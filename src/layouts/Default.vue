@@ -1,6 +1,6 @@
 <template>
   <div class="content-wrapper bg-background-primary font-sans text-copy-primary leading-normal flex flex-col min-h-screen" :class="theme">
-    <header class="border-t-20 border-green-500">
+    <header class="border-t-20 border-green-500 bg-background-quaternary">
       <nav class="container-inner mx-auto flex flex-wrap justify-between items-center py-8">
         <div>
           <g-link to="/"><g-image src="../../static/logo.svg" class="w-40" alt="logo" /></g-link>
