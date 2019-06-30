@@ -4,7 +4,7 @@ workflow "Deploy" {
 }
 
 action "OnlyRelease" {
-  uses = "actions/bin/filter@release"
+  uses = "actions/bin/filter@master"
   args = "branch release"
 }
 
