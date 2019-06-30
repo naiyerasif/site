@@ -9,7 +9,7 @@ action "OnlyRelease" {
 }
 
 action "Publish" {
-  uses = "JamesIves/github-pages-deploy-action@master"
+  uses = "JamesIves/github-pages-deploy-action@release"
   needs = ["OnlyRelease"]
   env = {
     BRANCH = "master"
