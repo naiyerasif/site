@@ -13,8 +13,11 @@ action "Publish" {
   needs = ["OnlyRelease"]
   env = {
     BRANCH = "master"
+    BASE_BRANCH = "release"
     BUILD_SCRIPT = "npm install && npm run build"
     FOLDER = "public"
+    COMMIT_EMAIL = "naiyer.app@gmail.com"
+    COMMIT_NAME = "Microflash"
   }
   secrets = ["ACCESS_TOKEN"]
 }
