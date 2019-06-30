@@ -24,30 +24,31 @@
             <svg width="170px" height="170px"><use xlink:href="#dots-triangle" /></svg>
           </div>
 
-          <p class="mb-12">This site was made possible by
+          <p class="mb-12">This site is made possible by:
             <ul class="my-5">
               <li>
-                <a href="https://gridsome.org/">Gridsome</a> - a modern Vue.js framework which generates this website
+                <a href="https://gridsome.org/">Gridsome</a>: a modern Vue.js framework for static websites
               </li>
               <li>
-                <a href="https://github.com/drehimself/gridsome-portfolio-starter">Gridsome Portfolio Starter</a> - which was the base for this website
+                <a href="https://github.com/drehimself/gridsome-portfolio-starter">Gridsome Portfolio Starter</a>: a simple portfolio starter for Gridsome
               </li>
               <li>
-                <a href="https://tailwindcss.com/">tailwindcss</a> - the CSS framework
+                <a href="https://tailwindcss.com/">tailwindcss</a>: a utility-first CSS framework
               </li>
               <li>
-                <a href="https://fusejs.io/">Fuse.js</a> - which powers the search
+                <a href="https://fusejs.io/">Fuse.js</a>: a lightweight fuzzy-search library
               </li>
               <li>
-                <a href="https://feathericons.com/">Feather Icons</a> - for all the SVG icons
+                <a href="https://feathericons.com/">Feather Icons</a>: beautiful open-source icons
               </li>
               <li>
-                <a href="https://undraw.co">unDraw</a> - for the awesome SVG illustrations
+                <a href="https://undraw.co">unDraw</a>: a collection of beautiful svg images
               </li>
             </ul>
-            The theme switching is done with the help of <a href="https://alligator.io/css/theming-custom-properties/">custom CSS properties</a>, the data is queried through <a href="https://graphql.org/">GraphQL</a> and the components are powered by <a href="https://vuejs.org/">Vue.js</a>. The fonts are mostly system-native with the exception of <code>monospace</code> fonts where <a href="https://fonts.google.com/specimen/Roboto+Mono">Roboto Mono</a> is preferred.
+            The theme switching is done with the help of <a href="https://alligator.io/css/theming-custom-properties/">custom CSS properties</a>, the data is queried through <a href="https://graphql.org/">GraphQL</a> and the components and layouts are powered by <a href="https://vuejs.org/">Vue.js</a>. The fonts are mostly system-native with the exception of <code>monospace</code> fonts where <a href="https://fonts.google.com/specimen/Roboto+Mono">Roboto Mono</a> is preferred.
           </p>
-          <p class="mb-12">The source of this site can be found at its <a href="https://github.com/Microflash/microflash.github.io">GitHub repo</a>.</p>
+          <p class="mb-12">Continuous Integration is handled through <a href="https://circleci.com/">CircleCI</a> and deployments are done with <a href="https://github.com/tschaub/gh-pages">gh-pages</a>. Graphics and illustrations are created using <a href="https://affinity.serif.com/en-gb/designer/">Affinity Designer</a>, <a href="https://products.office.com/en-in/visio/flowchart-software">Microsoft Visio</a> and <a href="https://www.adobe.com/in/products/xd.html">Adobe XD</a>.</p>
+          <p class="mb-12">The source of this site is <a href="https://github.com/Microflash/microflash.github.io">available</a> under <a href="https://github.com/Microflash/microflash.github.io/blob/release/LICENSE">MIT</a>, the content under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC by SA</a>.</p>
         </div>
       </div>
     </div>
