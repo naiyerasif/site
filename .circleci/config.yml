@@ -3,12 +3,18 @@ version: 2
 jobs:
   build-deploy:
     docker:
-      - image: node:latest
+      - image: circleci/node:latest
     steps:
       - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Install dependencies
           command: yarn
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
       - run:
           name: Build docs
           command: yarn build
