@@ -85,6 +85,9 @@ module.exports = {
         'monospace',
       ],
     },
+    inset: {
+      '4': '1rem'
+    }
   },
   variants: {
     colors: ['hover', 'focus', 'active']

@@ -1,6 +1,7 @@
 <template>
   <Layout>
     <div class="container-inner mx-auto my-16">
+      <a class="hidden" id="backToTop"></a>
       <h1 class="mb-4 text-4xl font-bold leading-tight">{{ $page.post.title }}</h1>
       <div class="text-xl text-gray-600 mb-4">{{ $page.post.date }} &middot; {{ $page.post.timeToRead }} min read</div>
       <div class="flex mb-8 text-sm">
@@ -13,8 +14,20 @@
         </g-link>
       </div>
       <div class="markdown-body mb-8" v-html="$page.post.content" />
-      <div class="mb-8 text-center">
-        <g-link to="/" class="border border-gray-600 rounded-full px-4 py-2 hover:bg-green-200 font-medium uppercase">Back to Home</g-link>
+      <div class="fixed right-4 bottom-4 z-0">
+        <a href="#" title="Back to top" v-scroll-to="'#backToTop'" class="mr-4 text-gray-400 hover:text-green-200">
+          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="inline">
+            <circle cx="12" cy="12" r="10" style="background:#fff"></circle>
+            <polyline points="16 12 12 8 8 12"></polyline>
+            <line x1="12" y1="16" x2="12" y2="8"></line>
+          </svg>
+        </a>
+        <a href="/" title="Home" class="text-gray-400 hover:text-green-200">
+          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="inline">
+            <path style="background:#fff" d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+        </a>
       </div>
     </div>
   </Layout>
