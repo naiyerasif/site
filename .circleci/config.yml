@@ -1,0 +1,34 @@
+version: 2
+
+jobs:
+  build-deploy:
+    docker:
+      - image: node:latest
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: yarn
+      - run:
+          name: Build docs
+          command: yarn build
+      - run:
+          name: Configure build
+          command: |
+            git config user.email "naiyer.app+circleci@gmail.com"
+            git config user.name "circleci-build"
+      - add_ssh_keys:
+          fingerprints:
+            - "59:ad:fd:64:71:eb:81:01:6a:d7:1a:c9:0c:19:39:af"
+      - run:
+          name: Deploy the build
+          command: yarn deploy
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build-deploy:
+          filters:
+            branches:
+              only: release      
