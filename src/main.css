@@ -92,7 +92,7 @@ nav .active {
 
 @media (min-width: 1024px) {
   .container-inner {
-    max-width: 960px;
+    max-width: 65vw;
   }
 }
 
