@@ -127,7 +127,7 @@ nav .active {
   opacity: 0;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 419px) {
   .icon-link {
     margin-left: -.72em;
   }

@@ -767,11 +767,20 @@ export default {
   .markdown-body .highlight pre,
   .markdown-body pre {
     background-color: #f6f8fa;
-    border-radius: 3px;
+    border-radius: 7px;
     font-size: 75%;
     line-height: 1.5;
     overflow: auto;
     padding: 16px;
+  }
+
+  @media (max-width: 419px) {
+    .markdown-body .highlight pre, .markdown-body pre {
+      margin: .85rem -1.5rem;
+      padding-left: 1.65rem;
+      padding-right: 1.65rem;
+      border-radius: 0;
+    }
   }
 
   .markdown-body pre code {
