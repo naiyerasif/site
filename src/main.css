@@ -116,3 +116,32 @@ nav .active {
   height: 100%;
   border: 0;
 }
+
+.icon-link {
+  opacity: 0;
+  font-size: .85em;
+  float: left;
+  margin-left: -.87em;
+  padding-right: .15em;
+  margin-top: .125em;
+  opacity: 0;
+}
+
+@media (max-width: 640px) {
+  .icon-link {
+    margin-left: -.72em;
+  }
+}
+
+h1:hover .icon-link, 
+h2:hover .icon-link, 
+h3:hover .icon-link, 
+h4:hover .icon-link, 
+h5:hover .icon-link, 
+h6:hover .icon-link {
+  opacity: 1;
+}
+
+.icon-link::before {
+  content: '#';
+}
