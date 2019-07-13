@@ -7,12 +7,12 @@
 .theme-light {
   --bg-background-primary: white;
   --bg-background-secondary: #f7fcfb;
-  --bg-background-tertiary: #d4f5e9;
+  --bg-background-tertiary: #c5e0d6;
   --bg-background-quaternary: #f3f3f3;
 
   --text-copy-primary: #2d4843;
   --text-copy-secondary: #4a6861;
-  --text-copy-tertiary: #248157;
+  --text-copy-tertiary: #134b2f;
   --text-copy-quaternary: #4a5568;
 
   --border-border-color-primary: white;
@@ -41,12 +41,12 @@
 .theme-dark {
   --bg-background-primary: #1f1f1f;
   --bg-background-secondary: #2b2b2b;
-  --bg-background-tertiary: #0f3f2d;
+  --bg-background-tertiary: #2d413a;
   --bg-background-quaternary: #303030;
 
   --text-copy-primary: #b2bcba;
   --text-copy-secondary: #4a6861;
-  --text-copy-tertiary: #8bceb0;
+  --text-copy-tertiary: #3eaf7c;
   --text-copy-quaternary: #acbab7;
 
   --border-border-color-primary:  #2e2e2e;
@@ -92,7 +92,7 @@ nav .active {
 
 @media (min-width: 1024px) {
   .container-inner {
-    max-width: 65vw;
+    max-width: 60vw;
   }
 }
 
