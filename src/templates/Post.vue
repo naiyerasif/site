@@ -2,7 +2,7 @@
   <Layout>
     <div class="container-inner mx-auto my-16">
       <a class="hidden" id="backToTop"></a>
-      <h1 class="mb-4 text-4xl font-bold leading-tight">{{ $page.post.title }}</h1>
+      <h1 class="text-5xl mb-4 font-semibold leading-tight">{{ $page.post.title }}</h1>
       <div class="text-xl text-gray-600 mb-4">{{ $page.post.date }} &middot; {{ $page.post.timeToRead }} min read</div>
       <div class="flex mb-8 text-sm">
         <g-link
