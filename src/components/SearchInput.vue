@@ -6,7 +6,7 @@
       <input
         type="text"
         placeholder="Search (Press  &quot;/&quot; to focus)"
-        class="bg-background-quaternary border-2 border-gray-500 rounded-full px-4 pl-10 py-2 outline-none focus:border-green-500 w-80"
+        class="bg-background-primary border-2 border-copy-primary rounded-full px-4 pl-10 py-2 outline-none focus:border-gray-600 w-80"
         v-model="query"
         @input="softReset"
         @keyup="performSearch"
@@ -19,7 +19,7 @@
         ref="search"
       >
       <div class="absolute top-0 ml-3" style="top:10px">
-        <svg fill="currentColor" class="text-gray-500 h-5 w-5" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"></path></svg>
+        <svg fill="currentColor" class="text-copy-primary h-6 w-6" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"></path></svg>
       </div>
       <div
         v-if="query.length > 0"

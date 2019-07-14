@@ -32,7 +32,7 @@
     </div>
     <footer class="bg-background-quaternary text-copy-quaternary z-10 md:py-6">
       <div class="container-inner mx-auto flex flex-col lg:flex-row items-center justify-between py-8">
-        <div class="mb-8 lg:mb-0 text-sm">
+        <div class="mb-8 lg:mb-0">
           <div>Copyright &copy; 2019 &middot; Source licensed <a class="text-copy-tertiary hover:text-gray-600" href="https://github.com/Microflash/microflash.github.io/blob/release/LICENSE">MIT</a>, content <a class="text-copy-tertiary hover:text-gray-600" href="https://creativecommons.org/licenses/by-sa/4.0/">CC by SA</a> &middot; <a href="sitemap.xml" title="Sitemap" class="text-copy-tertiary hover:text-gray-600">Sitemap</a></div>
         </div>
         <ul class="flex items-center">

@@ -1,19 +1,21 @@
 ---
-title: Docker Network Communication
-path: docker-network-communication
+title: Communication within a Docker network
+path: communication-within-a-docker-network
 date: 2019-07-06
-summary: Create an Angular application that consumes a REST microservice, both running on a Docker stack exposing the microservice endpoint only to the Angular application and not to the browser
+summary: Create an Angular application that consumes a REST endpoint, both running on a Docker stack
 tags: ['docker', 'angular', 'micronaut', 'microservices']
 ---
 
-## Objective
+## Premise
 
-Create an Angular application that consumes a REST microservice, both running on a Docker stack exposing the microservice endpoint only to the Angular application and not to the browser.
+You need to create an Angular application which consumes a REST endpoint, both running as containers on a Docker stack. Only the Angular application is publicly accessible; rest of the containers aren't exposed outside the Docker network.
+
+When you're serving the static build (e.g., production build) of an Angular application over Express or Nginx, there should be a mechanism to resolve the other services running on the same Docker stack through their Docker URLs. You'll get to know one way of achieving this here. 
 
 > **Requisites**
 > - Java 8 or higher
 > - Node 12 or higher
-> - Micronaut CLI (can be found at <http://micronaut.io/download.html>); a different framework can also be used. v1.1.3 was used in this example.
+> - Micronaut CLI (can be found at <http://micronaut.io/download.html>); v1.1.3 was used in this example. You can use other frameworks (such as Spring Boot) as well.
 > - Angular CLI (run `npm install -g @angular/cli` or `yarn global add @angular/cli` to install it globally). v8.0.1 was used in this example.
 
 ## Create a REST endpoint
@@ -24,7 +26,7 @@ Execute the following command on your favorite terminal to generate a simple Mic
 mn create-app com.mflash.app.greeter
 ```
 
-This'll create a Java app in a folder **greeter** with a package **com.mflash.app**. For more information, refer to [this guide](http://guides.micronaut.io/creating-your-first-micronaut-app/guide/index.html).
+This'll generate a Java application in a directory `greeter` with a package `com.mflash.app`. For more information, refer to [this guide](http://guides.micronaut.io/creating-your-first-micronaut-app/guide/index.html).
 
 Create a `GreeterController` in `com.mflash.app` package, which returns a JSON with a key `message`.
 
@@ -47,11 +49,10 @@ public class GreeterController {
     node.put("message", "Hello, human!");
     return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(node);
   }
-
 }
 ```
 
-Navigate to *src/main/resources* directory and edit **application.yml** as follows:
+Navigate to `src/main/resources` directory and edit **application.yml** as follows:
 
 ```yaml
 micronaut:
@@ -67,23 +68,27 @@ micronaut:
             - http://localhost:4200
 ```
 
-Here, a port for the application is being set (otherwise Micronaut will choose a random port every time it starts). Also, CORS is enabled for the requests coming from <http://localhost:4200> which is the Angular host.
+This configuration
+- sets a port for the Micronaut application (If you won't do this, Micronaut will choose a random port every time it starts)
+- enables CORS for the requests coming from <http://localhost:4200> (the Angular application)
 
-The REST endpoint is ready. Assemble the app using `gradle build` which would create a `greeter-0.1-all.jar` in *build/libs* directory. Create a Docker image by executing the following command (see [Dockerfile](./greeter/Dockerfile) for details):
+That's it! Assemble the app using `gradle build`. This will create a `greeter-0.1-all.jar` in `build/libs` directory. Create a Docker image by executing the following command (see the [Dockerfile](https://github.com/Microflash/bedrock/blob/master/docker/docker-network-communication/greeter/Dockerfile) for details):
 
 ```bash
 docker build -t microflash/greeter .
 ```
 
-## Create an Angular app
+## Create an Angular application
 
-Create an Angular app by executing the following command:
+Generate an Angular application by executing the following command:
 
 ```bash
 ng new ng-greeter --skip-tests --inline-template
 ```
 
-This will create an Angular app in a directory **ng-greeter**. Separate html files and test specifications will not be generated. For more information, refer to [Angular CLI wiki](https://github.com/angular/angular-cli/wiki/new). 
+This will create an Angular app in a directory `ng-greeter`.
+
+> **Note** that this command doesn't generate separate HTML files or test specifications. For more information, refer to [Angular CLI wiki](https://github.com/angular/angular-cli/wiki/new).
 
 Add `HttpClientModule` in `@NgModule imports` to provide support for calling REST APIs.
 
@@ -114,7 +119,7 @@ Create a new service by executing the following command:
 ng generate service Api
 ```
 
-This will create a new `ApiService` in a file `api.service.ts` in the *src/app* directory. Add a method `getGreeting()` to fetch the greeting from the REST endpoint created above.
+This will create a new `ApiService` in a file `api.service.ts` in the `src/app` directory. Add a method `getGreeting()` to fetch the greeting from the REST endpoint created earlier.
 
 ```typescript
 import { Injectable } from '@angular/core';
@@ -165,11 +170,11 @@ export class AppComponent implements OnInit {
 }
 ```
 
-Build the app, by running `ng build --prod`. The build will be dumped in *dist/ng-greeter* directory.
+Build the app by executing `ng build --prod`. The build will be dumped in `dist/ng-greeter` directory.
 
 ## Configure Nginx
 
-The build created in the previous step can be served through Nginx. Create a file `default.conf` in the directory *ng-greeter/config*. Add the following configuration in the file:
+This build can be served through Nginx. Create a file `default.conf` in the directory `ng-greeter/config`. Add the following configuration in the file:
 
 ```properties
 server {
@@ -218,15 +223,17 @@ server {
 
 **Recall** that the host for calling the API was not provided in the Angular app. So, when `getGreeting()` method will be called, `HttpClient` will resolve the path of the API as `http://localhost:4200/hello`. This path will obviously return an error if the app is run normally.
 
-To resolve this path, a proxy is configured with Nginx which will intercept all the calls to `/hello` endpoint and redirect it to `http://greeter:8084/hello` (which is Docker's network url for the REST endpoint created above). 
+To resolve this path, a proxy is configured with Nginx which will intercept all the calls to `/hello` endpoint and redirect it to `http://greeter:8084/hello` (which is the Docker URL for the REST endpoint created earlier). 
 
-## Configure Docker Stack
+## Configure Docker stack
 
-### Development Environment
+Exactly how you want run a Docker stack depends on your development workflow. However, the following considerations are worth mentioning.
 
-Assuming the builds in Development environment to be pretty frequent, the build creation can be delegated to Node on the environment itself and the build directories can be mapped through volumes.
+### Development
 
-Create a `stack-dev.yml` file in the parent directory of both *greeter* and *ng-greeter* directories. Add the following configuration:
+Assuming the builds in Development environment to be pretty frequent, the build creation can be delegated to Node.js on the environment itself and the build directories can be mapped through volumes.
+
+Create a `stack-dev.yml` file in the parent directory of both `greeter` and `ng-greeter` directories. Add the following configuration:
 
 ```yaml
 version: '3.1'
@@ -256,19 +263,21 @@ networks:
     driver: bridge
 ```
 
-Both Nginx and Greeter service have been networked on **greeternet** through a bridge. Only the port for Nginx has been exposed for access from outside the container. No API url will be visible from the browser, since they'll be internally resolved by Nginx.
+This configuration
+- creates a common network `greeternet` for Nginx and Greeter service
+- exposes only Nginx outside the container, ensuring that no API URLs are visible from the browser, since they'll be internally resolved by Nginx.
 
-The stack can be launched through `docker-compose -f stack-dev.yml up -d`. Access the UI at <http://localhost:4200> where the message from the endpoint would be displayed.
+Launch this stack by executing `docker-compose -f stack-dev.yml up -d`. Access the UI at <http://localhost:4200> where the message from the endpoint should be displayed.
 
-### Production Environment
+### Production
 
-For production, the build can be created through a [multistage Dockerfile](./ng-greeter/Dockerfile) by executing the following command
+For production, the build can be created through a [multistage Dockerfile](https://github.com/Microflash/bedrock/blob/master/docker/docker-network-communication/ng-greeter/Dockerfile) by executing the following command:
 
 ```bash
 docker build -t microflash/greeter_ui .
 ```
 
-and then the resultant image can be stacked with Greeter API. Create a `stack.yml` and add the following configuration:
+Now, create a `stack.yml` and add the following configuration:
 
 ```yaml
 version: '3.1'
@@ -295,16 +304,14 @@ networks:
     driver: bridge
 ```
 
-Naturally, no volumes are needed in this case since everything is already in the container. The stack can be launched through `docker-compose -f stack.yml up -d`and accessing the UI at <http://localhost:4200> would display the message from the endpoint.
+In this case, you don't need any volumes because everything is already in the container. Once again, launch the stack by executing `docker-compose -f stack.yml up -d` and access the UI at <http://localhost:4200> that should display the message from the endpoint.
 
 ## References
 
-### Source Code
-
-- [docker-network-sharing](https://github.com/Microflash/bedrock/tree/master/docker/docker-network-sharing)
-
-### Discussions
-
-- [eisfuchs](https://stackoverflow.com/users/1565175/eisfuchs): [Inject env variables from docker-compose into Angular4 app](https://stackoverflow.com/a/45727380) 
-- Kalkman, Michiel: [Wide open nginx CORS configuration](https://michielkalkman.com/snippets/nginx-cors-open-configuration/)
-- Nginx Docs: [Choosing an Outgoing IP Address](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/#choosing-an-outgoing-ip-address)
+> #### Source Code
+> - [docker-network-sharing](https://github.com/Microflash/bedrock/tree/master/docker/docker-network-sharing)
+> 
+> #### Discussions
+> - [eisfuchs](https://stackoverflow.com/users/1565175/eisfuchs): [Inject env variables from docker-compose into Angular4 app](https://stackoverflow.com/a/45727380) 
+> - Kalkman, Michiel: [Wide open nginx CORS configuration](https://michielkalkman.com/snippets/nginx-cors-open-configuration/)
+> - Nginx Docs: [Choosing an Outgoing IP Address](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/#choosing-an-outgoing-ip-address)
