@@ -6,17 +6,19 @@ summary: Create an Angular application that consumes a REST endpoint, both runni
 tags: ['docker', 'angular', 'micronaut', 'microservices']
 ---
 
-## Premise
+## Intent
 
 You need to create an Angular application which consumes a REST endpoint, both running as containers on a Docker stack. Only the Angular application is publicly accessible; rest of the containers aren't exposed outside the Docker network.
 
 When you're serving the static build (e.g., production build) of an Angular application over Express or Nginx, there should be a mechanism to resolve the other services running on the same Docker stack through their Docker URLs. You'll get to know one way of achieving this here. 
 
-> **Requisites**
-> - Java 8 or higher
-> - Node 12 or higher
-> - Micronaut CLI (can be found at <http://micronaut.io/download.html>); v1.1.3 was used in this example. You can use other frameworks (such as Spring Boot) as well.
-> - Angular CLI (run `npm install -g @angular/cli` or `yarn global add @angular/cli` to install it globally). v8.0.1 was used in this example.
+### Setup
+
+> This guide uses
+> - Java 8
+> - Node 12
+> - [Micronaut](http://micronaut.io/download.html) 1.1.3
+> - Angular 8
 
 ## Create a REST endpoint
 

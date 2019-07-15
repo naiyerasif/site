@@ -6,15 +6,17 @@ summary: Upload a directory or file using a Spring backend
 tags: ['multipart', 'upload', 'spring', 'angular']
 ---
 
-## Premise
+## Intent
 
 You need to create an Angular frontend to upload a folder or file with the help of a Spring backend.
 
-> **Requisites**
-> - Java 12 or higher
-> - Node 12 or higher
-> - Spring Boot 2.2; v2.2.M4 was used in this example.
-> - Angular CLI; v8.0.1 was used in this example.
+### Setup
+
+> This guide uses
+> - Java 12
+> - Node 12
+> - Spring Boot 2.2.M4
+> - Angular 8
 
 ## Create a Spring application to handle uploads
 

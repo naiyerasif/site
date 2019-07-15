@@ -739,7 +739,7 @@ export default {
   }
 
   .markdown-body img {
-    background-color: #fff;
+    background-color: transparent;
     box-sizing: content-box;
     max-width: 100%;
   }

@@ -23,6 +23,7 @@ module.exports = {
       use: '@gridsome/source-filesystem',
       options: {
         path: 'blog/**/*.md',
+        route: '/blog/:year/:month/:day/:slug',
         typeName: 'Post',
         refs: {
           tags: {
