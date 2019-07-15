@@ -27,7 +27,34 @@ docker-compose up -d
 
 Start by defining a [domain](https://github.com/Microflash/springtime/tree/master/spring-data-mongo-repository/src/main/java/com/mflash/domain). Say, you want to persist an `Email` object which is composed of an `Identity` object and a set of `Session` objects. When an `Email` object is saved, corresponding `Identity` object and `Session` objects should also be saved; the same goes for the delete operation.
 
+![Domain](./images/2019-07-08-persisting-and-querying-data-with-mongo-repository.svg)
+
 A Many-to-One relationship in mongoDB can be modeled with either [embedded documents](https://docs.mongodb.com/manual/tutorial/model-embedded-one-to-many-relationships-between-documents/) or [document references](https://docs.mongodb.com/manual/tutorial/model-referenced-one-to-many-relationships-between-documents/); with the later method being more useful since it prevents repetition of data. You can enforce this behavior through a `@DBRef` annotation.
+
+Your `Email` document will look like this:
+
+```java
+package com.mflash.domain;
+
+import java.time.ZonedDateTime;
+import java.util.HashSet;
+import java.util.Set;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+
+public class Email {
+
+  private @Id String key;
+  private String address;
+  private @DBRef Identity identity;
+  private @DBRef Set<Session> sessions;
+  private ZonedDateTime created;
+
+  // constructors, getters and setters, etc.
+}
+```
+
+Similarly, you can define `Identity` and `Session` documents.
 
 ## Create a Repository
 
