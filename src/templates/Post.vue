@@ -2,7 +2,7 @@
   <Layout>
     <div class="bg-background-quaternary">
       <div class="container-inner mx-auto textl-xl">
-        <div class="w-full pb-8 md:py-12">
+        <div class="w-full pb-8 pt-4 md:py-12">
           <a class="hidden" id="backToTop"></a>
           <h1 class="text-3xl md:text-5xl leading-tight mb-3">{{ $page.post.title }}</h1>
           <div class="text-sm text-gray-600 mb-4">{{ $page.post.date }} &middot; {{ $page.post.timeToRead }} min read</div>

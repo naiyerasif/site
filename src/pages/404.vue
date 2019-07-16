@@ -2,7 +2,7 @@
   <Layout>
     <div class="bg-background-quaternary">
       <div class="container-inner mx-auto textl-xl">
-        <div class="w-full pb-8 md:py-12">
+        <div class="w-full pb-12 pt-4 md:py-12">
           <h1 class="text-3xl md:text-5xl mb-4 leading-tight">Page Not Found</h1>
         </div>
       </div>

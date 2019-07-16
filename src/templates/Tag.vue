@@ -2,7 +2,7 @@
   <Layout>
     <div class="bg-background-quaternary">
       <div class="container-inner mx-auto textl-xl">
-        <div class="w-full pb-16 md:py-12">
+        <div class="w-full pb-16 pt-4 md:py-12">
           <a class="hidden" id="backToTop"></a>
           <h1 class="text-3xl md:text-5xl leading-tight">Tag: #{{ $page.tag.title }}</h1>
         </div>
