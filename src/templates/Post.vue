@@ -2,7 +2,7 @@
   <Layout>
     <div class="bg-background-quaternary">
       <div class="container-inner mx-auto textl-xl">
-        <div class="w-full py-8 md:py-12">
+        <div class="w-full pb-8 md:py-12">
           <a class="hidden" id="backToTop"></a>
           <h1 class="text-3xl md:text-5xl leading-tight mb-3">{{ $page.post.title }}</h1>
           <div class="text-sm text-gray-600 mb-4">{{ $page.post.date }} &middot; {{ $page.post.timeToRead }} min read</div>
@@ -17,12 +17,12 @@
           </div>
         </div>
       </div>
-      <div class="container-inner mx-auto -mt-48 md:-mt-32 pb-4 overflow-x-hidden">
+      <div class="container-inner mx-auto -mt-32 pb-4 overflow-x-hidden">
         <g-image src="../../static/pattern.svg" class="inline z-0"/>
       </div>
     </div>
-    <div class="container-inner mx-auto py-8 md:py-16">
-      <div class="markdown-body mb-8" v-html="$page.post.content" />
+    <div class="container-inner mx-auto py-4 md:py-16">
+      <div class="markdown-body mb-4" v-html="$page.post.content" />
       <div class="fixed right-4 bottom-4 z-0">
         <a href="#" title="Back to top" v-scroll-to="'#backToTop'" class="mr-4 text-gray-400 hover:text-green-200">
           <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="inline">
@@ -793,7 +793,7 @@ export default {
     padding: 16px;
   }
 
-  @media (max-width: 419px) {
+  @media (max-width: 639px) {
     .markdown-body .highlight pre, .markdown-body pre {
       margin: .85rem -1.5rem;
       padding-left: 1.65rem;
