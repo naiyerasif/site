@@ -3,7 +3,7 @@
     <div class="bg-background-quaternary">
       <div class="container-inner mx-auto textl-xl">
         <div class="w-full py-4 md:pt-12 md:pb-24 bg-background-pattern">
-          <h1 class="text-3xl md:text-5xl mb-4 leading-tight">Page Not Found</h1>
+          <h1 class="text-3xl font-bold md:text-5xl mb-4 leading-tight">Page Not Found</h1>
         </div>
       </div>
     </div>
