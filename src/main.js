@@ -35,6 +35,11 @@ export default function (Vue, { router, head, isClient }) {
     rel: 'stylesheet',
     href: 'https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap'
   })
+
+  head.link.push({
+    rel: 'stylesheet',
+    href: 'https://rsms.me/inter/inter.css'
+  })
 }
 
 

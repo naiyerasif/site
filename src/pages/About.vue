@@ -20,9 +20,9 @@
       <g-image src="../../static/mongodb.svg" class="w-1/6 inline my-4" alt="mongoDB" />
       <g-image src="../../static/jenkins.svg" class="w-1/6 inline my-4" alt="Jenkins" />
       <g-image src="../../static/kotlin.svg" class="w-1/6 inline my-4" alt="Kotlin" />
-      <p class="text-lg sm:text-xl mt-8">Besides writing code, I love to write documentation that is easy to read and digest (shoutout to fantastic <a href="https://spring.io/guides">Spring</a>, <a href="https://docs.docker.com/">Docker</a> and <a href="https://vuejs.org/v2/guide/">Vue.js</a> guides).</p>
+      <p class="text-lg sm:text-xl mt-8">Besides writing code, I love to write documentation that is easy to read and digest (shoutout to fantastic <a target="_blank" rel="noopener noreferrer" href="https://spring.io/guides">Spring</a>, <a target="_blank" rel="noopener noreferrer" href="https://docs.docker.com/">Docker</a> and <a target="_blank" rel="noopener noreferrer" href="https://vuejs.org/v2/guide/">Vue.js</a> guides).</p>
       <p class="text-lg sm:text-xl mt-8">When I'm not solving problems, I'm reading (mostly science fiction and spy thrillers) in English or Urdu, and listening to Pop and Vocals.</p>
-      <p class="text-lg sm:text-xl mt-8">Feel free to look around and contact me with any questions at <a href="https://www.twitter.com/Microflash">@Microflash</a> (which is the namesake of this blog).</p>
+      <p class="text-lg sm:text-xl mt-8">Feel free to look around and contact me with any questions at <a target="_blank" rel="noopener noreferrer" href="https://www.twitter.com/Microflash">@Microflash</a> (which is the namesake of this blog).</p>
     </div>
 
     <div class="overflow-x-hidden">
@@ -37,25 +37,27 @@
           <p class="mb-12">This site is made possible by:
             <ul class="my-5">
               <li>
-                <a href="https://gridsome.org/">Gridsome</a>: a modern Vue.js framework for static websites
+                <a target="_blank" rel="noopener noreferrer" href="https://gridsome.org/">Gridsome</a>: a modern Vue.js framework for static websites
               </li>
               <li>
-                <a href="https://github.com/drehimself/gridsome-portfolio-starter">Gridsome Portfolio Starter</a>: a simple portfolio starter for Gridsome
+                <a target="_blank" rel="noopener noreferrer" href="https://github.com/drehimself/gridsome-portfolio-starter">Gridsome Portfolio Starter</a>: a simple portfolio starter for Gridsome
               </li>
               <li>
-                <a href="https://tailwindcss.com/">tailwindcss</a>: a utility-first CSS framework
+                <a target="_blank" rel="noopener noreferrer" href="https://tailwindcss.com/">tailwindcss</a>: a utility-first CSS framework
               </li>
               <li>
-                <a href="https://fusejs.io/">Fuse.js</a>: a lightweight fuzzy-search library
+                <a target="_blank" rel="noopener noreferrer" href="https://fusejs.io/">Fuse.js</a>: a lightweight fuzzy-search library
               </li>
               <li>
-                <a href="https://feathericons.com/">Feather Icons</a>: beautiful open-source icons
+                <a target="_blank" rel="noopener noreferrer" href="https://feathericons.com/">Feather Icons</a>: beautiful open-source icons
               </li>
             </ul>
-            The theme switching is done with the help of <a href="https://alligator.io/css/theming-custom-properties/">custom CSS properties</a>, the data is queried through <a href="https://graphql.org/">GraphQL</a> and the components and layouts are powered by <a href="https://vuejs.org/">Vue.js</a>. The fonts are mostly system-native with the exception of <code>monospace</code> fonts where <a href="https://fonts.google.com/specimen/Roboto+Mono">Roboto Mono</a> is preferred.
           </p>
-          <p class="mb-12">Continuous Integration is handled through <a href="https://circleci.com/">CircleCI</a> and deployments are done with <a href="https://github.com/tschaub/gh-pages">gh-pages</a>. Graphics and illustrations are created using <a href="https://affinity.serif.com/en-gb/designer/">Affinity Designer</a>, <a href="https://products.office.com/en-in/visio/flowchart-software">Microsoft Visio</a> and <a href="https://www.adobe.com/in/products/xd.html">Adobe XD</a>.</p>
-          <p class="mb-8">The source of this site is <a href="https://github.com/Microflash/microflash.github.io">available</a> under <a href="https://github.com/Microflash/microflash.github.io/blob/release/LICENSE">MIT</a>, the content under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC by SA</a>.</p>
+          <p class="mb-12">
+            The theme switching is done with the help of <a target="_blank" rel="noopener noreferrer" href="https://alligator.io/css/theming-custom-properties/">custom CSS properties</a>, the data is queried through <a target="_blank" rel="noopener noreferrer" href="https://graphql.org/">GraphQL</a> and the components and layouts are powered by <a href="https://vuejs.org/">Vue.js</a>. <a target="_blank" rel="noopener noreferrer" href="https://rsms.me/inter/">Inter</a> is used as the main font (with an optional support for <a target="_blank" rel="noopener noreferrer" href="https://v-fonts.com/">variable fonts</a>) and <a target="_blank" rel="noopener noreferrer" href="https://fonts.google.com/specimen/Roboto+Mono">Roboto Mono</a> as the <code>monospace</code> font across the website.
+          </p>
+          <p class="mb-12">Continuous Integration is handled through <a target="_blank" rel="noopener noreferrer" href="https://circleci.com/">CircleCI</a> and deployments are done with <a target="_blank" rel="noopener noreferrer" href="https://github.com/tschaub/gh-pages">gh-pages</a>. Graphics and illustrations are created using <a target="_blank" rel="noopener noreferrer" href="https://affinity.serif.com/en-gb/designer/">Affinity Designer</a>, <a target="_blank" rel="noopener noreferrer" href="https://products.office.com/en-in/visio/flowchart-software">Microsoft Visio</a> and <a target="_blank" rel="noopener noreferrer" href="https://www.adobe.com/in/products/xd.html">Adobe XD</a>.</p>
+          <p class="mb-8">The source of this site is <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/microflash.github.io">available</a> under <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/microflash.github.io/blob/release/LICENSE">MIT</a>, the content under <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/">CC by SA</a>.</p>
         </div>
       </div>
     </div>

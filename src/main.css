@@ -1,5 +1,9 @@
 @tailwind base;
 
+@supports (font-variation-settings: normal) {
+  html { font-family: 'Inter var', font-sans }
+}
+
 @tailwind components;
 
 @tailwind utilities;
