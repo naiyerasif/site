@@ -44,7 +44,7 @@ module.exports = {
       options: {
         contentTypeName: 'Post',
         feedOptions: {
-          title: 'Microflash Blog',
+          title: 'Microflash',
           feed_url: 'https://microflash.github.io/rss.xml',
           site_url: 'https://microflash.github.io/'
         },
@@ -52,7 +52,7 @@ module.exports = {
           title: node.title,
           description: node.summary,
           url: 'https://microflash.github.io' + node.path,
-          author: 'Naiyer Asif',
+          author: node.author,
           date: node.date
         }),
         output: {
