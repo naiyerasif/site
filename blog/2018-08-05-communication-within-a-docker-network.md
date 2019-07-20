@@ -2,6 +2,7 @@
 title: Communication within a Docker network
 path: communication-within-a-docker-network
 date: 2019-07-06
+author: Naiyer Asif
 summary: Create an Angular application that consumes a REST endpoint, both running on a Docker stack
 tags: ['docker', 'angular', 'micronaut', 'microservices']
 ---
@@ -310,10 +311,9 @@ In this case, you don't need any volumes because everything is already in the co
 
 ## References
 
-> #### Source Code
-> - [docker-network-sharing](https://github.com/Microflash/bedrock/tree/master/docker/docker-network-sharing)
+> **Source Code** &mdash; [docker-network-sharing](https://github.com/Microflash/bedrock/tree/master/docker/docker-network-sharing)
 > 
-> #### Discussions
+> **Discussions**
 > - [eisfuchs](https://stackoverflow.com/users/1565175/eisfuchs): [Inject env variables from docker-compose into Angular4 app](https://stackoverflow.com/a/45727380) 
 > - Kalkman, Michiel: [Wide open nginx CORS configuration](https://michielkalkman.com/snippets/nginx-cors-open-configuration/)
 > - Nginx Docs: [Choosing an Outgoing IP Address](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/#choosing-an-outgoing-ip-address)

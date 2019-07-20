@@ -22,6 +22,7 @@ module.exports = {
     'g-image--lazy',
     'g-image--loaded',
     'icon-link',
+    'bg-background-pattern',
   ],
   extractors: [
     {

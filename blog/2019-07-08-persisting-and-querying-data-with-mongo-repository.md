@@ -2,13 +2,14 @@
 title: Persisting and querying data with MongoRepository
 path: persisting-and-querying-data-with-mongorepository
 date: 2019-07-08
+author: Naiyer Asif
 summary: Save objects and query them using MongoRepository interface of Spring Data MongoDB
-tags: ['spring-data', 'mongodb', 'repository']
+tags: ['spring-data', 'mongodb']
 ---
 
 ## Intent
 
-The intent of this guide is to save objects and query them using `MongoRepository` interface provided by Spring Data MongoDB. You'll also ensure that objects get saved and deleted properly in case of a one-to-many relationship.
+The intent of this guide is to save objects and query them using `MongoRepository` interface provided by Spring Data MongoDB. 
 
 ### Setup
 
@@ -17,7 +18,7 @@ The intent of this guide is to save objects and query them using `MongoRepositor
 > - Spring Boot 2.2.M4
 > - MongoDB 4
 
-Make sure that a mongoDB instance is available to persist the data. You can use [docker-compose.yml](https://github.com/Microflash/springtime/blob/master/spring-data-mongo-repository/docker-compose.yml) to launch an instance on Docker by executing the following command:
+Before getting started, make sure that a mongoDB instance is available to persist your data. You can use [docker-compose.yml](https://github.com/Microflash/springtime/blob/master/spring-data-mongo-repository/docker-compose.yml) to launch an instance on Docker by executing the following command:
 
 ```bash
 docker-compose up -d
@@ -25,13 +26,13 @@ docker-compose up -d
 
 ### Define a domain
 
-Start by defining a [domain](https://github.com/Microflash/springtime/tree/master/spring-data-mongo-repository/src/main/java/com/mflash/domain). Say, you want to persist an `Email` object which is composed of an `Identity` object and a set of `Session` objects. When an `Email` object is saved, corresponding `Identity` object and `Session` objects should also be saved; the same goes for the delete operation.
+Start by defining a [domain](https://github.com/Microflash/springtime/tree/master/spring-data-mongo-repository/src/main/java/com/mflash/domain). Say, you want to persist an `Email` object which consists of an `address`, an `Identity` of user, a set of `Session` created by the user and a `created` date. When an `Email` object is saved, corresponding `Identity` object and `Session` objects should also be persisted; the same goes for the delete operation.
 
 ![Domain](./images/2019-07-08-persisting-and-querying-data-with-mongo-repository.svg)
 
 A Many-to-One relationship in mongoDB can be modeled with either [embedded documents](https://docs.mongodb.com/manual/tutorial/model-embedded-one-to-many-relationships-between-documents/) or [document references](https://docs.mongodb.com/manual/tutorial/model-referenced-one-to-many-relationships-between-documents/); with the later method being more useful since it prevents repetition of data. You can enforce this behavior through a `@DBRef` annotation.
 
-Your `Email` document will look like this:
+Your `Email` document may look like this:
 
 ```java
 package com.mflash.domain;
@@ -78,11 +79,12 @@ public interface EmailRepository extends MongoRepository<Email, String> {
   Email findByAddress(String address);
 }
 ```
-`MongoRepository` provides several CRUD methods (like `findAll()`, `save()`, etc) out of the box, since it extends `CrudRepository` interface. For specific queries, you can define method signatures (using certain [naming conventions](https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#repositories.query-methods.query-creation)) for Spring to generate their implementations.
+
+Since `MongoRepository` extends `CrudRepository` interface, it provides several CRUD methods (like `findAll()`, `save()`, etc) out-of-the-box. For specific queries, you can define method signatures (using certain [naming conventions](https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#repositories.query-methods.query-creation)) for Spring to generate their implementations.
 
 ### Unit tests for Repository
 
-Write some tests to verify if the repository created earlier works as expected.
+Now that your repository is ready, you can write some tests to verify if it works as expected.
 
 ```java
 package com.mflash.repository;
@@ -147,7 +149,7 @@ class EmailRepositoryTest {
 }
 ```
 
-When you'll try to run these tests, you'll come across the following exception:
+When you'll run these tests, the following exception may be thrown:
 
 ```java
 org.bson.codecs.configuration.CodecConfigurationException: Can't find a codec for class java.time.ZonedDateTime.
@@ -157,7 +159,7 @@ This happens because `Email` class has a field `created` of type `ZonedDateTime`
 
 ### Converters for `ZonedDateTime`
 
-Spring provides `Converter` interface which can be implemented for this very purpose. To convert `Date` to `ZonedDateTime` object, write a converter like this:
+Spring provides a `Converter` interface which can be implemented for this very purpose. To convert `Date` to `ZonedDateTime` object, write a converter like this:
 
 ```java
 package com.mflash.helper.converter;
@@ -175,7 +177,7 @@ public class DateToZonedDateTimeConverter implements Converter<Date, ZonedDateTi
 }
 ```
 
-> **Note** that UTC is considered as `ZoneOffset` here. `Date` object contains no such information. However, since mongoDB timestamps default to UTC, you can adjust the offset accordingly for your own timezone.
+> **Note** that UTC is considered as `ZoneOffset` here. `Date` object, the one which actually gets persisted in mongoDB, contains no zone information. However, since mongoDB timestamps default to UTC, you can adjust the offset accordingly for your own timezone.
 
 Similarly, for conversion from `ZonedDateTime` to `Date`, write a yet another converter.
 
@@ -194,7 +196,7 @@ public class ZonedDateTimeToDateConverter implements Converter<ZonedDateTime, Da
 }
 ```
 
-Inject these implementations through a `MongoCustomConversions` bean as follows:
+Inject these converters through a `MongoCustomConversions` bean as follows:
 
 ```java
 package com.mflash.configuration;
@@ -224,9 +226,11 @@ public @Configuration class MongoConfiguration {
 }
 ```
 
+Now, you'll be able to run the unit tests successfully.
+
 ## Cascade the documents
 
-Spring Data Mongo doesn't support cascading of objects out-of-the-box. The official Spring documenation states that:
+Spring Data Mongo doesn't support cascading of objects out-of-the-box. The official Spring documentation states that:
 
 > The mapping framework does not handle cascading saves. If you change an `Account` object that is referenced by a `Person` object, you must save the `Account` object separately. Calling save on the `Person` object will not automatically save the `Account` objects in the property accounts.
 
@@ -252,7 +256,7 @@ public @interface Cascade {
 }
 ```
 
-Since, cascading can be done for save and/or delete operations, you can generalize your implementation by passing a value to the annotation that will set the type of cascading. By default, choose for cascading both save and delete operations through `CascadeType.ALL` value.
+Since, cascading can be done for save and/or delete operations, you can generalize your implementation by passing a value to the annotation that will set the type of cascading. By default, choose for cascading on both save and delete operations through `CascadeType.ALL` value.
 
 Annotate the desired fields with this annotation.
 
@@ -465,5 +469,4 @@ class CascadeTest {
 
 ## References
 
-> #### Source Code
-> - [spring-data-mongo-repository](https://github.com/Microflash/springtime/tree/master/spring-data-mongo-repository)
+> **Source Code** &mdash; [spring-data-mongo-repository](https://github.com/Microflash/springtime/tree/master/spring-data-mongo-repository)

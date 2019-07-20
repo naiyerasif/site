@@ -2,8 +2,9 @@
 title: Multipart upload with Spring
 path: multipart-upload-with-spring
 date: 2018-12-09
+author: Naiyer Asif
 summary: Upload a directory or file using a Spring backend
-tags: ['multipart', 'upload', 'spring', 'angular']
+tags: ['spring', 'angular']
 ---
 
 ## Intent
@@ -281,9 +282,8 @@ Launch the Spring and Angular applications and navigate to <http://localhost:420
 
 ## References
 
-> #### Source Code
-> - [spring-webmvc-multipart-upload](https://github.com/Microflash/springtime/tree/master/spring-webmvc-multipart-upload)
+> **Source Code** &mdash; [spring-webmvc-multipart-upload](https://github.com/Microflash/springtime/tree/master/spring-webmvc-multipart-upload)
 >
-> #### Discussions
+> **Discussions**
 > - Getting Started Guide from Spring: [Uploading files](https://spring.io/guides/gs/uploading-files/)
 > - grokonez: [Angular 6 – Upload/Get MultipartFile to/from Spring Boot Server](https://grokonez.com/java-integration/angular-6-upload-get-multipartfile-spring-boot-example)

@@ -2,10 +2,16 @@
   <Layout>
     <div class="bg-background-quaternary">
       <div class="container-inner mx-auto textl-xl">
-        <div class="w-full pb-8 pt-4 md:py-12">
+        <div class="w-full py-4 md:pt-12 md:pb-24 bg-background-pattern">
           <a class="hidden" id="backToTop"></a>
           <h1 class="text-3xl md:text-5xl leading-tight mb-3">{{ $page.post.title }}</h1>
-          <div class="text-sm text-gray-600 mb-4">{{ $page.post.date }} &middot; {{ $page.post.timeToRead }} min read</div>
+          <div class="flex text-gray py-4">
+            <g-image src="../../static/profile.png" class="h-10 w-10 rounded-full mx-0 mr-2" alt="Naiyer" />
+            <div class="text-left">
+              <div class="text-sm font-semibold">{{ $page.post.author }}</div>
+              <div class="text-sm">{{ $page.post.date }} &middot; {{ $page.post.timeToRead }} min read</div>
+            </div>
+          </div>
           <div class="flex mb-8 text-sm">
             <g-link
               :to="tag.path"
@@ -16,9 +22,6 @@
             </g-link>
           </div>
         </div>
-      </div>
-      <div class="container-inner mx-auto -mt-32 pb-4 overflow-x-hidden">
-        <g-image src="../../static/pattern.svg" class="inline z-0"/>
       </div>
     </div>
     <div class="container-inner mx-auto py-4 md:py-16">
@@ -47,6 +50,7 @@ query Post ($path: String!) {
   post: post (path: $path) {
     title
     date (format: "MMMM D, Y")
+    author
     content
     timeToRead
     tags {
@@ -589,7 +593,7 @@ export default {
   }
 
   .markdown-body blockquote {
-    border-left: .25em solid #30855A;
+    border-left: .15em solid #30855A;
     color: #6a737d;
     padding: 0 1em;
   }
@@ -1030,6 +1034,10 @@ export default {
 
   .markdown-body .pl-12 {
     padding-left: 128px!important;
+  }
+
+  .markdown-body blockquote p {
+    margin-bottom: 0.5em;
   }
 </style>
 

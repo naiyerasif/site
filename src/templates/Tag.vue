@@ -2,13 +2,10 @@
   <Layout>
     <div class="bg-background-quaternary">
       <div class="container-inner mx-auto textl-xl">
-        <div class="w-full pb-16 pt-4 md:py-12">
+        <div class="w-full pb-10 pt-4 md:pt-12 md:pb-32 bg-background-pattern">
           <a class="hidden" id="backToTop"></a>
           <h1 class="text-3xl md:text-5xl leading-tight">Tag: #{{ $page.tag.title }}</h1>
         </div>
-      </div>
-      <div class="container-inner mx-auto -mt-32 pb-4 overflow-x-hidden">
-        <g-image src="../../static/pattern.svg" class="inline"/>
       </div>
     </div>
     <div class="container-inner mx-auto my-16">

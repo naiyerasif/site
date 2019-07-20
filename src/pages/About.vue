@@ -2,13 +2,10 @@
   <Layout>
     <div class="bg-background-quaternary">
       <div class="container-inner mx-auto textl-xl">
-        <div class="w-full pb-12 pt-4 md:py-12">
-          <h1 class="text-3xl md:text-5xl mb-4 leading-tight">Hello, I'm <span class="text-green-500">Naiyer</span>,<br>
+        <div class="w-full py-4 md:py-16 bg-background-pattern">
+          <h1 class="text-3xl md:text-5xl mb-4 md:mb-16 leading-tight">Hello, I'm <span class="text-green-500">Naiyer</span>,<br>
             a full-stack developer <br>from Bengaluru, India.</h1>
         </div>
-      </div>
-      <div class="container-inner mx-auto -mt-32 pb-4 overflow-x-hidden">
-        <g-image src="../../static/pattern.svg" class="inline"/>
       </div>
     </div>
     <div class="container-inner mx-auto py-4 md:py-16">
