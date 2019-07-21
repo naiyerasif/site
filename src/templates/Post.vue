@@ -8,7 +8,7 @@
           <div class="flex text-gray py-4">
             <g-image src="../../static/profile.png" class="h-10 w-10 rounded-full mx-0 mr-2" alt="Naiyer" />
             <div class="text-left">
-              <div class="text-sm font-semibold">{{ $page.post.author }}</div>
+              <g-link class="text-sm font-semibold" to="/about">{{ $page.post.author }}</g-link>
               <div class="text-sm">{{ $page.post.date }} &middot; {{ $page.post.timeToRead }} min read</div>
             </div>
           </div>

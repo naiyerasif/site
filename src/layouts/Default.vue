@@ -17,11 +17,19 @@
           <li class="mr-8 mb-6 lg:mb-0">
             <search-input />
           </li>
-          <li class="mr-8 mb-6 lg:mb-0">
+          <li class="mr-6 mb-6 lg:mb-0">
             <theme-switcher :theme="theme" @themeChanged="updateTheme" />
           </li>
-          <li>
-            <g-link to="/about" class="text-copy-primary hover:text-gray-600">About</g-link>
+          <li class="nav dropdown">
+            <ul class="menu">
+              <li class="menu-item has-children"><a class="text-copy-primary hover:text-gray-600" href=""><span class="mt-1">Menu</span><span class="dropdown-icon"></span></a>
+                <ul class="sub-menu md:bg-background-primary md:rounded-lg md:shadow-xl">
+                  <!-- <li class="menu-item"><a class="text-copy-primary hover:text-gray-600" href="">Cheatsheets</a></li> -->
+                  <!-- <li class="menu-item border-b border-gray-600 opacity-25 pt-1 mb-1"></li> -->
+                  <li class="menu-item"><g-link to="/about" class="text-copy-primary hover:text-gray-600">About</g-link></li>
+                </ul>
+              </li>
+            </ul>
           </li>
         </ul>
       </nav>
@@ -101,3 +109,99 @@ export default {
 </script>
 
 <style src="../main.css" />
+
+<style scoped>
+.menu .menu-item.has-children, .menu .menu-item.has-children .menu-item {
+  position: relative;
+}
+.menu .menu-item a {
+  padding: 0.5em 0.75em;
+  border: none !important;
+  display: flex;
+  justify-content: space-between;
+}
+.menu .sub-menu {
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  transition: visibility .25s, opacity .25s ease-in-out;
+}
+.menu .sub-menu .menu-item {
+  visibility: hidden;
+}
+.menu .menu-item:hover > .sub-menu, .menu .menu-item:active > .sub-menu, .menu .menu-item:focus > .sub-menu {
+  opacity: 1;
+  height: auto;
+  width: auto;
+}
+.menu .menu-item:hover > .sub-menu,
+.menu .menu-item:hover > .sub-menu .menu-item, .menu .menu-item:active > .sub-menu,
+.menu .menu-item:active > .sub-menu .menu-item, .menu .menu-item:focus > .sub-menu,
+.menu .menu-item:focus > .sub-menu .menu-item {
+  visibility: visible;
+}
+.menu .menu-item > a:hover .dropdown-icon:after, .menu .menu-item > a:active .dropdown-icon:after, .menu .menu-item > a:focus .dropdown-icon:after {
+  transform: rotate(45deg);
+}
+.menu .dropdown-icon {
+  padding: 1em 1.25em;
+  margin: -1em -1em -1em .5em;
+}
+.menu .dropdown-icon:after {
+  content: "+";
+  font-size: 1.5rem;
+  display: block;
+  transition: transform .25s ease-in-out;
+}
+
+.dropdown {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+.dropdown .menu .dropdown-icon {
+  margin: -1.25em .5em -1em -2em;
+}
+
+@media only screen and (min-width: 1024px) {
+  .nav .menu {
+    display: flex;
+    flex-flow: row wrap;
+  }
+  .nav .menu > .menu-item > a .dropdown-icon {
+    padding-left: 0;
+  }
+  .nav .menu .menu-item:hover > .sub-menu, .nav .menu .menu-item:active > .sub-menu, .nav .menu .menu-item:focus > .sub-menu {
+    padding: 0.5em;
+    width: 175px;
+  }
+  .nav .menu .sub-menu {
+    position: absolute;
+    z-index: 3000;
+    top: 100%;
+    left: 0;
+  }
+  .nav .menu .sub-menu .sub-menu {
+    top: 0;
+    left: 100%;
+  }
+  .nav .menu .dropdown-icon {
+    padding: 1em;
+  }
+
+  .dropdown .menu > .menu-item > a .dropdown-icon {
+    padding-left: 1em;
+    padding-right: 0;
+  }
+  .dropdown .menu .sub-menu {
+    top: 100%;
+    left: auto;
+    right: 0;
+  }
+  .dropdown .menu .sub-menu .sub-menu {
+    left: auto;
+    right: 100%;
+  }
+}
+</style>
+
