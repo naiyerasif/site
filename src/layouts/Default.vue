@@ -25,8 +25,8 @@
                   <span class="dropdown-icon"></span>
                 </a>
                 <ul class="sub-menu md:bg-background-primary md:rounded-lg md:shadow-xl">
-                  <!-- <li class="menu-item"><a class="text-copy-primary hover:text-gray-600" href="">Cheatsheets</a></li> -->
-                  <!-- <li class="menu-item border-b border-gray-600 opacity-25 pt-1 mb-1"></li> -->
+                  <li class="menu-item"><g-link to="/tag/guide" class="text-copy-primary hover:text-gray-600">Guides</g-link></li>
+                  <li class="menu-item border-b border-gray-600 opacity-25 pt-1 mb-1"></li>
                   <li class="menu-item">
                     <g-link to="/about" class="text-copy-primary hover:text-gray-600">About</g-link>
                   </li>
