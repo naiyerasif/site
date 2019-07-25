@@ -17,6 +17,7 @@ module.exports = {
   siteName: 'Microflash',
   siteDescription: 'Personal website of Naiyer Asif',
   siteUrl: 'https://microflash.github.io',
+  titleTemplate: '%s — Microflash',
   outDir: 'public',
   plugins: [
     {
@@ -78,7 +79,9 @@ module.exports = {
     remark: {
       externalLinksTarget: '_blank',
       externalLinksRel: ['nofollow', 'noopener', 'noreferrer'],
-      anchorClassName: 'icon icon-link',
+      slug: true,
+      autolinkHeadings: true,
+      autolinkClassName: 'icon icon-link'
     }
   },
   css: {

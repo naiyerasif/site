@@ -1,12 +1,10 @@
 @tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @supports (font-variation-settings: normal) {
   html { font-family: 'Inter var', font-sans }
 }
-
-@tailwind components;
-
-@tailwind utilities;
 
 .theme-light {
   --bg-background-primary: white;
