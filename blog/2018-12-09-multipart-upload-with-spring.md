@@ -4,7 +4,7 @@ path: multipart-upload-with-spring
 date: 2018-12-09
 author: Naiyer Asif
 summary: Upload a directory or file using a Spring backend
-tags: ['spring', 'angular']
+tags: ['guide', 'spring', 'angular']
 ---
 
 ## Intent

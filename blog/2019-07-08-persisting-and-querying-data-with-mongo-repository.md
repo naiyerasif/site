@@ -4,7 +4,7 @@ path: persisting-and-querying-data-with-mongorepository
 date: 2019-07-08
 author: Naiyer Asif
 summary: Save objects and query them using MongoRepository interface of Spring Data MongoDB
-tags: ['spring-data', 'mongodb']
+tags: ['guide', 'spring-data', 'mongodb']
 ---
 
 ## Intent

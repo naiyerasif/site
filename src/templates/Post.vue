@@ -15,10 +15,10 @@
           <div class="flex mb-8 text-sm">
             <g-link
               :to="tag.path"
-              v-for="tag in $page.post.tags"
-              :key="tag.id"
+              v-for="(tag, i) in $page.post.tags"
+              :key="tag.id" :class="{'font-bold': i == 0}"
               class="bg-background-tertiary z-10 text-copy-tertiary hover:text-copy-tertiary rounded-full px-2 py-1 mr-2 text-xs hover:bg-background-quinary">
-              #{{ tag.title }}
+              <span v-if="i != 0">#</span>{{ tag.title }}
             </g-link>
           </div>
         </div>

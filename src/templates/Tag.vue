@@ -3,7 +3,10 @@
     <div class="bg-background-quaternary">
       <div class="container-inner mx-auto textl-xl">
         <div class="w-full pb-10 pt-4 md:pt-12 md:pb-32 bg-background-pattern">
-          <h1 class="text-3xl md:text-5xl leading-tight">Tag: <span class="font-bold">#{{ $page.tag.title }}</span></h1>
+          <h1 class="text-3xl md:text-5xl leading-tight">
+            <span class="font-bold" v-if="category">@{{ $page.tag.title }}s</span>
+            <span v-else>Tag: <span class="font-bold">#{{ $page.tag.title }}</span></span>
+          </h1>
         </div>
       </div>
     </div>
@@ -41,7 +44,8 @@ query Tag ($id: String!, $page: Int) {
             path
             summary
             tags {
-              title
+              title,
+              path
             }
           }
         }
@@ -58,7 +62,15 @@ import Postcard from '~/components/Postcard'
 export default {
   metaInfo() {
     return {
-      title: 'Tag: ' + this.$page.tag.title
+      title: this.category ? '@' + this.$page.tag.title + 's' : 'Tag: ' + this.$page.tag.title
+    }
+  },
+  computed: {
+    header() {
+
+    },
+    category() {
+      return this.$page.tag.title == 'guide'
     }
   },
   components: {

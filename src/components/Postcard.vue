@@ -7,8 +7,8 @@
     </g-link>
     
     <div class="text-copy-secondary text-gray-700 mb-8">
-      <g-link class="bg-background-tertiary text-copy-tertiary hover:text-copy-tertiary rounded-full px-2 py-1 mr-2 text-xs" v-for="tag in item.tags" :key="tag.id" :to="tag.path">
-        <span>#</span>{{ tag.title }}
+      <g-link :class="{'font-bold': i == 0}" class="bg-background-tertiary text-copy-tertiary hover:text-copy-tertiary rounded-full px-2 py-1 mr-2 text-xs" v-for="(tag, i) in item.tags" :key="tag.id" :to="tag.path">
+        <span v-if="i != 0">#</span>{{ tag.title }}
       </g-link>
     </div>
   </section>

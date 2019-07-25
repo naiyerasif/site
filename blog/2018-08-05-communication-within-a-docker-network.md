@@ -4,7 +4,7 @@ path: communication-within-a-docker-network
 date: 2019-07-06
 author: Naiyer Asif
 summary: Create an Angular application that consumes a REST endpoint, both running on a Docker stack
-tags: ['docker', 'angular', 'micronaut', 'microservices']
+tags: ['guide', 'docker', 'angular', 'micronaut', 'microservices']
 ---
 
 ## Intent
