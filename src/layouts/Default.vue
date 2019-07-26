@@ -47,7 +47,8 @@
           <div>Copyright &copy; {{ year }} &middot; Source licensed
             <a target="_blank" rel="noopener noreferrer" class="text-copy-tertiary hover:text-gray-600" href="https://github.com/Microflash/microflash.github.io/blob/release/LICENSE">MIT</a>, content
             <a class="text-copy-tertiary hover:text-gray-600" target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/">CC by SA</a> &middot;
-            <a href="sitemap.xml" title="Sitemap" class="text-copy-tertiary hover:text-gray-600">Sitemap</a>
+            <a href="sitemap.xml" title="Sitemap" class="text-copy-tertiary hover:text-gray-600">Sitemap</a> &middot;
+            <a href="https://github.com/Microflash/microflash.github.io/issues/new" target="_blank" rel="noopener noreferrer" class="text-copy-tertiary hover:text-gray-600">Report an issue</a>
           </div>
         </div>
         <ul class="flex items-center">
