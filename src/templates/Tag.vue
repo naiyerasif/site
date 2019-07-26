@@ -12,7 +12,7 @@
     </div>
     <div class="container-inner mx-auto my-16">
       <div v-for="post in $page.tag.belongsTo.edges" :key="post.node.id" class="post mb-16">
-        <postcard :item="post.node"/>
+        <postcard :item="post.node" />
       </div>
 
       <pagination
@@ -29,7 +29,7 @@
 query Tag ($id: String!, $page: Int) {
   tag: tag (id: $id) {
     title
-    belongsTo (page: $page, perPage: 7) @paginate {
+    belongsTo (sortBy: "updated", order: DESC, page: $page, perPage: 7) @paginate {
       totalCount
       pageInfo {
         totalPages
@@ -41,6 +41,7 @@ query Tag ($id: String!, $page: Int) {
             title
             timeToRead
     	      date (format: "MMMM D, YYYY")
+    	      updated (format: "MMMM D, YYYY")
             path
             summary
             tags {

@@ -26,9 +26,9 @@
     </div>
 
     <div class="overflow-x-hidden">
-      <div class="contact-me bg-background-secondary pt-12">
+      <div class="bg-background-secondary pt-12">
         <div class="container-inner mx-auto text-xl pb-4 relative">
-          <h2 class="font-bold mb-6" id="contact">Acknowledgements</h2>
+          <h2 class="font-bold mb-6">Acknowledgements</h2>
 
           <div class="absolute right-0 top-0" style="transform: translate(100%) rotate(180deg)">
             <svg width="170px" height="170px"><use xlink:href="#dots-triangle" /></svg>

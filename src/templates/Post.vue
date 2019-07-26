@@ -9,7 +9,7 @@
             <g-image src="../../static/profile.png" class="h-10 w-10 rounded-full mx-0 mr-2" alt="Naiyer" />
             <div class="text-left">
               <g-link class="text-sm font-semibold" to="/about">{{ $page.post.author }}</g-link>
-              <div class="text-sm">{{ $page.post.date }} &middot; {{ $page.post.timeToRead }} min read</div>
+              <div class="text-sm">{{ displayDate }} &middot; {{ $page.post.timeToRead }} min read</div>
             </div>
           </div>
           <div class="flex mb-8 text-sm">
@@ -50,8 +50,10 @@ query Post ($path: String!) {
   post: post (path: $path) {
     title
     date (format: "MMMM D, Y")
+    updated (format: "MMMM D, Y")
     author
     content
+    path
     timeToRead
     tags {
       title
@@ -66,6 +68,11 @@ export default {
   metaInfo() {
     return {
       title: this.$page.post.title
+    }
+  },
+  computed: {
+    displayDate() {
+      return this.$page.post.updated != this.$page.post.date ? 'Updated ' + this.$page.post.updated : 'Published ' + this.$page.post.date;
     }
   }
 }

@@ -2,7 +2,7 @@
   <Layout>
     <div class="container-inner mx-auto pt-16">
       <div v-for="post in $page.posts.edges" :key="post.id" class="post mb-16">
-        <postcard :item="post.node"/>
+        <postcard :item="post.node" />
       </div>
 
       <pagination
