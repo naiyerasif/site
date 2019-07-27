@@ -56,7 +56,8 @@ module.exports = {
           title: 'Microflash',
           description: 'Blog of Naiyer Asif',
           link: 'https://microflash.github.io/',
-          image: 'https://raw.githubusercontent.com/Microflash/microflash.github.io/release/src/favicon.png'
+          image: 'https://raw.githubusercontent.com/Microflash/microflash.github.io/release/src/favicon.png',
+          favicon: 'https://raw.githubusercontent.com/Microflash/microflash.github.io/release/src/favicon.png'
         },
         rss: {
           enabled: true,
@@ -76,7 +77,13 @@ module.exports = {
           title: node.title,
           date: node.date,
           description: node.summary,
-          author: node.author,
+          author: [
+            {
+              name: node.author,
+              email: 'naiyer.app@gmail.com',
+              link: 'https://microflash.github.io/about'
+            }
+          ],
           content: marked(node.content)
         })
       }
