@@ -811,7 +811,7 @@ export default {
   .markdown-body pre {
     background-color: #f6f8fa;
     border-radius: 3px;
-    font-size: 75%;
+    font-size: 85%;
     line-height: 1.5;
     overflow: auto;
     padding: 16px;
