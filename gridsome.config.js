@@ -48,25 +48,36 @@ module.exports = {
       }
     },
     {
-      use: 'gridsome-plugin-rss',
+      use: 'gridsome-plugin-feed',
       options: {
-        contentTypeName: 'Post',
+        contentTypes: ['Post'],
         feedOptions: {
           title: 'Microflash',
-          feed_url: 'https://microflash.github.io/rss.xml',
-          site_url: 'https://microflash.github.io/'
+          description: 'Blog of Naiyer Asif',
+          link: 'https://microflash.github.io/',
+          image: 'https://raw.githubusercontent.com/Microflash/microflash.github.io/release/src/favicon.png'
         },
-        feedItemOptions: node => ({
+        rss: {
+          enabled: true,
+          output: '/feed.xml'
+        },
+        atom: {
+          enabled: false,
+          output: '/feed.atom'
+        },
+        json: {
+          enabled: false,
+          output: '/feed.json'
+        },
+        maxItems: 25,
+        htmlFields: ['content'],
+        nodeToFeedItem: (node) => ({
           title: node.title,
+          date: node.date,
           description: node.summary,
-          url: 'https://microflash.github.io' + node.path,
           author: node.author,
-          date: node.date
-        }),
-        output: {
-          dir: './static',
-          name: 'rss.xml'
-        }
+          content: node.content
+        })
       }
     },
     {
