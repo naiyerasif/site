@@ -1,5 +1,6 @@
 const tailwind = require('tailwindcss')
 const purgecss = require('@fullhuman/postcss-purgecss')
+const marked = require('marked')
 
 const postcssPlugins = [
   tailwind(),
@@ -76,7 +77,7 @@ module.exports = {
           date: node.date,
           description: node.summary,
           author: node.author,
-          content: node.content
+          content: marked(node.content)
         })
       }
     },
