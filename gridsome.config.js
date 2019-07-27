@@ -35,6 +35,19 @@ module.exports = {
       }
     },
     {
+      use: '@gridsome/source-filesystem',
+      options: {
+        path: 'content/cheatsheet/*.md',
+        route: '/content/cheatsheet/:slug',
+        typeName: 'Cheatsheet',
+        remark: {
+          plugins: [
+            ['gridsome-plugin-remark-shiki', { theme: 'nord', skipInline: true }]
+          ]
+        }
+      }
+    },
+    {
       use: 'gridsome-plugin-rss',
       options: {
         contentTypeName: 'Post',
