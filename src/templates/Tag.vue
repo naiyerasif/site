@@ -4,7 +4,7 @@
       <div class="container-inner mx-auto textl-xl">
         <div class="w-full pb-10 pt-4 md:pt-12 md:pb-32 bg-background-pattern">
           <h1 class="text-3xl md:text-5xl leading-tight">
-            <span class="font-bold" v-if="category">@{{ $page.tag.title }}s</span>
+            <span class="font-bold" v-if="category">{{ header }}</span>
             <span v-else>Tag: <span class="font-bold">#{{ $page.tag.title }}</span></span>
           </h1>
         </div>
@@ -63,12 +63,13 @@ import Postcard from '~/components/Postcard'
 export default {
   metaInfo() {
     return {
-      title: this.category ? '@' + this.$page.tag.title + 's' : 'Tag: ' + this.$page.tag.title
+      title: this.category ? this.header : 'Tag: ' + this.$page.tag.title
     }
   },
   computed: {
     header() {
-
+      const first = this.$page.tag.title[0] || this.$page.tag.title.charAt(0);
+      return first.toUpperCase() + this.$page.tag.title.substring(1) + 's';
     },
     category() {
       return this.$page.tag.title == 'guide'
