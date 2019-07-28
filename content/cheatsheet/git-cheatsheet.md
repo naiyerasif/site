@@ -3,7 +3,7 @@ title: Git Cheatsheet
 path: git-cheatsheet
 date: 2019-03-24
 updated: 2019-07-25
-author: Naiyer Asif
+author: [naiyer]
 summary: Just a yet another Git cheatsheet
 ---
 

@@ -1,6 +1,6 @@
 {
   "name": "microflash",
-  "version": "0.0.1",
+  "version": "0.4.5",
   "description": "Personal website of Naiyer Asif",
   "repository": "https://github.com/Microflash/microflash.github.io.git",
   "author": "Naiyer Asif",
@@ -26,7 +26,9 @@
     "vue-scrollto": "^2.15.0"
   },
   "devDependencies": {
+    "fs-extra": "^8.1.0",
     "gh-pages": "^2.0.1",
+    "js-yaml": "^3.13.1",
     "tailwindcss": "^1.0.5"
   }
 }

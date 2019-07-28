@@ -3,7 +3,7 @@ title: Code Formatting with Prettier
 path: code-formatting-with-prettier
 date: 2019-04-20
 updated: 2019-04-20
-author: Naiyer Asif
+author: [naiyer]
 summary: Format JavaScript, TypeScript, HTML, etc with Prettier
 tags: ['guide', 'node', 'prettier']
 ---

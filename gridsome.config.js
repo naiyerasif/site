@@ -28,7 +28,8 @@ module.exports = {
             typeName: 'Tag',
             route: 'tag/:id',
             create: true
-          }
+          },
+          author: 'Author'
         },
         remark: {
           plugins: [
@@ -43,6 +44,9 @@ module.exports = {
         path: 'content/cheatsheet/*.md',
         route: '/content/cheatsheet/:slug',
         typeName: 'Cheatsheet',
+        refs: {
+          author: 'Author'
+        },
         remark: {
           plugins: [
             ['gridsome-plugin-remark-shiki', { theme: 'nord', skipInline: true }]

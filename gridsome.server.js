@@ -1,9 +1,29 @@
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
 const pick = require('lodash.pick');
+const yaml = require('js-yaml');
 
 module.exports = function (api, options) {
-  api.loadSource(store => {
+  api.loadSource(async store => {
+    // Add Authors
+    const authorsPath = path.join(__dirname, 'data/authors.yaml');
+    const authorsRaw = await fs.readFile(authorsPath, 'utf8');
+    const authorsData = yaml.safeLoad(authorsRaw);
+    const authors = store.addContentType({
+      typeName: 'Author',
+      route: '/about/:id'
+    });
+
+    authorsData.forEach(({ id, name: title, ...fields }) => {
+      authors.addNode({
+        id,
+        title,
+        fields,
+        internal: {
+          origin: authorsPath
+        }
+      })
+    });
   });
 
   api.beforeBuild(({ config, store }) => {

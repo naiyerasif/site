@@ -3,7 +3,7 @@ title: REST API with Express and TypeScript
 path: rest-api-with-express-and-typescript
 date: 2019-07-16
 updated: 2019-07-16
-author: Naiyer Asif
+author: [naiyer]
 summary: Create a simple REST API with Express and TypeScript
 tags: ['guide', 'express', 'typescript']
 ---

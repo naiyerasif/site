@@ -3,7 +3,7 @@ title: Messaging with RabbitMQ
 path: messaging-with-rabbitmq
 date: 2018-12-13
 updated: 2018-12-13
-author: Naiyer Asif
+author: [naiyer]
 summary: Publish and read messages with RabbitMQ using a Spring backend
 tags: ['guide', 'rabbitmq', 'spring']
 ---

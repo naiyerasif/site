@@ -5,10 +5,10 @@
         <div class="w-full py-4 md:pt-12 md:pb-24 bg-background-pattern">
           <a class="hidden" id="backToTop"></a>
           <h1 class="text-3xl font-bold md:text-5xl leading-tight mb-3">{{ $page.cheatsheet.title }}</h1>
-          <div class="flex text-gray py-4">
-            <g-image src="../../static/profile.png" class="h-10 w-10 rounded-full mx-0 mr-2" alt="Naiyer" />
+          <div class="flex text-gray py-4" v-for="author in $page.cheatsheet.author" :key="author.id">
+            <g-image :alt="author.title" :src="author.avatar" class="h-10 w-10 rounded-full mx-0 mr-2" />
             <div class="text-left">
-              <g-link class="text-sm font-semibold" to="/about/naiyer">{{ $page.cheatsheet.author }}</g-link>
+              <g-link class="text-sm font-semibold" :to="author.path">{{ author.title }}</g-link>
               <div class="text-sm">{{ displayDate }} &middot; {{ $page.cheatsheet.timeToRead }} min read</div>
             </div>
           </div>
@@ -50,7 +50,12 @@ query Cheatsheet ($path: String!) {
     title
     date (format: "MMMM D, Y")
     updated (format: "MMMM D, Y")
-    author
+    author {
+      id
+      title
+      path
+      avatar
+    }
     content
     path
     timeToRead

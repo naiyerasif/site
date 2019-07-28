@@ -3,7 +3,7 @@ title: Communication within a Docker network
 path: communication-within-a-docker-network
 date: 2018-08-05
 updated: 2019-07-06
-author: Naiyer Asif
+author: [naiyer]
 summary: Create an Angular application that consumes a REST endpoint, both running on a Docker stack
 tags: ['guide', 'docker', 'angular', 'micronaut', 'microservices']
 ---

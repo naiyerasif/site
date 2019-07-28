@@ -3,7 +3,7 @@ title: Multipart upload with Spring
 path: multipart-upload-with-spring
 date: 2018-12-09
 updated: 2018-12-09
-author: Naiyer Asif
+author: [naiyer]
 summary: Upload a directory or file using a Spring backend
 tags: ['guide', 'spring', 'angular']
 ---

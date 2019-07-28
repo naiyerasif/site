@@ -3,7 +3,7 @@ title: Linting SASS with Stylelint
 path: linting-sass-with-stylelint
 date: 2019-06-02
 updated: 2019-06-02
-author: Naiyer Asif
+author: [naiyer]
 summary: Lint SASS files with Stylelint and integrating it with Prettier
 tags: ['guide', 'sass', 'stylelint']
 ---
