@@ -153,3 +153,10 @@ app.listen(port, () => {
 ```
 
 Launch the application by executing `npm start` and you'll get the same application up and running, now with TypeScript support.
+
+## Add more routes
+
+To complete this guide, add more routes to handle GET, POST, PUT and DELETE requests. Open `index.ts` and add the following routes.
+
+
+
