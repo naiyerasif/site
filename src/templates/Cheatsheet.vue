@@ -72,7 +72,7 @@ export default {
       return "https://github.com/Microflash/microflash.github.io/edit/release" + this.$page.cheatsheet.path + ".md";
     },
     displayDate() {
-      return this.$page.cheatsheet.updated != this.$page.cheatsheet.date ? 'Updated ' + this.$page.cheatsheet.updated : 'Published ' + this.$page.cheatsheet.date;
+      return this.$page.cheatsheet.updated !== this.$page.cheatsheet.date ? 'Updated ' + this.$page.cheatsheet.updated : 'Published ' + this.$page.cheatsheet.date;
     }
   },
   components: {

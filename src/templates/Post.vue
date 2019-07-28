@@ -16,9 +16,9 @@
             <g-link
               :to="tag.path"
               v-for="(tag, i) in $page.post.tags"
-              :key="tag.id" :class="{'font-bold': i == 0}"
+              :key="tag.id" :class="{'font-bold': i === 0}"
               class="bg-background-tertiary z-10 text-copy-tertiary hover:text-copy-tertiary rounded-full px-2 py-1 mr-2 text-xs hover:bg-background-quinary">
-              <span v-if="i != 0">#</span>{{ tag.title }}
+              <span v-if="i !== 0">#</span>{{ tag.title }}
             </g-link>
           </div>
         </div>
@@ -87,7 +87,7 @@ export default {
       return "https://github.com/Microflash/microflash.github.io/edit/release/" + slug + ".md";
     },
     displayDate() {
-      return this.$page.post.updated != this.$page.post.date ? 'Updated ' + this.$page.post.updated : 'Published ' + this.$page.post.date;
+      return this.$page.post.updated !== this.$page.post.date ? 'Updated ' + this.$page.post.updated : 'Published ' + this.$page.post.date;
     }
   },
   components: {

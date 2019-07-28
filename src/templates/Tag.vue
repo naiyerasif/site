@@ -72,7 +72,7 @@ export default {
       return first.toUpperCase() + this.$page.tag.title.substring(1) + 's';
     },
     category() {
-      return this.$page.tag.title == 'guide'
+      return this.$page.tag.title === 'guide'
     }
   },
   components: {

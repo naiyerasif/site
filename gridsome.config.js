@@ -1,12 +1,14 @@
-const tailwind = require('tailwindcss')
-const purgecss = require('@fullhuman/postcss-purgecss')
-const marked = require('marked')
+const tailwind = require('tailwindcss');
+const purgecss = require('@fullhuman/postcss-purgecss');
+const marked = require('marked');
 
 const postcssPlugins = [
   tailwind(),
-]
+];
 
-if (process.env.NODE_ENV === 'production') postcssPlugins.push(purgecss())
+if (process.env.NODE_ENV === 'production') {
+  postcssPlugins.push(purgecss())
+}
 
 module.exports = {
   siteName: 'Microflash',
@@ -117,4 +119,4 @@ module.exports = {
       },
     },
   },
-}
+};
