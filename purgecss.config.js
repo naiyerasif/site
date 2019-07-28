@@ -25,16 +25,17 @@ module.exports = {
     'bg-background-pattern',
     'md:w-1/2',
     'lg:w-1/3',
-    'md:mb-0',
     'pt-12',
     'pb-4',
     'relative',
     'text-green-500',
     '-mx-2',
     'px-2',
+    'px-6',
     'mb-4',
     'pt-6',
-    'mb-12'
+    'mb-8',
+    'rounded'
   ],
   extractors: [
     {
