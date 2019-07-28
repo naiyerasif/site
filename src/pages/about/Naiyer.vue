@@ -11,15 +11,15 @@
     <div class="container-inner mx-auto py-4 md:py-16">
       <p class="text-lg sm:text-xl">I have more than 4 years of experience in Banking &amp; Financial Services, Legal &amp; Compliance and Aviation domains.</p>
       <p class="text-lg sm:text-xl mt-8">I'm adept at &mdash;</p>
-      <g-image src="../../static/java.svg" class="w-1/6 inline my-4" alt="Java" />
-      <g-image src="../../static/spring.svg" class="w-1/6 inline my-4" alt="Spring Framework" />
-      <g-image src="../../static/angular.svg" class="w-1/6 inline my-4" alt="Angular" />
-      <g-image src="../../static/oracle.svg" class="w-1/6 inline my-4" alt="Oracle Database" />
+      <g-image src="../../../static/java.svg" class="w-1/6 inline my-4" alt="Java" />
+      <g-image src="../../../static/spring.svg" class="w-1/6 inline my-4" alt="Spring Framework" />
+      <g-image src="../../../static/angular.svg" class="w-1/6 inline my-4" alt="Angular" />
+      <g-image src="../../../static/oracle.svg" class="w-1/6 inline my-4" alt="Oracle Database" />
       <p class="text-lg sm:text-xl mt-8">I have also worked on the following technologies, amongst others &mdash;</p>
-      <g-image src="../../static/docker.svg" class="w-1/6 inline my-4" alt="Docker" />
-      <g-image src="../../static/mongodb.svg" class="w-1/6 inline my-4" alt="mongoDB" />
-      <g-image src="../../static/jenkins.svg" class="w-1/6 inline my-4" alt="Jenkins" />
-      <g-image src="../../static/kotlin.svg" class="w-1/6 inline my-4" alt="Kotlin" />
+      <g-image src="../../../static/docker.svg" class="w-1/6 inline my-4" alt="Docker" />
+      <g-image src="../../../static/mongodb.svg" class="w-1/6 inline my-4" alt="mongoDB" />
+      <g-image src="../../../static/jenkins.svg" class="w-1/6 inline my-4" alt="Jenkins" />
+      <g-image src="../../../static/kotlin.svg" class="w-1/6 inline my-4" alt="Kotlin" />
       <p class="text-lg sm:text-xl mt-8">Besides writing code, I love to write documentation that is easy to read and digest (shoutout to fantastic <a target="_blank" rel="noopener noreferrer" href="https://spring.io/guides">Spring</a>, <a target="_blank" rel="noopener noreferrer" href="https://docs.docker.com/">Docker</a> and <a target="_blank" rel="noopener noreferrer" href="https://vuejs.org/v2/guide/">Vue.js</a> guides).</p>
       <p class="text-lg sm:text-xl mt-8">When I'm not solving problems, I'm reading (mostly science fiction and spy thrillers) in English or Urdu, and listening to Pop and Vocals.</p>
       <p class="text-lg sm:text-xl mt-8">Feel free to look around and contact me with any questions at <a target="_blank" rel="noopener noreferrer" href="https://www.twitter.com/Microflash">@Microflash</a> (which is the namesake of this blog).</p>

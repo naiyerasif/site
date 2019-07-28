@@ -83,7 +83,7 @@ module.exports = {
             {
               name: node.author,
               email: 'naiyer.app@gmail.com',
-              link: 'https://microflash.github.io/about'
+              link: 'https://microflash.github.io/about/naiyer'
             }
           ],
           content: marked(node.content)
