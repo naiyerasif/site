@@ -23,6 +23,12 @@ module.exports = {
     'g-image--loaded',
     'icon-link',
     'bg-background-pattern',
+    'md:w-1/2',
+    'lg:w-1/3',
+    'md:mb-0',
+    'pt-12',
+    'pb-4',
+    'relative'
   ],
   extractors: [
     {
