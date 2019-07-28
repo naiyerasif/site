@@ -28,7 +28,13 @@ module.exports = {
     'md:mb-0',
     'pt-12',
     'pb-4',
-    'relative'
+    'relative',
+    'text-green-500',
+    '-mx-2',
+    'px-2',
+    'mb-4',
+    'pt-6',
+    'mb-12'
   ],
   extractors: [
     {
