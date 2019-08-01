@@ -301,6 +301,23 @@ A `*` will appear next to the currently active branch
 git branch <branch>
 ```
 
+###### Delete a local branch
+
+```bash
+git branch -d <branch>
+git branch -D <branch>
+```
+
+`-d` is an alias for `--delete`, which only deletes the branch if it has already been fully merged in its upstream branch. Use `-D`, which is an alias for `--delete --force`, to delete the branch irrespective of its merged status.
+
+###### Delete a remote branch
+
+```bash
+git push <remote> --delete <branch>
+```
+
+In most cases, `<remote>` is `origin`.
+
 ###### Switch to another branch and check it out into your working directory
 
 ```bash
@@ -523,3 +540,4 @@ git reset --hard <branch>@{<spec>}
 > - [How can I git stash a specific file? [duplicate]](https://stackoverflow.com/a/5506483)
 > - [How to revert a Git repository to a previous commit](https://stackoverflow.com/a/4114122)
 > - [Useful tricks you might not know about Git stash](https://medium.freecodecamp.org/useful-tricks-you-might-not-know-about-git-stash-e8a9490f0a1a)
+> - [How do I delete a Git branch locally and remotely?](https://stackoverflow.com/questions/2003505/how-do-i-delete-a-git-branch-locally-and-remotely/2003515#2003515)
