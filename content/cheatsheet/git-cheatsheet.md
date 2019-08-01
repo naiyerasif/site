@@ -2,7 +2,7 @@
 title: Git Cheatsheet
 path: git-cheatsheet
 date: 2019-03-24
-updated: 2019-07-25
+updated: 2019-08-02
 author: [naiyer]
 summary: Just a yet another Git cheatsheet
 ---
