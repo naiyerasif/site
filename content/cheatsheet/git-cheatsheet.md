@@ -529,6 +529,8 @@ git reset --hard <branch>@{<spec>}
 
 ## References
 
+This cheatsheet is based on the references/discussions listed below.
+
 > **Other cheatsheets/references**
 > - [Atlassian Git Cheatsheet](https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet)
 > - [GitHub Cheatsheet](http://git.io/sheet)
