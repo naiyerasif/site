@@ -8,15 +8,38 @@
       </div>
     </div>
     <div class="container-inner mx-auto py-4 md:py-16">
-      <h2 class="font-bold text-xl mb-6">Cheatsheets</h2>
-      <ul class="my-5">
-        <li>
-          <g-link to="/content/cheatsheet/git-cheatsheet">Git Cheatsheet</g-link>
-        </li>
-      </ul>
+      <div class="max-w-sm rounded overflow-hidden bg-background-secondary shadow">
+        <div class="px-6 py-4">
+          <div class="font-bold text-xl mb-2">Cheatsheets</div>
+          <ul>
+            <li v-for="cheatsheet in $page.cheatsheets.edges" :key="cheatsheet.node.id">
+              <g-link :to="cheatsheet.node.path">{{ cheatsheet.node.title }}</g-link>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </Layout>
 </template>
+
+<page-query>
+query Cheatsheets ($page: Int) {
+  cheatsheets: allCheatsheet (sortBy: "title", order: DESC, perPage: 3, page: $page) {
+    totalCount
+    pageInfo {
+      totalPages
+      currentPage
+    }
+    edges {
+      node {
+        id
+        title
+        path
+      }
+    }
+  }
+}
+</page-query>
 
 <script>
 export default {
