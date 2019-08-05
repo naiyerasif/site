@@ -8,7 +8,7 @@
   "scripts": {
     "build": "gridsome build",
     "start": "gridsome develop",
-    "deploy": "gh-pages -b master -d public --message \"[skip ci] Updates\""
+    "deploy": "gh-pages -b master -d public --message \"[skip ci] Updates\" --git git"
   },
   "dependencies": {
     "@fullhuman/postcss-purgecss": "^1.2.0",
@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "fs-extra": "^8.1.0",
-    "gh-pages": "^2.0.1",
+    "gh-pages": "^2.1.0",
     "js-yaml": "^3.13.1",
     "tailwindcss": "^1.0.6"
   }
