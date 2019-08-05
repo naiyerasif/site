@@ -3665,9 +3665,9 @@ getpass@^0.1.1:
     assert-plus "^1.0.0"
 
 gh-pages@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/gh-pages/-/gh-pages-2.0.1.tgz#aefe47a43b8d9d2aa3130576b33fe95641e29a2f"
-  integrity sha512-uFlk3bukljeiWKQ2XvPfjcSi/ou7IfoDf2p+Fj672saLAr8bnOdFVqI/JSgrSgInKpCg5BksxEwGUl++dbg8Dg==
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/gh-pages/-/gh-pages-2.1.0.tgz#dcf519825d77d3a3ee78763076f4158403fc88c4"
+  integrity sha512-QmV1fh/2W5GZkfoLsG4g6dRTWiNYuCetMQmm8CL6Us8JVnAufYtS0uJPD8NYogmNB4UZzdRG44uPAL+jcBzEwQ==
   dependencies:
     async "^2.6.1"
     commander "^2.18.0"
@@ -3875,10 +3875,10 @@ gridsome-plugin-remark-shiki@^0.3.0:
     shiki-languages "^0.1.0"
     unist-util-visit "^1.4.0"
 
-gridsome@^0.6.6:
-  version "0.6.6"
-  resolved "https://registry.yarnpkg.com/gridsome/-/gridsome-0.6.6.tgz#054ce5b4f4c43624fd4885cbadd116e4b12471e2"
-  integrity sha512-6NSnOhM5wvxxSxIJt9FAOeA5IRZgx6J1V19kyfKyLxdWjlzfDwrhKFUPgROgob3N5zQfapslt3Zi21t8YS8DKg==
+gridsome@^0.6.7:
+  version "0.6.7"
+  resolved "https://registry.yarnpkg.com/gridsome/-/gridsome-0.6.7.tgz#f86232e18426acda78b97b552cccdf310240a765"
+  integrity sha512-0BuCq2YF2edRfkhI4phsBywB2XX9P5yMfbNy4nStNKU6187UsvnQO/aYjSl1m1rxoBSAFvvOBTuo0VXXKpf4Qw==
   dependencies:
     "@babel/core" "^7.0.0"
     "@gridsome/cli" "^0.2.1"
@@ -8090,10 +8090,10 @@ svgo@^1.0.0:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
-tailwindcss@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-1.0.5.tgz#5145fd61f251be06a77748819e12fb126914095d"
-  integrity sha512-e5edrSKqNOvWAVEutXN5czeJSXjQQxO7zNN4RDd5vQF/JTxnKdndcMFIC6p6YkRvcGFKPCZ/0rY1zZvPeq9V4A==
+tailwindcss@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-1.0.6.tgz#4e9dbd5726d5bd5c634e7b49d0aa4ea03d112330"
+  integrity sha512-hhdvXpnlYNnxfZCpldMypSWRzgmoQbKBy3namGlsP0Gs+qM8EwF3DBVUPoq8wJYbBFjzrgatE4czWJ6f12Y9+Q==
   dependencies:
     autoprefixer "^9.4.5"
     bytes "^3.0.0"
