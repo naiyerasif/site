@@ -16,6 +16,8 @@ tags: ['guide', 'node', 'prettier']
 
 You should already have a Node.js project; it could be any Express, Angular or Vue.js project.
 
+### Table of Contents
+
 ## Install Prettier
 
 Start by executing the following command in the directory where `package.json` is located

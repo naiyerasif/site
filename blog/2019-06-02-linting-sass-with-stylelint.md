@@ -16,6 +16,8 @@ It is quite usual to lint the JavaScript or TypeScript code in a web application
 
 You should already have a Node.js project with SASS; it could be any Angular or Vue.js project.
 
+### Table of Contents
+
 ## Install Styelint
 
 Execute the following command to add `stylelint`.

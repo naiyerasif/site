@@ -630,7 +630,7 @@ export default {
   }
 
   .markdown-body li>p {
-    margin-top: 16px;
+    margin-bottom: 0.4rem;
   }
 
   .markdown-body li+li {

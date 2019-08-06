@@ -22,6 +22,8 @@ When you're serving the static build (e.g., production build) of an Angular appl
 > - [Micronaut](http://micronaut.io/download.html) 1.1.3
 > - Angular 8
 
+### Table of Contents
+
 ## Create a REST endpoint
 
 Execute the following command on your favorite terminal to generate a simple Micronaut app with Gradle support:

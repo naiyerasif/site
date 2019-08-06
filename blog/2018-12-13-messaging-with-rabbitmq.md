@@ -19,6 +19,8 @@ You need to publish and read messages with RabbitMQ using a Spring backend.
 > - Spring Boot 2.1.0.RELEASE
 > - RabbitMQ 3 running on a Docker container
 
+### Table of Contents
+
 ## Setup a RabbitMQ broker
 
 Start by setting up a RabbitMQ broker; you can choose to [install](https://www.rabbitmq.com/download.html) it on your machine or run it as a container. For later, execute the following command on CLI in the project root where [docker-compose.yml](https://github.com/Microflash/springtime/blob/master/spring-messaging-rabbitmq/docker-compose.yml) resides.

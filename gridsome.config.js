@@ -33,7 +33,8 @@ module.exports = {
         },
         remark: {
           plugins: [
-            ['gridsome-plugin-remark-shiki', { theme: 'nord', skipInline: true }]
+            ['gridsome-plugin-remark-shiki', { theme: 'nord', skipInline: true }],
+            ['remark-toc', { maxDepth: 3, tight: true }]
           ]
         }
       }

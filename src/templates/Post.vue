@@ -3,7 +3,6 @@
     <div class="bg-background-quaternary bg-background-pattern">
       <div class="container-inner mx-auto textl-xl">
         <div class="w-full py-4 md:pt-12 md:pb-24">
-          <a class="hidden" id="backToTop"></a>
           <h1 class="text-3xl font-bold md:text-5xl leading-tight mb-3">{{ $page.post.title }}</h1>
           <div class="flex text-gray py-4" v-for="author in $page.post.author" :key="author.id">
             <g-image :alt="author.title" :src="author.avatar" class="h-10 w-10 rounded-full mx-0 mr-2" />
@@ -27,7 +26,7 @@
     <div class="container-inner mx-auto py-4 md:py-16">
       <markdown v-html="$page.post.content" />
       <div class="fixed right-4 bottom-4 z-0">
-        <a href="#" title="Back to top" v-scroll-to="'#backToTop'" class="mr-4 text-gray-400 hover:text-green-200">
+        <a href="#" title="Back to top" v-scroll-to="'#table-of-contents'" class="mr-4 text-gray-400 hover:text-green-200">
           <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="inline">
             <circle cx="12" cy="12" r="10" style="background:#fff"></circle>
             <polyline points="16 12 12 8 8 12"></polyline>

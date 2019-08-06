@@ -25,7 +25,9 @@ Before getting started, make sure that a mongoDB instance is available to persis
 docker-compose up -d
 ```
 
-### Define a domain
+### Table of Contents
+
+## Define a domain
 
 Start by defining a [domain](https://github.com/Microflash/springtime/tree/master/spring-data-mongo-repository/src/main/java/com/mflash/domain). Say, you want to persist an `Email` object which consists of an `address`, an `Identity` of user, a set of `Session` created by the user and a `created` date. When an `Email` object is saved, corresponding `Identity` object and `Session` objects should also be persisted; the same goes for the delete operation.
 

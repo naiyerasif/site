@@ -20,6 +20,8 @@ You need to create an Angular frontend to upload a folder or file with the help 
 > - Spring Boot 2.2.M4
 > - Angular 8
 
+### Table of Contents
+
 ## Create a Spring application to handle uploads
 
 Start by defining an interface that will enforce a contract for the service operations to upload and fetch files.
