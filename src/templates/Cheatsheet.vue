@@ -1,8 +1,8 @@
 <template>
   <Layout>
-    <div class="bg-background-quaternary">
+    <div class="bg-background-quaternary bg-background-pattern">
       <div class="container-inner mx-auto textl-xl">
-        <div class="w-full py-4 md:pt-12 md:pb-24 bg-background-pattern">
+        <div class="w-full py-4 md:pt-12 md:pb-24">
           <a class="hidden" id="backToTop"></a>
           <h1 class="text-3xl font-bold md:text-5xl leading-tight mb-3">{{ $page.cheatsheet.title }}</h1>
           <div class="flex text-gray py-4" v-for="author in $page.cheatsheet.author" :key="author.id">

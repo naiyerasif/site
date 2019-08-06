@@ -1,8 +1,8 @@
 <template>
   <Layout>
-    <div class="bg-background-quaternary">
+    <div class="bg-background-quaternary bg-background-pattern">
       <div class="container-inner mx-auto textl-xl">
-        <div class="w-full pb-10 pt-4 md:pt-12 md:pb-32 bg-background-pattern">
+        <div class="w-full pb-10 pt-4 md:pt-12 md:pb-32">
           <h1 class="text-3xl md:text-5xl leading-tight">
             <span class="font-bold" v-if="category">{{ header }}</span>
             <span v-else>Tag: <span class="font-bold">#{{ $page.tag.title }}</span></span>

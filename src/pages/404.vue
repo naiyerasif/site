@@ -1,8 +1,8 @@
 <template>
   <Layout>
-    <div class="bg-background-quaternary">
+    <div class="bg-background-quaternary bg-background-pattern">
       <div class="container-inner mx-auto textl-xl">
-        <div class="w-full py-4 md:pt-12 md:pb-24 bg-background-pattern">
+        <div class="w-full py-4 md:pt-12 md:pb-24">
           <h1 class="text-3xl font-bold md:text-5xl mb-4 leading-tight">Page Not Found</h1>
         </div>
       </div>
