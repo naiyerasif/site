@@ -2,15 +2,15 @@
 title: Linting SASS with Stylelint
 path: linting-sass-with-stylelint
 date: 2019-06-02
-updated: 2019-06-02
+updated: 2019-08-08
 author: [naiyer]
-summary: Lint SASS files with Stylelint and integrating it with Prettier
+summary: Analyze and fix problems in the SASS files with Stylelint and integrate it with Prettier
 tags: ['guide', 'sass', 'stylelint']
 ---
 
 ## Intent
 
-It is quite usual to lint the JavaScript or TypeScript code in a web application but you can lint [SASS](https://sass-lang.com/) (or CSS) as well. In fact, it is a good idea to do so to improve the quality of your CSS. Like JSLint or TSLint, [Stylelint](https://github.com/stylelint/stylelint) is a widely used linter that works with SCSS, Sass, Less and SugarSS. This guide shows you how `stylelint` can be used to lint SASS in a project.
+Just as you can lint the JavaScript or TypeScript code in a web application, you can also lint the [SASS](https://sass-lang.com/) (or CSS) files using [stylelint](https://github.com/stylelint/stylelint) which is a widely used linter that works with SCSS, Sass, Less and SugarSS. This guide shows you how `stylelint` can be used to lint SASS files in a project.
 
 ### Setup
 
@@ -18,7 +18,7 @@ You should already have a Node.js project with SASS; it could be any Angular or 
 
 ### Table of Contents
 
-## Install Styelint
+## Install Stylelint
 
 Execute the following command to add `stylelint`.
 
@@ -39,6 +39,16 @@ This script will run `stylelint` over all `scss` files in `src` directory and st
 ### Configuration files
 
 You can create `.stylelintignore` and `.stylelintrc` files in the root of your project. The former is used to ignore stylesheets in specified files and directories (just like `.gitignore`), while the latter is used to configure the behavior of `stylelint`.
+
+## Autofixing errors
+
+If your stylesheets are massive and you ran `stylelint` for the first time, you might get a huge number of violations. Instead of fixing all those violations by hand, you can put `stylelint` to work for you. Add the following script to let `stylelint` fix some of those violations automatically.
+
+```json
+"fix-scss": "stylelint \"src/**/*.scss\" --fix",
+```
+
+> As noted in the `stylelint` docs, autofixing is an *experimental* feature; it does not respect special comments for disabling `stylelint` within sources (e.g., `/* stylelint-disable-line */`). It is recommended to run `stylelint` twice if you're using both these special comments and autofixing. On the first run, some violations could be missed or reported incorrectly.
 
 ## Integrating Prettier with Stylelint
 
