@@ -694,7 +694,7 @@ export default {
   }
 
   .markdown-body code {
-    background-color: rgba(27,31,35,.05);
+    @apply bg-background-quaternary;
     border-radius: 7px;
     font-size: 85%;
     margin: 0;
