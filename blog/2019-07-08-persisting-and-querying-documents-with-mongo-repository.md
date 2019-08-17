@@ -1,23 +1,23 @@
 ---
-title: Persisting and querying data with MongoRepository
-path: persisting-and-querying-data-with-mongorepository
+title: Persisting and querying documents with MongoRepository
+path: persisting-and-querying-documents-with-mongorepository
 date: 2019-07-08
-updated: 2019-07-08
+updated: 2019-08-17
 author: [naiyer]
-summary: Save objects and query them using MongoRepository interface of Spring Data MongoDB
+summary: Save documents with MongoRepository interface and fetch them using query methods
 tags: ['guide', 'spring-data', 'mongodb']
 ---
 
 ## Intent
 
-The intent of this guide is to save objects and query them using `MongoRepository` interface provided by Spring Data MongoDB. 
+The intent of this guide is to save mongoDB documents with `MongoRepository` interface provided by Spring Data and run `find` queries using query methods.
 
 ### Setup
 
 > This guide uses
 > - Java 12
 > - Spring Boot 2.2.M4
-> - MongoDB 4
+> - mongoDB 4
 
 Before getting started, make sure that a mongoDB instance is available to persist your data. You can use [docker-compose.yml](https://github.com/Microflash/springtime/blob/master/spring-data-mongo-repository/docker-compose.yml) to launch an instance on Docker by executing the following command:
 
@@ -58,11 +58,11 @@ public class Email {
 }
 ```
 
-Similarly, you can define `Identity` and `Session` documents.
+Similarly, define `Identity` and `Session` documents.
 
 ## Create a Repository
 
-You can create a repository by extending `MongoRepository` interface.
+Create a repository by extending `MongoRepository` interface, as follows.
 
 ```java
 package com.mflash.repository;
@@ -83,11 +83,11 @@ public interface EmailRepository extends MongoRepository<Email, String> {
 }
 ```
 
-Since `MongoRepository` extends `CrudRepository` interface, it provides several CRUD methods (like `findAll()`, `save()`, etc) out-of-the-box. For specific queries, you can define method signatures (using certain [naming conventions](https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#repositories.query-methods.query-creation)) for Spring to generate their implementations.
+Since `MongoRepository` extends `CrudRepository` interface, it provides several CRUD methods (like `findAll()`, `save()`, etc) out-of-the-box. For specific queries, you can declare query methods (using certain [naming conventions](https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#repositories.query-methods.query-creation)) for Spring to generate their implementations at runtime.
 
 ### Unit tests for Repository
 
-Now that your repository is ready, you can write some tests to verify if it works as expected.
+Now that your repository is ready, write some tests to verify if it works as expected.
 
 ```java
 package com.mflash.repository;
@@ -158,7 +158,7 @@ When you'll run these tests, the following exception may be thrown:
 org.bson.codecs.configuration.CodecConfigurationException: Can't find a codec for class java.time.ZonedDateTime.
 ```
 
-This happens because `Email` class has a field `created` of type `ZonedDateTime` which can't be converted to a valid mongoDB representation by Spring. You'll have to tell Spring how this conversion can be done.
+This happens because `Email` class has a field `created` of type `ZonedDateTime` which can't be converted to a valid mongoDB representation by available Spring converters. Hence, you'll have to tell Spring how this conversion can be done.
 
 ### Converters for `ZonedDateTime`
 
@@ -389,7 +389,7 @@ public class CascadeMongoEventListener extends AbstractMongoEventListener<Object
         .doWithFields(source.getClass(), new CascadeSaveCallback(source, mongoOperations));
   }
 
-  public @Override void onAfterConvert(AfterConvertEvent<Object> event) {
+  public @Override void onAfterConvert(final AfterConvertEvent<Object> event) {
     final Object source = event.getSource();
     ReflectionUtils
         .doWithFields(source.getClass(), new CascadeDeleteCallback(source, mongoOperations));
