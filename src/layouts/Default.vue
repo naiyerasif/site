@@ -2,7 +2,7 @@
   <div class="content-wrapper bg-background-primary font-sans text-copy-primary leading-normal flex flex-col min-h-screen" :class="theme">
     <header class="bg-background-quaternary">
       <nav class="container-inner mx-auto flex flex-wrap justify-between items-center md:py-16 py-4">
-        <div class="pl-1">
+        <div>
           <g-link to="/"><g-image src="../../static/logo.svg" class="w-56" alt="logo" /></g-link>
         </div>
         <div class="block lg:hidden">

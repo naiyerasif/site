@@ -4,7 +4,7 @@
       <div class="container-inner mx-auto textl-xl">
         <div class="w-full py-4 md:pt-12 md:pb-24 bg-background-pattern">
           <a class="hidden" id="backToTop"></a>
-          <h1 class="text-3xl font-bold md:text-5xl leading-tight mb-3">{{ $page.cheatsheet.title }}</h1>
+          <h1 class="text-3xl font-semibold md:text-5xl leading-tight mb-3">{{ $page.cheatsheet.title }}</h1>
           <div class="flex text-gray py-4" v-for="author in $page.cheatsheet.author" :key="author.id">
             <g-image :alt="author.title" :src="author.avatar" class="h-10 w-10 rounded-full mx-0 mr-2" />
             <div class="text-left">
