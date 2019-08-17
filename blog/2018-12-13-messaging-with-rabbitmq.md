@@ -4,20 +4,20 @@ path: messaging-with-rabbitmq
 date: 2018-12-13
 updated: 2018-12-13
 author: [naiyer]
-summary: Publish and read messages with RabbitMQ using a Spring backend
+summary: Create a message queue with RabbitMQ and publish and read messages using a Spring backend
 tags: ['guide', 'rabbitmq', 'spring']
 ---
 
 ## Intent
 
-You need to publish and read messages with RabbitMQ using a Spring backend.
+The intent of this guide is to publish and read messages with RabbitMQ using a Spring backend.
 
 ### Setup
 
 > This guide uses
 > - Java 9
 > - Spring Boot 2.1.0.RELEASE
-> - RabbitMQ 3 running on a Docker container
+> - RabbitMQ 3 running as a Docker container
 
 ### Table of Contents
 
@@ -29,7 +29,7 @@ Start by setting up a RabbitMQ broker; you can choose to [install](https://www.r
 docker-compose up -d
 ```
 
-This will launch a RabbitMQ3 container.To access the management console, point your browser at <http://localhost:15672/> and login with the same username and password as set in `docker-compose.yml`.
+This will launch a RabbitMQ3 container. To access the management console, point your browser at <http://localhost:15672/> and login with the same username and password as set in `docker-compose.yml`.
 
 ## Define a domain
 
@@ -52,7 +52,7 @@ To start with, you'll create a list of books to publish on the queue.
 
 ## Configure Queue, Topic Exchange and Routing Key
 
-A typical RabbitMQ queue has a name to identify it, an optional routing key to selectively process messages and an exchange to route the messages to a queue based on the value of a routing key. A topic exchange works on wildcard matching of a routing pattern. There are several other types of exchanges. A binding ties a queue with an exchange and a routing key.
+A typical RabbitMQ queue has a name to identify it, an optional routing key to selectively process messages and an exchange to route the messages to a queue based on the value of a routing key. A topic exchange works on wildcard match of a routing pattern. There are several other types of exchanges. A binding ties a queue with an exchange and a routing key.
 
 You can configure all these as follows.
 
@@ -132,7 +132,7 @@ public @Service class Publisher implements CommandLineRunner {
 }
 ```
 
-**Note** that all the messages published are serialized as byte arrays by default. To properly serialize the list of `Book`s, set the message converter of `RabbitTemplate` as an instance of `Jackson2JsonMessageConverter`.
+**Note** that all the published messages are serialized as byte arrays by default. To properly serialize the list of `Book`s, set the message converter of `RabbitTemplate` as an instance of `Jackson2JsonMessageConverter`.
 
 ```java
 package com.mflash.configuration;
