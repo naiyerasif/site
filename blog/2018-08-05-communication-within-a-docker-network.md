@@ -21,6 +21,7 @@ When you're serving the static build (e.g., production build) of an Angular appl
 > - Node 12
 > - [Micronaut](http://micronaut.io/download.html) 1.1.3
 > - Angular 8
+> - Docker Engine 19
 
 ### Table of Contents
 
@@ -314,7 +315,7 @@ In this case, you don't need any volumes because everything is already in the co
 
 ## References
 
-> **Source Code** &mdash; [docker-network-sharing](https://github.com/Microflash/bedrock/tree/master/docker/docker-network-sharing)
+> **Source Code** &mdash; [docker-network-communication](https://github.com/Microflash/bedrock/tree/master/docker/docker-network-communication)
 > 
 > **Discussions**
 > - [eisfuchs](https://stackoverflow.com/users/1565175/eisfuchs): [Inject env variables from docker-compose into Angular4 app](https://stackoverflow.com/a/45727380) 
