@@ -1,16 +1,16 @@
 ---
-title: Linting SASS with Stylelint
+title: Linting SASS with stylelint
 path: linting-sass-with-stylelint
 date: 2019-06-02
 updated: 2019-08-08
 author: [naiyer]
-summary: Analyze and fix problems in the SASS files with Stylelint and integrate it with Prettier
+summary: Analyze and fix problems in the SASS files with stylelint and extend stylelint configuration
 tags: ['guide', 'sass', 'stylelint']
 ---
 
 ## Intent
 
-Just as you can lint the JavaScript or TypeScript code in a web application, you can also lint the [SASS](https://sass-lang.com/) (or CSS) files using [stylelint](https://github.com/stylelint/stylelint) which is a widely used linter that works with SCSS, Sass, Less and SugarSS. This guide shows you how `stylelint` can be used to lint SASS files in a project.
+Just as you can lint the JavaScript or TypeScript code in a web application, you can also lint the [SASS](https://sass-lang.com/) (or SCSS) files using [stylelint](https://github.com/stylelint/stylelint) which is a widely used linter that works with SCSS, Sass, Less and SugarSS. This guide shows you how `stylelint` can be used to lint SASS files in a project.
 
 ### Setup
 
@@ -36,9 +36,9 @@ Assuming your SASS code resides in `src` directory, you can configure the follow
 
 This script will run `stylelint` over all `scss` files in `src` directory and store a cache of results in `.cache/.stylelintcache` directory. Make sure that `.cache/` is in your `.gitignore`.
 
-### Configuration files
+If you want to ignore certain files, create a `.stylelintignore` in the project root and add the paths of those files. You can also add directories (just as you would in a `.gitignore` file).
 
-You can create `.stylelintignore` and `.stylelintrc` files in the root of your project. The former is used to ignore stylesheets in specified files and directories (just like `.gitignore`), while the latter is used to configure the behavior of `stylelint`.
+If you want to customize the behavior of `stylelint`, create a `.stylelintrc` file in the root of your project. This file can be either in JSON or YAML format. You can also add an extension (like `stylelintrc.json`, `.stylelintrc.yml`, etc) to gain editor support.
 
 ## Autofixing errors
 
@@ -50,7 +50,11 @@ If your stylesheets are massive and you ran `stylelint` for the first time, you 
 
 > As noted in the `stylelint` docs, autofixing is an *experimental* feature; it does not respect special comments for disabling `stylelint` within sources (e.g., `/* stylelint-disable-line */`). It is recommended to run `stylelint` twice if you're using both these special comments and autofixing. On the first run, some violations could be missed or reported incorrectly.
 
-## Integrating Prettier with Stylelint
+## Extending stylelint configurations
+
+`stylelint` supports shareable configurations which enable it to work with formatters like `prettier` and frameworks like `Bootstrap`. In a typical project, such utilities or frameworks are quite common and extending `stylelint` configuration will reduce friction between the linting and editing workflows.
+
+### Extending stylelint for prettier
 
 `stylelint-config-prettier` is a configuration that disables `stylelint` rules that conflict with Prettier. `stylelint-prettier` is a plugin that adds a rule that formats content using Prettier. It also exposes a *recommended* configuration that configures both `stylelint-prettier` and `stylelint-config-prettier` in a single step. Add both `stylelint-prettier` and `stylelint-config-prettier` as developer dependencies, then extend the recommended configuration.
 
@@ -69,7 +73,7 @@ Then add the following in `.stylelintrc`.
 }
 ```
 
-## Working with Bootstrap
+### Extending stylelint for Bootstrap
 
 If you are working with Bootstrap, you can extend the behavior of `stylelint` with Bootstrap-specific linting configuration. Execute the following command to add Bootstrap-specific linting extension.
 
@@ -81,6 +85,9 @@ Open `.stylelintrc` and add the following configuration.
 
 ```json
 {
-  "extends": ["stylelint-config-twbs-bootstrap/scss"]
+  "extends": [
+    // Other extensions
+    "stylelint-config-twbs-bootstrap/scss"
+  ]
 }
 ```
