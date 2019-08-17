@@ -1,6 +1,6 @@
 ---
 title: Persisting and querying documents with MongoRepository
-path: persisting-and-querying-documents-with-mongorepository
+path: persisting-and-querying-documents-with-mongo-repository
 date: 2019-07-08
 updated: 2019-08-17
 author: [naiyer]

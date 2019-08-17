@@ -1,6 +1,6 @@
 ---
 title: Messaging with RabbitMQ
-path: messaging-with-rabbitmq
+path: messaging-with-rabbit-mq
 date: 2018-12-13
 updated: 2018-12-13
 author: [naiyer]
