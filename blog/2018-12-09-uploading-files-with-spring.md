@@ -1,16 +1,16 @@
 ---
-title: Multipart upload with Spring
-path: multipart-upload-with-spring
+title: Uploading files with Spring
+path: uploading-files-with-spring
 date: 2018-12-09
 updated: 2018-12-09
 author: [naiyer]
-summary: Upload a directory or file using a Spring backend
+summary: Create a RESTful service using Spring and an Angular client to upload a directory or file  
 tags: ['guide', 'spring', 'angular']
 ---
 
 ## Intent
 
-You need to create an Angular frontend to upload a folder or file with the help of a Spring backend.
+The intent of this guide is to write a RESTful service to upload a folder or file with the help of a Spring backend and design a simple Angular client to demonstrate the functionality.
 
 ### Setup
 
@@ -24,7 +24,7 @@ You need to create an Angular frontend to upload a folder or file with the help 
 
 ## Create a Spring application to handle uploads
 
-Start by defining an interface that will enforce a contract for the service operations to upload and fetch files.
+Start by defining an interface that will enforce a contract for the service to upload and fetch files.
 
 ```java
 package com.mflash.service;
@@ -52,7 +52,114 @@ public @Service interface StorageService {
 }
 ```
 
-Implement this interface (see [FileSystemStorageService](https://github.com/Microflash/springtime/blob/master/spring-webmvc-multipart-upload/src/main/java/com/mflash/service/FileSystemStorageService.java)).
+### Implement the `FileSystemStorageService`
+
+`FileSystemStorageService` can be an implementation of `StorageService` interface that would interact with the filesystem of a machine.
+
+```java
+package com.mflash.service;
+
+import com.mflash.configuration.StorageProperties;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.List;
+import java.util.stream.Stream;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.stereotype.Service;
+import org.springframework.util.FileSystemUtils;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
+
+public @Service class FileSystemStorageService implements StorageService {
+
+  private final Path rootLocation;
+
+  public FileSystemStorageService(StorageProperties properties) {
+    this.rootLocation = Paths.get(properties.getLocation());
+  }
+
+  public @Override void init() {
+    try {
+      Files.createDirectories(rootLocation);
+    } catch (IOException e) {
+      throw new StorageException("Could not initialize storage", e);
+    }
+  }
+
+  public @Override void store(MultipartFile... files) {
+    if (files.length > 0) {
+      List.of(files).forEach(this::store);
+    } else {
+      throw new StorageFileNotFoundException("Invalid request payload");
+    }
+  }
+
+
+  public @Override Stream<Path> loadAll() {
+    try {
+      return Files.walk(this.rootLocation, 1)
+          .filter(path -> !path.equals(this.rootLocation))
+          .map(this.rootLocation::relativize);
+    } catch (IOException e) {
+      throw new StorageException("Failed to read stored files", e);
+    }
+  }
+
+  public @Override Path load(String filename) {
+    return rootLocation.resolve(filename);
+  }
+
+  public @Override Resource loadAsResource(String filename) {
+    try {
+      Path file = load(filename);
+      Resource resource = new UrlResource(file.toUri());
+      if (resource.exists() || resource.isReadable()) {
+        return resource;
+      } else {
+        throw new StorageFileNotFoundException("Could not read file: " + filename);
+      }
+    } catch (MalformedURLException e) {
+      throw new StorageFileNotFoundException("Could not read file: " + filename, e);
+    }
+  }
+
+  public @Override void deleteAll() {
+    FileSystemUtils.deleteRecursively(rootLocation.toFile());
+  }
+
+  private void store(MultipartFile file) {
+    String filename = StringUtils.cleanPath(file.getOriginalFilename());
+    try {
+      if (file.isEmpty()) {
+        throw new StorageException("Failed to store empty file " + filename);
+      }
+      if (filename.contains("..")) {
+        // This is a security check
+        throw new StorageException(
+            "Cannot store file with relative path outside current directory " + filename);
+      }
+      try (InputStream inputStream = file.getInputStream()) {
+        Files.copy(inputStream, this.rootLocation.resolve(filename),
+            StandardCopyOption.REPLACE_EXISTING);
+      }
+    } catch (IOException e) {
+      throw new StorageException("Failed to store file " + filename, e);
+    }
+  }
+}
+```
+
+Note that `rootLocation` is being fetched through a `ConfigurationProcessor`. You can configure the root location in `application.yml` under the key `storage.location`.
+
+> In a similar way, you can also implement services that would write to an `SFTP` server or on a cloud storage.
+
+### Define REST endpoints
 
 Now, create a Controller to expose necessary endpoints.
 
@@ -279,7 +386,41 @@ export class UploadComponent {
 }
 ```
 
-Create an HTML template to provide an interface (check out [upload.component.html](https://github.com/Microflash/springtime/blob/spring-webmvc-multipart-upload/web/src/app/upload/upload.component.html) which is built with [Nebular](https://akveo.github.io/nebular/)). Don't forget to supply `multiple` attribute on the `input[type=file]` element on the HTML page, else it won't allow upload of multiple files.
+Open `upload.component.html` and add the following template (which is built with [Nebular](https://akveo.github.io/nebular/)).
+
+```html
+<nb-layout>
+
+  <nb-layout-column>
+    <nb-card accent="info">
+      <nb-card-body>
+        <nb-icon icon="cloud-upload-outline"></nb-icon>&emsp;Multipart Upload with Spring
+      </nb-card-body>
+    </nb-card>
+    <nb-card>
+      <nb-card-body>
+        <input type="file" nbInput fullWidth placeholder="{{fileNames}}" (change)="selectFile($event)" multiple>
+        <nb-progress-bar *ngIf="currentFileUpload" [value]="progress.percentage" [displayValue]="true" [status]="status"></nb-progress-bar>
+        <button nbButton  style="margin-top: 1rem" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+      </nb-card-body>
+    </nb-card>
+  </nb-layout-column>
+
+  <nb-layout-column>
+    <nb-card *ngIf="uploadedFiles">
+      <nb-card-header>Uploaded files</nb-card-header>
+      <nb-list>
+        <nb-list-item *ngFor="let f of uploadedFiles">
+          {{ f }}
+        </nb-list-item>
+      </nb-list>
+    </nb-card>
+  </nb-layout-column>
+
+</nb-layout>
+```
+
+Don't forget to supply `multiple` attribute on the `input[type=file]` element on the HTML page, else it won't allow upload of multiple files.
 
 Launch the Spring and Angular applications and navigate to <http://localhost:4200>. Try uploading some files to see the application in action.
 
