@@ -4,15 +4,15 @@ path: communication-within-a-docker-network
 date: 2018-08-05
 updated: 2019-07-06
 author: [naiyer]
-summary: Create an Angular application that consumes a REST endpoint, both running on a Docker stack
+summary: Create an Angular application that talks to a REST endpoint backed by Spring, both running on a Docker stack
 tags: ['guide', 'docker', 'angular', 'micronaut', 'microservices']
 ---
 
 ## Intent
 
-You need to create an Angular application which consumes a REST endpoint, both running as containers on a Docker stack. Only the Angular application is publicly accessible; rest of the containers aren't exposed outside the Docker network.
+The intent of this guide is to create an Angular application which consumes a REST endpoint, both running as containers on a Docker stack. Only the Angular application is publicly accessible; rest of the containers aren't exposed outside the Docker network.
 
-When you're serving the static build (e.g., production build) of an Angular application over Express or Nginx, there should be a mechanism to resolve the other services running on the same Docker stack through their Docker URLs. You'll get to know one way of achieving this here. 
+When you're serving the static build (e.g., production build) of an Angular application over Express or Nginx, there should be a mechanism to resolve the services that it consumes through their Docker URLs. You'll get to know one way of achieving this here. 
 
 ### Setup
 
@@ -94,7 +94,7 @@ ng new ng-greeter --skip-tests --inline-template
 
 This will create an Angular app in a directory `ng-greeter`.
 
-> **Note** that this command doesn't generate separate HTML files or test specifications. For more information, refer to [Angular CLI wiki](https://github.com/angular/angular-cli/wiki/new).
+> **Note** that this command doesn't generate separate HTML files or specifications. For more information, refer to [Angular CLI wiki](https://github.com/angular/angular-cli/wiki/new).
 
 Add `HttpClientModule` in `@NgModule imports` to provide support for calling REST APIs.
 
