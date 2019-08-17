@@ -91,3 +91,7 @@ Now, open the `.eslintrc.json` file and add the following configuration:
   ]
 }
 ```
+
+## References
+
+> - [Prettier docs](https://prettier.io/docs/en/install.html)
