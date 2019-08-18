@@ -107,5 +107,7 @@ Now, `typescript-eslint` will play nice with `prettier` and use it to format whi
 
 ## References
 
+> **Source Code** &mdash; [ts-rest-api](https://github.com/Microflash/nodium/tree/master/ts-rest-api)
+> 
 > **Discussions**
 > - Niko Montana: <https://github.com/typescript-eslint/typescript-eslint/issues/36#issuecomment-494764385>
