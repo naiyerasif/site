@@ -716,7 +716,7 @@ export const register = (app: express.Application) => {
 };
 ```
 
-The workflow is quick simple: the `Promise` is being processed by returning the data in case of successfull database operation or by returning an error in case something goes wrong. Apart from this, errors are being returned for validation failures.
+The workflow is pretty simple: the `Promise` is being processed by returning the data in case of successfull database operation or by returning an error in case something goes wrong. Apart from this, errors are being returned for validation failures.
 
 ## Test the API
 
