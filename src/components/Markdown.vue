@@ -3,11 +3,6 @@
   </div>
 </template>
 
-<script>
-export default {
-}
-</script>
-
 <style>
   /* Modified version of: https://github.com/sindresorhus/github-markdown-css */
 
