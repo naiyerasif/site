@@ -51,8 +51,9 @@
   display: none;
 }
 
-.remarkability blockquote ul + p {
-  margin-top: 1em;
+.remarkability ul + p,
+.remarkability ol + p {
+  margin-top: 1.5em;
 }
 
 .remarkability h1 .icon-link,
