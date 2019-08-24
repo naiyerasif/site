@@ -438,6 +438,12 @@
   @apply bg-background-secondary;
 }
 
+.remarkability table tr code {
+  background-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .remarkability:before {
   content: "";
   display: table;
