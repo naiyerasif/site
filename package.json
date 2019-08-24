@@ -8,7 +8,7 @@
   "scripts": {
     "build": "gridsome build",
     "start": "gridsome develop",
-    "deploy": "gh-pages -b master -d public --message \"[skip ci] Updates\" --git git"
+    "deploy": "gh-pages -b master -d public --message \"[skip ci] Updates\""
   },
   "dependencies": {
     "@fullhuman/postcss-purgecss": "^1.2.0",
