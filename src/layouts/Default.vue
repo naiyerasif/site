@@ -1,9 +1,9 @@
 <template>
   <div class="content-wrapper bg-background-body text-content-body font-sans leading-normal flex flex-col min-h-screen" :class="theme">
     <header class="bg-background-header">
-      <nav class="container mx-auto flex flex-wrap justify-between items-center md:py-16 py-4">
+      <nav class="container mx-auto flex flex-wrap justify-between items-center py-4 md:py-16">
         <div>
-          <g-link to="/"><g-image src="../../static/logo.svg" class="w-56" alt="logo" /></g-link>
+          <g-link to="/"><g-image src="../../static/logo.svg" class="w-40 md:w-56" alt="logo" /></g-link>
         </div>
         <div class="block lg:hidden">
           <button @click="toggle" class="flex items-center px-3 py-2 hover:text-gray-600">
@@ -42,6 +42,7 @@
     <div class="flex-grow">
       <slot />
     </div>
+    
     <footer class="bg-background-footer text-content-footer z-10 md:py-6 decorated-links">
       <div class="container mx-auto flex flex-col lg:flex-row items-center justify-between py-8">
         <div class="mb-8 lg:mb-0">

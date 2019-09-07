@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="container mx-auto py-4 md:py-16">
-      <div class="max-w-sm rounded overflow-hidden bg-background-tag shadow">
+      <div class="max-w-sm rounded overflow-hidden bg-background-card shadow">
         <div class="px-6 py-4">
           <div class="font-bold text-xl mb-2">Cheatsheets</div>
           <ul>

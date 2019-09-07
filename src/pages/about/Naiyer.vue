@@ -19,7 +19,7 @@
         <div class="pt-6">
           <div class="flex flex-wrap -mx-2">
             <div class="w-full md:w-1/2 lg:w-1/3 px-2 mb-4 md:mb-0">
-              <div class="rounded overflow-hidden bg-background-tag shadow">
+              <div class="rounded overflow-hidden bg-background-card shadow">
                 <div class="px-6 py-4">
                   <div class="font-bold text-xl mb-2">Java</div>
                   <p
@@ -29,7 +29,7 @@
               </div>
             </div>
             <div class="w-full md:w-1/2 lg:w-1/3 px-2 mb-4 md:mb-0">
-              <div class="rounded overflow-hidden bg-background-tag shadow">
+              <div class="rounded overflow-hidden bg-background-card shadow">
                 <div class="px-6 py-4">
                   <div class="font-bold text-xl mb-2">Spring</div>
                   <p
@@ -39,7 +39,7 @@
               </div>
             </div>
             <div class="w-full md:w-1/2 lg:w-1/3 px-2 mb-4 md:mb-0">
-              <div class="rounded overflow-hidden bg-background-tag shadow">
+              <div class="rounded overflow-hidden bg-background-card shadow">
                 <div class="px-6 py-4">
                   <div class="font-bold text-xl mb-2">Angular</div>
                   <p
@@ -49,7 +49,7 @@
               </div>
             </div>
             <div class="w-full md:w-1/2 lg:w-1/3 px-2">
-              <div class="rounded overflow-hidden bg-background-tag shadow">
+              <div class="rounded overflow-hidden bg-background-card shadow">
                 <div class="px-6 py-4">
                   <div class="font-bold text-xl mb-2">Oracle Database</div>
                   <p class="text-xs">A multi-model relational database system marketed by Oracle</p>
@@ -62,7 +62,7 @@
         <div class="pt-6">
           <div class="flex flex-wrap -mx-2">
             <div class="w-full md:w-1/2 lg:w-1/3 px-2 mb-4 md:mb-0">
-              <div class="rounded overflow-hidden bg-background-tag shadow">
+              <div class="rounded overflow-hidden bg-background-card shadow">
                 <div class="px-6 py-4">
                   <div class="font-bold text-xl mb-2">Node.js</div>
                   <p
@@ -72,7 +72,7 @@
               </div>
             </div>
             <div class="w-full md:w-1/2 lg:w-1/3 px-2 mb-4 md:mb-0">
-              <div class="rounded overflow-hidden bg-background-tag shadow">
+              <div class="rounded overflow-hidden bg-background-card shadow">
                 <div class="px-6 py-4">
                   <div class="font-bold text-xl mb-2">Docker</div>
                   <p
@@ -82,7 +82,7 @@
               </div>
             </div>
             <div class="w-full md:w-1/2 lg:w-1/3 px-2 mb-4 md:mb-0">
-              <div class="rounded overflow-hidden bg-background-tag shadow">
+              <div class="rounded overflow-hidden bg-background-card shadow">
                 <div class="px-6 py-4">
                   <div class="font-bold text-xl mb-2">mongoDB</div>
                   <p
@@ -92,7 +92,7 @@
               </div>
             </div>
             <div class="w-full md:w-1/2 lg:w-1/3 px-2 mb-4 md:mb-0">
-              <div class="rounded overflow-hidden bg-background-tag shadow">
+              <div class="rounded overflow-hidden bg-background-card shadow">
                 <div class="px-6 py-4">
                   <div class="font-bold text-xl mb-2">Jenkins</div>
                   <p
@@ -102,7 +102,7 @@
               </div>
             </div>
             <div class="w-full md:w-1/2 lg:w-1/3 px-2">
-              <div class="rounded overflow-hidden bg-background-tag shadow">
+              <div class="rounded overflow-hidden bg-background-card shadow">
                 <div class="px-6 py-4">
                   <div class="font-bold text-xl mb-2">Kotlin</div>
                   <p
@@ -130,7 +130,7 @@
         </p>
       </div>
       <div class="overflow-x-hidden">
-        <div class="bg-background-tag pt-12">
+        <div class="bg-background-card pt-12 md:pt-20">
           <div class="container mx-auto text-xl pb-4 relative">
             <h2 class="font-bold mb-6">Acknowledgements</h2>
             <div class="absolute right-0 top-0" style="transform: translate(100%) rotate(180deg)">
@@ -162,7 +162,7 @@
             <p class="mb-8">
               Continuous Integration is handled through <a target="_blank" rel="noopener noreferrer" href="https://circleci.com/">CircleCI</a> and deployments are done with <a target="_blank" rel="noopener noreferrer" href="https://github.com/tschaub/gh-pages">gh-pages</a>. Graphics and illustrations are created using <a target="_blank" rel="noopener noreferrer" href="https://affinity.serif.com/en-gb/designer/">Affinity Designer</a>, <a target="_blank" rel="noopener noreferrer" href="https://products.office.com/en-in/visio/flowchart-software">Microsoft Visio</a> and <a target="_blank" rel="noopener noreferrer" href="https://www.adobe.com/in/products/xd.html">Adobe XD</a>.
             </p>
-            <p class="mb-8">
+            <p class="mb-8 md:mb-20">
               The source of this site is <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/microflash.github.io">available</a> under <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/microflash.github.io/blob/release/LICENSE">MIT</a>, the content under <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/">CC by SA</a>.
             </p>
           </div>

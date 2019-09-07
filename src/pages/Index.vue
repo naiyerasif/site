@@ -1,7 +1,7 @@
 <template>
   <Layout>
-    <div class="container mx-auto pt-16">
-      <div v-for="post in $page.posts.edges" :key="post.id" class="post mb-16">
+    <div class="container mx-auto pt-8 md:pt-16">
+      <div v-for="post in $page.posts.edges" :key="post.id" class="post mb-8 md:mb-16">
         <postcard :item="post.node" />
       </div>
 

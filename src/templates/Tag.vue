@@ -10,8 +10,8 @@
         </div>
       </div>
     </div>
-    <div class="container mx-auto my-16">
-      <div v-for="post in $page.tag.belongsTo.edges" :key="post.node.id" class="post mb-16">
+    <div class="container mx-auto pt-8 md:pt-16">
+      <div v-for="post in $page.tag.belongsTo.edges" :key="post.node.id" class="post mb-8 md:mb-16">
         <postcard :item="post.node" />
       </div>
 
