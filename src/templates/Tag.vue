@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <div class="bg-background-quaternary">
+    <div class="bg-background-header text-content-header">
       <div class="container mx-auto textl-xl">
         <div class="w-full pb-10 pt-4 md:pt-12 md:pb-32 bg-background-pattern">
           <h1 class="text-3xl md:text-5xl leading-tight">

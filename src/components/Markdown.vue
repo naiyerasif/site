@@ -158,7 +158,7 @@
 }
 
 .remarkability hr {
-  @apply bg-background-quaternary;
+  @apply bg-background-header;
   border: none;
   display: block;
   height: 1px;
@@ -219,7 +219,7 @@
 }
 
 .remarkability code {
-  @apply bg-background-quaternary;
+  @apply bg-background-header;
   border-radius: 7px;
   font-size: 85%;
   margin: 0;
@@ -430,12 +430,12 @@
 }
 
 .remarkability table tr {
-  @apply bg-background-quaternary;
+  @apply bg-background-header;
   border-top: 1px solid rgba(100, 100, 100, 0.6);
 }
 
 .remarkability table tr:nth-child(2n) {
-  @apply bg-background-secondary;
+  @apply bg-background-body;
 }
 
 .remarkability table tr code {

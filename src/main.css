@@ -1,71 +1,71 @@
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 @supports (font-variation-settings: normal) {
   html { font-family: 'Inter var', font-sans }
 }
 
-/* .theme-light {
-  --background-primary: #f3f3f3;
-  --content-primary: ;
-
-  --background-secondary: ;
-  --content-secondary: ;
-
-
-} */
+@tailwind components;
+@tailwind utilities;
 
 .theme-light {
-  --bg-background-primary: white;
-  --bg-background-secondary: #f7fcfb;
-  --bg-background-tertiary: #c5e0d6;
-  --bg-background-quaternary: #f3f3f3;
+  --background-header: #f2f2f6;
+  --content-hheader: #585470;
+  --content-header: #2a2743;
 
-  --text-copy-primary: #2d4843;
-  --text-copy-secondary: #4a6861;
-  --text-copy-tertiary: #134b2f;
-  --text-copy-quaternary: #4a5568;
+  --background-footer: #f3f3f6;
+  --content-footer: #504d60;
 
-  --border-border-color-primary: white;
+  --background-body: #fdfdfe;
+  --content-body: #0a090f;
+
+  --background-card: #e8e7f6;
+
+  --background-search: #fdfdfe;
+  --content-search: #0a090f;
+
+  --background-tag: #daeeea;
+  --content-tag: #1e826a;
+
+  --background-htag: #c3e4dc;
+  --content-htag: #176553;
 }
 
 .theme-light .search-highlighted {
-  background: #f0fff4;
+  background: #c4e4dd;
 }
 
 .theme-light .search-hover:hover {
-  background: #f0fff4;
-}
-
-.theme-dark .markdown-body {
-  color: #242e2b;
-}
-
-.theme-dark .search-highlighted {
-  background: #2d483d;
-}
-
-.theme-dark .search-hover:hover {
-  background: #2d4841;
+  background: #9cd3c6;
 }
 
 .theme-dark {
-  --bg-background-primary: #1f1f1f;
-  --bg-background-secondary: #2b2b2b;
-  --bg-background-tertiary: #2d413a;
-  --bg-background-quaternary: #303030;
+  --background-header: #181720;
+  --content-hheader: #7d7a90;
+  --content-header: #d0d0d0;
 
-  --text-copy-primary: #b2bcba;
-  --text-copy-secondary: #4a6861;
-  --text-copy-tertiary: #3eaf7c;
-  --text-copy-quaternary: #acbab7;
+  --background-footer: #181720;
+  --content-footer: #a2a2a8;
 
-  --border-border-color-primary:  #2e2e2e;
+  --background-body: #1d1c26;
+  --content-body: #c6c6cc;
+
+  --background-card: #110f19;
+
+  --background-search: #313039;
+
+  --background-tag: #0d352b;
+  --content-tag: #599989;
+
+  --background-htag: #145747;
+  --content-htag: #95beb3;
 }
 
-.theme-dark .markdown-body {
-    color: #cbd5e0;
+.theme-dark .search-highlighted {
+  background: #11483b;
+}
+
+.theme-dark .search-hover:hover {
+  background: #0f4034;
 }
 
 .content-wrapper {
@@ -98,7 +98,14 @@ a:hover {
 
 nav .active {
   font-weight: bold;
-  @apply border-black border-b;
+}
+
+.tag {
+  @apply bg-background-tag text-content-tag z-10 rounded px-2 py-1 mr-2 text-xs;
+}
+
+.tag:hover {
+  @apply bg-background-htag text-content-htag;
 }
 
 .container {

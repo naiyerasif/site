@@ -1,22 +1,18 @@
 <template>
   <Layout>
-    <div class="bg-background-quaternary">
+    <div class="bg-background-header text-content-header">
       <div class="container mx-auto textl-xl">
         <div class="w-full py-4 md:pt-12 md:pb-24 bg-background-pattern">
-          <h1 class="text-3xl font-semibold md:text-5xl leading-tight mb-3">{{ $page.post.title }}</h1>
-          <div class="flex text-gray py-4" v-for="author in $page.post.author" :key="author.id">
-            <g-image :alt="author.title" :src="author.avatar" class="h-10 w-10 rounded-full mx-0 mr-2" />
+          <h1 class="text-3xl md:text-5xl font-semibold leading-tight mb-3">{{ $page.post.title }}</h1>
+          <div class="flex items-center text-gray py-4" v-for="author in $page.post.author" :key="author.id">
+            <g-image :alt="author.title" :src="author.avatar" class="h-10 w-10 rounded-full shadow mx-0 mr-2" />
             <div class="text-left">
               <g-link class="text-sm font-semibold" :to="author.path">{{ author.title }}</g-link>
               <div class="text-sm">{{ displayDate }} &middot; {{ $page.post.timeToRead }} min read</div>
             </div>
           </div>
           <div class="flex mb-8 text-sm">
-            <g-link
-              :to="tag.path"
-              v-for="(tag, i) in $page.post.tags"
-              :key="tag.id" :class="{'font-bold': i === 0}"
-              class="bg-background-tertiary z-10 text-copy-tertiary hover:text-copy-tertiary rounded-full px-2 py-1 mr-2 text-xs hover:bg-background-quinary">
+            <g-link :to="tag.path" v-for="(tag, i) in $page.post.tags" :key="tag.id" :class="{'font-bold': i === 0}" class="tag">
               <span v-if="i !== 0">#</span>{{ tag.title }}
             </g-link>
           </div>
@@ -28,10 +24,10 @@
       <quick-links :dest="'table-of-contents'" />
     </div>
     <div class="overflow-x-hidden">
-      <div class="bg-background-secondary py-8 md:py-12">
+      <div class="bg-background-card py-8 md:py-12">
         <div class="container mx-auto text-xl relative">
           <span class="mr-2">Spotted a mistake or want to improve this post?</span>
-          <a target="_blank" rel="noopener noreferrer" :href="editUrl"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="inline"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg> Edit this page on GitHub!</a>
+          <a target="_blank" rel="noopener noreferrer" class="text-content-header hover:text-content-hheader" :href="editUrl"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="inline"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg> Edit this page on GitHub!</a>
         </div>
       </div>
     </div>

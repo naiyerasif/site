@@ -11,17 +11,22 @@ module.exports = {
     },
     colors: {
       background: {
-        primary: 'var(--bg-background-primary)',
-        secondary: 'var(--bg-background-secondary)',
-        tertiary: 'var(--bg-background-tertiary)',
-        quaternary: 'var(--bg-background-quaternary)'
+        header: 'var(--background-header)',
+        footer: 'var(--background-footer)',
+        body: 'var(--background-body)',
+        card: 'var(--background-card)',
+        search: 'var(--background-search)',
+        tag: 'var(--background-tag)',
+        htag: 'var(--background-htag)',
       },
 
-      copy: {
-        primary: 'var(--text-copy-primary)',
-        secondary: 'var(--text-copy-hover)',
-        tertiary: 'var(--text-copy-tertiary)',
-        quaternary: 'var(--text-copy-quaternary)'
+      content: {
+        header: 'var(--content-header)',
+        hheader: 'var(--content-hheader)',
+        footer: 'var(--content-footer)',
+        body: 'var(--content-body)',
+        tag: 'var(--content-tag)',
+        htag: 'var(--content-htag)',
       },
 
       transparent: 'transparent',
