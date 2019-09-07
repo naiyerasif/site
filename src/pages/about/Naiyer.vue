@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <div class="decorated-links">
-      <div class="bg-background-header text-content-header">
+      <div class="bg-background-header text-content-body">
         <div class="container mx-auto text-xl">
           <div class="w-full py-4 md:py-16 bg-background-pattern">
             <h1 class="text-3xl font-semibold md:text-5xl mb-4 md:mb-16 leading-tight">

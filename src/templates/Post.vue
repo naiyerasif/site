@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <div class="bg-background-header text-content-header">
+    <div class="bg-background-header text-content-body">
       <div class="container mx-auto textl-xl">
         <div class="w-full py-4 md:pt-12 md:pb-24 bg-background-pattern">
           <h1 class="text-3xl md:text-5xl font-semibold leading-tight mb-3">{{ $page.post.title }}</h1>
