@@ -9,8 +9,8 @@
 
 .theme-light {
   --background-header: #f2f2f6;
-  --content-hheader: #585470;
   --content-header: #2a2743;
+  --content-hheader: #585470;
 
   --background-footer: #f3f3f6;
   --content-footer: #504d60;
@@ -21,7 +21,6 @@
   --background-card: #e8e7f6;
 
   --background-search: #fdfdfe;
-  --content-search: #0a090f;
 
   --background-tag: #daeeea;
   --content-tag: #1e826a;
@@ -31,17 +30,19 @@
 }
 
 .theme-light .search-highlighted {
-  background: #c4e4dd;
+  background: #d1eee8;
+  color: #1e826a;
 }
 
 .theme-light .search-hover:hover {
   background: #9cd3c6;
+  color: #0c5343;
 }
 
 .theme-dark {
   --background-header: #181720;
-  --content-hheader: #7d7a90;
-  --content-header: #d0d0d0;
+  --content-header: #7d7a90;
+  --content-hheader: #d0d0d0;
 
   --background-footer: #181720;
   --content-footer: #a2a2a8;
@@ -62,10 +63,12 @@
 
 .theme-dark .search-highlighted {
   background: #11483b;
+  color: #95beb3;
 }
 
 .theme-dark .search-hover:hover {
   background: #0f4034;
+  color: #d8e7e3;
 }
 
 .content-wrapper {

@@ -36,12 +36,12 @@
             :key="index"
             :href="post.item.path"
             @click="reset"
-            class="bg-background-search text-content-header font-semibold text-xl cursor-pointer p-4 search-hover"
+            class="bg-background-search font-semibold text-xl cursor-pointer p-4 search-hover"
             :class="{ 'search-highlighted' : index === highlightedIndex }"
           >
             {{ post.item.title }}
 
-            <span class="block font-normal text-content-hheader text-sm my-1">{{ post.item.summary }}</span>
+            <span class="block font-normal text-sm my-1">{{ post.item.summary }}</span>
           </a>
 
           <div v-if="results.length === 0" class="bg-background-search font-normal w-full p-4">
