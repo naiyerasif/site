@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <div class="bg-background-quaternary">
-      <div class="container-inner mx-auto textl-xl">
+      <div class="container mx-auto textl-xl">
         <div class="w-full pb-10 pt-4 md:pt-12 md:pb-32 bg-background-pattern">
           <h1 class="text-3xl md:text-5xl leading-tight">
             <span class="font-semibold" v-if="category">{{ header }}</span>
@@ -10,7 +10,7 @@
         </div>
       </div>
     </div>
-    <div class="container-inner mx-auto my-16">
+    <div class="container mx-auto my-16">
       <div v-for="post in $page.tag.belongsTo.edges" :key="post.node.id" class="post mb-16">
         <postcard :item="post.node" />
       </div>

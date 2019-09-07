@@ -1,7 +1,7 @@
 <template>
   <div class="content-wrapper bg-background-primary font-sans text-copy-primary leading-normal flex flex-col min-h-screen" :class="theme">
     <header class="bg-background-quaternary">
-      <nav class="container-inner mx-auto flex flex-wrap justify-between items-center md:py-16 py-4">
+      <nav class="container mx-auto flex flex-wrap justify-between items-center md:py-16 py-4">
         <div>
           <g-link to="/"><g-image src="../../static/logo.svg" class="w-56" alt="logo" /></g-link>
         </div>
@@ -43,7 +43,7 @@
       <slot />
     </div>
     <footer class="bg-background-quaternary text-copy-quaternary z-10 md:py-6">
-      <div class="container-inner mx-auto flex flex-col lg:flex-row items-center justify-between py-8">
+      <div class="container mx-auto flex flex-col lg:flex-row items-center justify-between py-8">
         <div class="mb-8 lg:mb-0">
           <div>Copyright &copy; {{ year }} &middot; Source licensed
             <a target="_blank" rel="noopener noreferrer" class="text-copy-tertiary hover:text-gray-600" href="https://github.com/Microflash/microflash.github.io/blob/release/LICENSE">MIT</a>, content

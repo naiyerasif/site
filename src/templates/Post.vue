@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <div class="bg-background-quaternary">
-      <div class="container-inner mx-auto textl-xl">
+      <div class="container mx-auto textl-xl">
         <div class="w-full py-4 md:pt-12 md:pb-24 bg-background-pattern">
           <h1 class="text-3xl font-semibold md:text-5xl leading-tight mb-3">{{ $page.post.title }}</h1>
           <div class="flex text-gray py-4" v-for="author in $page.post.author" :key="author.id">
@@ -23,13 +23,13 @@
         </div>
       </div>
     </div>
-    <div class="container-inner mx-auto py-4 md:py-16">
+    <div class="container mx-auto py-4 md:py-16">
       <markdown v-html="$page.post.content" />
       <quick-links :dest="'table-of-contents'" />
     </div>
     <div class="overflow-x-hidden">
       <div class="bg-background-secondary py-8 md:py-12">
-        <div class="container-inner mx-auto text-xl relative">
+        <div class="container mx-auto text-xl relative">
           <span class="mr-2">Spotted a mistake or want to improve this post?</span>
           <a target="_blank" rel="noopener noreferrer" :href="editUrl"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="inline"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg> Edit this page on GitHub!</a>
         </div>
