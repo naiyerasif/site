@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <div v-for="detail in this.$page.author.details" :key="detail.id">
+    <div class="decorated-links" v-for="detail in this.$page.author.details" :key="detail.id">
       <div v-html="detail"/>
     </div>
   </Layout>

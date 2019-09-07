@@ -6,6 +6,16 @@
   html { font-family: 'Inter var', font-sans }
 }
 
+/* .theme-light {
+  --background-primary: #f3f3f3;
+  --content-primary: ;
+
+  --background-secondary: ;
+  --content-secondary: ;
+
+
+} */
+
 .theme-light {
   --bg-background-primary: white;
   --bg-background-secondary: #f7fcfb;
@@ -68,6 +78,22 @@ a {
 
 a:hover {
   @apply text-green-800;
+}
+
+.remarkability a, .decorated-links a {
+  background-position: 0 1.1em;
+  background-repeat: repeat-x;
+  display: inline;
+}
+
+.remarkability a, .decorated-links a {
+  background-image: linear-gradient(to right, #249e81 100%, transparent 0%);
+  background-size: 8px 0.5px;
+}
+
+.remarkability a:hover, .decorated-links a:hover {
+  background-image: linear-gradient(to right, #1b735e 100%, transparent 0%);
+  background-size: 8px 1.25px;
 }
 
 nav .active {

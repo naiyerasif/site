@@ -42,7 +42,7 @@
     <div class="flex-grow">
       <slot />
     </div>
-    <footer class="bg-background-quaternary text-copy-quaternary z-10 md:py-6">
+    <footer class="bg-background-quaternary text-copy-quaternary z-10 md:py-6 decorated-links">
       <div class="container mx-auto flex flex-col lg:flex-row items-center justify-between py-8">
         <div class="mb-8 lg:mb-0">
           <div>Copyright &copy; {{ year }} &middot; Source licensed
