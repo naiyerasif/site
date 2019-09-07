@@ -3,24 +3,23 @@ import VueScrollTo from 'vue-scrollto'
 import VueFuse from 'vue-fuse'
 
 export default function (Vue, { router, head, isClient }) {
-  // Set default layout as a global component
-  Vue.component('Layout', DefaultLayout);
+  Vue.component('Layout', DefaultLayout)
 
   Vue.use(VueScrollTo, {
     duration: 500,
-    easing: "ease",
+    easing: 'ease',
   });
 
   Vue.use(VueFuse);
 
   head.meta.push({
     name: 'keywords',
-    content: 'Java,Spring,Mcronaut,Docker,Jenkins,Angular'
+    content: 'Java,Spring,Microservices,Docker,Jenkins,Angular,Node.js'
   });
 
   head.meta.push({
     name: 'description',
-    content: 'Microflash'
+    content: 'Personal website of Naiyer Asif'
   });
 
   head.meta.push({
@@ -38,5 +37,3 @@ export default function (Vue, { router, head, isClient }) {
     href: 'https://rsms.me/inter/inter.css'
   });
 }
-
-
