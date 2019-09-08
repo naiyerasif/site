@@ -302,7 +302,7 @@
 }
 
 .remarkability blockquote {
-  border-left: .15em solid rgba(100, 100, 100, 0.6);
+  border-left: 1px solid rgba(100, 110, 100, 0.6);
   padding: 0 1em;
 }
 
