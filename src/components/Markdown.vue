@@ -219,8 +219,8 @@
 }
 
 .remarkability code {
-  @apply bg-background-header;
-  border-radius: 7px;
+  @apply bg-background-code;
+  border-radius: 5px;
   font-size: 85%;
   margin: 0;
   padding: .2em .4em;

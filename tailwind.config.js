@@ -15,6 +15,7 @@ module.exports = {
         footer: 'var(--background-footer)',
         body: 'var(--background-body)',
         card: 'var(--background-card)',
+        code: 'var(--background-code)',
         search: 'var(--background-search)',
         tag: 'var(--background-tag)',
         htag: 'var(--background-htag)',
