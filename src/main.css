@@ -29,6 +29,8 @@
 
   --background-htag: #c3e4dc;
   --content-htag: #176553;
+
+  scrollbar-color: light;
 }
 
 .theme-light .search-highlighted {
@@ -63,6 +65,24 @@
 
   --background-htag: #145747;
   --content-htag: #95beb3;
+
+  scrollbar-color: dark;
+}
+
+.theme-dark *::-webkit-scrollbar {
+  background-color: #1D1C26 !important;
+}
+
+.theme-dark *::-webkit-scrollbar-track {
+  background-color: #1D1C26 !important;
+}
+
+.theme-dark *::-webkit-scrollbar-thumb {
+  background-color: rgb(64, 63, 68) !important;
+}
+
+.theme-dark *::-webkit-scrollbar-button {
+  background-color: #313039 !important;
 }
 
 .theme-dark .search-highlighted {
