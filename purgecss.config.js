@@ -22,20 +22,10 @@ module.exports = {
     'g-image--lazy',
     'g-image--loaded',
     'icon-link',
-    'bg-background-pattern',
-    'md:w-1/2',
-    'lg:w-1/3',
-    'pt-12',
-    'pb-4',
-    'relative',
-    'text-green-500',
-    '-mx-2',
-    'px-2',
-    'px-6',
-    'mb-4',
-    'pt-6',
-    'mb-8',
-    'rounded'
+    '*::-webkit-scrollbar',
+    '*::-webkit-scrollbar-track',
+    '*::-webkit-scrollbar-thumb',
+    '*::-webkit-scrollbar-button'
   ],
   extractors: [
     {
