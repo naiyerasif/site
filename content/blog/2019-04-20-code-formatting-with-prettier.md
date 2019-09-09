@@ -4,7 +4,7 @@ path: code-formatting-with-prettier
 date: 2019-04-20
 updated: 2019-08-17
 author: [naiyer]
-summary: Format source code with Prettier and use it with EditorConfig and ESLint
+summary: Format source code with Prettier and configure it to work with EditorConfig and ESLint
 tags: ['guide', 'nodejs', 'prettier']
 ---
 
@@ -20,7 +20,7 @@ You should already have a Node.js project; it could be any Express, Angular or V
 
 ## Install Prettier
 
-Start by executing the following command in the directory where `package.json` is located
+Start by executing the following command in the directory where `package.json` is located:
 
 ```bash
 npm install --save-dev --save-exact prettier

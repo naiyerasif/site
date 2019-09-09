@@ -4,7 +4,7 @@ path: communication-within-a-docker-network
 date: 2018-08-05
 updated: 2019-07-06
 author: [naiyer]
-summary: Create an Angular application that talks to a REST endpoint backed by Spring, both running on a Docker stack
+summary: Create an Angular application that talks to a REST endpoint backed by Spring, both running as containers on a Docker stack
 tags: ['guide', 'docker', 'angular', 'micronaut', 'microservices']
 ---
 
@@ -12,7 +12,7 @@ tags: ['guide', 'docker', 'angular', 'micronaut', 'microservices']
 
 The intent of this guide is to create an Angular application which consumes a REST endpoint, both running as containers on a Docker stack. Only the Angular application is publicly accessible; rest of the containers aren't exposed outside the Docker network.
 
-When you're serving the static build (e.g., production build) of an Angular application over Express or Nginx, there should be a mechanism to resolve the services that it consumes through their Docker URLs. You'll get to know one way of achieving this here. 
+When you're serving the static build (e.g., production build) of an Angular application over Nginx, there should be a mechanism to resolve the services that it consumes through their Docker URLs. You'll get to know a way to achieve this here. 
 
 ### Setup
 
@@ -59,7 +59,7 @@ public class GreeterController {
 }
 ```
 
-Navigate to `src/main/resources` directory and edit **application.yml** as follows:
+Navigate to `src/main/resources` directory and add the following configuration in `application.yml`:
 
 ```yaml
 micronaut:
@@ -79,11 +79,13 @@ This configuration
 - sets a port for the Micronaut application (If you won't do this, Micronaut will choose a random port every time it starts)
 - enables CORS for the requests coming from <http://localhost:4200> (the Angular application)
 
-That's it! Assemble the app using `gradle build`. This will create a `greeter-0.1-all.jar` in `build/libs` directory. Create a Docker image by executing the following command (see the [Dockerfile](https://github.com/Microflash/bedrock/blob/master/docker/docker-network-communication/greeter/Dockerfile) for details):
+Assemble the application using `gradle build`. This will create a `greeter-0.1-all.jar` in `build/libs` directory. Create a Docker image by executing the following command:
 
 ```bash
 docker build -t microflash/greeter .
 ```
+
+> Check out the [Dockerfile](https://github.com/Microflash/bedrock/blob/master/docker/docker-network-communication/greeter/Dockerfile) for details on what's happening in the image.
 
 ## Create an Angular application
 
@@ -93,7 +95,7 @@ Generate an Angular application by executing the following command:
 ng new ng-greeter --skip-tests --inline-template
 ```
 
-This will create an Angular app in a directory `ng-greeter`.
+This will create an Angular application in a directory `ng-greeter`.
 
 > **Note** that this command doesn't generate separate HTML files or specifications. For more information, refer to [Angular CLI wiki](https://github.com/angular/angular-cli/wiki/new).
 
@@ -177,7 +179,7 @@ export class AppComponent implements OnInit {
 }
 ```
 
-Build the app by executing `ng build --prod`. The build will be dumped in `dist/ng-greeter` directory.
+Build the application by executing `ng build --prod`. The build will be dumped in `dist/ng-greeter` directory.
 
 ## Configure Nginx
 
@@ -228,9 +230,9 @@ server {
 }
 ```
 
-**Recall** that the host for calling the API was not provided in the Angular app. So, when `getGreeting()` method will be called, `HttpClient` will resolve the path of the API as `http://localhost:4200/hello`. This path will obviously return an error if the app is run normally.
+**Recall** that the host for calling the API was not provided in the Angular application. So, when `getGreeting()` method will be called, `HttpClient` will resolve the path of the API as `http://localhost:4200/hello`. This path will obviously return an error if the app is run normally.
 
-To resolve this path, a proxy is configured with Nginx which will intercept all the calls to `/hello` endpoint and redirect it to `http://greeter:8084/hello` (which is the Docker URL for the REST endpoint created earlier). 
+To resolve this path, a proxy is configured above with Nginx which will intercept all the calls to `/hello` endpoint and redirect it to `http://greeter:8084/hello` (which is the Docker URL for the REST endpoint created earlier). 
 
 ## Configure Docker stack
 
@@ -311,7 +313,7 @@ networks:
     driver: bridge
 ```
 
-In this case, you don't need any volumes because everything is already in the container. Once again, launch the stack by executing `docker-compose -f stack.yml up -d` and access the UI at <http://localhost:4200> that should display the message from the endpoint.
+In this case, you don't need any volumes because everything is already in the container. Launch the stack by executing `docker-compose -f stack.yml up -d` and access the UI at <http://localhost:4200> that should display the message from the endpoint.
 
 ## References
 

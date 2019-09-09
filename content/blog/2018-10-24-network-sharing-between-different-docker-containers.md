@@ -4,7 +4,7 @@ path: network-sharing-between-different-docker-containers
 date: 2018-10-24
 updated: 2019-08-17
 author: [naiyer]
-summary: Create two containers on separate Docker stacks that communicate through same Docker network
+summary: Create two containers on separate Docker stacks with a capability to communicate through same Docker network
 tags: ['guide', 'docker', 'angular', 'nodejs', 'microservices']
 ---
 
@@ -254,7 +254,7 @@ server {
 }
 ```
 
-**Recall** that the host for calling the endpoint was not provided in the Angular app. So, when `getGreeting()` method will be called, `HttpClient` will resolve the path of the API as `http://localhost:4200/hello`. This path will obviously return an error if the app is run normally.
+**Recall** that the host for calling the endpoint was not provided in the Angular application. So, when `getGreeting()` method will be called, `HttpClient` will resolve the path of the API as `http://localhost:4200/hello`. This path will obviously return an error if the app is run normally.
 
 To resolve this path, a proxy is configured with Nginx which will intercept all calls to `/hello` endpoint and redirect it to `http://greeter:8084/hello` (which is the Docker's network url for the REST endpoint created above). 
 

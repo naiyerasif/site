@@ -10,7 +10,7 @@ tags: ['guide', 'rabbitmq', 'spring']
 
 ## Intent
 
-The intent of this guide is to publish and read messages with RabbitMQ using a Spring backend.
+The intent of this guide is to create a message queue with RabbitMQ and to publish and read messages using a Spring backend.
 
 ### Setup
 

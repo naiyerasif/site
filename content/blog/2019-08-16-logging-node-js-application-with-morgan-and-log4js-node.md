@@ -73,7 +73,7 @@ Add these appenders to `express` as follows.
 
 ```typescript
 // import the appenders
-import { consoleAppender, fileAppender } from "./helpers/morgan";
+import { consoleAppender, fileAppender } from "./helpers/requests.logger";
 
 // other configurations and initializations
 

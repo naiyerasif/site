@@ -504,15 +504,9 @@ const removeByAlbum = async (album: string) => {
   return result.rows;
 };
 
-export {
-  findAll,
-  findById,
-  findByTitle,
-  findByArtist,
-  findByAlbum,
-  save,
-  remove,
-  removeByAlbum
+export { 
+  findAll, findById, findByTitle, findByArtist, findByAlbum, 
+  save, remove, removeByAlbum
 };
 ```
 
@@ -528,61 +522,49 @@ const ctx = "/track";
 
 export const register = (app: express.Application) => {
   app.get(`${ctx}`, (req, res) => {
-    repo
-      .findAll()
-      .then(data => {
-        res.jsonp({
-          result: data
-        });
-      })
-      .catch(err => {
-        res.status(500).jsonp({
-          error: err
-        });
+    repo.findAll().then(data => {
+      res.jsonp({
+        result: data
       });
+    }).catch(err => {
+      res.status(500).jsonp({
+        error: err
+      });
+    });
   });
 
   app.get(`${ctx}/search`, (req, res) => {
     if (req.query) {
       if (req.query.title) {
-        repo
-          .findByTitle(req.query.title)
-          .then(data => {
-            res.jsonp({
-              result: data
-            });
-          })
-          .catch(err => {
-            res.status(500).jsonp({
-              error: err
-            });
+        repo.findByTitle(req.query.title).then(data => {
+          res.jsonp({
+            result: data
           });
+        }).catch(err => {
+          res.status(500).jsonp({
+            error: err
+          });
+        });
       } else if (req.query.album) {
-        repo
-          .findByAlbum(req.query.album)
-          .then(data => {
-            res.jsonp({
-              result: data
-            });
-          })
-          .catch(err => {
-            res.status(500).jsonp({
-              error: err
-            });
+        repo.findByAlbum(req.query.album).then(data => {
+          res.jsonp({
+            result: data
           });
+        }).catch(err => {
+          res.status(500).jsonp({
+            error: err
+          });
+        });
       } else if (req.query.artist) {
-        repo
-          .findByArtist(req.query.artist)
-          .then(data => {
-            res.jsonp({
-              result: data
-            });
-          })
-          .catch(err => {
-            res.status(500).jsonp({
-              error: err
-            });
+        repo.findByArtist(req.query.artist).then(data => {
+          res.jsonp({
+            result: data
           });
+        }).catch(err => {
+          res.status(500).jsonp({
+            error: err
+          });
+        });
       } else {
         res.status(400).jsonp({
           error: "Invalid query parameter"
@@ -598,22 +580,19 @@ export const register = (app: express.Application) => {
   app.put(`${ctx}`, (req, res) => {
     if (req.body) {
       if (req.body.title && req.body.album && req.body.artist) {
-        repo
-          .save({
-            title: req.body.title,
-            album: req.body.album,
-            artist: req.body.artist
-          })
-          .then(data => {
-            res.jsonp({
-              result: "Saved"
-            });
-          })
-          .catch(err => {
-            res.status(500).jsonp({
-              error: err
-            });
+        repo.save({
+          title: req.body.title,
+          album: req.body.album,
+          artist: req.body.artist
+        }).then(data => {
+          res.jsonp({
+            result: "Saved"
           });
+        }).catch(err => {
+          res.status(500).jsonp({
+            error: err
+          });
+        });
       } else {
         res.status(400).jsonp({
           error: "Invalid request body"
@@ -630,33 +609,27 @@ export const register = (app: express.Application) => {
     if (req.body) {
       if (req.body.id) {
         if (req.body.title || req.body.album || req.body.artist) {
-          repo
-            .findById(req.body.id)
-            .then(data => {
-              const staged = {
-                id: data[0].id,
-                title: req.body.title ? req.body.title : data[0].title,
-                album: req.body.album ? req.body.album : data[0].album,
-                artist: req.body.artist ? req.body.artist : data[0].artist
-              };
-              repo
-                .save(staged)
-                .then(data => {
-                  res.jsonp({
-                    result: "Updated"
-                  });
-                })
-                .catch(err => {
-                  res.status(500).jsonp({
-                    error: err
-                  });
-                });
-            })
-            .catch(err => {
+          repo.findById(req.body.id).then(data => {
+            const staged = {
+              id: data[0].id,
+              title: req.body.title ? req.body.title : data[0].title,
+              album: req.body.album ? req.body.album : data[0].album,
+              artist: req.body.artist ? req.body.artist : data[0].artist
+            };
+            repo.save(staged).then(data => {
+              res.jsonp({
+                result: "Updated"
+              });
+            }).catch(err => {
               res.status(500).jsonp({
                 error: err
               });
             });
+          }).catch(err => {
+            res.status(500).jsonp({
+              error: err
+            });
+          });
         } else {
           res.status(400).jsonp({
             error: "Invalid request body"
@@ -677,31 +650,25 @@ export const register = (app: express.Application) => {
   app.delete(`${ctx}`, (req, res) => {
     if (req.body) {
       if (req.body.id) {
-        repo
-          .remove(req.body.id)
-          .then(data => {
-            res.jsonp({
-              result: "Track deleted"
-            });
-          })
-          .catch(err => {
-            res.status(500).jsonp({
-              error: err
-            });
+        repo.remove(req.body.id).then(data => {
+          res.jsonp({
+            result: "Track deleted"
           });
+        }).catch(err => {
+          res.status(500).jsonp({
+            error: err
+          });
+        });
       } else if (req.body.album) {
-        repo
-          .removeByAlbum(req.body.album)
-          .then(data => {
-            res.jsonp({
-              result: "Album deleted"
-            });
-          })
-          .catch(err => {
-            res.status(500).jsonp({
-              error: err
-            });
+        repo.removeByAlbum(req.body.album).then(data => {
+          res.jsonp({
+            result: "Album deleted"
           });
+        }).catch(err => {
+          res.status(500).jsonp({
+            error: err
+          });
+        });
       } else {
         res.status(400).jsonp({
           error: "Invalid request body"
@@ -716,7 +683,7 @@ export const register = (app: express.Application) => {
 };
 ```
 
-The workflow is pretty simple: the `Promise` is being processed by returning the data in case of successfull database operation or by returning an error in case something goes wrong. Apart from this, errors are being returned for validation failures.
+The workflow is as follows: the `Promise` is being processed by returning the data in case of successfull database operation or by returning an error in case something goes wrong. Apart from this, errors are being returned for validation failures.
 
 ## Test the API
 
@@ -728,8 +695,7 @@ curl -X GET 'http://localhost:8080/track/search?title=Too%20Much'
 curl -X GET 'http://localhost:8080/track/search?album=Nervous%20System'
 curl -X GET 'http://localhost:8080/track/search?artist=Daya'
 
-curl -X PUT \
-  http://localhost:8080/track \
+curl -X PUT http://localhost:8080/track \
   -H 'Content-Type: application/json' \
   -d '{
     "title": "brand new eyes",
@@ -737,8 +703,7 @@ curl -X PUT \
     "artist": "Sandra Dassault"
 }'
 
-curl -X PATCH \
-  http://localhost:8080/track \
+curl -X PATCH http://localhost:8080/track \
   -H 'Content-Type: application/json' \
   -d '{
     "id": 7,
@@ -747,15 +712,13 @@ curl -X PATCH \
     "artist": "Bea Miller"
 }'
 
-curl -X DELETE \
-  http://localhost:8080/track \
+curl -X DELETE http://localhost:8080/track \
   -H 'Content-Type: application/json' \
   -d '{
     "id": "7"
 }'
 
-curl -X DELETE \
-  http://localhost:8080/track \
+curl -X DELETE http://localhost:8080/track \
   -H 'Content-Type: application/json' \
   -d '{
     "album": "Nervous System"

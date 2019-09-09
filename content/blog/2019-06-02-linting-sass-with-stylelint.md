@@ -42,7 +42,7 @@ If you want to customize the behavior of `stylelint`, create a `.stylelintrc` fi
 
 ## Autofixing errors
 
-If your stylesheets are massive and you ran `stylelint` for the first time, you might get a huge number of violations. Instead of fixing all those violations by hand, you can put `stylelint` to work for you. Add the following script to let `stylelint` fix some of those violations automatically.
+If your stylesheets are massive and you ran `stylelint` for the first time, you might get a huge number of violations. Instead of fixing all those violations by hand, you can put `stylelint` to work for you. Add the following script to let `stylelint` fix some of the violations automatically.
 
 ```json
 "fix-scss": "stylelint \"src/**/*.scss\" --fix",
@@ -56,13 +56,13 @@ If your stylesheets are massive and you ran `stylelint` for the first time, you 
 
 ### Extending stylelint for prettier
 
-`stylelint-config-prettier` is a configuration that disables `stylelint` rules that conflict with Prettier. `stylelint-prettier` is a plugin that adds a rule that formats content using Prettier. It also exposes a *recommended* configuration that configures both `stylelint-prettier` and `stylelint-config-prettier` in a single step. Add both `stylelint-prettier` and `stylelint-config-prettier` as developer dependencies, then extend the recommended configuration.
+`stylelint-config-prettier` is a configuration that disables `stylelint` rules that conflict with Prettier. `stylelint-prettier` is a plugin that adds a rule that formats content using Prettier. It also exposes a *recommended* configuration that configures both `stylelint-prettier` and `stylelint-config-prettier` in a single step. Add both `stylelint-prettier` and `stylelint-config-prettier` as developer dependencies,
 
 ```bash
 npm install --save-dev stylelint-config-prettier stylelint-prettier
 ```
 
-Then add the following in `.stylelintrc`.
+then extend the recommended configuration by adding the following configuration in `.stylelintrc`.
 
 ```json
 {

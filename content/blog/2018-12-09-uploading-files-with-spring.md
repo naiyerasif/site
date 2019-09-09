@@ -4,7 +4,7 @@ path: uploading-files-with-spring
 date: 2018-12-09
 updated: 2018-12-09
 author: [naiyer]
-summary: Create a RESTful service using Spring and an Angular client to upload a directory or file  
+summary: Create a RESTful service using Spring and an Angular client to upload a directory or file on a disk  
 tags: ['guide', 'spring', 'angular']
 ---
 
