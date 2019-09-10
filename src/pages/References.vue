@@ -8,14 +8,15 @@
       </div>
     </div>
     <div class="container mx-auto py-4 md:py-16">
-      <div class="max-w-sm rounded overflow-hidden bg-background-card shadow">
-        <div class="px-6 py-4">
-          <div class="font-bold text-xl mb-2">Cheatsheets</div>
-          <ul>
-            <li v-for="cheatsheet in $page.cheatsheets.edges" :key="cheatsheet.node.id">
-              <g-link :to="cheatsheet.node.path">{{ cheatsheet.node.title }}</g-link>
-            </li>
-          </ul>
+      <div class="grid row flex flex-wrap -mx-6 md:-mx-2">
+        <div v-for="cheatsheet in $page.cheatsheets.edges" :key="cheatsheet.node.id" class="column flex w-full p-2 sm:w-1/2 md:w-1/3">
+          <g-link :to="cheatsheet.node.path" class="card rounded-none md:rounded">
+            <div class="p-4">
+              <div class="card-category text-content-body">{{ cheatsheet.node.label }}</div>
+              <h3 class="card-title">{{ cheatsheet.node.title }}</h3>
+              <p class="text-content-body">{{ cheatsheet.node.summary }}</p>
+            </div>
+          </g-link>
         </div>
       </div>
     </div>
@@ -35,6 +36,8 @@ query Cheatsheets ($page: Int) {
         id
         title
         path
+        summary
+        label
       }
     }
   }

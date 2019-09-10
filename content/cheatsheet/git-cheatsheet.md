@@ -4,7 +4,8 @@ path: git-cheatsheet
 date: 2019-03-24
 updated: 2019-08-02
 author: [naiyer]
-summary: Just a yet another Git cheatsheet
+summary: A selection of useful git scripts
+label: cheatsheet
 ---
 
 ## Init
