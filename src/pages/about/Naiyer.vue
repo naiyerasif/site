@@ -180,17 +180,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.card {
-  @apply bg-background-card w-full overflow-hidden shadow;
-}
-
-.card-category {
-  @apply tracking-wide text-xs uppercase;
-}
-
-.card-title {
-  @apply my-1 font-semibold;
-}
-</style>

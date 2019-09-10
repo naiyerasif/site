@@ -135,6 +135,18 @@ nav .active {
   @apply bg-background-htag text-content-htag;
 }
 
+.card {
+  @apply bg-background-card w-full overflow-hidden shadow;
+}
+
+.card-category {
+  @apply tracking-wide text-xs uppercase;
+}
+
+.card-title {
+  @apply my-1 font-semibold;
+}
+
 .container {
   padding-left: 1rem;
   padding-right: 1rem;
