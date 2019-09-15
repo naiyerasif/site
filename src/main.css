@@ -10,9 +10,9 @@
 .theme-light {
   --background-header: #f2f2f6;
   --content-header: #2a2743;
-  --content-hheader: #585470;
+  --content-hheader: #5d5686;
 
-  --background-footer: #e7e7ee;
+  --background-footer: #f5f5f8;
   --content-footer: #504d60;
 
   --background-body: #fdfdfe;
@@ -25,10 +25,10 @@
   --background-search: #fdfdfe;
 
   --background-tag: #daeeea;
-  --content-tag: #1e826a;
+  --content-tag: #196b57;
 
   --background-htag: #c3e4dc;
-  --content-htag: #176553;
+  --content-htag: #135344;
 
   scrollbar-color: light;
 }
@@ -45,8 +45,8 @@
 
 .theme-dark {
   --background-header: #181720;
-  --content-header: #7d7a90;
-  --content-hheader: #d0d0d0;
+  --content-header: #aaa6c2;
+  --content-hheader: #e2e2e2;
 
   --background-footer: #181720;
   --content-footer: #a2a2a8;
@@ -60,10 +60,10 @@
 
   --background-search: #313039;
 
-  --background-tag: #0d352b;
-  --content-tag: #599989;
+  --background-tag: #0b2e25;
+  --content-tag: #6fb8a5;
 
-  --background-htag: #145747;
+  --background-htag: #0d4638;
   --content-htag: #95beb3;
 
   scrollbar-color: dark;
@@ -115,12 +115,12 @@ a:hover {
 
 .remarkability a, .decorated-links a {
   background-image: linear-gradient(to right, #249e81 100%, transparent 0%);
-  background-size: 8px 0.5px;
+  background-size: 8px 0.75px;
 }
 
 .remarkability a:hover, .decorated-links a:hover {
   background-image: linear-gradient(to right, #1b735e 100%, transparent 0%);
-  background-size: 8px 1.25px;
+  background-size: 8px 1.5px;
 }
 
 nav .active {
