@@ -3,6 +3,7 @@
     <search-focus @keyup="focusSearch"></search-focus>
 
     <div class="relative w-80">
+      <label for="search" class="hidden">Search</label>
       <input
         type="text"
         placeholder="Search (Press  &quot;/&quot; to focus)"
@@ -16,7 +17,7 @@
         @keyup.enter="gotoLink"
         @blur="searchResultsVisible = false"
         @focus="searchResultsVisible = true"
-        ref="search"
+        ref="search" id="search"
       >
       <div class="absolute top-0 ml-3" style="top:8px">
         <svg fill="currentColor" class="text-content-header h-6 w-6" viewBox="0 0 24 24" width="24" height="24"><path d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"></path></svg>
