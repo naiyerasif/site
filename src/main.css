@@ -120,7 +120,7 @@ a:hover {
 
 .remarkability a:hover, .decorated-links a:hover {
   background-image: linear-gradient(to right, #1b735e 100%, transparent 0%);
-  background-size: 8px 1.5px;
+  background-size: 8px 1.25px;
 }
 
 nav .active {
