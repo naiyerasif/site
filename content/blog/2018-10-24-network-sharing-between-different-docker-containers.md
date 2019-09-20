@@ -23,7 +23,7 @@ The intent of this guide is to create two separate containers managed under sepa
 
 #### Prerequisites
 
-Refer [Communication within a Docker network](/blog/2018/08/05/communication-within-a-docker-network) and use the same Micronaut and Angular applications for this guide.
+Refer to [Communication within a Docker network](/blog/2018/08/05/communication-within-a-docker-network) and use the same Micronaut and Angular applications for this guide.
 
 ### Table of Contents
 
