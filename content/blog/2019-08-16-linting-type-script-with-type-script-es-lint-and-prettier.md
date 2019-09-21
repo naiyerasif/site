@@ -1,8 +1,8 @@
 ---
 title: Linting TypeScript with TypeScript ESLint and Prettier
 path: linting-type-script-with-type-script-es-lint-and-prettier
-date: 2019-08-18
-updated: 2019-08-18
+date: 2019-08-16
+updated: 2019-08-16
 author: [naiyer]
 summary: Setup a TypeScript project with linting by TypeScript ESLint and formatting through Prettier
 tags: ['guide', 'typescript-eslint', 'prettier', 'nodejs']
@@ -17,7 +17,7 @@ The intent of this guide is to setup linting with [TypeScript ESLint](https://gi
 > This guide uses
 > - Node 12
 
-You should already have a TypeScript project; it could be any Express or Angular project. Check out [Developing a REST API with Express, TypeScript and Postgres](/blog/2019/08/19/developing-a-rest-api-with-express-type-script-and-postgres) to know how you can develop a TypeScript project with Express and Postgres.
+You should already have a TypeScript project; it could be any Express or Angular project. Download the one created at the end of the post [Code Formatting with Prettier](/blog/2019/04/20/code-formatting-with-prettier) to follow this guide.
 
 ### Table of Contents
 
@@ -107,7 +107,7 @@ Now, `typescript-eslint` will play nice with `prettier` and use it to format whi
 
 ## References
 
-> **Source Code** &mdash; [ts-rest-api](https://github.com/Microflash/nodium/tree/master/ts-rest-api)
+> **Source Code** &mdash; [linting-with-typescript-eslint](https://github.com/Microflash/guides/tree/master/nodejs/linting-with-typescript-eslint)
 > 
 > **Discussions**
 > - Niko Montana: <https://github.com/typescript-eslint/typescript-eslint/issues/36#issuecomment-494764385>
