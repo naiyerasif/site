@@ -2,7 +2,7 @@
 title: Persisting and querying documents with MongoRepository
 path: persisting-and-querying-documents-with-mongo-repository
 date: 2019-07-08
-updated: 2019-08-17
+updated: 2019-09-21
 author: [naiyer]
 summary: Save documents with MongoRepository interface and fetch them using query methods
 tags: ['guide', 'spring-data', 'mongodb']
@@ -15,11 +15,29 @@ The intent of this guide is to save mongoDB documents with `MongoRepository` int
 ### Setup
 
 > This guide uses
-> - Java 12
-> - Spring Boot 2.2.M4
+> - Java 11
+> - Spring Boot 2.1.8
 > - mongoDB 4
 
-Before getting started, make sure that a mongoDB instance is available to persist your data. You can use [docker-compose.yml](https://github.com/Microflash/springtime/blob/master/spring-data-mongo-repository/docker-compose.yml) to launch an instance on Docker by executing the following command:
+Before getting started, make sure that a mongoDB instance is available to persist your data. You can use Docker to run an instance. Create a `docker-compose.yml` file at the project root and add the following details in it.
+
+```yaml
+version: '3.1'
+
+services:
+
+  mongo:
+    image: mongo
+    container_name: mongo_db
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: erin
+      MONGO_INITDB_ROOT_PASSWORD: richards
+```
+
+Executing the following command to launch the container.
 
 ```bash
 docker-compose up -d
@@ -29,7 +47,7 @@ docker-compose up -d
 
 ## Define a domain
 
-Start by defining a [domain](https://github.com/Microflash/springtime/tree/master/spring-data-mongo-repository/src/main/java/com/mflash/domain). Say, you want to persist an `Email` object which consists of an `address`, an `Identity` of user, a set of `Session` created by the user and a `created` date. When an `Email` object is saved, corresponding `Identity` object and `Session` objects should also be persisted; the same goes for the delete operation.
+Start by defining a domain. Say, you want to persist an `Email` object which consists of an `address`, an `Identity` of user, a set of `Session` created by the user and a `created` date. When an `Email` object is saved, corresponding `Identity` object and `Session` objects should also be persisted; the same goes for the delete operation.
 
 ![Domain](./images/2019-07-08-persisting-and-querying-data-with-mongo-repository.svg)
 
@@ -38,13 +56,12 @@ A Many-to-One relationship in mongoDB can be modeled with either [embedded docum
 Your `Email` document may look like this:
 
 ```java
-package com.mflash.domain;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Set;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 
 public class Email {
 
@@ -65,13 +82,12 @@ Similarly, define `Identity` and `Session` documents.
 Create a repository by extending `MongoRepository` interface, as follows.
 
 ```java
-package com.mflash.repository;
-
-import com.mflash.domain.Email;
-import com.mflash.domain.Identity;
-import com.mflash.domain.Session;
-import java.util.List;
+import dev.mflash.guides.mongo.domain.Email;
+import dev.mflash.guides.mongo.domain.Identity;
+import dev.mflash.guides.mongo.domain.Session;
 import org.springframework.data.mongodb.repository.MongoRepository;
+
+import java.util.List;
 
 public interface EmailRepository extends MongoRepository<Email, String> {
 
@@ -90,62 +106,47 @@ Since `MongoRepository` extends `CrudRepository` interface, it provides several 
 Now that your repository is ready, write some tests to verify if it works as expected.
 
 ```java
-package com.mflash.repository;
+import static dev.mflash.guides.mongo.configuration.TestData.*;
+import static org.junit.Assert.*;
 
-import static com.mflash.configuration.TestData.emails;
-import static com.mflash.configuration.TestData.identities;
-import static com.mflash.configuration.TestData.sessions;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-import com.mflash.configuration.TestData.Address;
-import com.mflash.configuration.TestData.City;
-import com.mflash.configuration.TestData.Name;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.junit4.SpringRunner;
 
-@ExtendWith(SpringExtension.class)
-@SpringBootTest
-class EmailRepositoryTest {
+@RunWith(SpringRunner.class)
+public @SpringBootTest class EmailRepositoryTest {
 
   private @Autowired EmailRepository repository;
 
-  @BeforeEach
-  void setUp() {
+  public @Before void setUp() {
     repository.deleteAll();
     repository.saveAll(emails.values());
   }
 
-  @Test
-  void findAll() {
+  public @Test void findAll() {
     final var totalNumberOfRecords = 3;
     assertEquals(totalNumberOfRecords, repository.findAll().size());
   }
 
-  @Test
-  void setKeyOnSave() {
+  public @Test void setKeyOnSave() {
     repository.findAll().forEach(email -> assertNotNull(email.getKey()));
   }
 
-  @Test
-  void findDistinctFirstByIdentityName() {
+  public @Test void findDistinctFirstByIdentityName() {
     final var tinaLawrence = Name.TINA_LAWRENCE;
     assertEquals(identities.get(tinaLawrence),
         repository.findDistinctFirstByIdentity(identities.get(tinaLawrence)).getIdentity());
   }
 
-  @Test
-  void findBySessionLocale() {
+  public @Test void findBySessionLocale() {
     final var numberOfResults = 2;
     assertEquals(numberOfResults, repository.findBySessions(sessions.get(City.LOS_ANGELES)).size());
   }
 
-  @Test
-  void findByAddress() {
+  public @Test void findByAddress() {
     final var address = Address.MOHD_ALI;
     assertEquals(Name.MOHD_ALI.name, repository.findByAddress(address.email).getIdentity().getName());
   }
@@ -165,12 +166,11 @@ This happens because `Email` class has a field `created` of type `ZonedDateTime`
 Spring provides a `Converter` interface which can be implemented for this very purpose. To convert `Date` to `ZonedDateTime` object, write a converter like this:
 
 ```java
-package com.mflash.helper.converter;
+import org.springframework.core.convert.converter.Converter;
 
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.Date;
-import org.springframework.core.convert.converter.Converter;
 
 public class DateToZonedDateTimeConverter implements Converter<Date, ZonedDateTime> {
 
@@ -185,11 +185,10 @@ public class DateToZonedDateTimeConverter implements Converter<Date, ZonedDateTi
 Similarly, for conversion from `ZonedDateTime` to `Date`, write a yet another converter.
 
 ```java
-package com.mflash.helper.converter;
+import org.springframework.core.convert.converter.Converter;
 
 import java.time.ZonedDateTime;
 import java.util.Date;
-import org.springframework.core.convert.converter.Converter;
 
 public class ZonedDateTimeToDateConverter implements Converter<ZonedDateTime, Date> {
 
@@ -202,17 +201,16 @@ public class ZonedDateTimeToDateConverter implements Converter<ZonedDateTime, Da
 Inject these converters through a `MongoCustomConversions` bean as follows:
 
 ```java
-package com.mflash.configuration;
-
-import com.mflash.helper.converter.DateToZonedDateTimeConverter;
-import com.mflash.helper.converter.ZonedDateTimeToDateConverter;
-import java.util.ArrayList;
-import java.util.List;
+import dev.mflash.guides.mongo.helper.converter.DateToZonedDateTimeConverter;
+import dev.mflash.guides.mongo.helper.converter.ZonedDateTimeToDateConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @EnableMongoRepositories(MongoConfiguration.REPOSITORY_PACKAGE)
 public @Configuration class MongoConfiguration {
@@ -244,8 +242,6 @@ However, you can write a custom mechanism to cascade objects on save and delete 
 Start by defining an annotation to indicate that a field should be cascaded.
 
 ```java
-package com.mflash.helper.event;
-
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -264,14 +260,13 @@ Since, cascading can be done for save and/or delete operations, you can generali
 Annotate the desired fields with this annotation.
 
 ```java
-package com.mflash.domain;
+import dev.mflash.guides.mongo.helper.event.Cascade;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
-import com.mflash.helper.event.Cascade;
 import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Set;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 
 public class Email {
 
@@ -290,12 +285,11 @@ public class Email {
 The references of cascaded objects should be associated with a document. You need to check if such a valid document exists. This can be done by checking the `@Id` of the document through a `FieldCallback`.
 
 ```java
-package com.mflash.helper.event;
-
-import java.lang.reflect.Field;
 import org.springframework.data.annotation.Id;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.util.ReflectionUtils.FieldCallback;
+
+import java.lang.reflect.Field;
 
 public class IdentifierCallback implements FieldCallback {
 
@@ -318,15 +312,14 @@ public class IdentifierCallback implements FieldCallback {
 Similarly, you need to identify the objects that should be cascaded, by detecting `@Cascade` annotation on a field, once again, through a `FieldCallback` and then perform actual persistence operation using `MongoOperations`.
 
 ```java
-package com.mflash.helper.event;
-
-import java.lang.reflect.Field;
-import java.util.Collection;
-import java.util.Objects;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.util.ReflectionUtils.FieldCallback;
+
+import java.lang.reflect.Field;
+import java.util.Collection;
+import java.util.Objects;
 
 public class CascadeSaveCallback implements FieldCallback {
 
@@ -370,8 +363,6 @@ You can also write a `CascadeDeleteCallback` for the delete operation. At this p
 Create a `MongoEventListener` to listen to `MongoMappingEvent`s and invoke the appropriate callbacks for you.
 
 ```java
-package com.mflash.helper.event;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.mapping.event.AbstractMongoEventListener;
@@ -389,7 +380,7 @@ public class CascadeMongoEventListener extends AbstractMongoEventListener<Object
         .doWithFields(source.getClass(), new CascadeSaveCallback(source, mongoOperations));
   }
 
-  public @Override void onAfterConvert(final AfterConvertEvent<Object> event) {
+  public @Override void onAfterConvert(AfterConvertEvent<Object> event) {
     final Object source = event.getSource();
     ReflectionUtils
         .doWithFields(source.getClass(), new CascadeDeleteCallback(source, mongoOperations));
@@ -397,37 +388,65 @@ public class CascadeMongoEventListener extends AbstractMongoEventListener<Object
 }
 ```
 
-`CascadeMongoEventListener` will invoke `CascadeSaveCallback` or `CascadeDeleteCallback` depending on your repository method. Inject it as a bean in a [`@Configuration`](https://github.com/Microflash/springtime/blob/master/spring-data-mongodb-repository/src/main/java/com/mflash/configuration/MongoConfiguration.java) to complete the implementation.
+`CascadeMongoEventListener` will invoke `CascadeSaveCallback` or `CascadeDeleteCallback` depending on your repository method. Inject it as a bean in the `MongoConfiguration` to complete the implementation.
+
+```java
+import dev.mflash.guides.mongo.helper.converter.DateToZonedDateTimeConverter;
+import dev.mflash.guides.mongo.helper.converter.ZonedDateTimeToDateConverter;
+import dev.mflash.guides.mongo.helper.event.CascadeMongoEventListener;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@EnableMongoRepositories(MongoConfiguration.REPOSITORY_PACKAGE)
+public @Configuration class MongoConfiguration {
+
+  static final String REPOSITORY_PACKAGE = "com.mflash.repository";
+  private final List<Converter<?, ?>> converters = new ArrayList<>();
+
+  public @Bean CascadeMongoEventListener cascadeMongoEventListener() {
+    return new CascadeMongoEventListener();
+  }
+
+  public @Bean MongoCustomConversions customConversions() {
+    converters.add(new DateToZonedDateTimeConverter());
+    converters.add(new ZonedDateTimeToDateConverter());
+    return new MongoCustomConversions(converters);
+  }
+}
+```
 
 ### Unit tests to verify cascading
 
 To verify if the cascading actually works, write some unit tests by persisting some `Email` objects and querying for `Identity` and `Session` objects.
 
 ```java
-package com.mflash.repository;
+import static org.junit.Assert.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import dev.mflash.guides.mongo.domain.Email;
+import dev.mflash.guides.mongo.domain.Identity;
+import dev.mflash.guides.mongo.domain.Session;
+import dev.mflash.guides.mongo.domain.Email.EmailBuilder;
+import dev.mflash.guides.mongo.domain.Identity.IdentityBuilder;
+import dev.mflash.guides.mongo.domain.Session.SessionBuilder;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
-import com.mflash.domain.Email;
-import com.mflash.domain.Email.EmailBuilder;
-import com.mflash.domain.Identity;
-import com.mflash.domain.Identity.IdentityBuilder;
-import com.mflash.domain.Session;
-import com.mflash.domain.Session.SessionBuilder;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Locale;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@ExtendWith(SpringExtension.class)
-@SpringBootTest
-class CascadeTest {
+@RunWith(SpringRunner.class)
+public @SpringBootTest class CascadeTest {
 
   private @Autowired EmailRepository emailRepository;
   private @Autowired SessionRepository sessionRepository;
@@ -436,8 +455,7 @@ class CascadeTest {
   private Session paris;
   private Email saved;
 
-  @BeforeEach
-  void setUp() {
+  public @Before void setUp() {
     emailRepository.deleteAll();
     sessionRepository.deleteAll();
     identityRepository.deleteAll();
@@ -451,15 +469,13 @@ class CascadeTest {
     saved = emailRepository.save(email);
   }
 
-  @Test
-  void saveCascade() {
+  public @Test void saveCascade() {
     identityRepository.findById(saved.getIdentity().getKey())
         .ifPresent(identity -> assertEquals(jasmine, identity));
     saved.getSessions().stream().findFirst().ifPresent(session -> assertEquals(paris, session));
   }
 
-  @Test
-  void deleteCascade() {
+  public @Test void deleteCascade() {
     Email email = emailRepository.findDistinctFirstByIdentity(jasmine);
     emailRepository.deleteById(email.getKey());
 
@@ -472,4 +488,4 @@ class CascadeTest {
 
 ## References
 
-> **Source Code** &mdash; [spring-data-mongo-repository](https://github.com/Microflash/springtime/tree/master/spring-data-mongo-repository)
+> **Source Code** &mdash; [spring-data-mongo-repository](https://github.com/Microflash/guides/tree/master/spring/spring-data-mongo-repository)
