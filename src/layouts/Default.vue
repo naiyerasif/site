@@ -25,11 +25,11 @@
                   <span class="dropdown-icon"></span>
                 </a>
                 <ul class="sub-menu md:bg-background-header md:rounded-lg md:shadow-xl">
-                  <li class="menu-item"><g-link to="/tag/guide" class="text-content-header hover:text-content-hheader">Guides</g-link></li>
-                  <li class="menu-item"><g-link to="/references" class="text-content-header hover:text-content-hheader">References</g-link></li>
+                  <li class="menu-item"><g-link to="/tag/guide/" class="text-content-header hover:text-content-hheader">Guides</g-link></li>
+                  <li class="menu-item"><g-link to="/references/" class="text-content-header hover:text-content-hheader">References</g-link></li>
                   <li class="menu-item border-b border-gray-500 opacity-25 pt-1 mb-1"></li>
                   <li class="menu-item">
-                    <g-link to="/about/naiyer" class="text-content-header hover:text-content-hheader">About</g-link>
+                    <g-link to="/about/naiyer/" class="text-content-header hover:text-content-hheader">About</g-link>
                   </li>
                 </ul>
               </li>
@@ -83,7 +83,7 @@
 
 <static-query>
 query {
-  metaData {
+  metadata {
     siteName
   }
 }

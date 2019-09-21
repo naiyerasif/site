@@ -16,17 +16,21 @@ module.exports = {
   siteUrl: 'https://microflash.github.io',
   titleTemplate: '%s — Microflash',
   outDir: 'public',
+  templates: {
+    Post: '/blog/:year/:month/:day/:path',
+    Cheatsheet: '/content/cheatsheet/:path',
+    Author: '/about/:id',
+    Tag: '/tag/:id'
+  },
   plugins: [
     {
       use: '@gridsome/source-filesystem',
       options: {
         path: 'content/blog/**/*.md',
-        route: '/blog/:year/:month/:day/:slug',
         typeName: 'Post',
         refs: {
           tags: {
             typeName: 'Tag',
-            route: 'tag/:id',
             create: true
           },
           author: 'Author'
@@ -43,7 +47,6 @@ module.exports = {
       use: '@gridsome/source-filesystem',
       options: {
         path: 'content/cheatsheet/*.md',
-        route: '/content/cheatsheet/:slug',
         typeName: 'Cheatsheet',
         refs: {
           author: 'Author'

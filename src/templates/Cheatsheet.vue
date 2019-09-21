@@ -9,7 +9,7 @@
             <g-image :alt="author.title" :src="author.avatar" class="h-10 w-10 rounded-full mx-0 mr-2" />
             <div class="text-left">
               <g-link class="text-sm font-semibold" :to="author.path">{{ author.title }}</g-link>
-              <div class="text-sm">{{ displayDate }} &middot; {{ $page.cheatsheet.timeToRead }} min read</div>
+              <div class="text-sm">{{ displayDate }}</div>
             </div>
           </div>
         </div>
@@ -44,7 +44,6 @@ query Cheatsheet ($path: String!) {
     }
     content
     path
-    timeToRead
   }
 }
 </page-query>
@@ -61,7 +60,8 @@ export default {
   },
   computed: {
     editUrl() {
-      return "https://github.com/Microflash/microflash.github.io/edit/release" + this.$page.cheatsheet.path + ".md";
+      const slug = this.$page.cheatsheet.path;
+      return "https://github.com/Microflash/microflash.github.io/edit/release" + slug.substring(0, slug.length - 1) + ".md";
     },
     displayDate() {
       return this.$page.cheatsheet.updated !== this.$page.cheatsheet.date ? 'Updated ' + this.$page.cheatsheet.updated : 'Published ' + this.$page.cheatsheet.date;

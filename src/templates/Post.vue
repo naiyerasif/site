@@ -71,7 +71,7 @@ export default {
     editUrl() {
       const tokens = this.$page.post.path.split('/');
       const slug = tokens.splice(1,2).join('/') + tokens.join('-');
-      return "https://github.com/Microflash/microflash.github.io/edit/release/content/" + slug + ".md";
+      return "https://github.com/Microflash/microflash.github.io/edit/release/content/" + slug.substring(0, slug.length - 1) + ".md";
     },
     displayDate() {
       return this.$page.post.updated !== this.$page.post.date ? 'Updated ' + this.$page.post.updated : 'Published ' + this.$page.post.date;

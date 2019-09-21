@@ -4,24 +4,21 @@ const pick = require('lodash.pick');
 const yaml = require('js-yaml');
 
 module.exports = function (api, options) {
-  api.loadSource(async store => {
+  api.loadSource(async ({ addMetadata, addCollection }) => {
     // Add Authors
     const authorsPath = path.join(__dirname, 'data/authors.yaml');
     const authorsRaw = await fs.readFile(authorsPath, 'utf8');
     const authorsData = yaml.safeLoad(authorsRaw);
-    const authors = store.addContentType({
-      typeName: 'Author',
-      route: '/about/:id'
-    });
+    const authors = addCollection('Author');
 
     authorsData.forEach(({ id, name: title, ...fields }) => {
       authors.addNode({
         id,
         title,
-        fields,
         internal: {
           origin: authorsPath
-        }
+        },
+        ...fields
       })
     });
   });
