@@ -2,7 +2,7 @@
 title: Developing a REST API with Express, TypeScript and Postgres
 path: developing-a-rest-api-with-express-type-script-and-postgres
 date: 2019-08-19
-updated: 2019-08-19
+updated: 2019-09-22
 author: [naiyer]
 summary: Create a REST API to perform CRUD operations using Express, TypeScript and Postgres
 tags: ['guide', 'express', 'typescript', 'postgres']
@@ -10,153 +10,16 @@ tags: ['guide', 'express', 'typescript', 'postgres']
 
 ## Intent
 
-The intent of this guide is to write a REST API to perform CRUD operations using Express, TypeScript and Postgres. You'll also learn how to add support for hot-reloading, simulating environment variables locally and logging with `morgan` and `log4js-node`.
+The intent of this guide is to write a REST API to perform CRUD operations using Express, TypeScript and Postgres. You'll also learn how to organize routes and add support for hot-reloading and simulating environment variables locally.
 
 ### Setup
 
 > This guide uses
 > - Node 12
 
-Create a directory for your project, say `ts-rest-api`, and open a terminal into it. Execute the following command to initialize it with NPM.
-
-```bash
-npm init -y
-```
+Download the project created at the end of the post [Logging Node.js application with morgan and log4js-node](/blog/2019/08/18/logging-node-js-application-with-morgan-and-log4js-node) to follow this guide.
 
 ### Table of Contents
-
-## Create a barebone endpoint
-
-Install `express` as a dependency.
-
-```bash
-npm install express
-```
-
-Create a file `index.js` in a folder `dist` in your project root and add the following code.
-
-```js
-const express = require("express");
-const app = express();
-const port = 8080; // default port for express
-
-// default route handler
-app.get("/", (req, res) => {
-  res.jsonp({
-    message: "Hello World!"
-  });
-});
-
-// start the express server
-app.listen(port, () => {
-  console.log(`Server started at http://localhost:${port}`);
-});
-```
-
-In the `package.json`, add a `main` entry pointing to this file and create a script to launch the application.
-
-```json
-"main": "dist/index.js",
-"scripts": {
-  "start": "node ."
-},
-```
-
-Open the terminal and execute `npm start` to launch the application. You should see the following message on the terminal.
-
-```bash
-Server started at http://localhost:8080
-```
-
-Send a request to the default endpoint using curl and you'll receive a JSON message.
-
-```bash
-$ curl -X GET http://localhost:8080/
-{"message":"Hello World!"}
-```
-
-At this point, this application is not using TypeScript.
-
-## Setup TypeScript
-
-Execute the following command to add TypeScript in your `devDependencies`.
-
-```bash
-npm install --save-dev typescript
-npm install --save-dev @types/node @types/express
-```
-
-The second command adds type definitions for `node` and `express` to help your IDE or editor provide support for types while editing the source code.
-
-You'll need to provide configurations to TypeScript compiler `tsc` to let it know where the TypeScript source code is located and where the compiled JavaScript code should be written at. To do so, execute the following command to generate a `tsconfig.json` file.
-
-```bash
-npx tsc --init
-```
-
-Open `tsconfig.json` and add the following configuration.
-
-```json
-{
-  "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
-    "sourceMap": true,
-    "outDir": "dist",
-    "strict": true,
-    "moduleResolution": "node",
-    "baseUrl": ".",
-    "paths": {
-      "*": [
-        "node_modules/*"
-      ]
-    },
-    "esModuleInterop": true
-  },
-  "include": [
-    "src/**/*"
-  ]
-}
-```
-
-Here, you've pointed the output of compiler to a directory `dist`. Open `package.json` and add the following configuration.
-
-```json
-"main": "dist/index.js",
-"scripts": {
-  "build": "tsc",
-  "prestart": "npm run build",
-  "start": "node ."
-},
-```
-
-Now, whenever you'll fire up `npm start`, the `prestart` script will launch first which in turn launch `tsc` which'll compile the TypeScript code and put it in `dist` directory.
-
-Copy `dist/index.js` to `src/index.ts` and edit it as follows.
-
-```typescript
-import express from "express";
-const app = express();
-const port = 8080; // default port for express
-
-// default route handler
-app.get("/", (req, res) => {
-  res.jsonp({
-    message: "Hello World!"
-  });
-});
-
-// start the express server
-app.listen(port, () => {
-  console.log(`Server started at http://localhost:${port}`);
-});
-```
-
-Launch the application by executing `npm start` and you'll get the same application up and running, now with TypeScript support.
-
-### Setup Linting and Code Formatting
-
-Refer to [Linting TypeScript with TypeScript ESLint and Prettier](/blog/2019/08/18/linting-type-script-with-type-script-es-lint-and-prettier) to setup TypeScript ESLint and Prettier with this project.
 
 ## Define a domain
 
@@ -220,17 +83,24 @@ And register this route collection with `express` in `src/index.ts`.
 
 ```typescript
 import express from "express";
+import { logger } from "./helpers/default.logger";
+import { consoleAppender, fileAppender } from "./helpers/requests.logger";
 import * as routes from "./routes";
 
-const app = express();
 const port = 8080; // default port for express
+
+const app = express();
+
+// add morgan for console and file
+app.use(consoleAppender);
+app.use(fileAppender);
 
 // register routes
 routes.register(app);
 
 // start the express server
 app.listen(port, () => {
-  console.log(`Server started at http://localhost:${port}`);
+  logger.info(`Server started at http://localhost:${port}`);
 });
 ```
 
@@ -252,26 +122,33 @@ Add this middleware to `express` as follows.
 ```typescript
 import express from "express";
 import bodyParser from "body-parser";
+import { logger } from "./helpers/default.logger";
+import { consoleAppender, fileAppender } from "./helpers/requests.logger";
 import * as routes from "./routes";
 
-const app = express();
 const port = 8080; // default port for express
+
+const app = express();
 
 // body parser to read request body
 app.use(bodyParser.json());
+
+// add morgan for console and file
+app.use(consoleAppender);
+app.use(fileAppender);
 
 // register routes
 routes.register(app);
 
 // start the express server
 app.listen(port, () => {
-  console.log(`Server started at http://localhost:${port}`);
+  logger.info(`Server started at http://localhost:${port}`);
 });
 ```
 
 ## Setup development workflows
 
-In this section, you'll learn how to enable hot-reloading, simulate environment variables locally and enable logging with `morgan` and `log4js-node`.
+In this section, you'll learn how to enable hot-reloading and simulate environment variables locally.
 
 ### Enable hot-reloading
 
@@ -303,7 +180,7 @@ Launch the application with `npm run dev` and `nodemon` will watch for any chang
 
 ### Environment variables for local development
 
-To avoid hardcoding the port in `src/index.ts`, you can configure `SERVER_PORT` environment variable on your machine. However, for local development, you can simulate the environment variables through `dotenv`.
+To avoid hardcoding the port in `src/index.ts`, you can configure `SERVER_PORT` environment variable on your machine. For local development, you can simulate the environment variables through `dotenv`.
 
 Add the dependency for `dotenv` using the following command.
 
@@ -324,6 +201,8 @@ Edit `src/index.ts` to use this variable.
 import dotenv from "dotenv";
 import express from "express";
 import bodyParser from "body-parser";
+import { logger } from "./helpers/default.logger";
+import { consoleAppender, fileAppender } from "./helpers/requests.logger";
 import * as routes from "./routes";
 
 // fetch .env configuration
@@ -337,22 +216,22 @@ const app = express();
 // body parser to read request body
 app.use(bodyParser.json());
 
+// add morgan for console and file
+app.use(consoleAppender);
+app.use(fileAppender);
+
 // register routes
 routes.register(app);
 
 // start the express server
 app.listen(port, () => {
-  console.log(`Server started at http://localhost:${port}`);
+  logger.info(`Server started at http://localhost:${port}`);
 });
 ```
 
 Starting the application will launch it at port 8080.
 
 > **Note** Make sure you add `.env` file in the `.gitignore` since this file is meant for only local development.
-
-### Setup logging with `morgan` and `log4js-node`
-
-Refer to [Logging Node.js application with morgan and log4js-node](/blog/2019/08/16/logging-node-js-application-with-morgan-and-log4js-node) to setup logging with `morgan` and `log4js-node` in this project.
 
 ## Setup persistence with Postgres
 
@@ -441,37 +320,7 @@ const findAll = async () => {
   return result.rows;
 };
 
-const findById = async (id: string) => {
-  logger.info("Fetching tracks by id");
-  const result = await pool.query(
-    `SELECT id, title, album, artist FROM track WHERE id = '${id}'`
-  );
-  return result.rows;
-};
-
-const findByTitle = async (title: string) => {
-  logger.info("Fetching tracks by title");
-  const result = await pool.query(
-    `SELECT id, title, album, artist FROM track WHERE title = '${title}'`
-  );
-  return result.rows;
-};
-
-const findByArtist = async (artist: string) => {
-  logger.info("Fetching tracks by artist");
-  const result = await pool.query(
-    `SELECT id, title, album, artist FROM track WHERE artist = '${artist}'`
-  );
-  return result.rows;
-};
-
-const findByAlbum = async (album: string) => {
-  logger.info("Fetching tracks by album");
-  const result = await pool.query(
-    `SELECT id, title, album, artist FROM track WHERE album = '${album}'`
-  );
-  return result.rows;
-};
+// other find functions
 
 const save = async (track: Track) => {
   const client = await pool.connect();
@@ -498,11 +347,7 @@ const remove = async (id: string) => {
   return result.rows;
 };
 
-const removeByAlbum = async (album: string) => {
-  logger.info("Deleting an album");
-  const result = await pool.query(`DELETE FROM track WHERE album = '${album}'`);
-  return result.rows;
-};
+// other remove functions
 
 export { 
   findAll, findById, findByTitle, findByArtist, findByAlbum, 
@@ -533,157 +378,11 @@ export const register = (app: express.Application) => {
     });
   });
 
-  app.get(`${ctx}/search`, (req, res) => {
-    if (req.query) {
-      if (req.query.title) {
-        repo.findByTitle(req.query.title).then(data => {
-          res.jsonp({
-            result: data
-          });
-        }).catch(err => {
-          res.status(500).jsonp({
-            error: err
-          });
-        });
-      } else if (req.query.album) {
-        repo.findByAlbum(req.query.album).then(data => {
-          res.jsonp({
-            result: data
-          });
-        }).catch(err => {
-          res.status(500).jsonp({
-            error: err
-          });
-        });
-      } else if (req.query.artist) {
-        repo.findByArtist(req.query.artist).then(data => {
-          res.jsonp({
-            result: data
-          });
-        }).catch(err => {
-          res.status(500).jsonp({
-            error: err
-          });
-        });
-      } else {
-        res.status(400).jsonp({
-          error: "Invalid query parameter"
-        });
-      }
-    } else {
-      res.status(400).jsonp({
-        error: "No query parameter found"
-      });
-    }
-  });
-
-  app.put(`${ctx}`, (req, res) => {
-    if (req.body) {
-      if (req.body.title && req.body.album && req.body.artist) {
-        repo.save({
-          title: req.body.title,
-          album: req.body.album,
-          artist: req.body.artist
-        }).then(data => {
-          res.jsonp({
-            result: "Saved"
-          });
-        }).catch(err => {
-          res.status(500).jsonp({
-            error: err
-          });
-        });
-      } else {
-        res.status(400).jsonp({
-          error: "Invalid request body"
-        });
-      }
-    } else {
-      res.status(400).jsonp({
-        error: "Empty request body"
-      });
-    }
-  });
-
-  app.patch(`${ctx}`, (req, res) => {
-    if (req.body) {
-      if (req.body.id) {
-        if (req.body.title || req.body.album || req.body.artist) {
-          repo.findById(req.body.id).then(data => {
-            const staged = {
-              id: data[0].id,
-              title: req.body.title ? req.body.title : data[0].title,
-              album: req.body.album ? req.body.album : data[0].album,
-              artist: req.body.artist ? req.body.artist : data[0].artist
-            };
-            repo.save(staged).then(data => {
-              res.jsonp({
-                result: "Updated"
-              });
-            }).catch(err => {
-              res.status(500).jsonp({
-                error: err
-              });
-            });
-          }).catch(err => {
-            res.status(500).jsonp({
-              error: err
-            });
-          });
-        } else {
-          res.status(400).jsonp({
-            error: "Invalid request body"
-          });
-        }
-      } else {
-        res.status(400).jsonp({
-          error: "Can't patch non-existent track"
-        });
-      }
-    } else {
-      res.status(400).jsonp({
-        error: "Empty request body"
-      });
-    }
-  });
-
-  app.delete(`${ctx}`, (req, res) => {
-    if (req.body) {
-      if (req.body.id) {
-        repo.remove(req.body.id).then(data => {
-          res.jsonp({
-            result: "Track deleted"
-          });
-        }).catch(err => {
-          res.status(500).jsonp({
-            error: err
-          });
-        });
-      } else if (req.body.album) {
-        repo.removeByAlbum(req.body.album).then(data => {
-          res.jsonp({
-            result: "Album deleted"
-          });
-        }).catch(err => {
-          res.status(500).jsonp({
-            error: err
-          });
-        });
-      } else {
-        res.status(400).jsonp({
-          error: "Invalid request body"
-        });
-      }
-    } else {
-      res.status(400).jsonp({
-        error: "Empty request body"
-      });
-    }
-  });
+  // other route implementations
 };
 ```
 
-The workflow is as follows: the `Promise` is being processed by returning the data in case of successfull database operation or by returning an error in case something goes wrong. Apart from this, errors are being returned for validation failures.
+The workflow is as follows: the `Promise` is being processed by returning the data in case of successfull database operation or by returning an error in case something goes wrong. Apart from this, you can return errors for validation failures.
 
 ## Test the API
 
@@ -727,4 +426,4 @@ curl -X DELETE http://localhost:8080/track \
 
 ## References
 
-> **Source Code** &mdash; [ts-rest-api](https://github.com/Microflash/nodium/tree/master/ts-rest-api)
+> **Source Code** &mdash; [express-postgres-api](https://github.com/Microflash/guides/tree/master/nodejs/express-postgres-api)
