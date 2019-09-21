@@ -1,8 +1,8 @@
 ---
 title: Logging Node.js application with morgan and log4js-node
 path: logging-node-js-application-with-morgan-and-log4js-node
-date: 2019-08-16
-updated: 2019-08-16
+date: 2019-08-18
+updated: 2019-09-22
 author: [naiyer]
 summary: Setup server-side logging on a Node.js application with morgan and log4js-node
 tags: ['guide', 'nodejs', 'morgan', 'log4js-node']
@@ -17,7 +17,7 @@ The intent of this guide is to configure logging on an existing Node.js applicat
 > This guide uses
 > - Node 12
 
-You should already have a Node.js project. Check out [Developing a REST API with Express, TypeScript and Postgres](/blog/2019/08/19/developing-a-rest-api-with-express-type-script-and-postgres) to know how you can develop a Node.js project with Express, TypeScript and Postgres.
+You should already have a Node.js project. Download the one created at the end of the post [Linting TypeScript with TypeScript ESLint and Prettier](/blog/2019/08/16/linting-type-script-with-type-script-es-lint-and-prettier) to follow this guide.
 
 ### Table of Contents
 
@@ -159,7 +159,7 @@ Start the application; you should see `app.log` in `logs` directory and the same
 
 ## References
 
-> **Source Code** &mdash; [ts-rest-api](https://github.com/Microflash/nodium/tree/master/ts-rest-api)
+> **Source Code** &mdash; [morgan-log4js-logging](https://github.com/Microflash/guides/tree/master/nodejs/morgan-log4js-logging)
 >
 > **Documentations** 
 > - [morgan docs](https://github.com/expressjs/morgan#readme)
