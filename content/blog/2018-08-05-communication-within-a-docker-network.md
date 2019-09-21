@@ -1,6 +1,6 @@
 ---
 title: Communication within a Docker network
-path: communication-within-a-docker-network
+path: /communication-within-a-docker-network
 date: 2018-08-05
 updated: 2019-09-19
 author: [naiyer]

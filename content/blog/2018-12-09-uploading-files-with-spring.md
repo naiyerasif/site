@@ -1,6 +1,6 @@
 ---
 title: Uploading files with Spring
-path: uploading-files-with-spring
+path: /uploading-files-with-spring
 date: 2018-12-09
 updated: 2019-09-21
 author: [naiyer]

@@ -1,6 +1,6 @@
 ---
 title: Network sharing between different Docker containers
-path: network-sharing-between-different-docker-containers
+path: /network-sharing-between-different-docker-containers
 date: 2018-10-24
 updated: 2019-09-19
 author: [naiyer]

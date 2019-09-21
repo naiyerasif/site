@@ -1,6 +1,6 @@
 ---
 title: Git Cheatsheet
-path: git-cheatsheet
+path: /git-cheatsheet
 date: 2019-03-24
 updated: 2019-08-02
 author: [naiyer]

@@ -1,6 +1,6 @@
 ---
 title: Logging Node.js application with morgan and log4js-node
-path: logging-node-js-application-with-morgan-and-log4js-node
+path: /logging-node-js-application-with-morgan-and-log4js-node
 date: 2019-08-18
 updated: 2019-09-22
 author: [naiyer]

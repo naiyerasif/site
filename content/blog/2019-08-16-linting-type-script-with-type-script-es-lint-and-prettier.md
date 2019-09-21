@@ -1,6 +1,6 @@
 ---
 title: Linting TypeScript with TypeScript ESLint and Prettier
-path: linting-type-script-with-type-script-es-lint-and-prettier
+path: /linting-type-script-with-type-script-es-lint-and-prettier
 date: 2019-08-16
 updated: 2019-08-16
 author: [naiyer]

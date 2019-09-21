@@ -1,6 +1,6 @@
 ---
 title: Code Formatting with Prettier
-path: code-formatting-with-prettier
+path: /code-formatting-with-prettier
 date: 2019-04-20
 updated: 2019-09-20
 author: [naiyer]

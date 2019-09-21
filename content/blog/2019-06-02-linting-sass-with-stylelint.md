@@ -1,6 +1,6 @@
 ---
 title: Linting SASS with stylelint
-path: linting-sass-with-stylelint
+path: /linting-sass-with-stylelint
 date: 2019-06-02
 updated: 2019-08-08
 author: [naiyer]
