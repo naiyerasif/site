@@ -2,7 +2,7 @@
 title: Code Formatting with Prettier
 path: code-formatting-with-prettier
 date: 2019-04-20
-updated: 2019-08-17
+updated: 2019-09-20
 author: [naiyer]
 summary: Format source code with Prettier and configure it to work with EditorConfig and ESLint
 tags: ['guide', 'nodejs', 'prettier']
@@ -14,7 +14,7 @@ tags: ['guide', 'nodejs', 'prettier']
 
 ### Setup
 
-You should already have a Node.js project; it could be any Express, Angular or Vue.js project.
+You should already have a Node.js project. Download the one created at the end of the post [Creating an Express application using TypeScript](/blog/2019/01/12/creating-an-express-application-using-type-script) to follow this guide. 
 
 ### Table of Contents
 
@@ -38,11 +38,13 @@ Execute the following command to install dependencies.
 npm install --save-dev pretty-quick husky
 ```
 
-Add an `fmt` script in `package.json` to format staged files and configure the `husky` object with a hook.
+Add an `fmt` script in `package.json` to format the staged files and configure the `husky` object with a hook.
 
 ```json
 {
-  "fmt": "pretty-quick --staged",
+  "scripts": {
+    "fmt": "pretty-quick --staged"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "npm run fmt"
@@ -94,4 +96,7 @@ Now, open the `.eslintrc.json` file and add the following configuration:
 
 ## References
 
+> **Source Code** &mdash; [prettier-code-formatting](https://github.com/Microflash/guides/tree/master/nodejs/prettier-code-formatting)
+>
+> **Discussions**
 > - [Prettier docs](https://prettier.io/docs/en/install.html)
