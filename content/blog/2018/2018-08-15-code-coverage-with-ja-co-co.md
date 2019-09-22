@@ -83,6 +83,10 @@ When `mvn jacoco:report` task fires up, it generates reports in HTML, CSV and XM
 
 > **Note** that the appearance of report may vary depending on your browser preferences.
 
+You've already seen how you can configure the title of the report using `title`. For a comprehensive list of options, check out [jacoco:report documentation](https://www.eclemma.org/jacoco/trunk/doc/report-mojo.html).
+
+### Coverage counters
+
 You can also configure custom rules for coverage compliance. For example, the build will fail if the following rules are not satisfied by coverage.
 
 ```xml
@@ -126,7 +130,11 @@ You can also configure custom rules for coverage compliance. For example, the bu
 </build>
 ```
 
-You've already seen how you can configure the title of the report using `title`. For a comprehensive list of options, check out [jacoco:report documentation](https://www.eclemma.org/jacoco/trunk/doc/report-mojo.html).
+Note that these rules are built around limits which are specified over a counter. Counters are used by JaCoCo to calculate different coverage metrics. 
+
+For example, in the above example, a `BUNDLE` specifies that the coverage rules apply to the entire application with an instruction coverage of 80%. The instruction coverage provides information about the amount of code that has been executed or missed, irrespective of how your source code has been formatted. Similarly, a class coverage tells that at least one method of a class has been executed.
+
+For a detailed account on coverage counters, check out the [official documentation](https://www.eclemma.org/jacoco/trunk/doc/counters.html).
 
 ## References
 
