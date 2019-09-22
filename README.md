@@ -1,4 +1,4 @@
-# Microflash [![CircleCI](https://circleci.com/gh/Microflash/microflash.github.io.svg?style=svg)](https://circleci.com/gh/Microflash/microflash.github.io)
+# Microflash [![CircleCI](https://circleci.com/gh/Microflash/mflash.dev.svg?style=svg)](https://circleci.com/gh/Microflash/mflash.dev)
 
 Personal website of Naiyer Asif, made possible by:
 
