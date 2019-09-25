@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
   siteName: 'Microflash',
   siteDescription: 'Personal website of Naiyer Asif',
-  siteUrl: 'https://microflash.github.io',
+  siteUrl: 'https://mflash.dev',
   titleTemplate: '%s — Microflash',
   outDir: 'public',
   templates: {
@@ -65,9 +65,9 @@ module.exports = {
         feedOptions: {
           title: 'Microflash',
           description: 'Blog of Naiyer Asif',
-          link: 'https://microflash.github.io/',
-          image: 'https://raw.githubusercontent.com/Microflash/microflash.github.io/release/src/favicon.png',
-          favicon: 'https://raw.githubusercontent.com/Microflash/microflash.github.io/release/src/favicon.png'
+          link: 'https://mflash.dev/',
+          image: 'https://raw.githubusercontent.com/Microflash/mflash.dev/release/src/favicon.png',
+          favicon: 'https://raw.githubusercontent.com/Microflash/mflash.dev/release/src/favicon.png'
         },
         rss: {
           enabled: true,
@@ -91,7 +91,7 @@ module.exports = {
             {
               name: node.author,
               email: 'naiyer.app@gmail.com',
-              link: 'https://microflash.github.io/about/naiyer'
+              link: 'https://mflash.dev/about/naiyer'
             }
           ],
           content: marked(node.content)

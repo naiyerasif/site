@@ -61,7 +61,7 @@ export default {
   computed: {
     editUrl() {
       const slug = this.$page.cheatsheet.path;
-      return "https://github.com/Microflash/microflash.github.io/edit/release" + slug.substring(0, slug.length - 1) + ".md";
+      return "https://github.com/Microflash/mflash.dev/edit/release" + slug.substring(0, slug.length - 1) + ".md";
     },
     displayDate() {
       return this.$page.cheatsheet.updated !== this.$page.cheatsheet.date ? 'Updated ' + this.$page.cheatsheet.updated : 'Published ' + this.$page.cheatsheet.date;

@@ -72,7 +72,7 @@ export default {
       const tokens = this.$page.post.path.split('/');
       tokens[1] = tokens[1] + "/" + tokens[2];
       const slug = tokens.splice(1,2).join('/') + tokens.join('-');
-      return "https://github.com/Microflash/microflash.github.io/edit/release/content/" + slug.substring(0, slug.length - 1) + ".md";
+      return "https://github.com/Microflash/mflash.dev/edit/release/content/" + slug.substring(0, slug.length - 1) + ".md";
     },
     displayDate() {
       return this.$page.post.updated !== this.$page.post.date ? 'Updated ' + this.$page.post.updated : 'Published ' + this.$page.post.date;
