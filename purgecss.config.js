@@ -25,7 +25,9 @@ module.exports = {
     '*::-webkit-scrollbar',
     '*::-webkit-scrollbar-track',
     '*::-webkit-scrollbar-thumb',
-    '*::-webkit-scrollbar-button'
+    '*::-webkit-scrollbar-button',
+    '::-moz-selection',
+    '::selection'
   ],
   extractors: [
     {

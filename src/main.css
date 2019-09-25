@@ -99,6 +99,14 @@
   transition: background-color .25s;
 }
 
+::-moz-selection { 
+  background: hsla(166, 64%, 38%, 0.25); 
+}
+
+::selection { 
+  background: hsla(166, 64%, 38%, 0.25);
+}
+
 a {
   @apply text-green-500 font-medium;
 }
