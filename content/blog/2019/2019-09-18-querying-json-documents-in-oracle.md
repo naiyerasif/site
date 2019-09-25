@@ -176,7 +176,7 @@ FROM
 WHERE json_value(
     bios.recognition,
     '$.title' RETURNING VARCHAR2(100)
-  ) is not null;
+  ) IS NOT NULL;
 ```
 
 which emits the following dataset.
