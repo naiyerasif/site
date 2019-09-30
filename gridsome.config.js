@@ -1,10 +1,13 @@
 const tailwind = require('tailwindcss');
 const purgecss = require('@fullhuman/postcss-purgecss');
 const marked = require('marked');
+const shiki = require('shiki');
 
 const postcssPlugins = [
   tailwind(),
 ];
+
+const darkNord = shiki.loadTheme('./static/dark-nord.json');
 
 if (process.env.NODE_ENV === 'production') {
   postcssPlugins.push(purgecss())
@@ -37,7 +40,7 @@ module.exports = {
         },
         remark: {
           plugins: [
-            ['gridsome-plugin-remark-shiki', { theme: 'nord', skipInline: true }],
+            ['gridsome-plugin-remark-shiki', { theme: darkNord, skipInline: true }],
             ['remark-toc', { maxDepth: 3, tight: true }]
           ]
         }
@@ -53,7 +56,7 @@ module.exports = {
         },
         remark: {
           plugins: [
-            ['gridsome-plugin-remark-shiki', { theme: 'nord', skipInline: true }]
+            ['gridsome-plugin-remark-shiki', { theme: darkNord, skipInline: true }]
           ]
         }
       }
