@@ -34,8 +34,8 @@
 query Cheatsheet ($path: String!) {
   cheatsheet: cheatsheet (path: $path) {
     title
-    date (format: "MMMM D, Y")
-    updated (format: "MMMM D, Y")
+    date (format: "MMM D, Y")
+    updated (format: "MMM D, Y")
     author {
       id
       title

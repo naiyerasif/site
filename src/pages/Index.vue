@@ -25,7 +25,7 @@ query Posts ($page: Int) {
       node {
         id
         title
-        date (format: "MMMM D, Y")
+        date (format: "MMM D, Y")
         summary
         timeToRead
         path

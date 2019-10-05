@@ -40,8 +40,8 @@ query Tag ($id: ID!, $page: Int) {
           ...on Post {
             title
             timeToRead
-    	      date (format: "MMMM D, YYYY")
-    	      updated (format: "MMMM D, YYYY")
+    	      date (format: "MMM D, Y")
+    	      updated (format: "MMM D, Y")
             path
             summary
             tags {
