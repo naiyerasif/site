@@ -20,7 +20,6 @@
     "gridsome": "^0.7.5",
     "gridsome-plugin-feed": "^1.0.2",
     "gridsome-plugin-remark-shiki": "^0.3.0",
-    "lodash.pick": "^4.4.0",
     "marked": "^0.7.0",
     "remark-toc": "^6.0.0",
     "typeface-inter": "^3.10.0",
@@ -29,9 +28,7 @@
     "vue-scrollto": "^2.17.1"
   },
   "devDependencies": {
-    "fs-extra": "^8.1.0",
     "gh-pages": "^2.1.1",
-    "js-yaml": "^3.13.1",
     "tailwindcss": "^1.1.2"
   }
 }

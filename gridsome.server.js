@@ -1,22 +1,19 @@
-const fs = require('fs-extra');
 const path = require('path');
-const pick = require('lodash.pick');
-const yaml = require('js-yaml');
+const fs = require('fs');
+const authorDataSource = path.join(__dirname, 'data/authors.json');
+const authorData = require(authorDataSource);
 
 module.exports = function (api, options) {
   api.loadSource(async ({ addMetadata, addCollection }) => {
     // Add Authors
-    const authorsPath = path.join(__dirname, 'data/authors.yaml');
-    const authorsRaw = await fs.readFile(authorsPath, 'utf8');
-    const authorsData = yaml.safeLoad(authorsRaw);
     const authors = addCollection('Author');
 
-    authorsData.forEach(({ id, name: title, ...fields }) => {
+    authorData.forEach(({ id, name: title, ...fields }) => {
       authors.addNode({
         id,
         title,
         internal: {
-          origin: authorsPath
+          origin: authorDataSource
         },
         ...fields
       })
@@ -29,7 +26,11 @@ module.exports = function (api, options) {
     const { collection } = store.getContentType('Post');
 
     const posts = collection.data.map(post => {
-      return pick(post, ['title', 'path', 'summary']);
+      return {
+        title: post.title,
+        path: post.path,
+        summary: post.summary
+      }
     });
 
     const output = {
