@@ -115,20 +115,9 @@ a:hover {
   @apply text-green-800;
 }
 
-.remarkability a, .decorated-links a {
-  background-position: 0 1.1em;
-  background-repeat: repeat-x;
-  display: inline;
-}
-
-.remarkability a, .decorated-links a {
-  background-image: linear-gradient(to right, #249e81 100%, transparent 0%);
-  background-size: 8px 0.75px;
-}
-
+.remarkability a:focus, .decorated-links a:focus, 
 .remarkability a:hover, .decorated-links a:hover {
-  background-image: linear-gradient(to right, #1b735e 100%, transparent 0%);
-  background-size: 8px 1.25px;
+  text-decoration: underline;
 }
 
 nav .active {
