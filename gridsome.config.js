@@ -19,6 +19,15 @@ module.exports = {
   siteUrl: 'https://mflash.dev',
   titleTemplate: '%s — Microflash',
   outDir: 'public',
+  permalinks: {
+    slugify: {
+      use: '@sindresorhus/slugify',
+      options: {
+        decamelize: false,
+        customReplacements: [['.js', 'js']]
+      }
+    }
+  },
   templates: {
     Post: '/blog/:year/:month/:day/:path',
     Cheatsheet: '/content/cheatsheet/:path',

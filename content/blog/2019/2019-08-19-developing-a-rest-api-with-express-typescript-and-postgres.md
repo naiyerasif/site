@@ -1,6 +1,6 @@
 ---
 title: Developing a REST API with Express, TypeScript and Postgres
-path: /developing-a-rest-api-with-express-type-script-and-postgres
+path: /developing-a-rest-api-with-express-typescript-and-postgres
 date: 2019-08-19
 updated: 2019-09-22
 author: [naiyer]

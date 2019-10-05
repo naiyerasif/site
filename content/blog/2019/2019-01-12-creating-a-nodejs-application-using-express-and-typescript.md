@@ -1,6 +1,6 @@
 ---
 title: Creating a Node.js application using Express and TypeScript
-path: /creating-a-node-js-application-using-express-and-type-script
+path: /creating-a-nodejs-application-using-express-and-typescript
 date: 2019-01-12
 updated: 2019-09-20
 author: [naiyer]

@@ -1,6 +1,6 @@
 ---
 title: Persisting and querying documents with MongoRepository
-path: /persisting-and-querying-documents-with-mongo-repository
+path: /persisting-and-querying-documents-with-mongorepository
 date: 2019-07-08
 updated: 2019-09-21
 author: [naiyer]
@@ -49,7 +49,7 @@ docker-compose up -d
 
 Start by defining a domain. Say, you want to persist an `Email` object which consists of an `address`, an `Identity` of user, a set of `Session` created by the user and a `created` date. When an `Email` object is saved, corresponding `Identity` object and `Session` objects should also be persisted; the same goes for the delete operation.
 
-![Domain](./images/2019-07-08-persisting-and-querying-data-with-mongo-repository.svg)
+![Domain](./images/2019-07-08-persisting-and-querying-data-with-mongorepository.svg)
 
 A Many-to-One relationship in mongoDB can be modeled with either [embedded documents](https://docs.mongodb.com/manual/tutorial/model-embedded-one-to-many-relationships-between-documents/) or [document references](https://docs.mongodb.com/manual/tutorial/model-referenced-one-to-many-relationships-between-documents/); with the later method being more useful since it prevents repetition of data. You can enforce this behavior through a `@DBRef` annotation.
 
