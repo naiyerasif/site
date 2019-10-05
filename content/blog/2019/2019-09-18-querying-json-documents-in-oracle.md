@@ -27,7 +27,7 @@ For the examples in this guide, you'll use data from mongoDB's [bios example col
 
 ## Create a relation
 
-Start by creating a schema that would store JSON documents as CLOB objects.
+Start by creating a relation that would store JSON documents as CLOB objects.
 
 ```sql
 CREATE TABLE BIOS (
@@ -134,11 +134,11 @@ In a different scenario, you may not want a list of names but only the first nam
 
 ```sql
 SELECT 
-    bios.id,
-    json_value(
-        bios.fname,
-        '$.first' RETURNING VARCHAR2(100)
-    ) first_name
+  bios.id,
+  json_value(
+    bios.fname,
+    '$.first' RETURNING VARCHAR2(100)
+  ) first_name
 FROM bios
 ORDER BY bios.id;
 ```
