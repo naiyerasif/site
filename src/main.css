@@ -97,6 +97,7 @@
 
 .content-wrapper {
   transition: background-color .25s;
+  overflow-x: hidden;
 }
 
 ::-moz-selection { 
