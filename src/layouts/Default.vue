@@ -11,7 +11,7 @@
           </button>
         </div>
         <ul class="uppercase tracking-wide font-bold w-full block sm:text-right flex-grow lg:flex lg:flex-initial lg:w-auto items-center mt-8 lg:mt-0" :class="isOpen ? 'block': 'hidden'">
-          <li class="mr-8 mb-6 lg:mb-0">
+          <li class="mr-0 md:mr-8 mb-6 lg:mb-0">
             <search-input />
           </li>
           <li class="mr-8 mb-6 lg:mb-0">
