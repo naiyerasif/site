@@ -44,13 +44,15 @@
     </div>
     
     <footer class="bg-background-footer text-content-footer z-10 md:py-6 decorated-links">
-      <div class="container mx-auto flex flex-col lg:flex-row items-center justify-between py-8">
+      <div class="container mx-auto flex flex-col lg:flex-row md:items-center justify-between py-8">
         <div class="mb-8 lg:mb-0">
-          <div>Copyright &copy; {{ year }} &middot; Source licensed
+          <div>
+            <p>Copyright &copy; {{ year }} Naiyer Asif</p>
+            <p>Source licensed
             <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/mflash.dev/blob/release/LICENSE">MIT</a>, content
-            <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/">CC by SA</a> &middot;
-            <a href="/sitemap.xml" title="Sitemap">Sitemap</a> &middot;
-            <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/mflash.dev/issues/new">Report an issue</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/">CC by SA</a></p>
+            <p><a href="/sitemap.xml" title="Sitemap">Sitemap</a> &middot;
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/mflash.dev/issues/new">Report an issue</a></p>
           </div>
         </div>
         <ul class="flex items-center">
