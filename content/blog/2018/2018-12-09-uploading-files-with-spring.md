@@ -10,7 +10,7 @@ tags: ['guide', 'spring', 'angular']
 
 ## Intent
 
-The intent of this guide is to write a RESTful service to upload a folder or file with the help of a Spring backend and design a simple Angular client to demonstrate the functionality.
+In this guide, you'll learn to write a RESTful service to upload a folder or file with the help of a Spring backend and design a simple Angular client to demonstrate the functionality.
 
 ### Setup
 
@@ -52,7 +52,7 @@ public interface StorageService {
 
 ### Implement the `FileSystemStorageService`
 
-Create a `FileSystemStorageService`; an implementation of `StorageService` interface that would interact with the filesystem of a machine.
+Create a `FileSystemStorageService`; an implementation of the `StorageService` interface that would interact with the filesystem of a machine.
 
 ```java
 import dev.mflash.guides.fileupload.configuration.StorageProperties;
@@ -148,9 +148,9 @@ public @Service class FileSystemStorageService implements StorageService {
 }
 ```
 
-Note that `rootDir` is being fetched through a `ConfigurationProcessor`. You can configure the root directory in `application.yml` under the key `storage.location`.
+Note that the value of `rootDir` is being fetched through a `ConfigurationProcessor`. You can configure the root directory in `application.yml` under the key `storage.location`.
 
-> In a similar way, you can also implement services that would write to an `SFTP` server or on a cloud storage.
+> Similarly, you can also implement services that would write to an `SFTP` server or on cloud storage.
 
 ### Define REST endpoints
 
@@ -433,7 +433,7 @@ Open `app.component.html` and add the following template (which is built using [
 </section>
 ```
 
-Don't forget to supply `multiple` attribute on the `input[type=file]` element on the HTML page, else it won't allow upload of multiple files.
+Don't forget to supply the `multiple` attribute on the `input[type=file]` element on the HTML page, else it won't allow the upload of multiple files.
 
 Launch the Spring and Angular applications and navigate to <http://localhost:4200>. Try uploading some files to see the application in action.
 

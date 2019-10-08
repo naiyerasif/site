@@ -10,7 +10,7 @@ tags: ['guide', 'docker', 'angular', 'micronaut']
 
 ## Intent
 
-The intent of this guide is to create two separate containers managed under separate Docker stacks but communicating through same Docker network.
+In this guide, you'll learn to create two separate containers managed under separate Docker stacks but communicating through the same Docker network.
 
 ### Setup
 
@@ -53,7 +53,7 @@ networks:
     driver: bridge
 ```
 
-Launch the stack by executing `docker-compose up -d`. This should create a Docker network `greeter-api_greeternet`. Your Angular container should also launch in the same network in order to call the Micronaut endpoints.
+Launch the stack by executing `docker-compose up -d`. This should create a Docker network `greeter-api_greeternet`. Your Angular container should also launch in the same network to call the Micronaut endpoints.
 
 ## Create a Docker stack for the Angular application
 

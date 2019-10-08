@@ -10,7 +10,7 @@ tags: ['guide', 'spring-data', 'mongodb']
 
 ## Intent
 
-The intent of this guide is to save mongoDB documents with `MongoRepository` interface provided by Spring Data and run `find` queries using query methods.
+In this guide, you'll learn to save mongoDB documents with `MongoRepository` interface provided by Spring Data and run `find` queries using query methods.
 
 ### Setup
 
@@ -47,11 +47,11 @@ docker-compose up -d
 
 ## Define a domain
 
-Start by defining a domain. Say, you want to persist an `Email` object which consists of an `address`, an `Identity` of user, a set of `Session` created by the user and a `created` date. When an `Email` object is saved, corresponding `Identity` object and `Session` objects should also be persisted; the same goes for the delete operation.
+Start by defining a domain. Say, you want to persist an `Email` object which consists of an `address`, an `Identity` of a user, a set of `Session` created by the user and a `created` date. When an `Email` object is saved, corresponding `Identity` object and `Session` objects should also be persisted; the same goes for the delete operation.
 
 ![Domain](./images/2019-07-08-persisting-and-querying-data-with-mongorepository.svg)
 
-A Many-to-One relationship in mongoDB can be modeled with either [embedded documents](https://docs.mongodb.com/manual/tutorial/model-embedded-one-to-many-relationships-between-documents/) or [document references](https://docs.mongodb.com/manual/tutorial/model-referenced-one-to-many-relationships-between-documents/); with the later method being more useful since it prevents repetition of data. You can enforce this behavior through a `@DBRef` annotation.
+A Many-to-One relationship in mongoDB can be modeled with either [embedded documents](https://docs.mongodb.com/manual/tutorial/model-embedded-one-to-many-relationships-between-documents/) or [document references](https://docs.mongodb.com/manual/tutorial/model-referenced-one-to-many-relationships-between-documents/); with the latter method being more useful since it prevents the repetition of data. You can enforce this behavior through a `@DBRef` annotation.
 
 Your `Email` document may look like this:
 
@@ -79,7 +79,7 @@ Similarly, define `Identity` and `Session` documents.
 
 ## Create a Repository
 
-Create a repository by extending `MongoRepository` interface, as follows.
+Create a repository by extending the `MongoRepository` interface, as follows.
 
 ```java
 import dev.mflash.guides.mongo.domain.Email;
@@ -163,7 +163,7 @@ This happens because `Email` class has a field `created` of type `ZonedDateTime`
 
 ### Converters for `ZonedDateTime`
 
-Spring provides a `Converter` interface which can be implemented for this very purpose. To convert `Date` to `ZonedDateTime` object, write a converter like this:
+Spring provides a `Converter` interface that can be implemented for this very purpose. To convert `Date` to `ZonedDateTime` object, write a converter like this:
 
 ```java
 import org.springframework.core.convert.converter.Converter;
@@ -180,7 +180,7 @@ public class DateToZonedDateTimeConverter implements Converter<Date, ZonedDateTi
 }
 ```
 
-> **Note** that UTC is considered as `ZoneOffset` here. `Date` object, the one which actually gets persisted in mongoDB, contains no zone information. However, since mongoDB timestamps default to UTC, you can adjust the offset accordingly for your own timezone.
+> **Note** that UTC is considered as `ZoneOffset` here. `Date` object, the one which gets persisted in mongoDB, contains no zone information. However, since mongoDB timestamps default to UTC, you can adjust the offset accordingly for your timezone.
 
 Similarly, for conversion from `ZonedDateTime` to `Date`, write a yet another converter.
 
@@ -255,7 +255,7 @@ public @interface Cascade {
 }
 ```
 
-Since, cascading can be done for save and/or delete operations, you can generalize your implementation by passing a value to the annotation that will set the type of cascading. By default, choose for cascading on both save and delete operations through `CascadeType.ALL` value.
+Since cascading can be done for save and/or delete operations, you can generalize your implementation by passing a value to the annotation that will set the type of cascading. By default, choose for cascading on both save and delete operations through `CascadeType.ALL` value.
 
 Annotate the desired fields with this annotation.
 
@@ -423,7 +423,7 @@ public @Configuration class MongoConfiguration {
 
 ### Unit tests to verify cascading
 
-To verify if the cascading actually works, write some unit tests by persisting some `Email` objects and querying for `Identity` and `Session` objects.
+To verify if the cascading works, write some unit tests by persisting some `Email` objects and querying for `Identity` and `Session` objects.
 
 ```java
 import static org.junit.Assert.*;

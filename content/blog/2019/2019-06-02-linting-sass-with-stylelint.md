@@ -28,13 +28,13 @@ npm install --save-dev stylelint
 
 ## Add NPM script for linting
 
-Assuming your SASS code resides in `src` directory, you can configure the following NPM script.
+Assuming your SASS code resides in the `src` directory, you can configure the following NPM script.
 
 ```json
 "lint-scss": "stylelint \"src/**/*.scss\" --cache --cache-location .cache/.stylelintcache",
 ```
 
-This script will run `stylelint` over all `scss` files in `src` directory and store a cache of results in `.cache/.stylelintcache` directory. Make sure that `.cache/` is in your `.gitignore`.
+This script will run `stylelint` over all `scss` files in the `src` directory and store a cache of results in `.cache/.stylelintcache` directory. Make sure that `.cache/` is in your `.gitignore`.
 
 If you want to ignore certain files, create a `.stylelintignore` in the project root and add the paths of those files. You can also add directories (just as you would in a `.gitignore` file).
 
@@ -75,7 +75,7 @@ then extend the recommended configuration by adding the following configuration 
 
 ### Extending stylelint for Bootstrap
 
-If you are working with Bootstrap, you can extend the behavior of `stylelint` with Bootstrap-specific linting configuration. Execute the following command to add Bootstrap-specific linting extension.
+If you are working with Bootstrap, you can extend the behavior of `stylelint` with Bootstrap-specific linting configuration. Execute the following command to add the Bootstrap-specific linting extension.
 
 ```bash
 npm install --save-dev stylelint-config-twbs-bootstrap

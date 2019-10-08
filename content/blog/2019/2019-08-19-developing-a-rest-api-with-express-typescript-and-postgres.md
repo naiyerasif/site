@@ -10,7 +10,7 @@ tags: ['guide', 'express', 'typescript', 'postgres']
 
 ## Intent
 
-The intent of this guide is to write a REST API to perform CRUD operations using Express, TypeScript and Postgres. You'll also learn how to organize routes and add support for hot-reloading and simulating environment variables locally.
+In this guide, you'll learn to write a REST API to perform CRUD operations using Express, TypeScript and Postgres. You'll also learn how to organize routes and add support for hot-reloading and simulating environment variables locally.
 
 ### Setup
 
@@ -50,7 +50,7 @@ export const register = (app: express.Application) => {
 };
 ```
 
-All of these are dummy routes in which you'll add some implementation later. Add an endpoint for health check in a file `src/routes/default.routes.ts`.
+All of these are dummy routes in which you'll add some implementation later. Add an endpoint for the health check in a file `src/routes/default.routes.ts`.
 
 ```typescript
 import * as express from "express";
@@ -152,7 +152,7 @@ In this section, you'll learn how to enable hot-reloading and simulate environme
 
 ### Enable hot-reloading
 
-It is cumbersome to manually restart the application every time you make some change in the source code. You can automate the restart using `nodemon`.
+It is cumbersome to manually restart the application every time you make a change in the source code. You can automate the restart using `nodemon`.
 
 ```bash
 npm install --save-dev nodemon
@@ -176,11 +176,11 @@ Edit `scripts` in `package.json` as follows.
 "start": "node ."
 ```
 
-Launch the application with `npm run dev` and `nodemon` will watch for any changes in a `ts` file and launch `serve` script.
+Launch the application with `npm run dev` and `nodemon` will watch for any changes in a `ts` file and launch the `serve` script.
 
 ### Environment variables for local development
 
-To avoid hardcoding the port in `src/index.ts`, you can configure `SERVER_PORT` environment variable on your machine. For local development, you can simulate the environment variables through `dotenv`.
+To avoid hardcoding the port in `src/index.ts`, you can configure a `SERVER_PORT` environment variable on your machine. For local development, you can simulate the environment variables through `dotenv`.
 
 Add the dependency for `dotenv` using the following command.
 
@@ -273,11 +273,11 @@ INSERT INTO "track" VALUES ('Worst In Me', 'Nervous System', 'Julia Michaels');
 INSERT INTO "track" VALUES ('Uh Huh', 'Nervous System', 'Julia Michaels');
 ```
 
-> **Note** that `SERIAL` type will automatically generate an incremented `id` in Postgres.
+> **Note** that the `SERIAL` type will automatically generate an incremented `id` in Postgres.
 
 ### Create a repository
 
-Add `pg` to communicate with Postgres alongwith its type definitions.
+Add `pg` to communicate with Postgres along with its type definitions.
 
 ```bash
 npm install pg
@@ -382,7 +382,7 @@ export const register = (app: express.Application) => {
 };
 ```
 
-The workflow is as follows: the `Promise` is being processed by returning the data in case of successfull database operation or by returning an error in case something goes wrong. Apart from this, you can return errors for validation failures.
+The workflow is as follows: the `Promise` is being processed by returning the data in case of successful database operation or by returning an error in case something goes wrong. Apart from this, you can return errors for validation failures.
 
 ## Test the API
 

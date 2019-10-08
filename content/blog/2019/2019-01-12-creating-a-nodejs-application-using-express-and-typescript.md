@@ -10,7 +10,7 @@ tags: ['guide', 'express', 'typescript', 'nodejs']
 
 ## Intent
 
-The intent of this guide is to create a simple Node.js application using Express.js as the middleware with TypeScript support. You'll start with a JavaScript application and add TypeScript support to it.
+In this guide, you'll learn to create a simple Node.js application using Express.js as the middleware with TypeScript support. You'll start with a JavaScript application and add TypeScript support to it.
 
 ### Setup
 
@@ -96,7 +96,7 @@ You'll need to provide configurations to TypeScript compiler `tsc` to let it kno
 npx tsc --init
 ```
 
-Open `tsconfig.json` file and add the following configuration.
+Open the `tsconfig.json` file and add the following configuration.
 
 ```json
 {
@@ -132,7 +132,7 @@ Here, you've pointed the output of the compiler to a directory named `dist`. Ope
 },
 ```
 
-Now, whenever you'll fire up `npm start`, the `prestart` script will launch first which in turn will launch `tsc` which'll compile the TypeScript code and put it in `dist` directory.
+Now, whenever you'll fire up `npm start`, the `prestart` script will launch first which in turn will launch `tsc` which will compile the TypeScript code and put it in the `dist` directory.
 
 Copy `dist/index.js` to `src/index.ts` and edit it as follows.
 

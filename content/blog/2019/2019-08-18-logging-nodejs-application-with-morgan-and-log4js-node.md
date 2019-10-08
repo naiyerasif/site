@@ -10,7 +10,7 @@ tags: ['guide', 'nodejs', 'morgan', 'log4js-node']
 
 ## Intent
 
-The intent of this guide is to configure logging on an existing Node.js application with `morgan` and `log4js-node` to print the logs on the console as well as a file.
+In this guide, you'll to configure logging on an existing Node.js application with `morgan` and `log4js-node` to print the logs on the console as well as a file.
 
 ### Setup
 
@@ -66,7 +66,7 @@ export const fileAppender = morgan(morganOutputFormat, {
 
 This source code
 - reads configurations from the environment variables (or falls back on some defaults if those variables are not available)
-- creates a rotating filestream appender that rolls everyday and dumps the logs in a directory called `logs`
+- creates a rotating filestream appender that rolls every day and dumps the logs in a directory called `logs`
 - creates a console appender which prints the logs on the console
 
 Add these appenders to `express` as follows.
@@ -92,7 +92,7 @@ Add the required dependencies with the following command.
 npm install log4js
 ```
 
-Ensure the following environment variables are available to the application (through `dotenv` or your system's environment variables); they configure the default logging level of `log4js-node` and the name of log file.
+Ensure the following environment variables are available to the application (through `dotenv` or your system's environment variables); they configure the default logging level of `log4js-node` and the name of the log file.
 
 ```properties
 LOG_LEVEL=info
@@ -139,7 +139,7 @@ export { logger };
 This source code
 - reads configurations from the environment variables (or falls back on some defaults if those variables are not available)
 - configures a console appender which prints the logs on the console
-- configures a rotating file appender that appends the logs in a file `app.log` in a directory called `logs` and rolls it everyday in a zip archive
+- configures a rotating file appender that appends the logs in a file `app.log` in a directory called `logs` and rolls it every day in a zip archive
 
 Use this logger as follows.
 

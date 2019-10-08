@@ -63,7 +63,7 @@ Add the JaCoCo plugin in `pom.xml`.
 
 JaCoCo runs coverage by instrumenting the Java code through an agent. The first execution `start-agent`  ensures that this agent (called `JaCoCo Agent`) starts up before the coverage and the second execution `generate-report` generates a report. 
 
-Execute `mvn package` or `mvn test` to see this in action. After the build, you'll notice a `jacoco.exec` file in `target` directory. You can open this file in your editor to see the results of coverage. 
+Execute `mvn package` or `mvn test` command to see this in action. After the build, you'll notice a `jacoco.exec` file in the `target` directory. You can open this file in your editor to see the results of coverage. 
 
 ![IntelliJ Idea Coverage window](./images/2018-08-15-code-coverage-with-jacoco-01.png)
 
@@ -77,17 +77,17 @@ Your editor may even show the coverage in the project window itself.
 
 JaCoCo provides a good amount of flexibility when it comes to configuration.
 
-When `mvn jacoco:report` task fires up, it generates reports in HTML, CSV and XML formats in a directory `target/site/jacoco`. You can use those files to integrate with a static analysis tool (like SonarQube) or publish the HTML report for other people to view. 
+When the `mvn jacoco:report` task fires up, it generates reports in HTML, CSV and XML formats in a directory `target/site/jacoco`. You can use those files to integrate with a static analysis tool (like SonarQube) or publish the HTML report for other people to view. 
 
 ![JaCoCo coverage report](./images/2018-08-15-code-coverage-with-jacoco-03.png)
 
-> **Note** that the appearance of report may vary depending on your browser preferences.
+> **Note** that the appearance of the report may vary depending on your browser preferences.
 
-You've already seen how you can configure the title of the report using `title`. For a comprehensive list of options, check out [jacoco:report documentation](https://www.eclemma.org/jacoco/trunk/doc/report-mojo.html).
+You've already seen how you can configure the title of the report using the `title` key. For a comprehensive list of options, check out [jacoco:report documentation](https://www.eclemma.org/jacoco/trunk/doc/report-mojo.html).
 
 ### Coverage counters
 
-You can also configure custom rules for coverage compliance. For example, the build will fail if the following rules are not satisfied by coverage.
+You can also configure custom rules for coverage compliance. For example, the build will fail if the following rules are not compliant by the coverage.
 
 ```xml
 <build>
@@ -134,7 +134,7 @@ Note that these rules are built around limits which are specified over a counter
 
 For example, in the above example, a `BUNDLE` specifies that the coverage rules apply to the entire application with an instruction coverage of 80%. The instruction coverage provides information about the amount of code that has been executed or missed, irrespective of how your source code has been formatted. Similarly, a class coverage tells that at least one method of a class has been executed.
 
-For a detailed account on coverage counters, check out the [official documentation](https://www.eclemma.org/jacoco/trunk/doc/counters.html).
+For a detailed account of coverage counters, check out the [official documentation](https://www.eclemma.org/jacoco/trunk/doc/counters.html).
 
 ## References
 

@@ -10,14 +10,14 @@ tags: ['guide', 'oracle']
 
 ## Intent
 
-The intent of this guide is to find a way to query over JSON documents stored as CLOB objects in an Oracle database. 
+In this guide, you'll learn to find a way to query over JSON documents stored as CLOB objects in an Oracle database. 
 
 ### Setup
 
 > This guide uses
 > - Oracle 12c
 
-If you've got Oracle 12c installed on your machine, you're good to go. If not, you can install it by downloading it from [here](https://www.oracle.com/database/technologies/oracle-database-software-downloads.html). If you just want to try out this guide, login at [Oracle Live SQL](https://livesql.oracle.com) which provides free Oracle environment for you to play with.
+If you've got Oracle 12c installed on your machine, you're good to go. If not, you can install it by downloading it from [here](https://www.oracle.com/database/technologies/oracle-database-software-downloads.html). If you just want to try out this guide, login at [Oracle Live SQL](https://livesql.oracle.com) which provides a free Oracle environment for you to play with.
 
 > **Note** that the functions used in this guide are available only in Oracle 12c onwards.
 
@@ -38,7 +38,7 @@ CREATE TABLE BIOS (
 );
 ```
 
-You can even apply constraints which will ensure that `fname`, `contribs` and `recognition` are valid JSONs as follows.
+You can even apply constraints that will ensure that `fname`, `contribs` and `recognition` are valid JSONs as follows.
 
 ```sql
 CREATE TABLE BIOS (
@@ -126,11 +126,11 @@ which emits the following dataset.
 Here, `json_table` is being used to project the JSON documents in a relation.
 - A column `bios.fname` (using `$[*]` path expression) is selected for the projection. 
 - Column names and their corresponding paths are specified for different attributes.
-- Finally the outcome of this projection is given a name `j`.
+- Finally, the outcome of this projection is given a name `j`.
 
 ### `json_value` function
 
-In a different scenario, you may not want a list of names but only the first name of all people. In this case, you don't need to project the entire JSON; instead you can return only the first name using `json_value` function as follows.
+In a different scenario, you may not want a list of names but only the first name of all people. In this case, you don't need to project the entire JSON; instead, you can return only the first name using `json_value` function as follows.
 
 ```sql
 SELECT 

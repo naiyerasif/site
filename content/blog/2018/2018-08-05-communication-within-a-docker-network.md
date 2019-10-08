@@ -10,7 +10,7 @@ tags: ['guide', 'docker', 'angular', 'micronaut']
 
 ## Intent
 
-The intent of this guide is to create an Angular application which consumes a REST endpoint backed by [Micronaut](http://micronaut.io/), both running as containers on a Docker stack. Only the Angular application is publicly accessible; rest of the containers aren't exposed outside the Docker network.
+In this guide, you'll learn to create an Angular application that consumes a REST endpoint backed by [Micronaut](http://micronaut.io/), both running as containers on a Docker stack. Only the Angular application is publicly accessible; the rest of the containers aren't exposed outside the Docker network.
 
 When you're serving the static build (e.g., production build) of an Angular application over Nginx, there should be a mechanism to resolve the services that it consumes through their Docker URLs. You'll get to know a way to achieve this here. 
 
@@ -29,9 +29,9 @@ Execute the following command on your favorite terminal to generate a Micronaut 
 mn create-app dev.mflash.guides.greeter.greeter-api --build maven
 ```
 
-This command will generate a Micronaut application with Java support in `greeter-api` directory with a package `dev.mflash.guides.greeter`. Import this application in your favorite IDE.
+This command will generate a Micronaut application with Java support in a `greeter-api` directory with a package `dev.mflash.guides.greeter`. Import this application in your favorite IDE.
 
-> **Note** Micronaut CLI will setup the same Java version which is available on the PATH. So, if Java 11 is available on your PATH, the variable `java.version` in `pom.xml` file will be set to 11.
+> **Note** Micronaut CLI will setup the same Java version which is available on the PATH. So, if Java 11 is available on your PATH, the variable `java.version` in the `pom.xml` file will be set to 11.
 
 ### Table of Contents
 
@@ -84,7 +84,7 @@ micronaut:
 
 This configuration sets the port of Embedded Server to 8084 (default is 8080) and enables CORS for the requests coming from http://localhost:4200 (Angular application).
 
-Assemble the application using `mvn package`; this will create a `greeter-api-0.1.jar` file in `target` directory.
+Assemble the application using `mvn package` command; this will create a `greeter-api-0.1.jar` file in the `target` directory.
 
 ### Create a Docker image of the Micronaut application
 
@@ -157,7 +157,7 @@ export class GreetingService {
 }
 ```
 
-> **Note** Use the relative path of endpoint. Don't attach any host in front of it.
+> **Note** Use the relative path of the endpoint. Don't attach any host in front of it.
 
 Edit `app.component.ts` to call `getGreeting` method and display the message on the UI:
 
@@ -196,7 +196,7 @@ export class AppComponent implements OnInit {
 }
 ```
 
-Build the application by executing `ng build --prod`. The build will be dumped in `dist/greeter-ui` directory.
+Build the application by executing `ng build --prod`. The build will be dumped in the `dist/greeter-ui` directory.
 
 ## Configure Nginx
 
@@ -247,9 +247,9 @@ server {
 }
 ```
 
-**Recall** that the host for calling the endpoint was not provided in the `GreetingService`. So, when `getGreeting` method will be called, `HttpClient` will resolve the path of the endpoint as `http://localhost:4200/hello`. This path will obviously return an error if the application is run normally.
+**Recall** that the host for calling the endpoint was not provided in the `GreetingService`. So, when `getGreeting` method will be called, `HttpClient` will resolve the path of the endpoint as `http://localhost:4200/hello`. This path will return an error if the application is run normally.
 
-Nginx configuration above configures a proxy which will intercept all the calls to `/hello` endpoint and redirect it to `http://greeter_api:8084/hello` (which is the Docker URL for the REST endpoint created earlier). 
+Nginx configuration above configures a proxy that will intercept all the calls to `/hello` endpoint and redirect it to `http://greeter_api:8084/hello` (which is the Docker URL for the REST endpoint created earlier). 
 
 ### Create a Docker image of the Angular application
 

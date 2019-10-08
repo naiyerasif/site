@@ -10,7 +10,7 @@ tags: ['guide', 'rabbitmq', 'spring']
 
 ## Intent
 
-The intent of this guide is to create a message queue with RabbitMQ and to publish and read messages using a Spring backend.
+In this guide, you'll learn to create a message queue with RabbitMQ and to publish and read messages using a Spring backend.
 
 ### Setup
 
@@ -23,7 +23,7 @@ The intent of this guide is to create a message queue with RabbitMQ and to publi
 
 ## Setup a RabbitMQ broker
 
-Start by setting up a RabbitMQ broker; you can choose to [install](https://www.rabbitmq.com/download.html) it on your machine or run it as a container. For later, create a `docker-compose.yml` file in thr project's root and add the following configuration.
+Start by setting up a RabbitMQ broker; you can choose to [install](https://www.rabbitmq.com/download.html) it on your machine or run it as a container. For later, create a `docker-compose.yml` file in the project's root and add the following configuration.
 
 ```yaml
 version: '3.1'
@@ -68,11 +68,11 @@ public class Book {
 }
 ```
 
-To start with, you'll create a list of books to publish on the queue.
+To start with, you'll create a list of books to publish in the queue.
 
 ## Configure Queue, Topic Exchange and Routing Key
 
-A typical RabbitMQ queue has a name to identify it, an optional routing key to selectively process messages and an exchange to route the messages to a queue based on the value of a routing key. A topic exchange works on wildcard match of a routing pattern. There are several other types of exchanges. A binding ties a queue with an exchange and a routing key.
+A typical RabbitMQ queue has a name to identify it, an optional routing key to selectively process messages and exchange to route the messages to a queue based on the value of a routing key. A topic exchange works on a wildcard match of a routing pattern. There are several other types of exchanges. A binding ties a queue with an exchange and a routing key.
 
 You can configure all these as follows.
 
@@ -106,7 +106,7 @@ public @Configuration class RabbitMQConfiguration {
 
 ## Create a Publisher
 
-A publisher or producer sends the message to the queue. In the present case, it’ll send a list of books. You'll use a `RabbitTemplate` object injected through Spring to send this list on the queue.
+A publisher or producer sends the message to the queue. In the present case, it’ll send a list of books. You'll use a `RabbitTemplate` object injected through Spring to send this list in the queue.
 
 ```java
 import dev.mflash.guides.rabbitmq.configuration.RabbitMQConfiguration;

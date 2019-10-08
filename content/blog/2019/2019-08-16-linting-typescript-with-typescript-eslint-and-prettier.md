@@ -10,7 +10,7 @@ tags: ['guide', 'typescript-eslint', 'prettier', 'nodejs']
 
 ## Intent
 
-The intent of this guide is to setup linting with [TypeScript ESLint](https://github.com/typescript-eslint/typescript-eslint) for a TypeScript project with support for Prettier.
+In this guide, you'll learn to set up linting with [TypeScript ESLint](https://github.com/typescript-eslint/typescript-eslint) for a TypeScript project with support for Prettier.
 
 ### Setup
 
@@ -30,7 +30,7 @@ npm install --save-dev eslint eslint-plugin-import
 npm install --save-dev @typescript-eslint/parser @typescript-eslint/eslint-plugin 
 ```
 
-Generate an `eslint` configuration file with the following command. Choose `JSON` as file format.
+Generate an `eslint` configuration file with the following command. Choose `JSON` as the file format.
 
 ```bash
 npx eslint --init
