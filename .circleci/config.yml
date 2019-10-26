@@ -3,7 +3,7 @@ version: 2
 jobs:
   build-deploy:
     docker:
-      - image: circleci/node:latest
+      - image: circleci/node:12.12-buster
     steps:
       - checkout
       - restore_cache:
