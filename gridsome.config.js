@@ -18,7 +18,7 @@ module.exports = {
   siteDescription: 'Personal website of Naiyer Asif',
   siteUrl: 'https://mflash.dev',
   titleTemplate: '%s — Microflash',
-  outDir: 'public',
+  outputDir: 'public',
   permalinks: {
     slugify: {
       use: '@sindresorhus/slugify',

@@ -678,10 +678,10 @@
     postcss "^7.0.14"
     purgecss "^1.4.0"
 
-"@gridsome/cli@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@gridsome/cli/-/cli-0.3.0.tgz#d6fd58561b161c9cda9989712fb909dbb64e06bc"
-  integrity sha512-pH5RJ9PsTTZ0mGsrKcl5Djj+O+Mvf0o7o7SH3GLf+c8sQAIJTuEVTlfpzUDcI7udbZUdMtkFjYocXKudEdKpBw==
+"@gridsome/cli@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@gridsome/cli/-/cli-0.3.1.tgz#8bdf97facddb3ab5338eb57521bc0bf5808561d2"
+  integrity sha512-DBzX0yWAE98kn1oZ69oT5dPqUNd9Isr+2/YFU/XP7e/+5OHEYsXdVlFrLgHkEwAsJvtfbkm5s5654mQ7UoK+rg==
   dependencies:
     "@hjvedvik/tasks" "^0.0.8"
     chalk "^2.4.1"
@@ -703,19 +703,19 @@
   dependencies:
     vue-analytics "^5.16.1"
 
-"@gridsome/plugin-sitemap@^0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@gridsome/plugin-sitemap/-/plugin-sitemap-0.2.2.tgz#3727db503dbe4125a4db7dcb0b65f602b13786e6"
-  integrity sha512-PA8BzdNruSkWPgpW/F5xGCBTQbjk5GOX3dmH2eWeoYmyGPx46vGOPXNScgLHdAR4ragwlwVUi4kEPGl2MfA8nA==
+"@gridsome/plugin-sitemap@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@gridsome/plugin-sitemap/-/plugin-sitemap-0.2.3.tgz#44c2655d97349f8a02a76a38452313442b6cdab5"
+  integrity sha512-7XtE8SSZrYmM7/lf91giF44rHSBKfaMNr+QcZ/Ctq9WIC7ga3YWiA7COshX6sBJK8okhP6djx82QbKnX8c8IYQ==
   dependencies:
     fs-extra "^7.0.0"
     micromatch "^3.1.10"
     sitemap "^2.1.0"
 
-"@gridsome/source-filesystem@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@gridsome/source-filesystem/-/source-filesystem-0.6.0.tgz#420199ee7a34101bfd8479ca2ac66435575c3b3c"
-  integrity sha512-W6Sf9VDXotbol2ojsbHtlILYw3lIGKqy52ojHwaq0FKZlgJV8U3UahRRiL8A68xQdy1uRUTFtWTSvF3oEwUuyA==
+"@gridsome/source-filesystem@^0.6.2":
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/@gridsome/source-filesystem/-/source-filesystem-0.6.2.tgz#95f65e9fcf03624ba23f8f0bee0779fe8e8b9021"
+  integrity sha512-K1pyXwFYIlABaHq3wqOPyYt4ARzLZuUQ+UZKjDSBT9I0T0qpCbwir5kJMQkR7qY4ONflUrv8fgG6DNSrc1uzbA==
   dependencies:
     chokidar "^2.0.4"
     fs-extra "^7.0.0"
@@ -724,10 +724,10 @@
     mime-types "^2.1.21"
     slash "^2.0.0"
 
-"@gridsome/transformer-remark@^0.3.4":
-  version "0.3.4"
-  resolved "https://registry.yarnpkg.com/@gridsome/transformer-remark/-/transformer-remark-0.3.4.tgz#7ecf37565ffb95001ed2cf7562ff1c42ac67ecbb"
-  integrity sha512-EYDfZs1JmpIfoXYszmxmzHNcg4YxcbBSjFWPm4CHpie6CXreNOmXErO2WZ5QvLscEu/B5bsno/3mAL30roCxyw==
+"@gridsome/transformer-remark@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@gridsome/transformer-remark/-/transformer-remark-0.4.0.tgz#7b03481e6be5064984fcacc6832693c766745a4d"
+  integrity sha512-rGtZisA0FYg0oaruT50YYtpPLgZobpnRLiH8BYTtT3PGMPIdC618emuRxfY9U3zXCUX2N4uO1JcZzcPVOmClxg==
   dependencies:
     gray-matter "^4.0.2"
     hash-sum "^1.0.2"
@@ -3722,7 +3722,7 @@ function-bind@^1.1.1:
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
   integrity sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==
 
-fuse.js@^3.2.0:
+fuse.js@^3.4.5:
   version "3.4.5"
   resolved "https://registry.yarnpkg.com/fuse.js/-/fuse.js-3.4.5.tgz#8954fb43f9729bd5dbcb8c08f251db552595a7a6"
   integrity sha512-s9PGTaQIkT69HaeoTVjwGsLfb8V8ScJLx5XGFcKHg0MqLUH/UZ4EKOtqtXX9k7AFqCGxD1aJmYb8Q5VYDibVRQ==
@@ -4029,14 +4029,14 @@ gridsome-plugin-remark-shiki@^0.3.0:
     shiki-languages "^0.1.0"
     unist-util-visit "^1.4.0"
 
-gridsome@^0.7.7:
-  version "0.7.7"
-  resolved "https://registry.yarnpkg.com/gridsome/-/gridsome-0.7.7.tgz#3c0e3929ef08004310210030c9eae5e374df4b45"
-  integrity sha512-dkxyPY/z3m0z9qCtsyQfYc81OQ+qVZ8MCMTpu8CDXG2rS36gyDHhpRjPgjjI/op2ZHNGsRtgN81ysB4Y0bsMQw==
+gridsome@^0.7.9:
+  version "0.7.9"
+  resolved "https://registry.yarnpkg.com/gridsome/-/gridsome-0.7.9.tgz#f33ec371d9d1ce5b38d375d5c7ecf5e9c22338e2"
+  integrity sha512-IEVVS3LiUHiFZU0g2RyveF9EDMFQMNK5bxFZHfyrtI5GHJxakmqbG0cQ+7WCJ5V92Q/2KYXXqs41SC5KphcsEw==
   dependencies:
     "@babel/code-frame" "^7.5.5"
     "@babel/core" "^7.0.0"
-    "@gridsome/cli" "^0.3.0"
+    "@gridsome/cli" "^0.3.1"
     "@hapi/joi" "^15.1.1"
     "@sindresorhus/slugify" "^0.8.0"
     "@vue/babel-preset-app" "^3.4.0"
@@ -8319,10 +8319,10 @@ svgo@^1.0.0:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
-tailwindcss@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-1.1.2.tgz#0107dc092c3edee6132b105d896b109c0f66afd6"
-  integrity sha512-mcTzZHXMipnQY9haB17baNJmBTkYYcC8ljfMdB9/97FfhKJIzlglJcyGythuQTOu7r/QIbLfZYYWZhAvaGj95A==
+tailwindcss@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-1.1.3.tgz#ad154f78e1e44060e32e3ed44b27287c2be126a6"
+  integrity sha512-8sa/QO+blnu3WXUylsgvYZlUbBpVH36QeGuZxgSGqp1dF3g4AGe1azt8FsO8i8Hfe9Oyvwhx3iSjRDak3nngeQ==
   dependencies:
     autoprefixer "^9.4.5"
     bytes "^3.0.0"
@@ -9031,12 +9031,12 @@ vue-analytics@^5.16.1:
   resolved "https://registry.yarnpkg.com/vue-analytics/-/vue-analytics-5.17.2.tgz#5a43cbd907a8b5d2c27e3df5046245604fa8c83e"
   integrity sha512-Vfbn5laOG8OVetrBNRfV64y/N5VVyw1PPC4LiowZFh58UOsfsGH8w+ZZn0pyMelSZmz9uxkgG5dNnce4bwJ6jg==
 
-vue-fuse@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/vue-fuse/-/vue-fuse-2.1.0.tgz#a8e785cbb80d216d99cf652f32d3cdad243a15df"
-  integrity sha512-hx4QZkeIATmFlKyq6QSWcFFHPJC0vmsusnZP1GkBSEXh1eH7WV8Pde9O0XFvXWIzCH4Dr+Dox25EKu+iAy4bSg==
+vue-fuse@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/vue-fuse/-/vue-fuse-2.1.2.tgz#9c369b9349f72adbd2aab2c36e3ee4dc55af522f"
+  integrity sha512-mTGawEw4QK+kVwaLUR4cV0CYEyrHzIKa8RrLtxCovoRWknllhu/eo1yWAJ5Ix0xQJxk/glMKnE/Z73gyTU1CiA==
   dependencies:
-    fuse.js "^3.2.0"
+    fuse.js "^3.4.5"
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.3"
