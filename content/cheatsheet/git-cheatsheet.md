@@ -2,109 +2,106 @@
 title: Git Cheatsheet
 path: /git-cheatsheet
 date: 2019-03-24
-updated: 2019-08-02
+updated: 2019-10-26
 author: [naiyer]
 summary: A selection of useful git scripts
 label: cheatsheet
 ---
 
-## Init
+## Setup
 
-###### Initialize a local directory as a Git repository
+###### Setup a local directory as a Git repository
 
-```bash
+```sh
 git init
 git init <directory_path>
 ```
 
 ###### Retrieve a repository from remote through a URL
 
-```bash
+```sh
 git clone <repository_url>
 git clone -b <branch> <repository_url>
 ```
 
-## Setup
+## Configure
 
-###### Set a name with which the commits are credited to in the version history
+Remove `--global` flag to set the configuration only for a given Git project.
 
-```bash
+###### Set a name and email to associate with the history
+
+```sh
 git config --global user.name "<name>"
+git config --global user.email "<email_address>"
 ```
 
-###### Set an email address to be associated with each history marker
+###### Set automatic command line coloring to review easily
 
-```bash
-git config --global user.email "<email>"
-```
-
-###### Set automatic command line coloring for Git for easy reviewing
-
-```bash
+```sh
 git config --global color.ui auto
 ```
 
 ###### Enable autocorrect (with a 1.5 second delay)
 
-```bash
+```sh
 git config --global help.autocorrect 15
 ```
 
-###### Setup an alias for a command
+###### Set an alias for a command
 
-```bash
+```sh
 git config --global alias.<new_alias> <git_function>
 ```
 
-For an alias with multiple functions use quotes. Remove `--global` flag to set the configuration only for a given Git project.
+Use quotes if the alias contains multiple functions.
 
 ###### Unset a configuration
 
-```bash
+```sh
 git config --unset-all user.name
 git config --unset-all user.email
 ```
 
 ###### List the configurations
 
-```bash
+```sh
 git config --global --list
 ```
 
 ## Stage & Snapshot
 
-###### Show modified files in working directory, staged for your next commit
+###### Show modified files in the working directory, staged for the next commit
 
-```bash
+```sh
 git status
 git status -sb
 ```
 
-`-sb` flag displays a styled status, instead of plain one
+`-sb` flag displays a styled status, instead of the plain one.
 
-###### Add a file as it looks now to your next commit (stage)
+###### Add a file or directory to the next commit
 
-```bash
-git add <file_path>
+```sh
+git add <path>
 ```
 
-###### Add all current files to the next commit
+###### Add all the modified files to the next commit
 
-```bash
+```sh
 git add .
 ```
 
 ###### Stripspace a file
 
-Stripspacing a file strips trailing whitespaces, collapses newlines and adds a newline at the end of file
+Strip trailing whitespaces, collapse newlines and add a newline at the end of a file with stripspacing.
 
-```bash
+```sh
 git stripspace < README.md
 ```
 
 ###### Show files to be removed from working directory.
 
-```bash
+```sh
 git clean -n
 ```
 
@@ -112,7 +109,7 @@ git clean -n
 
 ###### Unstage a file while retaining the changes in working directory
 
-```bash
+```sh
 git reset <file_path>
 ```
 
@@ -120,75 +117,81 @@ git reset <file_path>
 
 ###### Revert a commit to undo all the changes made in it, then apply it to the current branch
 
-```bash
+```sh
 git revert <SHA>[ <SHA> ...]
 ```
 
-If `n` SHAs are provided, `n` revert commits will be created.
+Revert `n` commits by providing as many SHAs.
 
 ###### Revert last N commits
 
-```bash
+```sh
 git revert HEAD~N..HEAD
 ```
 
 ###### Revert a range of commits
 
-```bash
+```sh
 git revert <SHA1>..<SHA4>
 ```
 
 ### Commit
 
-###### Commit your staged content as a new commit snapshot
+###### Commit the staged content
 
-```bash
+```sh
 git commit -m "<message>"
 ```
 
 ###### Commit all the local changes in tracked files
 
-```bash
+```sh
 git commit -a
 ```
 
 ###### Commit with no change
 
-```bash
+```sh
 git commit -m "<message>" --allow-empty
 ```
 
 ###### Amend a previous commit
 
-```bash
+```sh
 git commit --amend --no-edit
 ```
 
-Useful when the new changes are trivial enough not to warrant a new commit over the previous one
+This is useful when the new changes are trivial enough not to warrant a new commit over the previous one.
+
+###### Commit without triggering any precommit or commit-msg hooks
+
+```sh
+git commit --no-verify
+```
 
 ### Temporary Commits
 
 ###### Save modified and staged changes
 
-```bash
+```sh
 git stash
 ```
 
 ###### Save a subset of modified and staged file(s)
 
-```bash
+```sh
 git stash push -m <message> <file_path>[ <file_path1> ...]
 ```
 
 ###### Stash untracked files
 
-```bash
+```sh
 git stash push --include-untracked
 ```
 
 ###### List stack-order of stashed file changes
 
-```bash
+```sh
 git stash list
 ```
 
@@ -196,62 +199,60 @@ git stash list
 
 Pop deletes the stash from the stack after it has been applied on the repository.
 
-```bash
+```sh
 git stash pop
 git stash pop stash@{<stash_id>}
 ```
 
-Specifying a `<stash_id>` writes that particular stash on the repository and subsequently deletes it from the stack.
+Specify a `<stash_id>` to write a particular stash on the repository and subsequently delete it from the stack.
 
 ###### Write a particular file from stash
 
-```bash
+```sh
 git checkout stash -- <file_path>
 git checkout stash@{<stash_id>} -- <file_path>
 ```
 
-Specifying a `<stash_id>` unstashes a file from that particular stash and writes it in the repository.
+Specify a `<stash_id>` to unstash a file from a particular stash and write it in the repository.
 
 ###### Write a particular file from stash on a new branch
 
-```bash
+```sh
 git stash branch <branch_name>
 git stash branch <branch_name> stash@{<stash_id>}
 ```
 
-This creates a new branch, checks out the commit you were on when you stashed your work, reapplies your work there, and then drops the stash if it applies successfully. This is helpful if the changes have been applied on the same file that has been stashed in subsequent commits.
-
 ###### Apply the top of stash without deleting it
 
-```bash
+```sh
 git stash apply
 git stash apply stash@{<stash_id>}
 ```
 
-Specifying a `<stash_id>` writes that particular stash on the repository but doesn’t delete it from the stack.
+Specify a `<stash_id>` to write a particular stash on the repository without deleting it from the stack.
 
 ###### Display a summary of stash diffs
 
-```bash
+```sh
 git stash show
 git stash show -p
 git stash show stash@{<stash_id>}
 ```
 
-`-p` displays the full diff. Specifying a `<stash_id>` displays the diff summary of that particular stash.
+Use `-p` to display the full diff. Specify a `<stash_id>` to display the diff summary of a particular stash.
 
 ###### Discard the changes from top of stash stack
 
-```bash
+```sh
 git stash drop
 git stash drop stash@{<stash_id>}
 ```
 
-Specifying a `<stash_id>` drops that particular stash.
+Specify a `<stash_id>` to drop a particular stash.
 
 ###### Discard all stashes in a repository
 
-```bash
+```sh
 git stash clear
 ```
 
@@ -259,13 +260,13 @@ git stash clear
 
 ###### System wide ignore pattern for all local repositories
 
-```bash
+```sh
 git config --global core.excludesfile <file_path>
 ```
 
 ###### Ignore a file only on local repository
 
-```bash
+```sh
 git update-index --assume-unchanged <file_path>
 ```
 
@@ -273,7 +274,7 @@ Vice-versa, to unignore a file, use `--no-assume-unchanged` flag in the above co
 
 ###### Ignore files in a directory only on local repository
 
-```bash
+```sh
 cd <directory_path>
 git ls-files -z | xargs -0 git update-index --assume-unchanged
 ```
@@ -288,23 +289,23 @@ pattern*/
 
 ## Branch & Merge
 
-###### List your branches
+###### List the branches
 
-```bash
+```sh
 git branch
 ```
 
-A `*` will appear next to the currently active branch
+A `*` will appear next to the currently active branch.
 
 ###### Create a new branch at the current commit
 
-```bash
+```sh
 git branch <branch>
 ```
 
 ###### Delete a local branch
 
-```bash
+```sh
 git branch -d <branch>
 git branch -D <branch>
 ```
@@ -313,7 +314,7 @@ git branch -D <branch>
 
 ###### Delete a remote branch
 
-```bash
+```sh
 git push <remote> --delete <branch>
 ```
 
@@ -321,32 +322,32 @@ In most cases, `<remote>` is `origin`.
 
 ###### Switch to another branch and check it out into your working directory
 
-```bash
+```sh
 git checkout -b <branch>
 git checkout -
 ```
 
-`-` switches to the previous branch
+Switch to the previous branch by using `-`.
 
 ###### Merge the specified branch’s history into the current one
 
-```bash
+```sh
 git merge <branch>
 ```
 
 ###### Find all branches that have been merged into the current branch
 
-```bash
+```sh
 git branch --merged
 ```
 
-Vice-versa, the flag `--no-merged` lists branches that have not been merged into the current branch.
+Vice-versa, list the branches that have not been merged into the current branch using the flag `--no-merged`.
 
 ## Inspect & Compare
 
 ###### Show any object in Git in human-readable format
 
-```bash
+```sh
 git show <SHA>
 ```
 
@@ -354,43 +355,43 @@ git show <SHA>
 
 ###### Show the commit history for the currently active branch
 
-```bash
+```sh
 git log
 ```
 
-###### Show the commits on branchA that are not on branchB
+###### Show the commits on `branchA` that are not on `branchB`
 
-```bash
+```sh
 git log branchB..branchA
 ```
 
 ###### Show the commits that changed file, even across renames
 
-```bash
+```sh
 git log --follow <file_path>
 ```
 
 ###### Show all commit logs with indication of any paths that moved
 
-```bash
+```sh
 git log --stat -M
 ```
 
 ###### Limit number of commits
 
-```bash
+```sh
 git log -<limit>
 ```
 
 ###### Condense each commit to a single line
 
-```bash
+```sh
 git log --oneline
 ```
 
 ###### Styled log to print logs in prettyprint
 
-```bash
+```sh
 git log --all --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 ```
 
@@ -398,19 +399,19 @@ git log --all --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgr
 
 ###### Diff of what is changed but not staged
 
-```bash
+```sh
 git diff
 ```
 
 ###### Diff of what is staged but not yet committed
 
-```bash
+```sh
 git diff --staged
 ```
 
 ###### Show the diff of what is in `branchA` that is not in `branchB`
 
-```bash
+```sh
 git diff branchB...branchA
 ```
 
@@ -418,19 +419,19 @@ git diff branchB...branchA
 
 ###### Delete the file from project and stage the removal for commit
 
-```bash
+```sh
 git rm <file_path>
 ```
 
 ###### Remove all deleted files from the working tree (synonym of `git add .` but only for deleted files)
 
-```bash
+```sh
 git rm $(git ls-files -d)
 ```
 
 ###### Change an existing file path and stage the move
 
-```bash
+```sh
 git mv <existing_path> <new_path>
 ```
 
@@ -440,7 +441,7 @@ git mv <existing_path> <new_path>
 
 `<query>` is a case-sensitive search term
 
-```bash
+```sh
 git show :/<query>
 ```
 
@@ -448,16 +449,16 @@ Press `q` to quit the query.
 
 ###### Find a list of lines matching a pattern from all files
 
-```bash
+```sh
 git grep <keyword>
 git grep -e <regex or glob>
 ```
 
-Instead of keyword, regex or glob patterns can also be used. Multiple expressions can be chained through `--and`, `--or` and `--not` flags.
+Besides a keyword, you can also use regex or glob patterns. You can even chain multiple expressions through `--and`, `--or` and `--not` flags.
 
 ###### Web Server for Browsing Local Repositories
 
-```bash
+```sh
 git instaweb
 ```
 
@@ -465,32 +466,32 @@ git instaweb
 
 ###### Add a git URL as an alias
 
-```bash
+```sh
 git remote add <alias> <url>
 ```
 
 ###### Fetch down all the branches from that Git remote
 
-```bash
+```sh
 git fetch <alias>
 git fetch <alias> <branch>
 ```
 
-###### Merge a remote branch into your current branch to bring it up to date
+###### Merge a remote branch into the current branch to bring it up to date
 
-```bash
+```sh
 git merge <alias>/<branch>
 ```
 
 ###### Transmit local branch commits to the remote repository branch
 
-```bash
+```sh
 git push <alias> <branch>
 ```
 
 ###### Fetch and merge any commits from the tracking remote branch
 
-```bash
+```sh
 git pull
 ```
 
@@ -498,19 +499,19 @@ git pull
 
 ###### Apply any commits of current branch ahead of specified one
 
-```bash
+```sh
 git rebase <branch>
 ```
 
 ###### Show a log of changes to the local repository’s HEAD
 
-```bash
+```sh
 git reflog
 ```
 
 ###### Clear staging area, rewrite working tree from specified commit
 
-```bash
+```sh
 git reset --hard <commit>
 git reset --hard <branch>@{<spec>}
 ```
