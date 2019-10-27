@@ -5,7 +5,7 @@ date: 2018-10-24
 updated: 2019-09-19
 author: [naiyer]
 summary: Create two containers on separate Docker stacks with a capability to communicate through same Docker network
-tags: ['guide', 'docker', 'angular', 'micronaut']
+tags: ['guide']
 ---
 
 ## Intent

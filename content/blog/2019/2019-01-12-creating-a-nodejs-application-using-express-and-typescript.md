@@ -5,7 +5,7 @@ date: 2019-01-12
 updated: 2019-09-20
 author: [naiyer]
 summary: Bootstrap a Node.js application using Express.js with TypeScript support
-tags: ['guide', 'express', 'typescript', 'nodejs']
+tags: ['guide']
 ---
 
 ## Intent

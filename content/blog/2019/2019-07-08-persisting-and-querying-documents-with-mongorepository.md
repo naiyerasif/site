@@ -5,7 +5,7 @@ date: 2019-07-08
 updated: 2019-09-21
 author: [naiyer]
 summary: Save documents with MongoRepository interface and fetch them using query methods
-tags: ['guide', 'spring-data', 'mongodb']
+tags: ['guide']
 ---
 
 ## Intent

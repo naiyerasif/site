@@ -5,7 +5,7 @@ date: 2019-08-16
 updated: 2019-08-16
 author: [naiyer]
 summary: Setup a TypeScript project with linting by TypeScript ESLint and formatting through Prettier
-tags: ['guide', 'typescript-eslint', 'prettier', 'nodejs']
+tags: ['guide']
 ---
 
 ## Intent

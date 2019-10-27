@@ -5,7 +5,7 @@ date: 2019-04-20
 updated: 2019-09-20
 author: [naiyer]
 summary: Format source code with Prettier and configure it to work with EditorConfig and ESLint
-tags: ['guide', 'nodejs', 'prettier']
+tags: ['guide']
 ---
 
 ## Intent

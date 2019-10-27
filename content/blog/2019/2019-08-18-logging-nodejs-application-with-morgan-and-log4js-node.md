@@ -5,7 +5,7 @@ date: 2019-08-18
 updated: 2019-09-22
 author: [naiyer]
 summary: Setup server-side logging on a Node.js application with morgan and log4js-node
-tags: ['guide', 'nodejs', 'morgan', 'log4js-node']
+tags: ['guide']
 ---
 
 ## Intent

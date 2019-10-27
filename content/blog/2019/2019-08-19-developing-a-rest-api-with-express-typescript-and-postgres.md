@@ -5,7 +5,7 @@ date: 2019-08-19
 updated: 2019-09-22
 author: [naiyer]
 summary: Create a REST API to perform CRUD operations using Express, TypeScript and Postgres
-tags: ['guide', 'express', 'typescript', 'postgres']
+tags: ['guide']
 ---
 
 ## Intent

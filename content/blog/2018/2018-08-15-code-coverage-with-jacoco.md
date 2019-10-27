@@ -5,7 +5,7 @@ date: 2018-08-15
 updated: 2019-09-11
 author: [naiyer]
 summary: Run coverage using JaCoCo with unit and integration tests, apply custom coverage rules and generate reports
-tags: ['guide', 'coverage', 'jacoco']
+tags: ['guide']
 ---
 
 ## Intent

@@ -5,7 +5,7 @@ date: 2019-09-18
 updated: 2019-09-18
 author: [naiyer]
 summary: Query a JSON document stored as a CLOB in an Oracle database
-tags: ['guide', 'oracle']
+tags: ['guide']
 ---
 
 ## Intent

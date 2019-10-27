@@ -5,7 +5,7 @@ date: 2018-08-05
 updated: 2019-09-19
 author: [naiyer]
 summary: Create an Angular application that talks to a REST endpoint backed by Micronaut, both running as containers on a Docker stack
-tags: ['guide', 'docker', 'angular', 'micronaut']
+tags: ['guide']
 ---
 
 ## Intent

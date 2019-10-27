@@ -5,7 +5,7 @@ date: 2018-12-09
 updated: 2019-09-21
 author: [naiyer]
 summary: Create a RESTful service using Spring Boot and an Angular client to upload a directory or file on a file system  
-tags: ['guide', 'spring', 'angular']
+tags: ['guide']
 ---
 
 ## Intent

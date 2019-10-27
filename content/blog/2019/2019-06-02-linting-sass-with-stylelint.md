@@ -5,7 +5,7 @@ date: 2019-06-02
 updated: 2019-08-08
 author: [naiyer]
 summary: Analyze and fix problems in the SASS files with stylelint and extend stylelint configuration
-tags: ['guide', 'sass', 'stylelint']
+tags: ['guide']
 ---
 
 ## Intent
