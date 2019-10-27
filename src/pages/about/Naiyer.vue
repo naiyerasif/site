@@ -10,7 +10,7 @@
           </h1>
         </div>
       </div>
-      <div class="container mx-auto pt-6 md:pt-16 -mx-10">
+      <div class="container pt-6 md:pt-16 -mx-10">
         <main class="w-full sm:w-3/4 p-10 bg-background-main">
           <p class="text-xl">I have more than 4 years of experience in Banking &amp; Financial Services, Legal &amp; Compliance and Aviation domains.</p>
           <p class="text-xl font-semibold mt-4 md:mt-8">Technologies I am adept at &mdash;</p>
@@ -111,7 +111,7 @@
           <p class="text-xl mt-8">Feel free to look around and contact me with any questions at <a target="_blank" rel="noopener noreferrer" href="https://www.twitter.com/Microflash">{{ $page.author.twitter }}</a> (which is the namesake of this blog).</p>
         </main>
 
-        <section class="w-full sm:w-3/4 p-10 mt-10 bg-background-card">
+        <section class="w-full sm:w-3/4 p-10 mt-0 sm:mt-10 bg-background-card">
           <h2 class="font-bold mb-6">Acknowledgements</h2>
           <p class="mb-8">This site is made possible by:</p>
           <ul class="mb-8">

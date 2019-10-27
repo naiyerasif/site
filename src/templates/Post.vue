@@ -1,25 +1,26 @@
 <template>
   <Layout>
     <section>
-      <div class="container mx-auto sm:mb-4">
+      <div class="container mx-auto mt-2 sm:mt-0 sm:mb-4">
         <div class="w-full sm:w-2/3">
-          <h1 class="text-3xl md:text-5xl font-semibold leading-tight mb-2 md:mb-3">{{ $page.post.title }}</h1>
-          <div class="flex items-center py-4" v-for="author in $page.post.author" :key="author.id">
+          <h1 class="text-3xl md:text-5xl font-semibold leading-tight mb-4">{{ $page.post.title }}</h1>
+          <div class="flex items-center pb-2" v-for="author in $page.post.author" :key="author.id">
             <g-image :alt="author.title" :src="author.avatar" class="h-10 w-10 rounded-full shadow mx-0 mr-2" />
-            <div class="text-left">
-              <g-link class="text-sm font-semibold" :to="author.path">{{ author.title }}</g-link>
-              <div class="text-sm">{{ displayDate }} &middot; {{ $page.post.timeToRead }} min read</div>
+            <div class="text-left text-sm">
+              <g-link class="font-semibold" :to="author.path">{{ author.title }}</g-link>
+              <p>{{ displayDate }}</p>
             </div>
           </div>
-          <div class="flex text-sm">
+          <div class="flex text-sm items-center">
             <g-link :to="tag.path" v-for="(tag, i) in $page.post.tags" :key="tag.id" :class="{'font-bold': i === 0}" class="tag">
               <span v-if="i !== 0">#</span>{{ tag.title }}
-            </g-link>
+            </g-link> 
+            <p><span class="opacity-25">&sol;</span> {{ $page.post.timeToRead }} min read</p>
           </div>
         </div>
       </div>
     </section>
-    <div class="container mx-auto py-8 md:py-12 -mx-10">
+    <div class="container py-8 md:py-12 -mx-10">
       <markdown class="w-full sm:w-3/4 px-10 py-4 sm:py-10 bg-background-main" v-html="$page.post.content" />
       <quick-links :dest="'table-of-contents'" />
     </div>

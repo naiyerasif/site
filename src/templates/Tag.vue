@@ -4,8 +4,7 @@
       <div class="container mx-auto mb-3 sm:mb-8">
         <div class="w-full">
           <h1 class="text-3xl md:text-5xl leading-tight">
-            <span class="font-semibold" v-if="category">{{ header }}</span>
-            <span v-else>Tag: <span class="font-semibold">#{{ $page.tag.title }}</span></span>
+            <span><span class="font-semibold">#{{ $page.tag.title }}</span></span>
           </h1>
         </div>
       </div>
@@ -17,7 +16,7 @@
             <postcard :item="post.node" />
           </div>
         </div>
-        <pagination class="mt-4 mb-0 sm:my-4 sm:w-1/4"
+        <pagination class="mt-4 mb-0 sm:my-4 sm:w-2/5"
           v-if="$page.tag.belongsTo.pageInfo.totalPages > 1"
           :base="`/tag/${$page.tag.title}`"
           :info="$page.tag.belongsTo.pageInfo"
@@ -65,16 +64,7 @@ import Postcard from '~/components/Postcard'
 export default {
   metaInfo() {
     return {
-      title: this.category ? this.header : 'Tag: ' + this.$page.tag.title
-    }
-  },
-  computed: {
-    header() {
-      const first = this.$page.tag.title[0] || this.$page.tag.title.charAt(0);
-      return first.toUpperCase() + this.$page.tag.title.substring(1) + 's';
-    },
-    category() {
-      return this.$page.tag.title === 'guide'
+      title: '#' + this.$page.tag.title
     }
   },
   components: {

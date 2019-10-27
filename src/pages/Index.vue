@@ -19,7 +19,7 @@
             <postcard :item="post.node" />
           </div>
         </div>
-        <pagination class="mt-4 mb-0 sm:my-4 sm:w-1/4"
+        <pagination class="mt-4 mb-0 sm:my-4 sm:w-2/5"
           v-if="$page.posts.pageInfo.totalPages > 1"
           :info="$page.posts.pageInfo"
         />

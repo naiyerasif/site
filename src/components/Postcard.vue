@@ -1,13 +1,14 @@
 <template>
   <section class="postcard rounded-none md:rounded">
-    <div class="postcard-metadata">{{ item.hasOwnProperty("updated") && item.updated !== item.date ? 'Updated ' + item.updated : 'Published ' + item.date }} &middot; {{ item.timeToRead }} min read</div>
+    <div class="postcard-metadata">
+      <g-link :class="{'font-bold': i === 0}" class="tag" v-for="(tag, i) in item.tags" :key="tag.id" :to="tag.path">
+        <span>#</span>{{ tag.title }}
+      </g-link>
+      {{ item.hasOwnProperty("updated") && item.updated !== item.date ? 'Updated ' + item.updated : 'Published ' + item.date }} <span class="opacity-50">&sol;</span> {{ item.timeToRead }} min read
+    </div>
     <g-link :to="item.path" class="postcard-title text-content-body hover:text-primary-700">
       <h2 class="text-2xl md:text-3xl font-semibold mb-2">{{ item.title }}</h2>
-      <div class="font-normal mb-4">{{ item.summary }}</div>
-    </g-link>
-    
-    <g-link :class="{'font-bold': i === 0}" class="tag" v-for="(tag, i) in item.tags" :key="tag.id" :to="tag.path">
-        <span v-if="i !== 0">#</span>{{ tag.title }}
+      <div class="font-normal">{{ item.summary }}</div>
     </g-link>
   </section>
 </template>
@@ -24,7 +25,7 @@ export default {
 }
 
 .postcard-metadata {
-  @apply tracking-wide text-xs;
+  @apply tracking-wide text-xs mb-2;
 }
 
 .postcard-title {

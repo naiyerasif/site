@@ -1,21 +1,21 @@
 <template>
   <Layout>
     <section>
-      <div class="container mx-auto">
+      <div class="container mx-auto mt-2 sm:mt-0 sm:mb-4">
         <div class="w-full sm:w-2/3">
           <a class="hidden" id="backToTop"></a>
-          <h1 class="text-3xl font-semibold md:text-5xl leading-tight mb-3">{{ $page.cheatsheet.title }}</h1>
-          <div class="flex py-4" v-for="author in $page.cheatsheet.author" :key="author.id">
-            <g-image :alt="author.title" :src="author.avatar" class="h-10 w-10 rounded-full mx-0 mr-2" />
-            <div class="text-left">
-              <g-link class="text-sm font-semibold" :to="author.path">{{ author.title }}</g-link>
-              <div class="text-sm">{{ displayDate }}</div>
+          <h1 class="text-3xl md:text-5xl font-semibold leading-tight">{{ $page.cheatsheet.title }}</h1>
+          <div class="flex items-center py-4" v-for="author in $page.cheatsheet.author" :key="author.id">
+            <g-image :alt="author.title" :src="author.avatar" class="h-10 w-10 rounded-full shadow mx-0 mr-2" />
+            <div class="text-left text-sm">
+              <g-link class="font-semibold" :to="author.path">{{ author.title }}</g-link>
+              <p>{{ displayDate }}</p>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <div class="container mx-auto py-4 md:py-12 -mx-10">
+    <div class="container py-4 md:py-12 -mx-10">
       <markdown class="w-full sm:w-3/4 px-10 py-4 sm:py-10 bg-background-main" v-html="$page.cheatsheet.content" />
       <quick-links :dest="'backToTop'" />
     </div>
