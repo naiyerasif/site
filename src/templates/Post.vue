@@ -4,7 +4,7 @@
       <div class="container mx-auto textl-xl">
         <div class="w-full py-4 md:pt-12 md:pb-24 bg-background-pattern">
           <h1 class="text-3xl md:text-5xl font-semibold leading-tight mb-3">{{ $page.post.title }}</h1>
-          <div class="flex items-center text-gray py-4" v-for="author in $page.post.author" :key="author.id">
+          <div class="flex items-center py-4" v-for="author in $page.post.author" :key="author.id">
             <g-image :alt="author.title" :src="author.avatar" class="h-10 w-10 rounded-full shadow mx-0 mr-2" />
             <div class="text-left">
               <g-link class="text-sm font-semibold" :to="author.path">{{ author.title }}</g-link>
