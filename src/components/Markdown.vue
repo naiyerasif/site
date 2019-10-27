@@ -158,7 +158,7 @@
 }
 
 .remarkability hr {
-  @apply bg-background-header;
+  @apply bg-background-hr;
   border: none;
   display: block;
   height: 1px;
@@ -430,7 +430,7 @@
 }
 
 .remarkability table tr {
-  @apply bg-background-header;
+  @apply bg-background-hr;
   border-top: 1px solid rgba(100, 100, 100, 0.6);
 }
 

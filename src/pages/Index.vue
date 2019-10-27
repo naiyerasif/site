@@ -1,21 +1,36 @@
 <template>
   <Layout>
-    <div class="container mx-auto pt-8 md:pt-16">
-      <div v-for="post in $page.posts.edges" :key="post.id" class="post mb-8 md:mb-16">
-        <postcard :item="post.node" />
+    <div class="font-sans">
+      <div class="container mx-auto mb-3 sm:mb-12">
+        <div class="w-full">
+          <h1 class="text-xl md:text-4xl leading-tight">
+            &mdash; A collection<br>
+            of thoughts and processes<br>
+            on development and design<br>
+            by <g-link to="/about/naiyer/">Naiyer Asif</g-link>
+          </h1>
+        </div>
       </div>
-
-      <pagination
-        v-if="$page.posts.pageInfo.totalPages > 1"
-        :info="$page.posts.pageInfo"
-      />
+    </div>
+    <div class="container mx-auto">
+      <div class="w-full sm:w-5/6">
+        <div class="grid row flex flex-wrap -mx-6">
+          <div v-for="post in $page.posts.edges" :key="post.id" class="column flex w-full sm:px-6 py-2 sm:py-6 sm:w-1/2">
+            <postcard :item="post.node" />
+          </div>
+        </div>
+        <pagination class="mt-4 mb-0 sm:my-4 sm:w-1/4"
+          v-if="$page.posts.pageInfo.totalPages > 1"
+          :info="$page.posts.pageInfo"
+        />
+      </div>
     </div>
   </Layout>
 </template>
 
 <page-query>
 query Posts ($page: Int) {
-  posts: allPost (sortBy: "date", order: DESC, perPage: 7, page: $page) @paginate {
+  posts: allPost (sortBy: "date", order: DESC, perPage: 10, page: $page) @paginate {
     totalCount
     pageInfo {
       totalPages

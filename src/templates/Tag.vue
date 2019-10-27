@@ -1,26 +1,28 @@
 <template>
   <Layout>
-    <div class="bg-background-header text-content-body">
-      <div class="container mx-auto textl-xl">
-        <div class="w-full pb-10 pt-4 md:pt-12 md:pb-32 bg-background-pattern">
+    <section>
+      <div class="container mx-auto mb-3 sm:mb-8">
+        <div class="w-full">
           <h1 class="text-3xl md:text-5xl leading-tight">
             <span class="font-semibold" v-if="category">{{ header }}</span>
             <span v-else>Tag: <span class="font-semibold">#{{ $page.tag.title }}</span></span>
           </h1>
         </div>
       </div>
-    </div>
-    <div class="container mx-auto pt-8 md:pt-16">
-      <div v-for="post in $page.tag.belongsTo.edges" :key="post.node.id" class="post mb-8 md:mb-16">
-        <postcard :item="post.node" />
+    </section>
+    <div class="container mx-auto">
+      <div class="w-full sm:w-5/6">
+        <div class="grid row flex flex-wrap -mx-6">
+          <div v-for="post in $page.tag.belongsTo.edges" :key="post.node.id" class="column flex w-full sm:px-6 py-2 sm:py-6 sm:w-1/2">
+            <postcard :item="post.node" />
+          </div>
+        </div>
+        <pagination class="mt-4 mb-0 sm:my-4 sm:w-1/4"
+          v-if="$page.tag.belongsTo.pageInfo.totalPages > 1"
+          :base="`/tag/${$page.tag.title}`"
+          :info="$page.tag.belongsTo.pageInfo"
+        />
       </div>
-
-      <pagination
-        v-if="$page.tag.belongsTo.pageInfo.totalPages > 1"
-        :base="`/tag/${$page.tag.title}`"
-        :info="$page.tag.belongsTo.pageInfo"
-      />
-
     </div>
   </Layout>
 </template>
@@ -29,7 +31,7 @@
 query Tag ($id: ID!, $page: Int) {
   tag: tag (id: $id) {
     title
-    belongsTo (sortBy: "updated", order: DESC, page: $page, perPage: 7) @paginate {
+    belongsTo (sortBy: "updated", order: DESC, page: $page, perPage: 10) @paginate {
       totalCount
       pageInfo {
         totalPages

@@ -1,8 +1,8 @@
 <template>
   <Layout>
-    <div class="bg-background-header text-content-body">
-      <div class="container mx-auto textl-xl">
-        <div class="w-full py-4 md:pt-12 md:pb-24 bg-background-pattern">
+    <section>
+      <div class="container mx-auto">
+        <div class="w-full sm:w-2/3">
           <a class="hidden" id="backToTop"></a>
           <h1 class="text-3xl font-semibold md:text-5xl leading-tight mb-3">{{ $page.cheatsheet.title }}</h1>
           <div class="flex py-4" v-for="author in $page.cheatsheet.author" :key="author.id">
@@ -14,17 +14,15 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="container mx-auto py-4 md:py-16">
-      <markdown v-html="$page.cheatsheet.content" />
+    </section>
+    <div class="container mx-auto py-4 md:py-12 -mx-10">
+      <markdown class="w-full sm:w-3/4 px-10 py-4 sm:py-10 bg-background-main" v-html="$page.cheatsheet.content" />
       <quick-links :dest="'backToTop'" />
     </div>
     <div class="overflow-x-hidden">
-      <div class="bg-background-card py-8 md:py-12">
-        <div class="container mx-auto text-xl relative">
-          <span class="mr-2">Spotted a mistake or want to improve this cheatsheet?</span>
-          <a target="_blank" rel="noopener noreferrer" :href="editUrl"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="inline"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg> Edit this page on GitHub!</a>
-        </div>
+      <div class="container z-10 bg-background-footer mx-auto text-xl relative">
+        <span class="mr-2">Spotted a mistake or want to improve this cheatsheet?</span>
+        <a target="_blank" rel="noopener noreferrer" :href="editUrl"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="inline"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg> Edit this page on GitHub!</a>
       </div>
     </div>
   </Layout>

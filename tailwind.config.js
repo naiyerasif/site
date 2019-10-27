@@ -11,8 +11,9 @@ module.exports = {
     },
     colors: {
       background: {
-        header: 'var(--background-header)',
-        menu: 'var(--background-menu)',
+        main: 'var(--background-main)',
+        postcard: 'var(--background-postcard)',
+        hr: 'var(--background-hr)',
         footer: 'var(--background-footer)',
         body: 'var(--background-body)',
         card: 'var(--background-card)',

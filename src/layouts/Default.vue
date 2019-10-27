@@ -1,6 +1,6 @@
 <template>
-  <div class="content-wrapper bg-background-body text-content-body font-sans leading-normal flex flex-col min-h-screen" :class="theme">
-    <header class="bg-background-header">
+  <div class="content-wrapper text-content-body bg-background-body leading-normal flex flex-col min-h-screen" :class="theme">
+    <header>
       <nav class="container mx-auto flex flex-wrap justify-between items-center py-4 md:py-16">
         <div>
           <g-link to="/"><g-image src="../../static/logo.svg" class="w-40 md:w-56" alt="logo" /></g-link>
@@ -18,23 +18,11 @@
           <li class="mr-8 mb-6 lg:mb-0">
             <theme-switcher :theme="theme" @themeChanged="updateTheme" />
           </li>
-          <li class="nav dropdown">
-            <ul class="menu">
-              <li class="menu-item has-children">
-                <a class="text-content-header hover:text-content-headerh" href>
-                  <span class="mt-1">Menu</span>
-                  <span class="dropdown-icon"></span>
-                </a>
-                <ul class="sub-menu md:bg-background-menu md:rounded-lg md:shadow-xl">
-                  <li class="menu-item"><g-link to="/tag/guide/" class="text-content-header hover:text-content-headerh">Guides</g-link></li>
-                  <li class="menu-item"><g-link to="/references/" class="text-content-header hover:text-content-headerh">References</g-link></li>
-                  <li class="menu-item border-b opacity-25 pt-1 mb-1"></li>
-                  <li class="menu-item">
-                    <g-link to="/about/naiyer/" class="text-content-header hover:text-content-headerh">About</g-link>
-                  </li>
-                </ul>
-              </li>
-            </ul>
+          <li class="mr-8 mb-6 lg:mb-0">
+            <g-link to="/references/" class="text-content-header hover:text-content-headerh">References</g-link>
+          </li>
+          <li class="mr-8 mb-6 lg:mb-0">
+            <g-link to="/about/naiyer/" class="text-content-header hover:text-content-headerh">About</g-link>
           </li>
         </ul>
       </nav>
@@ -44,7 +32,7 @@
       <slot />
     </div>
     
-    <footer class="bg-background-footer text-content-footer z-10 md:py-6 decorated-links">
+    <footer class="bg-background-footer text-content-footer z-10 decorated-links">
       <div class="container mx-auto flex flex-col lg:flex-row md:items-center justify-between py-8">
         <div class="mb-8 lg:mb-0">
           <div>
@@ -83,10 +71,6 @@
         </ul>
       </div>
     </footer>
-
-    <div style="display:none">
-      <svg id="dots-triangle" width="170" height="170" xmlns="http://www.w3.org/2000/svg"><path d="M168.152 170a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm-18.478-18.478a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm0 18.478a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm-18.478 0a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm0-18.478a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm0-18.479a1.848 1.848 0 1 1 0-3.695 1.848 1.848 0 0 1 0 3.695zm-18.479 0a1.848 1.848 0 1 1 0-3.695 1.848 1.848 0 0 1 0 3.695zm0 18.479a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm0 18.478a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm0-55.435a1.848 1.848 0 1 1 0-3.695 1.848 1.848 0 0 1 0 3.695zM94.24 133.043a1.848 1.848 0 1 1 0-3.695 1.848 1.848 0 0 1 0 3.695zm0 18.479a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm0 18.478a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm0-55.435a1.848 1.848 0 1 1 0-3.695 1.848 1.848 0 0 1 0 3.695zm0-18.478a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm-18.478 36.956a1.848 1.848 0 1 1 0-3.695 1.848 1.848 0 0 1 0 3.695zm0 18.479a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm0 18.478a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm0-55.435a1.848 1.848 0 1 1 0-3.695 1.848 1.848 0 0 1 0 3.695zm0-18.478a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm0-18.478a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm-18.478 55.434a1.848 1.848 0 1 1 0-3.695 1.848 1.848 0 0 1 0 3.695zm0 18.479a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm0 18.478a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm0-55.435a1.848 1.848 0 1 1 0-3.695 1.848 1.848 0 0 1 0 3.695zm0-18.478a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm0-18.478a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm0-18.479a1.848 1.848 0 1 1 0-3.695 1.848 1.848 0 0 1 0 3.695zm-18.479 73.913a1.848 1.848 0 1 1 0-3.695 1.848 1.848 0 0 1 0 3.695zm0 18.479a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm0 18.478a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm0-55.435a1.848 1.848 0 1 1 0-3.695 1.848 1.848 0 0 1 0 3.695zm0-18.478a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm0-18.478a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm0-18.479a1.848 1.848 0 1 1 0-3.695 1.848 1.848 0 0 1 0 3.695zm0-18.478a1.848 1.848 0 1 1 0-3.695 1.848 1.848 0 0 1 0 3.695zm-18.478 92.391a1.848 1.848 0 1 1 0-3.695 1.848 1.848 0 0 1 0 3.695zm0 18.479a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm0 18.478a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm0-55.435a1.848 1.848 0 1 1 0-3.695 1.848 1.848 0 0 1 0 3.695zm0-18.478a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm0-18.478a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm0-18.479a1.848 1.848 0 1 1 0-3.695 1.848 1.848 0 0 1 0 3.695zm0-18.478a1.848 1.848 0 1 1 0-3.695 1.848 1.848 0 0 1 0 3.695zm0-18.478a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zM1.848 133.044a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.695zm0 18.478a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm0 18.478a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm0-55.435a1.848 1.848 0 1 1 0-3.695 1.848 1.848 0 0 1 0 3.695zm0-18.478a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm0-18.478a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm0-18.479a1.848 1.848 0 1 1 0-3.695 1.848 1.848 0 0 1 0 3.695zm0-18.478a1.848 1.848 0 1 1 0-3.695 1.848 1.848 0 0 1 0 3.695zm0-18.478a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696zm0-18.478a1.848 1.848 0 1 1 0-3.696 1.848 1.848 0 0 1 0 3.696z" fill="hsl(166, 65%, 34%)" fill-rule="evenodd" opacity=".503"/></svg>
-    </div>
   </div>
 </template>
 
@@ -133,104 +117,3 @@ export default {
 </script>
 
 <style src="../main.css" />
-
-<style scoped>
-.menu .menu-item.has-children,
-.menu .menu-item.has-children .menu-item {
-  position: relative;
-}
-.menu .menu-item a {
-  padding: 0.5em 0.75em;
-  border: 0 !important;
-  display: flex;
-  justify-content: space-between;
-}
-.menu .sub-menu {
-  opacity: 0;
-  height: 0;
-  width: 0;
-  transition: visibility 0.25s, opacity 0.25s ease-in-out;
-}
-.menu .sub-menu,
-.menu .sub-menu .menu-item {
-  visibility: hidden;
-}
-.menu .menu-item:active > .sub-menu,
-.menu .menu-item:focus > .sub-menu,
-.menu .menu-item:hover > .sub-menu {
-  opacity: 1;
-  height: auto;
-  width: auto;
-}
-.menu .menu-item:active > .sub-menu,
-.menu .menu-item:active > .sub-menu .menu-item,
-.menu .menu-item:focus > .sub-menu,
-.menu .menu-item:focus > .sub-menu .menu-item,
-.menu .menu-item:hover > .sub-menu,
-.menu .menu-item:hover > .sub-menu .menu-item {
-  visibility: visible;
-}
-.menu .menu-item > a:active .dropdown-icon:after,
-.menu .menu-item > a:focus .dropdown-icon:after,
-.menu .menu-item > a:hover .dropdown-icon:after {
-  transform: rotate(45deg);
-}
-.menu .dropdown-icon {
-  padding: 1em 1.25em;
-  margin: -1em -1em -1em 0.5em;
-}
-.menu .dropdown-icon:after {
-  content: "+";
-  font-size: 1.5rem;
-  display: block;
-  transition: transform 0.25s ease-in-out;
-}
-.dropdown {
-  direction: rtl;
-  unicode-bidi: bidi-override;
-}
-.dropdown .menu .dropdown-icon {
-  margin: -1.25em 0.5em -1em -2em;
-}
-@media only screen and (min-width: 1024px) {
-  .nav .menu {
-    display: flex;
-    flex-flow: row wrap;
-  }
-  .nav .menu > .menu-item > a .dropdown-icon {
-    padding-left: 0;
-  }
-  .nav .menu .menu-item:active > .sub-menu,
-  .nav .menu .menu-item:focus > .sub-menu,
-  .nav .menu .menu-item:hover > .sub-menu {
-    padding: 0.5em;
-    width: 175px;
-  }
-  .nav .menu .sub-menu {
-    position: absolute;
-    z-index: 3000;
-    top: 100%;
-    left: 0;
-  }
-  .nav .menu .sub-menu .sub-menu {
-    top: 0;
-    left: 100%;
-  }
-  .nav .menu .dropdown-icon {
-    padding: 1em;
-  }
-  .dropdown .menu > .menu-item > a .dropdown-icon {
-    padding-left: 1em;
-    padding-right: 0;
-  }
-  .dropdown .menu .sub-menu {
-    top: 100%;
-    left: auto;
-    right: 0;
-  }
-  .dropdown .menu .sub-menu .sub-menu {
-    left: auto;
-    right: 100%;
-  }
-}
-</style>

@@ -1,13 +1,13 @@
 <template>
   <Layout>
-    <div class="bg-background-header text-content-body">
-      <div class="container mx-auto textl-xl">
-        <div class="w-full py-4 md:py-16 bg-background-pattern">
-          <h1 class="text-3xl font-semibold md:text-5xl mb-4 md:mb-16 leading-tight">References</h1>
+    <section>
+      <div class="container mx-auto">
+        <div class="w-full">
+          <h1 class="text-3xl font-semibold md:text-5xl mb-3 md:mb-12 leading-tight">References</h1>
         </div>
       </div>
-    </div>
-    <div class="container mx-auto py-4 md:py-16">
+    </section>
+    <div class="container mx-auto">
       <div class="grid row flex flex-wrap -mx-6 md:-mx-2">
         <div v-for="cheatsheet in $page.cheatsheets.edges" :key="cheatsheet.node.id" class="column flex w-full p-2 sm:w-1/2 md:w-1/3">
           <g-link :to="cheatsheet.node.path" class="card rounded-none md:rounded">
