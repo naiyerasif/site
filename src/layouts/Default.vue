@@ -7,7 +7,8 @@
         </div>
         <div class="block lg:hidden">
           <button @click="toggle" class="flex items-center px-3 py-2" title="Menu">
-            <svg class="current-color h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" fill="currentColor" /></svg>
+            <svg :class="{ hidden: isOpen }" class="current-color h-5 w-5" viewBox="0 0 20 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M6.961,12l14.039,0"/><path d="M3,6l18,0"/><path d="M10.955,18l10.045,0"/></svg>
+            <svg :class="{ hidden: !isOpen }" class="current-color h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
         </div>
         <ul class="uppercase tracking-wide font-bold w-full block sm:text-right flex-grow lg:flex lg:flex-initial lg:w-auto items-center mt-8 lg:mt-0" :class="isOpen ? 'block': 'hidden'">
