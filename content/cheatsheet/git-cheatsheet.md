@@ -8,6 +8,8 @@ summary: A selection of useful git scripts
 label: cheatsheet
 ---
 
+### Table of Contents
+
 ## Setup
 
 ###### Setup a local directory as a Git repository

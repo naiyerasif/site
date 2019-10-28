@@ -177,9 +177,33 @@ nav .active {
   padding-right: 1rem;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .container {
     padding-left: 7rem;
     padding-right: 7rem;
+  }
+
+  .remarkability h3#table-of-contents + ul {
+    position: fixed;
+    text-align: right;
+    font-size: 0.9rem;
+    max-width: 25rem;
+    bottom: 33vh;
+    right: 1rem;
+  }
+
+  .remarkability h3#table-of-contents + ul,
+  .remarkability h3#table-of-contents + ul ul {
+    list-style-type: none;
+  }
+
+  .remarkability h3#table-of-contents {
+    visibility: hidden;
+    display: none;
+  }
+
+  .remarkability h3#table-of-contents + ul:before {
+    content: 'Table of Contents';
+    @apply font-semibold inline-block pb-2;
   }
 }

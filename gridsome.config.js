@@ -65,7 +65,8 @@ module.exports = {
         },
         remark: {
           plugins: [
-            ['gridsome-plugin-remark-shiki', { theme: darkNord, skipInline: true }]
+            ['gridsome-plugin-remark-shiki', { theme: darkNord, skipInline: true }],
+            ['remark-toc', { maxDepth: 2, tight: true }]
           ]
         }
       }
