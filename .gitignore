@@ -10,3 +10,4 @@ public
 .env
 .env.*
 static/rss.xml
+static/search.json
