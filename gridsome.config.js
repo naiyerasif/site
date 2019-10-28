@@ -7,6 +7,16 @@ const postcssPlugins = [
   tailwind(),
 ];
 
+const newRenderer = new marked.Renderer();
+const defaultRenderer = new marked.Renderer();
+newRenderer.heading = function (text, level, raw, slugger) {
+  if (level === 3 && text === 'Table of Contents') {
+    return ''
+  } else {
+    return defaultRenderer.heading(text, level, raw, slugger)
+  }
+}
+
 const darkNord = shiki.loadTheme('./static/dark-nord.json');
 
 if (process.env.NODE_ENV === 'production') {
@@ -78,9 +88,10 @@ module.exports = {
         feedOptions: {
           title: 'Microflash',
           description: 'Blog of Naiyer Asif',
+          id: 'https://mflash.dev/',
           link: 'https://mflash.dev/',
           image: 'https://raw.githubusercontent.com/Microflash/mflash.dev/release/src/favicon.png',
-          favicon: 'https://raw.githubusercontent.com/Microflash/mflash.dev/release/src/favicon.png'
+          copyright: 'Copyright 2019, Naiyer Asif',
         },
         rss: {
           enabled: true,
@@ -102,12 +113,12 @@ module.exports = {
           description: node.summary,
           author: [
             {
-              name: node.author,
-              email: 'naiyer.app@gmail.com',
+              name: '@Microflash',
+              email: 'Naiyer Asif',
               link: 'https://mflash.dev/about/naiyer'
             }
           ],
-          content: marked(node.content)
+          content: marked(node.content, { renderer: newRenderer })
         })
       }
     },
