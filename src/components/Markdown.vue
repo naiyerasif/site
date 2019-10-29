@@ -221,7 +221,7 @@
 .remarkability code {
   @apply bg-background-code;
   border-radius: 5px;
-  font-size: 85%;
+  font-size: 95%;
   margin: 0;
   padding: .2em .4em;
 }
@@ -248,7 +248,7 @@
 .remarkability pre>code {
   background: transparent;
   border: 0;
-  font-size: 85%;
+  font-size: 95%;
   margin: 0;
   padding: 0;
   white-space: pre;

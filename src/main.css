@@ -1,3 +1,124 @@
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../static/fonts/Inter-Regular.woff2") format("woff2"),
+       url("../static/fonts/Inter-Regular.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../static/fonts/Inter-Italic.woff2") format("woff2"),
+       url("../static/fonts/Inter-Italic.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../static/fonts/Inter-SemiBold.woff2") format("woff2"),
+       url("../static/fonts/Inter-SemiBold.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../static/fonts/Inter-SemiBoldItalic.woff2") format("woff2"),
+       url("../static/fonts/Inter-SemiBoldItalic.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../static/fonts/Inter-Bold.woff2") format("woff2"),
+       url("../static/fonts/Inter-Bold.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../static/fonts/Inter-BoldItalic.woff2") format("woff2"),
+       url("../static/fonts/Inter-BoldItalic.woff") format("woff");
+}
+
+/* -------------------------------------------------------
+Variable font.
+Usage:
+
+  html { font-family: 'Inter', sans-serif; }
+  @supports (font-variation-settings: normal) {
+    html { font-family: 'Inter var', sans-serif; }
+  }
+*/
+@font-face {
+  font-family: 'Inter var';
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+  font-named-instance: 'Regular';
+  src: url("../static/fonts/Inter-upright.var.woff2") format("woff2 supports variations(gvar)"),
+       url("../static/fonts/Inter-upright.var.woff2") format("woff2-variations"),
+       url("../static/fonts/Inter-upright.var.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'Inter var';
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: italic;
+  font-named-instance: 'Italic';
+  src: url("../static/fonts/Inter-italic.var.woff2") format("woff2 supports variations(gvar)"),
+       url("../static/fonts/Inter-italic.var.woff2") format("woff2-variations"),
+       url("../static/fonts/Inter-italic.var.woff2") format("woff2");
+}
+
+
+/* --------------------------------------------------------------------------
+[EXPERIMENTAL] Multi-axis, single variable font.
+
+Slant axis is not yet widely supported (as of February 2019) and thus this
+multi-axis single variable font is opt-in rather than the default.
+
+When using this, you will probably need to set font-variation-settings
+explicitly, e.g.
+
+  * { font-variation-settings: "slnt" 0deg }
+  .italic { font-variation-settings: "slnt" 10deg }
+
+*/
+@font-face {
+  font-family: 'Inter var experimental';
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: oblique 0deg 10deg;
+  src: url("../static/fonts/Inter.var.woff2") format("woff2-variations"),
+       url("../static/fonts/Inter.var.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: 'Iosevka SS05';
+  font-style:  normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../static/fonts/iosevka-ss05-regular.woff2") format("woff2"),
+       url("../static/fonts/iosevka-ss05-regular.woff") format("woff");
+}
+@font-face {
+  font-family: 'Iosevka SS05';
+  font-style:  normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../static/fonts/iosevka-ss05-bold.woff2") format("woff2"),
+       url("../static/fonts/iosevka-ss05-bold.woff") format("woff");
+}
+
 :root {
   --color-primary-100: hsl(162, 39%, 61%);
   --color-primary-200: hsl(163, 38%, 56%);

@@ -22,8 +22,6 @@
     "gridsome-plugin-remark-shiki": "^0.3.0",
     "marked": "^0.7.0",
     "remark-toc": "^6.0.0",
-    "typeface-inter": "^3.10.0",
-    "typeface-roboto-mono": "^0.0.75",
     "vue-fuse": "^2.1.2",
     "vue-scrollto": "^2.17.1"
   },

@@ -1,6 +1,3 @@
-import 'typeface-inter'
-import 'typeface-roboto-mono'
-
 import DefaultLayout from '~/layouts/Default.vue'
 import VueScrollTo from 'vue-scrollto'
 import VueFuse from 'vue-fuse'
