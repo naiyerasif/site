@@ -1,0 +1,15 @@
+.theme-light {
+  --code-background: #2E3440;
+  --code-background-transparent: #2E344000;
+  --code-background-opaque: #2E3440FF;
+  --code-foreground: #4C566A;
+  --code-foreground-translucent: #4C566AB3;
+}
+
+.theme-dark {
+  --code-background: #252632;
+  --code-background-transparent: #25263200;
+  --code-background-opaque: #252632FF;
+  --code-foreground: #616E88;
+  --code-foreground-transparent: #616E88B3;
+}

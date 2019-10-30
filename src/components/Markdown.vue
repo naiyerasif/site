@@ -3,6 +3,8 @@
   </div>
 </template>
 
+<style src="../code.css" />
+
 <style>
 /*! remarkability.css v0.5.1 | MIT License | github.com/Microflash/remarkability */
 .remarkability * {

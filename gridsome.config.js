@@ -17,7 +17,7 @@ newRenderer.heading = function (text, level, raw, slugger) {
   }
 }
 
-const darkNord = shiki.loadTheme('./static/dark-nord.json');
+const remarkable = shiki.loadTheme('./static/remarkable.json');
 
 if (process.env.NODE_ENV === 'production') {
   postcssPlugins.push(purgecss())
@@ -59,7 +59,7 @@ module.exports = {
         },
         remark: {
           plugins: [
-            ['gridsome-plugin-remark-shiki', { theme: darkNord, skipInline: true }],
+            ['gridsome-plugin-remark-shiki', { theme: remarkable, skipInline: true }],
             ['remark-toc', { maxDepth: 3, tight: true }]
           ]
         }
@@ -75,7 +75,7 @@ module.exports = {
         },
         remark: {
           plugins: [
-            ['gridsome-plugin-remark-shiki', { theme: darkNord, skipInline: true }],
+            ['gridsome-plugin-remark-shiki', { theme: remarkable, skipInline: true }],
             ['remark-toc', { maxDepth: 2, tight: true }]
           ]
         }
