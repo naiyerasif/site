@@ -309,8 +309,9 @@ nav .active {
     text-align: right;
     font-size: 0.9rem;
     max-width: 25rem;
-    bottom: 33vh;
+    bottom: 15vh;
     right: 1rem;
+    z-index: 11;
   }
 
   .remarkability h3#table-of-contents + ul,
