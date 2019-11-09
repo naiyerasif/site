@@ -13,13 +13,13 @@
       </div>
     </div>
     <div class="container mx-auto">
-      <div class="w-full sm:w-5/6">
+      <div class="w-full sm:w-6/7">
         <div class="grid row flex flex-wrap -mx-6">
           <div v-for="post in $page.posts.edges" :key="post.id" class="column flex w-full sm:px-6 py-2 sm:py-6 sm:w-1/2">
             <postcard :item="post.node" />
           </div>
         </div>
-        <pagination class="mt-4 mb-0 sm:my-4 sm:w-2/5"
+        <pagination class="mt-4 mb-0 sm:my-4 sm:w-3/7"
           v-if="$page.posts.pageInfo.totalPages > 1"
           :info="$page.posts.pageInfo"
         />

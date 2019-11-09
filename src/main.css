@@ -300,15 +300,15 @@ nav .active {
 
 @media (min-width: 1025px) {
   .container {
-    padding-left: 7rem;
-    padding-right: 7rem;
+    padding-left: 10vw;
+    padding-right: 10vw;
   }
 
   .remarkability h3#table-of-contents + ul {
     position: fixed;
     text-align: right;
     font-size: 0.9rem;
-    max-width: 25rem;
+    max-width: 30vw;
     bottom: 15vh;
     right: 1rem;
     z-index: 11;

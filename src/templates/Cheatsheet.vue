@@ -2,7 +2,7 @@
   <Layout>
     <section>
       <div class="container mx-auto mt-2 sm:mt-0 sm:mb-4">
-        <div class="w-full sm:w-2/3">
+        <div class="w-full sm:w-3/4">
           <a class="hidden" id="backToTop"></a>
           <h1 class="text-3xl md:text-5xl font-semibold leading-tight">{{ $page.cheatsheet.title }}</h1>
           <div class="flex items-center py-4" v-for="author in $page.cheatsheet.author" :key="author.id">
