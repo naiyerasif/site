@@ -14,7 +14,7 @@ tags: ['guide']
 
 ### Setup
 
-You should already have a Node.js project. Download the one created at the end of the post [Creating a Node.js application using Express and TypeScript](/blog/2019/01/12/creating-a-node-js-application-using-express-and-type-script) to follow this guide. 
+You should already have a Node.js project. Download the one created at the end of the post [Creating a Node.js application using Express and TypeScript](/blog/2019/01/12/creating-a-nodejs-application-using-express-and-typescript) to follow this guide. 
 
 ### Table of Contents
 

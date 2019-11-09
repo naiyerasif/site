@@ -17,7 +17,7 @@ In this guide, you'll learn to write a REST API to perform CRUD operations using
 > This guide uses
 > - Node 12
 
-Download the project created at the end of the post [Logging Node.js application with morgan and log4js-node](/blog/2019/08/18/logging-node-js-application-with-morgan-and-log4js-node) to follow this guide.
+Download the project created at the end of the post [Logging Node.js application with morgan and log4js-node](/blog/2019/08/18/logging-nodejs-application-with-morgan-and-log4js-node) to follow this guide.
 
 ### Table of Contents
 

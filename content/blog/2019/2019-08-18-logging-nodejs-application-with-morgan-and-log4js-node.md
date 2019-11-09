@@ -17,7 +17,7 @@ In this guide, you'll to configure logging on an existing Node.js application wi
 > This guide uses
 > - Node 12
 
-You should already have a Node.js project. Download the one created at the end of the post [Linting TypeScript with TypeScript ESLint and Prettier](/blog/2019/08/16/linting-type-script-with-type-script-es-lint-and-prettier) to follow this guide.
+You should already have a Node.js project. Download the one created at the end of the post [Linting TypeScript with TypeScript ESLint and Prettier](/blog/2019/08/16/linting-typescript-with-typescript-eslint-and-prettier) to follow this guide.
 
 ### Table of Contents
 
