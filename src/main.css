@@ -300,10 +300,18 @@ nav .active {
   padding-right: 1rem;
 }
 
+.remarkability > p:first-of-type {
+  @apply leading-relaxed;
+}
+
 @media (min-width: 1025px) {
   .container {
     padding-left: 10vw;
     padding-right: 10vw;
+  }
+
+  .remarkability > p:first-of-type {
+    @apply text-2xl;
   }
 
   .remarkability h3#table-of-contents + ul {
