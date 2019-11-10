@@ -21,6 +21,7 @@ module.exports = {
       background: {
         main: 'var(--background-main)',
         postcard: 'var(--background-postcard)',
+        postcardh: 'var(--background-postcard-hover)',
         hr: 'var(--background-hr)',
         footer: 'var(--background-footer)',
         body: 'var(--background-body)',

@@ -132,10 +132,10 @@ explicitly, e.g.
   --color-primary-a100: hsl(160, 24%, 22%);
   --color-primary-a200: hsl(160, 24%, 20%);
   --color-primary-a300: hsl(166, 61%, 11%);
-  --color-primary-a600: hsl(156, 33%, 97%);
-  --color-primary-a700: hsl(160, 29%, 90%);
-  --color-primary-a800: hsl(162, 25%, 87%);
-  --color-primary-a900: hsl(164, 25%, 85%);
+  --color-primary-a600: hsl(156, 34%, 98%);
+  --color-primary-a700: hsl(160, 30%, 94%);
+  --color-primary-a800: hsl(162, 26%, 89%);
+  --color-primary-a900: hsl(164, 26%, 87%);
 
   --color-secondary-100: hsl(244, 19%, 85%);
   --color-secondary-200: hsl(248, 18%, 74%);
@@ -167,13 +167,14 @@ explicitly, e.g.
 .theme-light {
   --background-main: theme('colors.primary.a600');
   --background-postcard: theme('colors.primary.a600');
+  --background-postcard-hover: theme('colors.primary.a700');
   --background-footer: theme('colors.white');
   --background-search: theme('colors.primary.a600');
   --background-hr: theme('colors.primary.a600');
   --background-body: theme('colors.white');
   --background-card: theme('colors.primary.a700');
   --background-code: theme('colors.primary.a700');
-  --background-tag: theme('colors.primary.a700');
+  --background-tag: theme('colors.primary.a800');
   --background-tag-hover: theme('colors.primary.a900');
 
   --content-header: theme('colors.secondary.900');
@@ -199,6 +200,7 @@ explicitly, e.g.
 .theme-dark {
   --background-main: theme('colors.secondary.a200');
   --background-postcard: theme('colors.secondary.a200');
+  --background-postcard-hover: theme('colors.secondary.a300');
   --background-footer: theme('colors.secondary.900');
   --background-search: theme('colors.secondary.800');
   --background-hr: theme('colors.secondary.a200');
@@ -257,7 +259,7 @@ explicitly, e.g.
 }
 
 a {
-  @apply text-primary-500 font-medium;
+  @apply text-primary-500 font-semibold;
 }
 
 a:hover {
@@ -274,7 +276,7 @@ nav .active {
 }
 
 .tag {
-  @apply bg-background-tag text-content-tag z-10 rounded px-2 py-1 mr-2 text-xs;
+  @apply bg-background-tag text-content-tag z-10 rounded px-2 py-1 mr-2 text-xs z-10;
 }
 
 .tag:hover {
@@ -282,7 +284,7 @@ nav .active {
 }
 
 .card {
-  @apply bg-background-card w-full overflow-hidden shadow;
+  @apply bg-background-card w-full overflow-hidden shadow text-base;
 }
 
 .card-category {

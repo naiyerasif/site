@@ -2,8 +2,8 @@
   <Layout>
     <section>
       <div class="container mx-auto mb-3 sm:mb-8">
-        <div class="w-full">
-          <h1 class="text-3xl md:text-5xl leading-tight">
+        <div class="w-full sm:w-3/4">
+          <h1 class="text-2xl md:text-5xl leading-tight">
             <span><span class="font-semibold">#{{ $page.tag.title }}</span></span>
           </h1>
         </div>

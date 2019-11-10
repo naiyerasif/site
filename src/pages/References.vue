@@ -2,8 +2,8 @@
   <Layout>
     <section>
       <div class="container mx-auto">
-        <div class="w-full">
-          <h1 class="text-3xl font-semibold md:text-5xl mb-3 md:mb-12 leading-tight">References</h1>
+        <div class="w-full sm:w-3/4">
+          <h1 class="text-2xl md:text-5xl font-semibold mb-3 md:mb-12 leading-tight">References</h1>
         </div>
       </div>
     </section>

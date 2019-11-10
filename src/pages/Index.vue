@@ -2,12 +2,12 @@
   <Layout>
     <div class="font-sans">
       <div class="container mx-auto mb-3 sm:mb-12">
-        <div class="w-full">
-          <h1 class="text-xl md:text-4xl leading-tight">
+        <div class="w-full sm:w-3/4">
+          <h1 class="text-2xl md:text-5xl font-semibold leading-tight">
             &mdash; A collection<br>
             of thoughts and processes<br>
             on development and design<br>
-            by <g-link to="/about/naiyer/">Naiyer Asif</g-link>
+            by <g-link class="font-semibold" to="/about/naiyer/">Naiyer Asif</g-link>
           </h1>
         </div>
       </div>
