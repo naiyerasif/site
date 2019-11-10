@@ -4,11 +4,8 @@ path: /querying-json-documents-in-oracle
 date: 2019-09-18
 updated: 2019-09-18
 author: [naiyer]
-summary: Query a JSON document stored as a CLOB in an Oracle database
 tags: ['guide']
 ---
-
-## Intent
 
 In this guide, you'll learn to find a way to query over JSON documents stored as CLOB objects in an Oracle database. 
 

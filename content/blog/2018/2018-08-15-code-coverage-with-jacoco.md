@@ -4,11 +4,8 @@ path: /code-coverage-with-jacoco
 date: 2018-08-15
 updated: 2019-09-11
 author: [naiyer]
-summary: Run coverage using JaCoCo with unit and integration tests, apply custom coverage rules and generate reports
 tags: ['guide']
 ---
-
-## Intent
 
 Code coverage is a measure of how much of your code executes when the automated tests run. JaCoCo (Java Code Coverage), amongst many others, is a tool that enables developers to quantify this metric for an application written in Java.
 

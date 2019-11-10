@@ -4,11 +4,8 @@ path: /logging-nodejs-application-with-morgan-and-log4js-node
 date: 2019-08-18
 updated: 2019-09-22
 author: [naiyer]
-summary: Setup server-side logging on a Node.js application with morgan and log4js-node
 tags: ['guide']
 ---
-
-## Intent
 
 In this guide, you'll to configure logging on an existing Node.js application with `morgan` and `log4js-node` to print the logs on the console as well as a file.
 

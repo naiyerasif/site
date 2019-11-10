@@ -3,12 +3,9 @@ title: Uploading files with Spring
 path: /uploading-files-with-spring
 date: 2018-12-09
 updated: 2019-09-21
-author: [naiyer]
-summary: Create a RESTful service using Spring Boot and an Angular client to upload a directory or file on a file system  
+author: [naiyer] 
 tags: ['guide']
 ---
-
-## Intent
 
 In this guide, you'll learn to write a RESTful service to upload a folder or file with the help of a Spring backend and design a simple Angular client to demonstrate the functionality.
 

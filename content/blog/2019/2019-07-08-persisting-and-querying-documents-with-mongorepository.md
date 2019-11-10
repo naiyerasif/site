@@ -4,11 +4,8 @@ path: /persisting-and-querying-documents-with-mongorepository
 date: 2019-07-08
 updated: 2019-09-21
 author: [naiyer]
-summary: Save documents with MongoRepository interface and fetch them using query methods
 tags: ['guide']
 ---
-
-## Intent
 
 In this guide, you'll learn to save mongoDB documents with `MongoRepository` interface provided by Spring Data and run `find` queries using query methods.
 

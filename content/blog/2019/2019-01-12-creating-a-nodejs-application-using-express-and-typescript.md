@@ -4,11 +4,8 @@ path: /creating-a-nodejs-application-using-express-and-typescript
 date: 2019-01-12
 updated: 2019-09-20
 author: [naiyer]
-summary: Bootstrap a Node.js application using Express.js with TypeScript support
 tags: ['guide']
 ---
-
-## Intent
 
 In this guide, you'll learn to create a simple Node.js application using Express.js as the middleware with TypeScript support. You'll start with a JavaScript application and add TypeScript support to it.
 

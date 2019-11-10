@@ -4,11 +4,8 @@ path: /communication-within-a-docker-network
 date: 2018-08-05
 updated: 2019-09-19
 author: [naiyer]
-summary: Create an Angular application that talks to a REST endpoint backed by Micronaut, both running as containers on a Docker stack
 tags: ['guide']
 ---
-
-## Intent
 
 In this guide, you'll learn to create an Angular application that consumes a REST endpoint backed by [Micronaut](http://micronaut.io/), both running as containers on a Docker stack. Only the Angular application is publicly accessible; the rest of the containers aren't exposed outside the Docker network.
 

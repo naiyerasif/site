@@ -2,9 +2,11 @@ const path = require('path');
 const fs = require('fs');
 const authorDataSource = path.join(__dirname, 'data/authors.json');
 const authorData = require(authorDataSource);
+const rmmd = require('remove-markdown');
+const { GraphQLString } = require('gridsome/graphql');
 
 module.exports = function (api, options) {
-  api.loadSource(async ({ addMetadata, addCollection }) => {
+  api.loadSource(async ({ addSchemaResolvers, addCollection }) => {
     // Add Authors
     const authors = addCollection('Author');
 
@@ -18,9 +20,23 @@ module.exports = function (api, options) {
         ...fields
       })
     });
+
+    // Generate summary from the first paragraph of a Post
+    addSchemaResolvers({
+      Post: {
+        summary: {
+          type: GraphQLString,
+          resolve(obj) {
+            let idxOfFirstHeader = obj.content.indexOf('###');
+            let firstParagraph = obj.content.substr(0, idxOfFirstHeader);
+            return rmmd(firstParagraph);
+          }
+        }
+      }
+    });
   });
 
-  api.beforeBuild(({ config, store }) => {
+  api.beforeBuild(({ store }) => {
 
     // Generate an index file for Fuse to search Posts
     const { collection } = store.getCollection('Post');

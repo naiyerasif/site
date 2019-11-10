@@ -8,14 +8,26 @@
     </div>
     <div class="postcard-title">
       <h2 class="text-2xl font-semibold mb-2">{{ item.title }}</h2>
-      <div class="font-normal">{{ item.summary }}</div>
+      <div class="text-sm font-normal">{{ summary }}</div>
     </div>
   </g-link>
 </template>
 
 <script>
 export default {
-  props: ['item']
+  props: ['item'],
+  computed: {
+    summary() {
+      const maxLength = 260;
+      const titleLength = Math.round(this.item.title.length * 2.3);
+      if ((this.item.summary.length + titleLength) <= maxLength) {
+        return this.item.summary
+      } else {
+        const lastIdxOfWord = this.item.summary.lastIndexOf(' ', maxLength - titleLength);
+        return this.item.summary.substr(0, lastIdxOfWord) + ' …'
+      }
+    }
+  }
 }
 </script>
 

@@ -4,11 +4,8 @@ path: /linting-typescript-with-typescript-eslint-and-prettier
 date: 2019-08-16
 updated: 2019-08-16
 author: [naiyer]
-summary: Setup a TypeScript project with linting by TypeScript ESLint and formatting through Prettier
 tags: ['guide']
 ---
-
-## Intent
 
 In this guide, you'll learn to set up linting with [TypeScript ESLint](https://github.com/typescript-eslint/typescript-eslint) for a TypeScript project with support for Prettier.
 

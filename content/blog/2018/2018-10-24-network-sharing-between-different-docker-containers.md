@@ -4,11 +4,8 @@ path: /network-sharing-between-different-docker-containers
 date: 2018-10-24
 updated: 2019-09-19
 author: [naiyer]
-summary: Create two containers on separate Docker stacks with a capability to communicate through same Docker network
 tags: ['guide']
 ---
-
-## Intent
 
 In this guide, you'll learn to create two separate containers managed under separate Docker stacks but communicating through the same Docker network.
 

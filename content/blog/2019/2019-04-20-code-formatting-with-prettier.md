@@ -4,11 +4,8 @@ path: /code-formatting-with-prettier
 date: 2019-04-20
 updated: 2019-09-20
 author: [naiyer]
-summary: Format source code with Prettier and configure it to work with EditorConfig and ESLint
 tags: ['guide']
 ---
-
-## Intent
 
 [Prettier](https://prettier.io) is an opinionated code formatter that formats the code in a consistent style. [Here are some reasons why you should use prettier](https://prettier.io/docs/en/why-prettier.html). In this guide, you'll learn to integrate it with your Node.js project. You'll also know how Prettier can work with EditorConfig and ESLint.
 

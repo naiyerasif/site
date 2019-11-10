@@ -4,11 +4,8 @@ path: /linting-sass-with-stylelint
 date: 2019-06-02
 updated: 2019-08-08
 author: [naiyer]
-summary: Analyze and fix problems in the SASS files with stylelint and extend stylelint configuration
 tags: ['guide']
 ---
-
-## Intent
 
 Just as you can lint the JavaScript or TypeScript code in a web application, you can also lint the [SASS](https://sass-lang.com/) (or SCSS) files using [stylelint](https://github.com/stylelint/stylelint) which is a widely used linter that works with SCSS, Sass, Less and SugarSS. This guide shows you how `stylelint` can be used to lint SASS files in a project.
 

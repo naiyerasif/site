@@ -4,11 +4,8 @@ path: /developing-a-rest-api-with-express-typescript-and-postgres
 date: 2019-08-19
 updated: 2019-09-22
 author: [naiyer]
-summary: Create a REST API to perform CRUD operations using Express, TypeScript and Postgres
 tags: ['guide']
 ---
-
-## Intent
 
 In this guide, you'll learn to write a REST API to perform CRUD operations using Express, TypeScript and Postgres. You'll also learn how to organize routes and add support for hot-reloading and simulating environment variables locally.
 

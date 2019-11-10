@@ -4,11 +4,8 @@ path: /messaging-with-rabbitmq
 date: 2018-12-13
 updated: 2019-09-21
 author: [naiyer]
-summary: Create a message queue with RabbitMQ and publish and read messages using a Spring backend
 tags: ['guide']
 ---
-
-## Intent
 
 In this guide, you'll learn to create a message queue with RabbitMQ and to publish and read messages using a Spring backend.
 
