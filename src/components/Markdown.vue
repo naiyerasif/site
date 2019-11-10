@@ -54,7 +54,9 @@
 }
 
 .remarkability ul + p,
-.remarkability ol + p {
+.remarkability ol + p,
+.remarkability ul + blockquote,
+.remarkability ol + blockquote {
   margin-top: 1.5em;
 }
 
