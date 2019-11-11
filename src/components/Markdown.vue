@@ -237,7 +237,6 @@
   border-radius: 3px;
   padding: 16px;
   line-height: 1.5;
-  margin-top: 0;
 }
 
 @media (max-width: 639px) {
@@ -269,6 +268,10 @@
   overflow: visible;
   padding: 0;
   word-wrap: normal;
+}
+
+.remarkability ul + pre {
+  margin-top: 1em;
 }
 
 .remarkability img {
