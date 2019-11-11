@@ -1,27 +1,29 @@
 ---
-title: Uploading files with Spring
-path: /uploading-files-with-spring
-date: 2018-12-09
-updated: 2019-09-21
+title: Uploading files with Spring and Angular
+path: /uploading-files-with-spring-and-angular
+date: 2018-09-09
+updated: 2019-11-11
 author: [naiyer] 
 tags: ['guide']
 ---
 
-In this guide, you'll learn to write a RESTful service to upload a folder or file with the help of a Spring backend and design a simple Angular client to demonstrate the functionality.
+When you need to obtain data from your users, it is customary to offer them provide it through forms and file uploads. Spring provides a robust set of APIs to do this, and so does Angular. Consider a requirement to upload multiple files. For large files, it also makes sense to provide some visual feedback indicating the progress of the upload. In this guide, we'll create Spring and Angular applications for this requirement.
 
 ### Setup
 
-> This guide uses
+> We'll use:
 > - Java 11
 > - Node 12
 > - Spring Boot 2.1.8
 > - Angular 8
 
+We'll utilize the [Uploading files](https://spring.io/guides/gs/uploading-files/) guide from Spring with some modifications to fit our needs.
+
 ### Table of Contents
 
 ## Create a Spring application to handle uploads
 
-Start by defining an interface that will enforce a contract for the service to upload and fetch files.
+Start by defining an interface to enforce a contract for the service to upload and fetch files.
 
 ```java
 import org.springframework.core.io.Resource;
@@ -47,9 +49,11 @@ public interface StorageService {
 }
 ```
 
-### Implement the `FileSystemStorageService`
+Create a `FileSystemStorageService` that would read/write files on the filesystem of a machine. It should
 
-Create a `FileSystemStorageService`; an implementation of the `StorageService` interface that would interact with the filesystem of a machine.
+- create a directory where files would be uploaded
+- provide methods to store and delete files on the disk
+- enable file download using its name
 
 ```java
 import dev.mflash.guides.fileupload.configuration.StorageProperties;
@@ -151,7 +155,7 @@ Note that the value of `rootDir` is being fetched through a `ConfigurationProces
 
 ### Define REST endpoints
 
-Now, create a Controller to expose necessary endpoints.
+To list, upload and download the files, define the necessary endpoints in a controller.
 
 ```java
 import dev.mflash.guides.fileupload.service.StorageException;
@@ -207,7 +211,7 @@ public @RestController class FileSystemStorageController {
 }
 ```
 
-> **Note** To handle a folder, all you need to do is create an endpoint that accepts multiple `MultipartFile` objects.
+> **Note** To handle a folder, create an endpoint that accepts multiple `MultipartFile` objects.
 
 Enable CORS to accept requests from the Angular frontend.
 
@@ -242,9 +246,9 @@ public @SpringBootApplication class Launcher implements WebMvcConfigurer {
 }
 ```
 
-## Create a frontend for uploads
+## Create an Angular application for uploads
 
-Execute the following command to generate a new Angular application:
+Execute the following command to generate a new Angular application.
 
 ```bash
 ng new uploader --minimal=true --routing=false --skipTests=true --style=scss --directory=web --enableIvy=true
@@ -252,7 +256,7 @@ ng new uploader --minimal=true --routing=false --skipTests=true --style=scss --d
 
 > For more information on these options, refer to [Angular CLI docs](https://angular.io/cli/new).
 
-Create a service to handle the interactions with Spring endpoints.
+Create a service to call the Spring endpoints.
 
 ```typescript
 import { Injectable } from "@angular/core";
@@ -301,9 +305,9 @@ export class UploadService {
 }
 ```
 
-**Note** that the upload methods are returning `Observable<HttpEvent<{}>>` as a response. With `HttpEvent`, you'll be able to track the progress of upload through its `loaded` and `total` properties. This is enabled by `reportProgress` option configured through `HttpRequest`.
+**Note** that we are returning `Observable<HttpEvent<{}>>` from the upload method as a response. With `HttpEvent`, you can track the progress of upload through `loaded` and `total` properties, made available when the `reportProgress` flag is set to `true` in the `HttpRequest` object.
 
-### Component to upload the files
+### Create a component to upload the files
 
 Edit `AppComponent` to use the `UploadService` to upload and display the files.
 
@@ -430,13 +434,13 @@ Open `app.component.html` and add the following template (which is built using [
 </section>
 ```
 
-Don't forget to supply the `multiple` attribute on the `input[type=file]` element on the HTML page, else it won't allow the upload of multiple files.
+Don't forget to provide the `multiple` attribute for the `input[type=file]` element in the component, else you won't be able to upload multiple files.
 
-Launch the Spring and Angular applications and navigate to <http://localhost:4200>. Try uploading some files to see the application in action.
+Launch the Spring and Angular applications and open the browser at <http://localhost:4200>. Try uploading some files to see the application in action.
 
 ## References
 
-> **Source Code** &mdash; [spring-webmvc-multipart-upload](https://github.com/Microflash/guides/tree/master/spring/spring-file-upload)
+> **Source Code**: [spring-file-upload](https://github.com/Microflash/guides/tree/master/spring/spring-file-upload)
 >
 > **Discussions**
 > - Getting Started Guide from Spring: [Uploading files](https://spring.io/guides/gs/uploading-files/)
