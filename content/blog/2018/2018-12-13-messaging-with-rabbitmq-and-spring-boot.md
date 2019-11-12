@@ -1,26 +1,28 @@
 ---
-title: Messaging with RabbitMQ
-path: /messaging-with-rabbitmq
+title: Messaging with RabbitMQ and Spring Boot
+path: /messaging-with-rabbitmq-and-spring-boot
 date: 2018-12-13
-updated: 2019-09-21
+updated: 2019-11-13
 author: [naiyer]
 tags: ['guide']
 ---
 
-In this guide, you'll learn to create a message queue with RabbitMQ and to publish and read messages using a Spring backend.
+[RabbitMQ](https://www.rabbitmq.com/) is an open-source message broker that implements several messaging protocols, including AMQP and STOMP. It is frequently used to queue messages and interact with queues. A RabbitMQ server acts as an exchange server (or broker). Clients, written in a variety of languages, enable applications to publish and consume the messages in the queue. In this guide, we'll learn how to create a queue with RabbitMQ and interact with it using Spring Boot.
 
 ### Setup
 
-> This guide uses
+> We'll use
 > - Java 11
 > - Spring Boot 2.1.8
 > - RabbitMQ 3 running as a Docker container
 
+Create a Spring Boot application with `spring-boot-starter-amqp` and [jackson-databind](https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind) as the dependencies.
+
 ### Table of Contents
 
-## Setup a RabbitMQ broker
+## Create a RabbitMQ broker
 
-Start by setting up a RabbitMQ broker; you can choose to [install](https://www.rabbitmq.com/download.html) it on your machine or run it as a container. For later, create a `docker-compose.yml` file in the project's root and add the following configuration.
+Let's start by setting up a RabbitMQ broker; you can choose to [install](https://www.rabbitmq.com/download.html) it on your machine or run it as a container. For later, create a `docker-compose.yml` file in the project's root and add the following configuration.
 
 ```yaml
 version: '3.1'
@@ -65,13 +67,16 @@ public class Book {
 }
 ```
 
-To start with, you'll create a list of books to publish in the queue.
+Let's create a list of books to publish them on a queue.
 
 ## Configure Queue, Topic Exchange and Routing Key
 
-A typical RabbitMQ queue has a name to identify it, an optional routing key to selectively process messages and exchange to route the messages to a queue based on the value of a routing key. A topic exchange works on a wildcard match of a routing pattern. There are several other types of exchanges. A binding ties a queue with an exchange and a routing key.
+A typical RabbitMQ queue has 
+- a name to identify it, 
+- an optional routing key to selectively process messages, and 
+- an exchange to route the messages to a queue based on the value of a routing key. 
 
-You can configure all these as follows.
+A topic exchange works on a wildcard match of a routing pattern. Topic exchange is not the only type of exchange available for use but it'll suffice for this guide. To bind a queue with an exchange and a routing key, we'll have to create a `Binding` which can be injected through a Bean as follows.
 
 ```java
 import org.springframework.amqp.core.Binding;
@@ -103,7 +108,7 @@ public @Configuration class RabbitMQConfiguration {
 
 ## Create a Publisher
 
-A publisher or producer sends the message to the queue. In the present case, it’ll send a list of books. You'll use a `RabbitTemplate` object injected through Spring to send this list in the queue.
+A publisher or producer sends the messages in a queue. In our case, it’ll send a list of books. We'll use a `RabbitTemplate` object injected through Spring to send this list in the queue.
 
 ```java
 import dev.mflash.guides.rabbitmq.configuration.RabbitMQConfiguration;
@@ -147,7 +152,7 @@ public @Service class Publisher implements CommandLineRunner {
 }
 ```
 
-**Note** that all the published messages are serialized as byte arrays by default. To properly serialize the list of `Book`s, set the message converter of `RabbitTemplate` as an instance of `Jackson2JsonMessageConverter`.
+**Note** that all the published messages are serialized as byte arrays by default. To properly serialize the list of `Book`s, we need to define a message converter for `RabbitTemplate` as an instance of `Jackson2JsonMessageConverter`.
 
 ```java
 import org.springframework.amqp.core.Binding;
@@ -191,9 +196,9 @@ public @Configuration class RabbitMQConfiguration {
 }
 ```
 
-## Create a Reader
+## Create a Consumer
 
-A reader or consumer will read the messages published by the publisher. In the present case, you'll simply print the list.
+A reader or consumer will read the messages published by the publisher. In our case, we'll simply print the list.
 
 ```java
 import dev.mflash.guides.rabbitmq.configuration.RabbitMQConfiguration;
@@ -222,7 +227,7 @@ public @Service class Reader {
 
 A `CountDownLatch` is used to wait for several threads to complete (here, it is set to 1).
 
-Specify the container factory that will be used to convert the incoming message into a list of books. Inject this list as a bean and set the message converter to `Jackson2JsonMessageConverter` to correctly deserialize the incoming message.
+To convert the incoming message into a list of books, we'll have to provide the `MessageConverter` to a `RabbitListener`. This can be done by injecting the `MessageConverter` through an instance of `SimpleRabbitListenerContainerFactory` as follows.
 
 ```java
 import org.springframework.amqp.core.Binding;
@@ -275,8 +280,8 @@ public @Configuration class RabbitMQConfiguration {
 }
 ```
 
-Launching the application will execute the `run()` method of the `Publisher` class and after 10 seconds, the consumer will be called to print the message received from the queue.
+When the application is launched, the publisher will publish the list of books on a queue called `mflash-queue`. After 10 seconds, the consumer will be called to print the message received from the queue.
 
 ## References
 
-> **Source Code** &mdash; [spring-messaging-rabbitmq](https://github.com/Microflash/guides/tree/master/spring/spring-messaging-rabbitmq)
+> **Source Code**: [spring-messaging-rabbitmq](https://github.com/Microflash/guides/tree/master/spring/spring-messaging-rabbitmq)
