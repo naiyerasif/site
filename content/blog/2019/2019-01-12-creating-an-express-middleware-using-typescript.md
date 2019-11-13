@@ -1,20 +1,20 @@
 ---
-title: Creating a Node.js application using Express and TypeScript
-path: /creating-a-nodejs-application-using-express-and-typescript
+title: Creating an Express middleware using TypeScript
+path: /creating-an-express-middleware-using-typescript
 date: 2019-01-12
-updated: 2019-09-20
+updated: 2019-11-13
 author: [naiyer]
 tags: ['guide']
 ---
 
-In this guide, you'll learn to create a simple Node.js application using Express.js as the middleware with TypeScript support. You'll start with a JavaScript application and add TypeScript support to it.
+TypeScript [has been gaining](https://2018.stateofjs.com/javascript-flavors/typescript/) popularity and adoption for a while as a strongly-typed flavor of JavaScript. In this guide, we'll explore a possible way to use TypeScript to write an Express middleware.  We'll start with a JavaScript project, add TypeScript support to it and explore some configurations to customize the behavior of TypeScript Compiler (`tsc`).
 
 ### Setup
 
-> This guide uses
+> We'll use
 > - Node 12
 
-Start by creating a Node.js application. Create a directory `express-rest-app` and open a terminal into it. Execute the following command on the terminal.
+Let's start by creating a Node.js application. Create a directory `express-rest-app` and open a terminal into it. Execute the following command on the terminal.
 
 ```bash
 npm init -y
@@ -24,7 +24,7 @@ This should generate file `package.json`. Open the directory in your favorite ed
 
 ### Table of Contents
 
-## Create a barebone endpoint
+## Create an Express app
 
 Install `express` as a dependency.
 
@@ -67,7 +67,7 @@ Open the terminal and execute `npm start` to launch the application. You should 
 Server started at http://localhost:8080
 ```
 
-Send a request to the default endpoint using curl and you'll receive a JSON message.
+If we send a request to the default endpoint using curl, we'll receive the following JSON message.
 
 ```bash
 $ curl -X GET http://localhost:8080/
@@ -85,9 +85,9 @@ npm install --save-dev typescript
 npm install --save-dev @types/node @types/express
 ```
 
-The second command adds type definitions for `node` and `express` to help your IDE or editor provide support for types while editing the source code.
+The second command adds type definitions for `node` and `express` to help the IDE or editor provide support for types while editing the source code.
 
-You'll need to provide configurations to TypeScript compiler `tsc` to let it know where the TypeScript source code is located and where the compiled JavaScript code should be written at. To do so, execute the following command to generate a `tsconfig.json` file.
+We need to provide configurations to TypeScript compiler `tsc` to inform it where the TypeScript source code is located and where the compiled JavaScript code should be written at. To do so, execute the following command to generate a `tsconfig.json` file.
 
 ```bash
 npx tsc --init
@@ -118,7 +118,7 @@ Open the `tsconfig.json` file and add the following configuration.
 }
 ```
 
-Here, you've pointed the output of the compiler to a directory named `dist`. Open `package.json` and add the following configuration.
+Here, we've pointed the output of the compiler to a directory named `dist`. Open `package.json` and add the following configuration.
 
 ```json
 "main": "dist/index.js",
@@ -129,7 +129,7 @@ Here, you've pointed the output of the compiler to a directory named `dist`. Ope
 },
 ```
 
-Now, whenever you'll fire up `npm start`, the `prestart` script will launch first which in turn will launch `tsc` which will compile the TypeScript code and put it in the `dist` directory.
+Now, whenever we'll fire up `npm start`, the `prestart` script will launch first which in turn will launch `tsc` which will compile the TypeScript code and put it in the `dist` directory.
 
 Copy `dist/index.js` to `src/index.ts` and edit it as follows.
 
@@ -155,4 +155,4 @@ Launch the application by executing `npm start` and you'll get the same applicat
 
 ## References
 
-> **Source Code** &mdash; [express-rest-app](https://github.com/Microflash/guides/tree/master/nodejs/express-rest-app)
+> **Source Code**: [express-rest-app](https://github.com/Microflash/guides/tree/master/nodejs/express-rest-app)
