@@ -2,28 +2,28 @@
 title: Code Formatting with Prettier
 path: /code-formatting-with-prettier
 date: 2019-04-20
-updated: 2019-09-20
+updated: 2019-11-13
 author: [naiyer]
-tags: ['guide']
+tags: ['gist']
 ---
 
-[Prettier](https://prettier.io) is an opinionated code formatter that formats the code in a consistent style. [Here are some reasons why you should use prettier](https://prettier.io/docs/en/why-prettier.html). In this guide, you'll learn to integrate it with your Node.js project. You'll also know how Prettier can work with EditorConfig and ESLint.
+[Prettier](https://prettier.io) is an opinionated code formatter that formats the code in a consistent style. It supports popular languages, libraries and frameworks in Node.js ecosystem and is widely used to enforce the style practices. In this gist, we'll integrate it with a Node.js application and explore on how to configure it to work with EditorConfig and ESLint. 
 
 ### Setup
 
-You should already have a Node.js project. Download the one created at the end of the post [Creating a Node.js application using Express and TypeScript](/blog/2019/01/12/creating-a-nodejs-application-using-express-and-typescript) to follow this guide. 
+We'll use the Node.js application that we created in the post [Creating an Express middleware using TypeScript](/blog/2019/01/12/creating-an-express-middleware-using-typescript) to kickstart our example.
 
 ### Table of Contents
 
 ## Install Prettier
 
-Start by executing the following command in the directory where `package.json` is located:
+Let's start by executing the following command in the directory where `package.json` is located:
 
 ```bash
 npm install --save-dev --save-exact prettier
 ```
 
-As per Prettier [documentation](https://prettier.io/docs/en/install.html), it is recommended to save an exact version of prettier in your `package.json` since it introduces stylistic changes in patch releases.
+As per the Prettier's [documentation](https://prettier.io/docs/en/install.html), it is recommended to save an exact version of prettier in our `package.json` since it introduces stylistic changes in patch releases.
 
 ## Configure pre-commit hook
 
@@ -71,7 +71,7 @@ max_line_length = off
 trim_trailing_whitespace = false
 ```
 
-Prettier CLI respects your `editorconfig` file by default. You can opt-out of this behavior using `--no-editorconfig` flag.
+Prettier CLI respects the `editorconfig` file by default. You can opt-out of this behavior using `--no-editorconfig` flag.
 
 ## Working with ESLint
 
@@ -93,7 +93,7 @@ Now, open the `.eslintrc.json` file and add the following configuration:
 
 ## References
 
-> **Source Code** &mdash; [prettier-code-formatting](https://github.com/Microflash/guides/tree/master/nodejs/prettier-code-formatting)
+> **Source Code**: [prettier-code-formatting](https://github.com/Microflash/guides/tree/master/nodejs/prettier-code-formatting)
 >
 > **Discussions**
 > - [Prettier docs](https://prettier.io/docs/en/install.html)
