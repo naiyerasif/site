@@ -4,17 +4,17 @@ path: /logging-nodejs-application-with-morgan-and-log4js-node
 date: 2019-08-18
 updated: 2019-09-22
 author: [naiyer]
-tags: ['guide']
+tags: ['gist']
 ---
 
-In this guide, you'll to configure logging on an existing Node.js application with `morgan` and `log4js-node` to print the logs on the console as well as a file.
+`console.log` has been a prevalent anti-pattern inherited by Node.js developers from years of printing to the console on a browser. While this is useful for quick debugging, it doesn't sit well with server-side design; it's hard to turn it off selectively, add log levels to it or redirect the logs to a file or database. Some good alternatives to the `console.log` are [winston](https://github.com/winstonjs/winston) and [log4js-node](https://github.com/log4js-node/log4js-node). In this guide, we'll configure logging with [morgan](https://github.com/expressjs/morgan) (which is a request logger for Express) and **log4js-node** to print the logs on the console as well as a file.
 
 ### Setup
 
-> This guide uses
+> We'll use
 > - Node 12
 
-You should already have a Node.js project. Download the one created at the end of the post [Linting TypeScript with TypeScript ESLint and Prettier](/blog/2019/08/16/linting-typescript-with-typescript-eslint-and-prettier) to follow this guide.
+To get started quickly, we'll use the Node.js application from the gist [Linting TypeScript with TypeScript ESLint and Prettier](/blog/2019/08/16/linting-typescript-with-typescript-eslint-and-prettier) to follow this guide.
 
 ### Table of Contents
 
@@ -156,7 +156,7 @@ Start the application; you should see `app.log` in `logs` directory and the same
 
 ## References
 
-> **Source Code** &mdash; [morgan-log4js-logging](https://github.com/Microflash/guides/tree/master/nodejs/morgan-log4js-logging)
+> **Source Code**: [morgan-log4js-logging](https://github.com/Microflash/guides/tree/master/nodejs/morgan-log4js-logging)
 >
 > **Documentations** 
 > - [morgan docs](https://github.com/expressjs/morgan#readme)
