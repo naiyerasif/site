@@ -7,24 +7,24 @@ author: [naiyer]
 tags: ['guide']
 ---
 
-In this guide, you'll learn to find a way to query over JSON documents stored as CLOB objects in an Oracle database. 
+Oracle added native JSON support in the version 12c, providing support for querying, indexing and transactions. It introduced a set of functions which can query a JSON document using [Oracle JSON Path Expressions](https://docs.oracle.com/database/121/ADXDB/json.htm#ADXDB6254), subject to certain [relaxations](https://docs.oracle.com/database/121/ADXDB/json.htm#GUID-951A61D5-EDC2-4E30-A20C-AE2AE7605C77), to match JSON attributes. In this guide, we'll explore some of those functions to query over JSON documents stored as CLOB objects. 
 
 ### Setup
 
-> This guide uses
+> We'll use
 > - Oracle 12c
 
 If you've got Oracle 12c installed on your machine, you're good to go. If not, you can install it by downloading it from [here](https://www.oracle.com/database/technologies/oracle-database-software-downloads.html). If you just want to try out this guide, login at [Oracle Live SQL](https://livesql.oracle.com) which provides a free Oracle environment for you to play with.
 
 > **Note** that the functions used in this guide are available only in Oracle 12c onwards.
 
-For the examples in this guide, you'll use data from mongoDB's [bios example collection](https://docs.mongodb.com/manual/reference/bios-example-collection/).
+For the examples in this guide, we'll use data from MongoDB's [bios example collection](https://docs.mongodb.com/manual/reference/bios-example-collection/).
 
 ### Table of Contents
 
 ## Create a relation
 
-Start by creating a relation that would store JSON documents as CLOB objects.
+Let's start by creating a relation that would store JSON documents as CLOB objects.
 
 ```sql
 CREATE TABLE BIOS (
@@ -35,7 +35,7 @@ CREATE TABLE BIOS (
 );
 ```
 
-You can even apply constraints that will ensure that `fname`, `contribs` and `recognition` are valid JSONs as follows.
+We can even apply constraints that will ensure that `fname`, `contribs` and `recognition` are valid JSONs as follows.
 
 ```sql
 CREATE TABLE BIOS (
@@ -78,11 +78,11 @@ INSERT INTO BIOS VALUES
 COMMIT;
 ```
 
-## Design the query
+## Design some queries
 
 ### `json_table` function
 
-Now that your relation is ready, it is time to design a few queries. You'll use `json_table` function to create a relational representation of JSON documents. Say, you want a list of names ordered by their `id`.
+Now that our relation is ready, it is time to design a few queries. We'll use `json_table` function to create a relational representation of JSON documents. Say, you want a list of names ordered by their `id`.
 
 ```sql
 SELECT 
@@ -120,14 +120,14 @@ which emits the following dataset.
 | 9   | James Gosling           |
 | 10  | Martin Odersky          |
 
-Here, `json_table` is being used to project the JSON documents in a relation.
+Here, we've used `json_table` to project the JSON documents in a relation.
 - A column `bios.fname` (using `$[*]` path expression) is selected for the projection. 
 - Column names and their corresponding paths are specified for different attributes.
 - Finally, the outcome of this projection is given a name `j`.
 
 ### `json_value` function
 
-In a different scenario, you may not want a list of names but only the first name of all people. In this case, you don't need to project the entire JSON; instead, you can return only the first name using `json_value` function as follows.
+In a different scenario, we may only want the first name of all people. In this case, we don't need to project the entire JSON; instead, we can return only the first name using `json_value` function as follows.
 
 ```sql
 SELECT 
@@ -157,9 +157,9 @@ which emits the following dataset.
 
 > **Note** that 
 > - `json_value` can only be used to return a scalar (i.e, not an object or collection) SQL data type.
-> - you can specify the format of the data which is being returned by `json_table` and `json_query` functions; if a value is boolean, you can return it as a boolean or string. 
+> - we can specify the format of the data which is being returned by `json_table` and `json_query` functions; if a value is boolean, we can return it as a boolean or string. 
 
-`json_value` function is especially useful when you want to apply some filters based on a JSON attribute but don't want to project the entire JSON. For example, say want to know the person who has a title as a recognition. `json_value` function comes handy in applying such a filter.
+`json_value` function is especially useful when you want to apply some filters based on a JSON attribute but don't want to project the entire JSON. For example, say you want to know the person who has a title as a recognition. `json_value` function comes handy in applying such a filter.
 
 ```sql
 SELECT 
@@ -220,7 +220,7 @@ which emits the following dataset.
 ## A few things to note
 
 - `json_query` and `json_value` can be treated as a special case of `json_table`.
-- All these functions use [Oracle JSON Path Expressions](https://docs.oracle.com/database/121/ADXDB/json.htm#ADXDB6254), subject to certain [relaxations](https://docs.oracle.com/database/121/ADXDB/json.htm#GUID-951A61D5-EDC2-4E30-A20C-AE2AE7605C77), to match JSON attributes. By default, Oracle matches with a lax syntax.
+- By default, Oracle matches with a [lax JSON syntax](https://docs.oracle.com/database/121/ADXDB/json.htm#GUID-1B6CFFBE-85FE-41DD-BA14-DD1DE73EAB20).
 - If a field name is repeated in a JSON document, Oracle may choose to match any one of those fields and ignore the rest.
 
 ## References
