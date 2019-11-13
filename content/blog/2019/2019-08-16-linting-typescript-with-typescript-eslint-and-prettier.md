@@ -4,14 +4,14 @@ path: /linting-typescript-with-typescript-eslint-and-prettier
 date: 2019-08-16
 updated: 2019-08-16
 author: [naiyer]
-tags: ['guide']
+tags: ['gist']
 ---
 
-In this guide, you'll learn to set up linting with [TypeScript ESLint](https://github.com/typescript-eslint/typescript-eslint) for a TypeScript project with support for Prettier.
+[TypeScript ESLint](https://github.com/typescript-eslint/typescript-eslint) is the spiritual successor of [TSLint](https://github.com/palantir/tslint), the de-facto linting tool exclusively developed for TypeScript by [Palantir Technologies](https://palantir.com/). In this guide, we'll set up linting with TypeScript ESLint for a TypeScript project. We'll also explore how to configure Prettier so that it plays nice with TypeScript ESLint.
 
 ### Setup
 
-> This guide uses
+> We'll use
 > - Node 12
 
 You should already have a TypeScript project; it could be any Express or Angular project. Download the one created at the end of the post [Code Formatting with Prettier](/blog/2019/04/20/code-formatting-with-prettier) to follow this guide.
@@ -104,7 +104,7 @@ Now, `typescript-eslint` will play nice with `prettier` and use it to format whi
 
 ## References
 
-> **Source Code** &mdash; [linting-with-typescript-eslint](https://github.com/Microflash/guides/tree/master/nodejs/linting-with-typescript-eslint)
+> **Source Code**: [linting-with-typescript-eslint](https://github.com/Microflash/guides/tree/master/nodejs/linting-with-typescript-eslint)
 > 
 > **Discussions**
 > - Niko Montana: <https://github.com/typescript-eslint/typescript-eslint/issues/36#issuecomment-494764385>
