@@ -1,20 +1,20 @@
 ---
-title: Persisting and querying documents with MongoRepository
-path: /persisting-and-querying-documents-with-mongorepository
+title: Persisting documents with MongoRepository
+path: /persisting-documents-with-mongorepository
 date: 2019-07-08
-updated: 2019-09-21
+updated: 2019-11-13
 author: [naiyer]
 tags: ['guide']
 ---
 
-In this guide, you'll learn to save mongoDB documents with `MongoRepository` interface provided by Spring Data and run `find` queries using query methods.
+Spring Boot provides a variety of ways to interact with a MongoDB database: low-level abstractions like `MongoReader`/`MongoWriter`, Query, Criteria and Update DSLs and `MongoTemplate` helper to facilitate common document operations. As a part of Spring Data, it also provides a familiar Repository style programming model through `MongoRepository` interface. In this guide, we'll explore some of the capabilities of `MongoRepository` by persisting and querying MongoDB documents.
 
 ### Setup
 
-> This guide uses
+> We'll use
 > - Java 11
 > - Spring Boot 2.1.8
-> - mongoDB 4
+> - MongoDB 4
 
 Before getting started, make sure that a mongoDB instance is available to persist your data. You can use Docker to run an instance. Create a `docker-compose.yml` file at the project root and add the following details in it.
 
@@ -44,13 +44,13 @@ docker-compose up -d
 
 ## Define a domain
 
-Start by defining a domain. Say, you want to persist an `Email` object which consists of an `address`, an `Identity` of a user, a set of `Session` created by the user and a `created` date. When an `Email` object is saved, corresponding `Identity` object and `Session` objects should also be persisted; the same goes for the delete operation.
+Let's start by defining a domain. Say, you want to persist an `Email` object which consists of an `address`, an `Identity` of a user, a set of `Session` created by the user and a `created` date. When an `Email` object is saved, corresponding `Identity` object and `Session` objects should also be persisted; the same goes for the delete operation.
 
-![Domain](./images/2019-07-08-persisting-and-querying-data-with-mongorepository.svg)
+![Domain](./images/2019-07-08-persisting-documents-with-mongorepository.svg)
 
-A Many-to-One relationship in mongoDB can be modeled with either [embedded documents](https://docs.mongodb.com/manual/tutorial/model-embedded-one-to-many-relationships-between-documents/) or [document references](https://docs.mongodb.com/manual/tutorial/model-referenced-one-to-many-relationships-between-documents/); with the latter method being more useful since it prevents the repetition of data. You can enforce this behavior through a `@DBRef` annotation.
+A Many-to-One relationship in MongoDB can be modeled with either [embedded documents](https://docs.mongodb.com/manual/tutorial/model-embedded-one-to-many-relationships-between-documents/) or [document references](https://docs.mongodb.com/manual/tutorial/model-referenced-one-to-many-relationships-between-documents/); with the latter method being more useful since it prevents the repetition of data. We can enforce this behavior through a `@DBRef` annotation.
 
-Your `Email` document may look like this:
+Our `Email` document may look like this:
 
 ```java
 import org.springframework.data.annotation.Id;
@@ -72,7 +72,7 @@ public class Email {
 }
 ```
 
-Similarly, define `Identity` and `Session` documents.
+In the similar fashion, define `Identity` and `Session` documents.
 
 ## Create a Repository
 
@@ -96,11 +96,11 @@ public interface EmailRepository extends MongoRepository<Email, String> {
 }
 ```
 
-Since `MongoRepository` extends `CrudRepository` interface, it provides several CRUD methods (like `findAll()`, `save()`, etc) out-of-the-box. For specific queries, you can declare query methods (using certain [naming conventions](https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#repositories.query-methods.query-creation)) for Spring to generate their implementations at runtime.
+Since `MongoRepository` extends `CrudRepository` interface, it provides several CRUD methods (like `findAll()`, `save()`, etc) out-of-the-box. For specific queries, we can declare query methods (using certain [naming conventions](https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#repositories.query-methods.query-creation)) for Spring to generate their implementations at runtime.
 
 ### Unit tests for Repository
 
-Now that your repository is ready, write some tests to verify if it works as expected.
+Now that our repository is ready, write some tests to verify if it works as expected.
 
 ```java
 import static dev.mflash.guides.mongo.configuration.TestData.*;
@@ -177,7 +177,7 @@ public class DateToZonedDateTimeConverter implements Converter<Date, ZonedDateTi
 }
 ```
 
-> **Note** that UTC is considered as `ZoneOffset` here. `Date` object, the one which gets persisted in mongoDB, contains no zone information. However, since mongoDB timestamps default to UTC, you can adjust the offset accordingly for your timezone.
+> **Note** that UTC is considered as `ZoneOffset` here. `Date` object, the one which gets persisted in MongoDB, contains no zone information. However, since MongoDB timestamps default to UTC, you can adjust the offset accordingly for your timezone.
 
 Similarly, for conversion from `ZonedDateTime` to `Date`, write a yet another converter.
 
@@ -232,11 +232,11 @@ Spring Data Mongo doesn't support cascading of objects out-of-the-box. The offic
 
 > The mapping framework does not handle cascading saves. If you change an `Account` object that is referenced by a `Person` object, you must save the `Account` object separately. Calling save on the `Person` object will not automatically save the `Account` objects in the property accounts.
 
-However, you can write a custom mechanism to cascade objects on save and delete operations by listening to `MongoMappingEvent`s.
+However, we can write a custom mechanism to cascade objects on save and delete operations by listening to `MongoMappingEvent`s.
 
 ### Define a `@Cascade` annotation
 
-Start by defining an annotation to indicate that a field should be cascaded.
+Let's start by defining an annotation to indicate that a field should be cascaded.
 
 ```java
 import java.lang.annotation.ElementType;
@@ -252,7 +252,7 @@ public @interface Cascade {
 }
 ```
 
-Since cascading can be done for save and/or delete operations, you can generalize your implementation by passing a value to the annotation that will set the type of cascading. By default, choose for cascading on both save and delete operations through `CascadeType.ALL` value.
+Since cascading can be done for save and/or delete operations, we can generalize this implementation by passing a value to the annotation that will set the type of cascading. By default, we'll cascade on both save and delete operations through `CascadeType.ALL` value.
 
 Annotate the desired fields with this annotation.
 
@@ -279,7 +279,7 @@ public class Email {
 
 ### Detect the fields to be cascaded
 
-The references of cascaded objects should be associated with a document. You need to check if such a valid document exists. This can be done by checking the `@Id` of the document through a `FieldCallback`.
+The references of cascaded objects should be associated with a document. We need to check if such a valid document exists. This can be done by checking the `@Id` of the document through a `FieldCallback`.
 
 ```java
 import org.springframework.data.annotation.Id;
@@ -306,7 +306,7 @@ public class IdentifierCallback implements FieldCallback {
 }
 ```
 
-Similarly, you need to identify the objects that should be cascaded, by detecting `@Cascade` annotation on a field, once again, through a `FieldCallback` and then perform actual persistence operation using `MongoOperations`.
+Similarly, we need to identify the objects that should be cascaded, by detecting `@Cascade` annotation on a field, once again, through a `FieldCallback` and then perform actual persistence operation using `MongoOperations`.
 
 ```java
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -353,11 +353,11 @@ public class CascadeSaveCallback implements FieldCallback {
 }
 ```
 
-You can also write a `CascadeDeleteCallback` for the delete operation. At this point, you can manually call these methods before save or delete operations to trigger cascading. However, you can also automate this to save pains.
+You can also write a `CascadeDeleteCallback` for the delete operation. At this point, we can manually call these methods before save or delete operations to trigger cascading. However, we can also automate this to save pains.
 
 ### Automate the cascading
 
-Create a `MongoEventListener` to listen to `MongoMappingEvent`s and invoke the appropriate callbacks for you.
+Create a `MongoEventListener` to listen to `MongoMappingEvent`s and invoke the appropriate callbacks.
 
 ```java
 import org.springframework.beans.factory.annotation.Autowired;
@@ -420,7 +420,7 @@ public @Configuration class MongoConfiguration {
 
 ### Unit tests to verify cascading
 
-To verify if the cascading works, write some unit tests by persisting some `Email` objects and querying for `Identity` and `Session` objects.
+To verify if the cascading works, let's write some unit tests by persisting some `Email` objects and querying for `Identity` and `Session` objects.
 
 ```java
 import static org.junit.Assert.*;
@@ -485,4 +485,4 @@ public @SpringBootTest class CascadeTest {
 
 ## References
 
-> **Source Code** &mdash; [spring-data-mongo-repository](https://github.com/Microflash/guides/tree/master/spring/spring-data-mongo-repository)
+> **Source Code**: [spring-data-mongo-repository](https://github.com/Microflash/guides/tree/master/spring/spring-data-mongo-repository)
