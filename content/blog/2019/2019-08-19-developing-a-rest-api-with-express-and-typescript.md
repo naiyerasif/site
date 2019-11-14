@@ -1,34 +1,32 @@
 ---
-title: Developing a REST API with Express, TypeScript and Postgres
-path: /developing-a-rest-api-with-express-typescript-and-postgres
+title: Developing a REST API with Express and TypeScript
+path: /developing-a-rest-api-with-express-and-typescript
 date: 2019-08-19
-updated: 2019-09-22
+updated: 2019-11-14
 author: [naiyer]
 tags: ['guide']
 ---
 
-In this guide, you'll learn to write a REST API to perform CRUD operations using Express, TypeScript and Postgres. You'll also learn how to organize routes and add support for hot-reloading and simulating environment variables locally.
+Express, as a middleware, is commonly used for creating REST APIs. In this guide, we'll build an API to perform CRUD operations on a Postgres database. We'll explore how to organize Express routes, add support for hot-reloading and simulate environment variables locally. 
 
 ### Setup
 
-> This guide uses
+> We'll use
 > - Node 12
 
-Download the project created at the end of the post [Logging Node.js application with morgan and log4js-node](/blog/2019/08/18/logging-nodejs-application-with-morgan-and-log4js-node) to follow this guide.
+To quickly get started, pull up the code for the gist [Logging Node.js application with morgan and log4js-node](/blog/2019/08/18/logging-nodejs-application-with-morgan-and-log4js-node).
 
-### Table of Contents
-
-## Define a domain
-
-Say, you want to build a music catalog. Your system should be able to
+We'll build a REST for a music catalog with the following capabilities.
 - add, modify or remove music tracks
 - associate a track with an album and artist
 - remove entire album
 - search tracks by title, album or artist
 
+### Table of Contents
+
 ## Configuring routes
 
-You need to add several REST endpoints to expose the domain described. To do so, you need to configure routes for those endpoints. Adding all the routes in `index.ts` will bloat it; hence, put the routes in a separate file, say `src/routes/tracks.routes.ts`.
+To process requests, we need to create several REST endpoints. We can do so by configuring routes for those endpoints. Since adding all the routes in `index.ts` will bloat it; we'll put them in a separate file, say `src/routes/tracks.routes.ts`.
 
 ```typescript
 import * as express from "express";
@@ -47,7 +45,7 @@ export const register = (app: express.Application) => {
 };
 ```
 
-All of these are dummy routes in which you'll add some implementation later. Add an endpoint for the health check in a file `src/routes/default.routes.ts`.
+All of these are placeholder routes in which we'll add some implementation later. For now, let's add an endpoint for the health check in a file `src/routes/default.routes.ts`.
 
 ```typescript
 import * as express from "express";
@@ -145,17 +143,17 @@ app.listen(port, () => {
 
 ## Setup development workflows
 
-In this section, you'll learn how to enable hot-reloading and simulate environment variables locally.
+In this section, we'll explore how to enable hot-reloading and simulate environment variables locally.
 
 ### Enable hot-reloading
 
-It is cumbersome to manually restart the application every time you make a change in the source code. You can automate the restart using `nodemon`.
+It is cumbersome to manually restart the application every time we make a change in the source code. We can automate the restart using `nodemon`.
 
 ```bash
 npm install --save-dev nodemon
 ```
 
-While you are at it, you can also add `rimraf` to clean your `dist` directory for every rebuild and `npm-run-all` to run multiple scripts together.
+While we are at it, we can also add `rimraf` to clean our `dist` directory for every rebuild and `npm-run-all` to run multiple `npm` scripts together.
 
 ```bash
 npm install --save-dev rimraf npm-run-all
@@ -177,7 +175,7 @@ Launch the application with `npm run dev` and `nodemon` will watch for any chang
 
 ### Environment variables for local development
 
-To avoid hardcoding the port in `src/index.ts`, you can configure a `SERVER_PORT` environment variable on your machine. For local development, you can simulate the environment variables through `dotenv`.
+To avoid hardcoding the port in `src/index.ts`, we can configure a `SERVER_PORT` environment variable on our machine. For local development, we can simulate the environment variables through `dotenv`.
 
 Add the dependency for `dotenv` using the following command.
 
@@ -186,7 +184,7 @@ npm install dotenv
 npm install --save-dev @types/dotenv
 ```
 
-Create a `.env` file in your project root and add the following content.
+Create a `.env` file in the project root and add the following content.
 
 ```properties
 SERVER_PORT=8080
@@ -228,7 +226,7 @@ app.listen(port, () => {
 
 Starting the application will launch it at port 8080.
 
-> **Note** Make sure you add `.env` file in the `.gitignore` since this file is meant for only local development.
+> **Note** Make sure to add `.env` file in the `.gitignore` since this file is meant for only local development.
 
 ## Setup persistence with Postgres
 
@@ -352,7 +350,7 @@ export {
 };
 ```
 
-Note that a connection pool (`Pool`) provided by `pg` is being used here to run queries asynchronously which returns a `Promise`. For finer control over a transaction, you can also use a `client` (as in `save` method where a transaction is being rolled back in case something goes wrong).
+Note that we're using a connection pool (`Pool`) provided by `pg` to execute the queries asynchronously. This connection pool returns a `Promise`. For finer control over a transaction, We may also use a `client` (as in `save` method where a transaction is being rolled back in case something goes wrong).
 
 Edit the routes in `src/routes/tracks.routes.ts` to use this repository.
 
@@ -379,7 +377,7 @@ export const register = (app: express.Application) => {
 };
 ```
 
-The workflow is as follows: the `Promise` is being processed by returning the data in case of successful database operation or by returning an error in case something goes wrong. Apart from this, you can return errors for validation failures.
+The workflow is as follows: the `Promise` is being processed by returning the data in case of successful database operation or by returning an error in case something goes wrong. Apart from this, we can return errors for validation failures.
 
 ## Test the API
 
@@ -423,4 +421,4 @@ curl -X DELETE http://localhost:8080/track \
 
 ## References
 
-> **Source Code** &mdash; [express-postgres-api](https://github.com/Microflash/guides/tree/master/nodejs/express-postgres-api)
+> **Source Code**: [express-postgres-api](https://github.com/Microflash/guides/tree/master/nodejs/express-postgres-api)
