@@ -34,7 +34,7 @@
     
     <footer class="bg-background-footer text-content-footer z-10 decorated-links">
       <div class="container mx-auto flex flex-col lg:flex-row md:items-center justify-between py-8">
-        <div class="mb-8 lg:mb-0">
+        <div class="mb-8 lg:mb-0 w-full">
           <div>
             <p>Copyright &copy; {{ year }} Naiyer Asif</p>
             <p>Source licensed
@@ -44,7 +44,7 @@
             <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/mflash.dev/issues/new">Report an issue</a></p>
           </div>
         </div>
-        <ul class="flex items-center">
+        <ul class="flex items-center w-full">
           <li class="mr-6">
             <a href="/feed.xml" title="RSS">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9" /><path d="M4 4a16 16 0 0 1 16 16" /><circle cx="5" cy="19" r="1" /></svg>

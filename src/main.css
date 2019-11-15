@@ -318,7 +318,7 @@ nav .active {
     position: fixed;
     text-align: right;
     font-size: 0.9rem;
-    max-width: 30vw;
+    max-width: 28vw;
     bottom: 15vh;
     right: 1rem;
     z-index: 11;

@@ -92,7 +92,8 @@ module.exports = {
     inset: {
       '0': '0',
       auto: 'auto',
-      '4': '1rem'
+      '4': '1rem',
+      '12': '3rem'
     }
   },
   variants: {

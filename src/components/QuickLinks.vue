@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed right-4 bottom-4 z-0">
+  <div class="fixed right-4 bottom-4 sm:bottom-12 z-10 sm:z-20">
     <a href="#" title="Back to top" v-scroll-to="scrollPath" class="mr-4">
       <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="inline"><circle cx="12" cy="12" r="10"></circle><polyline points="16 12 12 8 8 12"></polyline><line x1="12" y1="16" x2="12" y2="8"></line></svg>
     </a>
