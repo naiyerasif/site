@@ -4,14 +4,14 @@
       <div class="container mx-auto">
         <div class="w-full sm:w-3/4">
           <h1 class="text-2xl md:text-5xl font-semibold leading-tight">
-            Hello, I am <span class="text-primary-500">Naiyer</span>
+            Hello, I am <span id="about-me" class="text-primary-500">Naiyer</span>
             <br />a full-stack developer
             <br />from Bengaluru, India.
           </h1>
         </div>
       </div>
       <div class="container pt-6 md:pt-16 -mx-10">
-        <main class="w-full sm:w-3/4 p-10 bg-background-main text-xl">
+        <main class="w-full sm:w-3/4 px-10 py-4 md:py-10 bg-background-main text-xl">
           <p>I have more than 4 years of experience in Banking &amp; Financial Services, Legal &amp; Compliance and Aviation domains.</p>
           <p class="font-semibold mt-4 md:mt-8">Technologies I am adept at &mdash;</p>
             <div class="pt-4 md:pt-6">
@@ -79,7 +79,7 @@
                 <div class="card rounded-none md:rounded">
                   <div class="p-4">
                     <div class="card-category">Database</div>
-                    <h3 class="card-title">mongoDB</h3>
+                    <h3 class="card-title">MongoDB</h3>
                     <p>A general purpose, cross-platform, document-based, distributed NoSQL database</p>
                   </div>
                 </div>
@@ -105,16 +105,18 @@
             </div>
           </div>
           <p class="mt-4 md:mt-8">
-            Besides writing code, I love to create documentation that is easy to read and comprehend (shoutout to fantastic <a target="_blank" rel="noopener noreferrer" href="https://spring.io/guides">Spring</a>, <a target="_blank" rel="noopener noreferrer" href="https://docs.docker.com/">Docker</a> and <a target="_blank" rel="noopener noreferrer" href="https://vuejs.org/v2/guide/">Vue.js</a> guides).
+            Besides writing code, I compose poetry, draw vector illustrations and automate boring repetitive stuff using terminal and scripts. I prowl the web to discover typography and digital art (mostly geometric and vector) and find shiny new tools to tinker with (I've signed up for way more beta programs than anyone should). I also dedicate a fair chunk of my time for reading fiction, history, and physics.
           </p>
-          <p class="mt-8">When I am not solving problems, I am reading English or Urdu science fiction and thrillers, listening to Pop and Vocals or drawing SVG illustrations.</p>
-          <p class="mt-8">Feel free to look around and contact me with any questions at <a target="_blank" rel="noopener noreferrer" href="https://www.twitter.com/Microflash">{{ $page.author.twitter }}</a> (which is the namesake of this blog).</p>
+          <p class="mt-8">Feel free to look around and contact me with any questions at <a target="_blank" rel="noopener noreferrer" href="https://www.twitter.com/Microflash">{{ $page.author.twitter }}</a> (which is the namesake of this site).</p>
         </main>
 
-        <section class="w-full sm:w-3/4 p-10 mt-0 sm:mt-10 bg-background-card text-xl">
-          <h2 class="font-bold mb-6">Acknowledgements</h2>
-          <p class="mb-8">This site is made possible by:</p>
-          <ul class="mb-8">
+        <section class="w-full sm:w-3/4 px-10 py-4 md:py-10 mt-0 sm:mt-10 bg-background-card text-base">
+          <h2 class="font-bold mb-6" id="about-site">About this site</h2>
+          <p class="mb-8">This site started out as a pet project for me to learn <a target="_blank" rel="noopener noreferrer" href="https://vuejs.org/">Vue.js</a> and <a target="_blank" rel="noopener noreferrer" href="https://graphql.org/">GraphQL</a>, and as a way to get my bearing around Vue.js community. Working on this project, I became more informed about accessible color systems, content preloading, optimization of vector illustrations, <a target="_blank" rel="noopener noreferrer" href="https://unifiedjs.com/">unifiedjs</a> ecosystem, and more.</p>
+          <p class="mb-8">Currently, I'm publishing my notes on development and design collected over the years, mostly to serve as a quickly accessible way to share and refer back. The code described in the examples is for the demonstration of the topic under discussion; it is not meant to be used as-is in production.</p>
+          <h2 class="font-bold mb-6" id="acknowledgments">Acknowledgements</h2>
+          <p class="mb-2">This site was made possible by</p>
+          <ul class="mb-8 ml-8">
             <li>
               <a target="_blank" rel="noopener noreferrer" href="https://gridsome.org/">Gridsome</a>: a modern Vue.js framework for static websites
             </li>
@@ -134,17 +136,32 @@
               <a target="_blank" rel="noopener noreferrer" href="https://feathericons.com/">Feather Icons</a>: beautiful open-source icons
             </li>
           </ul>
-          <p class="mb-8">
-            The theme switching is done with the help of <a target="_blank" rel="noopener noreferrer" href="https://alligator.io/css/theming-custom-properties/">custom CSS properties</a>, the data is queried through <a target="_blank" rel="noopener noreferrer" href="https://graphql.org/">GraphQL</a> and the components and layouts are powered by <a href="https://vuejs.org/">Vue.js</a>. <a target="_blank" rel="noopener noreferrer" href="https://rsms.me/inter/">Inter</a> is used as the main font (with an optional support for <a target="_blank" rel="noopener noreferrer" href="https://v-fonts.com/">variable fonts</a>) and <a target="_blank" rel="noopener noreferrer" href="https://github.com/be5invis/iosevka">Iosevka SS05</a> as the <code>monospace</code> font across the website. A customized version of <a target="_blank" rel="noopener noreferrer" href="https://github.com/arcticicestudio/nord">Nord</a> is being used to decorate highlighted codeblocks.
-          </p>
-          <p class="mb-8">
-            Continuous Integration is handled through <a target="_blank" rel="noopener noreferrer" href="https://circleci.com/">CircleCI</a> and deployments are done with <a target="_blank" rel="noopener noreferrer" href="https://github.com/tschaub/gh-pages">gh-pages</a>. Graphics and illustrations are created using <a target="_blank" rel="noopener noreferrer" href="https://affinity.serif.com/en-gb/designer/">Affinity Designer</a> and <a target="_blank" rel="noopener noreferrer" href="https://www.adobe.com/in/products/xd.html">Adobe XD</a>.
-          </p>
+          <p class="mb-2">It uses</p>
+          <ul class="mb-8 ml-8">
+            <li><a target="_blank" rel="noopener noreferrer" href="https://alligator.io/css/theming-custom-properties/">custom CSS properties</a> for theme switching</li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://graphql.org/">GraphQL</a> for querying data</li>
+            <li><a href="https://vuejs.org/">Vue.js</a> for components and layouts</li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://rsms.me/inter/">Inter</a> as the main font</li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/be5invis/iosevka">Iosevka SS05</a> as the <code>monospace</code> font</li>
+            <li>a customized version of <a target="_blank" rel="noopener noreferrer" href="https://github.com/arcticicestudio/nord">Nord</a> to decorate highlighted codeblocks</li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://circleci.com/">CircleCI</a> for continuous integration</li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/tschaub/gh-pages">gh-pages</a> for deployment</li>
+            <li>graphics and illustrations created with <a target="_blank" rel="noopener noreferrer" href="https://affinity.serif.com/en-gb/designer/">Affinity Designer</a> and <a target="_blank" rel="noopener noreferrer" href="https://www.adobe.com/in/products/xd.html">Adobe XD</a></li>
+          </ul>
           <p>
             The source of this site is <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/mflash.dev">available</a> under <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/mflash.dev/blob/release/LICENSE">MIT</a>, the content under <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/">CC by SA</a>.
           </p>
         </section>
       </div>
+    </div>
+    <div class="fixed right-4 px-4 text-right z-20" style="bottom: 7vw">
+      <a href="#" v-scroll-to="aboutSite">About this site</a><br/>
+      <a href="#" v-scroll-to="ack">Acknowledgements</a>
+    </div>
+    <div class="fixed right-4 bottom-12 z-20">
+      <a href="#" title="Back to top" v-scroll-to="aboutMe" class="mr-4">
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="inline"><circle cx="12" cy="12" r="10"></circle><polyline points="16 12 12 8 8 12"></polyline><line x1="12" y1="16" x2="12" y2="8"></line></svg>
+      </a>
     </div>
   </Layout>
 </template>
@@ -174,6 +191,25 @@ export default {
         }
       ]
     };
+  },
+  computed: {
+    aboutMe() {
+      return "#about-me"
+    },
+    aboutSite() {
+      return "#about-site"
+    },
+    ack() {
+      return "#acknowledgments"
+    }
   }
 };
 </script>
+
+<style scoped>
+@media (max-width: 1024px) {
+  .fixed {
+    visibility: hidden;
+  }
+}
+</style>
