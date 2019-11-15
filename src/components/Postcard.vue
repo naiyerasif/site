@@ -4,7 +4,7 @@
       <g-link class="tag" v-for="tag in item.tags" :key="tag.id" :to="tag.path">
         <span>#</span>{{ tag.title }}
       </g-link>
-      {{ item.hasOwnProperty("updated") && item.updated !== item.date ? 'Updated ' + item.updated : 'Published ' + item.date }} <span class="opacity-50">&sol;</span> {{ item.timeToRead }} min read
+      {{ displayDate }} <span class="opacity-50">&sol;</span> {{ item.timeToRead }} min read
     </div>
     <div class="postcard-title">
       <h2 class="text-2xl font-semibold mb-2">{{ item.title }}</h2>
@@ -17,6 +17,9 @@
 export default {
   props: ['item'],
   computed: {
+    displayDate() {
+      return !this.item.hasOwnProperty("updated") ? this.item.date : (this.item.updated != this.item.date ? `Updated ${this.item.updated}` : `Published ${this.item.date}`);
+    },
     summary() {
       const maxLength = 260;
       const titleLength = Math.round(this.item.title.length * 2.3);
