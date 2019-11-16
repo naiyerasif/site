@@ -41,7 +41,7 @@
           >
             {{ post.item.title }}
 
-            <span class="block font-normal text-sm my-1">{{ post.item.summary }}</span>
+            <span class="block font-normal text-sm my-1">{{ post.item.summary.substr(0, post.item.summary.lastIndexOf(' ', 180)) + ' …' }}</span>
           </a>
 
           <div v-if="results.length === 0" class="bg-background-search font-normal w-full p-4">

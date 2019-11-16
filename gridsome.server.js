@@ -4,6 +4,11 @@ const authorDataSource = path.join(__dirname, 'data/authors.json');
 const authorData = require(authorDataSource);
 const rmmd = require('remove-markdown');
 const { GraphQLString } = require('gridsome/graphql');
+const summarize = (content) => {
+  let idxOfFirstHeader = content.indexOf('###');
+  let firstParagraph = content.substr(0, idxOfFirstHeader);
+  return rmmd(firstParagraph).substr(1);
+}
 
 module.exports = function (api, options) {
   api.loadSource(async ({ addSchemaResolvers, addCollection }) => {
@@ -27,9 +32,7 @@ module.exports = function (api, options) {
         summary: {
           type: GraphQLString,
           resolve(obj) {
-            let idxOfFirstHeader = obj.content.indexOf('###');
-            let firstParagraph = obj.content.substr(0, idxOfFirstHeader);
-            return rmmd(firstParagraph);
+            return summarize(obj.content)
           }
         }
       }
@@ -45,7 +48,7 @@ module.exports = function (api, options) {
       return {
         title: post.title,
         path: post.path,
-        summary: post.summary
+        summary: summarize(post.content)
       }
     });
 
