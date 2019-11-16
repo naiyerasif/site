@@ -3,18 +3,18 @@
     <div class="decorated-links">
       <div class="container mx-auto">
         <div class="w-full sm:w-3/4">
-          <h1 class="text-2xl md:text-5xl font-semibold leading-tight">
+          <div class="text-2xl md:text-5xl font-semibold leading-tight">
             Hello, I am <span id="about-me" class="text-primary-500">Naiyer</span>
-            <br />a full-stack developer
-            <br />from Bengaluru, India.
-          </h1>
+            <br/>a full-stack developer
+            <br/>from Bengaluru, India.
+          </div>
         </div>
       </div>
       <div class="container pt-6 md:pt-16 -mx-10">
         <main class="w-full sm:w-3/4 px-10 py-4 md:py-10 bg-background-main text-xl">
           <p>I have more than 4 years of experience in Banking &amp; Financial Services, Legal &amp; Compliance and Aviation domains.</p>
           <p class="font-semibold mt-4 md:mt-8">Technologies I am adept at &mdash;</p>
-            <div class="pt-4 md:pt-6">
+          <div class="pt-4 md:pt-6">
             <div class="grid row flex flex-wrap -mx-6 md:-mx-2">
               <div class="column flex w-full p-2 sm:w-1/2 md:w-1/3">
                 <div class="card rounded-none md:rounded">
@@ -112,8 +112,12 @@
 
         <section class="w-full sm:w-3/4 px-10 py-4 md:py-10 mt-0 sm:mt-10 bg-background-card text-base">
           <h2 class="font-bold mb-6" id="about-site">About this site</h2>
-          <p class="mb-8">This site started out as a pet project for me to learn <a target="_blank" rel="noopener noreferrer" href="https://vuejs.org/">Vue.js</a> and <a target="_blank" rel="noopener noreferrer" href="https://graphql.org/">GraphQL</a>, and as a way to get my bearing around Vue.js community. Working on this project, I became more informed about accessible color systems, content preloading, optimization of vector illustrations, <a target="_blank" rel="noopener noreferrer" href="https://unifiedjs.com/">unifiedjs</a> ecosystem, and more.</p>
-          <p class="mb-8">Currently, I'm publishing my notes on development and design collected over the years, mostly to serve as a quickly accessible way to share and refer back. The code described in the examples is for the demonstration of the topic under discussion; it is not meant to be used as-is in production.</p>
+          <p class="mb-8">
+            This site started out as a pet project for me to learn <a target="_blank" rel="noopener noreferrer" href="https://vuejs.org/">Vue.js</a> and <a target="_blank" rel="noopener noreferrer" href="https://graphql.org/">GraphQL</a>, and as a way to get my bearing around Vue.js community. Working on this project, I became more informed about accessible color systems, content preloading, optimization of vector illustrations, <a target="_blank" rel="noopener noreferrer" href="https://unifiedjs.com/">unifiedjs</a> ecosystem, and more.
+          </p>
+          <p class="mb-8">
+            Currently, I'm publishing my notes on development and design collected over the years, mostly to serve as a quickly accessible way to share and refer back. The code described in the examples is for the demonstration of the topic under discussion; it is not meant to be used as-is in production.
+          </p>
           <h2 class="font-bold mb-6" id="acknowledgments">Acknowledgements</h2>
           <p class="mb-2">This site was made possible by</p>
           <ul class="mb-8 ml-8">

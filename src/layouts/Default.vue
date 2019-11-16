@@ -2,9 +2,7 @@
   <div class="content-wrapper text-content-body bg-background-body leading-normal flex flex-col min-h-screen" :class="theme">
     <header>
       <nav class="container mx-auto flex flex-wrap justify-between items-center py-4 md:py-16">
-        <div>
-          <g-link to="/"><g-image src="../../static/logo.svg" class="w-40 md:w-56" alt="logo" /></g-link>
-        </div>
+        <g-link to="/"><g-image src="../../static/logo.svg" class="w-40 md:w-56" alt="logo" /></g-link>
         <div class="block lg:hidden">
           <button @click="toggle" class="flex items-center px-3 py-2" title="Menu">
             <svg :class="{ hidden: isOpen }" class="current-color h-5 w-5" viewBox="0 0 20 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M6.961,12l14.039,0"/><path d="M3,6l18,0"/><path d="M10.955,18l10.045,0"/></svg>
@@ -35,14 +33,13 @@
     <footer class="bg-background-footer text-content-footer z-10 decorated-links">
       <div class="container mx-auto flex flex-col lg:flex-row md:items-center justify-between py-8">
         <div class="mb-8 lg:mb-0 w-full">
-          <div>
-            <p>Copyright &copy; {{ year }} Naiyer Asif</p>
+          <p>Copyright &copy; {{ year }} Naiyer Asif</p>
             <p>Source licensed
             <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/mflash.dev/blob/release/LICENSE">MIT</a>, content
-            <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/">CC by SA</a></p>
+            <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/">CC by SA</a>
+            </p>
             <p><a href="/sitemap.xml" title="Sitemap">Sitemap</a> &middot;
             <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/mflash.dev/issues/new">Report an issue</a></p>
-          </div>
         </div>
         <ul class="flex items-center w-full">
           <li class="mr-6">

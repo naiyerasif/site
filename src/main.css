@@ -284,7 +284,7 @@ nav .active {
 }
 
 .card {
-  @apply bg-background-card w-full overflow-hidden shadow text-base;
+  @apply block bg-background-card w-full overflow-hidden shadow text-base;
 }
 
 .card-category {

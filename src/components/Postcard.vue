@@ -1,16 +1,16 @@
 <template>
-  <g-link :to="item.path" class="postcard rounded-none md:rounded bg-background-postcard hover:bg-background-postcardh text-content-body hover:text-primary-700">
+  <div class="postcard rounded-none md:rounded bg-background-postcard hover:bg-background-postcardh">
     <div class="postcard-metadata">
       <g-link class="tag" v-for="tag in item.tags" :key="tag.id" :to="tag.path">
         <span>#</span>{{ tag.title }}
       </g-link>
       {{ displayDate }} <span class="opacity-50">&sol;</span> {{ item.timeToRead }} min read
     </div>
-    <div class="postcard-title">
+    <g-link :to="item.path" class="postcard-title text-content-body hover:text-primary-700">
       <h2 class="text-2xl font-semibold mb-2">{{ item.title }}</h2>
       <div class="text-sm font-normal">{{ summary }}</div>
-    </div>
-  </g-link>
+    </g-link>
+  </div>
 </template>
 
 <script>
@@ -44,6 +44,6 @@ export default {
 }
 
 .postcard-title {
-  @apply my-1;
+  @apply block my-1;
 }
 </style>

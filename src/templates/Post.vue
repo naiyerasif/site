@@ -1,22 +1,20 @@
 <template>
   <Layout>
-    <section>
-      <div class="container mx-auto mt-2 sm:mt-0 sm:mb-4">
-        <div class="w-full sm:w-3/4">
-          <h1 class="text-2xl md:text-5xl font-semibold leading-tight mb-4">{{ $page.post.title }}</h1>
-          <div class="flex items-center pb-2" v-for="author in $page.post.author" :key="author.id">
-            <g-image :alt="author.title" :src="author.avatar" class="h-10 w-10 rounded-full shadow mx-0 mr-2" />
-            <div class="text-left text-sm">
-              <g-link class="font-semibold" :to="author.path">{{ author.title }}</g-link>
-              <p>{{ displayDate }}</p>
-            </div>
+    <section class="container mx-auto mt-2 sm:mt-0 sm:mb-4">
+      <div class="w-full sm:w-3/4">
+        <h1 class="text-2xl md:text-5xl font-semibold leading-tight mb-4">{{ $page.post.title }}</h1>
+        <div class="flex items-center pb-2" v-for="author in $page.post.author" :key="author.id">
+          <g-image :alt="author.title" :src="author.avatar" class="h-10 w-10 rounded-full shadow mx-0 mr-2" />
+          <div class="text-left text-sm">
+            <g-link class="font-semibold" :to="author.path">{{ author.title }}</g-link>
+            <p>{{ displayDate }}</p>
           </div>
-          <div class="flex text-sm items-center">
-            <g-link :to="tag.path" v-for="(tag, i) in $page.post.tags" :key="tag.id" :class="{'font-bold': i === 0}" class="tag">
-              <span v-if="i !== 0">#</span>{{ tag.title }}
-            </g-link> 
-            <p><span class="opacity-25">&sol;</span> {{ $page.post.timeToRead }} min read</p>
-          </div>
+        </div>
+        <div class="flex text-sm items-center">
+          <g-link :to="tag.path" v-for="(tag, i) in $page.post.tags" :key="tag.id" :class="{'font-bold': i === 0}" class="tag">
+            <span v-if="i !== 0">#</span>{{ tag.title }}
+          </g-link> 
+          <p><span class="opacity-25">&sol;</span> {{ $page.post.timeToRead }} min read</p>
         </div>
       </div>
     </section>
