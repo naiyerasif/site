@@ -79,12 +79,14 @@ export default {
       options: {
         shouldSort: true,
         includeMatches: true,
-        threshold: 0.5,
+        tokenize: true,
+        matchAllTokens: true,
+        threshold: 0.4,
         location: 0,
-        distance: 500,
+        distance: 600,
         maxPatternLength: 32,
         minMatchCharLength: 1,
-        keys: ['title', 'summary']
+        keys: ['title','summary']
       }
     }
   },
