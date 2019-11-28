@@ -4,7 +4,6 @@ Personal website of Naiyer Asif, made possible by
 
 - [Gridsome](https://gridsome.org/): a modern Vue.js framework for static websites
 - [Gridsome Portfolio Starter](https://github.com/drehimself/gridsome-portfolio-starter): a simple portfolio starter for Gridsome
-- [tailwindcss](https://tailwindcss.com/): a utility-first CSS framework
 - [Fuse.js](https://fusejs.io/): a lightweight fuzzy-search library
 - [Shiki](https://github.com/octref/shiki): a beauiful syntax highlighter
 - [Feather Icons](https://feathericons.com/): beautiful open-source icons
@@ -22,3 +21,4 @@ It uses
 - graphics and illustrations created with [Affinity Designer](https://affinity.serif.com/en-gb/designer/) and [Adobe XD](https://www.adobe.com/in/products/xd.html)
 
 The source of this site is available under [MIT](./LICENSE), the content under [CC by SA](https://creativecommons.org/licenses/by-sa/4.0/).
+

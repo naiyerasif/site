@@ -1,14 +1,14 @@
 <template>
-  <div class="postcard rounded-none md:rounded bg-background-postcard hover:bg-background-postcardh">
+  <div class="postcard">
     <div class="postcard-metadata">
-      <g-link class="tag" v-for="tag in item.tags" :key="tag.id" :to="tag.path">
-        <span>#</span>{{ tag.title }}
+      <g-link v-for="tag in item.tags" :key="tag.id" :to="tag.path">
+        #{{ tag.title }}
       </g-link>
-      {{ displayDate }} <span class="opacity-50">&sol;</span> {{ item.timeToRead }} min read
+      <span class="slash">&sol;</span> {{ displayDate }} <span class="slash">&sol;</span> {{ item.timeToRead }} min read
     </div>
-    <g-link :to="item.path" class="postcard-title text-content-body hover:text-primary-700">
-      <h2 class="text-2xl font-semibold mb-2">{{ item.title }}</h2>
-      <div class="text-sm font-normal">{{ summary }}</div>
+    <g-link :to="item.path" class="postcard-title">
+      <h2>{{ item.title }}</h2>
+      <div>{{ summary }}</div>
     </g-link>
   </div>
 </template>
@@ -34,16 +34,55 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
 .postcard {
-  @apply w-full overflow-hidden shadow p-6 z-0;
-}
+  width: $expanse-full;
+  overflow: hidden;
+  box-shadow: $shadow;
+  padding: $gap-sl;
+  border-radius: $radius-0;
+  background-color: var(--background-card);
 
-.postcard-metadata {
-  @apply tracking-wide text-xs mb-2 text-content-body;
-}
+  &:focus, &:hover {
+    background-color: var(--background-card-hover);
+  }
 
-.postcard-title {
-  @apply block my-1;
+  @include tablet-portrait {
+    border-radius: $radius;
+  }
+
+  .postcard-metadata, .postcard-title {
+    color: var(--text-block);
+  }
+
+  .postcard-metadata {
+    letter-spacing: $text-relaxed;
+    font-size: $text-xs;
+  }
+
+  .postcard-title {
+    display: block;
+    margin-top: $gap-xs / 2;
+    margin-bottom: $gap-xs / 2;
+
+    &:focus, &:hover {
+      color: $color-visited-link;
+    }
+
+    h2 {
+      font-size: $text-md;
+      font-weight: $font-semibold;
+      margin-bottom: $gap-sm;
+
+      @include tablet-portrait {
+        font-size: $text-lg;
+      }
+    }
+
+    div {
+      font-size: $text-sm;
+      font-weight: $font-normal;
+    }
+  }
 }
 </style>

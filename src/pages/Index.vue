@@ -1,29 +1,17 @@
 <template>
   <Layout>
-    <div class="font-sans">
-      <div class="container mx-auto mb-3 sm:mb-12">
-        <div class="w-full sm:w-3/4">
-          <div class="text-2xl md:text-5xl font-semibold leading-tight">
-            &mdash; A collection<br/>
-            of thoughts and processes<br/>
-            on development and design<br/>
-            by <g-link class="font-semibold" to="/about/naiyer/">Naiyer Asif</g-link>
-          </div>
+    <Hero>
+      &mdash; Reflections on<br/>
+      design and development<br/>
+      by <g-link to="/about/naiyer/">Naiyer Asif</g-link>
+    </Hero>
+    <div class="container posts">
+      <div class="grid-2">
+        <div class="column" v-for="post in $page.posts.edges" :key="post.id">
+          <PostCard :item="post.node"/>
         </div>
       </div>
-    </div>
-    <div class="container mx-auto">
-      <div class="w-full sm:w-6/7">
-        <div class="grid row flex flex-wrap -mx-6">
-          <div v-for="post in $page.posts.edges" :key="post.id" class="column flex w-full sm:px-6 py-2 sm:py-6 sm:w-1/2">
-            <postcard :item="post.node" />
-          </div>
-        </div>
-        <pagination class="mt-4 mb-0 sm:my-4 sm:w-3/7"
-          v-if="$page.posts.pageInfo.totalPages > 1"
-          :info="$page.posts.pageInfo"
-        />
-      </div>
+      <Pagination class="post-pagination" v-if="$page.posts.pageInfo.totalPages > 1" :info="$page.posts.pageInfo"/>
     </div>
   </Layout>
 </template>
@@ -56,17 +44,20 @@ query Posts ($page: Int) {
 </page-query>
 
 <script>
+import Hero from '~/components/Hero'
 import Pagination from '~/components/Pagination'
-import Postcard from '~/components/Postcard'
+import PostCard from '~/components/PostCard'
 
 export default {
-  metaInfo: {
-    title: 'Home'
+  metaInfo() {
+    return {
+      title: 'Home'
+    }
   },
   components: {
+    Hero,
     Pagination,
-    Postcard
+    PostCard
   }
 }
 </script>
-

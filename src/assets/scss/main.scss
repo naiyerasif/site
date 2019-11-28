@@ -1,0 +1,212 @@
+@charset "UTF-8";
+
+@import "./reset";
+@import "./fonts";
+@import "./colors";
+@import "./setup";
+@import "./mixins";
+
+* {
+  &::-webkit-scrollbar,
+  &::-webkit-scrollbar-track {
+    background-color: var(--background-scrollbar-track);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--background-scrollbar-thumb);
+  }
+
+  &::-webkit-scrollbar-button {
+    background-color: var(--background-scrollbar-button);
+  }
+
+  &::-moz-selection { 
+    background: $selection; 
+  }
+  
+  &::selection { 
+    background: $selection; 
+  }
+}
+
+body {
+  @include default-font;
+  font-size: $text-default;
+  background-color: var(--background-default);
+  background-image: linear-gradient(to top, var(--background-default) 0%, var(--background-default-darker) 100%);
+  min-height: 100vh;
+  color: var(--text-default);
+  text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+a {
+  color: $color-link;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: $font-semibold;
+
+  &:focus, &:hover {
+    color: $color-visited-link;
+  }
+
+  strong {
+    color: currentColor;
+  }
+}
+
+.remarkability, .attrib, .post {
+  a {
+    &[rel] {
+      &::after {
+        content: '\02197';
+      }
+    }
+  }
+}
+
+hr {
+  background-color: var(--text-default-muted);
+  border: none;
+  display: block;
+  height: 1px;
+}
+
+p {
+  margin-bottom: $gap-xs;
+}
+
+input {
+  @include default-font;
+  font-size: $text-default;
+  color: var(--text-default);
+
+  &::placeholder {
+    color: var(--text-default);
+    opacity: .5;
+  }
+}
+
+.container {
+  flex-grow: 1;
+  margin: 0 auto;
+  position: relative;
+  width: auto;
+  padding-left: $gap;
+  padding-right: $gap;
+
+  @include tablet-portrait {
+    padding-left: $gap-lg;
+    padding-right: $gap-lg;
+  }
+
+  @include tablet-landscape {
+    padding-left: $gap-ws;
+    padding-right: $gap-ws;
+  }
+}
+
+.icon {
+  width: $media-sm;
+  height: $media-sm;
+  vertical-align: middle;
+}
+
+.slash {
+  opacity: .25;
+}
+
+.post {
+  padding-top: $gap;
+  padding-bottom: $gap;
+  margin-right: -$gap-md;
+  margin-left: -$gap-md;
+
+  @include tablet-landscape {
+    padding-top: $gap-md;
+    padding-bottom: $gap-md;
+  }
+
+  .article {
+    width: $expanse-full;
+    padding: $gap-md;
+    background-color: var(--background-card);
+
+    @include tablet-landscape {
+      width: $expanse-half * 1.5;
+    }
+  }
+}
+
+.post-edit {
+  z-index: $rise-md;
+  margin-top: $gap-md;
+  margin-bottom: $gap-md;
+
+  @include tablet-portrait {
+    margin-bottom: $gap;
+  }
+
+  svg {
+    margin-right: $gap-xs / 2;
+    margin-left: $gap-xs;
+  }
+}
+
+.card {
+  display: block;
+  background-color: var(--background-card-hover);
+  width: $expanse-full;
+  overflow: hidden;
+  box-shadow: $shadow;
+  border-radius: $radius;
+  padding: $gap-sm;
+  font-size: $text-sm;
+
+  .card-category {
+    letter-spacing: $text-relaxed;
+    font-size: $text-xs;
+    text-transform: uppercase;
+  }
+
+  .card-title {
+    margin-top: $gap-xs;
+    margin-bottom: $gap-xs;
+    font-weight: $font-bold;
+    font-size: $text-default;
+  }
+}
+
+.grid-3 {
+  @include grid($gap-sm, 3);
+}
+
+.grid-2 {
+  @include grid($gap-sl, 2);
+}
+
+.posts {
+  width: $expanse-full;
+
+  @include tablet-portrait {
+    margin-left: $gap-0;
+    margin-right: $gap-0;
+    width: $expanse-full * .875;
+  }
+
+  .post-pagination {
+    margin-top: $gap;
+    margin-bottom: $gap-md;
+
+    @include tablet-landscape {
+      width: $expanse-half * .85;
+      margin-bottom: $gap-0;
+    }
+  }
+}
+
+.emphasis {
+  color: $color-link;
+}

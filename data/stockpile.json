@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "title": "Remarkability",
+    "type": "Styles",
+    "description": "Baseline CSS for HTML generated from markdown",
+    "link": "https://mflash.dev/remarkability/"
+  },
+  {
+    "id": "2",
+    "title": "Git Cheatsheet",
+    "type": "Cheatsheet",
+    "description": "A selection of useful git commands and shortcuts",
+    "link": "https://github.com/Microflash/git-cheatsheet.git"
+  },
+  {
+    "id": "3",
+    "title": "stockpile",
+    "type": "Collection",
+    "description": "Useful tools for execution, operations and more for full-stack developers",
+    "link": "https://github.com/Microflash/stockpile.git"
+  }
+]

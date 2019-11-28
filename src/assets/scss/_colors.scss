@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+$main: (
+  "100": hsl(162, 39%, 61%),
+  "200": hsl(163, 38%, 56%),
+  "300": hsl(164, 37%, 50%),
+  "400": hsl(165, 48%, 44%),
+  "500": hsl(166, 67%, 37%),
+  "600": hsl(166, 65%, 34%),
+  "700": hsl(167, 64%, 31%),
+  "800": hsl(166, 62%, 28%),
+  "900": hsl(167, 60%, 25%),
+  "a100": hsl(160, 24%, 22%),
+  "a200": hsl(160, 24%, 20%),
+  "a300": hsl(166, 61%, 11%),
+  "a600": hsl(156, 34%, 98%),
+  "a700": hsl(160, 30%, 94%),
+  "a800": hsl(162, 26%, 89%),
+  "a900": hsl(164, 26%, 87%)
+);
+
+$aux: (
+  "100": hsl(244, 19%, 85%),
+  "200": hsl(248, 18%, 74%),
+  "300": hsl(249, 18%, 63%),
+  "400": hsl(249, 17%, 53%),
+  "500": hsl(248, 22%, 43%),
+  "600": hsl(246, 21%, 35%),
+  "700": hsl(246, 20%, 27%),
+  "800": hsl(246, 18%, 20%),
+  "900": hsl(240, 15%, 13%),
+  "a100": hsl(246, 26%, 21%),
+  "a200": hsl(247, 16%, 11%),
+  "a300": hsl(252, 25%, 8%),
+  "a600": hsl(249, 17%, 92%),
+  "a700": hsl(245, 18%, 87%),
+  "a800": hsl(249, 20%, 80%),
+  "a900": hsl(249, 19%, 71%)
+);
+
+$black: hsl(0, 0%, 0%);
+$white: hsl(0, 0%, 100%);
+$selection: hsla(166, 64%, 38%, 0.25);
+
+@function main($variation) {
+  @return map-get($main, $variation);
+}
+
+@function aux($variation) {
+  @return map-get($aux, $variation);
+}
+
+[data-theme="light"] {
+  --background-default: #{$white};
+  --background-default-darker: #{main("a600")};
+  --background-code: #{main("a800")};
+  --background-search: #{main("a800")};
+  --background-search-hover: #{main("a700")};
+  --background-search-highlighted: #{main("a800")};
+  --background-card: #{main("a700")};
+  --background-card-hover: #{main("a800")};
+  --background-scrollbar-track: #{main("a800")};
+  --background-scrollbar-thumb: #{main("200")};
+  --background-scrollbar-button: #{lighten(main("100"), 10%)};
+  --text-default: #{aux("900")};
+  --text-default-muted: #{main("300")};
+  --text-search-muted: #{aux("600")};
+  --border-muted: #{transparentize(main("100"), .7)};
+  --border: #{transparentize(main("100"), .2)};
+  --remarkable-0: #{aux("800")};
+  --remarkable-0-transparent: #25263200;
+  --remarkable-0-opaque: #252632FF;
+
+  scrollbar-color: light;
+}
+
+[data-theme="dark"] {
+  --background-default: #{aux("900")};
+  --background-default-darker: #{aux("a300")};
+  --background-code: #{aux("800")};
+  --background-search: #{aux("a100")};
+  --background-search-hover: #{darken(aux("a100"), 5%)};
+  --background-search-highlighted: #{darken(aux("a100"), 10%)};
+  --background-card: #{aux("a300")};
+  --background-card-hover: #{lighten($black, 4%)};
+  --background-scrollbar-track: #{darken(aux("a300"), 10%)};
+  --background-scrollbar-thumb: #{lighten(aux("a200"), 10%)};
+  --background-scrollbar-button: #{lighten(aux("a200"), 5%)};
+  --text-default: #{aux("a800")};
+  --text-default-muted: #{main("800")};
+  --text-search-muted: #{aux("300")};
+  --border-muted: #{transparentize(aux("900"), .25)};
+  --border: #{aux("800")};
+  --remarkable-0: #{transparentize(aux("800"), .5)};
+  --remarkable-0-transparent: #2E344000;
+  --remarkable-0-opaque: #2E3440FF;
+
+  scrollbar-color: dark;
+}

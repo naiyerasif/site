@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+$width-phone: 599px !default;
+$width-tablet-portrait: 600px !default;
+$width-tablet-landscape: 900px !default;
+$width-desktop-mdpi: 1200px !default;
+$width-desktop-hdpi: 1800px !default;
+
+$family-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+  "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  "Helvetica", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+  "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$family-sans-var: "Inter var" !default;
+$family-code: "Iosevka SS05", "Roboto Mono", "Menlo", "Monaco", "Inconsolata",
+  "Consolas", "Liberation Mono", "Courier New", monospace !default;
+$family-remarkability: $family-sans-var, $family-sans !default;
+
+$font-normal: 400 !default;
+$font-semibold: 600 !default;
+$font-bold: 700 !default;
+
+$text-xs: .75rem !default;
+$text-sm: .875rem !default;
+$text-default: 1rem !default;
+$text-md: 1.25rem !default;
+$text-lg: 1.5rem !default;
+$text-xl: 1.75rem !default;
+$text-2xl: 2rem !default;
+$text-3xl: 3rem !default;
+
+$font-size: 1.125rem !default;
+$weight-headings: 600 !default;
+
+$text-relaxed: 0.025em !default;
+
+$expanse-full: 100% !default;
+$expanse-half: 50% !default;
+$expanse-md: 20rem !default;
+$expanse-lg: 27rem !default;
+
+$media-sm: 1.5rem !default;
+$media-lg: 2rem !default;
+$media-ws: 10rem !default;
+$media-hd: 14rem !default;
+
+$gap-0: 0 !default;
+$gap-xs: .5rem !default;
+$gap-sm: .75rem !default;
+$gap: 1rem !default;
+$gap-sl: 1.5rem !default;
+$gap-md: 2rem !default;
+$gap-ml: 2.5rem !default;
+$gap-lg: 3rem !default;
+$gap-xl: 4rem !default;
+$gap-ws: 10vw !default;
+
+$radius-0: 0 !default;
+$radius: .25rem !default;
+$radius-all: 100% !default;
+
+$shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !default;
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !default;
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !default;
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !default;
+
+$rise-md: 10 !default;
+$rise-lg: 15 !default;
+$rise-xl: 20 !default;
+
+$color-link: main("500") !default;
+$color-visited-link: main("800") !default;
+$color-monospace: inherit !default;
+
+$color-custom: aux("400") !default;
+$color-custom-visited: aux("200") !default;
+
+$color-text-light: var(--text-search-muted) !default;
+$color-default: inherit !default;
+$color-emphasis: inherit !default;
+
+$background-code: var(--background-code) !default;
+$background-ins: var(--background-code) !default;
+$background-mark: var(--background-code) !default;
+$background-table: inherit !default;
+$background-table-even: var(--background-code) !default;
+$background-table-hover: var(--border-muted) !default;
+$border: var(--border) !default;
+
+$closer-lists: true !default;
+$custom-colors: true !default;
+$custom-fonts: true !default;
+$text-adjusting: true !default;

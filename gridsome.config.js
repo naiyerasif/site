@@ -1,33 +1,36 @@
-const tailwind = require('tailwindcss');
-const purgecss = require('@fullhuman/postcss-purgecss');
-const marked = require('marked');
-const shiki = require('shiki');
+const path = require('path')
+const marked = require('marked')
+const stripTocRenderer = require('./marked.config').stripTocRenderer
+const shiki = require('shiki')
+const site = require('./data/site.json')
 
-const postcssPlugins = [
-  tailwind(),
-];
+const addStyleResources = (rule) => {
+  rule.use('style-resource')
+    .loader('style-resources-loader')
+    .options({
+      patterns: [
+        path.resolve(__dirname, './src/assets/scss/main.scss')
+      ]
+    })
+}
 
-const newRenderer = new marked.Renderer();
-const defaultRenderer = new marked.Renderer();
-newRenderer.heading = function (text, level, raw, slugger) {
-  if (level === 3 && text === 'Table of Contents') {
-    return ''
-  } else {
-    return defaultRenderer.heading(text, level, raw, slugger)
+const shikiOptions = {
+  theme: shiki.loadTheme('./static/remarkable.json'),
+  skipInline: true
+}
+
+const remarkOptions = (maxDepth) => {
+  return { 
+    maxDepth: maxDepth, 
+    tight: true 
   }
 }
 
-const remarkable = shiki.loadTheme('./static/remarkable.json');
-
-if (process.env.NODE_ENV === 'production') {
-  postcssPlugins.push(purgecss())
-}
-
 module.exports = {
-  siteName: 'Microflash',
-  siteDescription: 'Personal website of Naiyer Asif',
-  siteUrl: 'https://mflash.dev',
-  titleTemplate: '%s — Microflash',
+  siteName: site.title,
+  siteDescription: site.description,
+  siteUrl: site.url,
+  titleTemplate: `%s · ${site.title}`,
   outputDir: 'public',
   permalinks: {
     slugify: {
@@ -40,7 +43,6 @@ module.exports = {
   },
   templates: {
     Post: '/blog/:year/:month/:day/:path',
-    Cheatsheet: '/content/cheatsheet/:path',
     Author: '/about/:id',
     Tag: '/tag/:id'
   },
@@ -59,24 +61,8 @@ module.exports = {
         },
         remark: {
           plugins: [
-            ['gridsome-plugin-remark-shiki', { theme: remarkable, skipInline: true }],
-            ['remark-toc', { maxDepth: 3, tight: true }]
-          ]
-        }
-      }
-    },
-    {
-      use: '@gridsome/source-filesystem',
-      options: {
-        path: 'content/cheatsheet/*.md',
-        typeName: 'Cheatsheet',
-        refs: {
-          author: 'Author'
-        },
-        remark: {
-          plugins: [
-            ['gridsome-plugin-remark-shiki', { theme: remarkable, skipInline: true }],
-            ['remark-toc', { maxDepth: 2, tight: true }]
+            ['gridsome-plugin-remark-shiki', shikiOptions],
+            ['remark-toc', remarkOptions(3)]
           ]
         }
       }
@@ -86,12 +72,12 @@ module.exports = {
       options: {
         contentTypes: ['Post'],
         feedOptions: {
-          title: 'Microflash',
-          description: 'Blog of Naiyer Asif',
-          id: 'https://mflash.dev/',
-          link: 'https://mflash.dev/',
-          image: 'https://raw.githubusercontent.com/Microflash/mflash.dev/release/src/favicon.png',
-          copyright: 'Copyright 2019, Naiyer Asif',
+          title: site.title,
+          description: site.description,
+          id: site.url,
+          link: site.url,
+          image: site.favicon,
+          copyright: site.copyright,
         },
         rss: {
           enabled: true,
@@ -113,12 +99,12 @@ module.exports = {
           description: node.summary,
           author: [
             {
-              name: '@Microflash',
-              email: 'Naiyer Asif',
-              link: 'https://mflash.dev/about/naiyer'
+              name: `@${site.title}`,
+              email: site.maintainer,
+              link: site.about
             }
           ],
-          content: marked(node.content, { renderer: newRenderer })
+          content: marked(node.content, { renderer: stripTocRenderer })
         })
       }
     },
@@ -131,7 +117,7 @@ module.exports = {
     {
       use: '@gridsome/plugin-google-analytics',
       options: {
-        id: 'UA-143076148-1'
+        id: site.gatid
       }
     }
   ],
@@ -141,14 +127,11 @@ module.exports = {
       externalLinksRel: ['nofollow', 'noopener', 'noreferrer'],
       slug: true,
       autolinkHeadings: true,
-      autolinkClassName: 'icon icon-link'
+      autolinkClassName: 'toclink'
     }
   },
-  css: {
-    loaderOptions: {
-      postcss: {
-        plugins: postcssPlugins,
-      },
-    },
-  },
-};
+  chainWebpack(config) {
+    const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
+    types.forEach(type => addStyleResources(config.module.rule('scss').oneOf(type)))
+  }
+}

@@ -1,0 +1,73 @@
+@charset "UTF-8";
+
+@mixin default-font {
+  font-family: $family-sans;
+
+  @supports (font-variation-settings: normal) {
+    font-family: $family-sans-var, $family-sans;
+  }
+}
+
+@mixin phone-only {
+  @media screen and (max-width: $width-phone) {
+    @content;
+  }
+}
+
+@mixin tablet-portrait {
+  @media screen and (min-width: $width-tablet-portrait) {
+    @content;
+  }
+}
+
+@mixin tablet-landscape {
+  @media screen and (min-width: $width-tablet-landscape) {
+    @content;
+  }
+}
+
+@mixin desktop-mdpi {
+  @media screen and (min-width: $width-desktop-mdpi) {
+    @content;
+  }
+}
+
+@mixin desktop-hdpi {
+  @media screen and (min-width: $width-desktop-hdpi) {
+    @content;
+  }
+}
+
+@mixin hidden {
+  visibility: hidden;
+  display: none;
+}
+
+@mixin visible {
+  visibility: initial;
+  display: unset;
+}
+
+@mixin grid($gutter, $columns) {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -$gutter;
+  margin-left: -$gutter;
+
+  .column {
+    display: flex;
+    width: $expanse-full;
+    padding-top: $gutter;
+    padding-bottom: $gutter;
+
+    @include phone-only {
+      padding-top: $gutter / 2;
+      padding-bottom: $gutter / 2;
+    }
+
+    @include tablet-landscape {
+      width: $expanse-full / $columns;
+      padding: $gutter;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "title": "Microflash",
+  "description": "Reflections on design and development by Naiyer Asif",
+  "url": "https://mflash.dev",
+  "favicon": "https://raw.githubusercontent.com/Microflash/microflash.github.io/release/src/favicon.png",
+  "copyright": "Copyright 2019, Naiyer Asif",
+  "maintainer": "Naiyer Asif",
+  "about": "https://mflash.dev/about/naiyer",
+  "gatid": "UA-143076148-1"
+}

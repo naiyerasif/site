@@ -1,13 +1,12 @@
 *.log
 .cache
 .DS_Store
-.idea/
 content/draft/
-key
 src/.temp
 node_modules
+dist
+key
 public
+static/search.json
 .env
 .env.*
-static/rss.xml
-static/search.json

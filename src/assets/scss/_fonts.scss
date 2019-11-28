@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+$default-formats: ("woff2", "woff");
+
+@function _contains($list, $values...) {
+  @each $value in $values {
+    @if type-of(index($list, $value)) != "number" {
+      @return false;
+    }
+  }
+
+  @return true;
+}
+
+@function _declare-font-src($font-family, $file-path, $file-formats) {
+  $src: ();
+
+  $formats-map: (
+    "eot": "#{$file-path}.eot?#iefix"format("embedded-opentype"),
+    "woff2 supports variations(gvar)": "#{$file-path}.woff2"format("woff2 supports variations(gvar)"),
+    "woff2-variations": "#{$file-path}.woff2"format("woff2-variations"),
+    "woff2": "#{$file-path}.woff2"format("woff2"),
+    "woff": "#{$file-path}.woff"format("woff"),
+    "svg": "#{$file-path}.svg##{$font-family}"format("svg")
+  );
+
+  @each $format in $file-formats {
+    @if _contains(map-keys($formats-map), $format) {
+      $value: map-get($formats-map, $format);
+      $file-path: nth($value, 1);
+      $font-format: nth($value, 2);
+
+      $src: append($src, url($file-path) $font-format, comma);
+    } @else {
+      @error "`#{$file-formats}` contains an unsupported font file format. " +
+             "Must be `eot`, `woff2 supports variations(gvar)`, `woff2-variations`, `woff2`, `woff` and/or `svg`.";
+    }
+  }
+
+  @return $src;
+}
+
+@mixin font-face($font-family, $file-path, $file-formats: $default-formats) {
+  @font-face {
+    font-family: $font-family;
+    font-display: swap;
+    src: _declare-font-src($font-family, $file-path, $file-formats);
+    @content;
+  }
+}
+
+@include font-face("Inter", "/fonts/Inter-Regular") {
+  font-style: normal;
+  font-weight: 400;
+}
+
+@include font-face("Inter", "/fonts/Inter-Italic") {
+  font-style: italic;
+  font-weight: 400;
+}
+
+@include font-face("Inter", "/fonts/Inter-SemiBold") {
+  font-style: normal;
+  font-weight: 600;
+}
+
+@include font-face("Inter", "/fonts/Inter-SemiBoldItalic") {
+  font-style: italic;
+  font-weight: 600;
+}
+
+@include font-face("Inter", "/fonts/Inter-Bold") {
+  font-style: normal;
+  font-weight: 700;
+}
+
+@include font-face("Inter", "/fonts/Inter-BoldItalic") {
+  font-style: italic;
+  font-weight: 700;
+}
+
+@include font-face(
+  "Inter var",
+  "/fonts/Inter-upright.var",
+  ("woff2 supports variations(gvar)", "woff2-variations", "woff2")
+) {
+  font-style: normal;
+  font-weight: 100 900;
+  font-named-instance: "Regular";
+}
+
+@include font-face(
+  "Inter var",
+  "/fonts/Inter-italic.var",
+  ("woff2 supports variations(gvar)", "woff2-variations", "woff2")
+) {
+  font-style: italic;
+  font-weight: 100 900;
+  font-named-instance: "Italic";
+}
+
+@include font-face("Iosevka SS05", "/fonts/iosevka-ss05-regular") {
+  font-style: normal;
+  font-weight: 400;
+}
+
+@include font-face("Iosevka SS05", "/fonts/iosevka-ss05-bold") {
+  font-style: normal;
+  font-weight: 700;
+}

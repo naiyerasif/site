@@ -1,20 +1,22 @@
-const path = require('path');
-const fs = require('fs');
-const authorDataSource = path.join(__dirname, 'data/authors.json');
-const authorData = require(authorDataSource);
-const rmmd = require('remove-markdown');
-const { GraphQLString } = require('gridsome/graphql');
+const path = require('path')
+const fs = require('fs')
+const authorDataSource = './data/authors.json'
+const authorData = require(authorDataSource)
+const stockpileDataSource = './data/stockpile.json'
+const stockpileData = require(stockpileDataSource)
+const { GraphQLString } = require('gridsome/graphql')
+const marked = require('marked')
+const plainTextRenderer = require('./marked.config').plainTextRenderer
+
 const summarize = (content) => {
-  let idxOfFirstHeader = content.indexOf('###');
-  let firstParagraph = content.substr(0, idxOfFirstHeader);
-  return rmmd(firstParagraph).substr(1);
+  const idxOfFirstHeader = content.indexOf('###')
+  const firstParagraph = content.substr(0, idxOfFirstHeader)
+  return marked(firstParagraph, { renderer: plainTextRenderer, sanitize: false }).replace('&#39;', '\'')
 }
 
 module.exports = function (api, options) {
-  api.loadSource(async ({ addSchemaResolvers, addCollection }) => {
-    // Add Authors
-    const authors = addCollection('Author');
-
+  api.loadSource(({ addSchemaResolvers, addCollection }) => {
+    const authors = addCollection('Author')
     authorData.forEach(({ id, name: title, ...fields }) => {
       authors.addNode({
         id,
@@ -24,25 +26,35 @@ module.exports = function (api, options) {
         },
         ...fields
       })
-    });
+    })
 
-    // Generate summary from the first paragraph of a Post
+    const stockpile = addCollection('Stockpile')
+    stockpileData.forEach(({ id, title: title, ...fields }) => {
+      stockpile.addNode({
+        id,
+        title,
+        internal: {
+          origin: stockpileDataSource
+        },
+        ...fields
+      })
+    })
+
     addSchemaResolvers({
       Post: {
         summary: {
           type: GraphQLString,
-          resolve(obj) {
-            return summarize(obj.content)
+          resolve(post) {
+            return summarize(post.content)
           }
         }
       }
-    });
-  });
+    })
+  })
 
   api.beforeBuild(({ store }) => {
 
-    // Generate an index file for Fuse to search Posts
-    const { collection } = store.getCollection('Post');
+    const { collection } = store.getCollection('Post')
 
     const posts = collection.data.map(post => {
       return {
@@ -50,25 +62,22 @@ module.exports = function (api, options) {
         path: post.path,
         summary: summarize(post.content)
       }
-    });
+    })
 
     const output = {
       dir: './static',
       name: 'search.json',
       ...options.output
-    };
-
-    const outputPath = path.resolve(process.cwd(), output.dir);
-    const outputPathExists = fs.existsSync(outputPath);
-    const fileName = output.name.endsWith('.json')
-      ? output.name
-      : `${ output.name }.json`;
-
-    if (outputPathExists) {
-      fs.writeFileSync(path.resolve(process.cwd(), output.dir, fileName), JSON.stringify(posts))
-    } else {
-      fs.mkdirSync(outputPath);
-      fs.writeFileSync(path.resolve(process.cwd(), output.dir, fileName), JSON.stringify(posts))
     }
+
+    const outputPath = path.resolve(process.cwd(), output.dir)
+    const outputPathExists = fs.existsSync(outputPath)
+    const fileName = output.name.endsWith('.json') ? output.name : `${output.name}.json`
+
+    if (!outputPathExists) {
+      fs.mkdirSync(outputPath)
+    }
+
+    fs.writeFileSync(path.resolve(process.cwd(), output.dir, fileName), JSON.stringify(posts))
   })
-};
+}

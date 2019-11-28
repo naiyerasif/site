@@ -1,6 +1,8 @@
+import '~/assets/scss/main.scss'
 import DefaultLayout from '~/layouts/Default.vue'
-import VueScrollTo from 'vue-scrollto'
 import VueFuse from 'vue-fuse'
+import VueScrollTo from 'vue-scrollto'
+import site from '../data/site.json'
 
 export default function (Vue, { router, head, isClient }) {
   Vue.component('Layout', DefaultLayout)
@@ -8,22 +10,17 @@ export default function (Vue, { router, head, isClient }) {
   Vue.use(VueScrollTo, {
     duration: 500,
     easing: 'ease',
-  });
+  })
 
-  Vue.use(VueFuse);
-
-  head.meta.push({
-    name: 'keywords',
-    content: 'Java,Spring,Microservices,Docker,Jenkins,Angular,Node.js'
-  });
+  Vue.use(VueFuse)
 
   head.meta.push({
     name: 'description',
-    content: 'Personal website of Naiyer Asif'
-  });
+    content: site.description
+  })
 
   head.meta.push({
     name: 'author',
-    content: 'Naiyer Asif'
-  });
+    content: site.maintainer
+  })
 }

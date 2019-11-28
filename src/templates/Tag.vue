@@ -1,23 +1,13 @@
 <template>
   <Layout>
-    <section class="container mx-auto mb-3 sm:mb-8">
-      <div class="w-full sm:w-3/4">
-        <h1 class="text-2xl md:text-5xl leading-tight font-semibold">#{{ $page.tag.title }}</h1>
-      </div>
-    </section>
-    <div class="container mx-auto">
-      <div class="w-full sm:w-6/7">
-        <div class="grid row flex flex-wrap -mx-6">
-          <div v-for="post in $page.tag.belongsTo.edges" :key="post.node.id" class="column flex w-full sm:px-6 py-2 sm:py-6 sm:w-1/2">
-            <postcard :item="post.node" />
-          </div>
+    <Hero>#{{ $page.tag.title }}</Hero>
+    <div class="container posts">
+      <div class="grid-2">
+        <div class="column" v-for="post in $page.tag.belongsTo.edges" :key="post.node.id">
+          <PostCard :item="post.node" />
         </div>
-        <pagination class="mt-4 mb-0 sm:my-4 sm:w-3/7"
-          v-if="$page.tag.belongsTo.pageInfo.totalPages > 1"
-          :base="`/tag/${$page.tag.title}`"
-          :info="$page.tag.belongsTo.pageInfo"
-        />
       </div>
+      <Pagination class="post-pagination" v-if="$page.tag.belongsTo.pageInfo.totalPages > 1" :base="`/tag/${$page.tag.title}`" :info="$page.tag.belongsTo.pageInfo" />
     </div>
   </Layout>
 </template>
@@ -54,8 +44,9 @@ query Tag ($id: ID!, $page: Int) {
 </page-query>
 
 <script>
+import Hero from '~/components/Hero'
 import Pagination from '~/components/Pagination'
-import Postcard from '~/components/Postcard'
+import PostCard from '~/components/PostCard'
 
 export default {
   metaInfo() {
@@ -64,8 +55,9 @@ export default {
     }
   },
   components: {
+    Hero,
     Pagination,
-    Postcard
+    PostCard
   }
 }
 </script>
