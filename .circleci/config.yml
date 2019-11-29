@@ -1,40 +1,34 @@
 version: 2
-
 jobs:
-  build-deploy:
+  build:
     docker:
-      - image: circleci/node:12.12-buster
+      - image: circleci/node:12.13.1-buster
+    working_directory: ~/repo
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
-      - run:
-          name: Install dependencies
-          command: yarn
+          keys:
+            - v1-dependencies-{{ checksum "yarn.lock" }}
+            - v1-dependencies-
+      - run: yarn
       - save_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
           paths:
-            - ./node_modules
-      - run:
-          name: Build docs
-          command: yarn build
-      - run:
-          name: Configure build
-          command: |
-            git config user.email "naiyer.app+circleci@gmail.com"
-            git config user.name "circleci-build"
+            - node_modules
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+      - run: yarn build
+      - run: |
+          git config user.email "naiyer.app+circleci@gmail.com"
+          git config user.name "circleci-build"
       - add_ssh_keys:
           fingerprints:
             - "b4:2e:4a:5b:ec:99:71:ae:6b:db:6c:f0:bc:ea:22:21"
-      - run:
-          name: Deploy the build
-          command: yarn deploy
+      - run: yarn deploy
 
 workflows:
   version: 2
   build:
     jobs:
-      - build-deploy:
+      - build:
           filters:
             branches:
-              only: release      
+              only: release
