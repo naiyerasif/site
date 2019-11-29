@@ -60,10 +60,12 @@ export default {
 .stockpile {
   width: $expanse-full;
   margin-top: $gap;
+  margin-bottom: $gap;
 
   @include tablet-portrait {
     margin-left: $gap-0;
     margin-right: $gap-0;
+    margin-bottom: $gap-0;
     width: $expanse-full * .8;
   }
 
