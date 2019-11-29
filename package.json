@@ -8,6 +8,7 @@
   "scripts": {
     "build": "gridsome build",
     "start": "gridsome develop",
+    "env": "gridsome info", 
     "deploy": "gh-pages -b master -d public --message \"[skip ci] Updates\""
   },
   "dependencies": {

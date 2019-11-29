@@ -15,6 +15,7 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}
+      - run: yarn env
       - run: yarn build
       - run: |
           git config user.email "naiyer.app+circleci@gmail.com"
