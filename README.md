@@ -7,6 +7,7 @@ Personal website of Naiyer Asif, made possible by
 - [Fuse.js](https://fusejs.io/): a lightweight fuzzy-search library
 - [Shiki](https://github.com/octref/shiki): a beauiful syntax highlighter
 - [Feather Icons](https://feathericons.com/): beautiful open-source icons
+- [Remarkability](https://mflash.dev/remarkability/): baseline css for HTML generated from markdown
 
 It uses
 

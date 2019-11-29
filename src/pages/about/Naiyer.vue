@@ -100,6 +100,7 @@
             <li><a target="_blank" rel="noopener noreferrer" href="https://fusejs.io/">Fuse.js</a>: a lightweight fuzzy-search library</li>
             <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/octref/shiki">Shiki</a>: a beautiful syntax highlighter</li>
             <li><a target="_blank" rel="noopener noreferrer" href="https://feathericons.com/">Feather Icons</a>: beautiful open-source icons</li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://mflash.dev/remarkability/">Remarkability</a>: baseline css for HTML generated from markdown</li>
           </ul>
           <p>It uses</p>
           <ul class="content">
