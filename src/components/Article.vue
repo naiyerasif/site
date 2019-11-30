@@ -43,6 +43,7 @@
 
       &:before {
         content: 'Table of Contents';
+        font-weight: $font-semibold;
       }
     }
 
