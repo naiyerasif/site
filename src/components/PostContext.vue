@@ -47,6 +47,7 @@ export default {
       height: $media-lg;
       width: $media-lg;
       box-shadow: $shadow;
+      border-radius: $radius-all;
       margin-right: $gap-xs;
     }
   }

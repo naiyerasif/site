@@ -52,7 +52,7 @@ $selection: hsla(166, 64%, 38%, 0.25);
 
 [data-theme="light"] {
   --background-default: #{$white};
-  --background-default-darker: #{main("a600")};
+  --background-default-darker: #{lighten(main("a700"), 3%)};
   --background-code: #{main("a800")};
   --background-search: #{main("a800")};
   --background-search-hover: #{main("a700")};
