@@ -92,7 +92,6 @@ export default {
   }
 
   ul {
-    text-transform: uppercase;
     letter-spacing: $text-relaxed;
     list-style: none;
     font-weight: $font-bold;

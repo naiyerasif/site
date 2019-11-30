@@ -107,7 +107,6 @@ export default {
 
 <style lang="scss" scoped>
 .search {
-  text-transform: none;
   position: relative;
 
   .search-box {
