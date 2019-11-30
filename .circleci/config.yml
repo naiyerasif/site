@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:12.13.1-buster
+      - image: circleci/node:13.2-buster
     working_directory: ~/repo
     steps:
       - checkout
