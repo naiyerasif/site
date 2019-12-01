@@ -8,7 +8,7 @@
     <div class="container posts">
       <div class="grid-2">
         <div class="column" v-for="post in $page.posts.edges" :key="post.id">
-          <Card :item="post.node"/>
+          <PostCard :item="post.node"/>
         </div>
       </div>
       <Pagination class="post-pagination" v-if="$page.posts.pageInfo.totalPages > 1" :info="$page.posts.pageInfo"/>
@@ -46,7 +46,7 @@ query Posts ($page: Int) {
 <script>
 import Hero from '~/components/Hero'
 import Pagination from '~/components/Pagination'
-import Card from '~/components/Card'
+import PostCard from '~/components/PostCard'
 
 export default {
   metaInfo() {
@@ -57,7 +57,7 @@ export default {
   components: {
     Hero,
     Pagination,
-    Card
+    PostCard
   }
 }
 </script>
