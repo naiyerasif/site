@@ -9,7 +9,8 @@
     "build": "gridsome build",
     "start": "gridsome develop",
     "env": "gridsome info", 
-    "deploy": "gh-pages -b master -d public --message \"[skip ci] Updates\""
+    "deploy": "gh-pages -b master -d public --message \"[skip ci] Updates\"",
+    "dev:favicon": "source config/generate_favicons.sh src/favicon.png"
   },
   "dependencies": {
     "@gridsome/plugin-google-analytics": "^0.1.0",

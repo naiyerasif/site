@@ -4,7 +4,6 @@
 content/draft/
 src/.temp
 node_modules
-dist
 key
 public
 static/search.json
