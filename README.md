@@ -5,7 +5,7 @@ Personal website of Naiyer Asif, made possible by
 - [Gridsome](https://gridsome.org/): a modern Vue.js framework for static websites
 - [Gridsome Portfolio Starter](https://github.com/drehimself/gridsome-portfolio-starter): a simple portfolio starter for Gridsome
 - [Fuse.js](https://fusejs.io/): a lightweight fuzzy-search library
-- [Shiki](https://github.com/octref/shiki): a beauiful syntax highlighter
+- [Shiki](https://github.com/octref/shiki): a beautiful syntax highlighter
 - [Feather Icons](https://feathericons.com/): beautiful open-source icons
 - [Remarkability](https://mflash.dev/remarkability/): baseline css for HTML generated from markdown
 
