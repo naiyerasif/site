@@ -4,7 +4,7 @@
     <div class="container posts">
       <div class="grid-2">
         <div class="column" v-for="post in $page.tag.belongsTo.edges" :key="post.node.id">
-          <PostCard :item="post.node" />
+          <Card :item="post.node" />
         </div>
       </div>
       <Pagination class="post-pagination" v-if="$page.tag.belongsTo.pageInfo.totalPages > 1" :base="`/tag/${$page.tag.title}`" :info="$page.tag.belongsTo.pageInfo" />
@@ -46,7 +46,7 @@ query Tag ($id: ID!, $page: Int) {
 <script>
 import Hero from '~/components/Hero'
 import Pagination from '~/components/Pagination'
-import PostCard from '~/components/PostCard'
+import Card from '~/components/Card'
 
 export default {
   metaInfo() {
@@ -57,7 +57,7 @@ export default {
   components: {
     Hero,
     Pagination,
-    PostCard
+    Card
   }
 }
 </script>
