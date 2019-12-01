@@ -67,9 +67,7 @@ $selection: hsla(166, 64%, 38%, 0.25);
   --text-search-muted: #{aux("600")};
   --border-muted: #{transparentize(main("100"), .7)};
   --border: #{transparentize(main("100"), .2)};
-  --remarkable-0: #{aux("800")};
-  --remarkable-0-transparent: #25263200;
-  --remarkable-0-opaque: #252632FF;
+  --code-default: #{aux("800")};
 
   scrollbar-color: light;
 }
@@ -91,9 +89,7 @@ $selection: hsla(166, 64%, 38%, 0.25);
   --text-search-muted: #{aux("300")};
   --border-muted: #{transparentize(aux("900"), .25)};
   --border: #{aux("800")};
-  --remarkable-0: #{transparentize(aux("800"), .5)};
-  --remarkable-0-transparent: #2E344000;
-  --remarkable-0-opaque: #2E3440FF;
+  --code-default: #{transparentize(aux("800"), .5)};
 
   scrollbar-color: dark;
 }
