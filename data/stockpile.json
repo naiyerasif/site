@@ -1,10 +1,10 @@
 [
   {
     "id": "1",
-    "title": "Remarkability",
-    "type": "Styles",
-    "description": "Baseline CSS for HTML generated from markdown",
-    "link": "https://mflash.dev/remarkability/"
+    "title": "stockpile",
+    "type": "Collection",
+    "description": "Useful tools for execution, operations and more for full-stack developers",
+    "link": "https://github.com/Microflash/stockpile.git"
   },
   {
     "id": "2",
@@ -15,9 +15,16 @@
   },
   {
     "id": "3",
-    "title": "stockpile",
-    "type": "Collection",
-    "description": "Useful tools for execution, operations and more for full-stack developers",
-    "link": "https://github.com/Microflash/stockpile.git"
+    "title": "Remarkability",
+    "type": "Styles",
+    "description": "Baseline CSS for HTML generated from markdown",
+    "link": "https://mflash.dev/remarkability/"
+  },
+  {
+    "id": "4",
+    "title": "Jada",
+    "type": "Template",
+    "description": "A simple blog starter template for Gridsome",
+    "link": "https://github.com/Microflash/jada.git"
   }
 ]

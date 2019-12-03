@@ -22,7 +22,7 @@
 
 <page-query>
 query StockpileItems ($page: Int) {
-  stockpile: allStockpile (sortBy: "id", order: ASC, perPage: 15, page: $page) {
+  stockpile: allStockpile (sortBy: "id", order: DESC, perPage: 15, page: $page) {
     totalCount
     pageInfo {
       totalPages
