@@ -31,13 +31,15 @@
 
 body {
   @include default-font;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   font-size: $text-default;
   background-color: var(--background-default);
   background-image: linear-gradient(to top, var(--background-default) 0%, var(--background-default-darker) 100%);
   min-height: 100vh;
   color: var(--text-default);
   text-size-adjust: 100%;
-  text-rendering: optimizeLegibility;
   line-height: 1.5;
   overflow-x: hidden;
 }

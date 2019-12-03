@@ -12,12 +12,6 @@
     font-size: $text-md;
   }
 
-  @include tablet-portrait {
-    &>p:first-of-type {
-      font-size: $text-lg;
-    }
-  }
-
   pre {
     @include phone-only {
       margin-right: -$gap;
