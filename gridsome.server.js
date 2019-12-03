@@ -1,5 +1,6 @@
 const path = require('path')
 const fs = require('fs')
+const siteData = require('./data/site.json')
 const authorDataSource = './data/authors.json'
 const authorData = require(authorDataSource)
 const stockpileDataSource = './data/stockpile.json'
@@ -15,7 +16,7 @@ const summarize = (content) => {
 }
 
 module.exports = function (api, options) {
-  api.loadSource(({ addSchemaResolvers, addCollection }) => {
+  api.loadSource(({ addSchemaResolvers, addCollection, addMetadata }) => {
     const authors = addCollection('Author')
     authorData.forEach(({ id, name: title, ...fields }) => {
       authors.addNode({
@@ -40,12 +41,14 @@ module.exports = function (api, options) {
       })
     })
 
+    addMetadata('postEditUrl', siteData.postEditUrl)
+
     addSchemaResolvers({
       Post: {
         summary: {
           type: GraphQLString,
           resolve(post) {
-            return summarize(post.content)
+            return post.summary ? post.summary : summarize(post.content)
           }
         }
       }
@@ -60,7 +63,7 @@ module.exports = function (api, options) {
       return {
         title: post.title,
         path: post.path,
-        summary: summarize(post.content)
+        summary: post.summary ? post.summary : summarize(post.content)
       }
     })
 

@@ -35,6 +35,14 @@ query Post ($path: String!) {
 }
 </page-query>
 
+<static-query>
+query {
+  metadata {
+    postEditUrl
+  }
+}
+</static-query>
+
 <script>
 import Hero from '~/components/Hero'
 import Article from '~/components/Article'
@@ -69,7 +77,7 @@ export default {
       const tokens = this.$page.post.path.split('/');
       tokens[1] = tokens[1] + "/" + tokens[2];
       const slug = tokens.splice(1,2).join('/') + tokens.join('-');
-      return "https://github.com/Microflash/microflash.github.io/edit/release/content/" + slug.substring(0, slug.length - 1) + ".md";
+      return this.$static.metadata.postEditUrl + slug.substring(0, slug.length - 1) + ".md";
     }
   }
 }
