@@ -1,6 +1,6 @@
 <template>
   <header class="container header">
-    <g-link to="/"><g-image class="brand" src="../../../static/logo.svg" alt="logo" /></g-link>
+    <g-link class="brand-link" to="/"><g-image class="brand" src="../../../static/logo.svg" alt="logo" /></g-link>
     <div class="hamburger">
       <a @click="toggle" title="Menu">
         <svg :class="{ hidden: isOpen }" class="icon icon-menu" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"><path d="M7.028 12H21M3 6h18M11.022 18H21" fill="none" stroke="currentColor" stroke-width="2"/></svg>
@@ -50,6 +50,10 @@ export default {
   @include tablet-portrait {
     padding-top: $gap-xl;
     padding-bottom: $gap-xl;
+  }
+
+  .brand-link {
+    line-height: 0;
   }
 
   .brand {
