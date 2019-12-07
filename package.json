@@ -8,7 +8,7 @@
   "scripts": {
     "build": "gridsome build",
     "start": "gridsome develop",
-    "env": "gridsome info", 
+    "env": "gridsome info",
     "deploy": "gh-pages -b master -d public --message \"[skip ci] Updates\"",
     "dev:favicon": "source config/generate_favicons.sh src/favicon.png"
   },
@@ -31,6 +31,7 @@
     "marked": "^0.7.0",
     "node-sass": "^4.13.0",
     "sass-loader": "^8.0.0",
-    "style-resources-loader": "^1.3.2"
+    "style-resources-loader": "^1.3.2",
+    "unescape": "^1.0.1"
   }
 }

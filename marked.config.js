@@ -8,10 +8,9 @@ const stripTocRenderer = new marked.Renderer()
 stripTocRenderer.heading = (text, level, raw, slugger) => (level === 3 && text === 'Table of Contents') ? emptyspace : defaultRenderer.heading(text, level, raw, slugger)
 
 const plainTextRenderer = new marked.Renderer()
-plainTextRenderer.code = (code, lang, escaped) => code + whitespace
+plainTextRenderer.code = (code, infostring, escaped) => code + whitespace
 plainTextRenderer.blockquote = (quote) => quote + whitespace
-plainTextRenderer.html = (html) => html
-plainTextRenderer.heading = (text, level, raw) => text
+plainTextRenderer.heading = (text, level, raw, slugger) => text
 plainTextRenderer.hr = () => whitespace
 plainTextRenderer.list = (body, ordered, start) => body
 plainTextRenderer.listitem = (text) => text + whitespace
