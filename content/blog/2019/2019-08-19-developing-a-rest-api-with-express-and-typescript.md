@@ -421,4 +421,4 @@ curl -X DELETE http://localhost:8080/track \
 
 ## References
 
-> **Source Code**: [express-postgres-api](https://github.com/Microflash/guides/tree/master/nodejs/express-postgres-api)
+> **Source Code**: [express-postgres-api](https://gitlab.com/mflash/guides/nodejs/express-postgres-api)

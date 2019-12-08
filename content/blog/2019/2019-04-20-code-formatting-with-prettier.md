@@ -93,7 +93,7 @@ Now, open the `.eslintrc.json` file and add the following configuration:
 
 ## References
 
-> **Source Code**: [prettier-code-formatting](https://github.com/Microflash/guides/tree/master/nodejs/prettier-code-formatting)
+> **Source Code**: [prettier-code-formatting](https://gitlab.com/mflash/guides/nodejs/express-postgres-api/tree/prettier-code-formatting)
 >
 > **Discussions**
 > - [Prettier docs](https://prettier.io/docs/en/install.html)

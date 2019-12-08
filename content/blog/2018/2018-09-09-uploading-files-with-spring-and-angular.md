@@ -440,7 +440,7 @@ Launch the Spring and Angular applications and open the browser at <http://local
 
 ## References
 
-> **Source Code**: [spring-file-upload](https://github.com/Microflash/guides/tree/master/spring/spring-file-upload)
+> **Source Code**: [spring-file-upload](https://gitlab.com/mflash/guides/spring/tree/master/spring-file-upload)
 >
 > **Discussions**
 > - Getting Started Guide from Spring: [Uploading files](https://spring.io/guides/gs/uploading-files/)

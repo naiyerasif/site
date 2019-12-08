@@ -131,7 +131,7 @@ We can configure specific classes and [additional counters](https://www.jacoco.o
 
 ## References
 
-> **Source Code**: [coverage-with-jacoco](https://github.com/Microflash/guides/tree/master/java/coverage/coverage-with-jacoco)
+> **Source Code**: [coverage-with-jacoco](https://gitlab.com/mflash/guides/java/coverage-with-jacoco)
 >
 > **Discussions**
 > - [Maven plugin](https://www.eclemma.org/jacoco/trunk/doc/maven.html)

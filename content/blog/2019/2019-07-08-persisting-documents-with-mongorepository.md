@@ -2,7 +2,7 @@
 title: Persisting documents with MongoRepository
 path: /persisting-documents-with-mongorepository
 date: 2019-07-08
-updated: 2019-11-13
+updated: 2019-12-08
 author: [naiyer]
 tags: ['guide']
 ---
@@ -104,21 +104,21 @@ Now that our repository is ready, write some tests to verify if it works as expe
 
 ```java
 import static dev.mflash.guides.mongo.configuration.TestData.*;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 public @SpringBootTest class EmailRepositoryTest {
 
   private @Autowired EmailRepository repository;
 
-  public @Before void setUp() {
+  public @BeforeEach void setUp() {
     repository.deleteAll();
     repository.saveAll(emails.values());
   }
@@ -423,26 +423,26 @@ public @Configuration class MongoConfiguration {
 To verify if the cascading works, let's write some unit tests by persisting some `Email` objects and querying for `Identity` and `Session` objects.
 
 ```java
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import dev.mflash.guides.mongo.domain.Email;
-import dev.mflash.guides.mongo.domain.Identity;
-import dev.mflash.guides.mongo.domain.Session;
 import dev.mflash.guides.mongo.domain.Email.EmailBuilder;
+import dev.mflash.guides.mongo.domain.Identity;
 import dev.mflash.guides.mongo.domain.Identity.IdentityBuilder;
+import dev.mflash.guides.mongo.domain.Session;
 import dev.mflash.guides.mongo.domain.Session.SessionBuilder;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Locale;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 public @SpringBootTest class CascadeTest {
 
   private @Autowired EmailRepository emailRepository;
@@ -452,7 +452,7 @@ public @SpringBootTest class CascadeTest {
   private Session paris;
   private Email saved;
 
-  public @Before void setUp() {
+  public @BeforeEach void setUp() {
     emailRepository.deleteAll();
     sessionRepository.deleteAll();
     identityRepository.deleteAll();
@@ -485,4 +485,4 @@ public @SpringBootTest class CascadeTest {
 
 ## References
 
-> **Source Code**: [spring-data-mongo-repository](https://github.com/Microflash/guides/tree/master/spring/spring-data-mongo-repository)
+> **Source Code**: [spring-data-mongo-repository](https://gitlab.com/mflash/guides/spring/tree/master/spring-data-mongo-repository)

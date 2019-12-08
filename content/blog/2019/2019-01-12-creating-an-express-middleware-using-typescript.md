@@ -155,4 +155,4 @@ Launch the application by executing `npm start` and you'll get the same applicat
 
 ## References
 
-> **Source Code**: [express-rest-app](https://github.com/Microflash/guides/tree/master/nodejs/express-rest-app)
+> **Source Code**: [express-typescript-app](https://gitlab.com/mflash/guides/nodejs/express-postgres-api/tree/express-typescript-app)

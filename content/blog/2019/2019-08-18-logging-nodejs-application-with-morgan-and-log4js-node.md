@@ -156,7 +156,7 @@ Start the application; you should see `app.log` in `logs` directory and the same
 
 ## References
 
-> **Source Code**: [morgan-log4js-logging](https://github.com/Microflash/guides/tree/master/nodejs/morgan-log4js-logging)
+> **Source Code**: [morgan-log4js-logging](https://gitlab.com/mflash/guides/nodejs/express-postgres-api/tree/morgan-log4js-logging)
 >
 > **Documentations** 
 > - [morgan docs](https://github.com/expressjs/morgan#readme)

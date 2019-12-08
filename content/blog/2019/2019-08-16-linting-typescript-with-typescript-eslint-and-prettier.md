@@ -104,7 +104,7 @@ Now, `typescript-eslint` will play nice with `prettier` and use it to format whi
 
 ## References
 
-> **Source Code**: [linting-with-typescript-eslint](https://github.com/Microflash/guides/tree/master/nodejs/linting-with-typescript-eslint)
+> **Source Code**: [linting-with-typescript-eslint](https://gitlab.com/mflash/guides/nodejs/express-postgres-api/tree/typescript-eslint)
 > 
 > **Discussions**
 > - Niko Montana: <https://github.com/typescript-eslint/typescript-eslint/issues/36#issuecomment-494764385>

@@ -284,4 +284,4 @@ When the application is launched, the publisher will publish the list of books o
 
 ## References
 
-> **Source Code**: [spring-messaging-rabbitmq](https://github.com/Microflash/guides/tree/master/spring/spring-messaging-rabbitmq)
+> **Source Code**: [spring-messaging-rabbitmq](https://gitlab.com/mflash/guides/spring/tree/master/spring-messaging-rabbitmq)

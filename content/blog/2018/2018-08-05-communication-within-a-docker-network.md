@@ -311,7 +311,7 @@ Launch this stack by executing `docker-compose up -d`. Browse to <http://localho
 
 ## References
 
-> **Source Code**: [docker-network-communication](https://github.com/Microflash/guides/tree/master/docker/docker-network-communication)
+> **Source Code**: [network-communication](https://gitlab.com/mflash/guides/docker/network-communication)
 > 
 > **Discussions**
 > - [eisfuchs](https://stackoverflow.com/users/1565175/eisfuchs): [Inject env variables from docker-compose into Angular4 app](https://stackoverflow.com/a/45727380) 

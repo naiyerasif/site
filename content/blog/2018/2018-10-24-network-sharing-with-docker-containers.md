@@ -83,7 +83,7 @@ Launch this stack using `docker-compose up -d` and access the application at <ht
 
 ## References
 
-> **Source Code**: [docker-network-sharing](https://github.com/Microflash/guides/tree/master/docker/docker-network-sharing)
+> **Source Code**: [network-sharing](https://gitlab.com/mflash/guides/docker/network-sharing)
 > 
 > **Discussions**
 > - [cstrutton](https://stackoverflow.com/users/1311325/cstrutton): [Communication between multiple docker-compose projects](https://stackoverflow.com/questions/38088279/communication-between-multiple-docker-compose-projects)
