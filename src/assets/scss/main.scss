@@ -87,7 +87,7 @@ input {
 
   &::placeholder {
     color: var(--text-default);
-    opacity: .5;
+    opacity: 0.5;
   }
 }
 
@@ -117,7 +117,7 @@ input {
 }
 
 .slash {
-  opacity: .25;
+  opacity: 0.25;
 }
 
 .post {
@@ -152,7 +152,7 @@ input {
   }
 
   svg {
-    margin-right: $gap-xs / 2;
+    margin-right: ($gap-xs / 2);
     margin-left: $gap-xs;
   }
 }
@@ -195,7 +195,7 @@ input {
   @include tablet-portrait {
     margin-left: $gap-0;
     margin-right: $gap-0;
-    width: $expanse-full * .875;
+    width: $expanse-full * 0.875;
   }
 
   .post-pagination {
@@ -203,7 +203,7 @@ input {
     margin-bottom: $gap-md;
 
     @include tablet-landscape {
-      width: $expanse-half * .85;
+      width: $expanse-half * 0.85;
       margin-bottom: $gap-0;
     }
   }

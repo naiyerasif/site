@@ -1,5 +1,3 @@
-@charset "UTF-8";
-
 $width-phone: 599px !default;
 $width-tablet-portrait: 600px !default;
 $width-tablet-landscape: 900px !default;
@@ -13,14 +11,13 @@ $family-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
 $family-sans-var: "Inter var" !default;
 $family-code: "Iosevka SS05", "Roboto Mono", "Menlo", "Monaco", "Inconsolata",
   "Consolas", "Liberation Mono", "Courier New", monospace !default;
-$family-remarkability: $family-sans-var, $family-sans !default;
 
 $font-normal: 400 !default;
 $font-semibold: 600 !default;
 $font-bold: 700 !default;
 
-$text-xs: .75rem !default;
-$text-sm: .875rem !default;
+$text-xs: 0.75rem !default;
+$text-sm: 0.875rem !default;
 $text-default: 1rem !default;
 $text-md: 1.25rem !default;
 $text-lg: 1.5rem !default;
@@ -44,8 +41,8 @@ $media-ws: 10rem !default;
 $media-hd: 14rem !default;
 
 $gap-0: 0 !default;
-$gap-xs: .5rem !default;
-$gap-sm: .75rem !default;
+$gap-xs: 0.5rem !default;
+$gap-sm: 0.75rem !default;
 $gap: 1rem !default;
 $gap-sl: 1.5rem !default;
 $gap-md: 2rem !default;
@@ -55,24 +52,24 @@ $gap-xl: 4rem !default;
 $gap-ws: 10vw !default;
 
 $radius-0: 0 !default;
-$radius: .25rem !default;
+$radius: 0.1rem !default;
 $radius-all: 100% !default;
 
-$shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !default;
-$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !default;
-$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !default;
-$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !default;
+$shadow: 0 1px 3px 0 hsla(0, 0%, 0%, 0.1), 0 1px 2px 0 hsla(0, 0%, 0%, 0.06) !default;
+$shadow-md: 0 4px 6px -1px hsla(0, 0%, 0%, 0.1), 0 2px 4px -1px hsla(0, 0%, 0%, 0.06) !default;
+$shadow-lg: 0 10px 15px -3px hsla(0, 0%, 0%, 0.1), 0 4px 6px -2px hsla(0, 0%, 0%, 0.05) !default;
+$shadow-xl: 0 20px 25px -5px hsla(0, 0%, 0%, 0.1), 0 10px 10px -5px hsla(0, 0%, 0%, 0.04) !default;
 
 $rise-md: 10 !default;
 $rise-lg: 15 !default;
 $rise-xl: 20 !default;
 
-$color-link: main("500") !default;
-$color-visited-link: main("800") !default;
+$color-link: primary("500") !default;
+$color-visited-link: primary("700") !default;
 $color-monospace: inherit !default;
 
-$color-custom: aux("400") !default;
-$color-custom-visited: aux("200") !default;
+$color-custom: secondary("400") !default;
+$color-custom-visited: secondary("200") !default;
 
 $color-text-light: var(--text-search-muted) !default;
 $color-default: inherit !default;
@@ -90,3 +87,10 @@ $closer-lists: true !default;
 $custom-colors: true !default;
 $custom-fonts: true !default;
 $text-adjusting: true !default;
+$variable-fonts: true !default;
+
+$family-remarkability: $family-sans !default;
+
+@if $variable-fonts {
+  $family-remarkability: $family-sans-var, $family-sans !default;
+}

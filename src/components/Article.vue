@@ -7,7 +7,7 @@
 @import "../../node_modules/@microflash/remarkability/scss/remarkability.scss";
 
 .remarkability {
-  &>p:first-of-type {
+  & > p:first-of-type {
     line-height: 1.625;
     font-size: $text-md;
   }
@@ -24,8 +24,8 @@
       + ul {
       position: fixed;
       text-align: right;
-      font-size: $font-size * 0.8;
-      max-width: $gap-ws * 2.7;
+      font-size: ($font-size * 0.8);
+      max-width: ($gap-ws * 2.7);
       bottom: 5vh;
       right: $gap;
       z-index: $rise-lg;
@@ -46,7 +46,7 @@
   }
 
   .toclink {
-    margin-right: $gap-xs / 3;
+    margin-right: ($gap-xs / 3);
     font-weight: $font-normal;
 
     &::after {

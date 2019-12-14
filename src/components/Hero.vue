@@ -40,7 +40,7 @@ export default {
 
     @include tablet-portrait {
       font-size: $text-3xl;
-      width: $expanse-half * 1.5;
+      width: ($expanse-half * 1.5);
     }
   }
 

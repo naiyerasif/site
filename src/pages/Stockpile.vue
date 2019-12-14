@@ -66,11 +66,15 @@ export default {
     margin-left: $gap-0;
     margin-right: $gap-0;
     margin-bottom: $gap-0;
-    width: $expanse-full * .8;
+    width: ($expanse-full * 0.8);
   }
 
   .card-category, .description {
     color: var(--text-default);
+  }
+
+  .card-category {
+    font-weight: $font-normal;
   }
 }
 </style>

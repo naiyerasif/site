@@ -159,7 +159,7 @@ export default {
   width: $expanse-full;
   overflow-x: hidden;
   overflow-y: auto;
-  max-height: $gap-xl * 8;
+  max-height: ($gap-xl * 8);
   box-shadow: $shadow;
   margin-top: $gap-xs;
   border-radius: $radius;
@@ -229,7 +229,7 @@ export default {
 }
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .2s;
+  transition: opacity 0.2s;
 }
 
 .fade-enter, .fade-leave-to {
