@@ -9,7 +9,9 @@ const addStyleResources = (rule) => {
     .loader('style-resources-loader')
     .options({
       patterns: [
-        path.resolve(__dirname, './src/assets/scss/main.scss')
+        path.resolve(__dirname, './src/assets/scss/_colors.scss'),
+        path.resolve(__dirname, './src/assets/scss/_mixins.scss'),
+        path.resolve(__dirname, './src/assets/scss/_setup.scss')
       ]
     })
 }
