@@ -80,11 +80,11 @@ $selection: transparentize(primary("500"), 0.75);
 }
 
 [data-theme="dark"] {
-  --background-default: #{secondary("a200")};
-  --background-default-darker: #{secondary("a300")};
+  --background-default: #{shade(secondary("a300"), 15%)};
+  --background-default-darker: #{shade(secondary("a300"), 30%)};
   --background-code: #{secondary("900")};
   --background-search: #{secondary("a200")};
-  --background-search-hover: #{shade(secondary("a200"), 15%)};
+  --background-search-hover: #{shade(secondary("a200"), 20%)};
   --background-search-highlighted: #{shade(secondary("a200"), 25%)};
   --background-card: #{secondary("a300")};
   --background-card-hover: #{shade(secondary("a300"), 40%)};

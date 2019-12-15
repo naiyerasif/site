@@ -134,6 +134,8 @@ input {
   .article {
     width: $expanse-full;
     padding: $gap-md;
+    border: 1px solid var(--border-muted);
+    border-radius: $radius;
     background-color: var(--background-card);
 
     @include tablet-landscape {
@@ -144,7 +146,7 @@ input {
 
 .post-edit {
   z-index: $rise-md;
-  margin-top: $gap-md;
+  margin-top: $gap-xs;
   margin-bottom: $gap-md;
 
   @include tablet-portrait {
@@ -162,7 +164,7 @@ input {
   background-color: var(--background-card-hover);
   width: $expanse-full;
   overflow: hidden;
-  box-shadow: $shadow;
+  border: 1px solid var(--border-muted);
   border-radius: $radius;
   padding: $gap-sm;
   font-size: $text-sm;

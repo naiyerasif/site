@@ -114,13 +114,12 @@ export default {
 
     .search-input {
       background-color: var(--background-search);
-      border-radius: $radius-0;
-      box-shadow: $shadow;
+      border: 1px solid var(--border-muted);
+      border-radius: $radius;
       padding: $gap-sm $gap;
       padding-left: $gap-lg;
       outline: none;
       width: $expanse-full;
-      border: none;
 
       &:focus, &:hover {
         background-color: var(--background-search-hover);
@@ -160,21 +159,11 @@ export default {
   overflow-x: hidden;
   overflow-y: auto;
   max-height: ($gap-xl * 8);
-  box-shadow: $shadow;
   margin-top: $gap-xs;
-  border-radius: $radius-0;
+  border: 1px solid var(--border-muted);
 
   @include tablet-landscape {
     width: $expanse-lg;
-    box-shadow: $shadow-md;
-  }
-
-  @include desktop-mdpi {
-    box-shadow: $shadow-lg;
-  }
-
-  @include desktop-hdpi {
-    box-shadow: $shadow-xl;
   }
 
   .search-result {

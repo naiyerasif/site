@@ -38,9 +38,8 @@ export default {
 .postcard {
   width: $expanse-full;
   overflow: hidden;
-  box-shadow: $shadow;
   padding: $gap-sl;
-  border-radius: $radius-0;
+  border: 1px solid var(--border-muted);
   background-color: var(--background-card);
 
   &:focus, &:hover {

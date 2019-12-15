@@ -44,9 +44,9 @@ export default {
     padding-bottom: $gap-xs;
 
     .avatar {
-      height: $media-lg;
-      width: $media-lg;
-      box-shadow: $shadow;
+      height: $media-xl;
+      width: $media-xl;
+      border: 3px solid var(--border-muted);
       border-radius: $radius-all;
       margin-right: $gap-xs;
     }

@@ -37,6 +37,7 @@ $expanse-lg: 27rem !default;
 
 $media-sm: 1.5rem !default;
 $media-lg: 2rem !default;
+$media-xl: 2.5rem !default;
 $media-ws: 10rem !default;
 $media-hd: 14rem !default;
 
@@ -52,15 +53,8 @@ $gap-xl: 4rem !default;
 $gap-ws: 10vw !default;
 
 $radius-0: 0 !default;
-$radius: 0.1rem !default;
+$radius: 0.25rem !default;
 $radius-all: 100% !default;
-
-$shadow-color: $black !default;
-
-$shadow: 0 1px 3px 0 transparentize($shadow-color, 0.9), 0 1px 2px 0 transparentize($shadow-color, 0.94) !default;
-$shadow-md: 0 4px 6px -1px transparentize($shadow-color, 0.9), 0 2px 4px -1px transparentize($shadow-color, 0.94) !default;
-$shadow-lg: 0 10px 15px -3px transparentize($shadow-color, 0.9), 0 4px 6px -2px transparentize($shadow-color, 0.95) !default;
-$shadow-xl: 0 20px 25px -5px transparentize($shadow-color, 0.9), 0 10px 10px -5px transparentize($shadow-color, 0.96) !default;
 
 $rise-md: 10 !default;
 $rise-lg: 15 !default;

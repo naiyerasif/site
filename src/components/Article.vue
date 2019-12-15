@@ -13,6 +13,8 @@
   }
 
   pre {
+    border-radius: $radius-0;
+
     @include phone-only {
       margin-right: -$gap;
       margin-left: -$gap;
