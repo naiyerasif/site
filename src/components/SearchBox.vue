@@ -132,7 +132,7 @@ export default {
 
     .icon-search, .icon-close {
       position: absolute;
-      top: $gap-xs;
+      top: ($gap-xs * 1.25);
       color: $color-custom;
 
       &:focus, &:hover {
