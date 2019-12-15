@@ -126,7 +126,7 @@
     </div>
     <div class="to-the-top">
       <a href="#" title="Back to top" v-scroll-to="'#about-me'">
-        <svg class="icon icon-up" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="16 12 12 8 8 12"></polyline><line x1="12" y1="16" x2="12" y2="8"></line></svg>
+        <svg class="icon icon-up" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill-rule="evenodd" clip-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" fill="none"/><circle cx="12" cy="12" r="10" fill="currentColor" opacity=".2"/><polyline points="16 12 12 8 8 12" fill="none"/><line x1="12" y1="16" x2="12" y2="8" fill="none"/></svg>
       </a>
     </div>
   </Layout>
