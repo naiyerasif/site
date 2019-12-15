@@ -46,7 +46,7 @@ export default {
     .avatar {
       height: $media-xl;
       width: $media-xl;
-      border: 3px solid var(--border-muted);
+      border: 1px solid var(--border);
       border-radius: $radius-all;
       margin-right: $gap-xs;
     }

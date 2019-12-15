@@ -169,6 +169,11 @@ input {
   padding: $gap-sm;
   font-size: $text-sm;
 
+  &:last-child {
+    padding-bottom: $gap-xs;
+    margin-bottom: 0;
+  }
+
   .card-category {
     letter-spacing: $text-relaxed;
     font-size: $text-xs;

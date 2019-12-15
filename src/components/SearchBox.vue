@@ -4,10 +4,10 @@
     <div class="search-box">
       <input type="text" placeholder="Search (Press  &quot;/&quot; to focus)" class="search-input" v-model="query" @input="softReset" @keyup="performSearch" @keyup.esc="searchResultsVisible = false" @keydown.up.prevent="highlightPrev" @keydown.down.prevent="highlightNext" @keyup.enter="gotoLink" @blur="searchResultsVisible = false" @focus="searchResultsVisible = true" ref="search" aria-label="Search">
 
-      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-search" fill-rule="evenodd" clip-rule="evenodd" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8" fill="none"/><circle cx="11" cy="11" r="8" fill="currentColor" opacity=".2"/><path d="M21 21l-4.35-4.35" fill="none"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-search" fill-rule="evenodd" clip-rule="evenodd" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8" fill="none"/><circle cx="11" cy="11" r="8" fill="currentColor" opacity=".2"/><path d="M21 21l-4.35-4.35" fill="none"/></svg>
 
       <div class="close" v-if="query.length > 0" @click="reset">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-close" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" fill="none"/><circle cx="12" cy="12" r="10" opacity=".2" fill="currentColor"/><path d="M15 9l-6 6M9 9l6 6" fill="none"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-close" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" fill="none"/><circle cx="12" cy="12" r="10" opacity=".2" fill="currentColor"/><path d="M15 9l-6 6M9 9l6 6" fill="none"/></svg>
       </div>
     </div>
     <transition name="fade">

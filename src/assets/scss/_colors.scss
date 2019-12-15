@@ -60,7 +60,7 @@ $selection: transparentize(primary("500"), 0.75);
 [data-theme="light"] {
   --background-default: #{$white};
   --background-default-darker: #{primary("a700")};
-  --background-code: #{primary("100")};
+  --background-code: #{secondary("a900")};
   --background-search: #{primary("a800")};
   --background-search-hover: #{tint(primary("100"), 35%)};
   --background-search-highlighted: #{primary("200")};
