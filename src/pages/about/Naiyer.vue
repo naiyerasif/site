@@ -115,7 +115,7 @@
             <li>graphics and illustrations created with <a target="_blank" rel="noopener noreferrer" href="https://affinity.serif.com/en-gb/designer/">Affinity Designer</a> and <a target="_blank" rel="noopener noreferrer" href="https://www.adobe.com/in/products/xd.html">Adobe XD</a></li>
           </ul>
           <p>
-            The source of this site is <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/microflash.github.io">available</a> under <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/microflash.github.io/blob/release/LICENSE.md">MIT</a>, the content under <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/">CC by SA</a>.
+            The source of this site is <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/microflash.github.io">available</a> under <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/microflash.github.io/blob/release/LICENSE.md">MIT</a>, the content under <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/">CC by SA</a>. If you want to create a site similar to this one, get started with <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/jada">jada</a>.
           </p>
         </section>
       </div>

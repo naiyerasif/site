@@ -23,3 +23,4 @@ It uses
 
 The source of this site is available under [MIT](./LICENSE), the content under [CC by SA](https://creativecommons.org/licenses/by-sa/4.0/).
 
+> If you want to create a site similar to this one, get started with [jada](https://github.com/Microflash/jada).
