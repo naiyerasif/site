@@ -108,7 +108,7 @@
             <li><a target="_blank" rel="noopener noreferrer" href="https://graphql.org/">GraphQL</a> for querying data</li>
             <li><a href="https://vuejs.org/">Vue.js</a> for components and layouts</li>
             <li><a target="_blank" rel="noopener noreferrer" href="https://rsms.me/inter/">Inter</a> as the main font</li>
-            <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/be5invis/iosevka">Iosevka SS05</a> as the <code>monospace</code> font</li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/Iosevka">Iosevka SS12</a> as the <code>monospace</code> font</li>
             <li>a customized version of <a target="_blank" rel="noopener noreferrer" href="https://github.com/arcticicestudio/nord">Nord</a> to decorate highlighted codeblocks</li>
             <li><a target="_blank" rel="noopener noreferrer" href="https://circleci.com/">CircleCI</a> for continuous integration</li>
             <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/tschaub/gh-pages">gh-pages</a> for deployment</li>

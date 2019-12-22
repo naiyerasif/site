@@ -97,12 +97,12 @@ $default-formats: ("woff2", "woff");
   font-named-instance: "Italic";
 }
 
-@include font-face("Iosevka SS05", "/fonts/iosevka-ss05-regular") {
+@include font-face("Iosevka SS12", "/fonts/iosevka-ss12-regular") {
   font-style: normal;
   font-weight: 400;
 }
 
-@include font-face("Iosevka SS05", "/fonts/iosevka-ss05-bold") {
+@include font-face("Iosevka SS12", "/fonts/iosevka-ss12-bold") {
   font-style: normal;
   font-weight: 700;
 }
