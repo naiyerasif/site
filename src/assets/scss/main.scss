@@ -20,6 +20,8 @@
     background-color: var(--background-scrollbar-button);
   }
 
+  scrollbar-color: var(--background-scrollbar-thumb) var(--background-scrollbar-track);
+
   &::-moz-selection { 
     background: $selection; 
   }
