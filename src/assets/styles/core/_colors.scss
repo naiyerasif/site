@@ -97,6 +97,8 @@ $tertiary: (
 [data-theme="light"] {
   --text-default: #{secondary(900)};
   --text-muted: #{tint(tertiary(900), 20%)};
+  --link-default: #{shade(primary(700), 6%)};
+  --link-hover: #{shade(primary(900), 6%)};
   --background-body: #{tertiary(A600)};
   --background-body-dim: #{tint(tertiary(A900), 35%)};
   --background-panel-vibrant: #{transparentize(tertiary(100), 0.25)};
@@ -112,6 +114,8 @@ $tertiary: (
 [data-theme="dark"] {
   --text-default: #{shade($white, 25%)};
   --text-muted: #{shade(tertiary(300), 40%)};
+  --link-default: #{primary(500)};
+  --link-hover: #{primary(700)};
   --background-body: #{shade(secondary(A300), 15%)};
   --background-body-dim: #{shade(secondary(A300), 30%)};
   --background-panel-vibrant: #{transparentize(secondary(A200), 0.2)};
