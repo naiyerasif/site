@@ -1,9 +1,8 @@
 ---
-title: Code Formatting with Prettier
-path: /code-formatting-with-prettier
-date: 2019-04-20
-updated: 2019-11-13
-author: [naiyer]
+title: 'Code Formatting with Prettier'
+date: 2019-04-20 12:12:16
+updated: 2019-11-13 19:54:31
+authors: [naiyer]
 tags: ['gist']
 ---
 

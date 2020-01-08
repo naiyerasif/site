@@ -1,0 +1,47 @@
+// Media Query (Core)
+
+@mixin within($extent) {
+  @media screen and (max-width: ($extent - 1)) {
+    @content;
+  }
+}
+
+@mixin beyond($extent) {
+  @media screen and (min-width: $extent) {
+    @content;
+  }
+}
+
+// Media Query (Derived)
+// 
+// `handheld` is the default breakpoint
+
+@mixin phone {
+  @include within($width-sm) {
+    @content;
+  }
+}
+
+@mixin tab-portrait {
+  @include beyond($width-sm) {
+    @content;
+  }
+}
+
+@mixin tab-landscape {
+  @include beyond($width-md) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @include beyond($width-lg) {
+    @content;
+  }
+}
+
+@mixin widescreen {
+  @include beyond($width-xl) {
+    @content;
+  }
+}

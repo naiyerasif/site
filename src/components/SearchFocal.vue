@@ -1,5 +1,5 @@
 <template>
-  <div style="display: none"></div>
+  <div class="search-focal"></div>
 </template>
 
 <script>

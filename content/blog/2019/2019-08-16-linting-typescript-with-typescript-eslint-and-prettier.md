@@ -1,9 +1,7 @@
 ---
-title: Linting TypeScript with TypeScript ESLint and Prettier
-path: /linting-typescript-with-typescript-eslint-and-prettier
-date: 2019-08-16
-updated: 2019-08-16
-author: [naiyer]
+title: 'Linting TypeScript with TypeScript ESLint and Prettier'
+date: 2019-08-16 16:23:12
+authors: [naiyer]
 tags: ['gist']
 ---
 

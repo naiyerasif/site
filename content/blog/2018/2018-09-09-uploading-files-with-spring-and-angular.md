@@ -1,9 +1,8 @@
 ---
-title: Uploading files with Spring and Angular
-path: /uploading-files-with-spring-and-angular
-date: 2018-09-09
-updated: 2019-11-11
-author: [naiyer] 
+title: 'Uploading files with Spring and Angular'
+date: 2018-09-09 11:14:23
+updated: 2019-11-11 21:16:19
+authors: [naiyer] 
 tags: ['guide']
 ---
 

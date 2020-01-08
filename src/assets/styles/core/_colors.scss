@@ -1,0 +1,123 @@
+// Monochrome
+
+$black: hsl(0, 0%, 0%);
+$white: hsl(0, 0%, 100%);
+
+// Colormix functions
+// 
+// use `tint` instead of default `lighten`
+// use `shade` instead of default `darken` 
+
+@function tint($color, $percentage) {
+  @return mix($white, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+  @return mix($black, $color, $percentage);
+}
+
+// Color palettes
+// 
+// Ax00 variants are WCAG-accesible complements of x00 colors
+// all the colors are in CIECAM02 color space
+
+$primary: (
+  100: hsl(158, 25%, 79%),
+  200: hsl(160, 26%, 71%),
+  300: hsl(160, 30%, 62%),
+  400: hsl(161, 33%, 52%),
+  500: hsl(166, 64%, 38%),
+  600: hsl(165, 54%, 36%),
+  700: hsl(163, 45%, 34%),
+  800: hsl(162, 39%, 31%),
+  900: hsl(162, 35%, 28%),
+  A100: hsl(160, 31%, 25%),
+  A200: hsl(160, 27%, 22%),
+  A300: hsl(162, 25%, 18%),
+  A600:	hsl(150, 17%, 98%),
+  A700: hsl(160, 20%, 94%),
+  A800: hsl(164, 22%, 90%),
+  A900: hsl(160, 22%, 86%)
+);
+
+$secondary: (
+  100: hsl(240, 11%, 80%),
+  200: hsl(244, 12%, 72%),
+  300: hsl(245, 13%, 64%),
+  400: hsl(244, 14%, 58%),
+  500: hsl(245, 15%, 52%),
+  600: hsl(247, 19%, 46%),
+  700: hsl(247, 21%, 40%),
+  800: hsl(248, 19%, 33%),
+  900: hsl(248, 18%, 26%),
+  A100: hsl(248, 17%, 25%),
+  A200: hsl(249, 17%, 22%),
+  A300: hsl(245, 14%, 15%),
+  A600: hsl(240, 8%, 95%),
+  A700: hsl(252, 11%, 91%),
+  A800: hsl(240, 11%, 88%),
+  A900: hsl(240, 9%, 85%)
+);
+
+$tertiary: (
+  100: hsl(42, 93%, 95%),
+  200: hsl(38, 75%, 89%),
+  300: hsl(37, 81%, 83%),
+  400: hsl(36, 92%, 71%),
+  500: hsl(36, 69%, 62%),
+  600: hsl(36, 49%, 55%),
+  700: hsl(35, 38%, 48%),
+  800: hsl(36, 35%, 42%),
+  900: hsl(36, 33%, 36%),
+  A100: hsl(36, 31%, 31%),
+  A200: hsl(36, 28%, 26%),
+  A300: hsl(34, 27%, 22%),
+  A600: hsl(42, 50%, 96%),
+  A700: hsl(39, 63%, 94%),
+  A800: hsl(39, 67%, 92%),
+  A900: hsl(37, 74%, 89%)
+);
+
+// Conveniences for palette access
+
+@function primary($variation) {
+  @return map-get($primary, $variation);
+}
+
+@function secondary($variation) {
+  @return map-get($secondary, $variation);
+}
+
+@function tertiary($variation) {
+  @return map-get($tertiary, $variation);
+}
+
+// CSS properties for light theme
+
+[data-theme="light"] {
+  --text-default: #{secondary(900)};
+  --text-muted: #{tint(tertiary(900), 20%)};
+  --background-body: #{tertiary(A600)};
+  --background-body-dim: #{tint(tertiary(A900), 35%)};
+  --background-panel-vibrant: #{transparentize(tertiary(100), 0.25)};
+  --background-panel: #{tertiary(200)};
+  --background-panel-dim: #{tint(tertiary(300), 10%)};
+  --border-panel: #{transparentize(primary(100), 0.7)};
+  --border-search: #{shade(tertiary(300), 5%)};
+  --code-default: #{shade(primary(A300), 15%)};
+}
+
+// CSS properties for dark theme
+
+[data-theme="dark"] {
+  --text-default: #{shade($white, 25%)};
+  --text-muted: #{shade(tertiary(300), 40%)};
+  --background-body: #{shade(secondary(A300), 15%)};
+  --background-body-dim: #{shade(secondary(A300), 30%)};
+  --background-panel-vibrant: #{transparentize(secondary(A200), 0.2)};
+  --background-panel: #{secondary(A300)};
+  --background-panel-dim: #{shade(secondary(A300), 40%)};
+  --border-panel: #{transparentize(secondary(900), 0.25)};
+  --border-search: #{secondary(900)};
+  --code-default: #{transparentize(secondary(900), 0.5)};
+}

@@ -1,9 +1,8 @@
 ---
-title: Persisting documents with MongoRepository
-path: /persisting-documents-with-mongorepository
-date: 2019-07-08
-updated: 2019-12-08
-author: [naiyer]
+title: 'Persisting documents with MongoRepository'
+date: 2019-07-08 11:12:13
+updated: 2019-12-08 19:59:01
+authors: [naiyer]
 tags: ['guide']
 ---
 

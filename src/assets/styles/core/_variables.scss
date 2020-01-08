@@ -1,0 +1,146 @@
+// Options
+
+$closer-lists: true !default;
+$custom-colors: true !default;
+$custom-fonts: true !default;
+$font-smoothing: true !default;
+$text-adjusting: true !default;
+$heading-borders: false !default;
+$show-underline: false !default;
+$table-hover: false !default;
+$table-striped: false !default;
+$visited-links: false !default;
+$variable-fonts: false !default;
+$body-gradient: true !default;
+$external-links: true !default;
+
+// Typography
+
+$font-family-sans: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+  'Droid Sans', 'Oxygen', 'Ubuntu', 'Cantarell', 'Helvetica Neue', Arial,
+  'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+  'Segoe UI Symbol', 'Noto Color Emoji' !default;
+$font-family-fixed: 'Iosevka Curvy', SFMono-Regular, 'Roboto Mono', 'Andale Mono', Menlo, Monaco,
+  Consolas, 'Inconsolata', 'Liberation Mono', 'Courier New', monospace !default;
+
+// define variable font family here
+$font-family-sans-var: 'Inter var' !default;
+
+// set base font-family
+$font-family-base: $font-family-sans !default;
+
+@if $variable-fonts {
+  @supports (font-variation-settings: normal) {
+    $font-family-base: $font-family-sans-var, $font-family-sans !default;
+  }
+}
+
+// font weights
+$font-normal: 400 !default;
+$font-semibold: 600 !default;
+$font-bold: 700 !default;
+
+$weight-strong: $font-bold !default;
+$weight-headings: $font-semibold !default;
+
+$text-xs: 0.75rem !default;
+$text-sm: 0.875rem !default;
+$text-rg: 1rem !default;
+$text-md: 1.25rem !default;
+$text-lg: 1.5rem !default;
+$text-xl: 1.75rem !default;
+$text-2xl: 2rem !default;
+$text-3xl: 3rem !default;
+
+$font-size: $text-rg !default;
+$text-size-adjust: 100% !default;
+
+// Spacing
+
+// breakpoints
+$width-sm: 600px !default;
+$width-md: 900px !default;
+$width-lg: 1200px !default;
+$width-xl: 1800px !default;
+
+// grids
+$cell-sm: 14rem !default;
+$cell-md: 20rem !default;
+$cell-lg: 24rem !default;
+
+$line-height-rg: 1.6 !default;
+
+$line-height: $line-height-rg !default;
+
+$line-height-xs: 1.25 !default;
+$line-height-sm: 1.4 !default;
+
+$gap-xs: 0.5rem !default;
+$gap-sm: 0.75rem !default;
+$gap-rg: 1rem !default;
+$gap-md: 1.25rem !default;
+$gap-lg: 1.5rem !default;
+$gap-xl: 2rem !default;
+$gap-2xl: 3rem !default;
+$gap-3xl: 5rem !default;
+
+$expanse-container: 75vw !default;
+$expanse-article: 60vw !default;
+$expanse-base: $gap-2xl !default;
+$expanse-search: $gap-sm !default;
+$margin: $gap-lg !default;
+
+// radiuses
+$radius-sm: 0.25rem !default;
+$radius-rg: 0.5rem !default;
+
+$radius: $radius-sm !default;
+
+// graphics
+$gfx-sm: 1.5rem !default;
+
+// Indicators
+
+// Used as a value of `content`
+// Can be a `url`
+$indicator-external-link: '\02197' !default;
+
+$opacity-md: 0.5 !default;
+
+// Z-index
+
+$elevation-md: 10 !default;
+
+// Colors
+
+$link: primary(500) !default;
+$link-hover: primary(700) !default;
+$text: var(--text-default) !default;
+$text-muted: var(--text-muted) !default;
+$text-code: inherit !default;
+$text-strong: inherit !default;
+$text-light: $text-muted !default;
+$text-headings: inherit !default;
+$text-blockquote: $text-muted !default;
+$table-thead: inherit !default;
+$selected: transparentize(primary(500), 0.75);
+
+$background-body: var(--background-body) !default;
+$background-body-dim: var(--background-body-dim) !default;
+$background-panel: var(--background-panel) !default;
+$background-panel-dim: var(--background-panel-dim) !default;
+$background-panel-vibrant: var(--background-panel-vibrant) !default;
+$background-code: $background-panel-vibrant !default;
+$background-ins: $background-panel-vibrant !default;
+$background-mark: $background-panel-vibrant !default;
+$background-table: inherit !default;
+$background-table-even: $background-panel !default;
+$background-table-hover: $background-panel-dim !default;
+
+$border: transparentize(tertiary(600), 0.6) !default;
+$border-panel: var(--border-panel) !default;
+$border-search: var(--border-search) !default;
+
+$scrollbar-track: var(--background-body) !default;
+$scrollbar-thumb: var(--border-search) !default;
+$scrollbar-button: var(--background-body-dim) !default;

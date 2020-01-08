@@ -1,28 +1,29 @@
 <template>
   <header class="container header">
-    <g-link class="brand-link" to="/"><g-image class="brand" src="../../../static/logo.svg" alt="logo" /></g-link>
-    <div class="hamburger">
-      <a @click="toggle" title="Menu">
-        <svg :class="{ hidden: isOpen }" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" class="icon icon-menu"><path d="M7.028 12H21M3 6h18M11.022 18H21" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
-        <svg :class="{ hidden: !isOpen }" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-minimize"><path d="M18 6L6 18M6 6l12 12"/></svg>
-      </a>
-    </div>
-    <ul :class="isOpen ? 'visible': 'hidden'">
-      <li><SearchBox /></li>
+    <g-link class="brand" to="/">
+      <g-image class="logo" src="../../../static/logo.svg" alt="Microflash" />
+    </g-link>
+    <button class="hamburger hamburger-icon" :class="{ active: isOpen }" type="button" aria-label="Menu" @click="toggle">
+      <span class="hamburger-box" aria-hidden="true">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+    <ul class="menu" :class="isOpen ? 'is-visible': 'is-hidden-on-phone'">
+      <li><Search /></li>
       <li><ThemeSwitcher /></li>
       <li><g-link to="/stockpile/">Stockpile</g-link></li>
-      <li><g-link to="/about/naiyer/">About</g-link></li>
+      <li><g-link to="/about">About</g-link></li>
     </ul>
   </header>
 </template>
 
 <script>
-import SearchBox from '~/components/SearchBox'
+import Search from '~/components/Search'
 import ThemeSwitcher from '~/components/ThemeSwitcher'
 
 export default {
   components: {
-    SearchBox,
+    Search,
     ThemeSwitcher
   },
   data() {
@@ -37,95 +38,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.header {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: $gap;
-  padding-bottom: $gap;
-
-  @include tablet-portrait {
-    padding-top: $gap-xl;
-    padding-bottom: $gap-xl;
-  }
-
-  .brand-link {
-    line-height: 0;
-  }
-
-  .brand {
-    width: $media-ws;
-
-    @include tablet-portrait {
-      width: $media-hd;
-    }
-  }
-
-  .hidden {
-    @include phone-only {
-      @include hidden;
-    }
-  }
-
-  .visible {
-    @include visible;
-  }
-
-  .active {
-    font-weight: $font-bold;
-  }
-
-  .hamburger {
-    @include tablet-portrait {
-      @include hidden;
-    }
-
-    a {
-      display: flex;
-      align-items: center;
-      outline: none;
-      padding: $gap-sm;
-
-      .hidden {
-        @include hidden;
-      }
-    }
-  }
-
-  ul {
-    letter-spacing: $text-relaxed;
-    list-style: none;
-    font-weight: $font-bold;
-    width: $expanse-full;
-    display: block;
-    flex-grow: 1;
-    align-items: center;
-
-    @include tablet-portrait {
-      display: flex;
-      flex: 0 1 auto;
-      width: auto;
-    }
-
-    li {
-      margin-left: $gap * 1.5;
-
-      @include phone-only {
-        margin-top: $gap;
-        margin-left: 0;
-      }
-
-      a {
-        color: $color-custom;
-
-        &:focus, &:hover {
-          color: $color-custom-visited;
-        }
-      }
-    }
-  }
-}
-</style>

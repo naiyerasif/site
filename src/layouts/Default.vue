@@ -1,18 +1,10 @@
 <template>
-  <div id="app" dark>
+  <div class="layout">
     <Header />
-    <div style="overflow-x: hidden"><slot /></div>
+    <slot></slot>
     <Footer />
   </div>
 </template>
-
-<static-query>
-query {
-  metadata {
-    siteName
-  }
-}
-</static-query>
 
 <script>
 import Header from './partials/Header'

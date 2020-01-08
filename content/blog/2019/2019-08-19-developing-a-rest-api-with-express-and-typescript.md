@@ -1,9 +1,8 @@
 ---
-title: Developing a REST API with Express and TypeScript
-path: /developing-a-rest-api-with-express-and-typescript
-date: 2019-08-19
-updated: 2019-11-14
-author: [naiyer]
+title: 'Developing a REST API with Express and TypeScript'
+date: 2019-08-19 21:43:03
+updated: 2019-11-14 21:45:09
+authors: [naiyer]
 tags: ['guide']
 ---
 

@@ -1,57 +1,26 @@
 <template>
-  <div class="pagination">
-    <g-link :to="previousPage(info.currentPage)" :class="{'paginator': info.currentPage === 1}">&larr; Prev</g-link>
-    <div class="page-data">Page {{ info.currentPage }} of {{ info.totalPages }}</div>
-    <g-link :to="nextPage(info.currentPage,info.totalPages)" :class="{'paginator': info.currentPage === info.totalPages}">Next &rarr;</g-link>
-  </div>
+  <section class="container pagination">
+    <g-link class="is-prev" :to="previousPage(input.currentPage)" v-if="input.currentPage > 1">&larr; Prev</g-link>
+    <div>page {{ input.currentPage }} of {{ input.totalPages }}</div>
+    <g-link class="is-next" :to="nextPage(input.currentPage, input.totalPages)" v-if="input.currentPage < input.totalPages">Next &rarr;</g-link>
+  </section>
 </template>
 
 <script>
 export default {
-  props: ['base','info'],
-  methods: {
-    previousPage(currentPage) {
-      return [0, 1].includes(currentPage - 1) ? `${this.basePath}/` : `${this.basePath}/${currentPage - 1}/`;
-    },
-    nextPage(currentPage, totalPages) {
-      return totalPages > currentPage ? `${this.basePath}/${currentPage + 1}/` : `${this.basePath}/${currentPage}/`;
+  props: ['path', 'input'],
+  computed: {
+    base() {
+      return this.path || ''
     }
   },
-  computed: {
-    basePath() {
-      return this.base || ''
+  methods: {
+    previousPage(currentPage) {
+      return [0, 1].includes(currentPage - 1) ? `${this.base}/` : `${this.base}/${currentPage - 1}/`;
+    },
+    nextPage(currentPage, totalPages) {
+      return totalPages > currentPage ? `${this.base}/${currentPage + 1}/` : `${this.base}/${currentPage}/`;
     }
   }
 }
 </script>
-
-<style lang="scss">
-.pagination {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  .paginator {
-    pointer-events: none;
-    opacity: 0;
-
-    @include phone-only {
-      visibility: hidden;
-    }
-
-    @include tablet-landscape {
-      display: none;
-    }
-  }
-
-  .page-data {
-    color: $color-custom;
-    width: auto;
-    text-align: center;
-
-    @include tablet-landscape {
-      display: flex;
-    }
-  }
-}
-</style>

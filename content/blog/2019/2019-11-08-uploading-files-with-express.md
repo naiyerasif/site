@@ -1,9 +1,7 @@
 ---
-title: Uploading files with Express
-path: /uploading-files-with-express
-date: 2019-11-08
-updated: 2019-11-08
-author: [naiyer] 
+title: 'Uploading files with Express'
+date: 2019-11-08 16:06:33
+authors: [naiyer] 
 tags: ['guide']
 ---
 

@@ -1,9 +1,13 @@
 <template>
   <Layout>
-    <div class="container post">
-      <div class="article">
-        <h2>Page Not Found</h2>
-        <g-image src="../../static/404.svg" />
+    <div class="container hero">
+      <h1>Page not found</h1>
+    </div>
+    <div class="container">
+      <div class="post">
+        <div class="panel">
+          <g-image src="../../static/404.svg" />
+        </div>
       </div>
     </div>
   </Layout>
@@ -12,19 +16,7 @@
 <script>
 export default {
   metaInfo: {
-    title: 'Page Not Found'
+    title: 'Page not found'
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.article {
-  text-align: center;
-  
-  h2 {
-    margin-bottom: $gap;
-    font-size: $text-2xl;
-    font-weight: $font-semibold;
-  }
-}
-</style>

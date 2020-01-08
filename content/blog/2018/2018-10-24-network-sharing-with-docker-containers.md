@@ -1,9 +1,8 @@
 ---
-title: Network sharing with Docker containers
-path: /network-sharing-with-docker-containers
-date: 2018-10-24
-updated: 2019-11-11
-author: [naiyer]
+title: 'Network sharing with Docker containers'
+date: 2018-10-24 15:26:21
+updated: 2019-11-11 14:45:13
+authors: [naiyer]
 tags: ['gist']
 ---
 

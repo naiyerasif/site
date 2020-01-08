@@ -1,0 +1,51 @@
+// Cell sizing
+
+@mixin cell($font-size) {
+  font-size: #{$font-size}em;
+  padding: $margin / 2 / $font-size;
+}
+
+// Headings adjustment
+
+@mixin heading($font-size, $with-border: false, $top-space: false) {
+  font-size: #{$font-size}em;
+  margin-bottom: $margin / $font-size;
+
+  @if $top-space {
+    margin-top: $margin * 2 / $font-size;
+  } @else {
+    margin-top: $margin / $font-size;
+  }
+
+  @if $heading-borders and $with-border {
+    border-bottom: 1px solid $border;
+    padding-bottom: $margin / $font-size;
+  }
+}
+
+// Visibility
+
+@mixin hide($toggle: true) {
+  @if $toggle {
+    visibility: hidden;
+    display: none;
+  } @else {
+    visibility: initial;
+    display: unset;
+  }
+}
+
+// Box spacing
+
+@mixin spacing($gap-top: $gap-lg, $gap-bottom: $gap-lg) {
+  padding: $gap-top $gap-lg $gap-bottom;
+}
+
+// Align to center
+
+@mixin center($wrap: wrap, $justify: center) {
+  display: flex;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-items: center;
+}

@@ -1,9 +1,8 @@
 ---
-title: Linting SASS with stylelint
-path: /linting-sass-with-stylelint
-date: 2019-06-02
-updated: 2019-08-08
-author: [naiyer]
+title: 'Linting SASS with stylelint'
+date: 2019-06-02 15:32:12
+updated: 2019-08-08 20:21:01
+authors: [naiyer]
 tags: ['gist']
 ---
 

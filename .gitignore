@@ -1,11 +1,9 @@
 *.log
 .cache
-.DS_Store
+.vscode
 content/draft/
-src/.temp
-node_modules
 key
+node_modules
 public
+src/.temp
 static/search.json
-.env
-.env.*

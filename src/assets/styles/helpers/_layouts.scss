@@ -1,0 +1,38 @@
+// Grids
+
+// generates a grid with cells of specified width
+$grid-border: 1px solid transparent;
+
+@mixin matrix($width) {
+  display: flex;
+  flex-wrap: wrap;
+  
+  display: grid;
+  grid-template-columns: 100%;
+  
+  @include tab-landscape {
+    grid-template-columns: repeat(auto-fit, minmax($width, 1fr));
+  }
+  
+  &-cell {
+    flex: 1 1 $width;
+    height: 100%;
+  }
+}
+
+.grid-sm {
+  @include matrix($cell-sm);
+}
+
+.grid-md {
+  @include matrix($cell-md);
+}
+
+.grid-lg {
+  @include matrix($cell-lg);
+  border: $grid-border;
+
+  .grid-lg-cell {
+    border: $grid-border;
+  }
+}

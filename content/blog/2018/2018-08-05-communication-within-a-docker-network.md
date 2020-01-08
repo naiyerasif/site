@@ -1,9 +1,8 @@
 ---
-title: Communication within a Docker network
-path: /communication-within-a-docker-network
-date: 2018-08-05
-updated: 2019-11-11
-author: [naiyer]
+title: 'Communication within a Docker network'
+date: 2018-08-05 12:06:01
+updated: 2019-11-11 14:11:12
+authors: [naiyer]
 tags: ['guide']
 ---
 

@@ -1,9 +1,8 @@
 ---
-title: Messaging with RabbitMQ and Spring Boot
-path: /messaging-with-rabbitmq-and-spring-boot
-date: 2018-12-13
-updated: 2019-11-13
-author: [naiyer]
+title: 'Messaging with RabbitMQ and Spring Boot'
+date: 2018-12-13 20:20:54
+updated: 2019-11-13 16:45:02
+authors: [naiyer]
 tags: ['guide']
 ---
 

@@ -1,14 +1,12 @@
 <template>
   <Layout>
-    <Hero>#{{ $page.tag.title }}</Hero>
-    <div class="container posts">
-      <div class="grid-2">
-        <div class="column" v-for="post in $page.tag.belongsTo.edges" :key="post.node.id">
-          <PostCard :item="post.node" />
-        </div>
-      </div>
-      <Pagination class="post-pagination" v-if="$page.tag.belongsTo.pageInfo.totalPages > 1" :base="`/tag/${$page.tag.title}`" :info="$page.tag.belongsTo.pageInfo" />
+    <div class="container hero">
+      <h1>
+        #{{ $page.tag.title }}
+      </h1>
     </div>
+    <Posts :posts="$page.tag.belongsTo.edges" />
+    <Pagination v-if="$page.tag.belongsTo.pageInfo.totalPages > 1" :path="`/tag/${$page.tag.title}`" :input="$page.tag.belongsTo.pageInfo" />
   </Layout>
 </template>
 
@@ -30,7 +28,7 @@ query Tag ($id: ID!, $page: Int) {
     	      date (format: "MMM D, Y")
     	      updated (format: "MMM D, Y")
             path
-            summary
+            blurb
             tags {
               title,
               path
@@ -44,9 +42,8 @@ query Tag ($id: ID!, $page: Int) {
 </page-query>
 
 <script>
-import Hero from '~/components/Hero'
+import Posts from '~/components/Posts'
 import Pagination from '~/components/Pagination'
-import PostCard from '~/components/PostCard'
 
 export default {
   metaInfo() {
@@ -55,9 +52,8 @@ export default {
     }
   },
   components: {
-    Hero,
-    Pagination,
-    PostCard
+    Posts,
+    Pagination
   }
 }
 </script>

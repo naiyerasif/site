@@ -1,9 +1,8 @@
 ---
-title: Creating an Express middleware using TypeScript
-path: /creating-an-express-middleware-using-typescript
-date: 2019-01-12
-updated: 2019-11-13
-author: [naiyer]
+title: 'Creating an Express middleware using TypeScript'
+date: 2019-01-12 10:11:13
+updated: 2019-11-13 12:01:55
+authors: [naiyer]
 tags: ['guide']
 ---
 

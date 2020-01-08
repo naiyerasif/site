@@ -1,9 +1,8 @@
 ---
-title: Code Coverage with JaCoCo and Maven
-path: /code-coverage-with-jacoco-and-maven
-date: 2018-11-15
-updated: 2019-11-12
-author: [naiyer]
+title: 'Code Coverage with JaCoCo and Maven'
+date: 2018-11-15 21:09:32
+updated: 2019-11-12 19:14:45
+authors: [naiyer]
 tags: ['guide']
 ---
 

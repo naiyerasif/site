@@ -1,9 +1,7 @@
 ---
-title: Querying JSON documents in Oracle
-path: /querying-json-documents-in-oracle
-date: 2019-09-18
-updated: 2019-09-18
-author: [naiyer]
+title: 'Querying JSON documents in Oracle'
+date: 2019-09-18 22:11:11
+authors: [naiyer]
 tags: ['guide']
 ---
 

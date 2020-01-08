@@ -1,18 +1,20 @@
 <template>
   <Layout>
-    <Hero>Stockpile</Hero>
-    <div class="container stockpile">
-      <div class="grid-3">
-        <div class="column" v-for="item in $page.stockpile.edges" :key="item.node.id">
-          <a v-if="item.node.link.startsWith('http')" :href="item.node.link" class="card" target="_blank" rel="noopener noreferrer">
-            <div class="card-category">{{ item.node.type }}</div>
-            <h3 class="card-title">{{ item.node.title }}&nearr;</h3>
-            <p class="description">{{ item.node.description }}</p>
+    <div class="container hero">
+      <h1>Stockpile</h1>
+    </div>
+    <div class="container grid-lg">
+      <div class="grid-lg-cell" v-for="item in $page.stockpile.edges" :key="item.node.id">
+        <div class="panel card">
+          <a v-if="item.node.link.startsWith('http')" :href="item.node.link" target="_blank" rel="noopener noreferrer">
+            <div class="box-header">{{ item.node.type }}</div>
+            <h3 class="box-body">{{ item.node.title }}&nearr;</h3>
+            <p class="card-footer">{{ item.node.description }}</p>
           </a>
-          <g-link v-else :to="item.node.link" class="card">
-            <div class="card-category">{{ item.node.type }}</div>
-            <h3 class="card-title">{{ item.node.title }}</h3>
-            <p class="description">{{ item.node.description }}</p>
+          <g-link v-else :to="item.node.link">
+            <div class="card-header">{{ item.node.type }}</div>
+            <h3 class="card-body">{{ item.node.title }}</h3>
+            <p class="card-footer">{{ item.node.description }}</p>
           </g-link>
         </div>
       </div>
@@ -42,39 +44,11 @@ query StockpileItems ($page: Int) {
 </page-query>
 
 <script>
-import Hero from '~/components/Hero'
-
 export default {
   metaInfo() {
     return {
       title: 'Stockpile'
     }
-  },
-  components: {
-    Hero
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.stockpile {
-  width: $expanse-full;
-  margin-top: $gap;
-  margin-bottom: $gap;
-
-  @include tablet-portrait {
-    margin-left: $gap-0;
-    margin-right: $gap-0;
-    margin-bottom: $gap-0;
-    width: ($expanse-full * 0.8);
-  }
-
-  .card-category, .description {
-    color: var(--text-default);
-  }
-
-  .card-category {
-    font-weight: $font-normal;
-  }
-}
-</style>

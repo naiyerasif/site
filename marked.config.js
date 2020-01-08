@@ -1,11 +1,14 @@
 const marked = require('marked')
+const AllHtmlEntities = require('html-entities').AllHtmlEntities
+const appConfig = require('./app.config')
 
+const entities = new AllHtmlEntities()
 const whitespace = ' '
 const emptyspace = ''
 const defaultRenderer = new marked.Renderer()
 
 const stripTocRenderer = new marked.Renderer()
-stripTocRenderer.heading = (text, level, raw, slugger) => (level === 3 && text === 'Table of Contents') ? emptyspace : defaultRenderer.heading(text, level, raw, slugger)
+stripTocRenderer.heading = (text, level, raw, slugger) => (text === appConfig.tocPattern) ? emptyspace : defaultRenderer.heading(text, level, raw, slugger)
 
 const plainTextRenderer = new marked.Renderer()
 plainTextRenderer.code = (code, infostring, escaped) => code + whitespace
@@ -28,7 +31,31 @@ plainTextRenderer.link = (href, title, text) => text
 plainTextRenderer.image = (href, title, text) => whitespace
 plainTextRenderer.text = (text) => text
 
+const preprocess = (md) => {
+  const limit = 251
+  const tokens = marked.lexer(md)
+  let markdown = ''
+  let shouldStop = false
+  for (token of tokens) {
+    if (shouldStop || markdown.length > limit || token.text === appConfig.tocPattern) break
+    if (markdown !== '' && token.type === 'heading') shouldStop = true
+    if (token.type !== 'heading' && token.text) {
+      markdown = markdown + token.text.trim()
+    }
+    if (token.type === 'space' || token.type === 'hr' || token.type === 'br') {
+      markdown = markdown + whitespace
+    }
+  }
+  return markdown
+}
+
+const summarize = (content) => {
+  const markdown = preprocess(content)
+  const plainText = marked(markdown, { renderer: plainTextRenderer, sanitize: false })
+  return entities.decode(plainText)
+}
+
 module.exports = {
-  stripTocRenderer,
-  plainTextRenderer
+  summarize,
+  stripTocRenderer
 }

@@ -1,38 +1,23 @@
-const path = require('path')
+const autoprefixer = require('autoprefixer')
+const purgecss = require('@fullhuman/postcss-purgecss')
 const marked = require('marked')
-const stripTocRenderer = require('./marked.config').stripTocRenderer
 const shiki = require('shiki')
-const site = require('./data/site.json')
+const appConfig = require('./app.config')
+const stripTocRenderer = require('./marked.config').stripTocRenderer
 
-const addStyleResources = (rule) => {
-  rule.use('style-resource')
-    .loader('style-resources-loader')
-    .options({
-      patterns: [
-        path.resolve(__dirname, './src/assets/scss/_colors.scss'),
-        path.resolve(__dirname, './src/assets/scss/_mixins.scss'),
-        path.resolve(__dirname, './src/assets/scss/_setup.scss')
-      ]
-    })
-}
+const postcssPlugins = []
 
-const shikiOptions = {
-  theme: shiki.loadTheme('./static/remarkable.json'),
-  skipInline: true
-}
+if (process.env.NODE_ENV === 'production') postcssPlugins.push(purgecss())
 
-const remarkOptions = (maxDepth) => {
-  return { 
-    maxDepth: maxDepth, 
-    tight: true 
-  }
-}
+postcssPlugins.push(autoprefixer({
+  cascade: false
+}))
 
 module.exports = {
-  siteName: site.title,
-  siteDescription: site.description,
-  siteUrl: site.url,
-  titleTemplate: `%s · ${site.title}`,
+  siteName: appConfig.name,
+  siteDescription: appConfig.description,
+  siteUrl: appConfig.url,
+  titleTemplate: `%s · ${appConfig.name}`,
   outputDir: 'public',
   permalinks: {
     slugify: {
@@ -44,8 +29,7 @@ module.exports = {
     }
   },
   templates: {
-    Post: '/blog/:year/:month/:day/:path',
-    Author: '/about/:id',
+    Post: '/blog/:year/:month/:day/:title',
     Tag: '/tag/:id'
   },
   plugins: [
@@ -59,14 +43,19 @@ module.exports = {
             typeName: 'Tag',
             create: true
           },
-          author: 'Author'
-        },
-        remark: {
-          plugins: [
-            ['gridsome-plugin-remark-shiki', shikiOptions],
-            ['remark-toc', remarkOptions(3)]
-          ]
+          authors: {
+            typeName: 'Profile'
+          }
         }
+      }
+    },
+    {
+      use: '@gridsome/vue-remark',
+      options: {
+        typeName: 'Profile',
+        baseDir: './profiles',
+        template: './src/templates/Profile.vue',
+        route: '/profile/:id'
       }
     },
     {
@@ -74,12 +63,12 @@ module.exports = {
       options: {
         contentTypes: ['Post'],
         feedOptions: {
-          title: site.title,
-          description: site.description,
-          id: site.url,
-          link: site.url,
-          image: site.favicon,
-          copyright: site.copyright,
+          title: appConfig.name,
+          description: appConfig.description,
+          id: appConfig.url,
+          link: appConfig.url,
+          image: appConfig.favicon,
+          copyright: appConfig.copyright,
         },
         rss: {
           enabled: true,
@@ -98,12 +87,12 @@ module.exports = {
         nodeToFeedItem: (node) => ({
           title: node.title,
           date: node.date,
-          description: node.summary,
+          description: node.blurb,
           author: [
             {
-              name: `@${site.title}`,
-              email: site.maintainer,
-              link: site.about
+              name: `@${appConfig.name}`,
+              email: appConfig.maintainer,
+              link: appConfig.url
             }
           ],
           content: marked(node.content, { renderer: stripTocRenderer })
@@ -119,21 +108,33 @@ module.exports = {
     {
       use: '@gridsome/plugin-google-analytics',
       options: {
-        id: site.gatid
+        id: appConfig.gatid
       }
     }
   ],
   transformers: {
     remark: {
+      plugins: [
+        ['gridsome-plugin-remark-shiki', { theme: shiki.loadTheme('./static/remarkable.json'), skipInline: true }],
+        ['remark-toc', { heading: appConfig.tocPattern, maxDepth: 3, tight: true }]
+      ],
       externalLinksTarget: '_blank',
       externalLinksRel: ['nofollow', 'noopener', 'noreferrer'],
       slug: true,
-      autolinkHeadings: true,
-      autolinkClassName: 'toclink'
+      autolinkHeadings: {
+        content: {
+          type: 'element',
+          tagName: 'span',
+          properties: { className: ['ref-link'] }
+        }
+      }
     }
   },
-  chainWebpack(config) {
-    const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
-    types.forEach(type => addStyleResources(config.module.rule('scss').oneOf(type)))
+  css: {
+    loaderOptions: {
+      postcss: {
+        plugins: postcssPlugins,
+      },
+    },
   }
 }

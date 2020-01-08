@@ -1,5 +1,7 @@
 /*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
+
 // Blocks
+
 html,
 body,
 p,
@@ -28,6 +30,7 @@ h6 {
 }
 
 // Headings
+
 h1,
 h2,
 h3,
@@ -39,16 +42,19 @@ h6 {
 }
 
 // List
+
 ul {
   list-style: none;
 }
 
 // Abbreviation
+
 abbr[title] {
   text-decoration: none;
 }
 
 // Form
+
 button,
 input,
 select,
@@ -57,6 +63,7 @@ textarea {
 }
 
 // Box sizing
+
 html {
   box-sizing: border-box;
 }
@@ -70,6 +77,7 @@ html {
 }
 
 // Media
+
 img,
 video {
   height: auto;
@@ -77,11 +85,13 @@ video {
 }
 
 // Iframe
+
 iframe {
   border: 0;
 }
 
 // Table
+
 table {
   border-collapse: collapse;
   border-spacing: 0;

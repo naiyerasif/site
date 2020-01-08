@@ -1,11 +1,27 @@
 {
-  "title": "Microflash",
+  "name": "Microflash",
   "description": "Reflections on design and development by Naiyer Asif",
   "url": "https://mflash.dev",
   "favicon": "https://raw.githubusercontent.com/Microflash/microflash.github.io/release/src/favicon.png",
-  "copyright": "Copyright 2019, Naiyer Asif",
   "maintainer": "Naiyer Asif",
-  "about": "https://mflash.dev/about/naiyer",
-  "postEditUrl": "https://github.com/Microflash/microflash.github.io/edit/release/content/",
-  "gatid": "UA-143076148-1"
+  "gatid": "UA-143076148-1",
+  "tocPattern": "Table of Contents",
+  "searchConfig": {
+    "file": {
+      "dir": "static",
+      "name": "search.json"
+    },
+    "options": {
+      "shouldSort": true,
+      "includeMatches": true,
+      "tokenize": true,
+      "matchAllTokens": true,
+      "threshold": 0.4,
+      "location": 0,
+      "distance": 600,
+      "maxPatternLength": 32,
+      "minMatchCharLength": 1,
+      "keys": ["title", "blurb"]
+    }
+  }
 }

@@ -1,35 +1,24 @@
 const path = require('path')
 const fs = require('fs')
-const siteData = require('./data/site.json')
-const authorDataSource = './data/authors.json'
-const authorData = require(authorDataSource)
+const { GraphQLString } = require('gridsome/graphql')
 const stockpileDataSource = './data/stockpile.json'
 const stockpileData = require(stockpileDataSource)
-const { GraphQLString } = require('gridsome/graphql')
-const marked = require('marked')
-const plainTextRenderer = require('./marked.config').plainTextRenderer
-const decode = require('unescape')
+const appConfig = require('./app.config')
+const summarize = require('./marked.config').summarize
 
-const summarize = (content) => {
-  const idxOfFirstHeader = content.indexOf('###')
-  const firstParagraph = content.substr(0, idxOfFirstHeader)
-  return decode(marked(firstParagraph, { renderer: plainTextRenderer, sanitize: false }))
-}
+const editConfigs = appConfig.editConfig.paths
+const { basePath, constructEditUrl } = editConfigs.filter(p => p.collection === 'Post')[0]
 
-module.exports = function (api, options) {
-  api.loadSource(({ addSchemaResolvers, addCollection, addMetadata }) => {
-    const authors = addCollection('Author')
-    authorData.forEach(({ id, name: title, ...fields }) => {
-      authors.addNode({
-        id,
-        title,
-        internal: {
-          origin: authorDataSource
-        },
-        ...fields
-      })
-    })
+module.exports = function (api) {
 
+  api.onCreateNode(options => {
+    if (options.internal.typeName === 'Post' && !options.updated) {
+      options.updated = options.date
+    }
+    return { ...options }
+  })
+
+  api.loadSource(({ addSchemaResolvers, addCollection }) => {
     const stockpile = addCollection('Stockpile')
     stockpileData.forEach(({ id, title: title, ...fields }) => {
       stockpile.addNode({
@@ -42,36 +31,38 @@ module.exports = function (api, options) {
       })
     })
 
-    addMetadata('postEditUrl', siteData.postEditUrl)
-
     addSchemaResolvers({
       Post: {
-        summary: {
+        blurb: {
           type: GraphQLString,
           resolve(post) {
-            return post.summary ? post.summary : summarize(post.content)
+            return post.blurb ? post.blurb : summarize(post.content)
+          }
+        },
+        editUrl: {
+          type: GraphQLString,
+          resolve(post) {
+            return constructEditUrl(basePath, post.path)
           }
         }
       }
     })
   })
 
-  api.beforeBuild(({ store }) => {
-
-    const { collection } = store.getCollection('Post')
+  api.beforeBuild(context => {
+    const collection = context._app.store.getCollection('Post')._collection
 
     const posts = collection.data.map(post => {
       return {
         title: post.title,
         path: post.path,
-        summary: post.summary ? post.summary : summarize(post.content)
+        blurb: post.blurb ? post.blurb : summarize(post.content)
       }
     })
 
     const output = {
-      dir: './static',
-      name: 'search.json',
-      ...options.output
+      dir: `./${appConfig.searchConfig.file.dir}`,
+      name: appConfig.searchConfig.file.name
     }
 
     const outputPath = path.resolve(process.cwd(), output.dir)
