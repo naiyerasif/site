@@ -16,6 +16,10 @@
   @include desktop {
     max-width: $expanse-container;
   }
+
+  @include widescreen {
+    max-width: $expanse-article;
+  }
 }
 
 .panel {
