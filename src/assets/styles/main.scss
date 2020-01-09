@@ -253,7 +253,7 @@ $hamburger-layer-spacing: 6px !default;
   overflow: hidden;
   background-color: $background-panel-dim;
   @include spacing;
-  height: inherit;
+  height: 100%;
   border: 1px solid $background-panel;
 
   a {
