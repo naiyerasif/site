@@ -1,13 +1,47 @@
 // Grids
 
 // generates a grid with cells of specified width
-$grid-border: 1px solid transparent;
 
-@mixin matrix($width) {
+@mixin matrix($width, $gap: 0, $gap-phone: 0, $gap-tab-portrait: 0, $gap-tab-landscape: 0, $gap-desktop: 0, $gap-widescreen: 0) {
   display: flex;
   flex-wrap: wrap;
   
   display: grid;
+
+  @if $gap > 0 {
+    grid-gap: $gap;
+  }
+  
+  @if $gap-phone > 0 {
+    @include phone {
+      grid-gap: $gap-phone;
+    }
+  }
+
+  @if $gap-tab-portrait > 0 {
+    @include tab-portrait {
+      grid-gap: $gap-tab-portrait;
+    }
+  }
+
+  @if $gap-tab-landscape > 0 {
+    @include tab-landscape {
+      grid-gap: $gap-tab-landscape;
+    }
+  }
+
+  @if $gap-desktop > 0 {
+    @include desktop {
+      grid-gap: $gap-desktop;
+    }
+  }
+
+  @if $gap-widescreen > 0 {
+    @include widescreen {
+      grid-gap: $gap-widescreen;
+    }
+  }
+  
   grid-template-columns: 100%;
   
   @include tab-landscape {
@@ -16,23 +50,59 @@ $grid-border: 1px solid transparent;
   
   &-cell {
     flex: 1 1 $width;
+
+    @if $gap > 0 {
+      margin: $gap;
+    }
+
+    @if $gap-phone > 0 {
+      @include phone {
+        margin: $gap-phone;
+      }
+    }
+
+    @if $gap-tab-portrait > 0 {
+      @include tab-portrait {
+        margin: $gap-tab-portrait;
+      }
+    }
+
+    @if $gap-tab-landscape > 0 {
+      @include tab-landscape {
+        margin: $gap-tab-landscape;
+      }
+    }
+
+    @if $gap-desktop > 0 {
+      @include desktop {
+        margin: $gap-desktop;
+      }
+    }
+
+    @if $gap-widescreen > 0 {
+      @include widescreen {
+        margin: $gap-widescreen;
+      }
+    }
+
     height: 100%;
+  }
+
+  @supports (display: grid) {
+    & > * {
+      margin: 0;
+    }
   }
 }
 
 .grid-sm {
-  @include matrix($cell-sm);
+  @include matrix($cell-sm, $gap: $gap-sm);
 }
 
 .grid-md {
-  @include matrix($cell-md);
+  @include matrix($cell-md, $gap-phone: $gap-rg);
 }
 
 .grid-lg {
-  @include matrix($cell-lg);
-  border: $grid-border;
-
-  .grid-lg-cell {
-    border: $grid-border;
-  }
+  @include matrix($cell-lg, $gap-phone: 1px, $gap-tab-portrait: $gap-rg, $gap-tab-landscape: $gap-lg, $gap-widescreen: $gap-xl);
 }

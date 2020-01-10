@@ -14,11 +14,11 @@
   width: auto;
 
   @include desktop {
-    max-width: $expanse-container;
+    max-width: $expanse-container-rg;
   }
 
   @include widescreen {
-    max-width: $expanse-article;
+    max-width: $expanse-container-ws;
   }
 }
 
@@ -225,6 +225,7 @@ $hamburger-layer-spacing: 6px !default;
 
   @include tab-portrait {
     padding: $expanse-base;
+    border-radius: $radius;
   }
 
   &:hover, 
@@ -238,7 +239,7 @@ $hamburger-layer-spacing: 6px !default;
 }
 
 .card-header {
-  font-weight: $font-normal;
+  font-weight: $font-semibold;
   font-size: $text-xs;
   margin-bottom: $gap-xs;
 }
@@ -258,7 +259,7 @@ $hamburger-layer-spacing: 6px !default;
   background-color: $background-panel-dim;
   @include spacing;
   height: 100%;
-  border: 1px solid $background-panel;
+  border-radius: $radius;
 
   a {
     text-decoration: none;
@@ -266,7 +267,9 @@ $hamburger-layer-spacing: 6px !default;
 }
 
 .box-header {
+  font-weight: $font-semibold;
   font-size: $text-xs;
+  color: $text-muted;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
