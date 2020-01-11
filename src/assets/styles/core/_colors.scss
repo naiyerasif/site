@@ -95,10 +95,10 @@ $tertiary: (
 // CSS properties for light theme
 
 [data-theme="light"] {
-  --text-default: #{secondary(900)};
+  --text-default: #{secondary(A200)};
   --text-muted: #{tint(tertiary(900), 20%)};
   --link-default: #{shade(primary(700), 6%)};
-  --link-hover: #{shade(primary(900), 6%)};
+  --link-hover: #{primary(900)};
   --background-body: #{tertiary(A600)};
   --background-body-dim: #{tint(tertiary(A900), 35%)};
   --background-panel-vibrant: #{transparentize(tertiary(100), 0.25)};
