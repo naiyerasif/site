@@ -239,8 +239,7 @@ $hamburger-layer-spacing: 6px !default;
 }
 
 .card-header {
-  font-weight: $font-semibold;
-  font-size: $text-xs;
+  font-size: $text-sm;
   margin-bottom: $gap-xs;
 }
 
@@ -267,15 +266,14 @@ $hamburger-layer-spacing: 6px !default;
 }
 
 .box-header {
-  font-weight: $font-semibold;
-  font-size: $text-xs;
+  font-size: $text-sm;
   color: $text-muted;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
 .box-body {
-  font-size: $text-rg;
+  font-size: $text-md;
   margin-top: $gap-sm;
   margin-bottom: $gap-sm;
 }
