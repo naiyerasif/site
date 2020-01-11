@@ -1,3 +1,6 @@
+@use "sass:color";
+@use "colors";
+
 // Options
 
 $closer-lists: true !default;
@@ -124,7 +127,7 @@ $text-light: $text-muted !default;
 $text-headings: inherit !default;
 $text-blockquote: $text-muted !default;
 $table-thead: inherit !default;
-$selected: transparentize(primary(500), 0.75);
+$selected: color.adjust(colors.primary(500), $alpha: -0.75);
 
 $background-body: var(--background-body) !default;
 $background-body-dim: var(--background-body-dim) !default;
@@ -138,7 +141,7 @@ $background-table: inherit !default;
 $background-table-even: $background-panel !default;
 $background-table-hover: $background-panel-dim !default;
 
-$border: transparentize(tertiary(600), 0.6) !default;
+$border: color.adjust(colors.tertiary(600), $alpha: -0.6) !default;
 $border-panel: var(--border-panel) !default;
 $border-search: var(--border-search) !default;
 

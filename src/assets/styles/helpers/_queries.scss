@@ -1,3 +1,5 @@
+@use "../core/variables";
+
 // Media Query (Core)
 
 @mixin within($extent) {
@@ -17,31 +19,31 @@
 // `handheld` is the default breakpoint
 
 @mixin phone {
-  @include within($width-sm) {
+  @include within(variables.$width-sm) {
     @content;
   }
 }
 
 @mixin tab-portrait {
-  @include beyond($width-sm) {
+  @include beyond(variables.$width-sm) {
     @content;
   }
 }
 
 @mixin tab-landscape {
-  @include beyond($width-md) {
+  @include beyond(variables.$width-md) {
     @content;
   }
 }
 
 @mixin desktop {
-  @include beyond($width-lg) {
+  @include beyond(variables.$width-lg) {
     @content;
   }
 }
 
 @mixin widescreen {
-  @include beyond($width-xl) {
+  @include beyond(variables.$width-xl) {
     @content;
   }
 }

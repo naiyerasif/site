@@ -1,8 +1,11 @@
+@use "sass:list";
+@use "sass:map";
+@use "sass:meta";
 $default-formats: ("woff2", "woff");
 
 @function _contains($list, $values...) {
   @each $value in $values {
-    @if type-of(index($list, $value)) != "number" {
+    @if meta.type-of(list.index($list, $value)) != "number" {
       @return false;
     }
   }
@@ -23,12 +26,12 @@ $default-formats: ("woff2", "woff");
   );
 
   @each $format in $file-formats {
-    @if _contains(map-keys($formats-map), $format) {
-      $value: map-get($formats-map, $format);
-      $file-path: nth($value, 1);
-      $font-format: nth($value, 2);
+    @if _contains(map.keys($formats-map), $format) {
+      $value: map.get($formats-map, $format);
+      $file-path: list.nth($value, 1);
+      $font-format: list.nth($value, 2);
 
-      $src: append($src, url($file-path) $font-format, comma);
+      $src: list.append($src, url($file-path) $font-format, comma);
     } @else {
       @error "`#{$file-formats}` contains an unsupported font file format. " +
              "Must be `eot`, `woff2 supports variations(gvar)`, `woff2-variations`, `woff2`, `woff` and/or `svg`.";

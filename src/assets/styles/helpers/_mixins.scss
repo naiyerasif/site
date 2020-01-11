@@ -1,25 +1,27 @@
+@use "../core/variables";
+
 // Cell sizing
 
 @mixin cell($font-size) {
   font-size: #{$font-size}em;
-  padding: $margin / 2 / $font-size;
+  padding: variables.$margin / 2 / $font-size;
 }
 
 // Headings adjustment
 
 @mixin heading($font-size, $with-border: false, $top-space: false) {
   font-size: #{$font-size}em;
-  margin-bottom: $margin / $font-size;
+  margin-bottom: variables.$margin / $font-size;
 
   @if $top-space {
-    margin-top: $margin * 2 / $font-size;
+    margin-top: variables.$margin * 2 / $font-size;
   } @else {
-    margin-top: $margin / $font-size;
+    margin-top: variables.$margin / $font-size;
   }
 
-  @if $heading-borders and $with-border {
-    border-bottom: 1px solid $border;
-    padding-bottom: $margin / $font-size;
+  @if variables.$heading-borders and $with-border {
+    border-bottom: 1px solid variables.$border;
+    padding-bottom: variables.$margin / $font-size;
   }
 }
 
@@ -37,8 +39,8 @@
 
 // Box spacing
 
-@mixin spacing($gap-top: $gap-lg, $gap-bottom: $gap-lg) {
-  padding: $gap-top $gap-lg $gap-bottom;
+@mixin spacing($gap-top: variables.$gap-lg, $gap-bottom: variables.$gap-lg) {
+  padding: $gap-top variables.$gap-lg $gap-bottom;
 }
 
 // Align to center

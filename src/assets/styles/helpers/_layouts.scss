@@ -1,3 +1,6 @@
+@use "../core/variables";
+@use "queries";
+
 // Grids
 
 // generates a grid with cells of specified width
@@ -13,38 +16,38 @@
   }
   
   @if $gap-phone > 0 {
-    @include phone {
+    @include queries.phone {
       grid-gap: $gap-phone;
     }
   }
 
   @if $gap-tab-portrait > 0 {
-    @include tab-portrait {
+    @include queries.tab-portrait {
       grid-gap: $gap-tab-portrait;
     }
   }
 
   @if $gap-tab-landscape > 0 {
-    @include tab-landscape {
+    @include queries.tab-landscape {
       grid-gap: $gap-tab-landscape;
     }
   }
 
   @if $gap-desktop > 0 {
-    @include desktop {
+    @include queries.desktop {
       grid-gap: $gap-desktop;
     }
   }
 
   @if $gap-widescreen > 0 {
-    @include widescreen {
+    @include queries.widescreen {
       grid-gap: $gap-widescreen;
     }
   }
   
   grid-template-columns: 100%;
   
-  @include tab-landscape {
+  @include queries.tab-landscape {
     grid-template-columns: repeat(auto-fit, minmax($width, 1fr));
   }
   
@@ -56,31 +59,31 @@
     }
 
     @if $gap-phone > 0 {
-      @include phone {
+      @include queries.phone {
         margin: $gap-phone;
       }
     }
 
     @if $gap-tab-portrait > 0 {
-      @include tab-portrait {
+      @include queries.tab-portrait {
         margin: $gap-tab-portrait;
       }
     }
 
     @if $gap-tab-landscape > 0 {
-      @include tab-landscape {
+      @include queries.tab-landscape {
         margin: $gap-tab-landscape;
       }
     }
 
     @if $gap-desktop > 0 {
-      @include desktop {
+      @include queries.desktop {
         margin: $gap-desktop;
       }
     }
 
     @if $gap-widescreen > 0 {
-      @include widescreen {
+      @include queries.widescreen {
         margin: $gap-widescreen;
       }
     }
@@ -96,13 +99,13 @@
 }
 
 .grid-sm {
-  @include matrix($cell-sm, $gap: $gap-sm);
+  @include matrix(variables.$cell-sm, $gap: variables.$gap-sm);
 }
 
 .grid-md {
-  @include matrix($cell-md, $gap-phone: $gap-rg);
+  @include matrix(variables.$cell-md, $gap-phone: variables.$gap-rg);
 }
 
 .grid-lg {
-  @include matrix($cell-lg, $gap-phone: 1px, $gap-tab-portrait: $gap-rg, $gap-tab-landscape: $gap-lg, $gap-widescreen: $gap-xl);
+  @include matrix(variables.$cell-lg, $gap-phone: 1px, $gap-tab-portrait: variables.$gap-rg, $gap-tab-landscape: variables.$gap-lg, $gap-widescreen: variables.$gap-xl);
 }

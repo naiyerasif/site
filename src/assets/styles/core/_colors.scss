@@ -1,3 +1,5 @@
+@use "sass:color";
+@use "sass:map";
 // Monochrome
 
 $black: hsl(0, 0%, 0%);
@@ -9,11 +11,11 @@ $white: hsl(0, 0%, 100%);
 // use `shade` instead of default `darken` 
 
 @function tint($color, $percentage) {
-  @return mix($white, $color, $percentage);
+  @return color.mix($white, $color, $percentage);
 }
 
 @function shade($color, $percentage) {
-  @return mix($black, $color, $percentage);
+  @return color.mix($black, $color, $percentage);
 }
 
 // Color palettes
@@ -81,15 +83,15 @@ $tertiary: (
 // Conveniences for palette access
 
 @function primary($variation) {
-  @return map-get($primary, $variation);
+  @return map.get($primary, $variation);
 }
 
 @function secondary($variation) {
-  @return map-get($secondary, $variation);
+  @return map.get($secondary, $variation);
 }
 
 @function tertiary($variation) {
-  @return map-get($tertiary, $variation);
+  @return map.get($tertiary, $variation);
 }
 
 // CSS properties for light theme
@@ -101,10 +103,10 @@ $tertiary: (
   --link-hover: #{primary(900)};
   --background-body: #{tertiary(A600)};
   --background-body-dim: #{tint(tertiary(A900), 35%)};
-  --background-panel-vibrant: #{transparentize(tertiary(100), 0.25)};
+  --background-panel-vibrant: #{color.adjust(tertiary(100), $alpha: -0.25)};
   --background-panel: #{tertiary(200)};
   --background-panel-dim: #{tint(tertiary(300), 10%)};
-  --border-panel: #{transparentize(primary(100), 0.7)};
+  --border-panel: #{color.adjust(primary(100), $alpha: -0.7)};
   --border-search: #{shade(tertiary(300), 5%)};
   --code-default: #{shade(primary(A300), 15%)};
 }
@@ -118,10 +120,10 @@ $tertiary: (
   --link-hover: #{primary(700)};
   --background-body: #{shade(secondary(A300), 15%)};
   --background-body-dim: #{shade(secondary(A300), 30%)};
-  --background-panel-vibrant: #{transparentize(secondary(A200), 0.2)};
+  --background-panel-vibrant: #{color.adjust(secondary(A200), $alpha: -0.2)};
   --background-panel: #{secondary(A300)};
   --background-panel-dim: #{shade(secondary(A300), 40%)};
-  --border-panel: #{transparentize(secondary(900), 0.25)};
+  --border-panel: #{color.adjust(secondary(900), $alpha: -0.25)};
   --border-search: #{secondary(900)};
-  --code-default: #{transparentize(secondary(900), 0.5)};
+  --code-default: #{color.adjust(secondary(900), $alpha: -0.5)};
 }

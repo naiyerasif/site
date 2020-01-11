@@ -1,19 +1,22 @@
+@use "core/variables";
+@use "helpers/mixins";
+
 /*! remarkability.css v0.6.7 | MIT License | https://github.com/Microflash/remarkability */
 * {
   &::-webkit-scrollbar,
   &::-webkit-scrollbar-track {
-    background-color: $scrollbar-track;
+    background-color: variables.$scrollbar-track;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: $scrollbar-thumb;
+    background-color: variables.$scrollbar-thumb;
   }
 
   &::-webkit-scrollbar-button {
-    background-color: $scrollbar-button;
+    background-color: variables.$scrollbar-button;
   }
 
-  scrollbar-color: $scrollbar-thumb $scrollbar-track;
+  scrollbar-color: variables.$scrollbar-thumb variables.$scrollbar-track;
 
   scroll-behavior: smooth;
 
@@ -22,41 +25,41 @@
   }
 
   &::-moz-selection { 
-    background: $selected; 
+    background: variables.$selected; 
   }
   
   &::selection { 
-    background: $selected; 
+    background: variables.$selected; 
   }
 }
 
 body {
-  line-height: $line-height;
-  font-size: $font-size;
+  line-height: variables.$line-height;
+  font-size: variables.$font-size;
 
-  @if $text-adjusting {
-    text-size-adjust: $text-size-adjust;
+  @if variables.$text-adjusting {
+    text-size-adjust: variables.$text-size-adjust;
   }
 
-  @if $custom-colors {
-    color: $text;
+  @if variables.$custom-colors {
+    color: variables.$text;
   }
 
-  @if $custom-fonts {
-    font-family: $font-family-base;
+  @if variables.$custom-fonts {
+    font-family: variables.$font-family-base;
   }
 
-  @if $font-smoothing {
+  @if variables.$font-smoothing {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
   }
 
   text-rendering: optimizeLegibility;
-  background-color: $background-body;
-  color: $text;
+  background-color: variables.$background-body;
+  color: variables.$text;
 
-  @if $body-gradient {
-    background-image: linear-gradient(to top, $background-body 0%, $background-body-dim 100%);
+  @if variables.$body-gradient {
+    background-image: linear-gradient(to top, variables.$background-body 0%, variables.$background-body-dim 100%);
     min-height: 100vh;
   }
 }
@@ -66,16 +69,16 @@ a {
   text-decoration: none;
   cursor: pointer;
 
-  @if $custom-colors {
-    color: $link;
+  @if variables.$custom-colors {
+    color: variables.$link;
 
     &:focus, 
     &:hover {
-      color: $link-hover;
+      color: variables.$link-hover;
     }
   }
 
-  @if $show-underline {
+  @if variables.$show-underline {
     text-decoration: underline;
   } @else {
     &:focus,
@@ -89,10 +92,10 @@ a {
     outline-width: 0;
   }
 
-  @if $external-links {
+  @if variables.$external-links {
     &[rel*="nofollow"] {
       &::after {
-        content: $indicator-external-link;
+        content: variables.$indicator-external-link;
       }
     }
   }
@@ -108,12 +111,12 @@ cite {
 }
 
 hr {
-  background-color: $border;
+  background-color: variables.$border;
   border: none;
   display: block;
   height: 1px;
-  margin-bottom: $margin;
-  margin-top: $margin;
+  margin-bottom: variables.$margin;
+  margin-top: variables.$margin;
 }
 
 img {
@@ -122,18 +125,18 @@ img {
 
 mark,
 ins {
-  border-radius: $radius;
+  border-radius: variables.$radius;
   padding: 0em 0.4em 0.2em;
   vertical-align: baseline;
 }
 
 ins {
-  background-color: $background-ins;
+  background-color: variables.$background-ins;
   text-decoration: none;
 }
 
 mark {
-  background-color: $background-mark;
+  background-color: variables.$background-mark;
 }
 
 summary {
@@ -162,10 +165,10 @@ small {
 }
 
 strong {
-  font-weight: $weight-strong;
+  font-weight: variables.$weight-strong;
 
-  @if $custom-colors {
-    color: $text-strong;
+  @if variables.$custom-colors {
+    color: variables.$text-strong;
   }
 }
 
@@ -190,7 +193,7 @@ ul,
 blockquote,
 pre,
 table {
-  margin-bottom: $margin;
+  margin-bottom: variables.$margin;
 
   &:last-child {
     margin-bottom: 0;
@@ -210,66 +213,66 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: $weight-headings;
+  font-weight: variables.$weight-headings;
   line-height: 1.2;
 
   &:first-child {
     margin-top: 0;
   }
 
-  @if $custom-colors {
-    color: $text-headings;
+  @if variables.$custom-colors {
+    color: variables.$text-headings;
   }
 }
 
 h1 {
-  @include heading(2.4, true);
+  @include mixins.heading(2.4, true);
 
-  line-height: $line-height-xs;
+  line-height: variables.$line-height-xs;
 }
 
 h2 {
-  @include heading(1.6, true, true);
+  @include mixins.heading(1.6, true, true);
 
-  line-height: $line-height-sm;
+  line-height: variables.$line-height-sm;
 }
 
 h3 {
-  @include heading(1.3);
+  @include mixins.heading(1.3);
 }
 
 h4 {
-  @include heading(1.2);
+  @include mixins.heading(1.2);
 }
 
 h5 {
-  @include heading(1.1);
+  @include mixins.heading(1.1);
 }
 
 h6 {
-  @include heading(1);
+  @include mixins.heading(1);
 }
 
 // Paragraphs
-@if $closer-lists {
+@if variables.$closer-lists {
   p {
     & + dl,
     & + ol,
     & + ul {
-      margin-top: -$margin;
+      margin-top: -(variables.$margin);
     }
   }
 }
 
 // Lists
 dd {
-  margin-left: $margin;
+  margin-left: variables.$margin;
 }
 
 ol,
 ul {
   list-style-position: outside;
-  margin-left: $margin;
+  margin-left: variables.$margin;
 }
 
 ol {
@@ -322,24 +325,24 @@ ul {
 
 // Input
 input {
-  font-family: $font-family-base;
-  font-size: $font-size;
-  color: $text;
+  font-family: variables.$font-family-base;
+  font-size: variables.$font-size;
+  color: variables.$text;
 
   &::placeholder,
   &::-moz-placeholder {
     color: inherit;
-    opacity: $opacity-md;
+    opacity: variables.$opacity-md;
   }
 }
 
 // Blockquote
 blockquote {
-  border-left: 2px solid $border;
+  border-left: 2px solid variables.$border;
   padding: 0.5em 1em;
 
-  @if $custom-colors {
-    color: $text-blockquote;
+  @if variables.$custom-colors {
+    color: variables.$text-blockquote;
   }
 }
 
@@ -350,13 +353,13 @@ samp,
 pre {
   -moz-osx-font-smoothing: auto;
   -webkit-font-smoothing: auto;
-  background-color: $background-code;
-  color: $text;
+  background-color: variables.$background-code;
+  color: variables.$text;
   font-size: 0.9em;
-  border-radius: $radius;
+  border-radius: variables.$radius;
 
-  @if $custom-fonts {
-    font-family: $font-family-fixed;
+  @if variables.$custom-fonts {
+    font-family: variables.$font-family-fixed;
   }
 }
 
@@ -365,14 +368,14 @@ kbd,
 samp {
   padding: 0.2em 0.4em 0.2em;
 
-  @if $custom-colors {
-    color: $text-code;
+  @if variables.$custom-colors {
+    color: variables.$text-code;
   }
 }
 
 pre {
   overflow: hidden;
-  border-radius: $radius;
+  border-radius: variables.$radius;
 
   code {
     display: block;
@@ -387,7 +390,7 @@ pre {
 
 // Figure
 figure {
-  margin-bottom: $margin * 2;
+  margin-bottom: variables.$margin * 2;
   text-align: center;
 
   &:first-child {
@@ -401,10 +404,10 @@ figure {
 
 figcaption {
   font-size: 0.8em;
-  margin-top: $margin / 1.6;
+  margin-top: variables.$margin / 1.6;
 
-  @if $custom-colors {
-    color: $text-light;
+  @if variables.$custom-colors {
+    color: variables.$text-light;
   }
 }
 
@@ -421,54 +424,54 @@ table {
 
 th,
 td {
-  @include cell(1);
+  @include mixins.cell(1);
 
-  border: 1px solid $border;
+  border: 1px solid variables.$border;
   line-height: 1.4;
 }
 
 thead,
 tfoot {
   tr {
-    @if $table-striped {
-      background-color: $border;
+    @if variables.$table-striped {
+      background-color: variables.$border;
     } @else {
-      background-color: $background-table-hover;
+      background-color: variables.$background-table-hover;
     }
   }
 
   th,
   td {
-    @include cell(0.9);
+    @include mixins.cell(0.9);
 
-    @if $custom-colors {
-      color: $table-thead;
+    @if variables.$custom-colors {
+      color: variables.$table-thead;
     }
 
     code {
-      background-color: $background-table;
+      background-color: variables.$background-table;
     }
   }
 }
 
 tbody {
   tr {
-    background-color: $background-table;
+    background-color: variables.$background-table;
 
-    @if $table-striped {
+    @if variables.$table-striped {
       &:nth-child(even) {
-        background-color: $background-table-even;
+        background-color: variables.$background-table-even;
       }
 
-      @if $table-hover {
+      @if variables.$table-hover {
         &:hover {
-          background-color: $background-table-hover;
+          background-color: variables.$background-table-hover;
         }
       }
     } @else {
-      @if $table-hover {
+      @if variables.$table-hover {
         &:hover {
-          background-color: $background-table-even;
+          background-color: variables.$background-table-even;
         }
       }
     }

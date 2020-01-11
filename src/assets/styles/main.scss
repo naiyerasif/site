@@ -1,9 +1,13 @@
 @charset "UTF-8";
 
-@import "reset";
-@import "core";
-@import "helpers";
-@import "globals";
+@use "reset";
+@use "core/colors";
+@use "core/fonts";
+@use "core/variables";
+@use "helpers/queries";
+@use "helpers/layouts";
+@use "helpers/mixins";
+@use "globals";
 
 // Cross-component definitions
 
@@ -13,34 +17,34 @@
   position: relative;
   width: auto;
 
-  @include desktop {
-    max-width: $expanse-container-rg;
+  @include queries.desktop {
+    max-width: variables.$expanse-container-rg;
   }
 
-  @include widescreen {
-    max-width: $expanse-container-ws;
+  @include queries.widescreen {
+    max-width: variables.$expanse-container-ws;
   }
 }
 
 .panel {
   display: block;
   overflow: hidden;
-  background-color: $background-panel;
-  @include spacing;
+  background-color: variables.$background-panel;
+  @include mixins.spacing;
 
-  @include tab-portrait {
-    padding: $expanse-base;
+  @include queries.tab-portrait {
+    padding: variables.$expanse-base;
   }
 }
 
 // Component-specific definitions
 
 .header {
-  @include center(wrap, space-between);
-  @include spacing;
+  @include mixins.center(wrap, space-between);
+  @include mixins.spacing;
 
-  @include tab-portrait {
-    padding: $expanse-base;
+  @include queries.tab-portrait {
+    padding: variables.$expanse-base;
   }
 
   .brand {
@@ -49,7 +53,7 @@
     .logo {
       width: 3rem;
 
-      @include tab-portrait {
+      @include queries.tab-portrait {
         width: 4rem;
       }
     }
@@ -62,27 +66,27 @@
   align-items: center;
   width: 100%;
   list-style: none;
-  font-weight: $font-semibold;
+  font-weight: variables.$font-semibold;
 
-  @include phone {
-    margin-top: $gap-md;
-    margin-right: -$gap-lg;
-    margin-left: -$gap-lg;
-    padding: $gap-rg;
-    background-color: $background-panel-dim;
+  @include queries.phone {
+    margin-top: variables.$gap-md;
+    margin-right: -(variables.$gap-lg);
+    margin-left: -(variables.$gap-lg);
+    padding: variables.$gap-rg;
+    background-color: variables.$background-panel-dim;
     
     li {
-      padding: $gap-xs;
+      padding: variables.$gap-xs;
     }
   }
 
-  @include tab-portrait {
+  @include queries.tab-portrait {
     display: flex;
     flex: 0 1 auto;
     width: auto;
 
     li {
-      margin-left: $gap-rg;
+      margin-left: variables.$gap-rg;
     }
   }
 }
@@ -109,21 +113,21 @@ $hamburger-layer-spacing: 6px !default;
   margin: 0;
   overflow: visible;
 
-  @include tab-portrait {
-    @include hide(true);
+  @include queries.tab-portrait {
+    @include mixins.hide(true);
   }
 
   &.active {
     .hamburger-inner,
     .hamburger-inner::before,
     .hamburger-inner::after {
-      background-color: $link;
+      background-color: variables.$link;
     }
   }
 }
 
 .hamburger-box {
-  width: $gap-md;
+  width: variables.$gap-md;
   height: $hamburger-layer-height * 3 + $hamburger-layer-spacing * 2;
   display: inline-block;
   position: relative;
@@ -137,10 +141,10 @@ $hamburger-layer-spacing: 6px !default;
   &,
   &::before,
   &::after {
-    width: $gap-md;
+    width: variables.$gap-md;
     height: $hamburger-layer-height;
-    background-color: $link;
-    border-radius: $radius-rg;
+    background-color: variables.$link;
+    border-radius: variables.$radius-rg;
     position: absolute;
     transition-property: transform;
     transition-duration: 0.15s;
@@ -200,37 +204,37 @@ $hamburger-layer-spacing: 6px !default;
 }
 
 .hero {
-  @include spacing(0);
+  @include mixins.spacing(0);
 
-  @include tab-portrait {
-    padding-right: $expanse-base;
-    padding-bottom: $gap-2xl;
-    padding-left: $expanse-base;
+  @include queries.tab-portrait {
+    padding-right: variables.$expanse-base;
+    padding-bottom: variables.$gap-2xl;
+    padding-left: variables.$expanse-base;
   }
 
   h1 {
-    @include phone {
-      font-size: $text-lg;
+    @include queries.phone {
+      font-size: variables.$text-lg;
     }
 
-    @include desktop {
-      width: $expanse-article;
+    @include queries.desktop {
+      width: variables.$expanse-article;
     }
   }
 }
 
 .card {
-  @include spacing;
+  @include mixins.spacing;
   height: inherit;
 
-  @include tab-portrait {
-    padding: $expanse-base;
-    border-radius: $radius;
+  @include queries.tab-portrait {
+    padding: variables.$expanse-base;
+    border-radius: variables.$radius;
   }
 
   &:hover, 
   &:focus {
-    background-color: $background-panel-dim;
+    background-color: variables.$background-panel-dim;
   }
 
   a {
@@ -239,26 +243,26 @@ $hamburger-layer-spacing: 6px !default;
 }
 
 .card-header {
-  font-size: $text-sm;
-  margin-bottom: $gap-xs;
+  font-size: variables.$text-sm;
+  margin-bottom: variables.$gap-xs;
 }
 
 .card-body {
-  font-size: $text-md;
+  font-size: variables.$text-md;
 }
 
 .card-footer {
-  font-size: $text-sm;
-  color: $text;
+  font-size: variables.$text-sm;
+  color: variables.$text;
 }
 
 .box {
   display: block;
   overflow: hidden;
-  background-color: $background-panel-dim;
-  @include spacing;
+  background-color: variables.$background-panel-dim;
+  @include mixins.spacing;
   height: 100%;
-  border-radius: $radius;
+  border-radius: variables.$radius;
 
   a {
     text-decoration: none;
@@ -266,28 +270,28 @@ $hamburger-layer-spacing: 6px !default;
 }
 
 .box-header {
-  font-size: $text-sm;
-  color: $text-muted;
+  font-size: variables.$text-sm;
+  color: variables.$text-muted;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
 .box-body {
-  font-size: $text-md;
-  margin-top: $gap-sm;
-  margin-bottom: $gap-sm;
+  font-size: variables.$text-md;
+  margin-top: variables.$gap-sm;
+  margin-bottom: variables.$gap-sm;
 }
 
 .article {
   font-size: 1.0625rem;
   width: 100%;
 
-  @include desktop {
-    width: $expanse-article;
+  @include queries.desktop {
+    width: variables.$expanse-article;
   }
 
   & > p:first-of-type {
-    font-size: $text-md;
+    font-size: variables.$text-md;
   }
 }
 
@@ -297,30 +301,30 @@ $hamburger-layer-spacing: 6px !default;
   justify-content: flex-start;
   align-items: flex-start;
 
-  @include desktop {
+  @include queries.desktop {
     flex-direction: row;
   }
 
   aside {
-    @include spacing(0);
+    @include mixins.spacing(0);
     width: 100%;
 
-    @include tab-portrait {
-      margin-top: -($expanse-base / 2);
-      padding-right: $expanse-base;
-      padding-left: $expanse-base;
-      margin-bottom: $expanse-base / 2;
+    @include queries.tab-portrait {
+      margin-top: -(variables.$expanse-base / 2);
+      padding-right: variables.$expanse-base;
+      padding-left: variables.$expanse-base;
+      margin-bottom: variables.$expanse-base / 2;
     }
 
-    @include desktop {
+    @include queries.desktop {
       width: auto;
-      margin-left: $gap-2xl;
-      margin-top: $expanse-base;
+      margin-left: variables.$gap-2xl;
+      margin-top: variables.$expanse-base;
       padding: 0;
     }
 
     p {
-      margin-bottom: $gap-xs;
+      margin-bottom: variables.$gap-xs;
     }
 
     .author {
@@ -328,32 +332,32 @@ $hamburger-layer-spacing: 6px !default;
       align-items: center;
 
       a {
-        margin-left: $gap-xs;
+        margin-left: variables.$gap-xs;
       }
     }
   }
 }
 
 .pagination {
-  @include spacing;
-  @include center(nowrap, space-between);
+  @include mixins.spacing;
+  @include mixins.center(nowrap, space-between);
 
-  @include tab-portrait {
-    padding: $expanse-base $expanse-base 0;
+  @include queries.tab-portrait {
+    padding: variables.$expanse-base variables.$expanse-base 0;
     justify-content: center;
 
     .is-prev {
-      margin-right: $gap-lg;
+      margin-right: variables.$gap-lg;
     }
 
     .is-next {
-      margin-left: $gap-lg;
+      margin-left: variables.$gap-lg;
     }
   }
 }
 
 .search-focal {
-  @include hide(true);
+  @include mixins.hide(true);
 }
 
 .search-container,
@@ -362,41 +366,41 @@ $hamburger-layer-spacing: 6px !default;
 }
 
 .search {
-  background-color: $background-panel;
-  padding: $gap-sm $gap-rg;
-  padding-left: $gap-2xl;
-  border: 1px solid $border-search;
-  border-radius: $radius;
+  background-color: variables.$background-panel;
+  padding: variables.$gap-sm variables.$gap-rg;
+  padding-left: variables.$gap-2xl;
+  border: 1px solid variables.$border-search;
+  border-radius: variables.$radius;
   outline: none;
   width: 100%;
 
   &:focus, 
   &:hover {
-    background-color: $background-panel-vibrant;
+    background-color: variables.$background-panel-vibrant;
   }
 
-  @include phone {
-    background-color: $background-panel;
+  @include queries.phone {
+    background-color: variables.$background-panel;
   }
 
-  @include tab-landscape {
+  @include queries.tab-landscape {
     width: 20rem;
   }
 }
 
 .results-container {
   position: absolute;
-  z-index: $elevation-md;
+  z-index: variables.$elevation-md;
   overflow: hidden;
   width: 100%;
   left: 0;
   right: 0;
   max-height: 32rem;
-  margin-top: $gap-xs;
-  border: 1px solid $border-search;
-  border-radius: $radius;
+  margin-top: variables.$gap-xs;
+  border: 1px solid variables.$border-search;
+  border-radius: variables.$radius;
 
-  @include tab-landscape {
+  @include queries.tab-landscape {
     width: 26rem;
   }
 
@@ -406,26 +410,26 @@ $hamburger-layer-spacing: 6px !default;
     overflow: auto;
     display: flex;
     flex-direction: column;
-    background-color: $background-panel-dim;
+    background-color: variables.$background-panel-dim;
 
     .search-result, .no-result {
-      padding: $gap-rg;
+      padding: variables.$gap-rg;
     }
 
     .no-result {
-      font-weight: $font-normal;
+      font-weight: variables.$font-normal;
     }
 
     .search-result-highlighted {
-      background-color: $background-panel;
+      background-color: variables.$background-panel;
     }
 
     .search-result {
-      font-weight: $font-bold;
-      font-size: $text-md;
-      color: $link;
+      font-weight: variables.$font-bold;
+      font-size: variables.$text-md;
+      color: variables.$link;
       cursor: pointer;
-      border-bottom: 1px solid $border-search;
+      border-bottom: 1px solid variables.$border-search;
 
       &:last-child {
         border-bottom: none;
@@ -433,17 +437,17 @@ $hamburger-layer-spacing: 6px !default;
 
       &:focus, 
       &:hover {
-        background-color: $background-panel-vibrant;
-        color: $link-hover;
+        background-color: variables.$background-panel-vibrant;
+        color: variables.$link-hover;
         text-decoration: none;
       }
 
       .search-result-summary {
         display: block;
-        font-weight: $font-normal;
-        font-size: $text-sm;
-        margin-top: $gap-sm;
-        color: $text;
+        font-weight: variables.$font-normal;
+        font-size: variables.$text-sm;
+        margin-top: variables.$gap-sm;
+        color: variables.$text;
       }
     }
   }
@@ -452,38 +456,38 @@ $hamburger-layer-spacing: 6px !default;
 .icon-search, .icon-close {
   position: absolute;
   top: 0.65rem;
-  color: $link;
+  color: variables.$link;
 
   &:focus, 
   &:hover {
-    color: $link-hover;
+    color: variables.$link-hover;
   }
 }
 
 .icon-search {
-  left: $gap-sm;
+  left: variables.$gap-sm;
 }
 
 .icon-close {
-  right: $gap-sm;
+  right: variables.$gap-sm;
 }
 
 .footer {
-  @include spacing;
+  @include mixins.spacing;
 
-  @include tab-portrait {
-    padding: $expanse-base;
+  @include queries.tab-portrait {
+    padding: variables.$expanse-base;
   }
 
-  @include desktop {
-    margin-top: $gap-xl;
-    margin-bottom: $gap-2xl;
+  @include queries.desktop {
+    margin-top: variables.$gap-xl;
+    margin-bottom: variables.$gap-2xl;
   }
 
   .grid-md-cell .imprint {
-    font-weight: $font-bold;
-    font-size: $text-3xl;
-    margin-bottom: $gap-lg;
+    font-weight: variables.$font-bold;
+    font-size: variables.$text-3xl;
+    margin-bottom: variables.$gap-lg;
   }
 
   .grid-md-cell p:not(:first-child) {
@@ -497,7 +501,7 @@ $hamburger-layer-spacing: 6px !default;
     margin-left: 0;
 
     li:not(:first-child) {
-      margin-left: $gap-xs;
+      margin-left: variables.$gap-xs;
     }
   }
 }
@@ -505,12 +509,12 @@ $hamburger-layer-spacing: 6px !default;
 // Utilities
 
 .is-visible {
-  @include hide(false);
+  @include mixins.hide(false);
 }
 
 .is-hidden-on-phone {
-  @include phone {
-    @include hide(true);
+  @include queries.phone {
+    @include mixins.hide(true);
   }
 }
 
@@ -520,37 +524,37 @@ $hamburger-layer-spacing: 6px !default;
   stroke-width: 1.5px;
   stroke-linecap: round;
   stroke-linejoin: round;
-  height: $gfx-sm;
-  width: $gfx-sm;
+  height: variables.$gfx-sm;
+  width: variables.$gfx-sm;
   vertical-align: top;
 }
 
 .translucent {
-  opacity: $opacity-md;
+  opacity: variables.$opacity-md;
 }
 
 .is-highlighted {
-  color: $link;
+  color: variables.$link;
 }
 
 .is-lead {
-  font-weight: $font-semibold;
-  font-size: $text-md;
-  margin-top: $gap-xs;
-  margin-bottom: $gap-xs;
+  font-weight: variables.$font-semibold;
+  font-size: variables.$text-md;
+  margin-top: variables.$gap-xs;
+  margin-bottom: variables.$gap-xs;
 }
 
 .options {
-  @include spacing;
-  @include center(nowrap, flex-start);
+  @include mixins.spacing;
+  @include mixins.center(nowrap, flex-start);
 
-  @include tab-portrait {
-    padding: $gap-2xl $expanse-base 0;
+  @include queries.tab-portrait {
+    padding: variables.$gap-2xl variables.$expanse-base 0;
   }
 
   & > a {
     text-decoration: none;
-    margin-right: $gap-rg;
+    margin-right: variables.$gap-rg;
   }
 }
 
@@ -576,11 +580,11 @@ h5,
 h6 {
   &:focus a .ref-link,
   &:hover a .ref-link {
-    @include hide(false);
+    @include mixins.hide(false);
     display: inline-block;
     width: 1.25ch;
     margin-left: -1.25ch;
-    font-weight: $font-normal;
+    font-weight: variables.$font-normal;
 
     &::after {
       content: '#';
