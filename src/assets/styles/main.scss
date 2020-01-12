@@ -270,7 +270,7 @@ $hamburger-layer-spacing: 6px !default;
 }
 
 .box-header {
-  font-size: variables.$text-sm;
+  font-size: variables.$text-xs;
   color: variables.$text-muted;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -369,7 +369,7 @@ $hamburger-layer-spacing: 6px !default;
   background-color: variables.$background-panel;
   padding: variables.$gap-sm variables.$gap-rg;
   padding-left: variables.$gap-2xl;
-  border: 1px solid variables.$border-search;
+  border: none;
   border-radius: variables.$radius;
   outline: none;
   width: 100%;
@@ -377,6 +377,7 @@ $hamburger-layer-spacing: 6px !default;
   &:focus, 
   &:hover {
     background-color: variables.$background-panel-vibrant;
+    box-shadow: 0px 10px 50px -25px variables.$text-muted;
   }
 
   @include queries.phone {
@@ -397,8 +398,8 @@ $hamburger-layer-spacing: 6px !default;
   right: 0;
   max-height: 32rem;
   margin-top: variables.$gap-xs;
-  border: 1px solid variables.$border-search;
   border-radius: variables.$radius;
+  box-shadow: 0px 10px 50px -25px variables.$text-muted;
 
   @include queries.tab-landscape {
     width: 26rem;
