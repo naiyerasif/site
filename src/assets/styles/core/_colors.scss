@@ -62,22 +62,22 @@ $secondary: (
 );
 
 $tertiary: (
-  100: #d8d3c1,
-  200: #ccc7b7,
-  300: #c0bcac,
-  400: #aeaa9c,
-  500: #9c988c,
-  600: #8b887d,
-  700: #7c7970,
-  800: #6d6b63,
-  900: #605d57,
-  A100: #54524c,
-  A200: #484642,
-  A300: #353431,
-  A600: #fbf8ea,
-  A700: #f4eeda,
-  A800: #eae4d1,
-  A900: #e0dac8
+  100: hsl(42, 74%, 74%),
+  200: hsl(42, 77%, 67%),
+  300: hsl(42, 81%, 59%),
+  400: hsl(42, 67%, 53%),
+  500: hsl(42, 55%, 49%),
+  600: hsl(41, 52%, 45%),
+  700: hsl(42, 48%, 41%),
+  800: hsl(41, 45%, 37%),
+  900: hsl(41, 42%, 33%),
+  A100: hsl(40, 40%, 30%),
+  A200: hsl(41, 38%, 26%),
+  A300: hsl(42, 34%, 23%),
+  A600: hsl(49, 50%, 94%),
+  A700: hsl(45, 59%, 88%),
+  A800: hsl(43, 67%, 84%),
+  A900: hsl(43, 71%, 78%)
 );
 
 // Conveniences for palette access
@@ -99,15 +99,14 @@ $tertiary: (
 [data-theme="light"] {
   --text-default: #{secondary(A200)};
   --text-muted: #{tertiary(A100)};
-  --link-default: #{color.scale(primary(700), $saturation: 75%, $lightness: -33%)};
-  --link-hover: #{primary(600)};
-  --background-body: #{tertiary(A600)};
-  --background-body-dim: #{tertiary(A800)};
-  --background-panel-vibrant: #{color.scale(tertiary(200), $saturation: 15%, $lightness: 15%)};
-  --background-panel: #{color.scale(tertiary(100), $saturation: 10%, $lightness: 15%)};
-  --background-panel-dim: #{color.scale(tertiary(200), $saturation: 10%, $lightness: 10%)};
-  --border-panel: #{color.adjust(primary(100), $alpha: -0.7)};
-  --border-search: #{tertiary(300)};
+  --link-default: #{color.scale(primary(800), $saturation: 5%, $lightness: 2%)};
+  --link-hover: #{primary(900)};
+  --background-body: #{$white};
+  --background-body-dim: #{primary(A600)};
+  --background-panel-vibrant: #{color.scale(tertiary(A800), $lightness: 30%)};
+  --background-panel: #{color.scale(tertiary(A700), $saturation: -20%, $lightness: 15%)};
+  --background-panel-dim: #{tertiary(A800)};
+  --border-search: #{color.scale(tertiary(200), $saturation: -30%)};
   --code-default: #{primary(A300)};
 }
 
@@ -115,7 +114,7 @@ $tertiary: (
 
 [data-theme="dark"] {
   --text-default: #{shade($white, 25%)};
-  --text-muted: #{tertiary(400)};
+  --text-muted: #{color.scale(tertiary(500), $saturation: -30%)};
   --link-default: #{primary(500)};
   --link-hover: #{primary(700)};
   --background-body: #{shade(secondary(A300), 15%)};
@@ -123,7 +122,6 @@ $tertiary: (
   --background-panel-vibrant: #{color.adjust(secondary(A200), $alpha: -0.2)};
   --background-panel: #{secondary(A300)};
   --background-panel-dim: #{shade(secondary(A300), 40%)};
-  --border-panel: #{color.adjust(secondary(900), $alpha: -0.25)};
   --border-search: #{secondary(900)};
   --code-default: #{color.adjust(secondary(900), $alpha: -0.5)};
 }

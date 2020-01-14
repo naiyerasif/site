@@ -125,17 +125,16 @@ $background-body-dim: var(--background-body-dim) !default;
 $background-panel: var(--background-panel) !default;
 $background-panel-dim: var(--background-panel-dim) !default;
 $background-panel-vibrant: var(--background-panel-vibrant) !default;
-$background-code: $background-panel-vibrant !default;
-$background-ins: $background-panel-vibrant !default;
-$background-mark: $background-panel-vibrant !default;
+$background-code: $background-panel-dim !default;
+$background-ins: $background-panel-dim !default;
+$background-mark: $background-panel-dim !default;
 $background-table: inherit !default;
 $background-table-even: $background-panel !default;
 $background-table-hover: $background-panel-dim !default;
 
 $border: color.adjust(colors.tertiary(600), $alpha: -0.6) !default;
-$border-panel: var(--border-panel) !default;
 $border-search: var(--border-search) !default;
 
-$scrollbar-track: var(--background-body) !default;
+$scrollbar-track: var(--background-panel-dim) !default;
 $scrollbar-thumb: var(--border-search) !default;
-$scrollbar-button: var(--background-body-dim) !default;
+$scrollbar-button: var(--background-panel-vibrant) !default;

@@ -380,10 +380,6 @@ $hamburger-layer-spacing: 6px !default;
     box-shadow: 0px 10px 50px -25px variables.$text-muted;
   }
 
-  @include queries.phone {
-    background-color: variables.$background-panel;
-  }
-
   @include queries.tab-landscape {
     width: 20rem;
   }
@@ -399,7 +395,7 @@ $hamburger-layer-spacing: 6px !default;
   max-height: 32rem;
   margin-top: variables.$gap-xs;
   border-radius: variables.$radius;
-  box-shadow: 0px 10px 50px -25px variables.$text-muted;
+  box-shadow: 0px 10px 50px -25px colors.$black;
 
   @include queries.tab-landscape {
     width: 26rem;
@@ -411,7 +407,7 @@ $hamburger-layer-spacing: 6px !default;
     overflow: auto;
     display: flex;
     flex-direction: column;
-    background-color: variables.$background-panel-dim;
+    background-color: variables.$background-panel;
 
     .search-result, .no-result {
       padding: variables.$gap-rg;
@@ -422,7 +418,7 @@ $hamburger-layer-spacing: 6px !default;
     }
 
     .search-result-highlighted {
-      background-color: variables.$background-panel;
+      background-color: variables.$background-panel-vibrant;
     }
 
     .search-result {
@@ -431,6 +427,7 @@ $hamburger-layer-spacing: 6px !default;
       color: variables.$link;
       cursor: pointer;
       border-bottom: 1px solid variables.$border-search;
+      // background-color: variables.$background-panel;
 
       &:last-child {
         border-bottom: none;
@@ -438,7 +435,7 @@ $hamburger-layer-spacing: 6px !default;
 
       &:focus, 
       &:hover {
-        background-color: variables.$background-panel-vibrant;
+        background-color: variables.$background-panel-dim;
         color: variables.$link-hover;
         text-decoration: none;
       }
