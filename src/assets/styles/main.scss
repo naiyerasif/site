@@ -229,7 +229,7 @@ $hamburger-layer-spacing: 6px !default;
 
   @include queries.tab-portrait {
     padding: variables.$expanse-base;
-    border-radius: variables.$radius;
+    border-radius: variables.$radius-rg;
   }
 
   &:hover, 
@@ -262,7 +262,7 @@ $hamburger-layer-spacing: 6px !default;
   background-color: variables.$background-panel-dim;
   @include mixins.spacing;
   height: 100%;
-  border-radius: variables.$radius;
+  border-radius: variables.$radius-rg;
 
   a {
     text-decoration: none;

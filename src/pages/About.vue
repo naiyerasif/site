@@ -6,8 +6,8 @@
     <div class="container">
       <div class="post">
         <main class="panel article">
-          <p>This site started out as a pet project for <g-link to="/profile/naiyer/">me</g-link> to learn <a target="_blank" rel="noopener noreferrer" href="https://vuejs.org/">Vue.js</a> and <a target="_blank" rel="noopener noreferrer" href="https://graphql.org/">GraphQL</a>, and as a way to get my bearing around Vue.js community. Working on this project, I became more informed about accessible color systems, content preloading, optimization of vector illustrations, <a target="_blank" rel="noopener noreferrer" href="https://unifiedjs.com/">unifiedjs</a> ecosystem, and more.</p>
-          <p>Currently, I'm publishing my notes on development and design collected over the years, mostly to serve as a quickly accessible way to share and refer back. The code described in the examples is for the demonstration of the topic under discussion; it is not meant to be used as-is in production.</p>
+          <p>This site started out as a pet project for <g-link to="/profile/naiyer/">Naiyer Asif</g-link> to learn <a target="_blank" rel="noopener noreferrer" href="https://vuejs.org/">Vue.js</a> and <a target="_blank" rel="noopener noreferrer" href="https://graphql.org/">GraphQL</a>, and as a way to get his bearing around Vue.js community. Working on this project, he became more informed about accessible color systems, content preloading, optimization of vector illustrations, <a target="_blank" rel="noopener noreferrer" href="https://unifiedjs.com/">unifiedjs</a> ecosystem, and more.</p>
+          <p>Currently, Naiyer is publishing his notes on development and design collected over the years, mostly to serve as a quickly accessible way to share and refer back. The code described in the examples is for the demonstration of the topic under discussion; it is not meant to be used as-is in production.</p>
           <h2>Acknowledgements</h2>
           <p>This site was made possible by</p>
           <ul>
