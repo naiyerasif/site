@@ -121,6 +121,7 @@ hr {
 
 img {
   vertical-align: text-bottom;
+  border-radius: variables.$radius;
 }
 
 mark,
@@ -383,6 +384,7 @@ pre {
     overflow: auto;
     border: none;
     padding: 1em 1.2em;
+    margin-bottom: -0.5px;
     font-size: 1em;
     white-space: pre;
   }
