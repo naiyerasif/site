@@ -46,7 +46,7 @@ body {
   }
 
   @if variables.$custom-fonts {
-    font-family: variables.$font-family-base;
+    @include mixins.base-font;
   }
 
   @if variables.$font-smoothing {
@@ -325,7 +325,7 @@ ul {
 
 // Input
 input {
-  font-family: variables.$font-family-base;
+  @include mixins.base-font;
   font-size: variables.$font-size;
   color: variables.$text;
 

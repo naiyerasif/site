@@ -29,15 +29,6 @@ $font-family-fixed: 'Iosevka Curvy', SFMono-Regular, 'Roboto Mono', 'Andale Mono
 // define variable font family here
 $font-family-sans-var: 'Inter var' !default;
 
-// set base font-family
-$font-family-base: $font-family-sans !default;
-
-@if $variable-fonts {
-  @supports (font-variation-settings: normal) {
-    $font-family-base: $font-family-sans-var, $font-family-sans !default;
-  }
-}
-
 // font weights
 $font-normal: 400 !default;
 $font-semibold: 600 !default;

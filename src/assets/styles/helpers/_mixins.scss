@@ -51,3 +51,15 @@
   justify-content: $justify;
   align-items: center;
 }
+
+// Set base font-family
+
+@mixin base-font {
+  font-family: variables.$font-family-sans;
+
+  @if variables.$variable-fonts {
+    @supports (font-variation-settings: normal) {
+      font-family: variables.$font-family-sans-var, variables.$font-family-sans;
+    }
+  }
+}
