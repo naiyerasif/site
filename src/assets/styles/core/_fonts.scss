@@ -50,39 +50,39 @@ $default-formats: ("woff2", "woff");
   }
 }
 
-@include font-face("Inter", "/fonts/Inter-Regular") {
+@include font-face("Inter", "/assets/fonts/Inter-Regular") {
   font-style: normal;
   font-weight: 400;
 }
 
-@include font-face("Inter", "/fonts/Inter-Italic") {
+@include font-face("Inter", "/assets/fonts/Inter-Italic") {
   font-style: italic;
   font-weight: 400;
 }
 
-@include font-face("Inter", "/fonts/Inter-SemiBold") {
+@include font-face("Inter", "/assets/fonts/Inter-SemiBold") {
   font-style: normal;
   font-weight: 600;
 }
 
-@include font-face("Inter", "/fonts/Inter-SemiBoldItalic") {
+@include font-face("Inter", "/assets/fonts/Inter-SemiBoldItalic") {
   font-style: italic;
   font-weight: 600;
 }
 
-@include font-face("Inter", "/fonts/Inter-Bold") {
+@include font-face("Inter", "/assets/fonts/Inter-Bold") {
   font-style: normal;
   font-weight: 700;
 }
 
-@include font-face("Inter", "/fonts/Inter-BoldItalic") {
+@include font-face("Inter", "/assets/fonts/Inter-BoldItalic") {
   font-style: italic;
   font-weight: 700;
 }
 
 @include font-face(
   "Inter var",
-  "/fonts/Inter-upright.var",
+  "/assets/fonts/Inter-upright.var",
   ("woff2 supports variations(gvar)", "woff2-variations", "woff2")
 ) {
   font-style: normal;
@@ -92,7 +92,7 @@ $default-formats: ("woff2", "woff");
 
 @include font-face(
   "Inter var",
-  "/fonts/Inter-italic.var",
+  "/assets/fonts/Inter-italic.var",
   ("woff2 supports variations(gvar)", "woff2-variations", "woff2")
 ) {
   font-style: italic;
@@ -100,12 +100,12 @@ $default-formats: ("woff2", "woff");
   font-named-instance: "Italic";
 }
 
-@include font-face("Iosevka Curvy", "/fonts/iosevka-curvy-regular") {
+@include font-face("Iosevka Curvy", "/assets/fonts/iosevka-curvy-regular") {
   font-style: normal;
   font-weight: 400;
 }
 
-@include font-face("Iosevka Curvy", "/fonts/iosevka-curvy-bold") {
+@include font-face("Iosevka Curvy", "/assets/fonts/iosevka-curvy-bold") {
   font-style: normal;
   font-weight: 700;
 }
