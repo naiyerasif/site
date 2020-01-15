@@ -107,5 +107,5 @@
 }
 
 .grid-lg {
-  @include matrix(variables.$cell-lg, $gap-phone: 1px, $gap-tab-portrait: variables.$gap-rg, $gap-tab-landscape: variables.$gap-lg, $gap-widescreen: variables.$gap-xl);
+  @include matrix(variables.$cell-lg, $gap-phone: 1px, $gap-tab-portrait: variables.$gap-lg, $gap-tab-landscape: variables.$gap-xl, $gap-widescreen: variables.$gap-2xl);
 }

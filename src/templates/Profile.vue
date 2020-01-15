@@ -7,7 +7,7 @@
         <br>from {{ $page.profile.location }}
       </h1>
     </div>
-    <div class="container">
+    <div class="container grid-wrapper">
       <VueRemarkContent />
     </div>
   </Layout>

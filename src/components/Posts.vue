@@ -1,5 +1,5 @@
 <template>
-  <div class="container grid-lg">
+  <div class="container grid-wrapper grid-lg">
     <div class="grid-lg-cell" v-for="post in posts" :key="post.id">
       <div class="panel card">
         <div class="card-header">

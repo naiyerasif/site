@@ -3,7 +3,7 @@
     <div class="container hero">
       <h1 id="top">About this site</h1>
     </div>
-    <div class="container">
+    <div class="container grid-wrapper">
       <div class="post">
         <main class="panel article">
           <p>This site started out as a pet project for <g-link to="/profile/naiyer/">Naiyer Asif</g-link> to learn <a target="_blank" rel="noopener noreferrer" href="https://vuejs.org/">Vue.js</a> and <a target="_blank" rel="noopener noreferrer" href="https://graphql.org/">GraphQL</a>, and as a way to get his bearing around Vue.js community. Working on this project, he became more informed about accessible color systems, content preloading, optimization of vector illustrations, <a target="_blank" rel="noopener noreferrer" href="https://unifiedjs.com/">unifiedjs</a> ecosystem, and more.</p>

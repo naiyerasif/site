@@ -3,7 +3,7 @@
     <div class="container hero">
       <h1>Stockpile</h1>
     </div>
-    <div class="container grid-lg">
+    <div class="container grid-wrapper grid-lg">
       <div class="grid-lg-cell" v-for="item in $page.stockpile.edges" :key="item.node.id">
         <div class="panel card">
           <a v-if="item.node.link.startsWith('http')" :href="item.node.link" target="_blank" rel="noopener noreferrer">
