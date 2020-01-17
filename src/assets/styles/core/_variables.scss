@@ -23,7 +23,7 @@ $font-family-sans: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
   'Droid Sans', 'Oxygen', 'Ubuntu', 'Cantarell', 'Helvetica Neue', Arial,
   'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
   'Segoe UI Symbol', 'Noto Color Emoji' !default;
-$font-family-fixed: 'Iosevka Curvy', SFMono-Regular, 'Roboto Mono', 'Andale Mono', Menlo, Monaco,
+$font-family-fixed: 'JetBrains Mono', SFMono-Regular, 'Roboto Mono', 'Andale Mono', Menlo, Monaco,
   Consolas, 'Inconsolata', 'Liberation Mono', 'Courier New', monospace !default;
 
 // define variable font family here
@@ -78,9 +78,9 @@ $gap-xl: 2rem !default;
 $gap-2xl: 3rem !default;
 $gap-3xl: 5rem !default;
 
-$expanse-container-rg: 85vw !default;
+$expanse-container-rg: 80vw !default;
 $expanse-container-ws: 60vw !default;
-$expanse-article: 60vw !default;
+$expanse-article: 55vw !default;
 $expanse-base: $gap-2xl !default;
 $expanse-search: $gap-sm !default;
 $margin: $gap-lg !default;

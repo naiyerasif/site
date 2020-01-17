@@ -100,12 +100,12 @@ $default-formats: ("woff2", "woff");
   font-named-instance: "Italic";
 }
 
-@include font-face("Iosevka Curvy", "/assets/fonts/iosevka-curvy-regular") {
+@include font-face("JetBrains Mono", "/assets/fonts/JetBrainsMono-Regular") {
   font-style: normal;
   font-weight: 400;
 }
 
-@include font-face("Iosevka Curvy", "/assets/fonts/iosevka-curvy-bold") {
+@include font-face("JetBrains Mono", "/assets/fonts/JetBrainsMono-Bold") {
   font-style: normal;
   font-weight: 700;
 }

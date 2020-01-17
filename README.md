@@ -18,7 +18,7 @@ It uses
 - [GraphQL](https://graphql.org/) for querying data
 - [Vue.js](https://vuejs.org/) for components and layouts
 - [Inter](https://rsms.me/inter/) as the main font
-- [Iosevka Curvy](https://github.com/Microflash/Iosevka/tree/curvy) as the `monospace` font
+- [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) as the `monospace` font
 - a customized version of [Nord](https://github.com/arcticicestudio/nord) to decorate the codeblocks
 - [CircleCI](https://circleci.com/) for continuous integration
 - [gh-pages](https://github.com/tschaub/gh-pages) for deployment
