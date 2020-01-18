@@ -328,6 +328,8 @@ $hamburger-layer-spacing: 6px !default;
   height: inherit;
 
   @include queries.phone {
+    padding: variables.$gap-lg;
+
     .card-body {
       font-size: variables.$text-md;
     }
