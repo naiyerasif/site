@@ -1,7 +1,7 @@
 <template>
   <footer class="container grid-md footer">
     <section class="grid-md-cell">
-      <g-image class="imprint" src="../../../static/icon.svg" alt="logo" width="50" />
+      <g-image class="imprint" src="../../../static/assets/images/icon.svg" alt="logo" width="50" />
       <p>Copyright &copy; {{ year }} Naiyer Asif</p>
       <p>Source licensed <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/microflash.github.io/blob/release/LICENSE.md">MIT</a>, content <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/">CC by SA</a></p>
     </section>
