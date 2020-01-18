@@ -56,7 +56,11 @@
     line-height: 0;
 
     & > img {
-      width: 3rem;
+      width: 15rem;
+
+      @include queries.within(variables.$width-md) {
+        width: 13rem;
+      }
     }
   }
 }
@@ -506,6 +510,7 @@ h6 {
   padding-left: variables.$gap-2xl;
   border: 1.5px solid transparent;
   outline: none;
+  width: 100%;
   border-radius: variables.$radius;
 
   &:focus, 
