@@ -14,7 +14,7 @@
   margin-bottom: variables.$margin / $font-size;
 
   @if $top-space {
-    margin-top: variables.$margin * 2 / $font-size;
+    margin-top: variables.$margin * 3 / $font-size;
   } @else {
     margin-top: variables.$margin / $font-size;
   }
@@ -39,8 +39,15 @@
 
 // Box spacing
 
-@mixin spacing($gap-top: variables.$gap-lg, $gap-bottom: variables.$gap-lg) {
+@mixin spacing($gap-top: variables.$gap-md, $gap-bottom: variables.$gap-md) {
   padding: $gap-top variables.$gap-lg $gap-bottom;
+}
+
+// Expanse
+
+@mixin expanse($gap-top: variables.$gap-lg, $gap-bottom: variables.$gap-lg) {
+  padding-top: $gap-top;
+  padding-bottom: $gap-bottom;
 }
 
 // Align to center

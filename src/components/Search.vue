@@ -14,7 +14,8 @@
       <div v-if="query.length > 0 && searchResultsVisible" class="results-container">
         <div class="search-results" ref="results">
           <a v-for="(post, index) in results" :key="index" :href="post.item.path" @click="reset" :class="{ 'search-result-highlighted' : index === highlightedIndex }" class="search-result">
-            {{ post.item.title }} <span class="search-result-summary">{{ post.item.blurb | clip }} &hellip;</span>
+            <span class="search-result-title">{{ post.item.title }}</span>
+            <span class="search-result-summary">{{ post.item.blurb | clip }} &hellip;</span>
           </a>
           <div v-if="results.length === 0" class="no-result">
             <p>No results for '<strong>{{ query }}</strong>'</p>

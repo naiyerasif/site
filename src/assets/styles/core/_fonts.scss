@@ -1,11 +1,11 @@
-@use "sass:list";
-@use "sass:map";
-@use "sass:meta";
-$default-formats: ("woff2", "woff");
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+$default-formats: ('woff2', 'woff');
 
 @function _contains($list, $values...) {
   @each $value in $values {
-    @if meta.type-of(list.index($list, $value)) != "number" {
+    @if meta.type-of(list.index($list, $value)) != 'number' {
       @return false;
     }
   }
@@ -17,12 +17,12 @@ $default-formats: ("woff2", "woff");
   $src: ();
 
   $formats-map: (
-    "eot": "#{$file-path}.eot?#iefix"format("embedded-opentype"),
-    "woff2 supports variations(gvar)": "#{$file-path}.woff2"format("woff2 supports variations(gvar)"),
-    "woff2-variations": "#{$file-path}.woff2"format("woff2-variations"),
-    "woff2": "#{$file-path}.woff2"format("woff2"),
-    "woff": "#{$file-path}.woff"format("woff"),
-    "svg": "#{$file-path}.svg##{$font-family}"format("svg")
+    'eot': '#{$file-path}.eot?#iefix'format('embedded-opentype'),
+    'woff2 supports variations(gvar)': '#{$file-path}.woff2'format('woff2 supports variations(gvar)'),
+    'woff2-variations': '#{$file-path}.woff2'format('woff2-variations'),
+    'woff2': '#{$file-path}.woff2'format('woff2'),
+    'woff': '#{$file-path}.woff'format('woff'),
+    'svg': '#{$file-path}.svg##{$font-family}'format('svg')
   );
 
   @each $format in $file-formats {
@@ -33,8 +33,8 @@ $default-formats: ("woff2", "woff");
 
       $src: list.append($src, url($file-path) $font-format, comma);
     } @else {
-      @error "`#{$file-formats}` contains an unsupported font file format. " +
-             "Must be `eot`, `woff2 supports variations(gvar)`, `woff2-variations`, `woff2`, `woff` and/or `svg`.";
+      @error '`#{$file-formats}` contains an unsupported font file format. ' +
+             'Must be `eot`, `woff2 supports variations(gvar)`, `woff2-variations`, `woff2`, `woff` and/or `svg`.';
     }
   }
 
@@ -50,62 +50,62 @@ $default-formats: ("woff2", "woff");
   }
 }
 
-@include font-face("Inter", "/assets/fonts/Inter-Regular") {
+@include font-face('Inter', '/assets/fonts/Inter-Regular') {
   font-style: normal;
   font-weight: 400;
 }
 
-@include font-face("Inter", "/assets/fonts/Inter-Italic") {
+@include font-face('Inter', '/assets/fonts/Inter-Italic') {
   font-style: italic;
   font-weight: 400;
 }
 
-@include font-face("Inter", "/assets/fonts/Inter-SemiBold") {
+@include font-face('Inter', '/assets/fonts/Inter-SemiBold') {
   font-style: normal;
   font-weight: 600;
 }
 
-@include font-face("Inter", "/assets/fonts/Inter-SemiBoldItalic") {
+@include font-face('Inter', '/assets/fonts/Inter-SemiBoldItalic') {
   font-style: italic;
   font-weight: 600;
 }
 
-@include font-face("Inter", "/assets/fonts/Inter-Bold") {
+@include font-face('Inter', '/assets/fonts/Inter-Bold') {
   font-style: normal;
   font-weight: 700;
 }
 
-@include font-face("Inter", "/assets/fonts/Inter-BoldItalic") {
+@include font-face('Inter', '/assets/fonts/Inter-BoldItalic') {
   font-style: italic;
   font-weight: 700;
 }
 
 @include font-face(
-  "Inter var",
-  "/assets/fonts/Inter-upright.var",
-  ("woff2 supports variations(gvar)", "woff2-variations", "woff2")
+  'Inter var',
+  '/assets/fonts/Inter-upright.var',
+  ('woff2 supports variations(gvar)', 'woff2-variations', 'woff2')
 ) {
   font-style: normal;
   font-weight: 100 900;
-  font-named-instance: "Regular";
+  font-named-instance: 'Regular';
 }
 
 @include font-face(
-  "Inter var",
-  "/assets/fonts/Inter-italic.var",
-  ("woff2 supports variations(gvar)", "woff2-variations", "woff2")
+  'Inter var',
+  '/assets/fonts/Inter-italic.var',
+  ('woff2 supports variations(gvar)', 'woff2-variations', 'woff2')
 ) {
   font-style: italic;
   font-weight: 100 900;
-  font-named-instance: "Italic";
+  font-named-instance: 'Italic';
 }
 
-@include font-face("JetBrains Mono", "/assets/fonts/JetBrainsMono-Regular") {
+@include font-face('JetBrains Mono', '/assets/fonts/JetBrainsMono-Regular') {
   font-style: normal;
   font-weight: 400;
 }
 
-@include font-face("JetBrains Mono", "/assets/fonts/JetBrainsMono-Bold") {
+@include font-face('JetBrains Mono', '/assets/fonts/JetBrainsMono-Bold') {
   font-style: normal;
   font-weight: 700;
 }

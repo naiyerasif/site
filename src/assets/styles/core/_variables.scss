@@ -1,9 +1,10 @@
-@use "sass:color";
-@use "colors";
+@use 'sass:color';
+@use 'colors';
 
 // Options
 
 $closer-lists: true !default;
+$top-space: true !default;
 $custom-colors: true !default;
 $custom-fonts: true !default;
 $font-smoothing: true !default;
@@ -37,14 +38,11 @@ $font-bold: 700 !default;
 $weight-strong: $font-bold !default;
 $weight-headings: $font-semibold !default;
 
-$text-xs: 0.75rem !default;
 $text-sm: 0.875rem !default;
 $text-rg: 1rem !default;
 $text-md: 1.25rem !default;
 $text-lg: 1.5rem !default;
 $text-xl: 1.75rem !default;
-$text-2xl: 2rem !default;
-$text-3xl: 3rem !default;
 
 $font-size: $text-rg !default;
 $text-size-adjust: 100% !default;
@@ -59,15 +57,12 @@ $width-xl: 1800px !default;
 
 // grids
 $cell-sm: 14rem !default;
-$cell-md: 20rem !default;
+$cell-md: 16rem !default;
 $cell-lg: 25rem !default;
 
 $line-height-rg: 1.6 !default;
 
 $line-height: $line-height-rg !default;
-
-$line-height-xs: 1.25 !default;
-$line-height-sm: 1.4 !default;
 
 $gap-xs: 0.5rem !default;
 $gap-sm: 0.75rem !default;
@@ -78,21 +73,22 @@ $gap-xl: 2rem !default;
 $gap-2xl: 3rem !default;
 $gap-3xl: 5rem !default;
 
-$expanse-container-rg: 80vw !default;
-$expanse-container-ws: 60vw !default;
-$expanse-article: 55vw !default;
-$expanse-base: $gap-2xl !default;
-$expanse-search: $gap-sm !default;
+$expanse-min: $gap-lg !default;
+$expanse-rg: calc(100vw - 10rem) !default;
+$expanse-xl: 65vw !default;
+
 $margin: $gap-lg !default;
 
 // radiuses
 $radius-sm: 0.25rem !default;
 $radius-rg: 0.5rem !default;
+$radius-md: 0.75rem !default;
 
 $radius: $radius-sm !default;
 
 // graphics
 $gfx-sm: 1.5rem !default;
+$gfx-rg: 2rem !default;
 
 // Indicators
 

@@ -1,5 +1,5 @@
-@use "sass:color";
-@use "sass:map";
+@use 'sass:color';
+@use 'sass:map';
 // Monochrome
 
 $black: hsl(0, 0%, 0%);
@@ -96,7 +96,7 @@ $tertiary: (
 
 // CSS properties for light theme
 
-[data-theme="light"] {
+[data-theme='light'] {
   --text-default: #{secondary(A200)};
   --text-muted: #{tertiary(A100)};
   --link-default: #{color.scale(primary(800), $saturation: 5%, $lightness: 2%)};
@@ -112,7 +112,7 @@ $tertiary: (
 
 // CSS properties for dark theme
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   --text-default: #{shade($white, 25%)};
   --text-muted: #{color.scale(tertiary(500), $saturation: -30%)};
   --link-default: #{primary(500)};

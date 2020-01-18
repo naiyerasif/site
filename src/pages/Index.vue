@@ -2,9 +2,7 @@
   <Layout>
     <div class="container hero">
       <h1>
-        &mdash; Reflections on<br/>
-        design and development<br/>
-        by <g-link to="/profile/naiyer/">Naiyer Asif</g-link>
+        Reflections on design and development by <g-link to="/profile/naiyer/">Naiyer Asif</g-link>
       </h1>
     </div>
     <Posts :posts="$page.posts.edges" />

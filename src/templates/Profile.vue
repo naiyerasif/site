@@ -2,13 +2,16 @@
   <Layout>
     <div class="container hero">
       <h1>
-        Hello, I am <span id="about-me" class="is-highlighted">{{ firstName }}</span>
-        <br>a {{ $page.profile.role | lowerCase }}
-        <br>from {{ $page.profile.location }}
+        Hello, I'm <span id="top" class="is-red">{{ firstName }}</span>, a {{ $page.profile.role | lowerCase }} from {{ $page.profile.location }}
       </h1>
     </div>
-    <div class="container grid-wrapper">
-      <VueRemarkContent />
+    <div class="container article">
+      <VueRemarkContent class="main" />
+      <div class="article-actions">
+        <a href="#top">
+          <svg viewBox="0 0 24 24" class="icon icon-up"><circle cx="12" cy="12" r="10" fill="currentColor" fill-opacity="0.2"></circle><polyline points="16 12 12 8 8 12"></polyline><line x1="12" y1="16" x2="12" y2="8"></line></svg> Back to top
+        </a>
+      </div>
     </div>
   </Layout>
 </template>
@@ -25,7 +28,6 @@ query Profile ($id: ID!) {
 </page-query>
 
 <script>
-
 export default {
   metaInfo() {
     return {

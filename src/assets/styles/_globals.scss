@@ -1,5 +1,5 @@
-@use "core/variables";
-@use "helpers/mixins";
+@use 'core/variables';
+@use 'helpers/mixins';
 
 /*! remarkability.css v0.6.7 | MIT License | https://github.com/Microflash/remarkability */
 * {
@@ -93,7 +93,7 @@ a {
   }
 
   @if variables.$external-links {
-    &[rel*="nofollow"] {
+    &[rel*='nofollow'] {
       &::after {
         content: variables.$indicator-external-link;
       }
@@ -229,29 +229,29 @@ h6 {
 h1 {
   @include mixins.heading(2.4, true);
 
-  line-height: variables.$line-height-xs;
+  line-height: 1.25;
 }
 
 h2 {
-  @include mixins.heading(1.6, true, true);
+  @include mixins.heading(1.6, false, true);
 
-  line-height: variables.$line-height-sm;
+  line-height: 1.4;
 }
 
 h3 {
-  @include mixins.heading(1.3);
+  @include mixins.heading(1.3, false, true);
 }
 
 h4 {
-  @include mixins.heading(1.2);
+  @include mixins.heading(1.2, false, true);
 }
 
 h5 {
-  @include mixins.heading(1.1);
+  @include mixins.heading(1.1, false, true);
 }
 
 h6 {
-  @include mixins.heading(1);
+  @include mixins.heading(1, false, true);
 }
 
 // Paragraphs

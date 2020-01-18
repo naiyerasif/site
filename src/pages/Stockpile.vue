@@ -3,18 +3,18 @@
     <div class="container hero">
       <h1>Stockpile</h1>
     </div>
-    <div class="container grid-wrapper grid-lg">
-      <div class="grid-lg-cell" v-for="item in $page.stockpile.edges" :key="item.node.id">
-        <div class="panel card">
+    <div class="container grid-sm stockpile">
+      <div class="grid-sm-cell" v-for="item in $page.stockpile.edges" :key="item.node.id">
+        <div class="box">
           <a v-if="item.node.link.startsWith('http')" :href="item.node.link" target="_blank" rel="noopener noreferrer">
             <div class="box-header">{{ item.node.type }}</div>
             <h3 class="box-body">{{ item.node.title }}&nearr;</h3>
-            <p class="card-footer">{{ item.node.description }}</p>
+            <p class="box-footer">{{ item.node.description }}</p>
           </a>
           <g-link v-else :to="item.node.link">
-            <div class="card-header">{{ item.node.type }}</div>
-            <h3 class="card-body">{{ item.node.title }}</h3>
-            <p class="card-footer">{{ item.node.description }}</p>
+            <div class="box-header">{{ item.node.type }}</div>
+            <h3 class="box-body">{{ item.node.title }}</h3>
+            <p class="box-footer">{{ item.node.description }}</p>
           </g-link>
         </div>
       </div>
