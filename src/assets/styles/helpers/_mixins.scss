@@ -45,7 +45,7 @@
 
 // Expanse
 
-@mixin expanse($gap-top: variables.$gap-lg, $gap-bottom: variables.$gap-lg) {
+@mixin expanse($gap-top: 0, $gap-bottom: 0) {
   padding-top: $gap-top;
   padding-bottom: $gap-bottom;
 }

@@ -98,7 +98,7 @@ $tertiary: (
 
 [data-theme='light'] {
   --text-default: #{secondary(A200)};
-  --text-muted: #{tertiary(A100)};
+  --text-muted: #{tertiary(800)};
   --link-default: #{color.scale(primary(800), $saturation: 5%, $lightness: 2%)};
   --link-hover: #{primary(900)};
   --background-body: #{$white};

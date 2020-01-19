@@ -9,24 +9,17 @@
 @use 'helpers/mixins';
 @use 'globals';
 
-.container-fluid {
+.container {
   flex-grow: 1;
   margin: 0 auto;
   position: relative;
   width: auto;
-
-  @include queries.tab-portrait {
-    padding-right: variables.$expanse-min;
-    padding-left: variables.$expanse-min;
-    width: variables.$expanse-rg;
-  }
-}
-
-.container {
-  @extend .container-fluid;
-
   padding-right: variables.$expanse-min;
   padding-left: variables.$expanse-min;
+
+  @include queries.tab-portrait {
+    width: variables.$expanse-rg;
+  }
 }
 
 // SVG icons
@@ -42,14 +35,25 @@
   vertical-align: top;
 }
 
+.icon-sm {
+  @extend .icon;
+
+  stroke-width: 2px;
+  width: variables.$gfx-xs;
+}
+
 // Header
 
 .header {
-  @include mixins.center(wrap, space-between);
-  @include mixins.expanse(variables.$expanse-min, variables.$expanse-min);
+  @include mixins.center(no-wrap, space-between);
+  @include mixins.expanse(variables.$expanse-min);
+  
+  @include queries.within(variables.$width-md) {
+    flex-wrap: wrap;
+  }
 
   @include queries.tab-portrait {
-    @include mixins.expanse(5rem, 5rem);
+    @include mixins.expanse(variables.$expanse-md);
   }
 
   .brand {
@@ -230,7 +234,18 @@ $hamburger-layer-spacing: 6px !default;
 // Footer
 
 .footer {
-  @include mixins.expanse(8rem, 6rem);
+  margin-top: variables.$gap-xl;
+  margin-bottom: variables.$gap-2xl;
+
+  @include queries.tab-portrait {
+    margin-top: variables.$gap-2xl;
+    margin-bottom: variables.$gap-3xl;
+  }
+
+  @include queries.desktop {
+    margin-top: variables.$gap-3xl;
+    margin-bottom: variables.$gap-2xl * 3;
+  }
 
   .grid-md-cell {
     margin-right: variables.$gap-rg;
@@ -253,8 +268,7 @@ $hamburger-layer-spacing: 6px !default;
     display: flex;
   }
 
-  img,
-  svg {
+  .is-separated {
     margin-right: variables.$gap-sm;
   }
 }
@@ -262,8 +276,18 @@ $hamburger-layer-spacing: 6px !default;
 // Hero
 
 .hero {
-  margin-top: variables.$gap-xl;
+  margin-top: variables.$gap-2xl;
   margin-bottom: variables.$gap-2xl;
+
+  @include queries.tab-portrait {
+    margin-top: variables.$gap-3xl;
+    margin-bottom: variables.$gap-3xl;
+  }
+
+  @include queries.desktop {
+    margin-top: variables.$gap-2xl * 3;
+    margin-bottom: variables.$gap-2xl * 3;
+  }
 
   @include queries.tab-landscape {
     display: flex;
@@ -275,10 +299,6 @@ $hamburger-layer-spacing: 6px !default;
   h1 {
     @include queries.phone {
       font-size: variables.$text-xl;
-    }
-
-    @include queries.tab-portrait {
-      margin-bottom: 6rem;
     }
 
     @include queries.desktop {
@@ -365,12 +385,17 @@ $hamburger-layer-spacing: 6px !default;
 // Pagination
 
 .pagination {
-  @include mixins.expanse;
+  @include mixins.expanse(variables.$gap-lg, variables.$gap-lg);
   @include mixins.center(nowrap, space-between);
+
+  .is-prev,
+  .is-next {
+    vertical-align: middle;
+  }
 
   @include queries.tab-portrait {
     justify-content: center;
-    @include mixins.expanse(5rem, variables.$gap-rg);
+    @include mixins.expanse(5rem, variables.$gap-lg);
 
     .is-prev {
       margin-right: variables.$gap-lg;
@@ -398,6 +423,8 @@ $hamburger-layer-spacing: 6px !default;
 
   @include queries.tab-landscape {
     max-width: variables.$expanse-xl;
+    padding-right: variables.$gap-2xl;
+    padding-left: variables.$gap-2xl;
   }
 
   .main {
@@ -425,7 +452,7 @@ $hamburger-layer-spacing: 6px !default;
   }
 
   .article-actions {
-    @include mixins.expanse(variables.$gap-3xl, 0);
+    @include mixins.expanse(variables.$gap-2xl, variables.$gap-xl);
     @include mixins.center(nowrap, space-between);
 
     & > a {
@@ -435,7 +462,7 @@ $hamburger-layer-spacing: 6px !default;
 
     @include queries.tab-portrait {
       justify-content: center;
-      @include mixins.expanse(5rem, variables.$gap-rg);
+      @include mixins.expanse(5rem, variables.$gap-xl);
     }
   }
 }
@@ -497,6 +524,9 @@ h6 {
 
 // Search
 
+$search-border-muted: 1.5px solid variables.$background-panel-dim;
+$search-border-visible: 1.5px solid variables.$link;
+
 .search-focal {
   @include mixins.hide(true);
 }
@@ -510,15 +540,15 @@ h6 {
   background-color: variables.$background-panel;
   padding: variables.$gap-sm variables.$gap-rg;
   padding-left: variables.$gap-2xl;
-  border: 1.5px solid transparent;
+  border: $search-border-muted;
   outline: none;
   width: 100%;
-  border-radius: variables.$radius;
+  border-radius: variables.$radius-xl;
 
   &:focus, 
   &:hover {
     background-color: variables.$background-panel-vibrant;
-    border: 1.5px solid variables.$link;
+    border: $search-border-visible;
   }
 
   @include queries.tab-landscape {
@@ -535,7 +565,8 @@ h6 {
   right: 0;
   max-height: 32rem;
   margin-top: variables.$gap-xs;
-  border-radius: variables.$radius;
+  border: $search-border-visible;
+  border-radius: variables.$radius-md;
   box-shadow: 0px 10px 50px -25px colors.$black;
 
   @include queries.tab-landscape {
@@ -653,6 +684,10 @@ h6 {
 
 .is-red {
   color: hsl(350, 90%, 45%);
+}
+
+.is-primary {
+  color: variables.$link;
 }
 
 // Layout

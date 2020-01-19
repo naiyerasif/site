@@ -75,6 +75,7 @@ $gap-3xl: 5rem !default;
 
 $expanse-min: $gap-lg !default;
 $expanse-rg: calc(100vw - 10rem) !default;
+$expanse-md: $gap-3xl !default;
 $expanse-xl: 65vw !default;
 
 $margin: $gap-lg !default;
@@ -83,10 +84,12 @@ $margin: $gap-lg !default;
 $radius-sm: 0.25rem !default;
 $radius-rg: 0.5rem !default;
 $radius-md: 0.75rem !default;
+$radius-xl: 2rem !default;
 
 $radius: $radius-sm !default;
 
 // graphics
+$gfx-xs: 1rem !default;
 $gfx-sm: 1.5rem !default;
 $gfx-rg: 2rem !default;
 

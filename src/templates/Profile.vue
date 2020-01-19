@@ -2,7 +2,7 @@
   <Layout>
     <div class="container hero">
       <h1>
-        Hello, I'm <span id="top" class="is-red">{{ firstName }}</span>, a {{ $page.profile.role | lowerCase }} from {{ $page.profile.location }}
+        Hello, I'm <span id="top" class="is-primary">{{ firstName }}</span>, a {{ $page.profile.role | lowerCase }} from {{ $page.profile.location }}
       </h1>
     </div>
     <div class="container article">
