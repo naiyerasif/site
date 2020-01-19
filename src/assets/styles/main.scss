@@ -9,17 +9,23 @@
 @use 'helpers/mixins';
 @use 'globals';
 
-.container {
+.container-fluid {
   flex-grow: 1;
   margin: 0 auto;
   position: relative;
   width: auto;
-  padding-right: variables.$expanse-min;
-  padding-left: variables.$expanse-min;
 
   @include queries.tab-portrait {
     width: variables.$expanse-rg;
+    padding-right: variables.$expanse-min;
+    padding-left: variables.$expanse-min;
   }
+}
+
+.container {
+  @extend .container-fluid;
+  padding-right: variables.$expanse-min;
+  padding-left: variables.$expanse-min;
 }
 
 // SVG icons
@@ -63,7 +69,7 @@
       width: 15rem;
 
       @include queries.within(variables.$width-md) {
-        width: 13rem;
+        width: 12rem;
       }
     }
   }
