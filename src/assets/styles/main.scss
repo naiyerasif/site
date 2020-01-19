@@ -721,6 +721,17 @@ $search-border-visible: 1.5px solid variables.$link;
   }
 }
 
+@keyframes slideUp {
+  from {
+    transform: translate3d(0, 20%, 0);
+  }
+
+  to {
+    visibility: hidden;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 .animated {
   animation-duration: 750ms;
   transition-duration: 750ms;
@@ -744,6 +755,16 @@ $search-border-visible: 1.5px solid variables.$link;
 }
 
 .fade-enter, 
-.fade-leave-to {
+.fade-leave-to,
+.slide-up-enter,
+.slide-up-leave-to {
   opacity: 0;
+}
+
+.slide-up-enter-active,
+.slide-up-leave-active {
+  @extend .animated;
+  transition-duration: 300ms;
+  animation-duration: 300ms;
+  animation-name: slideUp;
 }
