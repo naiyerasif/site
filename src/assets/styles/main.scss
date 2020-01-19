@@ -619,7 +619,7 @@ $search-border-visible: 1.5px solid variables.$link;
     .search-result {
       cursor: pointer;
       text-decoration: none;
-      border-bottom: 1px solid variables.$border-search;
+      border-bottom: 1px solid variables.$border-muted;
 
       &:last-child {
         border-bottom: none;

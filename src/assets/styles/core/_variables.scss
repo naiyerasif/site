@@ -132,8 +132,8 @@ $background-table-even: $background-panel !default;
 $background-table-hover: $background-panel-vibrant !default;
 
 $border: color.adjust(colors.tertiary(600), $alpha: -0.6) !default;
-$border-search: var(--border-search) !default;
+$border-muted: var(--border-muted) !default;
 
-$scrollbar-track: var(--background-panel-dim) !default;
-$scrollbar-thumb: var(--border-search) !default;
-$scrollbar-button: var(--background-panel-vibrant) !default;
+$scrollbar-track: var(--scrollbar-track) !default;
+$scrollbar-thumb: var(--scrollbar-thumb) !default;
+$scrollbar-button: var(--scrollbar-button) !default;
