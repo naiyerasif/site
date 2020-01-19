@@ -26,6 +26,9 @@
           <svg viewBox="0 0 24 24" class="icon icon-edit"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" fill="currentColor" fill-opacity="0.2"></path></svg> Edit this page
         </a>
         <a :href="jumpToTableOfContents">
+          <svg viewBox="0 0 24 24" class="icon icon-list"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg> Table of Contents
+        </a>
+        <a href="#app">
           <svg viewBox="0 0 24 24" class="icon icon-up"><circle cx="12" cy="12" r="10" fill="currentColor" fill-opacity="0.2"></circle><polyline points="16 12 12 8 8 12"></polyline><line x1="12" y1="16" x2="12" y2="8"></line></svg> Back to top
         </a>
       </div>

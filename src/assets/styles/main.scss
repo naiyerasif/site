@@ -51,7 +51,7 @@
 // Header
 
 .header {
-  @include mixins.center(no-wrap, space-between);
+  @include mixins.center(nowrap, space-between);
   @include mixins.expanse(variables.$expanse-min);
   
   @include queries.within(variables.$width-md) {
@@ -475,10 +475,11 @@ $hamburger-layer-spacing: 6px !default;
 
   .article-actions {
     @include mixins.expanse(variables.$gap-2xl, variables.$gap-xl);
-    @include mixins.center(nowrap, space-between);
+    @include mixins.center(wrap, space-between);
 
     & > a {
       text-decoration: none;
+      margin-top: variables.$gap-rg;
       margin-right: variables.$gap-rg;
     }
 
