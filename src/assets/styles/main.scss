@@ -326,6 +326,22 @@ $hamburger-layer-spacing: 6px !default;
   }
 }
 
+.metadata-author-avatar {
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+
+    @include queries.tab-landscape {
+      width: 8rem;
+      height: 8rem;
+    }
+  }
+}
+
 .metadata-author {
   display: flex;
   align-items: center;
