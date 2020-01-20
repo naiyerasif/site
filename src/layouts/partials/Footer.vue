@@ -14,11 +14,11 @@
       <ul class="is-footer-list">
         <li>
           <svg viewBox="0 0 24 24" class="icon-sm icon-rss is-separated"><path d="M4 11a9 9 0 0 1 9 9" /><path d="M4 4a16 16 0 0 1 16 16" /><circle cx="5" cy="19" r="1" /><path d="M20 20l-15.049-.968L4 4c8.777 0 16 7.223 16 16z" fill="currentColor" opacity="0.2"/></svg>
-          <a href="/feed.xml" title="Sitemap">RSS feed</a>
+          <a href="/feed.xml">RSS feed</a>
         </li>
         <li>
           <svg viewBox="0 0 24 24" class="icon-sm icon-map is-separated"><path d="M1,6l0,16l7,-4l8,4l7,-4l0,-16l-7,4l-8,-4l-7,4Z" fill="currentColor" fill-opacity="0.2"/><path d="M8,2l0,16"/><path d="M16,6l0,16"/></svg>
-          <a href="/sitemap.xml" title="Sitemap">Sitemap</a>
+          <a href="/sitemap.xml">Sitemap</a>
         </li>
         <li>
           <svg viewBox="0 0 24 24" class="icon-sm icon-code is-separated"><circle cx="18" cy="18" r="3" fill="currentColor" fill-opacity="0.2"/><circle cx="6" cy="6" r="3" fill="currentColor" fill-opacity="0.2"/><path d="M13,6l3,0c1.097,0 2,0.903 2,2l0,7"/><path d="M6,9l0,12"/></svg>
