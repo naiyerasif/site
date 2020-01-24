@@ -1,6 +1,6 @@
 {
   "name": "microflash",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "description": "Reflections on design and development by Naiyer Asif",
   "repository": "https://github.com/Microflash/microflash.github.io.git",
   "author": "Naiyer Asif",
@@ -32,7 +32,8 @@
     "html-entities": "^1.2.1",
     "marked": "^0.8.0",
     "sass": "^1.24.0",
-    "sass-loader": "^8.0.0"
+    "sass-loader": "^8.0.0",
+    "svg-to-vue-component": "^0.3.8"
   },
   "browserslist": [
     "defaults"

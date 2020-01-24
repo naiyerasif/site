@@ -4,10 +4,10 @@
     <div class="search-box">
       <input type="text" placeholder="Search (Press  &quot;/&quot; to focus)" class="search" v-model="query" @input="softReset" @keyup="performSearch" @keyup.esc="searchResultsVisible = false" @keydown.up.prevent="highlightPrev" @keydown.down.prevent="highlightNext" @keyup.enter="gotoLink" @blur="searchResultsVisible = false" @focus="searchResultsVisible = true" ref="search" aria-label="Search">
 
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon icon-search"><circle cx="11" cy="11" r="8" fill="currentColor" fill-opacity="0.2"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <IconSearch class="icon icon-search" />
 
       <div class="close" v-if="query.length > 0" @click="reset">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon icon-close"><circle cx="12" cy="12" r="10" fill="currentColor" fill-opacity="0.2"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+        <IconClose class="icon icon-close" />
       </div>
     </div>
     <transition name="fade">
@@ -29,13 +29,17 @@
 <script>
 import axios from 'axios'
 import SearchFocal from './SearchFocal'
+import IconSearch from '~/assets/images/icon-search.svg'
+import IconClose from '~/assets/images/icon-close.svg'
 import siteConfig from '../../data/site.json'
 
 const searchConfig = siteConfig.searchConfig
 
 export default {
   components: {
-    SearchFocal
+    SearchFocal,
+    IconSearch,
+    IconClose
   },
   created() {
     axios(`/${searchConfig.file.name}`).then(response => {
