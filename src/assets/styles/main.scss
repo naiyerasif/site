@@ -756,8 +756,8 @@ $search-border-visible: 1.5px solid variables.$link;
 }
 
 .animated {
-  animation-duration: 750ms;
-  transition-duration: 750ms;
+  animation-duration: 500ms;
+  transition-duration: 500ms;
   animation-fill-mode: both;
 
   @media (print), (prefers-reduced-motion: reduce) {
