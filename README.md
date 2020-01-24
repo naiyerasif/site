@@ -9,6 +9,7 @@ Personal website of Naiyer Asif, made possible by
 - [Feather Icons](https://feathericons.com/): beautiful open-source icons
 - [Remarkability](https://mflash.dev/remarkability/): the baseline css for HTML generated from markdown
 - [Hamburgers](https://github.com/jonsuh/hamburgers): a collection of tasty CSS-animated hamburger icons
+- [Animate.css](https://github.com/daneden/animate.css): a cross-browser library of CSS animations
 - [Grid By Example](https://gridbyexample.com/): a collection of examples and references on CSS Grid maintained by [Rachel Andrew](https://rachelandrew.co.uk/)
 - [Leonardo](https://github.com/adobe/leonardo): an adaptive color scale generator developed by Adobe
 

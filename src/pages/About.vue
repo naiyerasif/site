@@ -17,6 +17,7 @@
           <li><a target="_blank" rel="noopener noreferrer" href="https://feathericons.com/">Feather Icons</a>: beautiful open-source icons</li>
           <li><a target="_blank" rel="noopener noreferrer" href="https://mflash.dev/remarkability/">Remarkability</a>: the baseline css for HTML generated from markdown</li>
           <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/jonsuh/hamburgers">Hamburgers</a>: a collection of tasty CSS-animated hamburger icons</li>
+          <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/daneden/animate.css">Animate.css</a>: a cross-browser library of CSS animations</li>
           <li><a target="_blank" rel="noopener noreferrer" href="https://gridbyexample.com/">Grid By Example</a>: a collection of examples and references on CSS Grid maintained by <a target="_blank" rel="noopener noreferrer" href="https://rachelandrew.co.uk/">Rachel Andrew</a></li>
           <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/adobe/leonardo">Leonardo</a>: an adaptive color scale generator developed by Adobe</li>
         </ul>
