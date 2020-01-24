@@ -17,4 +17,9 @@ export default function (Vue, { router, head, isClient }) {
     name: 'author',
     content: siteConfig.maintainer
   })
+
+  head.meta.push({
+    name: 'description',
+    content: siteConfig.description
+  })
 }
