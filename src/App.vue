@@ -1,5 +1,5 @@
 <template>
-  <transition appear name="fade">
+  <transition appear name="wilt">
     <router-view />
   </transition>
 </template>
