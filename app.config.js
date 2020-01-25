@@ -3,6 +3,11 @@ const siteConfig = require('./data/site.json')
 module.exports = {
   copyright: `Copyright ${new Date().getFullYear()} ${this.name}`,
   blogDir: 'content/blog/',
+  draftDir: 'content/draft/',
+  slugifyConfig: {
+    decamelize: false,
+    customReplacements: [['.js', 'js']]
+  },
   editConfig: {
     paths: [
       {

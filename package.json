@@ -10,6 +10,7 @@
     "start": "gridsome develop",
     "inspect": "gridsome info",
     "deploy": "gh-pages -b master -d public --message \"[skip ci] Updates\"",
+    "dev:post": "node tools/newPost.js",
     "dev:favicon": "source tools/generate_favicons.sh src/favicon.png"
   },
   "dependencies": {
