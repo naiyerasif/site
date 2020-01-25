@@ -755,27 +755,6 @@ $search-border-visible: 1.5px solid variables.$link;
   }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-  
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
-
 .animated {
   animation-duration: 500ms;
   transition-duration: 500ms;
@@ -798,20 +777,8 @@ $search-border-visible: 1.5px solid variables.$link;
   animation-name: fadeOutUp;
 }
 
-.wilt-enter-active {
-  @extend .animated;
-  animation-name: fadeIn;
-}
-
-.wilt-leave-active {
-  @extend .animated;
-  animation-name: fadeOut;
-}
-
 .fade-enter, 
 .fade-leave-to,
-.wilt-enter, 
-.wilt-leave-to,
 .slide-up-enter,
 .slide-up-leave-to {
   opacity: 0;

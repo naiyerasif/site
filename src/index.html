@@ -3,6 +3,58 @@
 
 <head>
   ${head}
+  <style type="text/css">
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
+  }
+
+  .wilt-leave-active,
+  .wilt-enter-active {
+    animation-duration: 500ms;
+    transition-duration: 500ms;
+    animation-fill-mode: both;
+  }
+
+  @media (print),
+  (prefers-reduced-motion: reduce) {
+
+    .wilt-leave-active,
+    .wilt-enter-active {
+      animation-duration: 1ms;
+      transition-duration: 1ms;
+      animation-iteration-count: 1;
+    }
+  }
+
+  .wilt-enter-active {
+    animation-name: fadeIn;
+  }
+
+  .wilt-leave-active {
+    animation-name: fadeOut;
+  }
+
+  .wilt-enter,
+  .wilt-leave-to {
+    opacity: 0;
+  }
+  </style>
 </head>
 
 <body ${bodyAttrs}>
