@@ -55,6 +55,11 @@
             <IconTwitter class="icon" />
           </a>
         </li>
+        <li>
+          <a href="https://in.linkedin.com/in/naiyerasif" title="LinkedIn" target="_blank" rel="noopener noreferrer" class="is-separated">
+            <IconLinkedin class="icon" />
+          </a>
+        </li>
       </ul>
     </section>
   </footer>
@@ -78,6 +83,7 @@ import IconLicense from '~/assets/images/icon-license.svg'
 import IconGithub from '~/assets/images/icon-github.svg'
 import IconGitlab from '~/assets/images/icon-gitlab.svg'
 import IconTwitter from '~/assets/images/icon-twitter.svg'
+import IconLinkedin from '~/assets/images/icon-linkedin.svg'
 
 export default {
   components: {
@@ -89,7 +95,8 @@ export default {
     IconLicense,
     IconGithub,
     IconGitlab,
-    IconTwitter
+    IconTwitter,
+    IconLinkedin
   },
   computed: {
     year() {
