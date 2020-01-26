@@ -26,5 +26,12 @@
     "type": "Template",
     "description": "A simple blog starter template for Gridsome",
     "link": "https://github.com/Microflash/jada.git"
+  },
+  {
+    "id": "5",
+    "title": "Succinct",
+    "type": "Theme",
+    "description": "A slightly opinionated theme for Vuepress",
+    "link": "https://github.com/Microflash/vuepress-theme-succinct.git"
   }
 ]
