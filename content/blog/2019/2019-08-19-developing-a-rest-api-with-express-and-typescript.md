@@ -1,7 +1,7 @@
 ---
 title: 'Developing a REST API with Express and TypeScript'
 date: 2019-08-19 21:43:03
-updated: 2019-11-14 21:45:09
+updated: 2020-02-06 23:26:09
 authors: [naiyer]
 tags: ['guide']
 ---
@@ -22,123 +22,6 @@ We'll build a REST for a music catalog with the following capabilities.
 - search tracks by title, album or artist
 
 ### Table of Contents
-
-## Configuring routes
-
-To process requests, we need to create several REST endpoints. We can do so by configuring routes for those endpoints. Since adding all the routes in `index.ts` will bloat it; we'll put them in a separate file, say `src/routes/tracks.routes.ts`.
-
-```typescript
-import * as express from "express";
-
-const ctx = "/track";
-export const register = (app: express.Application) => {
-  app.get(`${ctx}`, (req, res) => {});
-
-  app.get(`${ctx}/search`, (req, res) => {});
-
-  app.put(`${ctx}`, (req, res) => {});
-
-  app.patch(`${ctx}`, (req, res) => {});
-
-  app.delete(`${ctx}`, (req, res) => {});
-};
-```
-
-All of these are placeholder routes in which we'll add some implementation later. For now, let's add an endpoint for the health check in a file `src/routes/default.routes.ts`.
-
-```typescript
-import * as express from "express";
-
-export const register = (app: express.Application) => {
-  app.get("/health", (req, res) => {
-    res.jsonp({
-      status: "ok",
-      host: "localhost",
-      port: process.env.SERVER_PORT
-    });
-  });
-};
-```
-
-Collect these routes in `src/routes/index.ts`.
-
-```typescript
-import * as express from "express";
-import * as defaultRoutes from "./default.routes";
-import * as trackRoutes from "./tracks.routes";
-
-export const register = (app: express.Application) => {
-  defaultRoutes.register(app);
-  trackRoutes.register(app);
-};
-```
-
-And register this route collection with `express` in `src/index.ts`.
-
-```typescript
-import express from "express";
-import { logger } from "./helpers/default.logger";
-import { consoleAppender, fileAppender } from "./helpers/requests.logger";
-import * as routes from "./routes";
-
-const port = 8080; // default port for express
-
-const app = express();
-
-// add morgan for console and file
-app.use(consoleAppender);
-app.use(fileAppender);
-
-// register routes
-routes.register(app);
-
-// start the express server
-app.listen(port, () => {
-  logger.info(`Server started at http://localhost:${port}`);
-});
-```
-
-Launch the application with `npm start` and execute the following command. You should see the expected response of the health check.
-
-```bash
-$ curl -X GET http://localhost:8080/health
-{"status":"ok","host":"localhost"}
-```
-
-To parse the request body, add `body-parser` as a dependency.
-
-```bash
-npm install body-parser
-```
-
-Add this middleware to `express` as follows.
-
-```typescript
-import express from "express";
-import bodyParser from "body-parser";
-import { logger } from "./helpers/default.logger";
-import { consoleAppender, fileAppender } from "./helpers/requests.logger";
-import * as routes from "./routes";
-
-const port = 8080; // default port for express
-
-const app = express();
-
-// body parser to read request body
-app.use(bodyParser.json());
-
-// add morgan for console and file
-app.use(consoleAppender);
-app.use(fileAppender);
-
-// register routes
-routes.register(app);
-
-// start the express server
-app.listen(port, () => {
-  logger.info(`Server started at http://localhost:${port}`);
-});
-```
 
 ## Setup development workflows
 
@@ -192,12 +75,10 @@ SERVER_PORT=8080
 Edit `src/index.ts` to use this variable.
 
 ```typescript
-import dotenv from "dotenv";
-import express from "express";
-import bodyParser from "body-parser";
-import { logger } from "./helpers/default.logger";
-import { consoleAppender, fileAppender } from "./helpers/requests.logger";
-import * as routes from "./routes";
+import dotenv from 'dotenv';
+import express from 'express';
+import { logger } from './helpers/default.logger';
+import { consoleAppender, fileAppender } from './helpers/requests.logger';
 
 // fetch .env configuration
 dotenv.config();
@@ -207,15 +88,9 @@ const port = process.env.SERVER_PORT;
 
 const app = express();
 
-// body parser to read request body
-app.use(bodyParser.json());
-
 // add morgan for console and file
 app.use(consoleAppender);
 app.use(fileAppender);
-
-// register routes
-routes.register(app);
 
 // start the express server
 app.listen(port, () => {
@@ -302,15 +177,15 @@ export interface Track {
 Create a file `src/persistence/tracks.repository.ts` and add the following code.
 
 ```typescript
-import { Pool } from "pg";
-import { Track } from "../model/track.model";
-import { logger } from "../helpers/default.logger";
+import { Pool } from 'pg';
+import { Track } from '../model/track.model';
+import { logger } from '../helpers/default.logger';
 
 const pool = new Pool();
 
 const findAll = async () => {
-  logger.info("Fetching all tracks");
-  const result = await pool.query("SELECT id, title, album, artist FROM track");
+  logger.info('Fetching all tracks');
+  const result = await pool.query('SELECT id, title, album, artist FROM track');
   return result.rows;
 };
 
@@ -319,16 +194,16 @@ const findAll = async () => {
 const save = async (track: Track) => {
   const client = await pool.connect();
   try {
-    logger.info("Saving a track");
+    logger.info('Saving a track');
     const result = await client.query(
       `INSERT INTO track(title, album, artist) VALUES ('${track.title}', '${track.album}', '${track.artist}') ON CONFLICT (id) DO UPDATE SET title = '${track.title}', album = '${track.album}', artist = '${track.artist}'`
     );
-    await client.query("COMMIT");
-    logger.info("Transaction committed");
+    await client.query('COMMIT');
+    logger.info('Transaction committed');
     return result.rows;
   } catch (e) {
-    await client.query("ROLLBACK");
-    logger.info("Failed saving the track. Transaction rolled back");
+    await client.query('ROLLBACK');
+    logger.info('Failed saving the track. Transaction rolled back');
     throw e;
   } finally {
     client.release();
@@ -336,7 +211,7 @@ const save = async (track: Track) => {
 };
 
 const remove = async (id: string) => {
-  logger.info("Deleting a track");
+  logger.info('Deleting a track');
   const result = await pool.query(`DELETE FROM track WHERE id = '${id}'`);
   return result.rows;
 };
@@ -351,14 +226,15 @@ export {
 
 Note that we're using a connection pool (`Pool`) provided by `pg` to execute the queries asynchronously. This connection pool returns a `Promise`. For finer control over a transaction, We may also use a `client` (as in `save` method where a transaction is being rolled back in case something goes wrong).
 
-Edit the routes in `src/routes/tracks.routes.ts` to use this repository.
+## Configuring routes
+
+To process requests, we need to create several REST endpoints. We can do so by configuring routes for those endpoints. Since adding all the routes in `index.ts` will bloat it; we'll put them in a separate file, say `src/routes/tracks.routes.ts`.
 
 ```typescript
-import * as express from "express";
-import * as repo from "../persistence/tracks.repository";
+import * as express from 'express';
+import * as repo from '../persistence/tracks.repository';
 
-const ctx = "/track";
-
+const ctx = '/track';
 export const register = (app: express.Application) => {
   app.get(`${ctx}`, (req, res) => {
     repo.findAll().then(data => {
@@ -372,8 +248,63 @@ export const register = (app: express.Application) => {
     });
   });
 
-  // other route implementations
+  app.get(`${ctx}/search`, (req, res) => {
+    // repository call
+  });
+
+  // Other routes
 };
+```
+
+Collect these routes in `src/routes/index.ts`.
+
+```typescript
+import * as express from 'express';
+import * as trackRoutes from './tracks.routes';
+
+export const register = (app: express.Application) => {
+  trackRoutes.register(app);
+};
+```
+
+To parse the request body, add `body-parser` as a dependency.
+
+```bash
+npm install body-parser
+```
+
+And register the track route collection and `body-parser` with `express` in `src/index.ts`.
+
+```typescript
+import dotenv from "dotenv";
+import express from 'express';
+import bodyParser from "body-parser";
+import { logger } from "./helpers/default.logger";
+import { consoleAppender, fileAppender } from "./helpers/requests.logger";
+import * as routes from "./routes";
+
+// fetch .env configuration
+dotenv.config();
+
+// port now available from .env
+const port = process.env.SERVER_PORT;
+
+const app = express();
+
+// body parser to read request body
+app.use(bodyParser.json());
+
+// add morgan for console and file
+app.use(consoleAppender);
+app.use(fileAppender);
+
+// register routes
+routes.register(app);
+
+// start the express server
+app.listen(port, () => {
+  logger.info(`Server started at http://localhost:${port}`);
+});
 ```
 
 The workflow is as follows: the `Promise` is being processed by returning the data in case of successful database operation or by returning an error in case something goes wrong. Apart from this, we can return errors for validation failures.
@@ -420,4 +351,4 @@ curl -X DELETE http://localhost:8080/track \
 
 ## References
 
-> **Source Code**: [express-postgres-api](https://gitlab.com/mflash/guides/nodejs/express-postgres-api)
+> **Source Code**: [express-rest-api-typescript](https://gitlab.com/mflash/nodejs-guides/-/tree/master/express-rest-api-typescript)

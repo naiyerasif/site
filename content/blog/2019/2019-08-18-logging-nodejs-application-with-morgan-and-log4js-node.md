@@ -38,18 +38,18 @@ MORGAN_LOG_ROLLING_INTERVAL=1d
 Create a file `src/helpers/requests.logger.ts` and add the following code.
 
 ```typescript
-import morgan from "morgan";
-import rfs from "rotating-file-stream";
+import morgan from 'morgan';
+import rfs from 'rotating-file-stream';
 
 // morgan configurations
-const morganLogDir = process.env.LOG_DIR || "logs";
-const morganLogFile = process.env.MORGAN_LOG || "requests.log";
+const morganLogDir = process.env.LOG_DIR || 'logs';
+const morganLogFile = process.env.MORGAN_LOG || 'requests.log';
 const morganLogRollingInterval =
-  process.env.MORGAN_LOG_ROLLING_INTERVAL || "1d";
-const morganOutputFormat = process.env.MORGAN_LOG_FMT || "combined";
+  process.env.MORGAN_LOG_ROLLING_INTERVAL || '1d';
+const morganOutputFormat = process.env.MORGAN_LOG_FMT || 'combined';
 
 // rotating stream for morgan
-const accessLogStream = rfs(morganLogFile, {
+const accessLogStream = rfs.createStream(morganLogFile, {
   interval: morganLogRollingInterval,
   path: morganLogDir
 });
@@ -69,7 +69,7 @@ Add these appenders to `express` as follows.
 
 ```typescript
 // import the appenders
-import { consoleAppender, fileAppender } from "./helpers/requests.logger";
+import { consoleAppender, fileAppender } from './helpers/requests.logger';
 
 // other configurations and initializations
 
@@ -98,31 +98,31 @@ LOG_FILE=app.log
 Create a file `src/helpers/default.logger.ts` and add the following code.
 
 ```typescript
-import { configure, getLogger } from "log4js";
+import { configure, getLogger } from 'log4js';
 
 // log location
-const logDir = process.env.LOG_DIR || "logs";
-const logFileName = process.env.LOG_FILE || "app.log";
+const logDir = process.env.LOG_DIR || 'logs';
+const logFileName = process.env.LOG_FILE || 'app.log';
 const logFilePath = `${logDir}/${logFileName}`;
 
 // set default log level
-const logLevel = process.env.LOG_LEVEL || "info";
+const logLevel = process.env.LOG_LEVEL || 'info';
 
 // appenders
 configure({
   appenders: {
-    console: { type: "stdout", layout: { type: "colored" } },
+    console: { type: 'stdout', layout: { type: 'colored' } },
     dateFile: {
-      type: "dateFile",
+      type: 'dateFile',
       filename: logFilePath,
-      layout: { type: "basic" },
+      layout: { type: 'basic' },
       compress: true,
       daysToKeep: 14,
       keepFileExt: true
     }
   },
   categories: {
-    default: { appenders: ["console", "dateFile"], level: logLevel }
+    default: { appenders: ['console', 'dateFile'], level: logLevel }
   }
 });
 
@@ -141,7 +141,7 @@ Use this logger as follows.
 
 ```typescript
 // import the logger
-import { logger } from "./helpers/default.logger";
+import { logger } from './helpers/default.logger';
 
 // other configurations and initializations 
 
@@ -155,7 +155,7 @@ Start the application; you should see `app.log` in `logs` directory and the same
 
 ## References
 
-> **Source Code**: [morgan-log4js-logging](https://gitlab.com/mflash/guides/nodejs/express-postgres-api/tree/morgan-log4js-logging)
+> **Source Code**: [logging-with-morgan-log4js](https://gitlab.com/mflash/nodejs-guides/-/tree/master/logging-with-morgan-log4js)
 >
 > **Documentations** 
 > - [morgan docs](https://github.com/expressjs/morgan#readme)

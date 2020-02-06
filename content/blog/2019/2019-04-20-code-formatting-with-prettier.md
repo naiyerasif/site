@@ -1,7 +1,7 @@
 ---
 title: 'Code Formatting with Prettier'
 date: 2019-04-20 12:12:16
-updated: 2019-11-13 19:54:31
+updated: 2020-02-06 22:43:31
 authors: [naiyer]
 tags: ['gist']
 ---
@@ -92,7 +92,7 @@ Now, open the `.eslintrc.json` file and add the following configuration:
 
 ## References
 
-> **Source Code**: [prettier-code-formatting](https://gitlab.com/mflash/guides/nodejs/express-postgres-api/tree/prettier-code-formatting)
+> **Source Code**: [prettier-code-formatting](https://gitlab.com/mflash/nodejs-guides/-/tree/master/prettier-code-formatting)
 >
 > **Discussions**
 > - [Prettier docs](https://prettier.io/docs/en/install.html)

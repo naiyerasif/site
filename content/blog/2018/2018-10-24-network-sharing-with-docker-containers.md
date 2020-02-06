@@ -1,7 +1,7 @@
 ---
 title: 'Network sharing with Docker containers'
 date: 2018-10-24 15:26:21
-updated: 2019-11-11 14:45:13
+updated: 2020-02-07 24:22:13
 authors: [naiyer]
 tags: ['gist']
 ---
@@ -82,7 +82,7 @@ Launch this stack using `docker-compose up -d` and access the application at <ht
 
 ## References
 
-> **Source Code**: [network-sharing](https://gitlab.com/mflash/guides/docker/network-sharing)
+> **Source Code**: [network-sharing](https://gitlab.com/mflash/docker-guides/-/tree/master/network-sharing)
 > 
 > **Discussions**
 > - [cstrutton](https://stackoverflow.com/users/1311325/cstrutton): [Communication between multiple docker-compose projects](https://stackoverflow.com/questions/38088279/communication-between-multiple-docker-compose-projects)

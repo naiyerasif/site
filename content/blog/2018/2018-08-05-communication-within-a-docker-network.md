@@ -1,7 +1,7 @@
 ---
 title: 'Communication within a Docker network'
 date: 2018-08-05 12:06:01
-updated: 2019-11-11 14:11:12
+updated: 2020-02-07 24:19:12
 authors: [naiyer]
 tags: ['guide']
 ---
@@ -310,7 +310,7 @@ Launch this stack by executing `docker-compose up -d`. Browse to <http://localho
 
 ## References
 
-> **Source Code**: [network-communication](https://gitlab.com/mflash/guides/docker/network-communication)
+> **Source Code**: [network-communication](https://gitlab.com/mflash/docker-guides/-/tree/master/network-communication)
 > 
 > **Discussions**
 > - [eisfuchs](https://stackoverflow.com/users/1565175/eisfuchs): [Inject env variables from docker-compose into Angular4 app](https://stackoverflow.com/a/45727380) 

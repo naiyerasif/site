@@ -1,6 +1,7 @@
 ---
 title: 'Linting TypeScript with TypeScript ESLint and Prettier'
 date: 2019-08-16 16:23:12
+updated: 2020-02-06 22:51:18
 authors: [naiyer]
 tags: ['gist']
 ---
@@ -102,7 +103,7 @@ Now, `typescript-eslint` will play nice with `prettier` and use it to format whi
 
 ## References
 
-> **Source Code**: [linting-with-typescript-eslint](https://gitlab.com/mflash/guides/nodejs/express-postgres-api/tree/typescript-eslint)
+> **Source Code**: [typescript-linting](https://gitlab.com/mflash/nodejs-guides/-/tree/master/typescript-linting)
 > 
 > **Discussions**
 > - Niko Montana: <https://github.com/typescript-eslint/typescript-eslint/issues/36#issuecomment-494764385>

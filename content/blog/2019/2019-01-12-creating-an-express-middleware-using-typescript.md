@@ -1,7 +1,7 @@
 ---
 title: 'Creating an Express middleware using TypeScript'
 date: 2019-01-12 10:11:13
-updated: 2019-11-13 12:01:55
+updated: 2020-02-06 22:30:55
 authors: [naiyer]
 tags: ['guide']
 ---
@@ -34,14 +34,14 @@ npm install express
 Create a file `index.js` in a folder `dist` in your project root and add the following code.
 
 ```js
-const express = require("express");
+const express = require('express');
 const app = express();
 const port = 8080; // default port for express
 
 // default route handler
-app.get("/", (req, res) => {
+app.get('/', (req, res) => {
   res.jsonp({
-    message: "Hello World!"
+    message: 'Hello World!'
   });
 });
 
@@ -133,14 +133,14 @@ Now, whenever we'll fire up `npm start`, the `prestart` script will launch first
 Copy `dist/index.js` to `src/index.ts` and edit it as follows.
 
 ```typescript
-import express from "express";
+import express from 'express';
 const app = express();
 const port = 8080; // default port for express
 
 // default route handler
-app.get("/", (req, res) => {
+app.get('/', (req, res) => {
   res.jsonp({
-    message: "Hello World!"
+    message: 'Hello World!'
   });
 });
 
@@ -154,4 +154,4 @@ Launch the application by executing `npm start` and you'll get the same applicat
 
 ## References
 
-> **Source Code**: [express-typescript-app](https://gitlab.com/mflash/guides/nodejs/express-postgres-api/tree/express-typescript-app)
+> **Source Code**: [express-with-typescript](https://gitlab.com/mflash/nodejs-guides/-/tree/master/express-with-typescript)
