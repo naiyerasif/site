@@ -1,5 +1,6 @@
 const autoprefixer = require('autoprefixer')
 const purgecss = require('@fullhuman/postcss-purgecss')
+const purgecssOptions = require('./purgecss.config')
 const marked = require('marked')
 const shiki = require('shiki')
 const appConfig = require('./app.config')
@@ -7,7 +8,7 @@ const stripTocRenderer = require('./marked.config').stripTocRenderer
 
 const postcssPlugins = []
 
-if (process.env.NODE_ENV === 'production') postcssPlugins.push(purgecss())
+if (process.env.NODE_ENV === 'production') postcssPlugins.push(purgecss(purgecssOptions))
 
 postcssPlugins.push(autoprefixer({
   cascade: false
