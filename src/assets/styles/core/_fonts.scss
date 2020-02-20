@@ -1,6 +1,7 @@
 @use 'sass:list';
 @use 'sass:map';
 @use 'sass:meta';
+
 $default-formats: ('woff2', 'woff');
 
 @function _contains($list, $values...) {
@@ -82,7 +83,7 @@ $default-formats: ('woff2', 'woff');
 
 @include font-face(
   'Inter var',
-  '/assets/fonts/Inter-upright.var',
+  '/assets/fonts/Inter-roman.var',
   ('woff2 supports variations(gvar)', 'woff2-variations', 'woff2')
 ) {
   font-style: normal;
