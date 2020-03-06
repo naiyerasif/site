@@ -21,8 +21,6 @@ We'll build a REST for a music catalog with the following capabilities.
 - remove entire album
 - search tracks by title, album or artist
 
-### Table of Contents
-
 ## Setup development workflows
 
 In this section, we'll explore how to enable hot-reloading and simulate environment variables locally.

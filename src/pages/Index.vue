@@ -1,9 +1,11 @@
 <template>
   <Layout>
     <div class="container hero">
-      <h1>
-        Reflections on design and development by <g-link to="/profile/naiyer/">Naiyer Asif</g-link>
-      </h1>
+      <section class="canvas">
+        <h1 class="title">
+          <span class="is-separated is-hidden-on-phone">&mdash;</span>Reflections on design and development by <g-link to="/profile/naiyer/">Naiyer Asif</g-link>
+        </h1>
+      </section>
     </div>
     <Posts :posts="$page.posts.edges" />
     <Pagination v-if="$page.posts.pageInfo.totalPages > 1" :input="$page.posts.pageInfo" />
@@ -23,7 +25,7 @@ query Posts ($page: Int) {
         id
         title
         date (format: "MMM D, Y")
-        blurb
+        excerpt
         timeToRead
         path
         tags {

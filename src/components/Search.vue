@@ -1,25 +1,24 @@
 <template>
   <div class="search-container">
     <SearchFocal @keyup="focusSearch" />
-    <div class="search-box">
+    <div class="search-box" :class="{ 'remove-bottom-border' : searchResultsVisible && query.length > 0 }">
       <input type="text" placeholder="Search (Press  &quot;/&quot; to focus)" class="search" v-model="query" @input="softReset" @keyup="performSearch" @keyup.esc="searchResultsVisible = false" @keydown.up.prevent="highlightPrev" @keydown.down.prevent="highlightNext" @keyup.enter="gotoLink" @blur="searchResultsVisible = false" @focus="searchResultsVisible = true" ref="search" aria-label="Search">
 
-      <IconSearch class="icon icon-search" />
-
-      <div class="close" v-if="query.length > 0" @click="reset">
-        <IconClose class="icon icon-close" />
-      </div>
+      <transition name="slide-up" mode="out-in">
+        <IconSearch class="icon icon-search" v-if="query.length < 1" />
+        <IconClear v-if="query.length > 0" @click="reset" class="icon icon-clear" />
+      </transition>
     </div>
     <transition name="fade">
-      <div v-if="query.length > 0 && searchResultsVisible" class="results-container">
+      <div v-if="query.length > 0 && searchResultsVisible" class="results-container" :class="{ 'remove-top-border' : searchResultsVisible }">
         <div class="search-results" ref="results">
+          <section class="results-label">
+            {{ results.length > 0 ? results.length === 1 ? `${results.length} result` : `${results.length} results` : `No results for "${this.query}"` }}
+          </section>
           <a v-for="(post, index) in results" :key="index" :href="post.item.path" @click="reset" :class="{ 'search-result-highlighted' : index === highlightedIndex }" class="search-result">
             <span class="search-result-title">{{ post.item.title }}</span>
-            <span class="search-result-summary">{{ post.item.blurb | clip }} &hellip;</span>
+            <span class="search-result-excerpt">{{ post.item.excerpt | clip }} &hellip;</span>
           </a>
-          <div v-if="results.length === 0" class="no-result">
-            <p>No results for '<strong>{{ query }}</strong>'</p>
-          </div>
         </div>
       </div>
     </transition>
@@ -29,17 +28,17 @@
 <script>
 import axios from 'axios'
 import SearchFocal from './SearchFocal'
-import IconSearch from '~/assets/images/icon-search.svg'
-import IconClose from '~/assets/images/icon-close.svg'
-import siteConfig from '../../data/site.json'
+import IconSearch from '@/images/icon-search.svg'
+import IconClear from '@/images/icon-clear.svg'
+import * as appConfig from '../../app.config'
 
-const searchConfig = siteConfig.searchConfig
+const searchConfig = appConfig.searchConfig
 
 export default {
   components: {
     SearchFocal,
     IconSearch,
-    IconClose
+    IconClear
   },
   created() {
     axios(`/${searchConfig.file.name}`).then(response => {

@@ -1,6 +1,6 @@
-@use "../core/variables";
+@use '../core/variables';
 
-// Cell sizing
+// Table cell sizing
 
 @mixin cell($font-size) {
   font-size: #{$font-size}em;
@@ -37,36 +37,26 @@
   }
 }
 
-// Box spacing
-
-@mixin spacing($gap-top: variables.$gap-md, $gap-bottom: variables.$gap-md) {
-  padding: $gap-top variables.$gap-lg $gap-bottom;
-}
-
-// Expanse
-
-@mixin expanse($gap-top: 0, $gap-bottom: 0) {
-  padding-top: $gap-top;
-  padding-bottom: $gap-bottom;
-}
-
-// Align to center
-
-@mixin center($wrap: wrap, $justify: center) {
-  display: flex;
-  flex-wrap: $wrap;
-  justify-content: $justify;
-  align-items: center;
-}
-
 // Set base font-family
 
 @mixin base-font {
-  font-family: variables.$font-family-sans;
+  font-family: variables.$family-default;
 
-  @if variables.$variable-fonts {
+  @if variables.$variable-fonts and variables.$family-default-var {
     @supports (font-variation-settings: normal) {
-      font-family: variables.$font-family-sans-var, variables.$font-family-sans;
+      font-family: variables.$family-default-var, variables.$family-native;
+    }
+  }
+}
+
+// Set monospace font-family
+
+@mixin code-font {
+  font-family: variables.$family-code;
+
+  @if variables.$variable-fonts and variables.$family-code-var {
+    @supports (font-variation-settings: normal) {
+      font-family: variables.$family-code-var, variables.$family-code-native;
     }
   }
 }

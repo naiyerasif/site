@@ -1,21 +1,21 @@
 <template>
-  <div class="container-fluid grid-lg">
-    <div class="grid-lg-cell" v-for="post in posts" :key="post.id">
-      <div class="card">
-        <div class="card-header">
+  <div class="container posts">
+    <section class="canvas">
+      <div class="post" v-for="post in posts" :key="post.id">
+        <div class="post-header">
           <span v-html="displayDate(post.node)"/>
           <span class="separator"></span>{{ post.node.timeToRead }} min read
           <span class="separator"></span>
           <g-link v-for="tag in post.node.tags" :key="tag.id" :to="tag.path">
-            #{{ tag.title }}
+            #{{ tag.title }} 
           </g-link>
         </div>
         <g-link :to="post.node.path">
-          <h2 class="card-body">{{ post.node.title }}</h2>
-          <p class="card-footer">{{ post.node.blurb | clip }} &hellip;</p>
+          <h2 class="post-body">{{ post.node.title }}</h2>
+          <p class="post-footer">{{ post.node.excerpt | clip }} &hellip;</p>
         </g-link>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 

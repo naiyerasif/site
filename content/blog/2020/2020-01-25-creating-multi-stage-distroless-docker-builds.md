@@ -13,8 +13,6 @@ You may wonder why would someone choose to create a distroless image. Here are a
 - It reduces the complexity of inception of an image, both in terms of resources and cost. You ship only what you need.
 - Potential upgrades to the components are less contentious and more amiable.
 
-### Table of Contents
-
 ## Multi-stage Docker images
 
 Consider a Spring Boot application. If you build and launch the application in the same Docker image, it would be unnecessarily large because of the Maven or Gradle cache and JDK. You can avoid this by building the application in one stage and using the fat JAR to launch the application in the second stage. As a bonus, you can use only the JRE in the second stage, since you don't need the entire JDK to run the application. This reduces the clutter and size of your image significantly.

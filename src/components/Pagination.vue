@@ -1,5 +1,5 @@
 <template>
-  <section class="container pagination">
+  <section class="pagination">
     <g-link class="is-prev" :to="previousPage(input.currentPage)" v-if="input.currentPage > 1"><IconChevronLeft class="icon-sm" /> Prev</g-link>
     <div>page {{ input.currentPage }} of {{ input.totalPages }}</div>
     <g-link class="is-next" :to="nextPage(input.currentPage)" v-if="input.currentPage < input.totalPages">Next <IconChevronRight class="icon-sm" /></g-link>
@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import IconChevronLeft from '~/assets/images/icon-chevron-left.svg'
-import IconChevronRight from '~/assets/images/icon-chevron-right.svg'
+import IconChevronLeft from '@/images/icon-chevron-left.svg'
+import IconChevronRight from '@/images/icon-chevron-right.svg'
 
 export default {
   props: ['path', 'input'],

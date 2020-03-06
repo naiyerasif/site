@@ -1,14 +1,14 @@
+const path = require('path')
 const autoprefixer = require('autoprefixer')
 const purgecss = require('@fullhuman/postcss-purgecss')
-const purgecssOptions = require('./purgecss.config')
 const marked = require('marked')
 const shiki = require('shiki')
+const purgecssConfig = require('./purgecss.config')
 const appConfig = require('./app.config')
-const stripTocRenderer = require('./marked.config').stripTocRenderer
 
 const postcssPlugins = []
 
-if (process.env.NODE_ENV === 'production') postcssPlugins.push(purgecss(purgecssOptions))
+if (process.env.NODE_ENV === 'production') postcssPlugins.push(purgecss(purgecssConfig))
 
 postcssPlugins.push(autoprefixer({
   cascade: false
@@ -51,13 +51,13 @@ module.exports = {
       use: '@gridsome/vue-remark',
       options: {
         typeName: 'Profile',
-        baseDir: './profiles',
+        baseDir: './content/profiles',
         template: './src/templates/Profile.vue',
         route: '/profile/:id'
       }
     },
     {
-      use: 'gridsome-plugin-feed',
+      use: '@microflash/gridsome-plugin-feed',
       options: {
         contentTypes: ['Post'],
         feedOptions: {
@@ -85,7 +85,7 @@ module.exports = {
         nodeToFeedItem: (node) => ({
           title: node.title,
           date: node.date,
-          description: node.blurb,
+          description: node.excerpt,
           author: [
             {
               name: `@${appConfig.name}`,
@@ -93,7 +93,7 @@ module.exports = {
               link: appConfig.url
             }
           ],
-          content: marked(node.content, { renderer: stripTocRenderer })
+          content: marked(node.content)
         })
       }
     },
@@ -106,15 +106,14 @@ module.exports = {
     {
       use: '@gridsome/plugin-google-analytics',
       options: {
-        id: appConfig.gatid
+        id: 'UA-143076148-1'
       }
     }
   ],
   transformers: {
     remark: {
       plugins: [
-        ['gridsome-plugin-remark-shiki', { theme: shiki.loadTheme('./static/remarkable.json'), skipInline: true }],
-        ['remark-toc', { heading: appConfig.tocPattern, maxDepth: 3, tight: true }]
+        ['gridsome-plugin-remark-shiki', { theme: shiki.loadTheme('./static/remarkable.json'), skipInline: true }]
       ],
       externalLinksTarget: '_blank',
       externalLinksRel: ['nofollow', 'noopener', 'noreferrer'],
@@ -123,7 +122,7 @@ module.exports = {
         content: {
           type: 'element',
           tagName: 'span',
-          properties: { className: ['ref-link'] }
+          properties: { className: ['citation'] }
         }
       }
     }
@@ -136,6 +135,7 @@ module.exports = {
     },
   },
   chainWebpack: config => {
+    config.resolve.alias.set('@', path.resolve(__dirname, 'static/assets'))
     config.module.rules.delete('svg')
     config.module.rule('svg')
       .test(/\.svg$/).use('vue').loader('vue-loader').end()

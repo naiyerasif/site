@@ -12,8 +12,6 @@ Just as you can lint the JavaScript or TypeScript code in a web application, you
 
 Any Node.js project using SASS can be used to follow this example.
 
-### Table of Contents
-
 ## Install Stylelint
 
 Execute the following command to add `stylelint`.

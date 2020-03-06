@@ -7,8 +7,6 @@ tags: ['tip']
 
 If the upstream Git repository is extremely large, cloning it on local and syncing the changes with the remote becomes a challenge since a `git clone` will try to download the entire history. This tip shows you one of the ways to handle this problem.
 
-### Table of Contents
-
 ## Start with a shallow clone
 
 Clone only a portion of history that is required for your work by using `--depth` option.

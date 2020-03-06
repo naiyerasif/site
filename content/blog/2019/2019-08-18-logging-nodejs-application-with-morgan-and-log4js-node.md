@@ -15,8 +15,6 @@ tags: ['gist']
 
 To get started quickly, we'll use the Node.js application from the gist [Linting TypeScript with TypeScript ESLint and Prettier](/blog/2019/08/16/linting-typescript-with-typescript-eslint-and-prettier) to follow this guide.
 
-### Table of Contents
-
 ## Setup request logging with `morgan`
 
 `morgan` is a request logger middleware for `express`. Install it in your project with the following command. `rotating-file-stream` will be used to write the logs to a file.

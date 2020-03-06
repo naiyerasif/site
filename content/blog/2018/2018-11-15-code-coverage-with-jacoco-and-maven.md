@@ -17,8 +17,6 @@ Code coverage is a measure of how much of your code executes when the automated 
 
 To hit the ground running, let's make use of the Spring Boot application created in the guide [Uploading files with Spring and Angular](/blog/2018/09/09/uploading-files-with-spring-and-angular/).
 
-### Table of Contents
-
 ## Setup JaCoCo
 
 Add the JaCoCo plugin in `pom.xml` with the following confiuration.

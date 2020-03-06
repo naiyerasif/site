@@ -1,13 +1,14 @@
 const path = require('path')
 const fs = require('fs')
 const { GraphQLString } = require('gridsome/graphql')
-const stockpileDataSource = './data/stockpile.json'
-const stockpileData = require(stockpileDataSource)
+const moment = require('moment')
 const appConfig = require('./app.config')
 const summarize = require('./marked.config').summarize
 
 const editConfigs = appConfig.editConfig.paths
 const { basePath, constructEditUrl } = editConfigs.filter(p => p.collection === 'Post')[0]
+
+const outdationDate = appConfig.prefs.outdationPeriod ? moment().clone().subtract(appConfig.prefs.outdationPeriod, 'days').startOf('day') : null
 
 module.exports = function (api) {
 
@@ -15,28 +16,20 @@ module.exports = function (api) {
     if (options.internal.typeName === 'Post' && !options.updated) {
       options.updated = options.date
     }
+
+    if (options.internal.typeName === 'Post' && !options.outdated && !['never'].includes(options.outdated)) {
+      options.outdated = outdationDate && moment(options.updated, 'YYYY-MM-DD HH:mm:ss').isBefore(outdationDate) ? 'old' : '#'
+    }
     return { ...options }
   })
 
-  api.loadSource(({ addSchemaResolvers, addCollection }) => {
-    const stockpile = addCollection('Stockpile')
-    stockpileData.forEach(({ id, title: title, ...fields }) => {
-      stockpile.addNode({
-        id,
-        title,
-        internal: {
-          origin: stockpileDataSource
-        },
-        ...fields
-      })
-    })
-
+  api.loadSource(({ addSchemaResolvers }) => {
     addSchemaResolvers({
       Post: {
-        blurb: {
+        excerpt: {
           type: GraphQLString,
           resolve(post) {
-            return post.blurb ? post.blurb : summarize(post.content)
+            return post.excerpt ? post.excerpt : summarize(post.content)
           }
         },
         editUrl: {
@@ -56,7 +49,7 @@ module.exports = function (api) {
       return {
         title: post.title,
         path: post.path,
-        blurb: post.blurb ? post.blurb : summarize(post.content)
+        excerpt: post.excerpt ? post.excerpt : summarize(post.content)
       }
     })
 

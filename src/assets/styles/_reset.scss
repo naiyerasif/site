@@ -57,9 +57,14 @@ abbr[title] {
 
 button,
 input,
-select,
-textarea {
+select {
   margin: 0;
+}
+
+input,
+textarea {
+  background-color: inherit;
+  color: inherit;
 }
 
 // Box sizing

@@ -15,8 +15,6 @@ tags: ['gist']
 
 You should already have a TypeScript project; it could be any Express or Angular project. Download the one created at the end of the post [Code Formatting with Prettier](/blog/2019/04/20/code-formatting-with-prettier) to follow this guide.
 
-### Table of Contents
-
 ## Setup TypeScript ESLint
 
 Execute the following commands to add required dependencies for `typescript-eslint`.

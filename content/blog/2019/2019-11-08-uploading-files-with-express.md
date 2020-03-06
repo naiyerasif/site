@@ -14,8 +14,6 @@ In a typical Spring, Node.js and Angular setup, an Express middleware is often u
 > - Spring Boot 2.2
 > - Angular 8
 
-### Table of Contents
-
 ## Create a file upload service
 
 Start by generating a Spring Boot application with `spring-boot-starter-webflux` as one of the starters. We'll run this application on port `8081`. Adjust the port by editing the `application.properties`.

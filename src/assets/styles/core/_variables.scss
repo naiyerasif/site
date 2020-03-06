@@ -1,68 +1,60 @@
-@use 'sass:color';
-@use 'colors';
+@use './colors';
 
 // Options
 
 $closer-lists: true !default;
-$top-space: true !default;
 $custom-colors: true !default;
 $custom-fonts: true !default;
 $font-smoothing: true !default;
 $text-adjusting: true !default;
+$round-images: true !default;
+$round-codeblocks: true !default;
 $heading-borders: false !default;
 $show-underline: false !default;
 $table-hover: false !default;
 $table-striped: false !default;
 $visited-links: false !default;
+$hovered-links: true !default;
 $variable-fonts: true !default;
-$body-gradient: true !default;
 $external-links: true !default;
 
 // Typography
 
-$font-family-sans: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-  'Droid Sans', 'Oxygen', 'Ubuntu', 'Cantarell', 'Helvetica Neue', Arial,
-  'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-  'Segoe UI Symbol', 'Noto Color Emoji' !default;
-$font-family-fixed: 'JetBrains Mono', SFMono-Regular, 'Roboto Mono', 'Andale Mono', Menlo, Monaco,
-  Consolas, 'Inconsolata', 'Liberation Mono', 'Courier New', monospace !default;
+$family-native: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+'Droid Sans', 'Oxygen', 'Ubuntu', 'Cantarell', 'Helvetica Neue', Arial,
+'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+'Segoe UI Symbol', 'Noto Color Emoji' !default;
+$family-code-native: SFMono-Regular, 'Roboto Mono', 'Andale Mono', Menlo, Monaco,
+Consolas, 'Inconsolata', 'Liberation Mono', 'Courier New', monospace !default;
 
-// define variable font family here
-$font-family-sans-var: 'Inter var' !default;
+$family-default: Inter, $family-native !default;
+$family-code: 'JetBrains Mono', $family-code-native !default;
+$family-default-var: 'Inter var' !default;
+$family-code-var: null !default;
 
-// font weights
-$font-normal: 400 !default;
-$font-semibold: 600 !default;
-$font-bold: 700 !default;
+$weight-normal: 400 !default;
+$weight-semibold: 600 !default;
+$weight-bold: 700 !default;
 
-$weight-strong: $font-bold !default;
-$weight-headings: $font-semibold !default;
+$weight-headings: $weight-semibold !default;
 
-$text-sm: 0.875rem !default;
-$text-rg: 1rem !default;
-$text-md: 1.25rem !default;
-$text-lg: 1.5rem !default;
-$text-xl: 1.75rem !default;
+$font-size-xs: calc(0.75rem + 0.125vw) !default;
+$font-size-sm: calc(0.8rem + 0.25vw) !default;
+$font-size: calc(1rem + 0.2vw) !default;
+$font-size-md: calc(1.0625rem + 0.5vw) !default;
+$font-size-lg: calc(1.125rem + 1vw) !default;
+$font-size-xl: calc(1.5rem + 1.5vw) !default;
 
-$font-size: $text-rg !default;
 $text-size-adjust: 100% !default;
 
 // Spacing
 
-// breakpoints
-$width-sm: 600px !default;
-$width-md: 900px !default;
-$width-lg: 1200px !default;
-$width-xl: 1800px !default;
+$line-height: 1.6 !default;
 
-// grids
-$cell-sm: 14rem !default;
-$cell-md: 16rem !default;
-$cell-lg: 25rem !default;
-
-$line-height-rg: 1.6 !default;
-
-$line-height: $line-height-rg !default;
+$breakpoint-sm: 600px !default;
+$breakpoint-md: 900px !default;
+$breakpoint-lg: 1200px !default;
+$breakpoint-xl: 1800px !default;
 
 $gap-xs: 0.5rem !default;
 $gap-sm: 0.75rem !default;
@@ -73,67 +65,77 @@ $gap-xl: 2rem !default;
 $gap-2xl: 3rem !default;
 $gap-3xl: 5rem !default;
 
-$expanse-min: $gap-lg !default;
-$expanse-rg: calc(100vw - 10rem) !default;
-$expanse-md: $gap-3xl !default;
-$expanse-xl: 65vw !default;
-
+$gap: $gap-rg !default;
 $margin: $gap-lg !default;
 
-// radiuses
-$radius-sm: 0.25rem !default;
-$radius-rg: 0.5rem !default;
-$radius-md: 0.75rem !default;
-$radius-xl: 2rem !default;
+$expanse-md: calc(2vw + 1rem) !default;
+$expanse-lg: calc(4vw + 1rem) !default;
+$expanse-xl: calc(4vw + 2rem) !default;
 
-$radius: $radius-sm !default;
+$canvas: 50vw !default;
 
-// graphics
+$cell-sm: 12rem !default;
+$cell-md: 16rem !default;
+
 $gfx-xs: 1rem !default;
 $gfx-sm: 1.5rem !default;
 $gfx-rg: 2rem !default;
 
-// Indicators
+$gfx-avatar: calc(3.5rem + 4vw) !default;
 
-// Used as a value of `content`
-// Can be a `url`
+// Display
+
+$radius-2xs: 0.25rem !default;
+$radius-xs: 0.5rem !default;
+$radius-sm: 0.75rem !default;
+$radius-rg: 1rem !default;
+$radius-md: 1.5rem !default;
+$radius-lg: 2rem !default;
+
+$radius: $radius-2xs !default;
+$image-radius: $radius !default;
+$codeblock-radius: $radius !default;
+
+$opacity: 0.5 !default;
+
 $indicator-external-link: '\02197' !default;
-
-$opacity-md: 0.5 !default;
-
-// Z-index
-
-$elevation-md: 10 !default;
+$indicator-reference-link: '#' !default;
+$indicator-separator: '/' !default;
 
 // Colors
 
-$link: var(--link-default) !default;
-$link-hover: var(--link-hover) !default;
-$text: var(--text-default) !default;
-$text-muted: var(--text-muted) !default;
+$color-muted: var(--color-muted) !default;
+$color-pronounced: var(--color-pronounced) !default;
+$color-default: var(--color-default) !default;
+
+$background-default: var(--background-default) !default;
+$background-auxiliary: var(--background-auxiliary) !default;
+$background-muted: var(--background-muted) !default;
+$background-pronounced: var(--background-pronounced) !default;
+
+$background-body: $background-default !default;
+$background-code: $background-muted !default;
+$background-ins: $background-muted !default;
+$background-mark: $background-muted !default;
+$background-table: inherit !default;
+$background-table-even: inherit !default;
+$background-table-hover: $background-muted !default;
+$background-scrollbar: $background-auxiliary !default;
+
+$link: var(--color-link) !default;
+$link-hover: var(--color-hovered-link) !default;
+$link-visited: $color-pronounced !default;
+
+$border: $color-muted !default;
+$border-active: $link !default;
+
+$text: $color-default !default;
 $text-code: inherit !default;
 $text-strong: inherit !default;
-$text-light: $text-muted !default;
-$text-headings: inherit !default;
-$text-blockquote: $text-muted !default;
-$table-thead: inherit !default;
-$selected: color.adjust(colors.primary(500), $alpha: -0.75);
+$text-muted: $color-muted !default;
+$text-headings: $color-pronounced !default;
+$text-blockquote: $color-muted !default;
 
-$background-body: var(--background-body) !default;
-$background-body-dim: var(--background-body-dim) !default;
-$background-panel: var(--background-panel) !default;
-$background-panel-dim: var(--background-panel-dim) !default;
-$background-panel-vibrant: var(--background-panel-vibrant) !default;
-$background-code: $background-panel-vibrant !default;
-$background-ins: $background-panel-vibrant !default;
-$background-mark: $background-panel-vibrant !default;
-$background-table: inherit !default;
-$background-table-even: $background-panel !default;
-$background-table-hover: $background-panel-vibrant !default;
-
-$border: color.adjust(colors.tertiary(600), $alpha: -0.6) !default;
-$border-muted: var(--border-muted) !default;
-
-$scrollbar-track: var(--scrollbar-track) !default;
-$scrollbar-thumb: var(--scrollbar-thumb) !default;
-$scrollbar-button: var(--scrollbar-button) !default;
+$table-thead: $color-pronounced !default;
+$scrollbar: var(--background-scrollbar) !default;
+$selected: colors.fade(colors.primary(500), 0.75) !default;

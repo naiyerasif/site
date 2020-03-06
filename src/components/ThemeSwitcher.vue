@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import IconDark from '~/assets/images/icon-dark.svg'
-import IconLight from '~/assets/images/icon-light.svg'
+import IconDark from '@/images/icon-dark.svg'
+import IconLight from '@/images/icon-light.svg'
 
 const themes = ['light', 'dark']
 

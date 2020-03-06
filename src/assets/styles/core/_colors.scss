@@ -1,83 +1,75 @@
 @use 'sass:color';
 @use 'sass:map';
-// Monochrome
-
-$black: hsl(0, 0%, 0%);
-$white: hsl(0, 0%, 100%);
-
-// Colormix functions
-// 
-// use `tint` instead of default `lighten`
-// use `shade` instead of default `darken` 
-
-@function tint($color, $percentage) {
-  @return color.mix($white, $color, $percentage);
-}
-
-@function shade($color, $percentage) {
-  @return color.mix($black, $color, $percentage);
-}
 
 // Color palettes
 // 
 // Ax00 variants are WCAG-accesible complements of x00 colors
 // all the colors are in CIECAM02 color space
 
+$black: hsl(0, 0%, 0%);
+$white: hsl(0, 0%, 100%);
+
 $primary: (
-  100: hsl(158, 25%, 79%),
-  200: hsl(160, 26%, 71%),
-  300: hsl(160, 30%, 62%),
-  400: hsl(161, 33%, 52%),
-  500: hsl(166, 64%, 38%),
-  600: hsl(165, 54%, 36%),
-  700: hsl(163, 45%, 34%),
-  800: hsl(162, 39%, 31%),
-  900: hsl(162, 35%, 28%),
-  A100: hsl(160, 31%, 25%),
-  A200: hsl(160, 27%, 22%),
-  A300: hsl(162, 25%, 18%),
-  A600:	hsl(150, 17%, 98%),
-  A700: hsl(160, 20%, 94%),
-  A800: hsl(164, 22%, 90%),
-  A900: hsl(160, 22%, 86%)
+  A500: hsl(150, 17%, 98%),
+  A600: hsl(160, 21%, 95%),
+  A700: hsl(164, 22%, 90%),
+  A800: hsl(162, 23%, 83%),
+  A900: hsl(159, 26%, 76%),
+  100: hsl(160, 28%, 67%),
+  200: hsl(162, 30%, 58%),
+  300: hsl(164, 39%, 47%),
+  400: hsl(165, 58%, 38%),
+  500: hsl(164, 48%, 36%),
+  600: hsl(163, 42%, 33%),
+  700: hsl(162, 36%, 30%),
+  800: hsl(161, 33%, 27%),
+  900: hsl(162, 30%, 24%),
+  A100: hsl(161, 26%, 21%),
+  A200: hsl(162, 23%, 17%),
+  A300: hsl(156, 21%, 14%),
+  A400: hsl(163, 17%, 8%)
 );
 
 $secondary: (
-  100: hsl(240, 11%, 80%),
-  200: hsl(244, 12%, 72%),
-  300: hsl(245, 13%, 64%),
-  400: hsl(244, 14%, 58%),
-  500: hsl(245, 15%, 52%),
-  600: hsl(247, 19%, 46%),
-  700: hsl(247, 21%, 40%),
-  800: hsl(248, 19%, 33%),
-  900: hsl(248, 18%, 26%),
-  A100: hsl(248, 17%, 25%),
-  A200: hsl(249, 17%, 22%),
-  A300: hsl(245, 14%, 15%),
-  A600: hsl(240, 8%, 95%),
-  A700: hsl(252, 11%, 91%),
-  A800: hsl(240, 11%, 88%),
-  A900: hsl(240, 9%, 85%)
+  A500: hsl(210, 9%, 96%),
+  A600: hsl(240, 6%, 94%),
+  A700: hsl(225, 7%, 89%),
+  A800: hsl(231, 8%, 83%),
+  A900: hsl(234, 8%, 77%),
+  100: hsl(231, 8%, 70%),
+  200: hsl(233, 9%, 64%),
+  300: hsl(229, 10%, 57%),
+  400: hsl(233, 10%, 52%),
+  500: hsl(231, 11%, 47%),
+  600: hsl(232, 14%, 42%),
+  700: hsl(231, 18%, 38%),
+  800: hsl(233, 20%, 34%),
+  900: hsl(232, 20%, 28%),
+  A100: hsl(234, 18%, 23%),
+  A200: hsl(232, 16%, 18%),
+  A300: hsl(234, 16%, 13%),
+  A400: hsl(225, 18%, 4%)
 );
 
 $tertiary: (
-  100: hsl(42, 74%, 74%),
-  200: hsl(42, 77%, 67%),
-  300: hsl(42, 81%, 59%),
-  400: hsl(42, 67%, 53%),
-  500: hsl(42, 55%, 49%),
-  600: hsl(41, 52%, 45%),
-  700: hsl(42, 48%, 41%),
-  800: hsl(41, 45%, 37%),
-  900: hsl(41, 42%, 33%),
-  A100: hsl(40, 40%, 30%),
-  A200: hsl(41, 38%, 26%),
-  A300: hsl(42, 34%, 23%),
-  A600: hsl(49, 50%, 94%),
-  A700: hsl(45, 59%, 88%),
-  A800: hsl(43, 67%, 84%),
-  A900: hsl(43, 71%, 78%)
+  A500: hsl(53, 50%, 97%),
+  A600: hsl(46, 72%, 92%),
+  A700: hsl(44, 83%, 84%),
+  A800: hsl(43, 77%, 76%),
+  A900: hsl(43, 56%, 70%),
+  100: hsl(44, 42%, 64%),
+  200: hsl(43, 31%, 58%),
+  300: hsl(42, 24%, 52%),
+  400: hsl(42, 21%, 47%),
+  500: hsl(42, 20%, 42%),
+  600: hsl(43, 19%, 37%),
+  700: hsl(44, 18%, 33%),
+  800: hsl(43, 17%, 28%),
+  900: hsl(42, 16%, 24%),
+  A100: hsl(45, 15%, 20%),
+  A200: hsl(42, 15%, 17%),
+  A300: hsl(40, 14%, 12%),
+  A400: hsl(45, 13%, 6%)
 );
 
 // Conveniences for palette access
@@ -94,40 +86,56 @@ $tertiary: (
   @return map.get($tertiary, $variation);
 }
 
+// Colormix functions
+// 
+// use `tint` instead of default `lighten`
+// use `shade` instead of default `darken` 
+// use `fade` instead of default `transparentize`
+
+@function tint($color, $percentage) {
+  @return color.mix($white, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+  @return color.mix($black, $color, $percentage);
+}
+
+@function fade($color, $transparency: 1) {
+  @return color.adjust($color, $alpha: -($transparency));
+}
+
+@function vibrant($color, $vibrance) {
+  @return color.adjust($color, $saturation: $vibrance);
+}
+
 // CSS properties for light theme
 
 [data-theme='light'] {
-  --text-default: #{secondary(A200)};
-  --text-muted: #{tertiary(800)};
-  --link-default: #{color.scale(primary(800), $saturation: 5%, $lightness: 2%)};
-  --link-hover: #{primary(900)};
-  --background-body: #{$white};
-  --background-body-dim: #{primary(A600)};
-  --background-panel-vibrant: #{color.scale(tertiary(A800), $lightness: 30%)};
-  --background-panel: #{color.scale(tertiary(A700), $saturation: -20%, $lightness: 15%)};
-  --background-panel-dim: #{tertiary(A800)};
-  --border-muted: #{color.scale(tertiary(200), $saturation: -30%)};
-  --scrollbar-track: #{primary(200)};
-  --scrollbar-thumb: #{primary(700)};
-  --scrollbar-button: #{primary(400)};
-  --code-default: #{shade(primary(A200), 20%)};
+  --color-muted: #{tertiary(400)};
+  --color-pronounced: #{primary(600)};
+  --color-default: #{secondary(A100)};
+  --color-link: #{shade(primary(500), 10%)};
+  --color-hovered-link: #{primary(700)};
+  --background-default: #{$white};
+  --background-auxiliary: #{shade(tertiary(A500), 1%)};
+  --background-muted: #{primary(A500)};
+  --background-pronounced: #{tertiary(A600)};
+  --background-code: #{primary(A200)};
+  --background-scrollbar: #{primary(A900)};
 }
 
 // CSS properties for dark theme
 
 [data-theme='dark'] {
-  --text-default: #{shade($white, 25%)};
-  --text-muted: #{color.scale(tertiary(500), $saturation: -30%)};
-  --link-default: #{primary(500)};
-  --link-hover: #{primary(700)};
-  --background-body: #{shade(secondary(A300), 15%)};
-  --background-body-dim: #{shade(secondary(A300), 30%)};
-  --background-panel-vibrant: #{color.adjust(secondary(A200), $alpha: -0.2)};
-  --background-panel: #{secondary(A300)};
-  --background-panel-dim: #{shade(secondary(A300), 40%)};
-  --border-muted: #{secondary(900)};
-  --scrollbar-track: #{shade(secondary(A300), 40%)};
-  --scrollbar-thumb: #{secondary(900)};
-  --scrollbar-button: #{color.adjust(secondary(A200), $alpha: -0.2)};
-  --code-default: #{shade(secondary(A200), 25%)};
+  --color-muted: #{vibrant(tertiary(400), -10%)};
+  --color-pronounced: #{vibrant(tertiary(200), -15%)};
+  --color-default: #{shade($white, 25%)};
+  --color-link: #{primary(400)};
+  --color-hovered-link: #{primary(300)};
+  --background-default: #{secondary(A300)};
+  --background-auxiliary: #{shade(secondary(A300), 35%)};
+  --background-muted: #{shade(secondary(A200), 7%)};
+  --background-pronounced: #{secondary(A400)};
+  --background-code: #{shade(secondary(A300), 35%)};
+  --background-scrollbar: #{shade(secondary(A100), 5%)};
 }

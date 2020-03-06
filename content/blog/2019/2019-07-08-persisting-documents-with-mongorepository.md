@@ -39,8 +39,6 @@ Executing the following command to launch the container.
 docker-compose up -d
 ```
 
-### Table of Contents
-
 ## Define a domain
 
 Let's start by defining a domain. Say, you want to persist an `Email` object which consists of an `address`, an `Identity` of a user, a set of `Session` created by the user and a `created` date. When an `Email` object is saved, corresponding `Identity` object and `Session` objects should also be persisted; the same goes for the delete operation.

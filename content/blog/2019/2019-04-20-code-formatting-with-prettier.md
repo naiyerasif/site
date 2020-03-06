@@ -12,8 +12,6 @@ tags: ['gist']
 
 We'll use the Node.js application that we created in the post [Creating an Express middleware using TypeScript](/blog/2019/01/12/creating-an-express-middleware-using-typescript) to kickstart our example.
 
-### Table of Contents
-
 ## Install Prettier
 
 Let's start by executing the following command in the directory where `package.json` is located:

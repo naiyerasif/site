@@ -1,49 +1,49 @@
-@use "../core/variables";
+@use '../core/variables';
 
-// Media Query (Core)
+// Base Media Queries
 
-@mixin within($extent) {
-  @media screen and (max-width: ($extent - 1)) {
+@mixin within($breakpoint) {
+  @media screen and (max-width: ($breakpoint - 1)) {
     @content;
   }
 }
 
-@mixin beyond($extent) {
-  @media screen and (min-width: $extent) {
+@mixin beyond($breakpoint) {
+  @media screen and (min-width: $breakpoint) {
     @content;
   }
 }
 
-// Media Query (Derived)
+// Derived Media Queries
 // 
-// `handheld` is the default breakpoint
+// `phone` is the default breakpoint
 
 @mixin phone {
-  @include within(variables.$width-sm) {
+  @include within(variables.$breakpoint-sm) {
     @content;
   }
 }
 
-@mixin tab-portrait {
-  @include beyond(variables.$width-sm) {
+@mixin within-tab-landscape {
+  @include within(variables.$breakpoint-md) {
     @content;
   }
 }
 
 @mixin tab-landscape {
-  @include beyond(variables.$width-md) {
+  @include beyond(variables.$breakpoint-md) {
     @content;
   }
 }
 
-@mixin desktop {
-  @include beyond(variables.$width-lg) {
-    @content;
-  }
-}
+// @mixin desktop {
+//   @include beyond(variables.$breakpoint-lg) {
+//     @content;
+//   }
+// }
 
-@mixin widescreen {
-  @include beyond(variables.$width-xl) {
-    @content;
-  }
-}
+// @mixin widescreen {
+//   @include beyond(variables.$breakpoint-xl) {
+//     @content;
+//   }
+// }

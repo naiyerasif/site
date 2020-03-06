@@ -1,9 +1,15 @@
-const siteConfig = require('./data/site.json')
-
 module.exports = {
+  name: 'Microflash',
+  description: 'Reflections on design and development by Naiyer Asif',
+  url: 'https://mflash.dev',
+  favicon: 'https://raw.githubusercontent.com/Microflash/microflash.github.io/release/src/favicon.png',
+  maintainer: 'Naiyer Asif',
   copyright: `Copyright ${new Date().getFullYear()} ${this.name}`,
-  blogDir: 'content/blog/',
-  draftDir: 'content/draft/',
+  prefs: {
+    draftDir: 'archive/draft',
+    excerptSize: 251,
+    outdationPeriod: 365 // in days
+  },
   slugifyConfig: {
     decamelize: false,
     customReplacements: [['.js', 'js']]
@@ -12,7 +18,7 @@ module.exports = {
     paths: [
       {
         collection: 'Post',
-        basePath: `https://github.com/Microflash/microflash.github.io/edit/release/content/`,
+        basePath: 'https://github.com/Microflash/microflash.github.io/edit/release/content/',
         constructEditUrl: (ctx, path) => {
           const tokens = path.split('/')
           tokens[1] = tokens[1] + "/" + tokens[2]
@@ -22,5 +28,25 @@ module.exports = {
       }
     ]
   },
-  ...siteConfig
+  searchConfig: {
+    file: {
+      dir: 'static',
+      name: 'search.json'
+    },
+    options: {
+      shouldSort: true,
+      includeMatches: true,
+      tokenize: true,
+      matchAllTokens: true,
+      threshold: 0.4,
+      location: 0,
+      distance: 600,
+      maxPatternLength: 32,
+      minMatchCharLength: 3,
+      keys: [
+        'title',
+        'excerpt'
+      ]
+    }
+  }
 }

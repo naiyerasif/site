@@ -1,9 +1,8 @@
 *.log
 .cache
 .vscode
-content/draft/
-key
+archive
 node_modules
 public
-src/.temp
-static/search.json
+**/.temp
+**/search.json

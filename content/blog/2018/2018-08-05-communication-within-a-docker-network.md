@@ -19,8 +19,6 @@ When you are doing microservices, it is typical to run multiple Docker container
 
 We'll serve a production build of the Angular application on an [Nginx](https://nginx.org/) container. And we'll configure this container to communicate privately with the REST endpoint on a Docker network.
 
-### Table of Contents
-
 ## Create a REST endpoint
 
 Execute the following command on your favorite terminal to generate a Micronaut application with Maven support.

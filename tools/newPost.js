@@ -14,7 +14,7 @@ if (!title || !tag) {
 }
 
 const fileName = `${now.format('YYYY-MM-DD')}-${slugify(title, appConfig.slugifyConfig)}`
-const filePath = `./${appConfig.draftDir + fileName}.md`
+const filePath = `./${appConfig.draftDir}/${fileName}.md`
 
 const frontmatter = `---
 title: '${title}'

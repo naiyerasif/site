@@ -21,8 +21,6 @@ npm init -y
 
 This should generate file `package.json`. Open the directory in your favorite editor.
 
-### Table of Contents
-
 ## Create an Express app
 
 Install `express` as a dependency.

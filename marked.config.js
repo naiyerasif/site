@@ -4,11 +4,6 @@ const appConfig = require('./app.config')
 
 const entities = new AllHtmlEntities()
 const whitespace = ' '
-const emptyspace = ''
-const defaultRenderer = new marked.Renderer()
-
-const stripTocRenderer = new marked.Renderer()
-stripTocRenderer.heading = (text, level, raw, slugger) => (text === appConfig.tocPattern) ? emptyspace : defaultRenderer.heading(text, level, raw, slugger)
 
 const plainTextRenderer = new marked.Renderer()
 plainTextRenderer.code = (code, infostring, escaped) => code + whitespace
@@ -32,18 +27,17 @@ plainTextRenderer.image = (href, title, text) => whitespace
 plainTextRenderer.text = (text) => text
 
 const preprocess = (md) => {
-  const limit = 251
+  const limit = appConfig.prefs.excerptSize
+  const space = ['space', 'hr', 'br']
   const tokens = marked.lexer(md)
   let markdown = ''
-  let shouldStop = false
   for (token of tokens) {
-    if (shouldStop || markdown.length > limit || token.text === appConfig.tocPattern) break
-    if (markdown !== '' && token.type === 'heading') shouldStop = true
+    if ((markdown !== '' && token.type === 'heading') || markdown.length > limit) break
     if (token.type !== 'heading' && token.text) {
-      markdown = markdown + token.text.trim()
+      markdown += token.text.trim()
     }
-    if (token.type === 'space' || token.type === 'hr' || token.type === 'br') {
-      markdown = markdown + whitespace
+    if (space.includes(token.type)) {
+      markdown += whitespace
     }
   }
   return markdown
@@ -56,6 +50,5 @@ const summarize = (content) => {
 }
 
 module.exports = {
-  summarize,
-  stripTocRenderer
+  summarize
 }

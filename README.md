@@ -8,7 +8,6 @@ Personal website of Naiyer Asif, made possible by
 - [Shiki](https://github.com/octref/shiki): a beautiful syntax highlighter
 - [Feather Icons](https://feathericons.com/): beautiful open-source icons
 - [Remarkability](https://mflash.dev/remarkability/): the baseline css for HTML generated from markdown
-- [Hamburgers](https://github.com/jonsuh/hamburgers): a collection of tasty CSS-animated hamburger icons
 - [Animate.css](https://github.com/daneden/animate.css): a cross-browser library of CSS animations
 - [Grid By Example](https://gridbyexample.com/): a collection of examples and references on CSS Grid maintained by [Rachel Andrew](https://rachelandrew.co.uk/)
 - [Leonardo](https://github.com/adobe/leonardo): an adaptive color scale generator developed by Adobe
@@ -27,4 +26,4 @@ It uses
 
 The source of this site is available under [MIT](./LICENSE), the content under [CC by SA](https://creativecommons.org/licenses/by-sa/4.0/).
 
-> If you want to create a site similar to this one, get started with [jada](https://github.com/Microflash/jada).
+> Want to create a similar site? Get started with [jada](https://github.com/Microflash/jada).

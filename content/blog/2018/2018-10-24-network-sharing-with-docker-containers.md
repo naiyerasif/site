@@ -19,8 +19,6 @@ When you're working on a large number of microservices, you will eventually come
 
 Refer to [Communication within a Docker network](/blog/2018/08/05/communication-within-a-docker-network). We'll use the same Micronaut and Angular applications for this example.
 
-### Table of Contents
-
 ## Create a Docker stack for the Micronaut application
 
 Create a Docker image of the Micronaut application by executing the following command in your terminal. If you've already created this image, skip this step.

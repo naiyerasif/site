@@ -18,8 +18,6 @@ When you need to obtain data from your users, it is customary to offer them prov
 
 We'll utilize the [Uploading files](https://spring.io/guides/gs/uploading-files/) guide from Spring with some modifications to fit our needs.
 
-### Table of Contents
-
 ## Create a Spring application to handle uploads
 
 Start by defining an interface to enforce a contract for the service to upload and fetch files.

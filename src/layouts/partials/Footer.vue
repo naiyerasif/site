@@ -1,66 +1,41 @@
 <template>
-  <footer class="container grid-md footer">
-    <section class="grid-md-cell">
-      <div class="is-lead">
-        <Icon alt="logo" width="30" class="is-separated" /> Copyright &copy; {{ year }}
-      </div>
-      <ul class="is-footer-list">
-        <li>made with code, <span title="tea">☕</span> &amp; <span class="is-red" title="love">❤️</span></li>
-        <li>by <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash">Naiyer Asif</a></li>
-      </ul>
-    </section>
-    <section class="grid-md-cell">
-      <div class="is-lead">Resources</div>
-      <ul class="is-footer-list">
-        <li>
-          <IconRss class="icon-sm is-separated" /> <a href="/feed.xml">RSS feed</a>
-        </li>
-        <li>
-          <IconMap class="icon-sm is-separated" /> <a href="/sitemap.xml">Sitemap</a>
-        </li>
-        <li>
-          <IconCode class="icon-sm is-separated" /> <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/microflash.github.io">Source code</a>
-        </li>
-      </ul>
-    </section>
-    <section class="grid-md-cell">
-      <div class="is-lead">Support</div>
-      <ul class="is-footer-list">
-        <li>
-          <IconFeedback class="icon-sm is-separated" /> <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/microflash.github.io/issues/new">Report an issue</a>
-        </li>
-        <li>
-          <IconLicense class="icon-sm is-separated" /> <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/microflash.github.io/blob/release/LICENSE.md">Site License (MIT)</a>
-        </li>
-        <li>
-          <IconLicense class="icon-sm is-separated" /> <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/">Content License (CC by SA)</a>
-        </li>
-      </ul>
-    </section>
-    <section class="grid-md-cell">
-      <div class="is-lead">Connect</div>
-      <ul class="is-footer-list is-flex-list">
-        <li>
-          <a href="https://github.com/Microflash" title="GitHub" target="_blank" rel="noopener noreferrer" class="is-separated">
+  <footer class="container footer">
+    <section class="grid-md">
+      <section class="grid-md-cell">
+        <div class="is-lead">Resources</div>
+        <nav>
+          <div><IconRss class="icon-sm is-separated" /> <a href="/feed.xml">RSS feed</a></div>
+          <div><IconMap class="icon-sm is-separated" /> <a href="/sitemap.xml">Sitemap</a></div>
+          <div><IconCode class="icon-sm is-separated" /> <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/microflash.github.io">Source code</a></div>
+        </nav>
+      </section>
+      <section class="grid-md-cell">
+        <div class="is-lead">Support</div>
+        <div><IconFeedback class="icon-sm is-separated" /> <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/microflash.github.io/issues/new">Report an issue</a></div>
+        <div><IconLicense class="icon-sm is-separated" /> <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/microflash.github.io/blob/release/LICENSE.md">Site License (MIT)</a></div>
+        <div><IconLicense class="icon-sm is-separated" /> <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/">Content License (CC by SA)</a></div>
+      </section>
+      <section class="grid-md-cell">
+        <div class="is-lead">Connect</div>
+        <section>
+          <a class="is-separated" href="https://github.com/Microflash" title="GitHub" target="_blank" rel="noopener noreferrer">
             <IconGithub class="icon" />
           </a>
-        </li>
-        <li>
-          <a href="https://gitlab.com/Microflash" title="GitLab" target="_blank" rel="noopener noreferrer" class="is-separated">
+          <a class="is-separated" href="https://gitlab.com/Microflash" title="GitLab" target="_blank" rel="noopener noreferrer">
             <IconGitlab class="icon" />
           </a>
-        </li>
-        <li>
-          <a href="https://twitter.com/Microflash" title="Twitter" target="_blank" rel="noopener noreferrer" class="is-separated">
+          <a class="is-separated" href="https://twitter.com/Microflash" title="Twitter" target="_blank" rel="noopener noreferrer">
             <IconTwitter class="icon" />
           </a>
-        </li>
-        <li>
-          <a href="https://in.linkedin.com/in/naiyerasif" title="LinkedIn" target="_blank" rel="noopener noreferrer" class="is-separated">
+          <a class="is-separated" href="https://in.linkedin.com/in/naiyerasif" title="LinkedIn" target="_blank" rel="noopener noreferrer">
             <IconLinkedin class="icon" />
           </a>
-        </li>
-      </ul>
+        </section>
+      </section>
+    </section>
+    <section class="copyright" style="  ">
+      <Icon alt="logo" width="36" style="margin-top: 1rem" />
+      <div>Copyright &copy; {{ year }}, Made with code, <span title="tea">☕</span> &amp; <span class="is-warning" title="love">❤️</span> by <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash">Naiyer Asif</a></div>
     </section>
   </footer>
 </template>
@@ -74,16 +49,16 @@ query {
 </static-query>
 
 <script>
-import Icon from '~/assets/images/icon.svg'
-import IconRss from '~/assets/images/icon-rss.svg'
-import IconMap from '~/assets/images/icon-map.svg'
-import IconCode from '~/assets/images/icon-code.svg'
-import IconFeedback from '~/assets/images/icon-feedback.svg'
-import IconLicense from '~/assets/images/icon-license.svg'
-import IconGithub from '~/assets/images/icon-github.svg'
-import IconGitlab from '~/assets/images/icon-gitlab.svg'
-import IconTwitter from '~/assets/images/icon-twitter.svg'
-import IconLinkedin from '~/assets/images/icon-linkedin.svg'
+import Icon from '@/images/icon.svg'
+import IconRss from '@/images/icon-rss.svg'
+import IconMap from '@/images/icon-map.svg'
+import IconCode from '@/images/icon-code.svg'
+import IconFeedback from '@/images/icon-feedback.svg'
+import IconLicense from '@/images/icon-license.svg'
+import IconGithub from '@/images/icon-github.svg'
+import IconGitlab from '@/images/icon-gitlab.svg'
+import IconTwitter from '@/images/icon-twitter.svg'
+import IconLinkedin from '@/images/icon-linkedin.svg'
 
 export default {
   components: {

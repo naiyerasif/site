@@ -1,12 +1,14 @@
 <template>
   <Layout>
     <div class="container hero">
-      <h1>
-        Page not found
-        <p class="subtitle">
+      <section class="canvas">
+        <h1 class="title">
+          Page not found
+        </h1>
+        <div class="subtitle">
           <IconChevronLeft class="icon" /> Go back to <g-link to="/">Home</g-link>.
-        </p>
-      </h1>
+        </div>
+      </section>
     </div>
     <div class="container article">
       <div class="main">
@@ -19,8 +21,8 @@
 </template>
 
 <script>
-import IconChevronLeft from '~/assets/images/icon-chevron-left.svg'
-import NotFound from '~/assets/images/404.svg'
+import IconChevronLeft from '@/images/icon-chevron-left.svg'
+import NotFound from '@/images/404.svg'
 
 export default {
   metaInfo: {

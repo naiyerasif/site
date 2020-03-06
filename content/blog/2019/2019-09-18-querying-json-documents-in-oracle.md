@@ -18,8 +18,6 @@ If you've got Oracle 12c installed on your machine, you're good to go. If not, y
 
 For the examples in this guide, we'll use data from MongoDB's [bios example collection](https://docs.mongodb.com/manual/reference/bios-example-collection/).
 
-### Table of Contents
-
 ## Create a relation
 
 Let's start by creating a relation that would store JSON documents as CLOB objects.
