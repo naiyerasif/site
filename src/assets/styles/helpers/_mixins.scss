@@ -39,16 +39,12 @@
 
 // Set font-family
 
-@mixin font-family($family-default, $family-variable) {
-  @if $family-default {
-    font-family: $family-default, variables.$family-native;
-  } @else {
-    font-family: variables.$family-native;
-  }
+@mixin font-family($default-family, $variable-family) {
+  font-family: $default-family;
 
-  @if variables.$variable-fonts and $family-variable {
+  @if variables.$variable-fonts and $variable-family {
     @supports (font-variation-settings: normal) {
-      font-family: $family-variable, variables.$family-native;
+      font-family: $variable-family;
     }
   }
 }
