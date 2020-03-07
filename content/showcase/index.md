@@ -3,6 +3,7 @@ id: showcase-0
 title: 'Showcase'
 description: 'Projects, tools and experiments by Naiyer'
 toc: false
+enableEdit: false
 ---
 
 <div class="grid-sm">

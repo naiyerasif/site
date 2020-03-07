@@ -3,6 +3,7 @@ id: showcase-1
 title: 'Git Playbook'
 description: 'Useful git commands, tips and shortcuts'
 toc: true
+enableEdit: true
 ---
 
 ## Setup

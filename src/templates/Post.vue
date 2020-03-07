@@ -23,12 +23,12 @@
     </div>
     <div class="container article">
       <div class="content">
-        <Contents :headers="$page.post.headings" />
         <blockquote class="is-warning" v-if="outdationMessage">{{ outdationMessage }}</blockquote>
+        <Contents :headers="$page.post.headings" />
         <main class="main" v-html="$page.post.content" />
       </div>
       <div class="article-actions">
-        <a target="_blank" rel="noopener noreferrer" :href="$page.post.editUrl">
+        <a target="_blank" rel="noopener noreferrer" :href="editUrl">
           <IconEdit class="icon" /> Edit this page
         </a>
         <a href="#table-of-contents">
@@ -48,6 +48,9 @@ query Post ($path: String!) {
     title
     date (format: "MMM D, Y")
     updated (format: "MMM D, Y")
+    fileInfo {
+      path
+    }
     headings {
       depth
       value
@@ -63,7 +66,6 @@ query Post ($path: String!) {
     path
     timeToRead
     outdated
-    editUrl
     tags {
       title
       path
@@ -71,6 +73,14 @@ query Post ($path: String!) {
   }
 }
 </page-query>
+
+<static-query>
+query {
+  metadata {
+    editContext
+  }
+}
+</static-query>
 
 <script>
 import Contents from '~/components/Contents'
@@ -95,6 +105,10 @@ export default {
     displayDate() {
       const published = `Published <time>${this.$page.post.date}</time>`
       return !this.$page.post.hasOwnProperty('updated') ? published : (this.$page.post.updated !== this.$page.post.date ? `Updated <time>${this.$page.post.updated}</time>` : published); 
+    },
+    editUrl() {
+      const editContext = appConfig.editConfig && appConfig.editConfig.Post ? appConfig.editConfig.Post : this.$static.metadata.editContext
+      return `${editContext}/${this.$page.post.fileInfo.path}`
     },
     outdationMessage() {
       let warning = null

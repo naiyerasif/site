@@ -16,6 +16,9 @@
         <VueRemarkContent class="main" />
       </div>
       <div class="article-actions">
+        <a v-if="$page.showcase.enableEdit" target="_blank" rel="noopener noreferrer" :href="editUrl">
+          <IconEdit class="icon" /> Edit this page
+        </a>
         <a v-if="$page.showcase.toc" href="#table-of-contents">
           <IconList class="icon" /> Table of Contents
         </a>
@@ -34,6 +37,10 @@ query Showcase ($id: ID!) {
     title
     description
     toc
+    enableEdit
+    fileInfo {
+      path
+    }
     headings {
       depth
       value
@@ -43,10 +50,20 @@ query Showcase ($id: ID!) {
 }
 </page-query>
 
+<static-query>
+query {
+  metadata {
+    editContext
+  }
+}
+</static-query>
+
 <script>
 import Contents from '~/components/Contents'
+import IconEdit from '@/images/icon-edit.svg'
 import IconUp from '@/images/icon-up.svg'
 import IconList from '@/images/icon-list.svg'
+import * as appConfig from '../../app.config'
 
 export default {
   metaInfo() {
@@ -56,8 +73,15 @@ export default {
   },
   components: {
     Contents,
+    IconEdit,
     IconUp,
     IconList
+  },
+  computed: {
+    editUrl() {
+      const editContext = (appConfig.editConfig && appConfig.editConfig.Showcase ? appConfig.editConfig.Showcase : this.$static.metadata.editContext) + '/content/showcase'
+      return `${editContext}/${this.$page.showcase.fileInfo.path}`
+    }
   }
 }
 </script>

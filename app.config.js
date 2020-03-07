@@ -14,20 +14,6 @@ module.exports = {
     decamelize: false,
     customReplacements: [['.js', 'js']]
   },
-  editConfig: {
-    paths: [
-      {
-        collection: 'Post',
-        basePath: 'https://github.com/Microflash/microflash.github.io/edit/release/content/',
-        constructEditUrl: (ctx, path) => {
-          const tokens = path.split('/')
-          tokens[1] = tokens[1] + "/" + tokens[2]
-          const slug = tokens.splice(1, 2).join('/') + tokens.join('-')
-          return `${ctx + slug.substring(0, slug.length - 1)}.md`
-        }
-      }
-    ]
-  },
   searchConfig: {
     file: {
       dir: 'static',

@@ -5,9 +5,6 @@ const moment = require('moment')
 const appConfig = require('./app.config')
 const summarize = require('./marked.config').summarize
 
-const editConfigs = appConfig.editConfig.paths
-const { basePath, constructEditUrl } = editConfigs.filter(p => p.collection === 'Post')[0]
-
 const outdationDate = appConfig.prefs.outdationPeriod ? moment().clone().subtract(appConfig.prefs.outdationPeriod, 'days').startOf('day') : null
 
 module.exports = function (api) {
@@ -23,19 +20,15 @@ module.exports = function (api) {
     return { ...options }
   })
 
-  api.loadSource(({ addSchemaResolvers }) => {
+  api.loadSource(({ addMetadata,addSchemaResolvers }) => {
+    addMetadata('editContext', 'https://github.com/Microflash/microflash.github.io/edit/release')
+    
     addSchemaResolvers({
       Post: {
         excerpt: {
           type: GraphQLString,
           resolve(post) {
             return post.excerpt ? post.excerpt : summarize(post.content)
-          }
-        },
-        editUrl: {
-          type: GraphQLString,
-          resolve(post) {
-            return constructEditUrl(basePath, post.path)
           }
         }
       }
