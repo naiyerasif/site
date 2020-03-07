@@ -118,13 +118,13 @@
 .remove-bottom-border {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
+  border-bottom-color: transparent;
 }
 
 .remove-top-border {
   border-top-right-radius: 0;
   border-top-left-radius: 0;
-  border-top: none;
-  margin-top: -3px;
+  border-top-color: transparent;
 }
 
 .search {
@@ -133,6 +133,7 @@
   outline: none;
   border: none;
   width: 100%;
+  height: 96%;
 }
 
 .icon-search,
@@ -145,6 +146,7 @@
 }
 
 .search-box {
+  align-items: center;
   @include layouts.vspace(variables.$gap-xs);
   margin-top: 2px;
 

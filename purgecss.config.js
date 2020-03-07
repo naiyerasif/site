@@ -15,6 +15,6 @@ module.exports = {
     'g-image--loaded',
     'pre',
     'code',
-    'ref-link'
+    'citation'
   ]
 }
