@@ -3,19 +3,28 @@ jobs:
   build:
     docker:
       - image: circleci/node:13.2-buster
+    environment:
+      - GIT_LFS_SKIP_SMUDGE: 1
     working_directory: ~/repo
     steps:
       - checkout
+      - run: git lfs ls-files -l | cut -d' ' -f1 | sort > .assets-id
       - restore_cache:
           keys:
+            - v1-lfscache-{{ checksum ".assets-id" }}
             - v1-dependencies-{{ checksum "yarn.lock" }}
             - v1-dependencies-
+      - run: git lfs pull
+      - save_cache:
+          paths:
+            - .git/lfs
+          key: v1-lfscache-{{ checksum ".assets-id" }}
       - run: yarn
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}
-      - run: yarn env
+      - run: yarn status
       - run: yarn build
       - run: |
           git config user.email "naiyer.app+circleci@gmail.com"
