@@ -12,6 +12,7 @@
     <nav class="menu" :class="isOpen ? 'is-visible': 'is-hidden-on-phone'">
       <Search />
       <ThemeSwitcher />
+      <g-link to="/showcase/">Showcase</g-link>
       <g-link to="/profile/naiyer/">About</g-link>
     </nav>
   </header>

@@ -14,6 +14,10 @@ postcssPlugins.push(autoprefixer({
   cascade: false
 }))
 
+const remarkPlugins = [
+  ['gridsome-plugin-remark-shiki', { theme: shiki.loadTheme('./static/remarkable.json'), skipInline: true }]
+]
+
 module.exports = {
   siteName: appConfig.name,
   siteDescription: appConfig.description,
@@ -54,6 +58,16 @@ module.exports = {
         baseDir: './content/profiles',
         template: './src/templates/Profile.vue',
         route: '/profile/:id'
+      }
+    },
+    {
+      use: '@gridsome/vue-remark',
+      options: {
+        typeName: 'Showcase',
+        baseDir: './content/showcase',
+        pathPrefix: '/showcase',
+        template: './src/templates/Showcase.vue',
+        plugins: remarkPlugins
       }
     },
     {
@@ -112,9 +126,7 @@ module.exports = {
   ],
   transformers: {
     remark: {
-      plugins: [
-        ['gridsome-plugin-remark-shiki', { theme: shiki.loadTheme('./static/remarkable.json'), skipInline: true }]
-      ],
+      plugins: remarkPlugins,
       externalLinksTarget: '_blank',
       externalLinksRel: ['nofollow', 'noopener', 'noreferrer'],
       slug: true,

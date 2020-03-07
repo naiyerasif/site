@@ -292,7 +292,7 @@
 .main {
   @extend .canvas;
 
-  & > p:first-of-type {
+  & > p:first-child {
     font-size: variables.$font-size-md;
   }
 }
@@ -351,6 +351,7 @@
 // Card
 
 .card {
+  display: block;
   background-color: variables.$background-auxiliary;
   @include layouts.vspace(variables.$gap);
   @include layouts.hspace(variables.$gap);
@@ -366,9 +367,14 @@
     font-size: variables.$font-size-xs;
   }
 
+  .card-footer {
+    color: variables.$text;
+  }
+
   .card-body {
     margin-top: variables.$gap-xs;
     margin-bottom: variables.$gap-xs;
+    color: inherit;
   }
 
   .card-header {
