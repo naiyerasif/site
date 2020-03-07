@@ -118,13 +118,13 @@
 .remove-bottom-border {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
-  border-bottom: 1px solid transparent;
 }
 
 .remove-top-border {
   border-top-right-radius: 0;
   border-top-left-radius: 0;
-  border-top: 1px solid transparent;
+  border-top: none;
+  margin-top: -3px;
 }
 
 .search {

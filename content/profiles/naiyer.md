@@ -89,7 +89,7 @@ Feel free to look around and contact me with any questions at [@Microflash](http
 
 This site started out as a pet project for me while learning [Vue.js](https://vuejs.org/) and [GraphQL](https://graphql.org/). It helped me to get my bearing around Vue.js community, accessible color systems, content preloading, optimization of vector illustrations, [unifiedjs](https://unifiedjs.com/) ecosystem, and more.
 
-Currently, I'm posting my notes and opinions on the development and design collected over the years, mostly to serve as a way to share what I learn and receive ~~criticism and scorn~~ constructive feedback. The code described in the examples is meant for the demonstration of the topic under discussion; it is not meant to be copy-pasted as-is in production.
+Currently, I'm posting my notes and opinions on the development and design collected over the years, mostly to share what I learn and receive ~~criticism and scorn~~ constructive feedback. The code described in the examples is meant for the demonstration of the topic under discussion; it is not meant to be copy-pasted as-is in production.
 
 ### Acknowledgements
 
