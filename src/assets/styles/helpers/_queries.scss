@@ -35,15 +35,3 @@
     @content;
   }
 }
-
-// @mixin desktop {
-//   @include beyond(variables.$breakpoint-lg) {
-//     @content;
-//   }
-// }
-
-// @mixin widescreen {
-//   @include beyond(variables.$breakpoint-xl) {
-//     @content;
-//   }
-// }

@@ -1,8 +1,11 @@
 <template>
-  <section class="pagination">
+  <section class="pagination" v-if="input.totalPages > 1">
     <g-link class="is-prev" :to="previousPage(input.currentPage)" v-if="input.currentPage > 1"><IconChevronLeft class="icon-sm" /> Prev</g-link>
     <div>page {{ input.currentPage }} of {{ input.totalPages }}</div>
     <g-link class="is-next" :to="nextPage(input.currentPage)" v-if="input.currentPage < input.totalPages">Next <IconChevronRight class="icon-sm" /></g-link>
+  </section>
+  <section class="pagination" v-else>
+    <div class="is-muted">🔚 end of the list</div>
   </section>
 </template>
 

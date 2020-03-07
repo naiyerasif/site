@@ -569,6 +569,10 @@ h6 {
   border-color: $red;
 }
 
+.is-muted {
+  color: variables.$text-muted;
+}
+
 // Layout
 
 .layout {

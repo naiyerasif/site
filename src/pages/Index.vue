@@ -8,7 +8,7 @@
       </section>
     </div>
     <Posts :posts="$page.posts.edges" />
-    <Pagination v-if="$page.posts.pageInfo.totalPages > 1" :input="$page.posts.pageInfo" />
+    <Pagination :input="$page.posts.pageInfo" />
   </Layout>
 </template>
 
