@@ -243,9 +243,9 @@
   color: variables.$text-muted;
 
   .label {
-    height: 2rem;
-    width: 2rem;
-    margin-right: 1rem;
+    height: variables.$gap-xl;
+    width: variables.$gap-xl;
+    margin-right: variables.$gap-rg;
   }
 }
 
@@ -351,9 +351,9 @@
     margin-bottom: variables.$gap-xs;
 
     .label {
-      height: 0.9rem;
-      width: 0.9rem;
-      margin-right: 0.5rem;
+      height: variables.$gap-rg;
+      width: variables.$gap-rg;
+      margin-right: variables.$gap-xs;
     }
   }
 
@@ -398,9 +398,17 @@
   }
 
   .card-body {
+    display: inline-flex;
+    align-items: center;
     margin-top: variables.$gap-xs;
     margin-bottom: variables.$gap-xs;
     color: inherit;
+
+    .label {
+      height: variables.$gap-lg;
+      width: variables.$gap-lg;
+      margin-right: variables.$gap-xs;
+    }
   }
 
   .card-header {
