@@ -3,6 +3,7 @@ title: 'Code Coverage with JaCoCo and Maven'
 date: 2018-11-15 21:09:32
 updated: 2019-11-12 19:14:45
 authors: [naiyer]
+labels: [java, maven]
 ---
 
 Code coverage is a measure of how much of your code executes when the automated tests run. Depending on how effectively your tests are written, it can provide a good picture of how much you are testing your code. [JaCoCo](https://www.jacoco.org/jacoco/), one of the many others, is a popular tool that enables developers to quantify this metric for a Java application. In this guide, we'll integrate JaCoCo with a Spring Boot application. We'll also generate a coverage report that can be viewed in a browser.

@@ -2,6 +2,7 @@
 title: 'Uploading files with Express'
 date: 2019-11-08 16:06:33
 authors: [naiyer]
+labels: [express, spring, angular]
 ---
 
 In a typical Spring, Node.js and Angular setup, an Express middleware is often used as a [backend for frontend](https://developer.ibm.com/patterns/create-backend-for-frontend-application-architecture/). In this guide, we're going to explore how an Express middleware can mediate a file upload while talking to an Angular frontend and a Spring backend. Our middleware should be able to handle the upload a file of the order of several MBs.

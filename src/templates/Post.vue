@@ -15,6 +15,9 @@
           <div class="metadata-item">{{ $page.post.timeToRead }} min read</div>
         </div>
         <h1 class="title">{{ $page.post.title }}</h1>
+        <div class="subtitle">
+          <img class="label" v-for="label in $page.post.labels" :key="label" :src="resolveLabelIcon(label)" :alt="label"/>
+        </div>
       </section>
     </div>
     <div class="container article">
@@ -60,6 +63,7 @@ query Post ($path: String!) {
       avatar
       path
     }
+    labels
     content
     path
     timeToRead
@@ -110,6 +114,11 @@ export default {
         warning = `This post is marked as ${this.$page.post.outdated}. Some information may be inaccurate.`
       }
       return warning
+    }
+  },
+  methods: {
+    resolveLabelIcon(label) {
+      return `/assets/images/labels/${label}.svg`
     }
   }
 }

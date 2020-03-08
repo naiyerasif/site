@@ -2,6 +2,7 @@
 title: 'Syncing with a massive Git upstream'
 date: 2019-12-23 14:23:12
 authors: [naiyer]
+labels: [git]
 ---
 
 If the upstream Git repository is extremely large, cloning it on local and syncing the changes with the remote becomes a challenge since a `git clone` will try to download the entire history. This tip shows you one of the ways to handle this problem.

@@ -27,6 +27,7 @@ query Posts ($page: Int) {
         date (format: "MMM D, Y")
         excerpt
         timeToRead
+        labels
         path
       }
     }

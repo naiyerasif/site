@@ -241,6 +241,12 @@
 .subtitle {
   font-size: variables.$font-size-md;
   color: variables.$text-muted;
+
+  .label {
+    height: 2rem;
+    width: 2rem;
+    margin-right: 1rem;
+  }
 }
 
 .metadata {
@@ -340,7 +346,15 @@
   }
 
   .post-header {
+    display: inline-flex;
+    align-items: center;
     margin-bottom: variables.$gap-xs;
+
+    .label {
+      height: 0.9rem;
+      width: 0.9rem;
+      margin-right: 0.5rem;
+    }
   }
 
   .post-body {
@@ -351,6 +365,13 @@
   .post-footer {
     color: variables.$text-muted;
   }
+}
+
+// Labels
+
+.label {
+  display: inline-flex;
+  border-radius: unset;
 }
 
 // Card

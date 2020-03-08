@@ -3,6 +3,7 @@ title: 'Network sharing with Docker containers'
 date: 2018-10-24 15:26:21
 updated: 2020-02-07 24:22:13
 authors: [naiyer]
+labels: [docker, micronaut, angular]
 ---
 
 When you're working on a large number of microservices, you will eventually come across services running on multiple Docker stacks and networks. If the services are exposed publicly, they can smoothly interact with each other. But if they are not, you'll have to create a shared Docker network across multiple stacks to enable communication between them. 

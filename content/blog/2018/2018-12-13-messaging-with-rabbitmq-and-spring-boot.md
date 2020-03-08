@@ -3,6 +3,7 @@ title: 'Messaging with RabbitMQ and Spring Boot'
 date: 2018-12-13 20:20:54
 updated: 2019-11-13 16:45:02
 authors: [naiyer]
+labels: [rabbitmq, spring]
 ---
 
 [RabbitMQ](https://www.rabbitmq.com/) is an open-source message broker that implements several messaging protocols, including AMQP and STOMP. It is frequently used to queue messages and interact with queues. A RabbitMQ server acts as an exchange server (or broker). Clients, written in a variety of languages, enable applications to publish and consume the messages in the queue. In this guide, we'll learn how to create a queue with RabbitMQ and interact with it using Spring Boot.
