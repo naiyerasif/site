@@ -38,8 +38,7 @@ $weight-bold: 700 !default;
 
 $weight-headings: $weight-semibold !default;
 
-$font-size-xs: calc(0.75rem + 0.125vw) !default;
-$font-size-sm: calc(0.8rem + 0.25vw) !default;
+$font-size-sm: calc(0.8rem + 0.2vw) !default;
 $font-size: calc(1rem + 0.2vw) !default;
 $font-size-md: calc(1.0625rem + 0.5vw) !default;
 $font-size-lg: calc(1.125rem + 1vw) !default;
@@ -74,7 +73,7 @@ $expanse-xl: calc(4vw + 2rem) !default;
 
 $canvas: 50vw !default;
 
-$cell-sm: 12rem !default;
+$cell-sm: 15rem !default;
 $cell-md: 16rem !default;
 
 $gfx-xs: 1rem !default;
@@ -111,6 +110,7 @@ $color-default: var(--color-default) !default;
 $background-default: var(--background-default) !default;
 $background-auxiliary: var(--background-auxiliary) !default;
 $background-muted: var(--background-muted) !default;
+$background-subtle: var(--background-subtle) !default;
 $background-pronounced: var(--background-pronounced) !default;
 
 $background-body: $background-default !default;

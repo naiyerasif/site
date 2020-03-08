@@ -21,6 +21,8 @@
     </div>
     <div class="container article">
       <VueRemarkContent class="main" />
+    </div>
+    <div class="container sidekick">
       <div class="article-actions">
         <a href="#app">
           <IconUp class="icon" /> Back to top

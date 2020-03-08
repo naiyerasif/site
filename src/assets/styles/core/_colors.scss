@@ -119,6 +119,7 @@ $tertiary: (
   --background-default: #{$white};
   --background-auxiliary: #{shade(tertiary(A500), 1%)};
   --background-muted: #{primary(A500)};
+  --background-subtle: #{primary(A600)};
   --background-pronounced: #{tertiary(A600)};
   --background-code: #{primary(A200)};
   --background-scrollbar: #{primary(A900)};
@@ -135,6 +136,7 @@ $tertiary: (
   --background-default: #{secondary(A300)};
   --background-auxiliary: #{shade(secondary(A300), 35%)};
   --background-muted: #{shade(secondary(A200), 7%)};
+  --background-subtle: #{shade(secondary(A300), 10%)};
   --background-pronounced: #{secondary(A400)};
   --background-code: #{shade(secondary(A300), 35%)};
   --background-scrollbar: #{shade(secondary(A100), 5%)};

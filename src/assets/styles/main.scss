@@ -196,7 +196,7 @@
   }
 
   .search-result-excerpt {
-    font-size: variables.$font-size-xs;
+    font-size: variables.$font-size-sm;
     color: variables.$text-muted;
   }
 
@@ -224,6 +224,12 @@
   @include queries.within-tab-landscape {
     align-items: flex-start;
   }
+}
+
+.sidekick {
+  @extend .hero;
+  background-color: variables.$background-subtle;
+  @include layouts.vspace(variables.$expanse-md);
 }
 
 .title {
@@ -300,9 +306,6 @@
 }
 
 .article-actions {
-  margin-top: variables.$expanse-lg;
-  margin-bottom: variables.$expanse-md;
-
   & > a {
     display: inline-block;
     text-decoration: none;
@@ -366,7 +369,7 @@
 
   .card-header,
   .card-footer {
-    font-size: variables.$font-size-xs;
+    font-size: variables.$font-size-sm;
   }
 
   .card-footer {
@@ -390,8 +393,6 @@
   @include layouts.flex;
   @include layouts.hspace(variables.$expanse-lg);
   font-size: variables.$font-size-sm;
-  margin-top: variables.$expanse-md;
-  margin-bottom: variables.$expanse-lg;
   z-index: 15;
 
   .is-prev,
@@ -417,7 +418,7 @@
 
 .footer {
   @include layouts.flex;
-  font-size: variables.$font-size-xs;
+  font-size: variables.$font-size-sm;
   background-color: variables.$background-muted;
 
   @include queries.within-tab-landscape {
@@ -429,7 +430,7 @@
     display: block;
   }
 
-  .grid-md {
+  .grid-sm {
     width: 100%;
     @include layouts.vspace(variables.$expanse-md);
   }
@@ -549,7 +550,7 @@ h6 {
 // Active links
 
 .active {
-  text-decoration: underline dotted;
+  font-weight: variables.$weight-bold;
 }
 
 // Separator

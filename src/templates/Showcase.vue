@@ -15,6 +15,8 @@
         <Contents v-if="$page.showcase.toc" :headers="$page.showcase.headings" :depth="3" />
         <VueRemarkContent class="main" />
       </div>
+    </div>
+    <div class="container sidekick">
       <div class="article-actions">
         <a v-if="$page.showcase.enableEdit" target="_blank" rel="noopener noreferrer" :href="editUrl">
           <IconEdit class="icon" /> Edit this page

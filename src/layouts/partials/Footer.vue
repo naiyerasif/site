@@ -1,7 +1,7 @@
 <template>
   <footer class="container footer">
-    <section class="grid-md">
-      <section class="grid-md-cell">
+    <section class="grid-sm">
+      <section class="grid-sm-cell">
         <div class="is-lead">Resources</div>
         <nav>
           <div><IconRss class="icon-sm is-separated" /> <a href="/feed.xml">RSS feed</a></div>
@@ -9,13 +9,13 @@
           <div><IconCode class="icon-sm is-separated" /> <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/microflash.github.io">Source code</a></div>
         </nav>
       </section>
-      <section class="grid-md-cell">
+      <section class="grid-sm-cell">
         <div class="is-lead">Support</div>
         <div><IconFeedback class="icon-sm is-separated" /> <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/microflash.github.io/issues/new">Report an issue</a></div>
-        <div><IconLicense class="icon-sm is-separated" /> <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/microflash.github.io/blob/release/LICENSE.md">Site License (MIT)</a></div>
-        <div><IconLicense class="icon-sm is-separated" /> <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/">Content License (CC by SA)</a></div>
+        <div><IconLicense class="icon-sm is-separated" /> <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/microflash.github.io/blob/release/LICENSE.md">Site license (MIT)</a></div>
+        <div><IconLicense class="icon-sm is-separated" /> <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/">Content license (CC by SA)</a></div>
       </section>
-      <section class="grid-md-cell">
+      <section class="grid-sm-cell">
         <div class="is-lead">Connect</div>
         <section>
           <a class="is-separated" href="https://github.com/Microflash" title="GitHub" target="_blank" rel="noopener noreferrer">
@@ -34,7 +34,7 @@
       </section>
     </section>
     <section class="copyright" style="  ">
-      <Icon alt="logo" width="36" style="margin-top: 1rem" />
+      <Icon alt="logo" width="40" style="margin-top: 1rem" />
       <div>Copyright &copy; {{ year }}, Made with code, <span title="tea">☕</span> &amp; <span class="is-warning" title="love">❤️</span> by <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash">Naiyer Asif</a></div>
     </section>
   </footer>

@@ -6,8 +6,8 @@ toc: false
 enableEdit: false
 ---
 
-<div class="grid-sm">
-  <div class="grid-sm-cell">
+<div class="grid-md">
+  <div class="grid-md-cell">
     <div class="card">
       <a href="https://mflash.dev/vuepress-theme-succinct/" target="_blank" rel="noopener noreferrer">
         <div class="card-header">Theme</div>
@@ -16,7 +16,7 @@ enableEdit: false
       </a>
     </div>
   </div>
-  <div class="grid-sm-cell">
+  <div class="grid-md-cell">
     <div class="card">
       <a href="https://github.com/Microflash/jada" target="_blank" rel="noopener noreferrer">
         <div class="card-header">Starter</div>
@@ -25,7 +25,7 @@ enableEdit: false
       </a>
     </div>
   </div>
-  <div class="grid-sm-cell">
+  <div class="grid-md-cell">
     <div class="card">
       <a href="https://mflash.dev/remarkability/" target="_blank" rel="noopener noreferrer">
         <div class="card-header">Library</div>
@@ -34,7 +34,7 @@ enableEdit: false
       </a>
     </div>
   </div>
-  <div class="grid-sm-cell">
+  <div class="grid-md-cell">
     <div class="card">
       <g-link to="/showcase/git-playbook/">
         <div class="card-header">Reference</div>

@@ -27,6 +27,8 @@
         <Contents :headers="$page.post.headings" />
         <main class="main" v-html="$page.post.content" />
       </div>
+    </div>
+    <div class="container sidekick">
       <div class="article-actions">
         <a target="_blank" rel="noopener noreferrer" :href="editUrl">
           <IconEdit class="icon" /> Edit this page
