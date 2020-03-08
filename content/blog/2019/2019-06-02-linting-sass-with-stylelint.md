@@ -3,7 +3,6 @@ title: 'Linting SASS with stylelint'
 date: 2019-06-02 15:32:12
 updated: 2019-08-08 20:21:01
 authors: [naiyer]
-tags: ['gist']
 ---
 
 Just as you can lint the JavaScript or TypeScript code in a web application, you can also lint the [SASS](https://sass-lang.com/) (or SCSS) files using [stylelint](https://github.com/stylelint/stylelint). `stylelint` is a widely used linter that works with SCSS, Sass, Less and SugarSS. It supports a plugin system through which we can extend its behavior. In this gist, we'll explore how we can use `stylelint` to lint SASS files in a project.

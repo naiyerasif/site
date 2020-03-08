@@ -13,10 +13,6 @@
           <div class="metadata-item" v-html="displayDate"></div>
           <div class="separator"></div>
           <div class="metadata-item">{{ $page.post.timeToRead }} min read</div>
-          <div class="separator"></div>
-          <div class="metadata-item">
-            <g-link :to="tag.path" v-for="tag in $page.post.tags" :key="tag.id">#{{ tag.title }} </g-link>
-          </div>
         </div>
         <h1 class="title">{{ $page.post.title }}</h1>
       </section>
@@ -68,10 +64,6 @@ query Post ($path: String!) {
     path
     timeToRead
     outdated
-    tags {
-      title
-      path
-    }
   }
 }
 </page-query>

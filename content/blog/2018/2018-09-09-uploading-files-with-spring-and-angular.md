@@ -2,8 +2,7 @@
 title: 'Uploading files with Spring and Angular'
 date: 2018-09-09 11:14:23
 updated: 2019-11-11 21:16:19
-authors: [naiyer] 
-tags: ['guide']
+authors: [naiyer]
 ---
 
 When you need to obtain data from your users, it is customary to offer them provide it through forms and file uploads. Spring provides a robust set of APIs to do this, and so does Angular. Consider a requirement to upload multiple files. For large files, it also makes sense to provide some visual feedback indicating the progress of the upload. In this guide, we'll create Spring and Angular applications for this requirement.

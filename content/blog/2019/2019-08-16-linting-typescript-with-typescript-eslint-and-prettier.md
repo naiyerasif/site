@@ -3,7 +3,6 @@ title: 'Linting TypeScript with TypeScript ESLint and Prettier'
 date: 2019-08-16 16:23:12
 updated: 2020-02-06 22:51:18
 authors: [naiyer]
-tags: ['gist']
 ---
 
 [TypeScript ESLint](https://github.com/typescript-eslint/typescript-eslint) is the spiritual successor of [TSLint](https://github.com/palantir/tslint), the de-facto linting tool exclusively developed for TypeScript by [Palantir Technologies](https://palantir.com/). In this guide, we'll set up linting with TypeScript ESLint for a TypeScript project. We'll also explore how to configure Prettier so that it plays nice with TypeScript ESLint.

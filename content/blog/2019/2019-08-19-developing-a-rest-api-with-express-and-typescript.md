@@ -3,7 +3,6 @@ title: 'Developing a REST API with Express and TypeScript'
 date: 2019-08-19 21:43:03
 updated: 2020-02-06 23:26:09
 authors: [naiyer]
-tags: ['guide']
 ---
 
 Express, as a middleware, is commonly used for creating REST APIs. In this guide, we'll build an API to perform CRUD operations on a Postgres database. We'll explore how to organize Express routes, add support for hot-reloading and simulate environment variables locally. 

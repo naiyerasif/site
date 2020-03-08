@@ -28,11 +28,6 @@ query Posts ($page: Int) {
         excerpt
         timeToRead
         path
-        tags {
-          id
-          title
-          path
-        }
       }
     }
   }

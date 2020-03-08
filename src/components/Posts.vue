@@ -3,12 +3,8 @@
     <section class="canvas">
       <div class="post" v-for="post in posts" :key="post.id">
         <div class="post-header">
-          <span v-html="displayDate(post.node)"/>
+          <span v-html="post.node.date"/>
           <span class="separator"></span>{{ post.node.timeToRead }} min read
-          <span class="separator"></span>
-          <g-link v-for="tag in post.node.tags" :key="tag.id" :to="tag.path">
-            #{{ tag.title }} 
-          </g-link>
         </div>
         <g-link :to="post.node.path">
           <h2 class="post-body">{{ post.node.title }}</h2>
@@ -21,12 +17,6 @@
 
 <script>
 export default {
-  props: ['posts'],
-  methods: {
-    displayDate(post) {
-      const published = `Published <time>${post.date}</time>`
-      return !post.hasOwnProperty('updated') ? published : (post.updated !== post.date ? `Updated <time>${post.updated}</time>` : published); 
-    }
-  }
+  props: ['posts']
 }
 </script>

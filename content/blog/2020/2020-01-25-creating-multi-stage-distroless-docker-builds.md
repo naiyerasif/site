@@ -2,7 +2,6 @@
 title: 'Creating multi-stage distroless Docker builds'
 date: 2020-01-25 18:37:25
 authors: [naiyer]
-tags: ['tip']
 ---
 
 **Distroless 🤔?** Google [describes](https://github.com/GoogleContainerTools/distroless#distroless-docker-images) it as a Docker image that contains only your application and its runtime dependencies. Everything non-essential, including package managers, shells, etc, is not available in such an image.

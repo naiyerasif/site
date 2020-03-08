@@ -2,7 +2,6 @@
 title: 'Querying JSON documents in Oracle'
 date: 2019-09-18 22:11:11
 authors: [naiyer]
-tags: ['guide']
 ---
 
 Oracle added native JSON support in the version 12c, providing support for querying, indexing and transactions. It introduced a set of functions which can query a JSON document using [Oracle JSON Path Expressions](https://docs.oracle.com/database/121/ADXDB/json.htm#ADXDB6254), subject to certain [relaxations](https://docs.oracle.com/database/121/ADXDB/json.htm#GUID-951A61D5-EDC2-4E30-A20C-AE2AE7605C77), to match JSON attributes. In this guide, we'll explore some of those functions to query over JSON documents stored as CLOB objects. 

@@ -20,7 +20,6 @@ const frontmatter = `---
 title: '${title}'
 date: ${date}
 authors: [naiyer]
-tags: ['${tag}']
 ---
 `
 

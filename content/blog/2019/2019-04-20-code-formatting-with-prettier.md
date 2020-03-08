@@ -3,7 +3,6 @@ title: 'Code Formatting with Prettier'
 date: 2019-04-20 12:12:16
 updated: 2020-02-06 22:43:31
 authors: [naiyer]
-tags: ['gist']
 ---
 
 [Prettier](https://prettier.io) is an opinionated code formatter that formats the code in a consistent style. It supports popular languages, libraries, and frameworks in the Node.js ecosystem and is widely used to enforce the style practices. In this gist, we'll integrate it with a Node.js application and explore on how to configure it to work with EditorConfig and ESLint. 

@@ -31,8 +31,7 @@ module.exports = {
     }
   },
   templates: {
-    Post: '/blog/:year/:month/:day/:title',
-    Tag: '/tag/:id'
+    Post: '/blog/:year/:month/:day/:title'
   },
   plugins: [
     {
@@ -41,10 +40,6 @@ module.exports = {
         path: 'content/blog/**/*.md',
         typeName: 'Post',
         refs: {
-          tags: {
-            typeName: 'Tag',
-            create: true
-          },
           authors: {
             typeName: 'Profile'
           }

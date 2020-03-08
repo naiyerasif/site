@@ -3,7 +3,6 @@ title: 'Communication within a Docker network'
 date: 2018-08-05 12:06:01
 updated: 2020-02-07 24:19:12
 authors: [naiyer]
-tags: ['guide']
 ---
 
 When you are doing microservices, it is typical to run multiple Docker containers on a stack. It is also very typical to specify how these containers are exposed to each other and to the public. To illustrate this guide, consider a REST endpoint backed by [Micronaut](http://micronaut.io/) and an Angular application, running as containers on a Docker stack. Ideally, only the Angular application should be publicly accessible. In this guide, we'll explore how to address this usecase.
