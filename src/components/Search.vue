@@ -2,7 +2,7 @@
   <div class="search-container">
     <SearchFocal @keyup="focusSearch" />
     <div class="search-box" :class="{ 'remove-bottom-border' : searchResultsVisible && query.length > 0 }">
-      <input type="text" placeholder="Search (Press  &quot;/&quot; to focus)" class="search" v-model="query" @input="softReset" @keyup="performSearch" @keyup.esc="searchResultsVisible = false" @keydown.up.prevent="highlightPrev" @keydown.down.prevent="highlightNext" @keyup.enter="gotoLink" @blur="searchResultsVisible = false" @focus="searchResultsVisible = true" ref="search" aria-label="Search">
+      <input type="text" placeholder="Search (Press  &quot;/&quot; to focus)" class="search" v-model="query" @input="softReset" @keyup="performSearch" @keyup.esc="searchResultsVisible = false" @keydown.up.prevent="highlightPrev" @keydown.down.prevent="highlightNext" @keyup.enter="performSearch" @blur="searchResultsVisible = false" @focus="searchResultsVisible = true" ref="search" aria-label="Search">
 
       <transition name="slide-up" mode="out-in">
         <IconSearch class="icon icon-search" v-if="query.length < 1" />
@@ -85,11 +85,6 @@ export default {
     },
     scrollIntoView() {
       this.$refs.results.children[this.highlightedIndex].scrollIntoView({ block: 'nearest' })
-    },
-    gotoLink() {
-      if (this.results[this.highlightedIndex]) {
-        window.location = this.results[this.highlightedIndex].item.path
-      }
     },
     focusSearch(e) {
       if (e.key === '/') {
