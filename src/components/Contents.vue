@@ -10,11 +10,14 @@
 </template>
 
 <script>
+import * as appConfig from '../../app.config'
+
 export default {
   props: ['headers', 'depth'],
   computed: {
     allHeadings() {
-      return this.depth ? this.headers.filter(h => h.depth <= this.depth) : this.headers
+      const maxDepth = this.depth ? this.depth : appConfig.prefs.maxTocDepth
+      return this.headers.filter(h => h.depth <= maxDepth)
     }
   }
 }

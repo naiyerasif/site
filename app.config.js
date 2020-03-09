@@ -7,6 +7,7 @@ module.exports = {
   copyright: `Copyright ${new Date().getFullYear()} ${this.name}`,
   prefs: {
     draftDir: 'archive/draft',
+    maxTocDepth: 3,
     excerptSize: 251,
     outdationPeriod: 365 // in days
   },
