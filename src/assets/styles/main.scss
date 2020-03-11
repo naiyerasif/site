@@ -224,7 +224,8 @@
 }
 
 .sidekick {
-  @extend .hero;
+  @include layouts.flex($justify: space-around);
+  flex-direction: column;
   background-color: variables.$background-subtle;
   @include layouts.vspace(variables.$expanse-md);
 }
