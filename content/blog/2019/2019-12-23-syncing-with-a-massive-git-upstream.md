@@ -5,50 +5,42 @@ authors: [naiyer]
 labels: [git]
 ---
 
-If the upstream Git repository is extremely large, cloning it on local and syncing the changes with the remote becomes a challenge since a `git clone` will try to download the entire history. This tip shows you one of the ways to handle this problem.
+If a repository has an extremely long history or large size in the version control, contributing to it becomes a challenge. If you execute `git clone` on it, Git will try to download the entire history. This can take up a considerable amount of disk space, network bandwidth and time. How can you handle this scenario?
 
 ## Start with a shallow clone
 
-Clone only a portion of history that is required for your work by using `--depth` option.
+Let's assume that you've forked the repository you want to contribute to. Now, clone only a portion of the commit history that is required for you to work with. Let's say you're interested only in the last 3 commits from the HEAD. You can shallow clone the repository with the following command.
 
 ```sh
-git clone --depth 3 https://github.com/Example/massive.git
+git clone --depth 3 https://github.com/fork/massive.git
 ```
 
-> This may only fetch the default branch (say, `master`) up to the specified depth. 
+A **shallow clone**, as per the [docs](https://www.git-scm.com/docs/git-clone#Documentation/git-clone.txt---depthltdepthgt) fetches a history truncated to the specified number of commits. Also, note that the command mentioned above will only fetch the default branch. This happens because `--single-branch` flag is implied automatically. To fetch the history near the tips of the other branches, `--no-single-branch` flag should be specified while cloning.
 
-> If you execute `git fetch`, Git may not pull other branches. Why so? Your configuration may be a culprit.
->
-> ```sh
-> $ git config --get remote.origin.fetch
-> +refs/heads/master:refs/remotes/origin/master
-> ```
->
-> As you can see, `remote.origin.fetch` is configured to fetch only the `master`. To pull other branches, change this configuration as follows.
->
-> ```sh
-> git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
-> ```
-> 
-> Now, if you sync the remote with
->
-> ```sh
-> git remote update origin
-> ```
->
-> all the branches should be pulled by Git.
+In case you forget specifying `--no-single-branch` flag, you can examine the fetch configuration.
+
+```sh
+$ git config --get remote.origin.fetch
++refs/heads/master:refs/remotes/origin/master
+```
+
+and edit it to fetch the history from all the branches.
+
+```sh
+git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+```
+
+Execute `git remote update origin` and Git will fetch the history up to the requested depth.
 
 ## Add the remote upstream
 
-So far, we've managed to sync with the fork of an upstream repository upto a certain depth (`3` in the example above).
-
-To start syncing with the upstream, add it to your remotes.
+Add the remote upstream repository so that you can sync with the changes merged into it by other contributors.
 
 ```sh
-git remote add upstream https://github.com/Example/massive-upstream.git
+git remote add upstream https://github.com/example/massive.git
 ```
 
-Now, fetch the required history (say `2` levels of depth) of the upstream with the following command.
+Just like the fork, you can fetch the history of the upstream upto a certain depth from the HEAD.
 
 ```sh
 git fetch --depth 2 upstream
@@ -59,13 +51,13 @@ git fetch --depth 2 upstream
 Create a new branch from the HEAD of an upstream branch.
 
 ```sh
-git checkout -b latest upstream/latest
+git checkout -b latest upstream/dev
 ```
 
-This branch is currently available only on local. You need to track this branch on remote.
+Make your changes, commit them and set the local `latest` branch to track the remote of your fork. 
 
 ```sh
 git branch latest --set-upstream-to origin/latest
 ```
 
-Alternatively, you might want to merge the latest changes into the fork's `master`. To do that, first checkout the master and then merge the HEAD of the `upstream/master`.
+When you'll push the changes, `origin/latest` branch of the fork will be updated. You can then create a PR on the upstream repository for your changes to be merged.
