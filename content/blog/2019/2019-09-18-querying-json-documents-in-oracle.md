@@ -1,26 +1,88 @@
 ---
 title: 'Querying JSON documents in Oracle'
 date: 2019-09-18 22:11:11
+updated: 2020-03-14 00:48:09
 authors: [naiyer]
 labels: [oracle, json]
 ---
 
-Oracle added native JSON support in the version 12c, providing support for querying, indexing and transactions. It introduced a set of functions which can query a JSON document using [Oracle JSON Path Expressions](https://docs.oracle.com/database/121/ADXDB/json.htm#ADXDB6254), subject to certain [relaxations](https://docs.oracle.com/database/121/ADXDB/json.htm#GUID-951A61D5-EDC2-4E30-A20C-AE2AE7605C77), to match JSON attributes. In this guide, we'll explore some of those functions to query over JSON documents stored as CLOB objects. 
+Oracle added the native JSON support in the version 12c of their popular relational database system. With the help of new conditions and functions, you can create queries, indexes, transactions and views for JSON documents. 
 
-### Setup
+##### Setup
 
-> We'll use
-> - Oracle 12c
+The examples in this post use
 
-If you've got Oracle 12c installed on your machine, you're good to go. If not, you can install it by downloading it from [here](https://www.oracle.com/database/technologies/oracle-database-software-downloads.html). If you just want to try out this guide, login at [Oracle Live SQL](https://livesql.oracle.com) which provides a free Oracle environment for you to play with.
+- Oracle 12c
 
-> **Note** that the functions used in this guide are available only in Oracle 12c onwards.
+You can install Oracle 12c by downloading it from [here](https://www.oracle.com/database/technologies/oracle-database-software-downloads.html). If you just want to try out the examples, login at [Oracle Live SQL](https://livesql.oracle.com) which provides a free Oracle environment for you to play with.
 
-For the examples in this guide, we'll use data from MongoDB's [bios example collection](https://docs.mongodb.com/manual/reference/bios-example-collection/).
+## Introducing JSON Path Expressions
 
-## Create a relation
+JSON path expressions are Oracle's proprietary syntax to query a JSON document.
 
-Let's start by creating a relation that would store JSON documents as CLOB objects.
+- A JSON path expression starts with a dollar `$` symbol.
+- To access an attribute, a dot `.` is used followed by the attribute name.
+- To access an array element, a left `[` and right `]` brackets are used with an index or a range of indexes in between them.
+- To access all the attributes or elements of an array, an asterisk `*` is used as a wildcard.
+
+Consider the following JSON document.
+
+```json
+{
+  "id": "1c719bbb4b10f91d",
+  "name": "Marina",
+  "albums": [
+    {
+      "title": "Froot",
+      "released": 2015
+    },
+    {
+      "title": "Love + Fear",
+      "released": 2019
+    }
+  ],
+  "singles": [
+    {
+      "title": "Baby",
+      "released": 2018
+    },
+    {
+      "title": "Superstar",
+      "released": 2019
+    },
+    {
+      "title": "Orange Trees",
+      "released": 2019
+    },
+    {
+      "title": "To Be Human",
+      "released": 2019
+    },
+    {
+      "title": "Karma",
+      "released": 2019
+    },
+    {
+      "title": "About Love",
+      "released": 2020
+    }
+  ]
+}
+```
+
+Here are some examples of JSON path expressions to give you an idea of how they work.
+
+- `$.id` selects the `id` attribute.
+- `$.albums[*].title` selects the `title` attribute of all the albums.
+- `$.singles[0].*` selects all the attributes of the element at index 0 of the `singles` array.
+- `$.*[*].released` selects all the `released` attributes from both the `albums` and `singles` arrays.
+- `$.singles[1 to 3, 5]` selects all the elements from the `singles` array with index 1,2,3 and 5. The order of indexes should always be in ascending order.
+
+> There are a lot of other cases for the JSON path expressions. Refer to the [official reference](https://docs.oracle.com/database/121/ADXDB/json.htm#GUID-AEBAD813-99AB-418A-93AB-F96BC1658618) for more details.
+
+## Creating a relation with JSON data
+
+Let's create a simple relation with some JSON documents as CLOB objects. We'll use the data from MongoDB's [bios example collection](https://docs.mongodb.com/manual/reference/bios-example-collection/).
 
 ```sql
 CREATE TABLE BIOS (
@@ -31,7 +93,7 @@ CREATE TABLE BIOS (
 );
 ```
 
-We can even apply constraints that will ensure that `fname`, `contribs` and `recognition` are valid JSONs as follows.
+We know that `fname`, `contrib` and `recognition` are JSON fields. To ensure this, we can apply constraints using `IS JSON` condition, as follows.
 
 ```sql
 CREATE TABLE BIOS (
@@ -45,7 +107,8 @@ CREATE TABLE BIOS (
 );
 ```
 
-> **Note** that adding an `IS JSON` constraint can reduce the performance of insertion; use it only when you're not entirely sure if the inserted data will be a JSON document.
+> **WARNING** Adding an `IS JSON` constraint can reduce the performance of insertion; use it only when you're not entirely sure if the inserted data will be a JSON document.
+
 
 Populate this table with some data (directly pulled from `bios` collection).
 
@@ -74,20 +137,18 @@ INSERT INTO BIOS VALUES
 COMMIT;
 ```
 
-## Design some queries
+## Querying JSON as a table
 
-### `json_table` function
-
-Now that our relation is ready, it is time to design a few queries. We'll use `json_table` function to create a relational representation of JSON documents. Say, you want a list of names ordered by their `id`.
+Say, you want to query the full names from the `bios` table with the corresponding `id`. The `json_table` function comes in handy here; it takes a column and projects it as a relation that can then be queried like a usual table.
 
 ```sql
 SELECT 
   bios.id, 
   CASE 
-    WHEN j.aka IS NOT NULL 
-    THEN j.first_name || ' ' || j.aka || ' ' || j.last_name 
-    WHEN j.aka IS NULL 
-    THEN j.first_name || ' ' || j.last_name 
+    WHEN jbios.aka IS NOT NULL 
+    THEN jbios.first_name || ' ' || jbios.aka || ' ' || jbios.last_name 
+    WHEN jbios.aka IS NULL 
+    THEN jbios.first_name || ' ' || jbios.last_name 
   END AS name
 FROM  
   bios,  
@@ -97,11 +158,11 @@ FROM
       first_name VARCHAR2(100) PATH '$.first', 
       last_name VARCHAR2(100) PATH '$.last', 
       aka VARCHAR2(100) PATH '$.aka')
-  ) AS j 
+  ) AS jbios 
 ORDER BY bios.id;
 ```
 
-which emits the following dataset.
+This emits the following dataset.
 
 | ID  | NAME                    |
 | --- | ----------------------- |
@@ -116,27 +177,22 @@ which emits the following dataset.
 | 9   | James Gosling           |
 | 10  | Martin Odersky          |
 
-Here, we've used `json_table` to project the JSON documents in a relation.
-- A column `bios.fname` (using `$[*]` path expression) is selected for the projection. 
-- Column names and their corresponding paths are specified for different attributes.
-- Finally, the outcome of this projection is given a name `j`.
+## Querying a single JSON attribute
 
-### `json_value` function
-
-In a different scenario, we may only want the first name of all people. In this case, we don't need to project the entire JSON; instead, we can return only the first name using `json_value` function as follows.
+Take a different scenario: you want only the last name of the people along with the `id` from the `bios` table. In such a case, projecting the `fname` column as a table is not required. Instead, you can use the `json_value` function to return the first name from the `fname` column.
 
 ```sql
 SELECT 
   bios.id,
   json_value(
     bios.fname,
-    '$.first' RETURNING VARCHAR2(100)
+    '$.last' RETURNING VARCHAR2(100)
   ) first_name
 FROM bios
 ORDER BY bios.id;
 ```
 
-which emits the following dataset.
+This query emits the following dataset.
 
 | ID  | FIRST_NAME |
 | --- | ---------- |
@@ -151,11 +207,9 @@ which emits the following dataset.
 | 9   | James      |
 | 10  | Martin     |
 
-> **Note** that 
-> - `json_value` can only be used to return a scalar (i.e, not an object or collection) SQL data type.
-> - we can specify the format of the data which is being returned by `json_table` and `json_query` functions; if a value is boolean, we can return it as a boolean or string. 
+**Note** that the `json_value` function can only be used to return a scalar (i.e., not an object or collection) SQL data type.
 
-`json_value` function is especially useful when you want to apply some filters based on a JSON attribute but don't want to project the entire JSON. For example, say you want to know the person who has a title as a recognition. `json_value` function comes handy in applying such a filter.
+Another use of the `json_value` function is while applying some filters based on a JSON attribute. For example, say you want to know the person who has a title as a recognition.
 
 ```sql
 SELECT 
@@ -178,47 +232,50 @@ which emits the following dataset.
 | --- | ------ |
 | 3   | Hopper |
 
-### `json_query` function
+## Querying a JSON object or collection
 
-Unlike `json_value`, `json_query` function can return collections and fragments of a JSON document. Say, you want the first item of contributions of each person.
+Unlike `json_value`, the `json_query` function can return collections and fragments of a JSON document. Say, you want the first item of the contributions and the name of the first award of each person.
 
 ```sql
-SELECT 
+SELECT
   bios.id,
   json_value(
     bios.fname,
     '$.last' RETURNING VARCHAR2(100)
   ) name,
   json_query(
+    bios.contribs, 
+    '$[0]' RETURNING VARCHAR2(500) WITH WRAPPER
+  ) contribution,
+  json_query(
     bios.recognition, 
-    '$.awards[*].award' RETURNING VARCHAR2(500) WITH WRAPPER
+    '$.awards[0].award' RETURNING VARCHAR2(500) WITH WRAPPER
   ) awards
-FROM  
-  bios 
+FROM bios
 ORDER BY bios.id;
 ```
 
 which emits the following dataset.
 
-| ID  | NAME       | AWARDS                                                                                                             |
-| --- | ---------- | ------------------------------------------------------------------------------------------------------------------ |
-| 1   | Backus     | ["W.W. McDowell Award","National Medal of Science","Turing Award","Draper Prize"]                                  |
-| 2   | McCarthy   | ["Turing Award","Kyoto Prize","National Medal of Science"]                                                         |
-| 3   | Hopper     | ["Computer Sciences Man of the Year","Distinguished Fellow","W. W. McDowell Award","National Medal of Technology"] |
-| 4   | Nygaard    | ["Rosing Prize","Turing Award","IEEE John von Neumann Medal"]                                                      |
-| 5   | Dahl       | ["Rosing Prize","Turing Award","IEEE John von Neumann Medal"]                                                      |
-| 6   | van Rossum | ["Award for the Advancement of Free Software","NLUUG Award"]                                                       |
-| 7   | Ritchie    | ["Turing Award","National Medal of Technology","Japan Prize"]                                                      |
-| 8   | Matsumoto  | ["Award for the Advancement of Free Software"]                                                                     |
-| 9   | Gosling    | ["The Economist Innovation Award","Officer of the Order of Canada"]                                                |
-| 10  | Odersky    | -                                                                                                                  |
+| ID  | NAME       | CONTRIBUTION | AWARD                                          |
+| --- | ---------- | ------------ | ---------------------------------------------- |
+| 1   | Backus     | ["Fortran"]  | ["W.W. McDowell Award"]                        |
+| 2   | McCarthy   | ["Lisp"]     | ["Turing Award"]                               |
+| 3   | Hopper     | ["UNIVAC"]   | ["Computer Sciences Man of the Year"]          |
+| 4   | Nygaard    | ["OOP"]      | ["Rosing Prize"]                               |
+| 5   | Dahl       | ["OOP"]      | ["Rosing Prize"]                               |
+| 6   | van Rossum | ["Python"]   | ["Award for the Advancement of Free Software"] |
+| 7   | Ritchie    | ["UNIX"]     | ["Turing Award"]                               |
+| 8   | Matsumoto  | ["Ruby"]     | ["Award for the Advancement of Free Software"] |
+| 9   | Gosling    | ["Java"]     | ["The Economist Innovation Award"]             |
+| 10  | Odersky    | ["Scala"]    | -                                              |
 
-## A few things to note
-
-- `json_query` and `json_value` can be treated as a special case of `json_table`.
-- By default, Oracle matches with a [lax JSON syntax](https://docs.oracle.com/database/121/ADXDB/json.htm#GUID-1B6CFFBE-85FE-41DD-BA14-DD1DE73EAB20).
-- If a field name is repeated in a JSON document, Oracle may choose to match any one of those fields and ignore the rest.
+**Note** that
+- you can treat the `json_value` and `json_query` functions as a special case of the `json_table` function.
+- you can specify the format of the data returned by the `json_table`, `json_value` and `json_query` functions with `RETURNING` clause; if a value is boolean, you can return it as a boolean or string.
+- if an attribute is repeated in a JSON document, Oracle may choose to match any one of those fields and ignore the rest.
+- by default, Oracle matches the JSON attributes and collections with a [lax JSON syntax](https://docs.oracle.com/database/121/ADXDB/json.htm#GUID-1B6CFFBE-85FE-41DD-BA14-DD1DE73EAB20).
 
 ## References
 
-> [Oracle docs](https://docs.oracle.com/database/121/ADXDB/json.htm)
+- [Oracle docs](https://docs.oracle.com/database/121/ADXDB/json.htm)
