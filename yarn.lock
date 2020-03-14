@@ -8104,13 +8104,6 @@ sass-loader@^8.0.2:
     schema-utils "^2.6.1"
     semver "^6.3.0"
 
-sass@^1.26.1:
-  version "1.26.1"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.26.1.tgz#79a36c957530c1dfffa2958968b90cb736794e91"
-  integrity sha512-DWtzW0jDu+96MYkEdM8vUigjpisvM9qSlDwNvTFcr+XC7o2+3aXSAbHNcJ+8HzD1857uW9Opbxgu39esytVUKA==
-  dependencies:
-    chokidar ">=2.0.0 <4.0.0"
-
 sass@^1.26.3:
   version "1.26.3"
   resolved "https://registry.yarnpkg.com/sass/-/sass-1.26.3.tgz#412df54486143b76b5a65cdf7569e86f44659f46"
@@ -9630,10 +9623,10 @@ vue-analytics@^5.16.1:
   resolved "https://registry.yarnpkg.com/vue-analytics/-/vue-analytics-5.22.1.tgz#9d6b32da56daee1b9dfb23a267b50349a03f710f"
   integrity sha512-HPKQMN7gfcUqS5SxoO0VxqLRRSPkG1H1FqglsHccz6BatBatNtm/Vyy8brApktZxNCfnAkrSVDpxg3/FNDeOgQ==
 
-vue-fuse@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/vue-fuse/-/vue-fuse-2.2.0.tgz#b58b7197d2c92acb241b0c3263be56e3a80d7c94"
-  integrity sha512-mJmmRup0D7xm8nbqgteOu9Gpg6yKcBACs1peD7yGhnMztCEdeEpD/D7W4wvMa9UFogZnESI5vunxlZzgDY9/hA==
+vue-fuse@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/vue-fuse/-/vue-fuse-2.2.1.tgz#25b5612991c514ce2e7fe2170d212df6e8ca947a"
+  integrity sha512-J2XlMEwxXOayN86pXr44C7cF13C2TZyt3KfAew+4DuUlEa2c/pUKiM8gV2WfYTjQRUpF4VSAfaESY0XCf+4oFg==
   dependencies:
     fuse.js "^3.4.6"
 
