@@ -1,53 +1,25 @@
 @use './colors';
 
 // Options
-
-$closer-lists: true !default;
-$custom-colors: true !default;
-$custom-fonts: true !default;
-$font-smoothing: true !default;
-$text-adjusting: true !default;
-$round-images: true !default;
-$round-codeblocks: true !default;
-$heading-borders: false !default;
-$show-underline: false !default;
-$table-hover: false !default;
-$table-striped: false !default;
-$visited-links: false !default;
-$hovered-links: true !default;
-$variable-fonts: true !default;
 $external-links: true !default;
 
 // Typography
 
-$family-native: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-'Droid Sans', 'Oxygen', 'Ubuntu', 'Cantarell', 'Helvetica Neue', Arial,
-'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-'Segoe UI Symbol', 'Noto Color Emoji' !default;
-$family-code-native: SFMono-Regular, 'Roboto Mono', 'Andale Mono', Menlo, Monaco,
-Consolas, 'Inconsolata', 'Liberation Mono', 'Courier New', monospace !default;
-
-$family-default: Inter, $family-native !default;
-$family-code: 'JetBrains Mono', $family-code-native !default;
-$family-default-var: 'Inter var', $family-native !default;
-$family-code-var: null !default;
+$family-sans-native: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+  'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+  'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
+$family-code-native: SFMono-Regular, 'Roboto Mono', Menlo, Monaco, Consolas,
+  'Liberation Mono', 'Courier New', monospace !default;
 
 $weight-normal: 400 !default;
 $weight-semibold: 600 !default;
 $weight-bold: 700 !default;
 
-$weight-headings: $weight-semibold !default;
-
 $font-size-sm: calc(0.8rem + 0.2vw) !default;
-$font-size: calc(1rem + 0.2vw) !default;
 $font-size-md: calc(1.0625rem + 0.5vw) !default;
 $font-size-xl: calc(1.5rem + 1.5vw) !default;
 
-$text-size-adjust: 100% !default;
-
 // Spacing
-
-$line-height: 1.6 !default;
 
 $breakpoint-sm: 600px !default;
 $breakpoint-md: 900px !default;
@@ -64,7 +36,6 @@ $gap-2xl: 3rem !default;
 $gap-3xl: 5rem !default;
 
 $gap: $gap-rg !default;
-$margin: $gap-lg !default;
 
 $expanse-md: calc(2vw + 1rem) !default;
 $expanse-lg: calc(4vw + 1rem) !default;
@@ -91,8 +62,6 @@ $radius-md: 1.5rem !default;
 $radius-lg: 2rem !default;
 
 $radius: $radius-2xs !default;
-$image-radius: $radius !default;
-$codeblock-radius: $radius !default;
 
 $opacity: 0.5 !default;
 
@@ -112,29 +81,51 @@ $background-muted: var(--background-muted) !default;
 $background-subtle: var(--background-subtle) !default;
 $background-pronounced: var(--background-pronounced) !default;
 
-$background-body: $background-default !default;
-$background-code: $background-muted !default;
-$background-ins: $background-muted !default;
-$background-mark: $background-muted !default;
-$background-table: inherit !default;
-$background-table-even: inherit !default;
-$background-table-hover: $background-muted !default;
-$background-scrollbar: $background-auxiliary !default;
+$text: $color-default !default;
+$text-muted: $color-muted !default;
 
 $link: var(--color-link) !default;
 $link-hover: var(--color-hovered-link) !default;
-$link-visited: $color-pronounced !default;
 
-$border: $color-muted !default;
+$background-scrollbar: $background-auxiliary !default;
 $border-active: $link !default;
 
-$text: $color-default !default;
-$text-code: inherit !default;
-$text-strong: inherit !default;
-$text-muted: $color-muted !default;
-$text-headings: $color-pronounced !default;
-$text-blockquote: $color-muted !default;
-
-$table-thead: $color-pronounced !default;
 $scrollbar: var(--background-scrollbar) !default;
 $selected: colors.fade(colors.primary(500), 0.75) !default;
+
+@use '../../../../node_modules/@microflash/remarkability/scss/variables' with (
+  $closer-lists: true,
+  $custom-colors: true,
+  $custom-fonts: true,
+  $font-smoothing: true,
+  $text-adjusting: true,
+  $round-images: true,
+  $round-codeblocks: true,
+  $hovered-links: true,
+  $variable-fonts: true,
+  $family-default: (Inter, $family-sans-native),
+  $family-code: ('JetBrains Mono', $family-code-native),
+  $family-default-var: ('Inter var', $family-sans-native),
+  $weight-headings: $weight-semibold,
+  $font-size: calc(1rem + 0.2vw),
+  $margin: $gap-lg,
+  $radius: $radius,
+  $background-body: $background-default,
+  $background-code: $background-muted,
+  $background-ins: $background-muted,
+  $background-mark: $background-muted,
+  $background-table: inherit,
+  $background-table-even: inherit,
+  $background-table-hover: $background-muted,
+  $border: $color-muted,
+  $text: $text,
+  $text-code: inherit,
+  $text-strong: inherit,
+  $text-muted: $text-muted,
+  $text-headings: $color-pronounced,
+  $text-blockquote: $color-muted,
+  $link: $link,
+  $link-hover: $link-hover,
+  $link-visited: $color-pronounced,
+  $table-thead: $color-pronounced
+);

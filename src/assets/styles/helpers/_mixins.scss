@@ -1,30 +1,5 @@
 @use '../core/variables';
 
-// Table cell sizing
-
-@mixin cell($font-size) {
-  font-size: #{$font-size}em;
-  padding: variables.$margin / 2 / $font-size;
-}
-
-// Headings adjustment
-
-@mixin heading($font-size, $with-border: false, $top-space: false) {
-  font-size: #{$font-size}em;
-  margin-bottom: variables.$margin / $font-size;
-
-  @if $top-space {
-    margin-top: variables.$margin * 3 / $font-size;
-  } @else {
-    margin-top: variables.$margin / $font-size;
-  }
-
-  @if variables.$heading-borders and $with-border {
-    border-bottom: 1px solid variables.$border;
-    padding-bottom: variables.$margin / $font-size;
-  }
-}
-
 // Visibility
 
 @mixin hide($toggle: true) {
@@ -35,26 +10,4 @@
     visibility: initial;
     display: unset;
   }
-}
-
-// Set font-family
-
-@mixin font-family($default-family, $variable-family) {
-  font-family: $default-family;
-
-  @if variables.$variable-fonts and $variable-family {
-    @supports (font-variation-settings: normal) {
-      font-family: $variable-family;
-    }
-  }
-}
-
-// Default font-families
-
-@mixin base-font {
-  @include font-family(variables.$family-default, variables.$family-default-var);
-}
-
-@mixin code-font {
-  @include font-family(variables.$family-code, variables.$family-code-var);
 }

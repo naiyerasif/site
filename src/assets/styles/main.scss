@@ -9,7 +9,7 @@
 @use 'helpers/layouts';
 @use 'helpers/mixins';
 @use 'extensions';
-@use 'globals';
+@use '../../../node_modules/@microflash/remarkability/scss/remarkability.global.scss';
 
 // Container
 
