@@ -6,30 +6,32 @@ authors: [naiyer]
 labels: [prettier]
 ---
 
-[Prettier](https://prettier.io) is an opinionated code formatter that formats the code in a consistent style. It supports popular languages, libraries, and frameworks in the Node.js ecosystem and is widely used to enforce the style practices. In this gist, we'll integrate it with a Node.js application and explore on how to configure it to work with EditorConfig and ESLint. 
+[Prettier](https://prettier.io) is an opinionated code formatter that formats the code in a consistent style. It supports popular languages, libraries, and frameworks in the Node.js ecosystem and is widely used to enforce the style practices. 
 
-### Setup
+In this post, we'll integrate it with a Node.js application and explore on how to configure it to work with EditorConfig and ESLint. 
 
-We'll use the Node.js application that we created in the post [Creating an Express middleware using TypeScript](/blog/2019/01/12/creating-an-express-middleware-using-typescript) to kickstart our example.
+##### Setup
+
+You can pick the Node.js application created in the post [Using Express with TypeScript](/blog/2019/01/12/using-express-with-typescript/) to start with.
 
 ## Install Prettier
 
-Let's start by executing the following command in the directory where `package.json` is located:
+Execute the following command in the directory where `package.json` is located:
 
-```bash
-npm install --save-dev --save-exact prettier
+```sh
+yarn add -D -E prettier
 ```
 
-As per the Prettier's [documentation](https://prettier.io/docs/en/install.html), it is recommended to save an exact version of prettier in our `package.json` since it introduces stylistic changes in patch releases.
+As per the Prettier's [documentation](https://prettier.io/docs/en/install.html), it is recommended to save an exact version of prettier in the `package.json` since it introduces stylistic changes in patch releases.
 
-## Configure pre-commit hook
+### Configure pre-commit hook
 
 To format the staged files before you commit them to git, you can use `pretty-quick` to run prettier on staged files and `husky` to configure a pre-commit hook.
 
 Execute the following command to install dependencies.
 
-```bash
-npm install --save-dev pretty-quick husky
+```sh
+yarn add -D pretty-quick husky
 ```
 
 Add an `fmt` script in `package.json` to format the staged files and configure the `husky` object with a hook.
@@ -74,8 +76,8 @@ Prettier CLI respects the `editorconfig` file by default. You can opt-out of thi
 
 If you're working on a JavaScript project, you can use ESLint to format your code with Prettier. Execute the following command to add necessary plugins.
 
-```bash
-npm install --save-dev eslint-config-prettier eslint-plugin-prettier
+```sh
+yarn add -D eslint-config-prettier eslint-plugin-prettier
 ```
 
 Now, open the `.eslintrc.json` file and add the following configuration:
@@ -87,10 +89,3 @@ Now, open the `.eslintrc.json` file and add the following configuration:
   ]
 }
 ```
-
-## References
-
-> **Source Code**: [prettier-code-formatting](https://gitlab.com/mflash/nodejs-guides/-/tree/master/prettier-code-formatting)
->
-> **Discussions**
-> - [Prettier docs](https://prettier.io/docs/en/install.html)
