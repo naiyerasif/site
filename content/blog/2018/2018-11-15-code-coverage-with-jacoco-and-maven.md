@@ -6,16 +6,19 @@ authors: [naiyer]
 labels: [java, maven]
 ---
 
-Code coverage is a measure of how much of your code executes when the automated tests run. Depending on how effectively your tests are written, it can provide a good picture of how much you are testing your code. [JaCoCo](https://www.jacoco.org/jacoco/), one of the many others, is a popular tool that enables developers to quantify this metric for a Java application. In this guide, we'll integrate JaCoCo with a Spring Boot application. We'll also generate a coverage report that can be viewed in a browser.
+Code coverage is a measure of how much of your code executes when the automated tests run. Depending on how effectively your tests are written, it can provide a good picture of how much you are testing your code. [JaCoCo](https://www.jacoco.org/jacoco/), one of the many others, is a popular tool that enables developers to quantify this metric for a Java application. 
 
-### Setup
+In this post, we'll integrate JaCoCo with a Spring Boot application. We'll also generate a coverage report that can be viewed in a browser.
 
-> We'll use:
-> - Java 11
-> - Spring Boot 2.1.8
-> - JaCoCo 0.8.4
+##### Setup
 
-To hit the ground running, let's make use of the Spring Boot application created in the guide [Uploading files with Spring and Angular](/blog/2018/09/09/uploading-files-with-spring-and-angular/).
+The examples in this post use
+
+- Java 11
+- Spring Boot 2.1.8
+- JaCoCo 0.8.4 
+
+Let's reuse the Spring Boot application created in the post [Uploading files with Spring Boot and Angular](/blog/2018/09/09/uploading-files-with-spring-boot-and-angular/).
 
 ## Setup JaCoCo
 
@@ -128,8 +131,8 @@ We can configure specific classes and [additional counters](https://www.jacoco.o
 
 ## References
 
-> **Source Code**: [coverage-with-jacoco](https://gitlab.com/mflash/guides/java/coverage-with-jacoco)
->
-> **Discussions**
-> - [Maven plugin](https://www.eclemma.org/jacoco/trunk/doc/maven.html)
-> - [Maven usage example](https://www.eclemma.org/jacoco/trunk/doc/examples/build/pom.xml)
+**Source Code** &mdash; [coverage-with-jacoco](https://gitlab.com/mflash/java-guides/-/tree/master/coverage-with-jacoco)
+
+**See also**
+- [JaCoCo Maven plugin](https://www.eclemma.org/jacoco/trunk/doc/maven.html)
+- [Maven usage example](https://www.eclemma.org/jacoco/trunk/doc/examples/build/pom.xml)
