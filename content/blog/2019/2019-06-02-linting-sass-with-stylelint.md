@@ -6,23 +6,23 @@ authors: [naiyer]
 labels: [stylelint, sass]
 ---
 
-Just as you can lint the JavaScript or TypeScript code in a web application, you can also lint the [SASS](https://sass-lang.com/) (or SCSS) files using [stylelint](https://github.com/stylelint/stylelint). `stylelint` is a widely used linter that works with SCSS, Sass, Less and SugarSS. It supports a plugin system through which we can extend its behavior. In this gist, we'll explore how we can use `stylelint` to lint SASS files in a project.
+Besides JavaScript or TypeScript, you can also lint the [SASS](https://sass-lang.com/) (or SCSS) files, using a linter called [stylelint](https://github.com/stylelint/stylelint). `stylelint` is a widely used linter that works with SCSS, Sass, Less and SugarSS. It supports a plugin system through which we can extend its behavior. 
 
-### Setup
+##### Setup
 
-Any Node.js project using SASS can be used to follow this example.
+You can use any Node.js project using SASS to follow the examples.
 
 ## Install Stylelint
 
 Execute the following command to add `stylelint`.
 
 ```bash
-npm install --save-dev stylelint
+yarn add -D stylelint
 ```
 
 ## Add NPM script for linting
 
-Assuming your SASS code resides in the `src` directory, you can configure the following NPM script.
+Assuming your SASS code resides in the `src` directory, add the following NPM script.
 
 ```json
 "lint-scss": "stylelint \"src/**/*.scss\" --cache --cache-location .cache/.stylelintcache",
@@ -42,7 +42,7 @@ If your stylesheets are massive and you ran `stylelint` for the first time, you 
 "fix-scss": "stylelint \"src/**/*.scss\" --fix",
 ```
 
-> As noted in the `stylelint` docs, autofixing is an *experimental* feature; it does not respect special comments for disabling `stylelint` within sources (e.g., `/* stylelint-disable-line */`). It is recommended to run `stylelint` twice if you're using both these special comments and autofixing. On the first run, some violations could be missed or reported incorrectly.
+> As noted in the `stylelint` docs, autofixing is an *experimental* feature; it does not respect special comments for disabling `stylelint` within sources (e.g., `/* stylelint-disable-line */`). It is recommended that you run `stylelint` twice if you're using both these special comments and autofixing. On the first run, some violations could be missed or reported incorrectly.
 
 ## Extending stylelint configurations
 
@@ -53,7 +53,7 @@ If your stylesheets are massive and you ran `stylelint` for the first time, you 
 `stylelint-config-prettier` is a configuration that disables `stylelint` rules that conflict with Prettier. `stylelint-prettier` is a plugin that adds a rule that formats content using Prettier. It also exposes a *recommended* configuration that configures both `stylelint-prettier` and `stylelint-config-prettier` in a single step. Add both `stylelint-prettier` and `stylelint-config-prettier` as developer dependencies,
 
 ```bash
-npm install --save-dev stylelint-config-prettier stylelint-prettier
+yarn add -D stylelint-config-prettier stylelint-prettier
 ```
 
 then extend the recommended configuration by adding the following configuration in `.stylelintrc`.
@@ -72,7 +72,7 @@ then extend the recommended configuration by adding the following configuration 
 If you are working with Bootstrap, you can extend the behavior of `stylelint` with Bootstrap-specific linting configuration. Execute the following command to add the Bootstrap-specific linting extension.
 
 ```bash
-npm install --save-dev stylelint-config-twbs-bootstrap
+yarn add -D stylelint-config-twbs-bootstrap
 ```
 
 Open `.stylelintrc` and add the following configuration.
