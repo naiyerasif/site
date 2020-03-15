@@ -165,7 +165,7 @@ ORDER BY bios.id;
 This emits the following dataset.
 
 | ID  | NAME                    |
-| --- | ----------------------- |
+| --: | ----------------------- |
 | 1   | John Backus             |
 | 2   | John McCarthy           |
 | 3   | Grace Hopper            |
@@ -195,7 +195,7 @@ ORDER BY bios.id;
 This query emits the following dataset.
 
 | ID  | FIRST_NAME |
-| --- | ---------- |
+| --: | ---------- |
 | 1   | John       |
 | 2   | John       |
 | 3   | Grace      |
@@ -229,7 +229,7 @@ WHERE json_value(
 which emits the following dataset.
 
 | ID  | NAME   |
-| --- | ------ |
+| --: | ------ |
 | 3   | Hopper |
 
 ## Querying a JSON object or collection
@@ -258,7 +258,7 @@ ORDER BY bios.id;
 which emits the following dataset.
 
 | ID  | NAME       | CONTRIBUTION | AWARD                                          |
-| --- | ---------- | ------------ | ---------------------------------------------- |
+| --: | ---------- | ------------ | ---------------------------------------------- |
 | 1   | Backus     | ["Fortran"]  | ["W.W. McDowell Award"]                        |
 | 2   | McCarthy   | ["Lisp"]     | ["Turing Award"]                               |
 | 3   | Hopper     | ["UNIVAC"]   | ["Computer Sciences Man of the Year"]          |

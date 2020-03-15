@@ -40,3 +40,10 @@ a {
     }
   }
 }
+
+// Set table as block
+
+table {
+  display: block;
+  overflow-x: auto;
+}
