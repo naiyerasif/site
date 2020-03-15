@@ -6,16 +6,19 @@ authors: [naiyer]
 labels: [spring, mongodb]
 ---
 
-Spring Boot provides a variety of ways to interact with a MongoDB database: low-level abstractions like `MongoReader`/`MongoWriter`, Query, Criteria and Update DSLs and `MongoTemplate` helper to facilitate common document operations. As a part of Spring Data, it also provides a familiar Repository style programming model through `MongoRepository` interface. In this guide, we'll explore some of the capabilities of `MongoRepository` by persisting and querying MongoDB documents.
+Spring Boot provides a variety of ways to work with a MongoDB database: low-level `MongoReader` and `MongoWriter` APIs, Query, Criteria and Update DSLs, and `MongoTemplate` helper. `MongoRepository` interface is the Repository-style programming model provided by `spring-boot-starter-data-mongodb`.
 
-### Setup
+In this post, we'll explore how to persist documents with `MongoRepository`.
 
-> We'll use
-> - Java 11
-> - Spring Boot 2.1.8
-> - MongoDB 4
+##### Setup
 
-Before getting started, make sure that a mongoDB instance is available to persist your data. You can use Docker to run an instance. Create a `docker-compose.yml` file at the project root and add the following details in it.
+The examples in this post use
+
+- Java 13
+- Spring Boot 2.2.5
+- MongoDB 4
+
+You'd need a mongoDB instance to persist the data. You can install MongoDB Community Server from [here](https://www.mongodb.com/download-center/community) or get a free to try instance at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas). You can also use Docker to run an instance. Create a `docker-compose.yml` file at the project root and add the following details in it.
 
 ```yaml
 version: '3.1'
@@ -33,7 +36,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: richards
 ```
 
-Executing the following command to launch the container.
+Execute the following command to launch the container.
 
 ```bash
 docker-compose up -d
@@ -41,83 +44,97 @@ docker-compose up -d
 
 ## Define a domain
 
-Let's start by defining a domain. Say, you want to persist an `Email` object which consists of an `address`, an `Identity` of a user, a set of `Session` created by the user and a `created` date. When an `Email` object is saved, corresponding `Identity` object and `Session` objects should also be persisted; the same goes for the delete operation.
+Let's start by defining a domain. Say, you want to persist an `Account` object that contains information about a `User` and their `Session`s from different locations. When someone updates or deletes an `Account`, the corresponding `User` and `Session` should also get updated or deleted.
 
 ![Domain](./images/2019-07-08-persisting-documents-with-mongorepository.svg)
 
-A Many-to-One relationship in MongoDB can be modeled with either [embedded documents](https://docs.mongodb.com/manual/tutorial/model-embedded-one-to-many-relationships-between-documents/) or [document references](https://docs.mongodb.com/manual/tutorial/model-referenced-one-to-many-relationships-between-documents/); with the latter method being more useful since it prevents the repetition of data. We can enforce this behavior through a `@DBRef` annotation.
+A Many-to-One relationship in MongoDB can be modeled with either [embedded documents](https://docs.mongodb.com/manual/tutorial/model-embedded-one-to-many-relationships-between-documents/) or [document references](https://docs.mongodb.com/manual/tutorial/model-referenced-one-to-many-relationships-between-documents/); with the latter method being more useful since it prevents the repetition of data. You can enforce this behavior through a `@DBRef` annotation.
 
-Our `Email` document may look like this:
+Define an `Account` class, like this:
 
 ```java
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
+// src/main/java/dev/mflash/guides/mongo/domain/Account.java
 
-import java.time.ZonedDateTime;
-import java.util.HashSet;
-import java.util.Set;
-
-public class Email {
+public class Account {
 
   private @Id String key;
   private String address;
-  private @DBRef Identity identity;
+  private @DBRef User user;
   private @DBRef Set<Session> sessions;
   private ZonedDateTime created;
 
-  // constructors, getters and setters, etc.
+  // constructors, getters and setters, builders, etc.
 }
 ```
 
-In the similar fashion, define `Identity` and `Session` documents.
+Similarly, define `User`
+
+```java
+// src/main/java/dev/mflash/guides/mongo/domain/User.java
+
+public class User {
+
+  private @Id String key;
+  private String name;
+  private Locale locale;
+  private LocalDate dateOfBirth;
+
+  // constructors, getters and setters, builders, etc.
+}
+```
+
+and `Session` classes.
+
+```java
+// src/main/java/dev/mflash/guides/mongo/domain/Session.java
+
+public class Session {
+
+  private @Id String key;
+  private String city;
+  private Locale locale;
+  private String fingerprint;
+  private LocalDate lastAccessedOn;
+  private LocalTime lastAccessedAt;
+
+  // constructors, getters and setters, builders, etc.
+}
+```
 
 ## Create a Repository
 
-Create a repository by extending the `MongoRepository` interface, as follows.
+Extend `MongoRepository` to create a repository for `Account`.
 
 ```java
-import dev.mflash.guides.mongo.domain.Email;
-import dev.mflash.guides.mongo.domain.Identity;
-import dev.mflash.guides.mongo.domain.Session;
-import org.springframework.data.mongodb.repository.MongoRepository;
+// src/main/java/dev/mflash/guides/mongo/repository/AccountRepository.java
 
-import java.util.List;
+public interface AccountRepository extends MongoRepository<Account, String> {
 
-public interface EmailRepository extends MongoRepository<Email, String> {
+  Account findDistinctFirstByUser(User user);
 
-  Email findDistinctFirstByIdentity(Identity identity);
+  List<Account> findBySessions(Session session);
 
-  List<Email> findBySessions(Session session);
-
-  Email findByAddress(String address);
+  Account findByAddress(String address);
 }
 ```
 
-Since `MongoRepository` extends `CrudRepository` interface, it provides several CRUD methods (like `findAll()`, `save()`, etc) out-of-the-box. For specific queries, we can declare query methods (using certain [naming conventions](https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#repositories.query-methods.query-creation)) for Spring to generate their implementations at runtime.
+Since `MongoRepository` extends `CrudRepository` interface, it provides several CRUD methods (like `findAll()`, `save()`, etc) out-of-the-box. For specific queries, you can declare query methods (using certain [naming conventions](https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#repositories.query-methods.query-creation)) for Spring to generate their implementations at runtime.
 
-### Unit tests for Repository
+### Unit tests for the `AccountRepository`
 
-Now that our repository is ready, write some tests to verify if it works as expected.
+Now that the `AccountRepository` has been defined, write some tests to verify if it works as expected.
 
 ```java
-import static dev.mflash.guides.mongo.configuration.TestData.*;
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+// src/test/java/dev/mflash/guides/mongo/repository/AccountRepositoryTest.java
 
 @ExtendWith(SpringExtension.class)
-public @SpringBootTest class EmailRepositoryTest {
+public @SpringBootTest class AccountRepositoryTest {
 
-  private @Autowired EmailRepository repository;
+  private @Autowired AccountRepository repository;
 
   public @BeforeEach void setUp() {
     repository.deleteAll();
-    repository.saveAll(emails.values());
+    repository.saveAll(account.values());
   }
 
   public @Test void findAll() {
@@ -126,13 +143,13 @@ public @SpringBootTest class EmailRepositoryTest {
   }
 
   public @Test void setKeyOnSave() {
-    repository.findAll().forEach(email -> assertNotNull(email.getKey()));
+    repository.findAll().forEach(account -> assertNotNull(account.getKey()));
   }
 
-  public @Test void findDistinctFirstByIdentityName() {
+  public @Test void findDistinctFirstByUserName() {
     final var tinaLawrence = Name.TINA_LAWRENCE;
-    assertEquals(identities.get(tinaLawrence),
-        repository.findDistinctFirstByIdentity(identities.get(tinaLawrence)).getIdentity());
+    assertEquals(users.get(tinaLawrence),
+        repository.findDistinctFirstByUser(users.get(tinaLawrence)).getUser());
   }
 
   public @Test void findBySessionLocale() {
@@ -142,29 +159,25 @@ public @SpringBootTest class EmailRepositoryTest {
 
   public @Test void findByAddress() {
     final var address = Address.MOHD_ALI;
-    assertEquals(Name.MOHD_ALI.name, repository.findByAddress(address.email).getIdentity().getName());
+    assertEquals(Name.MOHD_ALI.name, repository.findByAddress(address.email).getUser().getName());
   }
 }
 ```
 
 When you'll run these tests, the following exception may be thrown:
 
-```java
+```sh
 org.bson.codecs.configuration.CodecConfigurationException: Can't find a codec for class java.time.ZonedDateTime.
 ```
 
-This happens because `Email` class has a field `created` of type `ZonedDateTime` which can't be converted to a valid mongoDB representation by available Spring converters. Hence, you'll have to tell Spring how this conversion can be done.
+This happens because `Account` has a field `created` of type `ZonedDateTime` which can't be converted to a valid MongoDB representation by available Spring converters. Hence, you'll have to tell Spring how to do this conversion.
 
 ### Converters for `ZonedDateTime`
 
-Spring provides a `Converter` interface that can be implemented for this very purpose. To convert `Date` to `ZonedDateTime` object, write a converter like this:
+Spring provides a `Converter` interface that you can implement for this very purpose. To convert `Date` to `ZonedDateTime` object, write a converter like this:
 
 ```java
-import org.springframework.core.convert.converter.Converter;
-
-import java.time.ZoneOffset;
-import java.time.ZonedDateTime;
-import java.util.Date;
+// src/main/java/dev/mflash/guides/mongo/helper/converter/DateToZonedDateTimeConverter.java
 
 public class DateToZonedDateTimeConverter implements Converter<Date, ZonedDateTime> {
 
@@ -174,15 +187,12 @@ public class DateToZonedDateTimeConverter implements Converter<Date, ZonedDateTi
 }
 ```
 
-> **Note** that UTC is considered as `ZoneOffset` here. `Date` object, the one which gets persisted in MongoDB, contains no zone information. However, since MongoDB timestamps default to UTC, you can adjust the offset accordingly for your timezone.
+> **INFO** UTC is considered as `ZoneOffset` here. `Date` object, persisted in MongoDB, contains no zone information. However, since MongoDB timestamps default to UTC, you can adjust the offset accordingly for your timezone.
 
 Similarly, for conversion from `ZonedDateTime` to `Date`, write a yet another converter.
 
 ```java
-import org.springframework.core.convert.converter.Converter;
-
-import java.time.ZonedDateTime;
-import java.util.Date;
+// src/main/java/dev/mflash/guides/mongo/helper/converter/ZonedDateTimeToDateConverter.java
 
 public class ZonedDateTimeToDateConverter implements Converter<ZonedDateTime, Date> {
 
@@ -195,29 +205,19 @@ public class ZonedDateTimeToDateConverter implements Converter<ZonedDateTime, Da
 Inject these converters through a `MongoCustomConversions` bean as follows:
 
 ```java
-import dev.mflash.guides.mongo.helper.converter.DateToZonedDateTimeConverter;
-import dev.mflash.guides.mongo.helper.converter.ZonedDateTimeToDateConverter;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.core.convert.converter.Converter;
-import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
-
-import java.util.ArrayList;
-import java.util.List;
+// src/main/java/dev/mflash/guides/mongo/configuration/MongoConfiguration.java
 
 @EnableMongoRepositories(MongoConfiguration.REPOSITORY_PACKAGE)
 public @Configuration class MongoConfiguration {
 
-  static final String REPOSITORY_PACKAGE = "com.mflash.repository";
-  private final List<Converter<?,?>> converters = new ArrayList<>();
+  static final String REPOSITORY_PACKAGE = "dev.mflash.guides.mongo.repository";
+  private final List<Converter<?, ?>> converters = new ArrayList<>();
 
   public @Bean MongoCustomConversions customConversions() {
     converters.add(new DateToZonedDateTimeConverter());
     converters.add(new ZonedDateTimeToDateConverter());
     return new MongoCustomConversions(converters);
   }
-
 }
 ```
 
@@ -225,21 +225,18 @@ Now, you'll be able to run the unit tests successfully.
 
 ## Cascade the documents
 
-Spring Data Mongo doesn't support cascading of objects out-of-the-box. The official Spring documentation states that:
+Spring Data Mongo doesn't support cascading of the objects out-of-the-box. The official Spring documentation states that:
 
 > The mapping framework does not handle cascading saves. If you change an `Account` object that is referenced by a `Person` object, you must save the `Account` object separately. Calling save on the `Person` object will not automatically save the `Account` objects in the property accounts.
 
-However, we can write a custom mechanism to cascade objects on save and delete operations by listening to `MongoMappingEvent`s.
+However, you can write a custom mechanism to cascade objects on save and delete operations by listening to `MongoMappingEvent`s.
 
 ### Define a `@Cascade` annotation
 
 Let's start by defining an annotation to indicate that a field should be cascaded.
 
 ```java
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+// src/main/java/dev/mflash/guides/mongo/helper/event/Cascade.java
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
@@ -249,41 +246,30 @@ public @interface Cascade {
 }
 ```
 
-Since cascading can be done for save and/or delete operations, we can generalize this implementation by passing a value to the annotation that will set the type of cascading. By default, we'll cascade on both save and delete operations through `CascadeType.ALL` value.
+Since cascading can be done for save and/or delete operations, let's generalize this implementation by passing a value to the annotation that will set the type of cascading. By default, we'll cascade on both save and delete operations through `CascadeType.ALL` value.
 
 Annotate the desired fields with this annotation.
 
 ```java
-import dev.mflash.guides.mongo.helper.event.Cascade;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
+// src/main/java/dev/mflash/guides/mongo/domain/Account.java
 
-import java.time.ZonedDateTime;
-import java.util.HashSet;
-import java.util.Set;
+public class Account {
 
-public class Email {
+  // Other properties
 
-  private @Id String key;
-  private String address;
-  private @DBRef @Cascade Identity identity;
+  private @DBRef @Cascade User user;
   private @DBRef @Cascade Set<Session> sessions;
-  private ZonedDateTime created;
 
-  // constructors, getters and setters, etc.
+  // constructors, getters and setters, builders, etc.
 }
 ```
 
 ### Detect the fields to be cascaded
 
-The references of cascaded objects should be associated with a document. We need to check if such a valid document exists. This can be done by checking the `@Id` of the document through a `FieldCallback`.
+The references of cascaded objects should be associated with a document, first by checking if such a valid document exists. This can be done by checking the `@Id` of the document through a `FieldCallback`.
 
 ```java
-import org.springframework.data.annotation.Id;
-import org.springframework.util.ReflectionUtils;
-import org.springframework.util.ReflectionUtils.FieldCallback;
-
-import java.lang.reflect.Field;
+// src/main/java/dev/mflash/guides/mongo/helper/event/IdentifierCallback.java
 
 public class IdentifierCallback implements FieldCallback {
 
@@ -303,17 +289,10 @@ public class IdentifierCallback implements FieldCallback {
 }
 ```
 
-Similarly, we need to identify the objects that should be cascaded, by detecting `@Cascade` annotation on a field, once again, through a `FieldCallback` and then perform actual persistence operation using `MongoOperations`.
+Similarly, we need to identify which fields have been annotated with `@Cascade` annotation, through a `FieldCallback`, and afterward perform a persistence operation using `MongoOperations`.
 
 ```java
-import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.util.ReflectionUtils;
-import org.springframework.util.ReflectionUtils.FieldCallback;
-
-import java.lang.reflect.Field;
-import java.util.Collection;
-import java.util.Objects;
+// src/main/java/dev/mflash/guides/mongo/helper/event/CascadeSaveCallback.java
 
 public class CascadeSaveCallback implements FieldCallback {
 
@@ -350,19 +329,14 @@ public class CascadeSaveCallback implements FieldCallback {
 }
 ```
 
-You can also write a `CascadeDeleteCallback` for the delete operation. At this point, we can manually call these methods before save or delete operations to trigger cascading. However, we can also automate this to save pains.
+You can also write a `CascadeDeleteCallback` for the delete operation. At this point, these methods can be manually called before save or delete operations to trigger cascading. But why not automate this!
 
 ### Automate the cascading
 
 Create a `MongoEventListener` to listen to `MongoMappingEvent`s and invoke the appropriate callbacks.
 
 ```java
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.core.mapping.event.AbstractMongoEventListener;
-import org.springframework.data.mongodb.core.mapping.event.AfterConvertEvent;
-import org.springframework.data.mongodb.core.mapping.event.BeforeConvertEvent;
-import org.springframework.util.ReflectionUtils;
+// src/main/java/dev/mflash/guides/mongo/helper/event/CascadeMongoEventListener.java
 
 public class CascadeMongoEventListener extends AbstractMongoEventListener<Object> {
 
@@ -385,101 +359,69 @@ public class CascadeMongoEventListener extends AbstractMongoEventListener<Object
 `CascadeMongoEventListener` will invoke `CascadeSaveCallback` or `CascadeDeleteCallback` depending on your repository method. Inject it as a bean in the `MongoConfiguration` to complete the implementation.
 
 ```java
-import dev.mflash.guides.mongo.helper.converter.DateToZonedDateTimeConverter;
-import dev.mflash.guides.mongo.helper.converter.ZonedDateTimeToDateConverter;
-import dev.mflash.guides.mongo.helper.event.CascadeMongoEventListener;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.core.convert.converter.Converter;
-import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
-
-import java.util.ArrayList;
-import java.util.List;
+// src/main/java/dev/mflash/guides/mongo/configuration/MongoConfiguration.java
 
 @EnableMongoRepositories(MongoConfiguration.REPOSITORY_PACKAGE)
 public @Configuration class MongoConfiguration {
 
-  static final String REPOSITORY_PACKAGE = "com.mflash.repository";
-  private final List<Converter<?, ?>> converters = new ArrayList<>();
+  static final String REPOSITORY_PACKAGE = "dev.mflash.guides.mongo.repository";
 
   public @Bean CascadeMongoEventListener cascadeMongoEventListener() {
     return new CascadeMongoEventListener();
   }
 
-  public @Bean MongoCustomConversions customConversions() {
-    converters.add(new DateToZonedDateTimeConverter());
-    converters.add(new ZonedDateTimeToDateConverter());
-    return new MongoCustomConversions(converters);
-  }
+  // Other configurations
 }
 ```
 
 ### Unit tests to verify cascading
 
-To verify if the cascading works, let's write some unit tests by persisting some `Email` objects and querying for `Identity` and `Session` objects.
+To verify if the cascading works, let's write some unit tests by persisting some `Account` objects and querying for `User` and `Session` objects.
 
 ```java
-import static org.junit.jupiter.api.Assertions.*;
-
-import dev.mflash.guides.mongo.domain.Email;
-import dev.mflash.guides.mongo.domain.Email.EmailBuilder;
-import dev.mflash.guides.mongo.domain.Identity;
-import dev.mflash.guides.mongo.domain.Identity.IdentityBuilder;
-import dev.mflash.guides.mongo.domain.Session;
-import dev.mflash.guides.mongo.domain.Session.SessionBuilder;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.Locale;
+// src/test/java/dev/mflash/guides/mongo/repository/CascadeTest.java
 
 @ExtendWith(SpringExtension.class)
 public @SpringBootTest class CascadeTest {
 
-  private @Autowired EmailRepository emailRepository;
+  private @Autowired AccountRepository accountRepository;
   private @Autowired SessionRepository sessionRepository;
-  private @Autowired IdentityRepository identityRepository;
-  private Identity jasmine;
+  private @Autowired UserRepository userRepository;
+  private User jasmine;
   private Session paris;
-  private Email saved;
+  private Account saved;
 
   public @BeforeEach void setUp() {
-    emailRepository.deleteAll();
+    accountRepository.deleteAll();
     sessionRepository.deleteAll();
-    identityRepository.deleteAll();
+    userRepository.deleteAll();
 
-    jasmine = new IdentityBuilder().name("Jasmine Beck").locale(Locale.FRANCE)
+    jasmine = new Builder().name("Jasmine Beck").locale(Locale.FRANCE)
         .dateOfBirth(LocalDate.of(1995, Month.DECEMBER, 12)).build();
-    paris = new SessionBuilder().city("Paris").locale(Locale.FRANCE).build();
-    Email email = new EmailBuilder().address("jasmine@nos.com").identity(jasmine).session(paris)
+    paris = new Session.Builder().city("Paris").locale(Locale.FRANCE).build();
+    Account account = new Account.Builder().address("jasmine@nos.com").user(jasmine).session(paris)
         .build();
 
-    saved = emailRepository.save(email);
+    saved = accountRepository.save(account);
   }
 
   public @Test void saveCascade() {
-    identityRepository.findById(saved.getIdentity().getKey())
-        .ifPresent(identity -> assertEquals(jasmine, identity));
+    userRepository.findById(saved.getUser().getKey())
+        .ifPresent(user -> assertEquals(jasmine, user));
     saved.getSessions().stream().findFirst().ifPresent(session -> assertEquals(paris, session));
   }
 
   public @Test void deleteCascade() {
-    Email email = emailRepository.findDistinctFirstByIdentity(jasmine);
-    emailRepository.deleteById(email.getKey());
+    Account account = accountRepository.findDistinctFirstByUser(jasmine);
+    accountRepository.deleteById(account.getKey());
 
-    email.getSessions()
+    account.getSessions()
         .forEach(session -> assertTrue(sessionRepository.findById(session.getKey()).isEmpty()));
-    assertTrue(identityRepository.findById(email.getIdentity().getKey()).isEmpty());
+    assertTrue(userRepository.findById(account.getUser().getKey()).isEmpty());
   }
 }
 ```
 
 ## References
 
-> **Source Code**: [spring-data-mongo-repository](https://gitlab.com/mflash/guides/spring/tree/master/spring-data-mongo-repository)
+**Source Code** &mdash; [spring-data-mongo-repository](https://gitlab.com/mflash/spring-guides/-/tree/master/spring-data-mongo-repository)
