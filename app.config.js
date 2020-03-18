@@ -7,8 +7,9 @@ module.exports = {
   copyright: `Copyright ${new Date().getFullYear()} ${this.name}`,
   prefs: {
     draftDir: 'archive/draft',
-    maxTocDepth: 3,
+    editContext: 'https://github.com/Microflash/microflash.github.io/edit/release',
     excerptSize: 251,
+    maxTocDepth: 3,
     outdationPeriod: 365 // in days
   },
   slugifyConfig: {

@@ -10,18 +10,21 @@ const outdationDate = appConfig.prefs.outdationPeriod ? moment().clone().subtrac
 module.exports = function (api) {
 
   api.onCreateNode(options => {
-    if (options.internal.typeName === 'Post' && !options.updated) {
-      options.updated = options.date
-    }
+    if (options.internal.typeName === 'Post') {
+      if (!options.updated) {
+        options.updated = options.date
+      }
 
-    if (options.internal.typeName === 'Post' && !options.outdated && !['never'].includes(options.outdated)) {
-      options.outdated = outdationDate && moment(options.updated, 'YYYY-MM-DD HH:mm:ss').isBefore(outdationDate) ? 'old' : '#'
+      if (!options.outdated && !['never'].includes(options.outdated)) {
+        options.outdated = outdationDate && moment(options.updated, 'YYYY-MM-DD HH:mm:ss').isBefore(outdationDate) ? 'old' : '#'
+      }
     }
+    
     return { ...options }
   })
 
   api.loadSource(({ addMetadata,addSchemaResolvers }) => {
-    addMetadata('editContext', 'https://github.com/Microflash/microflash.github.io/edit/release')
+    addMetadata('editContext', appConfig.prefs.editContext)
     
     addSchemaResolvers({
       Post: {
