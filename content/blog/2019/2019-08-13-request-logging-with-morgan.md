@@ -7,6 +7,14 @@ labels: [express, nodejs]
 
 Imagine developing an Express application with several endpoints and remaining in the bind which of those were being used by the client application and when! Some form of logging can help in this situation, just to tell about the endpoint and the timestamp when it was requested by the client. Express makes this easy through [morgan](https://github.com/expressjs/morgan).
 
+##### Article series
+
+1. [Using Express with TypeScript](/blog/2019/01/12/using-express-with-typescript/)
+2. [Request logging with morgan](/blog/2019/08/13/request-logging-with-morgan/)
+3. [Logging on Node.js with log4js-node](/blog/2019/08/14/logging-on-nodejs-with-log4js-node/)
+4. [Linting with TypeScript ESLint](/blog/2019/08/16/linting-with-typescript-eslint/)
+5. [Developing an API with Express and Postgres](/blog/2019/08/19/developing-an-api-with-express-and-postgres/)
+
 ##### Setup
 
 You can pick the Node.js application created in the post [Using Express with TypeScript](/blog/2019/01/12/using-express-with-typescript/) to follow this post.

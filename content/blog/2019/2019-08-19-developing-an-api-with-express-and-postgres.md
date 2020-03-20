@@ -8,6 +8,14 @@ labels: [express, postgres, typescript]
 
 Express is frequently used to create APIs in Node.js applications; these can be a middleware for a more traditional backend or an interface for the classic CRUD operations. In this post, we'll build an API to perform CRUD operations on a Postgres database. We'll explore patterns to organize routes, add support for hot-reloading and inject environment variables locally.
 
+##### Article series
+
+1. [Using Express with TypeScript](/blog/2019/01/12/using-express-with-typescript/)
+2. [Request logging with morgan](/blog/2019/08/13/request-logging-with-morgan/)
+3. [Logging on Node.js with log4js-node](/blog/2019/08/14/logging-on-nodejs-with-log4js-node/)
+4. [Linting with TypeScript ESLint](/blog/2019/08/16/linting-with-typescript-eslint/)
+5. [Developing an API with Express and Postgres](/blog/2019/08/19/developing-an-api-with-express-and-postgres/)
+
 ##### Setup
 
 You can pick the Node.js application created in the post [Linting with TypeScript ESLint](/blog/2019/08/16/linting-with-typescript-eslint/) to follow this post.

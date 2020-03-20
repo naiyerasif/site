@@ -10,6 +10,14 @@ labels: [nodejs, express]
 
 In this post, we'll explore the uses of `log4js-node` to print the logs on the console as well as a file.
 
+##### Article series
+
+1. [Using Express with TypeScript](/blog/2019/01/12/using-express-with-typescript/)
+2. [Request logging with morgan](/blog/2019/08/13/request-logging-with-morgan/)
+3. [Logging on Node.js with log4js-node](/blog/2019/08/14/logging-on-nodejs-with-log4js-node/)
+4. [Linting with TypeScript ESLint](/blog/2019/08/16/linting-with-typescript-eslint/)
+5. [Developing an API with Express and Postgres](/blog/2019/08/19/developing-an-api-with-express-and-postgres/)
+
 ##### Setup
 
 You can pick the Node.js application created in the post [Request logging with morgan](/blog/2019/08/13/request-logging-with-morgan/) to follow this post.
