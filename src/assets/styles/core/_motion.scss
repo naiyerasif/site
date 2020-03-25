@@ -34,6 +34,18 @@
   }
 }
 
+@keyframes sweep {
+  from {
+    opacity: 0;
+    margin-left: -1rem;
+  }
+
+  to {
+    opacity: 1;
+    margin-left: 0;
+  }
+}
+
 .animated {
   animation-duration: 500ms;
   transition-duration: 500ms;
@@ -69,4 +81,10 @@
   transition-duration: 300ms;
   animation-duration: 300ms;
   animation-name: slideUp;
+}
+
+details[open] summary ~ * {
+  @extend .animated;
+  animation-name: sweep;
+  animation-timing-function: ease-in-out;
 }
