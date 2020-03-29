@@ -28,10 +28,10 @@
     "vue-fuse": "^2.2.1"
   },
   "devDependencies": {
-    "autoprefixer": "^9.7.4",
+    "autoprefixer": "^9.7.5",
     "gh-pages": "^2.2.0",
     "html-entities": "^1.2.1",
-    "marked": "^0.8.1",
+    "marked": "^0.8.2",
     "moment": "^2.24.0",
     "sass": "^1.26.3",
     "sass-loader": "^8.0.2",
