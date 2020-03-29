@@ -20,7 +20,7 @@
     "@gridsome/source-filesystem": "^0.6.2",
     "@gridsome/transformer-remark": "^0.5.0",
     "@gridsome/vue-remark": "^0.1.10",
-    "@microflash/gridsome-plugin-feed": "^1.0.3",
+    "@microflash/gridsome-plugin-feed": "^1.0.4",
     "@microflash/remarkability": "^0.7.2",
     "axios": "^0.19.2",
     "gridsome": "^0.7.13",
