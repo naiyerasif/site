@@ -15,9 +15,8 @@
           <section class="results-label">
             {{ results.length > 0 ? results.length === 1 ? `${results.length} result` : `${results.length} results` : `No results for "${this.query}"` }}
           </section>
-          <a v-for="(post, index) in results" :key="index" :href="post.item.path" @click="reset" :class="{ 'search-result-highlighted' : index === highlightedIndex }" class="search-result">
+          <a v-for="(post, index) in results" :key="index" :href="post.item.path" @click="reset" class="search-result">
             <span class="search-result-title">{{ post.item.title }}</span>
-            <span class="search-result-excerpt">{{ post.item.excerpt | clip }} &hellip;</span>
           </a>
         </div>
       </div>
