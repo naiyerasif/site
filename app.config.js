@@ -22,7 +22,7 @@ module.exports = {
       includeMatches: true,
       tokenize: true,
       matchAllTokens: true,
-      threshold: 0.4,
+      threshold: 0.3,
       location: 0,
       distance: 600,
       maxPatternLength: 32,
