@@ -27,7 +27,10 @@ module.exports = {
   permalinks: {
     slugify: {
       use: '@sindresorhus/slugify',
-      options: appConfig.slugifyConfig
+      options: {
+        decamelize: false,
+        customReplacements: [['.js', 'js']]
+      }
     }
   },
   templates: {

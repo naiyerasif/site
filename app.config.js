@@ -6,15 +6,11 @@ module.exports = {
   maintainer: 'Naiyer Asif',
   copyright: `Copyright ${new Date().getFullYear()} ${this.name}`,
   prefs: {
-    draftDir: 'archive/draft',
+    draftDir: 'archive/backlog',
     editContext: 'https://github.com/Microflash/microflash.github.io/edit/release',
     excerptSize: 251,
     maxTocDepth: 3,
     outdationPeriod: 365 // in days
-  },
-  slugifyConfig: {
-    decamelize: false,
-    customReplacements: [['.js', 'js']]
   },
   searchConfig: {
     file: {
