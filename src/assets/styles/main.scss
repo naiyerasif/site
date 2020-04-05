@@ -162,6 +162,7 @@
   max-height: 75vh;
   @include layouts.hspace(0);
   z-index: 10;
+  width: 100%;
 }
 
 .search-results {
@@ -169,7 +170,7 @@
   overflow: auto;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: inherit;
 
   .search-result {
     cursor: pointer;
