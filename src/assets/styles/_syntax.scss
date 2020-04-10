@@ -1,0 +1,110 @@
+@use './core/variables';
+
+// Token colors
+
+$gray: hsl(180, 15%, 43%, 70%);
+$granite: hsl(170, 15%, 42%);
+$blush: hsl(346, 75%, 61%);
+$orange: hsl(10, 60%, 64%);
+$melon: hsl(19, 84%, 59%);
+$subtle: hsl(5, 60%, 65%);
+$indigo: hsl(252, 40%, 60%);
+$green: variables.$link;
+$teal: hsl(185, 67%, 36%);
+$gold: hsl(54, 30%, 55%);
+$blue: hsl(226, 41%, 45%);
+
+// Prism theme
+
+.gridsome-highlight {
+  margin-bottom: variables.$gap-lg;
+
+  code[class*='language-'],
+  pre[class*='language-'] {
+    tab-size: 2;
+    hyphens: none;
+  }
+
+  .token.comment,
+  .token.prolog,
+  .token.cdata {
+    color: $gray;
+  }
+
+  .token.punctuation {
+    color: $granite;
+  }
+
+  .namespace {
+    color: $gold;
+  }
+
+  .token.deleted {
+    color: $blush;
+  }
+
+  .token.symbol,
+  .token.property {
+    color: $indigo;
+  }
+
+  .token.tag,
+  .token.operator,
+  .token.keyword {
+    color: $subtle;
+  }
+
+  .token.boolean {
+    color: $teal;
+  }
+
+  .token.number {
+    color: $melon;
+  }
+
+  .token.constant,
+  .token.function,
+  .token.builtin,
+  .token.char {
+    color: $green;
+  }
+
+  .token.selector,
+  .token.doctype {
+    color: $blue;
+  }
+
+  .token.attr-name,
+  .token.inserted {
+    color: $orange;
+  }
+
+  .token.string,
+  .token.url,
+  .token.entity,
+  .language-css .token.string,
+  .style .token.string {
+    color: $melon;
+  }
+
+  .token.class-name,
+  .token.atrule,
+  .token.attr-value {
+    color: $blush;
+  }
+
+  .token.regex,
+  .token.important,
+  .token.variable {
+    color: $gold;
+  }
+
+  .token.important,
+  .token.bold {
+    font-weight: bold;
+  }
+
+  .token.italic {
+    font-style: normal;
+  }
+}

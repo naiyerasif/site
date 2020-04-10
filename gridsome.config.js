@@ -2,7 +2,6 @@ const path = require('path')
 const autoprefixer = require('autoprefixer')
 const purgecss = require('@fullhuman/postcss-purgecss')
 const marked = require('marked')
-const shiki = require('shiki')
 const purgecssConfig = require('./purgecss.config')
 const appConfig = require('./app.config')
 
@@ -15,7 +14,7 @@ postcssPlugins.push(autoprefixer({
 }))
 
 const remarkPlugins = [
-  ['gridsome-plugin-remark-shiki', { theme: shiki.loadTheme('./static/remarkable.json'), skipInline: true }]
+  ['gridsome-plugin-remark-prismjs-all', { noInlineHighlight: true }]
 ]
 
 module.exports = {
