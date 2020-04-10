@@ -565,16 +565,16 @@ git config --global alias.amend "commit --amend --no-edit"
 
 This playbook is based on the references and discussions listed below.
 
-> **Cheatsheets and references**
-> - [Atlassian Git Cheatsheet](https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet)
-> - [GitHub Cheatsheet](http://git.io/sheet)
-> - [GitHub Git Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
-> - [Git Immersion](http://gitimmersion.com)
-> 
-> **Discussions**
-> - [git update-index --assume-unchanged on directory](https://stackoverflow.com/a/12288918)
-> - [How can I git stash a specific file? [duplicate]](https://stackoverflow.com/a/5506483)
-> - [How to revert a Git repository to a previous commit](https://stackoverflow.com/a/4114122)
-> - [Useful tricks you might not know about Git stash](https://medium.freecodecamp.org/useful-tricks-you-might-not-know-about-git-stash-e8a9490f0a1a)
-> - [How do I delete a Git branch locally and remotely?](https://stackoverflow.com/questions/2003505/how-do-i-delete-a-git-branch-locally-and-remotely/2003515#2003515)
-> - [In git, is there a simple way of introducing an unrelated branch to a repository?](https://stackoverflow.com/a/4288660/5005580)
+**Cheatsheets and references**
+- [Atlassian Git Cheatsheet](https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet)
+- [GitHub Cheatsheet](http://git.io/sheet)
+- [GitHub Git Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
+- [Git Immersion](http://gitimmersion.com)
+
+**Discussions**
+- [git update-index --assume-unchanged on directory](https://stackoverflow.com/a/12288918)
+- [How can I git stash a specific file? [duplicate]](https://stackoverflow.com/a/5506483)
+- [How to revert a Git repository to a previous commit](https://stackoverflow.com/a/4114122)
+- [Useful tricks you might not know about Git stash](https://medium.freecodecamp.org/useful-tricks-you-might-not-know-about-git-stash-e8a9490f0a1a)
+- [How do I delete a Git branch locally and remotely?](https://stackoverflow.com/questions/2003505/how-do-i-delete-a-git-branch-locally-and-remotely/2003515#2003515)
+- [In git, is there a simple way of introducing an unrelated branch to a repository?](https://stackoverflow.com/a/4288660/5005580)
