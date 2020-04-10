@@ -1,4 +1,6 @@
 @use './core/variables';
+@use './helpers/layouts';
+@use './helpers/queries';
 
 // Token colors
 
@@ -21,6 +23,20 @@ $languages: js, ts, html, md, vue, css, sass, scss, less, stylus, go, java, c,
 
 .gridsome-highlight {
   margin-bottom: variables.$gap-lg;
+  
+  @include queries.phone {
+    margin-right: -(variables.$gap-xl);
+    margin-left: -(variables.$gap-xl);
+
+    pre {
+      border-radius: 0;
+    }
+
+    code {
+      padding-right: variables.$gap-xl;
+      padding-left: variables.$gap-xl;
+    }
+  }
 
   code[class*='language-'],
   pre[class*='language-'] {
@@ -56,6 +72,11 @@ $languages: js, ts, html, md, vue, css, sass, scss, less, stylus, go, java, c,
       variables.$code-selected 66%,
       transparent
     );
+
+    @include queries.phone {
+      margin-left: -(variables.$gap-xl);
+      padding-left: variables.$gap-xl;
+    }
   }
 
   .token.comment,
