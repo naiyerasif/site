@@ -46,7 +46,7 @@ services:
 
 Now, execute the following command on CLI.
 
-```sh
+```bash
 docker-compose up -d
 ```
 

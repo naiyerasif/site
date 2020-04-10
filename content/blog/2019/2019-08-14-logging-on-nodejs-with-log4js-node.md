@@ -26,7 +26,7 @@ You can pick the Node.js application created in the post [Request logging with m
 
 Add the required dependencies with the following command.
 
-```sh
+```bash
 yarn add log4js
 ```
 

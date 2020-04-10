@@ -26,7 +26,7 @@ You can pick the Node.js application created in the post [Logging on Node.js wit
 
 Execute the following commands to add required dependencies for `typescript-eslint`.
 
-```sh
+```bash
 yarn add -D eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser
 ```
 
@@ -34,7 +34,7 @@ yarn add -D eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser
 
 Generate an `eslint` configuration file with the following command.
 
-```sh
+```bash
 npx eslint --init
 ```
 

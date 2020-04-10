@@ -23,14 +23,14 @@ You can pick the Node.js application created in the post [Using Express with Typ
 
 `morgan` is a request logger middleware for `express`. Install it in your project with the following command.
 
-```sh
+```bash
 yarn add morgan
 yarn add -D @types/morgan
 ```
 
 If you want to save the logs in a file and rotate them daily, add `rotating-file-stream` as well.
 
-```sh
+```bash
 yarn add rotating-file-stream
 ```
 

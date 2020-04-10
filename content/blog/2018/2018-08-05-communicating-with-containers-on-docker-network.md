@@ -28,7 +28,7 @@ Let's create a backend service with an endpoint that our Angular app can call. F
 
 On a terminal, run 
 
-```sh
+```bash
 mn create-app dev.mflash.guides.greeter.greeter-api --build maven
 ```
 
@@ -102,7 +102,7 @@ CMD ["java", "-jar", "greeter-api.jar"]
 
 On the terminal, run
 
-```sh
+```bash
 docker build -t mflash/greeter-api .
 ```
 
@@ -112,7 +112,7 @@ to build an image for the backend.
 
 Let's generate a very minimal Angular app with no routing, specifications or external templates. Run the following command on the terminal.
 
-```sh
+```bash
 ng new greeter-ui --minimal --routing=false --style=css --skipTests --inlineStyle --inlineTemplate
 ```
 
@@ -134,7 +134,7 @@ export class AppModule {}
 
 Create a `GreetingService` by running the following command.
 
-```sh
+```bash
 ng generate service Greeting
 ```
 
@@ -269,7 +269,7 @@ CMD ["nginx", "-g", "daemon off;"]
 
 Generate the image by running the following command.
 
-```sh
+```bash
 docker build -t mflash/greeter-ui .
 ```
 

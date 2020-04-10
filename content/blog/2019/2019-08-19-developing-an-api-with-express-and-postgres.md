@@ -24,13 +24,13 @@ You can pick the Node.js application created in the post [Linting with TypeScrip
 
 It is cumbersome to manually restart the application every time we make a change in the source code. This can be automated by `nodemon`.
 
-```sh
+```bash
 yarn add -D nodemon
 ```
 
 To ensure that the old files are not getting cached, we can delete the `dist` directory before every rebuild (through `shx`). To run multiple node scripts conveniently, we can use `npm-run-all`.
 
-```sh
+```bash
 yarn add -D shx npm-run-all
 ```
 
@@ -54,7 +54,7 @@ To avoid hardcoding variables and secrets (e.g., database credentials, access to
 
 Add the dependency for `dotenv` using the following command.
 
-```sh
+```bash
 yarn add dotenv
 ```
 
@@ -167,7 +167,7 @@ INSERT INTO song(title, album, artist) VALUES ('Issues', 'Nervous System', 'Juli
 
 Add `pg` to communicate with Postgres along with its type definitions.
 
-```sh
+```bash
 yarn add pg
 yarn add -D @types/pg
 ```
@@ -331,7 +331,7 @@ export const registerEndpoints = (app: Application) => {
 
 To parse the request body, add `body-parser` as a dependency.
 
-```sh
+```bash
 yarn add body-parser
 ```
 
@@ -363,7 +363,7 @@ app.listen(port, () => logger.info(`Server started at http://localhost:${port}, 
 
 Build the app by `yarn build` and then launch it with `yarn start`. Use the following `curl` requests to verify the API.
 
-```sh
+```bash
 curl --request GET 'http://localhost:8080/song'
 
 curl --request GET 'http://localhost:8080/song/search?q=Carly'

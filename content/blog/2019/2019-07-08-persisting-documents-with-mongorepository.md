@@ -38,7 +38,7 @@ services:
 
 Execute the following command to launch the container.
 
-```sh
+```bash
 docker-compose up -d
 ```
 
@@ -166,7 +166,7 @@ public @SpringBootTest class AccountRepositoryTest {
 
 When you'll run these tests, the following exception may be thrown:
 
-```sh
+```bash
 org.bson.codecs.configuration.CodecConfigurationException: Can't find a codec for class java.time.ZonedDateTime.
 ```
 

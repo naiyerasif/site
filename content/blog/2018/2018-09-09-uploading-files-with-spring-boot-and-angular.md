@@ -165,7 +165,7 @@ public @SpringBootApplication class Launcher implements WebMvcConfigurer {
 
 Generate a minimal Angular app with the following command.
 
-```sh
+```bash
 ng new web --minimal --routing=false --style=css --skipTests --inlineStyle --inlineTemplate
 ```
 

@@ -25,7 +25,7 @@ The examples in this post use
 
 Let's start by creating a Node.js application. Create a directory `express-with-typescript` and open a terminal there. Execute the following command on the terminal.
 
-```sh
+```bash
 yarn init -y
 ```
 
@@ -35,7 +35,7 @@ This should generate a `package.json` file. Open the directory in your favorite 
 
 Install `express` as a dependency.
 
-```sh
+```bash
 yarn add express
 ```
 
@@ -69,13 +69,13 @@ In the `package.json`, add a `main` entry pointing to this file and create a scr
 
 Open the terminal and execute `yarn start` to launch the application. You should see the following message on the terminal.
 
-```sh
+```bash
 Server started at http://localhost:8080
 ```
 
 Send a request to the default endpoint using `curl` and you should get a reply.
 
-```sh
+```bash
 $ curl http://localhost:8080/
 {"message":"Hello World!"}
 ```
@@ -86,7 +86,7 @@ Let's add TypeScript support now.
 
 Execute the following command to add TypeScript in your `devDependencies`.
 
-```sh
+```bash
 yarn add -D typescript @types/node @types/express
 ```
 
@@ -94,7 +94,7 @@ yarn add -D typescript @types/node @types/express
 
 There's some configuation needed for the TypeScript compiler `tsc` to inform it where the TypeScript source code is located and where the compiled JavaScript code should be written at. To do so, execute the following command to generate a `tsconfig.json` file.
 
-```sh
+```bash
 npx tsc --init
 ```
 

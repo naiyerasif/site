@@ -42,7 +42,7 @@ services:
 
 Execute the following command to launch the container.
 
-```sh
+```bash
 docker-compose up -d
 ```
 
@@ -210,7 +210,7 @@ public @SpringBootApplication class Launcher {
 
 You'll get the following error.
 
-```sh
+```bash
 org.springframework.core.convert.ConverterNotFoundException: No converter found capable of converting from type [java.sql.Timestamp] to type [java.time.OffsetDateTime]
 ```
 
@@ -270,7 +270,7 @@ Now, you'll be able to run the application successfully.
 
 Use the following REST requests to verify if the application works as expected.
 
-```sh
+```bash
 curl --location --request GET 'http://localhost:8080/actor'
 curl --location --request GET 'http://localhost:8080/actor/WAHLBERG'
 ```

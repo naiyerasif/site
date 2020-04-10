@@ -17,7 +17,7 @@ You can pick the Node.js application created in the post [Request logging with m
 
 Add `winston` and `winston-daily-rotate-file` as dependencies.
 
-```sh
+```bash
 yarn add winston winston-daily-rotate-file
 ```
 

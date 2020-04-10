@@ -222,7 +222,7 @@ server:
 
 Generate a Node.js application by executing the following command.
 
-```sh
+```bash
 yarn init -y
 ```
 
@@ -236,7 +236,7 @@ We'll use
 
 Add all these dependencies through the following command.
 
-```sh
+```bash
 yarn add express morgan multer form-data axios cors body-parser
 ```
 
