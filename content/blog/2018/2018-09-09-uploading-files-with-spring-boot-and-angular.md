@@ -145,7 +145,7 @@ There are three endpoints configured here.
 
 Lastly, enable CORS to accept the requests from the Angular frontend.
 
-```java
+```java{10-12}
 // src/main/java/dev/mflash/guides/upload/Launcher.java
 
 @EnableConfigurationProperties(StorageProperties.class)

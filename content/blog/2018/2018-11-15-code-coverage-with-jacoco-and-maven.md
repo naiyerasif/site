@@ -84,7 +84,7 @@ In a typical scenario, we may require a project to have certain coverage. If the
 
 Consider the following configuration.
 
-```xml
+```xml{15-31}
 <build>
   <plugins>
     <plugin>

@@ -38,7 +38,7 @@ services:
 
 Execute the following command to launch the container.
 
-```bash
+```sh
 docker-compose up -d
 ```
 

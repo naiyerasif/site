@@ -95,7 +95,7 @@ CREATE TABLE BIOS (
 
 We know that `fname`, `contrib` and `recognition` are JSON fields. To ensure this, we can apply constraints using `IS JSON` condition, as follows.
 
-```sql
+```sql{6-8}
 CREATE TABLE BIOS (
   id INTEGER PRIMARY KEY,
   fname CLOB,

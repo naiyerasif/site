@@ -42,7 +42,7 @@ services:
 
 Execute the following command to launch the container.
 
-```bash
+```sh
 docker-compose up -d
 ```
 
@@ -56,7 +56,7 @@ To use Micronaut Data and persistence annotations, add `micronaut-data-spring` a
 
 Your `build.gradle` would look like this.
 
-```groovy
+```groovy{16-22}
 plugins {
   id 'org.springframework.boot' version '2.2.6.RELEASE'
   id 'io.spring.dependency-management' version '1.0.9.RELEASE'

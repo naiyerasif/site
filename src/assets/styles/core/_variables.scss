@@ -92,6 +92,7 @@ $border-active: $link !default;
 
 $scrollbar: var(--background-scrollbar) !default;
 $selected: colors.fade(colors.primary(500), 0.75) !default;
+$code-selected: colors.fade(colors.primary(500), 0.9) !default;
 
 @use '../../../../node_modules/@microflash/remarkability/scss/variables' with (
   $closer-lists: true,

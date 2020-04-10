@@ -14,6 +14,9 @@ $teal: hsl(185, 67%, 36%);
 $gold: hsl(54, 30%, 55%);
 $blue: hsl(226, 41%, 45%);
 
+$languages: js, ts, html, md, vue, css, sass, scss, less, stylus, go, java, c,
+  sh, yaml, py, docker, dockerfile, properties, groovy, typescript, json, xml, git, sql, bash, ini;
+
 // Prism theme
 
 .gridsome-highlight {
@@ -23,6 +26,36 @@ $blue: hsl(226, 41%, 45%);
   pre[class*='language-'] {
     tab-size: 2;
     hyphens: none;
+  }
+
+  pre[class*='language-']::before {
+    display: block;
+    z-index: 5;
+    text-align: right;
+    margin-bottom: -(variables.$gap-md);
+    padding-top: 0.5em;
+    padding-right: 0.5em;
+    color: variables.$text-muted;
+    font-size: 0.75em;
+    font-weight: bold;
+    opacity: 0.75;
+  }
+
+  @each $language in $languages {
+    pre[class~='language-#{$language}']::before {
+      content: '#{$language}';
+    }
+  }
+
+  .gridsome-highlight-code-line {
+    display: block;
+    margin-left: -1.2em;
+    padding-left: 1.2em;
+    background: linear-gradient(
+      to right,
+      variables.$code-selected 66%,
+      transparent
+    );
   }
 
   .token.comment,
