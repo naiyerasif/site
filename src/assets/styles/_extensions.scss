@@ -1,4 +1,5 @@
 @use './core/variables';
+@use './helpers/queries';
 
 // Scrollbar and selection
 
@@ -46,4 +47,15 @@ a {
 table {
   display: block;
   overflow-x: auto;
+}
+
+// Fullwidth blockquotes on phone
+
+blockquote {
+  @include queries.phone {
+    margin-right: -(variables.$gap-xl);
+    margin-left: -(variables.$gap-xl);
+    padding-right: variables.$gap-xl;
+    padding-left: variables.$gap-xl;
+  }
 }
