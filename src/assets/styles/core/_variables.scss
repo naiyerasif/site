@@ -41,6 +41,8 @@ $expanse-md: calc(2vw + 1rem) !default;
 $expanse-lg: calc(4vw + 1rem) !default;
 $expanse-xl: calc(4vw + 2rem) !default;
 
+$expanse-lg-neg: calc((4vw + 1rem) * -1) !default;
+
 $canvas: 50vw !default;
 
 $cell-sm: 15rem !default;

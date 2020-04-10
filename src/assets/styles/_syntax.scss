@@ -25,16 +25,16 @@ $languages: js, ts, html, md, vue, css, sass, scss, less, stylus, go, java, c,
   margin-bottom: variables.$gap-lg;
   
   @include queries.phone {
-    margin-right: -(variables.$gap-xl);
-    margin-left: -(variables.$gap-xl);
+    margin-right: variables.$expanse-lg-neg;
+    margin-left: variables.$expanse-lg-neg;
 
     pre {
       border-radius: 0;
     }
 
     code {
-      padding-right: variables.$gap-xl;
-      padding-left: variables.$gap-xl;
+      padding-right: variables.$expanse-lg;
+      padding-left: variables.$expanse-lg;
     }
   }
 
@@ -74,8 +74,8 @@ $languages: js, ts, html, md, vue, css, sass, scss, less, stylus, go, java, c,
     );
 
     @include queries.phone {
-      margin-left: -(variables.$gap-xl);
-      padding-left: variables.$gap-xl;
+      margin-left: variables.$expanse-lg-neg;
+      padding-left: variables.$expanse-lg;
     }
   }
 

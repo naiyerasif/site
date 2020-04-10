@@ -53,9 +53,9 @@ table {
 
 blockquote {
   @include queries.phone {
-    margin-right: -(variables.$gap-xl);
-    margin-left: -(variables.$gap-xl);
-    padding-right: variables.$gap-xl;
-    padding-left: variables.$gap-xl;
+    margin-right: variables.$expanse-lg-neg;
+    margin-left: variables.$expanse-lg-neg;
+    padding-right: variables.$expanse-lg;
+    padding-left: variables.$expanse-lg;
   }
 }
