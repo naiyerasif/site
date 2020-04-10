@@ -92,7 +92,7 @@ $border-active: $link !default;
 
 $scrollbar: var(--background-scrollbar) !default;
 $selected: colors.fade(colors.primary(500), 0.75) !default;
-$code-selected: colors.fade(colors.primary(500), 0.9) !default;
+$code-selected: colors.fade(colors.primary(500), 0.91) !default;
 
 @use '../../../../node_modules/@microflash/remarkability/scss/variables' with (
   $closer-lists: true,
@@ -112,7 +112,7 @@ $code-selected: colors.fade(colors.primary(500), 0.9) !default;
   $margin: $gap-lg,
   $radius: $radius,
   $background-body: $background-default,
-  $background-code: $background-muted,
+  $background-code: $background-scrollbar,
   $background-ins: $background-muted,
   $background-mark: $background-muted,
   $background-table: inherit,
