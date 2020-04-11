@@ -104,7 +104,7 @@ spring:
 
 ## Define the domain
 
-Create ane entity for `actor`.
+Create an entity for `actor`.
 
 ```java
 // src/main/java/dev/mflash/guides/pagila/domain/Actor.java
@@ -233,7 +233,7 @@ public class TimestampToOffsetDateTimeConverter implements Converter<Timestamp, 
 
 > **Note** that Postgres writes the records of type `timestampz` with UTC timezone. You'll have to adjust the timezone offset, if required by your application. For this example, we'll leave it to UTC.
 
-Similarly, write a `OffsetDateTimeToTimestampConverter` that converts a `OffsetDateTime` type to `Timestamp` type.
+Similarly, write an `OffsetDateTimeToTimestampConverter` that converts a `OffsetDateTime` type to `Timestamp` type.
 
 ```java
 // src/main/java/dev/mflash/guides/pagila/configuration/OffsetDateTimeToTimestampConverter.java
