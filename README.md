@@ -19,7 +19,7 @@ It uses
 - [Vue.js](https://vuejs.org/) for components and layouts
 - [Inter](https://rsms.me/inter/) as the main font
 - [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) as the `monospace` font
-- a customized version of [Nord](https://github.com/arcticicestudio/nord) to decorate the codeblocks
+- a [custom Prism theme](https://github.com/Microflash/microflash.github.io/blob/release/src/assets/styles/_syntax.scss) to decorate the codeblocks
 - [CircleCI](https://circleci.com/) for continuous integration
 - [gh-pages](https://github.com/tschaub/gh-pages) for deployment
 - graphics and illustrations created with [Affinity Designer](https://affinity.serif.com/en-gb/designer/)
