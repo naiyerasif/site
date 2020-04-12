@@ -1,7 +1,9 @@
 # Tools
 
 - [Generate favicon](#generate-favicon)
+- [Generate SVG sprites](#generate-svg-sprites)
 - [Create new post](#create-new-post)
+- [Clean deployment history](#clean-deployment-history)
 
 ### Generate favicon
 
@@ -9,6 +11,14 @@ Requires [imagemagick](http://www.imagemagick.org/).
 
 ```sh
 source tools/generate_favicons.sh src/favicon.png
+```
+
+### Generate SVG sprites
+
+Assumes SVG icons are located in `archive/labels` and `archive/images` directories.
+
+```sh
+source tools/generate_sprites.sh
 ```
 
 ### Create new post
