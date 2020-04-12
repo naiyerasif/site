@@ -6,7 +6,7 @@
           <span v-html="post.node.date"/>
           <span class="separator"></span>{{ post.node.timeToRead }} min read
           <span class="separator"></span>
-          <img class="label" v-for="label in post.node.labels" :key="label" :src="resolveLabelIcon(label)" :alt="label"/>
+          <svg v-svg :symbol="label" v-for="label in post.node.labels" :key="label"></svg>
         </div>
         <g-link :to="post.node.path">
           <h2 class="post-body">{{ post.node.title }}</h2>
@@ -19,11 +19,6 @@
 
 <script>
 export default {
-  props: ['posts'],
-  methods: {
-    resolveLabelIcon(label) {
-      return `/assets/images/labels/${label}.svg`
-    }
-  }
+  props: ['posts']
 }
 </script>

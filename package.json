@@ -25,7 +25,8 @@
     "axios": "^0.19.2",
     "gridsome": "^0.7.13",
     "gridsome-plugin-remark-prismjs-all": "^0.3.5",
-    "vue-fuse": "^2.2.1"
+    "vue-fuse": "^2.2.1",
+    "vue-svg-sprite": "^1.4.1"
   },
   "devDependencies": {
     "autoprefixer": "^9.7.5",

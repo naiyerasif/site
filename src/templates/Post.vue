@@ -16,7 +16,7 @@
         </div>
         <h1 class="title">{{ $page.post.title }}</h1>
         <div class="subtitle">
-          <img class="label" v-for="label in $page.post.labels" :key="label" :src="resolveLabelIcon(label)" :alt="label"/>
+          <svg v-svg :symbol="label" v-for="label in $page.post.labels" :key="label"></svg>
         </div>
       </section>
     </div>
