@@ -4,17 +4,19 @@
 
 // Token colors
 
-$gray: hsl(180, 15%, 43%, 70%);
-$granite: hsl(170, 15%, 42%);
-$blush: hsl(346, 75%, 61%);
-$orange: hsl(10, 60%, 64%);
-$melon: hsl(19, 84%, 59%);
-$subtle: hsl(5, 60%, 65%);
-$indigo: hsl(252, 40%, 60%);
-$green: variables.$link;
-$teal: hsl(185, 67%, 36%);
-$gold: hsl(54, 30%, 55%);
-$blue: hsl(226, 41%, 45%);
+$cadet: hsl(180, 19%, 38%, 70%);
+$iris: hsl(231, 52%, 61%);
+$brass: hsl(40, 40%, 46%);
+$vermillion: hsl(0, 57%, 54%);
+$jasper: hsl(6, 63%, 53%);
+$artichoke: hsl(68, 19%, 51%);
+$salmon: hsl(11, 77%, 63%);
+$teal: hsl(185, 31%, 40%);
+$rackley: hsl(205, 36%, 51%);
+$rebecca: hsl(266, 40%, 54%);
+$khaki: hsl(44, 23%, 67%);
+$emerald: hsl(167, 33%, 39%);
+$coral: hsl(4, 69%, 67%);
 
 $languages: js, ts, html, md, vue, css, sass, scss, less, stylus, go, java, c,
   sh, yaml, py, docker, dockerfile, properties, groovy, typescript, json, xml, git, sql, bash, ini;
@@ -82,30 +84,30 @@ $languages: js, ts, html, md, vue, css, sass, scss, less, stylus, go, java, c,
   .token.comment,
   .token.prolog,
   .token.cdata {
-    color: $gray;
+    color: $cadet;
   }
 
   .token.punctuation {
-    color: $granite;
+    color: $emerald;
   }
 
   .namespace {
-    color: $gold;
+    color: $khaki;
   }
 
   .token.deleted {
-    color: $blush;
+    color: $jasper;
   }
 
   .token.symbol,
   .token.property {
-    color: $indigo;
+    color: $rebecca;
   }
 
   .token.tag,
   .token.operator,
   .token.keyword {
-    color: $subtle;
+    color: $coral;
   }
 
   .token.boolean {
@@ -113,24 +115,24 @@ $languages: js, ts, html, md, vue, css, sass, scss, less, stylus, go, java, c,
   }
 
   .token.number {
-    color: $melon;
+    color: $artichoke;
   }
 
   .token.constant,
   .token.function,
   .token.builtin,
   .token.char {
-    color: $green;
+    color: $iris;
   }
 
   .token.selector,
   .token.doctype {
-    color: $blue;
+    color: $rackley;
   }
 
   .token.attr-name,
   .token.inserted {
-    color: $orange;
+    color: $salmon;
   }
 
   .token.string,
@@ -138,19 +140,19 @@ $languages: js, ts, html, md, vue, css, sass, scss, less, stylus, go, java, c,
   .token.entity,
   .language-css .token.string,
   .style .token.string {
-    color: $melon;
+    color: $brass;
   }
 
   .token.class-name,
   .token.atrule,
   .token.attr-value {
-    color: $blush;
+    color: $vermillion;
   }
 
   .token.regex,
   .token.important,
   .token.variable {
-    color: $gold;
+    color: $khaki;
   }
 
   .token.important,
