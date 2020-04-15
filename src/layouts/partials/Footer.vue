@@ -34,7 +34,7 @@
       </section>
     </section>
     <section class="copyright" style="  ">
-      <Icon alt="logo" width="40" style="margin-top: 1rem" />
+      <Favicon alt="logo" width="40" style="margin-top: 1rem" />
       <div>Copyright &copy; {{ year }}, Made with code, <span title="tea">☕</span> &amp; <span class="is-warning" title="love">❤️</span> by <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash">Naiyer Asif</a></div>
     </section>
   </footer>
@@ -49,7 +49,7 @@ query {
 </static-query>
 
 <script>
-import Icon from '@/images/icon.svg'
+import Favicon from '@/images/favicon.svg'
 import IconRss from '@/images/icon-rss.svg'
 import IconMap from '@/images/icon-map.svg'
 import IconCode from '@/images/icon-code.svg'
@@ -62,7 +62,7 @@ import IconLinkedin from '@/images/icon-linkedin.svg'
 
 export default {
   components: {
-    Icon,
+    Favicon,
     IconRss,
     IconMap,
     IconCode,
