@@ -25,7 +25,7 @@
     <div class="container sidekick">
       <div class="article-actions">
         <a href="#app">
-          <IconUp class="icon" /> Back to top
+          <Sprite symbol="icon-up" class="icon" /> Back to top
         </a>
       </div>
     </div>
@@ -45,7 +45,7 @@ query Profile ($id: ID!) {
 </page-query>
 
 <script>
-import IconUp from '@/images/icon-up.svg'
+import Sprite from '~/components/Sprite'
 
 export default {
   metaInfo() {
@@ -54,7 +54,7 @@ export default {
     }
   },
   components: {
-    IconUp
+    Sprite
   },
   computed: {
     firstName() {

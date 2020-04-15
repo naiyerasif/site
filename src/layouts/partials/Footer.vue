@@ -4,31 +4,31 @@
       <section class="grid-sm-cell">
         <div class="is-lead">Resources</div>
         <nav>
-          <div><IconRss class="icon-sm is-separated" /> <a href="/feed.xml">RSS feed</a></div>
-          <div><IconMap class="icon-sm is-separated" /> <a href="/sitemap.xml">Sitemap</a></div>
-          <div><IconCode class="icon-sm is-separated" /> <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/microflash.github.io">Source code</a></div>
+          <div><Sprite symbol="icon-rss" class="icon-sm is-separated" /> <a href="/feed.xml">RSS feed</a></div>
+          <div><Sprite symbol="icon-map" class="icon-sm is-separated" /> <a href="/sitemap.xml">Sitemap</a></div>
+          <div><Sprite symbol="icon-code" class="icon-sm is-separated" /> <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/microflash.github.io">Source code</a></div>
         </nav>
       </section>
       <section class="grid-sm-cell">
         <div class="is-lead">Support</div>
-        <div><IconFeedback class="icon-sm is-separated" /> <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/microflash.github.io/issues/new">Report an issue</a></div>
-        <div><IconLicense class="icon-sm is-separated" /> <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/microflash.github.io/blob/release/LICENSE.md">Site license (MIT)</a></div>
-        <div><IconLicense class="icon-sm is-separated" /> <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/">Content license (CC by SA)</a></div>
+        <div><Sprite symbol="icon-feedback" class="icon-sm is-separated" /> <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/microflash.github.io/issues/new">Report an issue</a></div>
+        <div><Sprite symbol="icon-license" class="icon-sm is-separated" /> <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/microflash.github.io/blob/release/LICENSE.md">Site license (MIT)</a></div>
+        <div><Sprite symbol="icon-license" class="icon-sm is-separated" /> <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/">Content license (CC by SA)</a></div>
       </section>
       <section class="grid-sm-cell">
         <div class="is-lead">Connect</div>
         <section>
           <a class="is-separated" href="https://github.com/Microflash" title="GitHub" target="_blank" rel="noopener noreferrer">
-            <IconGithub class="icon" />
+            <Sprite symbol="icon-github" class="icon" />
           </a>
           <a class="is-separated" href="https://gitlab.com/Microflash" title="GitLab" target="_blank" rel="noopener noreferrer">
-            <IconGitlab class="icon" />
+            <Sprite symbol="icon-gitlab" class="icon" />
           </a>
           <a class="is-separated" href="https://twitter.com/Microflash" title="Twitter" target="_blank" rel="noopener noreferrer">
-            <IconTwitter class="icon" />
+            <Sprite symbol="icon-twitter" class="icon" />
           </a>
           <a class="is-separated" href="https://in.linkedin.com/in/naiyerasif" title="LinkedIn" target="_blank" rel="noopener noreferrer">
-            <IconLinkedin class="icon" />
+            <Sprite symbol="icon-linkedin" class="icon" />
           </a>
         </section>
       </section>
@@ -49,29 +49,13 @@ query {
 </static-query>
 
 <script>
+import Sprite from '~/components/Sprite'
 import Favicon from '@/images/favicon.svg'
-import IconRss from '@/images/icon-rss.svg'
-import IconMap from '@/images/icon-map.svg'
-import IconCode from '@/images/icon-code.svg'
-import IconFeedback from '@/images/icon-feedback.svg'
-import IconLicense from '@/images/icon-license.svg'
-import IconGithub from '@/images/icon-github.svg'
-import IconGitlab from '@/images/icon-gitlab.svg'
-import IconTwitter from '@/images/icon-twitter.svg'
-import IconLinkedin from '@/images/icon-linkedin.svg'
 
 export default {
   components: {
-    Favicon,
-    IconRss,
-    IconMap,
-    IconCode,
-    IconFeedback,
-    IconLicense,
-    IconGithub,
-    IconGitlab,
-    IconTwitter,
-    IconLinkedin
+    Sprite,
+    Favicon
   },
   computed: {
     year() {

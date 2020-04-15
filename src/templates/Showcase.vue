@@ -19,13 +19,13 @@
     <div class="container sidekick">
       <div class="article-actions">
         <a v-if="$page.showcase.enableEdit" target="_blank" rel="noopener noreferrer" :href="editUrl">
-          <IconEdit class="icon" /> Edit this page
+          <Sprite symbol="icon-edit" class="icon" /> Edit this page
         </a>
         <a v-if="$page.showcase.toc" href="#table-of-contents">
-          <IconList class="icon" /> Table of Contents
+          <Sprite symbol="icon-list" class="icon" /> Table of Contents
         </a>
         <a href="#app">
-          <IconUp class="icon" /> Back to top
+          <Sprite symbol="icon-up" class="icon" /> Back to top
         </a>
       </div>
     </div>
@@ -62,9 +62,7 @@ query {
 
 <script>
 import Contents from '~/components/Contents'
-import IconEdit from '@/images/icon-edit.svg'
-import IconUp from '@/images/icon-up.svg'
-import IconList from '@/images/icon-list.svg'
+import Sprite from '~/components/Sprite'
 import * as appConfig from '../../app.config'
 
 export default {
@@ -75,9 +73,7 @@ export default {
   },
   components: {
     Contents,
-    IconEdit,
-    IconUp,
-    IconList
+    Sprite
   },
   computed: {
     editUrl() {

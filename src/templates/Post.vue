@@ -16,7 +16,7 @@
         </div>
         <h1 class="title">{{ $page.post.title }}</h1>
         <div class="subtitle">
-          <svg v-svg :symbol="label" v-for="label in $page.post.labels" :key="label"></svg>
+          <Sprite :symbol="label" class="label" v-for="label in $page.post.labels" :key="label" />
         </div>
       </section>
     </div>
@@ -30,13 +30,13 @@
     <div class="container sidekick">
       <div class="article-actions">
         <a target="_blank" rel="noopener noreferrer" :href="editUrl">
-          <IconEdit class="icon" /> Edit this page
+          <Sprite symbol="icon-edit" class="icon" /> Edit this page
         </a>
         <a href="#table-of-contents">
-          <IconList class="icon" /> Table of Contents
+          <Sprite symbol="icon-list" class="icon" /> Table of Contents
         </a>
         <a href="#app">
-          <IconUp class="icon" /> Back to top
+          <Sprite symbol="icon-up" class="icon" /> Back to top
         </a>
       </div>
     </div>
@@ -82,9 +82,7 @@ query {
 
 <script>
 import Contents from '~/components/Contents'
-import IconEdit from '@/images/icon-edit.svg'
-import IconList from '@/images/icon-list.svg'
-import IconUp from '@/images/icon-up.svg'
+import Sprite from '~/components/Sprite'
 import * as appConfig from '../../app.config'
 
 export default {
@@ -95,9 +93,7 @@ export default {
   },
   components: {
     Contents,
-    IconEdit,
-    IconList,
-    IconUp
+    Sprite
   },
   computed: {
     displayDate() {
@@ -114,11 +110,6 @@ export default {
         warning = `This post is marked as ${this.$page.post.outdated}. Some information may be inaccurate.`
       }
       return warning
-    }
-  },
-  methods: {
-    resolveLabelIcon(label) {
-      return `/assets/images/labels/${label}.svg`
     }
   }
 }

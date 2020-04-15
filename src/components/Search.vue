@@ -5,8 +5,8 @@
       <input type="text" placeholder="Search (Press  &quot;/&quot; to focus)" class="search" v-model="query" @input="softReset" @keyup="performSearch" @keyup.esc="searchResultsVisible = false" @keydown.up.prevent="highlightPrev" @keydown.down.prevent="highlightNext" @keyup.enter="performSearch" @blur="searchResultsVisible = false" @focus="searchResultsVisible = true" ref="search" aria-label="Search">
 
       <transition name="slide-up" mode="out-in">
-        <IconSearch class="icon icon-search" v-if="query.length < 1" />
-        <IconClear v-if="query.length > 0" @click="reset" class="icon icon-clear" />
+        <Sprite symbol="icon-search" class="icon icon-search" v-if="query.length < 1" />
+        <a style="height: 1.5rem" @click="reset" v-if="query.length > 0"><Sprite symbol="icon-clear" class="icon icon-clear" /></a>
       </transition>
     </div>
     <transition name="fade">
@@ -26,18 +26,16 @@
 
 <script>
 import axios from 'axios'
+import Sprite from './Sprite'
 import SearchFocal from './SearchFocal'
-import IconSearch from '@/images/icon-search.svg'
-import IconClear from '@/images/icon-clear.svg'
 import * as appConfig from '../../app.config'
 
 const searchConfig = appConfig.searchConfig
 
 export default {
   components: {
-    SearchFocal,
-    IconSearch,
-    IconClear
+    Sprite,
+    SearchFocal
   },
   created() {
     axios(`/${searchConfig.file.name}`).then(response => {

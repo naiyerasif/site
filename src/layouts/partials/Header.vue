@@ -1,12 +1,12 @@
 <template>
   <header class="container header">
     <g-link class="brand" to="/">
-      <g-image src="@/images/logo.svg" alt="Microflash logo" />
+      <Logo />
     </g-link>
     <a @click="toggle" class="hamburger" title="Menu">
       <transition name="slide-up" mode="out-in">
-        <IconMenu key="open" class="icon" v-if="!isOpen" />
-        <IconClose key="close" class="icon" v-else />
+        <Sprite symbol="icon-menu" key="open" class="icon" v-if="!isOpen" />
+        <Sprite symbol="icon-close" key="close" class="icon" v-else />
       </transition>
     </a>
     <nav class="menu" :class="isOpen ? 'is-visible': 'is-hidden-on-phone'">
@@ -19,15 +19,15 @@
 </template>
 
 <script>
-import IconMenu from '@/images/icon-menu.svg'
-import IconClose from '@/images/icon-close.svg'
+import Sprite from '~/components/Sprite'
+import Logo from '@/images/logo.svg'
 import Search from '~/components/Search'
 import ThemeSwitcher from '~/components/ThemeSwitcher'
 
 export default {
   components: {
-    IconMenu,
-    IconClose,
+    Logo,
+    Sprite,
     Search,
     ThemeSwitcher
   },

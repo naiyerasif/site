@@ -6,7 +6,7 @@
           <span class="is-warning">404</span> {{ getMsg() }}
         </h1>
         <div class="subtitle">
-          <IconChevronLeft class="icon" /> Go back to <g-link to="/">Home</g-link>.
+          <Sprite symbol="icon-chevron-left" class="icon" /> Go back to <g-link to="/">Home</g-link>.
         </div>
       </section>
     </div>
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import IconChevronLeft from '@/images/icon-chevron-left.svg'
+import Sprite from '~/components/Sprite'
 import NotFound from '@/images/404.svg'
 
 const msgs = [
@@ -36,7 +36,7 @@ export default {
     title: 'Page not found'
   },
   components: {
-    IconChevronLeft,
+    Sprite,
     NotFound
   },
   methods: {

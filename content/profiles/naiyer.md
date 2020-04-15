@@ -6,6 +6,8 @@ location: 'Bengaluru, India'
 avatar: './avatars/naiyer.png'
 ---
 
+import Sprite from '~/components/Sprite'
+
 I have more than 4 years of experience in Banking &amp; Financial Services, Legal &amp; Compliance and Aviation domains.
 
 #### Technologies I am adept at &mdash;
@@ -15,26 +17,26 @@ I have more than 4 years of experience in Banking &amp; Financial Services, Lega
   <div class="grid-md-cell">
     <div class="card">
       <div class="card-header">Platform</div>
-      <h5 class="card-body"><svg v-svg symbol="java"></svg> Java</h5>
+      <h5 class="card-body"><Sprite class="label" symbol="java" /> Java</h5>
       <p class="card-footer">The most popular programming platform for building enterprise applications</p>
     </div>
   </div>
   <div class="grid-md-cell">
     <div class="card">
       <div class="card-header">Framework</div>
-      <h5 class="card-body"><svg v-svg symbol="spring"></svg> Spring</h5>
+      <h5 class="card-body"><Sprite class="label" symbol="spring" /> Spring</h5>
       <p class="card-footer">Lightweight open-source Java framework for building large-scale applications</p>
     </div>
   </div><div class="grid-md-cell">
     <div class="card">
       <div class="card-header">Framework</div>
-      <h5 class="card-body"><svg v-svg symbol="angular"></svg> Angular</h5>
+      <h5 class="card-body"><Sprite class="label" symbol="angular" /> Angular</h5>
       <p class="card-footer">An open-source TypeScript-based framework to create single-page applications</p>
     </div>
   </div><div class="grid-md-cell">
     <div class="card">
       <div class="card-header">Database</div>
-      <h5 class="card-body"><svg v-svg symbol="oracle"></svg> Oracle</h5>
+      <h5 class="card-body"><Sprite class="label" symbol="oracle" /> Oracle</h5>
       <p class="card-footer">A proprietary multi-model database management system</p>
     </div>
   </div>
@@ -48,33 +50,33 @@ I have more than 4 years of experience in Banking &amp; Financial Services, Lega
   <div class="grid-md-cell">
     <div class="card">
       <div class="card-header">Platform</div>
-      <h5 class="card-body"><svg v-svg symbol="nodejs"></svg> Node.js</h5>
+      <h5 class="card-body"><Sprite class="label" symbol="nodejs" /> Node.js</h5>
       <p class="card-footer">An open-source, cross-platform runtime to run JavaScript code on server</p>
     </div>
   </div>
   <div class="grid-md-cell">
     <div class="card">
       <div class="card-header">Framework</div>
-      <h5 class="card-body"><svg v-svg symbol="vuejs"></svg> Vue.js</h5>
+      <h5 class="card-body"><Sprite class="label" symbol="vuejs" /> Vue.js</h5>
       <p class="card-footer">A progressive JavaScript framework for building user interfaces</p>
     </div>
   </div>
   <div class="grid-md-cell">
     <div class="card">
       <div class="card-header">Platform</div>
-      <h5 class="card-body"><svg v-svg symbol="docker"></svg> Docker</h5>
+      <h5 class="card-body"><Sprite class="label" symbol="docker" /> Docker</h5>
       <p class="card-footer">Enterprise container platform to build, share and deploy applications anywhere</p>
     </div>
   </div><div class="grid-md-cell">
     <div class="card">
       <div class="card-header">Database</div>
-      <h5 class="card-body"><svg v-svg symbol="mongodb"></svg> MongoDB</h5>
+      <h5 class="card-body"><Sprite class="label" symbol="mongodb" /> MongoDB</h5>
       <p class="card-footer">A general purpose, cross-platform, document-based, distributed NoSQL database</p>
     </div>
   </div><div class="grid-md-cell">
     <div class="card">
       <div class="card-header">Automation</div>
-      <h5 class="card-body"><svg v-svg symbol="jenkins"></svg> Jenkins</h5>
+      <h5 class="card-body"><Sprite class="label" symbol="jenkins" /> Jenkins</h5>
       <p class="card-footer">An open-source automation server to build, deploy and automate projects</p>
     </div>
   </div>

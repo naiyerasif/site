@@ -1,22 +1,20 @@
 <template>
   <a role="button" @click.prevent="switchTheme()" :aria-label="'Switch to ' + nextTheme + ' mode'" :title="'Switch to ' + nextTheme + ' mode'" class="switch-theme">
     <transition name="slide-up" mode="out-in">
-      <IconDark key="dark" v-if="theme === 'dark'" class="icon" />
-      <IconLight key="light" v-else class="icon" />
+      <Sprite symbol="icon-dark" key="dark" v-if="theme === 'dark'" class="icon" />
+      <Sprite symbol="icon-light" key="light" v-else class="icon" />
     </transition>
   </a>
 </template>
 
 <script>
-import IconDark from '@/images/icon-dark.svg'
-import IconLight from '@/images/icon-light.svg'
+import Sprite from './Sprite'
 
 const themes = ['light', 'dark']
 
 export default {
   components: {
-    IconDark,
-    IconLight
+    Sprite
   },
   data() {
     return {

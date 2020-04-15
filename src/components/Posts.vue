@@ -6,7 +6,7 @@
           <span v-html="post.node.date"/>
           <span class="separator"></span>{{ post.node.timeToRead }} min read
           <span class="separator"></span>
-          <svg v-svg :symbol="label" v-for="label in post.node.labels" :key="label"></svg>
+          <Sprite :symbol="label" class="label" v-for="label in post.node.labels" :key="label" />
         </div>
         <g-link :to="post.node.path">
           <h2 class="post-body">{{ post.node.title }}</h2>
@@ -18,7 +18,12 @@
 </template>
 
 <script>
+import Sprite from './Sprite'
+
 export default {
-  props: ['posts']
+  props: ['posts'],
+  components: {
+    Sprite
+  }
 }
 </script>

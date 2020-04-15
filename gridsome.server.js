@@ -25,6 +25,7 @@ module.exports = function (api) {
 
   api.loadSource(({ addMetadata,addSchemaResolvers }) => {
     addMetadata('editContext', appConfig.prefs.editContext)
+    addMetadata('spritePath', appConfig.prefs.spritePath)
     
     addSchemaResolvers({
       Post: {

@@ -1,7 +1,6 @@
 import '~/assets/styles/main.scss'
 
 import VueFuse from 'vue-fuse'
-import SvgSprite from 'vue-svg-sprite'
 import { AllHtmlEntities } from 'html-entities'
 import DefaultLayout from '~/layouts/Default.vue'
 import * as appConfig from '../app.config'
@@ -19,11 +18,6 @@ export default function (Vue, { router, head, isClient }) {
   })
 
   Vue.use(VueFuse)
-
-  Vue.use(SvgSprite, {
-    url: '/assets/images/sprites.svg',
-    class: 'label'
-  })
 
   head.meta.push({
     name: 'author',

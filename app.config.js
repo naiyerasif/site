@@ -8,6 +8,7 @@ module.exports = {
   prefs: {
     draftDir: 'archive/backlog',
     editContext: 'https://github.com/Microflash/microflash.github.io/edit/release',
+    spritePath: '/assets/images/icons.svg',
     excerptSize: 251,
     maxTocDepth: 3,
     outdationPeriod: 365 // in days
