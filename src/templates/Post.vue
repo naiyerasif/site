@@ -1,26 +1,28 @@
 <template>
   <Layout>
-    <div class="container hero">
-      <section class="canvas">
-        <div class="metadata">
-          <div class="metadata-item">
-            <div class="metadata-author" v-for="author in $page.post.authors" :key="author.id">
-              <g-image :alt="author.name" :src="author.avatar" />
-              <g-link :to="author.path">{{ author.name }}</g-link>
-            </div>
-          </div>
-          <div class="separator"></div>
-          <div class="metadata-item" v-html="displayDate"></div>
-          <div class="separator"></div>
-          <div class="metadata-item">{{ $page.post.timeToRead }} min read</div>
-        </div>
-        <h1 class="title">{{ $page.post.title }}</h1>
-        <div class="subtitle">
+    <div class="hero-media">
+      <div class="hero-image">
+        <div class="metadata-labels">
           <Sprite :symbol="label" class="label" v-for="label in $page.post.labels" :key="label" />
         </div>
-      </section>
+      </div>
     </div>
-    <div class="container article">
+    <div class="hero-content">
+      <div class="metadata">
+        <div class="metadata-item">
+          <div class="metadata-author" v-for="author in $page.post.authors" :key="author.id">
+            <g-image :alt="author.name" class="is-hidden-on-phone" :src="author.avatar" />
+            <g-link :to="author.path">{{ author.name }}</g-link>
+          </div>
+        </div>
+        <div class="separator"></div>
+        <div class="metadata-item" v-html="displayDate"></div>
+        <div class="separator"></div>
+        <div class="metadata-item">{{ $page.post.timeToRead }} min read</div>
+      </div>
+      <h1 class="title">{{ $page.post.title }}</h1>
+    </div>
+    <!-- <div class="container article">
       <div class="content">
         <blockquote class="is-warning" v-if="outdationMessage">{{ outdationMessage }}</blockquote>
         <Contents :headers="$page.post.headings" />
@@ -39,7 +41,7 @@
           <Sprite symbol="icon-up" class="icon" /> Back to top
         </a>
       </div>
-    </div>
+    </div> -->
   </Layout>
 </template>
 

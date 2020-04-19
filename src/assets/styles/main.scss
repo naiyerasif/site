@@ -38,7 +38,7 @@
 
   .logo,
   .menu,
-  .hero-image,
+  .hero-media,
   .sidebar-start {
     flex-basis: 25%;
   }
@@ -58,7 +58,7 @@
     grid-template-columns: 1fr 2fr 1fr;
   }
 
-  .hero-image,
+  .hero-media,
   .sidebar-start {
     grid-column: 1 / 2;
   }
@@ -88,7 +88,7 @@
   }
   
   .search,
-  .hero-image,
+  .hero-media,
   .hero-content,
   .content,
   .sidebar-start,
@@ -306,6 +306,82 @@
     width: 100%;
     text-align: end;
   }
+}
+
+// Hero
+
+.hero-media,
+.hero-content {
+  @include layouts.vspace(variables.$expanse-md);
+}
+
+$hero-media-size: calc(5rem + 10vw);
+
+.hero-media {
+  @include layouts.flex($justify: flex-end);
+  @include layouts.hspace(variables.$expanse-md);
+
+  @include queries.within-tab-landscape {
+    justify-content: flex-start;
+  }
+}
+
+.hero-image {
+  @include layouts.flex;
+  background-image: url('/assets/images/pattern.svg');
+  background-repeat: repeat-x;
+  height: $hero-media-size;
+  width: $hero-media-size;
+}
+
+.hero-content {
+  @include layouts.flex($align: flex-start);
+  flex-direction: column;
+
+  @include queries.within-tab-landscape {
+    @include layouts.hspace(variables.$expanse-md);
+    padding-top: 0;
+  }
+}
+
+// Metadata
+
+.metadata {
+  @include layouts.flex($justify: flex-start);
+  font-size: variables.$font-size-sm;
+
+  & > * {
+    margin-bottom: variables.$gap-xs;
+  }
+}
+
+.metadata-author {
+  @include layouts.flex($justify: flex-start);
+
+  img { 
+    height: variables.$gfx-rg;
+    width: variables.$gfx-rg;
+    border-radius: 50%;
+    margin-right: variables.$gap-xs;
+  }
+}
+
+$label-size: calc(1.75em + 3vw);
+
+.metadata-labels {
+  @include layouts.flex;
+
+  .label {
+    max-height: $label-size;
+    max-width: $label-size;
+    padding: 0.3em;
+  }
+}
+
+.metadata-media {
+  height: 70%;
+  width: 70%;
+  border-radius: 50%;
 }
 
 // Footer

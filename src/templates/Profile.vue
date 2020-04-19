@@ -1,23 +1,17 @@
 <template>
   <Layout>
-    <div class="container hero">
-      <section class="profile canvas">
-        <div class="metadata">
-          <div class="metadata-item">
-            <div class="metadata-author-avatar">
-              <g-image :alt="firstName" :src="$page.profile.avatar" />
-            </div>
-          </div>
-        </div>
-        <div class="intro">
-          <h1 class="title">
-            Hello, I'm <span class="is-primary">{{ firstName }}</span> 
-          </h1>
-          <div class="subtitle">
-            a {{ $page.profile.role | lowerCase }} from {{ $page.profile.location }}
-          </div>
-        </div>
-      </section>
+    <div class="hero-media">
+      <div class="hero-image">
+        <g-image :alt="firstName" class="metadata-media" :src="$page.profile.avatar" />
+      </div>
+    </div>
+    <div class="hero-content">
+      <h1 class="title">
+        Hello, I'm <span class="is-primary">{{ firstName }}</span> 
+      </h1>
+      <div class="subtitle">
+        a {{ $page.profile.role | lowerCase }} from {{ $page.profile.location }}
+      </div>
     </div>
     <div class="container article">
       <VueRemarkContent class="main" />

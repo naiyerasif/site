@@ -1,14 +1,11 @@
 <template>
   <Layout>
-    <div class="container hero">
-      <section class="canvas">
-        <h1 class="title">
-          {{ $page.showcase.title }}
-        </h1>
-        <div class="subtitle">
-          {{ $page.showcase.description }}
-        </div>
-      </section>
+    <div class="hero-media">
+      <div class="hero-image">//TODO</div>
+    </div>
+    <div class="hero-content">
+      <h1 class="title">{{ $page.showcase.title }}</h1>
+      <div class="subtitle">{{ $page.showcase.description }}</div>
     </div>
     <div class="container article">
       <div class="content">

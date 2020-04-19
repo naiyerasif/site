@@ -1,14 +1,15 @@
 <template>
   <Layout>
-    <div class="container hero">
-      <section class="canvas">
-        <h1 class="title">
-          <span class="is-separated is-hidden-on-phone">&mdash;</span>Reflections on design and development by <g-link to="/profile/naiyer/">Naiyer Asif</g-link>
-        </h1>
-      </section>
+    <div class="hero-media">
+      <div class="hero-image">//TODO</div>
     </div>
-    <Posts :posts="$page.posts.edges" />
-    <Pagination :input="$page.posts.pageInfo" />
+    <div class="hero-content">
+      <h1 class="title">
+        <span class="is-separated is-hidden-on-phone">&mdash;</span>Reflections on design and development by <g-link to="/profile/naiyer/">Naiyer Asif</g-link>
+      </h1>
+    </div>
+    <!-- <Posts :posts="$page.posts.edges" /> -->
+    <!-- <Pagination :input="$page.posts.pageInfo" /> -->
   </Layout>
 </template>
 

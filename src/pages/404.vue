@@ -1,14 +1,15 @@
 <template>
   <Layout>
-    <div class="container hero">
-      <section class="canvas">
-        <h1 class="title">
-          <span class="is-warning">404</span> {{ getMsg() }}
-        </h1>
-        <div class="subtitle">
-          <Sprite symbol="icon-chevron-left" class="icon" /> Go back to <g-link to="/">Home</g-link>.
-        </div>
-      </section>
+    <div class="hero-media">
+      <div class="hero-image">
+        <h1 class="is-warning">404</h1>
+      </div>
+    </div>
+    <div class="hero-content">
+      <h1 class="title">{{ getMsg() }}</h1>
+      <div class="subtitle">
+        <Sprite symbol="icon-chevron-left" class="icon" /> Go back to <g-link to="/">Home</g-link>.
+      </div>
     </div>
     <div class="container article">
       <div class="main">
