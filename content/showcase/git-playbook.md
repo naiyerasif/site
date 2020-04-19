@@ -4,6 +4,7 @@ title: 'Git Playbook'
 description: 'Useful git commands, tips and shortcuts'
 toc: true
 enableEdit: true
+labels: [git]
 ---
 
 ## Setup

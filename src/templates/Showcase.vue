@@ -1,7 +1,11 @@
 <template>
   <Layout>
     <div class="hero-media">
-      <div class="hero-image">//TODO</div>
+      <div class="hero-image">
+        <div class="metadata-labels" v-if="$page.showcase.labels">
+          <Sprite :symbol="label" class="label" v-for="label in $page.showcase.labels" :key="label" />
+        </div>
+      </div>
     </div>
     <div class="hero-content">
       <h1 class="title">{{ $page.showcase.title }}</h1>
@@ -32,6 +36,7 @@ query Showcase ($id: ID!) {
     title
     description
     toc
+    labels
     enableEdit
     fileInfo {
       path

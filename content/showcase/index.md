@@ -4,6 +4,7 @@ title: 'Showcase'
 description: 'Projects, tools and experiments by Naiyer'
 toc: false
 enableEdit: false
+labels: []
 ---
 
 <div class="grid-md">

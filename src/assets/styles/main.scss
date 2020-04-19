@@ -540,13 +540,16 @@ $label-size: calc(1.75em + 3vw);
     position: sticky;
     top: variables.$expanse-md;
   }
+
+  @include queries.within-tab-landscape {
+    @include layouts.vspace(0);
+  }
 }
 
 // Table of Contents
 
 .toc {
   font-size: variables.$font-size-sm;
-  margin-bottom: variables.$gap-lg;
   
   summary {
     outline: none;
