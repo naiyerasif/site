@@ -22,15 +22,13 @@
       </div>
       <h1 class="title">{{ $page.post.title }}</h1>
     </div>
-    <!-- <div class="container article">
-      <div class="content">
-        <blockquote class="is-warning" v-if="outdationMessage">{{ outdationMessage }}</blockquote>
-        <Contents :headers="$page.post.headings" />
-        <main class="main" v-html="$page.post.content" />
-      </div>
-    </div>
-    <div class="container sidekick">
-      <div class="article-actions">
+    <Contents :headers="$page.post.headings" />
+    <article class="article">
+      <blockquote class="is-warning" v-if="outdationMessage">{{ outdationMessage }}</blockquote>
+      <main v-html="$page.post.content" />
+    </article>
+    <div class="sidekick">
+      <div class="sidekick-actions">
         <a target="_blank" rel="noopener noreferrer" :href="editUrl">
           <Sprite symbol="icon-edit" class="icon" /> Edit this page
         </a>
@@ -41,7 +39,7 @@
           <Sprite symbol="icon-up" class="icon" /> Back to top
         </a>
       </div>
-    </div> -->
+    </div>
   </Layout>
 </template>
 

@@ -13,11 +13,9 @@
         a {{ $page.profile.role | lowerCase }} from {{ $page.profile.location }}
       </div>
     </div>
-    <div class="container article">
-      <VueRemarkContent class="main" />
-    </div>
-    <div class="container sidekick">
-      <div class="article-actions">
+    <VueRemarkContent class="content" />
+    <div class="sidekick">
+      <div class="sidekick-actions">
         <a href="#app">
           <Sprite symbol="icon-up" class="icon" /> Back to top
         </a>

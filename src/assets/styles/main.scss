@@ -451,6 +451,14 @@ $label-size: calc(1.75em + 3vw);
   @include layouts.flex($justify: space-around);
   flex-direction: column;
   @include layouts.vspace(variables.$expanse-md);
+
+  .sidekick-actions {
+    & > a {
+      display: inline-block;
+      text-decoration: none;
+      margin-right: variables.$gap-rg;
+    }
+  }
 }
 
 // Pagination
@@ -477,6 +485,147 @@ $label-size: calc(1.75em + 3vw);
 
   & > a {
     text-decoration: none;
+  }
+}
+
+// Card
+
+.card {
+  display: block;
+  background-color: variables.$background-auxiliary;
+  @include layouts.vspace(variables.$gap);
+  @include layouts.hspace(variables.$gap);
+  height: inherit;
+  border-radius: variables.$radius * 2;
+
+  a {
+    text-decoration: none;
+  }
+
+  .card-metadata,
+  .card-description {
+    font-size: variables.$font-size-sm;
+  }
+
+  .card-description {
+    color: variables.$text;
+  }
+
+  .card-title {
+    display: inline-flex;
+    align-items: center;
+    margin-top: variables.$gap-xs;
+    margin-bottom: variables.$gap-xs;
+    color: inherit;
+
+    .label {
+      height: variables.$gap-lg;
+      width: variables.$gap-lg;
+      margin-right: variables.$gap-xs;
+    }
+  }
+
+  .card-metadata {
+    color: variables.$text-muted;
+  }
+}
+
+// Sidebar
+
+.sidebar-start {
+  @include layouts.vspace(variables.$expanse-md);
+  @include layouts.hspace(variables.$expanse-md);
+
+  .is-hidden-on-phone {
+    position: sticky;
+    top: variables.$expanse-md;
+  }
+}
+
+// Table of Contents
+
+.toc {
+  font-size: variables.$font-size-sm;
+  margin-bottom: variables.$gap-lg;
+  
+  summary {
+    outline: none;
+    font-weight: variables.$weight-bold;
+    margin-bottom: variables.$gap-xs;
+  }
+
+  ul {
+    list-style-type: none;
+    margin-left: 0;
+
+    li {
+      $toc-margin: variables.$gap-rg;
+
+      .header-1 {
+        margin-left: $toc-margin;
+      }
+  
+      .header-2 {
+        margin-left: $toc-margin * 2;
+      }
+  
+      .header-3 {
+        margin-left: $toc-margin * 3;
+      }
+  
+      .header-4 {
+        margin-left: $toc-margin * 4;
+      }
+  
+      .header-5 {
+        margin-left: $toc-margin * 5;
+      }
+  
+      .header-6 {
+        margin-left: $toc-margin * 6;
+      }
+    }
+  }
+}
+
+// Article
+
+.article {
+  @include layouts.vspace(variables.$expanse-md);
+  max-width: variables.$canvas;
+
+  @include queries.within-tab-landscape {
+    @include layouts.hspace(variables.$expanse-md);
+    max-width: 98vw;
+  }
+
+  main {
+    & > p:first-child {
+      font-size: variables.$font-size-md;
+    }
+  }
+}
+
+// Article reference links
+
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6 {
+  &:focus a .citation,
+  &:hover a .citation {
+    @include mixins.hide(false);
+    display: inline-block;
+    width: 1.25ch;
+    margin-left: -1.25ch;
+    font-weight: variables.$weight-normal;
+
+    &::after {
+      content: variables.$indicator-reference-link;
+      outline: none;
+    }
   }
 }
 
@@ -546,6 +695,14 @@ $label-size: calc(1.75em + 3vw);
 .is-hidden-on-phone {
   @include queries.within-tab-landscape {
     @include mixins.hide;
+  }
+}
+
+.is-visible-on-phone {
+  @include mixins.hide;
+
+  @include queries.within-tab-landscape {
+    @include mixins.hide(false);
   }
 }
 

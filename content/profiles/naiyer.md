@@ -16,28 +16,28 @@ I have more than 4 years of experience in Banking &amp; Financial Services, Lega
 <div class="grid-md">
   <div class="grid-md-cell">
     <div class="card">
-      <div class="card-header">Platform</div>
-      <h5 class="card-body"><Sprite class="label" symbol="java" /> Java</h5>
-      <p class="card-footer">The most popular programming platform for building enterprise applications</p>
+      <div class="card-metadata">Platform</div>
+      <h5 class="card-title"><Sprite class="label" symbol="java" /> Java</h5>
+      <p class="card-description">The most popular programming platform for building enterprise applications</p>
     </div>
   </div>
   <div class="grid-md-cell">
     <div class="card">
-      <div class="card-header">Framework</div>
-      <h5 class="card-body"><Sprite class="label" symbol="spring" /> Spring</h5>
-      <p class="card-footer">Lightweight open-source Java framework for building large-scale applications</p>
+      <div class="card-metadata">Framework</div>
+      <h5 class="card-title"><Sprite class="label" symbol="spring" /> Spring</h5>
+      <p class="card-description">Lightweight open-source Java framework for building large-scale applications</p>
     </div>
   </div><div class="grid-md-cell">
     <div class="card">
-      <div class="card-header">Framework</div>
-      <h5 class="card-body"><Sprite class="label" symbol="angular" /> Angular</h5>
-      <p class="card-footer">An open-source TypeScript-based framework to create single-page applications</p>
+      <div class="card-metadata">Framework</div>
+      <h5 class="card-title"><Sprite class="label" symbol="angular" /> Angular</h5>
+      <p class="card-description">An open-source TypeScript-based framework to create single-page applications</p>
     </div>
   </div><div class="grid-md-cell">
     <div class="card">
-      <div class="card-header">Database</div>
-      <h5 class="card-body"><Sprite class="label" symbol="oracle" /> Oracle</h5>
-      <p class="card-footer">A proprietary multi-model database management system</p>
+      <div class="card-metadata">Database</div>
+      <h5 class="card-title"><Sprite class="label" symbol="oracle" /> Oracle</h5>
+      <p class="card-description">A proprietary multi-model database management system</p>
     </div>
   </div>
 </div>
@@ -49,35 +49,35 @@ I have more than 4 years of experience in Banking &amp; Financial Services, Lega
 <div class="grid-md">
   <div class="grid-md-cell">
     <div class="card">
-      <div class="card-header">Platform</div>
-      <h5 class="card-body"><Sprite class="label" symbol="nodejs" /> Node.js</h5>
-      <p class="card-footer">An open-source, cross-platform runtime to run JavaScript code on server</p>
+      <div class="card-metadata">Platform</div>
+      <h5 class="card-title"><Sprite class="label" symbol="nodejs" /> Node.js</h5>
+      <p class="card-description">An open-source, cross-platform runtime to run JavaScript code on server</p>
     </div>
   </div>
   <div class="grid-md-cell">
     <div class="card">
-      <div class="card-header">Framework</div>
-      <h5 class="card-body"><Sprite class="label" symbol="vuejs" /> Vue.js</h5>
-      <p class="card-footer">A progressive JavaScript framework for building user interfaces</p>
+      <div class="card-metadata">Framework</div>
+      <h5 class="card-title"><Sprite class="label" symbol="vuejs" /> Vue.js</h5>
+      <p class="card-description">A progressive JavaScript framework for building user interfaces</p>
     </div>
   </div>
   <div class="grid-md-cell">
     <div class="card">
-      <div class="card-header">Platform</div>
-      <h5 class="card-body"><Sprite class="label" symbol="docker" /> Docker</h5>
-      <p class="card-footer">Enterprise container platform to build, share and deploy applications anywhere</p>
+      <div class="card-metadata">Platform</div>
+      <h5 class="card-title"><Sprite class="label" symbol="docker" /> Docker</h5>
+      <p class="card-description">Enterprise container platform to build, share and deploy applications anywhere</p>
     </div>
   </div><div class="grid-md-cell">
     <div class="card">
-      <div class="card-header">Database</div>
-      <h5 class="card-body"><Sprite class="label" symbol="mongodb" /> MongoDB</h5>
-      <p class="card-footer">A general purpose, cross-platform, document-based, distributed NoSQL database</p>
+      <div class="card-metadata">Database</div>
+      <h5 class="card-title"><Sprite class="label" symbol="mongodb" /> MongoDB</h5>
+      <p class="card-description">A general purpose, cross-platform, document-based, distributed NoSQL database</p>
     </div>
   </div><div class="grid-md-cell">
     <div class="card">
-      <div class="card-header">Automation</div>
-      <h5 class="card-body"><Sprite class="label" symbol="jenkins" /> Jenkins</h5>
-      <p class="card-footer">An open-source automation server to build, deploy and automate projects</p>
+      <div class="card-metadata">Automation</div>
+      <h5 class="card-title"><Sprite class="label" symbol="jenkins" /> Jenkins</h5>
+      <p class="card-description">An open-source automation server to build, deploy and automate projects</p>
     </div>
   </div>
 </div>

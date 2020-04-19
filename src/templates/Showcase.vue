@@ -7,14 +7,10 @@
       <h1 class="title">{{ $page.showcase.title }}</h1>
       <div class="subtitle">{{ $page.showcase.description }}</div>
     </div>
-    <div class="container article">
-      <div class="content">
-        <Contents v-if="$page.showcase.toc" :headers="$page.showcase.headings" :depth="3" />
-        <VueRemarkContent class="main" />
-      </div>
-    </div>
-    <div class="container sidekick">
-      <div class="article-actions">
+    <Contents v-if="$page.showcase.toc" :headers="$page.showcase.headings" :depth="3" />
+    <VueRemarkContent :class="$page.showcase.toc ? 'article' : 'content'" />
+    <div class="sidekick">
+      <div class="sidekick-actions">
         <a v-if="$page.showcase.enableEdit" target="_blank" rel="noopener noreferrer" :href="editUrl">
           <Sprite symbol="icon-edit" class="icon" /> Edit this page
         </a>
