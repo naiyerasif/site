@@ -116,6 +116,8 @@ $tertiary: (
   --color-default: #{secondary(A100)};
   --color-link: #{shade(primary(500), 10%)};
   --color-hovered-link: #{primary(700)};
+  --color-border: #{fade($black, 0.9)};
+  --color-border-hovered: #{fade($black, 0.7)};
   --background-default: #{$white};
   --background-auxiliary: #{shade(tertiary(A500), 1%)};
   --background-muted: #{primary(A500)};
@@ -132,6 +134,8 @@ $tertiary: (
   --color-default: #{shade($white, 25%)};
   --color-link: #{primary(400)};
   --color-hovered-link: #{primary(300)};
+  --color-border: #{fade($white, 0.95)};
+  --color-border-hovered: #{fade($white, 0.75)};
   --background-default: #{secondary(A300)};
   --background-auxiliary: #{shade(secondary(A300), 35%)};
   --background-muted: #{shade(secondary(A200), 7%)};

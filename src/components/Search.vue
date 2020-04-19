@@ -1,12 +1,11 @@
 <template>
   <div class="search-container">
-    <SearchFocal @keyup="focusSearch" />
     <div class="search-box" :class="{ 'remove-bottom-border' : searchResultsVisible && query.length > 0 }">
-      <input type="text" placeholder="Search (Press  &quot;/&quot; to focus)" class="search" v-model="query" @input="softReset" @keyup="performSearch" @keyup.esc="searchResultsVisible = false" @keydown.up.prevent="highlightPrev" @keydown.down.prevent="highlightNext" @keyup.enter="performSearch" @blur="searchResultsVisible = false" @focus="searchResultsVisible = true" ref="search" aria-label="Search">
+      <input type="text" class="search-input" v-model="query" @input="softReset" @keyup="performSearch" @keyup.esc="searchResultsVisible = false" @keydown.up.prevent="highlightPrev" @keydown.down.prevent="highlightNext" @keyup.enter="performSearch" @blur="searchResultsVisible = false" @focus="searchResultsVisible = true" ref="search" aria-label="Search">
 
       <transition name="slide-up" mode="out-in">
         <Sprite symbol="icon-search" class="icon icon-search" v-if="query.length < 1" />
-        <a style="height: 1.5rem" @click="reset" v-if="query.length > 0"><Sprite symbol="icon-clear" class="icon icon-clear" /></a>
+        <a @click="reset" v-if="query.length > 0"><Sprite symbol="icon-clear" class="icon icon-clear" /></a>
       </transition>
     </div>
     <transition name="fade">
@@ -27,15 +26,13 @@
 <script>
 import axios from 'axios'
 import Sprite from './Sprite'
-import SearchFocal from './SearchFocal'
 import * as appConfig from '../../app.config'
 
 const searchConfig = appConfig.searchConfig
 
 export default {
   components: {
-    Sprite,
-    SearchFocal
+    Sprite
   },
   created() {
     axios(`/${searchConfig.file.name}`).then(response => {
@@ -82,11 +79,6 @@ export default {
     },
     scrollIntoView() {
       this.$refs.results.children[this.highlightedIndex].scrollIntoView({ block: 'nearest' })
-    },
-    focusSearch(e) {
-      if (e.key === '/') {
-        this.$refs.search.focus()
-      }
     }
   }
 }

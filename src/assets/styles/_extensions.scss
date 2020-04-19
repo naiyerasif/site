@@ -1,5 +1,6 @@
 @use './core/variables';
 @use './helpers/queries';
+@use './helpers/layouts';
 
 // Scrollbar and selection
 
@@ -30,6 +31,15 @@
   }
 }
 
+// SVG
+
+svg {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vertical-align: text-bottom;
+}
+
 // External links
 
 a {
@@ -49,13 +59,12 @@ table {
   overflow-x: auto;
 }
 
-// Fullwidth blockquotes on phone
+// Full-width blockquotes on phone
 
 blockquote {
   @include queries.phone {
     margin-right: variables.$expanse-lg-neg;
     margin-left: variables.$expanse-lg-neg;
-    padding-right: variables.$expanse-lg;
-    padding-left: variables.$expanse-lg;
+    @include layouts.hspace(variables.$expanse-lg);
   }
 }

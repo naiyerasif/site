@@ -90,7 +90,8 @@ $link: var(--color-link) !default;
 $link-hover: var(--color-hovered-link) !default;
 
 $background-scrollbar: $background-auxiliary !default;
-$border-active: $link !default;
+$border: var(--color-border) !default;
+$border-active: var(--color-border-hovered) !default;
 
 $scrollbar: var(--background-scrollbar) !default;
 $selected: colors.fade(colors.primary(500), 0.75) !default;
@@ -120,7 +121,7 @@ $code-selected: colors.fade(colors.primary(500), 0.91) !default;
   $background-table: inherit,
   $background-table-even: inherit,
   $background-table-hover: $background-muted,
-  $border: $color-muted,
+  $border: $border-active,
   $text: $text,
   $text-code: inherit,
   $text-strong: inherit,
