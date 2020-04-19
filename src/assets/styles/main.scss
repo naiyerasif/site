@@ -384,6 +384,67 @@ $label-size: calc(1.75em + 3vw);
   border-radius: 50%;
 }
 
+// Post
+
+.content {
+  @include layouts.vspace(variables.$expanse-md);
+
+  @include queries.within-tab-landscape {
+    padding-top: 0;
+    @include layouts.hspace(variables.$expanse-md);
+  }
+}
+
+.post {
+  margin-bottom: variables.$expanse-md;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  a {
+    text-decoration: none;
+
+    &:focus,
+    &:hover {
+
+      .post-title {
+        color: inherit;
+      }
+
+      .post-description {
+        color: variables.$text;
+      }
+    }
+  }
+
+  .post-metadata,
+  .post-description {
+    font-size: variables.$font-size-sm;
+  }
+
+  .post-metadata {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: variables.$gap-xs;
+
+    .label {
+      height: variables.$gap-rg;
+      width: variables.$gap-rg;
+      margin-right: variables.$gap-xs;
+    }
+  }
+
+  .post-title {
+    font-size: variables.$font-size-md;
+    color: variables.$link;
+  }
+
+  .post-description {
+    color: variables.$text-muted;
+  }
+}
+
 // Footer
 
 .footer {

@@ -8,7 +8,7 @@
         <span class="is-separated is-hidden-on-phone">&mdash;</span>Reflections on design and development by <g-link to="/profile/naiyer/">Naiyer Asif</g-link>
       </h1>
     </div>
-    <!-- <Posts :posts="$page.posts.edges" /> -->
+    <Posts :posts="$page.posts.edges" />
     <!-- <Pagination :input="$page.posts.pageInfo" /> -->
   </Layout>
 </template>
