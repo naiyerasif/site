@@ -119,11 +119,10 @@ $tertiary: (
   --color-border: #{fade($black, 0.9)};
   --color-border-hovered: #{fade($black, 0.7)};
   --background-default: #{$white};
-  --background-auxiliary: #{shade(tertiary(A500), 1%)};
   --background-muted: #{primary(A500)};
   --background-subtle: #{primary(A600)};
-  --background-pronounced: #{tertiary(A600)};
-  --background-scrollbar: #{primary(A900)};
+  --background-pronounced: #{tint(tertiary(A600), 25%)};
+  --background-scrollbar: #{tertiary(A800)};
 }
 
 // CSS properties for dark theme
@@ -136,9 +135,8 @@ $tertiary: (
   --color-hovered-link: #{primary(300)};
   --color-border: #{fade($white, 0.95)};
   --color-border-hovered: #{fade($white, 0.75)};
-  --background-default: #{secondary(A300)};
-  --background-auxiliary: #{shade(secondary(A300), 35%)};
-  --background-muted: #{shade(secondary(A200), 7%)};
+  --background-default: #{shade(secondary(A300), 30%)};
+  --background-muted: #{secondary(A300)};
   --background-subtle: #{shade(secondary(A300), 10%)};
   --background-pronounced: #{secondary(A400)};
   --background-scrollbar: #{shade(secondary(A100), 5%)};

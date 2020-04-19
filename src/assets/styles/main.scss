@@ -248,7 +248,7 @@
 
   .search-result:focus,
   .search-result:hover {
-    background-color: variables.$background-auxiliary;
+    background-color: variables.$background-pronounced;
 
     .search-result-title {
       color: variables.$link-hover;
@@ -492,7 +492,7 @@ $label-size: calc(1.75em + 3vw);
 
 .card {
   display: block;
-  background-color: variables.$background-auxiliary;
+  background-color: variables.$background-pronounced;
   @include layouts.vspace(variables.$gap);
   @include layouts.hspace(variables.$gap);
   height: inherit;

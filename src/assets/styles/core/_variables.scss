@@ -78,7 +78,6 @@ $color-pronounced: var(--color-pronounced) !default;
 $color-default: var(--color-default) !default;
 
 $background-default: var(--background-default) !default;
-$background-auxiliary: var(--background-auxiliary) !default;
 $background-muted: var(--background-muted) !default;
 $background-subtle: var(--background-subtle) !default;
 $background-pronounced: var(--background-pronounced) !default;
@@ -89,7 +88,7 @@ $text-muted: $color-muted !default;
 $link: var(--color-link) !default;
 $link-hover: var(--color-hovered-link) !default;
 
-$background-scrollbar: $background-auxiliary !default;
+$background-scrollbar: $background-pronounced !default;
 $border: var(--color-border) !default;
 $border-active: var(--color-border-hovered) !default;
 
