@@ -1,5 +1,5 @@
 <template>
-  <div class="container sidekick">
+  <section class="sidekick">
     <section class="pagination" v-if="input.totalPages > 1">
       <g-link class="is-prev" :to="previousPage(input.currentPage)" v-if="input.currentPage > 1"><Sprite symbol="icon-chevron-left" class="icon-sm" /> Prev</g-link>
       <div>page {{ input.currentPage }} of {{ input.totalPages }}</div>
@@ -8,7 +8,7 @@
     <section class="pagination" v-else>
       <div class="is-muted">🔚 end of the list</div>
     </section>
-  </div>
+  </section>
 </template>
 
 <script>

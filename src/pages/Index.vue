@@ -9,7 +9,7 @@
       </h1>
     </div>
     <Posts :posts="$page.posts.edges" />
-    <!-- <Pagination :input="$page.posts.pageInfo" /> -->
+    <Pagination :input="$page.posts.pageInfo" />
   </Layout>
 </template>
 
