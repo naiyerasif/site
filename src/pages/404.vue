@@ -11,12 +11,10 @@
         <Sprite symbol="icon-chevron-left" class="icon" /> Go back to <g-link to="/">Home</g-link>.
       </div>
     </div>
-    <div class="container article">
-      <div class="main">
-        <g-link to="/">
-          <NotFound />
-        </g-link>
-      </div>
+    <div class="content">
+      <g-link to="/">
+        <NotFound />
+      </g-link>
     </div>
   </Layout>
 </template>

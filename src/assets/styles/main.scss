@@ -451,8 +451,13 @@ $label-size: calc(1.75em + 3vw);
   @include layouts.flex($justify: space-around);
   flex-direction: column;
   @include layouts.vspace(variables.$expanse-md);
+  line-height: 2;
 
   .sidekick-actions {
+    @include queries.within-tab-landscape {
+      @include layouts.hspace(variables.$expanse-md);
+    }
+
     & > a {
       display: inline-block;
       text-decoration: none;
