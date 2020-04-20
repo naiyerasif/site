@@ -1,7 +1,9 @@
 <template>
   <Layout>
     <div class="hero-media">
-      <div class="hero-image">//TODO</div>
+      <div class="hero-image">
+        <g-image class="metadata-media" src="../../static/assets/images/index.svg" />
+      </div>
     </div>
     <div class="hero-content">
       <h1 class="title">
