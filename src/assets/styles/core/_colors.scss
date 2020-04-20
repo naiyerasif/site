@@ -135,7 +135,7 @@ $tertiary: (
   --color-hovered-link: #{primary(300)};
   --color-border: #{fade($white, 0.95)};
   --color-border-hovered: #{fade($white, 0.75)};
-  --background-default: #{shade(secondary(A300), 30%)};
+  --background-default: #{shade(secondary(A300), 25%)};
   --background-muted: #{secondary(A300)};
   --background-subtle: #{shade(secondary(A300), 10%)};
   --background-pronounced: #{secondary(A400)};
