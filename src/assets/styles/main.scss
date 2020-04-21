@@ -616,7 +616,7 @@ $label-size: calc(1.75em + 3vw);
 
   @include queries.within-tab-landscape {
     @include layouts.hspace(variables.$expanse-md);
-    max-width: 98vw;
+    max-width: 100vw;
   }
 
   main {

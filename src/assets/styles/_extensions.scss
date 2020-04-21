@@ -63,8 +63,8 @@ table {
 
 blockquote {
   @include queries.phone {
-    margin-right: variables.$expanse-lg-neg;
-    margin-left: variables.$expanse-lg-neg;
-    @include layouts.hspace(variables.$expanse-lg);
+    margin-right: variables.$expanse-md-neg;
+    margin-left: variables.$expanse-md-neg;
+    @include layouts.hspace(variables.$expanse-md);
   }
 }
