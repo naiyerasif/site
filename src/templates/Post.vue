@@ -32,7 +32,7 @@
         <a target="_blank" rel="noopener noreferrer" :href="editUrl">
           <Sprite symbol="icon-edit" class="icon" /> Edit this page
         </a>
-        <a href="#table-of-contents">
+        <a href="#table-of-contents" class="is-visible-on-phone">
           <Sprite symbol="icon-list" class="icon" /> Table of Contents
         </a>
         <a href="#app">

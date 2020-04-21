@@ -468,9 +468,12 @@ $label-size: calc(1.75em + 3vw);
     }
 
     & > a {
-      display: inline-block;
       text-decoration: none;
       margin-right: variables.$gap-rg;
+
+      @include queries.within-tab-landscape {
+        display: inline-block;
+      }
     }
   }
 }

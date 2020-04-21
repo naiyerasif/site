@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar-start">
     <details class="toc is-hidden-on-phone" open>
-      <summary id="table-of-contents">Table of Contents</summary>
+      <summary>Table of Contents</summary>
       <ul>
         <li v-for="header in allHeadings" :key="header.id">
           <a :class="'header-' + header.depth" :href="header.anchor">{{ header.value }}</a>
