@@ -289,22 +289,31 @@
 }
 
 .expandable-menu {
-  @include layouts.flex($wrap: nowrap, $align: flex-end);
-  flex-direction: column;
+  display: block;
   position: absolute;
   z-index: 5;
-  top: calc(3.75rem + 2.5vw);
-  height: 5.7em;
   background-color: variables.$background-muted;
-  @include layouts.vspace(variables.$gap-rg);
-  @include layouts.hspace(variables.$gap-lg);
   border: 1.5px solid variables.$border;
   border-radius: variables.$radius;
   visibility: visible;
+  top: calc(3.75rem + 2.5vw);
+  min-width: calc(5rem + 4vw);
 
   & > * {
-    width: 100%;
-    text-align: end;
+    display: block;
+    text-align: right;
+    @include layouts.vspace(variables.$gap-xs);
+    @include layouts.hspace(variables.$gap-sm);
+    border-top: 1px solid variables.$border;
+
+    &:first-child {
+      border-top: none;
+    }
+
+    &:focus,
+    &:hover {
+      background-color: variables.$background-pronounced;
+    }
   }
 }
 
@@ -476,7 +485,7 @@ $label-size: calc(1.75em + 3vw);
 
   .is-prev,
   .is-next {
-    display: inline-flex;
+    display: flex;
     align-items: center;
   }
 
