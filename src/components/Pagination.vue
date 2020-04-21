@@ -1,9 +1,9 @@
 <template>
   <section class="sidekick">
     <section class="pagination" v-if="input.totalPages > 1">
-      <g-link class="is-prev" :to="previousPage(input.currentPage)" v-if="input.currentPage > 1"><Sprite symbol="icon-chevron-left" class="icon-sm" /> <span>Prev</span></g-link>
+      <g-link class="is-prev" :to="previousPage(input.currentPage)" v-if="input.currentPage > 1">&larr; Prev</g-link>
       <div>page {{ input.currentPage }} of {{ input.totalPages }}</div>
-      <g-link class="is-next" :to="nextPage(input.currentPage)" v-if="input.currentPage < input.totalPages"><span>Next</span> <Sprite symbol="icon-chevron-right" class="icon-sm" /></g-link>
+      <g-link class="is-next" :to="nextPage(input.currentPage)" v-if="input.currentPage < input.totalPages">Next &rarr;</g-link>
     </section>
     <section class="pagination" v-else>
       <div class="is-muted">🔚 end of the list</div>
@@ -12,13 +12,8 @@
 </template>
 
 <script>
-import Sprite from './Sprite'
-
 export default {
   props: ['path', 'input'],
-  components: {
-    Sprite
-  },
   computed: {
     base() {
       return this.path || ''
