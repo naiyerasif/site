@@ -8,7 +8,7 @@
     <div class="hero-content">
       <h1 class="title">{{ getMsg() }}</h1>
       <div class="subtitle">
-        <Sprite symbol="icon-chevron-left" class="icon" /> Go back to <g-link to="/">Home</g-link>.
+        &larr; Go back to <g-link to="/">Home</g-link>.
       </div>
     </div>
     <div class="content">
@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import Sprite from '~/components/Sprite'
 import NotFound from '@/images/404.svg'
 
 const msgs = [
@@ -35,7 +34,6 @@ export default {
     title: 'Page not found'
   },
   components: {
-    Sprite,
     NotFound
   },
   methods: {
