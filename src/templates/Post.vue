@@ -11,7 +11,6 @@
       <div class="metadata">
         <div class="metadata-item">
           <div class="metadata-author" v-for="author in $page.post.authors" :key="author.id">
-            <g-image :alt="author.name" class="is-hidden-on-phone" :src="author.avatar" />
             <g-link :to="author.path">{{ author.name }}</g-link>
           </div>
         </div>
@@ -60,7 +59,6 @@ query Post ($path: String!) {
     authors {
       id
       name
-      avatar
       path
     }
     labels
