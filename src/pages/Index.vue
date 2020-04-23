@@ -2,7 +2,7 @@
   <Layout>
     <div class="hero-media">
       <div class="hero-image">
-        <g-image class="metadata-media" src="../../static/assets/images/index.svg" />
+        <Poster class="metadata-media" />
       </div>
     </div>
     <div class="hero-content">
@@ -41,6 +41,7 @@ query Posts ($page: Int) {
 <script>
 import Posts from '~/components/Posts'
 import Pagination from '~/components/Pagination'
+import Poster from '@/images/index.svg'
 
 export default {
   metaInfo: {
@@ -48,7 +49,8 @@ export default {
   },
   components: {
     Posts,
-    Pagination
+    Pagination,
+    Poster
   }
 }
 </script>
