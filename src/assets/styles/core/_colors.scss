@@ -111,7 +111,7 @@ $tertiary: (
 // CSS properties for light theme
 
 [data-theme='light'] {
-  --color-muted: #{tertiary(400)};
+  --color-muted: #{tertiary(600)};
   --color-pronounced: #{primary(600)};
   --color-default: #{secondary(A100)};
   --color-link: #{shade(primary(500), 10%)};
@@ -128,7 +128,7 @@ $tertiary: (
 // CSS properties for dark theme
 
 [data-theme='dark'] {
-  --color-muted: #{vibrant(tertiary(400), -10%)};
+  --color-muted: #{vibrant(tertiary(300), -10%)};
   --color-pronounced: #{vibrant(tertiary(200), -15%)};
   --color-default: #{shade($white, 25%)};
   --color-link: #{primary(400)};

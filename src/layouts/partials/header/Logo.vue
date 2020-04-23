@@ -1,6 +1,6 @@
 <template>
   <header class="logo">
-    <g-link class="brand" to="/">
+    <g-link class="brand" to="/" title="Microflash logo">
       <Logo />
     </g-link>
   </header>
