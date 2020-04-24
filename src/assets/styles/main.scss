@@ -581,6 +581,10 @@ $label-size: calc(1.75em + 3vw);
     li {
       $toc-margin: variables.$gap-rg;
 
+      & > a {
+        box-decoration-break: clone;
+      }
+
       .header-1 {
         margin-left: $toc-margin;
       }
