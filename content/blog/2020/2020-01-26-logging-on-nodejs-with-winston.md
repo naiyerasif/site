@@ -49,7 +49,7 @@ export const logger = winston.createLogger({
 });
 ```
 
-Here, we've cconfigured `winston` with two transports, `Console` and `DailyRotateFile`. `DailyRotateFile` will write the logs to `logs/app.log` file which'll be rotated every day or if it exceeds the size of 20 MB. The logs will be kept for up to 14 days in zip archives.
+Here, we've configured `winston` with two transports, `Console` and `DailyRotateFile`. `DailyRotateFile` will write the logs to `logs/app.log` file which'll be rotated every day or if it exceeds the size of 20 MB. The logs will be kept for up to 14 days in zip archives.
 
 To use the logger, import it and call the logging methods (`info`, `debug`, etc).
 
