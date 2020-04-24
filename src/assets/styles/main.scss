@@ -515,6 +515,14 @@ $label-size: calc(1.75em + 3vw);
   height: inherit;
   border-radius: variables.$radius * 2;
 
+  @include queries.phone {
+    margin-right: variables.$expanse-md-neg;
+    margin-left: variables.$expanse-md-neg;
+    @include layouts.vspace(variables.$expanse-md);
+    @include layouts.hspace(variables.$expanse-md);
+    border-radius: 0;
+  }
+
   a {
     text-decoration: none;
   }
