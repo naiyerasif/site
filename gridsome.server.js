@@ -3,7 +3,7 @@ const fs = require('fs')
 const { GraphQLString } = require('gridsome/graphql')
 const moment = require('moment')
 const appConfig = require('./app.config')
-const summarize = require('./marked.config').summarize
+const summarize = require('./processor').summarize
 
 const outdationDate = appConfig.prefs.outdationPeriod ? moment().clone().subtract(appConfig.prefs.outdationPeriod, 'days').startOf('day') : null
 

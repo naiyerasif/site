@@ -9,7 +9,7 @@
       </div>
       <g-link :to="post.node.path">
         <h2 class="post-title">{{ post.node.title }}</h2>
-        <p class="post-description">{{ post.node.excerpt | clip }} &hellip;</p>
+        <p class="post-description">{{ post.node.excerpt | clip }}..</p>
       </g-link>
     </div>
   </div>

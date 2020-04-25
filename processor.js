@@ -49,6 +49,21 @@ const summarize = (content) => {
   return entities.decode(plainText)
 }
 
+const clip = (value, size) => {
+  const clipSize = size || 240
+  const tokens = value.match(/.*?[?!.]/g)
+  let terminator = 0
+
+  for (const token of tokens) {
+    if (terminator >= clipSize) break
+    terminator += token.length
+  }
+
+  const finalValue = clipSize >= value.length ? value : value.substring(0, terminator)
+  return entities.decode(finalValue).trim()
+}
+
 module.exports = {
-  summarize
+  summarize,
+  clip
 }
