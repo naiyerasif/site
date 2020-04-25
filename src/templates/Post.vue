@@ -43,8 +43,8 @@
 </template>
 
 <page-query>
-query Post ($path: String!) {
-  post: post (path: $path) {
+query Post ($id: ID!) {
+  post: post (id: $id) {
     title
     date (format: "MMM D, Y")
     updated (format: "MMM D, Y")
