@@ -37,14 +37,18 @@
 // Grids
 // generates a grid with cells of specified width
 
-@mixin matrix($width, $gutter: variables.$gap-rg) {
+@mixin matrix($width, $gutter: variables.$gap-rg, $fit: false) {
   display: flex;
   flex-wrap: wrap;
   
   display: grid;
   grid-gap: $gutter;
   
-  grid-template-columns: repeat(auto-fill, minmax($width, 1fr));
+  @if $fit {
+    grid-template-columns: repeat(auto-fit, minmax($width, 1fr));
+  } @else {
+    grid-template-columns: repeat(auto-fill, minmax($width, 1fr));
+  }
   
   @include queries.phone {
     grid-template-columns: 100%;
@@ -69,4 +73,9 @@
 
 .grid-md {
   @include matrix(variables.$cell-md);
+}
+
+.gridx-md {
+  @include matrix($width: variables.$cell-md, $fit: true);
+  width: inherit;
 }

@@ -457,12 +457,27 @@ $label-size: calc(1.75em + 3vw);
 // Sidekick
 
 .sidekick {
-  @include layouts.flex($justify: space-around);
+  @include layouts.flex($align: flex-start, $justify: flex-start);
   flex-direction: column;
   @include layouts.vspace(variables.$expanse-md);
   line-height: 2;
 
+  .sidekick-recommendations {
+    @include layouts.flex;
+    width: 100%;
+
+    @include queries.within-tab-landscape {
+      @include layouts.hspace(variables.$expanse-md);
+    }
+
+    & > * {
+      margin-bottom: variables.$expanse-md;
+    }
+  }
+
   .sidekick-actions {
+    align-self: center;
+
     @include queries.within-tab-landscape {
       @include layouts.hspace(variables.$expanse-md);
     }
@@ -481,6 +496,7 @@ $label-size: calc(1.75em + 3vw);
 // Pagination
 
 .pagination {
+  align-self: center;
   @include layouts.flex;
   @include layouts.hspace(variables.$expanse-lg);
   font-size: variables.$font-size-sm;
@@ -766,6 +782,14 @@ h6 {
 
 .is-separated {
   margin-right: variables.$gap-sm;
+}
+
+.is-start-aligned {
+  text-align: start;
+}
+
+.is-end-aligned {
+  text-align: end;
 }
 
 // Typography

@@ -33,14 +33,14 @@ module.exports = {
     }
   },
   templates: {
-    Post: '/blog/:year/:month/:day/:title'
+    Blog: '/blog/:year/:month/:day/:title'
   },
   plugins: [
     {
       use: '@gridsome/source-filesystem',
       options: {
         path: 'content/blog/**/*.md',
-        typeName: 'Post',
+        typeName: 'Blog',
         refs: {
           authors: {
             typeName: 'Profile'
@@ -70,7 +70,7 @@ module.exports = {
     {
       use: '@microflash/gridsome-plugin-feed',
       options: {
-        contentTypes: ['Post'],
+        contentTypes: ['Blog'],
         feedOptions: {
           title: appConfig.name,
           description: appConfig.description,

@@ -10,7 +10,7 @@ const outdationDate = appConfig.prefs.outdationPeriod ? moment().clone().subtrac
 module.exports = function (api) {
 
   api.onCreateNode(options => {
-    if (options.internal.typeName === 'Post') {
+    if (options.internal.typeName === 'Blog') {
       if (!options.updated) {
         options.updated = options.date
       }
@@ -28,7 +28,7 @@ module.exports = function (api) {
     addMetadata('spritePath', appConfig.prefs.spritePath)
     
     addSchemaResolvers({
-      Post: {
+      Blog: {
         excerpt: {
           type: GraphQLString,
           resolve(post) {
@@ -39,8 +39,39 @@ module.exports = function (api) {
     })
   })
 
+  api.createPages(async ({ graphql, createPage }) => {
+    const { data } = await graphql(`{
+      allBlog {
+        edges {
+          node {
+            id
+            path
+          }
+          next {
+            id
+          }
+          previous {
+            id
+          }
+        }
+      }
+    }`)
+
+    data.allBlog.edges.forEach(element => {
+      createPage({
+        path: element.node.path,
+        component: './src/templates/Post.vue',
+        context: {
+          previousId: (element.previous) ? element.previous.id : '#',
+          nextId: (element.next) ? element.next.id : '#',
+          id: element.node.id
+        }
+      })
+    })
+  })
+
   api.beforeBuild(context => {
-    const collection = context._app.store.getCollection('Post')._collection
+    const collection = context._app.store.getCollection('Blog')._collection
 
     const posts = collection.data.map(post => {
       return {

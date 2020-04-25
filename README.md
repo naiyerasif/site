@@ -4,6 +4,7 @@ Personal website of Naiyer Asif, made possible by
 
 - [Gridsome](https://gridsome.org/): a modern Vue.js framework for static websites (and more)
 - [Gridsome Portfolio Starter](https://github.com/drehimself/gridsome-portfolio-starter): a simple portfolio starter for Gridsome
+- [Gridsome Casper V3 Starter](https://github.com/noxify/gridsome-starter-casper-v3): Grisome starter based on Ghost Casper V3 and tailwindcss
 - [Fuse.js](https://fusejs.io/): a lightweight fuzzy-search library
 - [Prism](https://prismjs.com/): a lightweight, extensible syntax highlighter
 - [Feather Icons](https://feathericons.com/): beautiful open-source icons

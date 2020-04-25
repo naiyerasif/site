@@ -27,6 +27,27 @@
       <main v-html="$page.post.content" />
     </article>
     <div class="sidekick">
+      <div class="sidekick-recommendations">
+        <div class="gridx-md">
+          <div class="grid-md-cell" v-if="$page.previous">
+            <div class="card is-start-aligned">
+              <g-link :to="$page.previous.path">
+                <div class="card-metadata">Previous</div>
+                <h5 class="card-title">{{ $page.previous.title }}</h5>
+              </g-link>
+            </div>
+          </div>
+          <div class="grid-md-cell" v-if="$page.next">
+            <div class="card is-end-aligned">
+              <g-link :to="$page.next.path">
+                <div class="card-metadata">Next</div>
+                <h5 class="card-title">{{ $page.next.title }}</h5>
+              </g-link>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="sidekick-actions">
         <a target="_blank" rel="noopener noreferrer" :href="editUrl">
           <Sprite symbol="icon-edit" class="icon" /> Edit this page
@@ -43,8 +64,8 @@
 </template>
 
 <page-query>
-query Post ($id: ID!) {
-  post: post (id: $id) {
+query Blog ($id: ID!, $previousId: ID!, $nextId: ID!) {
+  post: blog (id: $id) {
     title
     date (format: "MMM D, Y")
     updated (format: "MMM D, Y")
@@ -66,6 +87,16 @@ query Post ($id: ID!) {
     path
     timeToRead
     outdated
+  }
+
+  previous: blog (id: $previousId) {
+    title
+    path
+  }
+
+  next: blog (id: $nextId) {
+    title
+    path
   }
 }
 </page-query>
