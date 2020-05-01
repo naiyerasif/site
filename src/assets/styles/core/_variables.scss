@@ -17,6 +17,7 @@ $weight-bold: 700 !default;
 
 $font-size-sm: calc(0.8rem + 0.2vw) !default;
 $font-size-md: calc(1.0625rem + 0.5vw) !default;
+$font-size-rg: calc(1rem + 0.2vw) !default;
 $font-size-xl: calc(1.5rem + 1.5vw) !default;
 
 // Spacing
@@ -88,7 +89,6 @@ $text-muted: $color-muted !default;
 $link: var(--color-link) !default;
 $link-hover: var(--color-hovered-link) !default;
 
-$background-scrollbar: $background-pronounced !default;
 $border: var(--color-border) !default;
 $border-active: var(--color-border-hovered) !default;
 
@@ -97,38 +97,44 @@ $selected: colors.fade(colors.primary(500), 0.75) !default;
 $code-selected: colors.fade(colors.primary(500), 0.91) !default;
 
 @use '../../../../node_modules/@microflash/remarkability/scss/variables' with (
-  $closer-lists: true,
+  $compact-lists: true,
+  $multiline-wrap: true,
+  $custom-selection: true,
+  $custom-scrollbar: true,
   $custom-colors: true,
   $custom-fonts: true,
-  $font-smoothing: true,
-  $text-adjusting: true,
-  $round-images: true,
-  $round-codeblocks: true,
+  $round-media: true,
+  $round-blocks: true,
+  $responsive-tables: true,
   $hovered-links: true,
   $variable-fonts: true,
-  $family-default: (Inter, $family-sans-native),
+  $scroll-smoothly: true,
+  $family-base: (Inter, $family-sans-native),
   $family-code: ('JetBrains Mono', $family-code-native),
-  $family-default-var: ('Inter var', $family-sans-native),
+  $family-base-variable: ('Inter var', $family-sans-native),
   $weight-headings: $weight-semibold,
-  $font-size: calc(1rem + 0.2vw),
-  $margin: $gap-lg,
-  $radius: $radius,
+  $font-size-base: $font-size-rg,
   $background-body: $background-default,
-  $background-code: $background-scrollbar,
+  $background-code: $background-pronounced,
   $background-ins: $background-muted,
   $background-mark: $background-muted,
   $background-table: inherit,
   $background-table-even: inherit,
   $background-table-hover: $background-muted,
-  $border: $border-active,
+  $background-selected: $selected,
+  $background-scrollbar: $background-pronounced,
+  $border-color: $border-active,
+  $radius: $radius,
   $text: $text,
   $text-code: inherit,
-  $text-strong: inherit,
+  $text-bold: inherit,
   $text-muted: $text-muted,
   $text-headings: $color-pronounced,
   $text-blockquote: $color-muted,
   $link: $link,
   $link-hover: $link-hover,
   $link-visited: $color-pronounced,
-  $table-thead: $color-pronounced
+  $table-thead: $color-pronounced,
+  $scrollbar: $scrollbar,
+  $margin: $gap-lg
 );

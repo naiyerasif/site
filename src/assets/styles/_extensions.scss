@@ -2,35 +2,6 @@
 @use './helpers/queries';
 @use './helpers/layouts';
 
-// Scrollbar and selection
-
-* {
-  &::-webkit-scrollbar,
-  &::-webkit-scrollbar-track {
-    background-color: variables.$background-scrollbar;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: variables.$scrollbar;
-  }
-
-  scrollbar-color: variables.$scrollbar variables.$background-scrollbar;
-
-  scroll-behavior: smooth;
-
-  @media screen and (prefers-reduced-motion: true) { 
-    scroll-behavior: auto;
-  }
-
-  &::-moz-selection { 
-    background: variables.$selected;
-  }
-  
-  &::selection { 
-    background: variables.$selected;
-  }
-}
-
 // SVG
 
 svg {
@@ -50,13 +21,6 @@ a {
       }
     }
   }
-}
-
-// Set table as block
-
-table {
-  display: block;
-  overflow-x: auto;
 }
 
 // Full-width blockquotes on phone

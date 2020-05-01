@@ -927,15 +927,15 @@
     micromatch "^4.0.2"
     moment "^2.24.0"
 
-"@microflash/remarkability@^0.7.2":
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/@microflash/remarkability/-/remarkability-0.7.2.tgz#183279cd19d3b0d7320fec32bf355b3a07491cf7"
-  integrity sha512-ka1IUEeth2ugmH8TY3DrmC4GuM1VhdCIOYfd7StOgmQ0V/tI5+m2b/s3uFPl0hvMujMZJCMKzplXHojfFAuiGQ==
+"@microflash/remarkability@^0.8.1":
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/@microflash/remarkability/-/remarkability-0.8.1.tgz#6a977f3b7f575056762d762c76f186e89bc26662"
+  integrity sha512-5FdHwtTxNocLt1t25Nr3C6dlnUwBrpU0AVNQXo/s/G6pfD0Gsrub0qI3PHJZUvwJFZASEzivbVNLuqnVYPsUNg==
   dependencies:
-    autoprefixer "^9.7.1"
+    autoprefixer "^9.7.6"
     clean-css-cli "^4.3.0"
     postcss-cli "^7.1.0"
-    sass "^1.26.3"
+    sass "^1.26.5"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -1612,7 +1612,7 @@ auto-bind@^2.0.0:
   dependencies:
     "@types/react" "^16.8.12"
 
-autoprefixer@^9.4.7, autoprefixer@^9.7.1:
+autoprefixer@^9.4.7:
   version "9.7.4"
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-9.7.4.tgz#f8bf3e06707d047f0641d87aee8cfb174b2a5378"
   integrity sha512-g0Ya30YrMBAEZk60lp+qfX5YQllG+S5W3GYCFvyHTvhOki0AEQJLPEcIuGRsqVwLi8FvXPVtwTGhfr38hVpm0g==
@@ -6305,6 +6305,11 @@ moment@^2.24.0:
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
   integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
 
+moment@^2.25.0:
+  version "2.25.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.25.0.tgz#e961ab9a5848a1cf2c52b1af4e6c82a8401e7fe9"
+  integrity sha512-vbrf6kJGpevOxmDRvCCvGuCSXvRj93264WcFzjm3Z3pV4lfjrXll8rvSP+EbmCte64udj1LkJMILxQnjXAQBzg==
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -8190,10 +8195,10 @@ sass-loader@^8.0.2:
     schema-utils "^2.6.1"
     semver "^6.3.0"
 
-sass@^1.26.3:
-  version "1.26.3"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.26.3.tgz#412df54486143b76b5a65cdf7569e86f44659f46"
-  integrity sha512-5NMHI1+YFYw4sN3yfKjpLuV9B5l7MqQ6FlkTcC4FT+oHbBRUZoSjHrrt/mE0nFXJyY2kQtU9ou9HxvFVjLFuuw==
+sass@^1.26.5:
+  version "1.26.5"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.26.5.tgz#2d7aecfbbabfa298567c8f06615b6e24d2d68099"
+  integrity sha512-FG2swzaZUiX53YzZSjSakzvGtlds0lcbF+URuU9mxOv7WBh7NhXEVDa4kPKN4hN6fC2TkOTOKqiqp6d53N9X5Q==
   dependencies:
     chokidar ">=2.0.0 <4.0.0"
 
