@@ -917,15 +917,15 @@
     log-update "^2.3.0"
     p-map "^1.2.0"
 
-"@microflash/gridsome-plugin-feed@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@microflash/gridsome-plugin-feed/-/gridsome-plugin-feed-1.0.4.tgz#f256058b46a67310d66c9c8723c1b6253463a080"
-  integrity sha512-mmZMUrXPKSNLT8wL5X8OSDywwNhF7xJOBCSGuvsSNXIXW72OWsOU+Xg5fnrfkRGOLq6t8bbYMFJdY5wuDKzwxw==
+"@microflash/gridsome-plugin-feed@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@microflash/gridsome-plugin-feed/-/gridsome-plugin-feed-1.0.5.tgz#72c9159b8a4a49ef2e263bc640877642ef7c27e0"
+  integrity sha512-nt89iFU6ZOvgT2cFHQcpCHGkSWRB1hr6DKWGF+SlJ9tV1O03daKTaVLcEz1mko8lqtPB8iw+bAEyU45/6bXB4g==
   dependencies:
     feed "^4.1.0"
     fs-extra "^9.0.0"
     micromatch "^4.0.2"
-    moment "^2.24.0"
+    moment "^2.25.1"
 
 "@microflash/remarkability@^0.8.1":
   version "0.8.1"
@@ -6305,10 +6305,10 @@ moment@^2.24.0:
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
   integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
 
-moment@^2.25.0:
-  version "2.25.0"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.25.0.tgz#e961ab9a5848a1cf2c52b1af4e6c82a8401e7fe9"
-  integrity sha512-vbrf6kJGpevOxmDRvCCvGuCSXvRj93264WcFzjm3Z3pV4lfjrXll8rvSP+EbmCte64udj1LkJMILxQnjXAQBzg==
+moment@^2.25.1:
+  version "2.25.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.25.1.tgz#1cb546dca1eccdd607c9324747842200b683465d"
+  integrity sha512-nRKMf9wDS4Fkyd0C9LXh2FFXinD+iwbJ5p/lh3CHitW9kZbRbJ8hCruiadiIXZVbeAqKZzqcTvHnK3mRhFjb6w==
 
 move-concurrently@^1.0.1:
   version "1.0.1"
