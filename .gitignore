@@ -1,8 +1,6 @@
-*.log
-.cache
-.vscode
-archive
+.archive
+.temp
+.*cache
 node_modules
 public
-**/.temp
-**/search.json
+search.json

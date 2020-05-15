@@ -1,0 +1,68 @@
+@use '../variables';
+@use '../properties';
+@use '../mixins/layout';
+
+// Sidekick
+
+.sidekick {
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: properties.$space-rg;
+
+    > * {
+      display: flex;
+      flex-wrap: properties.$wrap-responsive;
+      flex: 1;
+      align-items: center;
+      font-size: variables.$font-sm;
+    }
+
+    .sidekick-actions {
+      > * {
+        @include layout.my(variables.$gap-xs);
+
+        &:not(:last-child) {
+          margin-right: variables.$gap;
+        }
+      }
+    }
+
+    .sidekick-recommendations {
+      flex-basis: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+      font-size: variables.$font-rg;
+      
+      > * {
+        display: block;
+        padding: properties.$space-sm;
+        background-color: variables.$bg-vibrant;
+        border: 1px solid variables.$border;
+        border-radius: variables.$radius;
+        margin-bottom: properties.$space-sm;
+        width: properties.$sidekick-width;
+
+        &:focus,
+        &:hover {
+          background-color: variables.$bg-glossy;
+        }
+      }
+    }
+  }
+}
+
+// Pagination
+
+.pagination {
+  justify-content: center;
+
+  .is-prev {
+    margin-right: variables.$gap;
+  }
+
+  .is-next {
+    margin-left: variables.$gap;
+  }
+}

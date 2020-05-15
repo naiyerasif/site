@@ -17,7 +17,7 @@ You can pick the Node.js application created in the post [Request logging with m
 
 Add `winston` and `winston-daily-rotate-file` as dependencies.
 
-```bash
+```sh
 yarn add winston winston-daily-rotate-file
 ```
 
@@ -69,6 +69,6 @@ Start the application; you should see `app.log` in `logs` directory and the same
 
 **Source code** &mdash; [logging-with-winston](https://gitlab.com/mflash/nodejs-guides/-/tree/master/logging-with-winston)
 
-**See also**
+**Related**
 - [winston docs](https://github.com/winstonjs/winston)
 - [winston-daily-rotate-file docs](https://github.com/winstonjs/winston-daily-rotate-file)

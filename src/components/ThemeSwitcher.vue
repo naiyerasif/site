@@ -1,5 +1,5 @@
 <template>
-  <a role="button" @click.prevent="switchTheme()" :aria-label="'Switch to ' + nextTheme + ' mode'" :title="'Switch to ' + nextTheme + ' mode'" class="switch-theme">
+  <a role="button" @click.prevent="switchTheme()" :aria-label="'Switch to ' + nextTheme + ' mode'" class="theme-switcher">
     <transition name="slide-up" mode="out-in">
       <Sprite symbol="icon-dark" key="dark" v-if="theme === 'dark'" class="icon" />
       <Sprite symbol="icon-light" key="light" v-else class="icon" />

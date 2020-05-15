@@ -2,6 +2,7 @@ const path = require('path')
 const autoprefixer = require('autoprefixer')
 const purgecss = require('@fullhuman/postcss-purgecss')
 const marked = require('marked')
+
 const purgecssConfig = require('./purgecss.config')
 const appConfig = require('./app.config')
 
@@ -14,7 +15,15 @@ postcssPlugins.push(autoprefixer({
 }))
 
 const remarkPlugins = [
-  ['gridsome-plugin-remark-prismjs-all', { noInlineHighlight: true }]
+  [
+    'gridsome-plugin-remark-prismjs-all', { 
+      noInlineHighlight: true,
+      aliases: {
+        sh: 'shell',
+        conf: 'properties'
+      }
+    }
+  ]
 ]
 
 module.exports = {
@@ -60,10 +69,10 @@ module.exports = {
     {
       use: '@gridsome/vue-remark',
       options: {
-        typeName: 'Showcase',
-        baseDir: './content/showcase',
-        pathPrefix: '/showcase',
-        template: './src/templates/Showcase.vue',
+        typeName: 'Collection',
+        baseDir: './content/collection',
+        pathPrefix: '/collection',
+        template: './src/templates/Collection.vue',
         plugins: remarkPlugins
       }
     },
@@ -131,7 +140,7 @@ module.exports = {
         content: {
           type: 'element',
           tagName: 'span',
-          properties: { className: ['citation'] }
+          properties: { className: ['reference'] }
         }
       }
     }
@@ -144,7 +153,7 @@ module.exports = {
     },
   },
   chainWebpack: config => {
-    config.resolve.alias.set('@', path.resolve(__dirname, 'static/assets'))
+    config.resolve.alias.set('static', path.resolve(__dirname, 'static'))
     config.module.rules.delete('svg')
     config.module.rule('svg')
       .test(/\.svg$/).use('vue').loader('vue-loader').end()

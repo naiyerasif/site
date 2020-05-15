@@ -18,7 +18,7 @@ You can pick the Node.js application created in the post [Using Express with Typ
 
 Execute the following command in the directory where `package.json` is located:
 
-```bash
+```sh
 yarn add -D -E prettier
 ```
 
@@ -30,7 +30,7 @@ To format the staged files before you commit them to git, you can use `pretty-qu
 
 Execute the following command to install dependencies.
 
-```bash
+```sh
 yarn add -D pretty-quick husky
 ```
 
@@ -76,7 +76,7 @@ Prettier CLI respects the `editorconfig` file by default. You can opt-out of thi
 
 If you're working on a JavaScript project, you can use ESLint to format your code with Prettier. Execute the following command to add necessary plugins.
 
-```bash
+```sh
 yarn add -D eslint-config-prettier eslint-plugin-prettier
 ```
 

@@ -1,0 +1,156 @@
+@use '../variables';
+@use '../properties';
+@use '../mixins/layout';
+@use '../mixins/queries';
+
+// Container
+
+.container {
+  flex-grow: 1;
+  margin: 0 auto;
+  position: relative;
+  width: auto;
+  max-width: properties.$max-width;
+  @include layout.px(properties.$space-rg);
+
+  &.is-column {
+    flex-direction: column;
+  }
+}
+
+// Icons
+
+.svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vertical-align: middle;
+  fill: currentColor;
+  fill-opacity: 0.25;
+}
+
+.icon {
+  @extend .svg;
+  stroke-width: 1.5px;
+  @include layout.size(variables.$icon-rg);
+}
+
+.icon-sm {
+  @extend .svg;
+  stroke-width: 2px;
+  @include layout.size(variables.$icon-sm);
+}
+
+// Links
+
+a {
+  &[rel*='nofollow']::after {
+    content: variables.$symbol-external-link;
+  }
+
+  .header &,
+  .sidekick &,
+  .card &,
+  .toc & {
+    &:focus,
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .sidekick & {
+    display: inline-flex;
+    align-items: center;
+
+    svg {
+      margin-right: variables.$char-gap-sm;
+    }
+  }
+}
+
+.active {
+  font-weight: variables.$weight-md;
+}
+
+// Typography
+
+.title {
+  font-size: variables.$font-xl;
+  color: variables.$text;
+}
+
+.subtitle {
+  font-size: variables.$font-md;
+  color: variables.$text-muted;
+}
+
+.is-primary {
+  color: variables.$link;
+  border-color: variables.$link;
+}
+
+.is-warning {
+  $red: hsl(350, 90%, 45%);
+  color: $red;
+  border-color: $red;
+}
+
+// Layout
+
+.gap-end {
+  margin-right: variables.$char-gap-sm;
+}
+
+.hidden-on-small {
+  @include queries.sm {
+    @include layout.hide;
+  }
+}
+
+// Full-width elements on phone
+
+$space-rg-neg: calc(-1rem - 2vw);
+
+blockquote {
+  @include queries.sm {
+    @include layout.mx($space-rg-neg);
+    @include layout.px(properties.$space-rg);
+  }
+}
+
+.content {
+  @include queries.sm {
+    .container {
+      flex-direction: column;
+
+      .large-gap {
+        @include layout.mx($space-rg-neg);
+        border-radius: 0;
+      }
+    }
+  }
+}
+
+.gridsome-highlight {
+  @include queries.sm {
+    @include layout.mx($space-rg-neg);
+
+    pre {
+      border-radius: 0;
+    }
+
+    code {
+      @include layout.px(properties.$space-rg);
+    }
+
+    .gridsome-highlight-code-line {
+      margin-left: $space-rg-neg;
+      padding-left: properties.$space-rg;
+    }
+  }
+
+  @include queries.md {
+    width: 120%;
+  }
+}

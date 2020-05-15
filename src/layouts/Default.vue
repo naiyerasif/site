@@ -1,24 +1,18 @@
 <template>
   <div class="layout">
-    <Logo />
-    <SearchBox />
-    <Menu />
+    <Header />
     <slot></slot>
     <Footer />
   </div>
 </template>
 
 <script>
-import Logo from './partials/header/Logo'
-import SearchBox from './partials/header/SearchBox'
-import Menu from './partials/header/Menu'
+import Header from './partials/Header'
 import Footer from './partials/Footer'
 
 export default {
   components: {
-    Logo,
-    SearchBox,
-    Menu,
+    Header,
     Footer
   }
 }

@@ -1,0 +1,47 @@
+// Transitions
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -2%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeOutUp {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, -2%, 0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translate3d(0, 20%, 0);
+  }
+
+  to {
+    visibility: hidden;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes rotateInRight {
+  from {
+    opacity: 0;
+    transform: rotateY(-180deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotateY(0deg);
+  }
+}

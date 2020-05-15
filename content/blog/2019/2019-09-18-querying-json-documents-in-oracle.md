@@ -32,40 +32,16 @@ Consider the following JSON document.
   "id": "1c719bbb4b10f91d",
   "name": "Marina",
   "albums": [
-    {
-      "title": "Froot",
-      "released": 2015
-    },
-    {
-      "title": "Love + Fear",
-      "released": 2019
-    }
+    { "title": "Froot", "released": 2015 },
+    { "title": "Love + Fear", "released": 2019 }
   ],
   "singles": [
-    {
-      "title": "Baby",
-      "released": 2018
-    },
-    {
-      "title": "Superstar",
-      "released": 2019
-    },
-    {
-      "title": "Orange Trees",
-      "released": 2019
-    },
-    {
-      "title": "To Be Human",
-      "released": 2019
-    },
-    {
-      "title": "Karma",
-      "released": 2019
-    },
-    {
-      "title": "About Love",
-      "released": 2020
-    }
+    { "title": "Baby", "released": 2018 },
+    { "title": "Superstar", "released": 2019 },
+    { "title": "Orange Trees", "released": 2019 },
+    { "title": "To Be Human", "released": 2019 },
+    { "title": "Karma", "released": 2019 },
+    { "title": "About Love", "released": 2020 }
   ]
 }
 ```
@@ -108,7 +84,6 @@ CREATE TABLE BIOS (
 ```
 
 > **WARNING** Adding an `IS JSON` constraint can reduce the performance of insertion; use it only when you're not entirely sure if the inserted data will be a JSON document.
-
 
 Populate this table with some data (directly pulled from `bios` collection).
 

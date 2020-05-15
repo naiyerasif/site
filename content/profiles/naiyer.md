@@ -6,40 +6,18 @@ location: 'Bengaluru, India'
 avatar: './avatars/naiyer.png'
 ---
 
-import Sprite from '~/components/Sprite'
+import Card from '~/components/Card'
 
-I have more than 4 years of experience in Banking &amp; Financial Services, Legal &amp; Compliance and Aviation domains.
+I've more than 4 years of experience in Banking &amp; Financial Services, Legal &amp; Compliance and Aviation domains.
 
 #### Technologies I am adept at &mdash;
 
 
 <div class="grid-md">
-  <div class="grid-md-cell">
-    <div class="card">
-      <div class="card-metadata">Platform</div>
-      <h5 class="card-title"><Sprite class="label" symbol="java" /> Java</h5>
-      <p class="card-description">The most popular programming platform for building enterprise applications</p>
-    </div>
-  </div>
-  <div class="grid-md-cell">
-    <div class="card">
-      <div class="card-metadata">Framework</div>
-      <h5 class="card-title"><Sprite class="label" symbol="spring" /> Spring</h5>
-      <p class="card-description">Lightweight open-source Java framework for building large-scale applications</p>
-    </div>
-  </div><div class="grid-md-cell">
-    <div class="card">
-      <div class="card-metadata">Framework</div>
-      <h5 class="card-title"><Sprite class="label" symbol="angular" /> Angular</h5>
-      <p class="card-description">An open-source TypeScript-based framework to create single-page applications</p>
-    </div>
-  </div><div class="grid-md-cell">
-    <div class="card">
-      <div class="card-metadata">Database</div>
-      <h5 class="card-title"><Sprite class="label" symbol="oracle" /> Oracle</h5>
-      <p class="card-description">A proprietary multi-model database management system</p>
-    </div>
-  </div>
+  <card metadata="Platform" icon="java" title="Java" description="The most popular programming platform for building enterprise applications" />
+  <card metadata="Framework" icon="spring" title="Spring" description="Lightweight open-source Java framework for building large-scale applications" />
+  <card metadata="Framework" icon="angular" title="Angular" description="An open-source TypeScript-based framework to create single-page applications" />
+  <card metadata="Database" icon="oracle" title="Oracle" description="A proprietary multi-model database management system" />
 </div>
 
 
@@ -47,41 +25,14 @@ I have more than 4 years of experience in Banking &amp; Financial Services, Lega
 
 
 <div class="grid-md">
-  <div class="grid-md-cell">
-    <div class="card">
-      <div class="card-metadata">Platform</div>
-      <h5 class="card-title"><Sprite class="label" symbol="nodejs" /> Node.js</h5>
-      <p class="card-description">An open-source, cross-platform runtime to run JavaScript code on server</p>
-    </div>
-  </div>
-  <div class="grid-md-cell">
-    <div class="card">
-      <div class="card-metadata">Framework</div>
-      <h5 class="card-title"><Sprite class="label" symbol="vuejs" /> Vue.js</h5>
-      <p class="card-description">A progressive JavaScript framework for building user interfaces</p>
-    </div>
-  </div>
-  <div class="grid-md-cell">
-    <div class="card">
-      <div class="card-metadata">Platform</div>
-      <h5 class="card-title"><Sprite class="label" symbol="docker" /> Docker</h5>
-      <p class="card-description">Enterprise container platform to build, share and deploy applications anywhere</p>
-    </div>
-  </div><div class="grid-md-cell">
-    <div class="card">
-      <div class="card-metadata">Database</div>
-      <h5 class="card-title"><Sprite class="label" symbol="mongodb" /> MongoDB</h5>
-      <p class="card-description">A general purpose, cross-platform, document-based, distributed NoSQL database</p>
-    </div>
-  </div><div class="grid-md-cell">
-    <div class="card">
-      <div class="card-metadata">Automation</div>
-      <h5 class="card-title"><Sprite class="label" symbol="jenkins" /> Jenkins</h5>
-      <p class="card-description">An open-source automation server to build, deploy and automate projects</p>
-    </div>
-  </div>
+  <card metadata="Platform" icon="nodejs" title="Node.js" description="An open-source, cross-platform runtime to run JavaScript code on server" />
+  <card metadata="Framework" icon="vuejs" title="Vue.js" description="A progressive JavaScript framework for building user interfaces" />
+  <card metadata="Platform" icon="docker" title="Docker" description="Enterprise container platform to build, share and deploy applications anywhere" />
+  <card metadata="Database" icon="mongodb" title="MongoDB" description="A general purpose, cross-platform, document-based, distributed NoSQL database" />
+  <card metadata="Automation" icon="jenkins" title="Jenkins" description="An open-source automation server to build, deploy and automate projects" />
 </div>
 <br>
+
 
 Besides writing code, I compose poetry, draw vector illustrations and automate boring repetitive stuff using bash and Node.js scripts. I prowl the web to discover typography and vector art, and find shiny new tools to tinker with (I've signed up for way more beta programs than anyone should). I also dedicate a fair chunk of my time for reading fiction, history, and physics.
 

@@ -1,0 +1,45 @@
+@use '../_variables';
+@use '../_properties';
+
+// Table of contents
+
+.toc {
+  background-color: variables.$bg-vibrant;
+  border-radius: variables.$radius;
+  margin-bottom: properties.$space-rg;
+  width: 100%;
+
+  a {
+    padding: 1em 1.2em;
+  }
+}
+
+.toc-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: variables.$weight-lg;
+  color: inherit;
+
+  &:focus,
+  &:hover {
+    color: inherit;
+  }
+}
+
+.toc-body {
+  list-style-type: none;
+  margin-left: 0;
+  font-size: variables.$font-sm;
+  padding: 0 variables.$gap variables.$gap-lg;
+
+  li {
+    $toc-margin: variables.$gap;
+    $levels: 3 4 5 6;
+
+    @each $level in $levels {
+      .toc-item-#{$level} {
+        margin-left: $toc-margin * ($level - 2);
+      }
+    }
+  }
+}

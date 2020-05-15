@@ -1,63 +1,54 @@
 <template>
   <Layout>
-    <div class="hero-media">
-      <div class="hero-image">
-        <div class="metadata-labels">
-          <Sprite :symbol="label" class="label" v-for="label in $page.post.labels" :key="label" />
-        </div>
-      </div>
-    </div>
-    <div class="hero-content">
-      <div class="metadata">
-        <div class="metadata-item">
-          <div class="metadata-author" v-for="author in $page.post.authors" :key="author.id">
-            <g-link :to="author.path">{{ author.name }}</g-link>
+    <section class="hero">
+      <div class="container">
+        <div class="metadata">
+          <div class="metadata-content">
+            <div class="metadata-header">
+              <div class="metadata-author" v-for="author in $page.post.authors" :key="author.id">
+                <g-link :to="author.path">{{ author.name }}</g-link>
+              </div>
+              <div class="metadata-item" v-html="displayDate"></div>
+              <div class="metadata-item">{{ $page.post.timeToRead }} min read</div>
+            </div>
+            <h1 class="title">{{ $page.post.title }}</h1>
+            <div class="metadata-footer">
+              <Sprite :symbol="label" class="label" v-for="label in $page.post.labels" :key="label" />
+            </div>
           </div>
         </div>
-        <div class="separator"></div>
-        <div class="metadata-item" v-html="displayDate"></div>
-        <div class="separator"></div>
-        <div class="metadata-item">{{ $page.post.timeToRead }} min read</div>
       </div>
-      <h1 class="title">{{ $page.post.title }}</h1>
+    </section>
+    <div class="content">
+      <main class="container">
+        <Toc :headers="$page.post.headings" />
+        <div class="article">
+          <blockquote class="is-warning" v-if="outdationMessage">{{ outdationMessage }}</blockquote>
+          <article v-html="$page.post.content" />
+        </div>
+      </main>
     </div>
-    <Contents :headers="$page.post.headings" />
-    <article class="article">
-      <blockquote class="is-warning" v-if="outdationMessage">{{ outdationMessage }}</blockquote>
-      <main v-html="$page.post.content" />
-    </article>
     <div class="sidekick">
-      <div class="sidekick-recommendations">
-        <div class="gridx-md">
-          <div class="grid-md-cell" v-if="$page.previous">
-            <div class="card is-start-aligned">
-              <g-link :to="$page.previous.path">
-                <div class="card-metadata">Previous</div>
-                <h5 class="card-title">{{ $page.previous.title }}</h5>
-              </g-link>
-            </div>
-          </div>
-          <div class="grid-md-cell" v-if="$page.next">
-            <div class="card is-end-aligned">
-              <g-link :to="$page.next.path">
-                <div class="card-metadata">Next</div>
-                <h5 class="card-title">{{ $page.next.title }}</h5>
-              </g-link>
-            </div>
-          </div>
+      <div class="container">
+        <div class="sidekick-recommendations">
+          <g-link v-if="$page.previous" :to="$page.previous.path">
+            &larr; {{ $page.previous.title }}
+          </g-link>
+          <g-link v-if="$page.next" :to="$page.next.path" style="text-align: right">
+            {{ $page.next.title }} &rarr;
+          </g-link>
         </div>
-      </div>
-
-      <div class="sidekick-actions">
-        <a target="_blank" rel="noopener noreferrer" :href="editUrl">
-          <Sprite symbol="icon-edit" class="icon" /> Edit this page
-        </a>
-        <a href="#table-of-contents" class="is-visible-on-phone">
-          <Sprite symbol="icon-list" class="icon" /> Table of Contents
-        </a>
-        <a href="#app">
-          <Sprite symbol="icon-up" class="icon" /> Back to top
-        </a>
+        <div class="sidekick-actions">
+          <a target="_blank" rel="noopener noreferrer" :href="editUrl">
+            <Sprite symbol="icon-edit" class="icon" /> Edit this page
+          </a>
+          <a href="#table-of-contents" class="is-visible-on-phone">
+            <Sprite symbol="icon-list" class="icon" /> Table of Contents
+          </a>
+          <a href="#app">
+            <Sprite symbol="icon-up" class="icon" /> Back to top
+          </a>
+        </div>
       </div>
     </div>
   </Layout>
@@ -101,16 +92,8 @@ query Blog ($id: ID!, $previousId: ID!, $nextId: ID!) {
 }
 </page-query>
 
-<static-query>
-query {
-  metadata {
-    editContext
-  }
-}
-</static-query>
-
 <script>
-import Contents from '~/components/Contents'
+import Toc from '~/components/Toc'
 import Sprite from '~/components/Sprite'
 import * as appConfig from '../../app.config'
 
@@ -121,7 +104,7 @@ export default {
     }
   },
   components: {
-    Contents,
+    Toc,
     Sprite
   },
   computed: {
@@ -130,7 +113,7 @@ export default {
       return !this.$page.post.hasOwnProperty('updated') ? published : (this.$page.post.updated !== this.$page.post.date ? `Updated <time>${this.$page.post.updated}</time>` : published); 
     },
     editUrl() {
-      const editContext = appConfig.editConfig && appConfig.editConfig.Post ? appConfig.editConfig.Post : this.$static.metadata.editContext
+      const editContext = appConfig.editConfig && appConfig.editConfig.Post ? appConfig.editConfig.Post : appConfig.prefs.editContext
       return `${editContext}/${this.$page.post.fileInfo.path}`
     },
     outdationMessage() {

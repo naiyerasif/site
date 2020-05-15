@@ -1,0 +1,65 @@
+@use '../variables';
+@use '../properties';
+@use '../mixins/layout';
+@use '../mixins/queries';
+
+//  Footer
+
+.footer {
+  background-color: variables.$bg-muted;
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    @include layout.py(properties.$hero-padding);
+    font-size: variables.$font-sm;
+  }
+
+  .grid-sm {
+    width: 100%;
+  }
+
+  .footer-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: properties.$space-rg;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+
+      svg {
+        color: variables.$text;
+      }
+
+      &:focus,
+      &:hover {
+        svg {
+          color: inherit;
+        }
+      }
+    }
+  }
+
+  .copyright {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+
+    > * {
+      margin-top: properties.$space-rg;
+    }
+
+    svg:first-of-type {
+      @include layout.size(24px);
+    }
+
+    @include queries.sm {
+      flex-direction: column-reverse;
+    }
+  }
+}

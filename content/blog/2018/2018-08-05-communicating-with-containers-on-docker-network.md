@@ -6,7 +6,7 @@ authors: [naiyer]
 labels: [docker, micronaut, angular]
 ---
 
-Say, you've an Angular app that talks to a backend service through a network. The Angular app and the service are running in separate containers, and these containers can be on the same Docker network or separate Docker networks. You don't want to expose any other container to the public except for the Angular one.
+Say, you've an Angular app that talks to a backend service through a network. Both of them are running in separate containers, which can be on the same or different Docker stack(s). You want only the Angular container to be publicly accessible through a port.
 
 Let's run through some scenarios on how you can achieve this.
 
@@ -20,21 +20,19 @@ The examples in this post use
 - Angular 9
 - Docker 19
 
-## Prerequisites
+We'd need an Angular app and a backend service to begin with.
 
-Let's create a backend service with an endpoint that our Angular app can call. For the sake of demonstration, let's create a `Hello World` endpoint.
+## Create a backend service
 
-### Create an image for the backend
+Let's create a very simple backend that will return a greeting message when a `/hello` endpoint will be called. We'll use [Micronaut](https://micronaut.io/) to generate this service. [Install](https://micronaut.io/download.html) Micronaut CLI and execute the following command on the terminal.
 
-On a terminal, run 
-
-```bash
+```sh
 mn create-app dev.mflash.guides.greeter.greeter-api --build maven
 ```
 
-to generate a Micronaut app with Maven support. Import the app in an IDE.
+This will generate a basic Micronaut app with Maven support. Import this app in your favorite IDE.
 
-> **INFO** Micronaut CLI will set the Java version in `pom.xml` with whatever is available on the PATH environment variable.
+> **INFO** Micronaut CLI will set the Java version in `pom.xml` with the one available on the PATH environment variable.
 
 Create a class for greeting message.
 
@@ -64,7 +62,7 @@ public class GreetingController {
 }
 ```
 
-Enable CORS for the Angular app to let it communicate with the endpoint `/hello`. To do this, edit `application.yml` file and add the following configuration.
+To let the Angular app call this endpoint, we'll have to enable CORS. To do this, edit `application.yml` file and add the following configuration.
 
 ```yaml
 # greeter-api/src/main/resources/application.yml
@@ -100,25 +98,23 @@ EXPOSE 8084
 CMD ["java", "-jar", "greeter-api.jar"]
 ```
 
-On the terminal, run
+To build a Docker image, execute the following command on the terminal.
 
-```bash
+```sh
 docker build -t mflash/greeter-api .
 ```
 
-to build an image for the backend.
+## Create an Angular app
 
-### Create an Angular image
+For the sake of example, let's generate a very minimal Angular app with no routing, specifications or external templates. Execute the following command on the terminal.
 
-Let's generate a very minimal Angular app with no routing, specifications or external templates. Run the following command on the terminal.
-
-```bash
+```sh
 ng new greeter-ui --minimal --routing=false --style=css --skipTests --inlineStyle --inlineTemplate
 ```
 
 > Refer to [`ng new` reference](https://angular.io/cli/new) for more information on these options.
 
-Add `HttpClientModule` in the root module. This'll be used to call the backend service we just created.
+To call the REST endpoint, we'll need `HttpClientModule`. Add it in the root module of the Angular app.
 
 ```typescript{3, 6}
 // greeter-ui/src/app/app.module.ts
@@ -132,9 +128,9 @@ import { HttpClientModule } from '@angular/common/http';
 export class AppModule {}
 ```
 
-Create a `GreetingService` by running the following command.
+Create a `GreetingService` by executing the following command.
 
-```bash
+```sh
 ng generate service Greeting
 ```
 
@@ -155,7 +151,7 @@ export class GreetingService {
 }
 ```
 
-> **TIP** Don't attach any host in front of the endpoint.
+> **TIP** Don't add any host in front of the endpoint.
 
 Edit `AppComponent` to display the greeting message.
 
@@ -185,11 +181,9 @@ export class AppComponent {
 }
 ```
 
-Once you've built the app by `ng build --prod`, you'd need a server to serve the application. Let's use [Nginx](https://nginx.org/) for this purpose.
+To serve the production build of this app, we can use [Nginx](https://nginx.org/). Create a `default.conf` file in the root of the Angular app and add the following configuration.
 
-Create a `default.conf` file in the root of the Angular app and add the following configuration.
-
-```properties
+```conf
 # greeter-ui/default.conf
 
 server {
@@ -236,7 +230,8 @@ server {
 }
 ```
 
-Don't worry too much about this configuration; it just instructs `nginx` to
+Don't worry too much about this configuration; it instructs `nginx` to
+
 - listen for any requests at port `4200`
 - serve files from a directory `/usr/share/nginx/html`
 - serve `index.html` at `/`
@@ -269,17 +264,13 @@ CMD ["nginx", "-g", "daemon off;"]
 
 Generate the image by running the following command.
 
-```bash
+```sh
 docker build -t mflash/greeter-ui .
 ```
 
-## Scenarios
+## Scenario 1: Containers on the same Docker stack
 
-Now that we're done with the prerequisites, let's run a few scenarios.
-
-### Containers on the same network
-
-Create a compose file and add the following configuration.
+Consider the first scenario where the Angular app and the backend service are running on the same Docker stack. Create a compose file and add the following configuration. 
 
 ```yaml
 # scenario-1-on-the-same-network/docker-compose.yml
@@ -304,13 +295,13 @@ networks:
     driver: bridge
 ```
 
-> Note that only `greeter-ui` has been exposed publicly.
+> Note that only `greeter-ui` is exposed publicly.
 
-Launch this stack by executing `docker-compose up -d` and browse to <http://localhost:4200>. You'll get something like this.
+Launch this stack by executing `docker-compose up -d` and browse to <http://localhost:4200>. You'll see the following message displayed on the browser window.
 
 ![Greeter UI](./images/2018-08-05-communicating-with-containers-on-docker-network-01.png)
 
-Unfortunately, we're not getting the message from the backend service. A quick look on the networks tab on Devtools reveals that we're getting a `502 Bad Gateway` for the request at <http://0.0.0.0:8084/hello?name=Microflash>. That's because Docker assigns some randome host to a service; in this case, it is not `0.0.0.0`.
+This is the default greeting message; we're not getting the message from the backend service. A quick look on the Networks tab in Devtools reveals that we're getting a `502 Bad Gateway` for the request at <http://0.0.0.0:8084/hello?name=Microflash>. That's because Docker assigns some random host to a service; in this case, it is not `0.0.0.0`.
 
 To resolve this issue, open `default.conf` file and replace the host `0.0.0.0` in the `proxy_pass` value with the service name you specified in `docker-compose.yml` (in our case, it's `greeter-api`).
 
@@ -332,9 +323,9 @@ Rebuild the `greeter-ui` image, launch the stack again and browse to <http://loc
 
 ![Greeter UI](./images/2018-08-05-communicating-with-containers-on-docker-network-02.png)
 
-### Containers on different networks
+## Scenario 2: Containers on different Docker stacks
 
-But what if the containers are running on different networks? The service url <http://greeter-api:8084> won't work unless the containers share the same network. Let's see how we can make it work.
+The service url <http://greeter-api:8084> won't work unless the containers share the same network. For the containers running on different Docker stacks, we can configure them to connect through the same network.
 
 Create a compose file and add the following configuration for the backend service.
 
@@ -379,14 +370,13 @@ networks:
 
 In this file, we're declaring the Angular app exposed over the port `4200` and the network `uinet` which is nothing but a reference for `greeternet`. This will ensure that the services on both the stacks can talk to each other over the network `greeternet`.
 
-Launch both the stacks with `docker-compose up -d` and browse to <http://localhost:4200>. You should see the expected message on the browser window.
+Launch both the stacks with `docker-compose up -d` and browse to <http://localhost:4200>. You would see the expected message on the browser window.
 
 ## References
 
 **Source code** &mdash; [communicating-with-containers-on-docker-network](https://gitlab.com/mflash/docker-guides/-/tree/master/communicating-with-containers-on-docker-network)
 
-**See also**
-
+**Related**
 - [Inject env variables from docker-compose into Angular4 app](https://stackoverflow.com/a/45727380)
 - [Communication between multiple docker-compose projects](https://stackoverflow.com/questions/38088279/communication-between-multiple-docker-compose-projects)
 - [Wide open nginx CORS configuration](https://michielkalkman.com/snippets/nginx-cors-open-configuration/)

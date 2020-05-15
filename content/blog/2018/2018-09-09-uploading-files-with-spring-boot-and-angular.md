@@ -6,7 +6,7 @@ authors: [naiyer]
 labels: [spring, angular]
 ---
 
-Give yourself a few years of time and you'll eventually come across a file upload problem of varying complexity. Consider this one: you want a Spring backend to upload a file through an Angular app. Since the files can be large and the network may be slow, the upload can take a while to complete. Hence, it is also useful to display the progress of the upload on the Angular app.
+Give yourself some time in software development and you'll eventually come across file upload problems of varying complexity. Consider this one: you want a Spring backend to upload a file through an Angular app. Since the files can be large and the network may be slow, the upload can take a while to complete. Hence, you also want to display the progress of the upload on the Angular app.
 
 To solve this problem, we can modify the Spring Boot application described in [Uploading files](https://spring.io/guides/gs/uploading-files/) guide for our needs. And then we can create an Angular app to provide a UI.
 
@@ -165,7 +165,7 @@ public @SpringBootApplication class Launcher implements WebMvcConfigurer {
 
 Generate a minimal Angular app with the following command.
 
-```bash
+```sh
 ng new web --minimal --routing=false --style=css --skipTests --inlineStyle --inlineTemplate
 ```
 
@@ -323,6 +323,6 @@ Launch the Spring and Angular applications and open the browser at <http://local
 
 **Source Code** &mdash; [spring-file-upload](https://gitlab.com/mflash/spring-guides/-/tree/master/spring-file-upload)
 
-**See also**
+**Related**
 - [Uploading files](https://spring.io/guides/gs/uploading-files/)
 - [Angular 6 – Upload/Get MultipartFile to/from Spring Boot Server](https://grokonez.com/java-integration/angular-6-upload-get-multipartfile-spring-boot-example)

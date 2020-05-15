@@ -1,16 +1,21 @@
 <template>
   <Layout>
-    <div class="hero-media">
-      <div class="hero-image">
-        <Poster class="metadata-media" />
+    <section class="hero">
+      <div class="container">
+        <h1 class="title">
+          <span class="gap-end hidden-on-small">&mdash;</span>Reflections on <br class="hidden-on-small" />design and development <br class="hidden-on-small" />by <g-link to="/profile/naiyer/">Naiyer Asif</g-link>
+        </h1>
       </div>
+    </section>
+    <div class="content">
+      <main class="container">
+        <Card v-for="post in $page.posts.edges" :key="post.id" :title="post.node.title" :description="post.node.excerpt | clip" :src="post.node.path" large>
+          <span v-html="post.node.date"/>
+          <span>{{ post.node.timeToRead }} min read</span>
+          <Sprite :symbol="label" class="label" v-for="label in post.node.labels" :key="label" />
+        </Card>
+      </main>
     </div>
-    <div class="hero-content">
-      <h1 class="title">
-        <span class="is-separated is-hidden-on-phone">&mdash;</span>Reflections on design and development by <g-link to="/profile/naiyer/">Naiyer Asif</g-link>
-      </h1>
-    </div>
-    <Posts :posts="$page.posts.edges" />
     <Pagination :input="$page.posts.pageInfo" />
   </Layout>
 </template>
@@ -39,18 +44,18 @@ query Blogs ($page: Int) {
 </page-query>
 
 <script>
-import Posts from '~/components/Posts'
+import Card from '~/components/Card'
 import Pagination from '~/components/Pagination'
-import Poster from '@/images/index.svg'
+import Sprite from '~/components/Sprite'
 
 export default {
   metaInfo: {
     title: 'Home'
   },
   components: {
-    Posts,
+    Card,
     Pagination,
-    Poster
+    Sprite
   }
 }
 </script>

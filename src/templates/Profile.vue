@@ -1,26 +1,32 @@
 <template>
   <Layout>
-    <div class="hero-media">
-      <div class="hero-image">
-        <g-image :alt="firstName" class="metadata-media" :src="$page.profile.avatar" />
+    <section class="hero">
+      <div class="container">
+        <div class="metadata">
+          <div class="metadata-media">
+            <g-image :alt="firstName" :src="$page.profile.avatar" />
+          </div>
+          <div class="metadata-content">
+            <h1 class="title">Hello, I'm <span class="is-primary">{{ firstName }}</span></h1>
+            <div class="subtitle">a {{ $page.profile.role | lowerCase }} from {{ $page.profile.location }}</div>
+          </div>
+        </div>
       </div>
+    </section>
+    <div class="content">
+      <main class="container">
+        <VueRemarkContent class="article" />
+      </main>
     </div>
-    <div class="hero-content">
-      <h1 class="title">
-        Hello, I'm <span class="is-primary">{{ firstName }}</span> 
-      </h1>
-      <div class="subtitle">
-        a {{ $page.profile.role | lowerCase }} from {{ $page.profile.location }}
+    <section class="sidekick">
+      <div class="container">
+        <div class="sidekick-actions">
+          <a href="#app">
+            <Sprite symbol="icon-up" class="icon" /> Back to top
+          </a>
+        </div>
       </div>
-    </div>
-    <VueRemarkContent class="content" />
-    <div class="sidekick">
-      <div class="sidekick-actions">
-        <a href="#app">
-          <Sprite symbol="icon-up" class="icon" /> Back to top
-        </a>
-      </div>
-    </div>
+    </section>
   </Layout>
 </template>
 

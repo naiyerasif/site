@@ -11,7 +11,7 @@ If a repository has an extremely long history or large size in the version contr
 
 Let's assume that you've forked the repository you want to contribute to. Now, clone only a portion of the commit history that is required for you to work with. Let's say you're interested only in the last 3 commits from the HEAD. You can shallow clone the repository with the following command.
 
-```bash
+```sh
 git clone --depth 3 https://github.com/fork/massive.git
 ```
 
@@ -19,14 +19,14 @@ A **shallow clone**, as per the [docs](https://www.git-scm.com/docs/git-clone#Do
 
 In case you forget specifying `--no-single-branch` flag, you can examine the fetch configuration.
 
-```bash
+```sh
 $ git config --get remote.origin.fetch
 +refs/heads/master:refs/remotes/origin/master
 ```
 
 and edit it to fetch the history from all the branches.
 
-```bash
+```sh
 git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 ```
 
@@ -36,13 +36,13 @@ Execute `git remote update origin` and Git will fetch the history up to the requ
 
 Add the remote upstream repository so that you can sync with the changes merged into it by other contributors.
 
-```bash
+```sh
 git remote add upstream https://github.com/example/massive.git
 ```
 
 Just like the fork, you can fetch the history of the upstream upto a certain depth from the HEAD.
 
-```bash
+```sh
 git fetch --depth 2 upstream
 ```
 
@@ -50,13 +50,13 @@ git fetch --depth 2 upstream
 
 Create a new branch from the HEAD of an upstream branch.
 
-```bash
+```sh
 git checkout -b latest upstream/dev
 ```
 
 Make your changes, commit them and set the local `latest` branch to track the remote of your fork. 
 
-```bash
+```sh
 git branch latest --set-upstream-to origin/latest
 ```
 

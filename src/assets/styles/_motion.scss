@@ -1,0 +1,58 @@
+@use './core/transitions';
+
+// Animation mixin
+
+@mixin animate($name, $duration: 500ms, $timing-fn: ease) {
+  animation-name: $name;
+  animation-duration: $duration;
+  transition-duration: $duration;
+  animation-fill-mode: both;
+  transition-timing-function: $timing-fn;
+
+  @media (print), (prefers-reduced-motion: reduce) {
+    animation-duration: 1ms;
+    transition-duration: 1ms;
+    animation-iteration-count: 1;
+  }
+}
+
+// Dissolve transition
+
+.dissolve-enter-to,
+.dissolve-enter-active {
+  @include animate($name: fadeInDown, $timing-fn: ease-in);
+}
+
+.dissolve-leave-to,
+.dissolve-leave-active {
+  @include animate($name: fadeOutUp, $timing-fn: ease-out);
+}
+
+.dissolve-enter,
+.dissolve-leave {
+  opacity: 0;
+}
+
+// Slide-up transition
+
+.slide-up-enter-active,
+.slide-up-leave-active {
+  @include animate($name: slideUp, $duration: 300ms, $timing-fn: ease-in-out);
+}
+
+.slide-up-enter,
+.slide-up-leave-to {
+  opacity: 0;
+}
+
+// Rotate-in-right transition
+
+.rotate-in-right-enter-to,
+.rotate-in-right-leave {
+  @include animate($name: rotateInRight, $timing-fn: ease-in-out);
+}
+
+.rotate-in-right-enter,
+.rotate-in-right-leave-to {
+  opacity: 0;
+}

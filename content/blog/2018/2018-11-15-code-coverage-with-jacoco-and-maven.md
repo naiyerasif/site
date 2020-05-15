@@ -22,7 +22,7 @@ Let's reuse the Spring Boot application created in the post [Uploading files wit
 
 ## Setup JaCoCo
 
-Add the JaCoCo plugin in `pom.xml` with the following confiuration.
+Add the JaCoCo plugin in `pom.xml` with the following configuration.
 
 ```xml
 <build>
@@ -56,7 +56,7 @@ Add the JaCoCo plugin in `pom.xml` with the following confiuration.
 
 Jacoco runs the coverage by instrumenting the Java code through an agent. The first execution `start-agent` starts this agent (called `JaCoCo Agent`). The second execution `generate-report` generates the report.
 
-Execute `mvn package` or `mvn test` command to see this in action. After the build, you'll notice a `jacoco.exec` file in the `target` directory. We can open this file in your IDE to see the results of coverage.
+Execute `mvn package` or `mvn test` command to see this in action. After the build, you'll notice a `jacoco.exec` file in the `target` directory. We can open this file in an IDE to see the results of coverage.
 
 ![IntelliJ Idea Coverage window](./images/2018-11-15-code-coverage-with-jacoco-and-maven-01.png)
 
@@ -76,7 +76,7 @@ When the `mvn jacoco:report` task fires up, it generates reports in HTML, CSV an
 
 > **Note** that the appearance of the report may vary depending on your browser preferences.
 
-You've already seen how you can configure the title of the report using the `title` key. We can also configure the encoding, footer text, etc and explicitly exclude or include class files. For a comprehensive list of options, refer to [jacoco:report documentation](https://www.jacoco.org/jacoco/trunk/doc/report-mojo.html).
+We've already seen how we can configure the title of the report using the `title` key. We can also configure the encoding, footer text, etc and explicitly exclude or include class files. For a comprehensive list of options, refer to [jacoco:report documentation](https://www.jacoco.org/jacoco/trunk/doc/report-mojo.html).
 
 ### Enforce coverage compliance
 
@@ -125,14 +125,14 @@ Consider the following configuration.
 </build>
 ```
 
-We have specified a coverage rule to be applied to the entire application with an instruction coverage of 80% using the `INSTRUCTION` counter. The instruction coverage provides information about the amount of code that has been executed or missed, irrespective of how your source code has been formatted. Similarly, a class coverage (which we have specified using the `CLASS` counter) tells that at least one method of a class has been executed. These rules will apply over the entire application because we've used a `BUNDLE` element.
+We have specified a coverage rule to be applied to the entire application with an instruction coverage of 80% using the `INSTRUCTION` counter. The instruction coverage provides information about the amount of code that has been executed or missed, irrespective of how the source code has been formatted. Similarly, a class coverage (which we have specified using the `CLASS` counter) tells that at least one method of a class has been executed. These rules will apply over the entire application because we've used a `BUNDLE` element.
 
-We can configure specific classes and [additional counters](https://www.jacoco.org/jacoco/trunk/doc/counters.html) as well to customize the coverage rules. For more details on this can be done, refer to the [official documentation](https://www.jacoco.org/jacoco/trunk/doc/index.html).
+We can configure specific classes and [additional counters](https://www.jacoco.org/jacoco/trunk/doc/counters.html) as well to customize the coverage rules. For more details on how this can be done, refer to the [official documentation](https://www.jacoco.org/jacoco/trunk/doc/index.html).
 
 ## References
 
 **Source Code** &mdash; [coverage-with-jacoco](https://gitlab.com/mflash/java-guides/-/tree/master/coverage-with-jacoco)
 
-**See also**
+**Related**
 - [JaCoCo Maven plugin](https://www.eclemma.org/jacoco/trunk/doc/maven.html)
 - [Maven usage example](https://www.eclemma.org/jacoco/trunk/doc/examples/build/pom.xml)

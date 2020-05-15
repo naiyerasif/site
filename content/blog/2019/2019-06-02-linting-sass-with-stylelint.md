@@ -16,7 +16,7 @@ You can use any Node.js project using SASS to follow the examples.
 
 Execute the following command to add `stylelint`.
 
-```bash
+```sh
 yarn add -D stylelint
 ```
 
@@ -52,7 +52,7 @@ If your stylesheets are massive and you ran `stylelint` for the first time, you 
 
 `stylelint-config-prettier` is a configuration that disables `stylelint` rules that conflict with Prettier. `stylelint-prettier` is a plugin that adds a rule that formats content using Prettier. It also exposes a *recommended* configuration that configures both `stylelint-prettier` and `stylelint-config-prettier` in a single step. Add both `stylelint-prettier` and `stylelint-config-prettier` as developer dependencies,
 
-```bash
+```sh
 yarn add -D stylelint-config-prettier stylelint-prettier
 ```
 
@@ -71,7 +71,7 @@ then extend the recommended configuration by adding the following configuration 
 
 If you are working with Bootstrap, you can extend the behavior of `stylelint` with Bootstrap-specific linting configuration. Execute the following command to add the Bootstrap-specific linting extension.
 
-```bash
+```sh
 yarn add -D stylelint-config-twbs-bootstrap
 ```
 

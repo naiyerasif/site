@@ -119,7 +119,7 @@ This service
 - returns a requested file by name with `loadResource` method, and
 - cleans up the upload directory with `deleteAll` method
 
-Create a controller to accept a request and prepare the response.
+Create a handler to accept a request and prepare the response.
 
 ```java
 // src/main/java/dev/mflash/guides/upload/handler/FileSystemStorageHandler.java
@@ -167,9 +167,7 @@ public @Controller class FileSystemStorageHandler {
 }
 ```
 
-The `ServerResponse` is returned as an atomic value through `Mono`. 
-
-### Configure routes
+### Configure the routes
 
 Note that the handler methods don't have any endpoint information. In a reactive Spring Boot application, this information (also called *routes*) can be provided through a `RouterFunction` bean as follows.
 
@@ -222,7 +220,7 @@ server:
 
 Generate a Node.js application by executing the following command.
 
-```bash
+```sh
 yarn init -y
 ```
 
@@ -236,7 +234,7 @@ We'll use
 
 Add all these dependencies through the following command.
 
-```bash
+```sh
 yarn add express morgan multer form-data axios cors body-parser
 ```
 

@@ -26,7 +26,7 @@ You can pick the Node.js application created in the post [Request logging with m
 
 Add the required dependencies with the following command.
 
-```bash
+```sh
 yarn add log4js
 ```
 
@@ -106,5 +106,5 @@ Start the application; you should see `app.log` in `logs` directory and the same
 
 **Source code** &mdash; [logging-with-log4js-node](https://gitlab.com/mflash/nodejs-guides/-/tree/master/logging-with-log4js-node)
 
-**See also**
+**Related**
 - [log4js-node docs](https://log4js-node.github.io/log4js-node/index.html)

@@ -3,6 +3,7 @@
 @use 'sass:meta';
 
 $default-formats: ('woff2', 'woff');
+$font-location: '/assets/fonts';
 
 @function _contains($list, $values...) {
   @each $value in $values {
@@ -51,39 +52,39 @@ $default-formats: ('woff2', 'woff');
   }
 }
 
-@include font-face('Inter', '/assets/fonts/Inter-Regular') {
+@include font-face('Inter', '#{$font-location}/Inter-Regular') {
   font-style: normal;
   font-weight: 400;
 }
 
-@include font-face('Inter', '/assets/fonts/Inter-Italic') {
+@include font-face('Inter', '#{$font-location}/Inter-Italic') {
   font-style: italic;
   font-weight: 400;
 }
 
-@include font-face('Inter', '/assets/fonts/Inter-SemiBold') {
+@include font-face('Inter', '#{$font-location}/Inter-SemiBold') {
   font-style: normal;
   font-weight: 600;
 }
 
-@include font-face('Inter', '/assets/fonts/Inter-SemiBoldItalic') {
+@include font-face('Inter', '#{$font-location}/Inter-SemiBoldItalic') {
   font-style: italic;
   font-weight: 600;
 }
 
-@include font-face('Inter', '/assets/fonts/Inter-Bold') {
+@include font-face('Inter', '#{$font-location}/Inter-Bold') {
   font-style: normal;
   font-weight: 700;
 }
 
-@include font-face('Inter', '/assets/fonts/Inter-BoldItalic') {
+@include font-face('Inter', '#{$font-location}/Inter-BoldItalic') {
   font-style: italic;
   font-weight: 700;
 }
 
 @include font-face(
   'Inter var',
-  '/assets/fonts/Inter-roman.var',
+  '#{$font-location}/Inter-roman.var',
   ('woff2 supports variations(gvar)', 'woff2-variations', 'woff2')
 ) {
   font-style: normal;
@@ -93,7 +94,7 @@ $default-formats: ('woff2', 'woff');
 
 @include font-face(
   'Inter var',
-  '/assets/fonts/Inter-italic.var',
+  '#{$font-location}/Inter-italic.var',
   ('woff2 supports variations(gvar)', 'woff2-variations', 'woff2')
 ) {
   font-style: italic;
@@ -101,12 +102,12 @@ $default-formats: ('woff2', 'woff');
   font-named-instance: 'Italic';
 }
 
-@include font-face('JetBrains Mono', '/assets/fonts/JetBrainsMono-Regular') {
+@include font-face('JetBrains Mono', '#{$font-location}/JetBrainsMono-Regular') {
   font-style: normal;
   font-weight: 400;
 }
 
-@include font-face('JetBrains Mono', '/assets/fonts/JetBrainsMono-Bold') {
+@include font-face('JetBrains Mono', '#{$font-location}/JetBrainsMono-Bold') {
   font-style: normal;
   font-weight: 700;
 }

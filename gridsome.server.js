@@ -2,8 +2,9 @@ const path = require('path')
 const fs = require('fs')
 const { GraphQLString } = require('gridsome/graphql')
 const moment = require('moment')
+
 const appConfig = require('./app.config')
-const summarize = require('./processor').summarize
+const excerpt = require('./app.server').excerpt
 
 const outdationDate = appConfig.prefs.outdationPeriod ? moment().clone().subtract(appConfig.prefs.outdationPeriod, 'days').startOf('day') : null
 
@@ -24,15 +25,12 @@ module.exports = function (api) {
   })
 
   api.loadSource(({ addMetadata,addSchemaResolvers }) => {
-    addMetadata('editContext', appConfig.prefs.editContext)
-    addMetadata('spritePath', appConfig.prefs.spritePath)
-    
     addSchemaResolvers({
       Blog: {
         excerpt: {
           type: GraphQLString,
           resolve(post) {
-            return post.excerpt ? post.excerpt : summarize(post.content)
+            return post.excerpt ? post.excerpt : excerpt(post.content)
           }
         }
       }
@@ -77,7 +75,7 @@ module.exports = function (api) {
       return {
         title: post.title,
         path: post.path,
-        excerpt: post.excerpt ? post.excerpt : summarize(post.content)
+        excerpt: post.excerpt ? post.excerpt : excerpt(post.content)
       }
     })
 

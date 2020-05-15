@@ -1,0 +1,83 @@
+@use '../_variables';
+@use '../_properties';
+@use '../mixins/_layout';
+
+// Search
+
+.search-container,
+.search-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  position: relative;
+}
+
+.search-container {
+  background-color: variables.$bg-glossy;
+  position: absolute;
+  top: properties.$search-alignment;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.search-box {
+  width: properties.$search-width;
+  @include layout.px(properties.$search-padding);
+  height: 100%;
+
+  .search-input {
+    outline: none;
+    border: none;
+    flex: 1;
+    height: inherit;
+  }
+}
+
+.search-results {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: properties.$search-width;
+  margin: 0 auto;
+  top: 100%;
+  right: 0;
+  left: 0;
+  z-index: 5;
+  max-height: 75vh;
+  overflow: hidden;
+  border-bottom-left-radius: properties.$radius-responsive;
+  border-bottom-right-radius: properties.$radius-responsive;
+  box-shadow: 0 20px 40px variables.$bg-glossy;
+
+  .results-box {
+    overflow: auto;
+    z-index: 5;
+    background-color: variables.$bg-muted;
+
+    > * {
+      display: block;
+    }
+
+    .result-item,
+    .result-label {
+      padding: variables.$gap-xs properties.$search-padding;
+    }
+
+    .result-label {
+      color: variables.$text-muted;
+    }
+
+    .result-item {
+      color: variables.$text;
+
+      &:focus,
+      &:hover {
+        color: variables.$link-vibrant;
+        background-color: variables.$bg-vibrant;
+      }
+    }
+  }
+}

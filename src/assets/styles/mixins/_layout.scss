@@ -1,0 +1,40 @@
+// Set dimensions
+
+@mixin size($width, $height: $width) {
+  height: $height;
+  width: $width;
+}
+
+// Padding and Margin utilities
+
+@mixin px($value) {
+  padding-right: $value;
+  padding-left: $value;
+}
+
+@mixin py($value) {
+  padding-top: $value;
+  padding-bottom: $value;
+}
+
+@mixin mx($value) {
+  margin-right: $value;
+  margin-left: $value;
+}
+
+@mixin my($value) {
+  margin-top: $value;
+  margin-bottom: $value;
+}
+
+// Visibility
+
+@mixin hide($hidden: true) {
+  @if $hidden {
+    visibility: hidden;
+    display: none;
+  } @else {
+    visibility: visible;
+    display: unset;
+  }
+}

@@ -1,91 +1,6 @@
 @use 'sass:color';
 @use 'sass:map';
 
-// Color palettes
-// 
-// Ax00 variants are WCAG-accesible complements of x00 colors
-// all the colors are in CIECAM02 color space
-
-$black: hsl(0, 0%, 0%);
-$white: hsl(0, 0%, 100%);
-
-$primary: (
-  A500: hsl(150, 17%, 98%),
-  A600: hsl(160, 21%, 95%),
-  A700: hsl(164, 22%, 90%),
-  A800: hsl(162, 23%, 83%),
-  A900: hsl(159, 26%, 76%),
-  100: hsl(160, 28%, 67%),
-  200: hsl(162, 30%, 58%),
-  300: hsl(164, 39%, 47%),
-  400: hsl(165, 58%, 38%),
-  500: hsl(164, 48%, 36%),
-  600: hsl(163, 42%, 33%),
-  700: hsl(162, 36%, 30%),
-  800: hsl(161, 33%, 27%),
-  900: hsl(162, 30%, 24%),
-  A100: hsl(161, 26%, 21%),
-  A200: hsl(162, 23%, 17%),
-  A300: hsl(156, 21%, 14%),
-  A400: hsl(163, 17%, 8%)
-);
-
-$secondary: (
-  A500: hsl(210, 9%, 96%),
-  A600: hsl(240, 6%, 94%),
-  A700: hsl(225, 7%, 89%),
-  A800: hsl(231, 8%, 83%),
-  A900: hsl(234, 8%, 77%),
-  100: hsl(231, 8%, 70%),
-  200: hsl(233, 9%, 64%),
-  300: hsl(229, 10%, 57%),
-  400: hsl(233, 10%, 52%),
-  500: hsl(231, 11%, 47%),
-  600: hsl(232, 14%, 42%),
-  700: hsl(231, 18%, 38%),
-  800: hsl(233, 20%, 34%),
-  900: hsl(232, 20%, 28%),
-  A100: hsl(234, 18%, 23%),
-  A200: hsl(232, 16%, 18%),
-  A300: hsl(234, 16%, 13%),
-  A400: hsl(225, 18%, 4%)
-);
-
-$tertiary: (
-  A500: hsl(53, 50%, 97%),
-  A600: hsl(46, 72%, 92%),
-  A700: hsl(44, 83%, 84%),
-  A800: hsl(43, 77%, 76%),
-  A900: hsl(43, 56%, 70%),
-  100: hsl(44, 42%, 64%),
-  200: hsl(43, 31%, 58%),
-  300: hsl(42, 24%, 52%),
-  400: hsl(42, 21%, 47%),
-  500: hsl(42, 20%, 42%),
-  600: hsl(43, 19%, 37%),
-  700: hsl(44, 18%, 33%),
-  800: hsl(43, 17%, 28%),
-  900: hsl(42, 16%, 24%),
-  A100: hsl(45, 15%, 20%),
-  A200: hsl(42, 15%, 17%),
-  A300: hsl(40, 14%, 12%),
-  A400: hsl(45, 13%, 6%)
-);
-
-// Conveniences for palette access
-
-@function primary($variation) {
-  @return map.get($primary, $variation);
-}
-
-@function secondary($variation) {
-  @return map.get($secondary, $variation);
-}
-
-@function tertiary($variation) {
-  @return map.get($tertiary, $variation);
-}
-
 // Colormix functions
 // 
 // use `tint` instead of default `lighten`
@@ -108,36 +23,94 @@ $tertiary: (
   @return color.adjust($color, $saturation: $vibrance);
 }
 
+// Color palettes
+// 
+// Ax00 variants are WCAG-accesible complements of x00 colors
+// all the colors are in CIECAM02 color space
+
+$black: hsl(0, 0%, 0%);
+$white: hsl(0, 0%, 100%);
+
+$primary: (
+  100: hsl(152, 25%, 80%),
+  200: hsl(153, 26%, 75%),
+  300: hsl(153, 29%, 64%),
+  400: hsl(155, 33%, 53%),
+  500: hsl(160, 62%, 38%),
+  600: hsl(158, 49%, 36%),
+  700: hsl(156, 41%, 33%),
+  800: hsl(155, 35%, 29%),
+  900: hsl(154, 29%, 23%),
+) !default;
+
+$secondary: (
+  100: hsl(223, 8%, 83%),
+  200: hsl(227, 9%, 79%),
+  300: hsl(231, 9%, 72%),
+  400: hsl(227, 10%, 64%),
+  500: hsl(229, 10%, 57%),
+  600: hsl(228, 10%, 50%),
+  700: hsl(228, 13%, 44%),
+  800: hsl(229, 17%, 39%),
+  900: hsl(228, 16%, 30%)
+) !default;
+
+$tertiary: (
+  100: hsl(34, 86%, 77%),
+  200: hsl(34, 68%, 73%),
+  300: hsl(35, 46%, 65%),
+  400: hsl(34, 33%, 58%),
+  500: hsl(35, 23%, 51%),
+  600: hsl(34, 22%, 45%),
+  700: hsl(35, 20%, 39%),
+  800: hsl(34, 19%, 33%),
+  900: hsl(32, 18%, 26%)
+) !default;
+
+// Conveniences for palette access
+
+@function primary($variation) {
+  @return map.get($primary, $variation);
+}
+
+@function secondary($variation) {
+  @return map.get($secondary, $variation);
+}
+
+@function tertiary($variation) {
+  @return map.get($tertiary, $variation);
+}
+
 // CSS properties for light theme
 
 [data-theme='light'] {
-  --color-muted: #{tertiary(600)};
-  --color-pronounced: #{primary(600)};
-  --color-default: #{secondary(A100)};
-  --color-link: #{shade(primary(500), 10%)};
-  --color-hovered-link: #{primary(700)};
-  --color-border: #{fade($black, 0.9)};
-  --color-border-hovered: #{fade($black, 0.7)};
-  --background-default: #{$white};
-  --background-muted: #{primary(A500)};
-  --background-subtle: #{primary(A600)};
-  --background-pronounced: #{tint(tertiary(A600), 25%)};
-  --background-scrollbar: #{tertiary(A800)};
+  --text: #{shade(secondary(900), 25%)};
+  --text-muted: #{tertiary(700)};
+  --text-vibrant: #{secondary(800)};
+  --link: #{vibrant(primary(700), 0.5)};
+  --link-vibrant: #{vibrant(primary(800), 0.5)};
+  --border: #{fade($black, 0.9)};
+  --border-vibrant: #{fade($black, 0.7)};
+  --scrollbar: #{fade(tertiary(300), 0.3)};
+  --bg: #{$white};
+  --bg-muted: #{tint(tertiary(200), 94%)};
+  --bg-vibrant: #{tint(tertiary(100), 77%)};
+  --bg-glossy: #{tint(tertiary(100), 33%)};
 }
 
 // CSS properties for dark theme
 
 [data-theme='dark'] {
-  --color-muted: #{vibrant(tertiary(300), -10%)};
-  --color-pronounced: #{vibrant(tertiary(200), -15%)};
-  --color-default: #{shade($white, 25%)};
-  --color-link: #{primary(400)};
-  --color-hovered-link: #{primary(300)};
-  --color-border: #{fade($white, 0.95)};
-  --color-border-hovered: #{fade($white, 0.75)};
-  --background-default: #{shade(secondary(A300), 25%)};
-  --background-muted: #{secondary(A300)};
-  --background-subtle: #{shade(secondary(A300), 10%)};
-  --background-pronounced: #{secondary(A400)};
-  --background-scrollbar: #{shade(secondary(A100), 5%)};
+  --text: #{shade($white, 25%)};
+  --text-muted: #{shade(tertiary(500), 11%)};
+  --text-vibrant: #{tint(tertiary(800), 25%)};
+  --link: #{primary(500)};
+  --link-vibrant: #{primary(400)};
+  --border: #{fade($white, 0.95)};
+  --border-vibrant: #{fade($white, 0.75)};
+  --scrollbar: #{fade(secondary(900), 0.3)};
+  --bg: #{shade(secondary(900), 60%)};
+  --bg-muted: #{shade(secondary(900), 55%)};
+  --bg-vibrant: #{shade(secondary(900), 66%)};
+  --bg-glossy: #{shade(secondary(900), 77%)};
 }

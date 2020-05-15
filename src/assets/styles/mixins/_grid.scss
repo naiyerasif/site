@@ -1,0 +1,41 @@
+@use '../variables';
+@use '../properties';
+@use './queries';
+@use './layout';
+
+// Grid mixin
+// generates a grid with cells of specified width
+
+@mixin grid($width, $gap: properties.$space-sm, $strategy: auto-fill) {
+  display: flex;
+  flex-wrap: wrap;
+
+  display: grid;
+  grid-gap: $gap;
+  grid-template-columns: repeat($strategy, minmax($width, 1fr));
+  grid-auto-rows: minmax(max-content, auto);
+
+  @include queries.sm {
+    grid-template-columns: none;
+  }
+
+  > * {
+    flex: 1 1 $width;
+    @include layout.mx($gap);
+    height: 100%;
+  }
+
+  @supports (display: grid) {
+    & > * {
+      @include layout.mx(0);
+    }
+  }
+}
+
+.grid-sm {
+  @include grid(variables.$grid-sm);
+}
+
+.grid-md {
+  @include grid(variables.$grid-md, $strategy: auto-fit);
+}

@@ -1,23 +1,28 @@
 <template>
-  <div class="search-container">
-    <div class="search-box" :class="{ 'remove-bottom-border' : searchResultsVisible && query.length > 0 }">
-      <input type="text" class="search-input" v-model="query" @input="softReset" @keyup="performSearch" @keyup.esc="searchResultsVisible = false" @keydown.up.prevent="highlightPrev" @keydown.down.prevent="highlightNext" @keyup.enter="performSearch" @blur="searchResultsVisible = false" @focus="searchResultsVisible = true" ref="search" aria-label="Search">
-
-      <transition name="slide-up" mode="out-in">
-        <Sprite symbol="icon-search" class="icon icon-search" v-if="query.length < 1" />
-        <a @click="reset" v-if="query.length > 0"><Sprite symbol="icon-clear" class="icon icon-clear" /></a>
-      </transition>
-    </div>
-    <transition name="fade">
-      <div v-if="query.length > 0 && searchResultsVisible" class="results-container" :class="{ 'remove-top-border' : searchResultsVisible }">
-        <div class="search-results" ref="results">
-          <section class="results-label">
-            {{ results.length > 0 ? results.length === 1 ? `${results.length} result` : `${results.length} results` : `No results for "${this.query}"` }}
-          </section>
-          <a v-for="(post, index) in results" :key="index" :href="post.item.path" @click="reset" class="search-result">
-            <span class="search-result-title">{{ post.item.title }}</span>
+  <div class="search">
+    <a role="button" aria-label="Launch search" @click="expand">
+      <Sprite symbol="icon-search" class="icon" />
+    </a>
+    <transition name="dissolve">
+      <div v-if="expanded" class="search-container">
+        <div class="search-box">
+          <input type="text" class="search-input" placeholder="Search" v-model="query" @input="softReset" @keyup="performSearch" @keyup.esc="searchResultsVisible = false" @keydown.up.prevent="highlightPrev" @keydown.down.prevent="highlightNext" @keyup.enter="performSearch" @blur="searchResultsVisible = false" @focus="searchResultsVisible = true" ref="search" aria-label="Search">
+          <a role="button" aria-label="Reset search" @click="reset" class="search-reset">
+            <Sprite symbol="icon-delete" class="icon" />
           </a>
         </div>
+        <transition name="dissolve">
+          <div v-if="query.length > 0 && searchResultsVisible" class="search-results">
+            <div class="results-box" ref="results">
+              <section class="result-label">
+                {{ results.length > 0 ? results.length === 1 ? `${results.length} result` : `${results.length} results` : `No results for "${this.query}"` }}
+              </section>
+              <a v-for="(post, index) in results" :key="index" :href="post.item.path" @click="reset" class="result-item">
+                <span class="result-title">{{ post.item.title }}</span>
+              </a>
+            </div>
+          </div>
+        </transition>
       </div>
     </transition>
   </div>
@@ -26,8 +31,8 @@
 <script>
 import axios from 'axios'
 import Sprite from './Sprite'
-import * as appConfig from '../../app.config'
 
+import * as appConfig from '../../app.config'
 const searchConfig = appConfig.searchConfig
 
 export default {
@@ -48,13 +53,15 @@ export default {
       posts: [],
       highlightedIndex: 0,
       searchResultsVisible: false,
-      options: searchConfig.options
+      options: searchConfig.options,
+      expanded: false
     }
   },
   methods: {
     reset() {
       this.query = ''
       this.highlightedIndex = 0
+      this.expanded = !this.expanded
     },
     softReset() {
       this.highlightedIndex = 0
@@ -79,6 +86,15 @@ export default {
     },
     scrollIntoView() {
       this.$refs.results.children[this.highlightedIndex].scrollIntoView({ block: 'nearest' })
+    },
+    expand(e) {
+      this.expanded = !this.expanded
+
+      if (this.expanded) {
+        this.$nextTick(() => {
+          this.$refs.search.focus()
+        })
+      }
     }
   }
 }

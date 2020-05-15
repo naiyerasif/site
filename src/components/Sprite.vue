@@ -1,23 +1,23 @@
 <template>
   <svg>
-    <use :xlink:href="url" :href="url"></use>
+    <use :xlink:href="link" :href="link"></use>
   </svg>
 </template>
 
-<static-query>
-query {
-  metadata {
-    spritePath
-  }
-}
-</static-query>
-
 <script>
+import * as appConfig from '../../app.config'
+
 export default {
-  props: ['symbol'],
+  props: {
+    src: {
+      type: String,
+      default: 'icons'
+    },
+    symbol: String
+  },
   computed: {
-    url() {
-      return `${this.$static.metadata.spritePath}#${this.symbol}`
+    link() {
+      return `${appConfig.prefs.spriteDir}/${this.src}.svg#${this.symbol}`
     }
   }
 }

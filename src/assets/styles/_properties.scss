@@ -1,0 +1,65 @@
+@use 'variables';
+@use 'mixins/queries';
+
+:root {
+  --space: (1rem + 2vw);
+  --space-sm: (var(--space) / 2);
+  --space-md: (var(--space) * 1.5);
+  --space-lg: (var(--space) * 2);
+}
+
+$space-sm: calc(var(--space-sm)) !default;
+$space-rg: calc(var(--space)) !default;
+$space-md: calc(var(--space-md)) !default;
+$space-lg: calc(var(--space-lg)) !default;
+
+:root {
+  --max-width: initial;
+  --wrap-responsive: wrap;
+  --radius-responsive: 0;
+  --align-expanded: flex-start;
+  --align-centered: var(--align-expanded);
+  --gap-compressed: #{$space-rg};
+  --search-width: 100%;
+  --search-padding: calc(var(--space) * 1.4);
+  --search-alignment: 50%;
+  --hero-padding: #{$space-md};
+  --metadata-width: 100%;
+  --metadata-gap: #{variables.$gap};
+  --article-width: 100%;
+  --sidekick-width: 100%;
+}
+
+@include queries.md {
+  :root {
+    --max-width: calc(#{variables.$breakpoint-sm} + #{variables.$container-offset});
+    --wrap-responsive: nowrap;
+    --radius-responsive: #{variables.$radius};
+    --align-expanded: space-between;
+    --align-centered: center;
+    --gap-compressed: #{$space-sm};
+    --search-padding: #{variables.$gap};
+    --search-width: calc(50% + 2 * var(--search-padding));
+    --search-alignment: 0;
+    --hero-padding: #{$space-lg};
+    --metadata-width: 80%;
+    --metadata-gap: 0;
+    --article-width: 70%;
+    --sidekick-width: max-content;
+  }
+}
+
+$max-width: var(--max-width) !default;
+$gap-compressed: var(--gap-compressed) !default;
+$wrap-responsive: var(--wrap-responsive) !default;
+$radius-responsive: var(--radius-responsive) !default;
+$align-expanded: var(--align-expanded) !default;
+$align-centered: var(--align-centered) !default;
+$search-width: var(--search-width) !default;
+$search-padding: var(--search-padding) !default;
+$search-alignment: var(--search-alignment) !default;
+$hero-padding: var(--hero-padding) !default;
+$metadata-width: var(--metadata-width) !default;
+$metadata-gap: var(--metadata-gap) !default;
+$article-width: var(--article-width) !default;
+$sidekick-width: var(--sidekick-width) !default;

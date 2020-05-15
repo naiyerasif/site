@@ -44,7 +44,7 @@ services:
 
 Execute the following command to launch the container.
 
-```bash
+```sh
 docker-compose up -d
 ```
 
@@ -274,7 +274,7 @@ public class DatabaseConfiguration {
 
 Launch the application and you'd be able to hit the APIs without any authentication.
 
-```bash
+```sh
 curl --location --request POST 'http://localhost:8080/notes' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -606,7 +606,7 @@ Here, we've
 
 Launch the application, and try to hit the <http://localhost:8080/notes> endpoint.
 
-```bash
+```sh
 $ curl --location --request GET 'localhost:8080/notes'
 {
   "timestamp": "2020-04-10T17:58:03.858+0000",
@@ -619,7 +619,7 @@ $ curl --location --request GET 'localhost:8080/notes'
 
 The response `403 Forbidden` is expected, since this endpoint is no longer accessible publicly. Now, register as a new user.
 
-```bash
+```sh
 curl --location --request POST 'localhost:8080/users/register' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -631,7 +631,7 @@ curl --location --request POST 'localhost:8080/users/register' \
 
 and login with this user.
 
-```bash
+```sh
 curl --location --request POST 'localhost:8080/login' \
 --header 'Content-Type: application/json' \
 --header 'Content-Type: text/plain' \
@@ -643,13 +643,13 @@ curl --location --request POST 'localhost:8080/login' \
 
 You'll receive a response `200 OK` with an `Authorization` header that contains a token,
 
-```bash
+```sh
 Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlbWlseUBleGFtcGxlLmNvbSIsImV4cCI6MTU4NzQwNTcwMn0.-gKb3XHD18ego96v4ObI211oihi4kfLmG68rJ_7aa_7ClNpoEpkjJTP9LjxoRnrGAcF3GQrhqOiOIWAJIbU1YQ
 ```
 
 Use this token and hit the <http://localhost:8080/notes> endpoint, again. This time, you'll get a successful response. Play with other endpoints to create, edit and delete a note, using the same token.
 
-```bash{1,2}
+```sh{1,2}
 $ curl --location --request GET 'localhost:8080/notes' \
 --header 'Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlbWlseUBleGFtcGxlLmNvbSIsImV4cCI6MTU4NzQwNTcwMn0.-gKb3XHD18ego96v4ObI211oihi4kfLmG68rJ_7aa_7ClNpoEpkjJTP9LjxoRnrGAcF3GQrhqOiOIWAJIbU1YQ'
 
@@ -667,6 +667,6 @@ $ curl --location --request GET 'localhost:8080/notes' \
 
 **Source Code** &mdash; [spring-security-jwt-auth](https://gitlab.com/mflash/spring-guides/-/tree/master/spring-security-jwt-auth)
 
-**See also**
+**Related**
 - [Introduction to JSON Web Tokens](https://jwt.io/introduction/)
 - [Verify Access Tokens for Custom APIs](https://auth0.com/docs/api-auth/tutorials/verify-access-token)

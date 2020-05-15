@@ -38,7 +38,7 @@ services:
 
 Execute the following command to launch the container.
 
-```bash
+```sh
 docker-compose up -d
 ```
 
@@ -166,7 +166,7 @@ public @SpringBootTest class AccountRepositoryTest {
 
 When you'll run these tests, the following exception may be thrown:
 
-```bash
+```sh
 org.bson.codecs.configuration.CodecConfigurationException: Can't find a codec for class java.time.ZonedDateTime.
 ```
 
@@ -223,13 +223,13 @@ public @Configuration class MongoConfiguration {
 
 Now, you'll be able to run the unit tests successfully.
 
-## Cascade the documents
+## Cascade the document operations
 
 Spring Data Mongo doesn't support cascading of the objects out-of-the-box. The official Spring documentation states that:
 
 > The mapping framework does not handle cascading saves. If you change an `Account` object that is referenced by a `Person` object, you must save the `Account` object separately. Calling save on the `Person` object will not automatically save the `Account` objects in the property accounts.
 
-However, you can write a custom mechanism to cascade objects on save and delete operations by listening to `MongoMappingEvent`s.
+However, you can write a custom mechanism to cascade save and delete operations by listening to `MongoMappingEvent`s.
 
 ### Define a `@Cascade` annotation
 
@@ -246,7 +246,7 @@ public @interface Cascade {
 }
 ```
 
-Since cascading can be done for save and/or delete operations, let's generalize this implementation by passing a value to the annotation that will set the type of cascading. By default, we'll cascade on both save and delete operations through `CascadeType.ALL` value.
+Since cascading can be done for save and/or delete operations, let's generalize this implementation by passing a value to the annotation that will set the type of cascading. By default, we'll cascade both save and delete operations through `CascadeType.ALL` value.
 
 Annotate the desired fields with this annotation.
 

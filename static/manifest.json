@@ -1,0 +1,12 @@
+{
+  "name": "Microflash",
+  "short_name": "Microflash",
+  "description": "Reflections on design and development by Naiyer Asif",
+  "icons": [{
+    "src": "google-touch-icon.png",
+    "sizes": "512x512"
+  }],
+  "background_color": "#101015",
+  "theme_color": "#101015",
+  "display": "fullscreen"
+}

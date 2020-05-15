@@ -6,7 +6,7 @@ authors: [naiyer]
 labels: [typescript, eslint]
 ---
 
-[TypeScript ESLint](https://github.com/typescript-eslint/typescript-eslint) is the spiritual successor of [TSLint](https://github.com/palantir/tslint), the de-facto linting tool exclusively developed for TypeScript by [Palantir Technologies](https://palantir.com/). 
+[TypeScript ESLint](https://github.com/typescript-eslint/typescript-eslint) is the successor of [TSLint](https://github.com/palantir/tslint), the linting tool exclusively developed for TypeScript. It leverages the existing JavaScript linting ecosystem and brings consistency across the tooling to lint both JavaScript and TypeScript apps.
 
 In this post, we'll set up linting with TypeScript ESLint for a TypeScript project.
 
@@ -26,7 +26,7 @@ You can pick the Node.js application created in the post [Logging on Node.js wit
 
 Execute the following commands to add required dependencies for `typescript-eslint`.
 
-```bash
+```sh
 yarn add -D eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser
 ```
 
@@ -34,7 +34,7 @@ yarn add -D eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser
 
 Generate an `eslint` configuration file with the following command.
 
-```bash
+```sh
 npx eslint --init
 ```
 
@@ -77,5 +77,5 @@ You can lint the files using `yarn lint`. Also, when the application is started 
 
 **Source code** &mdash; [linting-with-typescript-eslint](https://gitlab.com/mflash/nodejs-guides/-/tree/master/linting-with-typescript-eslint)
 
-**See also**
+**Related**
 - [typescript-eslint repo](https://github.com/typescript-eslint/typescript-eslint)

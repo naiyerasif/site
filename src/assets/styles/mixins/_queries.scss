@@ -1,0 +1,35 @@
+@use '../variables';
+
+// Media query mixins
+
+@mixin within($breakpoint) {
+  @media screen and (max-width: ($breakpoint - 1)) {
+    @content;
+  }
+}
+
+@mixin beyond($breakpoint) {
+  @media screen and (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+// Pre-defined media queries
+
+@mixin sm {
+  @include within(variables.$breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin within-md {
+  @include within(variables.$breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin md {
+  @include beyond(variables.$breakpoint-md) {
+    @content;
+  }
+}
