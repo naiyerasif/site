@@ -21,7 +21,7 @@ $space-lg: calc(var(--space-lg)) !default;
   --align-centered: var(--align-expanded);
   --gap-compressed: #{$space-rg};
   --search-width: 100%;
-  --search-padding: calc(var(--space) * 1.4);
+  --search-padding: #{$space-rg};
   --search-alignment: 50%;
   --hero-padding: #{$space-md};
   --metadata-width: 100%;
