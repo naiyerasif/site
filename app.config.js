@@ -15,7 +15,7 @@ module.exports = {
   maintainer: pkgAuthor,
   copyright: `Copyright ${new Date().getFullYear()} ${pkgAuthor}`,
   prefs: {
-    draftDir: 'archive/backlog',
+    draftDir: '.archive/backlog',
     editContext: `${pkgRepo.replace(/.git$/g, '')}/edit/release`,
     spriteDir: '/assets/images',
     excerptSize: 251,

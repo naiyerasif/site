@@ -11,7 +11,7 @@
     "start": "gridsome develop",
     "status": "gridsome info",
     "deploy": "gh-pages -b master -d public --message \"[skip ci] Updates\"",
-    "post": "node tools/newPost.js"
+    "post": "node bin/newPost.js"
   },
   "dependencies": {
     "@fullhuman/postcss-purgecss": "^2.2.0",
