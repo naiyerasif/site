@@ -8,7 +8,7 @@ avatar: './avatars/naiyer.png'
 
 import Card from '~/components/Card'
 
-I've more than 4 years of experience in Banking &amp; Financial Services, Legal &amp; Compliance and Aviation domains.
+I've worked on applications in Banking &amp; Financial Services, Legal &amp; Compliance, Document Processing and Aviation domains, across multiple technology stacks and development paradigms.
 
 #### Technologies I am adept at &mdash;
 
@@ -16,7 +16,7 @@ I've more than 4 years of experience in Banking &amp; Financial Services, Legal 
 <div class="grid-md">
   <card metadata="Platform" icon="java" title="Java" description="The most popular programming platform for building enterprise applications" />
   <card metadata="Framework" icon="spring" title="Spring" description="Lightweight open-source Java framework for building large-scale applications" />
-  <card metadata="Framework" icon="angular" title="Angular" description="An open-source TypeScript-based framework to create single-page applications" />
+  <card metadata="Platform" icon="nodejs" title="Node.js" description="An open-source, cross-platform runtime to run JavaScript code on server" />
   <card metadata="Database" icon="oracle" title="Oracle" description="A proprietary multi-model database management system" />
 </div>
 
@@ -25,9 +25,10 @@ I've more than 4 years of experience in Banking &amp; Financial Services, Legal 
 
 
 <div class="grid-md">
-  <card metadata="Platform" icon="nodejs" title="Node.js" description="An open-source, cross-platform runtime to run JavaScript code on server" />
+  <card metadata="Framework" icon="angular" title="Angular" description="An open-source TypeScript-based framework to create single-page applications" />
   <card metadata="Framework" icon="vuejs" title="Vue.js" description="A progressive JavaScript framework for building user interfaces" />
   <card metadata="Platform" icon="docker" title="Docker" description="Enterprise container platform to build, share and deploy applications anywhere" />
+  <card metadata="Database" icon="postgres" title="Postgres" description="A powerful, open source object-relational database system" />
   <card metadata="Database" icon="mongodb" title="MongoDB" description="A general purpose, cross-platform, document-based, distributed NoSQL database" />
   <card metadata="Automation" icon="jenkins" title="Jenkins" description="An open-source automation server to build, deploy and automate projects" />
 </div>
