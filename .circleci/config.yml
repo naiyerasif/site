@@ -29,13 +29,7 @@ jobs:
           key: v1-dependencies-{{ checksum "yarn.lock" }}
       - run: yarn status
       - run: yarn build
-      - run: |
-          git config user.email "naiyer.app+circleci@gmail.com"
-          git config user.name "circleci-build"
-      - add_ssh_keys:
-          fingerprints:
-            - "b4:2e:4a:5b:ec:99:71:ae:6b:db:6c:f0:bc:ea:22:21"
-      - run: yarn deploy
+      - run: npx netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_ACCESS_TOKEN --prod --dir=public
 
 workflows:
   version: 2
@@ -45,3 +39,4 @@ workflows:
           filters:
             branches:
               only: release
+              ignore: master
