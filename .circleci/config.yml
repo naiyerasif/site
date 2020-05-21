@@ -39,4 +39,3 @@ workflows:
           filters:
             branches:
               only: release
-              ignore: master
