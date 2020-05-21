@@ -37,7 +37,7 @@
       
       > * {
         display: block;
-        padding: properties.$space-sm;
+        padding: variables.$gap-sm variables.$gap-md;
         background-color: variables.$bg-vibrant;
         border: 1px solid variables.$border;
         border-radius: variables.$radius;

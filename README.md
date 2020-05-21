@@ -22,7 +22,7 @@ It uses
 - [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) as the `monospace` font
 - a [custom Prism theme](https://github.com/Microflash/microflash.github.io/blob/release/src/assets/styles/core/_syntax.scss) to decorate the codeblocks
 - [CircleCI](https://circleci.com/) for continuous integration
-- [Netlify](https://netlify.com/) for deployment
+- [Netlify](https://netlify.com/) for publishing
 - graphics and illustrations created with [Affinity Designer](https://affinity.serif.com/en-gb/designer/)
 
 The source of this site is available under [MIT](./LICENSE), the content under [CC by SA](https://creativecommons.org/licenses/by-sa/4.0/).
