@@ -6,7 +6,7 @@
 // Grid mixin
 // generates a grid with cells of specified width
 
-@mixin grid($width, $gap: properties.$space-sm, $strategy: auto-fill) {
+@mixin grid($width, $height: 100%, $gap: properties.$space-sm, $strategy: auto-fill) {
   display: flex;
   flex-wrap: wrap;
 
@@ -22,7 +22,7 @@
   > * {
     flex: 1 1 $width;
     @include layout.mx($gap);
-    height: 100%;
+    min-height: $height;
   }
 
   @supports (display: grid) {
@@ -33,9 +33,9 @@
 }
 
 .grid-sm {
-  @include grid(variables.$grid-sm);
+  @include grid($width: variables.$grid-sm);
 }
 
 .grid-md {
-  @include grid(variables.$grid-md, $strategy: auto-fit);
+  @include grid($width: variables.$grid-md, $strategy: auto-fit);
 }

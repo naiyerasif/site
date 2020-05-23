@@ -45,3 +45,15 @@
     transform: rotateY(0deg);
   }
 }
+
+@keyframes fadeBackgroundColor {
+  from {
+    opacity: 0;
+    transform: background-color;
+  }
+
+  to {
+    opacity: 1;
+    transform: background-color;
+  }
+}

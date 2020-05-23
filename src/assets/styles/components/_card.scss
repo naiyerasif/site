@@ -1,23 +1,41 @@
-@use '../_variables';
-@use '../_properties';
-@use '../mixins/_layout';
+@use '../variables';
+@use '../properties';
+@use '../mixins/layout';
 
 // Card
+
+$card-background: variables.$bg-card;
+$card-active-background: variables.$bg-card-vibrant;
+$card-gap: calc(1.25rem + 1vw);
+$card-gap-neg: calc(-1.25rem - 1vw);
+$card-border: variables.$border;
+$card-radius: variables.$radius;
+$card-title-size: variables.$font-lg;
+$card-description-size: variables.$font-rg;
+$card-metadata-color: variables.$text-muted;
+$card-metadata-icon-size: variables.$icon-sm;
+$card-metadata-size: variables.$font-sm;
 
 .card {
   display: flex;
   flex-direction: column;
-  background-color: variables.$bg-vibrant;
-  padding: properties.$space-sm;
-  border-radius: variables.$radius;
+  justify-content: space-between;
+  background-color: $card-background;
+  padding: $card-gap;
+  border-radius: $card-radius;
 
-  &.large-gap {
-    padding: properties.$space-rg;
+  > a {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    padding: inherit;
+    margin: $card-gap-neg;
   }
 
   &:focus,
   &:hover {
-    background-color: variables.$bg-glossy;
+    background-color: $card-active-background;
 
     .card-title,
     .card-description {
@@ -29,14 +47,10 @@
     display: flex;
     align-items: center;
     @include layout.my(variables.$char-gap);
-    font-weight: variables.$weight-md;
-
-    &.large-title {
-      font-size: variables.$font-md;
-    }
+    font-size: $card-title-size;
 
     .label {
-      @include layout.size(variables.$icon-rg);
+      @include layout.size($card-title-size);
       margin-right: variables.$char-gap;
     }
   }
@@ -45,8 +59,8 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    color: variables.$text-muted;
-    font-size: variables.$font-sm;
+    color: $card-metadata-color;
+    font-size: $card-metadata-size;
 
     > span::after {
       content: variables.$symbol-separator;
@@ -55,13 +69,14 @@
     }
 
     .label {
-      @include layout.size(variables.$icon-sm);
+      @include layout.size($card-metadata-icon-size);
       margin-right: variables.$char-gap;
     }
   }
 
   .card-description {
     color: variables.$text;
-    font-size: variables.$font-sm;
+    font-size: $card-description-size;
+    opacity: 0.85;
   }
 }

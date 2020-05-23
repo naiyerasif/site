@@ -1,35 +1,41 @@
-@use '../_variables';
-@use '../_properties';
-@use '../mixins/_layout';
-@use '../mixins/_queries';
+@use '../variables';
+@use '../properties';
+@use '../mixins/layout';
+@use '../mixins/queries';
 
 // Header
 
+$header-background: variables.$bg-header;
+$header-item-gapx: variables.$gap-sm;
+$header-item-gapy: properties.$header-gap;
+$header-top-gap-adjustment: -(variables.$gap-lg);
+$header-wrap: properties.$wrap-responsive;
+$header-item-judtification: properties.$align-between;
+
 .header {
-  background-color: variables.$bg-glossy;
-  font-size: variables.$font-sm;
+  background-color: $header-background;
 
   .container {
     display: flex;
-    flex-wrap: properties.$wrap-responsive;
-    justify-content: properties.$align-expanded;
+    flex-wrap: $header-wrap;
+    justify-content: $header-item-judtification;
     align-items: center;
 
     > * {
-      @include layout.py(properties.$gap-compressed);
+      @include layout.py($header-item-gapy);
 
       &:not(:first-child) {
-        margin-left: variables.$gap-sm;
+        margin-left: $header-item-gapx;
       }
 
       &:not(:nth-last-child(2)) {
-        margin-right: variables.$gap-sm;
+        margin-right: $header-item-gapx;
       }
     }
 
     .brand {
       line-height: 0;
-      width: 30px;
+      width: 36px;
 
       svg {
         @include layout.size(inherit);
@@ -72,6 +78,6 @@
   .theme-switcher,
   .header-link {
     order: 4;
-    margin-top: -(variables.$gap-lg);
+    margin-top: $header-top-gap-adjustment;
   }
 }

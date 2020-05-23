@@ -2,27 +2,23 @@
 @use 'mixins/queries';
 
 :root {
-  --space: (1rem + 2vw);
-  --space-sm: (var(--space) / 2);
-  --space-md: (var(--space) * 1.5);
-  --space-lg: (var(--space) * 2);
+  --base-gap: (1rem + 2vw);
 }
 
-$space-sm: calc(var(--space-sm)) !default;
-$space-rg: calc(var(--space)) !default;
-$space-md: calc(var(--space-md)) !default;
-$space-lg: calc(var(--space-lg)) !default;
+$space-sm: calc(var(--base-gap) * 0.5) !default;
+$space-rg: calc(var(--base-gap)) !default;
+$space-md: calc(var(--base-gap) * 1.5) !default;
+$space-lg: calc(var(--base-gap) * 2) !default;
 
 :root {
-  --max-width: initial;
+  --container-width: initial;
   --wrap-responsive: wrap;
   --radius-responsive: 0;
-  --align-expanded: flex-start;
-  --align-centered: var(--align-expanded);
-  --gap-compressed: #{$space-rg};
+  --align-between: flex-start;
+  --header-gap: #{$space-rg};
+  --search-gap: #{$space-rg};
   --search-width: 100%;
-  --search-padding: #{$space-rg};
-  --search-alignment: 50%;
+  --search-top-adjustment: 50%;
   --hero-padding: #{$space-md};
   --metadata-width: 100%;
   --metadata-gap: #{variables.$gap};
@@ -32,15 +28,14 @@ $space-lg: calc(var(--space-lg)) !default;
 
 @include queries.md {
   :root {
-    --max-width: calc(#{variables.$breakpoint-sm} + #{variables.$container-offset});
+    --container-width: calc(#{variables.$breakpoint-sm} + #{variables.$container-offset});
     --wrap-responsive: nowrap;
     --radius-responsive: #{variables.$radius};
-    --align-expanded: space-between;
-    --align-centered: center;
-    --gap-compressed: #{$space-sm};
-    --search-padding: #{variables.$gap};
-    --search-width: calc(50% + 2 * var(--search-padding));
-    --search-alignment: 0;
+    --align-between: space-between;
+    --header-gap: #{$space-sm};
+    --search-gap: #{variables.$gap};
+    --search-width: calc(50% + 2.75 * var(--search-gap));
+    --search-top-adjustment: 0;
     --hero-padding: #{$space-lg};
     --metadata-width: 80%;
     --metadata-gap: 0;
@@ -49,15 +44,15 @@ $space-lg: calc(var(--space-lg)) !default;
   }
 }
 
-$max-width: var(--max-width) !default;
-$gap-compressed: var(--gap-compressed) !default;
+$container-width: var(--container-width) !default;
 $wrap-responsive: var(--wrap-responsive) !default;
 $radius-responsive: var(--radius-responsive) !default;
-$align-expanded: var(--align-expanded) !default;
-$align-centered: var(--align-centered) !default;
+$align-between: var(--align-between) !default;
+$header-gap: var(--header-gap) !default;
+$search-gap: var(--search-gap) !default;
 $search-width: var(--search-width) !default;
-$search-padding: var(--search-padding) !default;
-$search-alignment: var(--search-alignment) !default;
+$search-top-adjustment: var(--search-top-adjustment) !default;
+$card-meta-icon-size: var(--card-meta-icon-size) !default;
 $hero-padding: var(--hero-padding) !default;
 $metadata-width: var(--metadata-width) !default;
 $metadata-gap: var(--metadata-gap) !default;

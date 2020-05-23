@@ -1,26 +1,14 @@
-@use 'sass:color';
+@use 'sass:color' as *;
 @use 'sass:map';
 
 // Colormix functions
-// 
-// use `tint` instead of default `lighten`
-// use `shade` instead of default `darken` 
-// use `fade` instead of default `transparentize`
-
-@function tint($color, $percentage) {
-  @return color.mix($white, $color, $percentage);
-}
-
-@function shade($color, $percentage) {
-  @return color.mix($black, $color, $percentage);
-}
 
 @function fade($color, $transparency: 1) {
-  @return color.adjust($color, $alpha: -($transparency));
+  @return adjust($color, $alpha: -($transparency));
 }
 
-@function vibrant($color, $vibrance) {
-  @return color.adjust($color, $saturation: $vibrance);
+@function saturate($color, $vibrance) {
+  @return adjust($color, $saturation: $vibrance);
 }
 
 // Color palettes
@@ -81,36 +69,49 @@ $tertiary: (
   @return map.get($tertiary, $variation);
 }
 
+// Common properties
+
+:root {
+  --text-vibrant: hsl(350, 70%, 50%);
+  --text-muted: hsl(29, 57%, 44%);
+}
+
 // CSS properties for light theme
 
 [data-theme='light'] {
-  --text: #{shade(secondary(900), 25%)};
-  --text-muted: #{tertiary(600)};
-  --text-vibrant: #{vibrant(secondary(700), 25)};
-  --link: #{vibrant(primary(700), 0.5)};
-  --link-vibrant: #{vibrant(primary(800), 0.5)};
-  --border: #{fade($black, 0.9)};
-  --border-vibrant: #{fade($black, 0.7)};
-  --scrollbar: #{fade(tertiary(300), 0.3)};
-  --bg: #{$white};
-  --bg-muted: #{tint(tertiary(200), 94%)};
-  --bg-vibrant: #{tint(tertiary(100), 77%)};
-  --bg-glossy: #{tint(tertiary(100), 33%)};
+  $bg-base: $white;
+  $text-base: mix($black, secondary(900), 25%);
+
+  --text: #{$text-base};
+  --border: #{mix($bg-base, $text-base, 77%)};
+  --border-vibrant: #{mix($bg-base, $text-base, 66%)};
+  --link: #{mix($text-base, primary(500), 20%)};
+  --link-vibrant: #{mix($text-base, primary(500), 33%)};
+  --scrollbar: #{fade(saturate(tertiary(300), 25%), 0.3)};
+  --bg-body: #{$bg-base};
+  --bg-header: #{mix($white, tertiary(100), 50%)};
+  --bg-vibrant: #{mix($white, tertiary(100), 77%)};
+  --bg-muted: #{mix($white, tertiary(200), 94%)};
+  --bg-card: #{mix($white, primary(900), 92%)};
+  --bg-card-vibrant: #{mix($white, tertiary(100), 75%)};
 }
 
 // CSS properties for dark theme
 
 [data-theme='dark'] {
-  --text: #{shade($white, 25%)};
-  --text-muted: #{shade(tertiary(400), 11%)};
-  --text-vibrant: #{tint(tertiary(500), 11%)};
-  --link: #{primary(500)};
+  $bg-base: mix($black, secondary(900), 60%);
+  $text-base: mix($black, $white, 25%);
+
+  --text: #{$text-base};
+  --border: #{mix($bg-base, $text-base, 88%)};
+  --border-vibrant: #{mix($bg-base, $text-base, 66%)};
+  --link: #{mix($text-base, primary(500), 5%)};
   --link-vibrant: #{primary(400)};
-  --border: #{fade($white, 0.95)};
-  --border-vibrant: #{fade($white, 0.75)};
   --scrollbar: #{fade(secondary(900), 0.3)};
-  --bg: #{shade(secondary(900), 60%)};
-  --bg-muted: #{shade(secondary(900), 55%)};
-  --bg-vibrant: #{shade(secondary(900), 66%)};
-  --bg-glossy: #{shade(secondary(900), 77%)};
+  --bg-body: #{$bg-base};
+  --bg-header: #{mix($black, secondary(900), 77%)};
+  --bg-vibrant: #{mix($black, secondary(900), 66%)};
+  --bg-muted: #{mix($black, secondary(900), 55%)};
+  --bg-card: #{mix($black, secondary(900), 68%)};
+  --bg-card-vibrant: #{mix($bg-base, primary(500), 92%)};
 }

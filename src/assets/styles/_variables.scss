@@ -12,10 +12,11 @@ $weight-rg: 400 !default;
 $weight-md: 600 !default;
 $weight-lg: 700 !default;
 
-$font-sm: calc(0.75rem + 0.2vw) !default;
+$font-sm: calc(0.8rem + 0.2vw) !default;
 $font-rg: calc(1rem + 0.2vw) !default;
-$font-md: calc(1.0625rem + 0.4vw) !default;
-$font-xl: calc(1.25rem + 2vw) !default;
+$font-md: calc(1.0625rem + 0.5vw) !default;
+$font-lg: calc(1.75rem + 0.25vw) !default;
+$font-xl: calc(1.5rem + 2.5vw) !default;
 
 // Spacing
 
@@ -43,7 +44,6 @@ $icon-rg: 1.5rem !default;
 
 $grid-sm: 15rem !default;
 $grid-md: 17rem !default;
-$grid-lg: 25rem !default;
 
 // Display
 
@@ -71,10 +71,12 @@ $scrollbar: var(--scrollbar) !default;
 $selected: colors.fade(colors.primary(500), 0.75) !default;
 $code-selected: colors.fade(colors.primary(500), 0.91) !default;
 
-$bg: var(--bg) !default;
+$bg-body: var(--bg-body) !default;
+$bg-header: var(--bg-header) !default;
 $bg-muted: var(--bg-muted) !default;
+$bg-card: var(--bg-card) !default;
+$bg-card-vibrant: var(--bg-card-vibrant) !default;
 $bg-vibrant: var(--bg-vibrant) !default;
-$bg-glossy: var(--bg-glossy) !default;
 
 @use '../../../node_modules/@microflash/remarkability/scss/variables' with (
   $multiline-wrap: true,
@@ -92,7 +94,8 @@ $bg-glossy: var(--bg-glossy) !default;
   $family-code: ('JetBrains Mono', $family-code-native),
   $family-base-variable: ('Inter var', $family-sans-native),
   $font-size-base: $font-rg,
-  $background-body: $bg,
+  $weight-headings: $weight-md,
+  $background-body: $bg-body,
   $background-code: $bg-vibrant,
   $background-ins: $bg-muted,
   $background-mark: $bg-muted,

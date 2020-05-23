@@ -11,8 +11,7 @@ module.exports = {
     'img',
     'a',
     'pre',
-    'code',
-    'citation'
+    'code'
   ],
   whitelistPatterns: [
     /^g-/

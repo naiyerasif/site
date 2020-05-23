@@ -4,6 +4,19 @@
 
 // Search
 
+$search-background: variables.$bg-header;
+$result-background: variables.$bg-muted;
+$search-top-adjustment: properties.$search-top-adjustment;
+$search-width: properties.$search-width;
+$search-gap: properties.$search-gap;
+$result-gapx: properties.$search-gap;
+$result-gapy: variables.$gap-xs;
+$result-label-color: variables.$text-muted;
+$result-item-color: variables.$text;
+$result-item-active-color: variables.$link-vibrant;
+$result-item-active-background: variables.$bg-vibrant;
+$search-border-radius: properties.$radius-responsive;
+
 .search-container,
 .search-box {
   display: flex;
@@ -14,9 +27,9 @@
 }
 
 .search-container {
-  background-color: variables.$bg-glossy;
+  background-color: $search-background;
   position: absolute;
-  top: properties.$search-alignment;
+  top: $search-top-adjustment;
   right: 0;
   bottom: 0;
   left: 0;
@@ -24,8 +37,8 @@
 }
 
 .search-box {
-  width: properties.$search-width;
-  @include layout.px(properties.$search-padding);
+  width: $search-width;
+  @include layout.px($search-gap);
   height: 100%;
 
   .search-input {
@@ -40,7 +53,7 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  width: properties.$search-width;
+  width: $search-width;
   margin: 0 auto;
   top: 100%;
   right: 0;
@@ -48,14 +61,14 @@
   z-index: 5;
   max-height: 75vh;
   overflow: hidden;
-  border-bottom-left-radius: properties.$radius-responsive;
-  border-bottom-right-radius: properties.$radius-responsive;
-  box-shadow: 0 20px 40px variables.$bg-glossy;
+  border-bottom-left-radius: $search-border-radius;
+  border-bottom-right-radius: $search-border-radius;
+  box-shadow: 0 20px 40px $search-background;
 
   .results-box {
     overflow: auto;
     z-index: 5;
-    background-color: variables.$bg-muted;
+    background-color: $result-background;
 
     > * {
       display: block;
@@ -63,20 +76,20 @@
 
     .result-item,
     .result-label {
-      padding: variables.$gap-xs properties.$search-padding;
+      padding: $result-gapy $result-gapx;
     }
 
     .result-label {
-      color: variables.$text-muted;
+      color: $result-label-color;
     }
 
     .result-item {
-      color: variables.$text;
+      color: $result-item-color;
 
       &:focus,
       &:hover {
-        color: variables.$link-vibrant;
-        background-color: variables.$bg-vibrant;
+        color: $result-item-active-color;
+        background-color: $result-item-active-background;
       }
     }
   }

@@ -4,8 +4,12 @@
 
 // Content
 
+$content-gapy: properties.$space-rg;
+$content-article-width: properties.$article-width;
+$content-first-paragraph-size: variables.$font-md;
+
 .content {
-  @include layout.my(properties.$hero-padding);
+  @include layout.my($content-gapy);
 
   .container {
     display: flex;
@@ -18,15 +22,15 @@
     
     .toc,
     .article {
-      max-width: properties.$article-width;
+      max-width: $content-article-width;
 
       article > p:first-child {
-        font-size: variables.$font-md;
+        font-size: $content-first-paragraph-size;
       }
     }
 
-    .large-gap:not(:last-child) {
-      margin-bottom: properties.$space-rg;
+    .card:not(:last-child) {
+      margin-bottom: $content-gapy;
     }
   }
 }
@@ -45,7 +49,6 @@ h6 {
     display: inline-block;
     width: 1.25ch;
     margin-left: -1.25ch;
-    font-weight: variables.$weight-rg;
 
     &::after {
       content: variables.$symbol-reference-link;

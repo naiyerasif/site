@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import NotFound from 'static/assets/images/404.svg'
+import NotFound from '@/static/assets/images/404.svg'
 
 const msgs = [
   `Page not found`,

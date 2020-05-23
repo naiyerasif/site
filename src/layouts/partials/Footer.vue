@@ -31,13 +31,6 @@
             </a>
           </section>
         </div>
-        <!-- 
-        <div class="footer-item">
-          
-          <section>
-            
-          </section>
-        </div> -->
       </section>
       <section class="copyright">
         <Favicon alt="logo" />
@@ -49,7 +42,7 @@
 
 <script>
 import Sprite from '~/components/Sprite'
-import Favicon from 'static/favicon.svg'
+import Favicon from '@/static/favicon.svg'
 
 export default {
   components: {

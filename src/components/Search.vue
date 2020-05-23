@@ -32,7 +32,7 @@
 import axios from 'axios'
 import Sprite from './Sprite'
 
-import * as appConfig from '../../app.config'
+import * as appConfig from '@/app.config'
 const searchConfig = appConfig.searchConfig
 
 export default {

@@ -1,7 +1,7 @@
 <template>
   <section class="toc" id="table-of-contents">
     <a role="button" @click.prevent="toggleOpen()" aria-label="Toggle Table of contents" class="toc-header">
-      <strong>Table of contents</strong>
+      <span>Table of contents</span>
       <div class="toc-minimizer">
         <transition name="slide-up" mode="out-in">
           <div key="close" v-if="!tocOpen" class="close">&#8595;</div>
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import * as appConfig from '../../app.config'
+import * as appConfig from '@/app.config'
 
 export default {
   props: ['headers', 'depth'],

@@ -53,7 +53,7 @@ query Collection ($id: ID!) {
 <script>
 import Sprite from '~/components/Sprite'
 import Toc from '~/components/Toc'
-import * as appConfig from '../../app.config'
+import * as appConfig from '@/app.config'
 
 export default {
   metaInfo() {

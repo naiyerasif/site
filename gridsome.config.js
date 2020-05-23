@@ -153,7 +153,7 @@ module.exports = {
     },
   },
   chainWebpack: config => {
-    config.resolve.alias.set('static', path.resolve(__dirname, 'static'))
+    config.resolve.alias.set('@', path.resolve(__dirname))
     config.module.rules.delete('svg')
     config.module.rule('svg')
       .test(/\.svg$/).use('vue').loader('vue-loader').end()

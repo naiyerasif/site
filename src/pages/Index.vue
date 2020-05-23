@@ -9,7 +9,7 @@
     </section>
     <div class="content">
       <main class="container">
-        <Card v-for="post in $page.posts.edges" :key="post.id" :title="post.node.title" :description="post.node.excerpt | clip" :src="post.node.path" large>
+        <Card v-for="post in $page.posts.edges" :key="post.id" :title="post.node.title" :description="post.node.excerpt | clip" :src="post.node.path">
           <span v-html="post.node.date"/>
           <span>{{ post.node.timeToRead }} min read</span>
           <Sprite :symbol="label" class="label" v-for="label in post.node.labels" :key="label" />

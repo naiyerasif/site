@@ -1,20 +1,22 @@
 <template>
-  <StitchedCard :src="src" :class="{ 'large-gap': large }">
+  <StitchedCard :src="src">
     <div v-if="metadata" class="card-metadata">{{ metadata }}</div>
     <div v-else class="card-metadata">
       <slot></slot>
     </div>
-    <div class="card-title" :class="{ 'large-title': large }">
-      <Sprite v-if="icon" class="label" :symbol="icon" />
-      {{ this.src == '#' || this.src.startsWith('/') ? title : title + '&nearr;' }}
+    <div class="card-content">
+      <div class="card-title">
+        <Sprite v-if="icon" class="label" :symbol="icon" />
+        {{ this.src == '#' || this.src.startsWith('/') ? title : title + '&nearr;' }}
+      </div>
+      <div class="card-description">{{ description }}</div>
     </div>
-    <div class="card-description">{{ description }}</div>
   </StitchedCard>
 </template>
 
 <script>
 import Sprite from './Sprite'
-import StitchedCard from './partials/StitchedCard'
+import StitchedCard from './StitchedCard'
 
 export default {
   props: {
@@ -22,7 +24,6 @@ export default {
     title: String,
     description: String,
     icon: String,
-    large: Boolean,
     src: {
       type: String,
       default: '#'

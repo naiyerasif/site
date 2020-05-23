@@ -3,10 +3,18 @@
 
 // Table of contents
 
+$toc-background: variables.$bg-vibrant;
+$toc-radius: variables.$radius;
+$toc-gap-bottom: properties.$space-rg;
+$toc-header-weight: variables.$weight-md;
+$toc-body-font-size: variables.$font-sm;
+$toc-body-gapx: variables.$gap;
+$toc-body-gap-bottom: variables.$gap-lg;
+
 .toc {
-  background-color: variables.$bg-vibrant;
-  border-radius: variables.$radius;
-  margin-bottom: properties.$space-rg;
+  background-color: $toc-background;
+  border-radius: $toc-radius;
+  margin-bottom: $toc-gap-bottom;
   width: 100%;
 
   a {
@@ -17,7 +25,7 @@
 .toc-header {
   display: flex;
   justify-content: space-between;
-  font-weight: variables.$weight-lg;
+  font-weight: $toc-header-weight;
   color: inherit;
 
   &:focus,
@@ -29,11 +37,11 @@
 .toc-body {
   list-style-type: none;
   margin-left: 0;
-  font-size: variables.$font-sm;
-  padding: 0 variables.$gap variables.$gap-lg;
+  font-size: $toc-body-font-size;
+  padding: 0 $toc-body-gapx $toc-body-gap-bottom;
 
   li {
-    $toc-margin: variables.$gap;
+    $toc-margin: $toc-body-gapx;
     $levels: 3 4 5 6;
 
     @each $level in $levels {

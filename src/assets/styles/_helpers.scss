@@ -1,7 +1,8 @@
-@use '../variables';
-@use '../properties';
-@use '../mixins/layout';
-@use '../mixins/queries';
+@use 'variables';
+@use 'properties';
+@use 'motion';
+@use 'mixins/layout';
+@use 'mixins/queries';
 
 // Container
 
@@ -10,12 +11,19 @@
   margin: 0 auto;
   position: relative;
   width: auto;
-  max-width: properties.$max-width;
+  max-width: properties.$container-width;
   @include layout.px(properties.$space-rg);
 
   &.is-column {
     flex-direction: column;
   }
+}
+
+// Animate background
+
+.card,
+.card > a {
+  @include motion.animate($name: fadeBackgroundColor, $duration: 300ms, $timing-fn: ease-in-out);
 }
 
 // Icons
@@ -49,13 +57,17 @@ a {
     content: variables.$symbol-external-link;
   }
 
-  .header &,
-  .sidekick &,
-  .card &,
-  .toc & {
+  &:focus,
+  &:hover {
+    text-decoration: none;
+  }
+
+  .hero &,
+  .article &,
+  .footer & {
     &:focus,
     &:hover {
-      text-decoration: none;
+      text-decoration: underline;
     }
   }
 
@@ -67,10 +79,10 @@ a {
       margin-right: variables.$char-gap-sm;
     }
   }
-}
 
-.active {
-  font-weight: variables.$weight-md;
+  &.active {
+    font-weight: variables.$weight-md;
+  }
 }
 
 // Typography
@@ -91,9 +103,8 @@ a {
 }
 
 .is-warning {
-  $red: hsl(350, 90%, 45%);
-  color: $red;
-  border-color: $red;
+  color: variables.$text-vibrant;
+  border-color: variables.$text-vibrant;
 }
 
 // Layout
@@ -124,7 +135,7 @@ blockquote {
     .container {
       flex-direction: column;
 
-      .large-gap {
+      .card {
         @include layout.mx($space-rg-neg);
         border-radius: 0;
       }
