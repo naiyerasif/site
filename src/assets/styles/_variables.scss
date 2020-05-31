@@ -2,8 +2,8 @@
 
 // Typography
 
-$family-sans-native: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-  'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+$family-sans-native: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+  Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
   'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
 $family-code-native: SFMono-Regular, 'Roboto Mono', Menlo, Monaco, Consolas,
   'Liberation Mono', 'Courier New', monospace !default;
@@ -12,8 +12,9 @@ $weight-rg: 400 !default;
 $weight-md: 600 !default;
 $weight-lg: 700 !default;
 
+$font-xs: calc(0.75rem + 0.125vw) !default;
 $font-sm: calc(0.8rem + 0.2vw) !default;
-$font-rg: calc(1rem + 0.2vw) !default;
+$font-rg: calc(1rem + 0.25vw) !default;
 $font-md: calc(1.0625rem + 0.5vw) !default;
 $font-lg: calc(1.75rem + 0.25vw) !default;
 $font-xl: calc(1.5rem + 2.5vw) !default;
@@ -32,22 +33,21 @@ $gap-sm: 0.75rem !default;
 $gap-rg: 1rem !default;
 $gap-md: 1.25rem !default;
 $gap-lg: 1.5rem !default;
+$gap-xl: 1.75rem !default;
 
-$gap: $gap-rg !default;
-
-$char-gap-sm: 0.5ch !default;
-$char-gap: 1ch !default;
-$separator-gap: $gap-sm !default;
+$ch-sm: 0.5ch !default;
+$ch-rg: 1ch !default;
+$separator-gap: $ch-rg !default;
 
 $icon-sm: 1rem !default;
 $icon-rg: 1.5rem !default;
 
 $grid-sm: 15rem !default;
-$grid-md: 17rem !default;
+$grid-rg: 17rem !default;
 
 // Display
 
-$radius: 0.5rem !default;
+$radius: 0.3rem !default;
 
 $symbol-external-link: '\02197' !default;
 $symbol-reference-link: '#' !default;
@@ -59,24 +59,17 @@ $separator-opacity: 0.5 !default;
 
 $text: var(--text) !default;
 $text-muted: var(--text-muted) !default;
-$text-vibrant: var(--text-vibrant) !default;
 
 $link: var(--link) !default;
 $link-vibrant: var(--link-vibrant) !default;
 
 $border: var(--border) !default;
-$border-vibrant: var(--border-vibrant) !default;
-
-$scrollbar: var(--scrollbar) !default;
 $selected: colors.fade(colors.primary(500), 0.75) !default;
 $code-selected: colors.fade(colors.primary(500), 0.91) !default;
 
 $bg-body: var(--bg-body) !default;
-$bg-header: var(--bg-header) !default;
-$bg-muted: var(--bg-muted) !default;
-$bg-card: var(--bg-card) !default;
-$bg-card-vibrant: var(--bg-card-vibrant) !default;
 $bg-vibrant: var(--bg-vibrant) !default;
+$bg-feed: var(--bg-feed) !default;
 
 @use '../../../node_modules/@microflash/remarkability/scss/variables' with (
   $multiline-wrap: true,
@@ -97,25 +90,25 @@ $bg-vibrant: var(--bg-vibrant) !default;
   $weight-headings: $weight-md,
   $background-body: $bg-body,
   $background-code: $bg-vibrant,
-  $background-ins: $bg-muted,
-  $background-mark: $bg-muted,
+  $background-ins: $bg-vibrant,
+  $background-mark: $bg-vibrant,
   $background-table: inherit,
   $background-table-even: inherit,
-  $background-table-hover: $bg-muted,
+  $background-table-hover: $bg-vibrant,
   $background-selected: $selected,
   $background-scrollbar: $bg-vibrant,
-  $border-color: $border-vibrant,
+  $border-color: $border,
   $radius: $radius,
   $text: $text,
   $text-code: inherit,
   $text-bold: inherit,
   $text-muted: $text-muted,
-  $text-headings: $text-vibrant,
+  $text-headings: $text,
   $text-blockquote: $text-muted,
   $link: $link,
   $link-hover: $link-vibrant,
-  $link-visited: $text-vibrant,
-  $table-thead: $text-vibrant,
-  $scrollbar: $scrollbar,
+  $link-visited: $link-vibrant,
+  $table-thead: inherit,
+  $scrollbar: $border,
   $margin: $gap-lg
 );

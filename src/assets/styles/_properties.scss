@@ -11,50 +11,49 @@ $space-md: calc(var(--base-gap) * 1.5) !default;
 $space-lg: calc(var(--base-gap) * 2) !default;
 
 :root {
+  --responsive-wrap: wrap;
+  --responsive-align-between: flex-start;
+  --responsive-flex-basis: 100%;
   --container-width: initial;
-  --wrap-responsive: wrap;
-  --radius-responsive: 0;
-  --align-between: flex-start;
-  --header-gap: #{$space-rg};
-  --search-gap: #{$space-rg};
-  --search-width: 100%;
-  --search-top-adjustment: 50%;
-  --hero-padding: #{$space-md};
-  --metadata-width: 100%;
-  --metadata-gap: #{variables.$gap};
+  --header-gap-block: #{$space-rg};
+  --search-gap-start: 50%;
+  --search-gap-inline: 0;
+  --result-gap: #{$space-rg};
+  --hero-gap-block: #{$space-md};
+  --metadata-gap-end: #{variables.$gap-rg};
   --article-width: 100%;
   --sidekick-width: 100%;
+  --feed-item-order: -1;
 }
 
 @include queries.md {
   :root {
+    --responsive-wrap: nowrap;
+    --responsive-align-between: space-between;
+    --responsive-flex-basis: auto;
     --container-width: calc(#{variables.$breakpoint-sm} + #{variables.$container-offset});
-    --wrap-responsive: nowrap;
-    --radius-responsive: #{variables.$radius};
-    --align-between: space-between;
-    --header-gap: #{$space-sm};
-    --search-gap: #{variables.$gap};
-    --search-width: calc(50% + 2.75 * var(--search-gap));
-    --search-top-adjustment: 0;
-    --hero-padding: #{$space-lg};
-    --metadata-width: 80%;
-    --metadata-gap: 0;
+    --header-gap-block: #{$space-sm};
+    --search-gap-start: 0;
+    --search-gap-inline: #{$space-rg};
+    --result-gap: #{$space-sm};
+    --hero-gap-block: #{$space-lg};
+    --metadata-gap-end: 0;
     --article-width: 75%;
     --sidekick-width: max-content;
+    --feed-item-order: auto;
   }
 }
 
+$responsive-wrap: var(--responsive-wrap) !default;
+$responsive-align-between: var(--responsive-align-between) !default;
+$responsive-flex-basis: var(--responsive-flex-basis) !default;
 $container-width: var(--container-width) !default;
-$wrap-responsive: var(--wrap-responsive) !default;
-$radius-responsive: var(--radius-responsive) !default;
-$align-between: var(--align-between) !default;
-$header-gap: var(--header-gap) !default;
-$search-gap: var(--search-gap) !default;
-$search-width: var(--search-width) !default;
-$search-top-adjustment: var(--search-top-adjustment) !default;
-$card-meta-icon-size: var(--card-meta-icon-size) !default;
-$hero-padding: var(--hero-padding) !default;
-$metadata-width: var(--metadata-width) !default;
-$metadata-gap: var(--metadata-gap) !default;
+$header-gap-block: var(--header-gap-block) !default;
+$search-gap-start: var(--search-gap-start) !default;
+$search-gap-inline: var(--search-gap-inline) !default;
+$result-gap: var(--result-gap) !default;
+$hero-gap-block: var(--hero-gap-block) !default;
+$metadata-gap-end: var(--metadata-gap-end) !default;
 $article-width: var(--article-width) !default;
 $sidekick-width: var(--sidekick-width) !default;
+$feed-item-order: var(--feed-item-order) !default;

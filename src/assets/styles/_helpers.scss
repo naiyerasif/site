@@ -1,30 +1,7 @@
 @use 'variables';
 @use 'properties';
-@use 'motion';
 @use 'mixins/layout';
 @use 'mixins/queries';
-
-// Container
-
-.container {
-  flex-grow: 1;
-  margin: 0 auto;
-  position: relative;
-  width: auto;
-  max-width: properties.$container-width;
-  @include layout.px(properties.$space-rg);
-
-  &.is-column {
-    flex-direction: column;
-  }
-}
-
-// Animate background
-
-.card,
-.card > a {
-  @include motion.animate($name: fadeBackgroundColor, $duration: 300ms, $timing-fn: ease-in-out);
-}
 
 // Icons
 
@@ -57,29 +34,6 @@ a {
     content: variables.$symbol-external-link;
   }
 
-  &:focus,
-  &:hover {
-    text-decoration: none;
-  }
-
-  .hero &,
-  .article &,
-  .footer & {
-    &:focus,
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-  .sidekick & {
-    display: inline-flex;
-    align-items: center;
-
-    svg {
-      margin-right: variables.$char-gap-sm;
-    }
-  }
-
   &.active {
     font-weight: variables.$weight-md;
   }
@@ -89,11 +43,14 @@ a {
 
 .title {
   font-size: variables.$font-xl;
-  color: variables.$text;
 }
 
 .subtitle {
   font-size: variables.$font-md;
+  color: variables.$text-muted;
+}
+
+.is-muted {
   color: variables.$text-muted;
 }
 
@@ -103,20 +60,29 @@ a {
 }
 
 .is-warning {
-  color: variables.$text-vibrant;
-  border-color: variables.$text-vibrant;
+  $red: hsl(350, 70%, 50%);
+  color: $red;
+  border-color: $red;
 }
 
 // Layout
 
 .gap-end {
-  margin-right: variables.$char-gap-sm;
+  margin-right: variables.$ch-rg;
+
+  &-sm {
+    margin-right: variables.$ch-sm;
+  }
 }
 
-.hidden-on-small {
+.hidden-sm {
   @include queries.sm {
     @include layout.hide;
   }
+}
+
+.is-column {
+  flex-direction: column;
 }
 
 // Full-width elements on phone
@@ -125,34 +91,33 @@ $space-rg-neg: calc(-1rem - 2vw);
 
 blockquote {
   @include queries.sm {
-    @include layout.mx($space-rg-neg);
-    @include layout.px(properties.$space-rg);
+    @include layout.margin-inline($space-rg-neg);
+    @include layout.padding-inline(properties.$space-rg);
   }
 }
 
 .content {
   @include queries.sm {
-    .container {
-      flex-direction: column;
+    flex-direction: column;
 
-      .card {
-        @include layout.mx($space-rg-neg);
-        border-radius: 0;
-      }
+    .card,
+    .feed-item {
+      @include layout.margin-inline($space-rg-neg);
+      border-radius: 0;
     }
   }
 }
 
 .gridsome-highlight {
   @include queries.sm {
-    @include layout.mx($space-rg-neg);
+    @include layout.margin-inline($space-rg-neg);
 
     pre {
       border-radius: 0;
     }
 
     code {
-      @include layout.px(properties.$space-rg);
+      @include layout.padding-inline(properties.$space-rg);
     }
 
     .gridsome-highlight-code-line {

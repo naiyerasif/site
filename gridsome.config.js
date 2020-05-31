@@ -58,6 +58,13 @@ module.exports = {
       }
     },
     {
+      use: '@gridsome/source-filesystem',
+      options: {
+        path: 'content/feed/**/*.md',
+        typeName: 'Feed'
+      }
+    },
+    {
       use: '@gridsome/vue-remark',
       options: {
         typeName: 'Profile',
@@ -91,14 +98,6 @@ module.exports = {
         rss: {
           enabled: true,
           output: '/feed.xml'
-        },
-        atom: {
-          enabled: false,
-          output: '/feed.atom'
-        },
-        json: {
-          enabled: false,
-          output: '/feed.json'
         },
         maxItems: 25,
         htmlFields: ['content'],

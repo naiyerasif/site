@@ -2,8 +2,8 @@
   <a role="switch" @click.prevent="switchTheme()" :aria-label="'Switch to ' + nextTheme + ' theme'" aria-checked="true" class="theme-switcher">
     <svg viewBox="0 0 24 24" class="icon">
       <transition name="slide-up" mode="out-in">
-        <use :xlink:href="link('icon-dark')" :href="link('icon-dark')" key="dark" v-if="theme === 'dark'"></use>
-        <use :xlink:href="link('icon-light')" :href="link('icon-light')" key="light" v-else></use>
+        <use :xlink:href="uri('icon-dark')" :href="uri('icon-dark')" key="dark" v-if="theme === 'dark'"></use>
+        <use :xlink:href="uri('icon-light')" :href="uri('icon-light')" key="light" v-else></use>
       </transition>
     </svg>
   </a>
@@ -34,7 +34,7 @@ export default {
       window.__setPreferredTheme(themes[nextIndex])
       this.theme = themes[nextIndex]
     },
-    link(symbol) {
+    uri(symbol) {
       return `${appConfig.prefs.spriteDir}/icons.svg#${symbol}`
     }
   },

@@ -4,34 +4,33 @@
 
 // Content
 
-$content-gapy: properties.$space-rg;
-$content-article-width: properties.$article-width;
+$content-gap-end: properties.$space-rg;
+$content-gap-block: calc(1rem - 1vw);
 $content-first-paragraph-size: variables.$font-md;
 
 .content {
-  @include layout.my($content-gapy);
+  @include layout.container;
+  flex-wrap: wrap;
+  align-items: center;
+  @include layout.margin-block($content-gap-block);
 
-  .container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+  .toc,
+  .article {
+    flex-basis: 100%;
+    max-width: properties.$article-width;
 
-    > * {
-      flex-basis: 100%;
+    article > p:first-child {
+      font-size: $content-first-paragraph-size;
     }
-    
-    .toc,
-    .article {
-      max-width: $content-article-width;
+  }
 
-      article > p:first-child {
-        font-size: $content-first-paragraph-size;
-      }
-    }
+  .card:not(:last-child) {
+    margin-bottom: $content-gap-end;
+  }
 
-    .card:not(:last-child) {
-      margin-bottom: $content-gapy;
-    }
+  .collection,
+  figure {
+    width: 100%;
   }
 }
 

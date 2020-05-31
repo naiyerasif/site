@@ -21,13 +21,13 @@
 
   > * {
     flex: 1 1 $width;
-    @include layout.mx($gap);
+    @include layout.margin-inline($gap);
     min-height: $height;
   }
 
   @supports (display: grid) {
     & > * {
-      @include layout.mx(0);
+      @include layout.margin-inline(0);
     }
   }
 }
@@ -36,6 +36,6 @@
   @include grid($width: variables.$grid-sm);
 }
 
-.grid-md {
-  @include grid($width: variables.$grid-md, $strategy: auto-fit);
+.grid-rg {
+  @include grid($width: variables.$grid-rg, $strategy: auto-fit);
 }

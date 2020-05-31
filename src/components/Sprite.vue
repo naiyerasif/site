@@ -1,11 +1,13 @@
 <template>
   <svg>
-    <use :xlink:href="link" :href="link"></use>
+    <use :xlink:href="uri" :href="uri" />
   </svg>
 </template>
 
 <script>
 import * as appConfig from '@/app.config'
+
+const { spriteDir } = appConfig.prefs
 
 export default {
   props: {
@@ -16,8 +18,8 @@ export default {
     symbol: String
   },
   computed: {
-    link() {
-      return `${appConfig.prefs.spriteDir}/${this.src}.svg#${this.symbol}`
+    uri() {
+      return `${spriteDir}/${this.src}.svg#${this.symbol}`
     }
   }
 }

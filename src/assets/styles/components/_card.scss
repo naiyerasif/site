@@ -1,20 +1,16 @@
 @use '../variables';
-@use '../properties';
 @use '../mixins/layout';
 
 // Card
 
-$card-background: variables.$bg-card;
-$card-active-background: variables.$bg-card-vibrant;
+$card-background: variables.$bg-vibrant;
 $card-gap: calc(1.25rem + 1vw);
-$card-gap-neg: calc(-1.25rem - 1vw);
-$card-border: variables.$border;
 $card-radius: variables.$radius;
 $card-title-size: variables.$font-lg;
-$card-description-size: variables.$font-rg;
 $card-metadata-color: variables.$text-muted;
 $card-metadata-icon-size: variables.$icon-sm;
-$card-metadata-size: variables.$font-sm;
+$card-metadata-font-size: variables.$font-sm;
+$card-description-size: variables.$font-rg;
 
 .card {
   display: flex;
@@ -24,34 +20,15 @@ $card-metadata-size: variables.$font-sm;
   padding: $card-gap;
   border-radius: $card-radius;
 
-  > a {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex: 1;
-    padding: inherit;
-    margin: $card-gap-neg;
-  }
-
-  &:focus,
-  &:hover {
-    background-color: $card-active-background;
-
-    .card-title,
-    .card-description {
-      color: inherit;
-    }
-  }
-
   .card-title {
     display: flex;
     align-items: center;
-    @include layout.my(variables.$char-gap);
+    @include layout.margin-block(variables.$ch-rg);
     font-size: $card-title-size;
 
     .label {
       @include layout.size($card-title-size);
-      margin-right: variables.$char-gap;
+      margin-right: variables.$ch-rg;
     }
   }
 
@@ -60,17 +37,17 @@ $card-metadata-size: variables.$font-sm;
     flex-wrap: wrap;
     align-items: center;
     color: $card-metadata-color;
-    font-size: $card-metadata-size;
+    font-size: $card-metadata-font-size;
 
-    > span::after {
+    > *::after {
       content: variables.$symbol-separator;
-      @include layout.mx(variables.$separator-gap);
+      @include layout.margin-inline(variables.$separator-gap);
       opacity: variables.$separator-opacity;
     }
 
     .label {
       @include layout.size($card-metadata-icon-size);
-      margin-right: variables.$char-gap;
+      margin-right: variables.$ch-rg;
     }
   }
 

@@ -13,7 +13,7 @@ I've worked on applications in Banking &amp; Financial Services, Legal &amp; Com
 #### Technologies I am adept at &mdash;
 
 
-<div class="grid-md">
+<div class="grid-rg">
   <card metadata="Platform" icon="java" title="Java" description="The most popular programming platform for building enterprise applications" />
   <card metadata="Framework" icon="spring" title="Spring" description="Lightweight open-source Java framework for building large-scale applications" />
   <card metadata="Platform" icon="nodejs" title="Node.js" description="An open-source, cross-platform runtime to run JavaScript code on server" />
@@ -24,7 +24,7 @@ I've worked on applications in Banking &amp; Financial Services, Legal &amp; Com
 #### Other technologies that I work on &mdash;
 
 
-<div class="grid-md">
+<div class="grid-rg">
   <card metadata="Framework" icon="angular" title="Angular" description="An open-source TypeScript-based framework to create single-page applications" />
   <card metadata="Framework" icon="vuejs" title="Vue.js" description="A progressive JavaScript framework for building user interfaces" />
   <card metadata="Platform" icon="docker" title="Docker" description="Enterprise container platform to build, share and deploy applications anywhere" />

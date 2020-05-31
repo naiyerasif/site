@@ -1,22 +1,22 @@
 <template>
-  <StitchedCard :src="src">
+  <div class="card">
     <div v-if="metadata" class="card-metadata">{{ metadata }}</div>
     <div v-else class="card-metadata">
       <slot></slot>
     </div>
     <div class="card-content">
-      <div class="card-title">
+      <CardTitle :src="src" class="card-title">
         <Sprite v-if="icon" class="label" :symbol="icon" />
         {{ this.src == '#' || this.src.startsWith('/') ? title : title + '&nearr;' }}
-      </div>
+      </CardTitle>
       <div class="card-description">{{ description }}</div>
     </div>
-  </StitchedCard>
+  </div>
 </template>
 
 <script>
 import Sprite from './Sprite'
-import StitchedCard from './StitchedCard'
+import CardTitle from './CardTitle'
 
 export default {
   props: {
@@ -31,7 +31,7 @@ export default {
   },
   components: {
     Sprite,
-    StitchedCard
+    CardTitle
   }
 }
 </script>

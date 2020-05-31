@@ -4,24 +4,16 @@
 
 // Hero
 
-$hero-background: variables.$bg-vibrant;
-$hero-gapy: properties.$hero-padding;
-$metadata-gapx: properties.$space-rg;
-$metadata-gapy: properties.$metadata-gap;
-$metadata-width: properties.$metadata-width;
+$header-gap-block: properties.$hero-gap-block;
+$metadata-gap-start: properties.$space-rg;
+$metadata-gap-end: properties.$metadata-gap-end;
 $metadata-header-font-size: variables.$font-sm;
-$metadata-header-gapy: variables.$gap-xs;
-$metadata-label-gapy: variables.$gap;
-$metadata-label-gapx: variables.$gap;
+$metadata-header-gap-end: variables.$gap-xs;
+$metadata-label-gap: variables.$gap-rg;
 
 .hero {
-  background-color: variables.$bg-vibrant;
-
-  .container {
-    display: flex;
-    flex-wrap: properties.$wrap-responsive;
-    @include layout.py($hero-gapy);
-  }
+  @include layout.container;
+  @include layout.padding-block($header-gap-block);
 }
 
 // Metadata
@@ -33,8 +25,8 @@ $metadata-label-gapx: variables.$gap;
   flex: 1;
 
   .metadata-media {
-    margin-right: $metadata-gapx;
-    margin-bottom: $metadata-gapy;
+    margin-right: $metadata-gap-start;
+    margin-bottom: $metadata-gap-end;
 
     img {
       @include layout.size(auto, calc(5rem + 5vw));
@@ -42,38 +34,34 @@ $metadata-label-gapx: variables.$gap;
     }
   }
 
-  .metadata-content {
-    width: $metadata-width;
-  }
-}
-
-.metadata-footer,
-.metadata-header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  font-size: $metadata-header-font-size;
-}
-
-.metadata-header {
-  > * {
-    margin-bottom: $metadata-header-gapy;
+  .metadata-footer,
+  .metadata-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: $metadata-header-font-size;
   }
 
-  > *:not(:last-child)::after {
-    content: variables.$symbol-separator;
-    @include layout.mx(variables.$separator-gap);
-    opacity: variables.$separator-opacity;
+  .metadata-header {
+    > * {
+      margin-bottom: $metadata-header-gap-end;
+    }
+  
+    > *:not(:last-child)::after {
+      content: variables.$symbol-separator;
+      @include layout.margin-inline(variables.$separator-gap);
+      opacity: variables.$separator-opacity;
+    }
   }
-}
 
-.metadata-footer {
-  .label {
-    margin-top: $metadata-label-gapy;
-    @include layout.size(variables.$icon-rg);
-
-    &:not(:last-child) {
-      margin-right: $metadata-label-gapx;
+  .metadata-footer {
+    .label {
+      margin-top: $metadata-label-gap;
+      @include layout.size(variables.$icon-rg * 1.5);
+  
+      &:not(:last-child) {
+        margin-right: $metadata-label-gap;
+      }
     }
   }
 }

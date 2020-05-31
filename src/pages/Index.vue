@@ -1,21 +1,17 @@
 <template>
   <Layout>
     <section class="hero">
-      <div class="container">
-        <h1 class="title">
-          <span class="gap-end hidden-on-small">&mdash;</span>Reflections on <br class="hidden-on-small" />design and development <br class="hidden-on-small" />by <g-link to="/profile/naiyer/">Naiyer Asif</g-link>
-        </h1>
-      </div>
+      <h1 class="title">
+        <span class="gap-end-sm hidden-sm">&mdash;</span>Reflections on <br class="hidden-sm" />design and development <br class="hidden-sm" />by <g-link to="/profile/naiyer/">Naiyer Asif</g-link>
+      </h1>
     </section>
-    <div class="content">
-      <main class="container">
-        <Card v-for="post in $page.posts.edges" :key="post.id" :title="post.node.title" :description="post.node.excerpt | clip" :src="post.node.path">
-          <span v-html="post.node.date"/>
-          <span>{{ post.node.timeToRead }} min read</span>
-          <Sprite :symbol="label" class="label" v-for="label in post.node.labels" :key="label" />
-        </Card>
-      </main>
-    </div>
+    <main class="content">
+      <Card v-for="post in $page.posts.edges" :key="post.id" :title="post.node.title" :description="post.node.excerpt | clip" :src="post.node.path">
+        <time v-html="post.node.date" />
+        <span>{{ post.node.timeToRead }} min read</span>
+        <Sprite :symbol="label" class="label" v-for="label in post.node.labels" :key="label" />
+      </Card>
+    </main>
     <Pagination :input="$page.posts.pageInfo" />
   </Layout>
 </template>

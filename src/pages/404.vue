@@ -1,22 +1,20 @@
 <template>
   <Layout>
-    <section class="hero">
-      <div class="container">
-        <div class="metadata">
-          <div class="metadata-content">
-            <h1 class="title">{{ getMsg() }}</h1>
-            <div class="subtitle">
-              &larr; Go back to <g-link to="/">Home</g-link>.
-            </div>
+    <div class="hero">
+      <div class="metadata">
+        <div class="metadata-content">
+          <h1 class="title">{{ getMsg() }}</h1>
+          <div class="subtitle">
+            &larr; Go back to <g-link to="/">Home</g-link>.
           </div>
         </div>
       </div>
-    </section>
-    <div class="content">
-      <main class="container">
-        <NotFound />
-      </main>
     </div>
+    <main class="content">
+      <figure>
+        <NotFound />
+      </figure>
+    </main>
   </Layout>
 </template>
 

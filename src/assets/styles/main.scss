@@ -9,12 +9,13 @@
 @use 'properties';
 @use 'core/syntax';
 @use 'mixins/grid';
-@use 'helpers';
 @use 'components/header';
 @use 'components/search';
 @use 'components/hero';
 @use 'components/card';
+@use 'components/feed';
 @use 'components/sidekick';
 @use 'components/content';
 @use 'components/toc';
 @use 'components/footer';
+@use 'helpers';

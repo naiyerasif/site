@@ -1,6 +1,6 @@
 const pkg = require('./package.json')
 
-const capitalize = ([ first, ...rest ]) => [ first.toUpperCase(), ...rest ].join('')
+const capitalize = ([first, ...rest]) => [first.toUpperCase(), ...rest].join('')
 
 const pkgName = capitalize(pkg.name)
 const pkgAuthor = pkg.author
@@ -15,7 +15,8 @@ module.exports = {
   maintainer: pkgAuthor,
   copyright: `Copyright ${new Date().getFullYear()} ${pkgAuthor}`,
   prefs: {
-    draftDir: '.archive/backlog',
+    draftDir: '.archive/backlog/blog',
+    statusDir: '.archive/backlog/status',
     editContext: `${pkgRepo.replace(/.git$/g, '')}/edit/release`,
     spriteDir: '/assets/images',
     excerptSize: 251,

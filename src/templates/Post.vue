@@ -1,54 +1,48 @@
 <template>
   <Layout>
     <section class="hero">
-      <div class="container">
-        <div class="metadata">
-          <div class="metadata-content">
-            <div class="metadata-header">
-              <div class="metadata-author" v-for="author in $page.post.authors" :key="author.id">
-                <g-link :to="author.path">{{ author.name }}</g-link>
-              </div>
-              <div class="metadata-item" v-html="displayDate"></div>
-              <div class="metadata-item">{{ $page.post.timeToRead }} min read</div>
+      <div class="metadata">
+        <div class="metadata-content">
+          <div class="metadata-header">
+            <div class="metadata-author" v-for="author in $page.post.authors" :key="author.id">
+              <g-link :to="author.path">{{ author.name }}</g-link>
             </div>
-            <h1 class="title">{{ $page.post.title }}</h1>
-            <div class="metadata-footer">
-              <Sprite :symbol="label" class="label" v-for="label in $page.post.labels" :key="label" />
-            </div>
+            <div class="metadata-item" v-html="displayDate"></div>
+            <div class="metadata-item">{{ $page.post.timeToRead }} min read</div>
+          </div>
+          <h1 class="title">{{ $page.post.title }}</h1>
+          <div class="metadata-footer">
+            <Sprite :symbol="label" class="label" v-for="label in $page.post.labels" :key="label" />
           </div>
         </div>
       </div>
     </section>
-    <div class="content">
-      <main class="container">
-        <Toc :headers="$page.post.headings" />
-        <div class="article">
-          <blockquote class="is-warning" v-if="outdationMessage">{{ outdationMessage }}</blockquote>
-          <article v-html="$page.post.content" />
-        </div>
-      </main>
-    </div>
+    <main class="content">
+      <Toc :headers="$page.post.headings" />
+      <div class="article">
+        <blockquote class="is-warning" v-if="outdationMessage">{{ outdationMessage }}</blockquote>
+        <article v-html="$page.post.content" />
+      </div>
+    </main>
     <div class="sidekick">
-      <div class="container">
-        <div class="sidekick-recommendations">
-          <g-link v-if="$page.previous" :to="$page.previous.path">
-            &larr; {{ $page.previous.title }}
-          </g-link>
-          <g-link v-if="$page.next" :to="$page.next.path" style="text-align: right">
-            {{ $page.next.title }} &rarr;
-          </g-link>
-        </div>
-        <div class="sidekick-actions">
-          <a target="_blank" rel="noopener noreferrer" :href="editUrl">
-            <Sprite symbol="icon-edit" class="icon" /> Edit this page
-          </a>
-          <a href="#table-of-contents" class="is-visible-on-phone">
-            <Sprite symbol="icon-list" class="icon" /> Table of Contents
-          </a>
-          <a href="#app">
-            <Sprite symbol="icon-up" class="icon" /> Back to top
-          </a>
-        </div>
+      <div class="sidekick-recommendations">
+        <g-link v-if="$page.previous" :to="$page.previous.path">
+          &larr; {{ $page.previous.title }}
+        </g-link>
+        <g-link v-if="$page.next" :to="$page.next.path" style="text-align: right">
+          {{ $page.next.title }} &rarr;
+        </g-link>
+      </div>
+      <div class="sidekick-actions">
+        <a target="_blank" rel="noopener noreferrer" :href="editUrl">
+          <Sprite symbol="icon-edit" class="icon" /> Edit this page
+        </a>
+        <a href="#table-of-contents" class="is-visible-on-phone">
+          <Sprite symbol="icon-list" class="icon" /> Table of Contents
+        </a>
+        <a href="#app">
+          <Sprite symbol="icon-up" class="icon" /> Back to top
+        </a>
       </div>
     </div>
   </Layout>

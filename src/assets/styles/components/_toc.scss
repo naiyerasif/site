@@ -5,16 +5,15 @@
 
 $toc-background: variables.$bg-vibrant;
 $toc-radius: variables.$radius;
-$toc-gap-bottom: properties.$space-rg;
 $toc-header-weight: variables.$weight-md;
 $toc-body-font-size: variables.$font-sm;
-$toc-body-gapx: variables.$gap;
-$toc-body-gap-bottom: variables.$gap-lg;
+$toc-body-gap-inline: variables.$gap-rg;
+$toc-body-gap-end: variables.$gap-lg;
 
 .toc {
   background-color: $toc-background;
   border-radius: $toc-radius;
-  margin-bottom: $toc-gap-bottom;
+  margin-bottom: properties.$space-rg;
   width: 100%;
 
   a {
@@ -26,11 +25,10 @@ $toc-body-gap-bottom: variables.$gap-lg;
   display: flex;
   justify-content: space-between;
   font-weight: $toc-header-weight;
-  color: inherit;
 
   &:focus,
   &:hover {
-    color: inherit;
+    text-decoration: none;
   }
 }
 
@@ -38,10 +36,10 @@ $toc-body-gap-bottom: variables.$gap-lg;
   list-style-type: none;
   margin-left: 0;
   font-size: $toc-body-font-size;
-  padding: 0 $toc-body-gapx $toc-body-gap-bottom;
+  padding: 0 $toc-body-gap-inline $toc-body-gap-end;
 
   li {
-    $toc-margin: $toc-body-gapx;
+    $toc-margin: $toc-body-gap-inline;
     $levels: 3 4 5 6;
 
     @each $level in $levels {

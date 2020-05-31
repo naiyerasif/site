@@ -5,22 +5,17 @@
 
 //  Footer
 
-$footer-background: variables.$bg-muted;
-$footer-gapy: properties.$hero-padding;
 $footer-font-size: variables.$font-sm;
-$footer-item-gap-top: properties.$space-rg;
-$footer-item-gap-bottom: properties.$space-rg;
+$footer-gap-block: properties.$hero-gap-block;
+$footer-item-gap-start: properties.$space-rg;
+$footer-item-gap-end: properties.$space-rg;
 
 .footer {
-  background-color: $footer-background;
-
-  .container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    @include layout.py($footer-gapy);
-    font-size: $footer-font-size;
-  }
+  @include layout.container;
+  flex-wrap: wrap;
+  align-items: center;
+  @include layout.padding-block($footer-gap-block);
+  font-size: $footer-font-size;
 
   .grid-sm {
     width: 100%;
@@ -31,7 +26,7 @@ $footer-item-gap-bottom: properties.$space-rg;
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
-    margin-bottom: $footer-item-gap-bottom;
+    margin-bottom: $footer-item-gap-end;
 
     a {
       display: inline-flex;
@@ -46,7 +41,7 @@ $footer-item-gap-bottom: properties.$space-rg;
     justify-content: space-between;
 
     > * {
-      margin-top: $footer-item-gap-top;
+      margin-top: $footer-item-gap-start;
     }
 
     svg:first-of-type {

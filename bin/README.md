@@ -3,6 +3,7 @@
 - [Generate favicon](#generate-favicon)
 - [Generate SVG sprites](#generate-svg-sprites)
 - [Create new post](#create-new-post)
+- [Create new status](#create-new-status)
 - [Clean deployment history](#clean-deployment-history)
 
 ### Generate favicon
@@ -23,8 +24,18 @@ source bin/generate-sprites.sh
 
 ### Create new post
 
+Pass the title and labels as first and second arguments.
+
 ```sh
 node bin/newPost.js
+```
+
+### Create new status
+
+Pass the title and topic as first and second arguments.
+
+```sh
+node bin/newStatus.js
 ```
 
 ### Clean deployment history

@@ -1,14 +1,18 @@
-@use 'sass:color' as *;
+@use 'sass:color';
 @use 'sass:map';
 
 // Colormix functions
 
+@function mix($base, $derived, $percentage) {
+  @return color.mix($base, $derived, $percentage);
+}
+
 @function fade($color, $transparency: 1) {
-  @return adjust($color, $alpha: -($transparency));
+  @return color.adjust($color, $alpha: -($transparency));
 }
 
 @function saturate($color, $vibrance) {
-  @return adjust($color, $saturation: $vibrance);
+  @return color.adjust($color, $saturation: $vibrance);
 }
 
 // Color palettes
@@ -16,8 +20,17 @@
 // Ax00 variants are WCAG-accesible complements of x00 colors
 // all the colors are in CIECAM02 color space
 
-$black: hsl(0, 0%, 0%);
-$white: hsl(0, 0%, 100%);
+$mono: (
+  100: hsl(0, 0%, 100%),
+  200: hsl(0, 0%, 85%),
+  300: hsl(0, 0%, 71%),
+  400: hsl(0, 0%, 56%),
+  500: hsl(0, 0%, 44%),
+  600: hsl(60, 1%, 33%),
+  700: hsl(60, 1%, 24%),
+  800: hsl(0, 1%, 14%),
+  900: hsl(0, 0%, 0%)
+);
 
 $primary: (
   100: hsl(152, 25%, 80%),
@@ -43,19 +56,11 @@ $secondary: (
   900: hsl(228, 16%, 30%)
 ) !default;
 
-$tertiary: (
-  100: hsl(34, 86%, 77%),
-  200: hsl(34, 68%, 73%),
-  300: hsl(35, 46%, 65%),
-  400: hsl(34, 33%, 58%),
-  500: hsl(35, 23%, 51%),
-  600: hsl(34, 22%, 45%),
-  700: hsl(35, 20%, 39%),
-  800: hsl(34, 19%, 33%),
-  900: hsl(32, 18%, 26%)
-) !default;
-
 // Conveniences for palette access
+
+@function mono($variation) {
+  @return map.get($mono, $variation);
+}
 
 @function primary($variation) {
   @return map.get($primary, $variation);
@@ -65,35 +70,23 @@ $tertiary: (
   @return map.get($secondary, $variation);
 }
 
-@function tertiary($variation) {
-  @return map.get($tertiary, $variation);
-}
-
-// Common properties
-
-:root {
-  --text-vibrant: hsl(350, 70%, 50%);
-  --text-muted: hsl(29, 57%, 44%);
-}
+$white: mono(100);
+$black: mono(900);
 
 // CSS properties for light theme
 
 [data-theme='light'] {
-  $bg-base: $white;
+  $bg-base: mix($white, mono(200), 80%);
   $text-base: mix($black, secondary(900), 25%);
 
   --text: #{$text-base};
-  --border: #{mix($bg-base, $text-base, 77%)};
-  --border-vibrant: #{mix($bg-base, $text-base, 66%)};
+  --text-muted: #{mix($bg-base, secondary(900), 25%)};
   --link: #{mix($text-base, primary(500), 20%)};
   --link-vibrant: #{mix($text-base, primary(500), 33%)};
-  --scrollbar: #{fade(saturate(tertiary(300), 25%), 0.3)};
+  --border: #{mix($bg-base, $text-base, 77%)};
   --bg-body: #{$bg-base};
-  --bg-header: #{mix($white, tertiary(100), 50%)};
-  --bg-vibrant: #{mix($white, tertiary(100), 77%)};
-  --bg-muted: #{mix($white, tertiary(200), 94%)};
-  --bg-card: #{mix($white, primary(900), 92%)};
-  --bg-card-vibrant: #{mix($white, tertiary(100), 75%)};
+  --bg-vibrant: #{$white};
+  --bg-feed: #{mix($white, mono(200), 55%)};
 }
 
 // CSS properties for dark theme
@@ -103,15 +96,11 @@ $tertiary: (
   $text-base: mix($black, $white, 25%);
 
   --text: #{$text-base};
-  --border: #{mix($bg-base, $text-base, 88%)};
-  --border-vibrant: #{mix($bg-base, $text-base, 66%)};
+  --text-muted: #{mix($bg-base, secondary(500), 25%)};
   --link: #{mix($text-base, primary(500), 5%)};
   --link-vibrant: #{primary(400)};
-  --scrollbar: #{fade(secondary(900), 0.3)};
+  --border: #{mix($bg-base, $text-base, 88%)};
   --bg-body: #{$bg-base};
-  --bg-header: #{mix($black, secondary(900), 77%)};
-  --bg-vibrant: #{mix($black, secondary(900), 66%)};
-  --bg-muted: #{mix($black, secondary(900), 55%)};
-  --bg-card: #{mix($black, secondary(900), 68%)};
-  --bg-card-vibrant: #{mix($bg-base, primary(500), 92%)};
+  --bg-vibrant: #{mix($black, $bg-base, 20%)};
+  --bg-feed: #{mix($black, $bg-base, 12%)};
 }

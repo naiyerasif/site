@@ -1,21 +1,15 @@
-@use '../_variables';
-@use '../_properties';
-@use '../mixins/_layout';
+@use '../variables';
+@use '../properties';
+@use '../mixins/layout';
 
 // Search
 
-$search-background: variables.$bg-header;
-$result-background: variables.$bg-muted;
-$search-top-adjustment: properties.$search-top-adjustment;
-$search-width: properties.$search-width;
-$search-gap: properties.$search-gap;
-$result-gapx: properties.$search-gap;
-$result-gapy: variables.$gap-xs;
-$result-label-color: variables.$text-muted;
-$result-item-color: variables.$text;
-$result-item-active-color: variables.$link-vibrant;
-$result-item-active-background: variables.$bg-vibrant;
-$search-border-radius: properties.$radius-responsive;
+$search-background: variables.$bg-body;
+$search-box-gap-start: properties.$space-rg;
+$result-background: variables.$bg-vibrant;
+$result-gap-inline: properties.$search-gap-inline;
+$result-item-gap-inline: properties.$result-gap;
+$result-item-gap-block: variables.$gap-sm;
 
 .search-container,
 .search-box {
@@ -27,9 +21,8 @@ $search-border-radius: properties.$radius-responsive;
 }
 
 .search-container {
-  background-color: $search-background;
   position: absolute;
-  top: $search-top-adjustment;
+  top: properties.$search-gap-start;
   right: 0;
   bottom: 0;
   left: 0;
@@ -37,8 +30,9 @@ $search-border-radius: properties.$radius-responsive;
 }
 
 .search-box {
-  width: $search-width;
-  @include layout.px($search-gap);
+  background-color: $search-background;
+  width: inherit;
+  @include layout.padding-inline($search-box-gap-start);
   height: 100%;
 
   .search-input {
@@ -47,13 +41,16 @@ $search-border-radius: properties.$radius-responsive;
     flex: 1;
     height: inherit;
   }
+
+  .search-reset {
+    line-height: 0;
+  }
 }
 
 .search-results {
   display: flex;
   flex-direction: column;
   position: absolute;
-  width: $search-width;
   margin: 0 auto;
   top: 100%;
   right: 0;
@@ -61,35 +58,33 @@ $search-border-radius: properties.$radius-responsive;
   z-index: 5;
   max-height: 75vh;
   overflow: hidden;
-  border-bottom-left-radius: $search-border-radius;
-  border-bottom-right-radius: $search-border-radius;
-  box-shadow: 0 20px 40px $search-background;
+  @include layout.padding-inline($result-gap-inline);
 
   .results-box {
     overflow: auto;
-    z-index: 5;
+    width: calc(100% - 1px);
+    z-index: 4;
     background-color: $result-background;
 
     > * {
       display: block;
     }
 
-    .result-item,
     .result-label {
-      padding: $result-gapy $result-gapx;
+      font-size: variables.$font-sm;
     }
 
-    .result-label {
-      color: $result-label-color;
+    .result-label,
+    .result-item {
+      padding: $result-item-gap-block $result-item-gap-inline;
     }
 
     .result-item {
-      color: $result-item-color;
+      border-top: 1px solid $search-background;
 
       &:focus,
       &:hover {
-        color: $result-item-active-color;
-        background-color: $result-item-active-background;
+        background-color: $search-background;
       }
     }
   }

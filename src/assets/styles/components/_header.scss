@@ -5,79 +5,60 @@
 
 // Header
 
-$header-background: variables.$bg-header;
-$header-item-gapx: variables.$gap-sm;
-$header-item-gapy: properties.$header-gap;
-$header-top-gap-adjustment: -(variables.$gap-lg);
-$header-wrap: properties.$wrap-responsive;
-$header-item-judtification: properties.$align-between;
+$header-font-size: calc(0.95rem + 0.125vw);
+$header-gap-block: properties.$header-gap-block;
+$header-gap-inline: variables.$gap-rg;
 
 .header {
-  background-color: $header-background;
+  @include layout.container;
+  flex-wrap: properties.$responsive-wrap;
+  justify-content: properties.$responsive-align-between;
+  align-items: center;
+  font-size: $header-font-size;
+  @include layout.padding-block($header-gap-block);
 
-  .container {
-    display: flex;
-    flex-wrap: $header-wrap;
-    justify-content: $header-item-judtification;
-    align-items: center;
+  > * {
+    @include layout.margin-inline($header-gap-inline);
 
-    > * {
-      @include layout.py($header-item-gapy);
-
-      &:not(:first-child) {
-        margin-left: $header-item-gapx;
-      }
-
-      &:not(:nth-last-child(2)) {
-        margin-right: $header-item-gapx;
-      }
+    &:first-child {
+      margin-left: 0;
     }
 
-    .brand {
-      line-height: 0;
-      width: 36px;
-
-      svg {
-        @include layout.size(inherit);
-      }
+    &:last-child {
+      margin-right: 0;
     }
+  }
 
-    .break {
-      flex-basis: 100%;
-      height: 0;
-      margin: 0;
-      padding: 0;
-      
-      @include queries.md {
-        @include layout.hide;
-      }
+  .brand,
+  .theme-switcher {
+    line-height: 0;
+  }
+
+  .brand {
+    width: 36px;
+
+    svg {
+      @include layout.size(inherit);
     }
   }
 }
 
-// Reorder for small screen
+// Rearrange on small screen
 
 @include queries.within-md {
-  .brand {
-    flex: 1;
+  .brand,
+  .search {
+    order: -1;
+    margin-bottom: $header-gap-block;
   }
 
   .search {
-    order: 2;
-    margin-right: 0 !important;
+    flex-basis: calc(100% - 68px);
+    display: inline-flex;
+    justify-content: flex-end;
   }
 
-  .break {
-    order: 3;
-  }
-
-  .brand + .header-link {
+  .brand + a {
     margin-left: 0 !important;
-  }
-
-  .theme-switcher,
-  .header-link {
-    order: 4;
-    margin-top: $header-top-gap-adjustment;
   }
 }

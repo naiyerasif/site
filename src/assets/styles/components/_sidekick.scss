@@ -4,67 +4,73 @@
 
 // Sidekick
 
-$sidekick-gap-bottom: properties.$space-rg;
-$sidekick-wrap: properties.$wrap-responsive;
-$sidekick-active-background: variables.$bg-header;
+$sidekick-wrap: properties.$responsive-wrap;
 $sidekick-font-size: variables.$font-sm;
-$sidekick-actions-gapx: variables.$gap;
-$sidekick-actions-gapy: variables.$gap-xs;
+$sidekick-gap-start: properties.$space-rg;
+$sidekick-actions-gap-inline: variables.$gap-rg;
+$sidekick-actions-gap-block: variables.$gap-xs;
 $sidekick-recommendations-font-size: variables.$font-rg;
-$sidekick-recommendations-radius: variables.$radius;
-$sidekick-recommendations-border: 1px solid variables.$border;
-$sidekick-recommendations-gapx: variables.$gap-md;
-$sidekick-recommendations-gapy: variables.$gap-sm;
-$sidekick-recommendations-margin-bottom: properties.$space-sm;
+$sidekick-recommendations-gap-inline: variables.$gap-md;
+$sidekick-recommendations-gap-block: variables.$gap-sm;
+$sidekick-recommendations-gap-end: properties.$space-sm;
 $sidekick-recommendations-background: variables.$bg-vibrant;
+$sidekick-recommendations-border: 1px solid variables.$border;
+$sidekick-recommendations-radius: variables.$radius;
 $sidekick-recommendations-width: properties.$sidekick-width;
-$pagination-gap: variables.$gap;
+$pagination-gap: variables.$gap-rg;
 
 .sidekick {
-  .container {
+  @include layout.container;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: $sidekick-gap-start;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+
+    svg {
+      margin-right: variables.$ch-sm;
+    }
+
+    &:focus,
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  > * {
     display: flex;
     flex-wrap: wrap;
+    flex: 1;
     align-items: center;
-    margin-bottom: $sidekick-gap-bottom;
+    font-size: $sidekick-font-size;
+  }
 
+  .sidekick-actions {
     > * {
-      display: flex;
-      flex-wrap: $sidekick-wrap;
-      flex: 1;
-      align-items: center;
-      font-size: $sidekick-font-size;
-    }
+      @include layout.margin-block($sidekick-actions-gap-block);
 
-    .sidekick-actions {
-      > * {
-        @include layout.my($sidekick-actions-gapy);
-
-        &:not(:last-child) {
-          margin-right: $sidekick-actions-gapx;
-        }
+      &:not(:last-child) {
+        margin-right: $sidekick-actions-gap-inline;
       }
     }
+  }
 
-    .sidekick-recommendations {
-      flex-basis: 100%;
-      flex-direction: column;
-      align-items: flex-start;
-      font-size: $sidekick-recommendations-font-size;
-      
-      > * {
-        display: block;
-        padding: $sidekick-recommendations-gapy $sidekick-recommendations-gapx;
-        background-color: $sidekick-recommendations-background;
-        border: $sidekick-recommendations-border;
-        border-radius: $sidekick-recommendations-radius;
-        margin-bottom: $sidekick-recommendations-margin-bottom;
-        width: $sidekick-recommendations-width;
-
-        &:focus,
-        &:hover {
-          background-color: $sidekick-active-background;
-        }
-      }
+  .sidekick-recommendations {
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: $sidekick-recommendations-font-size;
+    
+    > * {
+      display: block;
+      padding: $sidekick-recommendations-gap-block $sidekick-recommendations-gap-inline;
+      background-color: $sidekick-recommendations-background;
+      border: $sidekick-recommendations-border;
+      border-radius: $sidekick-recommendations-radius;
+      margin-bottom: $sidekick-recommendations-gap-end;
+      width: $sidekick-recommendations-width;
     }
   }
 }
