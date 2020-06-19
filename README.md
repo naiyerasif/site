@@ -1,6 +1,6 @@
-# Microflash [![CircleCI](https://circleci.com/gh/Microflash/microflash.github.io.svg?style=svg)](https://circleci.com/gh/Microflash/microflash.github.io)
+# Microflash [![CircleCI](https://circleci.com/gh/Microflash/site.svg?style=svg)](https://circleci.com/gh/Microflash/site)
 
-Personal website of Naiyer Asif, made possible by
+This site is made possible by
 
 - [Gridsome](https://gridsome.org/): a modern Vue.js framework for static websites (and more)
 - [Gridsome Portfolio Starter](https://github.com/drehimself/gridsome-portfolio-starter): a simple portfolio starter for Gridsome
