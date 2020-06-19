@@ -11,7 +11,7 @@ module.exports = {
   name: pkgName,
   description: pkgDescription,
   url: 'https://mflash.dev',
-  favicon: 'https://raw.githubusercontent.com/Microflash/microflash.github.io/release/static/google-touch-icon.png',
+  favicon: 'https://raw.githubusercontent.com/Microflash/site/release/static/google-touch-icon.png',
   maintainer: pkgAuthor,
   copyright: `Copyright ${new Date().getFullYear()} ${pkgAuthor}`,
   prefs: {

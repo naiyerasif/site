@@ -5,12 +5,12 @@
         <h5>Resources</h5>
         <a href="/feed.xml"><Sprite symbol="icon-rss" class="icon-sm gap-end" />RSS feed</a>
         <a href="/sitemap.xml"><Sprite symbol="icon-sitemap" class="icon-sm gap-end" />Sitemap</a>
-        <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/microflash.github.io"><Sprite symbol="icon-code" class="icon-sm gap-end" />Source code</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site"><Sprite symbol="icon-code" class="icon-sm gap-end" />Source code</a>
       </div>
       <div class="footer-item">
         <h5>Support</h5>
-        <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/microflash.github.io/issues/new"><Sprite symbol="icon-feedback" class="icon-sm gap-end" />Report an issue</a>
-        <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/microflash.github.io/blob/release/LICENSE.md"><Sprite symbol="icon-license" class="icon-sm gap-end" />Site license (MIT)</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site/issues/new"><Sprite symbol="icon-feedback" class="icon-sm gap-end" />Report an issue</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site/blob/release/LICENSE.md"><Sprite symbol="icon-license" class="icon-sm gap-end" />Site license (MIT)</a>
         <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/"><Sprite symbol="icon-license" class="icon-sm gap-end" />Content license (CC by SA)</a>
       </div>
       <div class="footer-item">

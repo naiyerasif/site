@@ -20,7 +20,7 @@ It uses
 - [Vue.js](https://vuejs.org/) for components and layouts
 - [Inter](https://rsms.me/inter/) as the main font
 - [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) as the `monospace` font
-- a [custom Prism theme](https://github.com/Microflash/microflash.github.io/blob/release/src/assets/styles/core/_syntax.scss) to decorate the codeblocks
+- a [custom Prism theme](https://github.com/Microflash/site/blob/release/src/assets/styles/core/_syntax.scss) to decorate the codeblocks
 - [CircleCI](https://circleci.com/) for continuous integration
 - [Netlify](https://netlify.com/) for publishing
 - graphics and illustrations created with [Affinity Designer](https://affinity.serif.com/en-gb/designer/)
