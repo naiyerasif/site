@@ -6,7 +6,8 @@
 // Header
 
 $header-font-size: calc(0.95rem + 0.125vw);
-$header-gap-block: properties.$header-gap-block;
+$header-gap-block-start: properties.$header-gap-block-start;
+$header-gap-block-end: properties.$header-gap-block-end;
 $header-gap-inline: variables.$gap-rg;
 
 .header {
@@ -15,7 +16,8 @@ $header-gap-inline: variables.$gap-rg;
   justify-content: properties.$responsive-align-between;
   align-items: center;
   font-size: $header-font-size;
-  @include layout.padding-block($header-gap-block);
+  padding-top: $header-gap-block-start;
+  padding-bottom: $header-gap-block-end;
 
   > * {
     @include layout.margin-inline($header-gap-inline);
@@ -49,7 +51,7 @@ $header-gap-inline: variables.$gap-rg;
   .brand,
   .search {
     order: -1;
-    margin-bottom: $header-gap-block;
+    margin-bottom: $header-gap-block-end;
   }
 
   .search {
