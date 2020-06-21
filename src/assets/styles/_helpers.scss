@@ -27,6 +27,14 @@
   @include layout.size(variables.$icon-sm);
 }
 
+.icon-card {
+  border-radius: variables.$radius * 3;
+
+  > * {
+    font-family: inherit;
+  }
+}
+
 // Links
 
 a {

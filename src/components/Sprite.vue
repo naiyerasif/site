@@ -1,5 +1,5 @@
 <template>
-  <svg>
+  <svg role="img">
     <use :xlink:href="uri" :href="uri" />
   </svg>
 </template>
