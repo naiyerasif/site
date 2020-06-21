@@ -8,7 +8,7 @@ avatar: './avatars/naiyer.png'
 
 import Sprite from '~/components/Sprite'
 
-I've worn different hats on a diverse range of projects in Banking &amp; Financial Services, Legal &amp; Compliance, Document Processing and Aviation domains. This includes work on ETL, frontend, site reliability and backend.
+I've worked on a diverse range of projects in Banking &amp; Financial Services, Legal &amp; Compliance, Document Processing and Aviation domains, with experience on ETL, frontend, site reliability and backend.
 
 #### Technologies I am adept at &mdash;
 
@@ -33,9 +33,7 @@ I've worn different hats on a diverse range of projects in Banking &amp; Financi
 <br>
 
 
-Besides writing code, I draw vector illustrations and read fiction (mostly sci-fi and fantasy). I like exploring languages and have an avid interest in typography. I prowl the web for shiny new tools to tinker with. In a social setting, you'll find a kindred soul in me if you're interested in movies, pop music, Urdu poetry and books. I'm also a pretty good listener.
-
-Feel free to look around and contact me with any questions at [@Microflash](https://www.twitter.com/Microflash) (which is the namesake of this site).
+I love to draw vector illustrations and have an avid interest in typography. I read a goodly amount of science fiction and fantasy, and prowl the web for shiny new tools to tinker with. Feel free to look around and contact me with any questions at [@Microflash](https://www.twitter.com/Microflash) (which is the namesake of this site).
 
 ### About this site
 
