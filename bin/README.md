@@ -1,7 +1,6 @@
 # Tools
 
 - [Generate favicon](#generate-favicon)
-- [Generate SVG sprites](#generate-svg-sprites)
 - [Create new post](#create-new-post)
 - [Create new status](#create-new-status)
 - [Clean deployment history](#clean-deployment-history)
@@ -12,14 +11,6 @@ Requires [imagemagick](http://www.imagemagick.org/).
 
 ```sh
 source bin/generate-favicon.sh static/google-touch-icon.png
-```
-
-### Generate SVG sprites
-
-Assumes SVG icons are located in `.archive/svg/icons` and `.archive/svg/labels` directories.
-
-```sh
-source bin/generate-sprites.sh
 ```
 
 ### Create new post

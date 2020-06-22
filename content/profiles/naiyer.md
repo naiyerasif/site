@@ -51,6 +51,7 @@ This site was made possible by
 - [Fuse.js](https://fusejs.io/): a lightweight fuzzy-search library
 - [Prism](https://prismjs.com/): a lightweight, extensible syntax highlighter
 - [Feather Icons](https://feathericons.com/): beautiful open-source icons
+- [Spritely](https://github.com/Microflash/spritely): a Node.js CLI to generate SVG sprites
 - [Remarkability](https://mflash.dev/remarkability/): baseline CSS for text-heavy HTML documents
 - [Animate.css](https://github.com/daneden/animate.css): a cross-browser library of CSS animations
 - [Grid By Example](https://gridbyexample.com/): a collection of examples and references on CSS Grid

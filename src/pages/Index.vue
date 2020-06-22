@@ -9,7 +9,7 @@
       <Card v-for="post in $page.posts.edges" :key="post.id" :title="post.node.title" :description="post.node.excerpt | clip" :src="post.node.path">
         <time v-html="post.node.date" />
         <span>{{ post.node.timeToRead }} min read</span>
-        <Sprite :symbol="label" class="label" v-for="label in post.node.labels" :key="label" />
+        <Sprite :symbol="'icon-' + label" class="label" v-for="label in post.node.labels" :key="label" />
       </Card>
     </main>
     <Pagination :input="$page.posts.pageInfo" />

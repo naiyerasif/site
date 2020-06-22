@@ -11,7 +11,9 @@
     "start": "gridsome develop",
     "status": "gridsome info",
     "new:post": "node bin/newPost.js",
-    "new:status": "node bin/newStatus.js"
+    "new:status": "node bin/newStatus.js",
+    "build:icons": "cp static/assets/images/icons.svg .archive/backups/icons.svg && spritely --input .archive/svg/icons --output static/assets/images/icons.svg --prefix \"icon-\" --recursive true",
+    "build:cards": "cp static/assets/images/cards.svg .archive/backups/cards.svg && spritely --input .archive/svg/cards --output static/assets/images/cards.svg --prefix \"card-\" --a11y true"
   },
   "dependencies": {
     "@fullhuman/postcss-purgecss": "^2.3.0",

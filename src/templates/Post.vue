@@ -12,7 +12,7 @@
           </div>
           <h1 class="title">{{ $page.post.title }}</h1>
           <div class="metadata-footer">
-            <Sprite :symbol="label" class="label" v-for="label in $page.post.labels" :key="label" />
+            <Sprite :symbol="'icon-' + label" class="label" v-for="label in $page.post.labels" :key="label" />
           </div>
         </div>
       </div>
