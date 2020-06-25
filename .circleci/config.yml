@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: microflash/node:13.2-buster
+      - image: microflash/node:14-buster
     environment:
       - GIT_LFS_SKIP_SMUDGE: 1
     working_directory: ~/repo
