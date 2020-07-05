@@ -16,8 +16,8 @@ module.exports = function (api) {
         options.updated = options.date
       }
 
-      if (!options.outdated && !['never'].includes(options.outdated)) {
-        options.outdated = outdationDate && moment(options.updated, 'YYYY-MM-DD HH:mm:ss').isBefore(outdationDate) ? 'old' : '#'
+      if (typeof(options.outdated) == 'undefined') {
+        options.outdated = outdationDate && moment(options.updated, 'YYYY-MM-DD HH:mm:ss').isBefore(outdationDate) ? 'true' : 'undefined'
       }
     }
     

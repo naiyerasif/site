@@ -111,11 +111,7 @@ export default {
       return `${editContext}/${this.$page.post.fileInfo.path}`
     },
     outdationMessage() {
-      let warning = null
-      if (!['#', 'never'].includes(this.$page.post.outdated)) {
-        warning = `This post is marked as ${this.$page.post.outdated}. Some information may be inaccurate.`
-      }
-      return warning
+      return this.$page.post.outdated !== 'undefined' && this.$page.post.outdated === 'true' ? 'This post is outdated. Some information may be inaccurate.' : null
     }
   }
 }
