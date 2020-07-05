@@ -1,6 +1,6 @@
 {
   "name": "microflash",
-  "version": "0.9.7",
+  "version": "0.9.8",
   "private": true,
   "description": "Reflections on design and development by Naiyer Asif",
   "repository": "https://github.com/Microflash/site.git",
@@ -18,14 +18,14 @@
   "dependencies": {
     "@fullhuman/postcss-purgecss": "^2.3.0",
     "@gridsome/plugin-google-analytics": "^0.1.1",
-    "@gridsome/plugin-sitemap": "^0.3.0",
+    "@gridsome/plugin-sitemap": "^0.4.0",
     "@gridsome/source-filesystem": "^0.6.2",
-    "@gridsome/transformer-remark": "^0.6.0",
-    "@gridsome/vue-remark": "^0.2.1",
+    "@gridsome/transformer-remark": "^0.6.1",
+    "@gridsome/vue-remark": "^0.2.2",
     "@microflash/gridsome-plugin-feed": "^1.0.7",
     "@microflash/remarkability": "^0.8.3",
     "axios": "^0.19.2",
-    "gridsome": "^0.7.17",
+    "gridsome": "^0.7.18",
     "gridsome-plugin-remark-prismjs-all": "^0.3.5",
     "vue-fuse": "^2.2.1"
   },
@@ -36,7 +36,7 @@
     "moment": "^2.27.0",
     "netlify-cli": "^2.54.0",
     "sass": "^1.26.9",
-    "sass-loader": "^8.0.2",
+    "sass-loader": "^9.0.1",
     "svg-to-vue-component": "^0.3.8"
   }
 }
