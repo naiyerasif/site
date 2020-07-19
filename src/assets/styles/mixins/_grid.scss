@@ -1,12 +1,17 @@
-@use '../variables';
 @use '../properties';
-@use './queries';
-@use './layout';
+@use 'queries';
+@use 'utils';
 
 // Grid mixin
 // generates a grid with cells of specified width
 
-@mixin grid($width, $height: 100%, $gap: properties.$space-sm, $strategy: auto-fill, $responsive: true) {
+@mixin grid(
+  $width,
+  $height: 100%,
+  $gap: properties.$space-sm,
+  $strategy: auto-fill,
+  $mobile-friendly: true
+) {
   display: flex;
   flex-wrap: wrap;
 
@@ -15,7 +20,7 @@
   grid-template-columns: repeat($strategy, minmax($width, 1fr));
   grid-auto-rows: minmax(max-content, auto);
 
-  @if $responsive {
+  @if $mobile-friendly {
     @include queries.sm {
       grid-template-columns: none;
     }
@@ -23,25 +28,13 @@
 
   > * {
     flex: 1 1 $width;
-    @include layout.margin-inline($gap);
+    @include utils.mx($gap);
     min-height: $height;
   }
 
   @supports (display: grid) {
     & > * {
-      @include layout.margin-inline(0);
+      @include utils.mx(0);
     }
   }
-}
-
-.grid-xs {
-  @include grid($width: variables.$grid-xs, $responsive: false);
-}
-
-.grid-sm {
-  @include grid($width: variables.$grid-sm);
-}
-
-.grid-rg {
-  @include grid($width: variables.$grid-rg, $strategy: auto-fit);
 }

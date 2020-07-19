@@ -1,11 +1,11 @@
-@use '../_variables';
-@use '../_properties';
+@use '../variables';
+@use '../properties';
 
 // Table of contents
 
 $toc-background: variables.$bg-vibrant;
 $toc-radius: variables.$radius;
-$toc-header-weight: variables.$weight-md;
+$toc-header-weight: variables.$weight-bd;
 $toc-body-font-size: variables.$font-sm;
 $toc-body-gap-inline: variables.$gap-rg;
 $toc-body-gap-end: variables.$gap-lg;

@@ -1,19 +1,22 @@
 @use '../variables';
 @use '../properties';
-@use '../mixins/layout';
+@use '../mixins/utils';
 
 // Hero
 
-$header-gap-block: properties.$hero-gap-block;
+$hero-background: variables.$bg-vibrant;
+$hero-border-radius: properties.$responsive-radius;
+$hero-gap-block: properties.$space-rg;
+$footer-gap-top: properties.$space-sm;
 $metadata-gap-start: properties.$space-rg;
 $metadata-gap-end: properties.$metadata-gap-end;
 $metadata-header-font-size: variables.$font-sm;
 $metadata-header-gap-end: variables.$gap-xs;
-$metadata-label-gap: variables.$gap-rg;
 
 .hero {
-  @include layout.container;
-  @include layout.padding-block($header-gap-block);
+  @include utils.py($hero-gap-block);
+  background-color: $hero-background;
+  border-radius: $hero-border-radius;
 }
 
 // Metadata
@@ -29,39 +32,30 @@ $metadata-label-gap: variables.$gap-rg;
     margin-bottom: $metadata-gap-end;
 
     img {
-      @include layout.size(auto, calc(5rem + 5vw));
+      @include utils.size(auto, calc(5rem + 5vw));
       border-radius: 100%;
     }
   }
 
-  .metadata-footer,
   .metadata-header {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     font-size: $metadata-header-font-size;
-  }
 
-  .metadata-header {
     > * {
       margin-bottom: $metadata-header-gap-end;
     }
-  
+
     > *:not(:last-child)::after {
       content: variables.$symbol-separator;
-      @include layout.margin-inline(variables.$separator-gap);
+      @include utils.mx(variables.$separator-gap);
       opacity: variables.$separator-opacity;
     }
   }
 
   .metadata-footer {
-    .label {
-      margin-top: $metadata-label-gap;
-      @include layout.size(variables.$icon-rg * 1.5);
-  
-      &:not(:last-child) {
-        margin-right: $metadata-label-gap;
-      }
-    }
+    margin-top: $footer-gap-top;
+    font-size: $metadata-header-font-size;
   }
 }

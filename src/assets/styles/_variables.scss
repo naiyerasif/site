@@ -1,4 +1,4 @@
-@use 'core/colors';
+@use 'core/theme';
 
 // Typography
 
@@ -8,9 +8,8 @@ $family-sans-native: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
 $family-code-native: SFMono-Regular, 'Roboto Mono', Menlo, Monaco, Consolas,
   'Liberation Mono', 'Courier New', monospace !default;
 
-$weight-rg: 400 !default;
-$weight-md: 600 !default;
-$weight-lg: 700 !default;
+$weight-rg: var(--weight-rg) !default;
+$weight-bd: var(--weight-bd) !default;
 
 $font-xs: calc(0.75rem + 0.125vw) !default;
 $font-sm: calc(0.8rem + 0.2vw) !default;
@@ -26,7 +25,7 @@ $breakpoint-md: 900px !default;
 $breakpoint-lg: 1200px !default;
 $breakpoint-xl: 1800px !default;
 
-$container-offset: 35vw !default;
+$container-offset: 30vw !default;
 
 $gap-xs: 0.5rem !default;
 $gap-sm: 0.75rem !default;
@@ -37,14 +36,16 @@ $gap-xl: 1.75rem !default;
 
 $ch-sm: 0.5ch !default;
 $ch-rg: 1ch !default;
+$ch-md: 1.5ch !default;
 $separator-gap: $ch-rg !default;
 
 $icon-sm: 1rem !default;
 $icon-rg: 1.5rem !default;
 
-$grid-xs: calc(8rem + 6vw) !default;
+$stroke-width-sm: var(--stroke-width-sm) !default;
+$stroke-width-rg: var(--stroke-width-sm) !default;
+
 $grid-sm: 15rem !default;
-$grid-rg: 17rem !default;
 
 // Display
 
@@ -52,8 +53,9 @@ $radius: 0.3rem !default;
 
 $symbol-external-link: '\02197' !default;
 $symbol-reference-link: '#' !default;
-$symbol-separator: '\2758' !default;
+$symbol-separator: '\00B7' !default;
 
+$fill-opacity: 0.25 !default;
 $separator-opacity: 0.5 !default;
 
 // Colors
@@ -65,12 +67,17 @@ $link: var(--link) !default;
 $link-vibrant: var(--link-vibrant) !default;
 
 $border: var(--border) !default;
-$selected: colors.fade(colors.primary(500), 0.75) !default;
-$code-selected: colors.fade(colors.primary(500), 0.91) !default;
+$selected: theme.fade(theme.primary(500), 0.75) !default;
+$code-selected: theme.fade(theme.primary(500), 0.91) !default;
 
 $bg-body: var(--bg-body) !default;
 $bg-vibrant: var(--bg-vibrant) !default;
-$bg-feed: var(--bg-feed) !default;
+$bg-muted: var(--bg-muted) !default;
+
+$bg-caution: var(--bg-caution) !default;
+$bg-tip: var(--bg-tip) !default;
+$bg-warning: var(--bg-warning) !default;
+$bg-important: var(--bg-important) !default;
 
 @use '../../../node_modules/@microflash/remarkability/scss/variables' with (
   $multiline-wrap: true,
@@ -88,11 +95,12 @@ $bg-feed: var(--bg-feed) !default;
   $family-code: ('JetBrains Mono', $family-code-native),
   $family-base-variable: ('Inter var', $family-sans-native),
   $font-size-base: $font-rg,
-  $weight-headings: $weight-md,
+  $weight-normal: $weight-rg,
+  $weight-bold: $weight-bd,
   $background-body: $bg-body,
-  $background-code: $bg-vibrant,
-  $background-ins: $bg-vibrant,
-  $background-mark: $bg-vibrant,
+  $background-code: $bg-muted,
+  $background-ins: $bg-muted,
+  $background-mark: $bg-muted,
   $background-table: inherit,
   $background-table-even: inherit,
   $background-table-hover: $bg-vibrant,

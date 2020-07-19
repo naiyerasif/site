@@ -3,20 +3,20 @@ title: 'Persisting documents with MongoRepository'
 date: 2019-07-08 11:12:13
 updated: 2019-12-08 19:59:01
 authors: [naiyer]
-labels: [spring, mongodb]
+topics: [spring, mongodb]
 ---
 
 Spring Boot provides a variety of ways to work with a MongoDB database: low-level `MongoReader` and `MongoWriter` APIs, Query, Criteria and Update DSLs, and `MongoTemplate` helper. `MongoRepository` interface is the Repository-style programming model provided by `spring-boot-starter-data-mongodb`.
 
 In this post, we'll explore how to persist documents with `MongoRepository`.
 
-##### Setup
-
+:::note Setup
 The examples in this post use
 
 - Java 13
 - Spring Boot 2.2.5
 - MongoDB 4
+:::
 
 You'd need a mongoDB instance to persist the data. You can install MongoDB Community Server from [here](https://www.mongodb.com/download-center/community) or get a free to try instance at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas). You can also use Docker to run an instance. Create a `docker-compose.yml` file at the project root and add the following details in it.
 
@@ -187,7 +187,7 @@ public class DateToZonedDateTimeConverter implements Converter<Date, ZonedDateTi
 }
 ```
 
-> **INFO** UTC is considered as `ZoneOffset` here. `Date` object, persisted in MongoDB, contains no zone information. However, since MongoDB timestamps default to UTC, you can adjust the offset accordingly for your timezone.
+> **Info** UTC is considered as `ZoneOffset` here. `Date` object, persisted in MongoDB, contains no zone information. However, since MongoDB timestamps default to UTC, you can adjust the offset accordingly for your timezone.
 
 Similarly, for conversion from `ZonedDateTime` to `Date`, write a yet another converter.
 

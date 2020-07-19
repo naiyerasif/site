@@ -3,21 +3,21 @@ title: 'Uploading files with Spring Boot and Angular'
 date: 2018-09-09 11:14:23
 updated: 2020-03-08 21:16:19
 authors: [naiyer]
-labels: [spring, angular]
+topics: [spring, angular]
 ---
 
 Give yourself some time in software development and you'll eventually come across file upload problems of varying complexity. Consider this one: you want a Spring backend to upload a file through an Angular app. Since the files can be large and the network may be slow, the upload can take a while to complete. Hence, you also want to display the progress of the upload on the Angular app.
 
 To solve this problem, we can modify the Spring Boot application described in [Uploading files](https://spring.io/guides/gs/uploading-files/) guide for our needs. And then we can create an Angular app to provide a UI.
 
-##### Setup
-
+:::note Setup
 The examples in this post use
 
 - Java 13
 - Node 12
 - Spring Boot 2.1.8
 - Angular 9
+:::
 
 ## Create the upload service with Spring Boot
 
@@ -259,7 +259,7 @@ export class AppComponent implements AfterContentChecked {
 }
 ```
 
-> **WARNING** Do NOT use `AfterContentChecked` interface to call a service in production! Use a suitable change detection strategy to update the view.
+> **Warning** Do NOT use `AfterContentChecked` interface to call a service in production! Use a suitable change detection strategy to update the view.
 
 Open `app.component.html` and add the following template (which is built using [Bulma](https://bulma.io)).
 

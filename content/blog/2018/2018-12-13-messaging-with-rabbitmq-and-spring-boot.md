@@ -3,20 +3,20 @@ title: 'Messaging with RabbitMQ and Spring Boot'
 date: 2018-12-13 20:20:54
 updated: 2019-11-13 16:45:02
 authors: [naiyer]
-labels: [rabbitmq, spring]
+topics: [rabbitmq, spring]
 ---
 
 [RabbitMQ](https://www.rabbitmq.com/) is an open-source message broker that implements several messaging protocols, including AMQP and STOMP. It is frequently used to queue messages and interact with queues. A RabbitMQ server acts as an exchange server (or broker). Clients, written in a variety of languages, enable applications to publish and consume the messages in the queue. 
 
 In this post, we'll learn how to create a queue with RabbitMQ and interact with it using Spring Boot.
 
-##### Setup
-
+:::note Setup
 The examples in this post use
 
 - Java 13
 - Spring Boot 2.2.5
 - RabbitMQ 3 running as a Docker container
+:::
 
 Create a Spring Boot application with `spring-boot-starter-amqp` and [jackson-databind](https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind) as the dependencies.
 

@@ -22,7 +22,7 @@
   }
 }
 
-@mixin within-md {
+@mixin rg {
   @include within(variables.$breakpoint-md) {
     @content;
   }

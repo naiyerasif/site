@@ -1,6 +1,6 @@
 <template>
   <svg role="img">
-    <use :xlink:href="uri" :href="uri" />
+    <use :xlink:href="link" :href="link" />
   </svg>
 </template>
 
@@ -18,7 +18,7 @@ export default {
     symbol: String
   },
   computed: {
-    uri() {
+    link() {
       return `${spriteDir}/${this.src}.svg#${this.symbol}`
     }
   }

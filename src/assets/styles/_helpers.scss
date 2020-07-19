@@ -1,37 +1,21 @@
 @use 'variables';
 @use 'properties';
-@use 'mixins/layout';
 @use 'mixins/queries';
+@use 'mixins/utils';
+@use 'mixins/grid';
 
-// Icons
+// Containers
 
-.svg {
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  vertical-align: middle;
-  fill: currentColor;
-  fill-opacity: 0.25;
+body {
+  @include utils.container;
 }
 
-.icon {
-  @extend .svg;
-  stroke-width: 1.5px;
-  @include layout.size(variables.$icon-rg);
-}
-
-.icon-sm {
-  @extend .svg;
-  stroke-width: 2px;
-  @include layout.size(variables.$icon-sm);
-}
-
-.icon-card {
-  border-radius: variables.$radius * 3;
+.layout {
+  width: inherit;
 
   > * {
-    font-family: inherit;
+    display: flex;
+    @include utils.px(properties.$space-rg);
   }
 }
 
@@ -43,8 +27,38 @@ a {
   }
 
   &.active {
-    font-weight: variables.$weight-md;
+    font-weight: variables.$weight-bd;
   }
+}
+
+// Icons
+
+.svg {
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vertical-align: middle;
+  align-self: center;
+  fill: currentColor;
+  fill-opacity: variables.$fill-opacity;
+}
+
+.icon-rg {
+  @extend .svg;
+  stroke-width: variables.$stroke-width-rg;
+  @include utils.size(variables.$icon-rg);
+}
+
+.icon-sm {
+  @extend .svg;
+  stroke-width: variables.$stroke-width-sm;
+  @include utils.size(variables.$icon-sm);
+}
+
+// Grids
+
+.grid-sm {
+  @include grid.grid($width: variables.$grid-sm);
 }
 
 // Typography
@@ -73,9 +87,9 @@ a {
   border-color: $red;
 }
 
-// Layout
+// Gap
 
-.gap-end {
+.gap-ch {
   margin-right: variables.$ch-rg;
 
   &-sm {
@@ -83,58 +97,10 @@ a {
   }
 }
 
+// Hide utility
+
 .hidden-sm {
   @include queries.sm {
-    @include layout.hide;
-  }
-}
-
-.is-column {
-  flex-direction: column;
-}
-
-// Full-width elements on phone
-
-$space-rg-neg: calc(-1rem - 2vw);
-
-blockquote {
-  @include queries.sm {
-    @include layout.margin-inline($space-rg-neg);
-    @include layout.padding-inline(properties.$space-rg);
-  }
-}
-
-.content {
-  @include queries.sm {
-    flex-direction: column;
-
-    .card,
-    .feed-item {
-      @include layout.margin-inline($space-rg-neg);
-      border-radius: 0;
-    }
-  }
-}
-
-.gridsome-highlight {
-  @include queries.sm {
-    @include layout.margin-inline($space-rg-neg);
-
-    pre {
-      border-radius: 0;
-    }
-
-    code {
-      @include layout.padding-inline(properties.$space-rg);
-    }
-
-    .gridsome-highlight-code-line {
-      margin-left: $space-rg-neg;
-      padding-left: properties.$space-rg;
-    }
-  }
-
-  @include queries.md {
-    width: 120%;
+    @include utils.hide;
   }
 }

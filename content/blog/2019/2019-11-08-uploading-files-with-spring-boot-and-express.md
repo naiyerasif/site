@@ -3,13 +3,12 @@ title: 'Uploading files with Spring Boot and Express'
 date: 2019-11-08 16:06:33
 updated: 2020-03-18 21:50:11
 authors: [naiyer]
-labels: [express, spring, angular]
+topics: [express, spring, angular]
 ---
 
 In a traditional microservice premise, a client application (e.g., an Angular frontend) rarely hits a backend service directly. Usually, a middleware (e.g., an Express application) sits between the backend and client, facilitating the communication, as a [backend for frontend](https://developer.ibm.com/patterns/create-backend-for-frontend-application-architecture/). In this post, we'll explore how Express can facilitate a file upload with a reactive Spring backend and an Angular frontend.
 
-##### Setup
-
+:::note Setup
 The examples in this post use
 
 - Java 13
@@ -17,6 +16,7 @@ The examples in this post use
 - Node 12
 - Express 4
 - Angular 9
+:::
 
 ## Create an upload service with Spring Boot
 
@@ -207,7 +207,7 @@ public @SpringBootApplication class Launcher implements WebFluxConfigurer {
 }
 ```
 
-> **WARNING** This is a global CORS mapping. Do NOT use such a configuration on production!
+> **Warning** This is a global CORS mapping. Do NOT use such a configuration on production!
 
 Since Express will be running at the port `8080`, let's configure a different port for the Spring application by editing `application.yml` file.
 

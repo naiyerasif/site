@@ -1,46 +1,46 @@
 <template>
   <footer class="footer">
     <section class="grid-sm">
-      <div class="footer-item">
-        <h5>Resources</h5>
-        <a href="/feed.xml"><Sprite symbol="icon-rss" class="icon-sm gap-end" />RSS feed</a>
-        <a href="/sitemap.xml"><Sprite symbol="icon-sitemap" class="icon-sm gap-end" />Sitemap</a>
-        <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site"><Sprite symbol="icon-code" class="icon-sm gap-end" />Source code</a>
+      <div class="footer-menu">
+        <div class="footer-title">Resources</div>
+        <a href="/feed.xml"><Sprite symbol="icon-rss" class="icon-sm gap-ch" />RSS feed</a>
+        <a href="/sitemap.xml"><Sprite symbol="icon-sitemap" class="icon-sm gap-ch" />Sitemap</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site"><Sprite symbol="icon-file-source" class="icon-sm gap-ch" />Source code</a>
       </div>
-      <div class="footer-item">
-        <h5>Support</h5>
-        <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site/issues/new"><Sprite symbol="icon-feedback" class="icon-sm gap-end" />Report an issue</a>
-        <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site/blob/release/LICENSE.md"><Sprite symbol="icon-license" class="icon-sm gap-end" />Site license (MIT)</a>
-        <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/"><Sprite symbol="icon-license" class="icon-sm gap-end" />Content license (CC by SA)</a>
+      <div class="footer-menu">
+        <div class="footer-title">Support</div>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site/issues/new"><Sprite symbol="icon-feedback" class="icon-sm gap-ch" />Report an issue</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site/blob/release/LICENSE.md"><Sprite symbol="icon-license" class="icon-sm gap-ch" />Site license (MIT)</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/"><Sprite symbol="icon-license" class="icon-sm gap-ch" />Content license (CC by SA)</a>
       </div>
-      <div class="footer-item">
-        <h5>Connect</h5>
-        <section>
-          <a class="gap-end" href="https://github.com/Microflash" title="GitHub" target="_blank" rel="noopener noreferrer">
-            <Sprite symbol="icon-github" class="icon" />
+      <div class="footer-menu">
+        <div class="footer-title">Connect</div>
+        <div class="network">
+          <a class="gap-ch" href="https://github.com/Microflash" title="GitHub" target="_blank" rel="noopener noreferrer">
+            <Sprite symbol="icon-github" class="icon-rg" />
           </a>
-          <a class="gap-end" href="https://gitlab.com/Microflash" title="GitLab" target="_blank" rel="noopener noreferrer">
-            <Sprite symbol="icon-gitlab" class="icon" />
+          <a class="gap-ch" href="https://gitlab.com/Microflash" title="GitLab" target="_blank" rel="noopener noreferrer">
+            <Sprite symbol="icon-gitlab" class="icon-rg" />
           </a>
-          <a class="gap-end" href="https://twitter.com/Microflash" title="Twitter" target="_blank" rel="noopener noreferrer">
-            <Sprite symbol="icon-twitter" class="icon" />
+          <a class="gap-ch" href="https://twitter.com/Microflash" title="Twitter" target="_blank" rel="noopener noreferrer">
+            <Sprite symbol="icon-twitter" class="icon-rg" />
           </a>
-          <a class="gap-end" href="https://in.linkedin.com/in/naiyerasif" title="LinkedIn" target="_blank" rel="noopener noreferrer">
-            <Sprite symbol="icon-linkedin" class="icon" />
+          <a class="gap-ch" href="https://in.linkedin.com/in/naiyerasif" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <Sprite symbol="icon-linkedin" class="icon-rg" />
           </a>
-        </section>
+        </div>
       </div>
     </section>
-    <section class="copyright">
-      <Favicon alt="logo" />
-      <aside>Copyright &copy; {{ year }}, Made with code, <span title="tea">☕</span> &amp; <span class="is-warning" title="love">❤️</span> by <g-link to="/profile/naiyer/">Naiyer Asif</g-link></aside>
-    </section>
+    <div class="copyright">
+      <Favicon alt="logo" class="brand gap-ch" />
+      <span>&copy; {{ year }} &mdash; <g-link to="/profile/naiyer/">Naiyer Asif</g-link></span>
+    </div>
   </footer>
 </template>
 
 <script>
 import Sprite from '~/components/Sprite'
-import Favicon from '@/static/favicon.svg'
+import Favicon from '@/static/assets/images/brand.svg'
 
 export default {
   components: {

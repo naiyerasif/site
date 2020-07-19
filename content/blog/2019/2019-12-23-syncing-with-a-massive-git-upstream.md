@@ -2,7 +2,7 @@
 title: 'Syncing with a massive Git upstream'
 date: 2019-12-23 14:23:12
 authors: [naiyer]
-labels: [git]
+topics: [git]
 ---
 
 If a repository has an extremely long history or large size in the version control, contributing to it becomes a challenge. If you execute `git clone` on it, Git will try to download the entire history. This can take up a considerable amount of disk space, network bandwidth and time. How can you handle this scenario?

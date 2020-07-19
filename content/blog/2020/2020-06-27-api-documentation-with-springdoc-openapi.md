@@ -2,15 +2,14 @@
 title: 'API Documentation with springdoc-openapi'
 date: 2020-06-27 00:30:07
 authors: [naiyer]
-labels: [spring, openapi]
+topics: [spring, openapi]
 ---
 
 [OpenAPI Initiative](https://www.openapis.org/) is a widely adopted industry standard to describe and document APIs, with [Swagger](https://swagger.io/) being one of its most well-known implementations. For years, [Springfox](https://github.com/springfox/springfox), using Swagger, has provided a well-adopted toolchain for Spring projects to generate OpenAPI documentation and provide a UI on the top of it. Unfortunately, the Springfox project is not frequently maintained; its latest release v2.9.2 at the timing of writing this post was in 2018. This is where [springdoc-openapi](https://springdoc.org/) comes into picture.
 
 Springdoc is a relatively young [open-source](https://github.com/springdoc/springdoc-openapi) project that adds several new features not available in Springfox at the moment, including the support for OpenAPI Specification 3 (OAS 3) and functional and reactive Spring APIs to create REST endpoints. In this post, we'll explore how we can use Springdoc with a Spring Boot project.
 
-##### Setup
-
+:::note Setup
 The code written for this post uses:
 
 - Java 14
@@ -18,6 +17,7 @@ The code written for this post uses:
 - Springdoc 1.4.3
 - Postgres 13 running in a Docker container
 - Maven 3.6.3
+:::
 
 You can run an instance of Postgres by installing it on your machine or in cloud. For a Docker container, use the following `Compose` file.
 

@@ -76,17 +76,28 @@ $black: mono(900);
 // CSS properties for light theme
 
 [data-theme='light'] {
-  $bg-base: mix($white, mono(200), 80%);
+  $bg-base: mix($white, mono(100), 20%);
   $text-base: mix($black, secondary(900), 25%);
 
   --text: #{$text-base};
-  --text-muted: #{mix($bg-base, secondary(900), 25%)};
-  --link: #{mix($text-base, primary(500), 20%)};
-  --link-vibrant: #{mix($text-base, primary(500), 33%)};
+  --text-muted: #{saturate(mix($bg-base, secondary(800), 10%), 20%)};
+  --link: #{mix($text-base, primary(500), 24%)};
+  --link-vibrant: #{mix($text-base, primary(500), 31%)};
   --border: #{mix($bg-base, $text-base, 77%)};
   --bg-body: #{$bg-base};
-  --bg-vibrant: #{$white};
-  --bg-feed: #{mix($white, mono(200), 55%)};
+  --bg-vibrant: #{mix($white, mono(200), 85%)};
+  --bg-muted: #{mix($white, primary(300), 80%)};
+
+  --bg-caution: hsl(54, 36%, 86%);
+  --bg-tip: hsl(160, 27%, 88%);
+  --bg-warning: hsl(5, 70%, 90%);
+  --bg-important: hsl(226, 40%, 88%);
+
+  --weight-rg: 400;
+  --weight-bd: 700;
+
+  --stroke-width-sm: 2px;
+  --stroke-width-rg: 1.5px;
 }
 
 // CSS properties for dark theme
@@ -96,11 +107,22 @@ $black: mono(900);
   $text-base: mix($black, $white, 25%);
 
   --text: #{$text-base};
-  --text-muted: #{mix($bg-base, secondary(500), 25%)};
+  --text-muted: #{mix($bg-base, secondary(500), 5%)};
   --link: #{mix($text-base, primary(500), 5%)};
   --link-vibrant: #{primary(400)};
-  --border: #{mix($bg-base, $text-base, 88%)};
+  --border: #{mix($bg-base, $text-base, 85%)};
   --bg-body: #{$bg-base};
   --bg-vibrant: #{mix($black, $bg-base, 20%)};
-  --bg-feed: #{mix($black, $bg-base, 12%)};
+  --bg-muted: #{mix($black, primary(900), 33%)};
+
+  --bg-caution: hsl(51, 23%, 24%);
+  --bg-tip: hsl(160, 34%, 22%);
+  --bg-warning: hsl(4, 56%, 28%);
+  --bg-important: hsl(228, 41%, 26%);
+
+  --weight-rg: 350;
+  --weight-bd: 600;
+
+  --stroke-width-sm: 1.5px;
+  --stroke-width-rg: 1px;
 }

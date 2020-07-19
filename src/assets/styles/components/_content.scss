@@ -1,36 +1,65 @@
 @use '../variables';
 @use '../properties';
-@use '../mixins/layout';
+@use '../mixins/utils';
 
 // Content
 
+$content-gap-start: properties.$space-lg;
 $content-gap-end: properties.$space-rg;
-$content-gap-block: calc(1rem - 1vw);
-$content-first-paragraph-size: variables.$font-md;
+$content-opener-size: variables.$font-md;
 
 .content {
-  @include layout.container;
   flex-wrap: wrap;
   align-items: center;
-  @include layout.margin-block($content-gap-block);
+  margin-top: $content-gap-start;
+  margin-bottom: $content-gap-end;
 
   .toc,
   .article {
-    flex-basis: 100%;
-    max-width: properties.$article-width;
-
     article > p:first-child {
-      font-size: $content-first-paragraph-size;
+      font-size: $content-opener-size;
     }
   }
 
-  .card:not(:last-child) {
-    margin-bottom: $content-gap-end;
-  }
-
-  .collection,
+  .toc,
+  .article,
   figure {
     width: 100%;
+  }
+}
+
+// Definitions
+
+.definition {
+  margin-bottom: variables.$gap-lg;
+
+  dt {
+    font-weight: variables.$weight-bd;
+  }
+}
+
+// Notes
+
+.note-header {
+  display: flex;
+  align-items: center;
+
+  .subtitle {
+    flex-basis: 100%;
+  }
+
+  .topics, time {
+    font-size: variables.$font-sm;
+  }
+
+  > time::after {
+    content: variables.$symbol-separator;
+    @include utils.mx(variables.$separator-gap);
+    opacity: variables.$separator-opacity;
+  }
+
+  hr {
+    flex-grow: 1;
   }
 }
 
@@ -44,7 +73,7 @@ h5,
 h6 {
   &:focus a .reference,
   &:hover a .reference {
-    @include layout.hide(false);
+    @include utils.hide(false);
     display: inline-block;
     width: 1.25ch;
     margin-left: -1.25ch;

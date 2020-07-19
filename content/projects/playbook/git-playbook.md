@@ -1,9 +1,9 @@
 ---
-id: collection-1
+id: 0
 title: 'Git Playbook'
 description: 'Swiss-army reference on useful git commands, tips and shortcuts'
 toc: true
-enableEdit: true
+editable: true
 ---
 
 ## Setup

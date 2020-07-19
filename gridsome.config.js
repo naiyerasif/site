@@ -15,15 +15,18 @@ postcssPlugins.push(autoprefixer({
 }))
 
 const remarkPlugins = [
+  'remark-admonitions',
   [
     'gridsome-plugin-remark-prismjs-all', { 
       noInlineHighlight: true,
       aliases: {
         sh: 'shell',
-        conf: 'properties'
+        conf: 'properties',
+        yml: 'yaml'
       }
     }
-  ]
+  ],
+  'gridsome-remark-figure-caption'
 ]
 
 module.exports = {
@@ -41,8 +44,13 @@ module.exports = {
       }
     }
   },
+  images: {
+    compress: false
+  },
   templates: {
-    Blog: '/blog/:year/:month/:day/:title'
+    Blog: '/blog/:year/:month/:day/:title',
+    Profile: '/profile/:id',
+    Project: '/project/:title'
   },
   plugins: [
     {
@@ -60,27 +68,22 @@ module.exports = {
     {
       use: '@gridsome/source-filesystem',
       options: {
-        path: 'content/feed/**/*.md',
-        typeName: 'Feed'
+        path: 'content/profiles/**/*.md',
+        typeName: 'Profile'
       }
     },
     {
-      use: '@gridsome/vue-remark',
+      use: '@gridsome/source-filesystem',
       options: {
-        typeName: 'Profile',
-        baseDir: './content/profiles',
-        template: './src/templates/Profile.vue',
-        route: '/profile/:id'
+        path: 'content/projects/**/*.md',
+        typeName: 'Project'
       }
     },
     {
-      use: '@gridsome/vue-remark',
+      use: '@gridsome/source-filesystem',
       options: {
-        typeName: 'Collection',
-        baseDir: './content/collection',
-        pathPrefix: '/collection',
-        template: './src/templates/Collection.vue',
-        plugins: remarkPlugins
+        path: 'content/notes/**/*.md',
+        typeName: 'Note'
       }
     },
     {

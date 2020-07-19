@@ -2,7 +2,7 @@
 title: 'Querying Postgres with Spring Data and Micronaut Data'
 date: 2020-04-05 16:29:09
 authors: [naiyer]
-labels: [spring, micronaut, postgres]
+topics: [spring, micronaut, postgres]
 ---
 
 `Repository` API of Spring Data is one of the most elegant and compelling features of Spring framework. It generates runtime implementations of the repositories. But what if those implementations can be generated at compile-time with type-checks that fail during compilation, rather than at runtime.
@@ -14,8 +14,7 @@ Micronaut Data is one of the projects under [Micronaut Framework](https://micron
 
 It works with multiple backends (including JPA and JDBC), provides a traditional synchronous API as well as reactive APIs for RxJava and Project Reactor, and integrates nicely with Spring Data and Spring Data JPA. In this post, we'll learn how to use its JDBC backend with a Spring Data `Repository`.
 
-##### Setup
-
+:::note Setup
 The examples in this post use
 
 - Java 11
@@ -23,6 +22,7 @@ The examples in this post use
 - Micronaut 1.3.4
 - Postgres 12.2
 - Gradle 6.3
+:::
 
 You can spin an instance of Postgres using the following `Compose` file.
 

@@ -1,55 +1,49 @@
 @use '../variables';
 @use '../properties';
-@use '../mixins/layout';
-@use '../mixins/queries';
+@use '../mixins/utils';
 
-//  Footer
+// Footer
 
-$footer-font-size: variables.$font-sm;
-$footer-gap-block: properties.$hero-gap-block;
-$footer-item-gap-start: properties.$space-rg;
-$footer-item-gap-end: properties.$space-rg;
+$font-size: variables.$font-sm;
+$block-gap: properties.$hero-gap-block;
+$item-gap: properties.$space-rg;
 
 .footer {
-  @include layout.container;
   flex-wrap: wrap;
   align-items: center;
-  @include layout.padding-block($footer-gap-block);
-  font-size: $footer-font-size;
+  @include utils.py($block-gap);
+  font-size: $font-size;
 
   .grid-sm {
     width: 100%;
   }
 
-  .footer-item {
+  .footer-menu {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
-    margin-bottom: $footer-item-gap-end;
+    margin-bottom: $item-gap;
 
     a {
       display: inline-flex;
       align-items: center;
     }
+
+    .footer-title {
+      font-weight: variables.$weight-bd;
+      margin-bottom: variables.$gap-lg;
+    }
   }
 
   .copyright {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     width: 100%;
-    justify-content: space-between;
 
-    > * {
-      margin-top: $footer-item-gap-start;
-    }
-
-    svg:first-of-type {
-      @include layout.size(24px);
-    }
-
-    @include queries.sm {
-      flex-direction: column-reverse;
+    .brand {
+      @include utils.size(32px);
+      flex-basis: 32px;
     }
   }
 }

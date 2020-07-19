@@ -3,15 +3,14 @@ title: 'Communicating with containers on Docker network'
 date: 2018-08-05 12:06:01
 updated: 2020-03-08 21:22:13
 authors: [naiyer]
-labels: [docker, micronaut, angular]
+topics: [docker, micronaut, angular]
 ---
 
 Say, you've an Angular app that talks to a backend service through a network. Both of them are running in separate containers, which can be on the same or different Docker stack(s). You want only the Angular container to be publicly accessible through a port.
 
 Let's run through some scenarios on how you can achieve this.
 
-##### Setup
-
+:::note Setup
 The examples in this post use
 
 - Java 13
@@ -19,6 +18,7 @@ The examples in this post use
 - Micronaut 1.3.2
 - Angular 9
 - Docker 19
+:::
 
 We'd need an Angular app and a backend service to begin with.
 
@@ -32,7 +32,7 @@ mn create-app dev.mflash.guides.greeter.greeter-api --build maven
 
 This will generate a basic Micronaut app with Maven support. Import this app in your favorite IDE.
 
-> **INFO** Micronaut CLI will set the Java version in `pom.xml` with the one available on the PATH environment variable.
+> **Info** Micronaut CLI will set the Java version in `pom.xml` with the one available on the PATH environment variable.
 
 Create a class for greeting message.
 
@@ -151,7 +151,7 @@ export class GreetingService {
 }
 ```
 
-> **TIP** Don't add any host in front of the endpoint.
+> **Tip** Don't add any host in front of the endpoint.
 
 Edit `AppComponent` to display the greeting message.
 
@@ -260,7 +260,7 @@ EXPOSE 4200
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-> **TIP** Create a `.dockerignore` file in the root of the Angular project and add `node_modules` and `dist` directories in it to prevent Docker from copying them while creating the image.
+> **Tip** Create a `.dockerignore` file in the root of the Angular project and add `node_modules` and `dist` directories in it to prevent Docker from copying them while creating the image.
 
 Generate the image by running the following command.
 

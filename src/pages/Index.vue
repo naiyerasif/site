@@ -1,16 +1,24 @@
 <template>
   <Layout>
-    <section class="hero">
+    <div class="hero">
       <h1 class="title">
-        <span class="gap-end-sm hidden-sm">&mdash;</span>Reflections on <br class="hidden-sm" />design and development <br class="hidden-sm" />by <g-link to="/profile/naiyer/">Naiyer Asif</g-link>
+        <span class="gap-ch-sm hidden-sm">&mdash;</span>Reflections on <br class="hidden-sm" />design and development <br class="hidden-sm" />by <g-link to="/profile/naiyer/">Naiyer Asif</g-link>
       </h1>
-    </section>
+    </div>
     <main class="content">
-      <Card v-for="post in $page.posts.edges" :key="post.id" :title="post.node.title" :description="post.node.excerpt | clip" :src="post.node.path">
-        <time v-html="post.node.date" />
-        <span>{{ post.node.timeToRead }} min read</span>
-        <Sprite :symbol="'icon-' + label" class="label" v-for="label in post.node.labels" :key="label" />
-      </Card>
+      <div class="card" v-for="post in $page.posts.edges" :key="post.id" @click="$router.push(post.node.path)">
+        <div class="card-metadata">
+          <time v-html="post.node.date" />
+          <span>&sim;{{ post.node.timeToRead }} min read</span>
+          <section class="topics">
+            <span class="gap-ch" v-for="topic in post.node.topics" :key="topic">#{{ topic }}</span>
+          </section>
+        </div>
+        <div class="card-content">
+          <g-link class="card-title" :to="post.node.path">{{ post.node.title }}</g-link>
+          <div class="card-description">{{ post.node.excerpt | clip }}</div>
+        </div>
+      </div>
     </main>
     <Pagination :input="$page.posts.pageInfo" />
   </Layout>
@@ -31,7 +39,7 @@ query Blogs ($page: Int) {
         date (format: "MMM D, Y")
         excerpt
         timeToRead
-        labels
+        topics
         path
       }
     }
@@ -40,7 +48,6 @@ query Blogs ($page: Int) {
 </page-query>
 
 <script>
-import Card from '~/components/Card'
 import Pagination from '~/components/Pagination'
 import Sprite from '~/components/Sprite'
 
@@ -49,7 +56,6 @@ export default {
     title: 'Home'
   },
   components: {
-    Card,
     Pagination,
     Sprite
   }

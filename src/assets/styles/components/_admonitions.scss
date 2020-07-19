@@ -1,0 +1,110 @@
+@use '../variables';
+@use '../properties';
+@use '../mixins/utils';
+
+// Admonitions
+
+$gap: properties.$space-rg;
+$ngap: properties.$nspace-rg;
+$header-gap-bottom: variables.$gap-md;
+$border-radius: properties.$responsive-radius;
+$font-size: 0.9em;
+
+.admonition {
+  margin: $gap $ngap;
+  padding: $gap;
+  border-radius: $border-radius;
+  font-size: $font-size;
+
+  h5 {
+    margin-top: 0;
+    margin-bottom: $header-gap-bottom;
+    text-transform: capitalize;
+  }
+}
+
+.admonition-icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: variables.$ch-rg;
+
+  svg {
+    display: inherit;
+    @include utils.size(22px);
+    stroke-width: 0;
+  }
+}
+
+.admonition-content {
+  & > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Presets
+
+$default-background: variables.$bg-vibrant;
+$default-color: variables.$text-muted;
+$caution-background: variables.$bg-caution;
+$caution-color: variables.$text;
+$tip-background: variables.$bg-tip;
+$tip-color: variables.$text;
+$warning-background: variables.$bg-warning;
+$warning-color: variables.$text;
+$important-background: variables.$bg-important;
+$important-color: variables.$text;
+$note-background: variables.$bg-vibrant;
+$note-color: variables.$text-muted;
+
+@mixin admonition($background: $default-background, $foreground: $default-color) {
+  background-color: $background;
+  
+  h5 {
+    color: $foreground;
+  }
+
+  .admonition-icon svg {
+    stroke: $foreground;
+    fill: $foreground;
+  }
+}
+
+.admonition {
+  @include admonition;
+}
+
+.admonition-caution {
+  @include admonition($caution-background, $caution-color);
+}
+
+.admonition-tip {
+  @include admonition($tip-background, $tip-color);
+}
+
+.admonition-warning {
+  @include admonition($warning-background, $warning-color);
+}
+
+.admonition-important {
+  @include admonition($important-background, $important-color);
+}
+
+.admonition-note {
+  @include admonition($note-background, $note-color);
+}
+
+// Rewrite Blockquotes
+
+blockquote {
+  border: none;
+  @extend .admonition;
+  @extend .admonition-content;
+  @extend .admonition-note;
+
+  strong:first-of-type {
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    margin-bottom: variables.$gap-sm;
+  }
+}

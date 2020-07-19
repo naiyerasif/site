@@ -1,29 +1,22 @@
 @use '../variables';
 @use '../properties';
-@use '../mixins/layout';
+@use '../mixins/utils';
 
 // Sidekick
 
-$sidekick-wrap: properties.$responsive-wrap;
-$sidekick-font-size: variables.$font-sm;
-$sidekick-gap-start: properties.$space-rg;
-$sidekick-actions-gap-inline: variables.$gap-rg;
-$sidekick-actions-gap-block: variables.$gap-xs;
-$sidekick-recommendations-font-size: variables.$font-rg;
-$sidekick-recommendations-gap-inline: variables.$gap-md;
-$sidekick-recommendations-gap-block: variables.$gap-sm;
-$sidekick-recommendations-gap-end: properties.$space-sm;
-$sidekick-recommendations-background: variables.$bg-vibrant;
-$sidekick-recommendations-border: 1px solid variables.$border;
-$sidekick-recommendations-radius: variables.$radius;
-$sidekick-recommendations-width: properties.$sidekick-width;
-$pagination-gap: variables.$gap-rg;
+$font-size: variables.$font-sm;
+$gap-start: properties.$hero-gap-block;
+$actions-gap-inline: variables.$gap-rg;
+$actions-gap-block: variables.$gap-xs;
+$recommendation-gap-end: properties.$space-sm;
+$sidekick-background: variables.$bg-vibrant;
+$sidekick-active-background: variables.$bg-muted;
 
 .sidekick {
-  @include layout.container;
+  display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-top: $sidekick-gap-start;
+  margin-top: $gap-start;
 
   a {
     display: inline-flex;
@@ -44,15 +37,17 @@ $pagination-gap: variables.$gap-rg;
     flex-wrap: wrap;
     flex: 1;
     align-items: center;
-    font-size: $sidekick-font-size;
+    font-size: $font-size;
   }
 
   .sidekick-actions {
+    justify-content: center;
+
     > * {
-      @include layout.margin-block($sidekick-actions-gap-block);
+      @include utils.my($actions-gap-block);
 
       &:not(:last-child) {
-        margin-right: $sidekick-actions-gap-inline;
+        margin-right: $actions-gap-inline;
       }
     }
   }
@@ -60,22 +55,28 @@ $pagination-gap: variables.$gap-rg;
   .sidekick-recommendations {
     flex-basis: 100%;
     flex-direction: column;
-    align-items: flex-start;
-    font-size: $sidekick-recommendations-font-size;
-    
+    align-items: center;
+    margin-bottom: $actions-gap-inline;
+    font-size: variables.$font-rg;
+
     > * {
-      display: block;
-      padding: $sidekick-recommendations-gap-block $sidekick-recommendations-gap-inline;
-      background-color: $sidekick-recommendations-background;
-      border: $sidekick-recommendations-border;
-      border-radius: $sidekick-recommendations-radius;
-      margin-bottom: $sidekick-recommendations-gap-end;
-      width: $sidekick-recommendations-width;
+      padding: variables.$gap-sm variables.$gap-rg;
+      border: 1px solid variables.$border;
+      border-radius: variables.$radius;
+      background-color: $sidekick-background;
+      margin-bottom: $recommendation-gap-end;
+
+      &:focus,
+      &:hover {
+        background-color: $sidekick-active-background;
+      }
     }
   }
 }
 
 // Pagination
+
+$pagination-gap: variables.$gap-rg;
 
 .pagination {
   justify-content: center;

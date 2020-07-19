@@ -2,7 +2,7 @@
 title: 'Building Docker images for Java applications'
 date: 2020-01-25 18:37:25
 authors: [naiyer]
-labels: [docker, java, maven]
+topics: [docker, java, maven]
 ---
 
 With the rise of the container-first Java frameworks ([Micronaut](https://micronaut.io/), [Quarkus](https://quarkus.io/), etc) and the JVM itself [evolving](https://blogs.oracle.com/java-platform-group/java-se-support-for-docker-cpu-and-memory-limits) to work smoothly with containers, there's been never a better time to embrace Java in a continuously-built continuously-deployed workflow. In this post, we'll explore some of the practices that can improve and enhance such workflows.
@@ -41,7 +41,7 @@ CMD ["java", "-jar", "app.jar"]
 
 `adoptopenjdk:11-jre-openj9` is only 80 MB, which is around a third the size of the JDK based image.
 
-> **TIP** Use smaller variants of the base images, if your application doesn't specifically depend on the functionality available in the full-fledged images. This could save you disk space and speed-up your build pipeline. Linux-based Docker images often come in different variants many of which (like `slim` and `alpine` variants) are significantly smaller in size.
+> **Tip** Use smaller variants of the base images, if your application doesn't specifically depend on the functionality available in the full-fledged images. This could save you disk space and speed-up your build pipeline. Linux-based Docker images often come in different variants many of which (like `slim` and `alpine` variants) are significantly smaller in size.
 
 ## Immutability with multi-stage builds
 
@@ -93,7 +93,7 @@ CMD ["app.jar"]
 
 Note that instead of `adoptopenjdk:11-jre-openj9`, `gcr.io/distroless/java:11` is used which is the official [Docker image for Java]((https://github.com/GoogleContainerTools/distroless/blob/master/java/README.md)) provided by Google.
 
-> **TIP** It is important that you specify the `ENTRYPOINT` or `CMD` commands in their *exec* (JSON array) form, since the distroless images don't contain a shell to launch.
+> **Tip** It is important that you specify the `ENTRYPOINT` or `CMD` commands in their *exec* (JSON array) form, since the distroless images don't contain a shell to launch.
 
 ## References
 

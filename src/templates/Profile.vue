@@ -12,12 +12,12 @@
       </div>
     </div>
     <main class="content">
-      <VueRemarkContent class="article" />
+      <article v-html="$page.profile.content" />
     </main>
     <div class="sidekick">
       <div class="sidekick-actions">
-        <a href="#app">
-          <Sprite symbol="icon-up" class="icon" /> Back to top
+        <a href="#app" title="Back to top">
+          <Sprite symbol="icon-up" class="icon-rg" />
         </a>
       </div>
     </div>
@@ -31,6 +31,7 @@ query Profile ($id: ID!) {
     role
     location
     avatar
+    content
     path
   }
 }

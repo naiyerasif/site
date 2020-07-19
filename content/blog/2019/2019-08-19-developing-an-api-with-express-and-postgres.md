@@ -3,22 +3,22 @@ title: 'Developing an API with Express and Postgres'
 date: 2019-08-19 21:43:03
 updated: 2020-02-06 23:26:09
 authors: [naiyer]
-labels: [express, postgres, typescript]
+topics: [express, postgres, typescript]
 ---
 
 Express is frequently used to create APIs in Node.js applications; these can be a middleware for a more traditional backend or an interface for the classic CRUD operations. In this post, we'll build an API to perform CRUD operations on a Postgres database. We'll explore patterns to organize routes, add support for hot-reloading and inject environment variables locally.
 
-##### Article series
-
+:::tip Article series
 1. [Using Express with TypeScript](/blog/2019/01/12/using-express-with-typescript/)
 2. [Request logging with morgan](/blog/2019/08/13/request-logging-with-morgan/)
 3. [Logging on Node.js with log4js-node](/blog/2019/08/14/logging-on-nodejs-with-log4js-node/)
 4. [Linting with TypeScript ESLint](/blog/2019/08/16/linting-with-typescript-eslint/)
 5. [Developing an API with Express and Postgres](/blog/2019/08/19/developing-an-api-with-express-and-postgres/)
+:::
 
-##### Setup
-
+:::note Setup
 You can pick the Node.js application created in the post [Linting with TypeScript ESLint](/blog/2019/08/16/linting-with-typescript-eslint/) to follow this post.
+:::
 
 ## Enable hot-reloading
 
@@ -118,7 +118,7 @@ app.get('/', (req, res) => res.json({
 app.listen(port, () => logger.info(`Server started at http://localhost:${port}, Press CTRL+C to stop it`));
 ```
 
-> **INFO** Make sure to add `.env` file in the `.gitignore` since it is meant only for the local development.
+> **Info** Make sure to add `.env` file in the `.gitignore` since it is meant only for the local development.
 
 ## Configure Postgres
 
@@ -161,7 +161,7 @@ INSERT INTO song(title, album, artist) VALUES ('Insomnia', 'D2', 'Daya');
 INSERT INTO song(title, album, artist) VALUES ('Issues', 'Nervous System', 'Julia Michaels');
 ```
 
-> **INFO** The `SERIAL` type will automatically generate an incremented `id` in Postgres.
+> **Info** The `SERIAL` type will automatically generate an incremented `id` in Postgres.
 
 ## Create a Repository
 

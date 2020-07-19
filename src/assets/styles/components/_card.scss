@@ -1,53 +1,56 @@
 @use '../variables';
-@use '../mixins/layout';
+@use '../properties';
+@use '../mixins/utils';
 
 // Card
 
 $card-background: variables.$bg-vibrant;
-$card-gap: calc(1.25rem + 1vw);
-$card-radius: variables.$radius;
+$card-active-background: variables.$bg-muted;
+$gap: properties.$space-rg;
+$ngap: properties.$nspace-rg;
+$card-radius: properties.$responsive-radius;
 $card-title-size: variables.$font-lg;
-$card-metadata-color: variables.$text-muted;
-$card-metadata-icon-size: variables.$icon-sm;
-$card-metadata-font-size: variables.$font-sm;
 $card-description-size: variables.$font-rg;
+$metadata-color: variables.$text-muted;
+$metadata-font-size: variables.$font-sm;
 
 .card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: $card-background;
-  padding: $card-gap;
+  @include utils.mx($ngap);
+  padding: $gap;
   border-radius: $card-radius;
+
+  &:focus,
+  &:hover {
+    background-color: $card-active-background;
+    cursor: pointer;
+  }
 
   .card-title {
     display: flex;
     align-items: center;
-    @include layout.margin-block(variables.$ch-rg);
+    @include utils.my(variables.$ch-rg);
     font-size: $card-title-size;
-
-    .label {
-      @include layout.size($card-title-size);
-      margin-right: variables.$ch-rg;
-    }
   }
 
   .card-metadata {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    color: $card-metadata-color;
-    font-size: $card-metadata-font-size;
+    color: $metadata-color;
+    font-size: $metadata-font-size;
 
-    > *::after {
+    > time::after,
+    > span::after {
       content: variables.$symbol-separator;
-      @include layout.margin-inline(variables.$separator-gap);
+      @include utils.mx(variables.$separator-gap);
       opacity: variables.$separator-opacity;
     }
 
-    .label {
-      @include layout.size($card-metadata-icon-size);
-      margin-right: variables.$ch-rg;
+    > * {
+      margin-bottom: variables.$ch-rg;
     }
   }
 
@@ -56,4 +59,14 @@ $card-description-size: variables.$font-rg;
     font-size: $card-description-size;
     opacity: 0.85;
   }
+}
+
+.topics {
+  display: inline-block;
+  border-radius: 5rem;
+  border: 1px solid variables.$border;
+  @include utils.py(variables.$ch-sm);
+  padding-right: variables.$ch-sm;
+  padding-left: variables.$ch-md;
+  background-color: $card-background;
 }

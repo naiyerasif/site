@@ -2,7 +2,7 @@
 title: 'Securing Spring Boot APIs with JWT Authentication'
 date: 2020-04-10 21:35:25
 authors: [naiyer]
-labels: [spring, jwt, postgres]
+topics: [spring, jwt, postgres]
 ---
 
 JSON Web Tokens (JWTs) are stateless, compact and self-contained [standard](https://tools.ietf.org/html/rfc7519) to transmit information as a JSON object. This object is usually encoded and encrypted to ensure the authenticity of the message. JWTs are small enough to be sent through URLs. Since they are self-contained, applications can glean sufficient authentication information from them, saving trips to the database. Being stateless, JWTs are particularly suitable to work with REST and HTTP (which are also stateless).
@@ -17,8 +17,7 @@ So, how does this work?
 
 In this post, we'll create a simple Spring Boot API and secure it using Spring Security and JWT-based authentication.
 
-##### Setup
-
+:::note Setup
 The code written for this post uses
 
 - Java 14
@@ -26,6 +25,7 @@ The code written for this post uses
 - Java JWT 0.9.1
 - Postgres 12.2
 - Gradle 6.3
+:::
 
 You can create an instance of Postgres using the following `Compose` file.
 

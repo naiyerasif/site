@@ -8,11 +8,11 @@
               <g-link :to="author.path">{{ author.name }}</g-link>
             </div>
             <div class="metadata-item" v-html="displayDate"></div>
-            <div class="metadata-item">{{ $page.post.timeToRead }} min read</div>
+            <div class="metadata-item">&sim;{{ $page.post.timeToRead }} min read</div>
           </div>
           <h1 class="title">{{ $page.post.title }}</h1>
-          <div class="metadata-footer">
-            <Sprite :symbol="'icon-' + label" class="label" v-for="label in $page.post.labels" :key="label" />
+          <div class="metadata-footer topics">
+            <span class="gap-ch" v-for="topic in $page.post.topics" :key="topic">#{{ topic }}</span>
           </div>
         </div>
       </div>
@@ -34,14 +34,14 @@
         </g-link>
       </div>
       <div class="sidekick-actions">
-        <a target="_blank" rel="noopener noreferrer" :href="editUrl">
-          <Sprite symbol="icon-edit" class="icon" /> Edit this page
+        <a target="_blank" rel="noopener noreferrer" title="Edit this page" :href="editUrl">
+          <Sprite symbol="icon-edit" class="icon-rg" />
         </a>
-        <a href="#table-of-contents" class="is-visible-on-phone">
-          <Sprite symbol="icon-list" class="icon" /> Table of Contents
+        <a href="#table-of-contents" title="Table of Contents">
+          <Sprite symbol="icon-contents" class="icon-rg" />
         </a>
-        <a href="#app">
-          <Sprite symbol="icon-up" class="icon" /> Back to top
+        <a href="#app" title="Back to top">
+          <Sprite symbol="icon-up" class="icon-rg" />
         </a>
       </div>
     </div>
@@ -67,7 +67,7 @@ query Blog ($id: ID!, $previousId: ID!, $nextId: ID!) {
       name
       path
     }
-    labels
+    topics
     content
     path
     timeToRead

@@ -1,21 +1,21 @@
 <template>
   <div class="search">
     <a role="button" aria-label="Launch search" @click="expand">
-      <Sprite symbol="icon-search" class="icon" />
+      <Sprite symbol="icon-search" class="icon-rg" />
     </a>
     <transition name="dissolve">
       <div v-if="expanded" class="search-container">
         <div class="search-box">
-          <input type="text" class="search-input" placeholder="Search" v-model="query" @input="softReset" @keyup="performSearch" @keyup.esc="searchResultsVisible = false" @keydown.up.prevent="highlightPrev" @keydown.down.prevent="highlightNext" @keyup.enter="performSearch" @blur="searchResultsVisible = false" @focus="searchResultsVisible = true" ref="search" aria-label="Search">
+          <input type="text" class="search-input" placeholder="Search blog posts ..." v-model="query" @input="softReset" @keyup="performSearch" @keyup.esc="searchResultsVisible = false" @keydown.up.prevent="highlightPrev" @keydown.down.prevent="highlightNext" @keyup.enter="performSearch" @blur="searchResultsVisible = false" @focus="searchResultsVisible = true" ref="search" aria-label="Search blog posts">
           <a role="button" aria-label="Reset search" @click="reset" class="search-reset">
-            <Sprite symbol="icon-delete" class="icon" />
+            <Sprite symbol="icon-reset" class="icon-rg" />
           </a>
         </div>
         <transition name="dissolve">
           <div v-if="query.length > 0 && searchResultsVisible" class="search-results">
             <div class="results-box" ref="results">
               <section class="result-label">
-                {{ results.length > 0 ? results.length === 1 ? `${results.length} result` : `${results.length} results` : `No results for "${this.query}"` }}
+                {{ results.length > 0 ? results.length === 1 ? `${results.length} result` : `${results.length} results` : `🙁 No results found for "${this.query}". Try searching something else.` }}
               </section>
               <a v-for="(post, index) in results" :key="index" :href="post.item.path" @click="reset" class="result-item">
                 <span class="result-title">{{ post.item.title }}</span>

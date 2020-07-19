@@ -3,20 +3,20 @@ title: 'Code Coverage with JaCoCo and Maven'
 date: 2018-11-15 21:09:32
 updated: 2019-11-12 19:14:45
 authors: [naiyer]
-labels: [java, maven]
+topics: [java, maven]
 ---
 
 Code coverage is a measure of how much of your code executes when the automated tests run. Depending on how effectively your tests are written, it can provide a good picture of how much you are testing your code. [JaCoCo](https://www.jacoco.org/jacoco/), one of the many others, is a popular tool that enables developers to quantify this metric for a Java application. 
 
 In this post, we'll integrate JaCoCo with a Spring Boot application. We'll also generate a coverage report that can be viewed in a browser.
 
-##### Setup
-
+:::note Setup
 The examples in this post use
 
 - Java 11
 - Spring Boot 2.1.8
 - JaCoCo 0.8.4 
+:::
 
 Let's reuse the Spring Boot application created in the post [Uploading files with Spring Boot and Angular](/blog/2018/09/09/uploading-files-with-spring-boot-and-angular/).
 
@@ -64,7 +64,7 @@ Your editor may even show the coverage in the project window itself.
 
 ![IntelliJ Idea Project window](./images/2018-11-15-code-coverage-with-jacoco-and-maven-02.png)
 
-> **Note** that these screenshots are from IntelliJ Idea; other editors/IDEs may display coverage information differently.
+> **Note** These screenshots are from IntelliJ Idea; other editors/IDEs may display coverage information differently.
 
 ## Configure JaCoCo
 
@@ -74,7 +74,7 @@ When the `mvn jacoco:report` task fires up, it generates reports in HTML, CSV an
 
 ![JaCoCo coverage report](./images/2018-11-15-code-coverage-with-jacoco-and-maven-03.png)
 
-> **Note** that the appearance of the report may vary depending on your browser preferences.
+> **Note** The appearance of the report may vary depending on your browser preferences.
 
 We've already seen how we can configure the title of the report using the `title` key. We can also configure the encoding, footer text, etc and explicitly exclude or include class files. For a comprehensive list of options, refer to [jacoco:report documentation](https://www.jacoco.org/jacoco/trunk/doc/report-mojo.html).
 

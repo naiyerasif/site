@@ -1,4 +1,6 @@
+@use '../variables';
 @use '../properties';
+@use 'queries';
 
 // Set dimensions
 
@@ -9,40 +11,28 @@
 
 // Padding and Margin utilities
 
-@mixin padding-inline($value) {
+@mixin px($value) {
   padding-right: $value;
   padding-left: $value;
   padding-inline: $value;
 }
 
-@mixin padding-block($value) {
+@mixin py($value) {
   padding-top: $value;
   padding-bottom: $value;
   padding-block: $value;
 }
 
-@mixin margin-inline($value) {
+@mixin mx($value) {
   margin-right: $value;
   margin-left: $value;
   margin-inline: $value;
 }
 
-@mixin margin-block($value) {
+@mixin my($value) {
   margin-top: $value;
   margin-bottom: $value;
   margin-block: $value;
-}
-
-// Visibility
-
-@mixin hide($hidden: true) {
-  @if $hidden {
-    visibility: hidden;
-    display: none;
-  } @else {
-    visibility: visible;
-    display: unset;
-  }
 }
 
 // Container
@@ -50,9 +40,20 @@
 @mixin container {
   display: flex;
   flex-grow: 1;
-  margin: 0 auto;
+  @include mx(auto);
   position: relative;
-  width: auto;
+  width: 100%;
   max-width: properties.$container-width;
-  @include padding-inline(properties.$space-rg);
+}
+
+// Visibility
+
+@mixin hide($hidden: true, $display-fallback: unset) {
+  @if $hidden {
+    visibility: hidden;
+    display: none;
+  } @else {
+    visibility: visible;
+    display: $display-fallback;
+  }
 }

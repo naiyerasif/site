@@ -1,0 +1,21 @@
+@use 'variables';
+@use 'properties';
+@use 'mixins/queries';
+@use 'mixins/utils';
+
+$gap: properties.$space-rg;
+$ngap: properties.$nspace-rg;
+$border-radius: properties.$responsive-radius;
+
+// Codeblock
+
+$codeblock-background: variables.$bg-vibrant;
+
+.gridsome-highlight pre {
+  background-color: $codeblock-background;
+  border-radius: $border-radius;
+  
+  code {
+    padding: $gap;
+  }
+}

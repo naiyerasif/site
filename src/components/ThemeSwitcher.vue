@@ -1,9 +1,9 @@
 <template>
-  <a role="switch" @click.prevent="switchTheme()" :aria-label="'Switch to ' + nextTheme + ' theme'" aria-checked="true" class="theme-switcher">
-    <svg viewBox="0 0 24 24" class="icon">
+  <a role="switch" @click.prevent="switchTheme" :aria-label="'Switch to ' + nextTheme + ' theme'" aria-checked="true" class="theme-switcher">
+    <svg viewBox="0 0 24 24" class="icon-rg">
       <transition name="slide-up" mode="out-in">
-        <use :xlink:href="uri('icon-dark')" :href="uri('icon-dark')" key="dark" v-if="theme === 'dark'"></use>
-        <use :xlink:href="uri('icon-light')" :href="uri('icon-light')" key="light" v-else></use>
+        <use :xlink:href="uri('dark')" :href="uri('dark')" key="dark" v-if="theme === 'dark'"></use>
+        <use :xlink:href="uri('light')" :href="uri('light')" key="light" v-else></use>
       </transition>
     </svg>
   </a>
@@ -35,7 +35,7 @@ export default {
       this.theme = themes[nextIndex]
     },
     uri(symbol) {
-      return `${appConfig.prefs.spriteDir}/icons.svg#${symbol}`
+      return `${appConfig.prefs.spriteDir}/icons.svg#icon-${symbol}`
     }
   },
   async mounted() {

@@ -52,6 +52,16 @@ $font-location: '/assets/fonts';
   }
 }
 
+@include font-face('Inter', '#{$font-location}/Inter-Light') {
+  font-style: normal;
+  font-weight: 350;
+}
+
+@include font-face('Inter', '#{$font-location}/Inter-LightItalic') {
+  font-style: italic;
+  font-weight: 350;
+}
+
 @include font-face('Inter', '#{$font-location}/Inter-Regular') {
   font-style: normal;
   font-weight: 400;
@@ -102,9 +112,19 @@ $font-location: '/assets/fonts';
   font-named-instance: 'Italic';
 }
 
+@include font-face('JetBrains Mono', '#{$font-location}/JetBrainsMono-SemiLight') {
+  font-style: normal;
+  font-weight: 350;
+}
+
 @include font-face('JetBrains Mono', '#{$font-location}/JetBrainsMono-Regular') {
   font-style: normal;
   font-weight: 400;
+}
+
+@include font-face('JetBrains Mono', '#{$font-location}/JetBrainsMono-Medium') {
+  font-style: normal;
+  font-weight: 600;
 }
 
 @include font-face('JetBrains Mono', '#{$font-location}/JetBrainsMono-Bold') {

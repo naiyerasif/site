@@ -1,33 +1,40 @@
 @use '../variables';
 @use '../properties';
-@use '../mixins/layout';
+@use '../mixins/utils';
 @use '../mixins/queries';
 
-// Header
-
-$header-font-size: calc(0.95rem + 0.125vw);
-$header-gap-block-start: properties.$header-gap-block-start;
-$header-gap-block-end: properties.$header-gap-block-end;
-$header-gap-inline: variables.$gap-rg;
+$font-size: variables.$font-sm;
+$block-padding: properties.$space-rg;
+$item-radius: variables.$radius;
+$item-inline-padding: variables.$gap-sm;
+$item-block-padding: variables.$gap-xs;
+$item-active-background: variables.$bg-muted;
+$residual-gap: variables.$gap-sm * -1;
 
 .header {
-  @include layout.container;
   flex-wrap: properties.$responsive-wrap;
-  justify-content: properties.$responsive-align-between;
+  justify-content: space-between;
   align-items: center;
-  font-size: $header-font-size;
-  padding-top: $header-gap-block-start;
-  padding-bottom: $header-gap-block-end;
+  font-size: $font-size;
+  @include utils.py($block-padding);
 
   > * {
-    @include layout.margin-inline($header-gap-inline);
+    border-radius: $item-radius;
+    padding: $item-block-padding $item-inline-padding;
+
+    &:focus,
+    &:hover {
+      background-color: $item-active-background;
+      text-decoration: none;
+    }
 
     &:first-child {
-      margin-left: 0;
+      margin-left: $residual-gap;
+      background-color: transparent;
     }
 
     &:last-child {
-      margin-right: 0;
+      margin-right: $residual-gap;
     }
   }
 
@@ -40,27 +47,20 @@ $header-gap-inline: variables.$gap-rg;
     width: 36px;
 
     svg {
-      @include layout.size(inherit);
+      @include utils.size(inherit);
     }
   }
 }
 
 // Rearrange on small screen
 
-@include queries.within-md {
-  .brand,
-  .search {
-    order: -1;
-    margin-bottom: $header-gap-block-end;
-  }
+@include queries.rg {
+  .brand {
+    flex-basis: 100%;
+    margin-bottom: $item-block-padding;
 
-  .search {
-    flex-basis: calc(100% - 68px);
-    display: inline-flex;
-    justify-content: flex-end;
-  }
-
-  .brand + a {
-    margin-left: 0 !important;
+    + a {
+      margin-left: $residual-gap !important;
+    }
   }
 }

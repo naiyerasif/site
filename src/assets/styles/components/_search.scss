@@ -1,41 +1,42 @@
 @use '../variables';
 @use '../properties';
-@use '../mixins/layout';
+@use '../mixins/utils';
 
 // Search
 
-$search-background: variables.$bg-body;
-$search-box-gap-start: properties.$space-rg;
+$search-background: variables.$bg-muted;
+$search-border-radius: properties.$responsive-radius;
+$search-gap-inline: properties.$search-gap-inline;
+$search-top-margin: properties.$search-top-margin;
+$searchbox-inline-padding: properties.$searchbox-gap-inline;
+$searchbox-block-padding: variables.$gap-sm;
 $result-background: variables.$bg-vibrant;
 $result-border: variables.$border;
 $result-border-width: properties.$result-border-width;
-$result-gap-inline: properties.$search-gap-inline;
-$result-item-gap-inline: properties.$result-gap;
-$result-item-gap-block: variables.$gap-sm;
 
 .search-container,
 .search-box {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 auto;
-  position: relative;
+  height: max-content;
 }
 
 .search-container {
   position: absolute;
-  top: properties.$search-gap-start;
-  right: 0;
-  bottom: 0;
-  left: 0;
   width: 100%;
+  margin-top: $search-top-margin;
+  right: 0;
+  left: 0;
 }
 
 .search-box {
+  position: relative;
+  @include utils.mx($search-gap-inline);
+  padding: $searchbox-block-padding $searchbox-inline-padding;
   background-color: $search-background;
+  border-radius: $search-border-radius;
   width: inherit;
-  @include layout.padding-inline($search-box-gap-start);
-  height: 100%;
 
   .search-input {
     outline: none;
@@ -54,17 +55,17 @@ $result-item-gap-block: variables.$gap-sm;
   flex-direction: column;
   position: absolute;
   margin: 0 auto;
-  top: 100%;
+  top: 4rem;
   right: 0;
   left: 0;
   z-index: 5;
   max-height: 75vh;
   overflow: hidden;
-  @include layout.padding-inline($result-gap-inline);
+  @include utils.px($search-gap-inline);
 
   .results-box {
     overflow: auto;
-    width: calc(100% - 1px);
+    width: inherit;
     z-index: 4;
     background-color: $result-background;
     border: solid $result-border;
@@ -74,17 +75,13 @@ $result-item-gap-block: variables.$gap-sm;
       display: block;
     }
 
-    .result-label {
-      font-size: variables.$font-sm;
-    }
-
     .result-label,
     .result-item {
-      padding: $result-item-gap-block $result-item-gap-inline;
+      padding: $searchbox-block-padding $searchbox-inline-padding;
     }
 
     .result-item {
-      border-top: 1px solid $search-background;
+      border-top: 1px solid $result-border;
 
       &:focus,
       &:hover {

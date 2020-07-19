@@ -3,16 +3,16 @@ title: 'Querying JSON documents in Oracle'
 date: 2019-09-18 22:11:11
 updated: 2020-03-14 00:48:09
 authors: [naiyer]
-labels: [oracle, json]
+topics: [oracle, json]
 ---
 
 Oracle added the native JSON support in the version 12c of their popular relational database system. With the help of new conditions and functions, you can create queries, indexes, transactions and views for JSON documents. 
 
-##### Setup
-
+:::note Setup
 The examples in this post use
 
 - Oracle 12c
+:::
 
 You can install Oracle 12c by downloading it from [here](https://www.oracle.com/database/technologies/oracle-database-software-downloads.html). If you just want to try out the examples, login at [Oracle Live SQL](https://livesql.oracle.com) which provides a free Oracle environment for you to play with.
 
@@ -83,7 +83,7 @@ CREATE TABLE BIOS (
 );
 ```
 
-> **WARNING** Adding an `IS JSON` constraint can reduce the performance of insertion; use it only when you're not entirely sure if the inserted data will be a JSON document.
+> **Warning** Adding an `IS JSON` constraint can reduce the performance of insertion; use it only when you're not entirely sure if the inserted data will be a JSON document.
 
 Populate this table with some data (directly pulled from `bios` collection).
 

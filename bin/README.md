@@ -1,39 +1,29 @@
 # Tools
 
-- [Generate favicon](#generate-favicon)
-- [Create new post](#create-new-post)
-- [Create new status](#create-new-status)
-- [Clean deployment history](#clean-deployment-history)
-
 ### Generate favicon
 
-Requires [imagemagick](http://www.imagemagick.org/).
+Requires [imagemagick](http://www.imagemagick.org/)
 
 ```sh
-source bin/generate-favicon.sh static/google-touch-icon.png
+node bin/favicon.js static/google-touch-icon.png
 ```
 
-### Create new post
+### Creat new post/status
 
-Pass the title and labels as first and second arguments.
+Pass the content type (**post** or **status**), title and metadata (**topics**) as arguments.
 
 ```sh
-node bin/newPost.js
+node bin/content.js --content post --title "<title>" --meta "<meta>"
+node bin/content.js --content status --title "<title>" --meta "<meta>"
 ```
 
-### Create new status
+### Generate SVGs
 
-Pass the title and topic as first and second arguments.
+Dump individual icons in a folder (say, `.archive/svg`) and use [`spritely`](https://www.npmjs.com/package/@microflash/spritely) to generate the sprite.
 
 ```sh
-node bin/newStatus.js
+yarn global add @microflash/spritely      # install spritely globally
+spritely --input .archive/svg --output cards.svg
 ```
 
-### Clean deployment history
-
-1. Create an orphan branch by `git checkout --orphan rm-pages`.
-2. Dump the latest commit from `master` on this branch. Commit the change.
-3. Remove `master` by `git branch -D master`
-4. Checkout a new `master` by `git checkout -b master`.
-5. Set this `master` to track remote `master` by `git branch -u origin/master`
-6. Force push the clean branch `git push -f`.
+Refer to the [spritely docs](https://github.com/Microflash/spritely) for usage details.

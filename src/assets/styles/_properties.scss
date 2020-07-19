@@ -9,57 +9,42 @@ $space-sm: calc(var(--base-gap) * 0.5) !default;
 $space-rg: calc(var(--base-gap)) !default;
 $space-md: calc(var(--base-gap) * 1.5) !default;
 $space-lg: calc(var(--base-gap) * 2) !default;
+$space-xl: calc(var(--base-gap) * 3) !default;
+
+$nspace-rg: calc(var(--base-gap) * -1) !default;
 
 :root {
+  --container-width: 100%;
   --responsive-wrap: wrap;
-  --responsive-align-between: flex-start;
-  --responsive-flex-basis: 100%;
-  --container-width: initial;
-  --header-gap-block-start: #{$space-rg};
-  --header-gap-block-end: #{$space-rg};
-  --search-gap-start: 50%;
+  --responsive-radius: 0;
+  --searchbox-gap-inline: #{$space-rg};
   --search-gap-inline: 0;
-  --result-gap: #{$space-rg};
+  --search-top-margin: -2rem;
   --result-border-width: 0;
   --hero-gap-block: #{$space-md};
   --metadata-gap-end: #{variables.$gap-rg};
-  --article-width: 100%;
-  --sidekick-width: 100%;
-  --feed-item-order: -1;
 }
 
 @include queries.md {
   :root {
-    --responsive-wrap: nowrap;
-    --responsive-align-between: space-between;
-    --responsive-flex-basis: auto;
     --container-width: calc(#{variables.$breakpoint-sm} + #{variables.$container-offset});
-    --header-gap-block-start: #{$space-rg};
-    --header-gap-block-end: #{$space-sm};
-    --search-gap-start: 25%;
-    --search-gap-inline: #{$space-rg};
-    --result-gap: #{$space-sm};
+    --responsive-wrap: nowrap;
+    --responsive-radius: #{variables.$radius};
+    --searchbox-gap-inline: #{$space-sm};
+    --search-gap-inline: #{$space-sm};
+    --search-top-margin: calc(-1.25rem - 1.125vw);
     --result-border-width: 1px;
     --hero-gap-block: #{$space-lg};
     --metadata-gap-end: 0;
-    --article-width: 75%;
-    --sidekick-width: max-content;
-    --feed-item-order: auto;
   }
 }
 
-$responsive-wrap: var(--responsive-wrap) !default;
-$responsive-align-between: var(--responsive-align-between) !default;
-$responsive-flex-basis: var(--responsive-flex-basis) !default;
 $container-width: var(--container-width) !default;
-$header-gap-block-start: var(--header-gap-block-start) !default;
-$header-gap-block-end: var(--header-gap-block-end) !default;
-$search-gap-start: var(--search-gap-start) !default;
+$responsive-wrap: var(--responsive-wrap) !default;
+$responsive-radius: var(--responsive-radius) !default;
+$searchbox-gap-inline: var(--searchbox-gap-inline) !default;
 $search-gap-inline: var(--search-gap-inline) !default;
-$result-gap: var(--result-gap) !default;
+$search-top-margin: var(--search-top-margin) !default;
 $result-border-width: var(--result-border-width) !default;
 $hero-gap-block: var(--hero-gap-block) !default;
 $metadata-gap-end: var(--metadata-gap-end) !default;
-$article-width: var(--article-width) !default;
-$sidekick-width: var(--sidekick-width) !default;
-$feed-item-order: var(--feed-item-order) !default;
