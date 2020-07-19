@@ -8,7 +8,7 @@
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateZ(-100px);
+    transform: translateZ(-100%);
   }
   to {
     opacity: 1;
@@ -23,7 +23,7 @@
   }
   to {
     opacity: 0;
-    transform: translateZ(-100px);
+    transform: translateZ(-100%);
   }
 }
 

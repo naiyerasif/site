@@ -2,7 +2,7 @@
 
 // Animation mixin
 
-@mixin animate($name, $duration: 500ms, $timing-fn: ease) {
+@mixin animate($name, $duration: 500ms, $timing-fn: ease-in-out) {
   animation-name: $name;
   animation-duration: $duration;
   transition-duration: $duration;
@@ -20,12 +20,12 @@
 
 .dissolve-enter-to,
 .dissolve-enter-active {
-  @include animate($name: fadeInDown, $timing-fn: ease-in);
+  @include animate(fadeInDown);
 }
 
 .dissolve-leave-to,
 .dissolve-leave-active {
-  @include animate($name: fadeOutUp, $timing-fn: ease-out);
+  @include animate(fadeOutUp);
 }
 
 .dissolve-enter,
@@ -37,7 +37,7 @@
 
 .slide-up-enter-active,
 .slide-up-leave-active {
-  @include animate($name: slideUp, $duration: 300ms, $timing-fn: ease-in-out);
+  @include animate($name: slideUp, $duration: 300ms);
 }
 
 .slide-up-enter,
@@ -49,7 +49,7 @@
 
 .rotate-in-right-enter-to,
 .rotate-in-right-leave {
-  @include animate($name: rotateInRight, $timing-fn: ease-in-out);
+  @include animate(rotateInRight);
 }
 
 .rotate-in-right-enter,
