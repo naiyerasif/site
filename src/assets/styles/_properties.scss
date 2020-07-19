@@ -9,7 +9,6 @@ $space-sm: calc(var(--base-gap) * 0.5) !default;
 $space-rg: calc(var(--base-gap)) !default;
 $space-md: calc(var(--base-gap) * 1.5) !default;
 $space-lg: calc(var(--base-gap) * 2) !default;
-$space-xl: calc(var(--base-gap) * 3) !default;
 
 $nspace-rg: calc(var(--base-gap) * -1) !default;
 
@@ -19,7 +18,7 @@ $nspace-rg: calc(var(--base-gap) * -1) !default;
   --responsive-radius: 0;
   --searchbox-gap-inline: #{$space-rg};
   --search-gap-inline: 0;
-  --search-top-margin: -2rem;
+  --search-top-margin: calc(3.75rem + 3.75vw);
   --result-border-width: 0;
   --hero-gap-block: #{$space-md};
   --metadata-gap-end: #{variables.$gap-rg};
@@ -32,7 +31,7 @@ $nspace-rg: calc(var(--base-gap) * -1) !default;
     --responsive-radius: #{variables.$radius};
     --searchbox-gap-inline: #{$space-sm};
     --search-gap-inline: #{$space-sm};
-    --search-top-margin: calc(-1.25rem - 1.125vw);
+    --search-top-margin: #{$space-rg};
     --result-border-width: 1px;
     --hero-gap-block: #{$space-lg};
     --metadata-gap-end: 0;

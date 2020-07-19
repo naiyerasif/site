@@ -19,13 +19,13 @@ $result-border-width: properties.$result-border-width;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: max-content;
 }
 
 .search-container {
   position: absolute;
   width: 100%;
   margin-top: $search-top-margin;
+  top: 0;
   right: 0;
   left: 0;
 }
@@ -50,12 +50,17 @@ $result-border-width: properties.$result-border-width;
   }
 }
 
+.no-border-radius {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
 .search-results {
   display: flex;
   flex-direction: column;
   position: absolute;
   margin: 0 auto;
-  top: 4rem;
+  top: 100%;
   right: 0;
   left: 0;
   z-index: 5;
