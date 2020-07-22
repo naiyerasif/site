@@ -8,7 +8,7 @@ Requires [imagemagick](http://www.imagemagick.org/)
 node bin/favicon.js static/google-touch-icon.png
 ```
 
-### Creat new post/status
+### Create new post/status
 
 Pass the content type (**post** or **status**), title and metadata (**topics**) as arguments.
 

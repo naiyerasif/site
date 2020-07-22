@@ -29,7 +29,7 @@ That's a 230 MB image to run a Java application; it includes operating system ut
 
 ## Use a JRE-based image to provide the runtime
 
-But come to think of it, you don't actual need the entire JDK. Unless your application specifically requires the JDK, a JRE should suffice the purpose of running your application. If that is the case, you're better off using `adoptopenjdk:11-jre-openj9` in the `Dockerfile`.
+But come to think of it, you don't actually need the entire JDK. Unless your application specifically requires the JDK, a JRE should suffice the purpose of running your application. If that is the case, you're better off using `adoptopenjdk:11-jre-openj9` in the `Dockerfile`.
 
 ```dockerfile{1}
 FROM adoptopenjdk:11-jre-openj9

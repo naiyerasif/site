@@ -40,7 +40,7 @@ Add the remote upstream repository so that you can sync with the changes merged 
 git remote add upstream https://github.com/example/massive.git
 ```
 
-Just like the fork, you can fetch the history of the upstream upto a certain depth from the HEAD.
+Just like the fork, you can fetch the history of the upstream up to a certain depth from the HEAD.
 
 ```sh
 git fetch --depth 2 upstream

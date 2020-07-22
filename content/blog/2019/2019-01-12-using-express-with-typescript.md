@@ -92,7 +92,7 @@ yarn add -D typescript @types/node @types/express
 
 `@types` dependencies provide type information to the editors so they can assist with code completion and type-checking.
 
-There's some configuation needed for the TypeScript compiler `tsc` to inform it where the TypeScript source code is located and where the compiled JavaScript code should be written at. To do so, execute the following command to generate a `tsconfig.json` file.
+There's some configuration needed for the TypeScript compiler `tsc` to inform it where the TypeScript source code is located and where the compiled JavaScript code should be written at. To do so, execute the following command to generate a `tsconfig.json` file.
 
 ```sh
 npx tsc --init
