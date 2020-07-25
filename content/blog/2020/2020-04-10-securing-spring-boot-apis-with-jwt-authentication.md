@@ -1,6 +1,7 @@
 ---
 title: 'Securing Spring Boot APIs with JWT Authentication'
 date: 2020-04-10 21:35:25
+updated: 2020-07-27 12:14:55
 authors: [naiyer]
 topics: [spring, jwt, postgres]
 ---
@@ -21,25 +22,26 @@ In this post, we'll create a simple Spring Boot API and secure it using Spring S
 The code written for this post uses
 
 - Java 14
-- Spring Boot 2.2.6
-- Java JWT 0.9.1
-- Postgres 12.2
-- Gradle 6.3
+- Spring Boot 2.3.2
+- Java JWT 0.11.2
+- Postgres 13
+- Maven 3.6.3
 :::
 
-You can create an instance of Postgres using the following `Compose` file.
+You can launch an instance of Postgres with Docker using the following `Compose` file.
 
 ```yaml
-version: "3.1"
+version: '3'
 
 services:
   db:
-    image: postgres:12.2-alpine
-    container_name: postgres_12.2
+    image: postgres:13-alpine
+    restart: always
     ports:
       - 5432:5432
     environment:
-      POSTGRES_PASSWORD: example
+      POSTGRES_USER: erin
+      POSTGRES_PASSWORD: richards
 ```
 
 Execute the following command to launch the container.
@@ -50,224 +52,202 @@ docker-compose up -d
 
 ## Configure the project
 
-Generate a Spring Boot project with [Spring Initializr](https://start.spring.io/), and add `spring-boot-starter-web`, `spring-boot-starter-data-jpa` and `postgresql` as dependencies.
+Generate a Spring Boot project with [Spring Initializr](https://start.spring.io/), and add `spring-boot-starter-web`, `spring-boot-starter-data-jdbc` and `postgresql` as dependencies.
 
-Your `build.gradle` would look like this.
+Your `pom.xml` would look like this.
 
-```groovy
-plugins {
-  id 'org.springframework.boot' version '2.2.6.RELEASE'
-  id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-  id 'java'
-}
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-group = 'dev.mflash.guides'
-version = '0.0.1'
-sourceCompatibility = JavaVersion.VERSION_14
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.3.2.RELEASE</version>
+    <relativePath/> <!-- lookup parent from repository -->
+  </parent>
 
-repositories {
-  jcenter()
-}
+  <groupId>dev.mflash.guides</groupId>
+  <artifactId>spring-security-jwt-auth</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
 
-dependencies {
-  implementation('org.springframework.boot:spring-boot-starter-web')
-  implementation('org.springframework.boot:spring-boot-starter-data-jpa')
-  runtimeOnly('org.postgresql:postgresql')
-}
+  <properties>
+    <java.version>14</java.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jdbc</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
 ```
 
-Open `application.yml` file and add the following database configuration.
+Rename `application.properties` to `application.yml`, open the file and add the following database configuration.
 
 ```yaml
 # src/main/resources/application.yml
 
 spring:
   datasource:
-    platform: postgres
-    url: jdbc:postgresql://localhost:5432/spring-guides
-    username: postgres
-    password: example
+    url: jdbc:postgresql://localhost:5432/spring
+    username: erin
+    password: richards
 ```
 
 ## Define the domain
 
-Say, you want to save a `Note` object, described by the following entity.
+Say, you want to save a `Book` object, described by the following entity.
 
 ```java
-// src/main/java/dev/mflash/guides/jwtauth/domain/Note.java
+// src/main/java/dev/mflash/guides/jwtauth/domain/Book.java
 
-public @Entity class Note {
+public class Book {
 
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private @Id int id;
+  private @Id long id;
   private String title;
-  private String content;
-  private OffsetDateTime lastUpdate;
+  private String author;
+  private Genre genre;
 
   // getters, setters, etc.
 }
 ```
 
-The `id` will be of type `SERIAL` in Postgres which'll be automatically incremented by the database. That's why we're delegating the generation to Postgres through `IDENTITY` generation strategy.
+The `id` will be of type `SERIAL` in Postgres which'll be automatically incremented by the database.
 
 Create the required table using the following SQL statement.
 
 ```sql
-CREATE TABLE note (
+CREATE TABLE book (
 	id SERIAL PRIMARY KEY,
-	title TEXT,
-	content TEXT,
-	last_update TIMESTAMP WITH TIME ZONE DEFAULT (current_timestamp AT TIME ZONE 'UTC')
+	title TEXT NOT NULL,
+	author TEXT NOT NULL,
+	genre TEXT NOT NULL
 );
 ```
 
-**Note** that the `last_update` field will save the timestamp with `UTC` timezone.
-
-## Create the Notes API
-
-Define a `NoteRepository` to perform database operations.
+**Note** that the `genre` is an enum described as follows.
 
 ```java
-// src/main/java/dev/mflash/guides/jwtauth/repository/NoteRepository.java
-
-public interface NoteRepository extends JpaRepository<Note, Integer> {
-
+public enum Genre {
+  fantasy,
+  thriller,
+  scifi
 }
 ```
 
-Create a controller to expose CRUD operations for `Note`. With Spring 5.2, a new functional way of writing controllers has been introduced (called [`WebMvc.fn`](https://spring.io/blog/2019/04/03/spring-tips-webmvc-fn-the-functional-dsl-for-spring-mvc)). `WebMvc.fn` introduces the following key concepts.
+## Create the Book API
+
+Define a `BookRepository` to perform database operations.
+
+```java
+// src/main/java/dev/mflash/guides/jwtauth/persistence/BookRepository.java
+
+public interface BookRepository extends CrudRepository<Book, Long> {
+
+  @Modifying
+  @Query("delete from book where id = :id")
+  int deleteById(@Param("id") long id);
+}
+```
+
+Create a controller to expose CRUD operations for `Book`. With Spring 5.2, a new functional way of writing controllers has been introduced (called [`WebMvc.fn`](https://spring.io/blog/2019/04/03/spring-tips-webmvc-fn-the-functional-dsl-for-spring-mvc)). `WebMvc.fn` introduces the following key concepts.
 
 - **HandlerFunction** which accepts a `ServerRequest` and provides a `ServerResponse`. A `ServerRequest` object encapsulates all kinds of requests, including path variables, request body, etc, which were traditionally parsed using annotations. A `ServerResponse` is analogous to a response wrapped in a `ResponseEntity`.
 - **RouterFunction** which configures the endpoints and their content-type. Traditionally, this was handled using annotations; now it's done through functions. After defining the routes, the request is sent to a handler function which provides the expected response.
 
-Using `WebMvc.fn`, your `NoteController` will look like this.
+Using `WebMvc.fn`, your `BookController` will look like this.
 
 ```java
-// src/main/java/dev/mflash/guides/jwtauth/controller/NoteController.java
+// src/main/java/dev/mflash/guides/jwtauth/controller/BookController.java
 
-public @Controller class NoteController {
+public @Controller class BookController {
 
-  private final NoteRepository repository;
+  private final BookRepository repository;
 
-  public NoteController(NoteRepository repository) {
+  public BookController(BookRepository repository) {
     this.repository = repository;
   }
 
-  private ServerResponse addNote(ServerRequest request) throws ServletException, IOException {
-    final Note note = request.body(Note.class);
-    note.setLastUpdate(OffsetDateTime.now());
-    final int id = repository.save(note).getId();
+  private ServerResponse addBook(ServerRequest request) throws ServletException, IOException {
+    final Book newBook = request.body(Book.class);
+    repository.save(newBook);
     return ServerResponse.ok().contentType(APPLICATION_JSON)
-        .body(Map.of("message", "Saved '" + note.getTitle() + "' with id: " + id));
+        .body(Map.of("message", String.format("Save successful for %s", newBook.getTitle())));
   }
 
-  private ServerResponse getNotes(ServerRequest request) {
-    final List<Note> notes = repository.findAll();
-    return ServerResponse.ok().contentType(APPLICATION_JSON).body(notes);
+  private ServerResponse getAllBooks(ServerRequest request) {
+    return ServerResponse.ok().contentType(APPLICATION_JSON).body(repository.findAll());
   }
 
-  private ServerResponse editNote(ServerRequest request) throws ServletException, IOException {
-    final int id = Integer.parseInt(request.pathVariable("id"));
-    final Note editedNote = request.body(Note.class);
-    repository.findById(id).ifPresent(note -> {
-      final Note newNote = new Note();
-      newNote.setId(id);
-      newNote.setTitle(!editedNote.getTitle().equals(note.getTitle()) ? editedNote.getTitle() : note.getTitle());
-      newNote
-          .setContent(!editedNote.getContent().equals(note.getContent()) ? editedNote.getContent() : note.getContent());
-      newNote.setLastUpdate(OffsetDateTime.now());
+  private ServerResponse editBook(ServerRequest request) throws ServletException, IOException {
+    long id = Long.parseLong(request.pathVariable("id"));
+    final Book editedBook = request.body(Book.class);
+    final Optional<Book> saved = repository.findById(id);
 
-      repository.save(newNote);
-    });
+    if (saved.isPresent()) {
+      final Book savedBook = saved.get();
+      final Book patchedBook = new Book();
+      patchedBook.setId(savedBook.getId());
+      patchedBook.setTitle(
+          !editedBook.getTitle().equals(savedBook.getTitle()) ? editedBook.getTitle() : savedBook.getTitle());
+      patchedBook.setAuthor(
+          !editedBook.getAuthor().equals(savedBook.getAuthor()) ? editedBook.getAuthor() : savedBook.getAuthor());
+      patchedBook.setGenre(
+          !editedBook.getGenre().equals(savedBook.getGenre()) ? editedBook.getGenre() : savedBook.getGenre());
+      repository.save(patchedBook);
+    } else {
+      throw new InvalidDataAccessApiUsageException("Couldn't patch unrelated or non-existent records");
+    }
 
     return ServerResponse.ok().contentType(APPLICATION_JSON)
-        .body(Map.of("message", "Saved edits for '" + editedNote.getTitle() + "'"));
+        .body(Map.of("message", String.format("Patch successful for %s", editedBook.getTitle())));
   }
 
-  private ServerResponse deleteNote(ServerRequest request) {
-    final int id = Integer.parseInt(request.pathVariable("id"));
-    repository.deleteById(id);
+  private ServerResponse deleteBook(ServerRequest request) {
+    long id = Long.parseLong(request.pathVariable("id"));
+
+    if (repository.deleteById(id) < 1) {
+      throw new InvalidDataAccessApiUsageException("Couldn't delete a non-existent record");
+    }
+
     return ServerResponse.ok().contentType(APPLICATION_JSON)
-        .body(Map.of("message", "Successfully deleted note with id: " + id));
+        .body(Map.of("message", String.format("Deletion successful for book with id: %s", id)));
   }
 
-  public @Bean RouterFunction<ServerResponse> notesRouter() {
+  public @Bean RouterFunction<ServerResponse> bookRoutes() {
     return route()
-        .nest(RequestPredicates.path("/notes"),
-            builder -> builder.POST("/", this::addNote)
-              .GET("/", this::getNotes)
-              .PUT("/{id}", this::editNote)
-              .DELETE("/{id}", this::deleteNote).build())
+        .nest(path("/book"),
+            builder -> builder
+                .GET("/", this::getAllBooks)
+                .PUT("/", this::addBook)
+                .PATCH("/{id}", this::editBook)
+                .DELETE("/{id}", this::deleteBook))
         .build();
-  }
-}
-```
-
-### Converters for `OffsetDateTime`
-
-Spring doesn't provide converters to convert `OffsetDateTime` into `Timestamp` and vice versa. You'll have to write `CustomConversions` to provide this information to Spring Data.
-
-Implement a `CustomConversions` class to conveniently define JPA-compatible conversions.
-
-```java
-// src/main/java/dev/mflash/guides/jwtauth/configuration/converter/JpaCustomConversions.java
-
-public class JpaCustomConversions extends CustomConversions {
-
-  private static final List<Object> STORE_CONVERTERS = Collections.emptyList();
-  private static final StoreConversions STORE_CONVERSIONS = StoreConversions
-      .of(new SimpleTypeHolder(Collections.emptySet(), true), STORE_CONVERTERS);
-
-  public JpaCustomConversions() {
-    this(Collections.emptyList());
-  }
-
-  public JpaCustomConversions(Collection<?> converters) {
-    super(STORE_CONVERSIONS, converters);
-  }
-}
-```
-
-Now, implement `Converter` interface to define converters for `OffsetDateTime` and `Timestamp`, as follows.
-
-```java
-// src/main/java/dev/mflash/guides/jwtauth/configuration/converter/OffsetDateTimeToTimestampConverter.java
-
-@WritingConverter
-public enum OffsetDateTimeToTimestampConverter implements Converter<OffsetDateTime, Timestamp> {
-  INSTANCE;
-
-  public @Override Timestamp convert(OffsetDateTime source) {
-    return Timestamp.from(Instant.from(source));
-  }
-}
-
-// src/main/java/dev/mflash/guides/jwtauth/configuration/converter/TimestampToOffsetDateTimeConverter.java
-
-@ReadingConverter
-public enum TimestampToOffsetDateTimeConverter implements Converter<Timestamp, OffsetDateTime> {
-  INSTANCE;
-
-  public @Override OffsetDateTime convert(Timestamp source) {
-    return source.toInstant().atOffset(ZoneOffset.UTC);
-  }
-}
-```
-
-Inject these converters through a configuration.
-
-```java
-// src/main/java/dev/mflash/guides/jwtauth/configuration/DatabaseConfiguration.java
-
-@EnableJpaRepositories("dev.mflash.guides.jwtauth.repository")
-public class DatabaseConfiguration {
-
-  @Primary
-  public @Bean JpaCustomConversions customConversions() {
-    final var converters = new ArrayList<Converter<?, ?>>();
-    converters.add(TimestampToOffsetDateTimeConverter.INSTANCE);
-    converters.add(OffsetDateTimeToTimestampConverter.INSTANCE);
-    return new JpaCustomConversions(converters);
   }
 }
 ```
@@ -275,23 +255,25 @@ public class DatabaseConfiguration {
 Launch the application and you'd be able to hit the APIs without any authentication.
 
 ```sh
-curl --location --request POST 'http://localhost:8080/notes' \
+$ curl --location --request PUT 'http://localhost:8080/book' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-  "title": "An example note",
-  "content": "Some content"
+  "title": "Kill Orbit",
+  "author": "Joel Dane",
+  "genre": "scifi"
 }'
 
-curl --location --request GET 'http://localhost:8080:8080/notes'
+$ curl --location --request GET 'http://localhost:8080/book'
 
-curl --location --request PUT 'http://localhost:8080:8080/notes/1' \
+$ curl --location --request PATCH 'http://localhost:8080/book/1' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-  "title": "An example note",
-  "content": "With some changes in content"
+    "title": "Cry Pilot",
+    "author": "Joel Dane",
+    "genre": "scifi"
 }'
 
-curl --location --request DELETE 'http://localhost:8080:8080/notes/1'
+$ curl --location --request DELETE 'http://localhost:8080/book/1'
 ```
 
 ## Enable User registration with Spring Security
@@ -302,6 +284,8 @@ Spring Security's `AuthenticationManager` works with a `UserDetails` object to h
 - extending `UserDetailsService` interface and overriding its `loadUserByUsername` method to return details from `CustomUser`
 - providing this service to `AuthenticationManager` through a configuration.
 
+> In our case, we're saving the `CustomUser` in a Postgres database. There are other solutions to save and fetch this user, like LDAP, OIDC, etc., which are out of the scope of this article.
+
 ### Create an API to save `CustomUser`
 
 To begin with, create the following table to store user information in the database.
@@ -309,9 +293,9 @@ To begin with, create the following table to store user information in the datab
 ```sql
 CREATE TABLE custom_user (
 	id SERIAL PRIMARY KEY,
-	email TEXT,
-	name TEXT,
-	password TEXT
+	email TEXT NOT NULL,
+	name TEXT NOT NULL,
+	password TEXT NOT NULL
 );
 ```
 
@@ -320,9 +304,8 @@ Define an entity corresponding to this table.
 ```java
 // src/main/java/dev/mflash/guides/jwtauth/domain/CustomUser.java
 
-public @Entity class CustomUser {
+public class CustomUser {
 
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private @Id int id;
   private String email;
   private String name;
@@ -335,11 +318,11 @@ public @Entity class CustomUser {
 Define a repository to save and fetch the user. For this application, we'll treat the `email` as the username of a `CustomUser`.
 
 ```java
-// src/main/java/dev/mflash/guides/jwtauth/repository/CustomUserRepository.java
+// src/main/java/dev/mflash/guides/jwtauth/persistence/CustomUserRepository.java
 
-public interface CustomUserRepository extends JpaRepository<CustomUser, Integer> {
+public interface CustomUserRepository extends CrudRepository<CustomUser, Long> {
 
-  CustomUser findByEmail(String email);
+  Optional<CustomUser> findByEmail(String email);
 }
 ```
 
@@ -350,6 +333,8 @@ To let a user register on the application, expose an endpoint to create a new `C
 
 public @Controller class CustomUserController {
 
+  public static final String REGISTRATION_URL = "/user/register";
+
   private final CustomUserRepository repository;
   private final PasswordEncoder passwordEncoder;
 
@@ -359,16 +344,16 @@ public @Controller class CustomUserController {
   }
 
   private ServerResponse register(ServerRequest request) throws ServletException, IOException {
-    final CustomUser customUser = request.body(CustomUser.class);
-    customUser.setPassword(passwordEncoder.encode(customUser.getPassword()));
-    repository.save(customUser);
+    final CustomUser newUser = request.body(CustomUser.class);
+    newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
+    repository.save(newUser);
     return ServerResponse.ok().contentType(APPLICATION_JSON)
-        .body(Map.of("message", "Successfully saved " + customUser.getName()));
+        .body(Map.of("message", String.format("Registration successful for %s", newUser.getName())));
   }
 
-  public @Bean RouterFunction<ServerResponse> customUserRouter() {
+  public @Bean RouterFunction<ServerResponse> userRoutes() {
     return route()
-        .POST("/users/register", this::register)
+        .POST(REGISTRATION_URL, this::register)
         .build();
   }
 }
@@ -378,24 +363,28 @@ public @Controller class CustomUserController {
 
 ### Integrate the user management with Spring Security
 
-Add the following dependency in `build.gradle` for Spring Security.
+Add the following dependency in `pom.xml` for Spring Security.
 
-```groovy
-// Rest of the build file
+```xml
+<!-- Rest of the POM file -->
 
-dependencies {
-  // Other dependencies
-  implementation('org.springframework.boot:spring-boot-starter-security')
-}
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+  </dependencies>
 ```
 
 Implement the `UserDetailsService` which provides `loadUserByUsername` method to convert `CustomUser` for Spring Security by specifying that the `email` is the username field.
 
 ```java
-// src/main/java/dev/mflash/guides/jwtauth/service/CustomUserDetailsService.java
+// src/main/java/dev/mflash/guides/jwtauth/security/CustomUserDetailsService.java
 
 public @Service class CustomUserDetailsService implements UserDetailsService {
 
+  private static final String PLACEHOLDER = UUID.randomUUID().toString();
+  private static final User DEFAULT_USER = new User(PLACEHOLDER, PLACEHOLDER, List.of());
   private final CustomUserRepository repository;
 
   public CustomUserDetailsService(CustomUserRepository repository) {
@@ -403,18 +392,33 @@ public @Service class CustomUserDetailsService implements UserDetailsService {
   }
 
   public @Override UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-    CustomUser customUser = Objects.requireNonNull(repository.findByEmail(email), () -> {
-      throw new UsernameNotFoundException(email);
-    });
-
-    return new User(customUser.getEmail(), customUser.getPassword(), Collections.emptyList());
+    return repository.findByEmail(email)
+        .map(CustomUserConverter::toUser)
+        .orElse(DEFAULT_USER);
   }
 }
 ```
 
-Now, we can inject this service into Spring Security's `AuthenticationManager` to complete the integration of `CustomUser`.
+`CustomUserConverter` is a utility class that provides methods to convert `CustomUser` into other objects.
 
 ```java
+// src/main/java/dev/mflash/guides/jwtauth/security/CustomUserConverter.java
+
+public class CustomUserConverter {
+
+  public static User toUser(CustomUser user) {
+    return new User(user.getEmail(), user.getPassword(), List.of());
+  }
+
+  public static UsernamePasswordAuthenticationToken toAuthenticationToken(CustomUser user) {
+    return new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword(), List.of());
+  }
+}
+```
+
+Now, we can inject `CustomUserDetailsService` into Spring Security's `AuthenticationManager` to complete the integration of `CustomUser`.
+
+```java{16-18}
 // src/main/java/dev/mflash/guides/jwtauth/configuration/SecurityConfiguration.java
 
 @EnableWebSecurity
@@ -427,7 +431,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
   }
 
   public @Bean PasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder();
+    return PasswordEncoderFactories.createDelegatingPasswordEncoder();
   }
 
   protected @Override void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -436,45 +440,64 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 }
 ```
 
-**Note** that we've injected `BCryptPasswordEncoder` through this configuration to encode the user data; this `PasswordEncoder` will be used by `CustomUserController` while saving a new user.
+> **About `PasswordEncoder`**
+> If you're starting afresh, you can choose a `PasswordEncoder` of your choosing, say `BCryptPasswordEncoder` and things will work fine. However, there are chances that your application is using multiple encoders to store the passwords. A typical password record may look like this (a prefix enclosed in braces followed by the actual hash): `{bcrypt}$2a$10$LYB29GePiC3/ieDvmqCfL.Y6GEk9vEoZVZR2/EQ9nacnY43aQ4LO6`
+>
+> The `createDelegatingPasswordEncoder` comes to rescue here. It figures out the correct password encoding algorithm by reading the prefix and performs encoding and decoding operations.
+
+Note that the same `PasswordEncoder` is used by `CustomUserController` to encode the password of a new user.
 
 ## Add Authentication and Authorization filters
 
-To work with JWT, add the following dependency in `build.gradle`.
+To work with JWT, add the following dependencies in `pom.xml`.
 
-```groovy
-// Rest of the build file
+```xml
+<!-- Rest of the POM file -->
 
-dependencies {
-  // Other dependencies
-  implementation('io.jsonwebtoken:jjwt:0.9.1')
-}
+  <dependencies>
+    <dependency>
+      <groupId>io.jsonwebtoken</groupId>
+      <artifactId>jjwt-api</artifactId>
+      <version>0.11.2</version>
+    </dependency>
+    <dependency>
+      <groupId>io.jsonwebtoken</groupId>
+      <artifactId>jjwt-impl</artifactId>
+      <version>0.11.2</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.jsonwebtoken</groupId>
+      <artifactId>jjwt-jackson</artifactId>
+      <version>0.11.2</version>
+      <scope>runtime</scope>
+    </dependency>
+  </dependencies>
 ```
 
 Create a `TokenManager` class that'll generate and parse the JWT tokens.
 
 ```java
-// src/main/java/dev/mflash/guides/jwtauth/configuration/security/TokenManager.java
+// src/main/java/dev/mflash/guides/jwtauth/security/TokenManager.java
 
 public class TokenManager {
 
-  private static final String SECRET = "U3ByaW5nQm9vdFN1cGVyU2VjcmV0";
-  private static final long EXPIRATION_TIME = 10; // 10 days
-  static final String TOKEN_PREFIX = "Bearer ";
-  static final String HEADER_STRING = "Authorization";
-  public static final String SIGN_UP_URL = "/users/register";
+  private static final SecretKey SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS512);
+  public static final String TOKEN_PREFIX = "Bearer ";
+  private static final int TOKEN_EXPIRY_DURATION = 10; // in days
 
-  static String generateToken(String subject) {
+  public static String generateToken(String subject) {
     return Jwts.builder()
         .setSubject(subject)
-        .setExpiration(Date.from(ZonedDateTime.now().plusDays(EXPIRATION_TIME).toInstant()))
-        .signWith(SignatureAlgorithm.HS512, SECRET.getBytes())
+        .setExpiration(Date.from(ZonedDateTime.now().plusDays(TOKEN_EXPIRY_DURATION).toInstant()))
+        .signWith(SECRET_KEY)
         .compact();
   }
 
-  static String parseToken(String token) {
-    return Jwts.parser()
-        .setSigningKey(SECRET.getBytes())
+  public static String parseToken(String token) {
+    return Jwts.parserBuilder()
+        .setSigningKey(SECRET_KEY)
+        .build()
         .parseClaimsJws(token.replace(TOKEN_PREFIX, ""))
         .getBody()
         .getSubject();
@@ -482,36 +505,37 @@ public class TokenManager {
 }
 ```
 
-`SECRET` is a client-generated string used for signing the token. We've set the tokens to expire after 10 days (through `EXPIRATION_TIME` constant).
+`SECRET_KEY` is randomly-generated key using `HS512` algorithm (there are [other algorithms](https://github.com/jwtk/jjwt#signature-algorithms-keys), as well). This key is used for signing the tokens by `generateToken` method and subsequently to read them by `parseToken` method. We've also set the tokens to expire after 10 days (through `TOKEN_EXPIRY_DURATION` constant).
 
 Now, define an `AuthenticationFilter` to verify the correct user.
 
 ```java
-// src/main/java/dev/mflash/guides/jwtauth/configuration/security/JWTAuthenticationFilter.java
+// src/main/java/dev/mflash/guides/jwtauth/security/CustomAuthenticationFilter.java
 
-public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+
+  public static final String AUTH_HEADER_KEY = "Authorization";
 
   private final AuthenticationManager authenticationManager;
 
-  public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
+  public CustomAuthenticationFilter(AuthenticationManager authenticationManager) {
     this.authenticationManager = authenticationManager;
   }
 
   public @Override Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
       throws AuthenticationException {
     try {
-      CustomUser customUser = new ObjectMapper().readValue(request.getInputStream(), CustomUser.class);
-
-      return authenticationManager.authenticate(
-          new UsernamePasswordAuthenticationToken(customUser.getEmail(), customUser.getPassword(), Collections.emptyList()));
+      var user = new ObjectMapper().readValue(request.getInputStream(), CustomUser.class);
+      return authenticationManager.authenticate(CustomUserConverter.toAuthenticationToken(user));
     } catch (IOException e) {
-      throw new RuntimeException(e);
+      throw new AuthenticationCredentialsNotFoundException("Failed to resolve authentication credentials", e);
     }
   }
 
   protected @Override void successfulAuthentication(HttpServletRequest request, HttpServletResponse response,
       FilterChain chain, Authentication authResult) throws IOException, ServletException {
-    response.addHeader(HEADER_STRING, TOKEN_PREFIX + generateToken(((User) authResult.getPrincipal()).getUsername()));
+    response.addHeader(AUTH_HEADER_KEY,
+        TOKEN_PREFIX + generateToken(((User) authResult.getPrincipal()).getUsername()));
   }
 }
 ```
@@ -519,28 +543,23 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 Here, 
 
 - the `attemptAuthentication` method extracts the user from the request and tries to authenticate them with the help of `AuthenticationManager`. 
-- On successful authentication, a token is generated by `TokenManager` and attached to the header of the response (see `successfulAuthentication` method). This token will be used for subsequent requests and will be checked every time. 
+- On successful authentication, a token is generated by `TokenManager` and attached to the header of the response (see `successfulAuthentication` method). This token will be used for subsequent requests and will be checked every time a request arrives. 
   
-On successful verification of the token, access to the application will be enabled with the help of `doFilterInternal` method of `JWTAuthorizationFilter`.
+On successful verification of the token, access to the application will be enabled with the help of `doFilterInternal` method of `CustomAuthorizationFilter`.
 
 ```java
-// src/main/java/dev/mflash/guides/jwtauth/configuration/security/JWTAuthorizationFilter.java
+// src/main/java/dev/mflash/guides/jwtauth/security/CustomAuthorizationFilter.java
 
-public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
+public class CustomAuthorizationFilter extends BasicAuthenticationFilter {
 
-  public JWTAuthorizationFilter(AuthenticationManager authenticationManager) {
+  public CustomAuthorizationFilter(AuthenticationManager authenticationManager) {
     super(authenticationManager);
-  }
-
-  private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
-    String token = Objects.requireNonNull(request.getHeader(HEADER_STRING));
-    String user = Objects.requireNonNull(parseToken(token));
-    return new UsernamePasswordAuthenticationToken(user, null, Collections.emptyList());
   }
 
   protected @Override void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
       throws IOException, ServletException {
-    String header = request.getHeader(HEADER_STRING);
+
+    String header = request.getHeader(AUTH_HEADER_KEY);
 
     if (Objects.isNull(header) || !header.startsWith(TOKEN_PREFIX)) {
       chain.doFilter(request, response);
@@ -548,9 +567,27 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
     }
 
     UsernamePasswordAuthenticationToken authentication = getAuthentication(request);
-
     SecurityContextHolder.getContext().setAuthentication(authentication);
     chain.doFilter(request, response);
+  }
+
+  private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
+    String header = request.getHeader(AUTH_HEADER_KEY);
+
+    if (Objects.nonNull(header) && header.startsWith(TOKEN_PREFIX)) {
+      try {
+        String username = parseToken(header);
+        return new UsernamePasswordAuthenticationToken(username, null, List.of());
+      } catch (ExpiredJwtException e) {
+        throw new AccessDeniedException("Expired token");
+      } catch (UnsupportedJwtException | MalformedJwtException e) {
+        throw new AccessDeniedException("Unsupported token");
+      } catch (Exception e) {
+        throw new AccessDeniedException("User authorization not resolved");
+      }
+    } else {
+      throw new AccessDeniedException("Authorization token not found");
+    }
   }
 }
 ```
@@ -559,8 +596,8 @@ Here, the `doFilterInternal` method extracts the `Authorization` header, fetches
 
 We need to register these filters and specify which endpoints are protected and which are accessible publicly in the `SecurityConfiguration`.
 
-```java{16-25, 31-35}
-// src/main/java/dev/mflash/guides/jwtauth/configuration/SecurityConfiguration.java
+```java{12-20, 30-34}
+// src/main/java/dev/mflash/guides/jwtauth/SecurityConfiguration.java
 
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -571,19 +608,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     this.userDetailsService = userDetailsService;
   }
 
-  public @Bean PasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder();
-  }
-
   protected @Override void configure(HttpSecurity http) throws Exception {
     http.cors().and()
         .csrf().disable()
-        .authorizeRequests()
-          .antMatchers(HttpMethod.POST, TokenManager.SIGN_UP_URL).permitAll()
+        .authorizeRequests().antMatchers(POST, REGISTRATION_URL).permitAll()
         .anyRequest().authenticated().and()
-        .addFilter(new JWTAuthenticationFilter(authenticationManager()))
-        .addFilter(new JWTAuthorizationFilter(authenticationManager()))
-        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        .addFilter(new CustomAuthenticationFilter(authenticationManager()))
+        .addFilter(new CustomAuthorizationFilter(authenticationManager()))
+        .sessionManagement().sessionCreationPolicy(STATELESS);
+  }
+
+  public @Bean PasswordEncoder passwordEncoder() {
+    return PasswordEncoderFactories.createDelegatingPasswordEncoder();
   }
 
   protected @Override void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -604,61 +640,60 @@ Here, we've
 
 ## Testing the application
 
-Launch the application, and try to hit the <http://localhost:8080/notes> endpoint.
+Launch the application, and try to hit the <http://localhost:8080/book> endpoint.
 
 ```sh
-$ curl --location --request GET 'localhost:8080/notes'
+$ curl --location --request GET 'http://localhost:8080/book'
 {
-  "timestamp": "2020-04-10T17:58:03.858+0000",
+  "timestamp": "2020-07-25T14:01:20.130+00:00",
   "status": 403,
   "error": "Forbidden",
-  "message": "Access Denied",
-  "path": "/notes"
+  "message": "",
+  "path": "/book"
 }
 ```
 
 The response `403 Forbidden` is expected, since this endpoint is no longer accessible publicly. Now, register as a new user.
 
 ```sh
-curl --location --request POST 'localhost:8080/users/register' \
+$ curl --location --request POST 'http://localhost:8080/user/register' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "name": "Emily",
-    "email": "emily@example.com",
-    "password": "m4kEY&QU8I_."
+  "name": "Arya Antrix",
+  "email": "arya.antrix@example.com",
+  "password": "pa55word"
 }'
 ```
 
 and login with this user.
 
 ```sh
-curl --location --request POST 'localhost:8080/login' \
+$ curl --location --request POST 'http://localhost:8080/login' \
 --header 'Content-Type: application/json' \
---header 'Content-Type: text/plain' \
 --data-raw '{
-  "email": "emily@example.com",
-  "password": "m4kEY&QU8I_."
+  "email": "arya.antrix@example.com",
+  "password": "pa55word"
 }'
 ```
 
 You'll receive a response `200 OK` with an `Authorization` header that contains a token,
 
 ```sh
-Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlbWlseUBleGFtcGxlLmNvbSIsImV4cCI6MTU4NzQwNTcwMn0.-gKb3XHD18ego96v4ObI211oihi4kfLmG68rJ_7aa_7ClNpoEpkjJTP9LjxoRnrGAcF3GQrhqOiOIWAJIbU1YQ
+Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlbWlseS5icm9udGVAZXhhbXBsZS5jb20iLCJleHAiOjE1OTY1NDc2NDR9.ynoidjJ9b-42XO3nSiMzUcoF2wKWc3zGsCC9xObF4ymCJPcugAzx6Hd6NmUF342xnHoGqY2qXESqlKZ0HC9P2g
 ```
 
-Use this token and hit the <http://localhost:8080/notes> endpoint, again. This time, you'll get a successful response. Play with other endpoints to create, edit and delete a note, using the same token.
+Use this token and hit the <http://localhost:8080/book> endpoint, again. This time, you'll get a successful response. Play with the other endpoints to create, edit and delete a book, using the same token.
 
 ```sh{1,2}
-$ curl --location --request GET 'localhost:8080/notes' \
---header 'Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlbWlseUBleGFtcGxlLmNvbSIsImV4cCI6MTU4NzQwNTcwMn0.-gKb3XHD18ego96v4ObI211oihi4kfLmG68rJ_7aa_7ClNpoEpkjJTP9LjxoRnrGAcF3GQrhqOiOIWAJIbU1YQ'
+$ curl --location --request GET 'http://localhost:8080/book' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlbWlseS5icm9udGVAZXhhbXBsZS5jb20iLCJleHAiOjE1OTY1NDc2NDR9.ynoidjJ9b-42XO3nSiMzUcoF2wKWc3zGsCC9xObF4ymCJPcugAzx6Hd6NmUF342xnHoGqY2qXESqlKZ0HC9P2g'
 
 [
   {
     "id": 1,
-    "title": "An example note",
-    "content": "Some content",
-    "lastUpdate": "2020-04-10T23:35:26.216324+05:30"
+    "title": "Kill Orbit",
+    "author": "Joel Dane",
+    "genre": "scifi"
   }
 ]
 ```
