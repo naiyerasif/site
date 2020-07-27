@@ -112,7 +112,10 @@ $sidekick-active-background: variables.$bg-muted;
 $pagination-gap: variables.$gap-rg;
 
 .pagination {
+  display: flex;
+  flex: 1;
   justify-content: center;
+  font-size: $indicator-font-size;
 
   .is-prev {
     margin-right: $pagination-gap;
