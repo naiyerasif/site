@@ -4,11 +4,13 @@
 
 // Sidekick
 
-$font-size: variables.$font-sm;
 $gap-start: properties.$hero-gap-block;
+$indicator-padding: variables.$ch-rg;
+$indicator-color: variables.$text;
+$indicator-font-size: variables.$font-sm;
+$indicator-gap-end: properties.$space-rg;
 $actions-gap-inline: variables.$gap-rg;
 $actions-gap-block: variables.$gap-xs;
-$recommendation-gap-end: properties.$space-sm;
 $sidekick-background: variables.$bg-vibrant;
 $sidekick-active-background: variables.$bg-muted;
 
@@ -32,15 +34,9 @@ $sidekick-active-background: variables.$bg-muted;
     }
   }
 
-  > * {
-    display: flex;
-    flex-wrap: wrap;
-    flex: 1;
-    align-items: center;
-    font-size: $font-size;
-  }
-
   .sidekick-actions {
+    display: flex;
+    flex-basis: 100%;
     justify-content: center;
 
     > * {
@@ -52,23 +48,60 @@ $sidekick-active-background: variables.$bg-muted;
     }
   }
 
-  .sidekick-recommendations {
-    flex-basis: 100%;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: $actions-gap-inline;
-    font-size: variables.$font-rg;
+  .grid-sm-fit {
+    margin-bottom: $indicator-gap-end;
+    width: 100%;
 
     > * {
-      padding: variables.$gap-sm variables.$gap-rg;
+      cursor: pointer;
+      padding: variables.$gap-md variables.$gap-rg;
       border: 1px solid variables.$border;
       border-radius: variables.$radius;
       background-color: $sidekick-background;
-      margin-bottom: $recommendation-gap-end;
-
+      
       &:focus,
       &:hover {
         background-color: $sidekick-active-background;
+      }
+    }
+
+    .is-prev,
+    .is-next {
+      .label {
+        display: block;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .label,
+      .indicator {
+        color: $indicator-color;
+        font-size: $indicator-font-size;
+      }
+    }
+
+    .is-prev {
+      align-items: flex-start;
+
+      > *:last-child {
+        margin-right: auto;
+      }
+
+      .indicator {
+        padding-right: $indicator-padding;
+      }
+    }
+
+    .is-next {
+      align-items: flex-end;
+      text-align: right;
+      
+      > *:first-child {
+        margin-left: auto;
+      }
+
+      .indicator {
+        padding-left: $indicator-padding;
       }
     }
   }

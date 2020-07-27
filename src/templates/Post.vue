@@ -25,12 +25,14 @@
       </div>
     </main>
     <div class="sidekick">
-      <div class="sidekick-recommendations">
-        <g-link v-if="$page.previous" :to="$page.previous.path">
-          &larr; {{ $page.previous.title }}
+      <div class="grid-sm-fit">
+        <g-link class="is-prev" v-if="$page.previous" :to="$page.previous.path">
+          <span class="indicator">&larr;</span>
+          <span><span class="label">Previous</span>{{ $page.previous.title }}</span>
         </g-link>
-        <g-link v-if="$page.next" :to="$page.next.path" style="text-align: right">
-          {{ $page.next.title }} &rarr;
+        <g-link class="is-next" v-if="$page.next" :to="$page.next.path">
+          <span>{{ $page.next.title }}<span class="label">Next</span></span>
+          <span class="indicator">&rarr;</span>
         </g-link>
       </div>
       <div class="sidekick-actions">
