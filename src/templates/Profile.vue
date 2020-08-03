@@ -12,6 +12,7 @@
       </div>
     </div>
     <main class="content">
+      <ScrollIndicator />
       <article v-html="$page.profile.content" />
     </main>
     <div class="sidekick">
@@ -39,6 +40,7 @@ query Profile ($id: ID!) {
 
 <script>
 import Sprite from '~/components/Sprite'
+import ScrollIndicator from '~/components/ScrollIndicator'
 
 export default {
   metaInfo() {
@@ -47,7 +49,8 @@ export default {
     }
   },
   components: {
-    Sprite
+    Sprite,
+    ScrollIndicator
   },
   computed: {
     firstName() {

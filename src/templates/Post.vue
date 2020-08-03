@@ -18,6 +18,7 @@
       </div>
     </section>
     <main class="content">
+      <ScrollIndicator />
       <Toc :headers="$page.post.headings" />
       <div class="article">
         <blockquote class="is-warning" v-if="outdationMessage">{{ outdationMessage }}</blockquote>
@@ -95,6 +96,7 @@ query Blog ($id: ID!, $previousId: ID!, $nextId: ID!) {
 <script>
 import Toc from '~/components/Toc'
 import Sprite from '~/components/Sprite'
+import ScrollIndicator from '~/components/ScrollIndicator'
 import * as appConfig from '@/app.config'
 
 export default {
@@ -105,7 +107,8 @@ export default {
   },
   components: {
     Toc,
-    Sprite
+    Sprite,
+    ScrollIndicator
   },
   computed: {
     displayDate() {

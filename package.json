@@ -42,6 +42,7 @@
     "sass": "^1.26.10",
     "sass-loader": "^9.0.2",
     "shx": "^0.3.2",
-    "svg-to-vue-component": "^0.3.8"
+    "svg-to-vue-component": "^0.3.8",
+    "vue-scroll-indicator": "^0.1.3"
   }
 }

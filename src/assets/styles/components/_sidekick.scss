@@ -9,8 +9,11 @@ $indicator-padding: variables.$ch-rg;
 $indicator-color: variables.$text-muted;
 $indicator-font-size: variables.$font-xs;
 $indicator-gap-end: properties.$space-rg;
-$actions-gap-inline: variables.$gap-rg;
-$actions-gap-block: variables.$gap-xs;
+$actions-gap-inline: variables.$gap-xs;
+$actions-radius: variables.$radius;
+$actions-inline-padding: variables.$gap-sm;
+$actions-block-padding: variables.$gap-xs;
+$actions-active-background: variables.$bg-muted;
 $sidekick-background: variables.$bg-vibrant;
 $sidekick-active-background: variables.$bg-muted;
 
@@ -24,10 +27,6 @@ $sidekick-active-background: variables.$bg-muted;
     display: inline-flex;
     align-items: center;
 
-    svg {
-      margin-right: variables.$ch-sm;
-    }
-
     &:focus,
     &:hover {
       text-decoration: none;
@@ -40,7 +39,14 @@ $sidekick-active-background: variables.$bg-muted;
     justify-content: center;
 
     > * {
-      @include utils.my($actions-gap-block);
+      border-radius: $actions-radius;
+      padding: $actions-block-padding $actions-inline-padding;
+
+      &:focus,
+      &:hover {
+        background-color: $actions-active-background;
+        text-decoration: none;
+      }
 
       &:not(:last-child) {
         margin-right: $actions-gap-inline;
