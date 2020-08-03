@@ -19,7 +19,8 @@ I've worked on a variety of projects in Banking &amp; Financial Services, Legal 
 - **Angular** &mdash; open-source web framework to create single-page applications using TypeScript
 - **Vue.js** &mdash; progressive JavaScript framework to build user interfaces and single-page applications
 - **Docker** &mdash; container platform to build, deploy and share applications anywhere
-- **Postgres** &mdash; open-source SQL-compliant object-relational database system 
+- **Postgres** &mdash; open-source SQL-compliant object-relational database system
+- **Groovy** &mdash; optionally-typed dynamic language that runs on JVM
 - **MongoDB** &mdash; general purpose, document-based, distributed data platform
 - **Jenkins** &mdash; open source automation server to build, test and deploy software
 :::
