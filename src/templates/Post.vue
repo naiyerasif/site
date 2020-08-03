@@ -25,15 +25,19 @@
       </div>
     </main>
     <div class="sidekick">
-      <div class="grid-sm-fit">
-        <g-link class="is-prev" v-if="$page.previous" :to="$page.previous.path">
-          <span class="indicator">&larr;</span>
-          <span><span class="label">Previous</span>{{ $page.previous.title }}</span>
-        </g-link>
-        <g-link class="is-next" v-if="$page.next" :to="$page.next.path">
-          <span>{{ $page.next.title }}<span class="label">Next</span></span>
-          <span class="indicator">&rarr;</span>
-        </g-link>
+      <div class="sidekick-navigation">
+        <div class="is-prev">
+          <g-link v-if="$page.previous" :to="$page.previous.path">
+            <small class="indicator">&larr;</small>
+            <span><small class="label">Previous</small>{{ $page.previous.title }}</span>
+          </g-link>
+        </div>
+        <div class="is-next">
+          <g-link v-if="$page.next" :to="$page.next.path">
+            <span>{{ $page.next.title }}<small class="label">Next</small></span>
+            <small class="indicator">&rarr;</small>
+          </g-link>
+        </div>
       </div>
       <div class="sidekick-actions">
         <a target="_blank" rel="noopener noreferrer" title="Edit this page" :href="editUrl">

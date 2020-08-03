@@ -61,8 +61,8 @@ a {
   @include grid.grid($width: variables.$grid-sm);
 }
 
-.grid-sm-fit {
-  @include grid.grid($width: variables.$grid-sm, $height: min-content, $strategy: auto-fit);
+.sidekick-navigation {
+  @include grid.grid($width: 48%, $height: min-content, $strategy: auto-fit);
 }
 
 // Typography

@@ -6,8 +6,8 @@
 
 $gap-start: properties.$hero-gap-block;
 $indicator-padding: variables.$ch-rg;
-$indicator-color: variables.$text;
-$indicator-font-size: variables.$font-sm;
+$indicator-color: variables.$text-muted;
+$indicator-font-size: variables.$font-xs;
 $indicator-gap-end: properties.$space-rg;
 $actions-gap-inline: variables.$gap-rg;
 $actions-gap-block: variables.$gap-xs;
@@ -48,25 +48,22 @@ $sidekick-active-background: variables.$bg-muted;
     }
   }
 
-  .grid-sm-fit {
+  .sidekick-navigation {
     margin-bottom: $indicator-gap-end;
     width: 100%;
 
-    > * {
-      cursor: pointer;
-      padding: variables.$gap-md variables.$gap-rg;
+    a {
+      @include utils.size(100%);
+      padding: variables.$gap-rg variables.$gap-md;
       border: 1px solid variables.$border;
       border-radius: variables.$radius;
       background-color: $sidekick-background;
-      
+
       &:focus,
       &:hover {
         background-color: $sidekick-active-background;
       }
-    }
 
-    .is-prev,
-    .is-next {
       .label {
         display: block;
         text-transform: uppercase;
@@ -77,10 +74,11 @@ $sidekick-active-background: variables.$bg-muted;
       .indicator {
         color: $indicator-color;
         font-size: $indicator-font-size;
+        font-weight: variables.$weight-bd;
       }
     }
 
-    .is-prev {
+    .is-prev a {
       align-items: flex-start;
 
       > *:last-child {
@@ -92,10 +90,10 @@ $sidekick-active-background: variables.$bg-muted;
       }
     }
 
-    .is-next {
+    .is-next a {
       align-items: flex-end;
       text-align: right;
-      
+
       > *:first-child {
         margin-left: auto;
       }
