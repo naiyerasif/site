@@ -26,6 +26,15 @@ $content-opener-size: variables.$font-md;
   figure {
     width: 100%;
   }
+
+  .article {
+    margin-bottom: $content-gap-end;
+  }
+
+  .article:last-child,
+  .article:only-child {
+    margin-bottom: 0;
+  }
 }
 
 // Definitions
@@ -48,8 +57,14 @@ $content-opener-size: variables.$font-md;
     flex-basis: 100%;
   }
 
-  .topics, time {
+  time {
     font-size: variables.$font-sm;
+  }
+
+  .topics {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: variables.$font-xs;
   }
 
   > time::after {
