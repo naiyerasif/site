@@ -16,7 +16,7 @@ module.exports = {
   copyright: `Copyright ${new Date().getFullYear()} ${pkgAuthor}`,
   prefs: {
     draftDir: '.archive/backlog/blog',
-    statusDir: '.archive/backlog/status',
+    notesDir: '.archive/backlog/notes',
     editContext: `${pkgRepo.replace(/.git$/g, '')}/edit/release`,
     spriteDir: '/assets/images',
     excerptSize: 251,

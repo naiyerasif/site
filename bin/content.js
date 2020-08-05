@@ -23,9 +23,9 @@ const date = now.format('YYYY-MM-DD HH:mm:ss')
 
 let fileName, filePath, frontmatter
 
-if (CONTENT === 'status') {
+if (CONTENT === 'note') {
   fileName = `${now.format('YYYY-MM-DD-HH-mm')}-${slugify(TITLE, slugifyConfig)}`
-  filePath = `./${appConfig.prefs.statusDir}/${fileName}.md`
+  filePath = `./${appConfig.prefs.notesDir}/${fileName}.md`
   frontmatter = `---\ntitle: '${TITLE}'\ndate: ${date}\ntopics: [${META}]\n---\n`
 } else {
   fileName = `${now.format('YYYY-MM-DD')}-${slugify(TITLE, slugifyConfig)}`
