@@ -8,7 +8,6 @@
   "license": "MIT",
   "scripts": {
     "build": "gridsome build",
-    "deploy": "netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_ACCESS_TOKEN --prod --dir=public",
     "start": "gridsome develop",
     "status": "gridsome info",
     "new": "node bin/content.js",
