@@ -20,8 +20,8 @@ module.exports = [
   {
     id: 4,
     title: 'Remarkability',
-    description: 'Baseline CSS that improves reading experience of HTML documents',
-    link: 'https://microflash.github.io/remarkability/'
+    description: 'A compact CSS library for a pleasant reading experience on the web',
+    link: 'https://remarkability.netlify.app'
   },
   {
     id: 5,
