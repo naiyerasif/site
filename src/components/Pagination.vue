@@ -2,7 +2,7 @@
   <div class="sidekick">
     <div class="pagination" v-if="input.totalPages > 1">
       <g-link class="is-prev" :to="previousPage(input.currentPage)" v-if="input.currentPage > 1">&larr; Prev</g-link>
-      <div>page {{ input.currentPage }} of {{ input.totalPages }}</div>
+      <span>page {{ input.currentPage }} of {{ input.totalPages }}</span>
       <g-link class="is-next" :to="nextPage(input.currentPage)" v-if="input.currentPage < input.totalPages">Next &rarr;</g-link>
     </div>
     <div class="pagination" v-else>

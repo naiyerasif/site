@@ -2,12 +2,6 @@
 
 // Typography
 
-$family-sans-native: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-  Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
-  'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
-$family-code-native: SFMono-Regular, 'Roboto Mono', Menlo, Monaco, Consolas,
-  'Liberation Mono', 'Courier New', monospace !default;
-
 $weight-rg: var(--weight-rg) !default;
 $weight-bd: var(--weight-bd) !default;
 
@@ -80,20 +74,17 @@ $bg-warning: var(--bg-warning) !default;
 $bg-important: var(--bg-important) !default;
 
 @use '../../../node_modules/@microflash/remarkability/scss/variables' with (
-  $multiline-wrap: true,
-  $custom-selection: true,
-  $custom-scrollbar: true,
-  $custom-colors: true,
-  $custom-fonts: true,
-  $round-media: true,
-  $round-blocks: true,
-  $responsive-tables: true,
-  $hovered-links: true,
-  $variable-fonts: true,
-  $scroll-smoothly: true,
-  $family-base: (Inter, $family-sans-native),
-  $family-code: ('JetBrains Mono', $family-code-native),
-  $family-base-variable: ('Inter var', $family-sans-native),
+  $enable-selection-background: true,
+  $enable-custom-scrollbar: true,
+  $enable-custom-colors: true,
+  $enable-custom-fonts: true,
+  $enable-media-radius: true,
+  $enable-block-radius: true,
+  $enable-active-links: true,
+  $enable-variable-fonts: true,
+  $family-sans-custom: 'Inter',
+  $family-code-custom: 'JetBrains Mono',
+  $family-sans-variable: 'Inter var',
   $font-size-base: $font-rg,
   $weight-normal: $weight-rg,
   $weight-bold: $weight-bd,
@@ -115,7 +106,7 @@ $bg-important: var(--bg-important) !default;
   $text-headings: $text,
   $text-blockquote: $text-muted,
   $link: $link,
-  $link-hover: $link-vibrant,
+  $link-active: $link-vibrant,
   $link-visited: $link-vibrant,
   $table-thead: inherit,
   $scrollbar: $border,
