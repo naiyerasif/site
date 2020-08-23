@@ -12,14 +12,14 @@
           </div>
           <h1 class="title">{{ $page.post.title }}</h1>
           <div class="metadata-footer topics">
-            <span class="gap-ch" v-for="topic in $page.post.topics" :key="topic">#{{ topic }}</span>
+            <span class="gap-ch" v-for="topic in $page.post.topics" :key="topic">{{ topic }}</span>
           </div>
         </div>
       </div>
     </section>
     <main class="content">
       <ScrollIndicator />
-      <Toc :headers="$page.post.headings" />
+      <Toc v-if="$page.post.headings.length > 0" :headers="$page.post.headings" />
       <div class="article">
         <blockquote class="is-warning" v-if="outdationMessage">{{ outdationMessage }}</blockquote>
         <article v-html="$page.post.content" />

@@ -13,14 +13,15 @@ $card-title-size: variables.$font-lg;
 $card-description-size: variables.$font-rg;
 $metadata-color: variables.$text-muted;
 $metadata-font-size: variables.$font-sm;
+$topics-font-size: variables.$font-xs;
 
 .card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   @include utils.mx($ngap);
   padding: $gap;
   border-radius: $card-radius;
+  width: 100vw;
 
   &:focus,
   &:hover {
@@ -31,7 +32,6 @@ $metadata-font-size: variables.$font-sm;
   .card-title {
     display: flex;
     align-items: center;
-    @include utils.my(variables.$ch-rg);
     font-size: $card-title-size;
   }
 
@@ -53,12 +53,6 @@ $metadata-font-size: variables.$font-sm;
       margin-bottom: variables.$ch-rg;
     }
   }
-
-  .card-description {
-    color: variables.$text;
-    font-size: $card-description-size;
-    opacity: 0.85;
-  }
 }
 
 .topics {
@@ -69,4 +63,6 @@ $metadata-font-size: variables.$font-sm;
   padding-right: variables.$ch-sm;
   padding-left: variables.$ch-md;
   background-color: $card-background;
+  text-transform: uppercase;
+  font-size: $topics-font-size;
 }

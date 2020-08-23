@@ -56,7 +56,7 @@ module.exports = {
     {
       use: '@gridsome/source-filesystem',
       options: {
-        path: 'content/blog/**/*.md',
+        path: 'content/posts/**/*.md',
         typeName: 'Blog',
         refs: {
           authors: {
@@ -80,13 +80,6 @@ module.exports = {
       }
     },
     {
-      use: '@gridsome/source-filesystem',
-      options: {
-        path: 'content/notes/**/*.md',
-        typeName: 'Note'
-      }
-    },
-    {
       use: '@microflash/gridsome-plugin-feed',
       options: {
         contentTypes: ['Blog'],
@@ -107,7 +100,6 @@ module.exports = {
         nodeToFeedItem: (node) => ({
           title: node.title,
           date: node.date,
-          description: node.excerpt,
           author: [
             {
               name: `@${appConfig.name}`,

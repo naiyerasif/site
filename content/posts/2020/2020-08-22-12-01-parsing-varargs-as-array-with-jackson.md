@@ -1,7 +1,9 @@
 ---
 title: 'Parsing varargs as array with Jackson'
 date: 2020-08-22 12:01:03
-topics: [til]
+category: 'note'
+authors: [naiyer]
+topics: [java, serialization, jackson]
 ---
 
 Consider the following Java class where the setter for the `author` property accepts the values as varargs.

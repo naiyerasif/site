@@ -57,5 +57,9 @@ $metadata-header-gap-end: variables.$gap-xs;
   .metadata-footer {
     margin-top: $footer-gap-top;
     font-size: $metadata-header-font-size;
+
+    &.topics {
+      text-transform: uppercase;
+    }
   }
 }

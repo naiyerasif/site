@@ -41,41 +41,6 @@ $content-opener-size: variables.$font-md;
 
 .definition {
   margin-bottom: variables.$gap-lg;
-
-  dt {
-    font-weight: variables.$weight-bd;
-  }
-}
-
-// Notes
-
-.note-header {
-  display: flex;
-  align-items: center;
-
-  .subtitle {
-    flex-basis: 100%;
-  }
-
-  time {
-    font-size: variables.$font-sm;
-  }
-
-  .topics {
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: variables.$font-xs;
-  }
-
-  > time::after {
-    content: variables.$symbol-separator;
-    @include utils.mx(variables.$separator-gap);
-    opacity: variables.$separator-opacity;
-  }
-
-  hr {
-    flex-grow: 1;
-  }
 }
 
 // Reference links

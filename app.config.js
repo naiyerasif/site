@@ -19,7 +19,6 @@ module.exports = {
     notesDir: '.archive/backlog/notes',
     editContext: `${pkgRepo.replace(/.git$/g, '')}/edit/release`,
     spriteDir: '/assets/images',
-    excerptSize: 251,
     maxTocDepth: 3,
     outdationPeriod: 365 // in days
   },
@@ -81,7 +80,7 @@ module.exports = {
       minMatchCharLength: 3,
       keys: [
         'title',
-        'excerpt'
+        'topics'
       ]
     }
   }

@@ -1,10 +1,8 @@
 const path = require('path')
 const fs = require('fs')
-const { GraphQLString } = require('gridsome/graphql')
 const moment = require('moment')
 
 const appConfig = require('./app.config')
-const excerpt = require('./app.server').excerpt
 const localProjects = require('./content/projects')
 
 const outdationDate = appConfig.prefs.outdationPeriod ? moment().clone().subtract(appConfig.prefs.outdationPeriod, 'days').startOf('day') : null
@@ -17,6 +15,10 @@ module.exports = api => {
         options.updated = options.date
       }
 
+      if (!options.category) {
+        options.category = 'guide'
+      }
+
       if (typeof(options.outdated) == 'undefined') {
         options.outdated = outdationDate && moment(options.updated, 'YYYY-MM-DD HH:mm:ss').isBefore(outdationDate) ? 'true' : 'undefined'
       }
@@ -26,16 +28,6 @@ module.exports = api => {
   })
 
   api.loadSource(async ({ getCollection, addCollection, addSchemaResolvers }) => {
-    addSchemaResolvers({
-      Blog: {
-        excerpt: {
-          type: GraphQLString,
-          resolve(post) {
-            return post.excerpt ? post.excerpt : excerpt(post.content)
-          }
-        }
-      }
-    })
 
     const { collection } = getCollection('Project')
 
@@ -99,7 +91,7 @@ module.exports = api => {
       return {
         title: post.title,
         path: post.path,
-        excerpt: post.excerpt ? post.excerpt : excerpt(post.content)
+        topics: post.topics
       }
     })
 

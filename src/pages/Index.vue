@@ -11,12 +11,12 @@
           <time v-html="post.node.date" />
           <span>&sim;{{ post.node.timeToRead }} min read</span>
           <section class="topics">
-            <span class="gap-ch" v-for="topic in post.node.topics" :key="topic">#{{ topic }}</span>
+            <span class="gap-ch"><strong class="gap-ch">{{ post.node.category }}</strong>on</span>
+            <span class="gap-ch" v-for="topic in post.node.topics" :key="topic">{{ topic }}</span>
           </section>
         </div>
         <div class="card-content">
           <g-link class="card-title" :to="post.node.path">{{ post.node.title }}</g-link>
-          <div class="card-description">{{ post.node.excerpt | clip }}</div>
         </div>
       </div>
     </main>
@@ -37,8 +37,8 @@ query Blogs ($page: Int) {
         id
         title
         date (format: "MMM D, Y")
-        excerpt
         timeToRead
+        category
         topics
         path
       }
