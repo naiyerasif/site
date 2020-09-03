@@ -3,44 +3,30 @@
 @use '../mixins/utils';
 @use '../mixins/queries';
 
-$font-size: variables.$font-sm;
-$block-padding: properties.$space-rg;
-$item-radius: variables.$radius;
-$item-inline-padding: variables.$gap-sm;
-$item-block-padding: variables.$gap-xs;
-$item-active-background: variables.$bg-muted;
-$residual-gap: variables.$gap-sm * -1;
+// Header
+
+$header-gap: properties.$space-rg;
+$header-wrap: properties.$flex-wrap;
+$header-font-size: variables.$font-sm;
+$header-item-radius: variables.$radius;
+$header-menu-offsetx: -(utils.$tappable-gapx);
+$header-menu-offsety: utils.$tappable-gapx;
 
 .header {
-  flex-wrap: properties.$responsive-wrap;
+  display: flex;
+  flex-wrap: $header-wrap;
   justify-content: space-between;
   align-items: center;
-  font-size: $font-size;
-  @include utils.py($block-padding);
+  padding: $header-gap;
+  font-size: $header-font-size;
 
   > * {
-    border-radius: $item-radius;
-    padding: $item-block-padding $item-inline-padding;
-
-    &:focus,
-    &:hover {
-      background-color: $item-active-background;
-      text-decoration: none;
-    }
-
-    &:first-child {
-      margin-left: $residual-gap;
-      background-color: transparent;
-    }
-
-    &:last-child {
-      margin-right: $residual-gap;
-    }
+    display: inherit;
   }
 
-  .brand,
-  .theme-switcher {
-    line-height: 0;
+  .menu > *,
+  .search > a {
+    @include utils.tappable;
   }
 
   .brand {
@@ -50,17 +36,19 @@ $residual-gap: variables.$gap-sm * -1;
       @include utils.size(inherit);
     }
   }
+
+  .menu {
+    @include utils.even-gap;
+    @include utils.mx($header-menu-offsetx);
+  }
 }
 
 // Rearrange on small screen
 
 @include queries.rg {
-  .brand {
+  .menu {
     flex-basis: 100%;
-    margin-bottom: $item-block-padding;
-
-    + a {
-      margin-left: $residual-gap !important;
-    }
+    order: 1;
+    margin-top: $header-menu-offsety;
   }
 }

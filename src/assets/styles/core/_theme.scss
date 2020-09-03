@@ -80,14 +80,13 @@ $black: mono(900);
   $text-base: mix($black, secondary(900), 25%);
 
   --text: #{$text-base};
-  --text-muted: #{saturate(mix($bg-base, secondary(800), 10%), 20%)};
+  --text-passive: #{saturate(mix($bg-base, secondary(800), 10%), 20%)};
   --link: #{mix($text-base, primary(500), 24%)};
-  --link-vibrant: #{mix($text-base, primary(500), 31%)};
+  --link-active: #{mix($text-base, primary(500), 31%)};
   --border: #{mix($bg-base, $text-base, 77%)};
   --bg-body: #{$bg-base};
-  --bg-vibrant: #{mix($white, mono(200), 85%)};
-  --bg-muted: #{mix($white, primary(300), 80%)};
-
+  --bg-active: #{mix($white, mono(200), 85%)};
+  --bg-passive: #{mix($white, primary(300), 80%)};
   --bg-caution: hsl(54, 36%, 86%);
   --bg-tip: hsl(160, 27%, 88%);
   --bg-warning: hsl(5, 70%, 90%);
@@ -96,8 +95,8 @@ $black: mono(900);
   --weight-rg: 400;
   --weight-bd: 700;
 
-  --stroke-width-sm: 2px;
-  --stroke-width-rg: 1.5px;
+  --stroke-sm: 1.75px;
+  --stroke-rg: 1.25px;
 }
 
 // CSS properties for dark theme
@@ -107,22 +106,21 @@ $black: mono(900);
   $text-base: mix($black, $white, 25%);
 
   --text: #{$text-base};
-  --text-muted: #{mix($bg-base, secondary(500), 5%)};
+  --text-passive: #{mix($bg-base, secondary(500), 5%)};
   --link: #{mix($text-base, primary(500), 5%)};
-  --link-vibrant: #{primary(400)};
+  --link-active: #{primary(400)};
   --border: #{mix($bg-base, $text-base, 85%)};
   --bg-body: #{$bg-base};
-  --bg-vibrant: #{mix($black, $bg-base, 20%)};
-  --bg-muted: #{mix($black, primary(900), 33%)};
-
-  --bg-caution: hsl(51, 23%, 24%);
-  --bg-tip: hsl(160, 34%, 22%);
-  --bg-warning: hsl(4, 56%, 28%);
+  --bg-active: #{mix($black, $bg-base, 20%)};
+  --bg-passive: #{mix($black, primary(900), 33%)};
+  --bg-caution: hsl(49, 20%, 20%);
+  --bg-tip: hsl(160, 30%, 19%);
+  --bg-warning: hsl(4, 50%, 23%);
   --bg-important: hsl(228, 41%, 26%);
 
   --weight-rg: 350;
   --weight-bd: 600;
 
-  --stroke-width-sm: 1.5px;
-  --stroke-width-rg: 1px;
+  --stroke-sm: 1.5px;
+  --stroke-rg: 1px;
 }

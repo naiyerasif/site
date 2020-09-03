@@ -56,3 +56,15 @@
 .rotate-in-right-leave-to {
   opacity: 0;
 }
+
+// Theme switch transition
+
+* {
+  transition-property: background-color, border-color, font-weight, stroke-width;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+
+  @media (print), (prefers-reduced-motion: reduce) {
+    transition-duration: 1ms;
+  }
+}

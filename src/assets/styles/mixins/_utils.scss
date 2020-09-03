@@ -35,17 +35,6 @@
   margin-block: $value;
 }
 
-// Container
-
-@mixin container {
-  display: flex;
-  flex-grow: 1;
-  @include mx(auto);
-  position: relative;
-  width: 100%;
-  max-width: properties.$container-width;
-}
-
 // Visibility
 
 @mixin hide($hidden: true, $display-fallback: unset) {
@@ -56,4 +45,56 @@
     visibility: visible;
     display: $display-fallback;
   }
+}
+
+// Full-width
+
+$pgap: properties.$space-rg;
+$ngap: properties.$negative-space-rg;
+
+@mixin fullwidth($my: false) {
+  @if $my {
+    margin: $pgap $ngap;
+  } @else {
+    margin-right: $ngap;
+    margin-left: $ngap;
+  }
+
+  padding: $pgap;
+}
+
+// Even-gap
+
+$even-gap: variables.$ch-rg;
+
+@mixin even-gap($gap: $even-gap) {
+  & > *:not(:last-child) {
+    margin-right: $gap;
+  }
+}
+
+// Tappable
+
+$tappable-radius: variables.$radius;
+$tappable-gapx: variables.$gap-sm;
+$tappable-gapy: variables.$gap-xs;
+$tappable-background: variables.$bg-passive;
+
+@mixin tappable($radius: $tappable-radius, $gapx: $tappable-gapx, $gapy: $tappable-gapy) {
+  border-radius: $radius;
+  padding: $gapy $gapx;
+
+  &:focus,
+  &:hover {
+    background-color: $tappable-background;
+    text-decoration: none;
+  }
+}
+
+// Separator
+
+@mixin separator() {
+  content: variables.$symbol-separator;
+  @include mx(variables.$separator-gap);
+  opacity: variables.$separator-opacity;
 }

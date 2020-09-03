@@ -1,25 +1,25 @@
 <template>
   <Layout>
-    <div class="hero">
-      <div class="metadata">
-        <div class="metadata-media">
-          <g-image :alt="firstName" :src="$page.profile.avatar" />
-        </div>
-        <div class="metadata-content">
-          <h1 class="title">Hello, I'm <span class="is-primary">{{ firstName }}</span></h1>
-          <div class="subtitle">a {{ $page.profile.role | lowerCase }} from {{ $page.profile.location }}</div>
-        </div>
+    <Hero flex>
+      <div class="hero-media">
+        <g-image :alt="firstName" :src="$page.profile.avatar" />
       </div>
-    </div>
+      <div class="hero-content">
+        <h1 class="title">Hello, I'm <span class="is-primary">{{ firstName }}</span></h1>
+        <div class="subtitle">a {{ $page.profile.role | lowerCase }} from {{ $page.profile.location }}</div>
+      </div>
+    </Hero>
+    <ScrollIndicator />
     <main class="content">
-      <ScrollIndicator />
-      <article v-html="$page.profile.content" />
+      <article class="article" v-html="$page.profile.content" />
     </main>
     <div class="sidekick">
-      <div class="sidekick-actions">
-        <a href="#app" title="Back to top">
-          <Sprite symbol="icon-up" class="icon-rg" />
-        </a>
+      <div class="sidekick-wrapper">
+        <div class="sidekick-actions">
+          <a href="#app" title="Back to top">
+            <Sprite symbol="icon-up" class="icon-rg" />
+          </a>
+        </div>
       </div>
     </div>
   </Layout>
@@ -39,6 +39,7 @@ query Profile ($id: ID!) {
 </page-query>
 
 <script>
+import Hero from '~/components/partials/Hero'
 import Sprite from '~/components/Sprite'
 import ScrollIndicator from '~/components/ScrollIndicator'
 
@@ -49,6 +50,7 @@ export default {
     }
   },
   components: {
+    Hero,
     Sprite,
     ScrollIndicator
   },

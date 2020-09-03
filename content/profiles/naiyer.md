@@ -6,35 +6,33 @@ location: 'Bengaluru, India'
 avatar: './avatars/naiyer.png'
 ---
 
-I've worked on a variety of projects in Banking &amp; Financial Services, Legal &amp; Compliance, Document Processing and Aviation domains, with experience on ETL, frontend, site reliability and backend.
+I've experience in Aviation, Legal &amp; Compliance, Document Processing, and Banking &amp; Financial Services domains, with projects on backend, site reliability, frontend and ETL.
 
 :::note Technologies I'm adept at &mdash;
-- **Java** &mdash; open-source programming platform to build web, desktop, embedded devices and mobile applications
-- **Spring** &mdash; open-source framework for building modern Java-based enterprise applications
-- **Node.js** &mdash; asynchronous event-driven JavaScript runtime designed to build scalable network applications
-- **Oracle** &mdash; converged database management system for OLTP, warehousing and mixed workloads
+- **Java** and **Spring Boot**
+- **Relational databases** (Postgres and Oracle)
+- **Node.js**
 :::
 
 :::note Other technologies that I work on &mdash;
-- **Angular** &mdash; open-source web framework to create single-page applications using TypeScript
-- **Vue.js** &mdash; progressive JavaScript framework to build user interfaces and single-page applications
-- **Docker** &mdash; container platform to build, deploy and share applications anywhere
-- **Postgres** &mdash; open-source SQL-compliant object-relational database system
-- **Groovy** &mdash; optionally-typed dynamic language that runs on JVM
-- **MongoDB** &mdash; general purpose, document-based, distributed data platform
-- **Jenkins** &mdash; open source automation server to build, test and deploy software
+- **Vue.js** and **Angular**
+- **Vuepress** and **Gridsome**
+- **CSS and SASS**
+- **Groovy** (mainly with Spock framework and Gradle)
+- **Docker** and to some extent **Jenkins**
+- **MongoDB**
 :::
 
-I love to draw vector illustrations and have an avid interest in typography. I spend a lot of time hunting for good science fiction and fantasy books and reading them while commuting, after office and at random intervals during the day. I regularly explore new tools that improve my productivity and enhance my cache of knowledge.
+I love to draw vector illustrations and have an avid interest in typography. I spend a fair amount of time reading science fiction and fantasy books. I regularly explore new tools that improve my productivity and learning process.
 
 ### About this site
 
 This site began as a pet project while I was learning [Vue.js](https://vuejs.org/) and [GraphQL](https://graphql.org/). It helped me get my bearing around Vue.js community, accessibility, web performance and more.
 
-A lot of the posts here are tutorial-style notes that I'd documented to demonstrate a concept or process for my colleagues and myself. They serve as a reference of what I've learned, and a source to receive ~~criticism and scorn~~ constructive feedback. 
+Most of the posts here use a tutorial-style format to document a concept or process for my colleagues, peers and myself. They serve as a reference of what I've learned, and a source of ~~criticism and scorn~~ constructive feedback. 
 
 :::warning
-The code described in the examples is meant for the demonstration of the topic under discussion; please apply caution and common sense before using it in an actual application.
+Please treat the code samples as a reference and demonstration of the topic under discussion. They are **optimized for learning** and **not for use in production codebase**. Please seek out the advice of your peers before using them in an existing application.
 :::
 
 Feel free to look around and contact me with any questions at [@Microflash](https://www.twitter.com/Microflash) (which is the namesake of this site).
@@ -50,7 +48,7 @@ This site was made possible by
 - [Prism](https://prismjs.com/): a lightweight, extensible syntax highlighter
 - [Feather](https://feathericons.com/): beautiful open-source icons
 - [Spritely](https://github.com/Microflash/spritely): a Node.js CLI to generate SVG sprites
-- [Remarkability](https://mflash.dev/remarkability/): baseline CSS to improve readability of HTML documents
+- [Remarkability](https://remarkability.netlify.app): a compact CSS library for a pleasant reading experience on the web
 - [Bourbon](https://www.bourbon.io/): a lightweight SASS tool set
 - [Animate.css](https://github.com/daneden/animate.css): a cross-browser library of CSS animations
 - [Grid By Example](https://gridbyexample.com/): a collection of examples and references on CSS Grid
@@ -60,14 +58,14 @@ This site was made possible by
 
 This site uses
 
-- [CSS variables](https://css-tricks.com/guides/css-custom-properties/) to achieve responsive design and theme switching
+- [CSS variables](https://css-tricks.com/guides/css-custom-properties/) for responsive design and theme switching
 - [GraphQL](https://graphql.org/) for querying data
 - [Vue.js](https://vuejs.org/) as the frontend framework
 - [SASS](https://sass-lang.com/) as the CSS preprocessor (using Module System, and lightly adhering to SMACSS)
 - [PurgeCSS](https://purgecss.com/) to remove unused CSS
 - [Inter](https://rsms.me/inter/) as the body font (variable font with traditional fallbacks)
 - [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) as the `monospace` font
-- a [custom Prism theme](https://github.com/Microflash/site/blob/release/src/assets/styles/_syntax.scss) to decorate the codeblocks
+- a [custom Prism theme](https://github.com/Microflash/site/blob/release/src/assets/styles/components/_code.scss) to decorate the codeblocks
 - [Yarn](https://github.com/yarnpkg/yarn) as the package manager
 - [Git LFS](https://github.com/git-lfs/git-lfs) to version large files
 - [CircleCI](https://circleci.com/) for continuous integration

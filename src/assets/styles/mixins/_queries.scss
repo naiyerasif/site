@@ -16,20 +16,23 @@
 
 // Pre-defined media queries
 
+$breakpoint-sm: variables.$breakpoint-sm;
+$breakpoint-md: variables.$breakpoint-md;
+
 @mixin sm {
-  @include within(variables.$breakpoint-sm) {
+  @include within($breakpoint-sm) {
     @content;
   }
 }
 
 @mixin rg {
-  @include within(variables.$breakpoint-md) {
+  @include within($breakpoint-md) {
     @content;
   }
 }
 
 @mixin md {
-  @include beyond(variables.$breakpoint-md) {
+  @include beyond($breakpoint-md) {
     @content;
   }
 }

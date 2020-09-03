@@ -13,7 +13,7 @@ This site was made possible by
 - [Prism](https://prismjs.com/): a lightweight, extensible syntax highlighter
 - [Feather](https://feathericons.com/): beautiful open-source icons
 - [Spritely](https://github.com/Microflash/spritely): a Node.js CLI to generate SVG sprites
-- [Remarkability](https://mflash.dev/remarkability/): baseline CSS to improve readability of HTML documents
+- [Remarkability](https://remarkability.netlify.app): a compact CSS library for a pleasant reading experience on the web
 - [Bourbon](https://www.bourbon.io/): a lightweight SASS tool set
 - [Animate.css](https://github.com/daneden/animate.css): a cross-browser library of CSS animations
 - [Grid By Example](https://gridbyexample.com/): a collection of examples and references on CSS Grid
@@ -30,7 +30,7 @@ This site uses
 - [PurgeCSS](https://purgecss.com/) to remove unused CSS
 - [Inter](https://rsms.me/inter/) as the body font (variable font with traditional fallbacks)
 - [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) as the `monospace` font
-- a [custom Prism theme](https://github.com/Microflash/site/blob/release/src/assets/styles/_syntax.scss) to decorate the codeblocks
+- a [custom Prism theme](https://github.com/Microflash/site/blob/release/src/assets/styles/components/_code.scss) to decorate the codeblocks
 - [Yarn](https://github.com/yarnpkg/yarn) as the package manager
 - [Git LFS](https://github.com/git-lfs/git-lfs) to version large files
 - [CircleCI](https://circleci.com/) for continuous integration

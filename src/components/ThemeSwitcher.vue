@@ -1,5 +1,5 @@
 <template>
-  <a role="switch" @click.prevent="switchTheme" :aria-label="'Switch to ' + nextTheme + ' theme'" aria-checked="true" class="theme-switcher">
+  <a role="switch" @click.prevent="switchTheme" :aria-label="'Switch to ' + nextTheme + ' theme'" aria-checked="true" class="theme-switcher is-icon">
     <svg viewBox="0 0 24 24" class="icon-rg">
       <transition name="slide-up" mode="out-in">
         <use :xlink:href="uri('dark')" :href="uri('dark')" key="dark" v-if="theme === 'dark'"></use>
@@ -12,6 +12,7 @@
 <script>
 import * as appConfig from '@/app.config'
 
+const { paths } = appConfig
 const themes = ['light', 'dark']
 
 export default {
@@ -35,7 +36,7 @@ export default {
       this.theme = themes[nextIndex]
     },
     uri(symbol) {
-      return `${appConfig.prefs.spriteDir}/icons.svg#icon-${symbol}`
+      return `${paths.sprite}/icons.svg#icon-${symbol}`
     }
   },
   async mounted() {

@@ -5,10 +5,12 @@
 // Grid mixin
 // generates a grid with cells of specified width
 
+$grid-gap: properties.$space-sm;
+
 @mixin grid(
   $width,
   $height: 100%,
-  $gap: properties.$space-sm,
+  $gap: $grid-gap,
   $strategy: auto-fill,
   $mobile-friendly: true
 ) {

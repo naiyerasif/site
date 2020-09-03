@@ -1,0 +1,54 @@
+@use '../variables';
+@use '../properties';
+@use '../mixins/utils';
+
+// Posts
+
+$post-gap: properties.$space-md;
+$post-max-width: variables.$max-width-rg;
+$post-item-gapx: properties.$content-article-gap;
+$post-item-gapy: properties.$space-rg;
+$post-header-wrap: properties.$flex-wrap;
+$post-header-size: variables.$font-sm;
+$post-header-gap: variables.$ch-rg;
+$post-title-size: variables.$font-lg;
+$post-excerpt-color: variables.$text-passive;
+
+.posts {
+  @include utils.my($post-gap);
+
+  .post-item {
+    cursor: pointer;
+    @include utils.tappable($radius: 0, $gapx: $post-item-gapx, $gapy: $post-item-gapy);
+
+    > * {
+      max-width: $post-max-width;
+      @include utils.mx(auto);
+    }
+
+    .post-header {
+      display: flex;
+      align-items: center;
+      flex-wrap: $post-header-wrap;
+      font-size: $post-header-size;
+
+      > * {
+        margin-bottom: $post-header-gap;
+
+        &:not(:last-child)::after {
+          @include utils.separator;
+        }
+      }
+    }
+
+    .post-title {
+      font-size: $post-title-size;
+    }
+
+    .post-excerpt {
+      margin-top: $post-header-gap;
+      color: $post-excerpt-color;
+      font-size: 0.9em;
+    }
+  }
+}

@@ -1,0 +1,110 @@
+@use 'variables';
+@use 'properties';
+@use 'mixins/utils';
+@use 'mixins/layout';
+@use 'mixins/queries';
+
+// Containers
+
+$topics-font-size: variables.$font-xs;
+$topics-gapy: variables.$ch-sm; 
+$topics-gapx: variables.$ch-md;
+$topics-border: variables.$border;
+$topics-separator: variables.$symbol-separator;
+
+.is-flex {
+  display: flex;
+  flex-wrap: properties.$flex-wrap;
+}
+
+.topics {
+  display: inline-block;
+  border-radius: 5rem;
+  border: 1px solid $topics-border;
+  @include utils.py($topics-gapy);
+  padding-right: $topics-gapy;
+  padding-left: $topics-gapx;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: $topics-font-size;
+
+  .is-next {
+    margin-right: 1ch;
+  }
+
+  .is-mid {
+    @include utils.mx($topics-gapx);
+  }
+}
+
+// Links
+
+a {
+  &[rel*='nofollow']::after {
+    content: variables.$symbol-external-link;
+  }
+
+  &.active {
+    font-weight: variables.$weight-bd;
+  }
+
+  &.is-icon {
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
+  }
+}
+
+// Icons
+
+.svg {
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vertical-align: middle;
+  fill: currentColor;
+  fill-opacity: variables.$fill-opacity;
+}
+
+.icon-rg {
+  @extend .svg;
+  stroke-width: variables.$stroke-rg;
+  @include utils.size(variables.$icon-rg);
+}
+
+.icon-sm {
+  @extend .svg;
+  stroke-width: variables.$stroke-sm;
+  @include utils.size(variables.$icon-sm);
+}
+
+// Grids
+
+.footer-grid {
+  @include layout.grid($width: variables.$grid-sm, $gap: properties.$space-rg);
+}
+
+// Colors
+
+.is-primary {
+  color: variables.$link;
+  border-color: variables.$link;
+}
+
+// Gap
+
+.gap-ch {
+  margin-right: variables.$ch-rg;
+
+  &-sm {
+    margin-right: variables.$ch-sm;
+  }
+}
+
+// Hide utility
+
+.hidden-sm {
+  @include queries.sm {
+    @include utils.hide;
+  }
+}

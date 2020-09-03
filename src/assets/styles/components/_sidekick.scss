@@ -4,83 +4,96 @@
 
 // Sidekick
 
-$gap-start: properties.$hero-gap-block;
-$indicator-padding: variables.$ch-rg;
-$indicator-color: variables.$text-muted;
-$indicator-font-size: variables.$font-xs;
-$indicator-gap-end: properties.$space-rg;
-$actions-gap-inline: variables.$gap-xs;
-$actions-radius: variables.$radius;
-$actions-inline-padding: variables.$gap-sm;
-$actions-block-padding: variables.$gap-xs;
-$actions-active-background: variables.$bg-muted;
-$sidekick-background: variables.$bg-vibrant;
-$sidekick-active-background: variables.$bg-muted;
+$sidekick-background: variables.$bg-mid;
+$sidekick-topics-background: variables.$bg-body;
+$sidekick-topics-gapy: variables.$gap-rg;
+$sidekick-gap: properties.$space-rg;
+$sidekick-max-width: variables.$max-width-rg;
+$sidekick-nav-gap: properties.$space-rg;
+$sidekick-nav-margin: properties.$negative-space-rg;
+$sidekick-nav-flex-wrap: properties.$flex-wrap;
+$sidekick-nav-flex-basis: properties.$flex-basis;
+$sidekick-nav-background-prev: variables.$bg-prev;
+$sidekick-nav-background-next: variables.$bg-next;
+$sidekick-nav-background-active: variables.$bg-passive;
+$sidekick-nav-indicator-gap: variables.$ch-rg;
+$sidekick-nav-indicator-color: variables.$text-passive;
+$sidekick-nav-indicator-font-size: variables.$font-xs;
+$sidekick-nav-indicator-font-weight: variables.$weight-bd;
 
 .sidekick {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-top: $gap-start;
+  background-color: $sidekick-background;
+  padding: $sidekick-gap;
+
+  &-wrapper {
+    max-width: $sidekick-max-width;
+    @include utils.mx(auto);
+    text-align: center;
+
+    .topics {
+      background-color: $sidekick-topics-background;
+      @include utils.py($sidekick-topics-gapy);
+
+      a {
+        @include utils.tappable($radius: 10rem);
+      }
+    }
+
+    .sidekick-actions {
+      display: flex;
+      flex-basis: 100%;
+      justify-content: center;
+
+      a {
+        @include utils.tappable;
+      }
+    }
+  }
 
   a {
-    display: inline-flex;
-    align-items: center;
-
     &:focus,
     &:hover {
       text-decoration: none;
     }
   }
 
-  .sidekick-actions {
+  &-navigation {
     display: flex;
-    flex-basis: 100%;
-    justify-content: center;
+    flex-wrap: $sidekick-nav-flex-wrap;
+    margin: $sidekick-nav-margin $sidekick-nav-margin $sidekick-nav-gap;
+
+    .is-prev {
+      background-color: $sidekick-nav-background-prev;
+    }
+
+    .is-next {
+      background-color: $sidekick-nav-background-next;
+    }
 
     > * {
-      border-radius: $actions-radius;
-      padding: $actions-block-padding $actions-inline-padding;
+      flex-basis: $sidekick-nav-flex-basis;
 
-      &:focus,
-      &:hover {
-        background-color: $actions-active-background;
-        text-decoration: none;
-      }
+      a {
+        display: flex;
+        padding: $sidekick-nav-gap;
 
-      &:not(:last-child) {
-        margin-right: $actions-gap-inline;
-      }
-    }
-  }
+        &:focus,
+        &:hover {
+          background-color: $sidekick-nav-background-active;
+        }
 
-  .sidekick-navigation {
-    margin-bottom: $indicator-gap-end;
-    width: 100%;
+        .label {
+          display: block;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+        }
 
-    a {
-      @include utils.size(100%);
-      padding: variables.$gap-rg variables.$gap-md;
-      border: 1px solid variables.$border;
-      border-radius: variables.$radius;
-      background-color: $sidekick-background;
-
-      &:focus,
-      &:hover {
-        background-color: $sidekick-active-background;
-      }
-
-      .label {
-        display: block;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-      }
-
-      .label,
-      .indicator {
-        color: $indicator-color;
-        font-size: $indicator-font-size;
-        font-weight: variables.$weight-bd;
+        .label,
+        .indicator {
+          color: $sidekick-nav-indicator-color;
+          font-size: $sidekick-nav-indicator-font-size;
+          font-weight: $sidekick-nav-indicator-font-weight;
+        }
       }
     }
 
@@ -92,7 +105,7 @@ $sidekick-active-background: variables.$bg-muted;
       }
 
       .indicator {
-        padding-right: $indicator-padding;
+        padding-right: $sidekick-nav-indicator-gap;
       }
     }
 
@@ -105,27 +118,8 @@ $sidekick-active-background: variables.$bg-muted;
       }
 
       .indicator {
-        padding-left: $indicator-padding;
+        padding-left: $sidekick-nav-indicator-gap;
       }
     }
-  }
-}
-
-// Pagination
-
-$pagination-gap: variables.$gap-rg;
-
-.pagination {
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  font-size: $indicator-font-size;
-
-  .is-prev {
-    margin-right: $pagination-gap;
-  }
-
-  .is-next {
-    margin-left: $pagination-gap;
   }
 }

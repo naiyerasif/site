@@ -1,12 +1,14 @@
 <template>
   <div class="sidekick">
-    <div class="pagination" v-if="input.totalPages > 1">
-      <g-link class="is-prev" :to="previousPage(input.currentPage)" v-if="input.currentPage > 1">&larr; Prev</g-link>
-      <span>page {{ input.currentPage }} of {{ input.totalPages }}</span>
-      <g-link class="is-next" :to="nextPage(input.currentPage)" v-if="input.currentPage < input.totalPages">Next &rarr;</g-link>
-    </div>
-    <div class="pagination" v-else>
-      <div class="is-muted">🔚 end of the list</div>
+    <div class="sidekick-wrapper">
+      <div class="topics" v-if="input.totalPages > 1">
+        <g-link class="is-prev" :to="previousPage(input.currentPage)" v-if="input.currentPage > 1">&larr; Prev</g-link>
+        <span class="is-mid">page {{ input.currentPage }} of {{ input.totalPages }}</span>
+        <g-link class="is-next" :to="nextPage(input.currentPage)" v-if="input.currentPage < input.totalPages">Next &rarr;</g-link>
+      </div>
+      <div class="topics" v-else>
+        <div class="is-muted">🔚 end of the list</div>
+      </div>
     </div>
   </div>
 </template>

@@ -5,7 +5,7 @@ const moment = require('moment')
 const slugify = require('@sindresorhus/slugify')
 const program = require('commander')
 
-const appConfig = require('../app.config')
+const { paths } = require('../app.config')
 const slugifyConfig = require('../gridsome.config').permalinks.slugify.options
 
 program
@@ -25,11 +25,11 @@ let fileName, filePath, frontmatter
 
 if (CONTENT === 'note') {
   fileName = `${now.format('YYYY-MM-DD-HH-mm')}-${slugify(TITLE, slugifyConfig)}`
-  filePath = `./${appConfig.prefs.notesDir}/${fileName}.md`
+  filePath = `./${paths.note}/${fileName}.md`
   frontmatter = `---\ntitle: '${TITLE}'\ndate: ${date}\ntopics: [${META}]\n---\n`
 } else {
   fileName = `${now.format('YYYY-MM-DD')}-${slugify(TITLE, slugifyConfig)}`
-  filePath = `./${appConfig.prefs.draftDir}/${fileName}.md`
+  filePath = `./${paths.blog}/${fileName}.md`
   frontmatter = `---\ntitle: '${TITLE}'\ndate: ${date}\nauthors: [naiyer]\ntopics: [${META}]\n---\n`
 }
 

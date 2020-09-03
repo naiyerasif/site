@@ -4,62 +4,62 @@
 
 // Hero
 
-$hero-background: variables.$bg-vibrant;
-$hero-border-radius: properties.$responsive-radius;
-$hero-gap-block: properties.$space-rg;
-$footer-gap-top: properties.$space-sm;
-$metadata-gap-start: properties.$space-rg;
-$metadata-gap-end: properties.$metadata-gap-end;
-$metadata-header-font-size: variables.$font-sm;
-$metadata-header-gap-end: variables.$gap-xs;
+$hero-background: variables.$bg-active;
+$hero-gapx: properties.$space-rg;
+$hero-gapy: properties.$space-md;
+$hero-max-width: variables.$max-width-rg;
+$hero-title-size: variables.$font-xl;
+$hero-subtitle-size: variables.$font-md;
+$hero-subtitle-color: variables.$text-passive;
+$hero-content-gap-start: properties.$space-rg;
+$hero-content-gap-end: properties.$flex-gap;
+$hero-content-font-size: variables.$font-sm;
 
 .hero {
-  @include utils.py($hero-gap-block);
   background-color: $hero-background;
-  border-radius: $hero-border-radius;
-}
+  padding: $hero-gapy $hero-gapx;
 
-// Metadata
+  &-wrapper {
+    max-width: $hero-max-width;
+    @include utils.mx(auto);
 
-.metadata {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  flex: 1;
-
-  .metadata-media {
-    margin-right: $metadata-gap-start;
-    margin-bottom: $metadata-gap-end;
-
-    img {
-      @include utils.size(auto, calc(5rem + 5vw));
-      border-radius: 100%;
-    }
-  }
-
-  .metadata-header {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    font-size: $metadata-header-font-size;
-
-    > * {
-      margin-bottom: $metadata-header-gap-end;
+    &:only-child {
+      @include utils.my(0);
     }
 
-    > *:not(:last-child)::after {
-      content: variables.$symbol-separator;
-      @include utils.mx(variables.$separator-gap);
-      opacity: variables.$separator-opacity;
+    .title {
+      font-size: $hero-title-size;
+      line-height: 1.4;
     }
-  }
 
-  .metadata-footer {
-    margin-top: $footer-gap-top;
-    font-size: $metadata-header-font-size;
+    .subtitle {
+      font-size: $hero-subtitle-size;
+      color: $hero-subtitle-color;
+    }
 
-    &.topics {
-      text-transform: uppercase;
+    .hero-media {
+      margin-right: $hero-content-gap-start;
+      margin-bottom: $hero-content-gap-end;
+
+      img {
+        @include utils.size(auto, calc(5rem + 5vw));
+        border-radius: 100%;
+      }
+    }
+
+    .metadata {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      font-size: $hero-content-font-size;
+
+      > * {
+        margin-bottom: 1ch;
+
+        &:not(:last-child)::after {
+          @include utils.separator;
+        }
+      }
     }
   }
 }

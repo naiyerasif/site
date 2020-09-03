@@ -4,35 +4,38 @@
 
 // Footer
 
-$font-size: variables.$font-sm;
-$block-gap: properties.$hero-gap-block;
-$item-gap: properties.$space-rg;
+$footer-background: variables.$bg-active;
+$footer-gapx: properties.$space-rg;
+$footer-gapy: properties.$space-lg;
+$footer-font-size: variables.$font-sm;
+$footer-title-weight: variables.$weight-bd;
+$footer-title-bottom: variables.$gap-rg;
 
 .footer {
-  flex-wrap: wrap;
-  align-items: center;
-  @include utils.py($block-gap);
-  font-size: $font-size;
+  background-color: $footer-background;
+  padding: $footer-gapy $footer-gapx;
+  font-size: $footer-font-size;
 
-  .grid-sm {
-    width: 100%;
-  }
-
-  .footer-menu {
+  &-menu {
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
     flex-direction: column;
-    margin-bottom: $item-gap;
 
     a {
       display: inline-flex;
       align-items: center;
     }
+  }
 
-    .footer-title {
-      font-weight: variables.$weight-bd;
-      margin-bottom: variables.$gap-lg;
+  &-title {
+    font-weight: $footer-title-weight;
+    margin-bottom: $footer-title-bottom;
+  }
+
+  .network > a {
+    @include utils.tappable;
+
+    &:first-child {
+      margin-left: -(utils.$tappable-gapx);
     }
   }
 
@@ -40,10 +43,11 @@ $item-gap: properties.$space-rg;
     display: flex;
     align-items: center;
     width: 100%;
+    margin-top: $footer-gapx;
 
     .brand {
-      @include utils.size(32px);
-      flex-basis: 32px;
+      @include utils.size(28px);
+      flex-basis: 28px;
     }
   }
 }

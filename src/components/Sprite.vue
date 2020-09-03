@@ -7,7 +7,7 @@
 <script>
 import * as appConfig from '@/app.config'
 
-const { spriteDir } = appConfig.prefs
+const { paths } = appConfig
 
 export default {
   props: {
@@ -19,7 +19,7 @@ export default {
   },
   computed: {
     link() {
-      return `${spriteDir}/${this.src}.svg#${this.symbol}`
+      return `${paths.sprite}/${this.src}.svg#${this.symbol}`
     }
   }
 }

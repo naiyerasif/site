@@ -1,16 +1,12 @@
 <template>
   <Layout>
-    <div class="hero">
-      <div class="metadata">
-        <div class="metadata-content">
-          <h1 class="title">{{ getMsg() }}</h1>
-          <div class="subtitle">
-            &larr; Go back to <g-link to="/">Home</g-link>.
-          </div>
-        </div>
+    <Hero>
+      <h1 class="title">{{ getMsg() }}</h1>
+      <div class="subtitle">
+        &larr; Return to <g-link to="/">Home</g-link>.
       </div>
-    </div>
-    <main class="content">
+    </Hero>
+    <main>
       <figure>
         <NotFound />
       </figure>
@@ -19,6 +15,7 @@
 </template>
 
 <script>
+import Hero from '~/components/partials/Hero'
 import NotFound from '@/static/assets/images/404.svg'
 
 const msgs = [
@@ -33,6 +30,7 @@ export default {
     title: 'Page not found'
   },
   components: {
+    Hero,
     NotFound
   },
   methods: {

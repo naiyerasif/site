@@ -4,15 +4,15 @@
 
 // Search
 
-$search-background: variables.$bg-muted;
-$search-border-radius: properties.$responsive-radius;
-$search-gap-inline: properties.$search-gap-inline;
-$search-top-margin: properties.$search-top-margin;
-$searchbox-inline-padding: properties.$searchbox-gap-inline;
-$searchbox-block-padding: variables.$gap-sm;
-$result-background: variables.$bg-vibrant;
-$result-border: variables.$border;
-$result-border-width: properties.$result-border-width;
+$search-width: properties.$search-width;
+$search-background: utils.$tappable-background;
+$search-background-active: variables.$selected;
+$search-background-passive: variables.$code-selected;
+$search-gapy: utils.$tappable-gapy;
+$search-gapx: utils.$tappable-gapx;
+$search-radius: utils.$tappable-radius;
+$search-label-size: variables.$font-sm;
+$header-gap: properties.$space-rg;
 
 .search-container,
 .search-box {
@@ -23,74 +23,62 @@ $result-border-width: properties.$result-border-width;
 
 .search-container {
   position: absolute;
-  width: 100%;
-  margin-top: $search-top-margin;
-  top: 0;
-  right: 0;
-  left: 0;
+  right: $header-gap;
+  width: $search-width;
+  max-height: 40px;
 }
 
 .search-box {
   position: relative;
-  @include utils.mx($search-gap-inline);
-  padding: $searchbox-block-padding $searchbox-inline-padding;
+  width: 100%;
   background-color: $search-background;
-  border-radius: $search-border-radius;
-  width: inherit;
+  @include utils.tappable;
 
   .search-input {
     outline: none;
     border: none;
     flex: 1;
-    height: inherit;
-  }
-
-  .search-reset {
-    line-height: 0;
   }
 }
 
+@mixin border-bottom-radius($radius-right, $radius-left: $radius-right) {
+  border-bottom-right-radius: $radius-right;
+  border-bottom-left-radius: $radius-left;
+}
+
 .no-border-radius {
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+  @include border-bottom-radius(0);
 }
 
 .search-results {
   display: flex;
   flex-direction: column;
   position: absolute;
-  margin: 0 auto;
   top: 100%;
-  right: 0;
-  left: 0;
-  z-index: 5;
+  width: 100%;
   max-height: 75vh;
   overflow: hidden;
-  @include utils.px($search-gap-inline);
+  background-color: $search-background;
+  @include border-bottom-radius($search-radius);
 
   .results-box {
     overflow: auto;
-    width: inherit;
     z-index: 4;
-    background-color: $result-background;
-    border: solid $result-border;
-    border-width: $result-border-width;
 
     > * {
       display: block;
+      padding: $search-gapy $search-gapx;
     }
 
-    .result-label,
-    .result-item {
-      padding: $searchbox-block-padding $searchbox-inline-padding;
+    .result-label {
+      background-color: $search-background-passive;
+      font-size: $search-label-size;
     }
 
     .result-item {
-      border-top: 1px solid $result-border;
-
       &:focus,
       &:hover {
-        background-color: $search-background;
+        background-color: $search-background-active;
       }
     }
   }

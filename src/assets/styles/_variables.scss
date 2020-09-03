@@ -19,7 +19,7 @@ $breakpoint-md: 900px !default;
 $breakpoint-lg: 1200px !default;
 $breakpoint-xl: 1800px !default;
 
-$container-offset: 30vw !default;
+$max-width-rg: calc(#{$breakpoint-sm} + 20vw) !default;
 
 $gap-xs: 0.5rem !default;
 $gap-sm: 0.75rem !default;
@@ -36,10 +36,10 @@ $separator-gap: $ch-rg !default;
 $icon-sm: 1rem !default;
 $icon-rg: 1.5rem !default;
 
-$stroke-width-sm: var(--stroke-width-sm) !default;
-$stroke-width-rg: var(--stroke-width-sm) !default;
+$stroke-sm: var(--stroke-sm) !default;
+$stroke-rg: var(--stroke-sm) !default;
 
-$grid-sm: 15rem !default;
+$grid-sm: 16rem !default;
 
 // Display
 
@@ -55,31 +55,32 @@ $separator-opacity: 0.5 !default;
 // Colors
 
 $text: var(--text) !default;
-$text-muted: var(--text-muted) !default;
+$text-passive: var(--text-passive) !default;
 
 $link: var(--link) !default;
-$link-vibrant: var(--link-vibrant) !default;
+$link-active: var(--link-active) !default;
 
 $border: var(--border) !default;
 $selected: theme.fade(theme.primary(500), 0.75) !default;
 $code-selected: theme.fade(theme.primary(500), 0.91) !default;
 
 $bg-body: var(--bg-body) !default;
-$bg-vibrant: var(--bg-vibrant) !default;
-$bg-muted: var(--bg-muted) !default;
-
+$bg-active: var(--bg-active) !default;
+$bg-passive: var(--bg-passive) !default;
 $bg-caution: var(--bg-caution) !default;
 $bg-tip: var(--bg-tip) !default;
 $bg-warning: var(--bg-warning) !default;
 $bg-important: var(--bg-important) !default;
+
+$bg-prev: theme.fade(theme.secondary(500), 0.96) !default;
+$bg-next: theme.fade(theme.secondary(600), 0.90) !default;
+$bg-mid: theme.fade(theme.secondary(900), 0.92) !default;
 
 @use '../../../node_modules/@microflash/remarkability/scss/variables' with (
   $enable-selection-background: true,
   $enable-custom-scrollbar: true,
   $enable-custom-colors: true,
   $enable-custom-fonts: true,
-  $enable-media-radius: true,
-  $enable-block-radius: true,
   $enable-active-links: true,
   $enable-variable-fonts: true,
   $family-sans-custom: 'Inter',
@@ -89,25 +90,25 @@ $bg-important: var(--bg-important) !default;
   $weight-normal: $weight-rg,
   $weight-bold: $weight-bd,
   $background-body: $bg-body,
-  $background-code: $bg-muted,
-  $background-ins: $bg-muted,
-  $background-mark: $bg-muted,
+  $background-code: $bg-passive,
+  $background-ins: $bg-passive,
+  $background-mark: $bg-passive,
   $background-table: inherit,
   $background-table-even: inherit,
-  $background-table-hover: $bg-vibrant,
+  $background-table-hover: $bg-active,
   $background-selected: $selected,
-  $background-scrollbar: $bg-vibrant,
+  $background-scrollbar: $bg-active,
   $border-color: $border,
   $radius: $radius,
   $text: $text,
   $text-code: inherit,
   $text-bold: inherit,
-  $text-muted: $text-muted,
+  $text-muted: $text-passive,
   $text-headings: $text,
-  $text-blockquote: $text-muted,
+  $text-blockquote: $text-passive,
   $link: $link,
-  $link-active: $link-vibrant,
-  $link-visited: $link-vibrant,
+  $link-active: $link-active,
+  $link-visited: $link-active,
   $table-thead: inherit,
   $scrollbar: $border,
   $margin: $gap-lg

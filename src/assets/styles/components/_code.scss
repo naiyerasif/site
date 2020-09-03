@@ -1,5 +1,6 @@
-@use 'variables';
-@use 'properties';
+@use '../variables';
+@use '../properties';
+@use '../mixins/utils';
 
 // Token colors
 
@@ -20,28 +21,42 @@ $coral: hsl(4, 69%, 67%);
 $languages: js, ts, html, md, vue, css, sass, scss, less, stylus, go, java, c,
   sh, yaml, py, docker, dockerfile, properties, groovy, typescript, json, xml, git, shell, sql, bash, powershell, ini;
 
-$gap: properties.$space-rg;
-$ngap: properties.$nspace-rg;
+$code-background: variables.$bg-active;
+$code-max-width: variables.$max-width-rg;
+$code-gapy-rg: properties.$space-rg;
+$code-gapy-sm: properties.$space-sm;
+$code-gapx: properties.$content-article-gap;
+$code-gapx-neg: properties.$negative-space-rg;
 
 // Prism theme
 
 .gridsome-highlight {
-  margin: $gap $ngap;
+  @include utils.my($code-gapy-rg);
+  background-color: $code-background;
+
+  code {
+    max-width: $code-max-width;
+    @include utils.mx(auto);
+    padding: $code-gapy-sm $code-gapx;
+  }
 
   code[class*='language-'],
   pre[class*='language-'] {
     tab-size: 2;
     hyphens: none;
+    background-color: inherit;
   }
 
   pre[class*='language-']::before {
     display: block;
+    max-width: $code-max-width;
+    @include utils.mx(auto);
     z-index: 5;
     text-align: right;
-    margin-bottom: -(variables.$gap-md);
+    margin-bottom: -(variables.$gap-sm);
     padding-top: 0.5em;
     padding-right: 0.5em;
-    color: variables.$text-muted;
+    color: variables.$text-passive;
     font-size: 0.75em;
     font-weight: variables.$weight-bd;
     opacity: 0.75;
@@ -55,8 +70,8 @@ $ngap: properties.$nspace-rg;
 
   .gridsome-highlight-code-line {
     display: block;
-    margin-left: $ngap;
-    padding-left: $gap;
+    margin-left: $code-gapx-neg;
+    padding-left: $code-gapy-rg;
     background: linear-gradient(to right, variables.$code-selected 66%, transparent);
   }
 

@@ -4,43 +4,75 @@
 
 // Content
 
-$content-gap-start: properties.$space-lg;
-$content-gap-end: properties.$space-rg;
+$content-gap: properties.$space-md;
+$content-adm-gap: properties.$space-rg;
+$content-article-gap: properties.$content-article-gap;
+$content-list-gap: properties.$content-list-gap;
+$content-max-width: variables.$max-width-rg;
 $content-opener-size: variables.$font-md;
 
 .content {
-  flex-wrap: wrap;
-  align-items: center;
-  margin-top: $content-gap-start;
-  margin-bottom: $content-gap-end;
+  @include utils.my($content-gap);
 
-  .toc,
   .article {
-    article > p:first-child {
+    > p:first-of-type {
       font-size: $content-opener-size;
     }
-  }
 
-  .toc,
-  .article,
-  figure {
-    width: 100%;
-  }
+    > p,
+    > dl,
+    > table,
+    > h1,
+    > h2,
+    > h3,
+    > h4,
+    > h5,
+    > h6 {
+      max-width: $content-max-width;
+      @include utils.mx(auto);
+      @include utils.px($content-article-gap);
+    }
 
-  .article {
-    margin-bottom: $content-gap-end;
-  }
-
-  .article:last-child,
-  .article:only-child {
-    margin-bottom: 0;
+    
+    > ol,
+    > ul {
+      max-width: $content-max-width;
+      @include utils.mx(auto);
+      @include utils.px($content-list-gap);
+    }
   }
 }
 
-// Definitions
+// Table of contents
 
-.definition {
-  margin-bottom: variables.$gap-lg;
+$toc-body-font-size: variables.$font-sm;
+$toc-body-gap-inline: variables.$gap-rg;
+
+.toc {
+  max-width: $content-max-width;
+  @include utils.mx(auto);
+  margin-bottom: $content-adm-gap;
+
+  &-body {
+    list-style-type: none;
+    margin-left: 0;
+    @include utils.px($content-article-gap);
+
+    li:last-child {
+      margin-bottom: 0;
+    }
+
+    li {
+      $toc-margin: $toc-body-gap-inline;
+      $levels: 3 4 5 6;
+  
+      @each $level in $levels {
+        .toc-item-#{$level} {
+          margin-left: $toc-margin * ($level - 2);
+        }
+      }
+    }
+  }
 }
 
 // Reference links
@@ -62,5 +94,100 @@ h6 {
       content: variables.$symbol-reference-link;
       outline: none;
     }
+  }
+}
+
+// Admonitions & blockquotes
+
+$adm-default-background: variables.$bg-active;
+$adm-default-color: variables.$text-passive;
+$adm-caution-background: variables.$bg-caution;
+$adm-caution-color: variables.$text;
+$adm-tip-background: variables.$bg-tip;
+$adm-tip-color: variables.$text;
+$adm-warning-background: variables.$bg-warning;
+$adm-warning-color: variables.$text;
+$adm-important-background: variables.$bg-important;
+$adm-important-color: variables.$text;
+$adm-note-background: variables.$bg-active;
+$adm-note-color: variables.$text-passive;
+$adm-font-size: 0.9em;
+$adm-header-gap-bottom: variables.$gap-md;
+
+.admonition, blockquote {
+  @include utils.my($content-adm-gap);
+  padding: $content-adm-gap;
+  font-size: $adm-font-size;
+
+  > * {
+    max-width: $content-max-width;
+    @include utils.mx(auto);
+  }
+
+  h5 {
+    margin-bottom: $adm-header-gap-bottom;
+    text-transform: capitalize;
+  }
+
+  code {
+    overflow-wrap: break-word;
+  }
+}
+
+.admonition-icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: variables.$ch-rg;
+
+  svg {
+    display: inherit;
+    @include utils.size(22px);
+    stroke-width: 0;
+  }
+}
+
+@mixin admonition($background: $adm-default-background, $foreground: $adm-default-color) {
+  background-color: $background;
+  
+  h5 {
+    color: $foreground;
+  }
+
+  .admonition-icon svg {
+    stroke: $foreground;
+    fill: $foreground;
+  }
+}
+
+.admonition {
+  @include admonition;
+}
+
+.admonition-caution {
+  @include admonition($adm-caution-background, $adm-caution-color);
+}
+
+.admonition-tip {
+  @include admonition($adm-tip-background, $adm-tip-color);
+}
+
+.admonition-warning {
+  @include admonition($adm-warning-background, $adm-warning-color);
+}
+
+.admonition-important {
+  @include admonition($adm-important-background, $adm-important-color);
+}
+
+.admonition-note, blockquote {
+  @include admonition($adm-note-background, $adm-note-color);
+}
+
+blockquote {
+  strong:first-of-type {
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    margin-bottom: variables.$gap-sm;
   }
 }
