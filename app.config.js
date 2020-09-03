@@ -20,8 +20,7 @@ module.exports = {
     outdationPeriod: 365 // in days
   },
   paths: {
-    blog: '.archive/backlog/blog',
-    note: '.archive/backlog/notes',
+    draft: '.archive/backlog',
     search: {
       dir: './static',
       name: 'search.json'

@@ -25,11 +25,11 @@ let fileName, filePath, frontmatter
 
 if (CONTENT === 'note') {
   fileName = `${now.format('YYYY-MM-DD-HH-mm')}-${slugify(TITLE, slugifyConfig)}`
-  filePath = `./${paths.note}/${fileName}.md`
+  filePath = `./${paths.draft}/${fileName}.md`
   frontmatter = `---\ntitle: '${TITLE}'\ndate: ${date}\ntopics: [${META}]\n---\n`
 } else {
   fileName = `${now.format('YYYY-MM-DD')}-${slugify(TITLE, slugifyConfig)}`
-  filePath = `./${paths.blog}/${fileName}.md`
+  filePath = `./${paths.draft}/${fileName}.md`
   frontmatter = `---\ntitle: '${TITLE}'\ndate: ${date}\nauthors: [naiyer]\ntopics: [${META}]\n---\n`
 }
 
