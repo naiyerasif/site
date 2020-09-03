@@ -184,6 +184,8 @@ $adm-header-gap-bottom: variables.$gap-md;
 }
 
 blockquote {
+  border: none;
+  
   strong:first-of-type {
     display: flex;
     align-items: center;
