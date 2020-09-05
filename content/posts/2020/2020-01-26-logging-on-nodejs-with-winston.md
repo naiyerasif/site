@@ -2,7 +2,7 @@
 title: 'Logging on Node.js with winston'
 date: 2020-01-26 17:11:09
 authors: [naiyer]
-topics: [nodejs, express]
+topics: [nodejs, express, winston]
 ---
 
 `winston` is very popular logger for Node.js, providing simple API to store and format the logs. It provides support for custom logging levels, streaming logs and custom transports to save the logs. Another useful feature is the ability to query the logs based on filters like duration and keywords.
