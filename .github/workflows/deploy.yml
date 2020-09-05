@@ -1,0 +1,46 @@
+name: deploy
+
+on:
+  push:
+    branches: 
+      - release
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout source
+        uses: actions/checkout@v2
+      - name: generate lfs file list
+        run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
+      - name: restore lfs cache
+        uses: actions/cache@v2
+        id: lfs-cache
+        with:
+          path: .git/lfs
+          key: ${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}-v1
+      - name: pull lfs files
+        run: git lfs pull
+      - name: setup node
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: '14'
+      - name: restore node cache
+        uses: actions/cache@v2
+        id: node-cache
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}-v1
+      - name: install dependencies
+        run: yarn
+      - name: print environment
+        run: yarn status
+      - name: generate the build
+        run: yarn build
+      - name: publish
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --prod --dir=public
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}

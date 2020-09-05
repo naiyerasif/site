@@ -68,8 +68,8 @@ This site uses
 - a [custom Prism theme](https://github.com/Microflash/site/blob/release/src/assets/styles/components/_code.scss) to decorate the codeblocks
 - [Yarn](https://github.com/yarnpkg/yarn) as the package manager
 - [Git LFS](https://github.com/git-lfs/git-lfs) to version large files
-- [CircleCI](https://circleci.com/) for continuous integration
-- [Netlify](https://netlify.com/) for publishing
+- [GitHub Actions](https://github.com/features/actions) for continuous integration
+- [Netlify](https://netlify.com/) to publish the site
 - vector graphics and illustrations created with [Affinity Designer](https://affinity.serif.com/en-gb/designer/)
 
 ### License
