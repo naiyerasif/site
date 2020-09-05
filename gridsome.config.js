@@ -17,6 +17,11 @@ postcssPlugins.push(autoprefixer({
 const remarkPlugins = [
   'remark-admonitions',
   [
+    '@noxify/gridsome-plugin-remark-embed', {
+      'enabledProviders': ['Youtube']
+    }
+  ],
+  [
     'gridsome-plugin-remark-prismjs-all', { 
       noInlineHighlight: true,
       aliases: {

@@ -40,6 +40,10 @@ $content-opener-size: variables.$font-md;
       @include utils.mx(auto);
       @include utils.px($content-list-gap);
     }
+
+    div[class$='-embed'] {
+      @include utils.my($content-adm-gap);
+    }
   }
 }
 
