@@ -3,7 +3,7 @@ title: 'Persisting documents with MongoRepository'
 date: 2019-07-08 11:12:13
 updated: 2019-12-08 19:59:01
 authors: [naiyer]
-topics: [spring, mongodb]
+topics: [spring, data, mongodb]
 ---
 
 Spring Boot provides a variety of ways to work with a MongoDB database: low-level `MongoReader` and `MongoWriter` APIs, Query, Criteria and Update DSLs, and `MongoTemplate` helper. `MongoRepository` interface is the Repository-style programming model provided by `spring-boot-starter-data-mongodb`.

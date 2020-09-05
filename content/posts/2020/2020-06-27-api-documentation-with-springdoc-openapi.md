@@ -2,7 +2,7 @@
 title: 'API Documentation with springdoc-openapi'
 date: 2020-06-27 00:30:07
 authors: [naiyer]
-topics: [spring, webmvc, springdoc, openapi]
+topics: [spring, springdoc, openapi]
 ---
 
 [OpenAPI Initiative](https://www.openapis.org/) is a widely adopted industry standard to describe and document APIs, with [Swagger](https://swagger.io/) being one of its most well-known implementations. For years, [Springfox](https://github.com/springfox/springfox), using Swagger, has provided a well-adopted toolchain for Spring projects to generate OpenAPI documentation and provide a UI on the top of it. Unfortunately, the Springfox project is not frequently maintained; its latest release v2.9.2 at the timing of writing this post was in 2018. This is where [springdoc-openapi](https://springdoc.org/) comes into picture.

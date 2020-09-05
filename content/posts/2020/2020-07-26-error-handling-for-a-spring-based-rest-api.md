@@ -2,7 +2,7 @@
 title: 'Error handling for a Spring-based REST API'
 date: 2020-07-26 00:35:25
 authors: [naiyer]
-topics: [spring, webmvc, security, rest]
+topics: [spring, security, rest]
 ---
 
 Spring Boot provides pretty nifty defaults to handle exceptions and formulate helpful response in case anything goes wrong. Still, for any number of reasons, an exception can be thrown at runtime and the consumers of your API may get a garbled exception message (or worse, no message at all) with a `500 Internal Server Error` response.
