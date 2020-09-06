@@ -1,4 +1,4 @@
-# Microflash
+# Microflash ![deploy](https://github.com/Microflash/site/workflows/deploy/badge.svg)
 
 Personal website of Naiyer ([@Microflash](https://www.twitter.com/Microflash))
 
