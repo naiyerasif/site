@@ -9,18 +9,18 @@ avatar: './avatars/naiyer.png'
 I've experience in Aviation, Legal &amp; Compliance, Document Processing, and Banking &amp; Financial Services domains, with projects on backend, site reliability, frontend and ETL.
 
 :::note Technologies I'm adept at &mdash;
-- **Java** and **Spring Boot**
-- **Relational databases** (Postgres and Oracle)
-- **Node.js**
+- [Java](https://openjdk.java.net/) and [Spring Boot](https://spring.io/projects/spring-boot)
+- Relational databases (mostly [Postgres](https://www.postgresql.org/) and [Oracle](https://www.oracle.com/database/))
+- [Node.js](https://nodejs.org/en/)
 :::
 
 :::note Other technologies that I work on &mdash;
-- **Vue.js** and **Angular**
-- **Vuepress** and **Gridsome**
-- **CSS and SASS**
-- **Groovy** (mainly with Spock framework and Gradle)
-- **Docker** and to some extent **Jenkins**
-- **MongoDB**
+- [Vue.js](https://vuejs.org/) and [Angular](https://angular.io/)
+- [Vuepress](https://vuepress.vuejs.org/) and [Gridsome](https://gridsome.org/)
+- CSS and [SASS](https://sass-lang.com/)
+- [Groovy](https://groovy-lang.org/) (while working with [Spock](https://github.com/spockframework/spock) and [Gradle](https://gradle.org/))
+- [Docker](https://www.docker.com/) and [Jenkins](https://www.jenkins.io/)
+- [MongoDB](https://www.mongodb.com/)
 :::
 
 I love to draw vector illustrations and have an avid interest in typography. I spend a fair amount of time reading science fiction and fantasy books. I regularly explore new tools that improve my productivity and learning process.
