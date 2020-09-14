@@ -10,6 +10,7 @@
     "build": "gridsome build",
     "start": "gridsome develop",
     "status": "gridsome info",
+    "purge": "shx rm -rf public .cache src/.temp static/search.json",
     "new:post": "node bin/content.js --content post",
     "new:note": "node bin/content.js --content note",
     "new:icons": "shx cp static/assets/images/icons.svg .archive/backups/icons.svg && spritely --input .archive/svg/icons --output static/assets/images/icons.svg --prefix \"icon-\""
