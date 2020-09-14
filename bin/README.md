@@ -10,11 +10,17 @@ node bin/favicon.js static/google-touch-icon.png
 
 ### Create new post/note
 
-Pass the content type (**post** or **note**), title and metadata (**topics**) as arguments.
+Pass the content type (**post** or **note**), title and metadata (**topics**) as arguments. Optionally, you can also pass a relative date to override the current date.
 
 ```sh
-node bin/content.js --content post --title "<title>" --meta "<meta>"
-node bin/content.js --content note --title "<title>" --meta "<meta>"
+# create a new post
+node bin/content.js --content post --title 'Using Git LFS in CI' --meta 'git, lfs'
+
+# create a new note
+node bin/content.js --content note --title 'Skipping the GitLab CI' --meta 'gitlab ci'
+
+# pass a relative date to override now
+node bin/content.js --content note --date '2 days and 3 hours ago' --title 'Customize the PowerShell prompt' --meta 'powershell'
 ```
 
 ### Generate SVGs

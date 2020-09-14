@@ -2,6 +2,7 @@
 
 const fs = require('fs')
 const moment = require('moment')
+const chrono = require('chrono-node')
 const slugify = require('@sindresorhus/slugify')
 const program = require('commander')
 
@@ -11,26 +12,27 @@ const slugifyConfig = require('../gridsome.config').permalinks.slugify.options
 program
   .version('0.0.1')
   .option('-c, --content [content]', 'specify the type of content (default: post)')
+  .option('-d, --date [date]', 'specify the relative date (default: now)')
   .requiredOption('-t, --title [title]', 'specify the title of the content (required)')
   .requiredOption('-m, --meta [meta]', 'specify the meta of the content (required)')
   .parse(process.argv)
 
 const CONTENT = program.content || 'post'
-const TITLE = program.title
+const TITLE = slugify(program.title, slugifyConfig)
 const META = program.meta
-const now = moment()
-const date = now.format('YYYY-MM-DD HH:mm:ss')
+const DATE = program.date ? moment(chrono.parseDate(program.date)) : moment()
+const DATE_FMT_META = DATE.format('YYYY-MM-DD HH:mm:ss')
 
-let fileName, filePath, frontmatter
+let fileName, frontmatter
 
 if (CONTENT === 'note') {
-  fileName = `${now.format('YYYY-MM-DD-HH-mm')}-${slugify(TITLE, slugifyConfig)}`
-  filePath = `./${paths.draft}/${fileName}.md`
-  frontmatter = `---\ntitle: '${TITLE}'\ndate: ${date}\ntopics: [${META}]\n---\n`
+  fileName = `${DATE.format('YYYY-MM-DD-HH-mm')}-${TITLE}`
+  frontmatter = `---\ntitle: '${TITLE}'\ndate: ${DATE_FMT_META}\ntopics: [${META}]\n---\n`
 } else {
-  fileName = `${now.format('YYYY-MM-DD')}-${slugify(TITLE, slugifyConfig)}`
-  filePath = `./${paths.draft}/${fileName}.md`
-  frontmatter = `---\ntitle: '${TITLE}'\ndate: ${date}\nauthors: [naiyer]\ntopics: [${META}]\n---\n`
+  fileName = `${DATE.format('YYYY-MM-DD')}-${TITLE}`
+  frontmatter = `---\ntitle: '${TITLE}'\ndate: ${DATE_FMT_META}\nauthors: [naiyer]\ntopics: [${META}]\n---\n`
 }
+
+const filePath = `./${paths.draft}/${fileName}.md`
 
 fs.writeFile(filePath, frontmatter, () => console.log(`Created ${filePath}`))
