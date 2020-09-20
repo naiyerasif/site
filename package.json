@@ -16,7 +16,7 @@
     "new:icons": "shx cp static/assets/images/icons.svg .archive/backups/icons.svg && spritely --input .archive/svg/icons --output static/assets/images/icons.svg --prefix \"icon-\""
   },
   "dependencies": {
-    "@gridsome/plugin-google-analytics": "^0.1.1",
+    "@gridsome/plugin-google-analytics": "^0.1.2",
     "@gridsome/plugin-sitemap": "^0.4.0",
     "@gridsome/source-filesystem": "^0.6.2",
     "@gridsome/transformer-remark": "^0.6.2",
