@@ -5,7 +5,6 @@
 // Sidekick
 
 $sidekick-background: variables.$bg-mid;
-$sidekick-topics-background: variables.$bg-body;
 $sidekick-topics-gapy: variables.$gap-rg;
 $sidekick-gap: properties.$space-rg;
 $sidekick-max-width: variables.$max-width-rg;
@@ -31,7 +30,6 @@ $sidekick-nav-indicator-font-weight: variables.$weight-bd;
     text-align: center;
 
     .topics {
-      background-color: $sidekick-topics-background;
       @include utils.py($sidekick-topics-gapy);
 
       a {

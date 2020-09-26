@@ -6,6 +6,7 @@
 
 // Containers
 
+$topics-background: variables.$bg-active;
 $topics-font-size: variables.$font-xs;
 $topics-gapy: variables.$ch-sm; 
 $topics-gapx: variables.$ch-md;
@@ -24,6 +25,7 @@ $topics-separator: variables.$symbol-separator;
   @include utils.py($topics-gapy);
   padding-right: $topics-gapy;
   padding-left: $topics-gapx;
+  background-color: $topics-background;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: $topics-font-size;
