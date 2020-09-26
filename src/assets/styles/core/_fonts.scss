@@ -112,6 +112,46 @@ $font-location: '/assets/fonts';
   font-named-instance: 'Italic';
 }
 
+@include font-face('IBM Plex Sans', '#{$font-location}/IBMPlexSans-SemiBold') {
+  font-style: normal;
+  font-weight: 600;
+}
+
+@include font-face('IBM Plex Sans', '#{$font-location}/IBMPlexSans-BoldItalic') {
+  font-style: italic;
+  font-weight: 600;
+}
+
+@include font-face('IBM Plex Sans', '#{$font-location}/IBMPlexSans-Bold') {
+  font-style: normal;
+  font-weight: 700;
+}
+
+@include font-face('IBM Plex Sans', '#{$font-location}/IBMPlexSans-BoldItalic') {
+  font-style: italic;
+  font-weight: 700;
+}
+
+@include font-face(
+  'IBM Plex Sans var',
+  '#{$font-location}/IBMPlexSansVar-Roman',
+  ('woff2 supports variations(gvar)', 'woff2-variations', 'woff2')
+) {
+  font-style: normal;
+  font-weight: 100 900;
+  font-named-instance: 'Regular';
+}
+
+@include font-face(
+  'IBM Plex Sans var',
+  '#{$font-location}/IBMPlexSansVar-Italic',
+  ('woff2 supports variations(gvar)', 'woff2-variations', 'woff2')
+) {
+  font-style: italic;
+  font-weight: 100 900;
+  font-named-instance: 'Italic';
+}
+
 @include font-face('JetBrains Mono', '#{$font-location}/JetBrainsMono-SemiLight') {
   font-style: normal;
   font-weight: 350;

@@ -1,6 +1,7 @@
 @use '../variables';
 @use '../properties';
 @use '../mixins/utils';
+@use '../../../../node_modules/@microflash/remarkability/scss/mixins';
 
 // Posts
 
@@ -12,6 +13,7 @@ $post-header-wrap: properties.$flex-wrap;
 $post-header-size: variables.$font-sm;
 $post-header-gap: variables.$ch-rg;
 $post-title-size: variables.$font-lg;
+$post-title-weight: variables.$weight-bd;
 $post-excerpt-color: variables.$text-passive;
 
 .posts {
@@ -42,7 +44,9 @@ $post-excerpt-color: variables.$text-passive;
     }
 
     .post-title {
+      @include mixins.font('alternative');
       font-size: $post-title-size;
+      font-weight: $post-title-weight;
     }
 
     .post-excerpt {
