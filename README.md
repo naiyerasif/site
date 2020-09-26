@@ -29,6 +29,7 @@ This site uses
 - [SASS](https://sass-lang.com/) as the CSS preprocessor (using Module System, and lightly adhering to SMACSS)
 - [PurgeCSS](https://purgecss.com/) to remove unused CSS
 - [Inter](https://rsms.me/inter/) as the body font (variable font with traditional fallbacks)
+- [IBM Plex Sans](https://www.ibm.com/plex/) as the heading font (variable font with traditional fallbacks)
 - [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) as the `monospace` font
 - a [custom Prism theme](https://github.com/Microflash/site/blob/release/src/assets/styles/components/_code.scss) to decorate the codeblocks
 - [Yarn](https://github.com/yarnpkg/yarn) as the package manager
