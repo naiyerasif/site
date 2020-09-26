@@ -18,7 +18,8 @@ program
   .parse(process.argv)
 
 const CONTENT = program.content || 'post'
-const TITLE = slugify(program.title, slugifyConfig)
+const TITLE = program.title
+const SLUG = slugify(TITLE, slugifyConfig)
 const META = program.meta
 const DATE = program.date ? dayjs(chrono.parseDate(program.date)) : dayjs()
 const DATE_FMT_META = DATE.format('YYYY-MM-DD HH:mm:ss')
@@ -26,10 +27,10 @@ const DATE_FMT_META = DATE.format('YYYY-MM-DD HH:mm:ss')
 let fileName, frontmatter
 
 if (CONTENT === 'note') {
-  fileName = `${DATE.format('YYYY-MM-DD-HH-mm')}-${TITLE}`
+  fileName = `${DATE.format('YYYY-MM-DD-HH-mm')}-${SLUG}`
   frontmatter = `---\ntitle: '${TITLE}'\ndate: ${DATE_FMT_META}\ntopics: [${META}]\n---\n`
 } else {
-  fileName = `${DATE.format('YYYY-MM-DD')}-${TITLE}`
+  fileName = `${DATE.format('YYYY-MM-DD')}-${SLUG}`
   frontmatter = `---\ntitle: '${TITLE}'\ndate: ${DATE_FMT_META}\nauthors: [naiyer]\ntopics: [${META}]\n---\n`
 }
 
