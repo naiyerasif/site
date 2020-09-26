@@ -1,11 +1,13 @@
 const path = require('path')
 const fs = require('fs')
-const moment = require('moment')
+const dayjs = require('dayjs')
+const customParseFormat = require('dayjs/plugin/customParseFormat')
+dayjs.extend(customParseFormat)
 
 const { prefs, paths } = require('./app.config')
 const projects = require('./content/projects')
 
-const outdationDate = prefs.outdationPeriod ? moment().clone().subtract(prefs.outdationPeriod, 'days').startOf('day') : null
+const outdationDate = prefs.outdationPeriod ? dayjs().clone().subtract(prefs.outdationPeriod, 'days').startOf('day') : null
 
 module.exports = api => {
 
@@ -20,7 +22,7 @@ module.exports = api => {
       }
 
       if (typeof(options.outdated) == 'undefined') {
-        options.outdated = outdationDate && moment(options.updated, 'YYYY-MM-DD HH:mm:ss').isBefore(outdationDate) ? 'true' : 'undefined'
+        options.outdated = outdationDate && dayjs(options.updated, 'YYYY-MM-DD HH:mm:ss').isBefore(outdationDate) ? 'true' : 'undefined'
       }
     }
     

@@ -1,3 +1,4 @@
+const dayjs = require('dayjs')
 const pkg = require('./package.json')
 
 const capitalize = ([first, ...rest]) => [first.toUpperCase(), ...rest].join('')
@@ -13,7 +14,7 @@ module.exports = {
   url: 'https://mflash.dev',
   favicon: 'https://raw.githubusercontent.com/Microflash/site/release/static/google-touch-icon.png',
   maintainer: pkgAuthor,
-  copyright: `Copyright ${new Date().getFullYear()} ${pkgAuthor}`,
+  copyright: `Copyright ${dayjs().year()} ${pkgAuthor}`,
   prefs: {
     editContext: `${pkgRepo.replace(/.git$/g, '')}/edit/release`,
     maxTocDepth: 3,

@@ -20,7 +20,7 @@ node bin/content.js --content post --title 'Using Git LFS in CI' --meta 'git, lf
 node bin/content.js --content note --title 'Skipping the GitLab CI' --meta 'gitlab ci'
 
 # pass a relative date to override now
-node bin/content.js --content note --date '2 days and 3 hours ago' --title 'Customize the PowerShell prompt' --meta 'powershell'
+node bin/content.js --content note --date '2 days 3 hours ago' --title 'Customize the PowerShell prompt' --meta 'powershell'
 ```
 
 ### Generate SVGs

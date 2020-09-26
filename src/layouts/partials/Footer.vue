@@ -41,6 +41,7 @@
 <script>
 import Sprite from '~/components/Sprite'
 import Favicon from '@/static/favicon.svg'
+import dayjs from 'dayjs'
 
 export default {
   components: {
@@ -49,7 +50,7 @@ export default {
   },
   computed: {
     year() {
-      return new Date().getFullYear()
+      return dayjs().year()
     }
   }
 }

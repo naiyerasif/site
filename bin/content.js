@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const fs = require('fs')
-const moment = require('moment')
+const dayjs = require('dayjs')
 const chrono = require('chrono-node')
 const slugify = require('@sindresorhus/slugify')
 const program = require('commander')
@@ -20,7 +20,7 @@ program
 const CONTENT = program.content || 'post'
 const TITLE = slugify(program.title, slugifyConfig)
 const META = program.meta
-const DATE = program.date ? moment(chrono.parseDate(program.date)) : moment()
+const DATE = program.date ? dayjs(chrono.parseDate(program.date)) : dayjs()
 const DATE_FMT_META = DATE.format('YYYY-MM-DD HH:mm:ss')
 
 let fileName, frontmatter
