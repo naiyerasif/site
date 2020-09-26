@@ -948,13 +948,13 @@
   resolved "https://registry.yarnpkg.com/@microflash/remarkability/-/remarkability-0.11.0.tgz#08a649a86dafc3fd1166bf10ecce63868b4a0233"
   integrity sha512-zdQutO71vseof+LevISQ3i8xY2OlFu4xXAFBe11BP3egas4gnyQz8VyNIWEQyISAgB3AOZwDArNYoNTsOj3u8g==
 
-"@microflash/spritely@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@microflash/spritely/-/spritely-1.3.0.tgz#f513fc8dcdac3159078d538eec37938ba3bb5895"
-  integrity sha512-eJv9UA2PZ80Gq0hU1H5RAYHNLTwm99et2cdTBStV4ATBHzOWKQfTcnqnfgkXVbP2N8FGmmxEEiQQgcuuISOFow==
+"@microflash/spritely@^1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@microflash/spritely/-/spritely-1.3.1.tgz#95e79886d9df7fca7ad9e3bed03bd0dfaecffdc6"
+  integrity sha512-y/KxJglNcHArakxqYZYUZoezn33a6QgJJKQJtUs4KzkX7oLOUnuXhOQTp13491L+shA6TJLGWalDgZjFI/QXuw==
   dependencies:
     cheerio "^1.0.0-rc.3"
-    commander "^5.1.0"
+    commander "^6.1.0"
     fs-extra "^9.0.1"
     klaw "^3.0.0"
 
@@ -2526,11 +2526,6 @@ commander@^2.15.1, commander@^2.20.0, commander@^2.20.3:
   version "2.20.3"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
-
-commander@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-5.1.0.tgz#46abbd1652f8e059bddaef99bbdcb2ad9cf179ae"
-  integrity sha512-P0CysNDQ7rtVw4QIQtm+MRxV66vKFSvlsQvGYXZWR3qFU0jlMKHZZZgw8e+8DSah4UDKMqnknRDQz+xuQXQ/Zg==
 
 commander@^6.1.0:
   version "6.1.0"
