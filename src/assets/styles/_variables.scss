@@ -77,6 +77,7 @@ $bg-next: theme.fade(theme.secondary(600), 0.90) !default;
 $bg-mid: theme.fade(theme.secondary(900), 0.92) !default;
 
 @use '../../../node_modules/@microflash/remarkability/scss/variables' with (
+  $root: 'body',
   $enable-selection-background: true,
   $enable-custom-scrollbar: true,
   $enable-custom-colors: true,

@@ -943,10 +943,10 @@
     micromatch "^4.0.2"
     moment "^2.25.3"
 
-"@microflash/remarkability@^0.11.0":
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/@microflash/remarkability/-/remarkability-0.11.0.tgz#08a649a86dafc3fd1166bf10ecce63868b4a0233"
-  integrity sha512-zdQutO71vseof+LevISQ3i8xY2OlFu4xXAFBe11BP3egas4gnyQz8VyNIWEQyISAgB3AOZwDArNYoNTsOj3u8g==
+"@microflash/remarkability@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@microflash/remarkability/-/remarkability-1.1.1.tgz#2c7d90120adc39f0be0cef48a338453858056edf"
+  integrity sha512-/eJHCdNMX3cswVQdhKOcJeKkSkklI10zDvqyy3PX6f7CSJ/gqey4pQ0X9nK+EuzQLnxVhAKrBmvb2PhdlxXG0Q==
 
 "@microflash/spritely@^1.3.1":
   version "1.3.1"
