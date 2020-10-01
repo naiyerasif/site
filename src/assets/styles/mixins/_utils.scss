@@ -1,6 +1,15 @@
 @use '../variables';
 @use '../properties';
 @use 'queries';
+@use '../../../../node_modules/@microflash/remarkability/scss/mixins';
+
+// Alternative font
+
+@mixin distinct-font() {
+  @include mixins.font('distinct');
+  font-feature-settings: 'ss04' 1, 'case' 1, 'zero' 1;
+  line-height: 1.2;
+}
 
 // Set dimensions
 

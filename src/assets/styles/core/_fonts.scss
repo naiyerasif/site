@@ -112,44 +112,24 @@ $font-location: '/assets/fonts';
   font-named-instance: 'Italic';
 }
 
-@include font-face('IBM Plex Sans', '#{$font-location}/IBMPlexSans-SemiBold') {
+@include font-face('Space Grotesk', '#{$font-location}/SpaceGrotesk-Medium') {
   font-style: normal;
   font-weight: 600;
 }
 
-@include font-face('IBM Plex Sans', '#{$font-location}/IBMPlexSans-BoldItalic') {
-  font-style: italic;
-  font-weight: 600;
-}
-
-@include font-face('IBM Plex Sans', '#{$font-location}/IBMPlexSans-Bold') {
+@include font-face('Space Grotesk', '#{$font-location}/SpaceGrotesk-Bold') {
   font-style: normal;
-  font-weight: 700;
-}
-
-@include font-face('IBM Plex Sans', '#{$font-location}/IBMPlexSans-BoldItalic') {
-  font-style: italic;
   font-weight: 700;
 }
 
 @include font-face(
-  'IBM Plex Sans var',
-  '#{$font-location}/IBMPlexSansVar-Roman',
+  'Space Grotesk var',
+  '#{$font-location}/SpaceGrotesk-var',
   ('woff2 supports variations(gvar)', 'woff2-variations', 'woff2')
 ) {
   font-style: normal;
   font-weight: 100 900;
   font-named-instance: 'Regular';
-}
-
-@include font-face(
-  'IBM Plex Sans var',
-  '#{$font-location}/IBMPlexSansVar-Italic',
-  ('woff2 supports variations(gvar)', 'woff2-variations', 'woff2')
-) {
-  font-style: italic;
-  font-weight: 100 900;
-  font-named-instance: 'Italic';
 }
 
 @include font-face('JetBrains Mono', '#{$font-location}/JetBrainsMono-SemiLight') {

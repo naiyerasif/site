@@ -27,6 +27,7 @@ $footer-title-bottom: variables.$gap-rg;
   }
 
   &-title {
+    @include utils.distinct-font;
     font-weight: $footer-title-weight;
     margin-bottom: $footer-title-bottom;
   }

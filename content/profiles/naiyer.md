@@ -63,7 +63,7 @@ This site uses
 - [Vue.js](https://vuejs.org/) as the frontend framework
 - [SASS](https://sass-lang.com/) as the CSS preprocessor (using Module System, and lightly adhering to SMACSS)
 - [Inter](https://rsms.me/inter/) as the body font (variable font with traditional fallbacks)
-- [IBM Plex Sans](https://www.ibm.com/plex/) as the heading font (variable font with traditional fallbacks)
+- [Space Grotesk](https://github.com/floriankarsten/space-grotesk) as the heading font (variable font with traditional fallbacks)
 - [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) as the `monospace` font
 - a [custom Prism theme](https://github.com/Microflash/site/blob/release/src/assets/styles/components/_code.scss) to decorate the codeblocks
 - [Yarn](https://github.com/yarnpkg/yarn) as the package manager

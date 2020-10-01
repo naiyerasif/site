@@ -1,7 +1,6 @@
 @use '../variables';
 @use '../properties';
 @use '../mixins/utils';
-@use '../../../../node_modules/@microflash/remarkability/scss/mixins';
 
 // Content
 
@@ -88,7 +87,7 @@ h3,
 h4, 
 h5, 
 h6 {
-  @include mixins.font('alternative');
+  @include utils.distinct-font;
   
   &:focus a .reference,
   &:hover a .reference {

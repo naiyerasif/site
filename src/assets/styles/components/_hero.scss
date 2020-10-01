@@ -1,7 +1,6 @@
 @use '../variables';
 @use '../properties';
 @use '../mixins/utils';
-@use '../../../../node_modules/@microflash/remarkability/scss/mixins';
 
 // Hero
 
@@ -29,7 +28,7 @@ $hero-content-font-size: variables.$font-sm;
     }
 
     .title {
-      @include mixins.font('alternative');
+      @include utils.distinct-font;
       font-size: $hero-title-size;
       line-height: 1.4;
     }
