@@ -3,48 +3,48 @@ name: deploy
 on:
   push:
     branches: 
-      - release
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout source
+      - name: Checkout source
         uses: actions/checkout@v2
-      - name: generate lfs file list
+      - name: Generate LFS asset list
         run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
-      - name: restore lfs cache
+      - name: Restore LFS cache
         uses: actions/cache@v2
         id: lfs-cache
         with:
           path: .git/lfs
           key: ${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}-v1
-      - name: pull lfs files
+      - name: Pull new LFS files
         run: git lfs pull
-      - name: setup node
+      - name: Set up Node
         uses: actions/setup-node@v2-beta
         with:
           node-version: '14'
-      - name: restore node cache
+      - name: Restore Node cache
         uses: actions/cache@v2
         id: node-cache
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}-v1
-      - name: install dependencies
+      - name: Install dependencies
         run: yarn
-      - name: print environment
+      - name: Print environment
         run: yarn status
-      - name: generate the build
+      - name: Generate the build
         run: yarn build
-      - name: publish
+      - name: Publish on Netlify
         uses: netlify/actions/cli@master
         with:
           args: deploy --prod --dir=public
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-      - name: notify
+      - name: Notify Slack channel
         uses: bayssmekanique/action-simple-slack-notifier@v1
         if: always()
         with:
