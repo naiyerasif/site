@@ -3,12 +3,24 @@
 @use 'queries';
 @use '../../../../node_modules/@microflash/remarkability/scss/mixins';
 
-// Alternative font
+// Heading font
 
-@mixin distinct-font() {
+@mixin heading-font() {
   @include mixins.font('distinct');
   font-feature-settings: 'ss04' 1, 'case' 1, 'zero' 1;
   line-height: 1.2;
+}
+
+// Visibility
+
+@mixin hide($hidden: true, $display-fallback: unset) {
+  @if $hidden {
+    visibility: hidden;
+    display: none;
+  } @else {
+    visibility: visible;
+    display: $display-fallback;
+  }
 }
 
 // Set dimensions
@@ -44,58 +56,29 @@
   margin-block: $value;
 }
 
-// Visibility
-
-@mixin hide($hidden: true, $display-fallback: unset) {
-  @if $hidden {
-    visibility: hidden;
-    display: none;
-  } @else {
-    visibility: visible;
-    display: $display-fallback;
-  }
-}
-
-// Full-width
-
-$pgap: properties.$space-rg;
-$ngap: properties.$negative-space-rg;
-
-@mixin fullwidth($my: false) {
-  @if $my {
-    margin: $pgap $ngap;
-  } @else {
-    margin-right: $ngap;
-    margin-left: $ngap;
-  }
-
-  padding: $pgap;
-}
-
-// Even-gap
-
-$even-gap: variables.$ch-rg;
-
-@mixin even-gap($gap: $even-gap) {
-  & > *:not(:last-child) {
-    margin-right: $gap;
-  }
-}
-
 // Tappable
 
-$tappable-radius: variables.$radius;
-$tappable-gapx: variables.$gap-sm;
+$tappable-radius: variables.$radius * 6;
+$tappable-gapx: variables.$gap-rg;
 $tappable-gapy: variables.$gap-xs;
-$tappable-background: variables.$bg-passive;
+$tappable-background: variables.$bg-selected;
 
-@mixin tappable($radius: $tappable-radius, $gapx: $tappable-gapx, $gapy: $tappable-gapy) {
+@mixin tappable(
+  $radius: $tappable-radius, 
+  $gapx: $tappable-gapx, 
+  $gapy: $tappable-gapy, 
+  $background: $tappable-background
+) {
   border-radius: $radius;
   padding: $gapy $gapx;
 
+  &.is-icon {
+    padding: $gapy;
+  }
+
   &:focus,
   &:hover {
-    background-color: $tappable-background;
+    background-color: $background;
     text-decoration: none;
   }
 }
