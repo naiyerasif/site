@@ -13,7 +13,7 @@
       <nav class="footer-menu">
         <div class="footer-title">Support</div>
         <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site/issues/new"><Sprite symbol="icon-feedback" class="icon-sm gap-ch" />Report an issue</a>
-        <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site/blob/release/LICENSE.md"><Sprite symbol="icon-license" class="icon-sm gap-ch" />Site license (MIT)</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site/blob/main/LICENSE.md"><Sprite symbol="icon-license" class="icon-sm gap-ch" />Site license (MIT)</a>
         <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/"><Sprite symbol="icon-license" class="icon-sm gap-ch" />Content license (CC by SA)</a>
       </nav>
       <nav class="footer-menu">

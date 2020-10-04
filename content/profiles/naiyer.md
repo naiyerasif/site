@@ -29,7 +29,7 @@ I love to draw vector illustrations and have an avid interest in typography. I s
 
 This site began as a pet project while I was learning [Vue.js](https://vuejs.org/) and [GraphQL](https://graphql.org/). It helped me get my bearing around Vue.js community, accessibility, web performance and more.
 
-Most of the posts here use a tutorial-style format to document a concept or process for my colleagues, peers and myself. They serve as a reference of what I've learned, and a source of ~~criticism and scorn~~ constructive feedback. 
+Most of the posts here use a tutorial-style format to document a concept or process for my colleagues, peers and myself. They serve as a reference of what I've learned, and a source of ~~criticism and scorn~~ constructive feedback.
 
 :::warning
 Please treat the code samples as a reference and demonstration of the topic under discussion. They are **optimized for learning** and **not for use in production codebase**. Please seek out the advice of your peers before using them in an existing application.
@@ -65,7 +65,7 @@ This site uses
 - [Inter](https://rsms.me/inter/) as the body font (variable font with traditional fallbacks)
 - [Space Grotesk](https://github.com/floriankarsten/space-grotesk) as the heading font (variable font with traditional fallbacks)
 - [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) as the `monospace` font
-- a [custom Prism theme](https://github.com/Microflash/site/blob/release/src/assets/styles/components/_code.scss) to decorate the codeblocks
+- a [custom Prism theme](https://github.com/Microflash/site/blob/main/src/assets/styles/derived/_syntax.scss) to decorate the codeblocks
 - [Yarn](https://github.com/yarnpkg/yarn) as the package manager
 - [Git LFS](https://github.com/git-lfs/git-lfs) to version large files
 - [GitHub Actions](https://github.com/features/actions) for continuous integration
@@ -74,4 +74,4 @@ This site uses
 
 ### License
 
-The [source](https://github.com/Microflash/site) of this site is available under [MIT](https://github.com/Microflash/site/blob/release/LICENSE.md), the content under [CC by SA](https://creativecommons.org/licenses/by-sa/4.0/).
+The [source](https://github.com/Microflash/site) of this site is available under [MIT](https://github.com/Microflash/site/blob/main/LICENSE.md), the content under [CC by SA](https://creativecommons.org/licenses/by-sa/4.0/).

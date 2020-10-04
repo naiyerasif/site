@@ -30,7 +30,7 @@ This site uses
 - [Inter](https://rsms.me/inter/) as the body font (variable font with traditional fallbacks)
 - [Space Grotesk](https://github.com/floriankarsten/space-grotesk) as the heading font (variable font with traditional fallbacks)
 - [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) as the `monospace` font
-- a [custom Prism theme](https://github.com/Microflash/site/blob/release/src/assets/styles/components/_code.scss) to decorate the codeblocks
+- a [custom Prism theme](https://github.com/Microflash/site/blob/main/src/assets/styles/derived/_syntax.scss) to decorate the codeblocks
 - [Yarn](https://github.com/yarnpkg/yarn) as the package manager
 - [Git LFS](https://github.com/git-lfs/git-lfs) to version large files
 - [GitHub Actions](https://github.com/features/actions) for continuous integration
