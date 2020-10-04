@@ -5,7 +5,8 @@
 
 // Header
 
-$header-gap: properties.$flex-gapy;
+$header-gapx: properties.$flex-gapx;
+$header-gapy: properties.$flex-gapy;
 $header-wrap: properties.$flex-wrap;
 $header-background: variables.$bg-active;
 $header-font-size: variables.$font-sm;
@@ -17,7 +18,7 @@ $header-menu-offsety: utils.$tappable-gapx;
   flex-wrap: $header-wrap;
   justify-content: space-between;
   align-items: center;
-  padding: $header-gap;
+  padding: $header-gapy $header-gapx;
   font-size: $header-font-size;
   background-color: $header-background;
 
