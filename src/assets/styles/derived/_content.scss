@@ -33,7 +33,6 @@ $content-opener-size: variables.$font-md;
       @include utils.px($content-article-gap);
     }
 
-    
     > ol,
     > ul {
       max-width: $content-max-width;
@@ -87,7 +86,7 @@ h3,
 h4, 
 h5, 
 h6 {
-  @include utils.distinct-font;
+  @include utils.heading-font;
   
   &:focus a .reference,
   &:hover a .reference {
@@ -190,12 +189,15 @@ $adm-header-gap-bottom: variables.$gap-md;
 }
 
 blockquote {
-  border: none;
-  
   strong:first-of-type {
     display: flex;
     align-items: center;
     text-transform: capitalize;
     margin-bottom: variables.$gap-sm;
+  }
+
+  ul,
+  ol {
+    padding-left: variables.$gap-md;
   }
 }
