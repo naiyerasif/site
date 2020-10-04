@@ -17,7 +17,6 @@ This site was made possible by
 - [Bourbon](https://www.bourbon.io/): a lightweight SASS tool set
 - [Animate.css](https://github.com/daneden/animate.css): a cross-browser library of CSS animations
 - [Grid By Example](https://gridbyexample.com/): a collection of examples and references on CSS Grid
-- [Leonardo](https://github.com/adobe/leonardo): an adaptive color scale generator developed by Adobe
 
 ## Technologies
 
