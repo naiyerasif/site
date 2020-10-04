@@ -106,6 +106,8 @@ h6 {
 
 $adm-default-background: variables.$bg-active;
 $adm-default-color: variables.$text-passive;
+$adm-note-background: variables.$bg-active;
+$adm-note-color: variables.$text-passive;
 $adm-caution-background: variables.$bg-caution;
 $adm-caution-color: variables.$text;
 $adm-tip-background: variables.$bg-tip;
@@ -114,8 +116,7 @@ $adm-warning-background: variables.$bg-warning;
 $adm-warning-color: variables.$text;
 $adm-important-background: variables.$bg-important;
 $adm-important-color: variables.$text;
-$adm-note-background: variables.$bg-active;
-$adm-note-color: variables.$text-passive;
+
 $adm-font-size: 0.9em;
 $adm-header-gap-bottom: variables.$gap-md;
 

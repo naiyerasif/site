@@ -6,9 +6,9 @@
 
 // Containers
 
-$topics-background: variables.$bg-active;
+$topics-background: variables.$tone-3;
 $topics-font-size: variables.$font-xs;
-$topics-gapy: variables.$ch-sm; 
+$topics-gapy: variables.$ch-sm;
 $topics-gapx: variables.$ch-md;
 $topics-border: variables.$border;
 $topics-separator: variables.$symbol-separator;
@@ -16,6 +16,7 @@ $topics-separator: variables.$symbol-separator;
 .is-flex {
   display: flex;
   flex-wrap: properties.$flex-wrap;
+  align-items: center;
 }
 
 .topics {

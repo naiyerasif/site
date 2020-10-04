@@ -31,15 +31,13 @@ $gap-xl: 1.75rem !default;
 $ch-sm: 0.5ch !default;
 $ch-rg: 1ch !default;
 $ch-md: 1.5ch !default;
+
 $separator-gap: $ch-rg !default;
+
+$grid-sm: 15rem !default;
 
 $icon-sm: 1rem !default;
 $icon-rg: 1.5rem !default;
-
-$stroke-sm: var(--stroke-sm) !default;
-$stroke-rg: var(--stroke-sm) !default;
-
-$grid-sm: 16rem !default;
 
 // Display
 
@@ -52,7 +50,12 @@ $symbol-separator: '\00B7' !default;
 $fill-opacity: 0.25 !default;
 $separator-opacity: 0.5 !default;
 
+$stroke-sm: var(--stroke-sm) !default;
+$stroke-rg: var(--stroke-rg) !default;
+
 // Colors
+
+$brand: hsl(350, 90%, 45%);
 
 $text: var(--text) !default;
 $text-passive: var(--text-passive) !default;
@@ -61,20 +64,22 @@ $link: var(--link) !default;
 $link-active: var(--link-active) !default;
 
 $border: var(--border) !default;
-$selected: theme.fade(theme.primary(500), 0.75) !default;
-$code-selected: theme.fade(theme.primary(500), 0.91) !default;
 
 $bg-body: var(--bg-body) !default;
 $bg-active: var(--bg-active) !default;
 $bg-passive: var(--bg-passive) !default;
+$bg-code: var(--bg-code) !default;
+$bg-search: var(--bg-search) !default;
+$bg-selected: var(--bg-selected) !default;
+$bg-highlight: var(--bg-highlight) !default;
 $bg-caution: var(--bg-caution) !default;
 $bg-tip: var(--bg-tip) !default;
 $bg-warning: var(--bg-warning) !default;
 $bg-important: var(--bg-important) !default;
 
-$bg-prev: theme.fade(theme.secondary(500), 0.96) !default;
-$bg-next: theme.fade(theme.secondary(600), 0.90) !default;
-$bg-mid: theme.fade(theme.secondary(900), 0.92) !default;
+$tone-1: var(--tone-1) !default;
+$tone-2: var(--tone-2) !default;
+$tone-3: theme.fade(theme.$black, 0.95) !default;
 
 @use '../../../node_modules/@microflash/remarkability/scss/variables' with (
   $root: 'body',
@@ -100,7 +105,7 @@ $bg-mid: theme.fade(theme.secondary(900), 0.92) !default;
   $background-table: inherit,
   $background-table-even: inherit,
   $background-table-hover: $bg-active,
-  $background-selected: $selected,
+  $background-selected: $bg-selected,
   $background-scrollbar: $bg-active,
   $border-color: $border,
   $radius: $radius,
