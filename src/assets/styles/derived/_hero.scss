@@ -17,6 +17,9 @@ $hero-content-font-size: variables.$font-sm;
 
 .hero {
   background-color: $hero-background;
+  background-image: linear-gradient(to right bottom, variables.$tone-1, variables.$tone-2);
+  background-size: 300% 300%;
+  animation: gradient 15s ease-in-out infinite;
   padding: $hero-gapy $hero-gapx;
 
   &-wrapper {
@@ -28,9 +31,8 @@ $hero-content-font-size: variables.$font-sm;
     }
 
     .title {
-      @include utils.distinct-font;
+      @include utils.heading-font;
       font-size: $hero-title-size;
-      line-height: 1.4;
     }
 
     .subtitle {
