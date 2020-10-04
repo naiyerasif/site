@@ -20,7 +20,7 @@ $post-excerpt-color: variables.$text-passive;
 
   .post-item {
     cursor: pointer;
-    @include utils.tappable($radius: 0, $gapx: $post-item-gapx, $gapy: $post-item-gapy);
+    @include utils.tappable($radius: 0, $gapx: $post-item-gapx, $gapy: $post-item-gapy, $background: variables.$bg-highlight);
 
     > * {
       max-width: $post-max-width;
