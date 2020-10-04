@@ -4,17 +4,17 @@
 
 // Sidekick
 
-$sidekick-background: variables.$bg-mid;
+$sidekick-background: variables.$bg-passive;
 $sidekick-topics-gapy: variables.$gap-rg;
 $sidekick-gap: properties.$space-rg;
 $sidekick-max-width: variables.$max-width-rg;
 $sidekick-nav-gap: properties.$space-rg;
-$sidekick-nav-margin: properties.$negative-space-rg;
+$sidekick-nav-margin: properties.$curb-rg;
 $sidekick-nav-flex-wrap: properties.$flex-wrap;
 $sidekick-nav-flex-basis: properties.$flex-basis;
-$sidekick-nav-background-prev: variables.$bg-prev;
-$sidekick-nav-background-next: variables.$bg-next;
-$sidekick-nav-background-active: variables.$bg-passive;
+$sidekick-nav-background-prev: variables.$bg-highlight;
+$sidekick-nav-background-next: variables.$bg-selected;
+$sidekick-nav-background-active: variables.$bg-selected;
 $sidekick-nav-indicator-gap: variables.$ch-rg;
 $sidekick-nav-indicator-color: variables.$text-passive;
 $sidekick-nav-indicator-font-size: variables.$font-xs;
@@ -34,6 +34,7 @@ $sidekick-nav-indicator-font-weight: variables.$weight-bd;
 
       a {
         @include utils.tappable($radius: 10rem);
+        background-color: variables.$bg-code;
       }
     }
 
@@ -43,7 +44,8 @@ $sidekick-nav-indicator-font-weight: variables.$weight-bd;
       justify-content: center;
 
       a {
-        @include utils.tappable;
+        display: flex;
+        @include utils.tappable($gapx: utils.$tappable-gapy);
       }
     }
   }

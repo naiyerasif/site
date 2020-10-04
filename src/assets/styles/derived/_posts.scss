@@ -20,7 +20,7 @@ $post-excerpt-color: variables.$text-passive;
 
   .post-item {
     cursor: pointer;
-    @include utils.tappable($radius: 0, $gapx: $post-item-gapx, $gapy: $post-item-gapy);
+    @include utils.tappable($radius: 0, $gapx: $post-item-gapx, $gapy: $post-item-gapy, $background: variables.$bg-highlight);
 
     > * {
       max-width: $post-max-width;
@@ -43,7 +43,7 @@ $post-excerpt-color: variables.$text-passive;
     }
 
     .post-title {
-      @include utils.distinct-font;
+      @include utils.heading-font;
       font-size: $post-title-size;
       font-weight: $post-title-weight;
     }

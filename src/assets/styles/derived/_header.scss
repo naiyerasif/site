@@ -1,14 +1,15 @@
 @use '../variables';
 @use '../properties';
-@use '../mixins/utils';
 @use '../mixins/queries';
+@use '../mixins/utils';
 
 // Header
 
-$header-gap: properties.$space-rg;
+$header-gapx: properties.$flex-gapx;
+$header-gapy: properties.$flex-gapy;
 $header-wrap: properties.$flex-wrap;
+$header-background: variables.$bg-active;
 $header-font-size: variables.$font-sm;
-$header-item-radius: variables.$radius;
 $header-menu-offsetx: -(utils.$tappable-gapx);
 $header-menu-offsety: utils.$tappable-gapx;
 
@@ -17,11 +18,21 @@ $header-menu-offsety: utils.$tappable-gapx;
   flex-wrap: $header-wrap;
   justify-content: space-between;
   align-items: center;
-  padding: $header-gap;
+  padding: $header-gapy $header-gapx;
   font-size: $header-font-size;
+  background-color: $header-background;
 
   > * {
     display: inherit;
+    align-items: inherit;
+  }
+
+  .brand {
+    width: 160px;
+
+    svg {
+      @include utils.size(inherit);
+    }
   }
 
   .menu > *,
@@ -29,17 +40,20 @@ $header-menu-offsety: utils.$tappable-gapx;
     @include utils.tappable;
   }
 
-  .brand {
-    width: 36px;
-
-    svg {
-      @include utils.size(inherit);
-    }
+  .search {
+    justify-content: flex-end;
   }
 
   .menu {
-    @include utils.even-gap;
     @include utils.mx($header-menu-offsetx);
+    margin-right: 0.5rem;
+  }
+}
+
+@include queries.md {
+  .brand,
+  .search {
+    flex-basis: 50%;
   }
 }
 

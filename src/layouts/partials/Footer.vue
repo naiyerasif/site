@@ -1,5 +1,8 @@
 <template>
   <footer class="footer">
+    <p class="copyright">
+      <g-link to="/">Microflash</g-link> is created, written and maintained by <g-link to="/profile/naiyer/">Naiyer Asif</g-link>. It's built using <a href="/profile/naiyer/#technologies">Jamstack</a> and deployed on <a target="_blank" rel="noopener noreferrer" href="https://netlify.com/">Netlify</a> with <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site/actions">GitHub Actions</a>.
+    </p>
     <div class="footer-grid">
       <nav class="footer-menu">
         <div class="footer-title">Resources</div>
@@ -10,7 +13,7 @@
       <nav class="footer-menu">
         <div class="footer-title">Support</div>
         <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site/issues/new"><Sprite symbol="icon-feedback" class="icon-sm gap-ch" />Report an issue</a>
-        <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site/blob/release/LICENSE.md"><Sprite symbol="icon-license" class="icon-sm gap-ch" />Site license (MIT)</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site/blob/main/LICENSE.md"><Sprite symbol="icon-license" class="icon-sm gap-ch" />Site license (MIT)</a>
         <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/"><Sprite symbol="icon-license" class="icon-sm gap-ch" />Content license (CC by SA)</a>
       </nav>
       <nav class="footer-menu">
@@ -30,10 +33,6 @@
           </a>
         </div>
       </nav>
-    </div>
-    <div class="copyright">
-      <Favicon alt="logo" class="brand gap-ch" />
-      <span>&copy; {{ year }} &mdash; <g-link to="/profile/naiyer/">Naiyer Asif</g-link></span>
     </div>
   </footer>
 </template>

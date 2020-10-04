@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Logo from '@/static/favicon.svg'
+import Logo from '@/static/assets/images/logo.svg'
 import Search from '~/components/Search'
 import ThemeSwitcher from '~/components/ThemeSwitcher'
 

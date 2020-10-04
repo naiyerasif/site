@@ -2,22 +2,28 @@
 @use 'mixins/queries';
 
 :root {
-  --base-gap: (1rem + 2vw);
+  --gap: (1rem + 2vw);
 }
 
-$space-sm: calc(var(--base-gap) * 0.5) !default;
-$space-rg: calc(var(--base-gap)) !default;
-$space-md: calc(var(--base-gap) * 1.5) !default;
-$space-lg: calc(var(--base-gap) * 2) !default;
+$space-sm: calc(var(--gap) * 0.5) !default;
+$space-rg: calc(var(--gap)) !default;
+$space-md: calc(var(--gap) * 1.5) !default;
+$space-lg: calc(var(--gap) * 2) !default;
+$space-xl: calc(var(--gap) * 3) !default;
 
-$negative-space-rg: calc(var(--base-gap) * -1) !default;
+$curb-rg: calc(var(--gap) * -1) !default;
 
 :root {
   --container-width: 100%;
   --flex-wrap: wrap;
-  --flex-gap: #{variables.$gap-rg};
+  --flex-width: 100%;
   --flex-basis: 100%;
-  --search-width: calc(100% - var(--base-gap) * 2);
+  --flex-gap: #{variables.$gap-rg};
+  --flex-gapx: #{$space-rg};
+  --flex-gapy: #{$space-rg};
+  --search-offsetx: #{-(variables.$gap-sm)};
+  --search-width: calc(100% - var(--gap));
+  --search-radius: #{variables.$radius};
   --content-article-gap: #{$space-rg};
   --content-list-gap: #{$space-lg};
 }
@@ -26,9 +32,14 @@ $negative-space-rg: calc(var(--base-gap) * -1) !default;
   :root {
     --container-width: #{variables.$max-width-rg};
     --flex-wrap: nowrap;
-    --flex-gap: 0;
+    --flex-width: 45%;
     --flex-basis: 50%;
+    --flex-gap: 0;
+    --flex-gapx: #{$space-rg};
+    --flex-gapy: #{$space-sm};
+    --search-offsetx: 0;
     --search-width: 40ch;
+    --search-radius: 0;
     --content-article-gap: 0;
     --content-list-gap: #{$space-rg};
   }
@@ -36,8 +47,13 @@ $negative-space-rg: calc(var(--base-gap) * -1) !default;
 
 $container-width: var(--container-width) !default;
 $flex-wrap: var(--flex-wrap) !default;
-$flex-gap: var(--flex-gap) !default;
+$flex-width: var(--flex-width) !default;
 $flex-basis: var(--flex-basis) !default;
+$flex-gap: var(--flex-gap) !default;
+$flex-gapx: var(--flex-gapx) !default;
+$flex-gapy: var(--flex-gapy) !default;
+$search-offsetx: var(--search-offsetx) !default;
 $search-width: var(--search-width) !default;
+$search-radius: var(--search-radius) !default;
 $content-article-gap: var(--content-article-gap) !default;
 $content-list-gap: var(--content-list-gap) !default;

@@ -12,11 +12,11 @@ module.exports = {
   name: pkgName,
   description: pkgDescription,
   url: 'https://mflash.dev',
-  favicon: 'https://raw.githubusercontent.com/Microflash/site/release/static/google-touch-icon.png',
+  favicon: 'https://raw.githubusercontent.com/Microflash/site/main/static/google-touch-icon.png',
   maintainer: pkgAuthor,
   copyright: `Copyright ${dayjs().year()} ${pkgAuthor}`,
   prefs: {
-    editContext: `${pkgRepo.replace(/.git$/g, '')}/edit/release`,
+    editContext: `${pkgRepo.replace(/.git$/g, '')}/edit/main`,
     maxTocDepth: 3,
     outdationPeriod: 365 // in days
   },

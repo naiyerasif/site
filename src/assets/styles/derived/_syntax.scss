@@ -21,12 +21,12 @@ $coral: hsl(4, 69%, 67%);
 $languages: js, ts, html, md, vue, css, sass, scss, less, stylus, go, java, c,
   sh, yaml, py, docker, dockerfile, properties, groovy, typescript, json, xml, git, shell, sql, bash, powershell, ini;
 
-$code-background: variables.$bg-active;
+$code-background: variables.$bg-code;
 $code-max-width: variables.$max-width-rg;
 $code-gapy-rg: properties.$space-rg;
 $code-gapy-sm: properties.$space-sm;
 $code-gapx: properties.$content-article-gap;
-$code-gapx-neg: properties.$negative-space-rg;
+$code-gapx-neg: properties.$curb-rg;
 
 // Prism theme
 
@@ -72,7 +72,7 @@ $code-gapx-neg: properties.$negative-space-rg;
     display: block;
     margin-left: $code-gapx-neg;
     padding-left: $code-gapy-rg;
-    background: linear-gradient(to right, variables.$code-selected 66%, transparent);
+    background: linear-gradient(to right, variables.$bg-highlight 66%, transparent);
   }
 
   .token.comment,

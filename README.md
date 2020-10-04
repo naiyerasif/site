@@ -1,4 +1,4 @@
-# Microflash ![deploy](https://github.com/Microflash/site/workflows/deploy/badge.svg)
+# Microflash [![deploy](https://github.com/Microflash/site/workflows/deploy/badge.svg)](https://github.com/Microflash/site/actions)
 
 Personal website of Naiyer ([@Microflash](https://www.twitter.com/Microflash))
 
@@ -17,7 +17,6 @@ This site was made possible by
 - [Bourbon](https://www.bourbon.io/): a lightweight SASS tool set
 - [Animate.css](https://github.com/daneden/animate.css): a cross-browser library of CSS animations
 - [Grid By Example](https://gridbyexample.com/): a collection of examples and references on CSS Grid
-- [Leonardo](https://github.com/adobe/leonardo): an adaptive color scale generator developed by Adobe
 
 ## Technologies
 
@@ -30,7 +29,7 @@ This site uses
 - [Inter](https://rsms.me/inter/) as the body font (variable font with traditional fallbacks)
 - [Space Grotesk](https://github.com/floriankarsten/space-grotesk) as the heading font (variable font with traditional fallbacks)
 - [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) as the `monospace` font
-- a [custom Prism theme](https://github.com/Microflash/site/blob/release/src/assets/styles/components/_code.scss) to decorate the codeblocks
+- a [custom Prism theme](https://github.com/Microflash/site/blob/main/src/assets/styles/derived/_syntax.scss) to decorate the codeblocks
 - [Yarn](https://github.com/yarnpkg/yarn) as the package manager
 - [Git LFS](https://github.com/git-lfs/git-lfs) to version large files
 - [GitHub Actions](https://github.com/features/actions) for continuous integration

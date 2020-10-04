@@ -15,82 +15,35 @@
   @return color.adjust($color, $saturation: $vibrance);
 }
 
-// Color palettes
-// 
-// Ax00 variants are WCAG-accesible complements of x00 colors
-// all the colors are in CIECAM02 color space
+// Brand colors
 
-$mono: (
-  100: hsl(0, 0%, 100%),
-  200: hsl(0, 0%, 85%),
-  300: hsl(0, 0%, 71%),
-  400: hsl(0, 0%, 56%),
-  500: hsl(0, 0%, 44%),
-  600: hsl(60, 1%, 33%),
-  700: hsl(60, 1%, 24%),
-  800: hsl(0, 1%, 14%),
-  900: hsl(0, 0%, 0%)
-);
-
-$primary: (
-  100: hsl(152, 25%, 80%),
-  200: hsl(153, 26%, 75%),
-  300: hsl(153, 29%, 64%),
-  400: hsl(155, 33%, 53%),
-  500: hsl(160, 62%, 38%),
-  600: hsl(158, 49%, 36%),
-  700: hsl(156, 41%, 33%),
-  800: hsl(155, 35%, 29%),
-  900: hsl(154, 29%, 23%),
-) !default;
-
-$secondary: (
-  100: hsl(223, 8%, 83%),
-  200: hsl(227, 9%, 79%),
-  300: hsl(231, 9%, 72%),
-  400: hsl(227, 10%, 64%),
-  500: hsl(229, 10%, 57%),
-  600: hsl(228, 10%, 50%),
-  700: hsl(228, 13%, 44%),
-  800: hsl(229, 17%, 39%),
-  900: hsl(228, 16%, 30%)
-) !default;
-
-// Conveniences for palette access
-
-@function mono($variation) {
-  @return map.get($mono, $variation);
-}
-
-@function primary($variation) {
-  @return map.get($primary, $variation);
-}
-
-@function secondary($variation) {
-  @return map.get($secondary, $variation);
-}
-
-$white: mono(100);
-$black: mono(900);
+$white: hsl(0, 0%, 100%);
+$black: hsl(0, 0%, 0%);
+$primary: hsl(160, 62%, 38%);
+$secondary: hsl(229, 42%, 57%);
+$tertiary: hsl(28, 73%, 62%);
 
 // CSS properties for light theme
 
 [data-theme='light'] {
-  $bg-base: mix($white, mono(100), 20%);
-  $text-base: mix($black, secondary(900), 25%);
-
-  --text: #{$text-base};
-  --text-passive: #{saturate(mix($bg-base, secondary(800), 10%), 20%)};
-  --link: #{mix($text-base, primary(500), 24%)};
-  --link-active: #{mix($text-base, primary(500), 31%)};
-  --border: #{mix($bg-base, $text-base, 77%)};
-  --bg-body: #{$bg-base};
-  --bg-active: #{mix($white, mono(200), 85%)};
-  --bg-passive: #{mix($white, primary(300), 80%)};
-  --bg-caution: hsl(54, 36%, 86%);
-  --bg-tip: hsl(160, 27%, 88%);
-  --bg-warning: hsl(5, 70%, 90%);
-  --bg-important: hsl(226, 40%, 88%);
+  --text: #{saturate(mix($black, $secondary, 70%), -15%)};
+  --text-passive: #{saturate(mix($black, $secondary, 45%), 5%)};
+  --link: #{saturate(mix($black, $primary, 35%), 10%)};
+  --link-active: #{saturate(mix($black, $primary, 55%), 20%)};
+  --bg-body: #{saturate(mix($white, $tertiary, 85%), 10%)};
+  --bg-active: #{saturate(mix($white, $tertiary, 70%), 15%)};
+  --bg-passive: #{saturate(mix($white, $tertiary, 77%), 20%)};
+  --bg-code: #{saturate(mix($white, $tertiary, 95%), 20%)};
+  --bg-search: #{saturate(mix($white, $tertiary, 50%), 5%)};
+  --bg-selected: #{fade($tertiary, 0.75)};
+  --bg-highlight: #{fade($tertiary, 0.85)};
+  --bg-caution: hsl(57, 39%, 82%);
+  --bg-tip: hsl(169, 28%, 82%);
+  --bg-warning: hsl(0, 96%, 90%);
+  --bg-important: hsl(247, 44%, 87%);
+  --border: #{saturate(mix($white, $tertiary, 45%), 10%)};
+  --tone-1: hsla(10, 100%, 75%, 0.45);
+  --tone-2: hsla(192, 75%, 68%, 0.5);
 
   --weight-rg: 400;
   --weight-bd: 700;
@@ -102,21 +55,24 @@ $black: mono(900);
 // CSS properties for dark theme
 
 [data-theme='dark'] {
-  $bg-base: mix($black, secondary(900), 60%);
-  $text-base: mix($black, $white, 25%);
-
-  --text: #{$text-base};
-  --text-passive: #{mix($bg-base, secondary(500), 5%)};
-  --link: #{mix($text-base, primary(500), 5%)};
-  --link-active: #{primary(400)};
-  --border: #{mix($bg-base, $text-base, 85%)};
-  --bg-body: #{$bg-base};
-  --bg-active: #{mix($black, $bg-base, 20%)};
-  --bg-passive: #{mix($black, primary(900), 33%)};
-  --bg-caution: hsl(49, 20%, 20%);
-  --bg-tip: hsl(160, 30%, 19%);
-  --bg-warning: hsl(4, 50%, 23%);
-  --bg-important: hsl(228, 41%, 26%);
+  --text: #{saturate(mix($white, $secondary, 10%), -50%)};
+  --text-passive: #{saturate(mix($black, $tertiary, 15%), -25%)};
+  --link: #{$primary};
+  --link-active: #{mix($white, $primary, 25%)};
+  --bg-body: #{saturate(mix($black, $secondary, 85%), -10%)};
+  --bg-active: #{saturate(mix($black, $secondary, 90%), -5%)};
+  --bg-passive: #{saturate(mix($black, $secondary, 77%), -15%)};
+  --bg-code: #{saturate(mix($black, $secondary, 89%), -10%)};
+  --bg-search: #{mix($black, $primary, 70%)};
+  --bg-selected: #{fade($primary, 0.75)};
+  --bg-highlight: #{fade($primary, 0.9)};
+  --bg-caution: hsl(44, 30%, 18%);
+  --bg-tip: hsl(164, 49%, 16%);
+  --bg-warning: hsl(4, 58%, 22%);
+  --bg-important: hsl(228, 43%, 24%);
+  --border: #{saturate(mix($black, $secondary, 65%), -15%)};
+  --tone-1: hsla(350, 90%, 35%, 0.4);
+  --tone-2: hsla(263, 90%, 45%, 0.2);
 
   --weight-rg: 350;
   --weight-bd: 600;
