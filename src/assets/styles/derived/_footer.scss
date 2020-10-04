@@ -5,15 +5,20 @@
 // Footer
 
 $footer-background: variables.$bg-active;
-$footer-gapx: properties.$space-rg;
-$footer-gapy: properties.$space-lg;
+$footer-gapx: properties.$flex-gapx;
+$footer-gapy: properties.$space-xl;
 $footer-font-size: variables.$font-sm;
+$footer-title-gap: variables.$gap-rg;
 $footer-title-weight: variables.$weight-bd;
 $footer-title-bottom: variables.$gap-rg;
+$footer-copyright-width: properties.$flex-width;
 
 .footer {
   background-color: $footer-background;
-  padding: $footer-gapy $footer-gapx;
+  background-image: 
+    radial-gradient(circle at 80vw bottom, variables.$tone-1 25%, transparent 25%),
+    linear-gradient(328deg, variables.$tone-2 25%, transparent 25%);
+  padding: $footer-gapx $footer-gapx $footer-gapy;
   font-size: $footer-font-size;
 
   &-menu {
@@ -27,28 +32,20 @@ $footer-title-bottom: variables.$gap-rg;
   }
 
   &-title {
-    @include utils.distinct-font;
     font-weight: $footer-title-weight;
     margin-bottom: $footer-title-bottom;
   }
 
   .network > a {
-    @include utils.tappable;
+    @include utils.tappable($gapx: utils.$tappable-gapy);
 
     &:first-child {
-      margin-left: -(utils.$tappable-gapx);
+      margin-left: -(utils.$tappable-gapy);
     }
   }
 
   .copyright {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    margin-top: $footer-gapx;
-
-    .brand {
-      @include utils.size(28px);
-      flex-basis: 28px;
-    }
+    max-width: $footer-copyright-width;
+    margin-top: $footer-title-gap;
   }
 }
