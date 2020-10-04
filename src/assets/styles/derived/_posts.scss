@@ -43,7 +43,7 @@ $post-excerpt-color: variables.$text-passive;
     }
 
     .post-title {
-      @include utils.distinct-font;
+      @include utils.heading-font;
       font-size: $post-title-size;
       font-weight: $post-title-weight;
     }
