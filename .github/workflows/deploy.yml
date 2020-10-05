@@ -36,11 +36,11 @@ jobs:
       - name: Print environment
         run: yarn status
       - name: Generate the build
-        run: yarn build
-        env:
-          VIEW_ID: ${{ secrets.GA_VIEW_ID }}
-          CLIENT_EMAIL: ${{ secrets.GA_CLIENT_EMAIL }}
-          PRIVATE_KEY: ${{ secrets.GA_PRIVATE_KEY }}
+        run: |
+          echo VIEW_ID=${{ secrets.GA_VIEW_ID }} > .env
+          echo CLIENT_EMAIL=${{ secrets.GA_CLIENT_EMAIL }} >> .env
+          echo PRIVATE_KEY=${{ secrets.GA_PRIVATE_KEY }} >> .env
+          yarn build
       - name: Publish on Netlify
         uses: netlify/actions/cli@master
         with:
