@@ -5,7 +5,7 @@ authors: [naiyer]
 topics: [git, lfs]
 ---
 
-[Git LFS](https://git-lfs.github.com/) is a great way to version large binary files alongside the source code in Git. It replaces the actual files with text pointers in the Git repository and stores them on a remote server that works with Git LFS (e.g., GitHub.com, Azure DevOps, etc.). When you clone a repository with LFS objects, you'll receive the pointers instead. You'll have to install [the Git LFS client](https://github.com/git-lfs/git-lfs/releases/latest) which will convert these pointers into actual files during the checkout; this process is called **smudging**. You can watch an introduction of how this works on the following YouTube video.
+[Git LFS](https://git-lfs.github.com/) is a great way to version large binary files alongside the source code in Git. It replaces the actual files with text pointers in the Git repository and stores them on a remote server that works with Git LFS (e.g., GitHub.com, Azure DevOps, etc.). When you clone a repository with LFS objects, you'll receive the pointers instead. You'll have to install [the Git LFS client](https://github.com/git-lfs/git-lfs/releases/latest) which will convert these pointers into actual files during the checkout; this process is called **smudging**. You can watch an introduction to how this works on the following YouTube video.
 
 https://www.youtube.com/watch?v=uLR1RNqJ1Mw
 
@@ -13,9 +13,9 @@ Many Git vendors put certain bandwidth limits on LFS pulls. For example, GitHub 
 
 ## Creating a lockfile for the LFS assets
 
-Every LFS asset has a unique 64-character object identifier (OID). You can create a lockfile (say, `.lfs-assets-id`) containing the OIDs of all the LFS objects and use it as a key to generate a cache.
+Every LFS asset has a unique 64-character object identifier (OID). You can create a lockfile (say, `.lfs-assets-id`) containing the OIDs of all the LFS objects and use it as a key to generating a cache.
 
-> **Lockfile** A lockfile stores the specific versions of the dependencies specified by a management system (e.g., a package manager, file system, etc). In other words, it *locks* the versions of those dependencies. Common examples of the lockfiles are `package-lock.json` used by the [Node Package Manager](https://docs.npmjs.com/configuring-npm/package-lock-json.html), `Cargo.lock` used by [Cargo](https://doc.rust-lang.org/cargo/), etc. The purpose of a lockfile is to enable the system recreate the dependency graph accurately. In a CI environment, a lockfile helps ensure that your pipelines are immutable.
+> **Lockfile** A lockfile stores the specific versions of the dependencies specified by a management system (e.g., a package manager, file system, etc). In other words, it *locks* the versions of those dependencies. Common examples of the lockfiles are `package-lock.json` used by the [Node Package Manager](https://docs.npmjs.com/configuring-npm/package-lock-json.html), `Cargo.lock` used by [Cargo](https://doc.rust-lang.org/cargo/), etc. The purpose of a lockfile is to enable the system to recreate the dependency graph accurately. In a CI environment, a lockfile helps ensure that your pipelines are immutable.
 
 To begin with, you'll need the OIDs of the LFS objects, which can be found by `ls-files` command.
 
@@ -56,7 +56,7 @@ This lockfile should serve our purpose: it'd change only when you add a new LFS 
 
 ## Caching the LFS assets with CircleCI
 
-For a [CircleCI](https://circleci.com/) pipeline, you'd need a Docker image with the Git LFS client installed. For example, in case of a Node.js project, you can create a custom image (call it `microflash/node:14-buster`) using the following Dockerfile.
+For a [CircleCI](https://circleci.com/) pipeline, you'd need a Docker image with the Git LFS client installed. For example, in the case of a Node.js project, you can create a custom image (call it `microflash/node:14-buster`) using the following Dockerfile.
 
 ```dockerfile
 FROM circleci/node:14-buster
@@ -100,7 +100,7 @@ In this configuration, we're
 - executing `git lfs pull` to pull any changes, and
 - recreating the LFS cache (only when any new object is pulled)
 
-Note that the above configuration sets an environment variable `GIT_LFS_SKIP_SMUDGE=1`; this is needed to prevent the checkout step smudging the LFS objects before the cache is restored.
+Note that the above configuration sets an environment variable `GIT_LFS_SKIP_SMUDGE=1`; this is needed to prevent the checkout step from smudging the LFS objects before the cache is restored.
 
 ## Caching LFS assets with GitHub Actions
 

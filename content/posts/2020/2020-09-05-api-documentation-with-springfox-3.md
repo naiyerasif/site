@@ -44,7 +44,7 @@ docker-compose up -d
 
 ## Springfox 3 with Spring WebMvc
 
-Generate a Spring Boot project using [Spring Initializr](https://start.spring.io/), and add `spring-boot-starter-web`, `spring-boot-starter-data-jdbc`, `postgresql` and `spring-boot-starter-actuator` dependencies. Your `pom.xml` would look like this.
+Generate a Spring Boot project using [Spring Initializr](https://start.spring.io/), and add `spring-boot-starter-web`, `spring-boot-starter-data-jdbc`, `postgresql`, and `spring-boot-starter-actuator` dependencies. Your `pom.xml` would look like this.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -114,7 +114,7 @@ Generate a Spring Boot project using [Spring Initializr](https://start.spring.io
 </project>
 ```
 
-Rename `application.properties` to `application.yml`, open it in an editor and add the following configuration (change it wherever required).
+Rename `application.properties` to `application.yml`, open it in an editor, and add the following configuration (change it wherever required).
 
 ```yml
 # src/main/resources/application.yml
@@ -154,9 +154,9 @@ public class Note {
 }
 ```
 
-Postgres will generate the `id` automatically when a `save` operation is performed since `id` field is of `SERIAL` type.
+Postgres will generate the `id` automatically when a `save` operation is performed since the `id` field is of `SERIAL` type.
 
-Declare a repository to perform CRUD operations with `Note` entity.
+Declare a repository to perform CRUD operations with the `Note` entity.
 
 ```java
 // src/main/java/dev/mflash/guides/springfox3/NoteRepository.java
@@ -213,7 +213,7 @@ public class NoteController {
 }
 ```
 
-Here, apart from other endpoints, we've exposed an endpoint, through `upload` method, to upload a CSV of notes and persist them in the database.
+Here, apart from other endpoints, we've exposed an endpoint, through the `upload` method, to upload a CSV of notes and persist them in the database.
 
 ### Integrating Springfox 3
 
