@@ -5,6 +5,10 @@ const { google } = require('googleapis')
 
 dotenv.config()
 
+if (process.env.CLIENT_EMAIL && process.env.PRIVATE_KEY && process.env.VIEW_ID) {
+  console.log('Found env variables')
+}
+
 const jwtAuth = new google.auth.JWT({
   email: process.env.CLIENT_EMAIL,
   key: process.env.PRIVATE_KEY,
