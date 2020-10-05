@@ -29,14 +29,12 @@ module.exports = api => {
     return { ...options }
   })
 
-  api.loadSource(async ({ getCollection, addCollection }) => {
-    const { collection } = getCollection('Project')
-
+  api.loadSource(async ({ addCollection }) => {
     const allProjects = addCollection({
-      typeName: 'CompleteProject'
+      typeName: 'Project'
     })
 
-    projects.concat(collection.data).forEach(project => {
+    projects.forEach(project => {
       allProjects.addNode({
         id: project.id,
         title: project.title,

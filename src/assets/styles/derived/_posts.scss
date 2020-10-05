@@ -72,7 +72,7 @@ $post-excerpt-color: variables.$text-passive;
       
       &-title {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
 
         time {
           color: $post-section-header-color;
@@ -128,17 +128,33 @@ $post-excerpt-color: variables.$text-passive;
 
 .post-section-item-title {
   flex-wrap: properties.$flex-wrap;
+  $flex-basis-min: 22.5%;
+  $flex-basis-max: 100% - $flex-basis-min;
 
-  time {
+  time,
+  .project-title {
     flex-basis: 100%;
 
     @include queries.md {
       text-align: right;
-      flex-basis: 20%;
+      flex-basis: $flex-basis-min;
 
       &::after {
         @include utils.separator;
       }
     }
+  }
+
+  time + a,
+  .project-title + span {
+    flex-basis: 100%;
+
+    @include queries.md {
+      flex-basis: $flex-basis-max;
+    }
+  }
+
+  .project-title {
+    font-weight: $post-title-weight;
   }
 }
