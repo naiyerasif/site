@@ -6,43 +6,69 @@
       </h1>
     </Hero>
     <main class="posts">
-      <div class="post-item" v-for="post in $page.posts.edges" :key="post.id" @click="$router.push(post.node.path)">
-        <div class="post-header">
-          <time v-html="post.node.date" />
-          <span>&sim;{{ post.node.timeToRead }} min read</span>
-          <section class="topics">
-            <span class="gap-ch"><strong class="gap-ch">{{ post.node.category }}</strong>on</span>
-            <span class="gap-ch" v-for="topic in post.node.topics" :key="topic">{{ topic }}</span>
-          </section>
+      <div class="post-main-section" @click="$router.push(mostRecent.node.path)">
+        <div class="post-main-section-header">
+          <span class="posts-pill">
+            <strong>Most recent</strong>
+            <span class="separator"></span>
+            <time v-html="mostRecent.node.date" />
+          </span>
         </div>
-        <div class="post-title">
-          <g-link :to="post.node.path">{{ post.node.title }}</g-link>
+        <div class="post-main-section-title">
+          <g-link :to="mostRecent.node.path">{{ mostRecent.node.title }}</g-link>
         </div>
-        <div class="post-excerpt" v-html="excerpt(post.node.excerpt)" />
+        <div class="post-main-section-excerpt" v-html="excerpt(mostRecent.node.excerpt)" />
+      </div>
+
+      <div class="post-section">
+        <div class="post-section-header">
+          <strong class="posts-pill">Popular this month</strong>
+        </div>
+        <div class="post-section-item" v-for="popular in $page.popularPosts.edges" :key="popular.id" @click="$router.push(popular.node.path)">
+          <div class="post-section-item-title">
+            <span class="separator hidden-sm"></span>
+            <g-link :to="popular.node.path">{{ popular.node.title }}</g-link>
+          </div>
+        </div>
+      </div>
+
+      <div class="post-section">
+        <div class="post-section-header">
+          <strong class="posts-pill">Other recent posts</strong>
+        </div>
+        <div class="post-section-item" v-for="latest in recent" :key="latest.id" @click="$router.push(latest.node.path)">
+          <div class="post-section-item-title">
+            <time v-html="latest.node.date" />
+            <g-link :to="latest.node.path">{{ latest.node.title }}</g-link>
+          </div>
+        </div>
+        <div class="post-section-footer">
+          <g-link to="/blog">Browse more &rarr;</g-link>
+        </div>
       </div>
     </main>
-    <Pagination :input="$page.posts.pageInfo" />
   </Layout>
 </template>
 
 <page-query>
-query Blogs ($page: Int) {
-  posts: allBlog (sortBy: "date", order: DESC, perPage: 10, page: $page) @paginate {
-    totalCount
-    pageInfo {
-      totalPages
-      currentPage
-    }
+query {
+  popularPosts: allPopularBlog(sortBy: "views", order: DESC) {
     edges {
       node {
         id
         title
-        date (format: "MMM D, Y")
-        timeToRead
-        category
-        topics
-        excerpt
         path
+      }
+    }
+  }
+  latestPosts: allBlog(sortBy: "date", order: DESC, limit: 11) {
+    edges {
+      node {
+        id
+        title
+        path
+        date (format: "MMM D, Y")
+        excerpt
       }
     }
   }
@@ -51,17 +77,21 @@ query Blogs ($page: Int) {
 
 <script>
 import Hero from '~/components/partials/Hero'
-import Pagination from '~/components/Pagination'
-import Sprite from '~/components/Sprite'
 
 export default {
   metaInfo: {
     title: 'Home'
   },
   components: {
-    Hero,
-    Pagination,
-    Sprite
+    Hero
+  },
+  computed: {
+    mostRecent() {
+      return this.$page.latestPosts.edges[0]
+    },
+    recent() {
+      return this.$page.latestPosts.edges.slice(1)
+    }
   },
   methods: {
     excerpt(text) {

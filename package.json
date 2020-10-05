@@ -36,6 +36,8 @@
     "chrono-node": "^2.1.8",
     "commander": "^6.1.0",
     "dayjs": "^1.9.1",
+    "dotenv": "^8.2.0",
+    "googleapis": "^60.0.1",
     "marked": "^1.2.0",
     "sass": "^1.26.11",
     "sass-loader": "^10.0.2",

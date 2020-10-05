@@ -1,6 +1,8 @@
 .archive
+.env
 .temp
 .*cache
 node_modules
 public
+report.json
 search.json

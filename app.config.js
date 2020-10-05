@@ -26,6 +26,10 @@ module.exports = {
       dir: './static',
       name: 'search.json'
     },
+    report: {
+      dir: './static',
+      name: 'report.json'
+    },
     sprite: '/assets/images'
   },
   head: {
