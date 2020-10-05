@@ -7,7 +7,7 @@
   "author": "Naiyer Asif",
   "license": "MIT",
   "scripts": {
-    "build": "gridsome build",
+    "build": "node bin/report.js && gridsome build",
     "start": "gridsome develop",
     "status": "gridsome info",
     "purge": "shx rm -rf public .cache src/.temp static/search.json",
