@@ -67,7 +67,8 @@ $tappable-background: variables.$bg-selected;
   $radius: $tappable-radius, 
   $gapx: $tappable-gapx, 
   $gapy: $tappable-gapy, 
-  $background: $tappable-background
+  $background: $tappable-background,
+  $underline: false
 ) {
   border-radius: $radius;
   padding: $gapy $gapx;
@@ -80,6 +81,12 @@ $tappable-background: variables.$bg-selected;
   &:hover {
     background-color: $background;
     text-decoration: none;
+
+    @if $underline {
+      a {
+        text-decoration: underline;
+      }
+    }
   }
 }
 

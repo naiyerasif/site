@@ -6,7 +6,7 @@
 
 // Containers
 
-$topics-background: variables.$tone-3;
+$topics-background: variables.$bg-selected;
 $topics-font-size: variables.$font-xs;
 $topics-gapy: variables.$ch-sm;
 $topics-gapx: variables.$ch-md;
@@ -110,4 +110,10 @@ a {
   @include queries.sm {
     @include utils.hide;
   }
+}
+
+// Separator
+
+.separator::before {
+  @include utils.separator;
 }
