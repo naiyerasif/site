@@ -11,7 +11,7 @@ if (process.env.CLIENT_EMAIL && process.env.PRIVATE_KEY && process.env.VIEW_ID) 
 
 const jwtAuth = new google.auth.JWT({
   email: process.env.CLIENT_EMAIL,
-  key: process.env.PRIVATE_KEY,
+  key: process.env.PRIVATE_KEY.replace(new RegExp("\\\\n", "\g"), "\n"),
   scopes: 'https://www.googleapis.com/auth/analytics.readonly'
 })
 
