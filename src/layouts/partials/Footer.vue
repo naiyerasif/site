@@ -19,7 +19,7 @@
       <nav class="footer-menu">
         <div class="footer-title">Connect</div>
         <div class="network">
-          <a href="https://github.com/Microflash" title="GitHub" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/naiyerasif" title="GitHub" target="_blank" rel="noopener noreferrer">
             <Sprite symbol="icon-github" class="icon-rg" />
           </a>
           <a href="https://gitlab.com/Microflash" title="GitLab" target="_blank" rel="noopener noreferrer">
