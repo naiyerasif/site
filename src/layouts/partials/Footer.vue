@@ -8,7 +8,7 @@
         <div class="footer-title">Resources</div>
         <a href="/feed.xml"><Sprite symbol="icon-rss" class="icon-sm gap-ch" />RSS feed</a>
         <a href="/sitemap.xml"><Sprite symbol="icon-sitemap" class="icon-sm gap-ch" />Sitemap</a>
-        <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site"><Sprite symbol="icon-file-source" class="icon-sm gap-ch" />Source code</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site"><Sprite symbol="icon-code" class="icon-sm gap-ch" />Source code</a>
       </nav>
       <nav class="footer-menu">
         <div class="footer-title">Support</div>
