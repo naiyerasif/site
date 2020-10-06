@@ -5,6 +5,7 @@
     </g-link>
     <nav class="menu">
       <g-link to="/blog/">Blog</g-link>
+      <g-link to="/projects/">Projects</g-link>
       <g-link to="/profile/naiyer/">About</g-link>
       <ThemeSwitcher />
     </nav>

@@ -131,8 +131,7 @@ $post-excerpt-color: variables.$text-passive;
   $flex-basis-min: 22.5%;
   $flex-basis-max: 100% - $flex-basis-min;
 
-  time,
-  .project-title {
+  time {
     flex-basis: 100%;
 
     @include queries.md {
@@ -145,16 +144,11 @@ $post-excerpt-color: variables.$text-passive;
     }
   }
 
-  time + a,
-  .project-title + span {
+  time + a {
     flex-basis: 100%;
 
     @include queries.md {
       flex-basis: $flex-basis-max;
     }
-  }
-
-  .project-title {
-    font-weight: $post-title-weight;
   }
 }

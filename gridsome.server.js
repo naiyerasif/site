@@ -33,27 +33,12 @@ module.exports = api => {
     const allProjects = addCollection({
       typeName: 'Project'
     })
-
-    projects.forEach(project => {
-      allProjects.addNode({
-        id: project.id,
-        title: project.title,
-        description: project.description,
-        link: project.path
-      })
-    })
+    projects.forEach(project => allProjects.addNode(project))
 
     const popularBlogPosts = addCollection({
       typeName: 'PopularBlog'
     })
-
-    report.popular.forEach(entry => {
-      popularBlogPosts.addNode({
-        title: entry.title,
-        path: entry.path,
-        views: entry.views
-      })
-    })
+    report.popular.forEach(entry => popularBlogPosts.addNode(entry))
   })
 
   api.createPages(async ({ graphql, createPage }) => {

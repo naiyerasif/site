@@ -43,6 +43,12 @@ $content-opener-size: variables.$font-md;
     div[class$='-embed'] {
       @include utils.my($content-adm-gap);
     }
+
+    .prominent-list {
+      div:not(:last-child) {
+        margin-bottom: variables.$gap-lg;
+      }
+    }
   }
 }
 

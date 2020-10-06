@@ -46,20 +46,6 @@
           <g-link to="/blog">Browse more &rarr;</g-link>
         </div>
       </div>
-
-      <div class="post-section">
-        <div class="post-section-header">
-          <strong class="posts-pill">Projects</strong>
-        </div>
-        <div class="post-section-item" v-for="project in $page.projects.edges" :key="project.id">
-          <div class="post-section-item-title">
-            <span class="project-title">
-              <a target="_blank" rel="nofollow noopener noreferrer" :href="project.node.link">{{ project.node.title }}</a>
-            </span>
-            <span>{{ project.node.description }}</span>
-          </div>
-        </div>
-      </div>
     </main>
   </Layout>
 </template>
@@ -83,16 +69,6 @@ query {
         path
         date (format: "MMM D, Y")
         excerpt
-      }
-    }
-  }
-  projects: allProject (sortBy: "id", order: DESC) {
-    edges {
-      node {
-        id
-        title
-        description
-        link
       }
     }
   }
