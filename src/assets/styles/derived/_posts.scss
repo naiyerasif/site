@@ -26,7 +26,7 @@ $post-excerpt-color: variables.$text-passive;
   &-pill {
     display: inline-block;
     padding: 0.25rem 1rem;
-    background-color: $post-border;
+    background-color: variables.$bg-selected;
     color: $post-section-header-color;
     border: 1px solid $post-border;
     border-radius: 10rem;

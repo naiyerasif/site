@@ -63,7 +63,7 @@ $tertiary: hsl(28, 73%, 62%);
   --bg-active: #{saturate(mix($black, $secondary, 90%), -5%)};
   --bg-passive: #{saturate(mix($black, $secondary, 77%), -15%)};
   --bg-code: #{saturate(mix($black, $secondary, 89%), -10%)};
-  --bg-search: #{saturate(mix($black, $primary, 63%), -35%)};
+  --bg-search: #{mix($black, $primary, 70%)};
   --bg-selected: #{fade($primary, 0.75)};
   --bg-highlight: #{fade($primary, 0.9)};
   --bg-caution: hsl(44, 30%, 18%);
