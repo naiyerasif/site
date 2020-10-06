@@ -19,6 +19,12 @@ $sidekick-nav-indicator-gap: variables.$ch-rg;
 $sidekick-nav-indicator-color: variables.$text-passive;
 $sidekick-nav-indicator-font-size: variables.$font-xs;
 $sidekick-nav-indicator-font-weight: variables.$weight-bd;
+$pagination-font-size: variables.$font-sm;
+$pagination-border: variables.$border;
+$pagination-radius: variables.$radius * 2;
+$pagination-current-background: variables.$bg-highlight;
+$pagination-item-gapx: variables.$ch-rg;
+$pagination-item-gapy: variables.$ch-rg * 0.2;
 
 .sidekick {
   background-color: $sidekick-background;
@@ -29,12 +35,27 @@ $sidekick-nav-indicator-font-weight: variables.$weight-bd;
     @include utils.mx(auto);
     text-align: center;
 
-    .topics {
-      @include utils.py($sidekick-topics-gapy);
+    .pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: $pagination-font-size;
 
-      a {
-        @include utils.tappable($radius: 10rem);
-        background-color: variables.$bg-code;
+      .active {
+        font-weight: normal;
+      }
+
+      .is-current {
+        background-color: $pagination-current-background;
+      }
+
+      > * {
+        border: 1px solid $pagination-border;
+        @include utils.tappable($gapx: $pagination-item-gapx, $gapy: $pagination-item-gapy, $radius: $pagination-radius);
+
+        &:not(:last-child) {
+          margin-right: $pagination-item-gapx;
+        }
       }
     }
 

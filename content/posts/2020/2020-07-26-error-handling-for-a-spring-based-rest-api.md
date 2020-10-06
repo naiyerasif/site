@@ -5,15 +5,15 @@ authors: [naiyer]
 topics: [spring, security, rest]
 ---
 
-Spring Boot provides pretty nifty defaults to handle exceptions and formulate helpful response in case anything goes wrong. Still, for any number of reasons, an exception can be thrown at runtime and the consumers of your API may get a garbled exception message (or worse, no message at all) with a `500 Internal Server Error` response.
+Spring Boot provides pretty nifty defaults to handle exceptions and formulate a helpful response in case anything goes wrong. Still, for any number of reasons, an exception can be thrown at runtime and the consumers of your API may get a garbled exception message (or worse, no message at all) with a `500 Internal Server Error` response.
 
 Such a scenario is undesirable, because of the
 - **usability concerns** Although relevant, the default exception message may not be helpful to the consumers of your API.
 - **security concerns** The exception message may expose the internal details of your application to anyone using the API.
 
-This is pretty common occurrence and customizing the error response so that it is easy to comprehend is often one of the requirements of the API design. Like many other niceties, Spring Boot does a lot of heavy-lifting for you; it does not send binding errors (due to validation failure), exceptions or stacktrace in a response unless you configure them otherwise (see `server.error` keys under [Server Properties](https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html#server-properties) available for a Spring application).
+This is a pretty common occurrence and customizing the error response so that it is easy to comprehend is often one of the requirements of the API design. Like many other niceties, Spring Boot does a lot of heavy lifting for you; it does not send binding errors (due to validation failure), exceptions, or stacktrace in a response unless you configure them otherwise (see `server.error` keys under [Server Properties](https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html#server-properties) available for a Spring application).
 
-In this post, we'll explore some of the ways to customize error responses returned by a REST API. We'll also cover some usecases when Spring Security comes into picture.
+In this post, we'll explore some of the ways to customize error responses returned by a REST API. We'll also cover some usecases when Spring Security comes into the picture.
 
 :::note Setup
 The code written for this post uses:
@@ -47,7 +47,7 @@ docker-compose up -d
 ```
 ## Configure the project
 
-Generate a Spring Boot project with [Spring Initializr](https://start.spring.io/), and add `spring-boot-starter-web`, `spring-boot-starter-data-jdbc` and `postgresql` as dependencies.
+Generate a Spring Boot project with [Spring Initializr](https://start.spring.io/), and add `spring-boot-starter-web`, `spring-boot-starter-data-jdbc`, and `postgresql` as dependencies.
 
 Your `pom.xml` would look like this.
 
@@ -102,7 +102,7 @@ Your `pom.xml` would look like this.
 </project>
 ```
 
-Rename `application.properties` to `application.yml`, open the file and add the following database configuration.
+Rename `application.properties` to `application.yml`, open the file, and add the following database configuration.
 
 ```yaml
 # src/main/resources/application.yml
@@ -132,7 +132,7 @@ public class Book {
 }
 ```
 
-The `id` will be of type `SERIAL` in Postgres which'll be automatically incremented by the database.
+The `id` will be of type `SERIAL` in Postgres which will be automatically incremented by the database.
 
 Create the required table using the following SQL statement.
 
@@ -319,7 +319,7 @@ We are getting the correct status now but it'd be useful to let the client know 
 
 ## Exception handling with `@ControllerAdvice` and `@ExceptionHandler`
 
-If you examine `ResponseStatusException`, you'd notice that it saves the message in a variable `reason`. We'd prefer to map this to `message` key in the response above. Let's create a class `RestResponse` that can hold this response.
+If you examine `ResponseStatusException`, you'd notice that it saves the message in a variable `reason`. We'd prefer to map this to the `message` key in the response above. Let's create a class `RestResponse` that can hold this response.
 
 ```java
 // src/main/java/dev/mflash/guides/resterror/exception/RestResponse.java
@@ -447,7 +447,7 @@ $ curl --location --request GET 'http://localhost:8080/book/0'
 }
 ```
 
-Note that we're also injecting `WebRequest` instance to get the `path`. Besides `path`, a `WebRequest` can provide a whole lot [other details](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/context/request/WebRequest.html) about the request and client. Also, you may want to log the exceptions in the handler method, else Spring will not print them on the logs.
+Note that we're also injecting a `WebRequest` instance to get the `path`. Besides `path`, a `WebRequest` can provide a whole lot of [other details](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/context/request/WebRequest.html) about the request and client. Also, you may want to log the exceptions in the handler method, else Spring will not print them on the logs.
 
 At this point, you may continue to throw `ResponseStatusException` throughout your application or you can choose to extend it to define custom exceptions with specific `HttpStatus`. But what about exceptions that are thrown by a third-party?
 
@@ -455,7 +455,7 @@ At this point, you may continue to throw `ResponseStatusException` throughout yo
 
 One approach is to rethrow such exceptions as `ResponseStatusException`; this can be done wherever you encounter them. Another way is to write handler methods to intercept them in the `@RestControllerAdvice` above. It makes things a bit cleaner, but you can't handle every exception out there. To deal with this, you can write a generic exception handler that may handle `Exception` class.
 
-To get you started, Spring offers a [`ResponseEntityExceptionHandler`](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/mvc/method/annotation/ResponseEntityExceptionHandler.html) class that provides a huge number of handlers for the exceptions thrown by Spring. You can extend this class and implement your handlers on the top of it. Even better, you can override the existing handlers to customize their behavior. Let's modify `RestErrorHandler` as follows.
+To get you started, Spring offers a [`ResponseEntityExceptionHandler`](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/mvc/method/annotation/ResponseEntityExceptionHandler.html) class that provides a huge number of handlers for the exceptions thrown by Spring. You can extend this class and implement your handlers on top of it. Even better, you can override the existing handlers to customize their behavior. Let's modify `RestErrorHandler` as follows.
 
 ```java
 // src/main/java/dev/mflash/guides/resterror/exception/RestErrorHandler.java
@@ -527,7 +527,7 @@ public class RestErrorHandler extends ResponseEntityExceptionHandler {
 A lot of things are going on here.
 
 - `handleResponseStatusException` method specifically handles `ResponseStatusException`
-- `handleStatusException` method handles exceptions when status is not an error status (the statuses in 1xx, 2xx and 3xx series)
+- `handleStatusException` method handles exceptions when the status is not an error status (the statuses in 1xx, 2xx and 3xx series)
 - `handleEveryException` method handles all other exceptions and sets their status as `500 Internal Server Error`
 - we're also overriding `handleExceptionInternal` to translate the exceptions thrown by Spring to return `RestResponse`
 -  finally, we've defined `handleAllExceptions` handler that serves as a catch-all. If no specific error handler is found for an exception, this method will be invoked.
@@ -552,7 +552,7 @@ $ curl --location --request PUT 'http://localhost:8080/book' \
 }
 ```
 
-Since we've not configured any constant named `kids` in the `Genre` enum, Jackson will serialize `genre` field as null which would violate `NOT NULL` constraint in the database. The application will throw a `DataAccessException` as a result. Since, there's no handler defined for this exception in `RestErrorHandler` class, `handleAllExceptions` handler method will be invoked, sending the response seen above.
+Since we've not configured any constant named `kids` in the `Genre` enum, Jackson will serialize the `genre` field as null which would violate `NOT NULL` constraint in the database. The application will throw a `DataAccessException` as a result. Since there's no handler defined for this exception in `RestErrorHandler` class, the `handleAllExceptions` handler method will be invoked, sending the response seen above.
 
 ## Error Handling for Spring Security
 
@@ -632,7 +632,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 ### Handle Authorization failure with `AccessDeniedHandler`
 
-To handle authorization failures, you can implement `AccessDeniedHandler` interface. 
+To handle authorization failures, you can implement the `AccessDeniedHandler` interface. 
 
 ```java
 // src/main/java/dev/mflash/guides/resterror/security/CustomAccessDeniedHandler.java

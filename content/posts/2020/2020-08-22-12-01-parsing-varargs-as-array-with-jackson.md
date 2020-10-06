@@ -22,7 +22,7 @@ class Book {
 }
 ```
 
-If you pass a single value of `author` as follows, [Jackson](https://github.com/FasterXML/jackson-databind) will throw an error. 
+If you pass a single value of the `author` as follows, [Jackson](https://github.com/FasterXML/jackson-databind) will throw an error. 
 
 ```json
 {

@@ -6,12 +6,12 @@ authors: [naiyer]
 topics: [spring, security, jwt]
 ---
 
-JSON Web Tokens (JWTs) are stateless, compact and self-contained [standard](https://tools.ietf.org/html/rfc7519) to transmit information as a JSON object. This object is usually encoded and encrypted to ensure the authenticity of the message. JWTs are small enough to be sent through URLs. Since they are self-contained, applications can glean sufficient authentication information from them, saving trips to the database. Being stateless, JWTs are particularly suitable to work with REST and HTTP (which are also stateless).
+JSON Web Tokens (JWTs) are stateless, compact, and self-contained [standard](https://tools.ietf.org/html/rfc7519) to transmit the information as a JSON object. This object is usually encoded and encrypted to ensure the authenticity of the message. JWTs are small enough to be sent through URLs. Since they are self-contained, applications can glean sufficient authentication information from them, saving trips to the database. Being stateless, JWTs are particularly suitable to work with REST and HTTP (which are also stateless).
 
 So, how does this work?
 
 - When an application is secured using a JWT-based authentication, it requires a user to login with their credentials. These credentials can be backed by a database, a dedicated Identity and Access Management (IAM) system, etc. 
-- Once the login is successful, the application returns a JWT token. This token can be saved on the client side (using localStorage, cookie, etc.). 
+- Once the login is successful, the application returns a JWT token. This token can be saved on the client-side (using localStorage, cookie, etc.). 
 - When a subsequent request is made to the application, the token should be sent with it in an `Authorization` header, often using a [Bearer schema](https://tools.ietf.org/html/rfc6750).
 
 ![JWT-based authentication flow](./images/2020-04-10-securing-spring-boot-apis-with-jwt-authentication-01.svg)
@@ -52,7 +52,7 @@ docker-compose up -d
 
 ## Configure the project
 
-Generate a Spring Boot project with [Spring Initializr](https://start.spring.io/), and add `spring-boot-starter-web`, `spring-boot-starter-data-jdbc` and `postgresql` as dependencies.
+Generate a Spring Boot project with [Spring Initializr](https://start.spring.io/), and add `spring-boot-starter-web`, `spring-boot-starter-data-jdbc`, and `postgresql` as dependencies.
 
 Your `pom.xml` would look like this.
 
@@ -107,7 +107,7 @@ Your `pom.xml` would look like this.
 </project>
 ```
 
-Rename `application.properties` to `application.yml`, open the file and add the following database configuration.
+Rename `application.properties` to `application.yml`, open the file, and add the following database configuration.
 
 ```yaml
 # src/main/resources/application.yml
@@ -137,7 +137,7 @@ public class Book {
 }
 ```
 
-The `id` will be of type `SERIAL` in Postgres which'll be automatically incremented by the database.
+The `id` will be of type `SERIAL` in Postgres which will be automatically incremented by the database.
 
 Create the required table using the following SQL statement.
 
@@ -441,7 +441,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 ```
 
 > **About `PasswordEncoder`**
-> If you're starting afresh, you can choose a `PasswordEncoder` of your choosing, say `BCryptPasswordEncoder` and things will work fine. However, there are chances that your application is using multiple encoders to store the passwords. A typical password record may look like this (a prefix enclosed in braces followed by the actual hash): `{bcrypt}$2a$10$LYB29GePiC3/ieDvmqCfL.Y6GEk9vEoZVZR2/EQ9nacnY43aQ4LO6`
+> If you're starting afresh, you can choose a `PasswordEncoder` of your choosing, say `BCryptPasswordEncoder`, and things will work fine. However, there are chances that your application is using multiple encoders to store the passwords. A typical password record may look like this (a prefix enclosed in braces followed by the actual hash): `{bcrypt}$2a$10$LYB29GePiC3/ieDvmqCfL.Y6GEk9vEoZVZR2/EQ9nacnY43aQ4LO6`
 >
 > The `createDelegatingPasswordEncoder` comes to rescue here. It figures out the correct password encoding algorithm by reading the prefix and performs encoding and decoding operations.
 
@@ -505,7 +505,7 @@ public class TokenManager {
 }
 ```
 
-`SECRET_KEY` is randomly-generated key using `HS512` algorithm (there are [other algorithms](https://github.com/jwtk/jjwt#signature-algorithms-keys), as well). This key is used for signing the tokens by `generateToken` method and subsequently to read them by `parseToken` method. We've also set the tokens to expire after 10 days (through `TOKEN_EXPIRY_DURATION` constant).
+`SECRET_KEY` is a randomly-generated key using the `HS512` algorithm (there are [other algorithms](https://github.com/jwtk/jjwt#signature-algorithms-keys), as well). This key is used for signing the tokens by `generateToken` method and subsequently to read them by `parseToken` method. We've also set the tokens to expire after 10 days (through `TOKEN_EXPIRY_DURATION` constant).
 
 Now, define an `AuthenticationFilter` to verify the correct user.
 
@@ -545,7 +545,7 @@ Here,
 - the `attemptAuthentication` method extracts the user from the request and tries to authenticate them with the help of `AuthenticationManager`. 
 - On successful authentication, a token is generated by `TokenManager` and attached to the header of the response (see `successfulAuthentication` method). This token will be used for subsequent requests and will be checked every time a request arrives. 
   
-On successful verification of the token, access to the application will be enabled with the help of `doFilterInternal` method of `CustomAuthorizationFilter`.
+On successful verification of the token, access to the application will be enabled with the help of the `doFilterInternal` method of `CustomAuthorizationFilter`.
 
 ```java
 // src/main/java/dev/mflash/guides/jwtauth/security/CustomAuthorizationFilter.java
@@ -592,7 +592,7 @@ public class CustomAuthorizationFilter extends BasicAuthenticationFilter {
 }
 ```
 
-Here, the `doFilterInternal` method extracts the `Authorization` header, fetches the authentication status and updates the `SecurityContext`. If the authentication fails, the request to the application is denied by the filter.
+Here, the `doFilterInternal` method extracts the `Authorization` header, fetches the authentication status, and updates the `SecurityContext`. If the authentication fails, the request to the application is denied by the filter.
 
 We need to register these filters and specify which endpoints are protected and which are accessible publicly in the `SecurityConfiguration`.
 

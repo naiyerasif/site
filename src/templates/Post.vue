@@ -3,6 +3,7 @@
     <Hero>
       <div class="metadata">
         <div class="metadata-author" v-for="author in $page.post.authors" :key="author.id">
+          <g-image :alt="author.name" :src="author.avatar" />
           <g-link :to="author.path">{{ author.name }}</g-link>
         </div>
         <div class="metadata-item" v-html="displayDate"></div>
@@ -74,6 +75,7 @@ query Blog ($id: ID!, $previousId: ID!, $nextId: ID!) {
     authors {
       id
       name
+      avatar
       path
     }
     topics

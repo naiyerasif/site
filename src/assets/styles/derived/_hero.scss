@@ -70,6 +70,17 @@ $hero-content-font-size: variables.$font-sm;
           @include utils.separator;
         }
       }
+
+      &-author {
+        display: inherit;
+        align-items: inherit;
+
+        img {
+          @include utils.size(auto, variables.$icon-md);
+          margin-right: variables.$ch-rg;
+          border-radius: 100%;
+        }
+      }
     }
   }
 }

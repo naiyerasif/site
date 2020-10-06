@@ -6,12 +6,12 @@
     </Hero>
     <main class="content">
       <article class="article">
-        <dl>
-          <div class="definition" v-for="project in $page.projects.edges" :key="project.id">
-            <dt>
-              <g-link v-if="isExternal(project.node.link)" :to="project.node.link">{{ project.node.title }}</g-link>
-              <a v-else target="_blank" rel="nofollow noopener noreferrer" :href="project.node.link">{{ project.node.title }}</a>
-            </dt>
+        <blockquote>
+          <p>I've contributed to many open-source projects over the last few years; I maintain a few of them in my spare time. Here's a selection of projects that I've been involved with.</p>
+        </blockquote>
+        <dl class="prominent-list">
+          <div v-for="project in $page.projects.edges" :key="project.id">
+            <dt><a target="_blank" rel="nofollow noopener noreferrer" :href="project.node.path">{{ project.node.title }}</a></dt>
             <dd>{{ project.node.description }}</dd>
           </div>
         </dl>
@@ -21,14 +21,14 @@
 </template>
 
 <page-query>
-query CompleteProjects {
-  projects: allCompleteProject (sortBy: "id", order: DESC) {
+query {
+  projects: allProject {
     edges {
       node {
         id
         title
         description
-        link
+        path
       }
     }
   }
@@ -39,18 +39,11 @@ query CompleteProjects {
 import Hero from '~/components/partials/Hero'
 
 export default {
-  metaInfo() {
-    return {
-      title: 'Projects'
-    }
+  metaInfo: {
+    title: 'Projects'
   },
   components: {
     Hero
-  },
-  methods: {
-    isExternal(link) {
-      return link.startsWith('/')
-    }
   }
 }
 </script>

@@ -5,7 +5,7 @@ authors: [naiyer]
 topics: [aspectj, logging, spring]
 ---
 
-Method logging is a very common pattern that helps a developer verify which method has started executing and when it has finished. It can also be used to log the time a method takes to finish executing, the arguments it receives and the result it returns. You can do this manually by logging all this information using a logger but since it is a repetitive task, we can automate it. And that's exactly what we'll do in this post.
+Method logging is a very common pattern that helps a developer verify which method has started executing and when it has finished. It can also be used to log the time a method takes to finish executing, the arguments it receives, and the result it returns. You can do this manually by logging all this information using a logger but since it is a repetitive task, we can automate it. And that's exactly what we'll do in this post.
 
 :::note Setup
 The code written for this post uses:
@@ -139,7 +139,7 @@ Generate a Maven project using the following `pom.xml`.
 
 ## Define an annotation to log a method
 
-You can configure aspects by configuring an advice in a variety of ways. You can configure an advice to be applied on all classes in a set of packages. In this case, however, we'll restrict ourselves to the methods that we annotate with our custom annotation. 
+You can configure aspects by configuring an advice in a variety of ways. You can configure an advice to be applied to all classes in a set of packages. In this case, however, we'll restrict ourselves to the methods that we annotate with our custom annotation. 
 
 This is a prudent and flexible approach because 
 - we need not log all the methods, in the first place, and bloat our logs, and 
@@ -218,7 +218,7 @@ public class LogEntryExitAspect {
 }
 ```
 
-There's a lot to digest here. The `LogEntryExitAspect` class has a `log` method which accepts a `JoinPoint`.
+There's a lot to digest here. The `LogEntryExitAspect` class has a `log` method that accepts a `JoinPoint`.
 
 > **JointPoint** As *AspectJ in Action* says, a *join point* is an identifiable execution point in a system. A call to a method is a join point, and so is a field access. [Chapter 3 'Understanding the join point model', pp 53]
 
@@ -227,9 +227,9 @@ In our case, we want to apply an advice *around* a method that's annotated by `@
 Furthermore, 
 - we're extracting `CodeSignature` which provides `getParameterNames` method to extract the parameter names of the join point.
 - we're extracting `MethodSignature` to find the current instance of the `@LogEntryExit` annotation and its associated options, with the help of which we can customize the logging output.
-- with `MethodSignature`, we're also fetching the details of class in which the method is defined, the method's name and the list of arguments it receives.
+- with `MethodSignature`, we're also fetching the details of the class in which the method is defined, the method's name, and the list of arguments it receives.
 
-We've static `log` method that logs the messages based on the log level specified in the annotation; this is a necessity because our implementation is based on **SLF4J 1.7** which does not provide an API to pass the log level at runtime. Therefore, we've to resort to a `switch` like this -
+We have a static `log` method that logs the messages based on the log level specified in the annotation; this is a necessity because our implementation is based on **SLF4J 1.7** which does not provide an API to pass the log level at runtime. Therefore, we've to resort to a `switch` like this -
 
 ```java
 // src/main/java/dev/mflash/guides/logging/aspect/LogEntryExitAspect.java
@@ -252,7 +252,7 @@ public class LogEntryExitAspect {
 }
 ```
 
-Note that we're using [switch expressions](https://openjdk.java.net/jeps/361) which were introduced in Java 13 and are now a standard feature in Java 14.
+Note that we're using [switch expressions](https://openjdk.java.net/jeps/361) that were introduced in Java 13 and are now a standard feature in Java 14.
 
 We've defined `entry` and `exit` methods that prepare the log message depending on the options received through the annotation.
 
@@ -303,7 +303,7 @@ public class LogEntryExitAspect {
 }
 ```
 
-In case of the `entry` method, we're generating a map of parameters and arguments of the method and adding them to log message if `showArgs` flag is enabled. Similarly, we're adding the duration of execution and the result returned by the method to the log message based on `showExecutionTime` and `showResult` flags respectively. You'll also notice Java 8's [`StringJoiner`](https://docs.oracle.com/javase/8/docs/api/java/util/StringJoiner.html) in action here which is particularly suited to construct a sequence of string separated by a delimiter.
+In the case of the `entry` method, we're generating a map of parameters and arguments of the method and adding them to the log message if `showArgs` flag is enabled. Similarly, we're adding the duration of execution, and the result returned by the method to the log message based on `showExecutionTime` and `showResult` flags respectively. You'll also notice Java 8's [`StringJoiner`](https://docs.oracle.com/javase/8/docs/api/java/util/StringJoiner.html) in action here which is particularly suited to construct a sequence of string separated by a delimiter.
 
 Together the entire implementation looks like this.
 
@@ -524,14 +524,14 @@ class LogEntryExitAspectSpec extends Specification {
 In this specification,
 - in the `setup` block, we're initializing the `LogEntryExitAspect` and injecting it in an `AopProxy` used as the `GreetingService`. We're also initializing the `AspectAppender` we defined earlier and attaching it to the logger of the `GreetingService`; whenever this logger's methods get called, the logging events will be added to the list maintained by `AspectAppender`.
 - in the `cleanup` block, we're tearing down the appender.
-- the first scenario verifies the positive case that the logs are actually written when the `GreetingService.greet` method is called.
+- the first scenario verifies the positive case that the logs are written when the `GreetingService.greet` method is called.
 - the second scenario verifies the negative case that the logs are not written for the methods without `@LogEntryExit` annotation.
 
 ## Limitations of this approach
 
 - You cannot selectively ignore the arguments being logged. If a value is sensitive (for legal or security reasons), this implementation is not flexible enough to handle such a usecase.
 - This approach relies on Spring AOP; it doesn't work with classes that Spring IoC container is not aware of.
-- All the limitations of Spring AOP and Aspects apply on this approach; you can't log private methods and you can't extend this approach for advising fields.
+- All the limitations of Spring AOP and Aspects apply to this approach; you can't log private methods and you can't extend this approach for advising fields.
 
 ## References
 

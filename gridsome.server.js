@@ -29,33 +29,16 @@ module.exports = api => {
     return { ...options }
   })
 
-  api.loadSource(async ({ getCollection, addCollection }) => {
-    const { collection } = getCollection('Project')
-
+  api.loadSource(async ({ addCollection }) => {
     const allProjects = addCollection({
-      typeName: 'CompleteProject'
+      typeName: 'Project'
     })
-
-    projects.concat(collection.data).forEach(project => {
-      allProjects.addNode({
-        id: project.id,
-        title: project.title,
-        description: project.description,
-        link: project.path
-      })
-    })
+    projects.forEach(project => allProjects.addNode(project))
 
     const popularBlogPosts = addCollection({
       typeName: 'PopularBlog'
     })
-
-    report.popular.forEach(entry => {
-      popularBlogPosts.addNode({
-        title: entry.title,
-        path: entry.path,
-        views: entry.views
-      })
-    })
+    report.popular.forEach(entry => popularBlogPosts.addNode(entry))
   })
 
   api.createPages(async ({ graphql, createPage }) => {

@@ -47,6 +47,7 @@ $header-menu-offsety: utils.$tappable-gapx;
   .menu {
     @include utils.mx($header-menu-offsetx);
     margin-right: 0.5rem;
+    justify-content: center;
   }
 }
 

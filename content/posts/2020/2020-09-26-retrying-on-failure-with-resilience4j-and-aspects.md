@@ -7,14 +7,14 @@ topics: [retry, resilience4j, aspectj]
 
 Failure is an inevitability in a complex distributed system. A service may time out, a filesystem may run out of space or an API endpoint may be unavailable because of a failed deployment. Regardless of the reason, *it is impossible to eliminate failure; the only option is to design for it*.
 
-In particular, we may want prevent failure in our system in the first place. That's where the techniques like [rate-limiting](https://www.cloudflare.com/learning/bots/what-is-rate-limiting/) come into picture which prevent an undesirable load on a system. However, in case a failure occurs, we may want to prevent it to cascade any further by using approaches such as [circuit-breaking](https://docs.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker) that restrain failure from spreading beyond a certain part of our system. Even better, if we know that a failure lasts only for a short time (a *transient failure*), we may attempt to recover from it by using recovery strategies. One such strategy is the **retry pattern** where we retry a call to a service for a given number of attempts using a carefully selected **backoff strategy**. 
+In particular, we may want to prevent failure in our system in the first place. That's where techniques like [rate-limiting](https://www.cloudflare.com/learning/bots/what-is-rate-limiting/) come into the picture which prevent an undesirable load on a system. However, in case a failure occurs, we may want to prevent it to cascade any further by using approaches such as [circuit-breaking](https://docs.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker) that restrain failure from spreading beyond a certain part of our system. Even better, if we know that a failure lasts only for a short time (a *transient failure*), we may attempt to recover from it by using recovery strategies. One such strategy is the **retry pattern** where we retry a call to a service for a given number of attempts using a carefully selected **backoff strategy**. 
 
 > **Backoff Strategy** A backoff strategy is an algorithm that decides
 > - how to attempt a retry
 > - what should be the duration between the retries, and
 > - when to abandon any further attempts
 
-In this post, we'll explore how to implement a retry pattern for a Java method that may throw an exception. We'll use a library called [Resilience4J](https://github.com/resilience4j/resilience4j) which provides several fault-tolerance implementations including circuit breaking, retry, fallback, rate and time limiting, caching, etc. We'll only use **Resilience4J Retry** module of this library.
+In this post, we'll explore how to implement a retry pattern for a Java method that may throw an exception. We'll use a library called [Resilience4J](https://github.com/resilience4j/resilience4j) which provides several fault-tolerance implementations including circuit breaking, retry, fallback, rate and time limiting, caching, etc. We'll only use the **Resilience4J Retry** module of this library.
 
 :::note Setup
 The code written for this post uses:
@@ -157,7 +157,7 @@ public enum BackoffStrategy {
 }
 ```
 
-Some of these strategies, such as *Random*, *Exponential* and *Random Exponential*, are provided by Resilience4J's `IntervalFunction` interface (which also provides the values of `DEFAULT_INITIAL_INTERVAL`, `DEFAULT_RANDOMIZATION_FACTOR` and `DEFAULT_MULTIPLIER` constants). We can define our own functions for the rest of the strategies.
+Some of these strategies, such as *Random*, *Exponential*, and *Random Exponential*, are provided by Resilience4J's `IntervalFunction` interface (which also provides the values of `DEFAULT_INITIAL_INTERVAL`, `DEFAULT_RANDOMIZATION_FACTOR`, and `DEFAULT_MULTIPLIER` constants). We can define functions for the rest of the strategies.
 
 ```java
 // src/main/java/dev/mflash/guides/retry/aspect/RetryOnFailureIntervalFunctions.java
@@ -315,7 +315,7 @@ public class RetryOnFailureAspect {
 
 Let's break things a bit to get through what's going on here.
 
-- We start off by extracting some method related information, e.g., which class invoked the method (`target`), the method's name (`methodName`), etc.
+- We start by extracting some method related information, e.g., which class invoked the method (`target`), the method's name (`methodName`), etc.
 - We initialize the logger to log the retry events (`logger`).
 - We extract the instance of `@RetryOnFailure` annotation (`annotation`) and it's corresponding values. We pass these values to `RetryOnFailureIntervalFunctions.of` factory method which returns a corresponding backoff function. We also use these values to define a `retryConfiguration` that describes how the retry process should work.
 - We register the `retryConfiguration` on a `retryRegistry`. This is useful in case we want to use the same `retryConfiguration` for different methods and keep track of them.
@@ -481,7 +481,7 @@ class RetryOnFailureAspectTest {
 Let's break down what's happening here.
 
 - In the `setUp` method, we initialize the `RetryOnFailureAspect` and inject it in an `AopProxy`. The `AopProxy` is an interface provided by Spring AOP that returns proxied beans. In our case, this bean is nothing but an instance of `RetryOnFailureTestService`. We also initialize `AspectAppender` and attach it to the logger of `RetryOnFailureTestService`; whenever a retry is made, the `RetryEventPublisher.onRetry` method will log the events that would be available through this instance of `AspectAppender`.
-- In the `adviceShouldFireWithRetriesOnFailure` test, we simulate a retry scenario and check whether the retry actually happens. Note that, we're using [`SoftAssertions`](https://assertj.github.io/doc/#assertj-core-soft-assertions) that fails lazily after all the assertions have been executed.
+- In the `adviceShouldFireWithRetriesOnFailure` test, we simulate a retry scenario and check whether the retry happens. Note that, we're using [`SoftAssertions`](https://assertj.github.io/doc/#assertj-core-soft-assertions) that fail lazily after all the assertions have been executed.
 - In the `adviceShouldNotFireOnSuccess` test, we test a success scenario where the retry should not happen.
 - In the `tearDown` method, we simply stop the appender.
 

@@ -6,30 +6,30 @@ location: 'Bengaluru, India'
 avatar: './avatars/naiyer.png'
 ---
 
-I've experience in Aviation, Legal &amp; Compliance, Document Processing, and Banking &amp; Financial Services domains, with projects on backend, site reliability, frontend and ETL.
+I've worked on the backend, site reliability, frontend, and ETL projects, in Aviation, Legal &amp; Compliance, Document Processing, and Banking &amp; Financial Services domains.
 
-:::note Technologies I'm adept at &mdash;
+Technologies that I'm adept at include,
+
 - [Java](https://openjdk.java.net/) and [Spring Boot](https://spring.io/projects/spring-boot)
 - Relational databases (mostly [Postgres](https://www.postgresql.org/) and [Oracle](https://www.oracle.com/database/))
 - [Node.js](https://nodejs.org/en/)
-:::
 
-:::note Other technologies that I work on &mdash;
+Other technologies that I work on include,
+
 - [Vue.js](https://vuejs.org/) and [Angular](https://angular.io/)
 - [Vuepress](https://vuepress.vuejs.org/) and [Gridsome](https://gridsome.org/)
-- CSS and [SASS](https://sass-lang.com/)
+- CSS, [Sass](https://sass-lang.com/) and [Stylus](https://stylus-lang.com/)
 - [Groovy](https://groovy-lang.org/) (while working with [Spock](https://github.com/spockframework/spock) and [Gradle](https://gradle.org/))
 - [Docker](https://www.docker.com/) and [Jenkins](https://www.jenkins.io/)
 - [MongoDB](https://www.mongodb.com/)
-:::
 
-I love to draw vector illustrations and have an avid interest in typography. I spend a fair amount of time reading science fiction and fantasy books. I regularly explore new tools that improve my productivity and learning process.
+I regularly draw vector icons and illustrations and have an avid interest in typography. I read a fair amount of science fiction and fantasy books. I regularly explore new tools that improve my learning process, recollection, and productivity.
 
 ### About this site
 
-This site began as a pet project while I was learning [Vue.js](https://vuejs.org/) and [GraphQL](https://graphql.org/). It helped me get my bearing around Vue.js community, accessibility, web performance and more.
+This site began as a pet project while I was learning [Vue.js](https://vuejs.org/) and [GraphQL](https://graphql.org/). It helped me get my bearing around Vue.js community, accessibility, web performance, and more.
 
-Most of the posts here use a tutorial-style format to document a concept or process for my colleagues, peers and myself. They serve as a reference of what I've learned, and a source of ~~criticism and scorn~~ constructive feedback.
+Most of the posts here use a tutorial-style format to document a concept or process for my colleagues, peers, and myself. They serve as a reference for what I've learned, and a source of ~~criticism and scorn~~ constructive feedback.
 
 :::warning
 Please treat the code samples as a reference and demonstration of the topic under discussion. They are **optimized for learning** and **not for use in production codebase**. Please seek out the advice of your peers before using them in an existing application.

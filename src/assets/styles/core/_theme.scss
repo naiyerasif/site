@@ -70,7 +70,7 @@ $tertiary: hsl(28, 73%, 62%);
   --bg-tip: hsl(164, 49%, 16%);
   --bg-warning: hsl(4, 58%, 22%);
   --bg-important: hsl(228, 43%, 24%);
-  --border: #{saturate(mix($black, $secondary, 65%), -15%)};
+  --border: #{saturate(mix($black, $secondary, 60%), -25%)};
   --tone-1: hsla(350, 90%, 35%, 0.4);
   --tone-2: hsla(263, 90%, 45%, 0.2);
 
