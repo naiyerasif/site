@@ -43,7 +43,7 @@
           </div>
         </div>
         <div class="post-section-footer">
-          <g-link to="/blog">Browse more &rarr;</g-link>
+          <g-link to="/blog/2/">Browse more &rarr;</g-link>
         </div>
       </div>
     </main>
@@ -61,7 +61,7 @@ query {
       }
     }
   }
-  latestPosts: allBlog(sortBy: "date", order: DESC, limit: 11) {
+  latestPosts: allBlog(sortBy: "date", order: DESC, limit: 10) {
     edges {
       node {
         id
