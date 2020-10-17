@@ -1,7 +1,4 @@
-// Reset
-
-// Blocks
-
+/*! minireset.css v0.0.7 | MIT License | github.com/jgthms/minireset.css */
 html,
 body,
 p,
@@ -29,8 +26,6 @@ h6 {
   padding: 0;
 }
 
-// Headings
-
 h1,
 h2,
 h3,
@@ -41,19 +36,13 @@ h6 {
   font-weight: normal;
 }
 
-// List
-
 ul {
   list-style: none;
 }
 
-// Abbreviation
-
 abbr[title] {
   text-decoration: none;
 }
-
-// Form
 
 button,
 input,
@@ -68,21 +57,13 @@ textarea {
   color: inherit;
 }
 
-// Box sizing
-
 html {
   box-sizing: border-box;
 }
 
-* {
-  &,
-  &::before,
-  &::after {
-    box-sizing: inherit;
-  }
+*, *::before, *::after {
+  box-sizing: inherit;
 }
-
-// Media
 
 img,
 video {
@@ -90,13 +71,9 @@ video {
   max-width: 100%;
 }
 
-// Frame
-
 iframe {
   border: 0;
 }
-
-// Table
 
 table {
   border-collapse: collapse;
@@ -106,8 +83,9 @@ table {
 td,
 th {
   padding: 0;
-  
-  &:not([align]) {
-    text-align: left;
-  }
+}
+
+td:not([align]),
+th:not([align]) {
+  text-align: left;
 }
