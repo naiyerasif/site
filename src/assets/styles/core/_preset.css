@@ -1,4 +1,4 @@
-/*! minireset.css v0.0.7 | MIT License | github.com/jgthms/minireset.css */
+/*! Preset v0.0.9 | MIT License */
 html,
 body,
 p,
@@ -41,12 +41,14 @@ ul {
 }
 
 abbr[title] {
-  text-decoration: none;
+  text-decoration: underline dotted;
+  cursor: help;
 }
 
 button,
 input,
 select,
+optgroup,
 textarea {
   margin: 0;
 }
@@ -57,8 +59,14 @@ textarea {
   color: inherit;
 }
 
+*::placeholder {
+  color: inherit;
+  opacity: 0.5;
+}
+
 html {
   box-sizing: border-box;
+  tab-size: 2;
 }
 
 *, *::before, *::after {
@@ -71,8 +79,17 @@ video {
   max-width: 100%;
 }
 
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
 iframe {
-  border: 0;
+  border: none;
 }
 
 table {
