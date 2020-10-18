@@ -1,6 +1,5 @@
 @use 'variables';
 @use 'mixins/utils';
-@use 'mixins/layout';
 @use 'mixins/queries';
 
 // Containers
@@ -78,12 +77,6 @@ a {
   @extend .svg;
   stroke-width: var(--stroke-sm);
   @include utils.size(variables.$icon-sm);
-}
-
-// Grids
-
-.footer-grid {
-  @include layout.grid($width: variables.$grid-sm, $gap: var(--space-rg));
 }
 
 // Colors

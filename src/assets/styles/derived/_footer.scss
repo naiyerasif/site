@@ -13,6 +13,9 @@ $footer-title-bottom: variables.$gap-rg;
 $footer-copyright-width: var(--flex-width);
 
 .footer {
+  --grid-gap: var(--space-rg);
+  --grid-column-width: #{variables.$grid-sm};
+
   background-color: $footer-background;
   background-image: 
     radial-gradient(circle at 80vw bottom, var(--tone-1) 25%, transparent 25%),
