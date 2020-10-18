@@ -2,58 +2,31 @@
 @use 'mixins/queries';
 
 :root {
-  --gap: (1rem + 2vw);
-}
-
-$space-sm: calc(var(--gap) * 0.5) !default;
-$space-rg: calc(var(--gap)) !default;
-$space-md: calc(var(--gap) * 1.5) !default;
-$space-lg: calc(var(--gap) * 2) !default;
-$space-xl: calc(var(--gap) * 3) !default;
-
-$curb-rg: calc(var(--gap) * -1) !default;
-
-:root {
-  --container-width: 100%;
   --flex-wrap: wrap;
   --flex-width: 100%;
   --flex-basis: 100%;
   --flex-gap: #{variables.$gap-rg};
-  --flex-gapx: #{$space-rg};
-  --flex-gapy: #{$space-rg};
+  --flex-gapx: var(--space-rg);
+  --flex-gapy: var(--space-rg);
   --search-offsetx: #{-(variables.$gap-sm)};
-  --search-width: calc(100% - var(--gap));
+  --search-width: calc(100% - var(--space-rg));
   --search-radius: #{variables.$radius};
-  --content-article-gap: #{$space-rg};
-  --content-list-gap: #{$space-lg};
+  --content-article-gap: var(--space-rg);
+  --content-list-gap: var(--space-lg);
 }
 
 @include queries.md {
   :root {
-    --container-width: #{variables.$max-width-rg};
     --flex-wrap: nowrap;
     --flex-width: 45%;
     --flex-basis: 50%;
     --flex-gap: 0;
-    --flex-gapx: #{$space-rg};
-    --flex-gapy: #{$space-sm};
+    --flex-gapx: var(--space-rg);
+    --flex-gapy: var(--space-sm);
     --search-offsetx: 0;
     --search-width: 40ch;
     --search-radius: 0;
     --content-article-gap: 0;
-    --content-list-gap: #{$space-rg};
+    --content-list-gap: var(--space-rg);
   }
 }
-
-$container-width: var(--container-width) !default;
-$flex-wrap: var(--flex-wrap) !default;
-$flex-width: var(--flex-width) !default;
-$flex-basis: var(--flex-basis) !default;
-$flex-gap: var(--flex-gap) !default;
-$flex-gapx: var(--flex-gapx) !default;
-$flex-gapy: var(--flex-gapy) !default;
-$search-offsetx: var(--search-offsetx) !default;
-$search-width: var(--search-width) !default;
-$search-radius: var(--search-radius) !default;
-$content-article-gap: var(--content-article-gap) !default;
-$content-list-gap: var(--content-list-gap) !default;

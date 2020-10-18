@@ -1,14 +1,16 @@
 <template>
   <Layout>
-    <Hero flex>
-      <div class="hero-media">
-        <g-image :alt="firstName" :src="$page.profile.avatar" />
-      </div>
-      <div class="hero-content">
-        <h1 class="title">Hello, I'm <span class="is-primary">{{ firstName }}</span></h1>
-        <div class="subtitle">a {{ $page.profile.role | lowerCase }} from {{ $page.profile.location }}</div>
-      </div>
-    </Hero>
+    <template #hero>
+      <Hero flex>
+        <div class="hero-media">
+          <g-image :alt="firstName" :src="$page.profile.avatar" />
+        </div>
+        <div class="hero-content">
+          <h1 class="title">Hello, I'm <span class="is-primary">{{ firstName }}</span></h1>
+          <div class="subtitle">a {{ $page.profile.role | lowerCase }} from {{ $page.profile.location }}</div>
+        </div>
+      </Hero>
+    </template>
     <ScrollIndicator />
     <main class="content">
       <article class="article" v-html="$page.profile.content" />

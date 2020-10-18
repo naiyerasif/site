@@ -1,21 +1,19 @@
 @use 'variables';
-@use 'properties';
 @use 'mixins/utils';
-@use 'mixins/layout';
 @use 'mixins/queries';
 
 // Containers
 
-$topics-background: variables.$bg-selected;
+$topics-background: var(--bg-selected);
 $topics-font-size: variables.$font-xs;
 $topics-gapy: variables.$ch-sm;
 $topics-gapx: variables.$ch-md;
-$topics-border: variables.$border;
+$topics-border: var(--border);
 $topics-separator: variables.$symbol-separator;
 
 .is-flex {
   display: flex;
-  flex-wrap: properties.$flex-wrap;
+  flex-wrap: var(--flex-wrap);
   align-items: center;
 }
 
@@ -48,7 +46,7 @@ a {
   }
 
   &.active {
-    font-weight: variables.$weight-bd;
+    font-weight: var(--weight-bold);
   }
 
   &.is-icon {
@@ -64,34 +62,27 @@ a {
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
-  vertical-align: middle;
   fill: currentColor;
   fill-opacity: variables.$fill-opacity;
 }
 
 .icon-rg {
   @extend .svg;
-  stroke-width: variables.$stroke-rg;
+  stroke-width: var(--stroke-rg);
   @include utils.size(variables.$icon-rg);
 }
 
 .icon-sm {
   @extend .svg;
-  stroke-width: variables.$stroke-sm;
+  stroke-width: var(--stroke-sm);
   @include utils.size(variables.$icon-sm);
-}
-
-// Grids
-
-.footer-grid {
-  @include layout.grid($width: variables.$grid-sm, $gap: properties.$space-rg);
 }
 
 // Colors
 
 .is-primary {
-  color: variables.$link;
-  border-color: variables.$link;
+  color: var(--link);
+  border-color: var(--link);
 }
 
 // Gap

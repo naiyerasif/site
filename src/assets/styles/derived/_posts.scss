@@ -1,24 +1,23 @@
-@use '../variables';
-@use '../properties';
-@use '../mixins/utils';
-@use '../mixins/queries';
+@use '~/assets/styles/variables';
+@use '~/assets/styles/mixins/utils';
+@use '~/assets/styles/mixins/queries';
 
 // Posts
 
-$post-gap: properties.$space-md;
-$post-border: variables.$bg-search;
+$post-gap: var(--space-md);
+$post-border: var(--bg-highlight);
 $post-max-width: variables.$max-width-rg;
 $post-section-gapy: variables.$gap-sm;
 $post-section-header-size: variables.$font-md;
-$post-section-header-color: variables.$text-passive;
-$post-item-gapx: properties.$content-article-gap;
-$post-item-gapy: properties.$space-rg;
-$post-header-wrap: properties.$flex-wrap;
+$post-section-header-color: var(--text-passive);
+$post-item-gapx: var(--content-article-gap);
+$post-item-gapy: var(--space-rg);
+$post-header-wrap: var(--flex-wrap);
 $post-header-size: variables.$font-sm;
 $post-header-gap: variables.$ch-rg;
 $post-title-size: variables.$font-lg;
-$post-title-weight: variables.$weight-bd;
-$post-excerpt-color: variables.$text-passive;
+$post-title-weight: var(--weight-bold);
+$post-excerpt-color: var(--text-passive);
 
 .posts {
   @include utils.my($post-gap);
@@ -26,7 +25,7 @@ $post-excerpt-color: variables.$text-passive;
   &-pill {
     display: inline-block;
     padding: 0.25rem 1rem;
-    background-color: variables.$bg-selected;
+    background-color: var(--bg-selected);
     color: $post-section-header-color;
     border: 1px solid $post-border;
     border-radius: 10rem;
@@ -40,24 +39,6 @@ $post-excerpt-color: variables.$text-passive;
   .post-item > * {
     max-width: $post-max-width;
     @include utils.mx(auto);
-  }
-
-  .post-main-section {
-    cursor: pointer;
-    background-color: variables.$bg-passive;
-    @include utils.tappable($radius: 0, $gapx: $post-item-gapx, $gapy: $post-gap, $underline: true);
-
-    &-title {
-      @include utils.heading-font;
-      font-weight: $post-title-weight;
-      font-size: $post-title-size;
-    }
-
-    &-excerpt {
-      margin-top: $post-header-gap;
-      color: $post-section-header-color;
-      font-size: 0.9em;
-    }
   }
 
   .post-section {
@@ -85,7 +66,7 @@ $post-excerpt-color: variables.$text-passive;
 
       a {
         display: inline-block;
-        background-color: variables.$bg-highlight;
+        background-color: var(--bg-highlight);
         @include utils.tappable;
         margin-top: 1.5rem;
         font-size: 0.9em;
@@ -95,7 +76,7 @@ $post-excerpt-color: variables.$text-passive;
 
   .post-item {
     cursor: pointer;
-    @include utils.tappable($radius: 0, $gapx: $post-item-gapx, $gapy: $post-item-gapy, $background: variables.$bg-highlight, $underline: true);
+    @include utils.tappable($radius: 0, $gapx: $post-item-gapx, $gapy: $post-item-gapy, $background: var(--bg-highlight), $underline: true);
 
     .post-header {
       display: flex;
@@ -127,7 +108,7 @@ $post-excerpt-color: variables.$text-passive;
 }
 
 .post-section-item-title {
-  flex-wrap: properties.$flex-wrap;
+  flex-wrap: var(--flex-wrap);
   $flex-basis-min: 22.5%;
   $flex-basis-max: 100% - $flex-basis-min;
 

@@ -1,6 +1,5 @@
-@use '../variables';
-@use '../properties';
-@use '../mixins/utils';
+@use '~/assets/styles/variables';
+@use '~/assets/styles/mixins/utils';
 
 // Token colors
 
@@ -21,12 +20,12 @@ $coral: hsl(4, 69%, 67%);
 $languages: js, ts, html, md, vue, css, sass, scss, less, stylus, go, java, c,
   sh, yaml, py, docker, dockerfile, properties, groovy, typescript, json, xml, git, shell, sql, bash, powershell, ini;
 
-$code-background: variables.$bg-code;
+$code-background: var(--bg-code);
 $code-max-width: variables.$max-width-rg;
-$code-gapy-rg: properties.$space-rg;
-$code-gapy-sm: properties.$space-sm;
-$code-gapx: properties.$content-article-gap;
-$code-gapx-neg: properties.$curb-rg;
+$code-gapy-rg: var(--space-rg);
+$code-gapy-sm: var(--space-sm);
+$code-gapx: var(--content-article-gap);
+$code-gapx-neg: var(--curb-rg);
 
 // Prism theme
 
@@ -56,9 +55,9 @@ $code-gapx-neg: properties.$curb-rg;
     margin-bottom: -(variables.$gap-sm);
     padding-top: 0.5em;
     padding-right: 0.5em;
-    color: variables.$text-passive;
+    color: var(--text-passive);
     font-size: 0.75em;
-    font-weight: variables.$weight-bd;
+    font-weight: var(--weight-bold);
     opacity: 0.75;
   }
 
@@ -72,7 +71,7 @@ $code-gapx-neg: properties.$curb-rg;
     display: block;
     margin-left: $code-gapx-neg;
     padding-left: $code-gapy-rg;
-    background: linear-gradient(to right, variables.$bg-highlight 66%, transparent);
+    background: linear-gradient(to right, var(--bg-highlight) 66%, transparent);
   }
 
   .token.comment,
@@ -151,7 +150,7 @@ $code-gapx-neg: properties.$curb-rg;
 
   .token.important,
   .token.bold {
-    font-weight: variables.$weight-bd;
+    font-weight: var(--weight-bold);
   }
 
   .token.italic {

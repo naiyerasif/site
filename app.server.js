@@ -28,7 +28,7 @@ async function getReport() {
     'filters': 'ga:pagePathLevel1=@/blog/',
     'start-date': '30daysAgo',
     'end-date': 'today',
-    'max-results': 10,
+    'max-results': 9,
     'sort': '-ga:pageviews'
   })
 }

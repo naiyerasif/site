@@ -1,0 +1,70 @@
+:root {
+  --space-rg: calc(1rem + 2vw);
+  --space-sm: calc(var(--space-rg) * 0.5);
+  --space-md: calc(var(--space-rg) * 1.5);
+  --space-lg: calc(var(--space-rg) * 2);
+  --space-xl: calc(var(--space-rg) * 3);
+  --curb-rg: calc(var(--space-rg) * -1);
+
+  --hue-mono: 0;
+  --hue-primary: 160;
+  --hue-secondary: 229;
+  --hue-tertiary: 28;
+  --hsl-primary: var(--hue-primary), 62%, 38%;
+  --hsl-secondary: var(--hue-secondary), 42%, 57%;
+  --hsl-tertiary: var(--hue-tertiary), 73%, 62%;
+}
+
+[data-theme='light'] {
+  --text: hsl(var(--hue-mono), 0%, 15%);
+  --text-passive: hsl(var(--hue-secondary), 37%, 32%);
+  --link: hsl(var(--hue-primary), 72%, 26%);
+  --link-active: hsl(var(--hue-primary), 78%, 18%);
+  --bg-body: hsl(var(--hue-tertiary), 79%, 94%);
+  --bg-active: hsl(var(--hue-tertiary), 86%, 89%);
+  --bg-passive: hsl(var(--hue-tertiary), 95%, 92%);
+  --bg-code: hsl(var(--hue-tertiary), 95%, 99%);
+  --bg-search: hsl(var(--hue-tertiary), 77%, 81%);
+  --bg-selected: hsla(var(--hsl-tertiary), 0.25);
+  --bg-highlight: hsla(var(--hsl-tertiary), 0.15);
+  --bg-caution: hsl(57, 39%, 82%);
+  --bg-tip: hsl(169, 28%, 82%);
+  --bg-warning: hsl(0, 96%, 90%);
+  --bg-important: hsl(247, 44%, 87%);
+  --border: hsl(var(--hue-tertiary), 83%, 79%);
+  --tone-1: hsla(10, 100%, 75%, 0.45);
+  --tone-2: hsla(192, 75%, 68%, 0.5);
+
+  --weight-regular: 400;
+  --weight-bold: 700;
+
+  --stroke-sm: 1.75px;
+  --stroke-rg: 1.25px;
+}
+
+[data-theme='dark'] {
+  --text: hsl(var(--hue-mono), 0%, 75%);
+  --text-passive: hsl(var(--hue-tertiary), 25%, 53%);
+  --link: hsl(var(--hsl-primary));
+  --link-active: hsl(var(--hue-primary), 38%, 54%);
+  --bg-body: hsl(var(--hue-secondary), 15%, 10%);
+  --bg-active: hsl(var(--hue-secondary), 10%, 6%);
+  --bg-passive: hsl(var(--hue-secondary), 20%, 13%);
+  --bg-code: hsl(var(--hue-secondary), 19%, 6%);
+  --bg-search: hsl(var(--hue-primary), 62%, 11%);
+  --bg-selected: hsla(var(--hsl-primary), 0.25);
+  --bg-highlight: hsla(var(--hsl-primary), 0.15);
+  --bg-caution: hsl(44, 30%, 18%);
+  --bg-tip: hsl(164, 49%, 16%);
+  --bg-warning: hsl(4, 58%, 22%);
+  --bg-important: hsl(228, 43%, 24%);
+  --border: hsl(var(--hue-secondary), 6%, 23%);
+  --tone-1: hsla(350, 90%, 35%, 0.4);
+  --tone-2: hsla(263, 90%, 45%, 0.2);
+
+  --weight-regular: 350;
+  --weight-bold: 600;
+
+  --stroke-sm: 1.5px;
+  --stroke-rg: 1px;
+}

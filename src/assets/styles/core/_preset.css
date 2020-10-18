@@ -1,7 +1,4 @@
-// Reset
-
-// Blocks
-
+/*! Preset v0.0.9 | MIT License */
 html,
 body,
 p,
@@ -29,8 +26,6 @@ h6 {
   padding: 0;
 }
 
-// Headings
-
 h1,
 h2,
 h3,
@@ -41,23 +36,19 @@ h6 {
   font-weight: normal;
 }
 
-// List
-
 ul {
   list-style: none;
 }
 
-// Abbreviation
-
 abbr[title] {
-  text-decoration: none;
+  text-decoration: underline dotted;
+  cursor: help;
 }
-
-// Form
 
 button,
 input,
 select,
+optgroup,
 textarea {
   margin: 0;
 }
@@ -68,21 +59,19 @@ textarea {
   color: inherit;
 }
 
-// Box sizing
+*::placeholder {
+  color: inherit;
+  opacity: 0.5;
+}
 
 html {
   box-sizing: border-box;
+  tab-size: 2;
 }
 
-* {
-  &,
-  &::before,
-  &::after {
-    box-sizing: inherit;
-  }
+*, *::before, *::after {
+  box-sizing: inherit;
 }
-
-// Media
 
 img,
 video {
@@ -90,13 +79,18 @@ video {
   max-width: 100%;
 }
 
-// Frame
-
-iframe {
-  border: 0;
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
 }
 
-// Table
+iframe {
+  border: none;
+}
 
 table {
   border-collapse: collapse;
@@ -106,8 +100,9 @@ table {
 td,
 th {
   padding: 0;
-  
-  &:not([align]) {
-    text-align: left;
-  }
+}
+
+td:not([align]),
+th:not([align]) {
+  text-align: left;
 }

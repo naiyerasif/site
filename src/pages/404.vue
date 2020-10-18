@@ -1,11 +1,13 @@
 <template>
   <Layout>
-    <Hero>
-      <h1 class="title">{{ getMsg() }}</h1>
-      <div class="subtitle">
-        &larr; Return to <g-link to="/">Home</g-link>.
-      </div>
-    </Hero>
+    <template #hero>
+      <Hero>
+        <h1 class="title">{{ getMsg() }}</h1>
+        <div class="subtitle">
+          &larr; Return to <g-link to="/">Home</g-link>.
+        </div>
+      </Hero>
+    </template>
     <main>
       <figure>
         <NotFound />

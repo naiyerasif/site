@@ -1,28 +1,27 @@
-@use '../variables';
-@use '../properties';
-@use '../mixins/utils';
+@use '~/assets/styles/variables';
+@use '~/assets/styles/mixins/utils';
 
 // Sidekick
 
-$sidekick-background: variables.$bg-passive;
+$sidekick-background: var(--bg-passive);
 $sidekick-topics-gapy: variables.$gap-rg;
-$sidekick-gap: properties.$space-rg;
+$sidekick-gap: var(--space-rg);
 $sidekick-max-width: variables.$max-width-rg;
-$sidekick-nav-gap: properties.$space-rg;
-$sidekick-nav-margin: properties.$curb-rg;
-$sidekick-nav-flex-wrap: properties.$flex-wrap;
-$sidekick-nav-flex-basis: properties.$flex-basis;
-$sidekick-nav-background-prev: variables.$bg-highlight;
-$sidekick-nav-background-next: variables.$bg-selected;
-$sidekick-nav-background-active: variables.$bg-selected;
+$sidekick-nav-gap: var(--space-rg);
+$sidekick-nav-margin: var(--curb-rg);
+$sidekick-nav-flex-wrap: var(--flex-wrap);
+$sidekick-nav-flex-basis: var(--flex-basis);
+$sidekick-nav-background-prev: var(--bg-highlight);
+$sidekick-nav-background-next: var(--bg-selected);
+$sidekick-nav-background-active: var(--bg-selected);
 $sidekick-nav-indicator-gap: variables.$ch-rg;
-$sidekick-nav-indicator-color: variables.$text-passive;
+$sidekick-nav-indicator-color: var(--text-passive);
 $sidekick-nav-indicator-font-size: variables.$font-xs;
-$sidekick-nav-indicator-font-weight: variables.$weight-bd;
+$sidekick-nav-indicator-font-weight: var(--weight-bold);
 $pagination-font-size: variables.$font-sm;
-$pagination-border: variables.$border;
+$pagination-border: var(--border);
 $pagination-radius: variables.$radius * 2;
-$pagination-current-background: variables.$bg-highlight;
+$pagination-current-background: var(--bg-highlight);
 $pagination-item-gapx: variables.$ch-rg;
 $pagination-item-gapy: variables.$ch-rg * 0.2;
 

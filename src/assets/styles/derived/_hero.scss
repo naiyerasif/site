@@ -1,28 +1,19 @@
-@use '../variables';
-@use '../properties';
-@use '../mixins/utils';
+@use '~/assets/styles/variables';
+@use '~/assets/styles/mixins/utils';
 
 // Hero
 
-$hero-background: variables.$bg-passive;
-$hero-gapx: properties.$space-rg;
-$hero-gapy: properties.$space-md;
+$hero-gapx: var(--space-rg);
+$hero-gapy: var(--space-md);
 $hero-max-width: variables.$max-width-rg;
 $hero-title-size: variables.$font-xl;
 $hero-subtitle-size: variables.$font-md;
-$hero-subtitle-color: variables.$text-passive;
-$hero-content-gap-start: properties.$space-rg;
-$hero-content-gap-end: properties.$flex-gap;
+$hero-subtitle-color: var(--text-passive);
+$hero-content-gap-start: var(--space-rg);
+$hero-content-gap-end: var(--flex-gap);
 $hero-content-font-size: variables.$font-sm;
 
 .hero {
-  background-color: $hero-background;
-  background-image:
-    radial-gradient(circle at top center, variables.$tone-1 30%, transparent 30%),
-    linear-gradient(30deg, variables.$tone-2 30%, transparent 30%),
-    radial-gradient(circle at bottom right, variables.$bg-tip 30%, transparent 30%);
-  background-size: 144% 144%;
-  animation: gradient 120s ease-in-out infinite;
   padding: $hero-gapy $hero-gapx;
 
   @media (print), (prefers-reduced-motion: reduce) {

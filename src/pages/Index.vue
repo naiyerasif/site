@@ -1,11 +1,11 @@
 <template>
   <Layout>
-    <Hero>
-      <h1 class="title">
-        <span class="gap-ch-sm hidden-sm">&mdash;</span>Reflections on <br class="hidden-sm" />design and development <br class="hidden-sm" />by <g-link to="/profile/naiyer/">Naiyer Asif</g-link>
-      </h1>
-    </Hero>
-    <main class="posts">
+    <template #hero>
+      <Hero>
+        <h1 class="title">
+          <span class="gap-ch-sm hidden-sm">&mdash;</span>Reflections on <br class="hidden-sm" />design and development <br class="hidden-sm" />by <g-link to="/profile/naiyer/">Naiyer Asif</g-link>
+        </h1>
+      </Hero>
       <div class="post-main-section" @click="$router.push(mostRecent.node.path)">
         <div class="post-main-section-header">
           <span class="posts-pill">
@@ -19,7 +19,8 @@
         </div>
         <div class="post-main-section-excerpt" v-html="excerpt(mostRecent.node.excerpt)" />
       </div>
-
+    </template>
+    <main class="posts">
       <div class="post-section">
         <div class="post-section-header">
           <strong class="posts-pill">Popular this month</strong>
@@ -43,7 +44,7 @@
           </div>
         </div>
         <div class="post-section-footer">
-          <g-link to="/blog">Browse more &rarr;</g-link>
+          <g-link to="/blog/2/">Browse more &rarr;</g-link>
         </div>
       </div>
     </main>
@@ -61,7 +62,7 @@ query {
       }
     }
   }
-  latestPosts: allBlog(sortBy: "date", order: DESC, limit: 11) {
+  latestPosts: allBlog(sortBy: "date", order: DESC, limit: 10) {
     edges {
       node {
         id
