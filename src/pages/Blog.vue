@@ -1,9 +1,11 @@
 <template>
   <Layout>
-    <Hero>
-      <h1 class="title">Blog</h1>
-      <div class="subtitle">Guides, notes and opinion pieces</div>
-    </Hero>
+    <template #hero>
+      <Hero>
+        <h1 class="title">Blog</h1>
+        <div class="subtitle">Guides, notes and opinion pieces</div>
+      </Hero>
+    </template>
     <main class="posts">
       <div class="post-item" v-for="post in $page.posts.edges" :key="post.id" @click="$router.push(post.node.path)">
         <div class="post-header">

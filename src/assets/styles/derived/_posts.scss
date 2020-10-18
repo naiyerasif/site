@@ -5,7 +5,7 @@
 // Posts
 
 $post-gap: var(--space-md);
-$post-border: var(--bg-search);
+$post-border: var(--bg-highlight);
 $post-max-width: variables.$max-width-rg;
 $post-section-gapy: variables.$gap-sm;
 $post-section-header-size: variables.$font-md;
@@ -39,24 +39,6 @@ $post-excerpt-color: var(--text-passive);
   .post-item > * {
     max-width: $post-max-width;
     @include utils.mx(auto);
-  }
-
-  .post-main-section {
-    cursor: pointer;
-    background-color: var(--bg-passive);
-    @include utils.tappable($radius: 0, $gapx: $post-item-gapx, $gapy: $post-gap, $underline: true);
-
-    &-title {
-      @include utils.heading-font;
-      font-weight: $post-title-weight;
-      font-size: $post-title-size;
-    }
-
-    &-excerpt {
-      margin-top: $post-header-gap;
-      color: $post-section-header-color;
-      font-size: 0.9em;
-    }
   }
 
   .post-section {

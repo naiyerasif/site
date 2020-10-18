@@ -1,20 +1,22 @@
 <template>
   <Layout>
-    <Hero>
-      <div class="metadata">
-        <div class="metadata-author" v-for="author in $page.post.authors" :key="author.id">
-          <g-image :alt="author.name" :src="author.avatar" />
-          <g-link :to="author.path">{{ author.name }}</g-link>
+    <template #hero>
+      <Hero>
+        <div class="metadata">
+          <div class="metadata-author" v-for="author in $page.post.authors" :key="author.id">
+            <g-image :alt="author.name" :src="author.avatar" />
+            <g-link :to="author.path">{{ author.name }}</g-link>
+          </div>
+          <div class="metadata-item" v-html="displayDate"></div>
+          <div class="metadata-item">&sim;{{ $page.post.timeToRead }} min read</div>
         </div>
-        <div class="metadata-item" v-html="displayDate"></div>
-        <div class="metadata-item">&sim;{{ $page.post.timeToRead }} min read</div>
-      </div>
-      <h1 class="title">{{ $page.post.title }}</h1>
-      <div class="topics">
-        <span class="gap-ch"><strong class="gap-ch">{{ $page.post.category }}</strong>on</span>
-        <span class="gap-ch" v-for="topic in $page.post.topics" :key="topic">{{ topic }}</span>
-      </div>
-    </Hero>
+        <h1 class="title">{{ $page.post.title }}</h1>
+        <div class="topics">
+          <span class="gap-ch"><strong class="gap-ch">{{ $page.post.category }}</strong>on</span>
+          <span class="gap-ch" v-for="topic in $page.post.topics" :key="topic">{{ topic }}</span>
+        </div>
+      </Hero>
+    </template>
     <ScrollIndicator />
     <main class="content">
       <div v-if="outdationMessage" class="admonition admonition-warning alert alert--danger">

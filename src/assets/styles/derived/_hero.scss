@@ -3,7 +3,6 @@
 
 // Hero
 
-$hero-background: var(--bg-passive);
 $hero-gapx: var(--space-rg);
 $hero-gapy: var(--space-md);
 $hero-max-width: variables.$max-width-rg;
@@ -15,13 +14,6 @@ $hero-content-gap-end: var(--flex-gap);
 $hero-content-font-size: variables.$font-sm;
 
 .hero {
-  background-color: $hero-background;
-  background-image:
-    radial-gradient(circle at top center, var(--tone-1) 30%, transparent 30%),
-    linear-gradient(30deg, var(--tone-2) 30%, transparent 30%),
-    radial-gradient(circle at bottom right, var(--bg-tip) 30%, transparent 30%);
-  background-size: 144% 144%;
-  animation: gradient 120s ease-in-out infinite;
   padding: $hero-gapy $hero-gapx;
 
   @media (print), (prefers-reduced-motion: reduce) {

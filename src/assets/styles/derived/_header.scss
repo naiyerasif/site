@@ -4,13 +4,46 @@
 
 // Header
 
+$crown-background: var(--bg-active);
 $header-gapx: var(--flex-gapx);
 $header-gapy: var(--flex-gapy);
 $header-wrap: var(--flex-wrap);
-$header-background: var(--bg-active);
 $header-font-size: variables.$font-sm;
 $header-menu-offsetx: -(utils.$tappable-gapx);
 $header-menu-offsety: utils.$tappable-gapx;
+
+.crown {
+  background-color: $crown-background;
+  background-image:
+    radial-gradient(circle at top center, var(--tone-1) 30%, transparent 30%),
+    linear-gradient(30deg, var(--tone-2) 30%, transparent 30%),
+    radial-gradient(circle at bottom right, var(--bg-tip) 30%, transparent 30%);
+  background-size: 144% 144%;
+  animation: gradient 120s ease-in-out infinite;
+
+  .post-main-section > * {
+    max-width: variables.$max-width-rg;
+    @include utils.mx(auto);
+  }
+
+  .post-main-section {
+    cursor: pointer;
+    background-color: var(--bg-highlight);
+    @include utils.tappable($radius: 0, $gapx: var(--content-article-gap), $gapy: var(--space-md), $underline: true);
+
+    &-title {
+      @include utils.heading-font;
+      font-weight: var(--weight-bold);
+      font-size: variables.$font-lg;
+    }
+
+    &-excerpt {
+      margin-top: variables.$ch-rg;
+      color: var(--text-passive);
+      font-size: 0.9em;
+    }
+  }
+}
 
 .header {
   display: flex;
@@ -19,7 +52,6 @@ $header-menu-offsety: utils.$tappable-gapx;
   align-items: center;
   padding: $header-gapy $header-gapx;
   font-size: $header-font-size;
-  background-color: $header-background;
 
   > * {
     display: inherit;
