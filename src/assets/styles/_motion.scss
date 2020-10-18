@@ -60,8 +60,8 @@
 // Theme switch transition
 
 * {
-  transition-property: background-color, border-color, font-weight, stroke-width;
-  transition-duration: 300ms;
+  transition-property: background-color, border-color, font-weight;
+  transition-duration: 200ms;
   transition-timing-function: ease-in-out;
 
   @media (print), (prefers-reduced-motion: reduce) {
