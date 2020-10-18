@@ -9,7 +9,7 @@ $footer-gapx: properties.$flex-gapx;
 $footer-gapy: properties.$space-xl;
 $footer-font-size: variables.$font-sm;
 $footer-title-gap: variables.$gap-rg;
-$footer-title-weight: variables.$weight-bd;
+$footer-title-weight: var(--weight-bold);
 $footer-title-bottom: variables.$gap-rg;
 $footer-copyright-width: properties.$flex-width;
 

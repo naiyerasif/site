@@ -17,7 +17,7 @@ $post-header-wrap: properties.$flex-wrap;
 $post-header-size: variables.$font-sm;
 $post-header-gap: variables.$ch-rg;
 $post-title-size: variables.$font-lg;
-$post-title-weight: variables.$weight-bd;
+$post-title-weight: var(--weight-bold);
 $post-excerpt-color: variables.$text-passive;
 
 .posts {

@@ -18,7 +18,7 @@ $sidekick-nav-background-active: variables.$bg-selected;
 $sidekick-nav-indicator-gap: variables.$ch-rg;
 $sidekick-nav-indicator-color: variables.$text-passive;
 $sidekick-nav-indicator-font-size: variables.$font-xs;
-$sidekick-nav-indicator-font-weight: variables.$weight-bd;
+$sidekick-nav-indicator-font-weight: var(--weight-bold);
 $pagination-font-size: variables.$font-sm;
 $pagination-border: variables.$border;
 $pagination-radius: variables.$radius * 2;

@@ -2,9 +2,6 @@
 
 // Typography
 
-$weight-rg: var(--weight-rg) !default;
-$weight-bd: var(--weight-bd) !default;
-
 $font-xs: calc(0.75rem + 0.125vw) !default;
 $font-sm: calc(0.8rem + 0.2vw) !default;
 $font-rg: calc(1rem + 0.25vw) !default;
@@ -97,8 +94,8 @@ $tone-3: theme.fade(theme.$black, 0.95) !default;
     'distinct': 'default-sans' 'Space Grotesk' 'Space Grotesk var'
   ),
   $font-size-base: $font-rg,
-  $weight-normal: $weight-rg,
-  $weight-bold: $weight-bd,
+  $weight-normal: var(--weight-regular),
+  $weight-bold: var(--weight-bold),
   $background-body: $bg-body,
   $background-code: $bg-passive,
   $background-ins: $bg-passive,

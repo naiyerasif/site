@@ -48,7 +48,7 @@ a {
   }
 
   &.active {
-    font-weight: variables.$weight-bd;
+    font-weight: var(--weight-bold);
   }
 
   &.is-icon {

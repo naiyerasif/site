@@ -58,7 +58,7 @@ $code-gapx-neg: properties.$curb-rg;
     padding-right: 0.5em;
     color: variables.$text-passive;
     font-size: 0.75em;
-    font-weight: variables.$weight-bd;
+    font-weight: var(--weight-bold);
     opacity: 0.75;
   }
 
@@ -151,7 +151,7 @@ $code-gapx-neg: properties.$curb-rg;
 
   .token.important,
   .token.bold {
-    font-weight: variables.$weight-bd;
+    font-weight: var(--weight-bold);
   }
 
   .token.italic {
