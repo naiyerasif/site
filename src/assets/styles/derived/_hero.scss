@@ -6,7 +6,7 @@
 $hero-gapx: var(--space-rg);
 $hero-gapy: var(--space-md);
 $hero-max-width: variables.$max-width-rg;
-$hero-title-size: variables.$font-xl;
+$hero-title-size: calc(1.25rem + 3vw);
 $hero-subtitle-size: variables.$font-md;
 $hero-subtitle-color: var(--text-passive);
 $hero-content-gap-start: var(--space-rg);
@@ -31,6 +31,7 @@ $hero-content-font-size: variables.$font-sm;
     .title {
       @include utils.heading-font;
       font-size: $hero-title-size;
+      line-height: 1.3;
     }
 
     .subtitle {
