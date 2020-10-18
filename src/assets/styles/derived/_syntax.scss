@@ -1,6 +1,5 @@
-@use '../variables';
-@use '../properties';
-@use '../mixins/utils';
+@use '~/assets/styles/variables';
+@use '~/assets/styles/mixins/utils';
 
 // Token colors
 
@@ -23,10 +22,10 @@ $languages: js, ts, html, md, vue, css, sass, scss, less, stylus, go, java, c,
 
 $code-background: var(--bg-code);
 $code-max-width: variables.$max-width-rg;
-$code-gapy-rg: properties.$space-rg;
-$code-gapy-sm: properties.$space-sm;
-$code-gapx: properties.$content-article-gap;
-$code-gapx-neg: properties.$curb-rg;
+$code-gapy-rg: var(--space-rg);
+$code-gapy-sm: var(--space-sm);
+$code-gapx: var(--content-article-gap);
+$code-gapx-neg: var(--curb-rg);
 
 // Prism theme
 

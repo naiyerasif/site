@@ -1,5 +1,4 @@
 @use 'variables';
-@use 'properties';
 @use 'mixins/utils';
 @use 'mixins/layout';
 @use 'mixins/queries';
@@ -15,7 +14,7 @@ $topics-separator: variables.$symbol-separator;
 
 .is-flex {
   display: flex;
-  flex-wrap: properties.$flex-wrap;
+  flex-wrap: var(--flex-wrap);
   align-items: center;
 }
 
@@ -84,7 +83,7 @@ a {
 // Grids
 
 .footer-grid {
-  @include layout.grid($width: variables.$grid-sm, $gap: properties.$space-rg);
+  @include layout.grid($width: variables.$grid-sm, $gap: var(--space-rg));
 }
 
 // Colors

@@ -1,13 +1,12 @@
-@use '../variables';
-@use '../properties';
-@use '../mixins/utils';
+@use '~/assets/styles/variables';
+@use '~/assets/styles/mixins/utils';
 
 // Content
 
-$content-gap: properties.$space-md;
-$content-adm-gap: properties.$space-rg;
-$content-article-gap: properties.$content-article-gap;
-$content-list-gap: properties.$content-list-gap;
+$content-gap: var(--space-md);
+$content-adm-gap: var(--space-rg);
+$content-article-gap: var(--content-article-gap);
+$content-list-gap: var(--content-list-gap);
 $content-max-width: variables.$max-width-rg;
 $content-opener-size: variables.$font-md;
 

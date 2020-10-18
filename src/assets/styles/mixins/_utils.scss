@@ -1,7 +1,6 @@
-@use '../variables';
-@use '../properties';
+@use '~/assets/styles/variables';
 @use 'queries';
-@use '../../../../node_modules/@microflash/remarkability/scss/mixins';
+@use '@/node_modules/@microflash/remarkability/scss/mixins';
 
 // Heading font
 

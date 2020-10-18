@@ -1,17 +1,16 @@
-@use '../variables';
-@use '../properties';
-@use '../mixins/utils';
+@use '~/assets/styles/variables';
+@use '~/assets/styles/mixins/utils';
 
 // Footer
 
 $footer-background: var(--bg-active);
-$footer-gapx: properties.$flex-gapx;
-$footer-gapy: properties.$space-xl;
+$footer-gapx: var(--flex-gapx);
+$footer-gapy: var(--space-xl);
 $footer-font-size: variables.$font-sm;
 $footer-title-gap: variables.$gap-rg;
 $footer-title-weight: var(--weight-bold);
 $footer-title-bottom: variables.$gap-rg;
-$footer-copyright-width: properties.$flex-width;
+$footer-copyright-width: var(--flex-width);
 
 .footer {
   background-color: $footer-background;

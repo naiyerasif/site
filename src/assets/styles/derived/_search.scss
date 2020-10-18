@@ -1,19 +1,18 @@
-@use '../variables';
-@use '../properties';
-@use '../mixins/utils';
+@use '~/assets/styles/variables';
+@use '~/assets/styles/mixins/utils';
 
 // Search
 
-$search-width: properties.$search-width;
+$search-width: var(--search-width);
 $search-container-background: var(--bg-search);
-$search-container-offsetx: properties.$search-offsetx;
+$search-container-offsetx: var(--search-offsetx);
 $search-results-background: var(--bg-passive);
 $search-results-active-background: var(--bg-selected);
 $search-results-gap: variables.$gap-rg;
 $search-results-gapx: utils.$tappable-gapx;
 $search-results-gapy: utils.$tappable-gapy;
 $search-results-radius: variables.$radius;
-$search-top-radius: properties.$search-radius;
+$search-top-radius: var(--search-radius);
 $search-bottom-radius: variables.$radius;
 $search-label-size: variables.$font-sm;
 $search-label-background: var(--bg-highlight);

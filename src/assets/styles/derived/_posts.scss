@@ -1,19 +1,18 @@
-@use '../variables';
-@use '../properties';
-@use '../mixins/utils';
-@use '../mixins/queries';
+@use '~/assets/styles/variables';
+@use '~/assets/styles/mixins/utils';
+@use '~/assets/styles/mixins/queries';
 
 // Posts
 
-$post-gap: properties.$space-md;
+$post-gap: var(--space-md);
 $post-border: var(--bg-search);
 $post-max-width: variables.$max-width-rg;
 $post-section-gapy: variables.$gap-sm;
 $post-section-header-size: variables.$font-md;
 $post-section-header-color: var(--text-passive);
-$post-item-gapx: properties.$content-article-gap;
-$post-item-gapy: properties.$space-rg;
-$post-header-wrap: properties.$flex-wrap;
+$post-item-gapx: var(--content-article-gap);
+$post-item-gapy: var(--space-rg);
+$post-header-wrap: var(--flex-wrap);
 $post-header-size: variables.$font-sm;
 $post-header-gap: variables.$ch-rg;
 $post-title-size: variables.$font-lg;
@@ -127,7 +126,7 @@ $post-excerpt-color: var(--text-passive);
 }
 
 .post-section-item-title {
-  flex-wrap: properties.$flex-wrap;
+  flex-wrap: var(--flex-wrap);
   $flex-basis-min: 22.5%;
   $flex-basis-max: 100% - $flex-basis-min;
 

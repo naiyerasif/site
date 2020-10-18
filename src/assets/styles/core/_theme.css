@@ -1,4 +1,11 @@
 :root {
+  --space-rg: calc(1rem + 2vw);
+  --space-sm: calc(var(--space-rg) * 0.5);
+  --space-md: calc(var(--space-rg) * 1.5);
+  --space-lg: calc(var(--space-rg) * 2);
+  --space-xl: calc(var(--space-rg) * 3);
+  --curb-rg: calc(var(--space-rg) * -1);
+
   --hue-mono: 0;
   --hue-primary: 160;
   --hue-secondary: 229;

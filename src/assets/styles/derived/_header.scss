@@ -1,13 +1,12 @@
-@use '../variables';
-@use '../properties';
-@use '../mixins/queries';
-@use '../mixins/utils';
+@use '~/assets/styles/variables';
+@use '~/assets/styles/mixins/queries';
+@use '~/assets/styles/mixins/utils';
 
 // Header
 
-$header-gapx: properties.$flex-gapx;
-$header-gapy: properties.$flex-gapy;
-$header-wrap: properties.$flex-wrap;
+$header-gapx: var(--flex-gapx);
+$header-gapy: var(--flex-gapy);
+$header-wrap: var(--flex-wrap);
 $header-background: var(--bg-active);
 $header-font-size: variables.$font-sm;
 $header-menu-offsetx: -(utils.$tappable-gapx);

@@ -1,17 +1,16 @@
-@use '../variables';
-@use '../properties';
-@use '../mixins/utils';
+@use '~/assets/styles/variables';
+@use '~/assets/styles/mixins/utils';
 
 // Sidekick
 
 $sidekick-background: var(--bg-passive);
 $sidekick-topics-gapy: variables.$gap-rg;
-$sidekick-gap: properties.$space-rg;
+$sidekick-gap: var(--space-rg);
 $sidekick-max-width: variables.$max-width-rg;
-$sidekick-nav-gap: properties.$space-rg;
-$sidekick-nav-margin: properties.$curb-rg;
-$sidekick-nav-flex-wrap: properties.$flex-wrap;
-$sidekick-nav-flex-basis: properties.$flex-basis;
+$sidekick-nav-gap: var(--space-rg);
+$sidekick-nav-margin: var(--curb-rg);
+$sidekick-nav-flex-wrap: var(--flex-wrap);
+$sidekick-nav-flex-basis: var(--flex-basis);
 $sidekick-nav-background-prev: var(--bg-highlight);
 $sidekick-nav-background-next: var(--bg-selected);
 $sidekick-nav-background-active: var(--bg-selected);
