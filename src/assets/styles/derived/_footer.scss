@@ -4,7 +4,7 @@
 
 // Footer
 
-$footer-background: variables.$bg-active;
+$footer-background: var(--bg-active);
 $footer-gapx: properties.$flex-gapx;
 $footer-gapy: properties.$space-xl;
 $footer-font-size: variables.$font-sm;
@@ -16,8 +16,8 @@ $footer-copyright-width: properties.$flex-width;
 .footer {
   background-color: $footer-background;
   background-image: 
-    radial-gradient(circle at 80vw bottom, variables.$tone-1 25%, transparent 25%),
-    linear-gradient(328deg, variables.$tone-2 25%, transparent 25%);
+    radial-gradient(circle at 80vw bottom, var(--tone-1) 25%, transparent 25%),
+    linear-gradient(328deg, var(--tone-2) 25%, transparent 25%);
   padding: $footer-gapx $footer-gapx $footer-gapy;
   font-size: $footer-font-size;
 

@@ -110,18 +110,18 @@ h6 {
 
 // Admonitions & blockquotes
 
-$adm-default-background: variables.$bg-active;
-$adm-default-color: variables.$text-passive;
-$adm-note-background: variables.$bg-active;
-$adm-note-color: variables.$text-passive;
-$adm-caution-background: variables.$bg-caution;
-$adm-caution-color: variables.$text;
-$adm-tip-background: variables.$bg-tip;
-$adm-tip-color: variables.$text;
-$adm-warning-background: variables.$bg-warning;
-$adm-warning-color: variables.$text;
-$adm-important-background: variables.$bg-important;
-$adm-important-color: variables.$text;
+$adm-default-background: var(--bg-active);
+$adm-default-color: var(--text-passive);
+$adm-note-background: var(--bg-active);
+$adm-note-color: var(--text-passive);
+$adm-caution-background: var(--bg-caution);
+$adm-caution-color: var(--text);
+$adm-tip-background: var(--bg-tip);
+$adm-tip-color: var(--text);
+$adm-warning-background: var(--bg-warning);
+$adm-warning-color: var(--text);
+$adm-important-background: var(--bg-warning);
+$adm-important-color: var(--text);
 
 $adm-font-size: 0.9em;
 $adm-header-gap-bottom: variables.$gap-md;

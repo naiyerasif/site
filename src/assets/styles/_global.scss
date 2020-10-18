@@ -6,11 +6,11 @@
 
 // Containers
 
-$topics-background: variables.$bg-selected;
+$topics-background: var(--bg-selected);
 $topics-font-size: variables.$font-xs;
 $topics-gapy: variables.$ch-sm;
 $topics-gapx: variables.$ch-md;
-$topics-border: variables.$border;
+$topics-border: var(--border);
 $topics-separator: variables.$symbol-separator;
 
 .is-flex {
@@ -90,8 +90,8 @@ a {
 // Colors
 
 .is-primary {
-  color: variables.$link;
-  border-color: variables.$link;
+  color: var(--link);
+  border-color: var(--link);
 }
 
 // Gap

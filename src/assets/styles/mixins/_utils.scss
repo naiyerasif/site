@@ -61,7 +61,7 @@
 $tappable-radius: variables.$radius * 6;
 $tappable-gapx: variables.$gap-rg;
 $tappable-gapy: variables.$gap-xs;
-$tappable-background: variables.$bg-selected;
+$tappable-background: var(--bg-selected);
 
 @mixin tappable(
   $radius: $tappable-radius, 

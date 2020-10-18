@@ -1,5 +1,3 @@
-@use 'core/theme';
-
 // Typography
 
 $font-xs: calc(0.75rem + 0.125vw) !default;
@@ -48,35 +46,7 @@ $symbol-separator: '\00B7' !default;
 $fill-opacity: 0.25 !default;
 $separator-opacity: 0.5 !default;
 
-// Colors
-
-$brand: hsl(350, 90%, 45%);
-
-$text: var(--text) !default;
-$text-passive: var(--text-passive) !default;
-
-$link: var(--link) !default;
-$link-active: var(--link-active) !default;
-
-$border: var(--border) !default;
-
-$bg-body: var(--bg-body) !default;
-$bg-active: var(--bg-active) !default;
-$bg-passive: var(--bg-passive) !default;
-$bg-code: var(--bg-code) !default;
-$bg-search: var(--bg-search) !default;
-$bg-selected: var(--bg-selected) !default;
-$bg-highlight: var(--bg-highlight) !default;
-$bg-caution: var(--bg-caution) !default;
-$bg-tip: var(--bg-tip) !default;
-$bg-warning: var(--bg-warning) !default;
-$bg-important: var(--bg-important) !default;
-
-$tone-1: var(--tone-1) !default;
-$tone-2: var(--tone-2) !default;
-$tone-3: theme.fade(theme.$black, 0.95) !default;
-
-@use '../../../node_modules/@microflash/remarkability/scss/variables' with (
+@use '@/node_modules/@microflash/remarkability/scss/variables' with (
   $root: 'body',
   $enable-selection-background: true,
   $enable-custom-scrollbar: true,
@@ -93,27 +63,27 @@ $tone-3: theme.fade(theme.$black, 0.95) !default;
   $font-size-base: $font-rg,
   $weight-normal: var(--weight-regular),
   $weight-bold: var(--weight-bold),
-  $background-body: $bg-body,
-  $background-code: $bg-passive,
-  $background-ins: $bg-passive,
-  $background-mark: $bg-passive,
+  $background-body: var(--bg-body),
+  $background-code: var(--bg-passive),
+  $background-ins: var(--bg-passive),
+  $background-mark: var(--bg-passive),
   $background-table: inherit,
   $background-table-even: inherit,
-  $background-table-hover: $bg-active,
-  $background-selected: $bg-selected,
-  $background-scrollbar: $bg-active,
-  $border-color: $border,
+  $background-table-hover: var(--bg-active),
+  $background-selected: var(--bg-selected),
+  $background-scrollbar: var(--bg-active),
+  $border-color: var(--border),
   $radius: $radius,
-  $text: $text,
+  $text: var(--text),
   $text-code: inherit,
   $text-bold: inherit,
-  $text-muted: $text-passive,
-  $text-headings: $text,
-  $text-blockquote: $text-passive,
-  $link: $link,
-  $link-active: $link-active,
-  $link-visited: $link-active,
+  $text-muted: var(--text-passive),
+  $text-headings: var(--text),
+  $text-blockquote: var(--text-passive),
+  $link: var(--link),
+  $link-active: var(--link-active),
+  $link-visited: var(--link-active),
   $table-thead: inherit,
-  $scrollbar: $border,
+  $scrollbar: var(--border),
   $margin: $gap-lg
 );

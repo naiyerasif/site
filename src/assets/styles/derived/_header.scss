@@ -8,7 +8,7 @@
 $header-gapx: properties.$flex-gapx;
 $header-gapy: properties.$flex-gapy;
 $header-wrap: properties.$flex-wrap;
-$header-background: variables.$bg-active;
+$header-background: var(--bg-active);
 $header-font-size: variables.$font-sm;
 $header-menu-offsetx: -(utils.$tappable-gapx);
 $header-menu-offsety: utils.$tappable-gapx;
