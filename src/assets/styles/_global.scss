@@ -71,13 +71,13 @@ a {
 
 .icon-rg {
   @extend .svg;
-  stroke-width: variables.$stroke-rg;
+  stroke-width: var(--stroke-rg);
   @include utils.size(variables.$icon-rg);
 }
 
 .icon-sm {
   @extend .svg;
-  stroke-width: variables.$stroke-sm;
+  stroke-width: var(--stroke-sm);
   @include utils.size(variables.$icon-sm);
 }
 
