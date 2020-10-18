@@ -136,6 +136,8 @@ $adm-header-gap-bottom: variables.$gap-md;
   }
 
   h5 {
+    display: flex;
+    align-items: center;
     margin-bottom: $adm-header-gap-bottom;
     text-transform: capitalize;
   }
@@ -146,12 +148,9 @@ $adm-header-gap-bottom: variables.$gap-md;
 }
 
 .admonition-icon {
-  display: inline-block;
-  vertical-align: middle;
   margin-right: variables.$ch-rg;
 
   svg {
-    display: inherit;
     @include utils.size(22px);
     stroke-width: 0;
   }
