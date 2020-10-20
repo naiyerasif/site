@@ -7,13 +7,17 @@
   "author": "Naiyer Asif",
   "license": "MIT",
   "scripts": {
-    "build": "node bin/report.js && gridsome build",
+    "build": "npm run build:report && npm run build:site",
+    "build:report": "node bin/report.js",
+    "build:site": "gridsome build",
     "start": "gridsome develop",
     "status": "gridsome info",
     "purge": "shx rm -rf public .cache src/.temp static/search.json",
     "new:post": "node bin/content.js --content post",
     "new:note": "node bin/content.js --content note",
-    "new:icons": "shx cp static/assets/images/icons.svg .archive/backups/icons.svg && spritely --input .archive/svg/icons --output static/assets/images/icons.svg --prefix \"icon-\""
+    "sprite": "npm run sprite:backup && npm run sprite:build",
+    "sprite:backup": "shx cp static/assets/images/icons.svg .archive/backups/icons.svg",
+    "sprite:build": "spritely --input .archive/svg/icons --output static/assets/images/icons.svg --prefix \"icon-\""
   },
   "dependencies": {
     "@gridsome/plugin-google-analytics": "^0.1.2",
