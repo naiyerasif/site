@@ -40,7 +40,7 @@
     "googleapis": "^61.0.0",
     "marked": "^1.2.0",
     "sass": "^1.27.0",
-    "sass-loader": "^10.0.2",
+    "sass-loader": "^10.0.3",
     "shx": "^0.3.2",
     "svg-to-vue-component": "^0.3.8",
     "vue-scroll-indicator": "^0.1.3"
