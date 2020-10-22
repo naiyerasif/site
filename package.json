@@ -7,13 +7,17 @@
   "author": "Naiyer Asif",
   "license": "MIT",
   "scripts": {
-    "build": "node bin/report.js && gridsome build",
+    "build": "npm run build:report && npm run build:site",
+    "build:report": "node bin/report.js",
+    "build:site": "gridsome build",
     "start": "gridsome develop",
     "status": "gridsome info",
     "purge": "shx rm -rf public .cache src/.temp static/search.json",
     "new:post": "node bin/content.js --content post",
     "new:note": "node bin/content.js --content note",
-    "new:icons": "shx cp static/assets/images/icons.svg .archive/backups/icons.svg && spritely --input .archive/svg/icons --output static/assets/images/icons.svg --prefix \"icon-\""
+    "sprite": "npm run sprite:backup && npm run sprite:build",
+    "sprite:backup": "shx cp static/assets/images/icons.svg .archive/backups/icons.svg",
+    "sprite:build": "spritely --input .archive/svg/icons --output static/assets/images/icons.svg --prefix \"icon-\""
   },
   "dependencies": {
     "@gridsome/plugin-google-analytics": "^0.1.2",
@@ -35,12 +39,12 @@
     "autoprefixer": "^9.8.6",
     "chrono-node": "^2.1.8",
     "commander": "^6.1.0",
-    "dayjs": "^1.9.1",
+    "dayjs": "^1.9.3",
     "dotenv": "^8.2.0",
-    "googleapis": "^60.0.1",
-    "marked": "^1.2.0",
-    "sass": "^1.26.11",
-    "sass-loader": "^10.0.2",
+    "googleapis": "^61.0.0",
+    "marked": "^1.2.2",
+    "sass": "^1.27.0",
+    "sass-loader": "^10.0.3",
     "shx": "^0.3.2",
     "svg-to-vue-component": "^0.3.8",
     "vue-scroll-indicator": "^0.1.3"
