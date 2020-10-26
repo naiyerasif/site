@@ -28,7 +28,7 @@ let fileName, frontmatter
 
 if (CONTENT === 'note') {
   fileName = `${DATE.format('YYYY-MM-DD-HH-mm')}-${SLUG}`
-  frontmatter = `---\ntitle: '${TITLE}'\ndate: ${DATE_FMT_META}\ntopics: [${META}]\n---\n`
+  frontmatter = `---\ntitle: '${TITLE}'\ndate: ${DATE_FMT_META}\ncategory: 'note'\nauthors: [naiyer]\ntopics: [${META}]\n---\n`
 } else {
   fileName = `${DATE.format('YYYY-MM-DD')}-${SLUG}`
   frontmatter = `---\ntitle: '${TITLE}'\ndate: ${DATE_FMT_META}\nauthors: [naiyer]\ntopics: [${META}]\n---\n`
