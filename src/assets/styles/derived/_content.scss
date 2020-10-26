@@ -60,6 +60,7 @@ $toc-body-gap-inline: variables.$gap-rg;
   max-width: $content-max-width;
   @include utils.mx(auto);
   margin-bottom: $content-adm-gap;
+  font-size: 0.9em;
 
   &-body {
     list-style-type: none;
