@@ -1,42 +1,44 @@
 ---
 title: 'Persisting documents with MongoRepository'
 date: 2019-07-08 11:12:13
-updated: 2019-12-08 19:59:01
+updated: 2020-10-26 10:10:01
 authors: [naiyer]
 topics: [spring, data, mongodb]
 ---
 
-Spring Boot provides a variety of ways to work with a MongoDB database: low-level `MongoReader` and `MongoWriter` APIs, Query, Criteria and Update DSLs, and `MongoTemplate` helper. `MongoRepository` interface is the Repository-style programming model provided by `spring-boot-starter-data-mongodb`.
+[Spring Data MongoDB](https://spring.io/projects/spring-data-mongodb) provides a variety of ways to work with a MongoDB database: low-level `MongoReader` and `MongoWriter` APIs, and higher-level `MongoTemplate` and `MongoOperations` APIs that make use of Query, Criteria and Update DSLs. It also provides a repository-style programming model through the `MongoRepository` interface which adds convenient abstractions to work with MongoDB.
 
-In this post, we'll explore how to persist documents with `MongoRepository`.
+In this post, we'll explore how to persist documents with `MongoRepository`, create custom converters for specific data types and cascade the documents.
 
 :::note Setup
 The examples in this post use
 
-- Java 13
-- Spring Boot 2.2.5
+- Java 15
+- Spring Boot 2.3.4
+- Lombok 1.18.12
 - MongoDB 4
 :::
 
-You'd need a mongoDB instance to persist the data. You can install MongoDB Community Server from [here](https://www.mongodb.com/download-center/community) or get a free to try instance at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas). You can also use Docker to run an instance. Create a `docker-compose.yml` file at the project root and add the following details in it.
+Lombok is used to generate boilerplate code (e.g., getters, setters, builders, etc.) by using annotations. You can learn more about it [here](https://projectlombok.org/).
+
+You'd need a mongoDB instance to persist the data. You can install MongoDB Community Server from [here](https://www.mongodb.com/download-center/community) or get a free trial instance at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas). You can also launch MongoDB as a Docker container. Create a `docker-compose.yml` file somewhere and add the following details in it.
 
 ```yaml
-version: '3.1'
+version: '3'
 
 services:
 
   mongo:
-    image: mongo
-    container_name: mongo_db
-    restart: always
+    image: mongo:latest
+    container_name: mongodb_latest
     ports:
       - 27017:27017
     environment:
-      MONGO_INITDB_ROOT_USERNAME: erin
-      MONGO_INITDB_ROOT_PASSWORD: richards
+      MONGO_INITDB_ROOT_USERNAME: gwen
+      MONGO_INITDB_ROOT_PASSWORD: stacy
 ```
 
-Execute the following command to launch the container.
+Open the terminal at the location of `docker-compose.yml` and execute the following command to launch the container.
 
 ```sh
 docker-compose up -d
@@ -44,42 +46,42 @@ docker-compose up -d
 
 ## Define a domain
 
-Let's start by defining a domain. Say, you want to persist an `Account` object that contains information about a `User` and their `Session`s from different locations. When someone updates or deletes an `Account`, the corresponding `User` and `Session` should also get updated or deleted.
+> **Story** Consider a fictional social network where a *user* can create an *account*. A sign in by a user from a distinct location creates a *session* associated with that location. Since a user can sign in from different locations, multiple sessions may exist for an account. A user may decide to delete their account; if this happens, the corresponding sessions should also be deleted.
+
+Let's start by defining a domain for the above story. The relationship between the `Account`, `User` and `Session` collections can be represented by the following diagram.
 
 ![Domain](./images/2019-07-08-persisting-documents-with-mongorepository.svg)
 
-A Many-to-One relationship in MongoDB can be modeled with either [embedded documents](https://docs.mongodb.com/manual/tutorial/model-embedded-one-to-many-relationships-between-documents/) or [document references](https://docs.mongodb.com/manual/tutorial/model-referenced-one-to-many-relationships-between-documents/); with the latter method being more useful since it prevents the repetition of data. You can enforce this behavior through a `@DBRef` annotation.
+A Many-to-One relationship in MongoDB can be modeled with either [embedded documents](https://docs.mongodb.com/manual/tutorial/model-embedded-one-to-many-relationships-between-documents/) or [document references](https://docs.mongodb.com/manual/tutorial/model-referenced-one-to-many-relationships-between-documents/). You can add the latter behavior through a `@DBRef` annotation.
 
-Define an `Account` class, like this:
+Define an `Account` class as follows -
 
 ```java
 // src/main/java/dev/mflash/guides/mongo/domain/Account.java
 
+@Data @Builder
 public class Account {
 
-  private @Id String key;
-  private String address;
+  private final @Id @Default String key = UUID.randomUUID().toString();
   private @DBRef User user;
-  private @DBRef Set<Session> sessions;
+  private @DBRef @Singular Set<Session> sessions;
   private ZonedDateTime created;
-
-  // constructors, getters and setters, builders, etc.
 }
 ```
 
-Similarly, define `User`
+Similarly, define the `User`
 
 ```java
 // src/main/java/dev/mflash/guides/mongo/domain/User.java
 
+@Data @Builder
 public class User {
 
-  private @Id String key;
+  private final @Id @Default String key = UUID.randomUUID().toString();
   private String name;
+  private String email;
   private Locale locale;
   private LocalDate dateOfBirth;
-
-  // constructors, getters and setters, builders, etc.
 }
 ```
 
@@ -88,22 +90,21 @@ and `Session` classes.
 ```java
 // src/main/java/dev/mflash/guides/mongo/domain/Session.java
 
+@Data @Builder
 public class Session {
 
-  private @Id String key;
+  private final @Id @Default String key = UUID.randomUUID().toString();
   private String city;
   private Locale locale;
-  private String fingerprint;
-  private LocalDate lastAccessedOn;
-  private LocalTime lastAccessedAt;
-
-  // constructors, getters and setters, builders, etc.
+  private LocalDateTime accessed;
 }
 ```
 
+Note that we're initializing the `key` with a random UUID. We'll discuss why this is needed in the [cascading](#cascade-the-document-operations) section. 
+
 ## Create a Repository
 
-Extend `MongoRepository` to create a repository for `Account`.
+Define a repository for the `Account` by extending the `MongoRepository` interface.
 
 ```java
 // src/main/java/dev/mflash/guides/mongo/repository/AccountRepository.java
@@ -113,130 +114,163 @@ public interface AccountRepository extends MongoRepository<Account, String> {
   Account findDistinctFirstByUser(User user);
 
   List<Account> findBySessions(Session session);
-
-  Account findByAddress(String address);
 }
 ```
 
-Since `MongoRepository` extends `CrudRepository` interface, it provides several CRUD methods (like `findAll()`, `save()`, etc) out-of-the-box. For specific queries, you can declare query methods (using certain [naming conventions](https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#repositories.query-methods.query-creation)) for Spring to generate their implementations at runtime.
+`MongoRepository` extends `CrudRepository` interface and thereby, provides several CRUD methods (e.g., `findAll()`, `save()`, etc.) out-of-the-box. For specific queries, you can declare query methods (using the [naming conventions](https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#repositories.query-methods.query-creation) described in the docs). Spring will generate their implementations at runtime.
 
-### Unit tests for the `AccountRepository`
+### Testing the `AccountRepository`
 
-Now that the `AccountRepository` has been defined, write some tests to verify if it works as expected.
+Let's write some tests to check the functionality of the `AccountRepository`. We'll use assertion methods provided by [AssertJ](https://assertj.github.io/doc/), a popular assertion library that comes bundled with Spring.
 
 ```java
 // src/test/java/dev/mflash/guides/mongo/repository/AccountRepositoryTest.java
 
 @ExtendWith(SpringExtension.class)
-public @SpringBootTest class AccountRepositoryTest {
+@SpringBootTest class AccountRepositoryTest {
+
+  private static final List<User> SAMPLE_USERS = List.of(
+      User.builder().name("Tina Lawrence").email("tina@example.com").locale(Locale.CANADA).dateOfBirth(
+          LocalDate.of(1989, Month.JANUARY, 11)).build(),
+      User.builder().name("Adrian Chase").email("adrian@example.com").locale(Locale.UK).dateOfBirth(
+          LocalDate.of(1994, Month.APRIL, 23)).build(),
+      User.builder().name("Mohd Ali").email("mohdali@example.com").locale(Locale.JAPAN).dateOfBirth(
+          LocalDate.of(1999, Month.OCTOBER, 9)).build()
+  );
+
+  private static final List<Session> SAMPLE_SESSIONS = List.of(
+      Session.builder().city("Toronto").locale(Locale.CANADA).build(),
+      Session.builder().city("Los Angeles").locale(Locale.US).build(),
+      Session.builder().city("London").locale(Locale.UK).build(),
+      Session.builder().city("Paris").locale(Locale.FRANCE).build(),
+      Session.builder().city("Tokyo").locale(Locale.JAPAN).build()
+  );
+
+  private static final List<Account> SAMPLE_ACCOUNTS = List.of(
+      Account.builder().user(SAMPLE_USERS.get(0)).session(SAMPLE_SESSIONS.get(0)).session(SAMPLE_SESSIONS.get(1))
+          .created(ZonedDateTime.now()).build(),
+      Account.builder().user(SAMPLE_USERS.get(1)).session(SAMPLE_SESSIONS.get(1)).session(SAMPLE_SESSIONS.get(2))
+          .created(ZonedDateTime.now()).build(),
+      Account.builder().user(SAMPLE_USERS.get(2)).session(SAMPLE_SESSIONS.get(4)).session(SAMPLE_SESSIONS.get(3))
+          .created(ZonedDateTime.now()).build()
+  );
 
   private @Autowired AccountRepository repository;
 
-  public @BeforeEach void setUp() {
+  @BeforeEach
+  void setUp() {
     repository.deleteAll();
-    repository.saveAll(account.values());
+    repository.saveAll(SAMPLE_ACCOUNTS);
   }
 
-  public @Test void findAll() {
-    final var totalNumberOfRecords = 3;
-    assertEquals(totalNumberOfRecords, repository.findAll().size());
+  @Test
+  @DisplayName("Should find some accounts")
+  void shouldFindSomeAccounts() {
+    assertThat(repository.count()).isEqualTo(SAMPLE_ACCOUNTS.size());
   }
 
-  public @Test void setKeyOnSave() {
-    repository.findAll().forEach(account -> assertNotNull(account.getKey()));
+  @Test
+  @DisplayName("Should assign a key on save")
+  void shouldAssignAKeyOnSave() {
+    assertThat(repository.findAll()).extracting("key").isNotNull();
   }
 
-  public @Test void findDistinctFirstByUserName() {
-    final var tinaLawrence = Name.TINA_LAWRENCE;
-    assertEquals(users.get(tinaLawrence),
-        repository.findDistinctFirstByUser(users.get(tinaLawrence)).getUser());
+  @Test
+  @DisplayName("Should get a distinct user by first name")
+  void shouldGetADistinctUserByFirstName() {
+    assertThat(repository.findDistinctFirstByUser(SAMPLE_USERS.get(0)).getUser())
+        .isEqualToIgnoringGivenFields(SAMPLE_USERS.get(0), "key");
   }
 
-  public @Test void findBySessionLocale() {
-    final var numberOfResults = 2;
-    assertEquals(numberOfResults, repository.findBySessions(sessions.get(City.LOS_ANGELES)).size());
-  }
-
-  public @Test void findByAddress() {
-    final var address = Address.MOHD_ALI;
-    assertEquals(Name.MOHD_ALI.name, repository.findByAddress(address.email).getUser().getName());
+  @Test
+  @DisplayName("Should find some users with a given session")
+  void shouldFindSomeUsersWithAGivenSession() {
+    assertThat(repository.findBySessions(SAMPLE_SESSIONS.get(1))).isNotEmpty();
   }
 }
 ```
+
+In the above test, we begin by creating some test data (`SAMPLE_USERS`, `SAMPLE_SESSIONS` and `SAMPLE_ACCOUNTS`). Using the test data we test several functionalities of the repository.
+
+:::warning
+Use this approach only when you have a disposable database, e.g., an embedded test database or a [MongoDB test container](https://www.testcontainers.org/modules/databases/mongodb/) available for the test.
+:::
 
 When you'll run these tests, the following exception may be thrown:
 
-```sh
-org.bson.codecs.configuration.CodecConfigurationException: Can't find a codec for class java.time.ZonedDateTime.
+```log
+org.bson.codecs.configuration.CodecConfigurationException: Can't find a codec for class java.time.ZonedDateTime
 ```
 
-This happens because `Account` has a field `created` of type `ZonedDateTime` which can't be converted to a valid MongoDB representation by available Spring converters. Hence, you'll have to tell Spring how to do this conversion.
+This happens because `Account` has a field `created` of type `ZonedDateTime` which can't be converted to a valid MongoDB representation by the available Spring converters. You'll have to tell Spring how to do this conversion by defining a custom converter.
 
 ### Converters for `ZonedDateTime`
 
-Spring provides a `Converter` interface that you can implement for this very purpose. To convert `Date` to `ZonedDateTime` object, write a converter like this:
+Spring provides a `Converter` interface that you can implement for this purpose. We need two converters here: one to convert `ZonedDateTime` to `Date` and the other to convert `Date` to `ZonedDateTime`.
 
-```java
-// src/main/java/dev/mflash/guides/mongo/helper/converter/DateToZonedDateTimeConverter.java
+```java{9-23}
+// src/main/java/dev/mflash/guides/mongo/configuration/ZonedDateTimeConverters.java
 
-public class DateToZonedDateTimeConverter implements Converter<Date, ZonedDateTime> {
+public class ZonedDateTimeConverters {
 
-  public @Override ZonedDateTime convert(Date source) {
-    return source.toInstant().atZone(ZoneOffset.UTC);
+  public static List<Converter<?, ?>> getConvertersToRegister() {
+    return List.of(ZonedDateTimeToDateConverter.INSTANCE, DateToZonedDateTimeConverter.INSTANCE);
+  }
+
+  private enum ZonedDateTimeToDateConverter implements Converter<ZonedDateTime, Date> {
+    INSTANCE;
+
+    public @Override Date convert(ZonedDateTime source) {
+      return Date.from(source.toInstant());
+    }
+  }
+
+  private enum DateToZonedDateTimeConverter implements Converter<Date, ZonedDateTime> {
+    INSTANCE;
+
+    public @Override ZonedDateTime convert(Date source) {
+      return source.toInstant().atZone(ZoneOffset.UTC);
+    }
   }
 }
 ```
 
-> **Info** UTC is considered as `ZoneOffset` here. `Date` object, persisted in MongoDB, contains no zone information. However, since MongoDB timestamps default to UTC, you can adjust the offset accordingly for your timezone.
+In the above `ZonedDateTimeConverters` implementation, we first define the `ZonedDateTimeToDateConverter` and `DateToZonedDateTimeConverter` converters by extending the `Converter` interface. Finally, we return a list of these converters through `getConvertersToRegister` method. 
 
-Similarly, for conversion from `ZonedDateTime` to `Date`, write a yet another converter.
-
-```java
-// src/main/java/dev/mflash/guides/mongo/helper/converter/ZonedDateTimeToDateConverter.java
-
-public class ZonedDateTimeToDateConverter implements Converter<ZonedDateTime, Date> {
-
-  public @Override Date convert(ZonedDateTime source) {
-    return Date.from(source.toInstant());
-  }
-}
-```
+> Also note that we've defined *UTC* as the `ZoneOffset` here. MongoDB [stores times in UTC](https://docs.mongodb.com/manual/reference/bson-types/#document-bson-type-date) by default. You will have to adjust the offset if you need to store times in a custom timezone.
 
 Inject these converters through a `MongoCustomConversions` bean as follows:
 
-```java
+```java{8-10}
 // src/main/java/dev/mflash/guides/mongo/configuration/MongoConfiguration.java
 
 @EnableMongoRepositories(MongoConfiguration.REPOSITORY_PACKAGE)
 public @Configuration class MongoConfiguration {
 
   static final String REPOSITORY_PACKAGE = "dev.mflash.guides.mongo.repository";
-  private final List<Converter<?, ?>> converters = new ArrayList<>();
 
   public @Bean MongoCustomConversions customConversions() {
-    converters.add(new DateToZonedDateTimeConverter());
-    converters.add(new ZonedDateTimeToDateConverter());
-    return new MongoCustomConversions(converters);
+    return new MongoCustomConversions(ZonedDateTimeConverters.getConvertersToRegister());
   }
 }
 ```
 
-Now, you'll be able to run the unit tests successfully.
+You'll be able to run the tests successfully now.
 
 ## Cascade the document operations
 
-Spring Data Mongo doesn't support cascading of the objects out-of-the-box. The official Spring documentation states that:
+There is no concept of *foreign keys* in MongoDB and it does not support cascading. That's why Spring Data MongoDB doesn't support cascading either. The official Spring documentation states that: 
 
 > The mapping framework does not handle cascading saves. If you change an `Account` object that is referenced by a `Person` object, you must save the `Account` object separately. Calling save on the `Person` object will not automatically save the `Account` objects in the property accounts.
 
-However, you can write a custom mechanism to cascade save and delete operations by listening to `MongoMappingEvent`s.
+However, Spring Data MongoDB provides the support for lifecycle events through the `MongoMappingEvent` class. You can use this to write an event listener that can perform cascading operations for you.
 
 ### Define a `@Cascade` annotation
 
 Let's start by defining an annotation to indicate that a field should be cascaded.
 
 ```java
-// src/main/java/dev/mflash/guides/mongo/helper/event/Cascade.java
+// src/main/java/dev/mflash/guides/mongo/event/Cascade.java
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
@@ -246,30 +280,41 @@ public @interface Cascade {
 }
 ```
 
-Since cascading can be done for save and/or delete operations, let's generalize this implementation by passing a value to the annotation that will set the type of cascading. By default, we'll cascade both save and delete operations through `CascadeType.ALL` value.
+The `CascadeType` is an `enum` that denotes different types of cascading supported by our implementation.
+
+```java
+// src/main/java/dev/mflash/guides/mongo/event/CascadeType.java
+
+public enum CascadeType {
+  ALL, SAVE, DELETE
+}
+```
+
+With this, we can pass a `CascadeType` value to the `@Cascade` annotation and control the type of cascading we may want. By default, both save and delete operations will be cascaded.
 
 Annotate the desired fields with this annotation.
 
-```java
+```java{8-9}
 // src/main/java/dev/mflash/guides/mongo/domain/Account.java
 
+@Data @Builder
 public class Account {
 
   // Other properties
 
   private @DBRef @Cascade User user;
-  private @DBRef @Cascade Set<Session> sessions;
+  private @DBRef @Cascade @Singular Set<Session> sessions;
 
-  // constructors, getters and setters, builders, etc.
+  // Other properties
 }
 ```
 
 ### Detect the fields to be cascaded
 
-The references of cascaded objects should be associated with a document, first by checking if such a valid document exists. This can be done by checking the `@Id` of the document through a `FieldCallback`.
+The references of cascaded objects should be associated with a document by checking if such a document exists. You can do this by checking the `@Id` of the document through a `FieldCallback`.
 
 ```java
-// src/main/java/dev/mflash/guides/mongo/helper/event/IdentifierCallback.java
+// src/main/java/dev/mflash/guides/mongo/event/IdentifierCallback.java
 
 public class IdentifierCallback implements FieldCallback {
 
@@ -289,23 +334,20 @@ public class IdentifierCallback implements FieldCallback {
 }
 ```
 
-Similarly, we need to identify which fields have been annotated with `@Cascade` annotation, through a `FieldCallback`, and afterward perform a persistence operation using `MongoOperations`.
+Since a valid non-null `@Id` must be present for this to properly work, we need to initialize the key as early as possible. That's why we are [initializing](#define-a-domain) the `key` field of every document with a random UUID.
 
-```java
-// src/main/java/dev/mflash/guides/mongo/helper/event/CascadeSaveCallback.java
+To detect the fields to be cascaded, we need to check which of them have been annotated with the `@Cascade` annotation. For a save cascade, define an implementation of the `FieldCallback` which performs this check and applies a `save` operation using a `MongoOperations` bean.
 
+```java{21,24}
+// src/main/java/dev/mflash/guides/mongo/event/CascadeSaveCallback.java
+
+@RequiredArgsConstructor
 public class CascadeSaveCallback implements FieldCallback {
 
   private final Object source;
   private final MongoOperations mongoOperations;
 
-  public CascadeSaveCallback(Object source, MongoOperations mongoOperations) {
-    this.source = source;
-    this.mongoOperations = mongoOperations;
-  }
-
-  public @Override void doWith(final Field field)
-      throws IllegalArgumentException, IllegalAccessException {
+  public @Override void doWith(final Field field) throws IllegalArgumentException, IllegalAccessException {
     ReflectionUtils.makeAccessible(field);
 
     if (field.isAnnotationPresent(DBRef.class) && field.isAnnotationPresent(Cascade.class)) {
@@ -329,36 +371,82 @@ public class CascadeSaveCallback implements FieldCallback {
 }
 ```
 
-You can also write a `CascadeDeleteCallback` for the delete operation. At this point, these methods can be manually called before save or delete operations to trigger cascading. But why not automate this!
+Similarly, implement a `CascadeDeleteCallback` that checks the presence of the `@Id` and `@Cascade` annotations and applies the `remove` operation.
 
-### Automate the cascading
+```java{21,24}
+// src/main/java/dev/mflash/guides/mongo/event/CascadeDeleteCallback.java
 
-Create a `MongoEventListener` to listen to `MongoMappingEvent`s and invoke the appropriate callbacks.
+@RequiredArgsConstructor
+public class CascadeDeleteCallback implements FieldCallback {
 
-```java
-// src/main/java/dev/mflash/guides/mongo/helper/event/CascadeMongoEventListener.java
+  private final Object source;
+  private final MongoOperations mongoOperations;
 
-public class CascadeMongoEventListener extends AbstractMongoEventListener<Object> {
+  public @Override void doWith(final Field field) throws IllegalArgumentException, IllegalAccessException {
+    ReflectionUtils.makeAccessible(field);
 
-  private @Autowired MongoOperations mongoOperations;
+    if (field.isAnnotationPresent(DBRef.class) && field.isAnnotationPresent(Cascade.class)) {
+      final Object fieldValue = field.get(source);
 
-  public @Override void onBeforeConvert(final BeforeConvertEvent<Object> event) {
-    final Object source = event.getSource();
-    ReflectionUtils
-        .doWithFields(source.getClass(), new CascadeSaveCallback(source, mongoOperations));
-  }
+      if (Objects.nonNull(fieldValue)) {
+        final var callback = new IdentifierCallback();
+        final CascadeType cascadeType = field.getAnnotation(Cascade.class).value();
 
-  public @Override void onAfterConvert(AfterConvertEvent<Object> event) {
-    final Object source = event.getSource();
-    ReflectionUtils
-        .doWithFields(source.getClass(), new CascadeDeleteCallback(source, mongoOperations));
+        if (cascadeType.equals(CascadeType.DELETE) || cascadeType.equals(CascadeType.ALL)) {
+          if (fieldValue instanceof Collection<?>) {
+            ((Collection<?>) fieldValue).forEach(mongoOperations::remove);
+          } else {
+            ReflectionUtils.doWithFields(fieldValue.getClass(), callback);
+            mongoOperations.remove(fieldValue);
+          }
+        }
+      }
+    }
   }
 }
 ```
 
-`CascadeMongoEventListener` will invoke `CascadeSaveCallback` or `CascadeDeleteCallback` depending on your repository method. Inject it as a bean in the `MongoConfiguration` to complete the implementation.
+These callbacks won't be invoked automatically; you'd need a listener to invoke them.
+
+### Invoking the cascade automatically
+
+The `AbstractMongoEventListener` class provides various [callback methods](https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#mongodb.mapping-usage.events) that get invoked during the persistence operations. As mentioned in the docs,
+
+- the `onBeforeSave` callback method is called *before* inserting or saving a document in the database; this method captures the `BeforeSaveEvent` containing the document being saved.
+- the `onBeforeDelete` callback method is called *before* a document is deleted; this method captures the `BeforeDeleteEvent` containing the document about to be deleted.
+- the `onAfterDelete` callback method is called *after* a document or a set of documents have been deleted; this method captures the `AfterDeleteEvent` containing the document(s) that has/have been deleted. The references of the documents in the `AfterDeleteEvent` merely contain the values of `id` and not other fields since they've already been deleted.
+
+Also note that the lifecycle events are emitted only for the parent types. These events won't be emitted for any children until and unless they're annotated with the `@DBRef` annotation.
+
+Let's use these callback methods to execute the cascade callbacks implemented earlier. Create a `AccountCascadeMongoEventListener` class that extends `AbstractMongoEventListener` for the `Account` class. 
 
 ```java
+// src/main/java/dev/mflash/guides/mongo/event/AccountCascadeMongoEventListener.java
+
+public class AccountCascadeMongoEventListener extends AbstractMongoEventListener<Account> {
+
+  private @Autowired MongoOperations mongoOperations;
+  private Account deletedAccount;
+
+  public @Override void onBeforeSave(BeforeSaveEvent<Account> event) {
+    final Object source = event.getSource();
+    ReflectionUtils.doWithFields(source.getClass(), new CascadeSaveCallback(source, mongoOperations));
+  }
+
+  public @Override void onBeforeDelete(BeforeDeleteEvent<Account> event) {
+    final Object id = Objects.requireNonNull(event.getDocument()).get("_id");
+    deletedAccount = mongoOperations.findById(id, Account.class);
+  }
+
+  public @Override void onAfterDelete(AfterDeleteEvent<Account> event) {
+    ReflectionUtils.doWithFields(Account.class, new CascadeDeleteCallback(deletedAccount, mongoOperations));
+  }
+}
+```
+
+and inject it as a bean using `MongoConfiguration`.
+
+```java{8-10}
 // src/main/java/dev/mflash/guides/mongo/configuration/MongoConfiguration.java
 
 @EnableMongoRepositories(MongoConfiguration.REPOSITORY_PACKAGE)
@@ -366,62 +454,121 @@ public @Configuration class MongoConfiguration {
 
   static final String REPOSITORY_PACKAGE = "dev.mflash.guides.mongo.repository";
 
-  public @Bean CascadeMongoEventListener cascadeMongoEventListener() {
-    return new CascadeMongoEventListener();
+  public @Bean AccountCascadeMongoEventListener cascadeMongoEventListener() {
+    return new AccountCascadeMongoEventListener();
   }
 
-  // Other configurations
+  public @Bean MongoCustomConversions customConversions() {
+    return new MongoCustomConversions(ZonedDateTimeConverters.getConvertersToRegister());
+  }
 }
 ```
 
-### Unit tests to verify cascading
+### Testing the cascading
 
-To verify if the cascading works, let's write some unit tests by persisting some `Account` objects and querying for `User` and `Session` objects.
+To verify if the cascading works, let's write some tests.
 
 ```java
-// src/test/java/dev/mflash/guides/mongo/repository/CascadeTest.java
+// src/test/java/dev/mflash/guides/mongo/repository/AccountCascadeTest.java
 
 @ExtendWith(SpringExtension.class)
-public @SpringBootTest class CascadeTest {
+@SpringBootTest class AccountCascadeTest {
+
+  private static final User SAMPLE_USER = User.builder().name("Jasmine Beck").email("jasmine@example.com").locale(
+      Locale.FRANCE).dateOfBirth(LocalDate.of(1995, Month.DECEMBER, 12)).build();
+  private static final Session SAMPLE_SESSION = Session.builder().city("Paris").locale(Locale.FRANCE).build();
+  private static final Account SAMPLE_ACCOUNT = Account.builder().user(SAMPLE_USER).session(SAMPLE_SESSION).created(
+      ZonedDateTime.now()).build();
 
   private @Autowired AccountRepository accountRepository;
   private @Autowired SessionRepository sessionRepository;
   private @Autowired UserRepository userRepository;
-  private User jasmine;
-  private Session paris;
-  private Account saved;
 
-  public @BeforeEach void setUp() {
+  private Account savedAccount;
+
+  @BeforeEach
+  void setUp() {
     accountRepository.deleteAll();
     sessionRepository.deleteAll();
     userRepository.deleteAll();
-
-    jasmine = new Builder().name("Jasmine Beck").locale(Locale.FRANCE)
-        .dateOfBirth(LocalDate.of(1995, Month.DECEMBER, 12)).build();
-    paris = new Session.Builder().city("Paris").locale(Locale.FRANCE).build();
-    Account account = new Account.Builder().address("jasmine@nos.com").user(jasmine).session(paris)
-        .build();
-
-    saved = accountRepository.save(account);
+    savedAccount = accountRepository.save(SAMPLE_ACCOUNT);
   }
 
-  public @Test void saveCascade() {
-    userRepository.findById(saved.getUser().getKey())
-        .ifPresent(user -> assertEquals(jasmine, user));
-    saved.getSessions().stream().findFirst().ifPresent(session -> assertEquals(paris, session));
+  @Test
+  @DisplayName("Should cascade on save")
+  void shouldCascadeOnSave() {
+    final User savedUser = savedAccount.getUser();
+    final Optional<Session> savedSession = savedAccount.getSessions().stream().findAny();
+
+    final String userId = savedUser.getKey();
+    assertThat(userRepository.findById(userId))
+        .hasValueSatisfying(user -> assertThat(user).isEqualToIgnoringGivenFields(SAMPLE_USER, "key"));
+
+    if (savedSession.isPresent()) {
+      final String sessionId = savedSession.get().getKey();
+      assertThat(sessionRepository.findById(sessionId)).isNotEmpty()
+          .hasValueSatisfying(session -> assertThat(session).isEqualToIgnoringGivenFields(SAMPLE_SESSION, "key"));
+    }
+
+    savedUser.setLocale(Locale.CANADA);
+    savedAccount.setUser(savedUser);
+    accountRepository.save(savedAccount);
+    assertThat(userRepository.findById(userId))
+        .hasValueSatisfying(user -> assertThat(user.getLocale()).isEqualTo(Locale.CANADA));
+
+    if (savedSession.isPresent()) {
+      final Session modifiedSession = savedSession.get();
+      modifiedSession.setCity("Nice");
+      savedAccount.setSessions(Set.of(modifiedSession, Session.builder().city("Lyon").locale(Locale.FRANCE).build()));
+      Account modifiedAccount = accountRepository.save(savedAccount);
+      assertThat(sessionRepository.findById(modifiedSession.getKey())).isNotEmpty()
+          .hasValueSatisfying(session -> assertThat(session.getCity()).isEqualTo("Nice"));
+      assertThat(modifiedAccount.getSessions().stream().filter(s -> s.getCity().equals("Lyon")).findAny())
+          .hasValueSatisfying(session -> assertThat(sessionRepository.findById(session.getKey())).isNotEmpty()
+              .hasValueSatisfying(matchedSession -> assertThat(matchedSession.getCity()).isEqualTo("Lyon")));
+    }
   }
 
-  public @Test void deleteCascade() {
-    Account account = accountRepository.findDistinctFirstByUser(jasmine);
-    accountRepository.deleteById(account.getKey());
+  @Test
+  @DisplayName("Should not cascade on fetch")
+  void shouldNotCascadeOnFetch() {
+    final String userId = savedAccount.getUser().getKey();
+    final Set<Session> sessions = savedAccount.getSessions();
+    accountRepository.findById(savedAccount.getKey());
 
-    account.getSessions()
-        .forEach(session -> assertTrue(sessionRepository.findById(session.getKey()).isEmpty()));
-    assertTrue(userRepository.findById(account.getUser().getKey()).isEmpty());
+    assertThat(userRepository.findById(userId)).isNotEmpty();
+    assertThat(sessions).allSatisfy(session ->
+        assertThat(sessionRepository.findById(session.getKey())).isNotEmpty());
+  }
+
+  @Test
+  @DisplayName("Should cascade on delete")
+  void shouldCascadeOnDelete() {
+    final Optional<Account> fetchedAccount = accountRepository.findById(savedAccount.getKey());
+    accountRepository.deleteById(savedAccount.getKey());
+
+    assertThat(fetchedAccount)
+        .hasValueSatisfying(account -> {
+          assertThat(userRepository.findById(account.getUser().getKey())).isEmpty();
+          assertThat(account.getSessions())
+              .allSatisfy(session -> assertThat(sessionRepository.findById(session.getKey())).isEmpty());
+        });
   }
 }
 ```
 
+In this test class,
+
+- we define some test data - `SAMPLE_USER`, `SAMPLE_SESSION` and `SAMPLE_ACCOUNT`.
+- we implement a `setup` method that removes all the documents from the repositories and saves the `SAMPLE_ACCOUNT` before each test is run.
+- the test `shouldCascadeOnSave` verifies if the `@DBRef` annotation correctly persists the `SAMPLE_USER` and `SAMPLE_SESSION` documents when the `SAMPLE_ACCOUNT` is saved. Then it updates the `User` document in the `SAMPLE_ACCOUNT` and checks if the same update appears in the document of the `User` collection for the given `id`. The same thing is done for the `Session` document.
+- the test `shouldNotCascadeOnFetch` verifies that the cascade doesn't happen when a document is fetched from the database.
+- the test `shouldCascadeOnDelete` verifies that once the `SAMPLE_ACCOUNT` has been deleted, the corresponding `User` and `Session` documents have also been deleted.
+
 ## References
 
-**Source Code** &mdash; [spring-data-mongo-repository](https://gitlab.com/mflash/spring-guides/-/tree/master/spring-data-mongo-repository)
+**Source Code** &mdash; [spring-data-mongo-repository](https://github.com/Microflash/spring-guides/tree/main/spring-data-mongo-repository)
+
+## Updates
+
+- Thanks [@CyberpunkPerson](https://github.com/CyberpunkPerson) for [pointing out](https://github.com/Microflash/spring-guides/issues/1) that `onAfterConvert` can delete objects not only when the parent is deleted but also when the parent is fetched 🤦‍♀️! I've patched the code and updated the article with a fix.
