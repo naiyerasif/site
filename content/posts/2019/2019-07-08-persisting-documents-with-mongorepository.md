@@ -259,11 +259,13 @@ You'll be able to run the tests successfully now.
 
 ## Cascade the document operations
 
-There is no concept of *foreign keys* in MongoDB and it does not support cascading. That's why Spring Data MongoDB doesn't support cascading either. The official Spring documentation states that: 
+:::warning
+There is no concept of *foreign keys* in MongoDB and it does not support cascading. Spring Data MongoDB [states](https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#mapping-usage-references) clearly that the mapping framework does not handle cascading saves. If you change an `Account` object that is referenced by a `Person` object, you must save the `Account` object separately. Calling save on the `Person` object will not automatically save the `Account` objects in the property accounts.
 
-> The mapping framework does not handle cascading saves. If you change an `Account` object that is referenced by a `Person` object, you must save the `Account` object separately. Calling save on the `Person` object will not automatically save the `Account` objects in the property accounts.
+The following implementation illustrates a way cascading can be done. However, it is not a *robust* solution and has its own trade-offs. Therefore, it is recommended to cascade the documents manually to ensure consistency and correctness of the data.
+:::
 
-However, Spring Data MongoDB provides the support for lifecycle events through the `MongoMappingEvent` class. You can use this to write an event listener that can perform cascading operations for you.
+Spring Data MongoDB provides the support for lifecycle events through the `MongoMappingEvent` class. You can use this to write an event listener that can perform cascading operations for you.
 
 ### Define a `@Cascade` annotation
 
