@@ -3,7 +3,6 @@
 
 // Footer
 
-$footer-background: var(--bg-active);
 $footer-gapx: var(--flex-gapx);
 $footer-gapy: var(--space-xl);
 $footer-font-size: variables.$font-sm;
@@ -16,10 +15,9 @@ $footer-copyright-width: var(--flex-width);
   --grid-gap: var(--space-rg);
   --grid-column-width: #{variables.$grid-sm};
 
-  background-color: $footer-background;
   background-image: 
     radial-gradient(circle at 80vw bottom, var(--tone-1) 25%, transparent 25%),
-    linear-gradient(328deg, var(--tone-2) 25%, transparent 25%);
+    linear-gradient(323deg, var(--tone-2) 25%, transparent 25%);
   padding: $footer-gapx $footer-gapx $footer-gapy;
   font-size: $footer-font-size;
 
