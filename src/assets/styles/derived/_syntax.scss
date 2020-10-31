@@ -3,23 +3,19 @@
 
 // Token colors
 
-@function _hsla($h, $s, $l, $a: 1) {
-  @return hsl($h, $s, calc(#{$l} - var(--lightmix)), $a);
-}
-
-$cadet: _hsla(180, 19%, 33%, 0.6);
-$iris: _hsla(231, 52%, 56%);
-$brass: _hsla(40, 40%, 41%);
-$vermillion: _hsla(0, 57%, 49%);
-$jasper: _hsla(6, 63%, 48%);
-$artichoke: _hsla(68, 19%, 46%);
-$salmon: _hsla(11, 77%, 58%);
-$teal: _hsla(185, 31%, 35%);
-$rackley: _hsla(205, 36%, 46%);
-$rebecca: _hsla(266, 40%, 49%);
-$khaki: _hsla(44, 23%, 62%);
-$emerald: _hsla(167, 33%, 34%);
-$coral: _hsla(4, 69%, 62%);
+$cadet: utils.hsla(180, 19%, 33%, 0.6);
+$iris: utils.hsla(231, 52%, 56%);
+$brass: utils.hsla(40, 40%, 41%);
+$vermillion: utils.hsla(0, 57%, 49%);
+$jasper: utils.hsla(6, 63%, 48%);
+$artichoke: utils.hsla(68, 19%, 46%);
+$salmon: utils.hsla(11, 77%, 58%);
+$teal: utils.hsla(185, 31%, 35%);
+$rackley: utils.hsla(205, 36%, 46%);
+$rebecca: utils.hsla(266, 40%, 49%);
+$khaki: utils.hsla(44, 23%, 62%);
+$emerald: utils.hsla(167, 33%, 34%);
+$coral: utils.hsla(4, 69%, 62%);
 
 $languages: js, ts, html, md, vue, css, sass, scss, less, log, stylus, go, java, c,
   sh, yaml, py, docker, dockerfile, properties, groovy, typescript, json, xml, git, shell, sql, bash, powershell, ini;

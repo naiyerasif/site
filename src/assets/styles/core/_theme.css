@@ -30,7 +30,6 @@
   --bg-selected: hsla(var(--hsl-tertiary), var(--opacity-selected));
   --bg-caution: hsl(57, 39%, 82%);
   --bg-tip: hsl(169, 28%, 82%);
-  --bg-warning: hsl(0, 96%, 90%);
   --bg-important: hsl(247, 44%, 87%);
   --border: hsl(var(--hue-tertiary), 83%, 79%);
   --tone-1: hsla(10, 100%, 75%, 0.45);
@@ -56,7 +55,6 @@
   --bg-selected: hsla(var(--hsl-primary), var(--opacity-selected));
   --bg-caution: hsl(44, 30%, 18%);
   --bg-tip: hsl(164, 49%, 16%);
-  --bg-warning: hsl(4, 58%, 22%);
   --bg-important: hsl(228, 43%, 24%);
   --border: hsl(var(--hue-secondary), 6%, 23%);
   --tone-1: hsla(350, 90%, 35%, 0.4);

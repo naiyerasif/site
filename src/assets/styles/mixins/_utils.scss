@@ -96,3 +96,9 @@ $tappable-background: var(--bg-selected);
   @include mx(variables.$separator-gap);
   opacity: variables.$separator-opacity;
 }
+
+// Theme-friendly color generator
+
+@function hsla($h, $s, $l, $a: 1) {
+  @return hsl($h, $s, calc(#{$l} - var(--lightmix)), $a);
+}

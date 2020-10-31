@@ -1,5 +1,6 @@
 @use '~/assets/styles/variables';
 @use '~/assets/styles/mixins/utils';
+@use '~/assets/styles/mixins/queries';
 
 // Content
 
@@ -11,42 +12,20 @@ $content-max-width: variables.$max-width-rg;
 $content-opener-size: variables.$font-md;
 
 .content {
-  @include utils.my($content-gap);
+  max-width: $content-max-width;
+  margin: $content-gap auto;
+  
+  @include queries.sm {
+    @include utils.px($content-adm-gap);
+  }
 
   .article {
     > p:first-of-type {
       font-size: $content-opener-size;
     }
 
-    > p,
-    > dl,
-    > table,
-    > h1,
-    > h2,
-    > h3,
-    > h4,
-    > h5,
-    > h6 {
-      max-width: $content-max-width;
-      @include utils.mx(auto);
-      @include utils.px($content-article-gap);
-    }
-
-    > ol,
-    > ul {
-      max-width: $content-max-width;
-      @include utils.mx(auto);
-      @include utils.px($content-list-gap);
-    }
-
     div[class$='-embed'] {
       @include utils.my($content-adm-gap);
-    }
-
-    .prominent-list {
-      div:not(:last-child) {
-        margin-bottom: variables.$gap-lg;
-      }
     }
   }
 }
@@ -57,8 +36,6 @@ $toc-body-font-size: variables.$font-sm;
 $toc-body-gap-inline: variables.$gap-rg;
 
 .toc {
-  max-width: $content-max-width;
-  @include utils.mx(auto);
   margin-bottom: $content-adm-gap;
   font-size: 0.9em;
 
@@ -110,36 +87,40 @@ h6 {
 
 // Admonitions & blockquotes
 
-$adm-default-background: var(--bg-active);
-$adm-default-color: var(--text-passive);
-$adm-note-background: var(--bg-active);
-$adm-note-color: var(--text-passive);
-$adm-caution-background: var(--bg-caution);
-$adm-caution-color: var(--text);
-$adm-tip-background: var(--bg-tip);
-$adm-tip-color: var(--text);
-$adm-warning-background: var(--bg-warning);
-$adm-warning-color: var(--text);
-$adm-important-background: var(--bg-warning);
-$adm-important-color: var(--text);
+$adm-font-size: 0.95em;
+$adm-indent: 2ch;
+$adm-header-gap: variables.$gap-md;
 
-$adm-font-size: 0.9em;
-$adm-header-gap-bottom: variables.$gap-md;
+@mixin admonition($color) {
+  --block-color: #{$color};
+  --block-indent: #{$adm-indent};
 
-.admonition, blockquote {
-  @include utils.my($content-adm-gap);
-  padding: $content-adm-gap;
-  font-size: $adm-font-size;
-
-  > * {
-    max-width: $content-max-width;
-    @include utils.mx(auto);
+  @include queries.md {
+    margin-left: calc(var(--block-indent) * -1);
   }
 
+  color: var(--block-color);
+  border-left: 2px solid var(--block-color);
+  padding-left: var(--block-indent);
+  font-size: $adm-font-size;
+
   h5 {
+    color: var(--block-color);
+  }
+
+  .admonition-icon svg {
+    stroke: var(--block-color);
+    fill: var(--block-color);
+  }
+}
+
+.admonition {
+  @include utils.my($content-adm-gap);
+
+  .admonition-heading h5 {
     display: flex;
     align-items: center;
-    margin-bottom: $adm-header-gap-bottom;
+    margin-bottom: $adm-header-gap;
     text-transform: capitalize;
   }
 
@@ -152,58 +133,42 @@ $adm-header-gap-bottom: variables.$gap-md;
   margin-right: variables.$ch-rg;
 
   svg {
-    @include utils.size(22px);
+    @include utils.size(24px);
     stroke-width: 0;
   }
 }
 
-@mixin admonition($background: $adm-default-background, $foreground: $adm-default-color) {
-  background-color: $background;
-  
-  h5 {
-    color: $foreground;
-  }
-
-  .admonition-icon svg {
-    stroke: $foreground;
-    fill: $foreground;
-  }
-}
-
-.admonition {
-  @include admonition;
+.admonition, 
+.admonition-note {
+  @include admonition(var(--text-passive));
 }
 
 .admonition-caution {
-  @include admonition($adm-caution-background, $adm-caution-color);
+  --text-caution: #{utils.hsla(40, 38%, 46%)};
+  @include admonition(var(--text-caution));
 }
 
 .admonition-tip {
-  @include admonition($adm-tip-background, $adm-tip-color);
+  --text-tip: #{utils.hsla(165, 24%, 46%)};
+  @include admonition(var(--text-tip));
 }
 
 .admonition-warning {
-  @include admonition($adm-warning-background, $adm-warning-color);
+  --text-warning: #{utils.hsla(6, 59%, 57%)};
+  @include admonition(var(--text-warning));
 }
 
 .admonition-important {
-  @include admonition($adm-important-background, $adm-important-color);
-}
-
-.admonition-note, blockquote {
-  @include admonition($adm-note-background, $adm-note-color);
+  --text-important: #{utils.hsla(231, 52%, 64%)};
+  @include admonition(var(--text-important));
 }
 
 blockquote {
+  @include admonition(var(--text));
+
   strong:first-of-type {
     display: flex;
     align-items: center;
-    text-transform: capitalize;
-    margin-bottom: variables.$gap-sm;
-  }
-
-  ul,
-  ol {
-    padding-left: variables.$gap-md;
+    margin-bottom: $adm-header-gap;
   }
 }
