@@ -70,7 +70,7 @@ $separator-opacity: 0.5 !default;
   $background-table-even: inherit,
   $background-table-hover: var(--bg-active),
   $background-selected: var(--bg-selected),
-  $background-scrollbar: var(--bg-active),
+  $background-scrollbar: transparent,
   $border-color: var(--border),
   $radius: $radius,
   $text: var(--text),
