@@ -43,7 +43,7 @@
     "dotenv": "^8.2.0",
     "googleapis": "^61.0.0",
     "marked": "^1.2.2",
-    "sass": "^1.27.0",
+    "sass": "^1.28.0",
     "sass-loader": "^10.0.4",
     "shx": "^0.3.3",
     "svg-to-vue-component": "^0.3.8",
