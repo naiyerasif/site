@@ -1,5 +1,5 @@
 :root {
-  --space-rg: calc(1rem + 2vw);
+  --space-rg: calc(1.25rem + 2vw);
   --space-sm: calc(var(--space-rg) * 0.5);
   --space-md: calc(var(--space-rg) * 1.5);
   --space-lg: calc(var(--space-rg) * 2);
