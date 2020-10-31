@@ -15,7 +15,7 @@ $search-results-radius: variables.$radius;
 $search-top-radius: var(--search-radius);
 $search-bottom-radius: variables.$radius;
 $search-label-size: variables.$font-sm;
-$search-label-background: var(--bg-highlight);
+$search-label-background: var(--bg-highlighted);
 
 .search-container,
 .search-box {

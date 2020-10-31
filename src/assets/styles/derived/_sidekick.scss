@@ -11,7 +11,7 @@ $sidekick-nav-gap: var(--space-rg);
 $sidekick-nav-margin: var(--curb-rg);
 $sidekick-nav-flex-wrap: var(--flex-wrap);
 $sidekick-nav-flex-basis: var(--flex-basis);
-$sidekick-nav-background-prev: var(--bg-highlight);
+$sidekick-nav-background-prev: var(--bg-highlighted);
 $sidekick-nav-background-next: var(--bg-selected);
 $sidekick-nav-background-active: var(--bg-selected);
 $sidekick-nav-indicator-gap: variables.$ch-rg;
@@ -21,7 +21,7 @@ $sidekick-nav-indicator-font-weight: var(--weight-bold);
 $pagination-font-size: variables.$font-sm;
 $pagination-border: var(--border);
 $pagination-radius: variables.$radius * 2;
-$pagination-current-background: var(--bg-highlight);
+$pagination-current-background: var(--bg-highlighted);
 $pagination-item-gapx: variables.$ch-rg;
 $pagination-item-gapy: variables.$ch-rg * 0.2;
 

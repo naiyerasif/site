@@ -75,7 +75,7 @@ $code-gapx-neg: var(--curb-rg);
     display: block;
     margin-left: $code-gapx-neg;
     padding-left: $code-gapy-rg;
-    background: linear-gradient(to right, var(--bg-highlight) 66%, transparent);
+    background: linear-gradient(to right, var(--bg-highlighted) 66%, transparent);
   }
 
   .token.comment,

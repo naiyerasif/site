@@ -13,6 +13,9 @@
   --hsl-primary: var(--hue-primary), 62%, 38%;
   --hsl-secondary: var(--hue-secondary), 42%, 57%;
   --hsl-tertiary: var(--hue-tertiary), 73%, 62%;
+
+  --opacity-highlighted: 0.2;
+  --opacity-selected: 0.3;
 }
 
 [data-theme='light'] {
@@ -23,8 +26,8 @@
   --bg-body: hsl(var(--hue-tertiary), 84%, 98%);
   --bg-active: hsl(var(--hue-tertiary), 88%, 92%);
   --bg-passive: hsl(var(--hue-tertiary), 93%, 94%);
-  --bg-selected: hsla(var(--hsl-tertiary), 0.25);
-  --bg-highlight: hsla(var(--hsl-tertiary), 0.15);
+  --bg-highlighted: hsla(var(--hsl-tertiary), var(--opacity-highlighted));
+  --bg-selected: hsla(var(--hsl-tertiary), var(--opacity-selected));
   --bg-caution: hsl(57, 39%, 82%);
   --bg-tip: hsl(169, 28%, 82%);
   --bg-warning: hsl(0, 96%, 90%);
@@ -49,8 +52,8 @@
   --bg-body: hsl(var(--hue-secondary), 20%, 8%);
   --bg-active: hsl(var(--hue-secondary), 10%, 6%);
   --bg-passive: hsl(var(--hue-secondary), 20%, 11%);
-  --bg-selected: hsla(var(--hsl-primary), 0.25);
-  --bg-highlight: hsla(var(--hsl-primary), 0.15);
+  --bg-highlighted: hsla(var(--hsl-primary), var(--opacity-highlighted));
+  --bg-selected: hsla(var(--hsl-primary), var(--opacity-selected));
   --bg-caution: hsl(44, 30%, 18%);
   --bg-tip: hsl(164, 49%, 16%);
   --bg-warning: hsl(4, 58%, 22%);

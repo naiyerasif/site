@@ -27,7 +27,7 @@ $header-menu-offsety: utils.$tappable-gapx;
 
   .post-main-section {
     cursor: pointer;
-    background-color: var(--bg-highlight);
+    background-color: var(--bg-highlighted);
     @include utils.tappable($radius: 0, $gapx: var(--content-article-gap), $gapy: var(--space-md), $underline: true);
 
     &-title {
