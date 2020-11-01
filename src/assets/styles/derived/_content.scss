@@ -109,6 +109,10 @@ $adm-header-gap: variables.$gap-md;
     stroke: var(--block-color);
     fill: var(--block-color);
   }
+
+  code {
+    overflow-wrap: break-word;
+  }
 }
 
 .admonition {
@@ -119,10 +123,6 @@ $adm-header-gap: variables.$gap-md;
     align-items: center;
     margin-bottom: $adm-header-gap;
     text-transform: capitalize;
-  }
-
-  code {
-    overflow-wrap: break-word;
   }
 }
 
