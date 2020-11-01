@@ -69,6 +69,10 @@ This site uses
 - [Netlify](https://netlify.com/) to publish the site
 - [Affinity Designer](https://affinity.serif.com/en-gb/designer/) to create icons, diagrams and illustrations
 
+### Privacy
+
+This site uses [Google Analytics](https://marketingplatform.google.com/about/analytics/) to collect statistics about user interactions, subject to the practices [documented here](https://support.google.com/analytics/answer/6004245). Feel free to use a blocker, such as [uBlock Origin](https://github.com/gorhill/uBlock), to block the analytics, in case you don't want to share your data.
+
 ### License
 
 The [source](https://github.com/Microflash/site) of this site is available under [MIT](https://github.com/Microflash/site/blob/main/LICENSE.md), the content under [CC by SA](https://creativecommons.org/licenses/by-sa/4.0/).
