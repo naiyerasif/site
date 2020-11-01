@@ -117,13 +117,13 @@ $pagination-item-gapy: variables.$ch-rg * 0.2;
           text-decoration: none;
         }
 
-        .label {
+        .sidekick-label {
           display: block;
           text-transform: uppercase;
           letter-spacing: 2px;
         }
 
-        .label,
+        .sidekick-label,
         .indicator {
           color: $sidekick-nav-indicator-color;
           font-size: $sidekick-nav-indicator-font-size;

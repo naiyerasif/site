@@ -44,13 +44,13 @@
         <div class="is-prev">
           <g-link v-if="$page.previous" :to="$page.previous.path">
             <small class="indicator">&larr;</small>
-            <span><small class="label">Previous</small><span class="title">{{ $page.previous.title }}</span></span>
+            <span><small class="sidekick-label">Previous</small><span class="title">{{ $page.previous.title }}</span></span>
           </g-link>
         </div>
         <div class="is-next">
           <g-link v-if="$page.next" :to="$page.next.path">
             <small class="indicator">&rarr;</small>
-            <span><small class="label">Next</small><span class="title">{{ $page.next.title }}</span></span>
+            <span><small class="sidekick-label">Next</small><span class="title">{{ $page.next.title }}</span></span>
           </g-link>
         </div>
       </div>
