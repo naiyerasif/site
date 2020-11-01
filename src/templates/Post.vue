@@ -28,35 +28,33 @@
       <Toc v-if="$page.post.headings.length > 0" :headers="$page.post.headings" />
       <article class="article" v-html="$page.post.content" />
     </main>
-    <div class="sidekick">
+    <template #sidekick>
+      <div class="sidekick-actions">
+        <a target="_blank" rel="noopener noreferrer" title="Edit this page" :href="editUrl">
+          <Sprite symbol="icon-edit" class="icon-rg" />
+        </a>
+        <a v-if="$page.post.headings.length > 0" href="#table-of-contents" title="Table of Contents">
+          <Sprite symbol="icon-contents" class="icon-rg" />
+        </a>
+        <a href="#app" title="Back to top">
+          <Sprite symbol="icon-up" class="icon-rg" />
+        </a>
+      </div>
       <div class="sidekick-navigation">
         <div class="is-prev">
           <g-link v-if="$page.previous" :to="$page.previous.path">
             <small class="indicator">&larr;</small>
-            <span><small class="label">Previous</small>{{ $page.previous.title }}</span>
+            <span><small class="label">Previous</small><span class="title">{{ $page.previous.title }}</span></span>
           </g-link>
         </div>
         <div class="is-next">
           <g-link v-if="$page.next" :to="$page.next.path">
-            <span>{{ $page.next.title }}<small class="label">Next</small></span>
             <small class="indicator">&rarr;</small>
+            <span><small class="label">Next</small><span class="title">{{ $page.next.title }}</span></span>
           </g-link>
         </div>
       </div>
-      <div class="sidekick-wrapper">
-        <div class="sidekick-actions">
-          <a target="_blank" rel="noopener noreferrer" title="Edit this page" :href="editUrl">
-            <Sprite symbol="icon-edit" class="icon-rg" />
-          </a>
-          <a v-if="$page.post.headings.length > 0" href="#table-of-contents" title="Table of Contents">
-            <Sprite symbol="icon-contents" class="icon-rg" />
-          </a>
-          <a href="#app" title="Back to top">
-            <Sprite symbol="icon-up" class="icon-rg" />
-          </a>
-        </div>
-      </div>
-    </div>
+    </template>
   </Layout>
 </template>
 
