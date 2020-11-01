@@ -1,10 +1,10 @@
 // Typography
 
-$font-xs: calc(0.75rem + 0.125vw) !default;
+$font-xs: calc(0.7rem + 0.1vw) !default;
 $font-sm: calc(0.8rem + 0.2vw) !default;
-$font-rg: calc(1rem + 0.25vw) !default;
-$font-md: calc(1.125rem + 0.5vw) !default;
-$font-lg: calc(1.75rem + 0.25vw) !default;
+$font-rg: calc(0.9rem + 0.3vw) !default;
+$font-md: calc(1rem + 0.4vw) !default;
+$font-lg: calc(1.2rem + 0.6vw) !default;
 
 // Spacing
 
@@ -63,14 +63,14 @@ $separator-opacity: 0.5 !default;
   $weight-normal: var(--weight-regular),
   $weight-bold: var(--weight-bold),
   $background-body: var(--bg-body),
-  $background-code: var(--bg-passive),
-  $background-ins: var(--bg-passive),
-  $background-mark: var(--bg-passive),
+  $background-code: var(--bg-highlighted),
+  $background-ins: var(--bg-highlighted),
+  $background-mark: var(--bg-highlighted),
   $background-table: inherit,
   $background-table-even: inherit,
-  $background-table-hover: var(--bg-active),
+  $background-table-hover: var(--bg-highlighted),
   $background-selected: var(--bg-selected),
-  $background-scrollbar: var(--bg-active),
+  $background-scrollbar: transparent,
   $border-color: var(--border),
   $radius: $radius,
   $text: var(--text),

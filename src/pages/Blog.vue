@@ -22,7 +22,9 @@
         <div class="post-excerpt" v-html="excerpt(post.node.excerpt)" />
       </div>
     </main>
-    <Pagination path="blog" :input="$page.posts.pageInfo" />
+    <template #sidekick>
+      <Pagination path="blog" :input="$page.posts.pageInfo" />
+    </template>
   </Layout>
 </template>
 

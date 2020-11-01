@@ -4,7 +4,7 @@
 // Search
 
 $search-width: var(--search-width);
-$search-container-background: var(--bg-body);
+$search-container-background: var(--bg-active);
 $search-container-offsetx: var(--search-offsetx);
 $search-results-background: var(--bg-passive);
 $search-results-active-background: var(--bg-selected);
@@ -15,7 +15,7 @@ $search-results-radius: variables.$radius;
 $search-top-radius: var(--search-radius);
 $search-bottom-radius: variables.$radius;
 $search-label-size: variables.$font-sm;
-$search-label-background: var(--bg-highlight);
+$search-label-background: var(--bg-highlighted);
 
 .search-container,
 .search-box {

@@ -5,7 +5,9 @@
       <slot name="hero"></slot>
     </div>
     <slot></slot>
-    <Footer />
+    <Footer>
+      <slot name="sidekick"></slot>
+    </Footer>
   </div>
 </template>
 

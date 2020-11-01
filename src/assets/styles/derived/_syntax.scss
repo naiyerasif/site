@@ -3,19 +3,19 @@
 
 // Token colors
 
-$cadet: hsl(180, 19%, calc(33% - var(--lightmix)), 0.6);
-$iris: hsl(231, 52%, calc(56% - var(--lightmix)));
-$brass: hsl(40, 40%, calc(41% - var(--lightmix)));
-$vermillion: hsl(0, 57%, calc(49% - var(--lightmix)));
-$jasper: hsl(6, 63%, calc(48% - var(--lightmix)));
-$artichoke: hsl(68, 19%, calc(46% - var(--lightmix)));
-$salmon: hsl(11, 77%, calc(58% - var(--lightmix)));
-$teal: hsl(185, 31%, calc(35% - var(--lightmix)));
-$rackley: hsl(205, 36%, calc(46% - var(--lightmix)));
-$rebecca: hsl(266, 40%, calc(49% - var(--lightmix)));
-$khaki: hsl(44, 23%, calc(62% - var(--lightmix)));
-$emerald: hsl(167, 33%, calc(34% - var(--lightmix)));
-$coral: hsl(4, 69%, calc(62% - var(--lightmix)));
+$cadet: utils.hsla(180, 19%, 33%, 0.6);
+$iris: utils.hsla(231, 52%, 56%);
+$brass: utils.hsla(40, 40%, 41%);
+$vermillion: utils.hsla(0, 57%, 49%);
+$jasper: utils.hsla(6, 63%, 48%);
+$artichoke: utils.hsla(68, 19%, 46%);
+$salmon: utils.hsla(11, 77%, 58%);
+$teal: utils.hsla(185, 31%, 35%);
+$rackley: utils.hsla(205, 36%, 46%);
+$rebecca: utils.hsla(266, 40%, 49%);
+$khaki: utils.hsla(44, 23%, 62%);
+$emerald: utils.hsla(167, 33%, 34%);
+$coral: utils.hsla(4, 69%, 62%);
 
 $languages: js, ts, html, md, vue, css, sass, scss, less, log, stylus, go, java, c,
   sh, yaml, py, docker, dockerfile, properties, groovy, typescript, json, xml, git, shell, sql, bash, powershell, ini;
@@ -26,17 +26,17 @@ $code-gapy-rg: var(--space-rg);
 $code-gapy-sm: var(--space-sm);
 $code-gapx: var(--content-article-gap);
 $code-gapx-neg: var(--curb-rg);
+$code-radius: 1vw;
 
 // Prism theme
 
 .gridsome-highlight {
-  @include utils.my($code-gapy-rg);
+  margin: $code-gapy-rg $code-gapx-neg;
   background-color: $code-background;
+  border-radius: $code-radius;
 
   code {
-    max-width: $code-max-width;
-    @include utils.mx(auto);
-    padding: $code-gapy-sm $code-gapx;
+    padding: $code-gapy-rg;
   }
 
   code[class*='language-'],
@@ -48,13 +48,11 @@ $code-gapx-neg: var(--curb-rg);
 
   pre[class*='language-']::before {
     display: block;
-    max-width: $code-max-width;
-    @include utils.mx(auto);
     z-index: 5;
     text-align: right;
-    margin-bottom: -(variables.$gap-sm);
+    margin-bottom: -(variables.$gap-rg);
     padding-top: 0.5em;
-    padding-right: 0.5em;
+    padding-right: 0.75em;
     color: var(--text-passive);
     font-size: 0.75em;
     font-weight: var(--weight-bold);
@@ -71,7 +69,7 @@ $code-gapx-neg: var(--curb-rg);
     display: block;
     margin-left: $code-gapx-neg;
     padding-left: $code-gapy-rg;
-    background: linear-gradient(to right, var(--bg-highlight) 66%, transparent);
+    background: linear-gradient(to right, var(--bg-highlighted) 66%, transparent);
   }
 
   .token.comment,

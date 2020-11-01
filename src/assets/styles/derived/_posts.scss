@@ -5,7 +5,7 @@
 // Posts
 
 $post-gap: var(--space-md);
-$post-border: var(--bg-highlight);
+$post-border: var(--bg-highlighted);
 $post-max-width: variables.$max-width-rg;
 $post-section-gapy: variables.$gap-sm;
 $post-section-header-size: variables.$font-md;
@@ -66,7 +66,7 @@ $post-excerpt-color: var(--text-passive);
 
       a {
         display: inline-block;
-        background-color: var(--bg-highlight);
+        background-color: var(--bg-highlighted);
         @include utils.tappable;
         margin-top: 1.5rem;
         font-size: 0.9em;
@@ -76,7 +76,7 @@ $post-excerpt-color: var(--text-passive);
 
   .post-item {
     cursor: pointer;
-    @include utils.tappable($radius: 0, $gapx: $post-item-gapx, $gapy: $post-item-gapy, $background: var(--bg-highlight), $underline: true);
+    @include utils.tappable($radius: 0, $gapx: $post-item-gapx, $gapy: $post-item-gapy, $background: var(--bg-highlighted), $underline: true);
 
     .post-header {
       display: flex;

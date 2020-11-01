@@ -15,15 +15,13 @@
     <main class="content">
       <article class="article" v-html="$page.profile.content" />
     </main>
-    <div class="sidekick">
-      <div class="sidekick-wrapper">
-        <div class="sidekick-actions">
-          <a href="#app" title="Back to top">
-            <Sprite symbol="icon-up" class="icon-rg" />
-          </a>
-        </div>
+    <template #sidekick>
+      <div class="sidekick-actions">
+        <a href="#app" title="Back to top">
+          <Sprite symbol="icon-up" class="icon-rg" />
+        </a>
       </div>
-    </div>
+    </template>
   </Layout>
 </template>
 

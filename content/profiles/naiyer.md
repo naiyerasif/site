@@ -8,20 +8,18 @@ avatar: './avatars/naiyer.png'
 
 I've worked on the backend, site reliability, frontend, and ETL projects, in Aviation, Legal &amp; Compliance, Document Processing, and Banking &amp; Financial Services domains.
 
-Technologies that I'm adept at include,
+Technologies that I'm adept at &ndash;
+> - [Java](https://openjdk.java.net/) and [Spring Boot](https://spring.io/projects/spring-boot)
+> - Relational databases (mostly [Postgres](https://www.postgresql.org/) and [Oracle](https://www.oracle.com/database/))
+> - [Node.js](https://nodejs.org/en/)
 
-- [Java](https://openjdk.java.net/) and [Spring Boot](https://spring.io/projects/spring-boot)
-- Relational databases (mostly [Postgres](https://www.postgresql.org/) and [Oracle](https://www.oracle.com/database/))
-- [Node.js](https://nodejs.org/en/)
-
-Other technologies that I work on include,
-
-- [Vue.js](https://vuejs.org/) and [Angular](https://angular.io/)
-- [Vuepress](https://vuepress.vuejs.org/) and [Gridsome](https://gridsome.org/)
-- CSS, [Sass](https://sass-lang.com/) and [Stylus](https://stylus-lang.com/)
-- [Groovy](https://groovy-lang.org/) (while working with [Spock](https://github.com/spockframework/spock) and [Gradle](https://gradle.org/))
-- [Docker](https://www.docker.com/) and [Jenkins](https://www.jenkins.io/)
-- [MongoDB](https://www.mongodb.com/)
+Other technologies that I work on &ndash;
+> - [Vue.js](https://vuejs.org/) and [Angular](https://angular.io/)
+> - [Vuepress](https://vuepress.vuejs.org/) and [Gridsome](https://gridsome.org/)
+> - CSS, [Sass](https://sass-lang.com/) and [Stylus](https://stylus-lang.com/)
+> - [Groovy](https://groovy-lang.org/) (while working with [Spock](https://github.com/spockframework/spock) and [Gradle](https://gradle.org/))
+> - [Docker](https://www.docker.com/) and [Jenkins](https://www.jenkins.io/)
+> - [MongoDB](https://www.mongodb.com/)
 
 I regularly draw vector icons and illustrations and have an avid interest in typography. I read a fair amount of science fiction and fantasy books. I regularly explore new tools that improve my learning process, recollection, and productivity.
 
@@ -61,15 +59,19 @@ This site uses
 - [GraphQL](https://graphql.org/) for querying data
 - [Vue.js](https://vuejs.org/) as the frontend framework
 - [SASS](https://sass-lang.com/) as the CSS preprocessor (using Module System, and lightly adhering to SMACSS)
-- [Inter](https://rsms.me/inter/) as the body font (variable font with traditional fallbacks)
-- [Space Grotesk](https://github.com/floriankarsten/space-grotesk) as the heading font (variable font with traditional fallbacks)
+- [Inter](https://rsms.me/inter/) as the body font
+- [Space Grotesk](https://github.com/floriankarsten/space-grotesk) as the heading font
 - [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) as the `monospace` font
 - a [custom Prism theme](https://github.com/Microflash/site/blob/main/src/assets/styles/derived/_syntax.scss) to decorate the codeblocks
 - [Yarn](https://github.com/yarnpkg/yarn) as the package manager
 - [Git LFS](https://github.com/git-lfs/git-lfs) to version large files
 - [GitHub Actions](https://github.com/features/actions) for continuous integration
 - [Netlify](https://netlify.com/) to publish the site
-- vector graphics and illustrations created with [Affinity Designer](https://affinity.serif.com/en-gb/designer/)
+- [Affinity Designer](https://affinity.serif.com/en-gb/designer/) to create icons, diagrams and illustrations
+
+### Privacy
+
+This site uses [Google Analytics](https://marketingplatform.google.com/about/analytics/) to collect statistics about user interactions, subject to the practices [documented here](https://support.google.com/analytics/answer/6004245). Feel free to use a blocker, such as [uBlock Origin](https://github.com/gorhill/uBlock), to block the analytics, in case you don't want to share your data.
 
 ### License
 

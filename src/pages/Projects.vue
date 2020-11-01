@@ -5,13 +5,13 @@
         <h1 class="title">Projects</h1>
         <div class="subtitle">Tools, utilities and experiments</div>
       </Hero>
-      <blockquote style="background-color: var(--bg-highlight)">
-        <p>I've contributed to many open-source projects over the last few years; I maintain a few of them in my spare time. Here's a selection of projects that I've been involved with.</p>
-      </blockquote>
     </template>
     <main class="content">
+      <blockquote>
+        <p>I've contributed to many open-source projects over the last few years; I maintain a few of them in my spare time. Here's a selection of projects that I've been involved with.</p>
+      </blockquote>
       <article class="article">
-        <dl class="prominent-list">
+        <dl>
           <div v-for="project in $page.projects.edges" :key="project.id">
             <dt><a target="_blank" rel="nofollow noopener noreferrer" :href="project.node.path">{{ project.node.title }}</a></dt>
             <dd>{{ project.node.description }}</dd>
