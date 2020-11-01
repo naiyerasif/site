@@ -59,15 +59,15 @@ This site uses
 - [GraphQL](https://graphql.org/) for querying data
 - [Vue.js](https://vuejs.org/) as the frontend framework
 - [SASS](https://sass-lang.com/) as the CSS preprocessor (using Module System, and lightly adhering to SMACSS)
-- [Inter](https://rsms.me/inter/) as the body font (variable font with traditional fallbacks)
-- [Space Grotesk](https://github.com/floriankarsten/space-grotesk) as the heading font (variable font with traditional fallbacks)
+- [Inter](https://rsms.me/inter/) as the body font
+- [Space Grotesk](https://github.com/floriankarsten/space-grotesk) as the heading font
 - [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) as the `monospace` font
 - a [custom Prism theme](https://github.com/Microflash/site/blob/main/src/assets/styles/derived/_syntax.scss) to decorate the codeblocks
 - [Yarn](https://github.com/yarnpkg/yarn) as the package manager
 - [Git LFS](https://github.com/git-lfs/git-lfs) to version large files
 - [GitHub Actions](https://github.com/features/actions) for continuous integration
 - [Netlify](https://netlify.com/) to publish the site
-- vector graphics and illustrations created with [Affinity Designer](https://affinity.serif.com/en-gb/designer/)
+- [Affinity Designer](https://affinity.serif.com/en-gb/designer/) to create icons, diagrams and illustrations
 
 ### License
 
