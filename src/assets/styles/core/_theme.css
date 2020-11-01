@@ -16,6 +16,8 @@
 
   --opacity-highlighted: 0.2;
   --opacity-selected: 0.3;
+
+  --grid-col-xs: calc(9rem + 5vw);
 }
 
 [data-theme='light'] {

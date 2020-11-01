@@ -19,29 +19,6 @@ $header-menu-offsety: utils.$tappable-gapx;
     radial-gradient(circle at 100% 10%, var(--bg-tip) 7%, transparent 7%);
   background-size: 150% 100%;
   animation: gradient 250s ease-in-out infinite;
-
-  .post-main-section > * {
-    max-width: variables.$max-width-rg;
-    @include utils.mx(auto);
-  }
-
-  .post-main-section {
-    cursor: pointer;
-    background-color: var(--bg-highlighted);
-    @include utils.tappable($radius: 0, $gapx: var(--content-article-gap), $gapy: var(--space-md), $underline: true);
-
-    &-title {
-      @include utils.heading-font;
-      font-weight: var(--weight-bold);
-      font-size: variables.$font-lg;
-    }
-
-    &-excerpt {
-      margin-top: variables.$ch-rg;
-      color: var(--text-passive);
-      font-size: 0.9em;
-    }
-  }
 }
 
 .header {

@@ -6,45 +6,42 @@
           <span class="gap-ch-sm hidden-sm">&mdash;</span>Reflections on <br class="hidden-sm" />design and development <br class="hidden-sm" />by <g-link to="/profile/naiyer/">Naiyer Asif</g-link>
         </h1>
       </Hero>
-      <div class="post-main-section" @click="$router.push(mostRecent.node.path)">
-        <div class="post-main-section-header">
-          <span class="posts-pill">
-            <strong>Most recent</strong>
-            <span class="separator"></span>
-            <time v-html="mostRecent.node.date" />
-          </span>
-        </div>
-        <div class="post-main-section-title">
-          <g-link :to="mostRecent.node.path">{{ mostRecent.node.title }}</g-link>
-        </div>
-        <div class="post-main-section-excerpt" v-html="excerpt(mostRecent.node.excerpt)" />
-      </div>
     </template>
-    <main class="posts">
-      <div class="post-section">
-        <div class="post-section-header">
-          <strong class="posts-pill">Popular this month</strong>
-        </div>
-        <div class="post-section-item" v-for="popular in $page.popularPosts.edges" :key="popular.id" @click="$router.push(popular.node.path)">
-          <div class="post-section-item-title">
-            <span class="separator hidden-sm"></span>
-            <g-link :to="popular.node.path">{{ popular.node.title }}</g-link>
+    <main class="container has-content-my">
+      <div class="has-content-mx">
+        <div class="card is-clickable" @click="$router.push(mostRecent.node.path)">
+          <div class="card-header has-separated">
+            <strong>Most recent</strong>
+            <time v-html="mostRecent.node.date" />
           </div>
+          <div class="card-title">
+            <g-link class="is-header" :to="mostRecent.node.path">{{ mostRecent.node.title }}</g-link>
+          </div>
+          <div class="card-footer" v-html="excerpt(mostRecent.node.excerpt)" />
         </div>
-      </div>
 
-      <div class="post-section">
-        <div class="post-section-header">
-          <strong class="posts-pill">Other recent posts</strong>
-        </div>
-        <div class="post-section-item" v-for="latest in recent" :key="latest.id" @click="$router.push(latest.node.path)">
-          <div class="post-section-item-title">
-            <time v-html="latest.node.date" />
-            <g-link :to="latest.node.path">{{ latest.node.title }}</g-link>
+        <div class="label mt-5 mb-2 is-bordered is-round">Popular this month</div>
+        <div class="grid" style="--grid-column-width: var(--grid-col-xs)">
+          <div class="card is-clickable" v-for="popular in $page.popularPosts.edges" :key="popular.id" @click="$router.push(popular.node.path)">
+            <div class="card-content is-regular">
+              <g-link :to="popular.node.path">{{ popular.node.title }}</g-link>
+            </div>
           </div>
         </div>
-        <div class="post-section-footer">
-          <g-link to="/blog/2/">Browse more &rarr;</g-link>
+
+        <div class="label mt-5 mb-2 is-bordered is-round">Other recent posts</div>
+        <div class="grid" style="--grid-column-width: var(--grid-col-xs)">
+          <div class="card is-clickable" v-for="latest in recent" :key="latest.id" @click="$router.push(latest.node.path)">
+            <div class="card-header">
+              <time v-html="latest.node.date" />
+            </div>
+            <div class="card-content is-regular">
+              <g-link :to="latest.node.path">{{ latest.node.title }}</g-link>
+            </div>
+          </div>
+        </div>
+        <div class="is-right">
+          <g-link class="label mt-2 is-round is-undecorated is-right" to="/blog/2/">Browse more &rarr;</g-link>
         </div>
       </div>
     </main>

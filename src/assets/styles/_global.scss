@@ -4,6 +4,13 @@
 
 // Containers
 
+$container-max-width: variables.$max-width-rg;
+
+.container {
+  max-width: $container-max-width;
+  @include utils.mx(auto);
+}
+
 $topics-background: var(--bg-selected);
 $topics-font-size: variables.$font-xs;
 $topics-gapy: variables.$ch-sm;
@@ -36,6 +43,85 @@ $topics-separator: variables.$symbol-separator;
   .is-mid {
     @include utils.mx($topics-gapx);
   }
+}
+
+// Semantics
+
+.has-separated > *:not(:last-child)::after {
+  @include utils.separator;
+}
+
+.is-bold {
+  font-weight: var(--weight-bold);
+}
+
+.is-captialized {
+  text-transform: capitalize;
+}
+
+.is-clickable {
+  cursor: pointer;
+
+  &:focus a,
+  &:hover a {
+    text-decoration: underline;
+  }
+}
+
+.has-content-my {
+  @include utils.my(var(--space-md));
+}
+
+.has-content-mx {
+  @include utils.mx(var(--flex-gapy));
+}
+
+.label {
+  display: inline-block;
+  @extend .is-bold;
+  background-color: var(--bg-highlighted);
+  padding: 0.5em 1.25em;
+  font-size: variables.$font-sm;
+}
+
+.is-header {
+  @extend .is-bold;
+  @include utils.heading-font;
+}
+
+.is-regular {
+  font-size: variables.$font-rg;
+}
+
+.is-bordered {
+  border: 1px solid var(--border);
+}
+
+.is-round {
+  border-radius: 10rem;
+}
+
+.is-undecorated {
+  &:focus,
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.is-right {
+  text-align: right;
+}
+
+.mt-5 {
+  margin-top: 5em;
+}
+
+.mt-2 {
+  margin-top: 2em;
+}
+
+.mb-2 {
+  margin-bottom: 2em;
 }
 
 // Links

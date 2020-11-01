@@ -1,0 +1,36 @@
+@use '~/assets/styles/variables';
+@use '~/assets/styles/mixins/utils';
+
+// Card
+
+$card-background: var(--bg-passive);
+$card-background-active: var(--bg-selected);
+$card-emphasis-color: var(--text-passive);
+$card-font-size: variables.$font-sm;
+$card-border: 1px solid var(--border);
+$card-radius: variables.$radius * 2;
+$card-gap: var(--space-sm);
+
+.card {
+  background-color: $card-background;
+  border: $card-border;
+  border-radius: $card-radius;
+  padding: $card-gap;
+  font-size: $card-font-size;
+
+  &:focus,
+  &:hover {
+    background-color: $card-background-active;
+  }
+
+  &-title {
+    font-size: 1.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.75em;
+  }
+
+  &-header {
+    font-size: variables.$font-sm;
+    color: $card-emphasis-color;
+  }
+}

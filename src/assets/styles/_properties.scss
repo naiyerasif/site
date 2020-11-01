@@ -7,6 +7,7 @@
   --flex-basis: 100%;
   --flex-gap: #{variables.$gap-rg};
   --flex-gapx: var(--space-rg);
+  --flex-gapy: var(--space-rg);
   --search-offsetx: #{-(variables.$gap-sm)};
   --search-width: calc(100% - var(--space-rg));
   --search-radius: #{variables.$radius};
@@ -21,6 +22,7 @@
     --flex-basis: 50%;
     --flex-gap: 0;
     --flex-gapx: var(--space-rg);
+    --flex-gapy: 0;
     --search-offsetx: 0;
     --search-width: 40ch;
     --search-radius: 0;
