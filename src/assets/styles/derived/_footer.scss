@@ -42,6 +42,7 @@ $pagination-item-gapy: variables.$ch-rg * 0.2;
   &-menu  {
     --grid-gap: var(--space-rg);
     --grid-column-width: #{variables.$grid-sm};
+    padding-left: 0;
 
     &-section {
       display: flex;
