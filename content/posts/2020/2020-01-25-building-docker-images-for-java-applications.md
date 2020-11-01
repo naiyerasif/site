@@ -98,5 +98,4 @@ Note that instead of `adoptopenjdk:11-jre-openj9`, `gcr.io/distroless/java:11` i
 ## References
 
 - [Intro Guide to Dockerfile Best Practices](https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/)
-- [Distroless Docker: Containerizing Apps, not VMs](https://www.youtube.com/watch?v=lviLZFciDv4)
 - [distroless at GitHub](https://github.com/GoogleContainerTools/distroless)

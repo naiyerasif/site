@@ -19,6 +19,15 @@ $content-opener-size: variables.$font-md;
     @include utils.px($content-adm-gap);
   }
 
+  figure,
+  div[class$='-embed'] {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    @include utils.mx(-50vw);
+  }
+
   .article {
     > p:first-of-type {
       font-size: $content-opener-size;
