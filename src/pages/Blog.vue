@@ -6,20 +6,21 @@
         <div class="subtitle">Guides, notes and opinion pieces</div>
       </Hero>
     </template>
-    <main class="posts">
-      <div class="post-item" v-for="post in $page.posts.edges" :key="post.id" @click="$router.push(post.node.path)">
-        <div class="post-header">
-          <time v-html="post.node.date" />
-          <span>&sim;{{ post.node.timeToRead }} min read</span>
-          <section class="topics">
-            <span class="gap-ch"><strong class="gap-ch">{{ post.node.category }}</strong>on</span>
-            <span class="gap-ch" v-for="topic in post.node.topics" :key="topic">{{ topic }}</span>
-          </section>
+    <main class="container has-content-my">
+      <div class="has-content-mx">
+        <div class="grid" style="--grid-column-width: 18rem">
+          <div class="card is-clickable" v-for="post in $page.posts.edges" :key="post.id" @click="$router.push(post.node.path)">
+            <div class="card-header has-separated">
+              <time v-html="post.node.date" />
+              <span>&sim;{{ post.node.timeToRead }} min read</span>
+              <strong class="is-captialized">{{ post.node.category }}</strong>
+            </div>
+            <div class="card-title is-header">
+              <g-link :to="post.node.path">{{ post.node.title }}</g-link>
+            </div>
+            <div class="card-footer" v-html="excerpt(post.node.excerpt)" />
+          </div>
         </div>
-        <div class="post-title">
-          <g-link :to="post.node.path">{{ post.node.title }}</g-link>
-        </div>
-        <div class="post-excerpt" v-html="excerpt(post.node.excerpt)" />
       </div>
     </main>
     <template #sidekick>
