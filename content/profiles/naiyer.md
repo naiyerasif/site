@@ -6,7 +6,7 @@ location: 'Bengaluru, India'
 avatar: './avatars/naiyer.png'
 ---
 
-Currently, I'm filling the shoes of a backend engineer on an Aviation product where I write microservices using [Spring Boot](https://spring.io/projects/spring-boot). Now and then, I also contribute to the reference implementation of my organization's design system.
+Currently, I'm wearing the hat of a backend engineer on an Aviation product where I write microservices using [Spring Boot](https://spring.io/projects/spring-boot). Now and then, I also contribute to the reference implementation of my organization's design system.
 
 In the past, I've worked on site reliability, frontend, and ETL projects, in Legal &amp; Compliance, Document Processing, and Banking &amp; Financial Services domains.
 
