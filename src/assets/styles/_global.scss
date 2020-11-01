@@ -11,6 +11,10 @@ $container-max-width: variables.$max-width-rg;
   @include utils.mx(auto);
 }
 
+.layout {
+  overflow-x: hidden;
+}
+
 $topics-background: var(--bg-selected);
 $topics-font-size: variables.$font-xs;
 $topics-gapy: variables.$ch-sm;
