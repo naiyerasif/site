@@ -8,12 +8,13 @@ avatar: './avatars/naiyer.png'
 
 I've worked on the backend, site reliability, frontend, and ETL projects, in Aviation, Legal &amp; Compliance, Document Processing, and Banking &amp; Financial Services domains.
 
-Technologies that I'm adept at &ndash;
+> **Technologies that I'm adept at &ndash;**
 > - [Java](https://openjdk.java.net/) and [Spring Boot](https://spring.io/projects/spring-boot)
 > - Relational databases (mostly [Postgres](https://www.postgresql.org/) and [Oracle](https://www.oracle.com/database/))
 > - [Node.js](https://nodejs.org/en/)
 
-Other technologies that I work on &ndash;
+<!-- a comment to separate the blockquote -->
+> **Other technologies that I work on &ndash;**
 > - [Vue.js](https://vuejs.org/) and [Angular](https://angular.io/)
 > - [Vuepress](https://vuepress.vuejs.org/) and [Gridsome](https://gridsome.org/)
 > - CSS, [Sass](https://sass-lang.com/) and [Stylus](https://stylus-lang.com/)
