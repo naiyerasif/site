@@ -14,7 +14,7 @@
   --hsl-secondary: var(--hue-secondary), 42%, 57%;
   --hsl-tertiary: var(--hue-tertiary), 73%, 62%;
 
-  --opacity-highlighted: 0.2;
+  --opacity-highlighted: 0.175;
   --opacity-selected: 0.3;
 
   --grid-col-xs: calc(9rem + 5vw);
