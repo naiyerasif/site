@@ -26,17 +26,17 @@ $code-gapy-rg: var(--space-rg);
 $code-gapy-sm: var(--space-sm);
 $code-gapx: var(--content-article-gap);
 $code-gapx-neg: var(--curb-rg);
+$code-radius: 1vw;
 
 // Prism theme
 
 .gridsome-highlight {
-  @include utils.my($code-gapy-rg);
+  margin: $code-gapy-rg $code-gapx-neg;
   background-color: $code-background;
+  border-radius: $code-radius;
 
   code {
-    max-width: $code-max-width;
-    @include utils.mx(auto);
-    padding: $code-gapy-sm $code-gapx;
+    padding: $code-gapy-rg;
   }
 
   code[class*='language-'],
@@ -48,13 +48,11 @@ $code-gapx-neg: var(--curb-rg);
 
   pre[class*='language-']::before {
     display: block;
-    max-width: $code-max-width;
-    @include utils.mx(auto);
     z-index: 5;
     text-align: right;
-    margin-bottom: -(variables.$gap-sm);
+    margin-bottom: -(variables.$gap-rg);
     padding-top: 0.5em;
-    padding-right: 0.5em;
+    padding-right: 0.75em;
     color: var(--text-passive);
     font-size: 0.75em;
     font-weight: var(--weight-bold);
