@@ -45,9 +45,6 @@ module.exports = {
       }
     }
   },
-  images: {
-    compress: false
-  },
   templates: {
     Blog: '/blog/:year/:month/:day/:title',
     Profile: '/profile/:id',
