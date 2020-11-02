@@ -146,7 +146,7 @@ $adm-header-gap: variables.$gap-md;
 
 .admonition, 
 .admonition-note {
-  @include admonition(var(--text-passive));
+  @include admonition(var(--text-highlighted));
 }
 
 .admonition-caution {
