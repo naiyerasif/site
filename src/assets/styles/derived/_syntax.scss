@@ -21,7 +21,7 @@ $languages: js, ts, html, md, vue, css, sass, scss, less, log, stylus, go, java,
   sh, yaml, py, docker, dockerfile, properties, groovy, typescript, json, xml, git, shell, sql, bash, powershell, ini;
 
 $code-background: var(--bg-accent);
-$code-max-width: variables.$max-width-rg;
+$code-max-width: variables.$maxwidth-rg;
 $code-gapy-rg: var(--space-rg);
 $code-gapy-sm: var(--space-sm);
 $code-gapx: var(--content-article-gap);
