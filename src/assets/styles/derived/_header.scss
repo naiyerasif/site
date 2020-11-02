@@ -12,11 +12,11 @@ $header-menu-offsety: utils.$tappable-gapx;
 
 .crown {
   background-image:
-    radial-gradient(circle at 0% 10%, var(--bg-caution) 9%, transparent 9%),
-    radial-gradient(circle at 22.5% center, var(--tone-2) 8%, transparent 8%),
-    radial-gradient(circle at top center, var(--tone-1) 30%, transparent 30%),
-    radial-gradient(circle at 77.5% center, var(--bg-important) 5%, transparent 5%),
-    radial-gradient(circle at 100% 10%, var(--bg-tip) 7%, transparent 7%);
+    radial-gradient(circle at 0% 10%, var(--bg-selected) 9%, transparent 9%),
+    radial-gradient(circle at 22.5% center, var(--colormix-2) 8%, transparent 8%),
+    radial-gradient(circle at top center, var(--colormix-1) 30%, transparent 30%),
+    radial-gradient(circle at 77.5% center, var(--colormix-3) 5%, transparent 5%),
+    radial-gradient(circle at 100% 10%, var(--bg-highlighted) 7%, transparent 7%);
   background-size: 150% 100%;
   animation: gradient 250s ease-in-out infinite;
 }

@@ -5,10 +5,10 @@
 
 $hero-gapx: var(--space-rg);
 $hero-gapy: var(--space-md);
-$hero-max-width: variables.$max-width-rg;
+$hero-max-width: variables.$maxwidth-rg;
 $hero-title-size: calc(1.25rem + 3vw);
 $hero-subtitle-size: variables.$font-md;
-$hero-subtitle-color: var(--text-passive);
+$hero-subtitle-color: var(--text-highlighted);
 $hero-content-gap-start: var(--space-rg);
 $hero-content-gap-end: var(--flex-gap);
 $hero-content-font-size: variables.$font-sm;

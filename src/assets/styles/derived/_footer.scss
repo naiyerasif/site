@@ -12,7 +12,7 @@ $footer-font-size: variables.$font-sm;
 $footer-title-weight: var(--weight-bold);
 $footer-title-bottom: variables.$gap-rg;
 $sidekick-nav-indicator-gap: variables.$ch-rg;
-$sidekick-nav-indicator-color: var(--text-passive);
+$sidekick-nav-indicator-color: var(--text-highlighted);
 $sidekick-nav-indicator-font-size: variables.$font-xs;
 $sidekick-nav-indicator-font-weight: var(--weight-bold);
 $pagination-border: var(--border);
@@ -30,8 +30,8 @@ $pagination-item-gapy: variables.$ch-rg * 0.2;
 
   @include queries.md {
     background-image: 
-      radial-gradient(circle at 20vw bottom, var(--tone-1) 27%, transparent 27%),
-      linear-gradient(45deg, var(--tone-2) 25%, transparent 25%);
+      radial-gradient(circle at 20vw bottom, var(--colormix-1) 27%, transparent 27%),
+      linear-gradient(45deg, var(--colormix-3) 25%, transparent 25%);
   }
 
   > * {

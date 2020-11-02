@@ -4,9 +4,10 @@
 // Search
 
 $search-width: var(--search-width);
-$search-container-background: var(--bg-active);
+$search-border: var(--border);
+$search-container-background: var(--bg-accent);
 $search-container-offsetx: var(--search-offsetx);
-$search-results-background: var(--bg-passive);
+$search-results-background: var(--bg-accent);
 $search-results-active-background: var(--bg-selected);
 $search-results-gap: variables.$gap-rg;
 $search-results-gapx: utils.$tappable-gapx;
@@ -30,6 +31,7 @@ $search-label-background: var(--bg-highlighted);
   background-color: $search-container-background;
   @include utils.mx($search-container-offsetx);
   width: $search-width;
+  border: 1px solid $search-border;
 }
 
 .search-box {
@@ -54,7 +56,7 @@ $search-label-background: var(--bg-highlighted);
   max-height: 75vh;
   overflow: hidden;
   background-color: $search-results-background;
-  border: 1px solid $search-container-background;
+  border: 1px solid $search-border;
   border-radius: $search-results-radius;
 
   .results-box {

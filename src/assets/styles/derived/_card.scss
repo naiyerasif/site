@@ -3,9 +3,9 @@
 
 // Card
 
-$card-background: var(--bg-passive);
+$card-background: var(--bg-accent);
 $card-background-active: var(--bg-selected);
-$card-emphasis-color: var(--text-passive);
+$card-emphasis-color: var(--text-highlighted);
 $card-font-size: variables.$font-sm;
 $card-border: 1px solid var(--border);
 $card-radius: variables.$radius * 2;

@@ -4,23 +4,19 @@ $font-xs: calc(0.7rem + 0.1vw) !default;
 $font-sm: calc(0.8rem + 0.2vw) !default;
 $font-rg: calc(0.9rem + 0.3vw) !default;
 $font-md: calc(1rem + 0.4vw) !default;
-$font-lg: calc(1.2rem + 0.6vw) !default;
 
 // Spacing
 
 $breakpoint-sm: 600px !default;
 $breakpoint-md: 900px !default;
-$breakpoint-lg: 1200px !default;
-$breakpoint-xl: 1800px !default;
 
-$max-width-rg: calc(#{$breakpoint-sm} + 20vw) !default;
+$maxwidth-rg: calc(#{$breakpoint-sm} + 20vw) !default;
 
 $gap-xs: 0.5rem !default;
 $gap-sm: 0.75rem !default;
 $gap-rg: 1rem !default;
 $gap-md: 1.25rem !default;
 $gap-lg: 1.5rem !default;
-$gap-xl: 1.75rem !default;
 
 $ch-sm: 0.5ch !default;
 $ch-rg: 1ch !default;
@@ -76,12 +72,12 @@ $separator-opacity: 0.5 !default;
   $text: var(--text),
   $text-code: inherit,
   $text-bold: inherit,
-  $text-muted: var(--text-passive),
+  $text-muted: var(--text-highlighted),
   $text-headings: var(--text),
-  $text-blockquote: var(--text-passive),
+  $text-blockquote: var(--text-highlighted),
   $link: var(--link),
-  $link-active: var(--link-active),
-  $link-visited: var(--link-active),
+  $link-active: var(--link-highlighted),
+  $link-visited: var(--link-highlighted),
   $table-thead: inherit,
   $scrollbar: var(--border),
   $margin: $gap-lg

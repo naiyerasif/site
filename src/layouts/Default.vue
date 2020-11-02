@@ -1,9 +1,8 @@
 <template>
   <div class="layout">
-    <div class="crown">
-      <Header />
+    <Header>
       <slot name="hero"></slot>
-    </div>
+    </Header>
     <slot></slot>
     <Footer>
       <slot name="sidekick"></slot>
