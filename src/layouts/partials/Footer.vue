@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="sidekick">
-      <slot/>
+      <slot></slot>
     </div>
     <div class="footer-menu">
       <p class="copyright">
