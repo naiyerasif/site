@@ -172,7 +172,7 @@ $adm-header-gap: variables.$gap-md;
 blockquote {
   @include admonition(var(--text));
 
-  strong:first-of-type {
+  & > p strong:first-of-type {
     display: flex;
     align-items: center;
     margin-bottom: $adm-header-gap;
