@@ -39,7 +39,7 @@
     "autoprefixer": "^9.8.6",
     "chrono-node": "^2.1.9",
     "commander": "^6.2.0",
-    "dayjs": "^1.9.5",
+    "dayjs": "^1.9.6",
     "dotenv": "^8.2.0",
     "googleapis": "^64.0.0",
     "marked": "^1.2.4",
