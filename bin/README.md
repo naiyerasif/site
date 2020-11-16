@@ -23,7 +23,7 @@ node bin/content.js --content note --title 'Skipping the GitLab CI' --meta 'gitl
 node bin/content.js --content note --date '2 days 3 hours ago' --title 'Customize the PowerShell prompt' --meta 'powershell'
 ```
 
-### Generate SVGs
+### Generate SVG sprites
 
 Dump individual icons in a folder (say, `.archive/svg`) and use [`spritely`](https://www.npmjs.com/package/@microflash/spritely) to generate the sprite.
 
