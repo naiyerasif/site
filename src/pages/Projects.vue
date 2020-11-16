@@ -12,7 +12,7 @@
       </blockquote>
       <div class="grid" style="--grid-column-width: var(--grid-col-xs)">
         <div class="card is-clickable" v-for="project in $page.projects.edges" :key="project.id">
-          <a class="card-content is-bold is-regular" target="_blank" rel="nofollow noopener noreferrer" :href="project.node.path">{{ project.node.title }}</a>
+          <a class="card-content is-bold is-regular" target="_blank" rel="nofollow noopener noreferrer" :href="project.node.link">{{ project.node.title }}</a>
           <div class="card-footer" v-html="project.node.description" />
         </div>
       </div>
@@ -28,7 +28,7 @@ query {
         id
         title
         description
-        path
+        link
       }
     }
   }
