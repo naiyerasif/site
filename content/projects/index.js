@@ -27,6 +27,6 @@ module.exports = [
   {
     title: 'Succinct',
     description: 'A Vuepress theme with support for dark and light modes, and web-fonts',
-    path: 'https://microflash.github.io/vuepress-theme-succinct/'
+    path: 'https://succinct.mflash.dev'
   }
 ]

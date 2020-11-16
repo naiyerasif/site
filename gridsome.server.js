@@ -35,7 +35,13 @@ module.exports = api => {
     const allProjects = addCollection({
       typeName: 'Project'
     })
-    projects.forEach(project => allProjects.addNode(project))
+    projects.forEach(project => {
+      allProjects.addNode({
+        title: project.title,
+        description: project.description,
+        link: project.path
+      })
+    })
 
     const popularBlogPosts = addCollection({
       typeName: 'PopularBlog'
