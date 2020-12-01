@@ -22,7 +22,7 @@ module.exports = [
   {
     title: 'Remarkability',
     description: 'A compact CSS library for a pleasant reading experience on the web',
-    path: 'https://remarkability.mflash.dev'
+    path: 'https://r11y.mflash.dev'
   },
   {
     title: 'Succinct',

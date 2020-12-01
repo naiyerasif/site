@@ -1,15 +1,15 @@
 ---
-title: 'Linting SASS with stylelint'
+title: 'Linting Sass with stylelint'
 date: 2019-06-02 15:32:12
 updated: 2019-08-08 20:21:01
 authors: [naiyer]
 topics: [stylelint, sass]
 ---
 
-Besides JavaScript or TypeScript, you can also lint the [SASS](https://sass-lang.com/) (or SCSS) files, using a linter called [stylelint](https://github.com/stylelint/stylelint). `stylelint` is a widely used linter that works with SCSS, Sass, Less and SugarSS. It supports a plugin system through which we can extend its behavior. 
+Besides JavaScript or TypeScript, you can also lint the [Sass](https://sass-lang.com/) (or SCSS) files, using a linter called [stylelint](https://github.com/stylelint/stylelint). `stylelint` is a widely used linter that works with SCSS, Sass, Less and SugarSS. It supports a plugin system through which we can extend its behavior. 
 
 :::note Setup
-You can use any Node.js project using SASS to follow the examples.
+You can use any Node.js project using Sass to follow the examples.
 :::
 
 ## Install Stylelint
@@ -22,7 +22,7 @@ yarn add -D stylelint
 
 ## Add NPM script for linting
 
-Assuming your SASS code resides in the `src` directory, add the following NPM script.
+Assuming your Sass code resides in the `src` directory, add the following NPM script.
 
 ```json
 "lint-scss": "stylelint \"src/**/*.scss\" --cache --cache-location .cache/.stylelintcache",

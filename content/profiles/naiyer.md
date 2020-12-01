@@ -6,7 +6,7 @@ location: 'Bengaluru, India'
 avatar: './avatars/naiyer.png'
 ---
 
-Currently, I'm wearing the hat of a backend engineer on an Aviation product where I write microservices using [Spring Boot](https://spring.io/projects/spring-boot). Now and then, I also contribute to the reference implementation of my organization's design system.
+Currently, I'm a backend engineer on an Aviation product where I write microservices using [Spring Boot](https://spring.io/projects/spring-boot). Occasionally, I also contribute to my organization's design system.
 
 In the past, I've worked on site reliability, frontend, and ETL projects, in Legal &amp; Compliance, Document Processing, and Banking &amp; Financial Services domains.
 
@@ -49,7 +49,7 @@ This site was made possible by
 - [Feather](https://feathericons.com/): beautiful open-source icons
 - [Spritely](https://github.com/Microflash/spritely): a Node.js CLI to generate SVG sprites
 - [Remarkability](https://remarkability.netlify.app): a compact CSS library for a pleasant reading experience on the web
-- [Bourbon](https://www.bourbon.io/): a lightweight SASS tool set
+- [Bourbon](https://www.bourbon.io/): a lightweight Sass tool set
 - [Animate.css](https://github.com/daneden/animate.css): a cross-browser library of CSS animations
 - [Grid By Example](https://gridbyexample.com/): a collection of examples and references on CSS Grid
 
@@ -60,7 +60,7 @@ This site uses
 - [CSS variables](https://css-tricks.com/guides/css-custom-properties/) for responsive design and theme switching
 - [GraphQL](https://graphql.org/) for querying data
 - [Vue.js](https://vuejs.org/) as the frontend framework
-- [SASS](https://sass-lang.com/) as the CSS preprocessor (using Module System, and lightly adhering to SMACSS)
+- [Sass](https://sass-lang.com/) as the CSS preprocessor (using Module System, and lightly adhering to SMACSS)
 - [Inter](https://rsms.me/inter/) as the body font
 - [Space Grotesk](https://github.com/floriankarsten/space-grotesk) as the heading font
 - [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) as the `monospace` font
