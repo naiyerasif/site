@@ -43,8 +43,8 @@
   --weight-regular: 400;
   --weight-bold: 700;
 
-  --stroke-sm: 1.75px;
-  --stroke-rg: 1.25px;
+  --stroke-sm: 2px;
+  --stroke-rg: 1.5px;
 }
 
 [data-theme='dark'] {
@@ -66,6 +66,6 @@
   --weight-regular: 350;
   --weight-bold: 600;
 
-  --stroke-sm: 1.5px;
-  --stroke-rg: 1px;
+  --stroke-sm: 1.75px;
+  --stroke-rg: 1.25px;
 }
