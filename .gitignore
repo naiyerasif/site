@@ -1,8 +1,14 @@
 .archive
 .env
+.pnp.*
 .temp
 .*cache
 .vscode
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
 node_modules
 public
 report.json
