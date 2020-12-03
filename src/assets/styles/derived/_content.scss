@@ -96,17 +96,18 @@ h6 {
 $adm-font-size: 0.95em;
 $adm-indent: 2ch;
 $adm-header-gap: variables.$gap-md;
+$adm-border-width: 0.2em;
 
 @mixin admonition($color) {
   --block-color: #{$color};
   --block-indent: #{$adm-indent};
 
   @include queries.md {
-    margin-left: calc(var(--block-indent) * -1);
+    margin-left: calc((var(--block-indent) + #{$adm-border-width}) * -1);
   }
 
   color: var(--block-color);
-  border-left: 2px solid var(--block-color);
+  border-left: $adm-border-width solid var(--block-color);
   padding-left: var(--block-indent);
   font-size: $adm-font-size;
 
