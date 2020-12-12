@@ -13,6 +13,7 @@ $container-max-width: variables.$maxwidth-rg;
 
 .layout {
   overflow-x: hidden;
+  font-weight: var(--weight-regular);
 }
 
 $topics-background: var(--bg-selected);

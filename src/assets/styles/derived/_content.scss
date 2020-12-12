@@ -29,12 +29,17 @@ $content-opener-size: variables.$font-md;
   }
 
   .article {
-    > p:first-of-type {
-      font-size: $content-opener-size;
-    }
-
     div[class$='-embed'] {
       @include utils.my($content-adm-gap);
+    }
+
+    p + h1,
+    p + h2,
+    p + h3,
+    p + h4,
+    p + h5,
+    p + h6 {
+      margin-top: 1.5em;
     }
   }
 }
