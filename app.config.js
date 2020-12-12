@@ -44,7 +44,11 @@ module.exports = {
       { rel: 'mask-icon', href: '/mask-icon.svg', color: '#db0b2f' },
       { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
       { rel: 'manifest', href: '/manifest.json' },
-      { rel: 'preload', href: '/assets/images/icons.svg', type: 'image/svg+xml', as: 'image' }
+      { rel: 'preload', href: '/assets/images/icons.svg', type: 'image/svg+xml', as: 'image' },
+      { href: 'https://static.cloudflareinsights.com', rel: 'preconnect' }
+    ],
+    script: [
+      { src: 'https://static.cloudflareinsights.com/beacon.min.js', 'data-cf-beacon': '{"token": "6f75c3ff5f22444388cee1c933d54db0"}', async: true, defer: true }
     ]
   },
   search: {
