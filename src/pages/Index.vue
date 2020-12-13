@@ -20,7 +20,7 @@
           <div class="card-footer" v-html="excerpt(mostRecent.node.excerpt)" />
         </div>
 
-        <div class="label mt-5 mb-2 is-bordered is-round">Popular this month</div>
+        <h4 class="mt-3 mb-1 is-middle"><Sprite symbol="icon-popular" class="icon-rg gap-ch-sm" /> Popular this month</h4>
         <div class="grid" style="--grid-column-width: var(--grid-col-xs)">
           <div class="card is-clickable" v-for="popular in $page.popularPosts.edges" :key="popular.id" @click="$router.push(popular.node.path)">
             <div class="card-content is-regular">
@@ -29,7 +29,7 @@
           </div>
         </div>
 
-        <div class="label mt-5 mb-2 is-bordered is-round">Other recent posts</div>
+        <h4 class="mt-3 mb-1 is-middle"><Sprite symbol="icon-recent" class="icon-rg gap-ch-sm" /> Other recent posts</h4>
         <div class="grid" style="--grid-column-width: var(--grid-col-xs)">
           <div class="card is-clickable" v-for="latest in recent" :key="latest.id" @click="$router.push(latest.node.path)">
             <div class="card-header">
@@ -75,13 +75,15 @@ query {
 
 <script>
 import Hero from '~/components/partials/Hero'
+import Sprite from '~/components/Sprite'
 
 export default {
   metaInfo: {
     title: 'Home'
   },
   components: {
-    Hero
+    Hero,
+    Sprite
   },
   computed: {
     mostRecent() {

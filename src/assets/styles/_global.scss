@@ -117,8 +117,13 @@ $topics-separator: variables.$symbol-separator;
   text-align: right;
 }
 
-.mt-5 {
-  margin-top: 5em;
+.is-middle {
+  display: inline-flex;
+  align-items: center;
+}
+
+.mt-3 {
+  margin-top: 3em;
 }
 
 .mt-2 {
@@ -127,6 +132,10 @@ $topics-separator: variables.$symbol-separator;
 
 .mb-2 {
   margin-bottom: 2em;
+}
+
+.mb-1 {
+  margin-bottom: 1em;
 }
 
 // Links

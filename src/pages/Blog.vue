@@ -56,7 +56,6 @@ query Blogs ($page: Int) {
 <script>
 import Hero from '~/components/partials/Hero'
 import Pagination from '~/components/Pagination'
-import Sprite from '~/components/Sprite'
 
 export default {
   metaInfo: {
@@ -64,8 +63,7 @@ export default {
   },
   components: {
     Hero,
-    Pagination,
-    Sprite
+    Pagination
   },
   methods: {
     excerpt(text) {
