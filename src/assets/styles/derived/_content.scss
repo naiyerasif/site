@@ -33,12 +33,12 @@ $content-opener-size: variables.$font-md;
       @include utils.my($content-adm-gap);
     }
 
-    p + h1,
-    p + h2,
-    p + h3,
-    p + h4,
-    p + h5,
-    p + h6 {
+    *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) + h1,
+    *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) + h2,
+    *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) + h3,
+    *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) + h4,
+    *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) + h5,
+    *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) + h6 {
       margin-top: 1.5em;
     }
   }
