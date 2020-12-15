@@ -29,12 +29,17 @@ $content-opener-size: variables.$font-md;
   }
 
   .article {
-    > p:first-of-type {
-      font-size: $content-opener-size;
-    }
-
     div[class$='-embed'] {
       @include utils.my($content-adm-gap);
+    }
+
+    *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) + h1,
+    *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) + h2,
+    *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) + h3,
+    *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) + h4,
+    *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) + h5,
+    *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) + h6 {
+      margin-top: 1.5em;
     }
   }
 }

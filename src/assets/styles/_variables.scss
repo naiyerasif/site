@@ -43,7 +43,9 @@ $separator-opacity: 0.5 !default;
 
 @use '@/node_modules/@microflash/remarkability/scss/variables' with (
   $root: 'body',
+  $lead: '.article > p:first-of-type',
   $enable-selection-background: true,
+  $enable-lead-paragraph: true,
   $enable-custom-scrollbar: true,
   $enable-custom-colors: true,
   $enable-custom-fonts: true,
@@ -57,10 +59,10 @@ $separator-opacity: 0.5 !default;
     'distinct': 'default-sans' 'Space Grotesk' 'Space Grotesk var'
   ),
   $font-size-base: $font-rg,
-  $weight-normal: var(--weight-regular),
   $weight-bold: var(--weight-bold),
   $background-body: var(--bg-body),
   $background-code: var(--bg-highlighted),
+  $background-del: hsla(350, 90%, 45%, 0.2),
   $background-ins: var(--bg-highlighted),
   $background-mark: var(--bg-highlighted),
   $background-table: inherit,
