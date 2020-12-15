@@ -20,7 +20,7 @@
           <div class="card-footer" v-html="excerpt(mostRecent.node.excerpt)" />
         </div>
 
-        <h4 class="mt-3 mb-1 is-middle"><Sprite symbol="icon-popular" class="icon-rg gap-ch-sm" /> Popular this month</h4>
+        <h4 class="mt-3 mb-1 is-middle"><Sprite symbol="icon-popular" class="icon-rg gap-ch-sm" style="fill:hsl(350, 90%, 45%);stroke:hsl(350, 90%, 45%)" /> Popular this month</h4>
         <div class="grid" style="--grid-column-width: var(--grid-col-xs)">
           <div class="card is-clickable" v-for="popular in $page.popularPosts.edges" :key="popular.id" @click="$router.push(popular.node.path)">
             <div class="card-content is-regular">
@@ -29,7 +29,7 @@
           </div>
         </div>
 
-        <h4 class="mt-3 mb-1 is-middle"><Sprite symbol="icon-recent" class="icon-rg gap-ch-sm" /> Other recent posts</h4>
+        <h4 class="mt-3 mb-1 is-middle"><Sprite symbol="icon-recent" class="icon-rg gap-ch-sm" style="fill:hsl(234, 46%, 50%);stroke:hsl(234, 46%, 50%)" /> Other recent posts</h4>
         <div class="grid" style="--grid-column-width: var(--grid-col-xs)">
           <div class="card is-clickable" v-for="latest in recent" :key="latest.id" @click="$router.push(latest.node.path)">
             <div class="card-header">
