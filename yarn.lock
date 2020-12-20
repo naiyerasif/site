@@ -9951,11 +9951,6 @@ vue-router@^3.1.3:
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.4.9.tgz#c016f42030ae2932f14e4748b39a1d9a0e250e66"
   integrity sha512-CGAKWN44RqXW06oC+u4mPgHLQQi2t6vLD/JbGRDAXm0YpMv0bgpKuU5bBd7AvMgfTz9kXVRIWKHqRwGEb8xFkA==
 
-vue-scroll-indicator@^0.1.3:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/vue-scroll-indicator/-/vue-scroll-indicator-0.1.3.tgz#e83e4eed3bcd976a38e5931fd1281162e0a0c896"
-  integrity sha512-8LdU9SMHZdnlb6G4gpWZ7hpYEmruC6k38yql6ZQI1SMNnGrFDIHHCyfrLrcqhMoCflVFaZsY7b6njrUmdtwZEA==
-
 vue-server-renderer@^2.6.10:
   version "2.6.12"
   resolved "https://registry.yarnpkg.com/vue-server-renderer/-/vue-server-renderer-2.6.12.tgz#a8cb9c49439ef205293cb41c35d0d2b0541653a5"
