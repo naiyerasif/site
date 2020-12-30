@@ -2,9 +2,9 @@
   <div class="sidekick">
     <div class="sidekick-wrapper">
       <div class="pagination" v-if="input.totalPages > 1 && input.totalPages < 6">
-        <g-link class="is-prev" :to="previousPage" v-if="input.currentPage > 1">&larr;</g-link>
+        <g-link class="is-prev" :to="previousPage" v-if="input.currentPage > 1">&xlarr;</g-link>
         <g-link :class="{ 'is-current': input.currentPage == idx }" v-for="idx in input.totalPages" :key="idx" :to="destination(idx)">{{ idx }}</g-link>
-        <g-link class="is-next" :to="nextPage" v-if="input.currentPage < input.totalPages">&rarr;</g-link>
+        <g-link class="is-next" :to="nextPage" v-if="input.currentPage < input.totalPages">&xrarr;</g-link>
       </div>
       <div class="pagination" v-else>
         <div class="is-muted">🔚 end of the list</div>

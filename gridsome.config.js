@@ -1,7 +1,9 @@
 const path = require('path')
 const autoprefixer = require('autoprefixer')
+const purgecss = require('@fullhuman/postcss-purgecss')
 const marked = require('marked')
 
+const purgecssConfig = require('./purgecss.config')
 const appConfig = require('./app.config')
 
 const postcssPlugins = [
@@ -9,6 +11,10 @@ const postcssPlugins = [
     cascade: false
   })
 ]
+
+if (process.env.NODE_ENV === 'production') {
+  postcssPlugins.push(purgecss(purgecssConfig))
+}
 
 const remarkPlugins = [
   'remark-admonitions',

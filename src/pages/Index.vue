@@ -41,7 +41,7 @@
           </div>
         </div>
         <div class="is-right">
-          <g-link class="label mt-2 is-round is-undecorated is-right" to="/blog/2/">Browse more &rarr;</g-link>
+          <g-link class="label mt-2 is-round is-undecorated is-right" to="/blog/2/">Browse more &xrarr;</g-link>
         </div>
       </div>
     </main>
