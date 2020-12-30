@@ -21,11 +21,11 @@ $content-opener-size: variables.$font-md;
 
   figure,
   div[class$='-embed'] {
-    width: 100vw;
+    width: var(--content-media-width);
     position: relative;
     left: 50%;
     right: 50%;
-    @include utils.mx(-50vw);
+    @include utils.mx(var(--content-media-margin));
   }
 
   .article {

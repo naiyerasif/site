@@ -13,6 +13,8 @@
   --search-radius: #{variables.$radius};
   --content-article-gap: var(--space-rg);
   --content-list-gap: var(--space-lg);
+  --content-media-width: 100vw;
+  --content-media-margin: -50vw;
 }
 
 @include queries.md {
@@ -28,5 +30,7 @@
     --search-radius: 0;
     --content-article-gap: 0;
     --content-list-gap: var(--space-rg);
+    --content-media-width: 80vw;
+    --content-media-margin: -40vw;
   }
 }
