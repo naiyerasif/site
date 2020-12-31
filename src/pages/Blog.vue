@@ -9,7 +9,7 @@
     <main class="container has-content-my">
       <div class="has-content-mx">
         <div class="grid" style="--grid-column-width: 18rem">
-          <div class="card is-clickable" v-for="post in $page.posts.edges" :key="post.id" @click="$router.push(post.node.path)">
+          <div class="card shadow %active is-clickable" v-for="post in $page.posts.edges" :key="post.id" @click="$router.push(post.node.path)">
             <div class="card-header has-separated">
               <time v-html="post.node.date" />
               <span>&sim;{{ post.node.timeToRead }} min read</span>

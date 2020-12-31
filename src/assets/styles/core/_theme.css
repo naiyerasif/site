@@ -22,9 +22,6 @@
   --opacity-gradient: 0.3;
 
   --grid-col-xs: calc(9rem + 5vw);
-  --shadow-offset-blur: 0 1px 3px;
-  --shadow-opacity: 0.3;
-  --shadow-opacity-active: 0.6;
 }
 
 [data-theme='light'] {
@@ -50,9 +47,6 @@
   --stroke-rg: 1.5px;
 
   --shadow-color: var(--h-amber), 93%, 34%;
-  
-  --shadow: var(--shadow-offset-blur) hsl(var(--shadow-color), var(--shadow-opacity));
-  --shadow-active: var(--shadow-offset-blur) hsl(var(--shadow-color), var(--shadow-opacity-active));
 }
 
 [data-theme='dark'] {
@@ -78,6 +72,4 @@
   --stroke-rg: 1.25px;
 
   --shadow-color: var(--h-jade), 38%, 54%;
-  --shadow: var(--shadow-offset-blur) hsl(var(--shadow-color), var(--shadow-opacity));
-  --shadow-active: var(--shadow-offset-blur) hsl(var(--shadow-color), var(--shadow-opacity-active));
 }

@@ -9,20 +9,16 @@ $card-emphasis-color: var(--text-highlighted);
 $card-font-size: variables.$font-sm;
 $card-radius: variables.$radius;
 $card-gap: var(--space-sm);
-$card-shadow: var(--shadow);
-$card-shadow-active: var(--shadow-active);
 
 .card {
   background-color: $card-background;
   border-radius: $card-radius;
   padding: $card-gap;
   font-size: $card-font-size;
-  box-shadow: $card-shadow;
 
   &:focus,
   &:hover {
     background-color: $card-background-active;
-    box-shadow: $card-shadow-active;
   }
 
   &-title {

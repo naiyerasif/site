@@ -27,6 +27,7 @@ module.exports = {
     deep: [
       /^~/,
       /^!/,
+      /^%/,
       /gridsome-highlight$/,
       /tbody$/,
       /tfoot$/,
