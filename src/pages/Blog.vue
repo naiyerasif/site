@@ -24,7 +24,7 @@
       </div>
     </main>
     <template #sidekick>
-      <Pagination path="blog" :input="$page.posts.pageInfo" />
+      <Pagination path="blog" :total="$page.posts.pageInfo.totalPages" :current="$page.posts.pageInfo.currentPage" />
     </template>
   </Layout>
 </template>
