@@ -33,4 +33,11 @@
       background-color: var(--chip-background-active);
     }
   }
+
+  &.\~sm {
+    --chip-padding-block: #{variables.$ch-sm};
+    --chip-padding-inline: #{variables.$ch-md};
+
+    font-size: 0.8em;
+  }
 }

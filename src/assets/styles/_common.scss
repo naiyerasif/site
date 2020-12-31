@@ -60,10 +60,6 @@ $topics-separator: variables.$symbol-separator;
   font-weight: var(--weight-bold);
 }
 
-.is-captialized {
-  text-transform: capitalize;
-}
-
 .is-clickable {
   cursor: pointer;
 
@@ -100,21 +96,6 @@ $topics-separator: variables.$symbol-separator;
 
 .is-bordered {
   border: 1px solid var(--border);
-}
-
-.is-round {
-  border-radius: 10rem;
-}
-
-.is-undecorated {
-  &:focus,
-  &:hover {
-    text-decoration: none;
-  }
-}
-
-.is-right {
-  text-align: right;
 }
 
 .is-middle {

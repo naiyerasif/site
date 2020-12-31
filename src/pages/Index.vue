@@ -40,8 +40,8 @@
             </div>
           </div>
         </div>
-        <div class="is-right">
-          <g-link class="label mt-2 is-round is-undecorated is-right" to="/blog/2/">Browse more &xrarr;</g-link>
+        <div class="text-right">
+          <g-link class="chip mt-2 !high ~sm uppercase tracking-widest" to="/blog/2/">Browse more &xrarr;</g-link>
         </div>
       </div>
     </main>
