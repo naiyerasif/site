@@ -31,13 +31,13 @@
     <template #sidekick>
       <div class="sidekick-actions">
         <a target="_blank" rel="noopener noreferrer" title="Edit this page" :href="editUrl">
-          <Sprite symbol="icon-edit" class="icon-rg" />
+          <Sprite symbol="icon-edit-file" class="icon-rg" />
         </a>
         <a v-if="$page.post.headings.length > 0" href="#table-of-contents" title="Table of Contents">
-          <Sprite symbol="icon-contents" class="icon-rg" />
+          <Sprite symbol="icon-table-of-content" class="icon-rg" />
         </a>
         <a href="#app" title="Back to top">
-          <Sprite symbol="icon-up" class="icon-rg" />
+          <Sprite symbol="icon-back-to-top" class="icon-rg" />
         </a>
       </div>
       <div class="sidekick-navigation">

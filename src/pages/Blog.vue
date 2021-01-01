@@ -13,7 +13,7 @@
             <div class="card-header has-separated">
               <time v-html="post.node.date" />
               <span>&sim;{{ post.node.timeToRead }} min read</span>
-              <strong class="captialize">{{ post.node.category }}</strong>
+              <strong class="capitalize">{{ post.node.category }}</strong>
             </div>
             <div class="card-title is-header">
               <g-link :to="post.node.path">{{ post.node.title }}</g-link>

@@ -12,14 +12,14 @@
           <div class="footer-title">Resources</div>
           <a href="/feed.xml"><Sprite symbol="icon-rss" class="icon-sm gap-ch" />RSS feed</a>
           <a href="/sitemap.xml"><Sprite symbol="icon-sitemap" class="icon-sm gap-ch" />Sitemap</a>
-          <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site"><Sprite symbol="icon-code" class="icon-sm gap-ch" />Source code</a>
+          <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site"><Sprite symbol="icon-code-file" class="icon-sm gap-ch" />Source code</a>
         </nav>
         <nav class="footer-menu-section">
           <div class="footer-title">Support</div>
-          <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site/issues/new"><Sprite symbol="icon-feedback" class="icon-sm gap-ch" />Report an issue</a>
+          <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site/issues/new"><Sprite symbol="icon-user-feedback" class="icon-sm gap-ch" />Report an issue</a>
           <a href="/profile/naiyer/#privacy"><Sprite symbol="icon-privacy" class="icon-sm gap-ch" />Privacy</a>
-          <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site/blob/main/LICENSE.md"><Sprite symbol="icon-license" class="icon-sm gap-ch" />Site license (MIT)</a>
-          <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/"><Sprite symbol="icon-license" class="icon-sm gap-ch" />Content license (CC by SA)</a>
+          <a target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site/blob/main/LICENSE.md"><Sprite symbol="icon-software-license" class="icon-sm gap-ch" />Site license (MIT)</a>
+          <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/"><Sprite symbol="icon-software-license" class="icon-sm gap-ch" />Content license (CC by SA)</a>
         </nav>
         <nav class="footer-menu-section">
           <div class="footer-title">Connect</div>
