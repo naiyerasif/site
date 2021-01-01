@@ -18,7 +18,7 @@
     <template #sidekick>
       <div class="sidekick-actions">
         <a href="#app" title="Back to top">
-          <Sprite symbol="icon-up" class="icon-rg" />
+          <Sprite symbol="icon-back-to-top" class="icon-rg" />
         </a>
       </div>
     </template>

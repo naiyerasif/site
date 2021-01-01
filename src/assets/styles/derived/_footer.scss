@@ -70,29 +70,6 @@ $pagination-item-gapy: variables.$ch-rg * 0.2;
 
   .sidekick {
 
-    .pagination {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-
-      .active {
-        font-weight: normal;
-      }
-
-      .is-current {
-        background-color: $pagination-current-background;
-      }
-
-      > * {
-        border: 1px solid $pagination-border;
-        @include utils.tappable($gapx: $pagination-item-gapx, $gapy: $pagination-item-gapy, $radius: $pagination-radius);
-
-        &:not(:last-child) {
-          margin-right: $pagination-item-gapx;
-        }
-      }
-    }
-
     &-actions {
       display: flex;
       flex-basis: 100%;

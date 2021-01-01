@@ -8,7 +8,7 @@
         <div class="search-box" :class="{ 'no-border-radius': query.length > 0 && searchResultsVisible}">
           <input type="text" class="search-input" placeholder="Search blog posts ..." v-model="query" @input="softReset" @keyup="performSearch" @keyup.esc="searchResultsVisible = false" @keydown.up.prevent="highlightPrev" @keydown.down.prevent="highlightNext" @keyup.enter="performSearch" @blur="searchResultsVisible = false" @focus="searchResultsVisible = true" ref="search" aria-label="Search blog posts">
           <a role="button" aria-label="Reset search" @click="reset" class="search-reset is-icon">
-            <Sprite symbol="icon-reset" class="icon-rg" />
+            <Sprite symbol="icon-clear-search" class="icon-rg" />
           </a>
         </div>
         <transition name="dissolve" mode="out-in">

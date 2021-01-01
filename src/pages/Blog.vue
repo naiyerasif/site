@@ -9,11 +9,11 @@
     <main class="container has-content-my">
       <div class="has-content-mx">
         <div class="grid" style="--grid-column-width: 18rem">
-          <div class="card is-clickable" v-for="post in $page.posts.edges" :key="post.id" @click="$router.push(post.node.path)">
+          <div class="card shadow %active is-clickable" v-for="post in $page.posts.edges" :key="post.id" @click="$router.push(post.node.path)">
             <div class="card-header has-separated">
               <time v-html="post.node.date" />
               <span>&sim;{{ post.node.timeToRead }} min read</span>
-              <strong class="is-captialized">{{ post.node.category }}</strong>
+              <strong class="capitalize">{{ post.node.category }}</strong>
             </div>
             <div class="card-title is-header">
               <g-link :to="post.node.path">{{ post.node.title }}</g-link>
@@ -24,7 +24,7 @@
       </div>
     </main>
     <template #sidekick>
-      <Pagination path="blog" :input="$page.posts.pageInfo" />
+      <Pagination path="blog" :total="$page.posts.pageInfo.totalPages" :current="$page.posts.pageInfo.currentPage" />
     </template>
   </Layout>
 </template>
