@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src/*"],
+      "@/*": ["./*"]
+    }
+  },
+  "exclude": [
+    ".cache",
+    ".github",
+    ".vscode",
+    "archive",
+    "content",
+    "node_modules",
+    "public",
+    "static"
+  ]
+}
