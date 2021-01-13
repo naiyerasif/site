@@ -1,8 +1,8 @@
-.archive
 .env
 .temp
 .*cache
 .vscode
+archive
 node_modules
 public
 report.json

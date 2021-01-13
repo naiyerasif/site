@@ -25,11 +25,11 @@ node bin/content.js --content note --date '2 days 3 hours ago' --title 'Customiz
 
 ### Generate SVG sprites
 
-Dump individual icons in a folder (say, `.archive/svg`) and use [`spritely`](https://www.npmjs.com/package/@microflash/spritely) to generate the sprite.
+Dump individual icons in a folder (say, `archive/svg`) and use [`spritely`](https://www.npmjs.com/package/@microflash/spritely) to generate the sprite.
 
 ```sh
 yarn global add @microflash/spritely      # install spritely globally
-spritely --input .archive/svg --output cards.svg
+spritely --input archive/svg --output cards.svg
 ```
 
 Refer to the [spritely docs](https://github.com/Microflash/spritely) for usage details.

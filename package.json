@@ -16,8 +16,8 @@
     "new:post": "node bin/content.js --content post",
     "new:note": "node bin/content.js --content note",
     "sprite": "npm run sprite:backup && npm run sprite:build",
-    "sprite:backup": "shx cp static/assets/images/icons.svg .archive/backups/icons.svg",
-    "sprite:build": "spritely --input .archive/svg/icons --output static/assets/images/icons.svg --prefix \"icon-\""
+    "sprite:backup": "shx cp static/assets/images/icons.svg archive/backups/icons.svg",
+    "sprite:build": "spritely --input archive/svg/icons --output static/assets/images/icons.svg --prefix \"icon-\""
   },
   "dependencies": {
     "@gridsome/plugin-google-analytics": "^0.1.2",
