@@ -24,7 +24,7 @@ module.exports = api => {
       }
 
       if (typeof(options.outdated) == 'undefined') {
-        options.outdated = outdationDate && dayjs(options.updated, 'YYYY-MM-DD HH:mm:ss').isBefore(outdationDate) ? 'true' : 'undefined'
+        options.outdated = outdationDate && dayjs(options.updated).isBefore(outdationDate) ? 'true' : 'undefined'
       }
     }
     

@@ -964,12 +964,12 @@
     log-update "^2.3.0"
     p-map "^1.2.0"
 
-"@microflash/gridsome-plugin-feed@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@microflash/gridsome-plugin-feed/-/gridsome-plugin-feed-1.2.0.tgz#e81d41207d445192ea4cac3f48d3767f7d7eb336"
-  integrity sha512-6DH1PpBFlJBNHCATh5eVsFx4xXFKJdLWgnycdv3ssdL+Ds5L0PHnThX+gdY2Xl3NnhltTRnygtqiJyLAXG4Xmg==
+"@microflash/gridsome-plugin-feed@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@microflash/gridsome-plugin-feed/-/gridsome-plugin-feed-1.2.1.tgz#b57b687f000d13adc5ca6ab1a1f1d77df0caf8b0"
+  integrity sha512-1/AM0igskl8pczLdjkYfHvzsBQgSoKUow2x7OfcXn3UJz0Cz79AEXs/yULKdMTcu5L2Ix/4qooa263tMsqiKdQ==
   dependencies:
-    dayjs "^1.9.6"
+    dayjs "^1.9.8"
     feed "^4.2.1"
 
 "@microflash/remarkability@^2.0.2":
@@ -3046,7 +3046,12 @@ dateformat@^3.0.3:
   resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-3.0.3.tgz#a6e37499a4d9a9cf85ef5872044d62901c9889ae"
   integrity sha512-jyCETtSl3VMZMWeRo7iY1FL19ges1t55hMo5yaam4Jrsm5EPL89UQkoQRyiI+Yf4k8r2ZpdngkV8hr1lIdjb3Q==
 
-dayjs@^1.8.29, dayjs@^1.9.6:
+dayjs@^1.10.3:
+  version "1.10.3"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.3.tgz#cf3357c8e7f508432826371672ebf376cb7d619b"
+  integrity sha512-/2fdLN987N8Ki7Id8BUN2nhuiRyxTLumQnSQf9CNncFCyqFsSKb9TNhzRYcC8K8eJSJOKvbvkImo/MKKhNi4iw==
+
+dayjs@^1.8.29:
   version "1.9.7"
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.9.7.tgz#4b260bb17dceed2d5f29038dfee03c65a6786fc0"
   integrity sha512-IC877KBdMhBrCfBfJXHQlo0G8keZ0Opy7YIIq5QKtUbCuHMzim8S4PyiVK4YmihI3iOF9lhfUBW4AQWHTR5WHA==
@@ -4511,10 +4516,10 @@ googleapis-common@^4.4.1:
     url-template "^2.0.8"
     uuid "^8.0.0"
 
-googleapis@^66.0.0:
-  version "66.0.0"
-  resolved "https://registry.yarnpkg.com/googleapis/-/googleapis-66.0.0.tgz#008062d06b13954bd3a0425c17e8f8396e884957"
-  integrity sha512-jdEleRoyo/AeJZjKGC7Z2mHgochn2vR2JKqey6kydRkIBmCZxoQKLisRR4H8CRYZeEd6+c8Ns/LzS1S7qUjoFw==
+googleapis@^67.0.0:
+  version "67.0.0"
+  resolved "https://registry.yarnpkg.com/googleapis/-/googleapis-67.0.0.tgz#ce0b92dcf5e4bc0fd1b82666a1625eb37fd3dc36"
+  integrity sha512-luhulHrk42DruR+c12W2sY2rrEVoKVdjaZDuHWSxcp1qz+VxvWQpuiK2QDLCXmo36/VFPMaa+Y7rRUR+Qqzd7w==
   dependencies:
     google-auth-library "^6.0.0"
     googleapis-common "^4.4.1"
@@ -8387,10 +8392,10 @@ sanitize-html@^1.20.0:
     parse-srcset "^1.0.2"
     postcss "^7.0.27"
 
-sass-loader@^10.1.0:
-  version "10.1.0"
-  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-10.1.0.tgz#1727fcc0c32ab3eb197cda61d78adf4e9174a4b3"
-  integrity sha512-ZCKAlczLBbFd3aGAhowpYEy69Te3Z68cg8bnHHl6WnSCvnKpbM6pQrz957HWMa8LKVuhnD9uMplmMAHwGQtHeg==
+sass-loader@^10.1.1:
+  version "10.1.1"
+  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-10.1.1.tgz#4ddd5a3d7638e7949065dd6e9c7c04037f7e663d"
+  integrity sha512-W6gVDXAd5hR/WHsPicvZdjAWHBcEJ44UahgxcIE196fW2ong0ZHMPO1kZuI5q0VlvMQZh32gpv69PLWQm70qrw==
   dependencies:
     klona "^2.0.4"
     loader-utils "^2.0.0"
@@ -8398,10 +8403,10 @@ sass-loader@^10.1.0:
     schema-utils "^3.0.0"
     semver "^7.3.2"
 
-sass@^1.32.0:
-  version "1.32.0"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.32.0.tgz#10101a026c13080b14e2b374d4e15ee24400a4d3"
-  integrity sha512-fhyqEbMIycQA4blrz/C0pYhv2o4x2y6FYYAH0CshBw3DXh5D5wyERgxw0ptdau1orc/GhNrhF7DFN2etyOCEng==
+sass@^1.32.2:
+  version "1.32.4"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.32.4.tgz#308bf29dd7f53d44ae4f06580e9a910ad9aa411e"
+  integrity sha512-N0BT0PI/t3+gD8jKa83zJJUb7ssfQnRRfqN+GIErokW6U4guBpfYl8qYB+OFLEho+QvnV5ZH1R9qhUC/Z2Ch9w==
   dependencies:
     chokidar ">=2.0.0 <4.0.0"
 
