@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <template #hero>
-      <div class="container flex flex-wrap flex-column items-start">
+      <div class="container flex flex-wrap flex-col items-start">
         <div class="flex items-center flex-wrap font-mono text-sm separated mb-base">
           <div v-html="displayDate" />
           <div>Reading time <strong>&sim;{{ $page.post.timeToRead }} mins</strong></div>
