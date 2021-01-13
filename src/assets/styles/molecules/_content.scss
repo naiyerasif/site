@@ -51,7 +51,7 @@ main.container {
   }
 }
 
-// reference links
+// reference links and code
 
 h1, 
 h2, 
@@ -72,6 +72,13 @@ h6 {
     &::after {
       content: '#';
     }
+  }
+
+  & code {
+    padding: 0;
+    background-color: transparent;
+    font-size: 0.95em;
+    color: var(--semantic-inform);
   }
 }
 
