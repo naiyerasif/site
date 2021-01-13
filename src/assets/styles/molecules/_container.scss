@@ -1,0 +1,15 @@
+@use '~/assets/styles/core/variables' as *;
+@use '~/assets/styles/mixins/gap' as *;
+
+// container
+
+.container {
+  max-width: $maxwidth-base;
+  @include mx(auto);
+}
+
+// max-width
+
+.max-sm {
+  max-width: $maxwidth-sm;
+}

@@ -4,53 +4,18 @@
   </transition>
 </template>
 
-<style>
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateZ(-100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateZ(0);
-  }
-}
+<style lang="scss" scoped>
+@use '~/assets/styles/mixins/animate' as *;
 
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-    transform: translateZ(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateZ(-100%);
-  }
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  animation-duration: 500ms;
-  transition-duration: 500ms;
-  animation-fill-mode: both;
-  transition-timing-function: ease-out;
-}
-
-@media (print), (prefers-reduced-motion: reduce) {
-  .fade-enter-active,
-  .fade-leave-active {
-    animation-duration: 1ms;
-    transition-duration: 1ms;
-    animation-iteration-count: 1;
-  }
-}
+@include transform-with-opacity(fadeIn, 0, translateZ(-100%), 1, translateZ(0));
+@include transform-with-opacity(fadeOut, 1, translateZ(0%), 0, translateZ(-100%));
 
 .fade-enter-active {
-  animation-name: fadeIn;
-  
+  @include animate(fadeIn, $timing-fn: ease-out);
 }
 
 .fade-leave-active {
-  animation-name: fadeOut;
+  @include animate(fadeOut, $timing-fn: ease-out);
 }
 
 .fade-enter,

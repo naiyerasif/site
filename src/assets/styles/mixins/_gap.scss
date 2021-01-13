@@ -1,0 +1,23 @@
+// padding utilities
+
+@mixin px($value) {
+  padding-right: $value;
+  padding-left: $value;
+}
+
+@mixin py($value) {
+  padding-top: $value;
+  padding-bottom: $value;
+}
+
+//margin utilities
+
+@mixin mx($value) {
+  margin-right: $value;
+  margin-left: $value;
+}
+
+@mixin my($value) {
+  margin-top: $value;
+  margin-bottom: $value;
+}

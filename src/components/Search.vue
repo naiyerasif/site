@@ -1,28 +1,35 @@
 <template>
-  <div class="search">
-    <a class="is-icon" role="button" aria-label="Launch search" @click="expand">
-      <Sprite symbol="icon-search" class="icon-rg" />
+  <div class="search flex items-center">
+    <a class="leading-none tappable focus:bg-ruby hover:bg-ruby" role="button" aria-label="Launch search" @click="launch">
+      <Sprite symbol="icon-search" class="icon" />
     </a>
     <transition name="dissolve" mode="out-in">
-      <div v-if="expanded" class="search-container">
-        <div class="search-box" :class="{ 'no-border-radius': query.length > 0 && searchResultsVisible}">
-          <input type="text" class="search-input" placeholder="Search blog posts ..." v-model="query" @input="softReset" @keyup="performSearch" @keyup.esc="searchResultsVisible = false" @keydown.up.prevent="highlightPrev" @keydown.down.prevent="highlightNext" @keyup.enter="performSearch" @blur="searchResultsVisible = false" @focus="searchResultsVisible = true" ref="search" aria-label="Search blog posts">
-          <a role="button" aria-label="Reset search" @click="reset" class="search-reset is-icon">
-            <Sprite symbol="icon-clear-search" class="icon-rg" />
-          </a>
-        </div>
-        <transition name="dissolve" mode="out-in">
-          <div v-if="query.length > 0 && searchResultsVisible" class="search-results">
-            <div class="results-box" ref="results">
-              <section class="result-label">
-                {{ results.length > 0 ? results.length === 1 ? `${results.length} result` : `${results.length} results` : `🙁 No results found for "${this.query}"` }}
-              </section>
-              <a v-for="(post, index) in results" :key="index" :href="post.item.path" @click="reset" class="result-item">
-                <span class="result-title">{{ post.item.title }}</span>
-              </a>
-            </div>
+      <div v-if="launched" class="search-modal fixed inset-0">
+        <search-escape @keyup.esc="escapeSearch" />
+        <div class="search-panel fixed inset-0 overflow-hidden flex flex-col shadow border-1 border-solid border-spinel rounded-2xl bg-tertiary my-far-md mx-auto px-far-sm py-far-sm max-w-4xl max-h-4xl z-50">
+          <div class="search-box flex items-center justify-between">
+            <Sprite symbol="icon-search" class="icon text-primary" />
+            <input type="text" class="search-input bg-transparent border-none outline-none basis-100 mx-base" placeholder="Search blog posts..." v-model="query" @input="softReset" @keyup="performSearch" @keydown.up.prevent="highlightPrev" @keydown.down.prevent="highlightNext" @keyup.enter="performSearch" ref="search" aria-label="Search blog posts"/>
+            <a role="button" aria-label="Reset search" @click="reset" class="search-reset leading-none focus:no-underline hover:no-underline">
+              <kbd class="tappable focus:bg-ruby hover:bg-ruby">esc</kbd>
+            </a>
           </div>
-        </transition>
+          <hr class="my-lg" />
+          <div v-if="query.length > 0 && searchResultsVisible" class="search-results overflow-auto pr-md mr-close-sm basis-100">
+            <strong v-if="results.length > 0">
+              {{ results.length === 1 ? `${results.length} result` : `${results.length} results` }}
+            </strong>
+            <div v-else class="flex items-center justify-center basis-100" style="height: 100%">
+              <no-results width="65%" />
+            </div>
+            <a v-for="(post, index) in results" :key="index" :href="post.item.path" @click="reset" class="search-result block mt-sm rounded-lg px-base py-base bg-quartz focus:bg-ruby hover:bg-ruby">
+              <span class="result-title">{{ post.item.title }}</span>
+            </a>
+          </div>
+          <div v-else class="flex items-center justify-center basis-100 overflow-auto">
+            <searching width="65%" />
+          </div>
+        </div>
       </div>
     </transition>
   </div>
@@ -30,14 +37,20 @@
 
 <script>
 import axios from 'axios'
+import Searching from '@/static/assets/images/searching.svg'
+import NoResults from '@/static/assets/images/noresults.svg'
 import Sprite from './Sprite'
+import SearchEscape from './SearchEscape'
 
 import * as appConfig from '@/app.config'
 const { search, paths } = appConfig
 
 export default {
   components: {
-    Sprite
+    Sprite,
+    Searching,
+    NoResults,
+    SearchEscape
   },
   created() {
     axios(`/${paths.search.name}`).then(response => {
@@ -54,14 +67,14 @@ export default {
       highlightedIndex: 0,
       searchResultsVisible: false,
       options: search,
-      expanded: false
+      launched: false
     }
   },
   methods: {
     reset() {
       this.query = ''
       this.highlightedIndex = 0
-      this.expanded = !this.expanded
+      this.launched = !this.launched
     },
     softReset() {
       this.highlightedIndex = 0
@@ -87,14 +100,17 @@ export default {
     scrollIntoView() {
       this.$refs.results.children[this.highlightedIndex].scrollIntoView({ block: 'nearest' })
     },
-    expand(e) {
-      this.expanded = !this.expanded
+    launch(e) {
+      this.launched = !this.launched
 
-      if (this.expanded) {
+      if (this.launched) {
         this.$nextTick(() => {
           this.$refs.search.focus()
         })
       }
+    },
+    escapeSearch(e) {
+      this.launched = !this.launched
     }
   }
 }

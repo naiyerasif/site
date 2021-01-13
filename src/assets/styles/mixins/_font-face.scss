@@ -1,0 +1,52 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+
+$default-formats: ('woff2', 'woff');
+
+@function _contains($list, $values...) {
+  @each $value in $values {
+    @if meta.type-of(list.index($list, $value)) != 'number' {
+      @return false;
+    }
+  }
+
+  @return true;
+}
+
+@function _declare-font-src($font-family, $file-path, $file-formats) {
+  $src: ();
+
+  $formats-map: (
+    'woff2 supports variations(gvar)': '#{$file-path}.woff2'format('woff2 supports variations(gvar)'),
+    'woff2-variations': '#{$file-path}.woff2'format('woff2-variations'),
+    'woff2': '#{$file-path}.woff2'format('woff2'),
+    'woff': '#{$file-path}.woff'format('woff')
+  );
+
+  @each $format in $file-formats {
+    @if _contains(map.keys($formats-map), $format) {
+      $value: map.get($formats-map, $format);
+      $file-path: list.nth($value, 1);
+      $font-format: list.nth($value, 2);
+
+      $src: list.append($src, url($file-path) $font-format, comma);
+    } @else {
+      @error '`#{$file-formats}` contains an unsupported font file format. ' +
+             'Must be `woff2 supports variations(gvar)`, `woff2-variations`, `woff2` and/or `woff`.';
+    }
+  }
+
+  @return $src;
+}
+
+@mixin font-face($font-family, $font-weight, $file-path, $font-style: normal, $file-formats: $default-formats) {
+  @font-face {
+    font-family: $font-family;
+    font-display: swap;
+    src: _declare-font-src($font-family, $file-path, $file-formats);
+    font-style: $font-style;
+    font-weight: $font-weight;
+    @content;
+  }
+}

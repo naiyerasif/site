@@ -1,6 +1,6 @@
 <template>
-  <a role="switch" @click.prevent="switchTheme" :aria-label="'Switch to ' + nextTheme + ' theme'" aria-checked="true" class="theme-switcher is-icon">
-    <svg viewBox="0 0 24 24" class="icon-rg">
+  <a role="switch" @click.prevent="switchTheme" :aria-label="'Switch to ' + nextTheme + ' theme'" aria-checked="true" class="theme-switcher leading-none tappable focus:bg-ruby hover:bg-ruby">
+    <svg viewBox="0 0 24 24" class="icon">
       <transition name="slide-up" mode="out-in">
         <use :href="uri('moon')" key="dark" v-if="theme === 'dark'"></use>
         <use :href="uri('sun')" key="light" v-else></use>

@@ -44,6 +44,7 @@ This site was made possible by
 - [Gridsome](https://gridsome.org/): a modern Vue.js framework for static websites (and more)
 - [Gridsome Portfolio Starter](https://github.com/drehimself/gridsome-portfolio-starter): a simple portfolio starter for Gridsome
 - [Gridsome Casper V3 Starter](https://github.com/noxify/gridsome-starter-casper-v3): Gridsome starter based on Ghost Casper V3 and tailwindcss
+- [Tailwind CSS](https://tailwindcss.com/): a utility-first CSS framework
 - [Fuse.js](https://fusejs.io/): a lightweight fuzzy-search library
 - [Prism](https://prismjs.com/): a lightweight, extensible syntax highlighter
 - [Feather](https://feathericons.com/): beautiful open-source icons
@@ -51,7 +52,6 @@ This site was made possible by
 - [Spritely](https://github.com/Microflash/spritely): a Node.js CLI to generate SVG sprites
 - [Remarkability](https://remarkability.netlify.app): a compact CSS library for a pleasant reading experience on the web
 - [Bourbon](https://www.bourbon.io/): a lightweight Sass tool set
-- [PurgeCSS](https://purgecss.com/): a tool to remove unused CSS
 - [Animate.css](https://github.com/daneden/animate.css): a cross-browser library of CSS animations
 - [Grid By Example](https://gridbyexample.com/): a collection of examples and references on CSS Grid
 

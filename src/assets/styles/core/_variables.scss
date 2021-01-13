@@ -1,0 +1,64 @@
+// typography
+
+$fonts-directory: '/assets/fonts' !default;
+
+// spacing
+
+$breakpoint-sm: 600px !default;
+$breakpoint-md: 900px !default;
+
+$maxwidth-sm: 70ch !default;
+$maxwidth-base: calc(#{$breakpoint-md} + 15vw) !default;
+
+$gap-xs: 0.5rem !default;
+$gap-sm: 0.75rem !default;
+$gap-base: 1rem !default;
+$gap-md: 1.25rem !default;
+$gap-lg: 1.5rem !default;
+$gap-xl: 2rem !default;
+
+// remarkability
+
+@use '@/node_modules/@microflash/remarkability/scss/variables' with (
+  $root: 'body',
+  $lead: '.article > p:first-of-type',
+  $enable-selection-background: true,
+  $enable-lead-paragraph: true,
+  $enable-custom-scrollbar: true,
+  $enable-custom-colors: true,
+  $enable-custom-fonts: true,
+  $enable-media-radius: true,
+  $enable-active-links: true,
+  $enable-variable-fonts: true,
+  $family-sans-custom: 'Inter',
+  $family-code-custom: 'JetBrains Mono',
+  $family-sans-variable: 'Inter var',
+  $font-families: (
+    'headings': 'default-sans' 'Space Grotesk' 'Space Grotesk var'
+  ),
+  $font-size-base: var(--text-base),
+  $weight-bold: var(--weight-bold),
+  $background-body: var(--brand-tertiary),
+  $background-code: var(--decorative-opal),
+  $background-del: var(--decorative-ruby),
+  $background-ins: var(--decorative-jade),
+  $background-mark: var(--decorative-gold),
+  $background-table: inherit,
+  $background-table-even: inherit,
+  $background-table-hover: var(--decorative-gold),
+  $background-selected: var(--decorative-jade),
+  $background-scrollbar: transparent,
+  $border-color: var(--decorative-spinel),
+  $radius: var(--radius-base),
+  $text: var(--brand-secondary),
+  $text-code: inherit,
+  $text-bold: inherit,
+  $text-muted: var(--semantic-neutral),
+  $text-headings: var(--brand-secondary),
+  $link: var(--brand-primary),
+  $link-active: var(--semantic-deter),
+  $link-visited: var(--semantic-urge),
+  $table-thead: inherit,
+  $scrollbar: var(--decorative-spinel),
+  $margin: $gap-lg
+);

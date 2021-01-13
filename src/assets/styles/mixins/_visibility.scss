@@ -1,0 +1,11 @@
+// visibility mixin
+
+@mixin hide($hidden: true) {
+  @if $hidden {
+    visibility: hidden;
+    display: none;
+  } @else {
+    visibility: visible;
+    display: revert;
+  }
+}

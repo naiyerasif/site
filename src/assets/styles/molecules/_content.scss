@@ -1,0 +1,88 @@
+@use '~/assets/styles/core/variables' as *;
+@use '~/assets/styles/mixins/gap' as *;
+@use '~/assets/styles/mixins/queries';
+@use '~/assets/styles/mixins/visibility';
+@use '@/node_modules/@microflash/remarkability/scss/mixins';
+
+// article container
+
+main.container {
+  figure img,
+  figure svg,
+  div[class$='-embed'] iframe {
+    border: 1px solid var(--decorative-quartz);
+    border-radius: var(--radius-base);
+  }
+
+  div[class$='-embed'],
+  .gridsome-highlight {
+    margin-bottom: $gap-xl;
+  }
+
+  figure,
+  div[class$='-embed'],
+  .gridsome-highlight {
+    position: relative;
+    width: calc(70ch + 8vw);
+
+    @include queries.rg {
+      width: 100vw;
+      left: 50%;
+      right: 50%;
+      @include mx(-50vw);
+    }
+  }
+
+  ul, ol, dl {
+    margin-left: 1.75rem;
+  }
+
+  li::marker {
+    color: var(--semantic-neutral);
+  }
+
+  $headers: (h1, h2, h3, h4, h5, h6);
+
+  @each $header in $headers {
+    *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) + #{$header} {
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+    }
+  }
+}
+
+// reference links
+
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6 {
+  @include mixins.font('headings');
+  font-feature-settings: 'ss04' 1, 'case' 1, 'zero' 1;
+  
+  &:focus a .reference,
+  &:hover a .reference {
+    @include visibility.hide(false);
+    display: inline-block;
+    width: 1.25ch;
+    margin-left: -1.25ch;
+
+    &::after {
+      content: '#';
+    }
+  }
+}
+
+// indicator for external links
+
+a {
+  &[rel*='nofollow']::after {
+    content: '\02197';
+  }
+
+  &.active {
+    font-weight: var(--weight-bold);
+  }
+}

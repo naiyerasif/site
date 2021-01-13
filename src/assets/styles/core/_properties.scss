@@ -1,0 +1,19 @@
+@use 'variables' as *;
+@use '~/assets/styles/mixins/queries';
+
+:root {
+  --gap-xs: #{$gap-xs};
+  --gap-sm: #{$gap-sm};
+  --gap-base: #{$gap-base};
+  --gap-md: #{$gap-md};
+  --gap-lg: #{$gap-lg};
+  --gap-xl: #{$gap-xl};
+
+  --code-px: var(--far-base);
+  --code-mx: var(--close-base);
+
+  @include queries.md {
+    --code-px: var(--far-sm);
+    --code-mx: var(--close-sm);
+  }
+}

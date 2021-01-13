@@ -1,23 +1,22 @@
 <template>
   <Layout>
     <template #hero>
-      <Hero>
-        <h1 class="title">{{ getMsg() }}</h1>
-        <div class="subtitle">
-          &xlarr; Return to <g-link to="/">Home</g-link>.
-        </div>
-      </Hero>
+      <div class="container">
+        <h1 class="font-headings leading-tight text-lg">{{ getMsg() }}</h1>
+        <div class="text-md text-neutral">&xlarr; Return to <g-link to="/">Home</g-link>.</div>
+      </div>
     </template>
-    <main>
-      <figure>
-        <NotFound />
-      </figure>
+    <main class="container px-far-base">
+      <div class="article max-sm">
+        <figure>
+          <NotFound />
+        </figure>
+      </div>
     </main>
   </Layout>
 </template>
 
 <script>
-import Hero from '~/components/partials/Hero'
 import NotFound from '@/static/assets/images/404.svg'
 
 const msgs = [
@@ -32,7 +31,6 @@ export default {
     title: 'Page not found'
   },
   components: {
-    Hero,
     NotFound
   },
   methods: {

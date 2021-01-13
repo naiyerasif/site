@@ -1,0 +1,26 @@
+@mixin animate($name, $duration: 500ms, $timing-fn: ease-in-out) {
+  animation-name: $name;
+  animation-duration: $duration;
+  transition-duration: $duration;
+  animation-fill-mode: both;
+  transition-timing-function: $timing-fn;
+
+  @media (print), (prefers-reduced-motion: reduce) {
+    animation-duration: 1ms;
+    transition-duration: 1ms;
+    animation-iteration-count: 1;
+  }
+}
+
+@mixin transform-with-opacity($name, $fromOpacity, $fromTransform, $toOpacity, $toTransform) {
+  @keyframes #{$name} {
+    from {
+      opacity: $fromOpacity;
+      transform: $fromTransform;
+    }
+    to {
+      opacity: $toOpacity;
+      transform: $toTransform;
+    }
+  }
+}

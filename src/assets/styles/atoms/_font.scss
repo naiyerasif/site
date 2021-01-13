@@ -1,0 +1,42 @@
+@use '~/assets/styles/core/variables';
+@use '~/assets/styles/mixins/font-face' as *;
+
+@function _font-path($font-file-name, $font-context: variables.$fonts-directory) {
+  @return '#{$font-context}/#{$font-file-name}';
+}
+
+// NON-VARIABLE FONT DECLARATIONS
+
+@include font-face('Inter', 350, _font-path('Inter-Light'));
+@include font-face('Inter', 350, _font-path('Inter-LightItalic'), italic);
+@include font-face('Inter', 400, _font-path('Inter-Regular'));
+@include font-face('Inter', 400, _font-path('Inter-Italic'), italic);
+@include font-face('Inter', 600, _font-path('Inter-SemiBold'));
+@include font-face('Inter', 600, _font-path('Inter-SemiBoldItalic'), italic);
+@include font-face('Inter', 700, _font-path('Inter-Bold'));
+@include font-face('Inter', 700, _font-path('Inter-BoldItalic'), italic);
+
+@include font-face('Space Grotesk', 600, _font-path('SpaceGrotesk-Medium'));
+@include font-face('Space Grotesk', 700, _font-path('SpaceGrotesk-Bold'));
+
+@include font-face('JetBrains Mono', 350, _font-path('JetBrainsMono-SemiLight'));
+@include font-face('JetBrains Mono', 400, _font-path('JetBrainsMono-Regular'));
+@include font-face('JetBrains Mono', 600, _font-path('JetBrainsMono-Medium'));
+@include font-face('JetBrains Mono', 700, _font-path('JetBrainsMono-Bold'));
+
+// VARIABLE FONT DECLARATIONS
+
+@include font-face('Inter var', 100 900, _font-path('Inter-roman.var'),
+  $file-formats: ('woff2 supports variations(gvar)', 'woff2-variations', 'woff2')) {
+  font-named-instance: 'Regular';
+}
+
+@include font-face('Inter var', 100 900, _font-path('Inter-italic.var'), italic,
+  $file-formats: ('woff2 supports variations(gvar)', 'woff2-variations', 'woff2')) {
+  font-named-instance: 'Italic';
+}
+
+@include font-face('Space Grotesk var', 100 900, _font-path('SpaceGrotesk-var'),
+  $file-formats: ('woff2 supports variations(gvar)', 'woff2-variations', 'woff2')) {
+  font-named-instance: 'Regular';
+}

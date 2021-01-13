@@ -1,24 +1,24 @@
 <template>
   <Layout>
     <template #hero>
-      <Hero flex>
-        <div class="hero-media">
-          <g-image :alt="firstName" :src="$page.profile.avatar" />
+      <div class="container flex flex-wrap">
+        <div class="avatar mr-far-base md:mb-far-base">
+          <g-image class="rounded-full border-1 border-solid border-spinel" :alt="firstName" :src="$page.profile.avatar" />
         </div>
-        <div class="hero-content">
-          <h1 class="title">Hello, I'm <span class="is-primary">{{ firstName }}</span></h1>
-          <div class="subtitle">a {{ $page.profile.role | lowerCase }} from {{ $page.profile.location }}</div>
+        <div class="introduction">
+          <h1 class="font-headings leading-tight text-lg">Hi, I'm <span class="text-deter">{{ firstName }}</span></h1>
+          <div class="text-md text-neutral">a {{ $page.profile.role | lowerCase }} from {{ $page.profile.location }}</div>
         </div>
-      </Hero>
+      </div>
     </template>
     <ScrollIndicator />
-    <main class="content">
-      <article class="article" v-html="$page.profile.content" />
+    <main class="container px-far-base">
+      <article class="article max-sm" v-html="$page.profile.content" />
     </main>
     <template #sidekick>
-      <div class="sidekick-actions">
-        <a href="#app" title="Back to top">
-          <Sprite symbol="icon-back-to-top" class="icon-rg" />
+      <div class="flex justify-end">
+        <a class="leading-none tappable focus:bg-ruby hover:bg-ruby" href="#app" title="Back to top">
+          <Sprite symbol="icon-back-to-top" class="icon" />
         </a>
       </div>
     </template>
@@ -39,7 +39,6 @@ query Profile ($id: ID!) {
 </page-query>
 
 <script>
-import Hero from '~/components/partials/Hero'
 import Sprite from '~/components/Sprite'
 import ScrollIndicator from '~/components/ScrollIndicator'
 
@@ -50,7 +49,6 @@ export default {
     }
   },
   components: {
-    Hero,
     Sprite,
     ScrollIndicator
   },
@@ -66,3 +64,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@use '~/assets/styles/mixins/size' as *;
+
+.avatar img {
+  @include size(auto, calc(5rem + 5vw));
+}
+</style>

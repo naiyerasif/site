@@ -1,0 +1,41 @@
+@use '~/assets/styles/mixins/animate' as *;
+
+@include transform-with-opacity(fadeInDown, 0, translate3d(0, 0, -100%), 1, translate3d(0, 0, 0));
+
+@keyframes fadeOutUp {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, 0, -100%);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translate3d(0, 20%, 0);
+  }
+
+  to {
+    visibility: hidden;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@include transform-with-opacity(rotateInRight, 0, rotateY(-180deg), 1, rotateY(0deg));
+
+@include transform-with-opacity(fadeBackgroundColor, 0, background-color, 1, background-color);
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

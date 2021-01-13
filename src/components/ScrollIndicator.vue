@@ -16,7 +16,7 @@ export default {
     },
     color: {
       type: String,
-      default: 'var(--link)',
+      default: 'var(--brand-primary)',
       required: false,
     },
     backgroundColor: {
@@ -54,14 +54,14 @@ export default {
 .scroll-indicator {
   width: 0;
   height: 100%;
+}
 
-  &-wrapper {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-  }
+.scroll-indicator-wrapper {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
 }
 </style>

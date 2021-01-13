@@ -1,30 +1,24 @@
 <template>
   <Layout>
     <template #hero>
-      <Hero>
-        <h1 class="title">Blog</h1>
-        <div class="subtitle">Guides, notes and opinion pieces</div>
-      </Hero>
+      <div class="container">
+        <h1 class="font-headings leading-tight text-lg">Blog</h1>
+        <div class="text-md text-neutral">Guides, notes and opinion pieces</div>
+      </div>
     </template>
-    <main class="container has-content-my">
-      <div class="has-content-mx">
-        <div class="grid" style="--grid-column-width: 18rem">
-          <div class="card shadow %active is-clickable" v-for="post in $page.posts.edges" :key="post.id" @click="$router.push(post.node.path)">
-            <div class="card-header has-separated">
-              <time v-html="post.node.date" />
-              <span>&sim;{{ post.node.timeToRead }} min read</span>
-              <strong class="capitalize">{{ post.node.category }}</strong>
-            </div>
-            <div class="card-title is-header">
-              <g-link :to="post.node.path">{{ post.node.title }}</g-link>
-            </div>
-            <div class="card-footer" v-html="excerpt(post.node.excerpt)" />
-          </div>
+    <main class="container px-far-base">
+      <div class="group cursor-pointer max-sm mb-far-base" v-for="post in $page.posts.edges" :key="post.id" @click="$router.push(post.node.path)">
+        <div class="text-sm text-neutral separated">
+          <strong class="capitalize">{{ post.node.category }}</strong>
+          <span>&sim;{{ post.node.timeToRead }} min</span>
+          <time v-html="post.node.date" />
         </div>
+        <g-link class="block font-bold group-hover:text-deter group-hover:underline text-md my-xs" :to="post.node.path">{{ post.node.title }}</g-link>
+        <div class="text-sm" v-html="excerpt(post.node.excerpt)" />
       </div>
     </main>
     <template #sidekick>
-      <Pagination path="blog" :total="$page.posts.pageInfo.totalPages" :current="$page.posts.pageInfo.currentPage" />
+      <Pagination class="mt-close-base" path="blog" :total="$page.posts.pageInfo.totalPages" :current="$page.posts.pageInfo.currentPage" />
     </template>
   </Layout>
 </template>
@@ -54,7 +48,6 @@ query Blogs ($page: Int) {
 </page-query>
 
 <script>
-import Hero from '~/components/partials/Hero'
 import Pagination from '~/components/Pagination'
 
 export default {
@@ -62,7 +55,6 @@ export default {
     title: 'Blog'
   },
   components: {
-    Hero,
     Pagination
   },
   methods: {

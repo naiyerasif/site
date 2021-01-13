@@ -1,21 +1,21 @@
 <template>
   <Layout>
     <template #hero>
-      <Hero>
-        <h1 class="title">Projects</h1>
-        <div class="subtitle">Tools, utilities and experiments</div>
-      </Hero>
-    </template>
-    <main class="content">
-      <blockquote class="mb-2">
-        <p>I've contributed to many open-source projects over the last few years; I maintain a few of them in my spare time. Here's a selection of projects that I've been involved with.</p>
-      </blockquote>
-      <div class="grid" style="--grid-column-width: var(--grid-col-xs)">
-        <div class="card shadow %active is-clickable" v-for="project in $page.projects.edges" :key="project.id">
-          <a class="card-content is-bold is-regular" target="_blank" rel="nofollow noopener noreferrer" :href="project.node.link">{{ project.node.title }}</a>
-          <div class="card-footer" v-html="project.node.description" />
-        </div>
+      <div class="container">
+        <h1 class="font-headings leading-tight text-lg">Projects</h1>
+        <div class="text-md text-neutral">Tools, utilities and experiments</div>
       </div>
+    </template>
+    <main class="container px-far-base">
+      <section class="article max-sm">
+        <blockquote>
+          <p>I've contributed to many open-source projects over the last few years; I maintain a few of them in my spare time. Here's a selection of projects that I've been involved with.</p>
+        </blockquote>
+        <div class="group cursor-pointer mt-far-sm" v-for="project in $page.projects.edges" :key="project.id">
+          <a class="block font-bold text-md my-xs group-hover:text-deter group-hover:underline" target="_blank" rel="nofollow noopener noreferrer" :href="project.node.link">{{ project.node.title }}</a>
+          <div class="text-sm" v-html="project.node.description" />
+        </div>
+      </section>
     </main>
   </Layout>
 </template>
@@ -36,14 +36,9 @@ query {
 </page-query>
 
 <script>
-import Hero from '~/components/partials/Hero'
-
 export default {
   metaInfo: {
     title: 'Projects'
-  },
-  components: {
-    Hero
   }
 }
 </script>

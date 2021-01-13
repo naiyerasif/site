@@ -1,48 +1,36 @@
 <template>
   <Layout>
     <template #hero>
-      <Hero>
-        <h1 class="title">
-          <span class="gap-ch-sm hidden-sm">&mdash;</span>Reflections on <br class="hidden-sm" />design and development <br class="hidden-sm" />by <g-link to="/profile/naiyer/">Naiyer Asif</g-link>
+      <div class="container">
+        <h1 class="font-headings leading-tight text-lg">
+          <span class="sm:hidden sm:invisible mr-ch-sm">&mdash;</span>Reflections on <br class="sm:hidden sm:invisible" />design and development <br class="sm:hidden sm:invisible" />by <g-link to="/profile/naiyer/">Naiyer Asif</g-link>
         </h1>
-      </Hero>
+      </div>
     </template>
-    <main class="container has-content-my">
-      <div class="has-content-mx">
-        <div class="card shadow %active is-clickable" @click="$router.push(mostRecent.node.path)">
-          <div class="card-header has-separated">
-            <strong>Most recent</strong>
-            <time v-html="mostRecent.node.date" />
-          </div>
-          <div class="card-title">
-            <g-link class="is-header" :to="mostRecent.node.path">{{ mostRecent.node.title }}</g-link>
-          </div>
-          <div class="card-footer" v-html="excerpt(mostRecent.node.excerpt)" />
+    <main class="container px-far-base">
+      <div class="separated">
+        <strong><Sprite symbol="icon-new" class="icon mr-base" style="fill:var(--semantic-urge);stroke:var(--semantic-urge)" />Latest</strong>
+        <time class="text-sm text-neutral" v-html="mostRecent.node.date" />
+      </div>
+      <div class="group cursor-pointer max-sm" style="margin-left:2.5rem" @click="$router.push(mostRecent.node.path)">
+        <g-link class="block font-bold text-md group-hover:text-deter group-hover:underline my-xs" :to="mostRecent.node.path">{{ mostRecent.node.title }}</g-link>
+        <div class="text-sm" v-html="excerpt(mostRecent.node.excerpt)" />
+      </div>
+      <hr class="my-far-base" />
+      <p class="font-bold"><Sprite symbol="icon-popular" class="icon mr-base" style="fill:var(--semantic-deter);stroke:var(--semantic-deter)" />Popular this month</p>
+      <div class="group cursor-pointer" style="margin-left:2.5rem" v-for="popular in $page.popularPosts.edges" :key="popular.id" @click="$router.push(popular.node.path)">
+        <g-link class="block my-sm group-hover:text-deter group-hover:underline" :to="popular.node.path">{{ popular.node.title }}</g-link>
+      </div>
+      <hr class="my-far-base" />
+      <p class="font-bold"><Sprite symbol="icon-recent" class="icon mr-base" style="fill:var(--semantic-inform);stroke:var(--semantic-inform)" />Recent posts</p>
+      <div class="group cursor-pointer mb-md" style="margin-left:2.5rem" v-for="latest in recent" :key="latest.id" @click="$router.push(latest.node.path)">
+        <div class="text-sm text-neutral separated">
+          <time v-html="latest.node.date" />
         </div>
-
-        <h4 class="mt-3 mb-1 is-middle"><Sprite symbol="icon-popular" class="icon-rg gap-ch-sm" style="fill:hsl(350, 90%, 45%);stroke:hsl(350, 90%, 45%)" /> Popular this month</h4>
-        <div class="grid" style="--grid-column-width: var(--grid-col-xs)">
-          <div class="card shadow %active is-clickable" v-for="popular in $page.popularPosts.edges" :key="popular.id" @click="$router.push(popular.node.path)">
-            <div class="card-content is-regular">
-              <g-link :to="popular.node.path">{{ popular.node.title }}</g-link>
-            </div>
-          </div>
-        </div>
-
-        <h4 class="mt-3 mb-1 is-middle"><Sprite symbol="icon-recent" class="icon-rg gap-ch-sm" style="fill:hsl(234, 46%, 50%);stroke:hsl(234, 46%, 50%)" /> Other recent posts</h4>
-        <div class="grid" style="--grid-column-width: var(--grid-col-xs)">
-          <div class="card shadow %active is-clickable" v-for="latest in recent" :key="latest.id" @click="$router.push(latest.node.path)">
-            <div class="card-header">
-              <time v-html="latest.node.date" />
-            </div>
-            <div class="card-content is-regular">
-              <g-link :to="latest.node.path">{{ latest.node.title }}</g-link>
-            </div>
-          </div>
-        </div>
-        <div class="text-right">
-          <g-link class="chip mt-2 !high ~sm uppercase tracking-widest" to="/blog/2/">Browse more &xrarr;</g-link>
-        </div>
+        <g-link class="block font-bold group-hover:text-deter group-hover:underline" :to="latest.node.path">{{ latest.node.title }}</g-link>
+      </div>
+      <div class="flex items-center justify-end mt-base">
+        <g-link class="tappable text-xs uppercase tracking-wider font-bold bg-quartz focus:bg-ruby hover:bg-ruby focus:no-underline hover:no-underline mt-far-sm" to="/blog/2/">Browse more &xrarr;</g-link>
       </div>
     </main>
   </Layout>
@@ -74,7 +62,6 @@ query {
 </page-query>
 
 <script>
-import Hero from '~/components/partials/Hero'
 import Sprite from '~/components/Sprite'
 
 export default {
@@ -82,7 +69,6 @@ export default {
     title: 'Home'
   },
   components: {
-    Hero,
     Sprite
   },
   computed: {

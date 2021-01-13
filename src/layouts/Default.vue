@@ -1,5 +1,5 @@
 <template>
-  <div class="layout">
+  <div class="layout font-normal overflow-x-hidden">
     <Header>
       <slot name="hero"></slot>
     </Header>

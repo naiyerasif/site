@@ -1,24 +1,20 @@
 <template>
-  <div class="sidekick">
-    <div class="sidekick-wrapper">
-      <div class="pagination" v-if="total > 1">
-        <g-link class="chip !high" :to="previousPage" v-if="current > 1">&xlarr;</g-link>
-        <template v-if="total < 6">
-          <g-link class="chip !high" :class="isCurrent(current, idx)" v-for="idx in total" :key="idx" :to="goto(idx)">{{ idx }}</g-link>
-        </template>
-        <template v-else>
-          <g-link class="chip !high" :class="isCurrent(current, pidx)" v-for="pidx in previousRange" :key="pidx" :to="goto(pidx)">{{ pidx }}</g-link>
-          <span v-if="showPreviousSeparator" class="pagination-separator">···</span>
-          <g-link class="chip !high" :class="isCurrent(current, midx)" v-for="midx in midRange" :key="midx" :to="goto(midx)">{{ midx }}</g-link>
-          <span v-if="showNextSeparator" class="pagination-separator">···</span>
-          <g-link class="chip !high" :class="isCurrent(current, nidx)" v-for="nidx in nextRange" :key="nidx" :to="goto(nidx)">{{ nidx }}</g-link>
-        </template>
-        <g-link class="chip !high" :to="nextPage" v-if="current < total">&xrarr;</g-link>
-      </div>
-      <div class="pagination" v-else>
-        <div class="is-muted">🔚 end of the list</div>
-      </div>
-    </div>
+  <div class="pagination flex items-center text-sm justify-end my-far-base" v-if="total > 1">
+    <g-link class="tappable bg-quartz focus:bg-ruby hover:bg-ruby focus:no-underline hover:no-underline mr-ch-base text-center" :to="previousPage" v-if="current > 1">&xlarr;</g-link>
+    <template v-if="total < 6">
+      <g-link class="tappable bg-quartz focus:bg-ruby hover:bg-ruby focus:no-underline hover:no-underline mr-ch-base text-center" :class="isCurrent(current, idx)" v-for="idx in total" :key="idx" :to="goto(idx)">{{ idx }}</g-link>
+    </template>
+    <template v-else>
+      <g-link class="tappable bg-quartz focus:bg-ruby hover:bg-ruby focus:no-underline hover:no-underline mr-ch-base text-center" :class="isCurrent(current, pidx)" v-for="pidx in previousRange" :key="pidx" :to="goto(pidx)">{{ pidx }}</g-link>
+      <span v-if="showPreviousSeparator" class="mr-ch-base text-neutral">···</span>
+      <g-link class="tappable bg-quartz focus:bg-ruby hover:bg-ruby focus:no-underline hover:no-underline mr-ch-base text-center" :class="isCurrent(current, midx)" v-for="midx in midRange" :key="midx" :to="goto(midx)">{{ midx }}</g-link>
+      <span v-if="showNextSeparator" class="mr-ch-base text-neutral">···</span>
+      <g-link class="tappable bg-quartz focus:bg-ruby hover:bg-ruby focus:no-underline hover:no-underline mr-ch-base text-center" :class="isCurrent(current, nidx)" v-for="nidx in nextRange" :key="nidx" :to="goto(nidx)">{{ nidx }}</g-link>
+    </template>
+    <g-link class="tappable bg-quartz focus:bg-ruby hover:bg-ruby focus:no-underline hover:no-underline text-center" :to="nextPage" v-if="current < total">&xrarr;</g-link>
+  </div>
+  <div class="flex items-center text-sm justify-end my-far-sm" v-else>
+    <div class="is-muted">🔚 end of the list</div>
   </div>
 </template>
 
@@ -77,22 +73,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-@use '~/assets/styles/variables';
-
-.pagination {
-  --pagination-gap: #{variables.$gap-sm};
-  
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-
-  *:not(:first-child) {
-    margin-left: var(--pagination-gap);
-  }
-  
-  .active {
-    font-weight: normal;
-  }
+<style scoped>
+.pagination a {
+  font-weight: var(--weight-normal);
+  min-width: 4ch;
 }
 </style>

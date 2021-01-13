@@ -1,0 +1,73 @@
+:root {
+  --text-xs: calc(0.7rem + 0.1vw);
+  --text-sm: calc(0.8rem + 0.2vw);
+  --text-base: calc(0.9rem + 0.3vw);
+  --text-md: calc(1rem + 0.4vw);
+
+  --far-base: calc(1.25rem + 2vw);
+  --far-sm: calc(var(--far-base) * 0.5);
+  --far-md: calc(var(--far-base) * 1.5);
+  --far-lg: calc(var(--far-base) * 2);
+
+  --close-base: calc(var(--far-base) * -1);
+  --close-sm: calc(var(--close-base) * 0.5);
+
+  --radius-base: 0.25rem;
+  --radius-full: 9999px;
+
+  --lightmix: 0%;
+}
+
+[data-theme='light'] {
+  --brand-primary: hsl(160, 62%, 31%);
+  --brand-secondary: hsl(240, 14%, 7%);
+  --brand-tertiary: hsl(30, 80%, 98%);
+
+  --semantic-neutral: hsl(240, 14%, 37%);
+  --semantic-deter: hsl(350, 90%, 45%);
+  --semantic-positive: hsl(140, 70%, 35%);
+  --semantic-warn: hsl(28, 73%, 50%);
+  --semantic-inform: hsl(200, 90%, 37%);
+  --semantic-urge: hsl(15, 83%, 48%);
+
+  --decorative-quartz: hsl(240, 14%, 66%, 0.1);
+  --decorative-spinel: hsl(240, 14%, 66%, 0.3);
+  --decorative-jade: hsl(160, 62%, 60%, 0.3);
+  --decorative-ruby: hsl(350, 90%, 70%, 0.3);
+  --decorative-opal: hsl(192, 90%, 70%, 0.3);
+  --decorative-gold: hsl(25, 90%, 70%, 0.2);
+
+  --lightmix: 10%;
+
+  --weight-normal: 400;
+  --weight-bold: 700;
+
+  --stroke-base: 1.5px;
+  --stroke-md: 2px;
+}
+
+[data-theme='dark'] {
+  --brand-primary: hsl(160, 62%, 41%);
+  --brand-secondary: hsl(30, 5%, 65%);
+  --brand-tertiary: hsl(240, 14%, 7%);
+
+  --semantic-neutral: hsl(240, 14%, 64%);
+  --semantic-deter: hsl(350, 90%, 55%);
+  --semantic-positive: hsl(140, 70%, 45%);
+  --semantic-warn: hsl(28, 73%, 60%);
+  --semantic-inform: hsl(200, 90%, 47%);
+  --semantic-urge: hsl(15, 83%, 58%);
+
+  --decorative-quartz: hsl(240, 14%, 45%, 0.1);
+  --decorative-spinel: hsl(240, 14%, 45%, 0.3);
+  --decorative-jade: hsl(160, 62%, 38%, 0.3);
+  --decorative-ruby: hsl(350, 90%, 35%, 0.3);
+  --decorative-opal: hsl(192, 90%, 25%, 0.3);
+  --decorative-gold: hsl(25, 90%, 35%, 0.2);
+
+  --weight-normal: 350;
+  --weight-bold: 600;
+
+  --stroke-base: 1.25px;
+  --stroke-md: 1.75px;
+}

@@ -1,22 +1,6 @@
-@use 'transitions.css';
+@use '~/assets/styles/mixins/animate' as *;
 
-// Animation mixin
-
-@mixin animate($name, $duration: 500ms, $timing-fn: ease-in-out) {
-  animation-name: $name;
-  animation-duration: $duration;
-  transition-duration: $duration;
-  animation-fill-mode: both;
-  transition-timing-function: $timing-fn;
-
-  @media (print), (prefers-reduced-motion: reduce) {
-    animation-duration: 1ms;
-    transition-duration: 1ms;
-    animation-iteration-count: 1;
-  }
-}
-
-// Dissolve transition
+// DISSOLVE
 
 .dissolve-enter-to,
 .dissolve-enter-active {
@@ -33,7 +17,7 @@
   opacity: 0;
 }
 
-// Slide-up transition
+// SLIDE-UP
 
 .slide-up-enter-active,
 .slide-up-leave-active {
@@ -45,7 +29,7 @@
   opacity: 0;
 }
 
-// Rotate-in-right transition
+// ROTATE-IN-RIGHT
 
 .rotate-in-right-enter-to,
 .rotate-in-right-leave {
@@ -57,7 +41,7 @@
   opacity: 0;
 }
 
-// Theme switch transition
+// THEME-SWITCH
 
 * {
   transition-property: background-color, border-color, font-weight;

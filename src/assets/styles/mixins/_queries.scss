@@ -1,6 +1,6 @@
-@use '~/assets/styles/variables';
+@use '~/assets/styles/core/variables' as *;
 
-// Media query mixins
+// BASE MEDIA QUERIES
 
 @mixin within($breakpoint) {
   @media screen and (max-width: ($breakpoint - 1)) {
@@ -14,10 +14,7 @@
   }
 }
 
-// Pre-defined media queries
-
-$breakpoint-sm: variables.$breakpoint-sm;
-$breakpoint-md: variables.$breakpoint-md;
+// DERIVED MEDIA QUERIES
 
 @mixin sm {
   @include within($breakpoint-sm) {

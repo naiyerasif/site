@@ -1,0 +1,12 @@
+@use '@/node_modules/@microflash/remarkability/scss/mixins';
+
+// font family helpers
+
+.font-headings {
+  @include mixins.font('headings');
+  font-feature-settings: 'ss04' 1, 'case' 1, 'zero' 1;
+}
+
+.font-mono {
+  @include mixins.font('code');
+}

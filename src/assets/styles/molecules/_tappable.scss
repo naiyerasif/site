@@ -1,0 +1,12 @@
+.tappable {
+  --tappable-radius: var(--radius-full);
+  --tappable-gap-inline: 1.5ch;
+  --tappable-gap-block: 0.75ch;
+
+  border-radius: var(--tappable-radius);
+  padding: var(--tappable-gap-block) var(--tappable-gap-inline);
+
+  &.leading-none {
+    padding: var(--tappable-gap-block);
+  }
+}

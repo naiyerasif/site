@@ -1,0 +1,22 @@
+@use '~/assets/styles/mixins/size' as *;
+
+.icon {
+  --icon-opacity: 0.25;
+  --icon-stroke: var(--stroke-base);
+  --icon-size: 1.5rem;
+
+  stroke: currentColor;
+  stroke-width: var(--icon-stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: currentColor;
+  fill-opacity: var(--icon-opacity);
+  @include size(var(--icon-size));
+
+  &-sm {
+    --icon-stroke: var(--stroke-md);
+    --icon-size: 1rem;
+
+    @extend .icon;
+  }
+}

@@ -1,42 +1,37 @@
-@use '~/assets/styles/variables';
-@use '~/assets/styles/mixins/utils';
+@use '~/assets/styles/core/variables';
 
-// Token colors
+@function hsla($h, $s, $l, $a: 1) {
+  @return hsl($h, $s, calc(#{$l} - var(--lightmix)), $a);
+}
 
-$cadet: utils.hsla(180, 19%, 40%, 0.6);
-$iris: utils.hsla(231, 52%, 56%);
-$brass: utils.hsla(40, 40%, 41%);
-$vermillion: utils.hsla(0, 57%, 49%);
-$jasper: utils.hsla(6, 63%, 48%);
-$artichoke: utils.hsla(68, 19%, 46%);
-$salmon: utils.hsla(11, 77%, 58%);
-$teal: utils.hsla(185, 31%, 35%);
-$rackley: utils.hsla(205, 36%, 46%);
-$rebecca: utils.hsla(266, 40%, 49%);
-$khaki: utils.hsla(44, 23%, 62%);
-$emerald: utils.hsla(167, 33%, 34%);
-$coral: utils.hsla(4, 69%, 62%);
+// token colors
+
+$cadet: hsla(180, 19%, 40%, 0.6);
+$iris: hsla(231, 52%, 56%);
+$brass: hsla(40, 40%, 41%);
+$vermillion: hsla(0, 57%, 49%);
+$jasper: hsla(6, 63%, 48%);
+$artichoke: hsla(68, 19%, 46%);
+$salmon: hsla(11, 77%, 58%);
+$teal: hsla(185, 31%, 35%);
+$rackley: hsla(205, 36%, 46%);
+$rebecca: hsla(266, 40%, 49%);
+$khaki: hsla(44, 23%, 62%);
+$emerald: hsla(167, 33%, 34%);
+$coral: hsla(4, 69%, 62%);
 
 $languages: js, ts, html, md, vue, css, sass, scss, less, log, stylus, go, java, c,
   sh, yaml, py, docker, dockerfile, properties, groovy, typescript, json, xml, git, shell, sql, bash, powershell, ini;
 
-$code-background: var(--bg-accent);
-$code-max-width: variables.$maxwidth-rg;
-$code-gapy-rg: var(--space-rg);
-$code-gapy-sm: var(--space-sm);
-$code-gapx: var(--content-article-gap);
-$code-gapx-neg: var(--curb-rg);
-$code-radius: 1vw;
-
-// Prism theme
+// syntax theme
 
 .gridsome-highlight {
-  margin: $code-gapy-rg $code-gapx-neg;
-  background-color: $code-background;
-  border-radius: $code-radius;
+  border: 1px solid var(--decorative-spinel);
+  border-radius: var(--radius-base);
+  background-color: transparent;
 
   code {
-    padding: $code-gapy-rg;
+    padding: var(--code-px);
   }
 
   code[class*='language-'],
@@ -50,13 +45,13 @@ $code-radius: 1vw;
     display: block;
     z-index: 5;
     text-align: right;
-    margin-bottom: -(variables.$gap-rg);
-    padding-top: 0.5em;
-    padding-right: 0.75em;
-    color: var(--text-highlighted);
+    margin-bottom: -(variables.$gap-base);
+    padding-top: 0.5ch;
+    padding-right: 1ch;
+    color: var(--semantic-deter);
     font-size: 0.75em;
     font-weight: var(--weight-bold);
-    opacity: 0.75;
+    opacity: 0.8;
   }
 
   @each $language in $languages {
@@ -67,9 +62,9 @@ $code-radius: 1vw;
 
   .gridsome-highlight-code-line {
     display: block;
-    margin-left: $code-gapx-neg;
-    padding-left: $code-gapy-rg;
-    background: linear-gradient(to right, var(--bg-highlighted) 66%, transparent);
+    margin-left: var(--code-mx);
+    padding-left: var(--code-px);
+    background: linear-gradient(to right, var(--decorative-gold) 55%, transparent);
   }
 
   .token.comment,
