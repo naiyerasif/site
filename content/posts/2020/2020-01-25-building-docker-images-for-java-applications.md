@@ -91,7 +91,7 @@ EXPOSE 8080
 CMD ["app.jar"]
 ```
 
-Note that instead of `adoptopenjdk:11-jre-openj9`, `gcr.io/distroless/java:11` is used which is the official [Docker image for Java]((https://github.com/GoogleContainerTools/distroless/blob/master/java/README.md)) provided by Google.
+Note that instead of `adoptopenjdk:11-jre-openj9`, `gcr.io/distroless/java:11` is used which is the official [Docker image for Java](https://github.com/GoogleContainerTools/distroless/blob/master/java/README.md) provided by Google.
 
 > **Tip** It is important that you specify the `ENTRYPOINT` or `CMD` commands in their *exec* (JSON array) form, since the distroless images don't contain a shell to launch.
 
