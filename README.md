@@ -18,7 +18,6 @@ This site was made possible by
 - [Remarkability](https://remarkability.netlify.app): a compact CSS library for a pleasant reading experience on the web
 - [Bourbon](https://www.bourbon.io/): a lightweight Sass tool set
 - [Animate.css](https://github.com/daneden/animate.css): a cross-browser library of CSS animations
-- [Grid By Example](https://gridbyexample.com/): a collection of examples and references on CSS Grid
 
 ## Technologies
 
@@ -31,7 +30,7 @@ This site uses
 - [Inter](https://rsms.me/inter/) as the body font
 - [Space Grotesk](https://github.com/floriankarsten/space-grotesk) as the heading font
 - [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) as the `monospace` font
-- a [custom Prism theme](https://github.com/Microflash/site/blob/main/src/assets/styles/derived/_syntax.scss) to decorate the codeblocks
+- a [custom Prism theme](https://github.com/Microflash/site/blob/main/src/assets/styles/molecules/_syntax.scss) to decorate the codeblocks
 - [Yarn](https://github.com/yarnpkg/yarn) as the package manager
 - [Git LFS](https://github.com/git-lfs/git-lfs) to version large files
 - [GitHub Actions](https://github.com/features/actions) for continuous integration
