@@ -6,4 +6,5 @@
   content: '\00B7';
   @include mx(1ch);
   opacity: var(--opacity-50);
+  font-weight: var(--weight-normal);
 }
