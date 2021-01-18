@@ -1,5 +1,5 @@
 <template>
-  <details class="toc max-sm text-sm mb-far-sm" id="table-of-contents">
+  <details class="toc max-sm text-sm mb-far-base" id="table-of-contents">
     <summary>Table of contents</summary>
     <ul class="toc-body list-none px-base py-sm">
       <li v-for="header in allHeadings" :key="header.id">
