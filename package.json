@@ -39,7 +39,7 @@
     "@tailwindcss/postcss7-compat": "^2.0.2",
     "autoprefixer": "^9.8.6",
     "chrono-node": "^2.1.11",
-    "commander": "^6.2.1",
+    "commander": "^7.0.0",
     "dayjs": "^1.10.3",
     "dotenv": "^8.2.0",
     "googleapis": "^67.0.0",
