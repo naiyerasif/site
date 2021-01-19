@@ -52,3 +52,8 @@
     transition-duration: 1ms;
   }
 }
+
+a {
+  transition-property: background-color, color, text-decoration-color;
+  transition-duration: 300ms;
+}
