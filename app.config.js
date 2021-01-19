@@ -35,6 +35,7 @@ module.exports = {
   },
   head: {
     meta: [
+      { name: 'color-scheme', content: 'dark light' },
       { name: 'author', content: pkgAuthor },
       { name: 'description', content: pkgDescription },
       { name: 'theme-color', content: '#101015' }

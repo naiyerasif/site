@@ -16,9 +16,13 @@
   --radius-full: 9999px;
 
   --lightmix: 0%;
+
+  color-scheme: dark light;
 }
 
 [data-theme='light'] {
+  color-scheme: light;
+
   --brand-primary: hsl(160, 62%, 31%);
   --brand-secondary: hsl(240, 14%, 7%);
   --brand-tertiary: hsl(30, 80%, 98%);
@@ -47,6 +51,8 @@
 }
 
 [data-theme='dark'] {
+  color-scheme: dark;
+
   --brand-primary: hsl(160, 62%, 41%);
   --brand-secondary: hsl(30, 5%, 65%);
   --brand-tertiary: hsl(240, 14%, 7%);
