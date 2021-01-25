@@ -56,4 +56,8 @@
 a {
   transition-property: background-color, color, text-decoration-color;
   transition-duration: 300ms;
+
+  @media (print), (prefers-reduced-motion: reduce) {
+    transition-duration: 1ms;
+  }
 }
