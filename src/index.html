@@ -38,6 +38,32 @@
     })();
   </script>
 
+  <script>
+    (function () {
+      window.__onTextModeChange = function () { };
+      function setTextMode(newTextMode) {
+        window.__textMode = newTextMode;
+        preferredTextMode = newTextMode;
+        document.body.setAttribute('data-text-mode', newTextMode);
+        window.__onTextModeChange(newTextMode);
+      }
+
+      var preferredTextMode;
+      try {
+        preferredTextMode = localStorage.getItem('text-mode');
+      } catch (err) { }
+
+      window.__setPreferredTextMode = function (newTextMode) {
+        setTextMode(newTextMode);
+        try {
+          localStorage.setItem('text-mode', newTextMode);
+        } catch (err) { }
+      }
+
+      setTextMode(preferredTextMode || 'normal');
+    })();
+  </script>
+
   ${app}
   ${scripts}
 </body>

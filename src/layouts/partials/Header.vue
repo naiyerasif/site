@@ -11,6 +11,7 @@
       </nav>
       <nav class="menu-end inline-flex ml-auto">
         <theme-switcher />
+        <text-mode-switcher class="ml-base" />
         <search class="ml-base" />
       </nav>
     </div>
@@ -22,12 +23,14 @@
 import Logo from '@/static/assets/images/logo.svg'
 import Search from '~/components/Search'
 import ThemeSwitcher from '~/components/ThemeSwitcher'
+import TextModeSwitcher from '~/components/TextModeSwitcher'
 
 export default {
   components: {
     Logo,
     Search,
-    ThemeSwitcher
+    ThemeSwitcher,
+    TextModeSwitcher
   }
 }
 </script>

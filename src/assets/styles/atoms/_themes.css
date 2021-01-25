@@ -1,9 +1,4 @@
 :root {
-  --text-xs: calc(0.7rem + 0.1vw);
-  --text-sm: calc(0.8rem + 0.2vw);
-  --text-base: calc(0.9rem + 0.3vw);
-  --text-md: calc(1rem + 0.4vw);
-
   --far-base: calc(1.25rem + 2vw);
   --far-sm: calc(var(--far-base) * 0.5);
   --far-md: calc(var(--far-base) * 1.5);
@@ -18,6 +13,20 @@
   --lightmix: 0%;
 
   color-scheme: dark light;
+}
+
+[data-text-mode='normal'] {
+  --text-xs: calc(0.7rem + 0.1vw);
+  --text-sm: calc(0.8rem + 0.2vw);
+  --text-base: calc(0.9rem + 0.3vw);
+  --text-md: calc(1rem + 0.4vw);
+}
+
+[data-text-mode='large'] {
+  --text-xs: calc(0.8rem + 0.1vw);
+  --text-sm: calc(0.9rem + 0.2vw);
+  --text-base: calc(1rem + 0.3vw);
+  --text-md: calc(1.1rem + 0.4vw);
 }
 
 [data-theme='light'] {
