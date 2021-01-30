@@ -44,19 +44,9 @@
 // THEME-SWITCH
 
 * {
-  transition-property: background-color, border-color, font-weight;
-  transition-duration: 200ms;
+  transition-property: background-color, border-color, font-weight, font-size;
+  transition-duration: 250ms;
   transition-timing-function: ease-in-out;
-
-  @media (print), (prefers-reduced-motion: reduce) {
-    transition-duration: 1ms;
-  }
-}
-
-* {
-  transition-property: font-size;
-  transition-duration: 300ms;
-  transition-timing-function: ease-out;
 
   @media (print), (prefers-reduced-motion: reduce) {
     transition-duration: 1ms;
