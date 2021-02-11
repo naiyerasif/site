@@ -1034,6 +1034,11 @@
     querystring "^0.2.0"
     unist-util-visit "^2.0.2"
 
+"@securized/plugin-cloudflare-analytics@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@securized/plugin-cloudflare-analytics/-/plugin-cloudflare-analytics-0.1.1.tgz#40e224e407dbe7c4fe38599b7a3bc77306c05479"
+  integrity sha512-pt+0Jq/lPNkOrz/CvWa2FDnVmmhlE5T8OuCl5CAe89iBldDqIEACAz5kxGRWCHxuvQNGYTMRT3WvabRpt7LkxQ==
+
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
