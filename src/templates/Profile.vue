@@ -69,6 +69,6 @@ export default {
 @use '~/assets/styles/mixins/size' as *;
 
 .avatar img {
-  @include size(auto, calc(5rem + 5vw));
+  @include size(calc(5rem + 5vw));
 }
 </style>
