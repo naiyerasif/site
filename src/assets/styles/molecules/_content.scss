@@ -60,7 +60,6 @@ h4,
 h5, 
 h6 {
   @include mixins.font('headings');
-  font-feature-settings: 'ss04' 1, 'case' 1, 'zero' 1;
   
   &:focus a .reference,
   &:hover a .reference {

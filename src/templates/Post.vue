@@ -2,9 +2,9 @@
   <Layout>
     <template #hero>
       <div class="container flex flex-wrap flex-col items-start">
-        <div class="flex items-center flex-wrap font-mono text-sm separated mb-base">
+        <div class="flex items-center flex-wrap text-sm separated mb-base">
           <div v-html="displayDate" />
-          <div>Reading time <strong>&sim;{{ $page.post.timeToRead }} mins</strong></div>
+          <div>Reading time <span class="font-bold">&sim;{{ $page.post.timeToRead }} mins</span></div>
         </div>
         <h1 class="font-headings leading-tight text-lg">{{ $page.post.title }}</h1>
         <div class="text-sm separated">
@@ -112,8 +112,8 @@ export default {
   },
   computed: {
     displayDate() {
-      const published = `Published <strong><time>${this.$page.post.date}</time></strong>`
-      return !this.$page.post.hasOwnProperty('updated') ? published : (this.$page.post.updated !== this.$page.post.date ? `Updated <strong><time>${this.$page.post.updated}</time></strong>` : published); 
+      const published = `Published <time class="font-bold">${this.$page.post.date}</time>`
+      return !this.$page.post.hasOwnProperty('updated') ? published : (this.$page.post.updated !== this.$page.post.date ? `Updated <time class="font-bold">${this.$page.post.updated}</time>` : published); 
     },
     editUrl() {
       const editContext = appConfig.editConfig && appConfig.editConfig.Post ? appConfig.editConfig.Post : appConfig.prefs.editContext
