@@ -1,6 +1,6 @@
 <template>
   <div class="search flex items-center">
-    <a class="leading-none tappable focus:bg-ruby hover:bg-ruby" role="button" aria-label="Launch search" @click="launch">
+    <a class="leading-none" role="button" aria-label="Launch search" @click="launch">
       <Sprite symbol="icon-search" class="icon" />
     </a>
     <transition name="dissolve" mode="out-in">

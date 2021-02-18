@@ -23,17 +23,17 @@
             <a class="inline-flex items-center" href="/profile/naiyer/#privacy"><Sprite symbol="icon-privacy" class="icon-sm mr-ch-sm" />Privacy</a>
           </li>
         </ul>
-        <div class="text-base my-base" style="margin-left: -1ch">
-          <a href="https://github.com/naiyerasif" title="GitHub" target="_blank" rel="noopener noreferrer" class="leading-none tappable focus:bg-ruby hover:bg-ruby">
+        <div class="text-base my-base">
+          <a href="https://github.com/naiyerasif" title="GitHub" target="_blank" rel="noopener noreferrer" class="leading-none mr-ch-base">
             <Sprite symbol="icon-github" class="icon" />
           </a>
-          <a href="https://gitlab.com/Microflash" title="GitLab" target="_blank" rel="noopener noreferrer" class="leading-none tappable focus:bg-ruby hover:bg-ruby">
+          <a href="https://gitlab.com/Microflash" title="GitLab" target="_blank" rel="noopener noreferrer" class="leading-none mr-ch-base">
             <Sprite symbol="icon-gitlab" class="icon" />
           </a>
-          <a href="https://twitter.com/Microflash" title="Twitter" target="_blank" rel="noopener noreferrer" class="leading-none tappable focus:bg-ruby hover:bg-ruby">
+          <a href="https://twitter.com/Microflash" title="Twitter" target="_blank" rel="noopener noreferrer" class="leading-none mr-ch-base">
             <Sprite symbol="icon-twitter" class="icon" />
           </a>
-          <a href="https://in.linkedin.com/in/naiyerasif" title="LinkedIn" target="_blank" rel="noopener noreferrer" class="leading-none tappable focus:bg-ruby hover:bg-ruby">
+          <a href="https://in.linkedin.com/in/naiyerasif" title="LinkedIn" target="_blank" rel="noopener noreferrer" class="leading-none">
             <Sprite symbol="icon-linkedin" class="icon" />
           </a>
         </div>

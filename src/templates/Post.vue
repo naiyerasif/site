@@ -40,13 +40,13 @@
         </span>
       </g-link>
       <div class="flex justify-end">
-        <a class="leading-none tappable focus:bg-ruby hover:bg-ruby" target="_blank" rel="noopener noreferrer" title="Edit this page" :href="editUrl">
+        <a class="leading-none mr-ch-base" target="_blank" rel="noopener noreferrer" title="Edit this page" :href="editUrl">
           <Sprite symbol="icon-edit-file" class="icon" />
         </a>
-        <a class="leading-none tappable focus:bg-ruby hover:bg-ruby" v-if="$page.post.headings.length > 0" href="#table-of-contents" title="Table of Contents">
+        <a class="leading-none mr-ch-base" v-if="$page.post.headings.length > 0" href="#table-of-contents" title="Table of Contents">
           <Sprite symbol="icon-table-of-content" class="icon" />
         </a>
-        <a class="leading-none tappable focus:bg-ruby hover:bg-ruby" href="#app" title="Back to top">
+        <a class="leading-none" href="#app" title="Back to top">
           <Sprite symbol="icon-back-to-top" class="icon" />
         </a>
       </div>

@@ -1,5 +1,5 @@
 <template>
-  <a role="switch" @click.prevent="switchTheme" :aria-label="'Switch to ' + nextTheme + ' theme'" aria-checked="true" class="theme-switcher leading-none tappable focus:bg-ruby hover:bg-ruby">
+  <a role="switch" @click.prevent="switchTheme" :aria-label="'Switch to ' + nextTheme + ' theme'" aria-checked="true" class="theme-switcher leading-none">
     <svg viewBox="0 0 24 24" class="icon">
       <transition name="slide-up" mode="out-in">
         <use :href="uri('moon')" key="dark" v-if="theme === 'dark'"></use>

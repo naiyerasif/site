@@ -47,8 +47,6 @@ This site was made possible by
 - [Tailwind CSS](https://tailwindcss.com/): a utility-first CSS framework
 - [Fuse.js](https://fusejs.io/): a lightweight fuzzy-search library
 - [Prism](https://prismjs.com/): a lightweight, extensible syntax highlighter
-- [Feather](https://feathericons.com/): beautiful open-source icons
-- [Context](https://github.com/Microflash/context): vector icons with context
 - [Spritely](https://github.com/Microflash/spritely): a Node.js CLI to generate SVG sprites
 - [Remarkability](https://remarkability.netlify.app): a compact CSS library for a pleasant reading experience on the web
 - [Bourbon](https://www.bourbon.io/): a lightweight Sass tool set
@@ -65,6 +63,7 @@ This site uses
 - [Inter](https://rsms.me/inter/) as the body font
 - [Space Grotesk](https://github.com/floriankarsten/space-grotesk) as the heading font
 - [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) as the `monospace` font
+- a [custom icon pack](https://github.com/Microflash/site/blob/main/static/assets/images/icons.svg) which is based on [Feather](https://feathericons.com/)
 - a [custom Prism theme](https://github.com/Microflash/site/blob/main/src/assets/styles/molecules/_syntax.scss) to decorate the codeblocks
 - [Yarn](https://github.com/yarnpkg/yarn) as the package manager
 - [Git LFS](https://github.com/git-lfs/git-lfs) to version large files

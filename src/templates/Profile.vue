@@ -17,7 +17,7 @@
     </main>
     <template #sidekick>
       <div class="flex justify-end">
-        <a class="leading-none tappable focus:bg-ruby hover:bg-ruby" href="#app" title="Back to top">
+        <a class="leading-none" href="#app" title="Back to top">
           <Sprite symbol="icon-back-to-top" class="icon" />
         </a>
       </div>
