@@ -112,12 +112,6 @@ module.exports = {
       }
     },
     {
-      use: '@securized/plugin-cloudflare-analytics',
-      options: {
-        token: '6f75c3ff5f22444388cee1c933d54db0'
-      }
-    },
-    {
       use: '@gridsome/plugin-google-analytics',
       options: {
         id: 'UA-143076148-1',
