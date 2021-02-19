@@ -45,7 +45,7 @@
     "googleapis": "^67.1.0",
     "gridsome-plugin-tailwindcss": "^4.1.1",
     "marked": "^2.0.0",
-    "sass": "^1.32.6",
+    "sass": "^1.32.8",
     "sass-loader": "^10.1.1",
     "shx": "^0.3.3",
     "svg-to-vue-component": "^0.3.8",
