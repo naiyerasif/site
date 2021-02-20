@@ -66,6 +66,7 @@ module.exports = {
       bold: 'var(--weight-bold)',
     },
     letterSpacing: {
+      normal: '0',
       wide: '0.1em',
       wider: '0.2em',
       widest: '0.3em',

@@ -7,9 +7,9 @@
           <div>Reading time <span class="font-bold">&sim;{{ $page.post.timeToRead }} mins</span></div>
         </div>
         <h1 class="font-headings leading-tight text-lg">{{ $page.post.title }}</h1>
-        <div class="text-sm separated">
-          <strong class="capitalize">{{ $page.post.category }}</strong>
-          <span v-for="(topic, idx) in $page.post.topics" :key="idx" class="font-mono uppercase">{{ topic }}</span>
+        <div class="flex flex-wrap items-center text-xs tracking-wide uppercase font-bold separated">
+          <strong>{{ $page.post.category }}</strong>
+          <tag v-for="(topic, idx) in $page.post.topics" :key="idx" :keyword="topic"/>
         </div>
       </div>
     </template>
@@ -95,6 +95,7 @@ query Blog ($id: ID!, $previousId: ID!, $nextId: ID!) {
 
 <script>
 import Toc from '~/components/Toc'
+import Tag from '~/components/Tag'
 import Sprite from '~/components/Sprite'
 import ScrollIndicator from '~/components/ScrollIndicator'
 import * as appConfig from '@/app.config'
@@ -107,6 +108,7 @@ export default {
   },
   components: {
     Toc,
+    Tag,
     Sprite,
     ScrollIndicator
   },

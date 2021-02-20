@@ -10,7 +10,7 @@
           <div class="search-box flex items-center justify-between">
             <Sprite symbol="icon-search" class="icon text-primary" />
             <input type="text" class="search-input bg-transparent border-none outline-none basis-100 mx-base" placeholder="Search blog posts..." v-model="query" @input="softReset" @keyup="performSearch" @keydown.up.prevent="highlightPrev" @keydown.down.prevent="highlightNext" @keyup.enter="performSearch" ref="search" aria-label="Search blog posts"/>
-            <a role="button" aria-label="Reset search" @click="reset" class="search-reset leading-none focus:no-underline hover:no-underline">
+            <a role="button" aria-label="Reset search" @click="reset" class="search-reset text-sm tracking-wide font-bold leading-none focus:no-underline hover:no-underline">
               <kbd class="tappable focus:bg-ruby hover:bg-ruby">esc</kbd>
             </a>
           </div>
