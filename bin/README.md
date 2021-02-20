@@ -8,19 +8,19 @@ Requires [imagemagick](http://www.imagemagick.org/)
 node bin/favicon.js static/google-touch-icon.png
 ```
 
-### Create new post/note
+### Create new post
 
-Pass the content type (**post** or **note**), title and metadata (**topics**) as arguments. Optionally, you can also pass a relative date to override the current date.
+Pass the post type with `-p` or `--post` option (*guide* (default), *note*, *redirect* or *sideline*), title with `-h` or `--headline` option, and comma-separated topics with `-t` or `--topics` option. Optionally, you can also pass a relative date to override the current date with `-d` or `--date` option.
 
 ```sh
 # create a new post
-node bin/content.js --content post --title 'Using Git LFS in CI' --meta 'git, lfs'
+node bin/content.js --post guide --headline 'Using Git LFS in CI' --topics 'git, lfs'
 
 # create a new note
-node bin/content.js --content note --title 'Skipping the GitLab CI' --meta 'gitlab ci'
+node bin/content.js --post note --headline 'Skipping the GitLab CI' --topics 'gitlab ci'
 
 # pass a relative date to override now
-node bin/content.js --content note --date '2 days 3 hours ago' --title 'Customize the PowerShell prompt' --meta 'powershell'
+node bin/content.js --post note --date '2 days 3 hours ago' --headline 'Customize the PowerShell prompt' --topics 'powershell'
 ```
 
 ### Generate SVG sprites
