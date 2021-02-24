@@ -8,7 +8,7 @@
       <div class="footer-links flex items-center justify-between flex-wrap lg:flex-nowrap mb-lg">
         <ul class="list-none flex flex-wrap lg:flex-nowrap separated">
           <li class="my-xs inline-flex items-center">
-            <a class="inline-flex items-center" target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site/issues/new"><Sprite symbol="icon-user-feedback" class="icon-sm mr-ch-sm" />Report an issue</a>
+            <a class="inline-flex items-center" target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site/issues/new"><Sprite symbol="icon-report-issue" class="icon-sm mr-ch-sm" />Report an issue</a>
           </li>
           <li class="my-xs inline-flex items-center">
             <a class="inline-flex items-center" href="/feed.xml"><Sprite symbol="icon-rss" class="icon-sm mr-ch-sm" />RSS feed</a>
@@ -25,16 +25,16 @@
         </ul>
         <div class="text-base my-base">
           <a href="https://github.com/naiyerasif" title="GitHub" target="_blank" rel="noopener noreferrer" class="leading-none mr-ch-base">
-            <Sprite symbol="icon-github" class="icon" />
+            <Sprite symbol="icon-github" class="icon-sm" />
           </a>
           <a href="https://gitlab.com/Microflash" title="GitLab" target="_blank" rel="noopener noreferrer" class="leading-none mr-ch-base">
-            <Sprite symbol="icon-gitlab" class="icon" />
+            <Sprite symbol="icon-gitlab" class="icon-sm" />
           </a>
           <a href="https://twitter.com/Microflash" title="Twitter" target="_blank" rel="noopener noreferrer" class="leading-none mr-ch-base">
-            <Sprite symbol="icon-twitter" class="icon" />
+            <Sprite symbol="icon-twitter" class="icon-sm" />
           </a>
           <a href="https://in.linkedin.com/in/naiyerasif" title="LinkedIn" target="_blank" rel="noopener noreferrer" class="leading-none">
-            <Sprite symbol="icon-linkedin" class="icon" />
+            <Sprite symbol="icon-linkedin" class="icon-sm" />
           </a>
         </div>
       </div>

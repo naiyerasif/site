@@ -1,14 +1,18 @@
 @use '~/assets/styles/mixins/size' as *;
 
 .icon {
+  --icon-stroke: var(--stroke-base);
   --icon-size: 2rem;
 
-  stroke: none;
-  fill: currentColor;
-  fill-rule: evenodd;
+  stroke: currentColor;
+  stroke-width: var(--icon-stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
   @include size(var(--icon-size));
 
   &-sm {
+    --icon-stroke: var(--stroke-md);
     --icon-size: 1.5rem;
 
     @extend .icon;

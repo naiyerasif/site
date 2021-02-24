@@ -54,6 +54,9 @@
 
   --weight-normal: 400;
   --weight-bold: 700;
+
+  --stroke-base: 1.5px;
+  --stroke-md: 2px;
 }
 
 [data-theme='dark'] {
@@ -79,4 +82,7 @@
 
   --weight-normal: 350;
   --weight-bold: 600;
+
+  --stroke-base: 1.25px;
+  --stroke-md: 1.75px;
 }

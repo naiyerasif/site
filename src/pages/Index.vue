@@ -9,7 +9,7 @@
     </template>
     <main class="container px-far-base">
       <div class="separated">
-        <strong><Sprite symbol="icon-new" class="icon mr-base" style="fill:var(--semantic-urge)" />Latest</strong>
+        <strong><Sprite symbol="icon-new" class="icon text-urge mr-base" />Latest</strong>
         <time class="text-sm text-neutral" v-html="mostRecent.node.date" />
       </div>
       <div class="group cursor-pointer max-sm" style="margin-left:3rem" @click="$router.push(mostRecent.node.path)">
@@ -17,12 +17,12 @@
         <div class="text-sm" v-html="excerpt(mostRecent.node.excerpt)" />
       </div>
       <hr class="my-far-base" />
-      <p class="font-bold"><Sprite symbol="icon-confetti" class="icon mr-base" style="fill:var(--semantic-deter)" />Popular this month</p>
+      <p class="font-bold"><Sprite symbol="icon-popular" class="icon text-deter mr-base" />Popular this month</p>
       <div class="group cursor-pointer" style="margin-left:3rem" v-for="popular in $page.popularPosts.edges" :key="popular.id" @click="$router.push(popular.node.path)">
         <g-link class="block my-sm group-hover:text-deter group-hover:underline" :to="popular.node.path">{{ popular.node.title }}</g-link>
       </div>
       <hr class="my-far-base" />
-      <p class="font-bold"><Sprite symbol="icon-recent" class="icon mr-base" style="fill:var(--semantic-inform)" />Recent posts</p>
+      <p class="font-bold"><Sprite symbol="icon-recent" class="icon text-inform mr-base" />Recent posts</p>
       <div class="group cursor-pointer mb-md" style="margin-left:3rem" v-for="latest in recent" :key="latest.id" @click="$router.push(latest.node.path)">
         <div class="text-sm text-neutral separated">
           <time v-html="latest.node.date" />

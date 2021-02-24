@@ -63,7 +63,7 @@ This site uses
 - [Inter](https://rsms.me/inter/) as the body font
 - [Space Grotesk](https://github.com/floriankarsten/space-grotesk) as the heading font
 - [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) as the `monospace` font
-- a [custom icon pack](https://github.com/Microflash/site/blob/main/static/assets/images/icons.svg) which is based on [Feather](https://feathericons.com/)
+- a [custom icon pack](https://github.com/Microflash/site/blob/main/static/assets/images/icons.svg) based on [Feather](https://feathericons.com/)
 - a [custom Prism theme](https://github.com/Microflash/site/blob/main/src/assets/styles/molecules/_syntax.scss) to decorate the codeblocks
 - [Yarn](https://github.com/yarnpkg/yarn) as the package manager
 - [Git LFS](https://github.com/git-lfs/git-lfs) to version large files
