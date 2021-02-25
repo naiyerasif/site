@@ -66,7 +66,7 @@ export default {
     },
     isCurrent(current, index) {
       return {
-        'is-current': current == index
+        'font-bold': current == index
       }
     }
   }
@@ -77,5 +77,9 @@ export default {
 .pagination a {
   font-weight: var(--weight-normal);
   min-width: 4ch;
+}
+
+.pagination a.font-bold {
+  font-weight: var(--weight-bold);
 }
 </style>
