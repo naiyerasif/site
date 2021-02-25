@@ -8,7 +8,7 @@
           <div class="search-box flex items-center justify-between">
             <Sprite symbol="icon-topic" class="icon text-primary" />
             <div class="flex-1 mx-base">
-              <strong class="capitalize">{{ query }}</strong>
+              <strong class="text-sm uppercase tracking-wide">{{ query }}</strong>
             </div>
             <a role="button" aria-label="Reset search" @click="reset" class="search-reset leading-none text-sm tracking-wide font-bold focus:no-underline hover:no-underline">
               <kbd class="tappable focus:bg-ruby hover:bg-ruby">esc</kbd>
