@@ -9,7 +9,7 @@ const projects = require('./content/projects')
 const reportPath = `${paths.report.dir}/${paths.report.name}`
 const popularPosts = require(reportPath)
 
-const outdationDate = prefs.outdationPeriod ? dayjs().clone().subtract(prefs.outdationPeriod, 'days').startOf('day') : null
+const outdationDate = dayjs().clone().subtract(prefs.outdationPeriod, 'days').startOf('day')
 
 module.exports = api => {
 
@@ -23,8 +23,8 @@ module.exports = api => {
         options.category = 'guide'
       }
 
-      if (typeof(options.outdated) == 'undefined') {
-        options.outdated = outdationDate && dayjs(options.updated).isBefore(outdationDate) ? 'true' : 'undefined'
+      if (typeof(options.status) == 'undefined') {
+        options.status = outdationDate && dayjs(options.updated).isBefore(outdationDate) ? 'outdated' : 'fresh'
       }
     }
     

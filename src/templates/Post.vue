@@ -78,7 +78,7 @@ query Blog ($id: ID!, $previousId: ID!, $nextId: ID!) {
     category
     path
     timeToRead
-    outdated
+    status
   }
 
   previous: blog (id: $previousId) {
@@ -122,7 +122,7 @@ export default {
       return `${editContext}/${this.$page.post.fileInfo.path}`
     },
     outdationMessage() {
-      return this.$page.post.outdated !== 'undefined' && this.$page.post.outdated === 'true' ? 'This post is old. Some information may be inaccurate.' : null
+      return this.$page.post.status === 'outdated' ? 'This post is old. Some information may be inaccurate.' : null
     }
   }
 }
