@@ -114,8 +114,8 @@ export default {
   },
   computed: {
     displayDate() {
-      const published = `Published <time class="font-bold">${this.$page.post.date}</time>`
-      return !this.$page.post.hasOwnProperty('updated') ? published : (this.$page.post.updated !== this.$page.post.date ? `Updated <time class="font-bold">${this.$page.post.updated}</time>` : published); 
+      const prefix = this.$page.post.updated !== this.$page.post.date ? 'Updated' : 'Published'
+      return `${prefix} <time class="font-bold">${this.$page.post.updated}</time>`
     },
     editUrl() {
       const editContext = appConfig.editConfig && appConfig.editConfig.Post ? appConfig.editConfig.Post : appConfig.prefs.editContext
