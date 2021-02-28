@@ -113,7 +113,7 @@ public class HealthCheck {
 
     var response = client.send(request, BodyHandlers.ofString());
 
-    if (response.statusCode() != 200 && !response.body().contains("UP")) {
+    if (response.statusCode() != 200 || !response.body().contains("UP")) {
       throw new RuntimeException("Healthcheck failed");
     }
   }
