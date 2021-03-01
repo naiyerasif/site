@@ -1,6 +1,7 @@
 ---
 title: 'Java-based health check for Docker'
 date: 2021-03-01 01:34:35
+updated: 2021-03-01 21:34:35
 authors: [naiyer]
 topics: [docker, java, distroless]
 ---
@@ -50,7 +51,7 @@ USER spring:spring
 COPY target/*.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
-HEALTHCHECK  --interval=25s --timeout=3s --retries=2 CMD wget --spider http://localhost:8080/actuator/health || exit 1
+HEALTHCHECK --interval=25s --timeout=3s --retries=2 CMD wget --spider http://localhost:8080/actuator/health || exit 1
 ```
 
 Here, the `HEALTHCHECK` instruction specifies that after 25 seconds when the container has started, the command `wget --spider http://localhost:8080/actuator/health || exit 1` should be executed. Docker will wait for 3 seconds for the command to return and retry 2 times if it fails on previous tries. If the final exit code is 1, the container will be marked as `unhealthy`; if the exit code is 0, it will be marked as `healthy`. This status will appear when you execute `docker ps`.
@@ -90,6 +91,8 @@ and run it by executing the following command.
 $ java Greeter.java
 Hello, world!
 ```
+
+> **Warning** Please note that the `java` command still uses the compiler (available under `jdk.compiler` module) to interpret this file. Thus, you'll be able use this feature only when you've this module available to the `java` binary. Otherwise, you'll need to first compile the above program using the `javac` compiler to run it. This is crucial because you cannot run the single-file programs on the containers that ship with a barebone JRE (which doesn't include the `jdk.compiler` module).
 
 ## Java HTTP Client
 
@@ -138,7 +141,7 @@ COPY target/*.jar app.jar
 COPY HealthCheck.java .
 EXPOSE 8080
 CMD ["app.jar"]
-HEALTHCHECK  --interval=25s --timeout=3s --retries=2 CMD ["java", "HealthCheck.java", "||", "exit", "1"]
+HEALTHCHECK --interval=25s --timeout=3s --retries=2 CMD ["java", "HealthCheck.java", "||", "exit", "1"]
 ```
 
 While using a distroless image, you need to specify the `ENTRYPOINT` or `CMD` commands in their *exec* (JSON array) form because the distroless images don't contain a shell to launch. 
