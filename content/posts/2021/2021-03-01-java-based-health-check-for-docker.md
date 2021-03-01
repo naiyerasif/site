@@ -1,7 +1,7 @@
 ---
 title: 'Java-based health check for Docker'
 date: 2021-03-01 01:34:35
-updated: 2021-03-01 21:34:35
+updated: 2021-03-01 23:21:56
 authors: [naiyer]
 topics: [docker, java, distroless]
 ---
@@ -70,7 +70,7 @@ CONTAINER ID   IMAGE             COMMAND               CREATED          STATUS  
 
 This way Docker's `HEALTHCHECK` instruction bubbles up the health information by telling Docker if the container is working.
 
-The biggest problem with this specific approach is that it relies on `wget` or `curl`. What if none of these utilities are available in the container? This is a possible scenario when you use a [distroless image](https://github.com/GoogleContainerTools/distroless); the only thing that would be available in such an image would be the Java runtime. How can we create a health check in such a scenario? This post explores the solution to this question.
+The biggest problem with this specific approach is that it relies on `wget` or `curl`. What if none of these utilities are available in the container? This is a possible scenario when you use a [distroless image](https://github.com/GoogleContainerTools/distroless); the only thing that would be available in such an image would be the Java tooling (JDK or JRE). How can we create a health check in such a scenario? This post explores the solution to this question.
 
 ## Single-file programs using Java 11
 
@@ -92,7 +92,7 @@ $ java Greeter.java
 Hello, world!
 ```
 
-> **Warning** Please note that the `java` command still uses the compiler (available under `jdk.compiler` module) to interpret this file. Thus, you'll be able use this feature only when you've this module available to the `java` binary. Otherwise, you'll need to first compile the above program using the `javac` compiler to run it. This is crucial because you cannot run the single-file programs on the containers that ship with a barebone JRE (which doesn't include the `jdk.compiler` module).
+Please note that the `java` command uses the Java compiler (available in the `jdk.compiler` module) to compile and run a single-file program under the hood. This is essential to note because many Docker images based on the JRE don't ship with the `jdk.compiler` module. In such cases, you'll have compile the single-file program beforehand to run it in the container.
 
 ## Java HTTP Client
 
@@ -158,7 +158,7 @@ CONTAINER ID   IMAGE             COMMAND                  CREATED              S
 769e8404b96e   endpoint:latest   "/usr/bin/java -jar …"   About a minute ago   Up About a minute (healthy)   0.0.0.0:8080->8080/tcp   serene_cerf
 ```
 
-This approach eliminates the need for any utility (like `curl` or `wget`) and relies solely on the Java runtime available in the image. It is also cross-platform and portable because it works irrespective of the operating system or underlying base of the image.
+This approach eliminates the need for any utility (like `curl` or `wget`) and relies solely on the Java tooling available in the image. It is also portable because it works irrespective of the operating system or underlying base of the image.
 
 ## References
 
