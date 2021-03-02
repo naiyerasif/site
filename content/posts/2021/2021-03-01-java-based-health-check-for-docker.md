@@ -92,7 +92,7 @@ $ java Greeter.java
 Hello, world!
 ```
 
-Please note that the `java` command uses the Java compiler (available in the `jdk.compiler` module) to compile and run a single-file program under the hood. This is essential to note because many Docker images based on the JRE don't ship with the `jdk.compiler` module. In such cases, you'll have compile the single-file program beforehand to run it in the container.
+Please note that the `java` command uses the Java compiler (available in the `jdk.compiler` module) to compile and run a single-file program under the hood. This is essential to note because many Docker images based on the JRE don't ship with the `jdk.compiler` module. In such cases, you'll have to compile the single-file program beforehand to run it in the container.
 
 ## Java HTTP Client
 
