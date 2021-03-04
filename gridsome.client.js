@@ -22,6 +22,6 @@ export default function (Vue, options, { head }) {
   }
 
   head.script.push(
-    { src: '//gc.zgo.at/count.js', async: true, 'data-goatcounter': 'https://mflash.goatcounter.com/count' }
+    { src: '/assets/js/count.js', async: true, 'data-goatcounter': 'https://mflash.goatcounter.com/count' }
   )
 }
