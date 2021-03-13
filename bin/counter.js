@@ -4,6 +4,7 @@ const counterPath = require('../app.config').paths.counter
 
 axios.get('https://gc.zgo.at/count.js', { responseType: 'arraybuffer' }).then(response => {
   fs.promises.writeFile(counterPath, response.data)
+  console.log('Analytics script downloaded')
 }).catch(error => {
   console.log(error)
 })
