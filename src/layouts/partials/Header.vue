@@ -48,7 +48,7 @@ export default {
   }
 
   .brand {
-    width: 160px;
+    width: 3rem;
 
     svg {
       @include size(inherit);
