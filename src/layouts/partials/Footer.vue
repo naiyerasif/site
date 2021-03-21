@@ -17,7 +17,7 @@
             <a class="inline-flex items-center" href="/sitemap.xml"><Sprite symbol="icon-sitemap" class="icon-sm mr-ch-sm" />Sitemap</a>
           </li>
           <li class="my-xs inline-flex items-center">
-            <a class="inline-flex items-center" target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site"><Sprite symbol="icon-code-file" class="icon-sm mr-ch-sm" />Source code</a>
+            <a class="inline-flex items-center" target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site"><Sprite symbol="icon-source-code" class="icon-sm mr-ch-sm" />Source code</a>
           </li>
           <li class="my-xs inline-flex items-center">
             <a class="inline-flex items-center" href="/profile/naiyer/#privacy"><Sprite symbol="icon-privacy" class="icon-sm mr-ch-sm" />Privacy</a>
