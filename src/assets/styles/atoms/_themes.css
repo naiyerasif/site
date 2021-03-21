@@ -11,8 +11,6 @@
   --radius-full: 9999px;
 
   --lightmix: 0%;
-
-  color-scheme: dark light;
 }
 
 [data-text-mode='normal'] {
@@ -33,6 +31,7 @@
 
 [data-theme='light'] {
   color-scheme: light;
+  scrollbar-color: light;
 
   --brand-primary: hsl(160, 62%, 31%);
   --brand-secondary: hsl(240, 14%, 7%);
@@ -63,6 +62,7 @@
 
 [data-theme='dark'] {
   color-scheme: dark;
+  scrollbar-color: dark;
 
   --brand-primary: hsl(160, 62%, 41%);
   --brand-secondary: hsl(30, 5%, 65%);
