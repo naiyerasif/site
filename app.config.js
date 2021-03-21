@@ -31,7 +31,6 @@ module.exports = {
       dir: './static',
       name: 'report.json'
     },
-    counter: './static/assets/js/count.js',
     sprite: '/assets/images'
   },
   search: {

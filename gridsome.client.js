@@ -15,13 +15,4 @@ export default function (Vue, options, { head }) {
     { rel: 'manifest', href: '/manifest.json' },
     { rel: 'preload', href: '/assets/images/icons.svg', type: 'image/svg+xml', as: 'image' }
   )
-
-  if (process.env.NODE_ENV !== 'production') {
-    // Only send hits on production builds
-    return;
-  }
-
-  head.script.push(
-    { src: '/assets/js/count.js', async: true, 'data-goatcounter': 'https://mflash.goatcounter.com/count' }
-  )
 }

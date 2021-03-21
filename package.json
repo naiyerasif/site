@@ -7,9 +7,8 @@
   "author": "Naiyer Asif",
   "license": "MIT",
   "scripts": {
-    "build": "npm run build:report && npm run build:counter && npm run build:site",
+    "build": "npm run build:report && npm run build:site",
     "build:report": "node bin/report.js",
-    "build:counter": "node bin/counter.js",
     "build:site": "gridsome build",
     "start": "gridsome develop",
     "status": "gridsome info",
