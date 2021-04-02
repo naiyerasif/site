@@ -13,7 +13,6 @@ This site was made possible by
 - [Fuse.js](https://fusejs.io/): a lightweight fuzzy-search in JavaScript
 - [Prism](https://prismjs.com/): a lightweight, robust, elegant syntax highlighting library
 - [Spritely](https://github.com/Microflash/spritely): a handy Node.js CLI to generate SVG sprites
-- [Remarkability](https://r11y.mflash.dev): a compact CSS library for a pleasant reading experience on the web
 - [Bourbon](https://www.bourbon.io/): a lightweight Sass tool set
 - [Animate.css](https://github.com/daneden/animate.css): a cross-browser library of CSS animations
 
