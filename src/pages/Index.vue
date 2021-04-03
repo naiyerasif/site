@@ -17,9 +17,9 @@
         <div class="text-sm" v-html="excerpt(mostRecent.node.excerpt)" />
       </div>
       <hr class="my-far-base" />
-      <p class="font-bold"><Sprite symbol="icon-popular" class="icon text-deter mr-base" />Popular this month</p>
-      <div class="group cursor-pointer" style="margin-left:3rem" v-for="popular in $page.popularPosts.edges" :key="popular.id" @click="$router.push(popular.node.path)">
-        <g-link class="block my-sm group-hover:text-deter group-hover:underline" :to="popular.node.path">{{ popular.node.title }}</g-link>
+      <p class="font-bold"><Sprite symbol="icon-popular" class="icon text-deter mr-base" />Popular topics</p>
+      <div class="flex flex-wrap items-center text-xs tracking-wide uppercase font-bold" style="margin-left:3rem">
+        <tag class="mb-base mr-base" v-for="(topic, index) in popularTopics" :key="index" :keyword="topic"/>
       </div>
       <hr class="my-far-base" />
       <p class="font-bold"><Sprite symbol="icon-recent" class="icon text-inform mr-base" />Recent posts</p>
@@ -38,15 +38,6 @@
 
 <page-query>
 query {
-  popularPosts: allPopularBlog(sortBy: "views", order: DESC) {
-    edges {
-      node {
-        id
-        title
-        path
-      }
-    }
-  }
   latestPosts: allBlog(sortBy: "date", order: DESC, limit: 10) {
     edges {
       node {
@@ -63,15 +54,21 @@ query {
 
 <script>
 import Sprite from '~/components/Sprite'
+import Tag from '~/components/Tag'
+import topics from '@/static/topics.json'
 
 export default {
   metaInfo: {
     title: 'Home'
   },
   components: {
-    Sprite
+    Sprite,
+    Tag
   },
   computed: {
+    popularTopics() {
+      return topics.sort()
+    },
     mostRecent() {
       return this.$page.latestPosts.edges[0]
     },

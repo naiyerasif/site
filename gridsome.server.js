@@ -42,14 +42,21 @@ module.exports = api => {
         link: project.path
       })
     })
-
-    const popularBlogPosts = addCollection({
-      typeName: 'PopularBlog'
-    })
-    popularPosts.forEach(entry => popularBlogPosts.addNode(entry))
   })
 
   api.createPages(async ({ graphql, createPage }) => {
+    const result = await graphql(`{
+      allBlog(filter: { path: { in: ["${popularPosts.join('","')}"]}}) {
+        edges {
+          node {
+            topics
+          }
+        }
+      }
+    }`)
+
+    writeToFile('popular topics', paths.topics, result.data.allBlog.edges.flatMap(e => e.node.topics).filter((value, idx, self) => self.indexOf(value) === idx))
+
     const { data } = await graphql(`{
       allBlog {
         edges {
