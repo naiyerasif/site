@@ -51,13 +51,7 @@ const initReport = () => {
     console.log('Create dataset for report')
 
     getReport(prefs.maxPopularPosts).then(res => {
-      writeToFile('analytics report', paths.report, res.data.rows.map(entry => {
-        return {
-          title: entry[0].slice(0, -13),
-          path: entry[1],
-          views: entry[2]
-        }
-      }))
+      writeToFile('analytics report', paths.report, res.data.rows.map(entry => entry[1]))
     }).catch(err => console.error(err))
   } else {
     console.log('Report found')
