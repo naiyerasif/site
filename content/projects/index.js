@@ -10,11 +10,6 @@ module.exports = [
     path: 'https://github.com/Microflash/gridsome-plugin-feed'
   },
   {
-    title: 'Remarkability',
-    description: 'A compact CSS library for a pleasant reading experience on the web',
-    path: 'https://r11y.mflash.dev'
-  },
-  {
     title: 'Succinct',
     description: 'A Vuepress theme with support for dark and light modes, and web-fonts',
     path: 'https://succinct.mflash.dev'
