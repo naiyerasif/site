@@ -4747,10 +4747,10 @@ gray-matter@^4.0.2:
     section-matter "^1.0.0"
     strip-bom-string "^1.0.0"
 
-gridsome-plugin-remark-prismjs-all@^0.3.5:
-  version "0.3.5"
-  resolved "https://registry.yarnpkg.com/gridsome-plugin-remark-prismjs-all/-/gridsome-plugin-remark-prismjs-all-0.3.5.tgz#5365bd0b1caa1a0a0360255b80cbfe3e1e5f7179"
-  integrity sha512-Rl4g2mHUh7m/pEEBEVRHClPlDdh/YGYYN6nePdKg9c7WEe7gCq8Z1vk5lJ/iV908zLid/eEhk9+dffgDtXCLFw==
+gridsome-plugin-remark-prismjs-all@^0.4.8:
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/gridsome-plugin-remark-prismjs-all/-/gridsome-plugin-remark-prismjs-all-0.4.8.tgz#3609d25c0709101f1c01456f1c0d049eb643d9b7"
+  integrity sha512-YJksuszBfkNE+LT7zt0HrkjT/O91fj0mAk2L6sMZgCISf8kzCmXrXtlVdlYNAhYlJkRMauLZ+FjtwHrgbJBN2w==
   dependencies:
     lodash "^4.17.15"
     parse-numeric-range "^0.0.2"
