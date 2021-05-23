@@ -60,7 +60,6 @@ This site uses
 - [Vue.js](https://vuejs.org/) as the frontend framework
 - [Sass](https://sass-lang.com/) as the CSS preprocessor
 - [Inter](https://rsms.me/inter/) as the body font
-- [Space Grotesk](https://github.com/floriankarsten/space-grotesk) as the heading font
 - [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) as the `monospace` font
 - a [custom icon pack](https://github.com/Microflash/site/blob/main/static/assets/images/icons.svg) based on [Feather](https://feathericons.com/)
 - a [custom Prism theme](https://github.com/Microflash/site/blob/main/src/assets/styles/molecules/_syntax.scss) to decorate the codeblocks

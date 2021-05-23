@@ -2,7 +2,7 @@
   <Layout>
     <template #hero>
       <div class="container">
-        <h1 class="font-headings leading-tight text-lg">
+        <h1 class="leading-tight text-lg">
           <span class="sm:hidden sm:invisible mr-ch-sm">&mdash;</span>Reflections on <br class="sm:hidden sm:invisible" />design and development <br class="sm:hidden sm:invisible" />by <g-link to="/profile/naiyer/">Naiyer Asif</g-link>
         </h1>
       </div>

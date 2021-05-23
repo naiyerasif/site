@@ -34,11 +34,9 @@ $gap-xl: 2rem !default;
   $family-code-custom: 'JetBrains Mono',
   $family-sans-variable: 'Inter var',
   $family-code-variable: 'JetBrains Mono var',
-  $font-families: (
-    'headings': 'default-sans' 'Space Grotesk' 'Space Grotesk var'
-  ),
   $font-size-base: var(--text-base),
   $weight-bold: var(--weight-bold),
+  $weight-headings: var(--weight-black),
   $background-body: var(--brand-tertiary),
   $background-code: var(--decorative-opal),
   $background-del: var(--decorative-ruby),

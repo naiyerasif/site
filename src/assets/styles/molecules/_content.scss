@@ -2,7 +2,6 @@
 @use '~/assets/styles/mixins/gap' as *;
 @use '~/assets/styles/mixins/queries';
 @use '~/assets/styles/mixins/visibility';
-@use '@/node_modules/@microflash/remarkability/scss/mixins';
 
 // article container
 
@@ -59,8 +58,6 @@ h3,
 h4, 
 h5, 
 h6 {
-  @include mixins.font('headings');
-  
   &:focus a .reference,
   &:hover a .reference {
     @include visibility.hide(false);
