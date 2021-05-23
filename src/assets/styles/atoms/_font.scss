@@ -1,4 +1,4 @@
-@use '~/assets/styles/core/variables';
+@use '~/assets/styles/variables';
 @use '~/assets/styles/mixins/font-face' as *;
 
 @function _font-path($font-file-name, $font-context: variables.$fonts-directory) {

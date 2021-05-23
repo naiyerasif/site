@@ -1,4 +1,4 @@
-@use '~/assets/styles/core/variables';
+@use '~/assets/styles/variables';
 
 @function hsla($h, $s, $l, $a: 1) {
   @return hsl($h, $s, calc(#{$l} - var(--lightmix)), $a);
