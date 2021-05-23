@@ -1,4 +1,5 @@
 @use 'sass:map';
+@use 'sass:math';
 @use 'sass:list';
 @use 'variables';
 @use 'functions';
@@ -7,7 +8,7 @@
 
 @mixin cell($font-size, $gap: variables.$margin) {
   font-size: #{$font-size}em;
-  padding: ($gap / 2.5 / $font-size) ($gap / 2 / $font-size);
+  padding: math.div(math.div($gap, 2.5), $font-size) math.div(math.div($gap, 2), $font-size);
 }
 
 // Heading gap, border and font sizing
@@ -19,17 +20,17 @@
   $top-space: true
 ) {
   font-size: #{$font-size}em;
-  margin-bottom: $gap / $font-size;
+  margin-bottom: math.div($gap, $font-size);
 
   @if $top-space {
-    margin-top: $gap * 2 / $font-size;
+    margin-top: math.div($gap * 2, $font-size);
   } @else {
-    margin-top: $gap / $font-size;
+    margin-top: math.div($gap, $font-size);
   }
 
   @if variables.$enable-heading-border and $with-border {
     border-bottom: 1px solid variables.$border-color;
-    padding-bottom: $gap / 2 / $font-size;
+    padding-bottom: math.div(math.div($gap, 2), $font-size);
   }
 }
 

@@ -1,3 +1,4 @@
+@use 'sass:math';
 @use 'variables';
 @use 'mixins';
 
@@ -229,7 +230,7 @@ body {
 
   figcaption {
     font-size: variables.$font-size-small;
-    margin-top: variables.$margin / 1.6;
+    margin-top: math.div(variables.$margin, 1.6);
 
     @if variables.$enable-custom-colors {
       color: variables.$text-muted;
