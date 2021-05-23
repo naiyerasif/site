@@ -55,6 +55,7 @@
 
   --decorative-quartz: hsl(240, 14%, 66%, 0.1);
   --decorative-spinel: hsl(240, 14%, 66%, 0.3);
+  --decorative-agate: hsl(240, 14%, 66%, 0.6);
   --decorative-jade: hsl(160, 62%, 60%, 0.3);
   --decorative-ruby: hsl(350, 90%, 70%, 0.3);
   --decorative-opal: hsl(192, 90%, 70%, 0.3);
@@ -87,6 +88,7 @@
 
   --decorative-quartz: hsl(240, 14%, 45%, 0.1);
   --decorative-spinel: hsl(240, 14%, 45%, 0.3);
+  --decorative-agate: hsl(240, 14%, 45%, 0.6);
   --decorative-jade: hsl(160, 62%, 38%, 0.3);
   --decorative-ruby: hsl(350, 90%, 35%, 0.3);
   --decorative-opal: hsl(192, 90%, 25%, 0.3);
