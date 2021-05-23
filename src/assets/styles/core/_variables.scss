@@ -19,8 +19,7 @@ $gap-xl: 2rem !default;
 
 // remarkability
 
-@use '@/node_modules/@microflash/remarkability/scss/variables' with (
-  $root: 'body',
+@use '~/assets/styles/molecules/remarkability/variables' with (
   $lead: '.article > p:first-of-type',
   $enable-selection-background: true,
   $enable-lead-paragraph: true,
