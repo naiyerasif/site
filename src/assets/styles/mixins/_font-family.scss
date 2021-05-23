@@ -1,0 +1,37 @@
+@use 'sass:list';
+
+// font family mixin for body copy
+
+$family-sans-native: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+  Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+  'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
+$family-code-native: ui-monospace, SFMono-Regular, 'Roboto Mono', Menlo, Monaco, Consolas,
+  'Liberation Mono', 'Courier New', monospace !default;
+
+@mixin font-body {
+  font-family: list.append('Inter', $family-sans-native);
+
+  @supports (font-variation-settings: normal) {
+    font-family: list.append('Inter var', $family-sans-native);
+  }
+
+  font-variant-ligatures: contextual common-ligatures;
+
+  // Features
+  // kern: switch kerning
+  // liga: switch contextual ligatures
+  // calt: switch contextual alternates
+  // cv05: lowercase L with tail
+  // cv08: uppercase I with serif
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'cv05' 1, 'cv08' 1;
+}
+
+// font family mixin for code
+
+@mixin font-code {
+  font-family: list.append('JetBrains Mono', $family-sans-native);
+
+  @supports (font-variation-settings: normal) {
+    font-family: list.append('JetBrains Mono var', $family-sans-native);
+  }
+}

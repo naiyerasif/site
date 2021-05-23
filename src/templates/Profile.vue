@@ -1,12 +1,12 @@
 <template>
   <Layout>
     <template #hero>
-      <div class="container flex flex-wrap">
+      <div class="container flex flex-wrap items-center">
         <div class="avatar mr-far-base md:mb-far-base">
           <g-image class="rounded-full border-1 border-solid border-spinel" :alt="firstName" :src="$page.profile.avatar" />
         </div>
         <div class="introduction">
-          <h1 class="font-headings leading-tight text-lg">Hi, I'm <span class="text-deter">{{ firstName }}</span></h1>
+          <h1 class="leading-tight text-lg">Hi, I'm <span class="text-deter">{{ firstName }}</span></h1>
           <div class="text-md text-neutral">a {{ $page.profile.role | lowerCase }} from {{ $page.profile.location }}</div>
         </div>
       </div>

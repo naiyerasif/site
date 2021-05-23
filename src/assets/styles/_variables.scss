@@ -1,0 +1,18 @@
+// typography
+
+$fonts-directory: '/assets/fonts' !default;
+
+// spacing
+
+$breakpoint-sm: 600px !default;
+$breakpoint-md: 900px !default;
+
+$maxwidth-sm: 70ch !default;
+$maxwidth-base: calc(#{$breakpoint-md} + 15vw) !default;
+
+$gap-xs: 0.5rem !default;
+$gap-sm: 0.75rem !default;
+$gap-base: 1rem !default;
+$gap-md: 1.25rem !default;
+$gap-lg: 1.5rem !default;
+$gap-xl: 2rem !default;

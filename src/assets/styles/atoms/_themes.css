@@ -1,4 +1,11 @@
 :root {
+  --gap-xs: 0.5rem;
+  --gap-sm: 0.75rem;
+  --gap-base: 1rem;
+  --gap-md: 1.25rem;
+  --gap-lg: 1.5rem;
+  --gap-xl: 2rem;
+
   --far-base: calc(1.25rem + 2vw);
   --far-sm: calc(var(--far-base) * 0.5);
   --far-md: calc(var(--far-base) * 1.5);
@@ -9,6 +16,8 @@
 
   --radius-base: 0.25rem;
   --radius-full: 9999px;
+
+  --opacity-base: 0.5;
 
   --lightmix: 0%;
 }
@@ -46,6 +55,7 @@
 
   --decorative-quartz: hsl(240, 14%, 66%, 0.1);
   --decorative-spinel: hsl(240, 14%, 66%, 0.3);
+  --decorative-agate: hsl(240, 14%, 66%, 0.6);
   --decorative-jade: hsl(160, 62%, 60%, 0.3);
   --decorative-ruby: hsl(350, 90%, 70%, 0.3);
   --decorative-opal: hsl(192, 90%, 70%, 0.3);
@@ -55,6 +65,7 @@
 
   --weight-normal: 400;
   --weight-bold: 700;
+  --weight-black: 800;
 
   --stroke-base: 1.5px;
   --stroke-md: 2px;
@@ -77,6 +88,7 @@
 
   --decorative-quartz: hsl(240, 14%, 45%, 0.1);
   --decorative-spinel: hsl(240, 14%, 45%, 0.3);
+  --decorative-agate: hsl(240, 14%, 45%, 0.6);
   --decorative-jade: hsl(160, 62%, 38%, 0.3);
   --decorative-ruby: hsl(350, 90%, 35%, 0.3);
   --decorative-opal: hsl(192, 90%, 25%, 0.3);
@@ -84,6 +96,7 @@
 
   --weight-normal: 350;
   --weight-bold: 600;
+  --weight-black: 800;
 
   --stroke-base: 1.25px;
   --stroke-md: 1.75px;

@@ -1,4 +1,4 @@
-/*! Preset v0.0.9 | MIT License */
+/*! Preset v0.1.0 | MIT License */
 html,
 body,
 p,
@@ -59,17 +59,14 @@ textarea {
   color: inherit;
 }
 
-*::placeholder {
-  color: inherit;
-  opacity: 0.5;
-}
-
 html {
   box-sizing: border-box;
   tab-size: 2;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -100,9 +97,4 @@ table {
 td,
 th {
   padding: 0;
-}
-
-td:not([align]),
-th:not([align]) {
-  text-align: left;
 }
