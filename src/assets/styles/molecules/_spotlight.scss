@@ -114,7 +114,10 @@ body {
     }
 
     &:focus {
+      outline-color: inherit;
+      outline-style: solid;
       outline-width: thin;
+      outline-offset: 0.125em;
     }
   }
 
