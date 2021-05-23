@@ -1,5 +1,5 @@
 <template>
-  <div class="layout font-normal overflow-x-hidden">
+  <div class="layout">
     <Header>
       <slot name="hero"></slot>
     </Header>
@@ -21,3 +21,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.layout {
+  font-weight: var(--weight-normal);
+  overflow-x: hidden;
+}
+</style>

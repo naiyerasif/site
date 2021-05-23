@@ -1,7 +1,0 @@
-@use '~/assets/styles/molecules/remarkability/mixins';
-
-// font family helpers
-
-.font-mono {
-  @include mixins.font('code');
-}

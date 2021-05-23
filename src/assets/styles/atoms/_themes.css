@@ -1,4 +1,11 @@
 :root {
+  --gap-xs: 0.5rem;
+  --gap-sm: 0.75rem;
+  --gap-base: 1rem;
+  --gap-md: 1.25rem;
+  --gap-lg: 1.5rem;
+  --gap-xl: 2rem;
+
   --far-base: calc(1.25rem + 2vw);
   --far-sm: calc(var(--far-base) * 0.5);
   --far-md: calc(var(--far-base) * 1.5);
@@ -9,6 +16,8 @@
 
   --radius-base: 0.25rem;
   --radius-full: 9999px;
+
+  --opacity-base: 0.5;
 
   --lightmix: 0%;
 }

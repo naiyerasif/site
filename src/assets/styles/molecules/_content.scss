@@ -48,6 +48,10 @@ main.container {
       margin-bottom: 0.5em;
     }
   }
+
+  .article > p:first-of-type {
+    font-size: 1.25em;
+  }
 }
 
 // reference links and code
