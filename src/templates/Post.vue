@@ -6,7 +6,7 @@
           <div v-html="displayDate" />
           <div>Reading time <span class="font-bold">&sim;{{ $page.post.timeToRead }} mins</span></div>
         </div>
-        <h1 class="leading-tight text-lg">{{ $page.post.title }}</h1>
+        <h1 class="leading-tight text-lg my-far-base">{{ $page.post.title }}</h1>
         <div class="flex flex-wrap items-center text-xs tracking-wide uppercase font-bold separated">
           <strong>{{ $page.post.category }}</strong>
           <tag v-for="(topic, idx) in $page.post.topics" :key="idx" :keyword="topic"/>

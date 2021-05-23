@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <template #hero>
-      <div class="container flex flex-wrap">
+      <div class="container flex flex-wrap items-center">
         <div class="avatar mr-far-base md:mb-far-base">
           <g-image class="rounded-full border-1 border-solid border-spinel" :alt="firstName" :src="$page.profile.avatar" />
         </div>
