@@ -40,15 +40,6 @@ main.container {
     color: var(--decorative-agate);
   }
 
-  $headers: (h1, h2, h3, h4, h5, h6);
-
-  @each $header in $headers {
-    *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) + #{$header} {
-      margin-top: 1.5em;
-      margin-bottom: 0.5em;
-    }
-  }
-
   .article > p:first-of-type {
     font-size: 1.25em;
   }

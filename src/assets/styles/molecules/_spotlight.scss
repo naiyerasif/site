@@ -40,8 +40,8 @@ $margin: var(--gap-lg) !default;
 
 @mixin heading($font-size) {
   font-size: #{$font-size}em;
-  margin-top: calc(var(--r11y-margin) * 2 / #{$font-size});
-  margin-bottom: calc(var(--r11y-margin) / #{$font-size});
+  margin-top: calc(#{$margin} * 5 / #{$font-size});
+  margin-bottom: calc(#{$margin} * 2.5 / #{$font-size});
 }
 
 @mixin cell($font-size) {
