@@ -3,7 +3,7 @@
 @use '~/assets/styles/mixins/gap';
 
 $weight-bold: var(--weight-bold) !default;
-$weight-headings: var(--weight-black) !default;
+$weight-headings: var(--weight-bold) !default;
 
 $text-base: var(--text-base) !default;
 $text-code: 0.9em !default;
@@ -257,6 +257,7 @@ body {
   h5,
   h6 {
     font-weight: $weight-headings;
+    @include family.font-heading;
     line-height: 1.2;
     color: $text-headings;
 

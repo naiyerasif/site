@@ -9,10 +9,10 @@ $family-code-native: ui-monospace, SFMono-Regular, 'Roboto Mono', Menlo, Monaco,
   'Liberation Mono', 'Courier New', monospace !default;
 
 @mixin font-body {
-  font-family: list.append('Inter', $family-sans-native);
+  font-family: 'Inter', $family-sans-native;
 
   @supports (font-variation-settings: normal) {
-    font-family: list.append('Inter var', $family-sans-native);
+    font-family: 'Inter var', $family-sans-native;
   }
 
   font-variant-ligatures: contextual common-ligatures;
@@ -29,9 +29,19 @@ $family-code-native: ui-monospace, SFMono-Regular, 'Roboto Mono', Menlo, Monaco,
 // font family mixin for code
 
 @mixin font-code {
-  font-family: list.append('JetBrains Mono', $family-sans-native);
+  font-family: 'JetBrains Mono', $family-sans-native;
 
   @supports (font-variation-settings: normal) {
-    font-family: list.append('JetBrains Mono var', $family-sans-native);
+    font-family: 'JetBrains Mono var', $family-sans-native;
   }
+}
+
+@mixin font-heading {
+  font-family: 'IBM Plex Sans', $family-sans-native;
+
+  @supports (font-variation-settings: normal) {
+    font-family: 'IBM Plex Sans var', $family-sans-native;
+  }
+
+  font-variant-ligatures: contextual common-ligatures;
 }
