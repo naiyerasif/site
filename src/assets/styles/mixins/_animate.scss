@@ -1,4 +1,6 @@
-@mixin animate($name, $duration: 500ms, $timing-fn: ease-in-out) {
+$ease-in-out-quad: cubic-bezier(0.46, 0.03, 0.52, 0.96);
+
+@mixin animate($name, $duration: 500ms, $timing-fn: $ease-in-out-quad) {
   animation-name: $name;
   animation-duration: $duration;
   transition-duration: $duration;

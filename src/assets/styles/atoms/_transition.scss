@@ -1,6 +1,6 @@
 @use '~/assets/styles/mixins/animate' as *;
 
-// DISSOLVE
+// dissolve
 
 .dissolve-enter-to,
 .dissolve-enter-active {
@@ -17,7 +17,7 @@
   opacity: 0;
 }
 
-// SLIDE-UP
+// slide up
 
 .slide-up-enter-active,
 .slide-up-leave-active {
@@ -29,7 +29,7 @@
   opacity: 0;
 }
 
-// ROTATE-IN-RIGHT
+// rotate in right
 
 .rotate-in-right-enter-to,
 .rotate-in-right-leave {
@@ -41,21 +41,24 @@
   opacity: 0;
 }
 
-// THEME-SWITCH
+// theme switch
 
 * {
   transition-property: background-color, border-color, font-weight, font-size;
   transition-duration: 250ms;
-  transition-timing-function: ease-in-out;
+  transition-timing-function: $ease-in-out-quad;
 
   @media (print), (prefers-reduced-motion: reduce) {
     transition-duration: 1ms;
   }
 }
 
+// links
+
 a {
   transition-property: background-color, color, text-decoration-color;
   transition-duration: 300ms;
+  transition-timing-function: $ease-in-out-quad;
 
   @media (print), (prefers-reduced-motion: reduce) {
     transition-duration: 1ms;
