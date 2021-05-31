@@ -22,7 +22,7 @@ module.exports = {
     outdationPeriod: 365 // in days
   },
   paths: {
-    draft: 'archive/backlog',
+    draft: '.gitlab/drafts',
     search: {
       dir: './static',
       name: 'search.json'

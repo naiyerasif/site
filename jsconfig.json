@@ -9,8 +9,8 @@
   "exclude": [
     ".cache",
     ".github",
+    ".gitlab",
     ".vscode",
-    "archive",
     "content",
     "node_modules",
     "public",
