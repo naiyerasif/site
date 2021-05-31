@@ -11,11 +11,11 @@
 @include transform-with-opacity(fadeOut, 1, translateZ(0%), 0, translateZ(-100%));
 
 .fade-enter-active {
-  @include animate(fadeIn, $timing-fn: ease-out);
+  @include animate(fadeIn);
 }
 
 .fade-leave-active {
-  @include animate(fadeOut, $timing-fn: ease-out);
+  @include animate(fadeOut);
 }
 
 .fade-enter,
