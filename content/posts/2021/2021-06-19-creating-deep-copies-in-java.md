@@ -87,7 +87,7 @@ class BookDeepCopyTest {
 
 At the end of the test, you can see that even if we modify the author's name in the copy of a `Book` object, the original object remains unaffected.
 
-There a few caveats in this approach.
+There are a few caveats in this approach.
 
 - You need to manually implement the `copy()` method in the source code of the classes. You may not have access to the source code; it may be part of an external library.
 - In the above example, the `Book` class has only two attributes. What if your class has a lot of fields, many of which are references to other types? You'll also have to do handle `null` values in such cases which is very tedious.
