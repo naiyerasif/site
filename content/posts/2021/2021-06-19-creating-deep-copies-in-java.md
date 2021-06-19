@@ -9,7 +9,7 @@ The need to create copies is pretty common in programming. In a nutshell, you ma
 
 ## Manually copying the data
 
-One way to achieve a predictable deep copying mechanism is to manually implement it in the classes. You can do this by defining a contract by the following interface.
+One way to achieve a predictable deep copying mechanism is to manually implement it in the classes. You can do this by defining the following interface.
 
 ```java
 public interface Copyable<T> {
@@ -89,12 +89,12 @@ At the end of the test, you can see that even if we modify the author's name in 
 
 There a few caveats in this approach.
 
-- It needs you to manually implement the `copy()` method in the source code of the classes. You may not have access to the source code of the classes; it may be part of an external library.
-- It is very tedious. In the above example, the `Book` class has only two attributes. What if your class has a lot of fields, many of which are references to other types? You'll also have to do handle `null` values in such cases which is very tedious.
+- You need to manually implement the `copy()` method in the source code of the classes. You may not have access to the source code; it may be part of an external library.
+- In the above example, the `Book` class has only two attributes. What if your class has a lot of fields, many of which are references to other types? You'll also have to do handle `null` values in such cases which is very tedious.
 
 ## Copying with serialized representation to object
 
-A better way to generate deep copying is by serialization using a Java library. There are multiple ways to do this; one way is to serialize the object to JSON using [Jackson](https://github.com/FasterXML/jackson) and deserialize it.
+A better approach to generate a deep copy is by serialization using a Java library. There are multiple ways to do this; one of them is to serialize the object to JSON using [Jackson](https://github.com/FasterXML/jackson) and deserialize it.
 
 Assuming you've got a Maven project, add the `jackson-databind` dependency in `pom.xml`.
 
@@ -117,7 +117,7 @@ Assuming you've got a Maven project, add the `jackson-databind` dependency in `p
 </project>
 ```
 
-You won't need to modify the original classes this time.
+You won't need to modify the original classes in this case.
 
 ```java{20-22}
 import static org.assertj.core.api.Assertions.assertThat;
@@ -156,16 +156,18 @@ class BookDeepCopyWithJacksonTest {
 
 In the above test, to create a deep copy, we
 
-- serialize the object `martian` as a JSON string using Jackson's `ObjectMapper.writeValueAsString` method.
-- deserialize the JSON string back to the object using `ObjectMapper.readValue` method.
+- serialized the object `martian` as a JSON string using Jackson's `ObjectMapper.writeValueAsString` method.
+- deserialized the JSON string back to the object using `ObjectMapper.readValue` method.
 
-This method is better than the first approach because it doesn't need any manual changes in the existing source code. It works with complex types as well.
+Using this approach
+- you don't need to mess with the source code of the classes.
+- you can create deep copies of complex objects, e.g., those using collections, maps, etc, with much fuss.
 
-However, note that it is a two-step process and can be a performance concern in some scenarios where memory is limited and objects are massive.
+However, note that this is a two-step process and can cause performance issues in some scenarios where memory is limited and objects are massive.
 
 ## Copying from object to object
 
-It is possible to avoid the two-step process used above and directly copy the object. You can use [Kryo](https://github.com/EsotericSoftware/kryo) which is a serialization framework for Java; it can create deep copies by direct copying data from the object to object.
+It is possible to avoid the two-step process used above and directly copy the object. You can use a serialization framework called [Kryo](https://github.com/EsotericSoftware/kryo) which can create deep copies by direct copying data from the object to object.
 
 Assuming you have a Maven project, add the `kryo` dependency in `pom.xml`.
 
@@ -226,10 +228,10 @@ class BookDeepCopyWithKryoTest {
 
 In the test above, we
 
-- initialize an instance of `Kryo` and set the registration of classes to `false`. By default, `kryo` requires the registration of all the classes that you need to copy (here `Author` and `Book`). However, if you want to use `kryo` only for copying purposes, you can safely disable the registration.
-- copy the object by calling the `copy` method from the `kryo` instance.
+- initialized an instance of `Kryo` and set the registration of classes to `false`. By default, `kryo` requires the registration of all the classes that you need to copy (here `Author` and `Book`). However, if you want to use `kryo` only for copying purposes, you can safely disable the registration.
+- copied the object by calling the `copy` method on the `kryo` instance.
 
-This method is better than the previous approach because it is a single-step process and therefore, in general, faster. It also works pretty effectively with complex / massive objects.
+This method is a single-step process, and much faster than previous approaches. It also works pretty effectively with complex / massive objects.
 
 ## References
 
