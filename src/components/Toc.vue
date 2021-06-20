@@ -1,21 +1,23 @@
 <template>
-  <details class="toc max-sm text-sm mb-far-base" id="table-of-contents">
-    <summary>Table of contents</summary>
-    <ul class="toc-body list-none px-base py-sm">
+  <section class="toc text-sm mb-far-base" id="table-of-contents">
+    <div class="toc-title text-xs font-bold uppercase tracking-widest py-base px-md flex items-center"><Sprite symbol="icon-table-of-content" class="icon-sm text-inform mr-ch-base" /> Table of contents</div>
+    <ul class="toc-body list-none py-base px-md">
       <li v-for="header in allHeadings" :key="header.id">
         <a :class="'toc-item-' + header.depth" :href="header.anchor">{{ header.value }}</a>
       </li>
     </ul>
-  </details>
+  </section>
 </template>
 
 <script>
+import Sprite from '~/components/Sprite'
 import * as appConfig from '@/app.config'
-
-const { prefs } = appConfig
 
 export default {
   props: ['headers', 'depth'],
+  components: {
+    Sprite
+  },
   computed: {
     allHeadings() {
       const maxDepth = this.depth ? this.depth : appConfig.prefs.maxTocDepth
@@ -27,6 +29,14 @@ export default {
 
 <style lang="scss" scoped>
 .toc {
+  border: 2px solid var(--decorative-spinel);
+  border-radius: var(--radius-base);
+  max-width: max-content;
+
+  &-title {
+    border-bottom: 1px solid var(--decorative-spinel);
+  }
+
   &-body {
     margin-left: 0;
   }
