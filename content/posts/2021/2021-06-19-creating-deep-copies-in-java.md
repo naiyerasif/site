@@ -90,7 +90,7 @@ At the end of the test, you can see that even if we modify the author's name in 
 There are a few caveats in this approach.
 
 - You need to manually implement the `copy()` method in the source code of the classes. You may not have access to the source code; it may be part of an external library.
-- In the above example, the `Book` class has only two attributes. What if your class has a lot of fields, many of which are references to other types? You'll also have to do handle `null` values in such cases which is very tedious.
+- In the above example, the `Book` class has only two attributes. What if your class has a lot of fields, many of which are references to other types? You'll also have to handle the `null` values in such cases which is very tedious.
 
 ## Copying with serialized representation to object
 
@@ -161,7 +161,7 @@ In the above test, to create a deep copy, we
 
 Using this approach
 - you don't need to mess with the source code of the classes.
-- you can create deep copies of complex objects, e.g., those using collections, maps, etc, with much fuss.
+- you can create deep copies of complex objects, e.g., those using collections, maps, etc, without much fuss.
 
 However, note that this is a two-step process and can cause performance issues in some scenarios where memory is limited and objects are massive.
 
