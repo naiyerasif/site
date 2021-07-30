@@ -6,9 +6,6 @@ const { writeToFile } = require('./app.server')
 const { prefs, paths } = require('./app.config')
 const projects = require('./content/projects')
 
-const reportPath = `${paths.report.dir}/${paths.report.name}`
-const popularPosts = require(reportPath)
-
 const outdationDate = dayjs().clone().subtract(prefs.outdationPeriod, 'days').startOf('day')
 
 module.exports = api => {
@@ -45,18 +42,6 @@ module.exports = api => {
   })
 
   api.createPages(async ({ graphql, createPage }) => {
-    const result = await graphql(`{
-      allBlog(filter: { path: { in: ["${popularPosts.join('","')}"]}}) {
-        edges {
-          node {
-            topics
-          }
-        }
-      }
-    }`)
-
-    writeToFile('popular topics', paths.topics, result.data.allBlog.edges.flatMap(e => e.node.topics).filter((value, idx, self) => self.indexOf(value) === idx))
-
     const { data } = await graphql(`{
       allBlog {
         edges {

@@ -72,7 +72,7 @@ This site uses
 
 ### Privacy
 
-This site uses [Google Analytics](https://marketingplatform.google.com/about/analytics/) to collect statistics about user interactions, subject to the practices [documented here](https://support.google.com/analytics/answer/6004245). Feel free to use a blocker, such as [uBlock Origin](https://github.com/gorhill/uBlock), to block the analytics, in case you don't want to share your data.
+This site does not use any analytics to track you.
 
 ### License
 

@@ -8,22 +8,15 @@
       </div>
     </template>
     <main class="container px-far-base">
-      <div class="separated">
-        <strong><Sprite symbol="icon-new" class="icon text-urge mr-base" />Latest</strong>
-        <time class="text-sm text-neutral" v-html="mostRecent.node.date" />
-      </div>
-      <div class="group cursor-pointer max-sm" style="margin-left:3rem" @click="$router.push(mostRecent.node.path)">
+      <div class="group cursor-pointer" @click="$router.push(mostRecent.node.path)">
+        <div class="text-sm text-neutral separated">
+          <time v-html="mostRecent.node.date" />
+        </div>
         <g-link class="block font-bold text-md group-hover:text-deter group-hover:underline my-xs" :to="mostRecent.node.path">{{ mostRecent.node.title }}</g-link>
         <div class="text-sm" v-html="excerpt(mostRecent.node.excerpt)" />
       </div>
       <hr class="my-far-base" />
-      <p class="font-bold"><Sprite symbol="icon-popular" class="icon text-deter mr-base" />Popular topics</p>
-      <div class="flex flex-wrap items-center text-xs tracking-wide uppercase font-bold" style="margin-left:3rem">
-        <tag class="mb-base mr-base" v-for="(topic, index) in popularTopics" :key="index" :keyword="topic"/>
-      </div>
-      <hr class="my-far-base" />
-      <p class="font-bold"><Sprite symbol="icon-recent" class="icon text-inform mr-base" />Recent posts</p>
-      <div class="group cursor-pointer mb-md" style="margin-left:3rem" v-for="latest in recent" :key="latest.id" @click="$router.push(latest.node.path)">
+      <div class="group cursor-pointer mb-md" v-for="latest in recent" :key="latest.id" @click="$router.push(latest.node.path)">
         <div class="text-sm text-neutral separated">
           <time v-html="latest.node.date" />
         </div>
@@ -55,7 +48,6 @@ query {
 <script>
 import Sprite from '~/components/Sprite'
 import Tag from '~/components/Tag'
-import topics from '@/static/topics.json'
 
 export default {
   metaInfo: {
@@ -66,9 +58,6 @@ export default {
     Tag
   },
   computed: {
-    popularTopics() {
-      return topics.sort()
-    },
     mostRecent() {
       return this.$page.latestPosts.edges[0]
     },

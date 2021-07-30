@@ -27,14 +27,6 @@ module.exports = {
       dir: './static',
       name: 'search.json'
     },
-    report: {
-      dir: './static',
-      name: 'report.json'
-    },
-    topics: {
-      dir: './static',
-      name: 'topics.json'
-    },
     sprite: '/assets/images'
   },
   search: {
