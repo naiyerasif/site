@@ -110,15 +110,6 @@ module.exports = {
       options: {
         cacheTime: 600000,
       }
-    },
-    {
-      use: '@gridsome/plugin-google-analytics',
-      options: {
-        id: 'UA-143076148-1',
-        debug: {
-          sendHitTask: process.env.NODE_ENV === 'production'
-        }
-      }
     }
   ],
   transformers: {

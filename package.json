@@ -7,9 +7,7 @@
   "author": "Naiyer Asif",
   "license": "MIT",
   "scripts": {
-    "build": "npm run build:report && npm run build:site",
-    "build:report": "node bin/report.js",
-    "build:site": "gridsome build",
+    "build": "gridsome build",
     "start": "gridsome develop",
     "status": "gridsome info",
     "purge": "shx rm -rf public .cache src/.temp static/search.json",
@@ -19,7 +17,6 @@
     "sprite:build": "spritely --input .gitlab/design/icons --output static/assets/images/icons.svg --prefix \"icon-\""
   },
   "dependencies": {
-    "@gridsome/plugin-google-analytics": "^0.1.2",
     "@gridsome/plugin-sitemap": "^0.4.0",
     "@gridsome/source-filesystem": "^0.6.2",
     "@gridsome/transformer-remark": "^0.6.4",
@@ -40,7 +37,6 @@
     "commander": "^7.2.0",
     "dayjs": "^1.10.6",
     "dotenv": "^10.0.0",
-    "googleapis": "^73.0.0",
     "gridsome-plugin-tailwindcss": "^4.1.1",
     "marked": "^2.1.3",
     "sass": "^1.35.2",
