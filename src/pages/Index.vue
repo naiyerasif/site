@@ -48,10 +48,29 @@ query {
 <script>
 import Sprite from '~/components/Sprite'
 import Tag from '~/components/Tag'
+import * as appConfig from '@/app.config'
 
 export default {
-  metaInfo: {
-    title: 'Home'
+  metaInfo() {
+    const title = 'Home'
+    const description = 'Reflections on design and development by Naiyer Asif'
+    
+    return {
+      title: title,
+      meta: [
+        { name: 'description', content: description },
+
+        { property: 'og:title', content: title },
+        { property: 'og:description', content: description },
+        { property: "og:url", content: `${appConfig.url}/` },
+
+        { name: 'twitter:card', content: 'summary' },
+        { name: 'twitter:title', content: title },
+        { name: 'twitter:description', content: description },
+        { name: 'twitter:site', content: '@Microflash' },
+        { name: 'twitter:creator', content: '@Microflash' }
+      ]
+    }
   },
   components: {
     Sprite,

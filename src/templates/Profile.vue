@@ -41,11 +41,28 @@ query Profile ($id: ID!) {
 <script>
 import Sprite from '~/components/Sprite'
 import ScrollIndicator from '~/components/ScrollIndicator'
+import * as appConfig from '@/app.config'
 
 export default {
   metaInfo() {
+    const title = this.$page.profile.name
+    const description = 'About Naiyer Asif'
+    
     return {
-      title: this.$page.profile.name
+      title: title,
+      meta: [
+        { name: 'description', content: description },
+
+        { property: 'og:title', content: title },
+        { property: 'og:description', content: description },
+        { property: "og:url", content: `${appConfig.url}${this.$page.profile.path}` },
+
+        { name: 'twitter:card', content: 'summary' },
+        { name: 'twitter:title', content: title },
+        { name: 'twitter:description', content: description },
+        { name: 'twitter:site', content: '@Microflash' },
+        { name: 'twitter:creator', content: '@Microflash' }
+      ]
     }
   },
   components: {
