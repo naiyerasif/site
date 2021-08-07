@@ -49,10 +49,29 @@ query Blogs ($page: Int) {
 
 <script>
 import Pagination from '~/components/Pagination'
+import * as appConfig from '@/app.config'
 
 export default {
-  metaInfo: {
-    title: 'Blog'
+  metaInfo() {
+    const title = 'Blog'
+    const description = 'Blog posts by Naiyer Asif'
+    
+    return {
+      title: title,
+      meta: [
+        { name: 'description', content: description },
+
+        { property: 'og:title', content: title },
+        { property: 'og:description', content: description },
+        { property: "og:url", content: `${appConfig.url}/blog/` },
+
+        { name: 'twitter:card', content: 'summary' },
+        { name: 'twitter:title', content: title },
+        { name: 'twitter:description', content: description },
+        { name: 'twitter:site', content: '@Microflash' },
+        { name: 'twitter:creator', content: '@Microflash' }
+      ]
+    }
   },
   components: {
     Pagination

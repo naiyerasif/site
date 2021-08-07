@@ -79,6 +79,7 @@ query Blog ($id: ID!, $previousId: ID!, $nextId: ID!) {
     path
     timeToRead
     status
+    excerpt
   }
 
   previous: blog (id: $previousId) {
@@ -102,8 +103,36 @@ import * as appConfig from '@/app.config'
 
 export default {
   metaInfo() {
+    const links = [{ rel: 'source', href: this.editUrl }]
+    
+    if (this.$page.previous) {
+      links.push({ rel: 'prev', 'aria-label': 'Previous post', href: `${appConfig.url}${this.$page.previous.path}` })
+    }
+
+    if (this.$page.next) {
+      links.push({ rel: 'next', 'aria-label': 'Next post', href: `${appConfig.url}${this.$page.next.path}` })
+    }
+
+    const title = this.$page.post.title
+    const description = this.$page.post.excerpt
+
     return {
-      title: this.$page.post.title
+      title: title,
+      link: links,
+      meta: [
+        { name: 'description', content: description },
+
+        { property: 'og:type', content: 'article' },
+        { property: 'og:title', content: title },
+        { property: 'og:description', content: description },
+        { property: "og:url", content: `${appConfig.url}${this.$page.post.path}` },
+
+        { name: 'twitter:card', content: 'summary' },
+        { name: 'twitter:title', content: title },
+        { name: 'twitter:description', content: description },
+        { name: 'twitter:site', content: '@Microflash' },
+        { name: 'twitter:creator', content: '@Microflash' }
+      ]
     }
   },
   components: {

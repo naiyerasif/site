@@ -18,7 +18,6 @@ module.exports = {
   prefs: {
     editContext: `${pkgRepo.replace(/.git$/g, '')}/edit/main`,
     maxTocDepth: 3,
-    maxPopularPosts: 9,
     outdationPeriod: 365 // in days
   },
   paths: {

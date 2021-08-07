@@ -36,9 +36,29 @@ query {
 </page-query>
 
 <script>
+import * as appConfig from '@/app.config'
+
 export default {
-  metaInfo: {
-    title: 'Projects'
-  }
+  metaInfo() {
+    const title = 'Projects'
+    const description = 'Tools, utilities and experiments by Naiyer Asif'
+    
+    return {
+      title: title,
+      meta: [
+        { name: 'description', content: description },
+
+        { property: 'og:title', content: title },
+        { property: 'og:description', content: description },
+        { property: "og:url", content: `${appConfig.url}/projects/` },
+
+        { name: 'twitter:card', content: 'summary' },
+        { name: 'twitter:title', content: title },
+        { name: 'twitter:description', content: description },
+        { name: 'twitter:site', content: '@Microflash' },
+        { name: 'twitter:creator', content: '@Microflash' }
+      ]
+    }
+  },
 }
 </script>
