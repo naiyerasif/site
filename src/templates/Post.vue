@@ -99,6 +99,7 @@ import Toc from '~/components/Toc'
 import Tag from '~/components/Tag'
 import Sprite from '~/components/Sprite'
 import ScrollIndicator from '~/components/ScrollIndicator'
+import dayjs from 'dayjs'
 import * as appConfig from '@/app.config'
 
 export default {
@@ -116,23 +117,30 @@ export default {
     const title = this.$page.post.title
     const description = this.$page.post.excerpt
 
+    const metas = [
+      { name: 'description', content: description },
+
+      { property: 'og:type', content: 'article' },
+      { property: 'og:title', content: title },
+      { property: 'og:description', content: description },
+      { property: "og:url", content: `${appConfig.url}${this.$page.post.path}` },
+      { property: "article:published_time", content: dayjs(this.$page.post.date).format('YYYY-MM-DD') },
+
+      { name: 'twitter:card', content: 'summary' },
+      { name: 'twitter:title', content: title },
+      { name: 'twitter:description', content: description },
+      { name: 'twitter:site', content: '@Microflash' },
+      { name: 'twitter:creator', content: '@Microflash' }
+    ]
+
+    if (this.$page.post.updated !== this.$page.post.date) {
+      metas.push({ property: "article:modified_time", content: dayjs(this.$page.post.updated).format('YYYY-MM-DD') })
+    }
+
     return {
       title: title,
       link: links,
-      meta: [
-        { name: 'description', content: description },
-
-        { property: 'og:type', content: 'article' },
-        { property: 'og:title', content: title },
-        { property: 'og:description', content: description },
-        { property: "og:url", content: `${appConfig.url}${this.$page.post.path}` },
-
-        { name: 'twitter:card', content: 'summary' },
-        { name: 'twitter:title', content: title },
-        { name: 'twitter:description', content: description },
-        { name: 'twitter:site', content: '@Microflash' },
-        { name: 'twitter:creator', content: '@Microflash' }
-      ]
+      meta: metas
     }
   },
   components: {
