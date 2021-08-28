@@ -257,9 +257,9 @@ body {
   h5,
   h6 {
     font-weight: $weight-headings;
-    @include family.font-heading;
     line-height: 1.2;
     color: $text-headings;
+    letter-spacing: -0.03em;
 
     &:first-child {
       margin-top: 0;

@@ -27,7 +27,7 @@
   --text-sm: calc(0.8rem + 0.2vw);
   --text-base: calc(0.9rem + 0.3vw);
   --text-md: calc(1rem + 0.4vw);
-  --text-lg: calc(1.3rem + 3vw);
+  --text-xxl: calc(1.7rem + 3.25vw);
 }
 
 [data-text-mode='large'] {
@@ -35,7 +35,7 @@
   --text-sm: calc(0.9rem + 0.2vw);
   --text-base: calc(1rem + 0.3vw);
   --text-md: calc(1.1rem + 0.4vw);
-  --text-lg: calc(1.4rem + 3vw);
+  --text-xxl: calc(1.8rem + 3.25vw);
 }
 
 [data-theme='light'] {

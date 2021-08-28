@@ -2,7 +2,7 @@
   <Layout>
     <template #hero>
       <div class="container">
-        <h1 class="leading-tight text-lg">Blog</h1>
+        <h1 class="leading-tight text-xxl">Blog</h1>
         <div class="text-md text-neutral">Guides, notes and opinion pieces</div>
       </div>
     </template>

@@ -17,16 +17,6 @@
   font-named-instance: 'Italic';
 }
 
-@include font-face('JetBrains Mono var', 100 900, _font-path('JetBrainsMono.var'),
-  $file-formats: ('woff2 supports variations(gvar)', 'woff2-variations', 'woff2')) {
-  font-named-instance: 'Regular';
-}
-
-@include font-face('IBM Plex Sans var', 100 900, _font-path('IBMPlexSans-roman.var'),
-  $file-formats: ('woff2 supports variations(gvar)', 'woff2-variations', 'woff2')) {
-  font-named-instance: 'Regular';
-}
-
 // static font-families
 
 @include font-face('Inter', 350, _font-path('Inter-Light'));
@@ -40,8 +30,5 @@
 
 @include font-face('JetBrains Mono', 350, _font-path('JetBrainsMono-Light'));
 @include font-face('JetBrains Mono', 400, _font-path('JetBrainsMono-Regular'));
-@include font-face('JetBrains Mono', 600, _font-path('JetBrainsMono-Medium'));
+@include font-face('JetBrains Mono', 600, _font-path('JetBrainsMono-SemiBold'));
 @include font-face('JetBrains Mono', 700, _font-path('JetBrainsMono-Bold'));
-
-@include font-face('IBM Plex Sans', 600, _font-path('IBMPlexSans-Medium'));
-@include font-face('IBM Plex Sans', 700, _font-path('IBMPlexSans-Bold'));

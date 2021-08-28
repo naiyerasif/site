@@ -59,7 +59,7 @@ module.exports = {
       'sm': 'var(--text-sm)',
       'base': 'var(--text-base)',
       'md': 'var(--text-md)',
-      'lg': 'var(--text-lg)'
+      'xxl': 'var(--text-xxl)'
     },
     fontWeight: {
       normal: 'var(--weight-normal)',

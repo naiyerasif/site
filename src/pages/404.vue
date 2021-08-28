@@ -2,7 +2,7 @@
   <Layout>
     <template #hero>
       <div class="container">
-        <h1 class="leading-tight text-lg">{{ getMsg() }}</h1>
+        <h1 class="leading-tight text-xxl">{{ getMsg() }}</h1>
         <div class="text-md text-neutral">&xlarr; Return to <g-link to="/">Home</g-link>.</div>
       </div>
     </template>
