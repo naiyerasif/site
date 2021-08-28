@@ -2,7 +2,7 @@
   <Layout>
     <template #hero>
       <div class="container">
-        <h1 class="leading-tight text-lg">Projects</h1>
+        <h1 class="leading-tight text-xxl">Projects</h1>
         <div class="text-md text-neutral">Tools, utilities and experiments</div>
       </div>
     </template>
