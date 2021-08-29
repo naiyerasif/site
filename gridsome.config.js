@@ -45,9 +45,6 @@ module.exports = {
       }
     },
     {
-      use: "gridsome-plugin-tailwindcss"
-    },
-    {
       use: '@microflash/gridsome-plugin-feed',
       options: {
         contentTypes: ['Blog'],

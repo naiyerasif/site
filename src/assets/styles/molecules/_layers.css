@@ -1,20 +1,19 @@
-@layer utilities {
-  @variants responsive {
-    .basis-100 {
-      flex-basis: 100%;
-    }
-  
-    .inset-0 {
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-    }
-  
-    .shadow {
-      --shadow-color: var(--decorative-spinel);
-    
-      box-shadow: 0 0 2em var(--shadow-color);
-    }
+.basis-100 {
+  flex-basis:100%
+ }
+ .inset-0 {
+  top:0;
+  right:0;
+  bottom:0;
+  left:0
+ }
+ .shadow {
+  --shadow-color:var(--decorative-spinel);
+  box-shadow:0 0 2em var(--shadow-color)
+ }
+ @media (max-width:599px) {
+  .sm\:basis-100 {
+   flex-basis:100%
   }
-}
+ }
+ 
