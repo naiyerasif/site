@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import * as slugify from '@/data/slugify'
+import * as slugify from '@/lib/slugify'
 
 // sprite file location
 const sprites = '/assets/images/icons.svg'
