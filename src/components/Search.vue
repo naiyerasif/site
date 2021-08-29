@@ -1,14 +1,14 @@
 <template>
   <div class="search flex items-center">
     <a class="leading-none" role="button" aria-label="Launch search" @click="launch">
-      <Sprite symbol="icon-search" class="icon" />
+      <Icon symbol="icon-search" class="icon" />
     </a>
     <transition name="dissolve" mode="out-in">
       <div v-if="launched" class="search-modal fixed inset-0 z-50">
         <search-escape @keyup.esc="escapeSearch" />
         <div class="search-panel fixed inset-0 overflow-hidden flex flex-col shadow border-1 border-solid border-spinel rounded-2xl bg-tertiary my-far-md mx-auto px-far-sm py-far-sm max-w-4xl max-h-4xl">
           <div class="search-box flex items-center justify-between">
-            <Sprite symbol="icon-search" class="icon text-primary" />
+            <Icon symbol="icon-search" class="icon text-primary" />
             <input type="text" class="search-input bg-transparent border-none outline-none basis-100 mx-base" placeholder="Search blog posts..." v-model="query" @input="softReset" @keyup="performSearch" @keydown.up.prevent="highlightPrev" @keydown.down.prevent="highlightNext" @keyup.enter="performSearch" ref="search" aria-label="Search blog posts"/>
             <a role="button" aria-label="Reset search" @click="reset" class="search-reset text-sm tracking-wide font-bold leading-none focus:no-underline hover:no-underline">
               <kbd class="tappable focus:bg-ruby hover:bg-ruby">esc</kbd>
@@ -39,7 +39,7 @@
 import axios from 'axios'
 import Searching from '@/static/assets/images/searching.svg'
 import NoResults from '@/static/assets/images/noresults.svg'
-import Sprite from './Sprite'
+import Icon from './Icon'
 import SearchEscape from './SearchEscape'
 
 import * as appConfig from '@/app.config'
@@ -47,7 +47,7 @@ const { search, paths } = appConfig
 
 export default {
   components: {
-    Sprite,
+    Icon,
     Searching,
     NoResults,
     SearchEscape

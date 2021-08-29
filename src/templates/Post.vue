@@ -41,13 +41,13 @@
       </g-link>
       <div class="flex justify-end">
         <a class="leading-none mr-ch-base" target="_blank" rel="noopener noreferrer" title="Edit this page" :href="editUrl">
-          <Sprite symbol="icon-edit-file" class="icon" />
+          <Icon symbol="icon-edit-file" class="icon" />
         </a>
         <a class="leading-none mr-ch-base" v-if="$page.post.headings.length > 0" href="#table-of-contents" title="Table of Contents">
-          <Sprite symbol="icon-table-of-content" class="icon" />
+          <Icon symbol="icon-table-of-content" class="icon" />
         </a>
         <a class="leading-none" href="#app" title="Back to top">
-          <Sprite symbol="icon-back-to-top" class="icon" />
+          <Icon symbol="icon-back-to-top" class="icon" />
         </a>
       </div>
     </template>
@@ -97,7 +97,7 @@ query Blog ($id: ID!, $previousId: ID!, $nextId: ID!) {
 <script>
 import Toc from '~/components/Toc'
 import Tag from '~/components/Tag'
-import Sprite from '~/components/Sprite'
+import Icon from '~/components/Icon'
 import ScrollIndicator from '~/components/ScrollIndicator'
 import dayjs from 'dayjs'
 import * as appConfig from '@/app.config'
@@ -146,7 +146,7 @@ export default {
   components: {
     Toc,
     Tag,
-    Sprite,
+    Icon,
     ScrollIndicator
   },
   computed: {

@@ -46,7 +46,6 @@ query {
 </page-query>
 
 <script>
-import Sprite from '~/components/Sprite'
 import Tag from '~/components/Tag'
 import * as appConfig from '@/app.config'
 
@@ -73,7 +72,6 @@ export default {
     }
   },
   components: {
-    Sprite,
     Tag
   },
   computed: {

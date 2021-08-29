@@ -18,7 +18,7 @@
     <template #sidekick>
       <div class="flex justify-end">
         <a class="leading-none" href="#app" title="Back to top">
-          <Sprite symbol="icon-back-to-top" class="icon" />
+          <Icon symbol="icon-back-to-top" class="icon" />
         </a>
       </div>
     </template>
@@ -39,7 +39,7 @@ query Profile ($id: ID!) {
 </page-query>
 
 <script>
-import Sprite from '~/components/Sprite'
+import Icon from '~/components/Icon'
 import ScrollIndicator from '~/components/ScrollIndicator'
 import * as appConfig from '@/app.config'
 
@@ -66,7 +66,7 @@ export default {
     }
   },
   components: {
-    Sprite,
+    Icon,
     ScrollIndicator
   },
   computed: {

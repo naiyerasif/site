@@ -25,8 +25,7 @@ module.exports = {
     search: {
       dir: './static',
       name: 'search.json'
-    },
-    sprite: '/assets/images'
+    }
   },
   search: {
     shouldSort: true,
