@@ -12,17 +12,9 @@ module.exports = api => {
 
   api.onCreateNode(options => {
     if (options.internal.typeName === 'Blog') {
-      if (!options.updated) {
-        options.updated = options.date
-      }
-
-      if (!options.category) {
-        options.category = 'guide'
-      }
-
-      if (typeof(options.status) == 'undefined') {
-        options.status = outdationDate && dayjs(options.updated).isBefore(outdationDate) ? 'outdated' : 'fresh'
-      }
+      options.updated = options.updated || options.date
+      options.category = options.category || 'guide'
+      options.status = options.status || outdationDate && dayjs(options.updated).isBefore(outdationDate) ? 'outdated' : 'fresh'
     }
     
     return { ...options }

@@ -4,32 +4,6 @@ const marked = require('marked')
 
 const appConfig = require('./app.config')
 
-const postcssPlugins = [
-  autoprefixer({
-    cascade: false
-  })
-]
-
-const remarkPlugins = [
-  'remark-admonitions',
-  [
-    '@noxify/gridsome-plugin-remark-embed', {
-      'enabledProviders': ['Youtube']
-    }
-  ],
-  [
-    'gridsome-plugin-remark-prismjs-all', { 
-      noInlineHighlight: true,
-      aliases: {
-        sh: 'shell',
-        conf: 'properties',
-        yml: 'yaml'
-      }
-    }
-  ],
-  'gridsome-remark-figure-caption'
-]
-
 module.exports = {
   siteName: appConfig.name,
   siteDescription: appConfig.description,
@@ -114,7 +88,25 @@ module.exports = {
   ],
   transformers: {
     remark: {
-      plugins: remarkPlugins,
+      plugins: [
+        'remark-admonitions',
+        [
+          '@noxify/gridsome-plugin-remark-embed', {
+            'enabledProviders': ['Youtube']
+          }
+        ],
+        [
+          'gridsome-plugin-remark-prismjs-all', { 
+            noInlineHighlight: true,
+            aliases: {
+              sh: 'shell',
+              conf: 'properties',
+              yml: 'yaml'
+            }
+          }
+        ],
+        'gridsome-remark-figure-caption'
+      ],
       externalLinksTarget: '_blank',
       externalLinksRel: ['nofollow', 'noopener', 'noreferrer'],
       slug: true,
@@ -130,7 +122,9 @@ module.exports = {
   css: {
     loaderOptions: {
       postcss: {
-        plugins: postcssPlugins,
+        plugins: [
+          autoprefixer()
+        ],
       },
     },
   },
