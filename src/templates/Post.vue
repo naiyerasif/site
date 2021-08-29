@@ -9,16 +9,16 @@
         <h1 class="leading-tight text-xxl my-far-base">{{ $page.post.title }}</h1>
         <div class="flex flex-wrap items-center text-xs tracking-wide uppercase font-bold separated">
           <strong>{{ $page.post.category }}</strong>
-          <tag v-for="(topic, idx) in $page.post.topics" :key="idx" :keyword="topic"/>
+          <tag v-for="(tag, idx) in $page.post.tags" :key="idx" :keyword="tag"/>
         </div>
       </div>
     </template>
     <ScrollIndicator />
     <main class="container px-far-base">
-      <div v-if="outdationMessage" class="admonition admonition-warning alert alert--danger">
+      <div v-if="expiryMessage" class="admonition admonition-warning alert alert--danger">
         <div class="admonition-heading"><h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M5.05.31c.81 2.17.41 3.38-.52 4.31C3.55 5.67 1.98 6.45.9 7.98c-1.45 2.05-1.7 6.53 3.53 7.7-2.2-1.16-2.67-4.52-.3-6.61-.61 2.03.53 3.33 1.94 2.86 1.39-.47 2.3.53 2.27 1.67-.02.78-.31 1.44-1.13 1.81 3.42-.59 4.78-3.42 4.78-5.56 0-2.84-2.53-3.22-1.25-5.61-1.52.13-2.03 1.13-1.89 2.75.09 1.08-1.02 1.8-1.86 1.33-.67-.41-.66-1.19-.06-1.78C8.18 5.31 8.68 2.45 5.05.32L5.03.3l.02.01z"></path></svg></span>warning</h5></div>
         <div class="admonition-content">
-          <p>{{ outdationMessage }}</p>
+          <p>{{ expiryMessage }}</p>
         </div>
       </div>
       <Toc v-if="$page.post.headings.length > 0" :headers="$page.post.headings" />
@@ -73,12 +73,12 @@ query Blog ($id: ID!, $previousId: ID!, $nextId: ID!) {
       name
       path
     }
-    topics
+    tags
     content
     category
     path
     timeToRead
-    status
+    expired
     excerpt
   }
 
@@ -100,18 +100,18 @@ import Tag from '~/components/Tag'
 import Icon from '~/components/Icon'
 import ScrollIndicator from '~/components/ScrollIndicator'
 import dayjs from 'dayjs'
-import * as appConfig from '@/app.config'
+import * as siteConfig from '@/data/site.config'
 
 export default {
   metaInfo() {
     const links = [{ rel: 'source', href: this.editUrl }]
     
     if (this.$page.previous) {
-      links.push({ rel: 'prev', 'aria-label': 'Previous post', href: `${appConfig.url}${this.$page.previous.path}` })
+      links.push({ rel: 'prev', 'aria-label': 'Previous post', href: `${siteConfig.url}${this.$page.previous.path}` })
     }
 
     if (this.$page.next) {
-      links.push({ rel: 'next', 'aria-label': 'Next post', href: `${appConfig.url}${this.$page.next.path}` })
+      links.push({ rel: 'next', 'aria-label': 'Next post', href: `${siteConfig.url}${this.$page.next.path}` })
     }
 
     const title = this.$page.post.title
@@ -123,7 +123,7 @@ export default {
       { property: 'og:type', content: 'article' },
       { property: 'og:title', content: title },
       { property: 'og:description', content: description },
-      { property: "og:url", content: `${appConfig.url}${this.$page.post.path}` },
+      { property: "og:url", content: `${siteConfig.url}${this.$page.post.path}` },
       { property: "article:published_time", content: dayjs(this.$page.post.date).format('YYYY-MM-DD') },
 
       { name: 'twitter:card', content: 'summary' },
@@ -155,11 +155,10 @@ export default {
       return `${prefix} <time class="font-bold">${this.$page.post.updated}</time>`
     },
     editUrl() {
-      const editContext = appConfig.editConfig && appConfig.editConfig.Post ? appConfig.editConfig.Post : appConfig.prefs.editContext
-      return `${editContext}/${this.$page.post.fileInfo.path}`
+      return `${siteConfig.editContext}/${this.$page.post.fileInfo.path}`
     },
-    outdationMessage() {
-      return this.$page.post.status === 'outdated' ? 'This post is old. Some information may be inaccurate.' : null
+    expiryMessage() {
+      return this.$page.post.expired !== '' ? this.$page.post.expired : null
     }
   }
 }

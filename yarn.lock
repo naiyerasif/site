@@ -4505,6 +4505,16 @@ gray-matter@^4.0.2:
     section-matter "^1.0.0"
     strip-bom-string "^1.0.0"
 
+gray-matter@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/gray-matter/-/gray-matter-4.0.3.tgz#e893c064825de73ea1f5f7d88c7a9f7274288798"
+  integrity sha512-5v6yZd4JK3eMI3FqqCouswVqwugaA9r4dNZB1wwcmrD02QkV5H0y7XBQW8QwQqEaZY1pM9aqORSORhJRdNK44Q==
+  dependencies:
+    js-yaml "^3.13.1"
+    kind-of "^6.0.2"
+    section-matter "^1.0.0"
+    strip-bom-string "^1.0.0"
+
 gridsome-plugin-remark-prismjs-all@^0.4.8:
   version "0.4.8"
   resolved "https://registry.yarnpkg.com/gridsome-plugin-remark-prismjs-all/-/gridsome-plugin-remark-prismjs-all-0.4.8.tgz#3609d25c0709101f1c01456f1c0d049eb643d9b7"
@@ -5737,6 +5747,11 @@ keyv@^3.0.0:
   integrity sha512-9ykJ/46SN/9KPM/sichzQ7OvXyGDYKGTaDlKMGCAlg2UK8KRy4jb0d8sFc+0Tt0YYnThq8X2RZgCg74RPxgcVA==
   dependencies:
     json-buffer "3.0.0"
+
+keyword-extractor@^0.0.20:
+  version "0.0.20"
+  resolved "https://registry.yarnpkg.com/keyword-extractor/-/keyword-extractor-0.0.20.tgz#2fb24a2654f36179733ae198a369395703c05721"
+  integrity sha512-VXMhJkmNqVZ+HbAyQx5rn7ssC8gumfgdFEfO9bYKAT5T8GrZKgtigH8tYT1pti7WuU86FbsCQfsJXI3lfvWsHA==
 
 kind-of@^2.0.1:
   version "2.0.1"

@@ -1,9 +1,8 @@
 ---
 title: 'Persisting documents with MongoRepository'
-date: 2019-07-08 11:12:13
-updated: 2020-10-26 10:10:01
-authors: [naiyer]
-topics: [spring, data, mongodb]
+date: 2019-07-08
+updated: 2020-10-26
+tags: ['spring', 'repository', 'mongodb']
 ---
 
 [Spring Data MongoDB](https://spring.io/projects/spring-data-mongodb) provides a variety of ways to work with a MongoDB database: low-level `MongoReader` and `MongoWriter` APIs, and higher-level `MongoTemplate` and `MongoOperations` APIs that make use of Query, Criteria and Update DSLs. It also provides a repository-style programming model through the `MongoRepository` interface which adds convenient abstractions to work with MongoDB.

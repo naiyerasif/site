@@ -38,7 +38,6 @@ query Blogs ($page: Int) {
         date (format: "MMM D, Y")
         timeToRead
         category
-        topics
         excerpt
         path
       }

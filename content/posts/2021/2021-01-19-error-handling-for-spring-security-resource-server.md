@@ -1,8 +1,7 @@
 ---
 title: 'Error handling for Spring Security Resource Server'
-date: 2021-01-19 09:46:57
-authors: [naiyer]
-topics: [spring, security, oauth2]
+date: 2021-01-19
+tags: ['spring', 'security', 'oauth2']
 ---
 
 > This is a follow-up post for [Error handling for a Spring-based REST API](/blog/2020/07/26/error-handling-for-a-spring-based-rest-api/) and [Protecting endpoints with Spring Security Resource Server](/blog/2020/11/15/protecting-endpoints-with-spring-security-resource-server/).

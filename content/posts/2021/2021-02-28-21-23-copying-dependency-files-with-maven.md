@@ -2,8 +2,7 @@
 title: 'Copying dependency files with Maven'
 date: 2021-02-28 21:23:03
 category: 'note'
-authors: [naiyer]
-topics: [maven, java]
+tags: ['maven', 'java', 'copy']
 ---
 
 Sometimes, when I build an application with Maven, I need to move some dependency files to the target directory along with the application JAR. These files may not be used by the application directly and hence wouldn't be packaged in the application JAR.

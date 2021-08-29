@@ -1,9 +1,8 @@
 ---
 title: 'Java-based health check for Docker'
-date: 2021-03-01 01:34:35
-updated: 2021-03-01 23:21:56
-authors: [naiyer]
-topics: [docker, java, distroless]
+date: 2021-03-01
+updated: 2021-03-01
+tags: ['docker', 'healthcheck', 'java', 'distroless']
 ---
 
 When you launch a container, Docker maintains its status as it transitions between several states. When you list the containers (using `docker ps` or `docker container ls`), the status of those states is displayed under `CREATED` and `STATUS` labels. These states are tracked through the server events; you can list them in real-time using the [`docker events`](https://docs.docker.com/engine/reference/commandline/events/) command.

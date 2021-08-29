@@ -1,9 +1,8 @@
 ---
 title: 'Querying JSON documents in Oracle'
-date: 2019-09-18 22:11:11
-updated: 2020-03-14 00:48:09
-authors: [naiyer]
-topics: [oracle, json]
+date: 2019-09-18
+updated: 2020-03-14
+tags: ['json', 'oracle', 'database']
 ---
 
 Oracle added the native JSON support in the version 12c of their popular relational database system. With the help of new conditions and functions, you can create queries, indexes, transactions and views for JSON documents. 

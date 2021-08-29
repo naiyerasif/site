@@ -1,9 +1,8 @@
 ---
 title: 'Uploading files with Spring Boot and Express'
-date: 2019-11-08 16:06:33
-updated: 2020-03-18 21:50:11
-authors: [naiyer]
-topics: [express, spring, angular]
+date: 2019-11-08
+updated: 2020-03-18
+tags: ['spring', 'express', 'angular', 'upload']
 ---
 
 In a traditional microservice premise, a client application (e.g., an Angular frontend) rarely hits a backend service directly. Usually, a middleware (e.g., an Express application) sits between the backend and client, facilitating the communication, as a [backend for frontend](https://developer.ibm.com/patterns/create-backend-for-frontend-application-architecture/). In this post, we'll explore how Express can facilitate a file upload with a reactive Spring backend and an Angular frontend.

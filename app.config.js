@@ -39,7 +39,7 @@ module.exports = {
     minMatchCharLength: 3,
     keys: [
       'title',
-      'topics'
+      'tags'
     ]
   }
 }

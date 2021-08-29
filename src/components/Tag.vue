@@ -6,7 +6,7 @@
         <search-escape @keyup.esc="escapeSearch" />
         <div class="search-panel fixed inset-0 overflow-hidden flex flex-col shadow border-1 border-solid border-spinel rounded-2xl bg-tertiary my-far-md mx-auto px-far-sm py-far-sm max-w-4xl max-h-4xl">
           <div class="search-box flex items-center justify-between">
-            <Icon symbol="icon-topic" class="icon text-primary" />
+            <Icon symbol="icon-tag" class="icon text-primary" />
             <div class="flex-1 mx-base">
               <strong class="text-sm uppercase tracking-wide">{{ query }}</strong>
             </div>
@@ -37,7 +37,7 @@ import SearchEscape from './SearchEscape'
 import * as appConfig from '@/app.config'
 const searchIndex = `/${appConfig.paths.search.name}`
 let searchOptions = appConfig.search
-searchOptions.keys = ['topics']
+searchOptions.keys = ['tags']
 
 export default {
   props: {

@@ -1,23 +1,12 @@
-const dayjs = require('dayjs')
-const customParseFormat = require('dayjs/plugin/customParseFormat')
-dayjs.extend(customParseFormat)
-
+const { resolveBlog } = require('./lib/typeResolver')
 const { writeToFile } = require('./app.server')
-const { prefs, paths } = require('./app.config')
+const { paths } = require('./app.config')
 const projects = require('./content/projects')
-
-const outdationDate = dayjs().clone().subtract(prefs.outdationPeriod, 'days').startOf('day')
 
 module.exports = api => {
 
   api.onCreateNode(options => {
-    if (options.internal.typeName === 'Blog') {
-      options.updated = options.updated || options.date
-      options.category = options.category || 'guide'
-      options.status = options.status || outdationDate && dayjs(options.updated).isBefore(outdationDate) ? 'outdated' : 'fresh'
-    }
-    
-    return { ...options }
+    resolveBlog(options)
   })
 
   api.loadSource(async ({ addCollection }) => {
@@ -71,7 +60,7 @@ module.exports = api => {
       return {
         title: post.title,
         path: post.path,
-        topics: post.topics
+        tags: post.tags
       }
     })
 

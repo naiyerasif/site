@@ -1,9 +1,8 @@
 ---
 title: 'Logging methods with AspectJ in a Spring application'
-date: 2020-09-13 21:01:49
-updated: 2021-07-18 16:07:00
-authors: [naiyer]
-topics: [aspectj, logging, spring]
+date: 2020-09-13
+updated: 2021-07-18
+tags: ['aspectj', 'logging', 'spring']
 ---
 
 Method logging is a common pattern to collect data about a method. This could be execution time, the inputs and outputs of the method, etc. You can do this by using a logger but since this is a repetitive task, it makes sense to automate it. That's exactly what we'll do in this post.

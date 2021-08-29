@@ -1,9 +1,8 @@
 ---
 title: 'Developing an API with Express and Postgres'
-date: 2019-08-19 21:43:03
-updated: 2020-02-06 23:26:09
-authors: [naiyer]
-topics: [express, postgres, typescript]
+date: 2019-08-19
+updated: 2020-02-06
+tags: ['postgres', 'express', 'typescript']
 ---
 
 Express is frequently used to create APIs in Node.js applications; these can be a middleware for a more traditional backend or an interface for the classic CRUD operations. In this post, we'll build an API to perform CRUD operations on a Postgres database. We'll explore patterns to organize routes, add support for hot-reloading and inject environment variables locally.
