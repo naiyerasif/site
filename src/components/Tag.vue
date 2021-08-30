@@ -15,7 +15,7 @@
             </a>
           </div>
           <hr class="my-lg" />
-          <div v-if="searchResultsVisible" class="search-results overflow-auto pr-md mr-close-sm basis-100">
+          <div v-if="searchResultsVisible" class="search-results overflow-auto pr-md mr-close-sm basis-100" ref="results">
             <strong class="text-neutral" v-if="results.length > 0">
               {{ results.length === 1 ? `${results.length} related post` : `${results.length} related posts` }}
             </strong>
@@ -34,11 +34,6 @@ import axios from 'axios'
 import Icon from './Icon'
 import SearchEscape from './SearchEscape'
 
-import * as appConfig from '@/app.config'
-const searchIndex = `/${appConfig.paths.search.name}`
-let searchOptions = appConfig.search
-searchOptions.keys = ['tags']
-
 export default {
   props: {
     keyword: {
@@ -52,9 +47,9 @@ export default {
   },
   created() {
     this.query = this.keyword
-    axios(searchIndex).then(response => {
+    axios('/search.json').then(response => {
       this.posts = response.data
-      this.$search(this.query, this.posts, this.options).then(results => {
+      this.$search(this.query, this.posts, this.keys).then(results => {
         this.results = results
         this.highlightedIndex = 0
         this.searchResultsVisible = true
@@ -70,8 +65,10 @@ export default {
       posts: [],
       highlightedIndex: 0,
       searchResultsVisible: false,
-      options: searchOptions,
-      launched: false
+      launched: false,
+      keys: [
+        'tags'
+      ]
     }
   },
   methods: {
@@ -84,12 +81,6 @@ export default {
     },
     launch(e) {
       this.launched = !this.launched
-
-      if (this.launched) {
-        this.$nextTick(() => {
-          this.$refs.search.focus()
-        })
-      }
     },
     escapeSearch(e) {
       this.launched = !this.launched

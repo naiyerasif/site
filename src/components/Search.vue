@@ -15,7 +15,7 @@
             </a>
           </div>
           <hr class="my-lg" />
-          <div v-if="query.length > 0 && searchResultsVisible" class="search-results overflow-auto pr-md mr-close-sm basis-100">
+          <div v-if="query.length > 0 && searchResultsVisible" class="search-results overflow-auto pr-md mr-close-sm basis-100" ref="results">
             <strong v-if="results.length > 0">
               {{ results.length === 1 ? `${results.length} result` : `${results.length} results` }}
             </strong>
@@ -42,9 +42,6 @@ import NoResults from '@/static/assets/images/noresults.svg'
 import Icon from './Icon'
 import SearchEscape from './SearchEscape'
 
-import * as appConfig from '@/app.config'
-const { search, paths } = appConfig
-
 export default {
   components: {
     Icon,
@@ -53,7 +50,7 @@ export default {
     SearchEscape
   },
   created() {
-    axios(`/${paths.search.name}`).then(response => {
+    axios(`/search.json`).then(response => {
       this.posts = response.data
     }).catch(error => {
       console.log(error)
@@ -66,8 +63,11 @@ export default {
       posts: [],
       highlightedIndex: 0,
       searchResultsVisible: false,
-      options: search,
-      launched: false
+      launched: false,
+      keys: [
+        'title',
+        'tags'
+      ]
     }
   },
   methods: {
@@ -81,7 +81,7 @@ export default {
       this.searchResultsVisible = true
     },
     performSearch() {
-      this.$search(this.query, this.posts, this.options).then(results => {
+      this.$search(this.query, this.posts, this.keys).then(results => {
         this.results = results
       })
     },
