@@ -1,4 +1,4 @@
-module.exports = [
+const projects = [
   {
     title: 'Spritely',
     description: 'A handy Node.js CLI to generate SVG sprites',
@@ -15,3 +15,13 @@ module.exports = [
     path: 'https://succinct.mflash.dev'
   }
 ]
+
+const loadProjects = collection => {
+  projects.forEach(project => collection.addNode({
+    title: project.title,
+    description: project.description,
+    link: project.path,
+  }))
+}
+
+module.exports = { loadProjects }

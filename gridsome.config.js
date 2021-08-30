@@ -26,7 +26,7 @@ module.exports = {
     {
       use: '@gridsome/source-filesystem',
       options: {
-        path: 'content/posts/**/*.md',
+        path: 'data/posts/**/*.md',
         typeName: 'Blog',
         refs: {
           authors: {
@@ -38,7 +38,7 @@ module.exports = {
     {
       use: '@gridsome/source-filesystem',
       options: {
-        path: 'content/profiles/**/*.md',
+        path: 'data/profiles/**/*.md',
         typeName: 'Profile'
       }
     },
