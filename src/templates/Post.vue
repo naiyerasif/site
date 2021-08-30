@@ -158,7 +158,7 @@ export default {
       return `${siteConfig.editContext}/${this.$page.post.fileInfo.path}`
     },
     expiryMessage() {
-      return this.$page.post.expired !== '' ? this.$page.post.expired : null
+      return !this.$page.post.expired || this.$page.post.expired === 'never' ? null : this.$page.post.expired
     }
   }
 }
