@@ -11,11 +11,11 @@
     "dev": "gridsome develop",
     "status": "gridsome info",
     "purge": "shx rm -rf public .cache src/.temp static/search.json",
-    "post": "node bin/content.js",
     "sprite": "npm run sprite:backup && npm run sprite:build",
     "sprite:backup": "shx cp static/assets/images/icons.svg .gitlab/dist/icons.svg",
     "sprite:build": "spritely --input .gitlab/design/icons --output static/assets/images/icons.svg --prefix \"icon-\"",
-    "get:tags": "node bin/tags.js -p "
+    "get:tags": "node bin/tags.js -p ",
+    "put:post": "node bin/post.js -t "
   },
   "dependencies": {
     "@gridsome/plugin-sitemap": "^0.4.0",
@@ -34,7 +34,6 @@
     "@microflash/spritely": "^1.3.3",
     "@sindresorhus/slugify": "^0.8.0",
     "autoprefixer": "^9.8.6",
-    "chrono-node": "^2.3.1",
     "commander": "^8.1.0",
     "dayjs": "^1.10.6",
     "gray-matter": "^4.0.3",

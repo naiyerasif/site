@@ -16,8 +16,5 @@ module.exports = {
   copyright: `Copyright ${dayjs().year()} ${pkgAuthor}`,
   prefs: {
     maxTocDepth: 3,
-  },
-  paths: {
-    draft: '.gitlab/drafts',
   }
 }
