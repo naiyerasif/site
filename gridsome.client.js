@@ -1,4 +1,4 @@
-const { maintainer } = require('./app.config')
+const { maintainer } = require('./data/site.config')
 
 export default function (Vue, options, { head }) {
   head.meta.push(
