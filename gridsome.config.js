@@ -1,48 +1,20 @@
 const path = require('path')
 const autoprefixer = require('autoprefixer')
-const marked = require('marked')
 
-const appConfig = require('./app.config')
-
-const postcssPlugins = [
-  autoprefixer({
-    cascade: false
-  })
-]
-
-const remarkPlugins = [
-  'remark-admonitions',
-  [
-    '@noxify/gridsome-plugin-remark-embed', {
-      'enabledProviders': ['Youtube']
-    }
-  ],
-  [
-    'gridsome-plugin-remark-prismjs-all', { 
-      noInlineHighlight: true,
-      aliases: {
-        sh: 'shell',
-        conf: 'properties',
-        yml: 'yaml'
-      }
-    }
-  ],
-  'gridsome-remark-figure-caption'
-]
+const { processMarkdown } = require('./lib/markdown')
+const slugifyOptions = require('./lib/slugify').options
+const siteConfig = require('./data/site.config')
 
 module.exports = {
-  siteName: appConfig.name,
-  siteDescription: appConfig.description,
-  siteUrl: appConfig.url,
-  titleTemplate: `%s — ${appConfig.name}`,
+  siteName: siteConfig.name,
+  siteDescription: siteConfig.description,
+  siteUrl: siteConfig.url,
+  titleTemplate: `%s — ${siteConfig.name}`,
   outputDir: 'public',
   permalinks: {
     slugify: {
       use: '@sindresorhus/slugify',
-      options: {
-        decamelize: false,
-        customReplacements: [['.js', 'js']]
-      }
+      options: slugifyOptions
     }
   },
   templates: {
@@ -54,7 +26,7 @@ module.exports = {
     {
       use: '@gridsome/source-filesystem',
       options: {
-        path: 'content/posts/**/*.md',
+        path: 'data/posts/**/*.md',
         typeName: 'Blog',
         refs: {
           authors: {
@@ -66,24 +38,21 @@ module.exports = {
     {
       use: '@gridsome/source-filesystem',
       options: {
-        path: 'content/profiles/**/*.md',
+        path: 'data/profiles/**/*.md',
         typeName: 'Profile'
       }
-    },
-    {
-      use: "gridsome-plugin-tailwindcss"
     },
     {
       use: '@microflash/gridsome-plugin-feed',
       options: {
         contentTypes: ['Blog'],
         feedOptions: {
-          title: appConfig.name,
-          description: appConfig.description,
-          id: appConfig.url,
-          link: appConfig.url,
-          image: appConfig.favicon,
-          copyright: appConfig.copyright,
+          title: siteConfig.name,
+          description: siteConfig.description,
+          id: siteConfig.url,
+          link: siteConfig.url,
+          image: siteConfig.favicon,
+          copyright: siteConfig.copyright,
         },
         rss: {
           enabled: true,
@@ -96,12 +65,12 @@ module.exports = {
           date: node.date,
           author: [
             {
-              name: `@${appConfig.name}`,
-              email: appConfig.maintainer,
-              link: appConfig.url
+              name: `@${siteConfig.name}`,
+              email: siteConfig.maintainer,
+              link: siteConfig.url
             }
           ],
-          content: marked(node.content)
+          content: processMarkdown(node.content)
         })
       }
     },
@@ -114,7 +83,25 @@ module.exports = {
   ],
   transformers: {
     remark: {
-      plugins: remarkPlugins,
+      plugins: [
+        'remark-admonitions',
+        [
+          '@noxify/gridsome-plugin-remark-embed', {
+            'enabledProviders': ['Youtube']
+          }
+        ],
+        [
+          'gridsome-plugin-remark-prismjs-all', { 
+            noInlineHighlight: true,
+            aliases: {
+              sh: 'shell',
+              conf: 'properties',
+              yml: 'yaml'
+            }
+          }
+        ],
+        'gridsome-remark-figure-caption'
+      ],
       externalLinksTarget: '_blank',
       externalLinksRel: ['nofollow', 'noopener', 'noreferrer'],
       slug: true,
@@ -130,7 +117,9 @@ module.exports = {
   css: {
     loaderOptions: {
       postcss: {
-        plugins: postcssPlugins,
+        plugins: [
+          autoprefixer()
+        ],
       },
     },
   },

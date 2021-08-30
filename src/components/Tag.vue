@@ -6,7 +6,7 @@
         <search-escape @keyup.esc="escapeSearch" />
         <div class="search-panel fixed inset-0 overflow-hidden flex flex-col shadow border-1 border-solid border-spinel rounded-2xl bg-tertiary my-far-md mx-auto px-far-sm py-far-sm max-w-4xl max-h-4xl">
           <div class="search-box flex items-center justify-between">
-            <Sprite symbol="icon-topic" class="icon text-primary" />
+            <Icon symbol="icon-tag" class="icon text-primary" />
             <div class="flex-1 mx-base">
               <strong class="text-sm uppercase tracking-wide">{{ query }}</strong>
             </div>
@@ -15,7 +15,7 @@
             </a>
           </div>
           <hr class="my-lg" />
-          <div v-if="searchResultsVisible" class="search-results overflow-auto pr-md mr-close-sm basis-100">
+          <div v-if="searchResultsVisible" class="search-results overflow-auto pr-md mr-close-sm basis-100" ref="results">
             <strong class="text-neutral" v-if="results.length > 0">
               {{ results.length === 1 ? `${results.length} related post` : `${results.length} related posts` }}
             </strong>
@@ -31,13 +31,8 @@
 
 <script>
 import axios from 'axios'
-import Sprite from './Sprite'
+import Icon from './Icon'
 import SearchEscape from './SearchEscape'
-
-import * as appConfig from '@/app.config'
-const searchIndex = `/${appConfig.paths.search.name}`
-let searchOptions = appConfig.search
-searchOptions.keys = ['topics']
 
 export default {
   props: {
@@ -47,14 +42,14 @@ export default {
     }
   },
   components: {
-    Sprite,
+    Icon,
     SearchEscape
   },
   created() {
     this.query = this.keyword
-    axios(searchIndex).then(response => {
+    axios('/search.json').then(response => {
       this.posts = response.data
-      this.$search(this.query, this.posts, this.options).then(results => {
+      this.$search(this.query, this.posts, this.keys).then(results => {
         this.results = results
         this.highlightedIndex = 0
         this.searchResultsVisible = true
@@ -70,8 +65,10 @@ export default {
       posts: [],
       highlightedIndex: 0,
       searchResultsVisible: false,
-      options: searchOptions,
-      launched: false
+      launched: false,
+      keys: [
+        'tags'
+      ]
     }
   },
   methods: {
@@ -84,12 +81,6 @@ export default {
     },
     launch(e) {
       this.launched = !this.launched
-
-      if (this.launched) {
-        this.$nextTick(() => {
-          this.$refs.search.focus()
-        })
-      }
     },
     escapeSearch(e) {
       this.launched = !this.launched

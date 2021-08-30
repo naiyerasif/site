@@ -1,6 +1,6 @@
 <template>
   <section class="toc text-sm mb-far-base" id="table-of-contents">
-    <div class="toc-title text-xs font-bold uppercase tracking-widest py-base px-md flex items-center"><Sprite symbol="icon-table-of-content" class="icon-sm text-inform mr-ch-base" /> Table of contents</div>
+    <div class="toc-title text-xs font-bold uppercase tracking-widest py-base px-md flex items-center"><Icon symbol="icon-table-of-content" class="icon-sm text-inform mr-ch-base" /> Table of contents</div>
     <ul class="toc-body list-none py-base px-md">
       <li v-for="header in allHeadings" :key="header.id">
         <a :class="'toc-item-' + header.depth" :href="header.anchor">{{ header.value }}</a>
@@ -10,17 +10,17 @@
 </template>
 
 <script>
-import Sprite from '~/components/Sprite'
-import * as appConfig from '@/app.config'
+import Icon from '~/components/Icon'
+import * as siteConfig from '@/data/site.config'
 
 export default {
   props: ['headers', 'depth'],
   components: {
-    Sprite
+    Icon
   },
   computed: {
     allHeadings() {
-      const maxDepth = this.depth ? this.depth : appConfig.prefs.maxTocDepth
+      const maxDepth = this.depth ? this.depth : siteConfig.tocDepth
       return this.headers.filter(h => h.depth <= maxDepth)
     }
   }

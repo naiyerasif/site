@@ -9,7 +9,6 @@ This site was made possible by
 - [Gridsome](https://gridsome.org/): a Jamstack framework for Vue.js
 - [Gridsome Portfolio Starter](https://github.com/drehimself/gridsome-portfolio-starter): a simple portfolio theme for Gridsome
 - [Gridsome Casper V3 Starter](https://github.com/jammeryhq/gridsome-starter-casper-v3): a Gridsome starter based on the Casper theme for Ghost
-- [Tailwind CSS](https://tailwindcss.com/): a utility-first CSS framework for rapid UI development
 - [Fuse.js](https://fusejs.io/): a lightweight fuzzy-search in JavaScript
 - [Prism](https://prismjs.com/): a lightweight, robust, elegant syntax highlighting library
 - [Spritely](https://github.com/Microflash/spritely): a handy Node.js CLI to generate SVG sprites

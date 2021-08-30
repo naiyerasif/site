@@ -46,9 +46,8 @@ query {
 </page-query>
 
 <script>
-import Sprite from '~/components/Sprite'
 import Tag from '~/components/Tag'
-import * as appConfig from '@/app.config'
+import * as siteConfig from '@/data/site.config'
 
 export default {
   metaInfo() {
@@ -62,7 +61,7 @@ export default {
 
         { property: 'og:title', content: title },
         { property: 'og:description', content: description },
-        { property: "og:url", content: `${appConfig.url}/` },
+        { property: "og:url", content: `${siteConfig.url}/` },
 
         { name: 'twitter:card', content: 'summary' },
         { name: 'twitter:title', content: title },
@@ -73,7 +72,6 @@ export default {
     }
   },
   components: {
-    Sprite,
     Tag
   },
   computed: {

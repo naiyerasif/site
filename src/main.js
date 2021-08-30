@@ -1,10 +1,8 @@
-import VueFuse from 'vue-fuse'
-
+import search from '@/lib/search'
 import '~/assets/styles/main.scss'
 import DefaultLayout from '~/layouts/Default.vue'
 
 export default function (Vue, { head }) {
   Vue.component('Layout', DefaultLayout)
-
-  Vue.use(VueFuse)
+  Vue.prototype.$search = search
 }

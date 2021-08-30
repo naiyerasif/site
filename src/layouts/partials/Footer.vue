@@ -8,33 +8,33 @@
       <div class="footer-links flex items-center justify-between flex-wrap lg:flex-nowrap mb-lg">
         <ul class="list-none flex flex-wrap lg:flex-nowrap separated">
           <li class="my-xs inline-flex items-center">
-            <a class="inline-flex items-center" target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site/issues/new"><Sprite symbol="icon-report-issue" class="icon-sm mr-ch-sm" />Report an issue</a>
+            <a class="inline-flex items-center" target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site/issues/new"><Icon symbol="icon-report-issue" class="icon-sm mr-ch-sm" />Report an issue</a>
           </li>
           <li class="my-xs inline-flex items-center">
-            <a class="inline-flex items-center" href="/feed.xml"><Sprite symbol="icon-rss" class="icon-sm mr-ch-sm" />RSS feed</a>
+            <a class="inline-flex items-center" href="/feed.xml"><Icon symbol="icon-rss" class="icon-sm mr-ch-sm" />RSS feed</a>
           </li>
           <li class="my-xs inline-flex items-center">
-            <a class="inline-flex items-center" href="/sitemap.xml"><Sprite symbol="icon-sitemap" class="icon-sm mr-ch-sm" />Sitemap</a>
+            <a class="inline-flex items-center" href="/sitemap.xml"><Icon symbol="icon-sitemap" class="icon-sm mr-ch-sm" />Sitemap</a>
           </li>
           <li class="my-xs inline-flex items-center">
-            <a class="inline-flex items-center" target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site"><Sprite symbol="icon-source-code" class="icon-sm mr-ch-sm" />Source code</a>
+            <a class="inline-flex items-center" target="_blank" rel="noopener noreferrer" href="https://github.com/Microflash/site"><Icon symbol="icon-source-code" class="icon-sm mr-ch-sm" />Source code</a>
           </li>
           <li class="my-xs inline-flex items-center">
-            <a class="inline-flex items-center" href="/profile/naiyer/#privacy"><Sprite symbol="icon-privacy" class="icon-sm mr-ch-sm" />Privacy</a>
+            <a class="inline-flex items-center" href="/profile/naiyer/#privacy"><Icon symbol="icon-privacy" class="icon-sm mr-ch-sm" />Privacy</a>
           </li>
         </ul>
         <div class="text-base my-base">
           <a href="https://github.com/naiyerasif" title="GitHub" target="_blank" rel="noopener noreferrer" class="leading-none mr-ch-base">
-            <Sprite symbol="icon-github" class="icon-sm" />
+            <Icon symbol="icon-github" class="icon-sm" />
           </a>
           <a href="https://gitlab.com/Microflash" title="GitLab" target="_blank" rel="noopener noreferrer" class="leading-none mr-ch-base">
-            <Sprite symbol="icon-gitlab" class="icon-sm" />
+            <Icon symbol="icon-gitlab" class="icon-sm" />
           </a>
           <a href="https://twitter.com/Microflash" title="Twitter" target="_blank" rel="noopener noreferrer" class="leading-none mr-ch-base">
-            <Sprite symbol="icon-twitter" class="icon-sm" />
+            <Icon symbol="icon-twitter" class="icon-sm" />
           </a>
           <a href="https://in.linkedin.com/in/naiyerasif" title="LinkedIn" target="_blank" rel="noopener noreferrer" class="leading-none">
-            <Sprite symbol="icon-linkedin" class="icon-sm" />
+            <Icon symbol="icon-linkedin" class="icon-sm" />
           </a>
         </div>
       </div>
@@ -45,13 +45,13 @@
 </template>
 
 <script>
-import Sprite from '~/components/Sprite'
+import Icon from '~/components/Icon'
 import Favicon from '@/static/favicon.svg'
 import dayjs from 'dayjs'
 
 export default {
   components: {
-    Sprite,
+    Icon,
     Favicon
   },
   computed: {
