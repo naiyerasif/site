@@ -1,7 +1,7 @@
 const path = require('path')
 const autoprefixer = require('autoprefixer')
-const marked = require('marked')
 
+const { processMarkdown } = require('./lib/markdown')
 const slugifyOptions = require('./lib/slugify').options
 const appConfig = require('./app.config')
 
@@ -70,7 +70,7 @@ module.exports = {
               link: appConfig.url
             }
           ],
-          content: marked(node.content)
+          content: processMarkdown(node.content)
         })
       }
     },
