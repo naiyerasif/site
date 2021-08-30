@@ -3,13 +3,13 @@ const autoprefixer = require('autoprefixer')
 
 const { processMarkdown } = require('./lib/markdown')
 const slugifyOptions = require('./lib/slugify').options
-const appConfig = require('./app.config')
+const siteConfig = require('./data/site.config')
 
 module.exports = {
-  siteName: appConfig.name,
-  siteDescription: appConfig.description,
-  siteUrl: appConfig.url,
-  titleTemplate: `%s — ${appConfig.name}`,
+  siteName: siteConfig.name,
+  siteDescription: siteConfig.description,
+  siteUrl: siteConfig.url,
+  titleTemplate: `%s — ${siteConfig.name}`,
   outputDir: 'public',
   permalinks: {
     slugify: {
@@ -47,12 +47,12 @@ module.exports = {
       options: {
         contentTypes: ['Blog'],
         feedOptions: {
-          title: appConfig.name,
-          description: appConfig.description,
-          id: appConfig.url,
-          link: appConfig.url,
-          image: appConfig.favicon,
-          copyright: appConfig.copyright,
+          title: siteConfig.name,
+          description: siteConfig.description,
+          id: siteConfig.url,
+          link: siteConfig.url,
+          image: siteConfig.favicon,
+          copyright: siteConfig.copyright,
         },
         rss: {
           enabled: true,
@@ -65,9 +65,9 @@ module.exports = {
           date: node.date,
           author: [
             {
-              name: `@${appConfig.name}`,
-              email: appConfig.maintainer,
-              link: appConfig.url
+              name: `@${siteConfig.name}`,
+              email: siteConfig.maintainer,
+              link: siteConfig.url
             }
           ],
           content: processMarkdown(node.content)

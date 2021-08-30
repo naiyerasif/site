@@ -48,7 +48,7 @@ query Blogs ($page: Int) {
 
 <script>
 import Pagination from '~/components/Pagination'
-import * as appConfig from '@/app.config'
+import * as siteConfig from '@/data/site.config'
 
 export default {
   metaInfo() {
@@ -62,7 +62,7 @@ export default {
 
         { property: 'og:title', content: title },
         { property: 'og:description', content: description },
-        { property: "og:url", content: `${appConfig.url}/blog/` },
+        { property: "og:url", content: `${siteConfig.url}/blog/` },
 
         { name: 'twitter:card', content: 'summary' },
         { name: 'twitter:title', content: title },

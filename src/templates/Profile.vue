@@ -41,7 +41,7 @@ query Profile ($id: ID!) {
 <script>
 import Icon from '~/components/Icon'
 import ScrollIndicator from '~/components/ScrollIndicator'
-import * as appConfig from '@/app.config'
+import * as siteConfig from '@/data/site.config'
 
 export default {
   metaInfo() {
@@ -55,7 +55,7 @@ export default {
 
         { property: 'og:title', content: title },
         { property: 'og:description', content: description },
-        { property: "og:url", content: `${appConfig.url}${this.$page.profile.path}` },
+        { property: "og:url", content: `${siteConfig.url}${this.$page.profile.path}` },
 
         { name: 'twitter:card', content: 'summary' },
         { name: 'twitter:title', content: title },

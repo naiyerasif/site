@@ -11,7 +11,7 @@
 
 <script>
 import Icon from '~/components/Icon'
-import * as appConfig from '@/app.config'
+import * as siteConfig from '@/data/site.config'
 
 export default {
   props: ['headers', 'depth'],
@@ -20,7 +20,7 @@ export default {
   },
   computed: {
     allHeadings() {
-      const maxDepth = this.depth ? this.depth : appConfig.prefs.maxTocDepth
+      const maxDepth = this.depth ? this.depth : siteConfig.tocDepth
       return this.headers.filter(h => h.depth <= maxDepth)
     }
   }
