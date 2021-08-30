@@ -9,13 +9,11 @@
   "scripts": {
     "build": "gridsome build",
     "dev": "gridsome develop",
-    "status": "gridsome info",
-    "purge": "shx rm -rf public .cache src/.temp static/search.json",
-    "sprite": "npm run sprite:backup && npm run sprite:build",
-    "sprite:backup": "shx cp static/assets/images/icons.svg .gitlab/dist/icons.svg",
-    "sprite:build": "spritely --input .gitlab/design/icons --output static/assets/images/icons.svg --prefix \"icon-\"",
+    "get:info": "gridsome info",
     "get:tags": "node bin/tags.js -p ",
-    "put:post": "node bin/post.js -t "
+    "put:icons": "shx cp static/assets/images/icons.svg .gitlab/dist/icons.svg && spritely --input .gitlab/design/icons --output static/assets/images/icons.svg --prefix \"icon-\"",
+    "put:post": "node bin/post.js -t ",
+    "del:cache": "shx rm -rf public .cache src/.temp static/search.json"
   },
   "dependencies": {
     "@gridsome/plugin-sitemap": "^0.4.0",
