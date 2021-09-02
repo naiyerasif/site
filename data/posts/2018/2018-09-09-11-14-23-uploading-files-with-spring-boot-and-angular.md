@@ -1,7 +1,7 @@
 ---
 title: 'Uploading files with Spring Boot and Angular'
-date: 2018-09-09
-updated: 2020-03-08
+date: 2018-09-09 11:14:23
+updated: 2020-03-08 21:16:19
 tags: ['spring', 'angular', 'upload']
 ---
 

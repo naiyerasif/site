@@ -1,7 +1,7 @@
 ---
 title: 'Code Formatting with Prettier'
-date: 2019-04-20
-updated: 2020-02-06
+date: 2019-04-20 12:12:16
+updated: 2020-02-06 22:43:31
 tags: ['prettier', 'formatter']
 ---
 

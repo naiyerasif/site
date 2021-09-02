@@ -1,7 +1,7 @@
 ---
 title: 'Developing an API with Express and Postgres'
-date: 2019-08-19
-updated: 2020-02-06
+date: 2019-08-19 21:43:03
+updated: 2020-02-06 23:26:09
 tags: ['postgres', 'express', 'typescript']
 ---
 

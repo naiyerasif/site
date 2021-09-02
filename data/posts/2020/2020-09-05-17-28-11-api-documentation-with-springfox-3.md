@@ -1,6 +1,6 @@
 ---
 title: 'API Documentation with Springfox 3'
-date: 2020-09-05
+date: 2020-09-05 17:28:11
 tags: ['spring', 'springfox', 'openapi', 'swagger']
 ---
 
@@ -268,7 +268,7 @@ public @SpringBootApplication class Launcher {
 
 Launch the application and visit <http://localhost:8080/swagger-ui/> where you'll see the documentation on the endpoints exposed by `NoteController`.
 
-![Swagger UI powered by Springfox 3](./images/2020-09-05-api-documentation-with-springfox-3-01.png)
+![Swagger UI powered by Springfox 3](./images/2020-09-05-17-28-11-api-documentation-with-springfox-3-01.png)
 
 You can access the OpenAPI docs at <http://localhost:8080/v3/api-docs> which can be imported into compatible tools, like Postman, Insomnia, etc.
 

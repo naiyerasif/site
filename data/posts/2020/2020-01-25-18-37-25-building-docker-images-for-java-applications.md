@@ -1,7 +1,7 @@
 ---
 title: 'Building Docker images for Java applications'
-date: 2020-01-25
-updated: 2021-02-28
+date: 2020-01-25 18:37:25
+updated: 2021-02-28 11:33:45
 tags: ['docker', 'security', 'java', 'distroless']
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 'Creating deep copies in Java'
-date: 2021-06-19
+date: 2021-06-19 10:56:39
 tags: ['java', 'jackson', 'kryo', 'copy']
 ---
 
