@@ -1,7 +1,7 @@
 ---
 title: 'Java-based health check for Docker'
 date: 2021-03-01 01:34:35
-updated: 2021-03-01 23:21:56
+updated: 2021-09-02 16:20:56
 tags: ['docker', 'healthcheck', 'java', 'distroless']
 ---
 
