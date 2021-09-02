@@ -1,6 +1,6 @@
 ---
 title: 'Error handling for a Spring-based REST API'
-date: 2020-07-26
+date: 2020-07-26 00:35:25
 tags: ['spring', 'security', 'rest']
 ---
 

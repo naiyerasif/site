@@ -1,6 +1,6 @@
 ---
 title: 'Error handling for Spring Security Resource Server'
-date: 2021-01-19
+date: 2021-01-19 09:46:57
 tags: ['spring', 'security', 'oauth2']
 ---
 

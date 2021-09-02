@@ -1,6 +1,6 @@
 ---
 title: 'API Documentation with springdoc-openapi'
-date: 2020-06-27
+date: 2020-06-27 00:30:07
 tags: ['spring', 'springdoc', 'openapi', 'documentation']
 ---
 
@@ -266,7 +266,7 @@ public @SpringBootApplication class Launcher {
 
 Launch the application and open <http://localhost:8080/swagger-ui.html>. You'd see the Swagger UI with the endpoints exposed by `NoteController`. 
 
-![Swagger UI powered by Springdoc](./images/2020-06-27-api-documentation-with-springdoc-openapi-01.png)
+![Swagger UI powered by Springdoc](./images/2020-06-27-00-30-07-api-documentation-with-springdoc-openapi-01.png)
 
 You can also access the OpenAPI docs at <http://localhost:8080/v3/api-docs> which can be imported in tools like Postman, Insomnia, etc.
 

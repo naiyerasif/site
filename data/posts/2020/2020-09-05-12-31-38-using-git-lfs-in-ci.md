@@ -1,6 +1,6 @@
 ---
 title: 'Using Git LFS in CI'
-date: 2020-09-05
+date: 2020-09-05 12:31:38
 tags: ['git', 'lfs', 'ci']
 ---
 

@@ -5,7 +5,7 @@
         <Logo />
       </g-link>
       <nav class="menu-start inline-flex justify-center sm:order-1 sm:basis-100 sm:mt-base">
-        <g-link class="tappable focus:bg-ruby hover:bg-ruby focus:no-underline hover:no-underline" to="/blog/">Blog</g-link>
+        <g-link class="tappable focus:bg-ruby hover:bg-ruby focus:no-underline hover:no-underline" to="/blog/">Articles</g-link>
         <g-link class="tappable focus:bg-ruby hover:bg-ruby focus:no-underline hover:no-underline" to="/projects/">Projects</g-link>
         <g-link class="tappable focus:bg-ruby hover:bg-ruby focus:no-underline hover:no-underline" to="/profile/naiyer/">About</g-link>
       </nav>

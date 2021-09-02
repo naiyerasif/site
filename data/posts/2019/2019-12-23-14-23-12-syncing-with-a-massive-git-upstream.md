@@ -1,6 +1,6 @@
 ---
 title: 'Syncing with a massive Git upstream'
-date: 2019-12-23
+date: 2019-12-23 14:23:12
 tags: ['git', 'clone', 'shallow']
 ---
 

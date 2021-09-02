@@ -1,7 +1,7 @@
 ---
 title: 'Messaging with RabbitMQ and Spring Boot'
-date: 2018-12-13
-updated: 2019-11-13
+date: 2018-12-13 20:20:54
+updated: 2019-11-13 16:45:02
 tags: ['rabbitmq', 'spring', 'queue']
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 'Retrying on failure with Resilience4J and Aspects'
-date: 2020-09-26
+date: 2020-09-26 15:17:06
 tags: ['retry', 'resilience4j', 'aspectj']
 ---
 

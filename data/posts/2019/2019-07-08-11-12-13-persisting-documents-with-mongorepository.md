@@ -1,7 +1,7 @@
 ---
 title: 'Persisting documents with MongoRepository'
-date: 2019-07-08
-updated: 2020-10-26
+date: 2019-07-08 11:12:13
+updated: 2020-10-26 10:10:01
 tags: ['spring', 'repository', 'mongodb']
 ---
 
@@ -49,7 +49,7 @@ docker-compose up -d
 
 Let's start by defining a domain for the above story. The relationship between the `Account`, `User` and `Session` collections can be represented by the following diagram.
 
-![Domain](./images/2019-07-08-persisting-documents-with-mongorepository.svg)
+![Domain](./images/2019-07-08-11-12-13-persisting-documents-with-mongorepository.svg)
 
 A Many-to-One relationship in MongoDB can be modeled with either [embedded documents](https://docs.mongodb.com/manual/tutorial/model-embedded-one-to-many-relationships-between-documents/) or [document references](https://docs.mongodb.com/manual/tutorial/model-referenced-one-to-many-relationships-between-documents/). You can add the latter behavior through a `@DBRef` annotation.
 
