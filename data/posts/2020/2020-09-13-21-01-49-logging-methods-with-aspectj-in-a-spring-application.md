@@ -11,9 +11,9 @@ Method logging is a common pattern to collect data about a method. This could be
 The code written for this post uses:
 
 - Java 16
-- Spring Boot 2.5.2
+- Spring Boot 2.5.4
 - AspectJ 1.9.7
-- Maven 3.8.1
+- Maven 3.8.2
 :::
 
 Generate a Maven project using the following `pom.xml`.
@@ -34,11 +34,10 @@ Generate a Maven project using the following `pom.xml`.
 
   <groupId>dev.mflash.guides.spring</groupId>
   <artifactId>aop-method-logging</artifactId>
-  <version>0.0.2</version>
+  <version>0.0.3</version>
 
   <properties>
     <java.version>16</java.version>
-    <aspectj.version>1.9.7</aspectj.version>
   </properties>
 
   <dependencies>
@@ -50,12 +49,10 @@ Generate a Maven project using the following `pom.xml`.
     <dependency>
       <groupId>org.aspectj</groupId>
       <artifactId>aspectjweaver</artifactId>
-      <version>${aspectj.version}</version>
     </dependency>
     <dependency>
       <groupId>org.aspectj</groupId>
       <artifactId>aspectjrt</artifactId>
-      <version>${aspectj.version}</version>
       <scope>runtime</scope>
     </dependency>
 
@@ -487,7 +484,7 @@ class LogEntryExitAspectTest {
 
   @BeforeEach
   void setUp() {
-    greetingService = ServiceProxyProvider.getServiceProxy(GreetingService.class);
+    greetingService = (GreetingService) ServiceProxyProvider.getServiceProxy(new GreetingService());
 
     aspectAppender = new AspectAppender();
     aspectAppender.setContext(new LoggerContext());
@@ -545,7 +542,6 @@ We need the proxied bean because that's how Spring AOP applies the advices.
 // src/test/java/dev/mflash/guides/spring/aop/logging/ServiceProxyProvider.java
 
 import dev.mflash.guides.spring.aop.logging.aspect.LogEntryExitAspect;
-import dev.mflash.guides.spring.aop.logging.service.GreetingService;
 import org.springframework.aop.aspectj.annotation.AspectJProxyFactory;
 import org.springframework.aop.framework.AopProxy;
 import org.springframework.aop.framework.DefaultAopProxyFactory;
@@ -554,14 +550,14 @@ public final class ServiceProxyProvider {
 
   private ServiceProxyProvider() {}
 
-  public static <T> T getServiceProxy(Class<T> clazz) {
+  public static Object getServiceProxy(Object service) {
     final var entryExitAspect = new LogEntryExitAspect();
-    final var proxyFactory = new AspectJProxyFactory(new GreetingService());
+    final var proxyFactory = new AspectJProxyFactory(service);
     proxyFactory.addAspect(entryExitAspect);
 
     final AopProxy aopProxy = new DefaultAopProxyFactory().createAopProxy(proxyFactory);
 
-    return clazz.cast(aopProxy.getProxy());
+    return aopProxy.getProxy();
   }
 }
 ```
