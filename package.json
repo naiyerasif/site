@@ -37,7 +37,7 @@
     "gray-matter": "^4.0.3",
     "keyword-extractor": "^0.0.20",
     "marked": "^3.0.2",
-    "sass": "^1.38.2",
+    "sass": "^1.39.0",
     "sass-loader": "^10.2.0",
     "shx": "^0.3.3",
     "svg-to-vue-component": "^0.3.8"
