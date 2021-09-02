@@ -1,7 +1,7 @@
 ---
 title: 'Logging methods with AspectJ in a Spring application'
 date: 2020-09-13 21:01:49
-updated: 2021-07-18 16:07:00
+updated: 2021-09-02 16:21:00
 tags: ['aspectj', 'log', 'spring']
 ---
 
