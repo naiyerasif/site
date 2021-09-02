@@ -161,6 +161,10 @@ This approach eliminates the need for any utility (like `curl` or `wget`) and re
 
 ## References
 
+**Source Code**
+- [docker-healthcheck](https://github.com/Microflash/java-guides/tree/master/docker-healthcheck)
+
+**Related**
 - [Dockerfile HEALTHCHECK reference](https://docs.docker.com/engine/reference/builder/#healthcheck)
 - [Running Single-file Programs without Compiling in Java 11](https://www.infoq.com/articles/single-file-execution-java11/)
 - [Introduction to the Java HTTP Client](https://openjdk.java.net/groups/net/httpclient/intro.html)
