@@ -19,6 +19,14 @@
     color: var(--semantic-inform);
   }
 
+  &-line-number {
+    display: inline-block;
+    user-select: none;
+    text-align: right;
+    padding-right: 2ch;
+    color: var(--shiki-token-comment);
+  }
+
   .line-highlighted {
     display: table-row;
     background: linear-gradient(to right, var(--code-highlight), transparent);

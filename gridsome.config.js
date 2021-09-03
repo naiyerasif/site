@@ -95,6 +95,7 @@ module.exports = {
             theme: 'css-variables',
             skipInline: true,
             showLanguage: true,
+            showLineNumbers: true,
             aliases: {
               conf: 'ini',
               dockerfile: 'docker',
