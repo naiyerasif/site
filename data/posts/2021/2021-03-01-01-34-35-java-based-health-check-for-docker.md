@@ -43,7 +43,7 @@ $ curl http://localhost:8080/actuator/health
 
 You can add a rudimentary health check using this endpoint in the Dockerfile as follows.
 
-```dockerfile{7}
+```dockerfile {7}
 FROM adoptopenjdk/openjdk11:alpine-jre
 RUN addgroup -S spring && adduser -S spring -G spring
 USER spring:spring
@@ -55,7 +55,7 @@ HEALTHCHECK --interval=25s --timeout=3s --retries=2 CMD wget --spider http://loc
 
 Here, the `HEALTHCHECK` instruction specifies that after 25 seconds when the container has started, the command `wget --spider http://localhost:8080/actuator/health || exit 1` should be executed. Docker will wait for 3 seconds for the command to return and retry 2 times if it fails on previous tries. If the final exit code is 1, the container will be marked as `unhealthy`; if the exit code is 0, it will be marked as `healthy`. This status will appear when you execute `docker ps`.
 
-```sh{7}
+```sh {7}
 $ docker ps --filter ancestor=endpoint:latest
 CONTAINER ID   IMAGE             COMMAND               CREATED          STATUS                             PORTS                    NAMES
 620970808ed0   endpoint:latest   "java -jar app.jar"   22 seconds ago   Up 21 seconds (health: starting)   0.0.0.0:8080->8080/tcp   gallant_dijkstra
@@ -134,7 +134,7 @@ The `BodyHandlers` class provides several static methods that return useful `Htt
 
 Using the `HealthCheck` single-file Java program above, we can declare a `HEALTHCHECK` instruction for a distroless image as follows.
 
-```dockerfile{3, 6}
+```dockerfile {3, 6}
 FROM gcr.io/distroless/java:11
 COPY target/*.jar app.jar
 COPY HealthCheck.java .

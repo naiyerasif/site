@@ -213,7 +213,7 @@ public class LogEntryExitAspect {
 
 We've also defined `entry` and `exit` methods to prepare the log message based on the options received by the annotation.
 
-```java{13-23,33,37}
+```java {13-23,33,37}
 // src/main/java/dev/mflash/guides/spring/aop/logging/aspect/LogEntryExitAspect.java
 
 @Aspect

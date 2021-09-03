@@ -91,11 +91,16 @@ module.exports = {
           }
         ],
         [
-          'gridsome-plugin-remark-prismjs-all', { 
-            noInlineHighlight: true,
+          require('./lib/remark-shiki'), {
+            theme: 'css-variables',
+            skipInline: true,
+            showLanguage: true,
+            showLineNumbers: true,
             aliases: {
-              sh: 'shell',
-              conf: 'properties',
+              conf: 'ini',
+              dockerfile: 'docker',
+              log: 'sh',
+              properties: 'ini',
               yml: 'yaml'
             }
           }

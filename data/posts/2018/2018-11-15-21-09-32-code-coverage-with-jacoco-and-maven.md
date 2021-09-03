@@ -88,7 +88,7 @@ You may require a project to have certain coverage. If the tests fail to pass th
 
 Consider the following configuration.
 
-```xml{15-26}
+```xml {15-26}
 <build>
   <plugins>
     <plugin>

@@ -31,7 +31,7 @@ The `adoptopenjdk:11` image alone is 440MB in size. Say, your application's JAR 
 
 But come to think of it, you don't need the entire JDK to run your application. Unless your application specifically requires the JDK, a JRE should suffice the purpose. If that is the case, you're better off using `adoptopenjdk/openjdk11:alpine-jre` in the `Dockerfile`.
 
-```dockerfile{1}
+```dockerfile {1}
 FROM adoptopenjdk/openjdk11:alpine-jre
 WORKDIR /usr/home/app
 COPY target/*.jar app.jar
@@ -72,7 +72,7 @@ CMD ["java", "-jar", "app.jar"]
 
 Many times, the image you build runs with a privileged (`root`) user. For development purposes, it is fine but it is not recommended in general (see [Principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) for more details). Therefore, you should create a non-root user and provide appropriate privileges to them to run the application and finally switch to that user in the image. For the `adoptopenjdk/openjdk11:alpine-jre` image, you can do something like this.
 
-```dockerfile{9-10}
+```dockerfile {9-10}
 FROM maven:3.6.3-jdk-11 as builder
 WORKDIR /usr/home/app
 COPY pom.xml .
@@ -102,7 +102,7 @@ You may wonder why would someone choose to create a distroless image. Here are a
 
 To use a distroless image, edit your `Dockerfile` as follows.
 
-```dockerfile{8}
+```dockerfile {8}
 FROM maven:3.6.3-jdk-11 as builder
 WORKDIR /usr/home/app
 COPY pom.xml .
@@ -122,7 +122,7 @@ Note that instead of `adoptopenjdk/openjdk11:alpine-jre`, we're using `gcr.io/di
 
 For a non-root user, the distroless images provide a `nonroot` user; you can switch to this user as follows.
 
-```dockerfile{10}
+```dockerfile {10}
 FROM maven:3.6.3-jdk-11 as builder
 WORKDIR /usr/home/app
 COPY pom.xml .
@@ -139,7 +139,7 @@ CMD ["app.jar"]
 
 Alternatively, you can use a distroless image that comes with the non-root user set as default.
 
-```dockerfile{8}
+```dockerfile {8}
 FROM maven:3.6.3-jdk-11 as builder
 WORKDIR /usr/home/app
 COPY pom.xml .

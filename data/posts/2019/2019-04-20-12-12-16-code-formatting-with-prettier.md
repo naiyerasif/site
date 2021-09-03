@@ -35,7 +35,7 @@ yarn add -D pretty-quick husky
 
 Add an `fmt` script in `package.json` to format the staged files and configure the `husky` object with a hook.
 
-```json{3, 7}
+```json {3, 7}
 {
   "scripts": {
     "fmt": "pretty-quick --staged"
