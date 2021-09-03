@@ -1,6 +1,23 @@
+@use '~/assets/styles/mixins/font-family' as family;
+
 .shiki {
   border: 1px dotted var(--decorative-spinel);
   border-radius: var(--radius-base);
+
+  &-metadata {
+    font-size: var(--text-xs);
+    margin-bottom: 1ch;
+  }
+
+  &-language {
+    @include family.font-code;
+    font-weight: var(--weight-bold);
+    border: 1px dotted var(--decorative-opal);
+    background-color: var(--decorative-opal);
+    border-radius: var(--radius-base);
+    padding: 0.5ch 1ch;
+    color: var(--semantic-inform);
+  }
 
   .line-highlighted {
     display: table-row;

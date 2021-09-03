@@ -94,6 +94,7 @@ module.exports = {
           require('./lib/remark-shiki'), {
             theme: 'css-variables',
             skipInline: true,
+            showLanguage: true,
             aliases: {
               conf: 'ini',
               dockerfile: 'docker',
