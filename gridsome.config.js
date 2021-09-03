@@ -93,7 +93,14 @@ module.exports = {
         [
           require('./lib/remark-shiki'), {
             theme: 'css-variables',
-            skipInline: true
+            skipInline: true,
+            aliases: {
+              conf: 'ini',
+              dockerfile: 'docker',
+              log: 'sh',
+              properties: 'ini',
+              yml: 'yaml'
+            }
           }
         ],
         'gridsome-remark-figure-caption'

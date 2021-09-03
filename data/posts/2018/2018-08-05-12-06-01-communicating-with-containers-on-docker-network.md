@@ -304,7 +304,7 @@ This is the default greeting message; we're not getting the message from the bac
 
 To resolve this issue, open `default.conf` file and replace the host `0.0.0.0` in the `proxy_pass` value with the service name you specified in `docker-compose.yml` (in our case, it's `greeter-api`).
 
-```properties {9}
+```conf {9}
 # greeter-ui/default.conf
 
 server {
