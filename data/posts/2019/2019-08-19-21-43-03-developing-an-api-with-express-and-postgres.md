@@ -94,7 +94,7 @@ export const environment = {
 
 Refactor `src/server.ts` to use `serverPort`.
 
-```typescript{9}
+```typescript {9}
 // src/server.ts
 
 import express from 'express';
@@ -336,7 +336,7 @@ yarn add body-parser
 
 Register `body-parser` and the endpoints in `src/server.ts`.
 
-```typescript{4, 10}
+```typescript {4, 10}
 // src/server.ts
 
 import express from 'express';

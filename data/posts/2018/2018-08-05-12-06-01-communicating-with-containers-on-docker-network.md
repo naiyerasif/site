@@ -48,7 +48,7 @@ public class Greeting {
 
 Configure an endpoint, say `/hello`, that returns a `Greeting` object.
 
-```java{6-9}
+```java {6-9}
 // greeter-api/src/main/java/dev/mflash/guides/greeter/GreetingController.java
 
 @Controller("/hello")
@@ -115,7 +115,7 @@ ng new greeter-ui --minimal --routing=false --style=css --skipTests --inlineStyl
 
 To call the REST endpoint, we'll need `HttpClientModule`. Add it in the root module of the Angular app.
 
-```typescript{3, 6}
+```typescript {3, 6}
 // greeter-ui/src/app/app.module.ts
 
 import { HttpClientModule } from '@angular/common/http';
@@ -135,7 +135,7 @@ ng generate service Greeting
 
 Add a method (`getGreeting`) to call the backend service.
 
-```typescript{9-11}
+```typescript {9-11}
 // greeter-ui/src/app/greeting.service.ts
 
 @Injectable({
@@ -304,7 +304,7 @@ This is the default greeting message; we're not getting the message from the bac
 
 To resolve this issue, open `default.conf` file and replace the host `0.0.0.0` in the `proxy_pass` value with the service name you specified in `docker-compose.yml` (in our case, it's `greeter-api`).
 
-```properties{9}
+```properties {9}
 # greeter-ui/default.conf
 
 server {

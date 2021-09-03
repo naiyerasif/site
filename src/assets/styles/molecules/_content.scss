@@ -14,22 +14,8 @@ main.container {
   }
 
   div[class$='-embed'],
-  .gridsome-highlight {
+  .shiki {
     margin-bottom: $gap-xl;
-  }
-
-  figure,
-  div[class$='-embed'],
-  .gridsome-highlight {
-    position: relative;
-    width: calc(70ch + 8vw);
-
-    @include queries.rg {
-      width: 100vw;
-      left: 50%;
-      right: 50%;
-      @include mx(-50vw);
-    }
   }
 
   ul, ol, dl {

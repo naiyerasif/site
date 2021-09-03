@@ -91,13 +91,9 @@ module.exports = {
           }
         ],
         [
-          'gridsome-plugin-remark-prismjs-all', { 
-            noInlineHighlight: true,
-            aliases: {
-              sh: 'shell',
-              conf: 'properties',
-              yml: 'yaml'
-            }
+          require('./lib/remark-shiki'), {
+            theme: 'css-variables',
+            skipInline: true
           }
         ],
         'gridsome-remark-figure-caption'

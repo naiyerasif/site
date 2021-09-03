@@ -99,7 +99,7 @@ Here, we've used the configuration from `environment.ts` to initialize a console
 
 Inject the appenders created above in the `express` app, as follows.
 
-```typescript{4, 10}
+```typescript {4, 10}
 // src/server.ts
 
 import express from 'express';

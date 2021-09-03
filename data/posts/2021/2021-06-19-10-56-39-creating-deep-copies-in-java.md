@@ -19,7 +19,7 @@ public interface Copyable<T> {
 
 You can implement this interface in the classes that need to provide deep copies.
 
-```java{6-12,21-26}
+```java {6-12,21-26}
 public class Book implements Copyable<Book> {
 
   private String title;
@@ -53,7 +53,7 @@ public class Author implements Copyable<Author> {
 
 You can now verify that calling the `copy()` method does create a deep copy through the following test.
 
-```java{18}
+```java {18}
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
@@ -118,7 +118,7 @@ Assuming you've got a Maven project, add the `jackson-databind` dependency in `p
 
 You won't need to modify the original classes in this case.
 
-```java{20-22}
+```java {20-22}
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -191,7 +191,7 @@ Assuming you have a Maven project, add the `kryo` dependency in `pom.xml`.
 
 As in the previous approach, you won't need to do any changes to the source code of the classes.
 
-```java{19-21}
+```java {19-21}
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.esotericsoftware.kryo.Kryo;

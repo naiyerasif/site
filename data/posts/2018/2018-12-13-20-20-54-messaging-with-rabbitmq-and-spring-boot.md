@@ -141,7 +141,7 @@ public @Service class Publisher implements CommandLineRunner {
 
 **Note** that all the published messages are serialized as byte arrays by default. To properly serialize the list of `Book`s, we need to define a message converter for `RabbitTemplate` as an instance of `Jackson2JsonMessageConverter`.
 
-```java{21-29}
+```java {21-29}
 // src/main/java/dev/mflash/guides/rabbitmq/configuration/RabbitMQConfiguration.java
 
 public @Configuration class RabbitMQConfiguration {
@@ -201,7 +201,7 @@ A `CountDownLatch` is used to wait for several threads to complete (here, it is 
 
 To convert the incoming message into a list of books, we'll have to provide the `MessageConverter` to a `RabbitListener`. This can be done by injecting the `MessageConverter` through an instance of `SimpleRabbitListenerContainerFactory` as follows.
 
-```java{21-27}
+```java {21-27}
 // src/main/java/dev/mflash/guides/rabbitmq/configuration/RabbitMQConfiguration.java
 
 public @Configuration class RabbitMQConfiguration {

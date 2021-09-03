@@ -1,0 +1,9 @@
+.shiki {
+  border: 1px dotted var(--decorative-spinel);
+  border-radius: var(--radius-base);
+
+  .line-highlighted {
+    display: table-row;
+    background: linear-gradient(to right, var(--code-highlight), transparent);
+  }
+}

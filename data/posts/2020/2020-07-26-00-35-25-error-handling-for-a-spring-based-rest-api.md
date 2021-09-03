@@ -258,7 +258,7 @@ The operation failed, obviously, and you received a JSON response with some usef
 
 The fastest way to address the issue with status is to throw Spring provided `ResponseStatusException` which accepts an `HttpStatus`.
 
-```java{13,26,35}
+```java {13,26,35}
 // src/main/java/dev/mflash/guides/resterror/controller/BookController.java
 
 @RequestMapping("/book")
@@ -601,7 +601,7 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
 
 You can be as generic or versatile in handling different types of `AuthenticationException`s as you need. Configure this entrypoint in the security configuration as follows.
 
-```java{19}
+```java {19}
 // src/main/java/dev/mflash/guides/resterror/security/SecurityConfiguration.java
 
 @EnableWebSecurity
@@ -659,7 +659,7 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 
 Similar to the `AuthenticationEntryPoint` approach, you can handle different scenarios that can lead to authorization failure. Call the `handle` method implemented above whenever such scenarios are encountered. An example is given below.
 
-```java{28}
+```java {28}
 // src/main/java/dev/mflash/guides/resterror/security/CustomAuthorizationFilter.java
 
 public class CustomAuthorizationFilter extends BasicAuthenticationFilter {
@@ -706,7 +706,7 @@ public class CustomAuthorizationFilter extends BasicAuthenticationFilter {
 
 For this to work, you'll have to inject the `CustomAccessDeniedHandler` in `CustomAuthorizationFilter` through the security configuration, as follows.
 
-```java{20}
+```java {20}
 // src/main/java/dev/mflash/guides/resterror/security/SecurityConfiguration.java
 
 @EnableWebSecurity
