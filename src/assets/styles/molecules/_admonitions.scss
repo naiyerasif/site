@@ -4,7 +4,7 @@
 @mixin admonition($color) {
   --block-color: #{$color};
   --block-indent: 2ch;
-  --block-border: 0.2em solid var(--block-color);
+  --block-border: 0.2em dotted var(--block-color);
 
   color: var(--block-color);
   border-left: var(--block-border);
@@ -13,11 +13,7 @@
 
   h5 {
     color: var(--block-color);
-  }
-
-  .admonition-icon svg {
-    stroke: var(--block-color);
-    fill: var(--block-color);
+    letter-spacing: normal;
   }
 
   code {
@@ -49,11 +45,6 @@
 
   &-icon {
     margin-right: 1ch;
-
-    svg {
-      @include size(24px);
-      stroke-width: 0;
-    }
   }
 }
 
@@ -62,20 +53,20 @@
   @include admonition(var(--semantic-neutral));
 }
 
-.admonition-caution {
-  @include admonition(var(--semantic-warn));
-}
-
 .admonition-tip {
-  @include admonition(var(--semantic-inform));
+  @include admonition(var(--semantic-positive));
 }
 
 .admonition-warning {
   @include admonition(var(--semantic-deter));
 }
 
-.admonition-important {
+.admonition-caution {
   @include admonition(var(--semantic-urge));
+}
+
+.admonition-info {
+  @include admonition(var(--semantic-inform));
 }
 
 blockquote {

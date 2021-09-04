@@ -1,5 +1,5 @@
 const path = require('path')
-const postcssPresetEnv = require('postcss-preset-env')
+const autoprefixer = require('autoprefixer')
 
 const { processMarkdown } = require('./lib/markdown')
 const slugifyOptions = require('./lib/slugify').options
@@ -84,7 +84,7 @@ module.exports = {
   transformers: {
     remark: {
       plugins: [
-        'remark-admonitions',
+        require('./lib/remark-admonitions'),
         [
           '@noxify/gridsome-plugin-remark-embed', {
             'enabledProviders': ['Youtube']
@@ -124,7 +124,7 @@ module.exports = {
     loaderOptions: {
       postcss: {
         plugins: [
-          postcssPresetEnv({ stage: 2 })
+          autoprefixer()
         ],
       },
     },
