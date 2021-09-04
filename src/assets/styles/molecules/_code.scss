@@ -1,47 +1,49 @@
 @use '~/assets/styles/mixins/font-family' as family;
 
+.code-metadata {
+  font-size: var(--text-xs);
+  user-select: none;
+  margin-bottom: 1ch;
+
+  .language-id {
+    @include family.font-code;
+    font-weight: var(--weight-bold);
+    padding: 0.25em 0.5em;
+    background-color: var(--decorative-opal);
+    color: var(--semantic-inform);
+    border-radius: var(--radius-base);
+  }
+}
+
 .shiki {
-  overflow-x: scroll;
+  overflow-x: auto; // needed for Safari
   border: 1px solid var(--decorative-spinel);
-  border-radius: var(--radius-base);
+  border-radius: 0;
 
   &:focus {
     outline: 2px solid var(--semantic-neutral);
   }
 
   & > code {
-    width: max-content;
+    width: max-content; // needed for Safari
   }
 
-  &-metadata {
-    font-size: var(--text-xs);
-    margin-bottom: 1ch;
-  }
-
-  &-language {
-    @include family.font-code;
-    font-weight: var(--weight-bold);
-    border: 1px dotted var(--decorative-opal);
-    background-color: var(--decorative-opal);
-    border-radius: var(--radius-base);
-    padding: 0.5ch 1ch;
-    color: var(--semantic-inform);
-  }
-
-  &-line-number {
-    display: inline-block;
-    user-select: none;
-    text-align: right;
-    padding-right: 2ch;
-    color: var(--shiki-token-comment);
+  .line {
+    &-number {
+      display: inline-block;
+      user-select: none;
+      padding-inline-end: 2ch;
+      text-align: right;
+      color: var(--shiki-token-comment);
+    }
   }
 
   .line-highlighted {
-    display: table-row;
+    display: inline-block;
     background: linear-gradient(to right, var(--code-highlight), transparent);
 
-    .shiki-line-number {
-      color: var(--code-highlight-line);
+    .line-number {
+      font-weight: var(--weight-bold);
     }
   }
 }
