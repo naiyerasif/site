@@ -1,5 +1,5 @@
 const path = require('path')
-const autoprefixer = require('autoprefixer')
+const postcssPresetEnv = require('postcss-preset-env')
 
 const { processMarkdown } = require('./lib/markdown')
 const slugifyOptions = require('./lib/slugify').options
@@ -124,7 +124,7 @@ module.exports = {
     loaderOptions: {
       postcss: {
         plugins: [
-          autoprefixer()
+          postcssPresetEnv({ stage: 2 })
         ],
       },
     },
