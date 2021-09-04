@@ -45,7 +45,7 @@ This site was made possible by
 - [Gridsome Portfolio Starter](https://github.com/drehimself/gridsome-portfolio-starter): a simple portfolio theme for Gridsome
 - [Gridsome Casper V3 Starter](https://github.com/jammeryhq/gridsome-starter-casper-v3): a Gridsome starter based on the Casper theme for Ghost
 - [Fuse.js](https://fusejs.io/): a lightweight fuzzy-search in JavaScript
-- [Prism](https://prismjs.com/): a lightweight, robust, elegant syntax highlighting library
+- [Shiki](https://github.com/shikijs/shiki): a beautiful syntax highlighter based on TextMate grammar
 - [Spritely](https://github.com/Microflash/spritely): a handy Node.js CLI to generate SVG sprites
 - [Bourbon](https://www.bourbon.io/): a lightweight Sass tool set
 - [Animate.css](https://github.com/daneden/animate.css): a cross-browser library of CSS animations
@@ -61,7 +61,6 @@ This site uses
 - [Inter](https://rsms.me/inter/) as the body font
 - [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) as the `monospace` font
 - a [custom icon pack](https://github.com/Microflash/site/blob/main/static/assets/images/icons.svg) based on [Feather](https://feathericons.com/)
-- a [custom Prism theme](https://github.com/Microflash/site/blob/main/src/assets/styles/molecules/_syntax.scss) to decorate the codeblocks
 - [Yarn](https://github.com/yarnpkg/yarn) as the package manager
 - [Git LFS](https://github.com/git-lfs/git-lfs) to version large files
 - [GitHub Actions](https://github.com/features/actions) for continuous integration
