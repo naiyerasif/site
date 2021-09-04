@@ -31,7 +31,6 @@
     "@microflash/spritely": "^1.3.3",
     "@sindresorhus/slugify": "^0.8.0",
     "autoprefixer": "^9.8.6",
-    "cheerio": "^1.0.0-rc.10",
     "commander": "^8.1.0",
     "dayjs": "^1.10.6",
     "gray-matter": "^4.0.3",

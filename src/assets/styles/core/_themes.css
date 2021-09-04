@@ -62,7 +62,6 @@
   --decorative-gold: hsl(25, 90%, 70%, 0.2);
 
   --code-highlight: hsl(31, 57%, 88%);
-  --code-highlight-line: hsla(180, 19%, 20%, 0.6);
   --shiki-color-text: #0a0a0e;
   --shiki-color-background: #f8f0e7;
   --shiki-token-constant: #4358d0;
@@ -107,8 +106,7 @@
   --decorative-opal: hsl(192, 90%, 25%, 0.3);
   --decorative-gold: hsl(25, 90%, 35%, 0.2);
 
-  --code-highlight: hsl(240, 17%, 10%);
-  --code-highlight-line: #86acac99;
+  --code-highlight: hsl(240, 18%, 15%);
   --shiki-color-text: #aaa6a1;
   --shiki-color-background: #0a0a0e;
   --shiki-token-constant: #596cd6;
