@@ -1,8 +1,17 @@
 @use '~/assets/styles/mixins/font-family' as family;
 
 .shiki {
-  border: 1px dotted var(--decorative-spinel);
+  overflow-x: scroll;
+  border: 1px solid var(--decorative-spinel);
   border-radius: var(--radius-base);
+
+  &:focus {
+    outline: 2px solid var(--semantic-neutral);
+  }
+
+  & > code {
+    width: max-content;
+  }
 
   &-metadata {
     font-size: var(--text-xs);
