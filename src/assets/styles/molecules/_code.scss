@@ -1,4 +1,5 @@
 @use '~/assets/styles/mixins/font-family' as family;
+@use '~/assets/styles/mixins/gap' as *;
 
 .code-metadata {
   font-size: var(--text-xs);
@@ -18,7 +19,7 @@
 .shiki {
   overflow-x: auto; // needed for Safari
   border: 1px solid var(--decorative-spinel);
-  border-radius: 0;
+  border-radius: var(--radius-base);
 
   &:focus {
     outline: 2px solid var(--semantic-neutral);
@@ -39,8 +40,14 @@
   }
 
   .line-highlighted {
-    display: inline-block;
-    background: linear-gradient(to right, var(--code-highlight), transparent);
+    display: block;
+    @include mx(-1.2em);
+    @include px(1.2em);
+    background: var(--code-highlight);
+
+    &:not(:last-child) {
+      margin-bottom: -2.7ch;
+    }
 
     .line-number {
       font-weight: var(--weight-bold);
