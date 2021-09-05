@@ -84,7 +84,7 @@ module.exports = {
   transformers: {
     remark: {
       plugins: [
-        'remark-admonitions',
+        require('./lib/remark-admonitions'),
         [
           '@noxify/gridsome-plugin-remark-embed', {
             'enabledProviders': ['Youtube']

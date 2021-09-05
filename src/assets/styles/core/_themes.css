@@ -49,7 +49,6 @@
   --semantic-neutral: hsl(240, 14%, 37%);
   --semantic-deter: hsl(350, 90%, 45%);
   --semantic-positive: hsl(140, 70%, 35%);
-  --semantic-warn: hsl(28, 73%, 50%);
   --semantic-inform: hsl(200, 90%, 37%);
   --semantic-urge: hsl(15, 83%, 48%);
 
@@ -94,7 +93,6 @@
   --semantic-neutral: hsl(240, 14%, 64%);
   --semantic-deter: hsl(350, 90%, 55%);
   --semantic-positive: hsl(140, 70%, 45%);
-  --semantic-warn: hsl(28, 73%, 60%);
   --semantic-inform: hsl(200, 90%, 47%);
   --semantic-urge: hsl(15, 83%, 58%);
 
