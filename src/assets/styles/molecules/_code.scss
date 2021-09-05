@@ -29,7 +29,8 @@
   }
 
   & > code {
-    width: max-content; // needed for Safari
+    display: table;
+    width: 100%; // needed for Safari
   }
 
   .line {
