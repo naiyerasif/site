@@ -97,6 +97,7 @@ module.exports = {
             showLanguage: true,
             showLineNumbers: true,
             highlightLines: true,
+            showCaptions: true,
             aliases: {
               conf: 'ini',
               dockerfile: 'docker',

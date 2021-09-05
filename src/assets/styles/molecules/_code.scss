@@ -1,5 +1,4 @@
 @use '~/assets/styles/mixins/font-family' as family;
-@use '~/assets/styles/mixins/gap' as *;
 
 .code-metadata {
   font-size: var(--text-xs);
@@ -13,6 +12,10 @@
     background-color: var(--decorative-opal);
     color: var(--semantic-inform);
     border-radius: var(--radius-base);
+  }
+
+  .code-caption {
+    padding: 0.25em 0.5em;
   }
 }
 
@@ -30,6 +33,8 @@
   }
 
   .line {
+    display: table-row;
+
     &-number {
       display: inline-block;
       user-select: none;
@@ -40,14 +45,7 @@
   }
 
   .line-highlighted {
-    display: block;
-    @include mx(-1.2em);
-    @include px(1.2em);
     background: var(--code-highlight);
-
-    &:not(:last-child) {
-      margin-bottom: -2.7ch;
-    }
 
     .line-number {
       font-weight: var(--weight-bold);
