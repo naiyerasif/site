@@ -1,6 +1,8 @@
 @use '~/assets/styles/mixins/font-family' as family;
 
 .code-metadata {
+  display: flex;
+  align-items: center;
   font-size: var(--text-xs);
   user-select: none;
   margin-bottom: 1ch;

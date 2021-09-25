@@ -13,6 +13,7 @@
 
   --close-base: calc(var(--far-base) * -1);
   --close-sm: calc(var(--close-base) * 0.5);
+  --close-lg: calc(var(--close-base) * 2);
 
   --radius-base: 0.25rem;
   --radius-full: 9999px;
