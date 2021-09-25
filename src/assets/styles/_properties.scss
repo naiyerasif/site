@@ -9,11 +9,19 @@
   --gap-lg: #{$gap-lg};
   --gap-xl: #{$gap-xl};
 
+  --zoom-base: var(--close-base);
+  --zoom-lg: var(--close-lg);
+
   --code-px: var(--far-base);
   --code-mx: var(--close-base);
 
   @include queries.md {
     --code-px: var(--far-sm);
     --code-mx: var(--close-sm);
+  }
+
+  @include queries.sm {
+    --zoom-base: var(--close-sm);
+    --zoom-lg: var(--close-base);
   }
 }

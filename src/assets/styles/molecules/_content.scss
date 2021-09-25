@@ -18,8 +18,14 @@ main.container {
     margin-bottom: $gap-xl;
   }
 
-  ul, ol, dl {
-    margin-left: 1.75rem;
+  figure,
+  div[class$='-embed'] {
+    @include mx(var(--zoom-lg));
+  }
+
+  .shiki,
+  .code-metadata {
+    @include mx(var(--zoom-base));
   }
 
   li::marker {
