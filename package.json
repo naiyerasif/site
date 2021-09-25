@@ -31,7 +31,7 @@
     "@sindresorhus/slugify": "^0.8.0",
     "autoprefixer": "^9.8.6",
     "commander": "^8.2.0",
-    "dayjs": "^1.10.6",
+    "dayjs": "^1.10.7",
     "gray-matter": "^4.0.3",
     "keyword-extractor": "^0.0.20",
     "marked": "^3.0.2",
