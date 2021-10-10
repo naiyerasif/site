@@ -1,10 +1,12 @@
 ---
-title: 'Logging methods with AspectJ'
-date: 2021-10-02 14:59:38
-tags: ['aspectj', 'log', 'aop']
+title: 'Weaving aspects at compile-time with AspectJ'
+date: 2021-10-10 15:12:18
+tags: ['aspectj', 'aop', 'log']
 ---
 
-A year ago, I wrote an article on [how to log methods using AspectJ and Spring AOP](/blog/2020/09/13/logging-methods-with-aspectj-in-a-spring-application/). This post is a follow-up that shows you how to log methods using plain Java (without using Spring or any other framework).
+> This is a follow-up post for [Logging methods with AspectJ in a Spring application](/blog/2020/09/13/logging-methods-with-aspectj-in-a-spring-application/).
+
+[AspectJ](https://www.eclipse.org/aspectj/) manipulates Java bytecode at compile-time or load-time. The process is called _weaving_. Depending on when it is performed, it is called _compile-time_ or _load-time_ weaving. Using the same example discussed in [Logging methods with AspectJ in a Spring application](/blog/2020/09/13/logging-methods-with-aspectj-in-a-spring-application/) that uses Spring AOP, we'll discuss how to log methods using Java and AspectJ (without any framework).
 
 :::note Setup
 The code written for this post uses:
@@ -17,7 +19,7 @@ The code written for this post uses:
 
 Create a Maven project using the following `pom.xml`.
 
-```xml {73-86,caption='pom.xml'}
+```xml {caption='pom.xml'}
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -25,8 +27,8 @@ Create a Maven project using the following `pom.xml`.
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>dev.mflash.guides.spring</groupId>
-  <artifactId>aop-method-logging</artifactId>
-  <version>0.0.1</version>
+  <artifactId>aop-compile-time</artifactId>
+  <version>0.0.2</version>
 
   <properties>
     <encoding>UTF-8</encoding>
@@ -49,7 +51,7 @@ Create a Maven project using the following `pom.xml`.
       <groupId>org.aspectj</groupId>
       <artifactId>aspectjrt</artifactId>
       <version>${aspectj.version}</version>
-      <scope>runtime</scope>
+      <scope>provided</scope>
     </dependency>
 
     <dependency>
@@ -87,23 +89,8 @@ Create a Maven project using the following `pom.xml`.
   <build>
     <plugins>
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>aspectj-maven-plugin</artifactId>
-        <version>1.14.0</version>
-        <configuration>
-          <complianceLevel>16</complianceLevel>
-          <showWeaveInfo>true</showWeaveInfo>
-          <encoding>${encoding}</encoding>
-          <Xlint>ignore</Xlint>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>compile</goal>
-              <goal>test-compile</goal>
-            </goals>
-          </execution>
-        </executions>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M5</version>
       </plugin>
     </plugins>
   </build>
@@ -111,23 +98,13 @@ Create a Maven project using the following `pom.xml`.
 </project>
 ```
 
-Note that AspectJ is configured to weave the classes at compile-time in the above configuration.
-
-- `Xlint` option informs you if something goes wrong with the Aspect code. You can set it to `ignore`, `warning`, or `error` depending on your need.
-- `showWeaveInfo` displays messages during weaving
-- `complianceLevel` sets the source code and bytecode target version for Java
-
-> __AspectJ weaving models__
-> AspectJ supports _build-time_ and _load-time_ weaving models.
-> 
-> - During build-time weaving, it can work with either source-code or bytecode. 
-> - During load-time weaving, it works primarily with bytecode. However, you can provide source code along with an XML file (aptly called `aop.xml`) for load-time weaving, if needed.
-
 ## Define an annotation to log a method
 
-Instead of defining an aspect specific to a package, you can use an annotation, say `@LogEntryExit` to specify if you want to log a method. This gives you control and flexibility to modify the behavior of logging by providing some configuration through the annotation. You can define the `@LogEntryExit` annotation as follows.
+Let's start by defining an annotation `@LogEntryExit`. This annotation will control the behavior of logging done on a method.
 
 ```java
+// src/main/java/dev/mflash/guides/java/aop/logging/annotation/LogEntryExit.java
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -150,7 +127,7 @@ public @interface LogEntryExit {
 }
 ```
 
-This annotation can accept
+This annotation can accept the following options.
 
 - a `value` to declare the logging level; by default, it is `INFO`.
 - a `showExecutionTime` flag to enable logging the execution time of the method; by default, it is `true`.
@@ -158,17 +135,19 @@ This annotation can accept
 - a `showArgs` flag to enable displaying the arguments received by the method; by default, it is `false`.
 - a `showResult` flag to enable displaying the result returned by the method; by default, it is `false`.
 
-`LogLevel` is an enum to specify, well, the log level.
+`LogLevel` is an enum that specifies the log level.
 
 ```java
+// src/main/java/dev/mflash/guides/java/aop/logging/annotation/LogEntryExit.java
+
 public enum LogLevel {
   DEBUG, INFO, TRACE, WARN, ERROR, FATAL
 }
 ```
 
-## Define the aspect with an advice to log the methods
+## Define the aspect with advice to log the methods
 
-The next step is to define the aspect that would apply the advice.
+When you annotate a method with the `@LogEntryExit` annotation, its entry and exit will be logged based on the options passed to it. To parse these options and set some sensible defaults on the logging behavior, let's create an aspect `LogEntryExitAspect`.
 
 ```java {24}
 // src/main/java/dev/mflash/guides/java/aop/logging/aspect/LogEntryExitAspect.java
@@ -227,18 +206,23 @@ public final class LogEntryExitAspect {
 }
 ```
 
-In the above implementation, we implement a `log` method that accepts a `JoinPoint` (more specifically, a `ProceedingJoinPoint`). In our case, this `JoinPoint` is nothing but an execution of any method annotated with the `@LogEntryExit` annotation.
+Note the _pointcut expressions_ 
 
-Note that the expression `execution(* *(..))` specifies that the advice should be applied when the method executes. This is needed to ensure that the logging happens during the method execution and not when the method is invoked. If this is not done, logging will happen twice, once on a method call and subsequently on method execution. Also, note that the expression `@annotation(dev.mflash.guides.java.aop.logging.annotation.LogEntryExit)` specifies that the advice should be applied on the method annotated by `@LogEntryExit`. Both expressions are combined using `&&` operator.
+- `execution(* *(..))` which selects all the method executions in our project
+- `@annotation(dev.mflash.guides.java.aop.logging.annotation.LogEntryExit)` which selects the methods that are annotated by the `@LogEntryExit` annotation
 
-Furthermore, we obtain 
+> We need both expressions satisfied. By default, AspectJ applies the advices on a method call _and_ method execution in case of an `@Around` aspect. The expression `execution(* *(..))` ensures that methods are logged only when they are executed.
 
-- `CodeSignature` to extract parameter names of the method, and 
-- `MethodSignature` to extract the details of the class, arguments received by the method being advised and values passed to the `@LogEntryExit` annotation for this execution.
+You'll also note that the logging takes place in the `log` method. Such places where crosscutting actions happen are called _join points_ in Aspect Oriented Programming (AOP). In AspectJ, a `ProceedingJoinPoint` allows us to inspect an execution, perform some action and _proceed_ forward. 
 
-All this information is used to calculate the execution time and to prepare a list of arguments to display using logs.
+Here, we use the `ProceedingJoinPoint` to extract 
 
-```java
+- extract parameter names of the method (from the `CodeSignature`), and
+- extract the details of the class, method arguments, and options passed to the `@LogEntryExit` annotation by this method (from the `MethodSignature`)
+
+With all this information available, we calculate the execution time and prepare log messages as follows.
+
+```java {43-46}
 // src/main/java/dev/mflash/guides/java/aop/logging/aspect/LogEntryExitAspect.java
 
 import dev.mflash.guides.java.aop.logging.annotation.LogEntryExit;
@@ -337,13 +321,68 @@ public final class LogEntryExitAspect {
 }
 ```
 
-In the `entry` method, we generate a map of parameters and arguments of the method and add them to the log message if the `showArgs` flag is set to `true`. Similarly, we add the duration of execution, and the result returned by the method to the log message based on the `showExecutionTime` and `showResult` flags respectively.
+Here
 
-## Method logging in action
+- the `entry` method prepares a log message containing parameter names and arguments of the method, and
+- the `exit` method prepares a log message containing execution time and the returned value
+
+## Configuring the AspectJ Compiler
+
+To modify the bytecode of methods annotated by the `@LogEntryExit` annotation, you'll need to configure AspectJ Compiler (`ajc` in short). An easy way to do this is by using Mojo's [Aspect Maven Plugin](https://www.mojohaus.org/aspectj-maven-plugin/). Open your `pom.xml` and modify it as follows.
+
+```xml {15-33}
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- rest of the POM -->
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M5</version>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>aspectj-maven-plugin</artifactId>
+        <version>1.14.0</version>
+        <configuration>
+          <complianceLevel>16</complianceLevel>
+          <showWeaveInfo>true</showWeaveInfo>
+          <encoding>${encoding}</encoding>
+          <Xlint>ignore</Xlint>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>compile</goal>
+              <goal>test-compile</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
+```
+
+Note that the `ajc` is configured to weave the classes during `compile` and `test-compile` goals of Maven's lifecycle. We're also passing the following configuration through the plugin.
+
+- `Xlint` to log an `error` or `warning` message if something goes wrong with the Aspect code. You can also set it to `ignore` all the issues.
+- `showWeaveInfo` displays useful details during weaving
+- `complianceLevel` sets the source code and bytecode target version for Java
+
+## Compile-time weaving in action
 
 To check if the above implementation works, create a class, say `GreetingHandler` with some sample methods.
 
 ```java
+// src/main/java/dev/mflash/guides/java/aop/logging/GreetingHandler.java
+
 import dev.mflash.guides.java.aop.logging.annotation.LogEntryExit;
 
 import java.time.temporal.ChronoUnit;
@@ -366,11 +405,13 @@ public class GreetingHandler {
 }
 ```
 
-Here, the public method `greet` and private method `resolveName` are annotated with the `@LogEntryExit` annotation, and hence should be logged.
+Here, the public method `greet` and private method `resolveName` are annotated with the `@LogEntryExit` annotation, and hence we expect them to be logged.
 
 Create a `Launcher` class to call these methods as follows.
 
 ```java
+// src/main/java/dev/mflash/guides/java/aop/logging/Launcher.java
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -389,18 +430,25 @@ public class Launcher {
 Running the `Launcher` outputs the following logs.
 
 ```log
-16:11:32.239 [main] INFO dev.mflash.guides.java.aop.logging.GreetingHandler - Started greet method with args: {name=Veronica}
-16:11:32.242 [main] INFO dev.mflash.guides.java.aop.logging.GreetingHandler - Started resolveName method with args: {name=Veronica}
-16:11:32.245 [main] INFO dev.mflash.guides.java.aop.logging.GreetingHandler - Finished resolveName method in 0 millis with return: Veronica
-16:11:32.245 [main] INFO dev.mflash.guides.java.aop.logging.GreetingHandler - Finished greet method in 4 millis with return: Hello, Veronica!
-16:11:32.245 [main] INFO dev.mflash.guides.java.aop.logging.Launcher - Hello, Veronica!
+16:54:35.272 [main] INFO dev.mflash.guides.java.aop.logging.GreetingHandler - Started greet method with args: {name=Veronica}
+16:54:35.272 [main] INFO dev.mflash.guides.java.aop.logging.GreetingHandler - Started resolveName method with args: {name=Veronica}
+16:54:35.272 [main] INFO dev.mflash.guides.java.aop.logging.GreetingHandler - Finished resolveName method in 0 millis with return: Veronica
+16:54:35.272 [main] INFO dev.mflash.guides.java.aop.logging.GreetingHandler - Finished greet method in 0 millis with return: Hello, Veronica!
+16:54:35.272 [main] INFO dev.mflash.guides.java.aop.logging.Launcher - Hello, Veronica!
 ```
 
 Feel free to play with other options of the `@LogEntryExit` annotation.
 
 ## Testing the aspect
 
-To test the `LogEntryExitAspect`, you can monitor the logs and verify if the expected messages are printed during the execution. To monitor the logs, __SLF4J__ does not provide an API but [Logback](http://logback.qos.ch/) does (which we're using along with __SLF4J__). Start by defining a custom appender to capture the log events, as follows.
+To test the `LogEntryExitAspect`, you can monitor the logs and verify if the expected messages are printed during the execution. [Logback](http://logback.qos.ch/) provides an API to capture logging events. We can use this API 
+
+- to define a custom log appender, say `AspectAppender`
+- attach this appender to the logger of `GreetingHandler` class
+- call the methods of the `GreetingHandler` class, and
+- query the captured events to verify that entry and exit logs
+
+Let's define the `AspectAppender` as follows.
 
 ```java
 // src/test/java/dev/mflash/guides/java/aop/logging/AspectAppender.java
@@ -501,22 +549,25 @@ class LogEntryExitAspectTest {
 }
 ```
 
-In this test class,
+Here, we
 
-- in the `setUp` method, we create new instances of `GreetingHandler`, `AspectAppender`, and a `Logger` for each test. We also add the `AspectAppender` to the logger to monitor the log events.
-- the first and second tests check if the advice is applied on the public `greet` method and private `resolveName` method when they execute.
-- the last test verifies that the advice is not applied on a method that is not annotated with the `@LogEntryExit` annotation.
-- the `cleanUp` method tears down the appender.
+- attach the `AspectAppender` to the logger of the `GreetingHandler` in the `setup` method. We stop the appender in the `cleanUp` method after every test.
+- verify if the entry and exit of the `GreetingHandler.greet` and `GreetingHandler.resolveName` are logged
+- verify that the entry and exit of the `GreetingHandler.resolveNothing` method are not logged since it is not annotated with the `@LogEntryExit` annotation.
 
 ## Conclusion
 
-- Using this approach, you can apply an advice to any Java class, whether they're Spring Beans or not. Also, you can advise both public and private methods.
-- More specifically, the build-time weaving doesn't require any agent; the load-time weaving requires an agent to weave the classes when the JVM loads them.
+- Compile-time weaving is pretty fast since all the bytecode is already weaved before execution.
+- It requires access to the source code. If source code is not available, you'll have to use _build-time_ or _load-time_ weaving. Spring AOP, for example, uses load-time weaving using proxies.
+- You can weave public or private methods of a Java class.
+- It is relatively simpler compared to _build-time_ or _load-time_ weaving which need an agent to weave the classes.
+- It introduces another compiler, `ajc`, in the compile process. Some IDEs may not provide support for this compiler out-of-box.
 
 ## References
 
-**Source Code** &mdash; [aop-method-logging](https://github.com/Microflash/java-guides/tree/master/aop-method-logging)
+**Source Code** &mdash; [aop-compile-time](https://github.com/Microflash/java-guides/tree/main/aop-compile-time)
 
 **Related**
 - [AspectJ in Action](https://livebook.manning.com/book/aspectj-in-action-second-edition/chapter-8/1) by Ramnivas Laddad
 - [The AspectJ Project](https://www.eclipse.org/aspectj/)
+- [The AspectJ Programming Guide](https://www.eclipse.org/aspectj/doc/released/progguide/index.html)
