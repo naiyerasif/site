@@ -16,7 +16,7 @@ The examples in this post use
 - JaCoCo 0.8.7
 :::
 
-Create a Maven project and add a few tests under the `src/test/java` folder. You can find the sample tests for this guide [here](https://github.com/Microflash/java-guides/tree/master/coverage-jacoco-maven/src/test/java/dev/mflash/guides/java/coverage/jacoco/).
+Create a Maven project and add a few tests under the `src/test/java` folder. You can find the sample tests for this guide [here](https://github.com/Microflash/java-guides/tree/main/coverage-jacoco-maven/src/test/java/dev/mflash/guides/java/coverage/jacoco/).
 
 ## Setup JaCoCo
 
@@ -146,7 +146,7 @@ You can configure specific classes and [additional counters](https://www.jacoco.
 
 ## References
 
-**Source Code** &mdash; [coverage-jacoco-maven](https://github.com/Microflash/java-guides/tree/master/coverage-jacoco-maven)
+**Source Code** &mdash; [coverage-jacoco-maven](https://github.com/Microflash/java-guides/tree/main/coverage-jacoco-maven)
 
 **Related**
 - [JaCoCo Maven plugin](https://www.eclemma.org/jacoco/trunk/doc/maven.html)

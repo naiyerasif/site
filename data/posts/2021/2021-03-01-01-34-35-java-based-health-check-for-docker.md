@@ -162,7 +162,7 @@ This approach eliminates the need for any utility (like `curl` or `wget`) and re
 ## References
 
 **Source Code**
-- [docker-healthcheck](https://github.com/Microflash/java-guides/tree/master/docker-healthcheck)
+- [docker-healthcheck](https://github.com/Microflash/java-guides/tree/main/docker-healthcheck)
 
 **Related**
 - [Dockerfile HEALTHCHECK reference](https://docs.docker.com/engine/reference/builder/#healthcheck)
