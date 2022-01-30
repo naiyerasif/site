@@ -1,0 +1,19 @@
+# Editor configuration, see https://editorconfig.org/
+root = true
+
+[*]
+charset = utf-8
+indent_style = tab
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{js,scss,ts}]
+quote_type = single
+
+[*.md]
+max_line_length = off
+trim_trailing_whitespace = false
+
+[*.svg]
+max_line_length = off
+insert_final_newline = false
