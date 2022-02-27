@@ -11,7 +11,6 @@
         </div>
       </div>
     </template>
-    <ScrollIndicator />
     <main class="container px-far-base">
       <article class="article max-sm" v-html="$page.profile.content" />
     </main>
@@ -40,7 +39,6 @@ query Profile ($id: ID!) {
 
 <script>
 import Icon from '~/components/Icon'
-import ScrollIndicator from '~/components/ScrollIndicator'
 import * as siteConfig from '@/data/site.config'
 
 export default {
@@ -66,8 +64,7 @@ export default {
     }
   },
   components: {
-    Icon,
-    ScrollIndicator
+    Icon
   },
   computed: {
     firstName() {

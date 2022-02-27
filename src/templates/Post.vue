@@ -13,7 +13,6 @@
         </div>
       </div>
     </template>
-    <ScrollIndicator />
     <main class="container px-far-base">
       <div v-if="expiryMessage" class="admonition admonition-warning alert alert--danger">
         <div class="admonition-heading"><h5><span class="admonition-icon"><Icon symbol="icon-adm-warning" class="icon" /></span>warning</h5></div>
@@ -98,7 +97,6 @@ query Blog ($id: ID!, $previousId: ID!, $nextId: ID!) {
 import Toc from '~/components/Toc'
 import Tag from '~/components/Tag'
 import Icon from '~/components/Icon'
-import ScrollIndicator from '~/components/ScrollIndicator'
 import dayjs from 'dayjs'
 import * as siteConfig from '@/data/site.config'
 
@@ -146,8 +144,7 @@ export default {
   components: {
     Toc,
     Tag,
-    Icon,
-    ScrollIndicator
+    Icon
   },
   computed: {
     displayDate() {
