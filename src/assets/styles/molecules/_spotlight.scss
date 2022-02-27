@@ -103,7 +103,7 @@ body {
     cursor: pointer;
     color: $link;
 
-    &:focus,
+    &:focus:not(:focus-visible),
     &:hover {
       text-decoration: underline;
       color: $link-hover;
@@ -113,10 +113,12 @@ body {
       color: $link-active;
     }
 
-    &:focus {
+    &:focus-visible {
+      color: $link-hover;
+      border-radius: $radius;
       outline-color: inherit;
       outline-style: solid;
-      outline-width: thin;
+      outline-width: 0.25ch;
       outline-offset: 0.125em;
     }
   }
