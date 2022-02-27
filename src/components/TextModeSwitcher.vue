@@ -1,5 +1,5 @@
 <template>
-  <a role="switch" @click.prevent="switchTextMode" :aria-label="'Switch to ' + nextTextMode + ' text'" aria-checked="true" class="text-mode-switcher leading-none">
+  <a role="switch" @click.prevent="switchTextMode" :aria-label="'Switch to ' + nextTextMode + ' text'" aria-checked="true" class="text-mode-switcher leading-none" tabindex="0">
     <svg viewBox="0 0 24 24" class="icon" role="img" aria-hidden="true">
       <transition name="slide-up" mode="out-in">
         <use :href="uri('zoom-in')" key="dark" v-if="textMode === 'normal'"></use>

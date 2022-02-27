@@ -24,7 +24,7 @@
     "axios": "^0.24.0",
     "fuse.js": "^6.5.3",
     "gridsome": "^0.7.23",
-    "gridsome-remark-figure-caption": "^1.2.0"
+    "gridsome-remark-figure-caption": "^1.2.1"
   },
   "devDependencies": {
     "@microflash/spritely": "^1.4.0",
@@ -34,13 +34,13 @@
     "dayjs": "^1.10.7",
     "gray-matter": "^4.0.3",
     "keyword-extractor": "^0.0.20",
-    "marked": "^4.0.8",
+    "marked": "^4.0.12",
     "parse-numeric-range": "^1.3.0",
     "rehype-parse": "7.0.1",
-    "sass": "^1.45.1",
+    "sass": "^1.49.9",
     "sass-loader": "^10.2.0",
-    "shiki": "^0.9.15",
-    "shx": "^0.3.3",
+    "shiki": "^0.10.1",
+    "shx": "^0.3.4",
     "svg-to-vue-component": "^0.3.8"
   }
 }
