@@ -18,7 +18,7 @@
       </div>
     </main>
     <template #sidekick>
-      <Pagination class="mt-close-base" path="blog" :total="$page.posts.pageInfo.totalPages" :current="$page.posts.pageInfo.currentPage" />
+      <Pagination class="mt-close-base" path="posts" :total="$page.posts.pageInfo.totalPages" :current="$page.posts.pageInfo.currentPage" />
     </template>
   </Layout>
 </template>
@@ -62,7 +62,7 @@ export default {
 
         { property: 'og:title', content: title },
         { property: 'og:description', content: description },
-        { property: "og:url", content: `${siteConfig.url}/blog/` },
+        { property: "og:url", content: `${siteConfig.url}/posts/` },
 
         { name: 'twitter:card', content: 'summary' },
         { name: 'twitter:title', content: title },

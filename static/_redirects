@@ -1,0 +1,7 @@
+# Redirects
+/blog/:year/:month/:date/:slug		/post/:year/:month/:date/:slug
+/blog															/posts
+/blog/1														/posts/1
+/blog/2														/posts/2
+/blog/3														/posts/3
+/blog/4														/posts/4
