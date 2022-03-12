@@ -18,7 +18,7 @@ module.exports = {
     }
   },
   templates: {
-    Blog: '/blog/:year/:month/:day/:title',
+    Blog: '/post/:year/:month/:day/:title',
     Profile: '/profile/:id',
     Project: '/project/:title'
   },

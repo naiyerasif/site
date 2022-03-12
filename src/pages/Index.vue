@@ -23,7 +23,7 @@
         <g-link class="block font-bold group-hover:text-deter group-hover:underline" :to="latest.node.path">{{ latest.node.title }}</g-link>
       </div>
       <div class="flex items-center justify-end mt-base">
-        <g-link class="tappable text-xs uppercase tracking-wider font-bold bg-quartz focus:bg-ruby hover:bg-ruby focus:no-underline hover:no-underline mt-far-sm" to="/blog/2/">Browse more &xrarr;</g-link>
+        <g-link class="tappable text-xs uppercase tracking-wider font-bold bg-quartz focus:bg-ruby hover:bg-ruby focus:no-underline hover:no-underline mt-far-sm" to="/posts/2/">Browse more &xrarr;</g-link>
       </div>
     </main>
   </Layout>
@@ -61,7 +61,7 @@ export default {
 
         { property: 'og:title', content: title },
         { property: 'og:description', content: description },
-        { property: "og:url", content: `${siteConfig.url}/` },
+        { property: "og:url", content: `${siteConfig.url}` },
 
         { name: 'twitter:card', content: 'summary' },
         { name: 'twitter:title', content: title },
