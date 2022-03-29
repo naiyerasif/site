@@ -5,7 +5,11 @@
   align-items: center;
   font-size: var(--text-xs);
   user-select: none;
-  margin-bottom: 1ch;
+	background-color: var(--decorative-quartz);
+	border-top-left-radius: var(--radius-seamless);
+	border-top-right-radius: var(--radius-seamless);
+	padding: 0.5ch 0.5ch 1ch 0.5ch;
+	margin-bottom: -0.5ch;
 
   .language-id {
     @include family.font-code;
@@ -24,22 +28,25 @@
 .shiki {
   overflow-x: auto; // needed for Safari
   border: 1px solid var(--decorative-spinel);
-  border-radius: var(--radius-base);
+  border-radius: var(--radius-seamless);
 
-  &:focus {
+  &:focus-within {
     outline: 2px solid var(--semantic-neutral);
   }
 
+	code {
+		padding: 1.2em 0;
+	}
+
   & > code {
-    display: table;
-    width: 100%; // needed for Safari
+    display: grid;
   }
 
   .line {
-    display: table-row;
+		padding: 0 1.2em;
+    border-left: 2px solid transparent;
 
     &-number {
-      display: inline-block;
       user-select: none;
       padding-right: 2ch;
       text-align: right;
@@ -49,9 +56,10 @@
 
   .line-highlighted {
     background: var(--code-highlight);
+		border-left-color: var(--decorative-agate);
 
     .line-number {
-      font-weight: var(--weight-bold);
+      color: var(--semantic-neutral);
     }
   }
 }

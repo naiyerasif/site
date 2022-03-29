@@ -9,8 +9,8 @@
   --gap-lg: #{$gap-lg};
   --gap-xl: #{$gap-xl};
 
-  --zoom-base: var(--close-base);
   --zoom-lg: var(--close-lg);
+	--radius-seamless: var(--radius-base);
 
   --code-px: var(--far-base);
   --code-mx: var(--close-base);
@@ -21,7 +21,7 @@
   }
 
   @include queries.sm {
-    --zoom-base: var(--close-sm);
     --zoom-lg: var(--close-base);
+		--radius-seamless: 0;
   }
 }

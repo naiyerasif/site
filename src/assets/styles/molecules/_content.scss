@@ -25,7 +25,7 @@ main.container {
 
   .shiki,
   .code-metadata {
-    @include mx(var(--zoom-base));
+    @include mx(var(--close-base));
   }
 
   li::marker {
