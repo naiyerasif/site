@@ -30,13 +30,13 @@ jobs:
         id: node-cache
         with:
           path: '**/node_modules'
-          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}-v1
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}-v1
       - name: Install dependencies
-        run: yarn
+        run: npm install
       - name: Print environment
-        run: yarn get:info
+        run: npm run get:info
       - name: Generate the build
-        run: yarn build
+        run: npm run build
       - name: Publish on Netlify
         uses: netlify/actions/cli@master
         with:
