@@ -3,8 +3,11 @@ import inline from 'lume/plugins/inline.ts'
 import postcss from 'lume/plugins/postcss.ts'
 import sass from 'lume/plugins/sass.ts'
 import terser from 'lume/plugins/terser.ts'
+import remark from './modules/remark/mod.ts'
 import date from './modules/date/mod.ts'
 import readingTime from './modules/reading-time/mod.ts'
+import rehypePlugins from './modules/rehype/plugins.ts'
+import remarkPlugins from './modules/remark/plugins.ts'
 import data from './src/_data.ts'
 
 const site = lume({
@@ -21,6 +24,10 @@ site.use(date({
 	precisionMode: true
 }))
 site.use(inline())
+site.use(remark({
+	remarkPlugins: remarkPlugins,
+	rehypePlugins: rehypePlugins
+}))
 site.use(postcss())
 site.use(sass())
 site.use(terser())
