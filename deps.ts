@@ -1,5 +1,7 @@
 export { default as dayjs } from 'https://esm.sh/dayjs@1.11.3'
 export { default as fenceparser } from 'https://esm.sh/@microflash/fenceparser@2.5.2'
+export { default as rehypeAutolinkHeadings } from 'https://esm.sh/rehype-autolink-headings@6.1.1'
+export { default as rehypeExternalLinks } from 'https://esm.sh/rehype-external-links@1.0.1'
 export { default as rehypeStringify } from 'https://esm.sh/rehype-stringify@9.0.3'
 export { default as remarkDirective } from 'https://esm.sh/remark-directive@2.0.1'
 export { default as remarkFigCaption } from 'https://esm.sh/@microflash/remark-figure-caption@1.0.0'
