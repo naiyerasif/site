@@ -1,5 +1,5 @@
 import { hastUtilHasProperty, hastUtilHeadingRank, hastUtilToString, unistUtilVisit } from '../../deps.ts'
-import { slugifyWithCounter, defaultSlugifyOptions } from '../slugify/mod.ts'
+import { slugifyWithCounter, defaults as defaultSlugifyOptions } from '../slugify/mod.ts'
 
 const slugify = slugifyWithCounter()
 
