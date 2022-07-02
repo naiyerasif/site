@@ -1,4 +1,5 @@
 import { rehypeAutolinkHeadings, rehypeExternalLinks } from '../../deps.ts'
+import rehypeSlugify from './rehype-slugify.js'
 
 export default [
 	[
@@ -7,6 +8,7 @@ export default [
 			rel: ['nofollow', 'noopener', 'noreferrer']
 		}
 	],
+	rehypeSlugify,
 	[
 		rehypeAutolinkHeadings, {
 			behavior: 'append',
