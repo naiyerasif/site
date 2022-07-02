@@ -8,6 +8,7 @@ import date from './modules/date/mod.ts'
 import readingTime from './modules/reading-time/mod.ts'
 import rehypePlugins from './modules/rehype/plugins.ts'
 import remarkPlugins from './modules/remark/plugins.ts'
+import postcssPlugins from './modules/postcss/plugins.ts'
 import data from './src/_data.ts'
 
 const site = lume({
@@ -28,7 +29,9 @@ site.use(remark({
 	remarkPlugins: remarkPlugins,
 	rehypePlugins: rehypePlugins
 }))
-site.use(postcss())
+site.use(postcss({
+	plugins: postcssPlugins,
+}))
 site.use(sass())
 site.use(terser())
 
