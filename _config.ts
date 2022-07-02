@@ -1,4 +1,8 @@
 import lume from 'lume/mod.ts'
+import inline from 'lume/plugins/inline.ts'
+import postcss from 'lume/plugins/postcss.ts'
+import sass from 'lume/plugins/sass.ts'
+import terser from 'lume/plugins/terser.ts'
 import readingTime from './modules/reading-time/mod.ts'
 import data from './src/_data.ts'
 
@@ -10,6 +14,11 @@ const site = lume({
 		port: 8080
 	}
 })
+
+site.use(inline())
+site.use(postcss())
+site.use(sass())
+site.use(terser())
 
 site.loadData(['.md'])
 site.copy('assets', '.')
