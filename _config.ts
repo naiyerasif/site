@@ -10,6 +10,7 @@ const site = lume({
 	}
 })
 
+site.filter('source', (path) => new URL(path, data.app.repositoryContext).href)
 site.filter('capitalize', ([ first, ...rest ]) => [first.toUpperCase(), ...rest].join(''))
 
 export default site
