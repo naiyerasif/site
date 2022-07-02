@@ -11,6 +11,9 @@ const site = lume({
 	}
 })
 
+site.loadData(['.md'])
+site.copy('assets', '.')
+
 site.filter('source', (path) => new URL(path, data.app.repositoryContext).href)
 site.filter('capitalize', ([ first, ...rest ]) => [first.toUpperCase(), ...rest].join(''))
 site.filter('readingTime', (text) => readingTime(text) + ' min read')
