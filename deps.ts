@@ -1,4 +1,5 @@
 export { default as dayjs } from 'https://esm.sh/dayjs@1.11.3'
+export { default as fenceparser } from 'https://esm.sh/@microflash/fenceparser@2.5.2'
 export { default as rehypeStringify } from 'https://esm.sh/rehype-stringify@9.0.3'
 export { default as remarkDirective } from 'https://esm.sh/remark-directive@2.0.1'
 export { default as remarkFigCaption } from 'https://esm.sh/@microflash/remark-figure-caption@1.0.0'
@@ -9,8 +10,10 @@ export { default as remarkSmartyPants } from 'https://esm.sh/remark-smartypants@
 export { default as timezone } from 'https://esm.sh/v86/dayjs@1.11.3/plugin/timezone'
 export { default as utc } from 'https://esm.sh/v86/dayjs@1.11.3/plugin/utc'
 export * as hastscript from 'https://esm.sh/hastscript@7.0.2'
+export * as hastUtilToHtml from 'https://esm.sh/hast-util-to-html@8.0.3'
 export * as nlcstToString from 'https://esm.sh/nlcst-to-string@3.1.0'
 export * as slugify from 'https://esm.sh/@sindresorhus/slugify@2.1.0'
+export * as starryNight from 'https://esm.sh/@wooorm/starry-night@1.0.1'
 export * as unified from 'https://esm.sh/unified@10.1.2'
 export * as unistUtilVisit from 'https://esm.sh/unist-util-visit@4.1.0'
 
