@@ -1,5 +1,6 @@
 import { rehypeAutolinkHeadings, rehypeExternalLinks } from '../../deps.ts'
 import rehypeSlugify from './rehype-slugify.js'
+import rehypeToc from './rehype-toc.js'
 
 export default [
 	[
@@ -9,6 +10,7 @@ export default [
 		}
 	],
 	rehypeSlugify,
+	rehypeToc,
 	[
 		rehypeAutolinkHeadings, {
 			behavior: 'append',
