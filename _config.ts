@@ -10,4 +10,6 @@ const site = lume({
 	}
 })
 
+site.filter('capitalize', ([ first, ...rest ]) => [first.toUpperCase(), ...rest].join(''))
+
 export default site
