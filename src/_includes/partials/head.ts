@@ -102,6 +102,7 @@ export default function (metaInfo: MetaInfo) {
 		html += `<meta itemprop="description" content="${metaInfo.description}">`
 	}
 
+	// inline styles
 	html += `<style>
 	.icon {
 		--icon-size: 1.5rem;
@@ -119,6 +120,32 @@ export default function (metaInfo: MetaInfo) {
 		.icon {
 			--icon-size: 24px;
 		}
+	}
+	a#skiplink {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: absolute;
+		background-color: var(--sugar-bg-deter);
+		border: 1px solid var(--sugar-bg-deter);
+		color: var(--sugar-fg-deter);
+		margin: 5px;
+		width: calc(100% - 10px);
+		padding: 0.5ch;
+		font-weight: var(--sugar-font-bold);
+		font-size: 0.8em;
+		clip-path: initial;
+		z-index: 5;
+	}
+	a#skiplink:not(:focus):not(:focus-within) {
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip-path: inset(50%);
+		white-space: nowrap;
+		border: 0;
 	}
 	</style>`
 
