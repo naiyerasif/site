@@ -2,7 +2,7 @@ import lume from 'lume/mod.ts'
 import inline from 'lume/plugins/inline.ts'
 import postcss from 'lume/plugins/postcss.ts'
 import sass from 'lume/plugins/sass.ts'
-import terser from 'lume/plugins/terser.ts'
+import esbuild from 'lume/plugins/esbuild.ts'
 import remark from './modules/remark/mod.ts'
 import date from './modules/date/mod.ts'
 import readingTime from './modules/reading-time/mod.ts'
@@ -33,7 +33,7 @@ site.use(postcss({
 	plugins: postcssPlugins,
 }))
 site.use(sass())
-site.use(terser())
+site.use(esbuild())
 
 site.loadData(['.md'])
 site.copy('assets', '.')
