@@ -1,0 +1,11 @@
+:root {
+	--sugar-gap-base: 2rem;
+
+	--app-max-width-body: calc(900px + 15vw);
+	--app-max-width-body: 80ch;
+
+	--app-offset: 36px;
+
+	--app-gap-base: calc(var(--app-offset) + 2vw);
+	--app-gap-md: calc(var(--app-gap-base) * 1.5);
+}
