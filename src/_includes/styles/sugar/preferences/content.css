@@ -1,0 +1,460 @@
+* {
+	box-decoration-break: clone;
+	scrollbar-color: var(--sugar-color-scrollbar) var(--sugar-background-scrollbar);
+}
+
+*::-webkit-scrollbar,
+*::-webkit-scrollbar-track {
+	background-color: var(--sugar-background-scrollbar);
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: var(--sugar-color-scrollbar);
+}
+
+*::-moz-selection {
+	background: var(--sugar-background-selection);
+}
+
+*::selection {
+	background: var(--sugar-background-selection);
+}
+
+body {
+	font-family: var(--sugar-font-body);
+	font-size: var(--sugar-text-base);
+	font-weight: var(--sugar-font-normal);
+	font-kerning: normal;
+	font-optical-sizing: auto;
+	text-rendering: optimizeLegibility;
+	background-color: var(--sugar-background-body);
+	color: var(--sugar-color-body);
+	-webkit-overflow-scrolling: touch;
+}
+
+body a {
+	color: var(--sugar-color-link);
+	cursor: pointer;
+	text-decoration-line: underline;
+	text-decoration-style: dotted;
+	text-decoration-skip-ink: auto;
+	text-decoration-thickness: var(--sugar-decoration-sm);
+}
+
+body a b,
+body a strong,
+body a i,
+body a em {
+	color: currentColor;
+}
+
+body a:focus:not(:focus-visible),
+body a:hover {
+	text-decoration-style: solid;
+	text-decoration-thickness: var(--sugar-decoration-base);
+	color: var(--sugar-color-link-hover);
+}
+
+body a:active {
+	text-decoration-style: solid;
+	text-decoration-thickness: var(--sugar-decoration-base);
+	color: var(--sugar-color-link-active);
+}
+
+body a:focus-visible {
+	text-decoration-color: transparent;
+	color: var(--sugar-color-link-hover);
+	border-radius: var(--sugar-radius-sm);
+	outline-color: var(--sugar-color-link-outline);
+	outline-style: solid;
+	outline-width: 0.25ch;
+	outline-offset: 0.125em;
+}
+
+body cite {
+	font-style: italic;
+}
+
+body blockquote {
+	padding: 0 0 0 2ch;
+	border-inline-start: 3px solid var(--sugar-color-border);
+	color: var(--sugar-color-emphasis);
+}
+
+body hr {
+	background-color: var(--sugar-color-border);
+	border: none;
+	display: block;
+	height: 1px;
+	margin-block: var(--sugar-gap-base);
+}
+
+body mark,
+body del,
+body ins {
+	border-radius: var(--sugar-radius-sm);
+	padding: 0.2ch 0.6ch;
+	font-size: 0.95em;
+}
+
+body del {
+	background-color: var(--sugar-background-del);
+	border: 1px solid var(--sugar-background-del);
+	text-decoration-line: line-through;
+}
+
+body ins {
+	background-color: var(--sugar-background-ins);
+	border: 1px solid var(--sugar-background-ins);
+	text-decoration: none;
+}
+
+body mark {
+	background-color: var(--sugar-background-mark);
+	border: 1px solid var(--sugar-background-mark);
+	color: inherit;
+}
+
+body summary {
+	display: list-item;
+}
+
+body details {
+	display: block;
+	border: 1px solid var(--sugar-color-border);
+	border-radius: var(--sugar-radius-base);
+	padding: 0 0.75em 0;
+}
+
+body details summary {
+	background-color: var(--sugar-background-summary);
+	margin: 0 -0.75em 0;
+	padding: 0.5em 0.75em;
+	cursor: pointer;
+}
+
+body details summary:focus-visible {
+	background-color: var(--sugar-color-link-hover);
+	border-radius: var(--sugar-radius-base);
+	outline-color: var(--sugar-color-link-outline);
+	outline-style: solid;
+	outline-width: 0.25ch;
+	outline-offset: 0.125em;
+}
+
+body details[open] {
+	padding-block-end: 0.5em;
+}
+
+body details[open] summary {
+	margin-block-end: 0.5em;
+	border-block-end: 1px solid var(--sugar-color-border);
+}
+
+body i,
+body em {
+	color: var(--sugar-color-emphasis);
+}
+
+body b,
+body strong {
+	font-weight: var(--sugar-font-bold);
+	color: var(--sugar-color-stress);
+}
+
+body small,
+body sub,
+body sup {
+	font-size: var(--sugar-text-small);
+}
+
+body sub {
+	vertical-align: sub;
+}
+
+body sup {
+	vertical-align: super;
+}
+
+body var {
+	font-family: var(--sugar-font-mono);
+}
+
+body img {
+	border-radius: var(--sugar-radius-base);
+}
+
+body figure {
+	margin-block-end: calc(var(--sugar-gap-base) * 2);
+	text-align: center;
+}
+
+body figure:first-child,
+body figure:only-child {
+	margin-block-start: 0;
+}
+
+body figure:last-child,
+body figure:only-child {
+	margin-block-end: 0;
+}
+
+body figcaption {
+	font-size: var(--sugar-text-small);
+	margin-block-start: calc(var(--sugar-gap-base) / 1.6);
+	color: var(--sugar-color-emphasis);
+}
+
+body p:not(:last-child),
+body dl:not(:last-child),
+body ol:not(:last-child),
+body ul:not(:last-child),
+body aside:not(:last-child),
+body blockquote:not(:last-child),
+body pre:not(:last-child),
+body table:not(:last-child) {
+	margin-block-end: var(--sugar-gap-base);
+}
+
+body p:empty {
+	display: none;
+}
+
+body h1 {
+	font-size: 2.5rem;
+}
+
+body h2 {
+	font-size: 2rem;
+}
+
+body h3 {
+	font-size: 1.5rem;
+}
+
+body h4 {
+	font-size: 1.25rem;
+}
+
+body h5 {
+	font-size: 1.125rem;
+}
+
+body h6 {
+	font-size: 0.95rem;
+}
+
+body :is(h1, h2, h3, h4, h5, h6) {
+	font-weight: var(--sugar-font-bold);
+	color: var(--sugar-color-headings);
+	margin-block-start: 2em;
+	margin-block-end: 1em;
+}
+
+body :is(h1, h2, h3, h4, h5, h6)+ :is(h1, h2, h3, h4, h5, h6) {
+	margin-block-start: 0;
+}
+
+body :is(h1, h2, h3, h4, h5, h6):first-child,
+body :is(h1, h2, h3, h4, h5, h6):only-child {
+	margin-block-start: 0;
+}
+
+body :is(h1, h2, h3, h4, h5, h6):last-child,
+body :is(h1, h2, h3, h4, h5, h6):only-child {
+	margin-block-end: 0;
+}
+
+body menu {
+	list-style: none;
+}
+
+body ol,
+body ul {
+	list-style-position: outside;
+}
+
+body ol {
+	list-style-type: decimal;
+}
+
+body ol ol {
+	list-style-type: lower-alpha;
+}
+
+body ol ol ol {
+	list-style-type: lower-roman;
+}
+
+body ol ol ol ol {
+	list-style-type: lower-greek;
+}
+
+body ol ol ol ol ol {
+	list-style-type: decimal;
+}
+
+body ol ol ol ol ol ol {
+	list-style-type: lower-alpha;
+}
+
+body ul {
+	list-style-type: disc;
+}
+
+body ul ul {
+	list-style-type: circle;
+}
+
+body ul ul ul {
+	list-style-type: square;
+}
+
+body ul ul ul ul {
+	list-style-type: circle;
+}
+
+body ul ul ul ul ul {
+	list-style-type: disc;
+}
+
+body ul ul ul ul ul ul {
+	list-style-type: circle;
+}
+
+body dd {
+	margin-inline-start: var(--sugar-gap-base);
+}
+
+body dt {
+	font-weight: var(--sugar-font-bold);
+}
+
+body li {
+	--list-item-gap: calc(var(--sugar-gap-base) / 3);
+}
+
+body li::marker {
+	color: var(--sugar-color-marker);
+}
+
+body li>*:not(:last-child) {
+	margin-block-end: var(--list-item-gap);
+}
+
+body li+li,
+body li> :last-child>li,
+body li> :last-child>li {
+	margin-block-start: var(--list-item-gap);
+}
+
+body input,
+body textarea,
+body select {
+	accent-color: var(--sugar-color-accent);
+	caret-color: var(--sugar-color-accent);
+	outline-color: var(--sugar-color-accent);
+	border-color: var(--sugar-color-accent);
+}
+
+body input::placeholder,
+body textarea::placeholder,
+body select::placeholder {
+	color: var(--sugar-color-emphasis);
+}
+
+body input:focus:not(:focus-visible),
+body input:hover,
+body textarea:focus:not(:focus-visible),
+body textarea:hover,
+body select:focus:not(:focus-visible),
+body select:hover {
+	color: var(--sugar-color-link-hover);
+	border-color: var(--sugar-color-link-outline);
+}
+
+body input:focus-visible,
+body textarea:focus-visible,
+body select:focus-visible {
+	color: var(--sugar-color-link-hover);
+	outline-color: var(--sugar-color-link-outline);
+}
+
+body code,
+body kbd,
+body samp,
+body pre {
+	font-family: var(--sugar-font-mono);
+	font-size: var(--sugar-text-code);
+	-moz-osx-font-smoothing: auto;
+	-webkit-font-smoothing: auto;
+	background-color: var(--sugar-background-code);
+	border: 1px solid var(--sugar-background-code);
+	border-radius: var(--sugar-radius-sm);
+}
+
+body code,
+body kbd,
+body samp {
+	padding: 0.2ch 0.6ch;
+	color: var(--sugar-color-code);
+}
+
+body pre {
+	overflow: hidden;
+	border-radius: var(--sugar-radius-base);
+}
+
+body pre code {
+	display: block;
+	background: none;
+	overflow: auto;
+	border: none;
+	padding: 1em 1.2em;
+	font-size: 1em;
+	white-space: pre;
+}
+
+body table {
+	display: block;
+	width: 100%;
+	overflow-x: auto;
+}
+
+body table pre {
+	white-space: pre-wrap;
+}
+
+body th {
+	font-weight: var(--sugar-font-bold);
+}
+
+body th,
+body td {
+	font-size: 1em;
+	padding: calc(var(--sugar-gap-base) / 2.5) calc(var(--sugar-gap-base) / 2);
+	border: 1px solid var(--sugar-color-border);
+}
+
+body thead tr,
+body tfoot tr {
+	background-color: var(--sugar-background-table-active);
+}
+
+body thead th,
+body thead td,
+body tfoot th,
+body tfoot td {
+	color: var(--sugar-color-table-active);
+}
+
+body thead th code,
+body thead td code,
+body tfoot th code,
+body tfoot td code {
+	background-color: var(--sugar-background-table);
+}
+
+body tbody tr {
+	background-color: var(--sugar-background-table);
+}

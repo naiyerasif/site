@@ -1,0 +1,162 @@
+:root {
+	--app-gap-content: calc(var(--app-gap-base) + 3vw);
+	--app-radius-media: 0;
+	--app-offset-media: calc(var(--app-offset) * -1);
+}
+
+@media screen and (min-width:768px) {
+	:root {
+		--app-radius-media: var(--sugar-radius-base);
+		--app-offset-media: calc(var(--app-offset) * -2);
+	}
+}
+
+a[rel*='nofollow']::after {
+	content: '\02197';
+	display: inline-block;
+	text-decoration: none;
+}
+
+.app {
+	overflow-x: hidden;
+}
+
+.button-icon,
+.button {
+	--app-bg-button: transparent;
+	--app-color-button: var(--sugar-color-link);
+	--app-padding-button: 8px;
+	--app-radius-button: var(--sugar-radius-base);
+
+	display: inline-flex;
+	align-items: center;
+	border: 1px solid transparent;
+	border-radius: var(--app-radius-button);
+	background-color: var(--app-bg-button);
+	color: var(--app-color-button);
+	padding: var(--app-padding-button);
+}
+
+a.button {
+	--app-padding-button: 6px 8px;
+}
+
+a.button.button:focus:not(:focus-visible),
+a.button:hover {
+	text-decoration: none;
+}
+
+.button.kbd {
+	--app-bg-button: var(--sugar-bg-commend);
+	font-family: var(--sugar-font-mono);
+	padding: 4px var(--app-padding-button);
+	border-color: var(--app-bg-button);
+}
+
+/* handle focus received from mouse etc. */
+.button-icon:focus:not(:focus-visible),
+.button-icon:hover,
+.button:focus:not(:focus-visible),
+.button:hover {
+	--app-bg-button: var(--sugar-bg-deter);
+	--app-color-button: var(--sugar-color-deter);
+	border-color: var(--app-bg-button);
+}
+
+.button-icon:active,
+.button:active {
+	--app-bg-button: var(--sugar-bg-warn);
+	--app-color-button: var(--sugar-color-warn);
+}
+
+/* handle focus from keyboard or tab key; see https://www.tpgi.com/focus-visible-and-backwards-compatibility/ */
+.button-icon:focus-visible,
+.button:focus-visible {
+	--app-bg-button: var(--sugar-bg-deter);
+	--app-color-button: var(--sugar-color-deter);
+	outline-color: var(--sugar-color-link-outline);
+	outline-style: solid;
+	outline-width: 0.25ch;
+	outline-offset: 0.125em;
+}
+
+.showcase {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--sugar-gap-base);
+	flex-basis: 100%;
+	margin-inline: calc(-1 * var(--app-offset));
+}
+
+@media screen and (min-width:768px) {
+	.showcase {
+		margin-inline: 0;
+	}
+}
+
+.showcase > * {
+	flex: 1 1 100%;
+}
+
+.showcase-item {
+	padding: var(--app-offset);
+	background-color: var(--sugar-bg-commend);
+	border: 1px solid var(--sugar-bg-commend);
+	border-radius: var(--app-radius-media);
+	font-weight: var(--sugar-font-bold);
+	cursor: pointer;
+}
+
+.showcase-item a:focus-visible {
+	outline: transparent;
+}
+
+.showcase-item:focus,
+.showcase-item:hover {
+	background-color: var(--sugar-bg-deter);
+	border-color: var(--sugar-bg-deter);
+}
+
+.showcase-item:focus a,
+.showcase-item:hover a {
+	color: var(--sugar-color-deter);
+	text-decoration-color: var(--sugar-color-deter);
+	text-decoration-thickness: var(--sugar-decoration-thickness);
+	text-decoration-style: solid;
+}
+
+.showcase-item:active {
+	background-color: var(--sugar-bg-warn);
+}
+
+.showcase-item:active a {
+	color: var(--sugar-color-warn);
+	text-decoration-color: var(--sugar-color-warn);
+}
+
+.showcase-item:focus-within {
+	background-color: var(--sugar-bg-deter);
+	outline-color: var(--sugar-outline-deter);
+	outline-style: solid;
+	outline-width: 0.2em;
+	outline-offset: -0.125em;
+	transition: outline-offset 145ms cubic-bezier(0.25, 0, 0.4, 1);
+}
+
+.showcase-item:focus-within a {
+	color: var(--sugar-color-deter);
+}
+
+.showcase-item-metadata {
+	font-size: var(--sugar-text-sm);
+	font-weight: var(--sugar-font-normal);
+}
+
+.prev .showcase-item-metadata,
+.next .showcase-item-metadata {
+	color: var(--sugar-color-emphasis);
+}
+
+.showcase-item.cover a {
+	font-size: 1.5em;
+}

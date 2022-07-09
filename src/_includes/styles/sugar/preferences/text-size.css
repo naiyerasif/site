@@ -1,4 +1,4 @@
-:root:not([data-text-size]), // fallback when JavaScript is not available
+:root:not([data-text-size]), /* fallback when JavaScript is not available */
 [data-text-size='regular'] {
 	--sugar-text-sm: calc(0.75rem + 0.2vw);
 	--sugar-text-base: calc(0.9rem + 0.3vw);

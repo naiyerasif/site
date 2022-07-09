@@ -1,4 +1,4 @@
-:root:not([data-theme]), // fallback when JavaScript is not available
+:root:not([data-theme]), /* fallback when JavaScript is not available */
 [data-theme='dark'] {
 	color-scheme: dark;
 
@@ -8,6 +8,7 @@
 	--sugar-bg-warn: hsl(18, 100%, 35%, 0.2);
 	--sugar-bg-deter: hsl(351, 100%, 38%, 0.2);
 	--sugar-bg-assert: hsl(215, 100%, 42%, 0.2);
+	--sugar-bg-flaunt: hsl(240, 14%, 2%);
 	--sugar-bg-code: hsl(240, 14%, 2%);
 
 	--sugar-color-base: hsl(207, 14%, 62%);
@@ -22,11 +23,12 @@
 	--sugar-outline-commend: hsl(158, 59%, 35%, 0.4);
 	--sugar-outline-deter: hsl(356, 82%, 56%, 0.5);
 
-	--sugar-border-commend: hsl(158, 100%, 16%);
-	--sugar-border-warn: hsl(16, 100%, 27%);
-	--sugar-border-deter: hsl(355, 100%, 30%);
-	--sugar-border-assert: hsl(217, 100%, 33%);
-	--sugar-border-code: hsl(207, 16%, 29%);
+	--sugar-border-note: hsl(207, 18%, 20%);
+	--sugar-border-commend: hsl(155, 100%, 11%);
+	--sugar-border-warn: hsl(14, 100%, 19%);
+	--sugar-border-deter: hsl(359, 100%, 21%);
+	--sugar-border-assert: hsl(219, 100%, 24%);
+	--sugar-border-code: hsl(208, 21%, 12%);
 
 	--sugar-font-normal: 350;
 	--sugar-font-bold: 600;
@@ -67,11 +69,12 @@
 	color-scheme: light;
 
 	--sugar-bg-base: hsl(240, 20%, 99%);
-	--sugar-bg-note: hsl(207, 13%, 57%, 0.1);
+	--sugar-bg-note: hsl(207, 6%, 57%, 0.1);
 	--sugar-bg-commend: hsl(154, 39%, 45%, 0.1);
 	--sugar-bg-warn: hsl(21, 92%, 52%, 0.1);
 	--sugar-bg-deter: hsl(359, 94%, 66%, 0.1);
 	--sugar-bg-assert: hsl(215, 100%, 63%, 0.1);
+	--sugar-bg-flaunt: hsl(35, 52%, 95%);
 	--sugar-bg-code: hsl(0, 0%, 100%);
 
 	--sugar-color-base: hsl(208, 15%, 34%);
@@ -86,11 +89,12 @@
 	--sugar-outline-commend: hsl(161, 90%, 27%, 0.3);
 	--sugar-outline-deter: hsl(352, 79%, 49%, 0.5);
 
-	--sugar-border-commend: hsl(154, 39%, 45%);
-	--sugar-border-warn: hsl(21, 92%, 52%);
-	--sugar-border-deter: hsl(359, 94%, 66%);
-	--sugar-border-assert: hsl(215, 100%, 63%);
-	--sugar-border-code: hsl(207, 13%, 57%);
+	--sugar-border-note: hsl(204, 16%, 81%);
+	--sugar-border-commend: hsl(149, 33%, 78%);
+	--sugar-border-warn: hsl(21, 100%, 82%);
+	--sugar-border-deter: hsl(4, 100%, 87%);
+	--sugar-border-assert: hsl(211, 100%, 84%);
+	--sugar-border-code: hsl(204, 16%, 81%);
 
 	--sugar-font-normal: 400;
 	--sugar-font-bold: 700;

@@ -1,0 +1,171 @@
+@font-face {
+	font-family: "Inter var";
+	font-display: swap;
+	src: url("/fonts/Inter-Regular.var.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 100 900;
+	font-named-instance: "Regular";
+}
+
+@font-face {
+	font-family: "Inter var";
+	font-display: swap;
+	src: url("/fonts/Inter-Italic.var.woff2") format("woff2");
+	font-style: italic;
+	font-weight: 100 900;
+	font-named-instance: "Italic";
+}
+
+@font-face {
+	font-family: "JetBrains Mono var";
+	font-display: swap;
+	src: url("/fonts/JetBrainsMono.var.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 100 900;
+	font-named-instance: "Regular";
+}
+
+@font-face {
+	font-family: "Inter";
+	font-display: swap;
+	src: url("/fonts/Inter-Light.woff2") format("woff2"), url("/fonts/Inter-Light.woff") format("woff");
+	font-style: normal;
+	font-weight: 350;
+}
+
+@font-face {
+	font-family: "Inter";
+	font-display: swap;
+	src: url("/fonts/Inter-LightItalic.woff2") format("woff2"), url("/fonts/Inter-LightItalic.woff") format("woff");
+	font-style: italic;
+	font-weight: 350;
+}
+
+@font-face {
+	font-family: "Inter";
+	font-display: swap;
+	src: url("/fonts/Inter-Regular.woff2") format("woff2"), url("/fonts/Inter-Regular.woff") format("woff");
+	font-style: normal;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: "Inter";
+	font-display: swap;
+	src: url("/fonts/Inter-Italic.woff2") format("woff2"), url("/fonts/Inter-Italic.woff") format("woff");
+	font-style: italic;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: "Inter";
+	font-display: swap;
+	src: url("/fonts/Inter-SemiBold.woff2") format("woff2"), url("/fonts/Inter-SemiBold.woff") format("woff");
+	font-style: normal;
+	font-weight: 600;
+}
+
+@font-face {
+	font-family: "Inter";
+	font-display: swap;
+	src: url("/fonts/Inter-SemiBoldItalic.woff2") format("woff2"), url("/fonts/Inter-SemiBoldItalic.woff") format("woff");
+	font-style: italic;
+	font-weight: 600;
+}
+
+@font-face {
+	font-family: "Inter";
+	font-display: swap;
+	src: url("/fonts/Inter-Bold.woff2") format("woff2"), url("/fonts/Inter-Bold.woff") format("woff");
+	font-style: normal;
+	font-weight: 700;
+}
+
+@font-face {
+	font-family: "Inter";
+	font-display: swap;
+	src: url("/fonts/Inter-BoldItalic.woff2") format("woff2"), url("/fonts/Inter-BoldItalic.woff") format("woff");
+	font-style: italic;
+	font-weight: 700;
+}
+
+@font-face {
+	font-family: "Inter";
+	font-display: swap;
+	src: url("/fonts/Inter-ExtraBold.woff2") format("woff2"), url("/fonts/Inter-ExtraBold.woff") format("woff");
+	font-style: normal;
+	font-weight: 800;
+}
+
+@font-face {
+	font-family: "Inter";
+	font-display: swap;
+	src: url("/fonts/Inter-ExtraBoldItalic.woff2") format("woff2"), url("/fonts/Inter-ExtraBoldItalic.woff") format("woff");
+	font-style: italic;
+	font-weight: 800;
+}
+
+@font-face {
+	font-family: "Inter";
+	font-display: swap;
+	src: url("/fonts/Inter-Black.woff2") format("woff2"), url("/fonts/Inter-Black.woff") format("woff");
+	font-style: normal;
+	font-weight: 900;
+}
+
+@font-face {
+	font-family: "Inter";
+	font-display: swap;
+	src: url("/fonts/Inter-BlackItalic.woff2") format("woff2"), url("/fonts/Inter-BlackItalic.woff") format("woff");
+	font-style: italic;
+	font-weight: 900;
+}
+
+@font-face {
+	font-family: "JetBrains Mono";
+	font-display: swap;
+	src: url("/fonts/JetBrainsMono-Light.woff2") format("woff2"), url("/fonts/JetBrainsMono-Light.woff") format("woff");
+	font-style: normal;
+	font-weight: 350;
+}
+
+@font-face {
+	font-family: "JetBrains Mono";
+	font-display: swap;
+	src: url("/fonts/JetBrainsMono-Regular.woff2") format("woff2"), url("/fonts/JetBrainsMono-Regular.woff") format("woff");
+	font-style: normal;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: "JetBrains Mono";
+	font-display: swap;
+	src: url("/fonts/JetBrainsMono-SemiBold.woff2") format("woff2"), url("/fonts/JetBrainsMono-SemiBold.woff") format("woff");
+	font-style: normal;
+	font-weight: 600;
+}
+
+@font-face {
+	font-family: "JetBrains Mono";
+	font-display: swap;
+	src: url("/fonts/JetBrainsMono-Bold.woff2") format("woff2"), url("/fonts/JetBrainsMono-Bold.woff") format("woff");
+	font-style: normal;
+	font-weight: 700;
+}
+
+:root {
+	--sugar-font-sans: 'Inter', var(--sugar-font-sans-native);
+	--sugar-font-mono: 'JetBrains Mono', var(--sugar-font-mono-native);
+}
+
+@supports (font-variation-settings: normal) {
+	:root {
+		--sugar-font-sans: 'Inter var', var(--sugar-font-sans-native);
+		--sugar-font-mono: 'JetBrains Mono var', var(--sugar-font-mono-native);
+	}
+}
+
+body:not(code):not(pre):not(kbd) {
+	/* ss04: disambiguation without slashed-zero */
+	font-feature-settings: 'ss04';
+}

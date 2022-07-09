@@ -1,0 +1,35 @@
+.article {
+	max-width: var(--app-max-width-text);
+}
+
+.article article>p:first-of-type {
+	font-size: 1.25em;
+}
+
+.article article .image-container,
+.article article .highlight,
+.article article .preview {
+	margin-inline: var(--app-offset-media);
+}
+
+.article article .image-container img,
+.article article .image-container svg {
+	border: 1px solid var(--sugar-bg-note);
+	border-radius: var(--app-radius-media);
+	margin-inline: auto;
+}
+
+.article article :is(h1, h2, h3, h4, h5, h6) a .icon {
+	display: none;
+	visibility: hidden;
+	vertical-align: text-top;
+	margin-inline-start: 0.25ch;
+	width: min(24px, 1.3ch);
+	height: min(24px, 1.3ch);
+}
+
+.article article :is(h1, h2, h3, h4, h5, h6):focus a .icon,
+.article article :is(h1, h2, h3, h4, h5, h6):hover a .icon {
+	display: inline-block;
+	visibility: visible;
+}
