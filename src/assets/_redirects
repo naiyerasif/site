@@ -1,4 +1,5 @@
 # Redirects
+/projects/												/stacktrace/
 /blog/:year/:month/:date/:slug		/post/:year/:month/:date/:slug
 /blog															/posts
 /blog/1														/posts/1

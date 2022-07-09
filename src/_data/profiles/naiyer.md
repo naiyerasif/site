@@ -13,7 +13,7 @@ I like solving problems and exploring ideas. I work in small bursts and in balan
 
 ## About this site
 
-I learn things with practice. Originally, I built this site with [Gridsome](https://gridsome.org/) to learn [Vue 2](https://v2.vuejs.org/) and [GraphQL](https://graphql.org/). In 2022, I reworked it using [Lume](https://lume.land/) and [Alpine.js](https://alpinejs.dev/).
+I learn things with practice. Originally, I built this site with [Gridsome](https://github.com/gridsome/gridsome) to learn [Vue 2](https://github.com/vuejs/vue) and [GraphQL](https://graphql.org/). In 2022, I reworked it using [Lume](https://lume.land/) and [Alpine.js](https://alpinejs.dev/).
 
 Building a personal site made me aware of the web community, inspired me to contribute to the open source, and taught me valuable lessons on accessibility, web performance, typography, design, and more. It also spurred my networking with people from different backgrounds.
 
@@ -35,11 +35,12 @@ It's fashionable to build personal sites and talk about their stack. I got this 
 - [Alpine.js](https://alpinejs.dev/): very light JavaScript framework to build interactivity
 - [Remark](https://github.com/remarkjs/remark) & [Rehype](https://github.com/rehypejs/rehype): the markdown and HTML processors
 - [Leonardo](https://leonardocolor.io/): an app by Adobe behind the color science of this site
-- [Sugar](https://github.com/Microflash/site/blob/main/src/_includes/styles/sugar/): my own classless library for text-heavy websites
+- [Sugar](https://github.com/Microflash/site/blob/main/src/_includes/styles/sugar/): my own classless CSS library for text-heavy websites
 - [PostCSS](https://postcss.org/): the CSS post-processor
 - [Fuse.js](https://fusejs.io/): the library that powers the search
 - [Starry Night](https://github.com/wooorm/starry-night): the library that powers the syntax highlighting of the code
 - [Inter](https://rsms.me/inter/) and [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono): the body and `monospace` fonts
+- [Vale](https://github.com/errata-ai/vale): a style and grammar linter for prose
 - [GitHub Actions](https://github.com/features/actions): the CI/CD tool that builds and deploys this site
 - [Netlify](https://netlify.com/): they host this site and serve it over a CDN
 
