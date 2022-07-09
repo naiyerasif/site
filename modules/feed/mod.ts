@@ -10,6 +10,12 @@ export enum FeedFormat {
 	JSON_1
 }
 
+export interface Output {
+	atom1?: string,
+	rss2?: string,
+	json1?: string
+}
+
 export interface Options {
 	/** Feed options with the details about site, author, etc */
 	feedOptions: FeedOptions,
@@ -41,7 +47,7 @@ function convertToSiteUrls(html: string, baseUrl: string) {
 	})
 }
 
-export default function createFeed(userOptions?: Partial<Options>): string[] {
+export default function createFeed(userOptions?: Partial<Options>): Output {
 	const options = merge(defaults, userOptions)
 
 	const feedProcessor = new feed.Feed(options.feedOptions)
@@ -53,19 +59,19 @@ export default function createFeed(userOptions?: Partial<Options>): string[] {
 		feedProcessor.addItem(feedItem)
 	}
 
-	const outputs = []
+	const output: Output = {}
 
 	if (options.outputs.includes(FeedFormat.ATOM_1)) {
-		outputs.push(feedProcessor.atom1())
+		output['atom1'] = feedProcessor.atom1()
 	}
 
 	if (options.outputs.includes(FeedFormat.RSS_2)) {
-		outputs.push(feedProcessor.rss2())
+		output['rss2'] = feedProcessor.rss2()
 	}
 
 	if (options.outputs.includes(FeedFormat.JSON_1)) {
-		outputs.push(feedProcessor.json1())
+		output['json1'] = feedProcessor.json1()
 	}
 
-	return outputs
+	return output
 }
