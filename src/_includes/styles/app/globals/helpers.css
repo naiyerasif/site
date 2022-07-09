@@ -104,6 +104,17 @@ a.button:hover {
 	}
 }
 
+.showcase-title {
+	display: flex;
+	align-items: center;
+	gap: 1ch;
+	color: var(--sugar-color-stress);
+}
+
+.showcase-title + .showcase {
+	margin-block-start: var(--sugar-gap-base);
+}
+
 .showcase-item {
 	padding: var(--app-offset);
 	background-color: var(--sugar-bg-commend);

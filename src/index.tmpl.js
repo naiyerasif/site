@@ -1,10 +1,12 @@
+import icon from './_includes/components/icon.ts'
 import time from './_includes/components/time.js'
 
 export const title = `Home`
 export const layout = `layouts/main.tmpl.js`
 
 export default function ({ search }, filters) {
-	let recent = `<div class="showcase">`
+	let recent = `<div class="showcase-title">${icon('green-new-energy')}<span>Recently published</span></div>`
+	recent += `<div class="showcase">`
 
 	search.pages('type=post', 'date=desc', 11)
 		.forEach((post, index) => {
