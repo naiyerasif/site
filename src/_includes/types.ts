@@ -1,8 +1,6 @@
 export enum ContentType {
-	PAGE,
-	POST,
-	POSTS,
-	PROFILE
+	article,
+	website
 }
 
 export interface MetaInfo {

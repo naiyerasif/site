@@ -1,25 +1,25 @@
 import appInfo from '../../_data.ts'
-import { MetaInfo } from '../types.ts'
+import { ContentType, MetaInfo } from '../types.ts'
 
-function addHost(context: string, baseUrl: string) {
+function resolveHost(context: string, baseUrl: string) {
 	return new URL(context, baseUrl).href
 }
 
 function resolveUrls(metaInfo: MetaInfo, baseUrl: string) {
 	if (metaInfo.url) {
-		metaInfo.url = addHost(metaInfo.url, baseUrl)
+		metaInfo.url = resolveHost(metaInfo.url, baseUrl)
 	}
 
 	if (metaInfo.previous) {
-		metaInfo.previous = addHost(metaInfo.previous, baseUrl)
+		metaInfo.previous = resolveHost(metaInfo.previous, baseUrl)
 	}
 
 	if (metaInfo.next) {
-		metaInfo.next = addHost(metaInfo.next, baseUrl)
+		metaInfo.next = resolveHost(metaInfo.next, baseUrl)
 	}
 
 	if (metaInfo.source) {
-		metaInfo.source = addHost(metaInfo.source, baseUrl)
+		metaInfo.source = resolveHost(metaInfo.source, baseUrl)
 	}
 }
 
@@ -63,7 +63,7 @@ export default function (metaInfo: MetaInfo) {
 		html += `<meta name="description" content="${metaInfo.description}">`
 	}
 
-	html += `<meta property="og:type" content="${metaInfo.type || 'website'}">`
+	html += `<meta property="og:type" content="${metaInfo.type || ContentType[ContentType.website]}">`
 	html += `<meta property="og:site_name" content="${app.title}">`
 	html += `<meta property="og:locale" content="en">`
 	html += `<meta property="og:title" content="${metaInfo.title}">`
@@ -103,51 +103,7 @@ export default function (metaInfo: MetaInfo) {
 	}
 
 	// inline styles
-	html += `<style>
-	.icon {
-		--icon-size: 1.5rem;
-		stroke: currentColor;
-		stroke-width: 2;
-		vector-effect: non-scaling-stroke;
-		stroke-linecap: round;
-		stroke-linejoin: round;
-		fill: none;
-		width: var(--icon-size);
-		height: var(--icon-size);
-		min-width: var(--icon-size);
-	}
-	@media (hover: none) {
-		.icon {
-			--icon-size: 24px;
-		}
-	}
-	a#skiplink {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		position: absolute;
-		background-color: var(--sugar-bg-deter);
-		border: 1px solid var(--sugar-bg-deter);
-		color: var(--sugar-fg-deter);
-		margin: 5px;
-		width: calc(100% - 10px);
-		padding: 0.5ch;
-		font-weight: var(--sugar-font-bold);
-		font-size: 0.8em;
-		clip-path: initial;
-		z-index: 5;
-	}
-	a#skiplink:not(:focus):not(:focus-within) {
-		width: 1px;
-		height: 1px;
-		padding: 0;
-		margin: -1px;
-		overflow: hidden;
-		clip-path: inset(50%);
-		white-space: nowrap;
-		border: 0;
-	}
-	</style>`
+	html += `<link rel="stylesheet" href="/inline.css" inline>`
 
 	return html
 }
