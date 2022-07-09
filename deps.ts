@@ -1,3 +1,4 @@
+export { minify } from 'https://unpkg.com/csso@5.0.3/dist/csso.esm.js'
 export { default as dayjs } from 'https://esm.sh/dayjs@1.11.3'
 export { default as fenceparser } from 'https://esm.sh/@microflash/fenceparser@2.5.2'
 export { default as postcssPresetEnv } from 'https://esm.sh/postcss-preset-env@7.7.2'
