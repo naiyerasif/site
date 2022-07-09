@@ -42,18 +42,40 @@ export default function remarkStarryNight(userOptions = {}) {
 
 			const lines = code.split(/\r\n|\r|\n/)
 
+			const prompts = metadata && metadata.prompt ? metadata.prompt.trim().split(',').map(p => parseInt(p)) : null
+
 			if (options.showLineNumbers && lines && lines.length > 1) {
 				const maxWidth = `${lines.length}`.length
 				const highlightLines = options.highlightLines && metadata && metadata.highlight && metadata.highlight.length
+				
 				code = lines.map((line, index) => {
 						const lineClasses = highlightLines && metadata.highlight.includes(index + 1) ? `line line-highlighted` : 'line'
 						const lineNumber = `${index + 1}`.padStart(maxWidth)
-						const lineNumberSlot = `<span class="line-number" aria-hidden="true">${lineNumber}</span>`
-						return `<span class="${lineClasses}">${lineNumberSlot}${line}</span>`
+
+						let decoratedLine = `<span class="${lineClasses}">`
+						decoratedLine += `<span class="line-number" aria-hidden="true">${lineNumber}</span>`
+
+						if (prompts && prompts.includes(index + 1)) {
+							decoratedLine += `<span class="line-prompt" aria-hidden="true">$</span>`
+						}
+						
+						decoratedLine += line
+						decoratedLine += `</span>`
+
+						return decoratedLine
 					})
 					.join('\r\n')
 			} else {
-				code = `<span class="line line-standalone">${code}</span>`
+				let decoratedLine = `<span class="line line-standalone">`
+
+				if (prompts && prompts.includes(1)) {
+					decoratedLine += `<span class="line-prompt" aria-hidden="true">$</span>`
+				}
+
+				decoratedLine += code
+				decoratedLine += `</span>`
+
+				code = decoratedLine
 			}
 
 			const langToken = scope ? scope.replace(/^source\./, '').replace(/\./g, '-') : lang
