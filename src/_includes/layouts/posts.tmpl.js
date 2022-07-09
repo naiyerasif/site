@@ -7,9 +7,12 @@ export default function (data, filters) {
 		.forEach(post => {
 			posts += `<div class="showcase-item" onclick="location.href='${post.data.url}'">`
 			posts += `<div class="showcase-item-metadata">`
+			posts += filters.capitalize(post.data.category)
+			posts += ' &mdash; '
 			posts += time(post.data.date, filters)
 			posts += `</div>`
 			posts += `<a href="${post.data.url}">${post.data.title}</a>`
+			posts += `<div class="showcase-item-details">${post.data.description}</div>`
 			posts += `</div>`
 		})
 

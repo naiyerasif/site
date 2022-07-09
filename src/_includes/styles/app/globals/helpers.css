@@ -98,6 +98,12 @@ a.button:hover {
 	flex: 1 1 100%;
 }
 
+@media screen and (min-width:768px) {
+	.showcase > * {
+		flex-basis: 40%;
+	}
+}
+
 .showcase-item {
 	padding: var(--app-offset);
 	background-color: var(--sugar-bg-commend);
@@ -105,6 +111,10 @@ a.button:hover {
 	border-radius: var(--app-radius-media);
 	font-weight: var(--sugar-font-bold);
 	cursor: pointer;
+}
+
+.showcase-item a {
+	font-size: 1.125em;
 }
 
 .showcase-item a:focus-visible {
@@ -147,14 +157,24 @@ a.button:hover {
 	color: var(--sugar-color-deter);
 }
 
-.showcase-item-metadata {
+.showcase-item-metadata,
+.showcase-item-details {
 	font-size: var(--sugar-text-sm);
 	font-weight: var(--sugar-font-normal);
+}
+
+.showcase-item-details {
+	color: var(--sugar-color-emphasis);
+	margin-block-start: 1em;
 }
 
 .prev .showcase-item-metadata,
 .next .showcase-item-metadata {
 	color: var(--sugar-color-emphasis);
+}
+
+.showcase-item.cover {
+	flex-basis: 100%;
 }
 
 .showcase-item.cover a {
