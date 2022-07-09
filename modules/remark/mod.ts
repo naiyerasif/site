@@ -1,38 +1,28 @@
 import loader from 'lume/core/loaders/text.ts'
 import { merge } from 'lume/core/utils.ts'
-import { unified, remarkParse, remarkGfm, remarkRehype, rehypeStringify } from '../../deps.ts'
+import { rehypeStringify, remarkGfm, remarkParse, remarkRehype, unified} from '../../deps.ts'
 
-import type { Data, Engine, Helper, Site } from 'lume/core.ts'
+import type { Engine, Helper, Site } from 'lume/core.ts'
 
 export interface Options {
-	/** The list of extensions this plugin applies to */
+	/** List of extensions this plugin applies to */
 	extensions: string[],
 
-	/** The list of remark plugins to use */
+	/** List of remark plugins to use */
 	remarkPlugins?: unknown[],
 
-	/** The list of rehype plugins to use */
+	/** List of rehype plugins to use */
 	rehypePlugins?: unknown[]
 }
 
 // Default options
 export const defaults: Options = {
 	extensions: ['.md'],
-	remarkPlugins: [ remarkGfm ],
-	rehypePlugins: []
+	// By default, GitHub-flavored markdown is enabled
+	remarkPlugins: [remarkGfm],
 }
 
-export function loadPlugin(plugin: unknown, engine: unified.Processor) {
-	if (Array.isArray(plugin)) {
-		const [pluginWithOps, ...opts] = plugin
-		engine.use(pluginWithOps, ...opts)
-	} else {
-		// @ts-ignore: Some plugins may not have types available
-		engine.use(plugin)
-	}
-}
-
-/** Template engine to render Markdown files with Unified */
+/** Template engine to render Markdown files with Remark */
 export class MarkdownEngine implements Engine {
 	engine: unified.Processor
 
@@ -42,11 +32,11 @@ export class MarkdownEngine implements Engine {
 
 	deleteCache() {}
 
-	render(content: string, data?: Data, filename?: string): Promise<string> {
-		return this.engine.process(content).then(result => result.toString())
+	async render(content: string): Promise<string> {
+		return (await this.engine.process(content)).toString()
 	}
 
-	renderSync(content: string, data?: Data, filename?: string): string {
+	renderSync(content: string): string {
 		return this.engine.processSync(content).toString()
 	}
 
@@ -61,40 +51,44 @@ export default function (userOptions?: Partial<Options>) {
 		// @ts-ignore: This expression is not callable
 		const engine = unified.unified()
 
-		// Register remark-parse to generate MDAST
-		// @ts-ignore: Remark-provided types should fix the type conflict
-		engine.use(remarkParse)
+		const plugins = []
 
-		// Register remark plugins
-		options.remarkPlugins?.forEach((plugin) => loadPlugin(plugin, engine))
+		// Add remark-parse to generate MDAST
+		plugins.push(remarkParse)
 
-		// Register remark-rehype to generate HAST
-		engine.use(remarkRehype, {
-			allowDangerousHtml: true
-		})
+		// Add default remark plugins
+		plugins.push(defaults.remarkPlugins)
 
-		// Register rehype plugins
-		options.rehypePlugins?.forEach((plugin) => loadPlugin(plugin, engine))
+		// Add remark plugins
+		options.remarkPlugins?.forEach((plugin) => plugins.push(plugin))
 
-		// Register rehype-stringify to output HTML
-		// @ts-ignore: Rehype-provided types should fix the type conflict
-		engine.use(rehypeStringify, {
-			allowDangerousHtml: true
-		})
+		// Add remark-rehype to generate HAST
+		plugins.push([remarkRehype, { allowDangerousHtml: true }])
+
+		// Add rehype plugins
+		options.rehypePlugins?.forEach((plugin) => plugins.push(plugin))
+
+		// Add rehype-stringify to output HTML
+		plugins.push([rehypeStringify, { allowDangerousHtml: true }])
+
+		// Register all plugins
+		// @ts-ignore: let unified take care of loading all the plugins
+		engine.use(plugins)
 
 		// Load the pages
-    site.loadPages(options.extensions, loader, new MarkdownEngine(engine))
+		const remarkEngine = new MarkdownEngine(engine)
+		site.loadPages(options.extensions, loader, remarkEngine)
 
-		// Register the md filter
-    site.filter('md', filter as Helper)
-    site.filter('mdSync', filterSync as Helper)
+		// Register the md and mdAsync filters
+		site.filter('md', filter as Helper)
+		site.filter('mdAsync', filterAsync as Helper, true)
 
-		function filter(string: string): Promise<string> {
-			return engine.process(string?.toString() || '').then(result => result.toString().trim())
+		async function filterAsync(string: string): Promise<string> {
+			return (await remarkEngine.render(string)).trim()
 		}
 
-		function filterSync(string: string): string {
-			return engine.processSync(string?.toString() || '').toString().trim()
+		function filter(string: string): string {
+			return remarkEngine.renderSync(string).trim()
 		}
 	}
 }
