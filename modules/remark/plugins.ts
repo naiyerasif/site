@@ -9,6 +9,7 @@ export default [
 		remarkStarryNight, {
 			aliases: {
 				conf: 'ini',
+				json: 'jsonc',
 				log: 'sh'
 			}
 		}
