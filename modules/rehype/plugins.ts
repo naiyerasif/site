@@ -1,6 +1,8 @@
-import { rehypeAutolinkHeadings, rehypeExternalLinks } from '../../deps.ts'
-import rehypeSlugify from './rehype-slugify.js'
+import { rehypeAutolinkHeadings, rehypeExternalLinks, rehypeSlugify } from '../../deps.ts'
+import { slugifyWithCounter, defaults as defaultSlugifyOptions } from '../slugify/mod.ts'
 import rehypeToc from './rehype-toc.js'
+
+const slugify = slugifyWithCounter()
 
 export default [
 	[
@@ -9,7 +11,16 @@ export default [
 			rel: ['nofollow', 'noopener', 'noreferrer']
 		}
 	],
-	rehypeSlugify,
+	[
+		rehypeSlugify, {
+			reset() {
+				slugify.reset()
+			},
+			slugify(text: string) {
+				return slugify(text, defaultSlugifyOptions)
+			}
+		}
+	],
 	rehypeToc,
 	[
 		rehypeAutolinkHeadings, {

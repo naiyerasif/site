@@ -4,6 +4,7 @@ export { default as fenceparser } from 'https://esm.sh/@microflash/fenceparser@2
 export { default as postcssPresetEnv } from 'https://esm.sh/postcss-preset-env@7.7.2'
 export { default as rehypeAutolinkHeadings } from 'https://esm.sh/rehype-autolink-headings@6.1.1'
 export { default as rehypeExternalLinks } from 'https://esm.sh/rehype-external-links@1.0.1'
+export { default as rehypeSlugify } from 'https://esm.sh/@microflash/rehype-slugify@1.0.0'
 export { default as rehypeStringify } from 'https://esm.sh/rehype-stringify@9.0.3'
 export { default as remarkDirective } from 'https://esm.sh/remark-directive@2.0.1'
 export { default as remarkFigCaption } from 'https://esm.sh/@microflash/remark-figure-caption@1.0.0'
