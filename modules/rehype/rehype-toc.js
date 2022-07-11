@@ -1,9 +1,27 @@
 import { hastUtilHasProperty, hastUtilHeadingRank, hastUtilToString, hastscript, unistUtilVisit } from '../../deps.ts'
 
-const { h, s } = hastscript
+const { h } = hastscript
+
+const defaults = {
+	replacementCondition(nodeString) {
+		return nodeString === '[[toc]]'
+	},
+	tagName: 'details',
+	properties: { id: 'table-of-contents' },
+	children(headings) {
+		return [
+			h('summary', 'Table of contents'),
+			h('ul.toc-items', [...headings.map(heading => h(`li.toc-item-${heading.depth}`, [
+				h('a', {href: `#${heading.id}`}, heading.title)
+			]))])
+		]
+	}
+}
 
 // Apply this plugin after you've slugged the headings
-export default function rehypeToc() {
+export default function rehypeToc(userOptions) {
+	const options = Object.assign({}, defaults, userOptions)
+
 	return (tree) => {
 		// collect all headings
 		const headings = []
@@ -20,25 +38,12 @@ export default function rehypeToc() {
 
 		unistUtilVisit.visit(tree, 'element', (node, index, parent) => {
 			// visit the node that matches the placeholder pattern
-			if (hastUtilToString.toString(node) === '[[toc]]') {
+			if (options.replacementCondition(hastUtilToString.toString(node))) {
 				// replace the placeholder with toc
 				if (headings && headings.length > 0) {
-					node.tagName = 'section'
-					const toc = [
-						h('.callout-indicator', [
-							s('svg', {'aria-hidden': 'true', role: 'img', className: ['icon', 'callout-sign']}, [
-								s('use', {href: '#ini-table-of-contents'})
-							]),
-							h('.callout-label', 'Table of contents')
-						]),
-						h('.callout-content', [
-							h('ul.toc-body', [...headings.map(heading => h(`li.toc-item-${heading.depth}`, [
-								h('a', {href: `#${heading.id}`}, heading.title)
-							]))])
-						])
-					]
-					node.properties = { id: 'table-of-contents', className: ['callout', 'callout-note', 'toc']}
-					node.children = [...toc]
+					node.tagName = options.tagName
+					node.properties = options.properties
+					node.children = [...options.children(headings)]
 				} else {
 					// if no headings are present, remove the node with the placeholder 
 					// and continue with the node that is now at the position where the removed node was
