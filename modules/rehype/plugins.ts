@@ -1,6 +1,5 @@
-import { rehypeAutolinkHeadings, rehypeExternalLinks, rehypeSlugify, hastscript } from '../../deps.ts'
+import { rehypeAutolinkHeadings, rehypeExternalLinks, rehypeSlugify, rehypeToc, hastscript } from '../../deps.ts'
 import { slugifyWithCounter, defaults as defaultSlugifyOptions } from '../slugify/mod.ts'
-import rehypeToc from './rehype-toc.js'
 
 const slugify = slugifyWithCounter()
 
@@ -25,11 +24,9 @@ export default [
 	],
 	[
 		rehypeToc, {
-			tagName: 'section',
-			properties: { id: 'table-of-contents', className: ['callout', 'callout-note', 'toc']},
 			// @ts-ignore: headings type
-			children(headings) {
-				return [
+			toc(headings) {
+				return h('section', { id: 'table-of-contents', className: ['callout', 'callout-note', 'toc'] }, [
 					h('.callout-indicator', [
 						s('svg', {'aria-hidden': 'true', role: 'img', className: ['icon', 'callout-sign']}, [
 							s('use', {href: '#ini-table-of-contents'})
@@ -42,7 +39,7 @@ export default [
 							h('a', {href: `#${heading.id}`}, heading.title)
 						]))])
 					])
-				]
+				])
 			}
 		}
 	],
