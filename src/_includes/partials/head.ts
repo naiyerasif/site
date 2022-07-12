@@ -21,10 +21,15 @@ function resolveUrls(metaInfo: MetaInfo, baseUrl: string) {
 	if (metaInfo.source) {
 		metaInfo.source = resolveHost(metaInfo.source, baseUrl)
 	}
+
+	if (metaInfo.image) {
+		metaInfo.image = resolveHost(metaInfo.image, baseUrl)
+	}
 }
 
 export default function (metaInfo: MetaInfo) {
 	const { app } = appInfo
+	metaInfo.image = metaInfo.image || '/images/opengraph/default.png'
 	resolveUrls(metaInfo, app.url)
 
 	let html = `<meta charset="utf-8">
@@ -76,6 +81,12 @@ export default function (metaInfo: MetaInfo) {
 		html += `<meta property="og:url" content="${metaInfo.url}">`
 	}
 
+	html += `<meta property="og:image" content="${metaInfo.image}">`
+
+	if (metaInfo.description) {
+		html += `<meta property="og:image:alt" content="${metaInfo.description}">`
+	}
+
 	if (metaInfo.published) {
 		html += `<meta property="article:published_time" content="${metaInfo.published}">`
 	}
@@ -90,6 +101,8 @@ export default function (metaInfo: MetaInfo) {
 	if (metaInfo.description) {
 		html += `<meta property="twitter:description" content="${metaInfo.description}">`
 	}
+
+	html += `<meta name="twitter:image:src" content="${metaInfo.image}">`
 
 	const twitter = app.networks.find(network => network.id === 'twitter')
 
