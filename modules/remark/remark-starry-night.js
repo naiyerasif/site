@@ -1,4 +1,3 @@
-import { merge } from 'lume/core/utils.ts'
 import { starryNight, unistUtilVisit, fenceparser, hastUtilToHtml } from '../../deps.ts'
 
 const defaults = {
@@ -75,8 +74,8 @@ function decorate(code, scope, lang, options, metadata) {
 	return template
 }
 
-export default function remarkStarryNight(userOptions = {}) {
-	const options = merge(defaults, userOptions)
+export default function remarkStarryNight(userOptions) {
+	const options = Object.assign({}, defaults, userOptions)
 	const { aliases } = options
 
 	const grammars = options.grammars || starryNight.all
@@ -106,8 +105,16 @@ export default function remarkStarryNight(userOptions = {}) {
 				console.warn(`Grammar unavailable for ${langId}; rendering the code fence as text`)
 			}
 
+			let codefence
+
+			if (options.disableDecorations) {
+				codefence = `<div class="highlight highlight-${langToken}"><pre><code tabindex="0">${code}</code></pre></div>`
+			} else {
+				codefence = decorate(code, scope, lang, options, metadata)
+			}
+
 			node.type = 'html'
-			node.value = decorate(code, scope, lang, options, metadata)
+			node.value = codefence
 		})
 	}
 }
