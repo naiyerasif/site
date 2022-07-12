@@ -170,12 +170,12 @@
 }
 
 .content .navigation {
-	margin-inline: var(--app-offset-media);
+	padding-inline: 0;
 }
 
 @media screen and (min-width: 768px) {
 	.content .navigation {
-		margin-inline: auto;
+		padding-inline: var(--app-offset);
 	}
 }
 
