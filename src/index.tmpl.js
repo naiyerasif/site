@@ -3,6 +3,7 @@ import time from './_includes/components/time.js'
 
 export const title = `Home`
 export const layout = `layouts/main.tmpl.js`
+export const renderOrder = 1
 
 export default function ({ search }, filters) {
 	let recent = `<div class="showcase-title">${icon('green-new-energy')}<span>Recently published</span></div>`

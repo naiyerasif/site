@@ -1,4 +1,5 @@
 export const url = '/search-index.json'
+export const renderOrder = 2
 
 export default function ({ search }) {
 	const indexItems = search.pages('type=post')

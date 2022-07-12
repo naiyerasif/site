@@ -1,4 +1,5 @@
 export const url = '/feed.xml'
+export const renderOrder = 2
 
 export default function ({ search, app }, { feed }) {
 	const author = app.author
