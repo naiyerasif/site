@@ -31,7 +31,7 @@ body {
 * {
 	margin: 0;
 	/* adjust the line-height based on x-height defined by the font (see: https://kittygiraudel.com/2020/05/18/using-calc-to-figure-out-optimal-line-height/) */
-	line-height: calc(0.35rem + 2ex + 0.35rem);
+	line-height: calc(0.3rem + 2ex + 0.3rem);
 
 	/* avoid text overflow */
 	overflow-wrap: break-word;
