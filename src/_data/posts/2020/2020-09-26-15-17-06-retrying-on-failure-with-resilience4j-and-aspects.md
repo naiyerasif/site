@@ -491,12 +491,11 @@ Let's break down what's happening here.
 - In the `adviceShouldNotFireOnSuccess` test, we test a success scenario where the retry should not happen.
 - In the `tearDown` method, we simply stop the appender.
 
----
+:::footnote
+Source code
+- [retry-on-failure](https://gitlab.com/mflash/spring-guides/-/tree/master/retry-on-failure)
 
-## References
-
-**Source Code** &mdash; [retry-on-failure](https://gitlab.com/mflash/spring-guides/-/tree/master/retry-on-failure)
-
-**Related**
+Related
 - [Resilience4J Retry docs](https://resilience4j.readme.io/docs/retry)
 - [Aspect Oriented Programming with Spring](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#aop)
+:::

@@ -237,13 +237,11 @@ In the test above, we
 
 This method is a single-step process, and much faster than previous approaches. It also works pretty effectively with complex / massive objects.
 
----
-
-## References
-
-**Source Code**
+:::footnote
+Source code
 - [deep-copying](https://github.com/Microflash/java-guides/tree/main/deep-copying)
 
-**Related**
+Related
 - [Jackson Databind docs](https://github.com/FasterXML/jackson-databind)
 - [Deep and shallow copies](https://github.com/EsotericSoftware/kryo#deep-and-shallow-copies)
+:::

@@ -105,11 +105,10 @@ app.listen(port, () => logger.info(`Server started at http://localhost:${port}`)
 
 Start the application; you should see `app.log` in `logs` directory and the same logs printed on the console.
 
----
+:::footnote
+Source code
+- [logging-with-log4js-node](https://gitlab.com/mflash/nodejs-guides/-/tree/master/logging-with-log4js-node)
 
-## References
-
-**Source code** &mdash; [logging-with-log4js-node](https://gitlab.com/mflash/nodejs-guides/-/tree/master/logging-with-log4js-node)
-
-**Related**
+Related
 - [log4js-node docs](https://log4js-node.github.io/log4js-node/index.html)
+:::

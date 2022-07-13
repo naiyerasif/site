@@ -161,10 +161,9 @@ CMD ["app.jar"]
 
 To search the list of all the available distroless images, you can refer to the [distroless Container Registry](https://console.cloud.google.com/gcr/images/distroless).
 
----
-
-## References
-
+:::footnote
+Related
 - [Intro Guide to Dockerfile Best Practices](https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/)
 - [distroless at GitHub](https://github.com/GoogleContainerTools/distroless)
 - [distroless Container Registry](https://console.cloud.google.com/gcr/images/distroless)
+:::

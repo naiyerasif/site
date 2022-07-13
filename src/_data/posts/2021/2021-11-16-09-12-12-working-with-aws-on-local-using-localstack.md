@@ -30,7 +30,7 @@ Default region name [None]: us-east-1
 Default output format [None]: json
 ```
 
-> You can put fake _AWS Access Key ID_ and _AWS Secret Access Key_ here. Although LocalStack requires an AWS account configured, it does not validate them.
+> You can put fake _AWS Access Key ID_ and _AWS Secret Access Key_ here. Although LocalStack requires an AWS account configured, it doesn't validate them.
 
 ## Launching the LocalStack container
 
@@ -69,7 +69,7 @@ You can now launch the container with the following command.
 docker compose -f localstack.yml up -d
 ```
 
-Once the container is up and running, open a terminal and ping the healthcheck endpoint. If things are working, you would see the status as "running".
+Once the container is up and running, open a terminal and ping the healthcheck endpoint. If things are working, you would see the status of the available services as "available".
 
 ```sh prompt='1' caption='Healthcheck for LocalStack container'
 curl localhost:4566/health
@@ -117,7 +117,7 @@ curl localhost:4566/health
 
 ## Working with AWS services
 
-You can now use the AWS services (such as S3, SNS, SQS, Secrets Manager, etc) through the port 4566. You can find the list of the core AWS services available on LocalStack [here](https://docs.localstack.cloud/aws/feature-coverage/). Let's explore some of the services with AWS CLI now.
+You can now use the AWS services (such as S3, SNS, SQS, Secrets Manager, etc) through the port 4566. You can find the list of the core AWS services available on LocalStack [here](https://docs.localstack.cloud/aws/feature-coverage/). Let's explore some services with AWS CLI now.
 
 ### Saving objects on S3
 
@@ -316,15 +316,14 @@ For more operations, check out the [secretsmanager](https://docs.aws.amazon.com/
 ## Conclusion
 
 - LocalStack is geared toward CLI and SDK driven workflows. If you need a desktop app, you can check out [Commandeer](https://getcommandeer.com/), or LocalStack subscriptions which offer a Web UI.
-- Support for some of the [AWS services](https://docs.localstack.cloud/aws/feature-coverage/) (such as ElastiCache, ECS, EKS, etc) requires a subscription.
+- Support for some [AWS services](https://docs.localstack.cloud/aws/feature-coverage/) (such as ElastiCache, ECS, EKS, etc) requires a subscription.
 
----
+:::footnote
+Source code
+- [localstack-introduction](https://github.com/Microflash/cloud-guides/tree/main/localstack-introduction)
 
-## References
-
-**Source Code** &mdash; [localstack-introduction](https://github.com/Microflash/cloud-guides/tree/main/localstack-introduction)
-
-**Related**
-- "LocalStack docs", LocalStack. [Online]. Available: https://docs.localstack.cloud/overview/. [Accessed: 12-Jul-2022]
-- "Locker at Docker Hub", LocalStack. [Online]. Available: https://hub.docker.com/r/localstack/localstack. [Accessed: 12-Jul-2022]
-- "AWS Command Line Interface Documentation", Amazon. [Online]. Available: https://docs.aws.amazon.com/cli/index.html. [Accessed: 12-Jul-2022] 
+Related
+- [LocalStack docs](https://docs.localstack.cloud/overview/)
+- [Locker at Docker Hub](https://hub.docker.com/r/localstack/localstack)
+- [AWS Command Line Interface Documentation](https://docs.aws.amazon.com/cli/index.html)
+:::

@@ -298,12 +298,11 @@ curl --location --request PATCH 'http://localhost:8080/customers' \
 curl --location --request DELETE 'http://localhost:8080/customers/2'
 ```
 
----
+:::footnote
+Source code
+- [spring-data-micronaut-data](https://gitlab.com/mflash/spring-guides/-/tree/master/spring-data-micronaut-data)
 
-## References
-
-**Source Code** &mdash; [spring-data-micronaut-data](https://gitlab.com/mflash/spring-guides/-/tree/master/spring-data-micronaut-data)
-
-**Related**
+Related
 - [Micronaut Data](https://micronaut-projects.github.io/micronaut-data/latest/guide/)
 - [Micronaut for Spring](https://micronaut-projects.github.io/micronaut-spring/latest/guide/index.html)
+:::

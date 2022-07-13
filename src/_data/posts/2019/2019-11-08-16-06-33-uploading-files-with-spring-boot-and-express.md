@@ -326,8 +326,7 @@ By executing `yarn start`, this Express application gets up and running on port 
 
 Reuse the Angular application for the upload from the post [Uploading files with Spring Boot and Angular](/post/2018/09/09/uploading-files-with-spring-boot-and-angular/). Launch it using `yarn start`. You'll be greeted by a form to upload the files which will appear in the upload directory configured by the Spring Boot application.
 
----
-
-## References
-
-**Source code** &mdash; [springrx-file-upload](https://gitlab.com/mflash/spring-guides/-/tree/master/springrx-file-upload)
+:::footnote
+Source code
+- [springrx-file-upload](https://gitlab.com/mflash/spring-guides/-/tree/master/springrx-file-upload)
+:::

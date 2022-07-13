@@ -699,13 +699,12 @@ Here,
 - the second test verifies that the application returns a proper error status (403 Forbidden) when the private endpoint receives a request without any authentication, and
 - the final test verifies that once a user has been authenticated successfully, they're able to access the private endpoint.
 
----
+:::footnote
+Source code
+- [spring-security-jwt-auth](https://github.com/Microflash/spring-guides/tree/main/spring-security-jwt-auth)
 
-## References
-
-**Source Code** &mdash; [spring-security-jwt-auth](https://github.com/Microflash/spring-guides/tree/main/spring-security-jwt-auth)
-
-**Related**
+Related
 - [Introduction to JSON Web Tokens](https://jwt.io/introduction/)
 - [Verify Access Tokens for Custom APIs](https://auth0.com/docs/api-auth/tutorials/verify-access-token)
 - [Database Initialization](https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto-database-initialization)
+:::

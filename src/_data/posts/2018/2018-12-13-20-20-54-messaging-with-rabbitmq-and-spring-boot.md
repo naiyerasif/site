@@ -248,8 +248,7 @@ public @Configuration class RabbitMQConfiguration {
 
 When the application is launched, the publisher will publish the list of books on a queue called `mflash-queue`. After 10 seconds, the consumer will be called to print the message received from the queue.
 
----
-
-## References
-
-**Source Code** &mdash; [spring-messaging-rabbitmq](https://gitlab.com/mflash/spring-guides/-/tree/master/spring-messaging-rabbitmq)
+:::footnote
+Source code
+- [spring-messaging-rabbitmq](https://gitlab.com/mflash/spring-guides/-/tree/master/spring-messaging-rabbitmq)
+:::

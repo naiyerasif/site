@@ -802,12 +802,11 @@ $ curl --location --request GET 'http://localhost:8080/book' \
 
 You'll receive a `200 OK` with a list of books saved in the database, as expected.
 
----
+:::footnote
+Source code
+- [spring-rest-error-handling](https://gitlab.com/mflash/spring-guides/-/tree/master/spring-rest-error-handling)
 
-## References
-
-**Source Code** &mdash; [spring-rest-error-handling](https://gitlab.com/mflash/spring-guides/-/tree/master/spring-rest-error-handling)
-
-**Related**
+Related
 - [Securing Spring Boot APIs with JWT Authentication](/post/2020/04/10/securing-spring-boot-apis-with-jwt-authentication/)
 - [Spring Security: Authentication and Authorization In-Depth](https://www.marcobehler.com/guides/spring-security)
+:::

@@ -137,9 +137,8 @@ jobs:
 
 Note that GitHub's [checkout action](https://github.com/actions/checkout) provides Git LFS support by default, so you won't have to create a custom Docker image in this case.
 
----
-
-## References
-
+:::footnote
+Related
 - [Avoiding git-lfs bandwidth waste with GitHub and CircleCI](https://www.develer.com/en/avoiding-git-lfs-bandiwdth-waste-with-github-and-circleci/)
 - [Cache for LFS](https://github.com/actions/checkout/issues/165#issuecomment-657673315)
+:::

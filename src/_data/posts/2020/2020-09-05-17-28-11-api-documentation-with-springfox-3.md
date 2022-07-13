@@ -277,8 +277,7 @@ Launch the application and visit <http://localhost:8080/swagger-ui/> where you'l
 
 You can access the OpenAPI docs at <http://localhost:8080/v3/api-docs> which can be imported into compatible tools, like Postman, Insomnia, etc.
 
----
-
-## References
-
-**Source Code** &mdash; [springfox3-webmvc-integration](https://gitlab.com/mflash/spring-guides/-/tree/master/springfox3-webmvc-integration)
+:::footnote
+Source code
+- [springfox3-webmvc-integration](https://gitlab.com/mflash/spring-guides/-/tree/master/springfox3-webmvc-integration)
+:::

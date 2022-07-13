@@ -237,16 +237,14 @@ WWW-Authenticate: Bearer error="invalid_token", error_description="The access to
 }
 ```
 
----
-
-## References
-
-**Source Code**
+:::footnote
+Source code
 - [spring-security-resource-server-error-handling](https://github.com/Microflash/spring-guides/tree/main/spring-security-resource-server-error-handling)
 
-**Related**
+Related
 - [Error handling for a Spring-based REST API](/post/2020/07/26/error-handling-for-a-spring-based-rest-api/)
 - [Protecting endpoints with Spring Security Resource Server](/post/2020/11/15/protecting-endpoints-with-spring-security-resource-server/)
 - [The OAuth 2.0 Authorization Framework: Bearer Token Usage](https://tools.ietf.org/html/rfc6750)
 - [`BearerTokenAuthenticationEntryPoint` in Spring Security Resource Server](https://github.com/spring-projects/spring-security/blob/master/oauth2/oauth2-resource-server/src/main/java/org/springframework/security/oauth2/server/resource/web/BearerTokenAuthenticationEntryPoint.java)
 - [`BearerTokenAccessDeniedHandler` in Spring Security Resource Server](https://github.com/spring-projects/spring-security/blob/master/oauth2/oauth2-resource-server/src/main/java/org/springframework/security/oauth2/server/resource/web/access/BearerTokenAccessDeniedHandler.java)
+:::
