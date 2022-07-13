@@ -1,5 +1,5 @@
-.callout {
-	--app-bg-callout: currentColor;
+.callout:not(.callout-footnote) {
+	--app-bg-callout: var(--sugar-bg-note);
 	--app-color-callout: var(--sugar-color-body);
 	--app-border-callout: 1px solid var(--app-border-color-callout);
 	border: var(--app-border-callout);
@@ -28,7 +28,7 @@
 	padding: 1ch;
 }
 
-.callout-sign {
+.callout-hint {
 	margin-inline-end: 0.5ch;
 	color: var(--app-color-callout);
 }
@@ -41,7 +41,8 @@
 	letter-spacing: 0.04em;
 }
 
-.callout-note {
+.callout-note,
+.callout-setup {
 	--app-bg-callout: var(--sugar-bg-note);
 	--app-color-callout: var(--sugar-color-base);
 	--app-border-color-callout: var(--sugar-border-note);
@@ -69,6 +70,25 @@
 	--app-bg-callout: var(--sugar-bg-assert);
 	--app-color-callout: var(--sugar-color-assert);
 	--app-border-color-callout: var(--sugar-border-assert);
+}
+
+.callout-footnote,
+.callout-setup {
+	font-size: var(--sugar-text-sm);
+}
+
+.callout-footnote {
+	margin-block-start: calc(var(--sugar-gap-base) * 2);
+	border-block-start: 1px solid var(--sugar-border-note);
+}
+
+.callout-footnote > * {
+	padding-inline: 0;
+}
+
+.callout-footnote p + ul,
+.callout-setup p + ul {
+	margin-block-start: calc(var(--sugar-gap-base) * -0.5);
 }
 
 .toc {
