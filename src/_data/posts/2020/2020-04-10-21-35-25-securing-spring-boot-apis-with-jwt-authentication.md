@@ -21,7 +21,7 @@ So, how does this work?
 
 In this post, we'll create a Spring Boot API and secure it using Spring Security and JWT-based authentication.
 
-:::note{label=Setup}
+:::setup
 The code written for this post uses
 
 - Java 15

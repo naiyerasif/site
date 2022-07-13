@@ -13,7 +13,7 @@ tags: ['aspectj', 'aop', 'log']
 
 [AspectJ](https://www.eclipse.org/aspectj/) manipulates Java bytecode at compile-time or load-time. The process is called _weaving_. Depending on when it is performed, it is called _compile-time_ or _load-time_ weaving. Using the same example discussed in [Logging methods with AspectJ in a Spring application](/post/2020/09/13/logging-methods-with-aspectj-in-a-spring-application/) that uses Spring AOP, we'll discuss how to log methods using Java and AspectJ (without any framework).
 
-:::note{label=Setup}
+:::setup
 The code written for this post uses:
 
 - Java 16

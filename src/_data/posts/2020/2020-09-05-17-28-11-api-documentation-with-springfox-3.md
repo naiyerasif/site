@@ -13,7 +13,7 @@ Recently, the popular [Springfox](https://github.com/springfox/springfox) projec
 
 In this post, we'll explore similar usecases that we'd covered in an [earlier post on springdoc-openapi](/post/2020/06/27/api-documentation-with-springdoc-openapi/).
 
-:::note{label=Setup}
+:::setup
 The code written for this post uses:
 
 - Java 14

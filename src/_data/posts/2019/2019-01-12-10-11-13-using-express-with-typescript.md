@@ -19,7 +19,7 @@ TypeScript [has been gaining](https://2019.stateofjs.com/javascript-flavors/type
 5. [Developing an API with Express and Postgres](/post/2019/08/19/developing-an-api-with-express-and-postgres/)
 :::
 
-:::note{label=Setup}
+:::setup
 The examples in this post use
 
 - Node.js 12

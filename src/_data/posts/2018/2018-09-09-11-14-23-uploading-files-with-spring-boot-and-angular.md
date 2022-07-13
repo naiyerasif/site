@@ -13,7 +13,7 @@ Give yourself some time in software development and you'll eventually come acros
 
 To solve this problem, we can modify the Spring Boot application described in [Uploading files](https://spring.io/guides/gs/uploading-files/) guide for our needs. And then we can create an Angular app to provide a UI.
 
-:::note{label=Setup}
+:::setup
 The examples in this post use
 
 - Java 13

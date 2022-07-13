@@ -13,7 +13,7 @@ tags: ['spring', 'repository', 'mongodb']
 
 In this post, we'll explore how to persist documents with `MongoRepository`, create custom converters for specific data types and cascade the documents.
 
-:::note{label=Setup}
+:::setup
 The examples in this post use
 
 - Java 15

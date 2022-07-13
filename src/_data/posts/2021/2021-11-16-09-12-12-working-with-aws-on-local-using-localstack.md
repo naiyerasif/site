@@ -11,7 +11,7 @@ tags: ['cloud', 'localstack', 'aws']
 
 Developing with AWS comes with its own set of challenges. If your organization has strict policies on cloud resources, prototyping with the AWS services can become a hassle. [LocalStack](https://localstack.dev) is a container-based technology which brings a comprehensive set of AWS services on your local machine. It plays well with the official AWS CLI and SDK. In this guide, I'll talk about how to setup LocalStack and use it with the AWS CLI.
 
-:::note{label=Setup}
+:::setup
 The examples in this post use
 
 - Docker Engine 20.10.17

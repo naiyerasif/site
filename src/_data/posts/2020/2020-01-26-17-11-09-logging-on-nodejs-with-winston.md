@@ -13,7 +13,7 @@ tags: ['winston', 'nodejs', 'log']
 
 In this post, we'll explore how `winston` can be used to log to the console as well as a file.
 
-:::note{label=Setup}
+:::setup
 You can pick the Node.js application created in the post [Request logging with morgan](/post/2019/08/13/request-logging-with-morgan/) to follow this post.
 :::
 
