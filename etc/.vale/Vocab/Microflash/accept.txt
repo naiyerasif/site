@@ -4,6 +4,7 @@ autoplay
 explainer
 fenceparser
 Gridsome
+healthcheck
 Jamstack
 Karaf
 Microflash
