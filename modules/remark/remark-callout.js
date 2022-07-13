@@ -1,52 +1,28 @@
 import { unified, remarkParse, unistUtilVisit, hastscript } from '../../deps.ts'
 
-const callouts = [
-	{
-		name: 'note',
-		label: 'Note',
-		value:
-			'<svg viewBox="0 0 24 24" role="img" aria-hidden="true" class="icon callout-sign"><use href="#ini-note"></use></svg>',
-	},
-	{
-		name: 'commend',
-		label: 'Success',
-		value:
-			'<svg viewBox="0 0 24 24" role="img" aria-hidden="true" class="icon callout-sign"><use href="#ini-commend"></use></svg>',
-	},
-	{
-		name: 'warn',
-		label: 'Warning',
-		value:
-			'<svg viewBox="0 0 24 24" role="img" aria-hidden="true" class="icon callout-sign"><use href="#ini-warn"></use></svg>',
-	},
-	{
-		name: 'deter',
-		label: 'Danger',
-		value:
-			'<svg viewBox="0 0 24 24" role="img" aria-hidden="true" class="icon callout-sign"><use href="#ini-deter"></use></svg>',
-	},
-	{
-		name: 'assert',
-		label: 'Important',
-		value:
-			'<svg viewBox="0 0 24 24" role="img" aria-hidden="true" class="icon callout-sign"><use href="#ini-assert"></use></svg>',
-	},
-]
-
-const calloutTypes = callouts.map(callout => callout.name)
-
-// @ts-ignore: Remark-provided types should fix the type conflict
 const parser = unified.unified().use(remarkParse)
 
-const createCallout = (callout, label, children) => {
-	const value = `${callout.value}<div class="callout-label">${label}</div>`
+function callout(calloutLabel, calloutHint, calloutContent) {
 	const indicator = {
 		type: 'paragraph',
 		data: {
 			hName: 'div',
 			hProperties: { className: ['callout-indicator'] }
 		},
-		children: parser.parse(value).children[0].children
+		children: [
+			{
+				type: 'html',
+				value: calloutHint
+			},
+			{
+				type: 'paragraph',
+				data: {
+					hName: 'div',
+					hProperties: { className: ['callout-label'] }
+				},
+				children: parser.parse(calloutLabel).children[0].children
+			}
+		]
 	}
 
 	const content = {
@@ -55,29 +31,61 @@ const createCallout = (callout, label, children) => {
 			hName: 'div',
 			hProperties: { className: ['callout-content'] }
 		},
-		children: children
+		children: calloutContent
 	}
-
 	return [ indicator, content ]
+}
+
+const callouts = {
+	note: {
+		label: 'Note',
+		hint: '<svg viewBox="0 0 24 24" role="img" aria-hidden="true" class="icon callout-hint"><use href="#ini-note"></use></svg>'
+	},
+	commend: {
+		label: 'Success',
+		hint: '<svg viewBox="0 0 24 24" role="img" aria-hidden="true" class="icon callout-hint"><use href="#ini-commend"></use></svg>'
+	},
+	warn: {
+		label: 'Warning',
+		hint: '<svg viewBox="0 0 24 24" role="img" aria-hidden="true" class="icon callout-hint"><use href="#ini-warn"></use></svg>'
+	},
+	deter: {
+		label: 'Danger',
+		hint: '<svg viewBox="0 0 24 24" role="img" aria-hidden="true" class="icon callout-hint"><use href="#ini-deter"></use></svg>'
+	},
+	assert: {
+		label: 'Important',
+		hint: '<svg viewBox="0 0 24 24" role="img" aria-hidden="true" class="icon callout-hint"><use href="#ini-assert"></use></svg>'
+	},
+	setup: {
+		label: 'Setup',
+		hint: '<svg viewBox="0 0 24 24" role="img" aria-hidden="true" class="icon callout-hint"><use href="#ini-setup"></use></svg>'
+	},
+	footnote: {
+		label: 'References',
+		tagName: 'section',
+		hint: '<svg viewBox="0 0 24 24" role="img" aria-hidden="true" class="icon callout-hint"><use href="#ini-footnote"></use></svg>'
+	}
 }
 
 export default function remarkCallout() {
 	return (tree) => {
 		unistUtilVisit.visit(tree, (node) => {
 			if (node.type === 'containerDirective') {
-				if (!calloutTypes.includes(node.name)) return
+				if (!callouts[node.name]) return
 
 				const data = node.data || (node.data = {})
-				const tagName = 'aside'
-				const selectedCallout = callouts.find(callout => callout.name === node.name)
+				const selected = callouts[node.name]
+				const { label, ...attributes } = node.attributes
 
 				node.attributes = {
-					...node.attributes,
+					...attributes,
 					class: `callout callout-${node.name}`
 				}
 
-				node.children = createCallout(selectedCallout, node.attributes.label || selectedCallout.label, node.children)
+				node.children = callout(label || selected.label, selected.hint, node.children)
 
+				const tagName = selected.tagName || 'aside'
 				data.hName = tagName
 				data.hProperties = hastscript.h(tagName, node.attributes).properties
 			}
