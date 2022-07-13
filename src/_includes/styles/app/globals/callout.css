@@ -1,5 +1,4 @@
-.callout:not(.callout-footnote) {
-	--app-bg-callout: var(--sugar-bg-note);
+.callout {
 	--app-color-callout: var(--sugar-color-body);
 	--app-border-callout: 1px solid var(--app-border-color-callout);
 	border: var(--app-border-callout);
@@ -79,6 +78,7 @@
 
 .callout-footnote {
 	margin-block-start: calc(var(--sugar-gap-base) * 2);
+	border-radius: 0;
 	border-block-start: 1px solid var(--sugar-border-note);
 }
 
