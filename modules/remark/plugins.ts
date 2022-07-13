@@ -1,5 +1,4 @@
-import { remarkDirective, remarkFigCaption, remarkSmartyPants } from '../../deps.ts'
-import remarkStarryNight from './remark-starry-night.js'
+import { remarkDirective, remarkFigCaption, remarkSmartyPants, remarkStarryNight } from '../../deps.ts'
 import remarkPreview from './remark-preview.js'
 import remarkCallout from './remark-callout.js'
 
