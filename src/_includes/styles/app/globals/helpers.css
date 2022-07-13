@@ -7,7 +7,7 @@
 @media screen and (min-width:768px) {
 	:root {
 		--app-radius-media: var(--sugar-radius-base);
-		--app-offset-media: calc(var(--app-offset) * -4);
+		--app-offset-media: calc(-3vw - var(--app-offset));
 	}
 }
 
