@@ -71,7 +71,7 @@ Start the application; you should see `app.log` in `logs` directory and the same
 
 :::footnote
 Source code
-- [logging-with-winston](https://gitlab.com/mflash/nodejs-guides/-/tree/master/logging-with-winston)
+- [logging-with-winston](https://github.com/Microflash/guides/tree/main/nodejs/logging-with-winston)
 
 Related
 - [winston docs](https://github.com/winstonjs/winston)

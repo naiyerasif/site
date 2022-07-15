@@ -326,7 +326,7 @@ Launch the Spring and Angular applications and open the browser at <http://local
 
 :::footnote
 Source code
-- [spring-file-upload](https://gitlab.com/mflash/spring-guides/-/tree/master/spring-file-upload)
+- [spring-file-upload](https://github.com/Microflash/guides/tree/main/spring/spring-file-upload)
 
 Related
 - [Uploading files](https://spring.io/guides/gs/uploading-files/)

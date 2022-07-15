@@ -1,6 +1,9 @@
 Asif
 Astro
 autoplay
+(d|D)atabind
+(d|D)eserialize
+(d|D)eserialization
 explainer
 fenceparser
 Gridsome

@@ -701,7 +701,7 @@ Here,
 
 :::footnote
 Source code
-- [spring-security-jwt-auth](https://github.com/Microflash/spring-guides/tree/main/spring-security-jwt-auth)
+- [spring-security-jwt-auth](https://github.com/Microflash/guides/tree/main/spring/spring-security-jwt-auth)
 
 Related
 - [Introduction to JSON Web Tokens](https://jwt.io/introduction/)

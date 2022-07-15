@@ -320,7 +320,7 @@ For more operations, check out the [secretsmanager](https://docs.aws.amazon.com/
 
 :::footnote
 Source code
-- [localstack-introduction](https://github.com/Microflash/cloud-guides/tree/main/localstack-introduction)
+- [localstack-introduction](https://github.com/Microflash/guides/tree/main/cloud/localstack-introduction)
 
 Related
 - [LocalStack docs](https://docs.localstack.cloud/overview/)

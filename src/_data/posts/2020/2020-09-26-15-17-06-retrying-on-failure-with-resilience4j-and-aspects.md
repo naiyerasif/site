@@ -493,7 +493,7 @@ Let's break down what's happening here.
 
 :::footnote
 Source code
-- [retry-on-failure](https://gitlab.com/mflash/spring-guides/-/tree/master/retry-on-failure)
+- [retry-on-failure](https://github.com/Microflash/guides/tree/main/spring/retry-on-failure)
 
 Related
 - [Resilience4J Retry docs](https://resilience4j.readme.io/docs/retry)

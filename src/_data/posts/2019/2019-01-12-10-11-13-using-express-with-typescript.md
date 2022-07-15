@@ -161,5 +161,5 @@ Launch the application by executing `yarn start` and you'll get the same applica
 
 :::footnote
 Source code
-- [express-with-typescript](https://gitlab.com/mflash/nodejs-guides/-/tree/master/express-with-typescript)
+- [express-with-typescript](https://github.com/Microflash/guides/tree/main/nodejs/express-with-typescript)
 :::

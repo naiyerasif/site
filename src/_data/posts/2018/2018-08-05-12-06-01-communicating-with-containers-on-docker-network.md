@@ -383,7 +383,7 @@ Launch both the stacks with `docker-compose up -d` and browse to <http://localho
 
 :::footnote
 Source code
-- [communicating-with-containers-on-docker-network](https://gitlab.com/mflash/docker-guides/-/tree/master/communicating-with-containers-on-docker-network)
+- [communicating-with-containers-on-docker-network](https://github.com/Microflash/guides/tree/main/cloud/communicating-with-containers-on-docker-network)
 
 Related
 - [Inject env variables from docker-compose into Angular4 app](https://stackoverflow.com/a/45727380)
