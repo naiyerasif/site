@@ -63,15 +63,15 @@ document.addEventListener('alpine:init', () => {
 				}
 			}
 		},
-		uniqueFilter(value, index, self) {
-			return self.indexOf(value) === index
+		unique(array) {
+			return array.filter((e, i) => array.findIndex((a) => a.item.title === e.item.title) === i)
 		},
 		updateRecentlySearched(searchResults) {
 			try {
 				if (this.recentlySearched && this.recentlySearched.length > 1) {
-					this.recentlySearched = [...searchResults, ...this.recentlySearched].filter(this.uniqueFilter).slice(0, 5)
+					this.recentlySearched = this.unique([...searchResults, ...this.recentlySearched]).slice(0, 5)
 				} else {
-					this.recentlySearched = [...searchResults].filter(this.uniqueFilter).slice(0, 5)
+					this.recentlySearched = this.unique(searchResults).slice(0, 5)
 				}
 				
 				localStorage.setItem('search-items', JSON.stringify(this.recentlySearched))
