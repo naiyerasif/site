@@ -78,7 +78,7 @@ You can lint the files using `yarn lint`. Also, when the application is started 
 
 :::footnote
 Source code
-- [linting-with-typescript-eslint](https://gitlab.com/mflash/nodejs-guides/-/tree/master/linting-with-typescript-eslint)
+- [linting-with-typescript-eslint](https://github.com/Microflash/guides/tree/main/nodejs/linting-with-typescript-eslint)
 
 Related
 - [typescript-eslint repo](https://github.com/typescript-eslint/typescript-eslint)

@@ -570,7 +570,7 @@ Here, we
 
 :::footnote
 Source code
-- [aop-compile-time](https://github.com/Microflash/java-guides/tree/main/aop-compile-time)
+- [aop-compile-time](https://github.com/Microflash/guides/tree/main/java/aop-compile-time)
 
 Related
 - [AspectJ in Action](https://livebook.manning.com/book/aspectj-in-action-second-edition/chapter-8/1) by Ramnivas Laddad

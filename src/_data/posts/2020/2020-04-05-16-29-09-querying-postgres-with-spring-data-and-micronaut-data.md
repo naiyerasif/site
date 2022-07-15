@@ -300,7 +300,7 @@ curl --location --request DELETE 'http://localhost:8080/customers/2'
 
 :::footnote
 Source code
-- [spring-data-micronaut-data](https://gitlab.com/mflash/spring-guides/-/tree/master/spring-data-micronaut-data)
+- [spring-data-micronaut-data](https://github.com/Microflash/guides/tree/main/spring/spring-data-micronaut-data)
 
 Related
 - [Micronaut Data](https://micronaut-projects.github.io/micronaut-data/latest/guide/)

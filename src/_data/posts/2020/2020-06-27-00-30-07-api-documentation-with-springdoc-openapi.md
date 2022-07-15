@@ -428,8 +428,8 @@ Once again, launch the application and open <http://localhost:8080/swagger-ui.ht
 
 :::footnote
 Source code
-- [springdoc-webmvc-integration](https://gitlab.com/mflash/spring-guides/-/tree/master/springdoc-webmvc-integration)
-- [springdoc-webmvcfn-integration](https://gitlab.com/mflash/spring-guides/-/tree/master/springdoc-webmvcfn-integration)
+- [springdoc-webmvc-integration](https://github.com/Microflash/guides/tree/main/spring/springdoc-webmvc-integration)
+- [springdoc-webmvcfn-integration](https://github.com/Microflash/guides/tree/main/spring/springdoc-webmvcfn-integration)
 
 Related
 - [Springdoc documentation](https://springdoc.org/)

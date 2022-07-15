@@ -279,5 +279,5 @@ You can access the OpenAPI docs at <http://localhost:8080/v3/api-docs> which can
 
 :::footnote
 Source code
-- [springfox3-webmvc-integration](https://gitlab.com/mflash/spring-guides/-/tree/master/springfox3-webmvc-integration)
+- [springfox3-webmvc-integration](https://github.com/Microflash/guides/tree/main/spring/springfox3-webmvc-integration)
 :::

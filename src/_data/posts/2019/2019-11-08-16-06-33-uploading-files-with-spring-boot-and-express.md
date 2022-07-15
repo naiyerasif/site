@@ -328,5 +328,5 @@ Reuse the Angular application for the upload from the post [Uploading files with
 
 :::footnote
 Source code
-- [springrx-file-upload](https://gitlab.com/mflash/spring-guides/-/tree/master/springrx-file-upload)
+- [springrx-file-upload](https://github.com/Microflash/guides/tree/main/spring/springrx-file-upload)
 :::

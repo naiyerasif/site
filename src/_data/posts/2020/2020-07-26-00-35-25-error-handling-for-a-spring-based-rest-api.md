@@ -804,7 +804,7 @@ You'll receive a `200 OK` with a list of books saved in the database, as expecte
 
 :::footnote
 Source code
-- [spring-rest-error-handling](https://gitlab.com/mflash/spring-guides/-/tree/master/spring-rest-error-handling)
+- [spring-rest-error-handling](https://github.com/Microflash/guides/tree/main/spring/spring-rest-error-handling)
 
 Related
 - [Securing Spring Boot APIs with JWT Authentication](/post/2020/04/10/securing-spring-boot-apis-with-jwt-authentication/)

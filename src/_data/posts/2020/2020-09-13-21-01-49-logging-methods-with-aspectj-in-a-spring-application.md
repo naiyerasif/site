@@ -576,7 +576,7 @@ public final class ServiceProxyProvider {
 
 :::footnote
 Source code
-- [aop-method-logging](https://github.com/Microflash/spring-guides/tree/main/aop-method-logging)
+- [aop-method-logging](https://github.com/Microflash/guides/tree/main/spring/aop-method-logging)
 
 Related
 - [Aspect Oriented Programming with Spring](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#aop)

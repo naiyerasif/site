@@ -574,7 +574,7 @@ In this test class,
 
 :::footnote
 Source code
-- [spring-data-mongo-repository](https://github.com/Microflash/spring-guides/tree/main/spring-data-mongo-repository)
+- [spring-data-mongo-repository](https://github.com/Microflash/guides/tree/main/spring/spring-data-mongo-repository)
 
 Corrections
 - Thanks [@CyberpunkPerson](https://github.com/CyberpunkPerson) for [pointing out](https://github.com/Microflash/spring-guides/issues/1) that `onAfterConvert` can delete objects not only when the parent is deleted but also when the parent is fetched 🤦‍♀️! I've patched the code and updated the article with a fix.

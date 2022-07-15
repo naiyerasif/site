@@ -129,7 +129,7 @@ Start the application; you should the request logs printed on console when the e
 
 :::footnote
 Source code
-- [morgan-request-logging](https://gitlab.com/mflash/nodejs-guides/-/tree/master/morgan-request-logging)
+- [morgan-request-logging](https://github.com/Microflash/guides/tree/main/nodejs/morgan-request-logging)
 
 Related
 - [morgan docs](https://github.com/expressjs/morgan#readme)

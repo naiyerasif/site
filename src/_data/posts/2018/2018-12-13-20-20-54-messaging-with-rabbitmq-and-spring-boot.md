@@ -250,5 +250,5 @@ When the application is launched, the publisher will publish the list of books o
 
 :::footnote
 Source code
-- [spring-messaging-rabbitmq](https://gitlab.com/mflash/spring-guides/-/tree/master/spring-messaging-rabbitmq)
+- [spring-messaging-rabbitmq](https://github.com/Microflash/guides/tree/main/spring/spring-messaging-rabbitmq)
 :::

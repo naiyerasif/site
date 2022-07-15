@@ -848,9 +848,9 @@ HTTP/1.1 200
 
 :::footnote
 Source code
-- [spring-security-token-validation-local](https://github.com/Microflash/spring-guides/tree/main/spring-security-token-validation-local)
-- [spring-security-token-introspection](https://github.com/Microflash/spring-guides/tree/main/spring-security-token-introspection)
-- [spring-security-token-validation-hybrid](https://github.com/Microflash/spring-guides/tree/main/spring-security-token-validation-hybrid)
+- [spring-security-token-validation-local](https://github.com/Microflash/guides/tree/main/spring/spring-security-token-validation-local)
+- [spring-security-token-introspection](https://github.com/Microflash/guides/tree/main/spring/spring-security-token-introspection)
+- [spring-security-token-validation-hybrid](https://github.com/Microflash/guides/tree/main/spring/spring-security-token-validation-hybrid)
 
 Related
 - [Spring Security Resource Server](https://docs.spring.io/spring-security/site/docs/current/reference/html5/#webflux-oauth2-resource-server)

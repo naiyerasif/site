@@ -156,7 +156,7 @@ You can configure specific classes and [additional counters](https://www.jacoco.
 
 :::footnote
 Source code
-- [coverage-jacoco-maven](https://github.com/Microflash/java-guides/tree/main/coverage-jacoco-maven)
+- [coverage-jacoco-maven](https://github.com/Microflash/guides/tree/main/java/coverage-jacoco-maven)
 
 Related
 - [JaCoCo Maven plugin](https://www.eclemma.org/jacoco/trunk/doc/maven.html)

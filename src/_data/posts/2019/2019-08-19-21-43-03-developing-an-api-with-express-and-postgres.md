@@ -403,5 +403,5 @@ curl --request DELETE http://localhost:8080/song \
 
 :::footnote
 Source code
-- [express-postgres-api](https://gitlab.com/mflash/nodejs-guides/-/tree/master/express-postgres-api)
+- [express-postgres-api](https://github.com/Microflash/guides/tree/main/nodejs/express-postgres-api)
 :::

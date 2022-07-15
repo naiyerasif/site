@@ -239,7 +239,7 @@ WWW-Authenticate: Bearer error="invalid_token", error_description="The access to
 
 :::footnote
 Source code
-- [spring-security-resource-server-error-handling](https://github.com/Microflash/spring-guides/tree/main/spring-security-resource-server-error-handling)
+- [spring-security-resource-server-error-handling](https://github.com/Microflash/guides/tree/main/spring/spring-security-resource-server-error-handling)
 
 Related
 - [Error handling for a Spring-based REST API](/post/2020/07/26/error-handling-for-a-spring-based-rest-api/)

@@ -165,7 +165,7 @@ This approach eliminates the need for any utility (like `curl` or `wget`) and re
 
 :::footnote
 Source code
-- [docker-healthcheck](https://github.com/Microflash/java-guides/tree/main/docker-healthcheck)
+- [docker-healthcheck](https://github.com/Microflash/guides/tree/main/java/docker-healthcheck)
 
 Related
 - [Dockerfile HEALTHCHECK reference](https://docs.docker.com/engine/reference/builder/#healthcheck)

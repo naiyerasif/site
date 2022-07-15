@@ -239,7 +239,7 @@ This method is a single-step process, and much faster than previous approaches. 
 
 :::footnote
 Source code
-- [deep-copying](https://github.com/Microflash/java-guides/tree/main/deep-copying)
+- [deep-copying](https://github.com/Microflash/guides/tree/main/java/deep-copying)
 
 Related
 - [Jackson Databind docs](https://github.com/FasterXML/jackson-databind)
