@@ -25,6 +25,9 @@ I've worked professionally on aviation, legal and compliance, and banking projec
 
 ### Open source
 
+- [remark-starry-night](https://github.com/Microflash/remark-starry-night): A Remark plugin to highlight codeblocks with [Starry Night](https://github.com/wooorm/starry-night)
+- [rehype-toc](https://github.com/Microflash/rehype-toc): A Rehype plugin to generate a table of contents
+- [rehype-slugify](https://github.com/Microflash/rehype-slugify): A Rehype plugin to add `id` attributes to headings
 - [fenceparser](https://github.com/Microflash/fenceparser): A metadata parser for code-fences in markdown
 - [remark-figure-caption](https://github.com/Microflash/remark-figure-caption): A Remark plugin to transform images with alt text to figures with captions
 - [Vector Grids](https://github.com/Microflash/vector-grids): A server-side random vector grid generator
@@ -37,6 +40,7 @@ I've worked professionally on aviation, legal and compliance, and banking projec
 - [Spring Security Resource Server](https://github.com/spring-projects/spring-security/tree/main/oauth2/oauth2-resource-server)
 - [Docker](https://www.docker.com/)
 - [Postgres](https://www.postgresql.org/)
+- Oracle Database
 - [Node.js](https://nodejs.org/en/)
 
 ## 2020
@@ -47,6 +51,7 @@ I've worked professionally on aviation, legal and compliance, and banking projec
 - [Spring Security OAuth](https://github.com/spring-attic/spring-security-oauth)
 - [Docker](https://www.docker.com/)
 - [Postgres](https://www.postgresql.org/)
+- Oracle Database
 - [Node.js](https://nodejs.org/en/)
 - [Angular](https://github.com/angular/angular)
 
@@ -61,6 +66,7 @@ I've worked professionally on aviation, legal and compliance, and banking projec
 - [Spring MVC](https://github.com/spring-projects/spring-framework)
 - [Spring Data JPA](https://github.com/spring-projects/spring-data-jpa)
 - [Docker](https://www.docker.com/)
+- Oracle Database
 - [Apache Karaf](https://karaf.apache.org/)
 - [Play Framework](https://github.com/playframework/playframework)
 - [Jenkins](https://www.jenkins.io/)
