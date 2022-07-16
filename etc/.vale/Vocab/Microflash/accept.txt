@@ -9,7 +9,9 @@ fenceparser
 Gridsome
 healthcheck
 Jamstack
+(json|JSON)
 Karaf
+mediatype
 Microflash
 Micronaut
 Naiyer
@@ -26,4 +28,5 @@ tldr
 usecase
 Vue
 Wipro
+(xml|XML)
 YouTube
