@@ -1,6 +1,16 @@
-# Microflash
+# Microflash [![deploy](https://github.com/Microflash/site/actions/workflows/deploy.yml/badge.svg)](https://github.com/Microflash/site/actions/workflows/deploy.yml)
 
 Personal website of [@naiyerasif](https://github.com/naiyerasif)
+
+## Development
+
+- Install [Deno](https://deno.land/) and [Lume](https://lume.land/)
+- Run `lume --serve` to serve the site at port `8080`
+- Run `lume` to generate a production build
+
+## Deployment
+
+The deployment on [Netlify](https://www.netlify.com/) is automated through [GitHub Actions](./.github/workflows/deploy.yml).
 
 ## License
 

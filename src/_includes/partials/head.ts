@@ -1,5 +1,8 @@
+import { getLumeVersion } from 'lume/core/utils.ts'
 import appInfo from '../../_data.ts'
 import { ContentType, MetaInfo } from '../types.ts'
+
+const generator = `Lume ${getLumeVersion()}`
 
 function resolveHost(context: string, baseUrl: string) {
 	return new URL(context, baseUrl).href
@@ -114,6 +117,8 @@ export default function (metaInfo: MetaInfo) {
 	if (metaInfo.description) {
 		html += `<meta itemprop="description" content="${metaInfo.description}">`
 	}
+
+	html += `<meta name="generator" content="${generator}">`
 
 	// inline styles
 	html += `<link rel="stylesheet" href="/inline.css" inline>`
