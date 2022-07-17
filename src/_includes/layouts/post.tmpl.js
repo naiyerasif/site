@@ -36,6 +36,22 @@ export default function (data, filters) {
 
 	const outdatedItem = data.outdated ? callout('Warning', 'This post is old. Some information may be out-of-date.', 'deter') : ''
 
+	let toc = ''
+
+	if (data.toc && data.toc.length) {
+		const tocItems = data.toc
+			.map(heading => `<li class="toc-item-${heading.depth}"><a href="#${heading.id}">${heading.value}</a></li>`)
+			.join('')
+		toc += `<section id="table-of-contents" class="callout callout-note toc">
+			<div class="callout-indicator"><svg aria-hidden="true" role="img" class="icon callout-sign"><use href="#ini-table-of-contents"/></svg>
+				<div class="callout-label">Table of contents</div>
+			</div>
+			<div class="callout-content">
+				<ul class="toc-body">${tocItems}</ul>
+			</div>
+		</section>`
+	}
+
 	const tags = data.tags.map(t => tag(t)).join('')
 
 	return base({
@@ -57,7 +73,7 @@ export default function (data, filters) {
 				<div class="hero-details-item">${data.timeToRead}</div>
 				<div class="hero-details-item tags"><span>${filters.capitalize(data.category)} on </span>${tags}</div>
 			</div>`,
-			main: `<article class="wrapper-content">${outdatedItem}${data.content}</article>
+			main: `<article class="wrapper-content">${outdatedItem}${toc}${data.content}</article>
 				<div class="navigation">${navItems}</div>
 				<div class="action">
 					<a href="${data.editUrl}" title="Edit the page" class="button-icon">${icon('edit-line')}</a>

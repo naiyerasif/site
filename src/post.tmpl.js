@@ -18,14 +18,14 @@ export default async function* (data, { mdAsync, dateCompare, readingTime, sourc
 	for (const [index, post] of posts.entries()) {
 		const timeToRead = readingTime(post.content)
 		const editUrl = source(post.file.directory + post.file.basename + post.file.extension)
-		post.content = await mdAsync('[[toc]]\r\n\r\n' + post.content)
+		const updatedPost = await mdAsync(post)
 		yield {
-			url: post.canonical,
+			url: updatedPost.canonical,
 			type: 'post',
-			...post,
+			...updatedPost,
 			timeToRead: timeToRead,
 			editUrl: editUrl,
-			outdated: dateCompare(post.update, new Date()) > data.app.limits.outdation,
+			outdated: dateCompare(updatedPost.update, new Date()) > data.app.limits.outdation,
 			prev: posts[index - 1],
 			next: posts[index + 1]
 		}
