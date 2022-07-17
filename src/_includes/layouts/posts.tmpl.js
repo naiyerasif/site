@@ -72,9 +72,7 @@ export default function (data, filters) {
 			<div class="hero-details">
 				<div class="hero-details-item">Posts &mdash;&mdash; ${fromPost}&hellip;${toPost} of ${totalPosts}</div>
 			</div>`,
-			main: `<main class="main">
-				<div class="showcase">${posts}</div>
-			</main>
+			main: `<div class="showcase">${posts}</div>
 			<div class="pagination">${pagination}</div>`
 		}
 	})

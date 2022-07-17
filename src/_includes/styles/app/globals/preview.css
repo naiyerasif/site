@@ -18,5 +18,5 @@
 	aspect-ratio: 16/9;
 	object-fit: cover;
 	border: 1px solid var(--sugar-bg-note);
-	border-radius: var(--app-radius-media);
+	border-radius: var(--app-radius-adaptive-base);
 }

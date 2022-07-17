@@ -5,7 +5,8 @@ import icon from './components/icon.ts'
 import { PageInfo } from './types.ts'
 
 export default function (pageInfo: PageInfo): string {
-	const { metaInfo, slots } = pageInfo
+	const { metaInfo, slots, content } = pageInfo
+	const mainClasses = content ? 'wrapper-base has-content' : 'wrapper-base'
 	return `<!DOCTYPE html>
 	<html lang="en">
 		<head>
@@ -17,7 +18,7 @@ export default function (pageInfo: PageInfo): string {
 			<script src="/alpine.init.js" inline></script>
 			<script src="/fuse.js@6.6.2.min.js"></script>
 			${header(slots.hero)}
-			<div class="content" id="content">${slots.main}</div>
+			<main class="${mainClasses}" id="content">${slots.main}</main>
 			${footer()}
 			<div style="display:none">
 				<img src="/sprites.svg" inline>

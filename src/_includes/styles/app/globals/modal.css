@@ -22,7 +22,7 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	max-height: calc(100% - var(--app-offset) * var(--app-modal-height-offset-factor));
+	max-height: calc(100% - var(--app-gap-inline-base) * var(--app-modal-height-offset-factor));
 	overflow: hidden;
 	overscroll-behavior: contain;
 	display: flex;
@@ -37,7 +37,7 @@
 
 @media screen and (min-width: 768px) {
 	.modal-container {
-		--app-modal-width: var(--app-max-width-text);
+		--app-modal-width: var(--app-max-width-content);
 		--app-modal-height-offset-factor: 4;
 	}
 }

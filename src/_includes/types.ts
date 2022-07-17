@@ -23,5 +23,6 @@ export interface PageSlots {
 
 export interface PageInfo {
 	metaInfo: MetaInfo,
-	slots: PageSlots
+	slots: PageSlots,
+	content?: boolean
 }
