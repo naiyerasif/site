@@ -19,12 +19,11 @@ export default function (data, filters) {
 					<h1 class="hero-title"><span class="hero-title-muted">Hi, I’m</span> ${filters.capitalize(data.id)}</h1>
 				</section>
 			</div>`,
-			main: `<main class="article">
-				<article>${data.content}</article>
-			</main>
+			main: `<article class="wrapper-content">${data.content}</article>
 			<div class="action">
 				<a href="#top" title="Back to top" class="button-icon">${backToTop}</a>
 			</div>`
-		}
+		},
+		content: true
 	})
 }

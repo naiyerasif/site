@@ -2,9 +2,12 @@
 	--sugar-gap-base: 2rem;
 
 	--app-max-width-body: calc(900px + 15vw);
-	--app-max-width-text: 70ch;
+	--app-max-width-content: 70ch;
 
-	--app-offset: 36px;
+	--app-gap-content: calc(var(--app-gap-base) + 3vw);
+
+	--app-gap-inline-base: 32px;
+	--app-gap-inline-md: calc(2 * var(--app-gap-inline-base));
 
 	--app-gap-base: calc(48px + 2vw);
 	--app-gap-md: calc(var(--app-gap-base) * 1.5);

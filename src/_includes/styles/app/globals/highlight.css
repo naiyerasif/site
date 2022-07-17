@@ -2,9 +2,12 @@
 	--app-bg-highlight: var(--sugar-bg-code);
 	--app-border-highlight: 1px solid var(--sugar-border-code);
 	background-color: var(--app-bg-highlight);
-	margin-block-end: var(--sugar-gap-base);
-	border-radius: var(--app-radius-media);
+	border-radius: var(--app-radius-adaptive-base);
 	border: var(--app-border-highlight);
+}
+
+.highlight:not(:last-child) {
+	margin-block-end: var(--sugar-gap-base);
 }
 
 .highlight:focus-within {

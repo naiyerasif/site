@@ -57,16 +57,14 @@ export default function (data, filters) {
 				<div class="hero-details-item">${data.timeToRead}</div>
 				<div class="hero-details-item tags"><span>${filters.capitalize(data.category)} on </span>${tags}</div>
 			</div>`,
-			main: `<main class="article">
-					${outdatedItem}
-					<article>${data.content}</article>
-				</main>
+			main: `<article class="wrapper-content">${outdatedItem}${data.content}</article>
 				<div class="navigation">${navItems}</div>
 				<div class="action">
 					<a href="${data.editUrl}" title="Edit the page" class="button-icon">${icon('edit-line')}</a>
 					<a href="#table-of-contents" title="Jump to table of contents" class="button-icon">${icon('table-of-contents')}</a>
 					<a href="#top" title="Back to top" class="button-icon">${backToTop}</a>
 			</div>`
-		}
+		},
+		content: true
 	})
 }

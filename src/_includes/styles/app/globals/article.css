@@ -1,25 +1,23 @@
-.article {
-	max-width: var(--app-max-width-text);
-}
-
-.article article>p:first-of-type {
+article.wrapper-content>p:first-of-type {
 	font-size: 1.25em;
 }
 
-.article article .image-container,
-.article article .highlight,
-.article article .preview {
-	margin-inline: var(--app-offset-media);
+article.wrapper-content .image-container,
+article.wrapper-content .highlight,
+article.wrapper-content .preview {
+	max-width: 100%;
+	grid-column: 1/-1;
 }
 
-.article article .image-container img,
-.article article .image-container svg {
+article.wrapper-content .image-container img,
+article.wrapper-content .image-container svg {
 	border: 1px solid var(--sugar-bg-note);
-	border-radius: var(--app-radius-media);
+	border-radius: var(--app-radius-adaptive-base);
+	background-color: var(--sugar-bg-code);
 	margin-inline: auto;
 }
 
-.article article :is(h1, h2, h3, h4, h5, h6) a .icon {
+article.wrapper-content :is(h1, h2, h3, h4, h5, h6) a .icon {
 	display: none;
 	visibility: hidden;
 	vertical-align: text-top;
@@ -28,8 +26,8 @@
 	height: min(24px, 1.3ch);
 }
 
-.article article :is(h1, h2, h3, h4, h5, h6):focus a .icon,
-.article article :is(h1, h2, h3, h4, h5, h6):hover a .icon {
+article.wrapper-content :is(h1, h2, h3, h4, h5, h6):focus a .icon,
+article.wrapper-content :is(h1, h2, h3, h4, h5, h6):hover a .icon {
 	display: inline-block;
 	visibility: visible;
 }

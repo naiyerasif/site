@@ -24,7 +24,7 @@ export default function ({ search }, filters) {
 
 	recent += `</div>`
 
-	return `<main class="main">${recent}</main>
+	return `${recent}
 		<div class="action">
 		<a href="/posts/2/" class="button">Browse more &xrarr;</a>
 	</div>`
