@@ -8,7 +8,7 @@ import remarkPlugins from './modules/remark/plugins.ts'
 import feed from './modules/feed/mod.ts'
 import sitemap from './modules/sitemap/mod.ts'
 import postcssPlugins from './modules/postcss/plugins.ts'
-import { csso, dayjs, readingTime } from './deps.ts'
+import { csso, dayjs } from './deps.ts'
 import data from './src/_data.ts'
 
 const site = lume({
@@ -29,7 +29,6 @@ site.use(remark({
 	remarkPlugins: remarkPlugins,
 	rehypePlugins: rehypePlugins
 }))
-site.use(readingTime())
 site.use(postcss({
 	plugins: postcssPlugins
 }))

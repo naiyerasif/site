@@ -1,9 +1,14 @@
-import { rehypeAutolinkHeadings, rehypeExternalLinks, rehypeExtractToc, rehypeSlugify } from '../../deps.ts'
+import { rehypeAutolinkHeadings, rehypeExternalLinks, rehypeExtractToc, rehypeInferReadingTime, rehypeSlugify } from '../../deps.ts'
 import { slugifyWithCounter, defaults as defaultSlugifyOptions } from '../slugify/mod.ts'
 
 const slugify = slugifyWithCounter()
 
 export default [
+	[
+		rehypeInferReadingTime, {
+			age: 18
+		}
+	],
 	[
 		rehypeExternalLinks, {
 			target: false,
