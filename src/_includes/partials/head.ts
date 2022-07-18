@@ -112,6 +112,12 @@ export default function (metaInfo: MetaInfo) {
 	html += `<meta name="twitter:site" content="${twitter?.username}">`
 	html += `<meta name="twitter:creator" content="${twitter?.username}">`
 
+	if (metaInfo.readingTime) {
+		// this is used by Slack (not Twitter)
+		html += `<meta name="twitter:label1" content="Reading time">`
+		html += `<meta name="twitter:data1" content="${metaInfo.readingTime}">`
+	}
+
 	html += `<meta itemprop="name" content="${metaInfo.title}">`
 
 	if (metaInfo.description) {

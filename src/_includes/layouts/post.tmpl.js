@@ -64,7 +64,8 @@ export default function (data, filters) {
 			published: filters.date(data.date, 'DATE'),
 			updated: data.update.toString() !== data.date.toString() ? filters.date(data.update, 'DATE') : null,
 			previous: data.prev ? data.prev.canonical : null,
-			next: data.next ? data.next.canonical : null
+			next: data.next ? data.next.canonical : null,
+			readingTime: data.timeToRead ? data.timeToRead : null
 		},
 		slots: {
 			hero: `<h1 class="hero-title">${data.title}</h1>
