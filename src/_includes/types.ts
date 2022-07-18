@@ -13,7 +13,8 @@ export interface MetaInfo {
 	source?: string,
 	published?: string,
 	updated?: string,
-	image?: string
+	image?: string,
+	readingTime?: string
 }
 
 export interface PageSlots {

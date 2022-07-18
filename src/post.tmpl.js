@@ -1,6 +1,6 @@
 export const layout = 'layouts/post.tmpl.js'
 
-export default async function* (data, { mdAsync, dateCompare, readingTime, source }) {
+export default async function* (data, { mdAsync, dateCompare, source }) {
 	const posts = Object.entries(data.posts)
 		.flatMap(([folder, nested]) => {
 			const directory = `/src/_data/posts/${folder}/`
@@ -16,9 +16,10 @@ export default async function* (data, { mdAsync, dateCompare, readingTime, sourc
 		})
 		.sort((p1, p2) => dateCompare(p1.date, p2.date))
 	for (const [index, post] of posts.entries()) {
-		const timeToRead = readingTime(post.content)
 		const editUrl = source(post.file.directory + post.file.basename + post.file.extension)
 		const updatedPost = await mdAsync(post)
+		const timeToRead = `${Math.ceil(parseFloat(updatedPost.meta.readingTime.toFixed(2)))} min read`
+		delete updatedPost.meta.readingTime
 		yield {
 			url: updatedPost.canonical,
 			type: 'post',
