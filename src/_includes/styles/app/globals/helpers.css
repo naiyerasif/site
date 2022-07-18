@@ -1,5 +1,5 @@
 :root {
-	--app-radius-adaptive-base: max(0px, min(var(--sugar-radius-base), calc((100vw - (var(--sugar-radius-base) / 2) - var(--app-max-width-body)) * 9999)));
+	--app-radius-adaptive-base: max(0px, min(var(--sugar-radius-base), calc((100vw - (var(--sugar-radius-base) / 2) - 100%) * 9999)));
 }
 
 a[rel*='nofollow']::after {
