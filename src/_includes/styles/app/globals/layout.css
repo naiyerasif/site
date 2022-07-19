@@ -199,6 +199,10 @@ main.wrapper-base .navigation {
 	margin-block-start: var(--app-gap-base);
 }
 
+main.wrapper-base .action {
+	gap: 1ch;
+}
+
 main.wrapper-base .pagination a {
 	justify-content: center;
 	min-width: 3ch;
