@@ -14,7 +14,7 @@ a[rel*='nofollow']::after {
 
 .button-icon,
 .button {
-	--app-bg-button: transparent;
+	--app-bg-button: var(--sugar-bg-note);
 	--app-color-button: var(--sugar-color-link);
 	--app-padding-button: 8px;
 	--app-radius-button: var(--sugar-radius-base);
@@ -29,6 +29,7 @@ a[rel*='nofollow']::after {
 }
 
 a.button {
+	--app-bg-button: transparent;
 	--app-padding-button: 6px 8px;
 }
 
