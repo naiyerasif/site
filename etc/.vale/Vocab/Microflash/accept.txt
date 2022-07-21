@@ -1,7 +1,10 @@
 Asif
 Astro
 autoplay
+codeblock
+codeblocks
 (d|D)atabind
+(d|D)eno
 (d|D)eserialize
 (d|D)eserialization
 explainer
@@ -11,6 +14,7 @@ healthcheck
 Jamstack
 (json|JSON)
 Karaf
+Lume
 mediatype
 Microflash
 Micronaut
@@ -19,6 +23,7 @@ Netlify
 [Nn]ginx
 Postgres
 Rehype
+resizer
 Shiki
 Soueidan
 Spritely
