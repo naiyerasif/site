@@ -57,9 +57,11 @@ export default function (data, filters) {
 		pagination += `<a href="${data.pagination.next}" aria-label="Next page" class="button">&xrarr;</a>`
 	}
 
-	const fromPost = ((current - 1) * data.results.length) + 1
+	const fromPost = ((current - 1) * 10) + 1
 	const toPost = fromPost + data.results.length - 1
 	const totalPosts = data.pagination.totalResults
+
+	const pageAnnotation = fromPost === toPost ? `${fromPost} of ${totalPosts}` : `${fromPost}&hellip;${toPost} of ${totalPosts}`
 
 	return base({
 		metaInfo: {
@@ -70,7 +72,7 @@ export default function (data, filters) {
 		slots: {
 			hero: `<h1 class="hero-title">Posts <span class="hero-title-muted">from the past, in chronological order</span></h1>
 			<div class="hero-details">
-				<div class="hero-details-item">Posts &mdash;&mdash; ${fromPost}&hellip;${toPost} of ${totalPosts}</div>
+				<div class="hero-details-item">Posts &mdash;&mdash; ${pageAnnotation}</div>
 			</div>`,
 			main: `<div class="showcase">${posts}</div>
 			<div class="pagination">${pagination}</div>`
