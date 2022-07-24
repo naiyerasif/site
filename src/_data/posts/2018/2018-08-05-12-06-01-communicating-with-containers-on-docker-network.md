@@ -29,7 +29,7 @@ We'd need an Angular app and a backend service to begin with.
 
 Let's create a very simple backend that will return a greeting message when a `/hello` endpoint will be called. We'll use [Micronaut](https://micronaut.io/) to generate this service. [Install](https://micronaut.io/download.html) Micronaut CLI and execute the following command on the terminal.
 
-```sh prompt='1'
+```sh prompt{1}
 mn create-app dev.mflash.guides.greeter.greeter-api --build maven
 ```
 

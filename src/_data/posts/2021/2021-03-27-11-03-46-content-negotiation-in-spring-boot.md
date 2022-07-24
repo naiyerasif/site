@@ -53,7 +53,7 @@ spring:
 
 By default, `format` is the query parameter to pass the acceptable format. Here's an example to get the response in XML.
 
-```sh prompt='1'
+```sh prompt{1}
 curl -s http://localhost:8080/game/trial?format=xml | xml fo -o
 <Game>
 	<title>Control</title>
@@ -63,7 +63,7 @@ curl -s http://localhost:8080/game/trial?format=xml | xml fo -o
 
 The default response format is JSON (unless specified / configured otherwise).
 
-```sh prompt='1'
+```sh prompt{1}
 curl -s http://localhost:8080/game/trial | jq
 {
 	"title": "Control",
@@ -98,7 +98,7 @@ To support custom media types, you might have to provide additional dependencies
 
 Sending the `Accept` request headers is the default content negotiation strategy provided by Spring.
 
-```sh prompt='1'
+```sh prompt{1}
 curl -s http://localhost:8080/game/trial -H 'Accept: application/xml' | xml fo -o
 <Game>
 	<title>Control</title>
@@ -108,7 +108,7 @@ curl -s http://localhost:8080/game/trial -H 'Accept: application/xml' | xml fo -
 
 Similarly, a request for JSON response returns:
 
-```sh prompt='1'
+```sh prompt{1}
 curl -s http://localhost:8080/game/trial -H 'Accept: application/json' | jq
 {
 	"title": "Control",
