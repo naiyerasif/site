@@ -22,7 +22,7 @@ The examples in this post use
 
 LocalStack works with a local AWS account which you can configure with the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html). Launch the `aws configure` command as follows.
 
-```sh caption='Configuring the AWS account' prompt='1'
+```sh caption='Configuring the AWS account' prompt{1}
 aws configure
 AWS Access Key ID [None]: gwen
 AWS Secret Access Key [None]: stacy
@@ -36,7 +36,7 @@ Default output format [None]: json
 
 Pull the latest LocalStack image from Docker.
 
-```sh prompt='1'
+```sh prompt{1}
 docker pull localstack/localstack:latest
 ```
 
@@ -65,13 +65,13 @@ networks:
 
 You can now launch the container with the following command.
 
-```sh prompt='1'
+```sh prompt{1}
 docker compose -f localstack.yml up -d
 ```
 
 Once the container is up and running, open a terminal and ping the healthcheck endpoint. If things are working, you would see the status of the available services as "available".
 
-```sh prompt='1' caption='Healthcheck for LocalStack container'
+```sh prompt{1} caption='Healthcheck for LocalStack container'
 curl localhost:4566/health
 {
   "features": {
@@ -138,7 +138,7 @@ Create a sample JSON file as follows, to save it on S3.
 
 Let's create a [bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html#BasicsBucket), say `my-bucket`, as follows.
 
-```sh prompt='1'
+```sh prompt{1}
 aws --endpoint-url http://localhost:4566 s3api create-bucket --bucket my-bucket --region us-east-1
 {
 	"Location": "/my-bucket"
@@ -147,7 +147,7 @@ aws --endpoint-url http://localhost:4566 s3api create-bucket --bucket my-bucket 
 
 You can list all the buckets with the following command.
 
-```sh {4-7} prompt='1'
+```sh {4-7} prompt{1}
 aws --endpoint-url http://localhost:4566 s3api list-buckets
 {
 	"Buckets": [
@@ -165,28 +165,28 @@ aws --endpoint-url http://localhost:4566 s3api list-buckets
 
 Now, you can upload the `sample.json` file on the new bucket.
 
-```sh prompt='1'
+```sh prompt{1}
 aws --endpoint-url http://localhost:4566 s3 cp sample.json s3://my-bucket/inner/sample.json --content-type 'application/json'
 upload: .\sample.json to s3://my-bucket/inner/sample.json
 ```
 
 You can download the existing file from the S3 bucket as follows.
 
-```sh prompt='1'
+```sh prompt{1}
 aws --endpoint-url http://localhost:4566 s3 cp s3://my-bucket/inner/sample.json sample2.json --content-type 'application/json'
 download: s3://my-bucket/inner/sample.json to .\sample2.json
 ```
 
 To delete the file, you can use the following command.
 
-```sh prompt='1'
+```sh prompt{1}
 aws --endpoint-url http://localhost:4566 s3 rm s3://my-bucket/inner/sample.json
 delete: s3://my-bucket/inner/sample.json
 ```
 
 Finally, you can delete the bucket as follows.
 
-```sh prompt='1'
+```sh prompt{1}
 aws --endpoint-url http://localhost:4566 s3api delete-bucket --bucket my-bucket
 ```
 
@@ -196,7 +196,7 @@ Refer to the [s3](https://docs.aws.amazon.com/cli/latest/reference/s3/index.html
 
 You can use the following command to create a queue called `my-queue`.
 
-```sh prompt='1'
+```sh prompt{1}
 aws --endpoint-url http://localhost:4566 sqs create-queue --queue-name my-queue
 {
 	"QueueUrl": "http://localhost:4566/000000000000/my-queue"
@@ -205,7 +205,7 @@ aws --endpoint-url http://localhost:4566 sqs create-queue --queue-name my-queue
 
 To verify if the queue is available, list all the queues as follows.
 
-```sh prompt='1'
+```sh prompt{1}
 aws --endpoint-url http://localhost:4566 sqs list-queues
 {
 	"QueueUrls": [
@@ -216,7 +216,7 @@ aws --endpoint-url http://localhost:4566 sqs list-queues
 
 Let's publish a message using the `send-message` command.
 
-```sh prompt='1'
+```sh prompt{1}
 aws --endpoint-url http://localhost:4566 sqs send-message --queue-url http://localhost:4566/000000000000/my-queue --message-body "Gwen"
 {
 	"MD5OfMessageBody": "030997f386c4663f2c3e9594308c60b4",
@@ -225,7 +225,7 @@ aws --endpoint-url http://localhost:4566 sqs send-message --queue-url http://loc
 ```
 You can read the published messages through the `receive-message` command.
 
-```sh prompt='1'
+```sh prompt{1}
 aws --endpoint-url http://localhost:4566 sqs receive-message --queue-url http://localhost:4566/000000000000/my-queue
 {
 	"Messages": [
@@ -241,7 +241,7 @@ aws --endpoint-url http://localhost:4566 sqs receive-message --queue-url http://
 
 Finally, to delete a message, you can use the `delete-message` command as follows. To delete the queue, use the `delete-queue` command.
 
-```sh prompt='1,3'
+```sh prompt{1,3}
 aws --endpoint-url http://localhost:4566 sqs delete-message --queue-url http://localhost:4566/000000000000/my-queue --receipt-handle ZDYzMmRjMmUtNWY2Yi00NzRmLWI1ZjQtYTYwNGJiZGRkMGFjIGFybjphd3M6c3FzOnVzLWVhc3QtMTowMDAwMDAwMDAwMDA6bXktcXVldWUgOGM2MjU3ZDItODRjOC00Njg5LWE2YTEtMWEzN2IxZmFhM2VjIDE2NTc2MzQwMDIuNzE3MDIyNA==
 
 aws --endpoint-url http://localhost:4566 sqs delete-queue --queue-url http://localhost:4566/000000000000/my-queue
@@ -253,7 +253,7 @@ For more operations, check the [sqs](https://docs.aws.amazon.com/cli/latest/refe
 
 To create a secret, you can use the `create-secret` command as follows.
 
-```sh prompt='1'
+```sh prompt{1}
 aws --endpoint-url http://localhost:4566 secretsmanager create-secret --name my-secret --secret-string '{"PG_PASSWORD":"stacy"}'
 {
 	"ARN": "arn:aws:secretsmanager:us-east-1:000000000000:secret:my-secret-b3dd81",
@@ -264,7 +264,7 @@ aws --endpoint-url http://localhost:4566 secretsmanager create-secret --name my-
 
 You can also list all the secrets available on the Secrets Manager.
 
-```sh prompt='1'
+```sh prompt{1}
 aws --endpoint-url http://localhost:4566 secretsmanager list-secrets
 {
 	"SecretList": [
@@ -286,7 +286,7 @@ aws --endpoint-url http://localhost:4566 secretsmanager list-secrets
 
 You can read the secrets with the `get-secret-value` command
 
-```sh prompt='1'
+```sh prompt{1}
 aws --endpoint-url http://localhost:4566 secretsmanager get-secret-value --secret-id my-secret
 {
 	"ARN": "arn:aws:secretsmanager:us-east-1:000000000000:secret:my-secret-b3dd81",
@@ -302,7 +302,7 @@ aws --endpoint-url http://localhost:4566 secretsmanager get-secret-value --secre
 
 Finally, you can delete a secret with its ARN.
 
-```sh prompt='1'
+```sh prompt{1}
 aws --endpoint-url http://localhost:4566 secretsmanager delete-secret --secret-id arn:aws:secretsmanager:us-east-1:000000000000:secret:my-secret-b3dd81
 {
 	"ARN": "arn:aws:secretsmanager:us-east-1:000000000000:secret:my-secret-b3dd81",

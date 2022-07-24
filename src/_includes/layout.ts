@@ -14,7 +14,7 @@ export default function (pageInfo: PageInfo): string {
 		</head>
 		<body class="app">
 			<a id="skiplink" href="#content">Skip to main content&ensp;${icon('arrow-circle-270-degree')}</a>
-			<script src="/alpinejs@3.10.2.min.js" defer></script>
+			<script src="/alpinejs@3.10.3.min.js" defer></script>
 			<script src="/alpine.init.js" inline></script>
 			<script src="/fuse.js@6.6.2.min.js"></script>
 			${header(slots.hero)}
