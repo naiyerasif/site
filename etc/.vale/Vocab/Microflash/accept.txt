@@ -1,3 +1,4 @@
+APIs
 Asif
 Astro
 autoplay
@@ -17,7 +18,7 @@ Karaf
 Lume
 mediatype
 Microflash
-Micronaut
+(m|M)icronaut
 Naiyer
 Netlify
 [Nn]ginx
@@ -35,3 +36,4 @@ Vue
 Wipro
 (xml|XML)
 YouTube
+(z|Z)alando
