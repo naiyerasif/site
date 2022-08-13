@@ -206,8 +206,23 @@ main.wrapper-base .navigation {
 	margin-block-start: var(--app-gap-base);
 }
 
-main.wrapper-base .action {
+main.wrapper-base .share {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	margin-block-start: var(--app-gap-base);
+}
+
+main.wrapper-base .action,
+main.wrapper-base .share {
 	gap: 1ch;
+}
+
+@media screen and (max-width: 767px) {
+	main.wrapper-base .share {
+		padding-inline: var(--app-gap-inline-base);
+	}
 }
 
 main.wrapper-base .pagination a {
