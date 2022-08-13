@@ -7,6 +7,17 @@ import tag from '../components/tag.ts'
 export default function (data, filters) {
 	const backToTop = icon('arrow-circle-90-degree')
 
+	const shareableTitle = encodeURI(data.title)
+	const shareableHashtags = data.tags.join(',')
+	const shareableLink = new URL(data.url, data.app.url).href
+
+	let shareLinks = `<span>Share</span>`
+	shareLinks += `<a href="mailto:?subject=${data.title}&body=Checkout this article I read! ${shareableLink}" title="Share through mail" rel="noopener noreferrer" class="button-icon">${icon('mail')}</a>`
+	shareLinks += `<a href="https://twitter.com/intent/tweet?text=${shareableTitle}%20${shareableLink}&hashtags=${shareableHashtags}&via=Microflash" title="Share with a tweet" target="_blank" rel="noopener noreferrer" class="button-icon">${icon('twitter')}</a>`
+	shareLinks += `<a href="https://www.linkedin.com/sharing/share-offsite/?url=${shareableLink}" title="Post on LinkedIn" target="_blank" rel="noopener noreferrer" class="button-icon">${icon('linkedin')}</a>`
+	shareLinks += `<a href="https://news.ycombinator.com/submitlink?u=${shareableLink}&t=${shareableTitle}" title="Submit to Hacker News" target="_blank" rel="noopener noreferrer" class="button-icon">${icon('hacker-news')}</a>`
+	shareLinks += `<a href="http://www.reddit.com/submit?url=${shareableLink}&title=${shareableTitle}" title="Post on Reddit" target="_blank" rel="noopener noreferrer" class="button-icon">${icon('reddit')}</a>`
+
 	let dateInfo = time(data.date, filters)
 
 	if (data.update.toString() !== data.date.toString()) {
@@ -75,6 +86,7 @@ export default function (data, filters) {
 				<div class="hero-details-item tags"><span>${filters.capitalize(data.category)} on </span>${tags}</div>
 			</div>`,
 			main: `<article class="wrapper-content">${outdatedItem}${toc}${data.content}</article>
+				<div class="share">${shareLinks}</div>
 				<div class="navigation">${navItems}</div>
 				<div class="action">
 					<a href="${data.editUrl}" title="Edit the page" class="button-icon">${icon('edit-line')}</a>
