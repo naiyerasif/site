@@ -37,6 +37,8 @@ site.use(esbuild())
 
 site.loadData(['.md'])
 site.copy('assets', '.')
+site.copy('assets/_headers', '_headers')
+site.copy('assets/_redirects', '_redirects')
 
 site.filter('source', (path) => new URL(data.app.repositoryContext + path).href)
 site.filter('capitalize', ([ first, ...rest ]) => [first.toUpperCase(), ...rest].join(''))
