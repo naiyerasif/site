@@ -22,6 +22,8 @@ Microflash
 Naiyer
 Netlify
 [Nn]ginx
+OAuth
+Ory
 Postgres
 Rehype
 resizer
