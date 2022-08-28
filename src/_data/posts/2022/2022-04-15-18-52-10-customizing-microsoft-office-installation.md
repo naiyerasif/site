@@ -9,19 +9,19 @@ category: note
 tags: ['microsoft', 'office', 'install']
 ---
 
-I had installed the Microsoft Office suite on different machines over the years. But one thing had always bugged me: the default Office installer installs a lot of applications that I never use (looking at you, OneNote and Skype). I wanted a way to cherry-pick only the Office apps that I really needed to use and exclude everything else from the installation. It turns out there is a way to accomplish this.
+I've installed the Microsoft Office suite on different machines over the years. But one thing had always bugged me: the default Office installer installs a lot of applications that I never use (looking at you, OneNote and Skype). I wanted a way to cherry-pick only the Office apps that I needed to use and exclude everything else from the installation. It turns out there is a way to accomplish this.
 
 ## Download the Office Deployment Tool
 
-The [Office Deployment Tool](https://www.microsoft.com/en-us/download/details.aspx?id=49117) is a command-line tool provided by Microsoft to download and deploy Microsoft Office on a computer. It's mainly targeted for enterprise users but can be used for personal installations as well. 
+The [Office Deployment Tool](https://www.microsoft.com/en-us/download/details.aspx?id=49117) is a command-line tool provided by Microsoft to download and deploy Microsoft Office on a computer. It's mainly targeted at enterprise users but can be used for personal installations as well.
 
 Download the installer (the `exe` file). When launched, it asks for a folder to extract its content. Say, you choose `D://ODT/`. After extraction, you can find a `setup.exe` file in the selected folder. This is the Office Deployment Tool.
 
 ## Mounting the Office installation
 
-> This step is needed only if you've downloaded the Office installation as an `img` file. If you've an `iso` file, extract it in a folder (say, `G:`).
+> This step is needed only if you've downloaded the Office installation as an `img` file. If you have an `iso` file, extract it in a folder (say, `G:`).
 
-Right click the Office installation `img` file and select **Mount**.
+Right-click the Office installation `img` file and select **Mount**.
 
 ![Mounting Office installer](/images/post/2022/2022-04-15-18-52-10-customizing-microsoft-office-installation-01.png)
 
@@ -62,7 +62,7 @@ Ensure that
 
 ## Deploy the Office suite
 
-Open PowerShell as administrator at the location where the Office Deployment Tool was extracted (that's, `D://ODT/`) and execute the following command.
+Open PowerShell as the administrator at the location where the Office Deployment Tool was extracted (that's, `D://ODT/`) and execute the following command.
 
 ```sh prompt{1}
 ./setup.exe /configure ./Configuration.xml
