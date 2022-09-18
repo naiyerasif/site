@@ -12,6 +12,7 @@ explainer
 fenceparser
 Gridsome
 healthcheck
+Hikari
 Jamstack
 (json|JSON)
 Karaf
@@ -22,6 +23,7 @@ Microflash
 Naiyer
 Netlify
 [Nn]ginx
+Nushell
 OAuth
 Ory
 Postgres
