@@ -38,7 +38,7 @@ The new version has an [all-green Lighthouse score](https://web.dev/measure/?url
 
 ### Small carbon footprint
 
-The carbon footprint of the previous version was already small. The redesign [reduces]((https://www.websitecarbon.com/website/mflash-dev/)) this even further.
+The carbon footprint of the previous version was already small. The redesign [reduces](https://www.websitecarbon.com/website/mflash-dev/) this even further.
 
 ![Carbon impact estimates](/images/post/2022/2022-07-13-14-24-12-microflash-version-2-04.png)
 
