@@ -30,3 +30,7 @@ This site doesn't use any ad-networks, trackers, or technologies with specific i
 ### Netlify
 
 This site is hosted on [Netlify](https://www.netlify.com/). Whenever you visit it, Netlify's general [privacy policy](https://www.netlify.com/privacy/) applies.
+
+## Audits
+
+- [Blacklight Privacy Inspection](https://themarkup.org/blacklight?url=mflash.dev)
