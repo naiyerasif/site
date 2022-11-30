@@ -8,6 +8,7 @@ export default {
 		repositoryContext: `https://github.com/Microflash/site/edit/main`,
 		url: 'https://mflash.dev',
 		networks: [
+			{ id: 'mastodon', url: 'https://mastodon.design/@naiyer', username: '@naiyer' },
 			{ id: 'twitter', url: 'https://twitter.com/Microflash', username: '@Microflash' },
 			{ id: 'github', url: 'https://github.com/naiyerasif', username: '@naiyerasif' },
 			{ id: 'linkedin', url: 'https://in.linkedin.com/in/naiyerasif', username: 'naiyerasif' },
