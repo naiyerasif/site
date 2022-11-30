@@ -117,6 +117,9 @@ export default function (metaInfo: MetaInfo) {
 		html += `<meta name="twitter:label1" content="Reading time">`
 		html += `<meta name="twitter:data1" content="${metaInfo.readingTime}">`
 	}
+	
+	const mastodon = app.networks.find(network => network.id === 'mastodon')
+	html += `<link rel="me" href="${mastodon?.url}">`
 
 	html += `<meta itemprop="name" content="${metaInfo.title}">`
 
