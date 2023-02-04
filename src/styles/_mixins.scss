@@ -1,0 +1,14 @@
+@mixin full-bleed {
+	grid-column: 1 / -1;
+	max-inline-size: 100%;
+	overflow: hidden;
+}
+
+@mixin mask($data-uri) {
+	content: "";
+	mask-image: url($data-uri);
+	mask-repeat: no-repeat;
+	mask-position: top center;
+	mask-size: contain;
+	background-color: currentColor;
+}

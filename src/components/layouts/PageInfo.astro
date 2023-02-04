@@ -1,0 +1,95 @@
+---
+import siteInfo, { canonical } from "~universal"
+
+function canonize(pageInfo) {
+	if (pageInfo.url) {
+		pageInfo.url = canonical(pageInfo.url)
+	}
+
+	if (pageInfo.previous) {
+		pageInfo.previous = canonical(pageInfo.previous)
+	}
+
+	if (pageInfo.next) {
+		pageInfo.next = canonical(pageInfo.next)
+	}
+
+	if (pageInfo.source) {
+		pageInfo.source = canonical(pageInfo.source)
+	}
+
+	pageInfo.image = canonical(pageInfo.image || "/images/opengraph/default.png")
+	pageInfo.type = pageInfo.type || "website"
+
+	return pageInfo
+}
+
+const pageInfo = canonize(Astro.props.pageInfo)
+const siteTitle = siteInfo.title
+const siteAuthor = siteInfo.author
+const twitterHandle = siteInfo.networks.twitter.username
+const mastodonUrl = siteInfo.networks.mastodon.uri
+---
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{pageInfo.title} &mdash; {siteTitle}</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="color-scheme" content="dark light">
+<meta name="author" content={siteAuthor}>
+<meta name="theme-color" content="#041516" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#fdf5f1" media="(prefers-color-scheme: light)">
+<link rel="mask-icon" href="/mask-icon.svg" color="#db0b2f">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="sitemap" href="/sitemap.xml">
+<link rel="alternate" type="application/rss+xml" href="/feed.xml">
+{pageInfo.url && <link rel="canonical" href={pageInfo.url}>}
+{pageInfo.source && <link rel="source" href={pageInfo.source}>}
+{pageInfo.previous && <link rel="prev" aria-label="Previous page" href={pageInfo.previous}>}
+{pageInfo.next && <link rel="next" aria-label="Next page" href={pageInfo.next}>}
+{pageInfo.description && <meta name="description" content={pageInfo.description}>}
+<meta property="og:type" content={pageInfo.type}>
+<meta property="og:site_name" content={siteTitle}>
+<meta property="og:locale" content="en">
+<meta property="og:title" content={pageInfo.title}>
+{pageInfo.description && <meta property="og:description" content={pageInfo.description}>}
+{pageInfo.url && <meta property="og:url" content={pageInfo.url}>}
+<meta property="og:image" content={pageInfo.image}>
+{pageInfo.description && <meta property="og:image:alt" content={pageInfo.description}>}
+{pageInfo.published && <meta property="article:published_time" content={pageInfo.published}>}
+{pageInfo.updated && <meta property="article:modified_time" content={pageInfo.updated}>}
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content={pageInfo.title}>
+{pageInfo.description && <meta property="twitter:description" content={pageInfo.description}>}
+<meta name="twitter:image:src" content={pageInfo.image}>
+<meta name="twitter:site" content={twitterHandle}>
+<meta name="twitter:creator" content={twitterHandle}>
+{pageInfo.timeToRead && <meta name="twitter:label1" content="Reading time">}
+{pageInfo.timeToRead && <meta name="twitter:data1" content={pageInfo.timeToRead}>}
+<link rel="me" href={mastodonUrl}>
+<meta itemprop="name" content={pageInfo.title}>
+{pageInfo.description && <meta itemprop="description" content={pageInfo.description}>}
+<meta name="generator" content={Astro.generator}>
+<script src="/fuse@6.6.2.basic.min.js" is:inline></script>
+<style is:global>
+:root {
+	--site-icon-size: 1.5rem;
+}
+@media (hover: none) {
+	:root {
+		--site-icon-size: 24px;
+	}
+}
+.icon {
+	stroke: currentColor;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	fill: none;
+	width: var(--site-icon-size);
+	height: var(--site-icon-size);
+	min-width: var(--site-icon-size);
+	min-height: var(--site-icon-size);
+}
+</style>

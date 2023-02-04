@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"~components/*": ["src/components/*"],
+			"~styles/*": ["src/styles/*"],
+			"~astro-rss": ["src/modules/astro-rss/index.js"],
+			"~datetime": ["src/modules/datetime/index.js"],
+			"~reading-time": ["src/modules/reading-time/index.js"],
+			"~slugifier": ["src/modules/slugifier/index.js"],
+			"~universal": ["src/modules/universal/index.js"]
+		}
+	}
+}

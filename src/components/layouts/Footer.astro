@@ -1,0 +1,34 @@
+---
+import Icon from "~components/atoms/Icon.astro"
+import siteInfo from "~universal"
+---
+
+<footer class="footer wrapper-max" id="bottom">
+	<div class="footer-container">
+		<div class="footer-primary">
+			<div class="footer-message">
+				<p class="subheadline">This is the part where you get in touch and we talk about software, books, and other interesting stuff.</p>
+				<div class="footer-links">
+					<a href={siteInfo.networks.github.uri} aria-label="GitHub" rel="noopener noreferrer"><Icon name="github"/></a>
+					<a href={siteInfo.networks.mastodon.uri} aria-label="Mastodon" rel="noopener noreferrer"><Icon name="mastodon"/></a>
+					<a href={siteInfo.networks.linkedin.uri} aria-label="LinkedIn" rel="noopener noreferrer"><Icon name="linkedin"/></a>
+				</div>
+			</div>
+			<div class="footer-subscription">
+				<p>Keep track of my latest content in your favorite RSS reader. <small>(<a href="https://aboutfeeds.com/" rel="nofollow noopener noreferrer">What's RSS?</a>)</small></p>
+				<div class="footer-rss">
+					<a href="/feed.xml"><Icon name="rss"/> Subscribe to Posts</a><br>
+					<a href="/all.xml"><Icon name="rss"/> Subscribe to Posts and statuses</a><br>
+				</div>
+			</div>
+		</div>
+		<div class="footer-secondary">
+			<div>&copy; 2018 &mdash;&mdash; today, Naiyer Asif</div>
+			<div class="footer-links">
+				<a href="/privacy">Privacy</a>
+				<a href="https://github.com/naiyerasif/naiyer.dev/issues/new" rel="nofollow noopener noreferrer">Report an issue</a>
+				<a href="/sitemap-index.xml">Sitemap</a>
+			</div>
+		</div>
+	</div>
+</footer>

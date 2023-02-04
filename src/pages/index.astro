@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content"
+import Layout from "~components/layouts/Layout.astro"
+import PostCard from "~components/layouts/PostCard.astro"
+import StatusCard from "~components/layouts/StatusCard.astro"
+import Time from "~components/atoms/Time.astro"
+import Icon from "~components/atoms/Icon.astro"
+import { compare } from "~datetime"
+import siteInfo, { postPathname, paginationPathname } from "~universal"
+
+const posts = (await getCollection("post"))
+	.sort((p1, p2) => compare(p1.data.date, p2.data.date))
+	.slice(0, 10)
+
+const pageInfo = {
+	hint: "Home",
+	title: "Home",
+	description: siteInfo.description,
+	url: Astro.url.pathname
+}
+---
+
+<Layout {pageInfo}>
+	<div class="hero" slot="hero">
+		<div class="subheadline inline">
+			<Icon name="recently-published"/> Recently published
+		</div>
+	</div>
+	<main id="content" class="wrapper-base">
+		<div class="showcase">
+			{posts.map(entry => entry.data.category === "status" ? <StatusCard {entry} /> : <PostCard {entry} />)}
+		</div>
+		<div class="action wrapper-max">
+			<div class="action-items pagination">
+				<a href={paginationPathname("posts", 2)} class="button flex">more posts <Icon name="arrow-right-2"/></a>
+			</div>
+		</div>
+	</main>
+</Layout>

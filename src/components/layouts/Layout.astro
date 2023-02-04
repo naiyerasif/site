@@ -1,0 +1,33 @@
+---
+import "~styles/main.scss"
+import PageInfo from "./PageInfo.astro"
+import SkipLink from "~components/atoms/SkipLink.astro"
+import Header from "./Header.astro"
+import Footer from "./Footer.astro"
+import Sprites from "~components/atoms/Sprites.astro"
+
+const { pageInfo, footer = true, ...attribs } = Astro.props
+const hint = pageInfo?.hint
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<PageInfo {pageInfo}/>
+	</head>
+	<body class="site">
+		<SkipLink/>
+		<Header {hint}>
+			<slot name="hero"/>
+		</Header>
+		<main id="content" {...attribs}>
+			<slot/>
+		</main>
+		{footer && <Footer/>}
+		<Sprites/>
+	</body>
+</html>
+
+<script>
+import "@generic-components/components/dialog.js"
+</script>

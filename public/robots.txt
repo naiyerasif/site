@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://naiyer.dev/sitemap-index.xml

@@ -1,0 +1,44 @@
+{
+	"name": "naiyer.dev",
+	"private": true,
+	"type": "module",
+	"version": "3.0.0",
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"postinstall": "astro telemetry disable",
+		"post": "node etc/bin/post.js"
+	},
+	"dependencies": {
+		"@astrojs/sitemap": "^1.0.1",
+		"@generic-components/components": "^1.1.8",
+		"@microflash/rehype-slugify": "^1.0.0",
+		"@microflash/rehype-starry-night": "^2.1.0",
+		"@microflash/remark-callout-directives": "^1.5.0",
+		"@microflash/remark-figure-caption": "^1.0.0",
+		"@microflash/remark-generic-directives": "^2.0.1",
+		"@sindresorhus/slugify": "^2.2.0",
+		"astro": "^2.0.6",
+		"dayjs": "^1.11.7",
+		"feed": "^4.2.2",
+		"postcss-combine-duplicated-selectors": "^10.0.3",
+		"postcss-preset-env": "^8.0.1",
+		"rehype-autolink-headings": "^6.1.1",
+		"rehype-external-links": "^2.0.1",
+		"rehype-stringify": "^9.0.3",
+		"remark-directive": "^2.0.1",
+		"remark-gfm": "^3.0.1",
+		"remark-parse": "^10.0.1",
+		"remark-rehype": "^10.1.0",
+		"remark-smartypants": "^2.0.0",
+		"sass": "^1.58.0",
+		"unified": "^10.1.2"
+	},
+	"devDependencies": {
+		"inquirer": "^9.1.4"
+	},
+	"browserslist": [
+		"defaults, not IE > 0"
+	]
+}

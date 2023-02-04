@@ -1,0 +1,39 @@
+name: deploy
+
+on:
+  push:
+    branches: 
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7.26.3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build site
+        run: pnpm build
+
+      - name: Publish on Netlify
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --prod --dir=dist
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}

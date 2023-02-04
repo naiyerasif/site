@@ -1,0 +1,161 @@
+:where(:not[data-text-size], [data-text-size="regular"]) {
+	--site-text-small: calc(0.8rem + 0.15vw);
+	--site-text-base: calc(1rem + 0.2vw);
+	--site-text-headline: calc(1.5rem + 2vw);
+	--site-text-subheadline: calc(1rem + 0.5vw);
+}
+
+:where([data-text-size="large"]) {
+	--site-text-small: calc(0.9rem + 0.2vw);
+	--site-text-base: calc(1.1rem + 0.25vw);
+	--site-text-headline: calc(1.6rem + 2.25vw);
+	--site-text-subheadline: calc(1.1rem + 0.75vw);
+}
+
+:where(:not[data-theme], [data-theme="dark"]) {
+	color-scheme: dark;
+
+	--site-background-body: hsl(183, 69%, 5%);
+	--site-background-showcase: hsl(183, 69%, 3%);
+	--site-background-code: hsl(183, 19%, 13%);
+	--site-background-selection: hsl(156, 100%, 12%);
+	--site-background-note: hsl(208, 18%, 17%);
+	--site-background-commend: hsl(156, 100%, 8%);
+	--site-background-warn: hsl(20, 100%, 12%);
+	--site-background-deter: hsl(358, 100%, 15%);
+	--site-background-assert: hsl(222, 93%, 18%);
+
+	--site-border-body: hsl(180, 18%, 18%);
+	--site-border-note: hsl(209, 14%, 32%);
+	--site-border-commend: hsl(161, 100%, 18%);
+	--site-border-warn: hsl(23, 100%, 27%);
+	--site-border-deter: hsl(350, 100%, 31%);
+	--site-border-assert: hsl(221, 79%, 41%);
+
+	--site-color-text-c0: hsl(207, 12%, 49%);
+	--site-color-text: hsl(205, 15%, 71%);
+	--site-color-text-c1: hsl(202, 16%, 90%);
+	--site-color-text-c2: hsl(208, 16%, 81%);
+	--site-color-commend: hsl(153, 32%, 55%);
+	--site-color-warn: hsl(27, 91%, 48%);
+	--site-color-deter: hsl(359, 96%, 67%);
+	--site-color-assert: hsl(216, 100%, 71%);
+	--site-color-marker: hsl(180, 8%, 36%);
+	--site-color-scrollbar: hsl(180, 8%, 36%);
+
+	--color-prettylights-syntax-comment: #8b949e;
+	--color-prettylights-syntax-constant: #79c0ff;
+	--color-prettylights-syntax-entity: #d2a8ff;
+	--color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+	--color-prettylights-syntax-entity-tag: #7ee787;
+	--color-prettylights-syntax-keyword: #ff7b72;
+	--color-prettylights-syntax-string: #a5d6ff;
+	--color-prettylights-syntax-variable: #ffa657;
+	--color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+	--color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+	--color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+	--color-prettylights-syntax-carriage-return-text: #f0f6fc;
+	--color-prettylights-syntax-carriage-return-bg: #b62324;
+	--color-prettylights-syntax-string-regexp: #7ee787;
+	--color-prettylights-syntax-markup-list: #f2cc60;
+	--color-prettylights-syntax-markup-heading: #1f6feb;
+	--color-prettylights-syntax-markup-italic: #c9d1d9;
+	--color-prettylights-syntax-markup-bold: #c9d1d9;
+	--color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+	--color-prettylights-syntax-markup-deleted-bg: #67060c;
+	--color-prettylights-syntax-markup-inserted-text: #aff5b4;
+	--color-prettylights-syntax-markup-inserted-bg: #033a16;
+	--color-prettylights-syntax-markup-changed-text: #ffdfb6;
+	--color-prettylights-syntax-markup-changed-bg: #5a1e02;
+	--color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+	--color-prettylights-syntax-markup-ignored-bg: #1158c7;
+	--color-prettylights-syntax-meta-diff-range: #d2a8ff;
+	--color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+	--color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+	--color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+
+	--site-font-regular: 350;
+	--site-font-semibold: 500;
+	--site-font-bold: 600;
+}
+
+:where([data-theme="light"]) {
+	color-scheme: light;
+
+	--site-background-body: hsl(20, 77%, 97%);
+	--site-background-showcase: hsl(20, 67%, 98%);
+	--site-background-code: hsl(20, 65%, 90%);
+	--site-background-selection: hsl(150, 33%, 85%);
+	--site-background-note: hsl(206, 15%, 93%);
+	--site-background-commend: hsl(147, 32%, 89%);
+	--site-background-warn: hsl(24, 100%, 91%);
+	--site-background-deter: hsl(6, 100%, 94%);
+	--site-background-assert: hsl(212, 100%, 93%);
+
+	--site-border-note: hsl(210, 16%, 78%);
+	--site-border-commend: hsl(151, 33%, 72%);
+	--site-border-warn: hsl(24, 100%, 75%);
+	--site-border-deter: hsl(2, 100%, 80%);
+	--site-border-assert: hsl(215, 100%, 80%);
+
+	--site-color-text-c0: hsl(208, 16%, 33%);
+	--site-color-text: hsl(207, 17%, 20%);
+	--site-color-text-c1: hsl(208, 21%, 6%);
+	--site-color-text-c2: hsl(208, 19%, 17%);
+	--site-color-commend: hsl(160, 75%, 30%);
+	--site-color-warn: hsl(26, 100%, 41%);
+	--site-color-deter: hsl(351, 100%, 40%);
+	--site-color-assert: hsl(221, 94%, 57%);
+	--site-border-body: hsl(180, 5%, 76%);
+	--site-color-marker: hsl(180, 4%, 56%);
+	--site-color-scrollbar: hsl(180, 6%, 44%);
+
+	--color-prettylights-syntax-comment: #6e7781;
+	--color-prettylights-syntax-constant: #0550ae;
+	--color-prettylights-syntax-entity: #8250df;
+	--color-prettylights-syntax-storage-modifier-import: #24292f;
+	--color-prettylights-syntax-entity-tag: #116329;
+	--color-prettylights-syntax-keyword: #cf222e;
+	--color-prettylights-syntax-string: #0a3069;
+	--color-prettylights-syntax-variable: #953800;
+	--color-prettylights-syntax-brackethighlighter-unmatched: #82071e;
+	--color-prettylights-syntax-invalid-illegal-text: #f6f8fa;
+	--color-prettylights-syntax-invalid-illegal-bg: #82071e;
+	--color-prettylights-syntax-carriage-return-text: #f6f8fa;
+	--color-prettylights-syntax-carriage-return-bg: #cf222e;
+	--color-prettylights-syntax-string-regexp: #116329;
+	--color-prettylights-syntax-markup-list: #3b2300;
+	--color-prettylights-syntax-markup-heading: #0550ae;
+	--color-prettylights-syntax-markup-italic: #24292f;
+	--color-prettylights-syntax-markup-bold: #24292f;
+	--color-prettylights-syntax-markup-deleted-text: #82071e;
+	--color-prettylights-syntax-markup-deleted-bg: #ffebe9;
+	--color-prettylights-syntax-markup-inserted-text: #116329;
+	--color-prettylights-syntax-markup-inserted-bg: #dafbe1;
+	--color-prettylights-syntax-markup-changed-text: #953800;
+	--color-prettylights-syntax-markup-changed-bg: #ffd8b5;
+	--color-prettylights-syntax-markup-ignored-text: #eaeef2;
+	--color-prettylights-syntax-markup-ignored-bg: #0550ae;
+	--color-prettylights-syntax-meta-diff-range: #8250df;
+	--color-prettylights-syntax-brackethighlighter-angle: #57606a;
+	--color-prettylights-syntax-sublimelinter-gutter-mark: #8c959f;
+	--color-prettylights-syntax-constant-other-reference-link: #0a3069;
+
+	--site-font-regular: 400;
+	--site-font-semibold: 600;
+	--site-font-bold: 700;
+}
+
+:where(html) {
+	--site-adaptive-align-center: start;
+	--site-adaptive-line-thickness-thin: 0;
+	--site-adaptive-radius-base: var(--site-radius-small);
+	--site-adaptive-radius-medium: var(--site-radius-small);
+
+	@media screen and (--window-base) {
+		--site-adaptive-align-center: center;
+		--site-adaptive-line-thickness-thin: var(--site-line-thickness-thin);
+		--site-adaptive-radius-base: var(--site-radius-base);
+		--site-adaptive-radius-medium: var(--site-radius-medium);
+	}
+}

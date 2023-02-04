@@ -1,0 +1,20 @@
+const postcssPresetEnv = require("postcss-preset-env")
+const postcssCombineDuplicatedSelectors = require("postcss-combine-duplicated-selectors")
+
+module.exports = {
+	plugins: [
+		postcssPresetEnv({
+			preserve: true,
+			enableClientSidePolyfills: true,
+			features: {
+				"custom-media-queries": true,
+				"focus-visible-pseudo-class": true,
+				"focus-within-pseudo-class": true,
+				"is-pseudo-class": true,
+				"logical-properties-and-values": true,
+				"media-query-ranges": true,
+			}
+		}),
+		postcssCombineDuplicatedSelectors(),
+	]
+}

@@ -1,0 +1,7 @@
+Asif
+(a|A)utoplay
+(n|N)aiyer
+(p|P)ostgres
+stacktrace
+usecase
+(v|V)ue

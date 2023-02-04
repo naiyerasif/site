@@ -1,0 +1,20 @@
+---
+import slugify from "~slugifier"
+
+const { name, alt, ...attribs } = Astro.props
+const href = `#${name}`
+const attributes = attribs || {}
+const ariaHidden = !alt
+const ariaLabel = !ariaHidden ? slugify(alt) : null
+
+if (ariaLabel) {
+	attributes["aria-labelledby"] = ariaLabel
+} else {
+	attributes["aria-hidden"] = ariaHidden
+}
+---
+
+<svg role="img" class="icon" {...attributes}>
+	{ariaLabel && <title id={ariaLabel}>{alt}</title>}
+	<use href={href}/>
+</svg>

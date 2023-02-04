@@ -1,0 +1,106 @@
+---
+import { getCollection } from "astro:content"
+import Layout from "~components/layouts/Layout.astro"
+import Time from "~components/atoms/Time.astro"
+import Toc from "~components/atoms/Toc.astro"
+import BackToTop from "~components/atoms/BackToTop.astro"
+import Icon from "~components/atoms/Icon.astro"
+import format, { compare, format_date } from "~datetime"
+import readingTime from "~reading-time"
+import siteInfo, { canonical, source, postPathname } from "~universal"
+
+export async function getStaticPaths() {
+	const posts = await getCollection("post")
+	return posts.sort((p1, p2) => compare(p1.data.date, p2.data.date))
+		.map((post, index, posts) => ({ post: post, prev: posts[index - 1], next: posts[index + 1] }))
+		.map(entry => ({
+			params: { slug: entry.post.slug },
+			props: { entry }
+		}))
+}
+
+const { entry } = Astro.props
+const { post, prev, next } = entry
+const { data, render } = post
+const { Content, headings } = await render()
+const category = data.category
+const timeToRead = `${readingTime(post.body).readingTime} min read`
+const editSource = source(`main/src/content/post/${post.id}`)
+const shareableTitle = encodeURI(data.title)
+const shareableLink = postPathname(data.slug)
+const shareViaMail = `mailto:?subject=${data.title}&body=Checkout this article I read! ${shareableLink}`
+const shareViaLinkedIn = `https://www.linkedin.com/sharing/share-offsite/?url=${shareableLink}`
+const shareViaHackerNews = `https://news.ycombinator.com/submitlink?u=${shareableLink}&t=${shareableTitle}`
+const shareViaReddit = `http://www.reddit.com/submit?url=${shareableLink}&title=${shareableTitle}`
+
+const prevPage = prev ? postPathname(prev.slug) : null
+const nextPage = next ? postPathname(next.slug) : null
+
+const pageInfo = {
+	hint: category,
+	title: data.title,
+	description: data.description,
+	url: Astro.url.pathname,
+	source: editSource,
+	type: "article",
+	published: format(data.date, format_date),
+	updated: data.update !== data.date ? format(data.update, format_date) : null,
+	previous: prevPage,
+	next: nextPage,
+	timeToRead: timeToRead
+}
+---
+
+<Layout {pageInfo}>
+	<div class="hero with-metadata" slot="hero">
+		<h1 class="headline" slot="hero">{data.title}</h1>
+		<div class="metadata">
+			<Time date={data.date} />
+			{data.update !== data.date && <span class="update">updated on <Time date={data.update} /></span>}
+			{category !== "status" && timeToRead && <span>~{timeToRead}</span>}
+		</div>
+	</div>
+	<main id="content" class="wrapper-medium">
+		<article class="wrapper-base">
+			{headings && headings.length > 0 && <nav class="toc">
+				<div class="toc-header">Table of Contents</div>
+				<Toc {headings}/>
+			</nav>}
+			<Content/>
+			<div class="recommendations">
+				{prevPage && 
+					<Fragment>
+						<div><span class="chip">Previous</span></div>
+						<a href={prevPage}>{prev.data.title}</a>
+					</Fragment>
+				}
+				{nextPage && 
+					<Fragment>
+						<div><span class="chip">Next</span></div>
+						<a href={nextPage}>{next.data.title}</a>
+					</Fragment>
+				}
+			</div>
+		</article>
+		<div class="action wrapper-max">
+			<div class="action-items post">
+				<a href={shareViaMail} title="Share via email" class="button" rel="noopener noreferrer" target="_blank">
+					<Icon name="mail"/>
+				</a>
+				<a href={shareViaLinkedIn} title="Post on LinkedIn" class="button" rel="noopener noreferrer" target="_blank">
+					<Icon name="linkedin"/>
+				</a>
+				<a href={shareViaHackerNews} title="Submit to Hacker News" class="button" rel="noopener noreferrer" target="_blank">
+					<Icon name="hacker-news"/>
+				</a>
+				<a href={shareViaReddit} title="Post on Reddit" class="button" rel="noopener noreferrer" target="_blank">
+					<Icon name="reddit"/>
+				</a>
+				<a href={editSource} title="Edit the post" class="button" rel="noopener noreferrer">
+					<Icon name="edit-line"/>
+				</a>
+				<BackToTop />
+			</div>
+		</div>
+	</main>
+</Layout>

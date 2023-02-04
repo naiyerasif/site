@@ -1,0 +1,42 @@
+---
+import Layout from "~components/layouts/Layout.astro"
+
+const pageInfo = {
+	hint: "Not found",
+	title: "404 Not found",
+	description: "Page not found",
+	url: Astro.url.pathname
+}
+---
+
+<Layout {pageInfo} footer={false} class="wrapper-max" style="height: 60vh">
+	<div class="glitch">
+		<div class="image-container">
+			<img src="/images/remix/remix-glitch.svg">
+		</div>
+		<h1 class="headline">
+			<random-404-messages></random-404-messages>
+		</h1>
+		<p class="subheadline">
+			<a href="/">Take me home.</a>
+		</p>
+	</div>
+</Layout>
+
+<script>
+export class Random404Messages extends HTMLElement {
+	static tagName = "random-404-messages"
+
+	static #messages = [
+		`This page is missing.`,
+		`There’s nothing here.`,
+		`This link is broken.`,
+	]
+
+	connectedCallback() {
+		this.textContent = Random404Messages.#messages[Math.floor(Math.random() * Random404Messages.#messages.length)]
+	}
+}
+
+customElements.define(Random404Messages.tagName, Random404Messages)
+</script>

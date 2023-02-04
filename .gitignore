@@ -1,0 +1,23 @@
+# build output
+dist/
+.output/
+.astro/
+*.d.ts
+search-index.json
+
+# dependencies
+node_modules/
+
+# logs
+*.log*
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store
+
+# vscode
+.vscode
+.workspace
