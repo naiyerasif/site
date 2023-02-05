@@ -1,18 +1,20 @@
-:where(:not[data-text-size], [data-text-size="regular"]) {
+:root:not([data-text-size]), 
+[data-text-size="regular"] {
 	--site-text-small: calc(0.8rem + 0.15vw);
 	--site-text-base: calc(1rem + 0.2vw);
 	--site-text-headline: calc(1.5rem + 2vw);
 	--site-text-subheadline: calc(1rem + 0.5vw);
 }
 
-:where([data-text-size="large"]) {
+[data-text-size="large"] {
 	--site-text-small: calc(0.9rem + 0.2vw);
 	--site-text-base: calc(1.1rem + 0.25vw);
 	--site-text-headline: calc(1.6rem + 2.25vw);
 	--site-text-subheadline: calc(1.1rem + 0.75vw);
 }
 
-:where(:not[data-theme], [data-theme="dark"]) {
+:root:not([data-theme]), 
+[data-theme="dark"] {
 	color-scheme: dark;
 
 	--site-background-body: hsl(183, 69%, 5%);
@@ -79,7 +81,7 @@
 	--site-font-bold: 600;
 }
 
-:where([data-theme="light"]) {
+[data-theme="light"] {
 	color-scheme: light;
 
 	--site-background-body: hsl(20, 77%, 97%);
