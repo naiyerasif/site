@@ -9,6 +9,7 @@ import remarkFigCaption from "@microflash/remark-figure-caption"
 import remarkCalloutDirectives from "@microflash/remark-callout-directives"
 import remarkGenericDirectives from "@microflash/remark-generic-directives"
 import youtube from "@microflash/remark-generic-directives/directives/youtube"
+import tweet from "./src/modules/generic-directives/tweet.js"
 import postscript from "./src/modules/generic-directives/postscript.js"
 import siteInfo from "./src/modules/universal/index.js"
 import { CountableSlugifier } from "./src/modules/slugifier/index.js"
@@ -35,6 +36,7 @@ export default defineConfig({
 				remarkGenericDirectives,
 				{
 					directives: {
+						tweet,
 						postscript,
 						youtube
 					}

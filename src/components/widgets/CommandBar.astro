@@ -10,18 +10,18 @@ import Icon from "~components/atoms/Icon.astro"
 const commandBarTemplate = document.createElement("template")
 commandBarTemplate.innerHTML = `
 <generic-dialog close-on-outside-click close-on-escape id="command-bar">
-	<button slot="invoker" part="opener" type="button">
+	<button slot="invoker" part="opener" type="button" aria-label="Open command center">
 		<slot name="opener"></slot>
 	</button>
 	<div slot="content" class="command-bar-items">
 		<header class="command-bar-header">
 			<input id="search-box" placeholder="Search for something...">
-			<button id="resetter" part="resetter" type="reset">
+			<button id="resetter" part="resetter" type="reset" aria-label="Reset search box">
 				<svg role="img" class="icon" aria-hidden="true">
 					<use href="#undo"/>
 				</svg>
 			</button>
-			<button id="escaper" part="escaper" type="button">
+			<button id="escaper" part="escaper" type="button" aria-label="Close command center">
 				<svg role="img" class="icon" aria-hidden="true">
 					<use href="#x"/>
 				</svg>

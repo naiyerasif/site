@@ -8,7 +8,8 @@
 		"build": "astro build",
 		"preview": "astro preview",
 		"postinstall": "astro telemetry disable",
-		"post": "node etc/bin/post.js"
+		"post": "node etc/bin/post.js",
+		"lighthouse": "unlighthouse-puppeteer --site http://localhost:8080"
 	},
 	"dependencies": {
 		"@astrojs/sitemap": "^1.0.1",
@@ -36,7 +37,9 @@
 		"unified": "^10.1.2"
 	},
 	"devDependencies": {
-		"inquirer": "^9.1.4"
+		"inquirer": "^9.1.4",
+		"puppeteer": "^19.6.3",
+		"unlighthouse-puppeteer": "^0.4.9"
 	},
 	"browserslist": [
 		"defaults, not IE > 0"
