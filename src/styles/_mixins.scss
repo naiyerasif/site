@@ -12,3 +12,15 @@
 	mask-size: contain;
 	background-color: currentColor;
 }
+
+@mixin windowSmall {
+	@media screen and (max-width: 47.999rem) {
+		@content;
+	}
+}
+
+@mixin windowBase {
+	@media screen and (min-width: 48rem) {
+		@content;
+	}
+}

@@ -25,7 +25,7 @@ button,
 	--site-button-border: transparent;
 
 	outline: none;
-	border: var(--site-line-thickness-base) solid var(--site-button-border);
+	border: var(--site-line-thickness-thick) solid var(--site-button-border);
 	border-radius: var(--site-radius-base);
 	color: var(--site-button-color);
 	background-color: var(--site-button-background);
@@ -221,7 +221,7 @@ button,
 	gap: 1rem;
 	margin-block-start: var(--site-vgap-base);
 
-	@media screen and (--window-base) {
+	@include mixins.windowBase {
 		grid-template-columns: max-content 3fr;
 	}
 
@@ -270,7 +270,7 @@ button,
 .command-bar {
 	&-items {
 		background-color: var(--site-background-body);
-		border: var(--site-line-thickness-thin) solid var(--site-border-body);
+		border: var(--site-line-thickness-base) solid var(--site-border-body);
 		border-radius: var(--site-radius-base);
 		
 		* {
@@ -309,7 +309,7 @@ button,
 	&-section {
 
 		& > * {
-			border-block-start: var(--site-line-thickness-thin) solid var(--site-border-body);
+			border-block-start: var(--site-line-thickness-base) solid var(--site-border-body);
 		}
 
 		.command-item {
@@ -320,7 +320,7 @@ button,
 			font-size: 0.9em;
 
 			&:not(:first-child) {
-				border-block-start: var(--site-line-thickness-thin) dotted var(--site-border-note);
+				border-block-start: var(--site-line-thickness-base) dotted var(--site-border-body);
 			}
 
 			&:is(:focus, :hover) {

@@ -31,8 +31,8 @@ article.wrapper-base {
 
 	.image-container img,
 	.image-container svg {
-		box-shadow: 0 0 var(--site-line-thickness-base) var(--site-border-note);
-		border-radius: var(--site-adaptive-radius-base);
+		box-shadow: 0 0 var(--site-line-thickness-thick) var(--site-border-body);
+		border-radius: var(--site-adaptive-radius-medium);
 		background-color: var(--site-background-showcase);
 		margin-inline: auto;
 	}
@@ -50,7 +50,7 @@ article.wrapper-base {
 	&:focus-within {
 		outline-color: var(--site-color-link-hover);
 		outline-style: solid;
-		outline-width: var(--site-line-thickness-base);
+		outline-width: var(--site-line-thickness-thick);
 		outline-offset: var(--site-line-inset-base);
 	}
 
@@ -58,7 +58,7 @@ article.wrapper-base {
 		display: flex;
 		align-items: center;
 		gap: 1ch;
-		border-block-end: var(--site-line-thickness-thin) solid var(--site-border-body);
+		border-block-end: var(--site-line-thickness-base) solid var(--site-border-body);
 		padding: 1ch;
 		font-size: var(--site-text-small);
 	}
@@ -83,7 +83,7 @@ article.wrapper-base {
 	}
 
 	.line {
-		border-inline-start: var(--site-line-thickness-base) solid transparent;
+		border-inline-start: var(--site-line-thickness-thick) solid transparent;
 		padding-inline: 1em;
 
 		&:is(:focus:not(:focus-visible), :hover) {
@@ -150,9 +150,9 @@ article.wrapper-base {
 .callout {
 	--callout-color: var(--site-color-text-c2);
 	--callout-background: var(--site-background-note);
-	--callout-radius: var(--site-adaptive-radius-base);
+	--callout-radius: var(--site-adaptive-radius-medium);
 	--callout-padding: var(--site-hgap-base);
-	--callout-border: var(--site-line-thickness-base) solid var(--callout-border-color, var(--site-border-note));
+	--callout-border: var(--site-line-thickness-base) solid var(--callout-border-color, var(--site-border-body));
 	border: var(--callout-border);
 	border-radius: var(--callout-radius);
 	background: var(--callout-background);
@@ -171,7 +171,6 @@ article.wrapper-base {
 		align-items: center;
 		padding: calc(var(--callout-padding) / 2) var(--callout-padding);
 		border-block-end: var(--callout-border);
-		border-block-end-style: dotted;
 	}
 
 	&-hint {

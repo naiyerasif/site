@@ -8,7 +8,7 @@
 		gap: 1rem;
 		margin-block-start: var(--site-vgap-base);
 
-		@media screen and (--window-base) {
+		@include mixins.windowBase {
 			grid-template-columns: max-content 3fr;
 		}
 
@@ -45,7 +45,7 @@
 
 	&-tweet {
 		background-color: var(--site-background-showcase);
-		border: var(--site-line-thickness-thin) solid var(--site-border-body);
+		border: var(--site-line-thickness-base) solid var(--site-border-body);
 		border-radius: var(--site-radius-medium);
 		padding: 1em;
 
@@ -65,7 +65,7 @@
 
 			&-image {
 				border-radius: var(--site-radius-round);
-				border: var(--site-line-thickness-thin) solid var(--site-border-body);
+				border: var(--site-line-thickness-base) solid var(--site-border-body);
 				inline-size: 48px;
 				block-size: 48px;
 			}

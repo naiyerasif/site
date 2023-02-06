@@ -1,8 +1,0 @@
-@custom-media --window-small (width < 48rem);
-@custom-media --window-base (width >= 48rem);
-@custom-media --motion-ok (prefers-reduced-motion: no-preference);
-
-:where(html) {
-	--font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-	--font-mono: ui-monospace, SFMono-Regular, "Roboto Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-}

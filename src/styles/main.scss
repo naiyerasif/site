@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-@use "props/_tokens.css";
 @use "core/preset";
 @use "website/fonts";
 
@@ -13,5 +12,3 @@
 @use "website/layouts";
 @use "website/content";
 @use "website/directives";
-// @use "old/website/global";
-// @use "old/website/layout";

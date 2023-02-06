@@ -51,7 +51,7 @@
 	&:focus-visible {
 		outline-color: var(--site-color-link-hover);
 		outline-style: solid;
-		outline-width: var(--site-line-thickness-base);
+		outline-width: var(--site-line-thickness-thick);
 		outline-offset: var(--site-line-offset-base);
 	}
 }
@@ -120,7 +120,7 @@
 	background-color: var(--site-border-body);
 	border: none;
 	display: block;
-	block-size: var(--site-line-thickness-thin);
+	block-size: var(--site-line-thickness-base);
 	margin-block: var(--site-vgap-base);
 }
 

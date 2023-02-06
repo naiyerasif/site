@@ -1,49 +1,33 @@
-:root:not([data-text-size]), 
-[data-text-size="regular"] {
-	--site-text-small: calc(0.8rem + 0.15vw);
-	--site-text-base: calc(1rem + 0.2vw);
-	--site-text-headline: calc(1.5rem + 2vw);
-	--site-text-subheadline: calc(1rem + 0.5vw);
-}
-
-[data-text-size="large"] {
-	--site-text-small: calc(0.9rem + 0.2vw);
-	--site-text-base: calc(1.1rem + 0.25vw);
-	--site-text-headline: calc(1.6rem + 2.25vw);
-	--site-text-subheadline: calc(1.1rem + 0.75vw);
-}
-
-:root:not([data-theme]), 
+:root:not([data-theme]), /* fallback when JavaScript is not available */
 [data-theme="dark"] {
 	color-scheme: dark;
 
-	--site-background-body: hsl(183, 69%, 5%);
-	--site-background-showcase: hsl(183, 69%, 3%);
-	--site-background-code: hsl(183, 19%, 13%);
-	--site-background-selection: hsl(156, 100%, 12%);
-	--site-background-note: hsl(208, 18%, 17%);
-	--site-background-commend: hsl(156, 100%, 8%);
-	--site-background-warn: hsl(20, 100%, 12%);
-	--site-background-deter: hsl(358, 100%, 15%);
-	--site-background-assert: hsl(222, 93%, 18%);
+	--site-background-body: hsl(240, 14%, 7%);
+	--site-background-showcase: hsl(240, 14%, 4%);
+	--site-background-code: hsl(240, 8%, 15%);
+	--site-background-selection: hsl(158, 100%, 14%);
+	--site-background-note: hsl(208, 21%, 12%);
+	--site-background-commend: hsl(152, 100%, 7%);
+	--site-background-warn: hsl(29, 100%, 10%);
+	--site-background-deter: hsl(359, 100%, 13%);
+	--site-background-assert: hsl(216, 100%, 14%);
 
-	--site-border-body: hsl(180, 18%, 18%);
-	--site-border-note: hsl(209, 14%, 32%);
-	--site-border-commend: hsl(161, 100%, 18%);
-	--site-border-warn: hsl(23, 100%, 27%);
-	--site-border-deter: hsl(350, 100%, 31%);
-	--site-border-assert: hsl(221, 79%, 41%);
+	--site-border-body: hsl(207, 17%, 25%);
+	--site-border-commend: hsl(160, 100%, 15%);
+	--site-border-warn: hsl(33, 100%, 19%);
+	--site-border-deter: hsl(357, 100%, 25%);
+	--site-border-assert: hsl(213, 91%, 30%);
 
-	--site-color-text-c0: hsl(207, 12%, 49%);
-	--site-color-text: hsl(205, 15%, 71%);
-	--site-color-text-c1: hsl(202, 16%, 90%);
-	--site-color-text-c2: hsl(208, 16%, 81%);
-	--site-color-commend: hsl(153, 32%, 55%);
-	--site-color-warn: hsl(27, 91%, 48%);
-	--site-color-deter: hsl(359, 96%, 67%);
-	--site-color-assert: hsl(216, 100%, 71%);
-	--site-color-marker: hsl(180, 8%, 36%);
-	--site-color-scrollbar: hsl(180, 8%, 36%);
+	--site-color-text-c0: hsl(209, 15%, 66%);
+	--site-color-text: hsl(210, 15%, 74%);
+	--site-color-text-c1: hsl(212, 16%, 84%);
+	--site-color-text-c2: hsl(206, 16%, 81%);
+	--site-color-commend: hsl(154, 32%, 52%);
+	--site-color-warn: hsl(37, 100%, 44%);
+	--site-color-deter: hsl(359, 98%, 71%);
+	--site-color-assert: hsl(213, 100%, 66%);
+	--site-color-marker: hsl(208, 14%, 39%);
+	--site-color-scrollbar: hsl(209, 15%, 33%);
 
 	--color-prettylights-syntax-comment: #8b949e;
 	--color-prettylights-syntax-constant: #79c0ff;
@@ -84,33 +68,32 @@
 [data-theme="light"] {
 	color-scheme: light;
 
-	--site-background-body: hsl(20, 77%, 97%);
-	--site-background-showcase: hsl(20, 67%, 98%);
-	--site-background-code: hsl(20, 65%, 90%);
-	--site-background-selection: hsl(150, 33%, 85%);
-	--site-background-note: hsl(206, 15%, 93%);
-	--site-background-commend: hsl(147, 32%, 89%);
-	--site-background-warn: hsl(24, 100%, 91%);
-	--site-background-deter: hsl(6, 100%, 94%);
-	--site-background-assert: hsl(212, 100%, 93%);
+	--site-background-body: hsl(27, 100%, 98%);
+	--site-background-showcase: hsl(27, 100%, 100%);
+	--site-background-code: hsl(20, 64%, 90%);
+	--site-background-selection: hsl(148, 36%, 86%);
+	--site-background-note: hsl(210, 15%, 94%);
+	--site-background-commend: hsl(148, 31%, 93%);
+	--site-background-warn: hsl(33, 95%, 92%);
+	--site-background-deter: hsl(4, 100%, 95%);
+	--site-background-assert: hsl(208, 100%, 94%);
 
-	--site-border-note: hsl(210, 16%, 78%);
-	--site-border-commend: hsl(151, 33%, 72%);
-	--site-border-warn: hsl(24, 100%, 75%);
-	--site-border-deter: hsl(2, 100%, 80%);
-	--site-border-assert: hsl(215, 100%, 80%);
+	--site-border-body: hsl(207, 15%, 75%);
+	--site-border-commend: hsl(151, 33%, 68%);
+	--site-border-warn: hsl(33, 96%, 64%);
+	--site-border-deter: hsl(3, 100%, 80%);
+	--site-border-assert: hsl(210, 100%, 76%);
 
-	--site-color-text-c0: hsl(208, 16%, 33%);
-	--site-color-text: hsl(207, 17%, 20%);
-	--site-color-text-c1: hsl(208, 21%, 6%);
-	--site-color-text-c2: hsl(208, 19%, 17%);
-	--site-color-commend: hsl(160, 75%, 30%);
-	--site-color-warn: hsl(26, 100%, 41%);
-	--site-color-deter: hsl(351, 100%, 40%);
-	--site-color-assert: hsl(221, 94%, 57%);
-	--site-border-body: hsl(180, 5%, 76%);
-	--site-color-marker: hsl(180, 4%, 56%);
-	--site-color-scrollbar: hsl(180, 6%, 44%);
+	--site-color-text-c0: hsl(208, 14%, 40%);
+	--site-color-text: hsl(209, 16%, 28%);
+	--site-color-text-c1: hsl(208, 18%, 18%);
+	--site-color-text-c2: hsl(210, 17%, 23%);
+	--site-color-commend: hsl(162, 100%, 24%);
+	--site-color-warn: hsl(35, 100%, 31%);
+	--site-color-deter: hsl(350, 100%, 40%);
+	--site-color-assert: hsl(214, 83%, 42%);
+	--site-color-marker: hsl(208, 14%, 64%);
+	--site-color-scrollbar: hsl(208, 12%, 51%);
 
 	--color-prettylights-syntax-comment: #6e7781;
 	--color-prettylights-syntax-constant: #0550ae;
@@ -146,18 +129,4 @@
 	--site-font-regular: 400;
 	--site-font-semibold: 600;
 	--site-font-bold: 700;
-}
-
-:where(html) {
-	--site-adaptive-align-center: start;
-	--site-adaptive-line-thickness-thin: 0;
-	--site-adaptive-radius-base: var(--site-radius-small);
-	--site-adaptive-radius-medium: var(--site-radius-small);
-
-	@media screen and (--window-base) {
-		--site-adaptive-align-center: center;
-		--site-adaptive-line-thickness-thin: var(--site-line-thickness-thin);
-		--site-adaptive-radius-base: var(--site-radius-base);
-		--site-adaptive-radius-medium: var(--site-radius-medium);
-	}
 }

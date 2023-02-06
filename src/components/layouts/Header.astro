@@ -1,6 +1,5 @@
 ---
 import Icon from "~components/atoms/Icon.astro"
-import TextSizeSwitcher from "~components/widgets/TextSizeSwitcher.astro"
 import ThemeSwitcher from "~components/widgets/ThemeSwitcher.astro"
 import CommandBar from "~components/widgets/CommandBar.astro"
 import BackToTop from "~components/atoms/BackToTop.astro"
@@ -22,7 +21,6 @@ const { hint = "Home" } = Astro.props
 				<a href="/posts/">Posts</a>
 				<a href="/stacktrace/">Stacktrace</a>
 				<a href="/about/">About</a>
-				<TextSizeSwitcher/>
 				<ThemeSwitcher/>
 			</nav>
 			<CommandBar/>

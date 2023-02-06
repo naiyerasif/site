@@ -37,14 +37,6 @@ const defaults = [
 					<use href="#sun"></use>
 				</svg>
 			</theme-switcher>
-			<text-size-switcher>
-				<svg role="img" class="icon" slot="text-size-regular" aria-hidden="true">
-					<use href="#text-size-regular"></use>
-				</svg>
-				<svg role="img" class="icon" slot="text-size-large" aria-hidden="true">
-					<use href="#text-size-large"></use>
-				</svg>
-			</text-size-switcher>
 		`,
 		"section": "Preferences"
 	}

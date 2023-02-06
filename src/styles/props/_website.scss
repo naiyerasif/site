@@ -1,4 +1,6 @@
-:where(html) {
+@use "../mixins";
+
+:root {
 	--site-font-body: var(--site-font-sans);
 	--site-font-code: var(--site-font-mono);
 
@@ -12,8 +14,8 @@
 	--site-hgap-base-x2: calc(var(--site-hgap-base) * 2);
 	--site-width-medium: calc(var(--site-width-base) + var(--site-hgap-base-x2));
 
-	--site-line-thickness-thin: 1px;
-	--site-line-thickness-base: 2px;
+	--site-line-thickness-base: 1px;
+	--site-line-thickness-thick: 2px;
 	--site-line-offset-base: 0.125em;
 	--site-line-inset-base: calc(var(--site-line-offset-base) * -1);
 
@@ -51,10 +53,22 @@
 	--site-vgap-large: calc(60px + 3vw);
 }
 
-:where(html) {
+:root {
 	--site-adaptive-color-link: var(--site-color-link);
 	--site-adaptive-background-link: var(--site-background-link);
 	--site-adaptive-border-link: var(--site-border-link);
+
+	--site-adaptive-align-center: start;
+	--site-adaptive-line-thickness-base: 0;
+	--site-adaptive-radius-base: var(--site-radius-small);
+	--site-adaptive-radius-medium: var(--site-radius-small);
+
+	@include mixins.windowBase {
+		--site-adaptive-align-center: center;
+		--site-adaptive-line-thickness-base: var(--site-line-thickness-base);
+		--site-adaptive-radius-base: var(--site-radius-base);
+		--site-adaptive-radius-medium: var(--site-radius-medium);
+	}
 }
 
 :where(a[href], area, button, input, label[for], select, summary, textarea, [tabindex]:not([tabindex*='-'])),

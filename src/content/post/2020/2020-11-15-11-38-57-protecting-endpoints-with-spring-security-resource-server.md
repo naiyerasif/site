@@ -39,7 +39,7 @@ The examples in this post use
 
 We'll use [Okta](https://okta.com) as the identity provider (IdP) but you can use any other provider that supports the `aud` claim and introspection.
 
-### Okta setup
+## Okta setup
 
 To get started with Okta, create a developer account and login to your dashboard. Open the *Application* tab and click on the *Add Application* button.
 
@@ -65,7 +65,7 @@ Switch to the *Scopes* tab, and click on the *Add Scope* button. Add a scope wit
 
 Similarly, add another scope with the name `write:messages`. This finishes Okta setup.
 
-### Generate Maven project
+## Generate Maven project
 
 Generate a Maven project with the following `pom.xml`.
 

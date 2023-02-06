@@ -7,12 +7,10 @@ module.exports = {
 			preserve: true,
 			enableClientSidePolyfills: true,
 			features: {
-				"custom-media-queries": true,
 				"focus-visible-pseudo-class": true,
 				"focus-within-pseudo-class": true,
 				"is-pseudo-class": true,
 				"logical-properties-and-values": true,
-				"media-query-ranges": true,
 			}
 		}),
 		postcssCombineDuplicatedSelectors(),

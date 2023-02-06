@@ -52,10 +52,11 @@ export class ThemeSwitcher extends HTMLElement {
 			this.#currentTheme = event.detail.theme
 			this.#updateDom()
 		})
+
+		this.#setTheme(this.#currentTheme || (this.#query.matches ? ThemeSwitcher.#darkTheme : ThemeSwitcher.#lightTheme))
 	}
  
 	connectedCallback() {
-		this.#setTheme(this.#currentTheme || (this.#query.matches ? ThemeSwitcher.#darkTheme : ThemeSwitcher.#lightTheme))
 		this.#switcher.addEventListener("click", this.#clickHandler)
 		this.#query.addEventListener("change", this.#changeHandler)
 	}

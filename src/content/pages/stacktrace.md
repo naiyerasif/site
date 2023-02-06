@@ -10,7 +10,7 @@ Here's a trace of technology stacks and projects that I've worked on.
 
 ## 2023
 
-#### Aerospace
+**Aerospace**
 
 - Java
 - [Spring Boot](https://github.com/spring-projects/spring-boot)
@@ -22,18 +22,18 @@ Here's a trace of technology stacks and projects that I've worked on.
 - [Docker](https://www.docker.com/)
 - [Postgres](https://www.postgresql.org/)
 
-#### Open source
+**Open source**
 
 - [remark-callout-directives](https://github.com/Microflash/remark-callout-directives): A Remark plugin to render callouts and admonitions with [directives](https://talk.commonmark.org/t/generic-directives-plugins-syntax/444)
 - [rehype-starry-night](https://github.com/Microflash/rehype-starry-night): A Rehype plugin to highlight codeblocks with [Starry Night](https://github.com/wooorm/starry-night)
 
-#### Personal
+**Personal**
 
 - [naiyer.dev](https://github.com/naiyerasif/naiyer.dev): The third version of this site built with [Astro](https://astro.build/)
 
 ## 2022
 
-#### Aerospace
+**Aerospace**
 
 - Java
 - [Spring Boot](https://github.com/spring-projects/spring-boot)
@@ -46,7 +46,7 @@ Here's a trace of technology stacks and projects that I've worked on.
 - [Docker](https://www.docker.com/)
 - [Postgres](https://www.postgresql.org/)
 
-#### Open source
+**Open source**
 
 - [remark-starry-night](https://github.com/Microflash/remark-starry-night): A Remark plugin to highlight codeblocks with [Starry Night](https://github.com/wooorm/starry-night)
 - [rehype-toc](https://github.com/Microflash/rehype-toc): A Rehype plugin to generate a table of contents
@@ -55,13 +55,13 @@ Here's a trace of technology stacks and projects that I've worked on.
 - [remark-figure-caption](https://github.com/Microflash/remark-figure-caption): A Remark plugin to transform images with alt text to figures with captions
 - [Vector Grids](https://github.com/Microflash/vector-grids): A server-side random vector grid generator
 
-#### Personal
+**Personal**
 
 - [Microflash v2](https://github.com/Microflash/site.v2): The second version of this site built with [Lume](https://lume.land/) and [Alpine.js](https://alpinejs.dev/)
 
 ## 2021
 
-#### Aerospace
+**Aerospace**
 
 - Java
 - [Spring Boot](https://github.com/spring-projects/spring-boot)
@@ -73,7 +73,7 @@ Here's a trace of technology stacks and projects that I've worked on.
 
 ## 2020
 
-#### Aerospace
+**Aerospace**
 
 - Java
 - [Spring Boot](https://github.com/spring-projects/spring-boot)
@@ -83,14 +83,14 @@ Here's a trace of technology stacks and projects that I've worked on.
 - [Postgres](https://www.postgresql.org/)
 - Oracle Database
 
-#### Open source
+**Open source**
 
 - [Spritely](https://github.com/Microflash/spritely): A handy Node.js command-line tool to generate SVG sprites
 - [Gridsome Feed Plugin](https://github.com/Microflash/gridsome-plugin-feed): A Gridsome plugin to generate RSS, Atom and JSON feeds
 
 ## 2019
 
-#### Aerospace
+**Aerospace**
 
 - Java
 - [Spring MVC](https://github.com/spring-projects/spring-framework)
@@ -101,18 +101,18 @@ Here's a trace of technology stacks and projects that I've worked on.
 - [Play Framework](https://github.com/playframework/playframework)
 - [Jenkins](https://www.jenkins.io/)
 
-#### Personal
+**Personal**
 
 - [Microflash v1](https://github.com/Microflash/site.v1): The first version of this site built with [Gridsome](https://github.com/gridsome/gridsome) and [Vue 2](https://github.com/vuejs/vue)
 
 ## 2018
 
-#### Aerospace
+**Aerospace**
 
 - [Apache Karaf](https://karaf.apache.org/)
 - [Play Framework](https://github.com/playframework/playframework)
 
-#### Legal and compliance
+**Legal and compliance**
 
 - Java
 - [Angular](https://github.com/angular/angular)
@@ -123,13 +123,13 @@ Here's a trace of technology stacks and projects that I've worked on.
 - [Jenkins](https://www.jenkins.io/)
 - [MongoDB](https://www.mongodb.com/)
 
-#### Open source
+**Open source**
 
 - [Succinct](https://succinct.mflash.dev/): A Vuepress theme with support for dark and light modes, and web-fonts
 
 ## 2017&mdash;2016
 
-#### Financial
+**Financial**
 
 - Java
 - [Oracle Data Integrator](https://www.oracle.com/in/middleware/technologies/data-integrator.html)
