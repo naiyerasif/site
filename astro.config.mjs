@@ -22,6 +22,18 @@ export default defineConfig({
 		port: 8080
 	},
 	integrations: [sitemap()],
+	vite: {
+		server: {
+			watch: {
+				ignored: [
+					"**/.git/**",
+					"**/.unlighthouse/**",
+					"**/.workspace/**",
+					"**/node_modules/**",
+				],
+			},
+		},
+	},
 	markdown: {
 		syntaxHighlight: false,
 		remarkPlugins: [

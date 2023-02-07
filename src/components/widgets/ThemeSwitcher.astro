@@ -19,19 +19,15 @@ themeSwitcherTemplate.innerHTML = `
 export class ThemeSwitcher extends HTMLElement {
 	static tagName = "theme-switcher"
 	static #eventName = "themechange"
-	static #storageKey = "theme"
 	static #darkTheme = "dark"
 	static #lightTheme = "light"
 	static #values = [ThemeSwitcher.#darkTheme, ThemeSwitcher.#lightTheme]
-	static #defaultValue = ThemeSwitcher.#darkTheme
 	static #ariaLabels = ThemeSwitcher.#values.reduce((v, theme) => ({ ...v, [theme]: `${theme.charAt(0).toUpperCase()}${theme.substring(1)} theme`}), {})
-
-	#currentTheme = null
-	#states = null
+	
 	#switcher = null
+	#currentTheme = window.__theme || ThemeSwitcher.#darkTheme
+	#states = null
 	#clickHandler = (event) => this.#switchTheme()
-	#changeHandler = (event) => this.#setTheme(event.matches ? ThemeSwitcher.#darkTheme : ThemeSwitcher.#lightTheme)
-	#query = matchMedia("(prefers-color-scheme: dark)")
 
 	constructor() {
 		super()
@@ -39,62 +35,36 @@ export class ThemeSwitcher extends HTMLElement {
 		const shadowRoot = this.attachShadow({ mode: "open" })
 		shadowRoot.append(themeSwitcherTemplate.content.cloneNode(true))
 
-		try {
-			this.#currentTheme = localStorage.getItem(ThemeSwitcher.#storageKey)
-		} catch (e) {
-			this.#currentTheme = ThemeSwitcher.#defaultValue
-		}
-
 		this.#switcher = shadowRoot.querySelector(`#${ThemeSwitcher.tagName}`)
-		this.#states = ThemeSwitcher.#values.reduce((v, theme) => ({ ...v, [theme]: shadowRoot.querySelector(`slot[name="${ThemeSwitcher.#storageKey}-${theme}"]`)}), {})
+		this.#states = ThemeSwitcher.#values.reduce((v, theme) => ({ ...v, [theme]: shadowRoot.querySelector(`slot[name="theme-${theme}"]`)}), {})
 
 		document.addEventListener(ThemeSwitcher.#eventName, (event) => {
 			this.#currentTheme = event.detail.theme
 			this.#updateDom()
 		})
-
-		this.#setTheme(this.#currentTheme || (this.#query.matches ? ThemeSwitcher.#darkTheme : ThemeSwitcher.#lightTheme))
 	}
- 
+
 	connectedCallback() {
+		this.#updateDom()
 		this.#switcher.addEventListener("click", this.#clickHandler)
-		this.#query.addEventListener("change", this.#changeHandler)
 	}
 
 	disconnectedCallback() {
 		this.#switcher.removeEventListener("click", this.#clickHandler)
-		this.#query.removeEventListener("change", this.#changeHandler)
-	}
-
-	#setTheme(newTheme) {
-		this.#currentTheme = newTheme
-		document.firstElementChild.setAttribute("data-theme", newTheme)
-		this.#updateDom()
-		this.#dispatchEvent({ theme: this.#currentTheme })
-
-		try {
-			localStorage.setItem(ThemeSwitcher.#storageKey, newTheme)
-		} catch (e) {}
 	}
 
 	#switchTheme() {
 		const currentIndex = ThemeSwitcher.#values.indexOf(this.#currentTheme)
 		const nextIndex = (currentIndex + 1) % ThemeSwitcher.#values.length
 		const newTheme = ThemeSwitcher.#values[nextIndex]
-		this.#setTheme(newTheme)
+		window.__setPreferredTheme(newTheme)
+		this.#currentTheme = newTheme
+		this.#updateDom()
 	}
 
 	#updateDom() {
 		this.#switcher.setAttribute("aria-label", ThemeSwitcher.#ariaLabels[this.#currentTheme])
 		ThemeSwitcher.#values.forEach(theme => this.#states[theme].style.display = theme === this.#currentTheme ? "revert" : "none")
-	}
-
-	#dispatchEvent(detail) {
-		this.dispatchEvent(new CustomEvent(ThemeSwitcher.#eventName, {
-			bubbles: true,
-			composed: true,
-			detail: detail
-		}))
 	}
 }
 
