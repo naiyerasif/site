@@ -7,7 +7,6 @@ specifiers:
   '@microflash/rehype-starry-night': ^2.1.0
   '@microflash/remark-callout-directives': ^1.5.0
   '@microflash/remark-figure-caption': ^1.0.0
-  '@microflash/remark-generic-directives': ^2.0.1
   '@sindresorhus/slugify': ^2.2.0
   astro: ^2.0.6
   dayjs: ^1.11.7
@@ -38,7 +37,6 @@ dependencies:
   '@microflash/rehype-starry-night': 2.1.0
   '@microflash/remark-callout-directives': 1.5.0
   '@microflash/remark-figure-caption': 1.0.0
-  '@microflash/remark-generic-directives': 2.0.1
   '@sindresorhus/slugify': 2.2.0
   astro: 2.0.6_sass@1.58.0
   dayjs: 1.11.7
@@ -1075,14 +1073,6 @@ packages:
       unist-util-visit: 4.1.2
     transitivePeerDependencies:
       - supports-color
-    dev: false
-
-  /@microflash/remark-generic-directives/2.0.1:
-    resolution: {integrity: sha512-bX2ZPysO6lzABC4v4fKf70s1jQfPhpNYD4/LCDMT3BQg2fW06XfKKb2xJlnwaOfhtsBXOdeuI9TS/nbFs/cBQg==}
-    dependencies:
-      defu: 6.1.2
-      hastscript: 7.1.0
-      unist-util-visit: 4.1.2
     dev: false
 
   /@nodelib/fs.scandir/2.1.5:
