@@ -7,10 +7,9 @@ import rehypeSlugify from "@microflash/rehype-slugify"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import remarkFigCaption from "@microflash/remark-figure-caption"
 import remarkCalloutDirectives from "@microflash/remark-callout-directives"
-import remarkGenericDirectives from "@microflash/remark-generic-directives"
-import youtube from "@microflash/remark-generic-directives/directives/youtube"
-import tweet from "./src/modules/generic-directives/tweet.js"
-import postscript from "./src/modules/generic-directives/postscript.js"
+import remarkPostscriptDirective from "./src/modules/generic-directives/remark-postscript-directive.js"
+import remarkTweetDirective from "./src/modules/generic-directives/remark-tweet-directive.js"
+import remarkYoutubeDirective from "./src/modules/generic-directives/remark-youtube-directive.js"
 import siteInfo from "./src/modules/universal/index.js"
 import { CountableSlugifier } from "./src/modules/slugifier/index.js"
 const slugifier = CountableSlugifier.slugifier()
@@ -44,16 +43,9 @@ export default defineConfig({
 				}
 			],
 			remarkDirective,
-			[
-				remarkGenericDirectives,
-				{
-					directives: {
-						tweet,
-						postscript,
-						youtube
-					}
-				}
-			],
+			remarkTweetDirective,
+			remarkYoutubeDirective,
+			remarkPostscriptDirective,
 			[
 				remarkCalloutDirectives,
 				{

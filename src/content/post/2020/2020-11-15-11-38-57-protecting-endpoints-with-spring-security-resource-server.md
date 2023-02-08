@@ -12,7 +12,7 @@ In any modern application, you'll encounter multiple services talking to each ot
 
 If you're looking for an introduction on OAuth2 and OpenID Connect, please review the following video.
 
-::youtube{#5th6CSQTdpM}
+::youtube[Explain it to Me Like I’m 5: Oauth2 and OpenID]{#5th6CSQTdpM}
 
 In this post, we'll discuss how to implement a service-to-service authorization flow using [client-credentials](https://oauth.net/2/grant-types/client-credentials/) grant type and [audience](https://tools.ietf.org/html/rfc7519#section-4.1.3) claim.
 

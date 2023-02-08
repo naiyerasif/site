@@ -6,4 +6,4 @@ update: "2022-10-06 14:07:07"
 category: "status"
 ---
 
-::tweet{#1577941158491201537}
+::tweet[https://twitter.com/SaraSoueidan/status/1577941158491201537]

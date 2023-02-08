@@ -6,4 +6,4 @@ update: "2022-07-25 18:36:00"
 category: "status"
 ---
 
-::tweet{#1551554491270500352}
+::tweet[https://twitter.com/frontstuff_io/status/1551554491270500352]

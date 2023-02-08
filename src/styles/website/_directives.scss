@@ -24,11 +24,16 @@
 	}
 
 	&-youtube {
-		position: relative;
-		padding-block-start: 25px;
-		padding-block-end: 56.25%;
-		height: 0;
 		@include mixins.full-bleed;
+		
+		&-iframe-container {
+			position: relative;
+			padding-block-start: 25px;
+			padding-block-end: 56.25%;
+			height: 0;
+			border: var(--site-line-thickness-base) solid var(--site-border-body);
+			border-radius: var(--site-adaptive-radius-base);
+		}
 
 		&-iframe {
 			position: absolute;
@@ -38,8 +43,7 @@
 			block-size: 100%;
 			aspect-ratio: 16/9;
 			object-fit: cover;
-			border: var(--site-line-thickness-base) solid var(--site-border-body);
-			border-radius: var(--site-adaptive-radius-base);
+			border-radius: inherit;
 		}
 	}
 

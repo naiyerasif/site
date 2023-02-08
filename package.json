@@ -18,7 +18,6 @@
 		"@microflash/rehype-starry-night": "^2.1.0",
 		"@microflash/remark-callout-directives": "^1.5.0",
 		"@microflash/remark-figure-caption": "^1.0.0",
-		"@microflash/remark-generic-directives": "^2.0.1",
 		"@sindresorhus/slugify": "^2.2.0",
 		"astro": "^2.0.6",
 		"dayjs": "^1.11.7",
@@ -37,8 +36,11 @@
 		"unified": "^10.1.2"
 	},
 	"devDependencies": {
+		"defu": "^6.1.2",
 		"inquirer": "^9.1.4",
+		"mdast-util-to-string": "^3.1.1",
 		"puppeteer": "^19.6.3",
+		"unist-util-visit": "^4.1.2",
 		"unlighthouse-puppeteer": "^0.4.9"
 	},
 	"browserslist": [

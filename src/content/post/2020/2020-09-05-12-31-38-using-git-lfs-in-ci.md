@@ -10,7 +10,7 @@ tags: ["git", "lfs", "ci"]
 
 [Git LFS](https://git-lfs.github.com/) is a great way to version large binary files alongside the source code in Git. It replaces the actual files with text pointers in the Git repository and stores them on a remote server that works with Git LFS (e.g., GitHub.com, Azure DevOps, etc.). When you clone a repository with LFS objects, you'll receive the pointers instead. You'll have to install [the Git LFS client](https://github.com/git-lfs/git-lfs/releases/latest) which will convert these pointers into actual files during the checkout; this process is called **smudging**. You can watch an introduction to how this works on the following YouTube video.
 
-::youtube{#uLR1RNqJ1Mw}
+::youtube[Git Large File Storage - How to Work with Big Files?]{#uLR1RNqJ1Mw}
 
 Many Git vendors put certain bandwidth limits on LFS pulls. For example, GitHub provides 1 GB a month of free bandwidth for pulling LFS objects. Your CI will pull these objects every time it runs the pipeline. Depending on your project size and the frequency of CI, you may eventually hit the bandwidth limit. To avoid this from happening, you can cache the LFS objects and reuse the cache between the builds.
 

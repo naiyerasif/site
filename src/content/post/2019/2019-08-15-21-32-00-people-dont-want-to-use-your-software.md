@@ -6,4 +6,4 @@ update: "2019-08-15 21:32:00"
 category: "status"
 ---
 
-::tweet{#1162031786248900609}
+::tweet[https://twitter.com/shl/status/1162031786248900609]
