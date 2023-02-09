@@ -18,19 +18,17 @@ const pageInfo = {
 }
 ---
 
-<Layout {pageInfo}>
-	<div class="hero with-image" slot="hero">
+<Layout {pageInfo} class="wrapper-medium">
+	<div class="profile-metadata" slot="hero">
 		<img src={avatar} alt={data.title}>
 		<h1 class="headline">Hi, I&rsquo;m {name}</h1>
 	</div>
-	<main id="content" class="wrapper-medium">
-		<article class="wrapper-base">
-			<Content/>
-		</article>
-		<div class="action wrapper-max">
-			<div class="post action-items">
-				<BackToTop />
-			</div>
+	<article class="wrapper-base">
+		<Content/>
+	</article>
+	<div class="action wrapper-max">
+		<div class="post action-items">
+			<BackToTop />
 		</div>
-	</main>
+	</div>
 </Layout>

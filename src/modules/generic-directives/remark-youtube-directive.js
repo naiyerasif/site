@@ -20,7 +20,8 @@ export default function remarkYoutubeDirective() {
 					let frameProperties = {
 						className: ["directive-youtube-iframe"],
 						src: `https://www.youtube.com/embed/${attributes.id}`,
-						allow: "join-ad-interest-group 'none'; run-ad-auction 'none'; encrypted-media; picture-in-picture; fullscreen"
+						allow: "join-ad-interest-group 'none'; run-ad-auction 'none'; encrypted-media; picture-in-picture; fullscreen",
+						loading: "lazy"
 					}
 	
 					let title

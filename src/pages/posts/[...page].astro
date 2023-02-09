@@ -27,21 +27,17 @@ const pageInfo = {
 }
 ---
 
-<Layout {pageInfo}>
-	<div class="hero" slot="hero">
-		<div class="subheadline inline">
-			<Icon name="posts"/>
-			Posts &mdash;&mdash; {page.start + 1}&hellip;{page.end + 1} of {page.total}
+<Layout {pageInfo} class="wrapper-base">
+	<div class="subheadline conditionally-centered" slot="hero">
+		<Icon name="posts"/>
+		<span>Posts &mdash;&mdash; {page.start + 1}&hellip;{page.end + 1} of {page.total}</span>
+	</div>
+	<div class="showcase">
+		{page.data.map(entry => entry.data.category === "status" ? <StatusCard {entry} /> : <PostCard {entry} />)}
+	</div>
+	<div class="action wrapper-max">
+		<div class="action-items pagination">
+			<Pagination currentPage={page.currentPage} totalPages={page.lastPage} base="posts"/>
 		</div>
 	</div>
-	<main id="content" class="wrapper-base">
-		<div class="showcase">
-			{page.data.map(entry => entry.data.category === "status" ? <StatusCard {entry} /> : <PostCard {entry} />)}
-		</div>
-		<div class="action wrapper-max">
-			<div class="action-items pagination">
-				<Pagination currentPage={page.currentPage} totalPages={page.lastPage} base="posts"/>
-			</div>
-		</div>
-	</main>
 </Layout>

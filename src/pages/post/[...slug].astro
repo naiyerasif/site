@@ -51,56 +51,54 @@ const pageInfo = {
 }
 ---
 
-<Layout {pageInfo}>
-	<div class="hero with-metadata" slot="hero">
-		<h1 class="headline" slot="hero">{data.title}</h1>
+<Layout {pageInfo} class="wrapper-medium">
+	<div class="post-metadata" slot="hero">
+		<h1 class="headline">{data.title}</h1>
 		<div class="metadata">
 			<Time date={data.date} />
 			{data.update !== data.date && <span class="update">updated on <Time date={data.update} /></span>}
 			{category !== "status" && timeToRead && <span>~{timeToRead}</span>}
 		</div>
 	</div>
-	<main id="content" class="wrapper-medium">
-		<article class="wrapper-base">
-			{headings && headings.length > 0 && <nav class="toc">
-				<div class="toc-header">Table of Contents</div>
-				<Toc {headings}/>
-			</nav>}
-			<Content/>
-			<div class="recommendations">
-				{prevPage && 
-					<Fragment>
-						<div><span class="chip">Previous</span></div>
-						<a href={prevPage}>{prev.data.title}</a>
-					</Fragment>
-				}
-				{nextPage && 
-					<Fragment>
-						<div><span class="chip">Next</span></div>
-						<a href={nextPage}>{next.data.title}</a>
-					</Fragment>
-				}
-			</div>
-		</article>
-		<div class="action wrapper-max">
-			<div class="action-items post">
-				<a href={shareViaMail} title="Share via email" class="button" rel="noopener noreferrer" target="_blank">
-					<Icon name="mail"/>
-				</a>
-				<a href={shareViaLinkedIn} title="Post on LinkedIn" class="button" rel="noopener noreferrer" target="_blank">
-					<Icon name="linkedin"/>
-				</a>
-				<a href={shareViaHackerNews} title="Submit to Hacker News" class="button" rel="noopener noreferrer" target="_blank">
-					<Icon name="hacker-news"/>
-				</a>
-				<a href={shareViaReddit} title="Post on Reddit" class="button" rel="noopener noreferrer" target="_blank">
-					<Icon name="reddit"/>
-				</a>
-				<a href={editSource} title="Edit the post" class="button" rel="noopener noreferrer">
-					<Icon name="edit-line"/>
-				</a>
-				<BackToTop />
-			</div>
+	<article class="wrapper-base">
+		{headings && headings.length > 0 && <nav class="toc">
+			<div class="toc-header">Table of Contents</div>
+			<Toc {headings}/>
+		</nav>}
+		<Content/>
+		<div class="recommendations">
+			{prevPage && 
+				<Fragment>
+					<div><span class="chip">Previous</span></div>
+					<a href={prevPage}>{prev.data.title}</a>
+				</Fragment>
+			}
+			{nextPage && 
+				<Fragment>
+					<div><span class="chip">Next</span></div>
+					<a href={nextPage}>{next.data.title}</a>
+				</Fragment>
+			}
 		</div>
-	</main>
+	</article>
+	<div class="action wrapper-max">
+		<div class="action-items post">
+			<a href={shareViaMail} title="Share via email" class="button" rel="noopener noreferrer" target="_blank">
+				<Icon name="mail"/>
+			</a>
+			<a href={shareViaLinkedIn} title="Post on LinkedIn" class="button" rel="noopener noreferrer" target="_blank">
+				<Icon name="linkedin"/>
+			</a>
+			<a href={shareViaHackerNews} title="Submit to Hacker News" class="button" rel="noopener noreferrer" target="_blank">
+				<Icon name="hacker-news"/>
+			</a>
+			<a href={shareViaReddit} title="Post on Reddit" class="button" rel="noopener noreferrer" target="_blank">
+				<Icon name="reddit"/>
+			</a>
+			<a href={editSource} title="Edit the post" class="button" rel="noopener noreferrer">
+				<Icon name="edit-line"/>
+			</a>
+			<BackToTop />
+		</div>
+	</div>
 </Layout>

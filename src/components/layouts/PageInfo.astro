@@ -19,6 +19,7 @@ function canonize(pageInfo) {
 		pageInfo.source = canonical(pageInfo.source)
 	}
 
+	pageInfo.description = pageInfo.description || siteInfo.description
 	pageInfo.image = canonical(pageInfo.image || "/images/opengraph/default.png")
 	pageInfo.type = pageInfo.type || "website"
 

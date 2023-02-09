@@ -109,16 +109,11 @@ button,
 .headline {
 	margin: 0;
 	font-size: var(--site-text-headline);
+	letter-spacing: -0.025em;
 }
 
 .subheadline {
 	font-size: var(--site-text-subheadline);
-
-	&.inline {
-		display: inline-flex;
-		align-items: center;
-		gap: 1ch;
-	}
 }
 
 .headline + .subheadline {

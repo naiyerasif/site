@@ -58,12 +58,14 @@
 	--site-adaptive-background-link: var(--site-background-link);
 	--site-adaptive-border-link: var(--site-border-link);
 
+	--site-adaptive-justify-center: flex-start;
 	--site-adaptive-align-center: start;
 	--site-adaptive-line-thickness-base: 0;
 	--site-adaptive-radius-base: var(--site-radius-small);
 	--site-adaptive-radius-medium: var(--site-radius-small);
 
 	@include mixins.windowBase {
+		--site-adaptive-justify-center: center;
 		--site-adaptive-align-center: center;
 		--site-adaptive-line-thickness-base: var(--site-line-thickness-base);
 		--site-adaptive-radius-base: var(--site-radius-base);

@@ -123,17 +123,24 @@
 	}
 }
 
-.navbar + .hero {
-	margin-block-start: var(--site-vgap-medium);
-}
-
 .hero {
-	text-align: var(--site-adaptive-align-center);
+	margin-block-end: var(--site-vgap-medium);
 
-	&.with-metadata .metadata {
-		margin-block-start: 2em;
+	.subheadline.conditionally-centered {
+		display: inline-flex;
+		align-items: center;
+		justify-content: var(--site-adaptive-justify-center);
+		gap: 1ch;
+	}
 
-		& > *:not(:last-child, :only-child)::after {
+	.post-metadata {
+		display: flex;
+		flex-direction: column;
+		align-items: var(--site-adaptive-justify-center);
+		text-align: var(--site-adaptive-align-center);
+		gap: var(--site-vgap-base);
+
+		.metadata > *:not(:last-child, :only-child)::after {
 			@include mixins.mask("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='15' r='1'/%3E%3C/svg%3E");
 			display: inline-block;
 			inline-size: 1em;
@@ -143,14 +150,11 @@
 		}
 	}
 
-	&.with-image {
+	.profile-metadata {
 		display: flex;
 		align-items: center;
-		gap: 1.5rem;
-
-		@include mixins.windowBase {
-			justify-content: center;
-		}
+		justify-content: var(--site-adaptive-justify-center);
+		gap: 2ch;
 
 		img {
 			--hero-image-size: calc(48px + 4vw);
@@ -163,19 +167,35 @@
 }
 
 .glitch {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	text-align: center;
+	display: grid;
+  place-content: center;
+	
+	#content {
+		justify-items: center;
+	}
 
 	.image-container {
-		--glitch-image-size: calc(15rem + 5vw);
+		--glitch-image-size: 15rem;
 		inline-size: var(--glitch-image-size);
 		block-size: var(--glitch-image-size);
 
 		img {
 			filter: drop-shadow(0 0 5rem var(--site-border-deter));
+
+			@media (prefers-reduced-motion: no-preference) {
+				animation: flicker 5s linear infinite;
+			}
 		}
+	}
+}
+
+@keyframes flicker {
+	0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+		opacity: .99;
+		
+	}
+	20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+		opacity: 0.4;
 	}
 }
 

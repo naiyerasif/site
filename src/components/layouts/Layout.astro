@@ -6,7 +6,9 @@ import Header from "./Header.astro"
 import Footer from "./Footer.astro"
 import Sprites from "~components/atoms/Sprites.astro"
 
-const { pageInfo, footer = true, ...attribs } = Astro.props
+const { pageInfo, ...attribs } = Astro.props
+
+const hero = Astro.slots.has("hero")
 const hint = pageInfo?.hint
 ---
 
@@ -17,13 +19,14 @@ const hint = pageInfo?.hint
 	</head>
 	<body class="site">
 		<SkipLink/>
-		<Header {hint}>
+		<Header {hint}/>
+		{hero && <section class="hero wrapper-base">
 			<slot name="hero"/>
-		</Header>
+		</section>}
 		<main id="content" {...attribs}>
 			<slot/>
 		</main>
-		{footer && <Footer/>}
+		<Footer/>
 		<Sprites/>
 	</body>
 </html>

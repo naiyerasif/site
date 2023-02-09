@@ -1,0 +1,20 @@
+---
+import "~styles/main.scss"
+import PageInfo from "./PageInfo.astro"
+import SkipLink from "~components/atoms/SkipLink.astro"
+
+const { pageInfo } = Astro.props
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<PageInfo {pageInfo}/>
+	</head>
+	<body class="site glitch">
+		<SkipLink/>
+		<main id="content" class="wrapper-max">
+			<slot/>
+		</main>
+	</body>
+</html>
