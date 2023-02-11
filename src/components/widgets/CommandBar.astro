@@ -3,32 +3,36 @@ import Icon from "~components/atoms/Icon.astro"
 ---
 
 <command-bar>
-	<Icon name="command-key" slot="opener"/>
+	<Icon name="command-key" slot="launcher"/>
 </command-bar>
 
 <script>
 const commandBarTemplate = document.createElement("template")
 commandBarTemplate.innerHTML = `
 <generic-dialog close-on-outside-click close-on-escape id="command-bar">
-	<button slot="invoker" part="opener" type="button" aria-label="Open command center">
-		<slot name="opener"></slot>
+	<button slot="invoker" part="launcher" type="button" aria-label="Open command bar">
+		<slot name="launcher"></slot>
 	</button>
-	<div slot="content" class="command-bar-items">
+	<section slot="content" class="command-bar-items">
 		<header class="command-bar-header">
 			<input id="search-box" placeholder="Search for something...">
-			<button id="resetter" part="resetter" type="reset" aria-label="Reset search box">
+			<button part="resetter" type="reset" aria-label="Reset search">
 				<svg role="img" class="icon" aria-hidden="true">
 					<use href="#undo"/>
 				</svg>
 			</button>
-			<button id="escaper" part="escaper" type="button" aria-label="Close command center">
+			<button part="escaper" type="button" aria-label="Close command bar">
 				<svg role="img" class="icon" aria-hidden="true">
 					<use href="#x"/>
 				</svg>
 			</button>
 		</header>
 		<div id="commands" tabindex="-1"></div>
-	</div>
+		<footer class="command-bar-footer">
+			<span><kbd>Tab</kbd> <kbd>Shift+Tab</kbd> to navigate</span>
+			<span><kbd>Esc</kbd> or click outside to close</span>
+		</footer>
+	</section>
 </generic-dialog>
 `
 
@@ -49,7 +53,7 @@ export class CommandBar extends HTMLElement {
 	static #anchorIcon = `<svg role="img" class="icon" aria-hidden="true"><use href="#arrow-right"/></svg>`
 
 	#commandBar = null
-	#opener = null
+	#launcher = null
 	#escaper = null
 	#searchBox = null
 	#resetter = null
@@ -70,15 +74,17 @@ export class CommandBar extends HTMLElement {
 			this.#clearSearchBox()
 		}
 	}
-	#openHandler = (event) => {
+	#commandHandler = (event) => {
 		if (event.ctrlKey && event.key === "k") {
 			event.preventDefault()
-			this.#opener.click()
-			this.#searchBox.focus()
+			this.#launcher.click()
 		}
 	}
-	#closeHandler = () => this.#commandBar.close()
-	#clearHandler = () => this.#clearSearchBox()
+	#focusHandler = (event) => {
+		this.#searchBox.focus()
+	}
+	#escapeHandler = () => this.#commandBar.close()
+	#resetHandler = () => this.#clearSearchBox()
 
 	constructor() {
 		super()
@@ -87,7 +93,7 @@ export class CommandBar extends HTMLElement {
 		shadowRoot.append(commandBarTemplate.content.cloneNode(true))
 
 		this.#commandBar = shadowRoot.querySelector(`#${CommandBar.tagName}`)
-		this.#opener = shadowRoot.querySelector(`button[part="opener"]`)
+		this.#launcher = shadowRoot.querySelector(`button[part="launcher"]`)
 		this.#escaper = shadowRoot.querySelector(`button[part="escaper"]`)
 		this.#searchBox = shadowRoot.querySelector(`#search-box`)
 		this.#resetter = shadowRoot.querySelector(`button[part="resetter"]`)
@@ -95,9 +101,10 @@ export class CommandBar extends HTMLElement {
 	}
 
 	async connectedCallback() {
-		document.addEventListener("keydown", this.#openHandler)
-		this.#escaper.addEventListener("click", this.#closeHandler)
-		this.#resetter.addEventListener("click", this.#clearHandler)
+		this.#commandBar.addEventListener("dialog-opened", this.#focusHandler)
+		document.addEventListener("keydown", this.#commandHandler)
+		this.#escaper.addEventListener("click", this.#escapeHandler)
+		this.#resetter.addEventListener("click", this.#resetHandler)
 		this.#searchBox.addEventListener("keyup", this.#searchHandler)
 
 		await this.#setupCommands()
@@ -105,9 +112,10 @@ export class CommandBar extends HTMLElement {
 	}
 
 	disconnectedCallback() {
-		document.removeEventListener("keydown", this.#openHandler)
-		this.#escaper.removeEventListener("click", this.#closeHandler)
-		this.#resetter.removeEventListener("click", this.#clearHandler)
+		this.#commandBar.removeEventListener("dialog-opened", this.#focusHandler)
+		document.removeEventListener("keydown", this.#commandHandler)
+		this.#escaper.removeEventListener("click", this.#escapeHandler)
+		this.#resetter.removeEventListener("click", this.#resetHandler)
 		this.#searchBox.removeEventListener("keyup", this.#searchHandler)
 	}
 

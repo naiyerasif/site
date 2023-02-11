@@ -19,7 +19,7 @@ code {
 button,
 .button,
 ::part(switch),
-::part(opener) {
+::part(launcher) {
 	--site-button-color: var(--site-color-link);
 	--site-button-background: var(--site-background-commend);
 	--site-button-border: transparent;
@@ -32,7 +32,7 @@ button,
 	cursor: pointer;
 	touch-action: manipulation;
 	-webkit-tap-highlight-color: transparent;
-	padding: 1ch;
+	padding: 0.5rem;
 
 	&:is(:focus, :focus-visible, :hover) {
 		--site-button-color: var(--site-color-link-hover);
@@ -100,7 +100,7 @@ button,
 }
 
 .chip {
-	padding: 0.5ch 1.5ch;
+	padding: 0.4rem 1rem;
 	font-size: var(--site-text-small);
 	border-radius: var(--site-radius-round);
 	background-color: var(--site-background-note);
@@ -222,7 +222,6 @@ button,
 
 	.chip {
 		font-weight: var(--site-font-semibold);
-		padding: 0.75ch 1.5ch;
 	}
 }
 
@@ -233,7 +232,7 @@ button,
 		min-inline-size: 2ch;
 		text-align: center;
 		text-decoration-color: transparent;
-		padding: 0.2ch 0.6ch;
+		padding: 0.25rem 0.5rem;
 
 		&.active {
 			--site-button-color: var(--site-color-link-hover);
@@ -245,13 +244,29 @@ button,
 		&.flex {
 			display: inline-flex;
 			align-items: center;
-			padding: 0.5ch 1ch;
+			padding-inline: 0.75rem;
 		}
+	}
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+}
+
+@keyframes slide-up {
+	from {
+		transform: translateY(10%);
 	}
 }
 
 :where(generic-dialog-overlay) {
 	backdrop-filter: blur(10px);
+
+	@media (prefers-reduced-motion: no-preference) {
+		animation: fade-in 200ms both;
+	}
 
 	&::part(dialog) {
 		inline-size: 100%;
@@ -259,12 +274,16 @@ button,
 		background-color: transparent;
 		border: none;
 		outline: none;
+
+		@media (prefers-reduced-motion: no-preference) {
+			animation: fade-in 400ms 200ms both, slide-up 400ms 200ms both;
+		}
 	}
 }
 
 .command-bar {
 	&-items {
-		background-color: var(--site-background-body);
+		background-color: var(--site-background-showcase);
 		border: var(--site-line-thickness-base) solid var(--site-border-body);
 		border-radius: var(--site-radius-base);
 		
@@ -275,9 +294,7 @@ button,
 		#commands {
 			max-block-size: 420px;
 			overflow-y: auto;
-			background-color: var(--site-background-body);
-			border-end-end-radius: inherit;
-			border-end-start-radius: inherit;
+			background-color: var(--site-background-showcase);
 		}
 	}
 
@@ -286,18 +303,32 @@ button,
 		align-items: center;
 		justify-content: space-between;
 		gap: 0.5rem;
-		padding-inline-end: 0.5ch;
-
-		button {
-			padding: 0.25ch;
-		}
+		padding: 0.5rem;
 
 		input {
-			padding: 0.5rem 1rem;
+			padding: 0.4rem 1rem;
 			inline-size: 100%;
 			border: none;
 			border-radius: var(--site-radius-base);
 			background-color: transparent;
+		}
+	}
+
+	&-footer {
+		display: flex;
+		align-items: center;
+		background-color: var(--site-background-body);
+		font-size: var(--site-text-small);
+		padding: 0.5rem 1rem;
+		border-end-end-radius: inherit;
+		border-end-start-radius: inherit;
+
+		& > *:not(:first-child)::before {
+			@include mixins.mask("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='15' r='1'/%3E%3C/svg%3E");
+			display: inline-block;
+			inline-size: 1em;
+			block-size: 1em;
+			opacity: 0.5;
 		}
 	}
 

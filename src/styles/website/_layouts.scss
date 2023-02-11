@@ -41,7 +41,7 @@
 	}
 
 	command-bar {
-		margin-bottom: -0.5ch;
+		line-height: 0;
 	}
 
 	@include mixins.windowBase {
@@ -81,10 +81,6 @@
 		justify-content: center;
 		flex-wrap: wrap;
 		gap: 1ch;
-
-		&.post .button {
-			padding: 0.7ch;
-		}
 	}
 }
 
