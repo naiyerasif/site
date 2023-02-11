@@ -283,9 +283,9 @@ button,
 
 .command-bar {
 	&-items {
-		background-color: var(--site-background-showcase);
+		background-color: var(--site-background-cmd);
 		border: var(--site-line-thickness-base) solid var(--site-border-body);
-		border-radius: var(--site-radius-base);
+		border-radius: var(--site-radius-medium);
 		
 		* {
 			outline-offset: var(--site-line-inset-base);
@@ -294,7 +294,7 @@ button,
 		#commands {
 			max-block-size: 420px;
 			overflow-y: auto;
-			background-color: var(--site-background-showcase);
+			background-color: var(--site-background-cmd);
 		}
 	}
 
@@ -310,6 +310,7 @@ button,
 			inline-size: 100%;
 			border: none;
 			border-radius: var(--site-radius-base);
+			caret-color: var(--site-color-deter);
 			background-color: transparent;
 		}
 	}
@@ -333,10 +334,6 @@ button,
 	}
 
 	&-section {
-
-		& > * {
-			border-block-start: var(--site-line-thickness-base) solid var(--site-border-body);
-		}
 
 		.command-item {
 			display: flex;

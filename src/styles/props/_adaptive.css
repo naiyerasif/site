@@ -2,32 +2,34 @@
 [data-theme="dark"] {
 	color-scheme: dark;
 
-	--site-background-body: hsl(240, 14%, 7%);
-	--site-background-showcase: hsl(240, 14%, 4%);
-	--site-background-code: hsl(240, 9%, 13%);
+	--site-background-body: hsl(216, 28%, 6%);
+	--site-background-showcase: hsl(218, 80%, 2%);
+	--site-background-cmd: hsl(218, 80%, 2%);
+	--site-background-code: hsl(220, 13%, 17%);
 	--site-background-selection: hsl(158, 100%, 14%);
-	--site-background-note: hsl(208, 22%, 12%);
-	--site-background-commend: hsl(153, 100%, 8%);
-	--site-background-warn: hsl(29, 100%, 10%);
-	--site-background-deter: hsl(359, 100%, 12%);
-	--site-background-assert: hsl(216, 100%, 14%);
+	--site-background-note: hsl(208, 21%, 12%);
+	--site-background-commend: hsl(152, 100%, 7%);
+	--site-background-warn: hsl(15, 100%, 12%);
+	--site-background-deter: hsl(359, 100%, 14%);
+	--site-background-assert: hsl(215, 100%, 14%);
 
-	--site-border-body: hsl(209, 17%, 25%);
+	--site-border-body: hsl(212, 12%, 21%);
+	--site-border-note: hsl(210, 16%, 27%);
 	--site-border-commend: hsl(158, 100%, 15%);
-	--site-border-warn: hsl(33, 100%, 18%);
-	--site-border-deter: hsl(357, 100%, 25%);
-	--site-border-assert: hsl(213, 98%, 27%);
+	--site-border-warn: hsl(21, 100%, 24%);
+	--site-border-deter: hsl(356, 100%, 27%);
+	--site-border-assert: hsl(212, 97%, 28%);
 
 	--site-color-text-c0: hsl(209, 15%, 66%);
 	--site-color-text: hsl(210, 15%, 74%);
 	--site-color-text-c1: hsl(212, 16%, 84%);
 	--site-color-text-c2: hsl(206, 16%, 81%);
-	--site-color-commend: hsl(154, 32%, 51%);
-	--site-color-warn: hsl(38, 100%, 43%);
-	--site-color-deter: hsl(0, 100%, 71%);
-	--site-color-assert: hsl(212, 100%, 68%);
+	--site-color-commend: hsl(154, 33%, 49%);
+	--site-color-warn: hsl(19, 65%, 55%);
+	--site-color-deter: hsl(358, 93%, 65%);
+	--site-color-assert: hsl(215, 100%, 61%);
 	--site-color-marker: hsl(208, 14%, 39%);
-	--site-color-scrollbar: hsl(209, 15%, 33%);
+	--site-color-scrollbar: hsl(209, 14%, 41%);
 
 	--color-prettylights-syntax-comment: #8b949e;
 	--color-prettylights-syntax-constant: #79c0ff;
@@ -69,31 +71,33 @@
 	color-scheme: light;
 
 	--site-background-body: hsl(43, 100%, 98%);
-	--site-background-showcase: hsl(43, 100%, 99%);
-	--site-background-code: hsl(20, 65%, 90%);
-	--site-background-selection: hsl(151, 33%, 78%);
-	--site-background-note: hsl(20, 72%, 93%);
-	--site-background-commend: hsl(149, 32%, 87%);
-	--site-background-warn: hsl(34, 100%, 90%);
-	--site-background-deter: hsl(5, 100%, 93%);
-	--site-background-assert: hsl(208, 100%, 91%);
+	--site-background-showcase: hsl(28, 100%, 97%);
+	--site-background-cmd: hsl(28, 100%, 99%);
+	--site-background-code: hsl(20, 68%, 92%);
+	--site-background-selection: hsl(149, 32%, 86%);
+	--site-background-note: hsl(27, 40%, 94%);
+	--site-background-commend: hsl(147, 30%, 92%);
+	--site-background-warn: hsl(20, 80%, 93%);
+	--site-background-deter: hsl(5, 100%, 94%);
+	--site-background-assert: hsl(209, 100%, 93%);
 
-	--site-border-body: hsl(21, 17%, 68%);
-	--site-border-commend: hsl(153, 33%, 60%);
-	--site-border-warn: hsl(35, 85%, 59%);
-	--site-border-deter: hsl(2, 100%, 78%);
-	--site-border-assert: hsl(211, 100%, 72%);
+	--site-border-body: hsl(19, 51%, 80%);
+	--site-border-note: hsl(21, 17%, 77%);
+	--site-border-commend: hsl(151, 33%, 71%);
+	--site-border-warn: hsl(19, 81%, 77%);
+	--site-border-deter: hsl(3, 100%, 83%);
+	--site-border-assert: hsl(210, 100%, 78%);
 
-	--site-color-text-c0: hsl(208, 14%, 34%);
+	--site-color-text-c0: hsl(208, 14%, 44%);
 	--site-color-text: hsl(209, 16%, 20%);
 	--site-color-text-c1: hsl(208, 18%, 10%);
 	--site-color-text-c2: hsl(210, 17%, 15%);
-	--site-color-commend: hsl(161, 100%, 20%);
-	--site-color-warn: hsl(34, 100%, 28%);
-	--site-color-deter: hsl(352, 100%, 35%);
-	--site-color-assert: hsl(214, 84%, 39%);
-	--site-color-marker: hsl(20, 11%, 57%);
-	--site-color-scrollbar: hsl(21, 27%, 58%);
+	--site-color-commend: hsl(162, 100%, 24%);
+	--site-color-warn: hsl(22, 85%, 37%);
+	--site-color-deter: hsl(348, 100%, 41%);
+	--site-color-assert: hsl(214, 81%, 45%);
+	--site-color-marker: hsl(19, 61%, 68%);
+	--site-color-scrollbar: hsl(19, 81%, 61%);
 
 	--color-prettylights-syntax-comment: #6e7781;
 	--color-prettylights-syntax-constant: #0550ae;
