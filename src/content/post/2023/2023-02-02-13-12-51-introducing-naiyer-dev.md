@@ -16,7 +16,7 @@ Barely a yearly has passed since I launched the last [version](/post/2022/07/13/
 
 Many folks took this to heart and implemented this beautifully. Take a look at Adam Argyle's [nerdy.dev](https://nerdy.dev) and Jhey Tompkins' [jhey.dev](https://jhey.dev). In a similar vein, this version moves a lot of my content from Twitter and elsewhere to one place.
 
-With this change, you'd notice a more personal tone on this site. For those who subscribe through RSS, the [original feed](/feed.xml) will continue to syndicates everything except my statuses. If you want to keep track of everything I post here, subscribe to a new [everything feed](/all.xml) using your favorite RSS reader.
+With this change, you'd notice a more personal tone on this site. For those who subscribe through RSS, the [original feed](/feed.xml) will continue to syndicate everything except my statuses. If you want to keep track of everything I post here, subscribe to a new [everything feed](/all.xml) using your favorite RSS reader.
 
 > Speaking of RSS, I gave it a bit more prominent treatment in the footer, with a link to [Matt Webb](https://interconnected.org/home/)'s excellent [explainer about all things RSS](https://aboutfeeds.com/).
 
@@ -24,7 +24,9 @@ With this change, you'd notice a more personal tone on this site. For those who 
 
 This site was located at [mflash.dev](https://mflash.dev). Microflash was my username on Twitter. I've been de-emphasizing its use lately. The move to a new domain [naiyer.dev](https://naiyer.dev) is a part of that effort.
 
-The old domain will continue to work. The redirection rules will transparently take care of switching the domain and whatnot.
+The old domain will continue to work. The redirection rules will transparently take care of switching the domain and whatnot.[^1]
+
+[^1]: I've not configured the redirections yet but they'll be in effect sometime this month.
 
 ## So, what's new?
 
@@ -32,9 +34,9 @@ Here are some quality of life improvements introduced in this version.
 
 ### Command bar
 
-The popularity of [Spotlight](https://en.wikipedia.org/wiki/Spotlight_(Apple)) inspired search boxes has been on the rise lately.[^1] They're pretty handy way to offer search and navigation for your site.
+The popularity of [Spotlight](https://en.wikipedia.org/wiki/Spotlight_(Apple)) inspired search boxes has been on the rise lately.[^2] They're pretty handy way to offer search and navigation for your site.
 
-[^1]: See Chris Coyier's write up on [Command Bars](https://chriscoyier.net/2022/12/18/command-bars/)
+[^2]: See Chris Coyier's write up on [Command Bars](https://chriscoyier.net/2022/12/18/command-bars/)
 
 This version replaces the good old search with a Command bar (represented by &#8984; symbol).
 
@@ -44,7 +46,7 @@ I've used [Fuse.js](https://fusejs.io/) to power the fuzzy search here. You can 
 
 ### Bottom navigation bar for small screens
 
-I've switched from the traditional hamburger menu (which sat on top right in the last version) to a bottom navigation bar on small screens.
+I've switched from the traditional hamburger menu (which sat on top right in the previous version) to a bottom navigation bar on small screens.
 
 ![Bottom navigation bar](/images/post/2023/2023-02-02-13-12-51-introducing-naiyer-dev-02.png)
 
