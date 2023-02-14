@@ -61,6 +61,6 @@ And if you're visiting this site with JavaScript turned off, things would still 
 ### Other changes
 
 - The table of contents now shows more items. Pretty handy if you need to quickly jump into subsections of an article.
-- I swapped [Lume](https://lume.land) with [Astro](https://astro.build) mainly because I was facing a lot of paper cuts with [Deno](https://deno.land). Lume is fantastic and I still use it many places.
+- I swapped [Lume](https://lume.land) with [Astro](https://astro.build) mainly because I was facing a lot of paper cuts with [Deno](https://deno.land). Lume is fantastic and I still use it in many places.
 - I've audited each page of this site with Lighthouse and the overall score sits at 96 which I think is acceptable for now. I'll continue to improve the score in future and keep running the scan on newer pages.
 - There's a new logo which accompanies this launch. I can wax philosophical about how it looks like the character `n`, bookmark icon or game controller but it really is just a shape that I found unique enough to represent my personal branding.

@@ -8,6 +8,10 @@
 	to = "/stacktrace"
 
 [[redirects]]
+	from = "/profile/naiyer"
+	to = "/about"
+
+[[redirects]]
 	from = "/blog/:year/:month/:date/:slug"
 	to = "/post/:year/:month/:date/:slug"
 
