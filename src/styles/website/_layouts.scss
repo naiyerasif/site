@@ -102,16 +102,17 @@
 		&-main {
 			display: flex;
 			align-items: center;
-			gap: 0.5ch;
 
 			.icon {
 				stroke: var(--site-color-text-c0);
+				opacity: 0.6;
+				margin-inline: 0.8ch 0.4ch;
 			}
 		}
 
-		.chip {
-			font-weight: var(--site-font-bold);
-			
+		.hint {
+			color: var(--site-color-text-c0);
+
 			&::first-letter {
 				text-transform: uppercase;
 			}

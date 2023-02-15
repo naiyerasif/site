@@ -49,7 +49,7 @@ It's fashionable to build personal sites and talk about their stack. I got this 
 - [Remark](https://github.com/remarkjs/remark) & [Rehype](https://github.com/rehypejs/rehype): the markdown and HTML processors
 - [Fuse.js](https://fusejs.io/): the library that powers the search
 - [Starry Night](https://github.com/wooorm/starry-night): the library that powers the syntax highlighting of the code
-- [Inter](https://rsms.me/inter/) and [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono): the body and `monospace` fonts
+- [Inter](https://rsms.me/inter/) and [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono): the body and `monospace` typefaces
 - [Vale](https://vale.sh): the spelling and writing style checker
 
 I'm not using any frontend frameworks. It's the boring (but reliable) HTML, CSS, JavaScript, and web components running the show.

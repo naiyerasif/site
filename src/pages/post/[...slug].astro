@@ -69,13 +69,13 @@ const pageInfo = {
 		<div class="recommendations">
 			{prevPage && 
 				<Fragment>
-					<div><span class="chip">Previous</span></div>
+					<div class="hint">Previous</div>
 					<a href={prevPage}>{prev.data.title}</a>
 				</Fragment>
 			}
 			{nextPage && 
 				<Fragment>
-					<div><span class="chip">Next</span></div>
+					<div class="hint">Next</div>
 					<a href={nextPage}>{next.data.title}</a>
 				</Fragment>
 			}

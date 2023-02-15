@@ -99,11 +99,8 @@ button,
 	}
 }
 
-.chip {
-	padding: 0.4rem 1rem;
-	font-size: var(--site-text-small);
-	border-radius: var(--site-radius-round);
-	background-color: var(--site-background-note);
+.hint {
+	font-weight: var(--site-font-semibold);
 }
 
 .headline {
@@ -218,10 +215,6 @@ button,
 
 	@include mixins.windowBase {
 		grid-template-columns: max-content 3fr;
-	}
-
-	.chip {
-		font-weight: var(--site-font-semibold);
 	}
 }
 
