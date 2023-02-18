@@ -20,18 +20,16 @@ const pageInfo = {
 }
 ---
 
-<Layout {pageInfo}>
+<Layout {pageInfo} class="wrapper-base">
 	<div class="subheadline" slot="hero">
 		I'm <strong>Naiyer</strong>, a problem solver, software engineer, and book lover. Welcome to my personal site. Here are my recents posts.
 	</div>
-	<main id="content" class="wrapper-base">
-		<div class="showcase">
-			{posts.map(entry => entry.data.category === "status" ? <StatusCard {entry} /> : <PostCard {entry} />)}
+	<div class="showcase">
+		{posts.map(entry => entry.data.category === "status" ? <StatusCard {entry} /> : <PostCard {entry} />)}
+	</div>
+	<div class="action wrapper-max">
+		<div class="action-items pagination">
+			<a href={paginationPathname("posts", 2)} class="button flex">more posts <Icon name="arrow-right-2"/></a>
 		</div>
-		<div class="action wrapper-max">
-			<div class="action-items pagination">
-				<a href={paginationPathname("posts", 2)} class="button flex">more posts <Icon name="arrow-right-2"/></a>
-			</div>
-		</div>
-	</main>
+	</div>
 </Layout>
