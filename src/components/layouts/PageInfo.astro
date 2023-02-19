@@ -72,7 +72,7 @@ const mastodonUrl = siteInfo.networks.mastodon.uri
 <meta itemprop="name" content={pageInfo.title}>
 {pageInfo.description && <meta itemprop="description" content={pageInfo.description}>}
 <meta name="generator" content={Astro.generator}>
-<script>
+<script is:inline>
 (function () {
 	let preferredTheme
 	try {
@@ -109,17 +109,178 @@ const mastodonUrl = siteInfo.networks.mastodon.uri
 })()
 </script>
 <script src="/fuse@6.6.2.basic.min.js" is:inline async></script>
-<style lang="scss" is:global>
-@use "../../styles/fonts.scss";
+<style is:inline>
+	@font-face {
+	font-family: Inter var;
+	font-display: swap;
+	src: url("/fonts/Inter-Regular.var.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 100 900;
+	font-named-instance: "Regular"
+}
+
+@font-face {
+	font-family: Inter var;
+	font-display: swap;
+	src: url("/fonts/Inter-Italic.var.woff2") format("woff2");
+	font-style: italic;
+	font-weight: 100 900;
+	font-named-instance: "Italic"
+}
+
+@font-face {
+	font-family: JetBrains Mono var;
+	font-display: swap;
+	src: url("/fonts/JetBrainsMono.var.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 100 900;
+	font-named-instance: "Regular"
+}
+
+@font-face {
+	font-family: Inter;
+	font-display: swap;
+	src: url("/fonts/Inter-Light.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 350
+}
+
+@font-face {
+	font-family: Inter;
+	font-display: swap;
+	src: url("/fonts/Inter-LightItalic.woff2") format("woff2");
+	font-style: italic;
+	font-weight: 350
+}
+
+@font-face {
+	font-family: Inter;
+	font-display: swap;
+	src: url("/fonts/Inter-Regular.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 400
+}
+
+@font-face {
+	font-family: Inter;
+	font-display: swap;
+	src: url("/fonts/Inter-Italic.woff2") format("woff2");
+	font-style: italic;
+	font-weight: 400
+}
+
+@font-face {
+	font-family: Inter;
+	font-display: swap;
+	src: url("/fonts/Inter-Medium.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 500
+}
+
+@font-face {
+	font-family: Inter;
+	font-display: swap;
+	src: url("/fonts/Inter-MediumItalic.woff2") format("woff2");
+	font-style: italic;
+	font-weight: 500
+}
+
+@font-face {
+	font-family: Inter;
+	font-display: swap;
+	src: url("/fonts/Inter-SemiBold.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 600
+}
+
+@font-face {
+	font-family: Inter;
+	font-display: swap;
+	src: url("/fonts/Inter-SemiBoldItalic.woff2") format("woff2");
+	font-style: italic;
+	font-weight: 600
+}
+
+@font-face {
+	font-family: Inter;
+	font-display: swap;
+	src: url("/fonts/Inter-Bold.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 700
+}
+
+@font-face {
+	font-family: Inter;
+	font-display: swap;
+	src: url("/fonts/Inter-BoldItalic.woff2") format("woff2");
+	font-style: italic;
+	font-weight: 700
+}
+
+@font-face {
+	font-family: JetBrains Mono;
+	font-display: swap;
+	src: url("/fonts/JetBrainsMono-Light.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 350
+}
+
+@font-face {
+	font-family: JetBrains Mono;
+	font-display: swap;
+	src: url("/fonts/JetBrainsMono-Regular.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 400
+}
+
+@font-face {
+	font-family: JetBrains Mono;
+	font-display: swap;
+	src: url("/fonts/JetBrainsMono-Medium.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 500
+}
+
+@font-face {
+	font-family: JetBrains Mono;
+	font-display: swap;
+	src: url("/fonts/JetBrainsMono-SemiBold.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 600
+}
+
+@font-face {
+	font-family: JetBrains Mono;
+	font-display: swap;
+	src: url("/fonts/JetBrainsMono-Bold.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 700
+}
 
 :root {
+	--family-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	--family-mono: ui-monospace, SFMono-Regular, "Roboto Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	--family-site-sans: "Inter", var(--family-sans);
+	--family-site-mono: "JetBrains Mono", var(--family-mono);
 	--size-site-icon: 1.5rem;
 	--text-site-small: calc(0.8rem + 0.15vw);
 	--text-site-base: calc(1rem + 0.2vw);
 	--text-site-headline: calc(1.5rem + 2vw);
 	--text-site-subheadline: calc(1rem + 0.5vw);
-
-	@media (hover: none) {
+}
+@supports (font-variation-settings: normal) {
+	:root {
+		--family-site-sans: "Inter var", var(--family-sans);
+		--family-site-mono: "JetBrains Mono var", var(--family-mono)
+	}
+}
+body:not(code):not(pre):not(kbd) {
+	/* ss03: curved r */
+	/* ss04: disambiguation without slashed-zero */
+	font-feature-settings: "ss03", "ss04";
+}
+@media (hover: none) {
+	:root {
 		--size-site-icon: 24px;
 	}
 }
