@@ -2,7 +2,7 @@
 import Icon from "./Icon.astro"
 ---
 
-<a data-skiplink="true" href="#content">Skip to main content&ensp;<Icon name="arrow-down"/></a>
+<a data-skiplink="true" href="#content">Skip to main content<Icon name="arrow-down"/></a>
 
 <style>
 a[data-skiplink] {
@@ -39,8 +39,8 @@ a[data-skiplink]:focus {
 	opacity: 1;
 	pointer-events: auto;
 	padding: 0.25rem 0.5rem;
-	background: var(--site-background-deter);
-	font-weight: var(--site-font-bold);
-	font-size: var(--site-text-small);
+	background: var(--background-site-deter);
+	font-weight: var(--font-site-semibold);
+	font-size: var(--text-site-small);
 }
 </style>
