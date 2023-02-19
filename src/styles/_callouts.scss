@@ -12,10 +12,6 @@
 
 	&-content {
 		padding: var(--callout-padding);
-
-		&:last-child {
-			margin-block-end: 0;
-		}
 	}
 
 	&-indicator {

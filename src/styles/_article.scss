@@ -55,3 +55,15 @@ figure svg {
 	border: var(--thickness-site-base) solid var(--border-site-body);
 	box-shadow: var(--shadow-size-site-base) var(--background-site-showcase);
 }
+
+blockquote,
+.callout-content {
+	& > * + * {
+		margin-block-start: var(--vgap-site-base);
+	}
+
+	& > p + ul,
+	& > p + ol {
+		margin-block-start: var(--vgap-site-small);
+	}
+}

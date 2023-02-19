@@ -63,7 +63,25 @@ button {
 // specific
 
 .headline {
-	color: var(--color-site-stress);
+	background: linear-gradient(to top right, 
+		var(--color-site-subtle) calc(19% - 1px), 
+		transparent 19%, 
+		transparent calc(20% - 1px), 
+		var(--color-site-normal) 20%, 
+		var(--color-site-normal) calc(39% - 1px), 
+		transparent 39%, 
+		transparent calc(40% - 1px), 
+		var(--color-site-stress) 40%, 
+		var(--color-site-stress) calc(59% - 1px), 
+		transparent 59%, 
+		transparent calc(60% - 1px), 
+		var(--color-site-subtle) 60%, 
+		var(--color-site-subtle) calc(79% - 1px), 
+		transparent 79%, 
+		transparent calc(80% - 1px), 
+		var(--color-site-emphasis) 80%);
+	background-clip: text;
+	color: transparent;
 	font-size: var(--text-site-headline);
 	letter-spacing: -0.025em;
 }
