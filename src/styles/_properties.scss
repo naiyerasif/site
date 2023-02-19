@@ -1,6 +1,8 @@
 @use "./mixins";
 
-@mixin dark-theme {
+// fallback when JavaScript is not available
+:root:not([data-theme]),
+[data-theme="dark"] {
 	color-scheme: dark;
 
 	--background-site-body: hsl(216, 28%, 6%);
@@ -68,7 +70,7 @@
 	--font-site-bold: 600;
 }
 
-@mixin light-theme {
+[data-theme="light"] {
 	color-scheme: light;
 
 	--background-site-body: hsl(43, 100%, 98%);
@@ -134,23 +136,6 @@
 	--font-site-regular: 400;
 	--font-site-semibold: 600;
 	--font-site-bold: 700;
-}
-
-// fallback when JavaScript is not available
-:root:not([data-theme]) {
-	@include dark-theme;
-
-	@media (prefers-color-scheme: light) {
-		@include light-theme;
-	}
-}
-
-[data-theme="dark"] {
-	@include dark-theme;
-}
-
-[data-theme="light"] {
-	@include light-theme;
 }
 
 :root {
