@@ -120,6 +120,7 @@
 :where(del) {
 	background-color: var(--background-site-del);
 	text-decoration-line: line-through;
+	text-decoration-color: var(--color-site-deter);
 }
 
 :where(ins) {
