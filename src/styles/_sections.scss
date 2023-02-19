@@ -1,7 +1,7 @@
 @use "./mixins";
 
 .header {
-	padding: var(--vgap-site-medium) var(--vgap-site-base);
+	padding: calc(2.5rem + 0.5vw) var(--vgap-site-base) var(--vgap-site-medium);
 
 	.brand {
 		--logo-size: calc(42px + 0.5vw);
