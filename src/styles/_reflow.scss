@@ -1,0 +1,357 @@
+@use "./mixins";
+
+::-moz-selection {
+	background: var(--background-site-selection);
+}
+
+::selection {
+	background: var(--background-site-selection);
+}
+
+::placeholder {
+	color: var(--color-site-subtle);
+}
+
+::marker {
+	color: var(--color-site-marker);
+}
+
+:is(
+	::-webkit-calendar-picker-indicator,
+	::-webkit-clear-button,
+	::-webkit-inner-spin-button,
+	::-webkit-outer-spin-button
+) {
+	color: var(--color-site-interaction);
+}
+
+@include mixins.interactive-elements {
+	accent-color: var(--color-site-interaction);
+	caret-color: var(--color-site-interaction);
+
+	// handle focus from keyboard or tab key
+	// see https://www.tpgi.com/focus-visible-and-backwards-compatibility/
+	&:focus-visible {
+		outline-color: var(--color-site-interaction);
+		outline-style: solid;
+		outline-width: var(--thickness-site-outline);
+		outline-offset: var(--offset-site-outline);
+	}
+}
+
+* {
+	box-decoration-break: clone;
+	scrollbar-color: var(--color-site-scrollbar) var(--background-site-scrollbar);
+	text-decoration-color: var(--color-site-decoration, currentColor);
+	text-decoration-thickness: var(--thickness-site-decoration);
+	// keep the underline offset consistent across browsers
+	text-underline-position: from-font;
+	text-decoration-skip-ink: auto;
+
+	&::-webkit-scrollbar,
+	&::-webkit-scrollbar-track {
+		background-color: var(--background-site-scrollbar);
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: var(--color-site-scrollbar);
+	}
+}
+
+:where(body) {
+	font-family: var(--family-site-body);
+	font-size: var(--text-site-base);
+	font-weight: var(--font-site-regular);
+	font-kerning: normal;
+	text-rendering: optimizeLegibility;
+	background-color: var(--background-site-body);
+	color: var(--color-site-normal);
+	// see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-overflow-scrolling
+	-webkit-overflow-scrolling: touch;
+}
+
+:where(a) {
+	--color-site-decoration: var(--background-site-selection);
+
+	color: var(--color-site-interaction);
+	cursor: pointer;
+	text-decoration-line: underline;
+	text-decoration-style: solid;
+
+	* {
+		color: currentColor;
+	}
+
+	// handle focus received from mouse etc
+	&:is(:focus:not(:focus-visible), :hover, :active) {
+		--color-site-decoration: currentColor;
+	}
+
+	// handle focus from keyboard or tab key
+	// see https://www.tpgi.com/focus-visible-and-backwards-compatibility/
+	&:focus-visible {
+		text-decoration-color: transparent;
+		border-radius: var(--radius-site-tiny);
+	}
+}
+
+:where(cite) {
+	font-style: italic;
+}
+
+:where(blockquote) {
+	padding: 0 0 0 1em;
+	border-inline-start: 3px dotted var(--color-site-emphasis);
+}
+
+:where(hr) {
+	display: block;
+	border: none;
+	background-color: var(--border-site-body);
+	block-size: var(--thickness-site-base);
+}
+
+:where(mark, del, ins) {
+	border-radius: var(--radius-site-small);
+	padding: 0.2ch 0.6ch;
+	font-size: 0.95em;
+}
+
+:where(del) {
+	background-color: var(--background-site-del);
+	text-decoration-line: line-through;
+}
+
+:where(ins) {
+	background-color: var(--background-site-ins);
+	text-decoration: none;
+}
+
+:where(mark) {
+	background-color: var(--background-site-mark);
+}
+
+:where(summary) {
+	display: list-item;
+}
+
+:where(details) {
+	display: block;
+	border: 1px solid var(--border-site-body);
+	border-radius: var(--radius-site-base);
+	padding: 0 0.75em 0;
+
+	summary {
+		background-color: var(--background-site-summary);
+		margin: 0 -0.75em 0;
+		padding: 0.5em 0.75em;
+		border-radius: var(--radius-site-base);
+		cursor: pointer;
+
+		// handle focus from keyboard or tab key
+		// see https://www.tpgi.com/focus-visible-and-backwards-compatibility/
+		&:focus-visible {
+			border-radius: var(--radius-site-base);
+		}
+	}
+
+	&[open] {
+		padding-block-end: 0.5em;
+
+		summary {
+			margin-block-end: 0.5em;
+			border-block-end: 1px solid var(--border-site-body);
+			border-end-start-radius: 0;
+			border-end-end-radius: 0;
+		}
+	}
+}
+
+:where(i, em) {
+	color: var(--color-site-emphasis);
+}
+
+:where(b, strong) {
+	font-weight: var(--font-site-bold);
+	color: var(--color-site-stress);
+}
+
+:where(small, sub, sup) {
+	font-size: 0.8em;
+}
+
+:where(sub) {
+	vertical-align: sub;
+}
+
+:where(sup) {
+	vertical-align: super;
+}
+
+:where(var) {
+	letter-spacing: 0.1ch;
+}
+
+:where(img) {
+	border-radius: var(--radius-site-base);
+}
+
+:where(figure) {
+	text-align: center;
+
+	& > * + * {
+		margin-block-start: var(--vgap-site-base);
+	}
+}
+
+:where(figcaption) {
+	font-size: 0.8em;
+	color: var(--color-site-subtle);
+}
+
+:where(article) > * + * {
+	margin-block-start: var(--vgap-site-base);
+}
+
+:is(h1, h2, h3, h4, h5, h6) {
+	font-weight: var(--font-site-bold);
+}
+
+:is(h2 + *, h3 + *, h4 + *, h5 + *, h6 + *) {
+	margin-block-start: 1.5em;
+}
+
+:is(* + h2, * + h3, * + h4, * + h5, * + h6) {
+	margin-block-start: 2em;
+}
+
+:where(h1) {
+	font-size: 2.5rem;
+	color: var(--color-site-stress);
+}
+
+:where(h2) {
+	font-size: 2rem;
+	color: var(--color-site-emphasis);
+}
+
+:where(h3) {
+	font-size: 1.5rem;
+}
+
+:where(h4) {
+	font-size: 1.25rem;
+}
+
+:where(h5) {
+	font-size: 1.125rem;
+}
+
+:where(h6) {
+	font-size: 0.95rem;
+}
+
+:where(menu) {
+	list-style: none;
+}
+
+:where(ol, ul) {
+	list-style-position: outside;
+}
+
+:where(dd) {
+	margin-inline-start: 2ch;
+}
+
+:where(dt) {
+	font-weight: var(--font-site-bold);
+}
+
+:where(li) {
+
+	& + li,
+	& > * + * {
+		margin-block-start: 0.6rem;
+	}
+}
+
+:where(p + ul, p + ol) {
+	margin-block-start: var(--vgap-site-small);
+}
+
+:where(button, input, textarea, select),
+:where(input[type='file']):is(::-webkit-file-upload-button, ::file-selector-button) {
+	outline-color: var(--color-site-interaction);
+	border-color: var(--border-site-interaction);
+	background-color: var(--background-site-interaction);
+}
+
+:where(code, kbd, samp, pre) {
+	font-family: var(--family-site-code);
+	font-size: 0.85em;
+	-moz-osx-font-smoothing: auto;
+	-webkit-font-smoothing: auto;
+	background-color: var(--background-site-code);
+	border-radius: var(--radius-site-small);
+}
+
+:where(code, kbd, samp) {
+	padding: 0.2ch 0.6ch;
+	color: var(--color-site-code);
+}
+
+:where(pre) {
+	overflow: hidden;
+	border-radius: var(--radius-site-base);
+
+	code {
+		display: block;
+		background: none;
+		overflow: auto;
+		border: none;
+		padding: 1em 1.2em;
+		font-size: 1em;
+		white-space: pre;
+	}
+}
+
+:where(table) {
+	display: block;
+	width: 100%;
+	overflow-x: auto;
+
+	pre {
+		white-space: pre-wrap;
+	}
+}
+
+:where(th) {
+	font-weight: var(--font-site-bold);
+}
+
+:where(th, td) {
+	font-size: 1em;
+	padding: 0.25rem 0.75rem;
+	border: 1px solid var(--border-site-body);
+}
+
+:where(thead, tfoot) {
+	tr {
+		background-color: var(--background-site-table-active);
+	}
+
+	th,
+	td {
+		color: var(--color-site-table-active);
+
+		code {
+			background-color: var(--background-site-table);
+		}
+	}
+}
+
+:where(tbody) {
+	tr {
+		background-color: var(--background-site-table);
+	}
+}

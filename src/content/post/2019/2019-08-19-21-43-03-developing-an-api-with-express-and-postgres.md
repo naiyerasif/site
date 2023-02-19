@@ -400,7 +400,8 @@ curl --request DELETE http://localhost:8080/song \
 }'
 ```
 
-:::postscript
-Source code
+---
+
+**Source code**
+
 - [express-postgres-api](https://github.com/Microflash/guides/tree/main/nodejs/express-postgres-api)
-:::

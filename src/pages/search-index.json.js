@@ -28,16 +28,8 @@ const defaults = [
 	},
 	{
 		"title": "Preferences",
-		"tags": ["preferences", "theme-switcher", "text-size-switcher"],
-		"content": `<theme-switcher>
-				<svg role="img" class="icon" slot="theme-dark" aria-hidden="true">
-					<use href="#moon"></use>
-				</svg>
-				<svg role="img" class="icon" slot="theme-light" aria-hidden="true">
-					<use href="#sun"></use>
-				</svg>
-			</theme-switcher>
-		`,
+		"tags": ["preferences", "theme-switcher"],
+		"content": `<theme-switcher></theme-switcher>`,
 		"section": "Preferences"
 	}
 ]

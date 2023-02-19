@@ -153,11 +153,13 @@ Since the instruction coverage of many of our tests is below 100%, executing `mv
 
 You can configure specific classes and [additional counters](https://www.jacoco.org/jacoco/trunk/doc/counters.html) as well to customize the coverage rules. For more details, refer to the [official documentation](https://www.jacoco.org/jacoco/trunk/doc/index.html).
 
-:::postscript
-Source code
+---
+
+**Source code**
+
 - [coverage-jacoco-maven](https://github.com/Microflash/guides/tree/main/java/coverage-jacoco-maven)
 
-Related
+**Related**
+
 - [JaCoCo Maven plugin](https://www.eclemma.org/jacoco/trunk/doc/maven.html)
 - [Maven usage example](https://www.eclemma.org/jacoco/trunk/doc/examples/build/pom.xml)
-:::

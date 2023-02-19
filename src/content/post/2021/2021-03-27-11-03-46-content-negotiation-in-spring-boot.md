@@ -115,11 +115,13 @@ curl -s http://localhost:8080/game/trial -H 'Accept: application/json' | jq
 }
 ```
 
-:::postscript
-Source code
+---
+
+**Source code**
+
 - [spring-content-negotiation](https://github.com/Microflash/guides/tree/main/spring/spring-content-negotiation)
 
-Related
+**Related**
+
 - [Path Matching and Content Negotiation](https://docs.spring.io/spring-boot/docs/current/reference/html/web.html#web.servlet.spring-mvc.content-negotiation)
 - [HTTP Semantics: Content Negotiation](https://www.rfc-editor.org/rfc/rfc9110.html#name-content-negotiation)
-:::

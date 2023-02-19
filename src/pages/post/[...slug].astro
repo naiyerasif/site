@@ -7,7 +7,7 @@ import BackToTop from "~components/atoms/BackToTop.astro"
 import Icon from "~components/atoms/Icon.astro"
 import format, { compare, format_date } from "~datetime"
 import readingTime from "~reading-time"
-import siteInfo, { canonical, source, postPathname } from "~universal"
+import { source, postPathname } from "~universal"
 
 export async function getStaticPaths() {
 	const posts = await getCollection("post")
@@ -51,38 +51,46 @@ const pageInfo = {
 }
 ---
 
-<Layout {pageInfo} class="wrapper-medium">
+<Layout {pageInfo}>
 	<div class="post-metadata" slot="hero">
 		<h1 class="headline">{data.title}</h1>
 		<div class="metadata">
-			<Time date={data.date} />
-			{data.update !== data.date && <span class="update">updated on <Time date={data.update} /></span>}
-			{category !== "status" && timeToRead && <span>~{timeToRead}</span>}
+			<Time date={data.date} />{data.update !== data.date && <span class="update">updated on <Time date={data.update} /></span>}{category !== "status" && timeToRead && <span>~{timeToRead}</span>}
 		</div>
 	</div>
-	<article class="wrapper-base">
+	<article class="content">
 		{headings && headings.length > 0 && <nav class="toc">
 			<div class="toc-header">Table of Contents</div>
 			<Toc {headings}/>
 		</nav>}
 		<Content/>
-		<div class="recommendations">
+		<div class="content-recommendations">
 			{prevPage && 
-				<Fragment>
-					<div class="hint">Previous</div>
-					<a href={prevPage}>{prev.data.title}</a>
-				</Fragment>
+				<div class="content-recommendation">
+					<div class="decorator">
+						<Icon name="arrow-left"/>
+					</div>
+					<div class="navigator">
+						<div class="hint">Previous</div>
+						<a href={prevPage}>{prev.data.title}</a>
+					</div>
+				</div>
 			}
 			{nextPage && 
-				<Fragment>
-					<div class="hint">Next</div>
-					<a href={nextPage}>{next.data.title}</a>
-				</Fragment>
+				<div class="content-recommendation">
+					<div class="decorator">
+						<Icon name="arrow-right"/>
+					</div>
+					<div class="navigator">
+						<div class="hint">Next</div>
+						<a href={nextPage}>{next.data.title}</a>
+					</div>
+				</div>
 			}
 		</div>
 	</article>
-	<div class="action wrapper-max">
-		<div class="action-items post">
+	<div class="sidekick">
+		<div class="sidekick-flex-items">
 			<a href={shareViaMail} title="Share via email" class="button" rel="noopener noreferrer" target="_blank">
 				<Icon name="mail"/>
 			</a>

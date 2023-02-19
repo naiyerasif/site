@@ -1,5 +1,4 @@
-<script is:inline>
-(function () {
+;(function () {
 	let preferredTheme
 	try {
 		preferredTheme = localStorage.getItem("theme")
@@ -33,4 +32,3 @@
 
 	setTheme(preferredTheme || (prefersDarkTheme.matches ? "dark" : "light"))
 })()
-</script>

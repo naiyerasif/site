@@ -1,13 +1,12 @@
 @charset "UTF-8";
 
-@use "core/preset";
-
-@use "props/_adaptive.css";
-@use "props/_website";
-@use "core/baseline";
-
-@use "website/_syntax.css";
-@use "website/globals";
-@use "website/layouts";
-@use "website/content";
-@use "website/directives";
+@use "properties";
+@use "preset";
+@use "reflow";
+@use "syntax";
+@use "layout";
+@use "sections";
+@use "globals";
+@use "directives";
+@use "article";
+@use "callouts";

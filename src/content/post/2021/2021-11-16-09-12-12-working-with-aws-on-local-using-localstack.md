@@ -317,12 +317,14 @@ For more operations, check out the [secretsmanager](https://docs.aws.amazon.com/
 - LocalStack is geared toward CLI and SDK driven workflows. If you need a desktop app, you can check out [Commandeer](https://getcommandeer.com/), or LocalStack subscriptions which offer a Web UI.
 - Support for some [AWS services](https://docs.localstack.cloud/aws/feature-coverage/) (such as ElastiCache, ECS, EKS, etc) requires a subscription.
 
-:::postscript
-Source code
+---
+
+**Source code**
+
 - [localstack-introduction](https://github.com/Microflash/guides/tree/main/cloud/localstack-introduction)
 
-Related
+**Related**
+
 - [LocalStack docs](https://docs.localstack.cloud/overview/)
 - [Locker at Docker Hub](https://hub.docker.com/r/localstack/localstack)
 - [AWS Command Line Interface Documentation](https://docs.aws.amazon.com/cli/index.html)
-:::

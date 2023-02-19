@@ -18,16 +18,16 @@ const pageInfo = {
 }
 ---
 
-<Layout {pageInfo} class="wrapper-medium">
+<Layout {pageInfo}>
 	<div class="profile-metadata" slot="hero">
 		<img src={avatar} alt={data.title}>
 		<h1 class="headline">Hi, I&rsquo;m {name}</h1>
 	</div>
-	<article class="wrapper-base">
+	<article class="content">
 		<Content/>
 	</article>
-	<div class="action wrapper-max">
-		<div class="post action-items">
+	<div class="sidekick">
+		<div class="sidekick-items">
 			<BackToTop />
 		</div>
 	</div>

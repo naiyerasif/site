@@ -5,7 +5,6 @@ import remarkGfm from "remark-gfm"
 import remarkSmartypants from "remark-smartypants"
 import remarkDirective from "remark-directive"
 import remarkCalloutDirectives from "@microflash/remark-callout-directives"
-import remarkPostscriptDirective from "../generic-directives/remark-postscript-directive.js"
 import remarkTweetDirective from "../generic-directives/remark-tweet-directive.js"
 import remarkYoutubeDirective from "../generic-directives/remark-youtube-directive.js"
 import remarkFigCaption from "@microflash/remark-figure-caption"
@@ -29,7 +28,6 @@ async function process(markdown) {
 		.use(remarkDirective)
 		.use(remarkTweetDirective, { noscript: true })
 		.use(remarkYoutubeDirective)
-		.use(remarkPostscriptDirective)
 		.use(remarkCalloutDirectives)
 		.use(remarkRehype, { allowDangerousHtml: true })
 		.use(rehypeStringify, { allowDangerousHtml: true })

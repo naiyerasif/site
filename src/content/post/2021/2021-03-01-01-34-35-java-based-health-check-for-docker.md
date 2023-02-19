@@ -162,12 +162,14 @@ CONTAINER ID   IMAGE             COMMAND                  CREATED              S
 
 This approach eliminates the need for any utility (like `curl` or `wget`) and relies solely on the Java tooling available in the image. It is also portable because it works irrespective of the operating system or underlying base of the image.
 
-:::postscript
-Source code
+---
+
+**Source code**
+
 - [docker-healthcheck](https://github.com/Microflash/guides/tree/main/java/docker-healthcheck)
 
-Related
+**Related**
+
 - [Dockerfile HEALTHCHECK reference](https://docs.docker.com/engine/reference/builder/#healthcheck)
 - [Running Single-file Programs without Compiling in Java 11](https://www.infoq.com/articles/single-file-execution-java11/)
 - [Introduction to the Java HTTP Client](https://openjdk.java.net/groups/net/httpclient/intro.html)
-:::

@@ -3,11 +3,9 @@ import { getCollection } from "astro:content"
 import Layout from "~components/layouts/Layout.astro"
 import PostCard from "~components/layouts/PostCard.astro"
 import StatusCard from "~components/layouts/StatusCard.astro"
-import Time from "~components/atoms/Time.astro"
 import Icon from "~components/atoms/Icon.astro"
 import Pagination from "~components/widgets/Pagination.astro"
 import { compare } from "~datetime"
-import { postPathname } from "~universal"
 
 export async function getStaticPaths({ paginate }) {
 	const posts = (await getCollection("post"))
@@ -27,17 +25,19 @@ const pageInfo = {
 }
 ---
 
-<Layout {pageInfo} class="wrapper-base">
-	<div class="subheadline conditionally-centered" slot="hero">
+<Layout {pageInfo} class="compact">
+	<div class="subheadline with-icon" slot="hero">
 		<Icon name="posts"/>
 		<span>Posts &mdash;&mdash; {page.start + 1}&hellip;{page.end + 1} of {page.total}</span>
 	</div>
 	<div class="showcase">
 		{page.data.map(entry => entry.data.category === "status" ? <StatusCard {entry} /> : <PostCard {entry} />)}
 	</div>
-	<div class="action wrapper-max">
-		<div class="action-items pagination">
-			<Pagination currentPage={page.currentPage} totalPages={page.lastPage} base="posts"/>
+	<div class="sidekick">
+		<div class="sidekick-flex-items">
+			<div class="pagination">
+				<Pagination currentPage={page.currentPage} totalPages={page.lastPage} base="posts"/>
+			</div>
 		</div>
 	</div>
 </Layout>

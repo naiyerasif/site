@@ -1,0 +1,215 @@
+@use "./mixins";
+
+// external link indicator
+a[rel*='nofollow']::after {
+	@include mixins.image-mask("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 7h10v10m0-10L7 17'/%3E%3C/svg%3E");
+	display: inline-block;
+	text-decoration: none;
+	inline-size: 1em;
+	block-size: 1em;
+}
+
+// reset any interaction styles
+pre,
+code {
+	cursor: auto;
+	touch-action: auto;
+}
+
+button {
+	cursor: pointer;
+	touch-action: manipulation;
+	-webkit-tap-highlight-color: transparent;
+	border: var(--thickness-site-base) solid var(--border-site-interaction);
+	border-radius: var(--radius-site-base);
+	padding: 0.5rem;
+
+	&:not(:focus, :hover, :active) {
+		border-color: var(--background-site-interaction);
+	}
+
+	.icon {
+		stroke: var(--color-site-interaction);
+	}
+}
+
+[onclick] {
+	cursor: pointer;
+	touch-action: manipulation;
+	-webkit-tap-highlight-color: transparent;
+	outline: none;
+
+	background-color: transparent;
+
+	&:is(:focus, :focus-within, :hover, :active) {
+		background-color: var(--background-site-interaction);
+	}
+
+	&:is(:focus, :focus-within, :hover) {
+		a {
+			--color-site-decoration: currentColor;
+			color: var(--color-site-link-hover);
+		}
+	}
+
+	&:active {
+		a {
+			--color-site-decoration: currentColor;
+			color: var(--color-site-link-active);
+		}
+	}
+}
+
+// specific
+
+.headline {
+	color: var(--color-site-stress);
+	font-size: var(--text-site-headline);
+	letter-spacing: -0.025em;
+}
+
+.subheadline {
+	font-size: var(--text-site-subheadline);
+
+	&.with-icon {
+		display: flex;
+		gap: 1ch;
+		align-items: center;
+
+		.icon {
+			transform: scale(125%);
+		}
+	}
+}
+
+.button {
+	display: inline-flex;
+	align-items: center;
+	padding: 0.5rem;
+	border: var(--thickness-site-base) solid var(--border-site-interaction);
+	border-radius: var(--radius-site-base);
+	background-color: var(--background-site-interaction);
+	text-decoration-color: transparent;
+
+	&:not(:focus, :hover, :active) {
+		border-color: var(--background-site-interaction);
+	}
+
+	&.with-text {
+		padding: 0.4rem 0.8rem;
+	}
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+}
+
+@keyframes slide-up {
+	from {
+		transform: translateY(10%);
+	}
+}
+
+:where(generic-dialog-overlay) {
+	backdrop-filter: blur(10px);
+
+	@media (prefers-reduced-motion: no-preference) {
+		animation: fade-in 200ms both;
+	}
+
+	&::part(dialog) {
+		inline-size: 100%;
+		max-inline-size: var(--width-site-base);
+		background-color: transparent;
+		border: none;
+		outline: none;
+
+		@media (prefers-reduced-motion: no-preference) {
+			animation: fade-in 400ms 200ms both, slide-up 400ms 200ms both;
+		}
+	}
+}
+
+.command-bar {
+	&-items {
+		background-color: var(--background-site-command-bar);
+		border: var(--thickness-site-base) solid var(--border-site-body);
+		border-radius: var(--radius-site-medium);
+		
+		* {
+			outline-offset: var(--inset-site-outline);
+		}
+		
+		#commands {
+			max-block-size: 420px;
+			overflow-y: auto;
+			background-color: var(--background-site-command-bar);
+		}
+	}
+
+	&-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.5rem;
+		padding: 0.5rem;
+
+		input {
+			padding: 0.3rem 1rem;
+			inline-size: 100%;
+			border: none;
+			border-radius: var(--radius-site-base);
+			
+			&:not(:focus, :active) {
+				background-color: transparent;
+			}
+		}
+	}
+
+	&-footer {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		background-color: var(--background-site-body);
+		font-size: var(--text-site-small);
+		padding: 0.5rem 1rem;
+		border-end-end-radius: inherit;
+		border-end-start-radius: inherit;
+
+		& > *:not(:first-child)::before {
+			@include mixins.image-mask("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='15' r='1'/%3E%3C/svg%3E");
+			display: inline-block;
+			inline-size: 1em;
+			block-size: 1em;
+			opacity: 0.5;
+		}
+	}
+
+	&-section {
+
+		&-items > * + * {
+			border-block-start: var(--thickness-site-base) dotted var(--border-site-body);
+		}
+
+		.command-item {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			padding: 0.8rem 1rem;
+			font-size: 0.9em;
+
+			&:is(:focus, :hover, :hover) {
+				background-color: var(--background-site-interaction);
+			}
+		}
+
+		&-header {
+			background-color: var(--background-site-note);
+			font-size: var(--text-site-small);
+			font-weight: var(--font-site-semibold);
+			padding: 0.25rem 1rem;
+		}
+	}
+}

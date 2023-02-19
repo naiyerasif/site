@@ -7,17 +7,17 @@ import BackToTop from "~components/atoms/BackToTop.astro"
 const { hint = "Home" } = Astro.props
 ---
 
-<header class="wrapper-max header" id="header">
+<header class="wrapper header" id="header">
 	<div class="navbar">
-		<div class="navbar-main">
+		<div class="navbar-primary">
 			<a href="/" class="brand">
 				<img src="/favicon.svg" alt="naiyer.dev's logo">
 			</a>
 			<Icon name="chevron-right"/>
 			<div class="hint">{hint}</div>
 		</div>
-		<div class="navbar-items">
-			<nav class="menu-items" slot="menu">
+		<div class="navbar-secondary">
+			<nav class="menu-items">
 				<a href="/posts/">Posts</a>
 				<a href="/stacktrace/">Stacktrace</a>
 				<a href="/about/">About</a>
@@ -28,11 +28,11 @@ const { hint = "Home" } = Astro.props
 	</div>
 </header>
 
-<nav class="mobile-menu-items" slot="menu">
-	<a href="/" class="button">
+<nav class="navbar-tertiary">
+	<a href="/" class="button" title="Home">
 		<Icon name="site"/>
 	</a>
-	<a href="/posts/" class="button">
+	<a href="/posts/" class="button" title="Posts">
 		<Icon name="posts"/>
 	</a>
 	<CommandBar/>

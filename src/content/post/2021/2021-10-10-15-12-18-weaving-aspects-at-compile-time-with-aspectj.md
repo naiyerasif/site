@@ -567,12 +567,14 @@ Here, we
 - It is relatively simpler compared to _build-time_ or _load-time_ weaving which need an agent to weave the classes.
 - It introduces another compiler, `ajc`, in the compile process. Some IDEs may not provide support for this compiler out-of-box.
 
-:::postscript
-Source code
+---
+
+**Source code**
+
 - [aop-compile-time](https://github.com/Microflash/guides/tree/main/java/aop-compile-time)
 
-Related
+**Related**
+
 - [AspectJ in Action](https://livebook.manning.com/book/aspectj-in-action-second-edition/chapter-8/1) by Ramnivas Laddad
 - [The AspectJ Project](https://www.eclipse.org/aspectj/)
 - [The AspectJ Programming Guide](https://www.eclipse.org/aspectj/doc/released/progguide/index.html)
-:::

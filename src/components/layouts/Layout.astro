@@ -20,7 +20,7 @@ const hint = pageInfo?.hint
 	<body class="site">
 		<SkipLink/>
 		<Header {hint}/>
-		{hero && <section class="hero wrapper-base">
+		{hero && <section class:list={["hero", attribs.class]}>
 			<slot name="hero"/>
 		</section>}
 		<main id="content" {...attribs}>

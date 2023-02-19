@@ -1,10 +1,9 @@
 ---
 import Icon from "~components/atoms/Icon.astro"
-import EmbeddedWebview from "~components/widgets/EmbeddedWebview.astro"
 import siteInfo from "~universal"
 ---
 
-<footer class="footer wrapper-max" id="bottom">
+<footer class="wrapper footer" id="bottom">
 	<div class="footer-container">
 		<div class="footer-primary">
 			<div class="footer-message">
@@ -32,5 +31,7 @@ import siteInfo from "~universal"
 			</div>
 		</div>
 	</div>
-	<EmbeddedWebview/>
+	<script>
+	import "../../modules/embedded-webview/index.js"
+	</script>
 </footer>

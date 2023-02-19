@@ -1,0 +1,239 @@
+@use "./mixins";
+
+@mixin dark-theme {
+	color-scheme: dark;
+
+	--background-site-body: hsl(216, 28%, 6%);
+	--background-site-showcase: hsl(218, 80%, 2%);
+	--background-site-command-bar: hsl(218, 80%, 2%);
+	--background-site-code: hsl(220, 13%, 17%);
+	--background-site-selection: hsl(158, 100%, 14%);
+	--background-site-note: hsl(208, 21%, 12%);
+	--background-site-commend: hsl(152, 100%, 7%);
+	--background-site-warn: hsl(15, 100%, 12%);
+	--background-site-deter: hsl(359, 100%, 14%);
+	--background-site-assert: hsl(215, 100%, 14%);
+
+	--border-site-body: hsl(212, 12%, 21%);
+	--border-site-note: hsl(210, 16%, 27%);
+	--border-site-commend: hsl(158, 100%, 15%);
+	--border-site-warn: hsl(21, 100%, 24%);
+	--border-site-deter: hsl(356, 100%, 27%);
+	--border-site-assert: hsl(212, 97%, 28%);
+
+	--color-site-subtle: hsl(209, 15%, 66%);
+	--color-site-normal: hsl(210, 15%, 74%);
+	--color-site-emphasis: hsl(212, 16%, 84%);
+	--color-site-stress: hsl(206, 16%, 81%);
+	--color-site-commend: hsl(154, 33%, 49%);
+	--color-site-warn: hsl(19, 65%, 55%);
+	--color-site-deter: hsl(358, 93%, 65%);
+	--color-site-assert: hsl(215, 100%, 61%);
+	--color-site-marker: hsl(208, 14%, 39%);
+	--color-site-scrollbar: hsl(209, 14%, 41%);
+
+	--color-prettylights-syntax-comment: #8b949e;
+	--color-prettylights-syntax-constant: #79c0ff;
+	--color-prettylights-syntax-entity: #d2a8ff;
+	--color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+	--color-prettylights-syntax-entity-tag: #7ee787;
+	--color-prettylights-syntax-keyword: #ff7b72;
+	--color-prettylights-syntax-string: #a5d6ff;
+	--color-prettylights-syntax-variable: #ffa657;
+	--color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+	--color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+	--color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+	--color-prettylights-syntax-carriage-return-text: #f0f6fc;
+	--color-prettylights-syntax-carriage-return-bg: #b62324;
+	--color-prettylights-syntax-string-regexp: #7ee787;
+	--color-prettylights-syntax-markup-list: #f2cc60;
+	--color-prettylights-syntax-markup-heading: #1f6feb;
+	--color-prettylights-syntax-markup-italic: #c9d1d9;
+	--color-prettylights-syntax-markup-bold: #c9d1d9;
+	--color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+	--color-prettylights-syntax-markup-deleted-bg: #67060c;
+	--color-prettylights-syntax-markup-inserted-text: #aff5b4;
+	--color-prettylights-syntax-markup-inserted-bg: #033a16;
+	--color-prettylights-syntax-markup-changed-text: #ffdfb6;
+	--color-prettylights-syntax-markup-changed-bg: #5a1e02;
+	--color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+	--color-prettylights-syntax-markup-ignored-bg: #1158c7;
+	--color-prettylights-syntax-meta-diff-range: #d2a8ff;
+	--color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+	--color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+	--color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+
+	--font-site-regular: 350;
+	--font-site-semibold: 500;
+	--font-site-bold: 600;
+}
+
+@mixin light-theme {
+	color-scheme: light;
+
+	--background-site-body: hsl(43, 100%, 98%);
+	--background-site-showcase: hsl(28, 100%, 97%);
+	--background-site-command-bar: hsl(28, 100%, 99%);
+	--background-site-code: hsl(20, 68%, 92%);
+	--background-site-selection: hsl(149, 32%, 86%);
+	--background-site-note: hsl(27, 40%, 94%);
+	--background-site-commend: hsl(147, 30%, 92%);
+	--background-site-warn: hsl(20, 80%, 93%);
+	--background-site-deter: hsl(5, 100%, 94%);
+	--background-site-assert: hsl(209, 100%, 93%);
+
+	--border-site-body: hsl(19, 51%, 80%);
+	--border-site-note: hsl(21, 17%, 77%);
+	--border-site-commend: hsl(151, 33%, 71%);
+	--border-site-warn: hsl(19, 81%, 77%);
+	--border-site-deter: hsl(3, 100%, 83%);
+	--border-site-assert: hsl(210, 100%, 78%);
+
+	--color-site-subtle: hsl(208, 14%, 44%);
+	--color-site-normal: hsl(209, 16%, 20%);
+	--color-site-emphasis: hsl(208, 18%, 10%);
+	--color-site-stress: hsl(210, 17%, 15%);
+	--color-site-commend: hsl(162, 100%, 24%);
+	--color-site-warn: hsl(22, 85%, 37%);
+	--color-site-deter: hsl(348, 100%, 41%);
+	--color-site-assert: hsl(214, 81%, 45%);
+	--color-site-marker: hsl(19, 61%, 68%);
+	--color-site-scrollbar: hsl(19, 81%, 61%);
+
+	--color-prettylights-syntax-comment: #6e7781;
+	--color-prettylights-syntax-constant: #0550ae;
+	--color-prettylights-syntax-entity: #8250df;
+	--color-prettylights-syntax-storage-modifier-import: #24292f;
+	--color-prettylights-syntax-entity-tag: #116329;
+	--color-prettylights-syntax-keyword: #cf222e;
+	--color-prettylights-syntax-string: #0a3069;
+	--color-prettylights-syntax-variable: #953800;
+	--color-prettylights-syntax-brackethighlighter-unmatched: #82071e;
+	--color-prettylights-syntax-invalid-illegal-text: #f6f8fa;
+	--color-prettylights-syntax-invalid-illegal-bg: #82071e;
+	--color-prettylights-syntax-carriage-return-text: #f6f8fa;
+	--color-prettylights-syntax-carriage-return-bg: #cf222e;
+	--color-prettylights-syntax-string-regexp: #116329;
+	--color-prettylights-syntax-markup-list: #3b2300;
+	--color-prettylights-syntax-markup-heading: #0550ae;
+	--color-prettylights-syntax-markup-italic: #24292f;
+	--color-prettylights-syntax-markup-bold: #24292f;
+	--color-prettylights-syntax-markup-deleted-text: #82071e;
+	--color-prettylights-syntax-markup-deleted-bg: #ffebe9;
+	--color-prettylights-syntax-markup-inserted-text: #116329;
+	--color-prettylights-syntax-markup-inserted-bg: #dafbe1;
+	--color-prettylights-syntax-markup-changed-text: #953800;
+	--color-prettylights-syntax-markup-changed-bg: #ffd8b5;
+	--color-prettylights-syntax-markup-ignored-text: #eaeef2;
+	--color-prettylights-syntax-markup-ignored-bg: #0550ae;
+	--color-prettylights-syntax-meta-diff-range: #8250df;
+	--color-prettylights-syntax-brackethighlighter-angle: #57606a;
+	--color-prettylights-syntax-sublimelinter-gutter-mark: #8c959f;
+	--color-prettylights-syntax-constant-other-reference-link: #0a3069;
+
+	--font-site-regular: 400;
+	--font-site-semibold: 600;
+	--font-site-bold: 700;
+}
+
+// fallback when JavaScript is not available
+:root:not([data-theme]) {
+	@include dark-theme;
+
+	@media (prefers-color-scheme: light) {
+		@include light-theme;
+	}
+}
+
+[data-theme="dark"] {
+	@include dark-theme;
+}
+
+[data-theme="light"] {
+	@include light-theme;
+}
+
+:root {
+	--family-site-body: var(--family-site-sans);
+	--family-site-code: var(--family-site-mono);
+
+	--width-site-small: calc(576px + 15vw);
+	--width-site-max: calc(900px + 15vw);
+	--width-site-base: 70ch;
+
+	--hgap-site-base: 32px;
+	--vgap-site-small: 1rem;
+	--vgap-site-base: 2rem;
+	--vgap-site-medium: calc(48px + 2.5vw);
+	--vgap-site-large: calc(60px + 3.5vw);
+
+	--radius-site-tiny: 4px;
+	--radius-site-small: 8px;
+	--radius-site-base: 1rem;
+	--radius-site-medium: 1.5rem;
+	--radius-site-round: 1e5px; /* 50% radius works for squares but not other shape; 1e5px = 100000px */
+
+	--shadow-size-site-base: 0 8px 24px;
+
+	--background-site-link: var(--background-site-commend);
+	--background-site-link-hover: var(--background-site-deter);
+	--background-site-link-active: var(--background-site-warn);
+	--background-site-del: var(--background-site-deter);
+	--background-site-ins: var(--background-site-commend);
+	--background-site-mark: var(--background-site-warn);
+	--background-site-scrollbar: transparent;
+	--background-site-summary: var(--background-site-note);
+	--background-site-table: inherit;
+	--background-site-table-active: var(--background-site-note);
+
+	--border-site-link: var(--border-site-commend);
+	--border-site-link-hover: var(--border-site-deter);
+	--border-site-link-active: var(--border-site-warn);
+
+	--color-site-code: inherit;
+	--color-site-link: var(--color-site-commend);
+	--color-site-link-hover: var(--color-site-deter);
+	--color-site-link-active: var(--color-site-warn);
+	--color-site-table-active: var(--color-site-emphasis);
+
+	--thickness-site-decoration: 0.2ex;
+	--thickness-site-outline: 2px;
+	--thickness-site-base: 1px;
+
+	--offset-site-outline: 0.125em;
+	--inset-site-outline: calc(var(-offset-site-outline) * -1);
+
+	--hgap-site-adaptive: 1rem;
+	--thickness-site-adaptive: 0;
+	--radius-site-adaptive-base: 0;
+	--radius-site-adaptive-medium: 0;
+	--align-site-adaptive: start;
+	--justify-site-adaptive: flex-start;
+
+	@include mixins.window-normal {
+		--hgap-site-adaptive: var(--hgap-site-base);
+		--thickness-site-adaptive: var(--thickness-site-base);
+		--radius-site-adaptive-base: var(--radius-site-base);
+		--radius-site-adaptive-medium: var(--radius-site-medium);
+		--align-site-adaptive: center;
+		--justify-site-adaptive: center;
+	}
+}
+
+@include mixins.interactive-elements {
+	--background-site-interaction: var(--background-site-link);
+	--border-site-interaction: var(--border-site-link);
+	--color-site-interaction: var(--color-site-link);
+
+	&:is(:focus, :focus-visible, :focus-within, :hover) {
+		--background-site-interaction: var(--background-site-link-hover);
+		--border-site-interaction: var(--border-site-link-hover);
+		--color-site-interaction: var(--color-site-link-hover);
+	}
+
+	&:active {
+		--background-site-interaction: var(--background-site-link-active);
+		--border-site-interaction: var(--border-site-link-active);
+		--color-site-interaction: var(--color-site-link-active);
+	}
+}

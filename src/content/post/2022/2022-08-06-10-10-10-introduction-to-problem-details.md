@@ -161,7 +161,8 @@ Problem Details has gained support from popular frameworks and libraries.
 - Micronaut has a dedicated library [micronaut-projects/micronaut-problem-json](https://github.com/micronaut-projects/micronaut-problem-json) to add Problem Details support.
 - [pupilstart/houston](https://github.com/pupilstart/houston) and [PDMLab/http-problem](https://github.com/PDMLab/http-problem) provide Problem Details support on Node.js and Deno.
 
-:::postscript
-Related
+---
+
+**Related**
+
 - [Problem Details for HTTP APIs](https://datatracker.ietf.org/doc/html/rfc7807)
-:::

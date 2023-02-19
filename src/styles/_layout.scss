@@ -1,0 +1,63 @@
+@use "./mixins";
+
+.site {
+  --canvas: minmax(0, 1fr);
+  --layout: min(var(--width-site-max), 100%);
+  --wrapper: minmax(0, calc(var(--hgap-site-base) * 7));
+  
+  display: grid;
+  grid-template-columns:
+     [canvas-start] var(--canvas)
+     [wrapper-start] var(--wrapper)
+     [layout-start] var(--layout) [layout-end]
+     var(--wrapper) [wrapper-end]
+     var(--canvas) [canvas-end];
+  
+  & > * {
+    grid-column: layout;
+  }
+  
+  & > .wrapper {
+    grid-column: wrapper;
+  }
+}
+
+@include mixins.window-normal {
+	.compact {
+		max-inline-size: var(--width-site-base);
+		margin-inline: auto;
+	}
+}
+
+.content {
+  --full: minmax(var(--hgap-site-base), 1fr);
+  --content: min(var(--width-site-base), 100% - var(--hgap-site-base) * 2);
+  --popout: minmax(0, var(--hgap-site-base));
+  --feature: minmax(0, calc(var(--hgap-site-base) * 2));
+
+  display: grid;
+  grid-template-columns:
+    [full-start] var(--full)
+    [feature-start] var(--feature)
+    [popout-start] var(--popout)
+    [content-start] var(--content) [content-end]
+    var(--popout) [popout-end]
+    var(--feature) [feature-end]
+    var(--full) [full-end];
+  
+  & > * {
+    grid-column: content;
+  }
+  
+  & > .popout {
+    grid-column: popout;
+  }
+  
+  & > .feature {
+    grid-column: feature;
+  }
+  
+  & > .full {
+    grid-column: full;
+  }
+}

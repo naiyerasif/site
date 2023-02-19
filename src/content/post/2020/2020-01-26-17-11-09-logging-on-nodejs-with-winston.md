@@ -68,11 +68,13 @@ app.listen(port, () => logger.info(`Server started at http://localhost:${port}`)
 
 Start the application; you should see `app.log` in `logs` directory and the same logs printed on the console.
 
-:::postscript
-Source code
+---
+
+**Source code**
+
 - [logging-with-winston](https://github.com/Microflash/guides/tree/main/nodejs/logging-with-winston)
 
-Related
+**Related**
+
 - [winston docs](https://github.com/winstonjs/winston)
 - [winston-daily-rotate-file docs](https://github.com/winstonjs/winston-daily-rotate-file)
-:::

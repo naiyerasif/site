@@ -319,11 +319,14 @@ After serving the preceding requests, the logs below show that the connections a
 2022-09-18 15:18:08.055 DEBUG 7104 --- [ool housekeeper] com.zaxxer.hikari.pool.HikariPool        : H2HikariPool - Fill pool skipped, pool is at sufficient level.
 ```
 
-:::postscript
-Source code
+---
+
+**Source code**
+
 - [spring-data-jdbc-hikari-leak-detection](https://github.com/Microflash/guides/tree/main/spring/spring-data-jdbc-hikari-leak-detection)
 
-Related
+**Related**
+
 - [Randomly HikariPool pool becomes zero and HikariCP is not renewing/creating new connections](https://github.com/brettwooldridge/HikariCP/issues/1256)
 - [Streaming Query Results](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-streaming)
-:::
+

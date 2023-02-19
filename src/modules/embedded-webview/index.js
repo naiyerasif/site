@@ -1,5 +1,4 @@
-<script>
-class EmbeddedWebview extends HTMLElement {
+export default class EmbeddedWebview extends HTMLElement {
 	static tagName = "embedded-webview"
 
 	connectedCallback() {
@@ -12,4 +11,3 @@ class EmbeddedWebview extends HTMLElement {
 }
 
 customElements.define(EmbeddedWebview.tagName, EmbeddedWebview)
-</script>

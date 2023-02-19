@@ -1,3 +1,5 @@
+@use "./mixins";
+
 .pl-c {
 	color: var(--color-prettylights-syntax-comment);
 }
@@ -116,4 +118,85 @@
 .pl-corl {
 	text-decoration: underline;
 	color: var(--color-prettylights-syntax-constant-other-reference-link);
+}
+
+.highlight {
+	background-color: var(--background-site-showcase);
+	box-shadow: var(--shadow-size-site-base) var(--background-site-showcase);
+	border: var(--thickness-site-base) solid var(--border-site-body);
+	border-radius: var(--radius-site-base);
+
+	&:not(:last-child) {
+		margin-block-end: var(--vgap-site-base);
+	}
+
+	&:focus-within {
+		outline-color: var(--color-site-link-hover);
+		outline-style: solid;
+		outline-width: var(--thickness-site-outline);
+		outline-offset: var(--inset-site-outline);
+	}
+
+	&-header {
+		display: flex;
+		align-items: center;
+		gap: 1ch;
+		border-block-end: var(--thickness-site-base) solid var(--border-site-body);
+		padding: 1ch;
+		font-size: var(--text-site-small);
+	}
+
+	&-language {
+		font-family: var(--family-site-code);
+		background-color: var(--background-site-code);
+		padding-inline: 0.75ch;
+		border-radius: var(--radius-site-small);
+	}
+
+	pre {
+		background-color: transparent;
+		border: none;
+		overflow-x: auto;
+
+		& > code {
+			display: grid;
+			padding-inline: 0;
+		}
+	}
+
+	.line {
+		border-inline-start: var(--thickness-site-outline) solid transparent;
+		padding-inline: 1em;
+
+		&:is(:focus:not(:focus-visible), :hover) {
+			background-color: var(--background-site-interaction);
+		}
+
+		&-number {
+			user-select: none;
+			margin-inline-end: 1em;
+			text-align: right;
+			color: var(--color-prettylights-syntax-sublimelinter-gutter-mark);
+		}
+
+		&[data-highlighted] {
+			background: var(--background-site-note);
+			border-inline-start: 2px solid var(--color-prettylights-syntax-comment);
+
+			.line-number {
+				color: var(--color-prettylights-syntax-comment);
+			}
+		}
+
+		&-prompt::before {
+			margin-inline-end: 1ch;
+			vertical-align: middle;
+			@include mixins.image-mask("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 20 7.521-10.957M5 2h1.764a2 2 0 0 1 1.789 1.106l7.894 15.788A2 2 0 0 0 18.236 20H20'/%3E%3C/svg%3E");
+			color: var(--color-site-deter);
+			display: inline-block;
+			user-select: none;
+			inline-size: 1em;
+			block-size: 1em;
+		}
+	}
 }

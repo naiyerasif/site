@@ -323,11 +323,13 @@ Don't forget to provide the `multiple` attribute for the `input[type=file]` elem
 
 Launch the Spring and Angular applications and open the browser at <http://localhost:4200>. Try uploading some files to see the application in action.
 
-:::postscript
-Source code
+---
+
+**Source code**
+
 - [spring-file-upload](https://github.com/Microflash/guides/tree/main/spring/spring-file-upload)
 
-Related
+**Related**
+
 - [Uploading files](https://spring.io/guides/gs/uploading-files/)
 - [Angular 6 – Upload/Get MultipartFile to/from Spring Boot Server](https://grokonez.com/java-integration/angular-6-upload-get-multipartfile-spring-boot-example)
-:::

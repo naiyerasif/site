@@ -1,0 +1,57 @@
+article.content {
+	& > p:first-of-type {
+		font-size: 1.2em;
+	}
+
+	& > hr:last-of-type {
+		margin-block-start: var(--vgap-site-medium);
+		background-color: transparent;
+		background-image: radial-gradient(circle, var(--color-site-marker) 1px, transparent 1px);
+		background-size: 8px 1px;
+		background-repeat: repeat;
+	}
+
+	:is(h1, h2, h3, h4, h5, h6) {
+		--size-site-icon: 1ch;
+		a .icon {
+			display: none;
+			visibility: hidden;
+			vertical-align: text-top;
+			margin-inline-start: 0.25ch;
+		}
+
+		&:focus,
+		&:hover {
+			a .icon {
+				display: inline-block;
+				visibility: visible;
+			}
+		}
+	}
+
+	& > .callout {
+		grid-column: popout;
+	}
+
+	& > .directive-youtube {
+		grid-column: full;
+
+		.directive-youtube-iframe-container {
+			border-inline: var(--thickness-site-adaptive) solid var(--border-site-body);
+			border-radius: var(--radius-site-adaptive-base);
+		}
+	}
+
+	& > .highlight {
+		grid-column: full;
+		border-inline: var(--thickness-site-adaptive) solid var(--border-site-body);
+		border-radius: var(--radius-site-adaptive-base);
+	}
+}
+
+figure img,
+figure svg {
+	margin-inline: auto;
+	border: var(--thickness-site-base) solid var(--border-site-body);
+	box-shadow: var(--shadow-size-site-base) var(--background-site-showcase);
+}

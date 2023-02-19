@@ -81,8 +81,7 @@
 
 // ensure button text is not selectable
 :where(button, button[type], input[type="button"], input[type="submit"], input[type="reset"]),
-:where(input[type="file"])::-webkit-file-upload-button,
-:where(input[type="file"])::file-selector-button {
+:where(input[type="file"]):is(::-webkit-file-upload-button, ::file-selector-button) {
 	-webkit-tap-highlight-color: transparent;
 	-webkit-touch-callout: none;
 	user-select: none;

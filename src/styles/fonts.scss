@@ -1,88 +1,35 @@
-@use "sass:list";
-@use "sass:map";
-@use "sass:meta";
+@use "mixins";
 
-@function _declare_font_source($font-family, $file-path, $file-formats) {
-	$src: ();
+@include mixins.variable-font("Inter var", 100 900, "Inter-Regular.var");
+@include mixins.variable-font("Inter var", 100 900, "Inter-Italic.var", italic);
+@include mixins.variable-font("JetBrains Mono var", 100 900, "JetBrainsMono.var");
 
-	$formats-map: (
-		"woff2": "#{$file-path}.woff2" format("woff2"),
-		"woff": "#{$file-path}.woff" format("woff"),
-	);
-
-	@each $format in $file-formats {
-		@if map.has-key($formats-map, $format) {
-			$value: map.get($formats-map, $format);
-			$font-path: list.nth($value, 1);
-			$font-format: list.nth($value, 2);
-			$src: list.append($src, url($font-path) $font-format, comma);
-		} @else {
-			@error "`#{$file-formats}` contains an unsupported font file format"
-		}
-	}
-
-	@return $src;
-}
-
-@mixin font-face($font-family, $font-weight, $font-style, $file-path, $file-formats) {
-	@font-face {
-		font-family: $font-family;
-		font-display: swap;
-		src: _declare-font-source($font-family, $file-path, $file-formats);
-		font-style: $font-style;
-		font-weight: $font-weight;
-		@content;
-	}
-}
-
-$font-directory: "/fonts";
-$named-instances: (
-	normal: "Regular",
-	italic: "Italic"
-);
-
-@mixin variable-font($font-family, $font-weight, $file-path, $font-style: normal) {
-	@include font-face($font-family, $font-weight, $font-style, "#{$font-directory}/#{$file-path}", "woff2") {
-		@if (map.has-key($named-instances, $font-style)) {
-			font-named-instance: map.get($named-instances, $font-style);
-		}
-	}
-}
-
-@mixin static-font($font-family, $font-weight, $file-path, $font-style: normal) {
-	@include font-face($font-family, $font-weight, $font-style, "#{$font-directory}/#{$file-path}", "woff2");
-}
-
-@include variable-font("Inter var", 100 900, "Inter-Regular.var");
-@include variable-font("Inter var", 100 900, "Inter-Italic.var", italic);
-@include variable-font("JetBrains Mono var", 100 900, "JetBrainsMono.var");
-
-@include static-font("Inter", 350, "Inter-Light");
-@include static-font("Inter", 350, "Inter-LightItalic", italic);
-@include static-font("Inter", 400, "Inter-Regular");
-@include static-font("Inter", 400, "Inter-Italic", italic);
-@include static-font("Inter", 500, "Inter-Medium");
-@include static-font("Inter", 500, "Inter-MediumItalic", italic);
-@include static-font("Inter", 600, "Inter-SemiBold");
-@include static-font("Inter", 600, "Inter-SemiBoldItalic", italic);
-@include static-font("Inter", 700, "Inter-Bold");
-@include static-font("Inter", 700, "Inter-BoldItalic", italic);
-@include static-font("JetBrains Mono", 350, "JetBrainsMono-Light");
-@include static-font("JetBrains Mono", 400, "JetBrainsMono-Regular");
-@include static-font("JetBrains Mono", 500, "JetBrainsMono-Medium");
-@include static-font("JetBrains Mono", 600, "JetBrainsMono-SemiBold");
-@include static-font("JetBrains Mono", 700, "JetBrainsMono-Bold");
+@include mixins.static-font("Inter", 350, "Inter-Light");
+@include mixins.static-font("Inter", 350, "Inter-LightItalic", italic);
+@include mixins.static-font("Inter", 400, "Inter-Regular");
+@include mixins.static-font("Inter", 400, "Inter-Italic", italic);
+@include mixins.static-font("Inter", 500, "Inter-Medium");
+@include mixins.static-font("Inter", 500, "Inter-MediumItalic", italic);
+@include mixins.static-font("Inter", 600, "Inter-SemiBold");
+@include mixins.static-font("Inter", 600, "Inter-SemiBoldItalic", italic);
+@include mixins.static-font("Inter", 700, "Inter-Bold");
+@include mixins.static-font("Inter", 700, "Inter-BoldItalic", italic);
+@include mixins.static-font("JetBrains Mono", 350, "JetBrainsMono-Light");
+@include mixins.static-font("JetBrains Mono", 400, "JetBrainsMono-Regular");
+@include mixins.static-font("JetBrains Mono", 500, "JetBrainsMono-Medium");
+@include mixins.static-font("JetBrains Mono", 600, "JetBrainsMono-SemiBold");
+@include mixins.static-font("JetBrains Mono", 700, "JetBrainsMono-Bold");
 
 :root {
-	--font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-	--font-mono: ui-monospace, SFMono-Regular, "Roboto Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	--family-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	--family-mono: ui-monospace, SFMono-Regular, "Roboto Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
-	--site-font-sans: "Inter", var(--font-sans);
-	--site-font-mono: "JetBrains Mono", var(--font-mono);
+	--family-site-sans: "Inter", var(--family-sans);
+	--family-site-mono: "JetBrains Mono", var(--family-mono);
 
 	@supports (font-variation-settings: normal) {
-		--site-font-sans: "Inter var", var(--font-sans);
-		--site-font-mono: "JetBrains Mono var", var(--font-mono);
+		--family-site-sans: "Inter var", var(--family-sans);
+		--family-site-mono: "JetBrains Mono var", var(--family-mono);
 	}
 }
 

@@ -158,7 +158,8 @@ app.listen(port, () => console.log(`Server started at http://localhost:${port}`)
 
 Launch the application by executing `yarn start` and you'll get the same application up and running, now with TypeScript support.
 
-:::postscript
-Source code
+---
+
+**Source code**
+
 - [express-with-typescript](https://github.com/Microflash/guides/tree/main/nodejs/express-with-typescript)
-:::

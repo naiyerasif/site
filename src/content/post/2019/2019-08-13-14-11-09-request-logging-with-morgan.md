@@ -126,10 +126,12 @@ app.listen(port, () => console.log(`Server started at http://localhost:${port}`)
 
 Start the application; you should the request logs printed on console when the endpoints are consumed by a client (such as `curl` or Postman). Set the environment to `production` and `morgan` will print the logs in `logs/requests.log` file.
 
-:::postscript
-Source code
+---
+
+**Source code**
+
 - [morgan-request-logging](https://github.com/Microflash/guides/tree/main/nodejs/morgan-request-logging)
 
-Related
+**Related**
+
 - [morgan docs](https://github.com/expressjs/morgan#readme)
-:::

@@ -571,10 +571,12 @@ In this test class,
 - the test `shouldNotCascadeOnFetch` verifies that the cascade doesn't happen when a document is fetched from the database.
 - the test `shouldCascadeOnDelete` verifies that once the `SAMPLE_ACCOUNT` has been deleted, the corresponding `User` and `Session` documents have also been deleted.
 
-:::postscript
-Source code
+---
+
+**Source code**
+
 - [spring-data-mongo-repository](https://github.com/Microflash/guides/tree/main/spring/spring-data-mongo-repository)
 
-Corrections
+**Corrections**
+
 - Thanks [@CyberpunkPerson](https://github.com/CyberpunkPerson) for [pointing out](https://github.com/Microflash/spring-guides/issues/1) that `onAfterConvert` can delete objects not only when the parent is deleted but also when the parent is fetched 🤦‍♀️! I've patched the code and updated the article with a fix.
-:::

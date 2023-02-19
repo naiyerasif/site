@@ -104,10 +104,12 @@ app.listen(port, () => logger.info(`Server started at http://localhost:${port}`)
 
 Start the application; you should see `app.log` in `logs` directory and the same logs printed on the console.
 
-:::postscript
-Source code
+---
+
+**Source code**
+
 - [logging-with-log4js-node](https://github.com/Microflash/guides/tree/main/nodejs/logging-with-log4js-node)
 
-Related
+**Related**
+
 - [log4js-node docs](https://log4js-node.github.io/log4js-node/index.html)
-:::

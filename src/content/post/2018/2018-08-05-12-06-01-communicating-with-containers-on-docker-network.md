@@ -380,13 +380,15 @@ In this file, we're declaring the Angular app exposed over the port `4200` and t
 
 Launch both the stacks with `docker-compose up -d` and browse to <http://localhost:4200>. You would see the expected message on the browser window.
 
-:::postscript
-Source code
+---
+
+**Source code**
+
 - [communicating-with-containers-on-docker-network](https://github.com/Microflash/guides/tree/main/cloud/communicating-with-containers-on-docker-network)
 
-Related
+**Related**
+
 - [Inject env variables from docker-compose into Angular4 app](https://stackoverflow.com/a/45727380)
 - [Communication between multiple docker-compose projects](https://stackoverflow.com/questions/38088279/communication-between-multiple-docker-compose-projects)
 - [Wide open nginx CORS configuration](https://michielkalkman.com/snippets/nginx-cors-open-configuration/)
 - [Choosing an Outgoing IP Address](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/#choosing-an-outgoing-ip-address)
-:::

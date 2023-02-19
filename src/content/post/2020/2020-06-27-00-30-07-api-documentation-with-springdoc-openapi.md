@@ -425,11 +425,13 @@ public @SpringBootApplication class Launcher {
 
 Once again, launch the application and open <http://localhost:8080/swagger-ui.html> to access the Swagger UI.
 
-:::postscript
-Source code
+---
+
+**Source code**
+
 - [springdoc-webmvc-integration](https://github.com/Microflash/guides/tree/main/spring/springdoc-webmvc-integration)
 - [springdoc-webmvcfn-integration](https://github.com/Microflash/guides/tree/main/spring/springdoc-webmvcfn-integration)
 
-Related
+**Related**
+
 - [Springdoc documentation](https://springdoc.org/)
-:::

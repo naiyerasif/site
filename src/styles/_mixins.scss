@@ -1,10 +1,66 @@
-@mixin full-bleed {
-	grid-column: 1 / -1;
-	max-inline-size: 100%;
-	overflow: hidden;
+@use "sass:list";
+@use "sass:map";
+@use "sass:meta";
+
+@function _declare_font_source($font-family, $file-path, $file-formats) {
+	$src: ();
+
+	$formats-map: (
+		"woff2": "#{$file-path}.woff2" format("woff2"),
+		"woff": "#{$file-path}.woff" format("woff"),
+	);
+
+	@each $format in $file-formats {
+		@if map.has-key($formats-map, $format) {
+			$value: map.get($formats-map, $format);
+			$font-path: list.nth($value, 1);
+			$font-format: list.nth($value, 2);
+			$src: list.append($src, url($font-path) $font-format, comma);
+		} @else {
+			@error "`#{$file-formats}` contains an unsupported font file format"
+		}
+	}
+
+	@return $src;
 }
 
-@mixin mask($data-uri) {
+@mixin font-face($font-family, $font-weight, $font-style, $file-path, $file-formats) {
+	@font-face {
+		font-family: $font-family;
+		font-display: swap;
+		src: _declare-font-source($font-family, $file-path, $file-formats);
+		font-style: $font-style;
+		font-weight: $font-weight;
+		@content;
+	}
+}
+
+$font-directory: "/fonts";
+$named-instances: (
+	normal: "Regular",
+	italic: "Italic"
+);
+
+@mixin variable-font($font-family, $font-weight, $file-path, $font-style: normal) {
+	@include font-face($font-family, $font-weight, $font-style, "#{$font-directory}/#{$file-path}", "woff2") {
+		@if (map.has-key($named-instances, $font-style)) {
+			font-named-instance: map.get($named-instances, $font-style);
+		}
+	}
+}
+
+@mixin static-font($font-family, $font-weight, $file-path, $font-style: normal) {
+	@include font-face($font-family, $font-weight, $font-style, "#{$font-directory}/#{$file-path}", "woff2");
+}
+
+@mixin interactive-elements {
+	:where(a[href], area, button, input, label[for], select, summary, textarea, [onclick], [tabindex]:not([tabindex*="-"])),
+	:where(input[type="file"]):is(::-webkit-file-upload-button, ::file-selector-button) {
+		@content;
+	}
+}
+
+@mixin image-mask($data-uri) {
 	content: "";
 	mask-image: url($data-uri);
 	mask-repeat: no-repeat;
@@ -13,13 +69,13 @@
 	background-color: currentColor;
 }
 
-@mixin windowSmall {
+@mixin window-small {
 	@media screen and (max-width: 47.999rem) {
 		@content;
 	}
 }
 
-@mixin windowBase {
+@mixin window-normal {
 	@media screen and (min-width: 48rem) {
 		@content;
 	}

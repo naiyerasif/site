@@ -573,12 +573,14 @@ public final class ServiceProxyProvider {
 - This approach relies on Spring AOP; it doesn't work with classes that the Spring IoC container is not aware of.
 - All the limitations of Spring AOP and Aspects apply to this approach; you can't log private methods and you can't extend this approach for advising the fields.
 
-:::postscript
-Source code
+---
+
+**Source code**
+
 - [aop-method-logging](https://github.com/Microflash/guides/tree/main/spring/aop-method-logging)
 
-Related
+**Related**
+
 - [Aspect Oriented Programming with Spring](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#aop)
 - [AspectJ in Action](https://livebook.manning.com/book/aspectj-in-action-second-edition/chapter-3/18) by Ramnivas Laddad
 - [The AspectJ Project](https://www.eclipse.org/aspectj/)
-:::

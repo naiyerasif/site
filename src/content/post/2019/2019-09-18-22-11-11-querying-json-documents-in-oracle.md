@@ -255,7 +255,8 @@ which emits the following dataset.
 - if an attribute is repeated in a JSON document, Oracle may choose to match any one of those fields and ignore the rest.
 - by default, Oracle matches the JSON attributes and collections with a [lax JSON syntax](https://docs.oracle.com/database/121/ADXDB/json.htm#GUID-1B6CFFBE-85FE-41DD-BA14-DD1DE73EAB20).
 
-:::postscript
-Related
+---
+
+**Related**
+
 - [Oracle docs](https://docs.oracle.com/database/121/ADXDB/json.htm)
-:::

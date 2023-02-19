@@ -75,10 +75,12 @@ Edit `package.json` scripts as follows.
 
 You can lint the files using `yarn lint`. Also, when the application is started with `yarn start`, the `prestart` script will launch the build generation and lint it as well.
 
-:::postscript
-Source code
+---
+
+**Source code**
+
 - [linting-with-typescript-eslint](https://github.com/Microflash/guides/tree/main/nodejs/linting-with-typescript-eslint)
 
-Related
+**Related**
+
 - [typescript-eslint repo](https://github.com/typescript-eslint/typescript-eslint)
-:::

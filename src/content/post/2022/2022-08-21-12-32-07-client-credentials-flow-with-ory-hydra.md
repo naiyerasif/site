@@ -238,9 +238,9 @@ curl -X POST 'http://localhost:4445/oauth2/introspect' -H 'Content-Type: applica
 - Other OAuth flows like `implicit`, `authorization_code`, `refresh_token`, etc. are also supported. The [5-min tutorial](https://www.ory.sh/docs/hydra/5min-tutorial) on the official site showcases the `authorization_code` based flow.
 - You can also pass a `hydra.yml` file with the [configuration](https://www.ory.sh/docs/hydra/reference/configuration) to customize the behavior of Hydra. In this post, the default configuration is used.
 
+---
 
-:::postscript
-Related
+**Related**
+
 - [Ory Hydra: Introduction](https://www.ory.sh/docs/hydra/)
 - [API reference](https://www.ory.sh/docs/reference/api)
-:::

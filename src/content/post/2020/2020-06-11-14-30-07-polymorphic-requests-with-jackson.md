@@ -264,7 +264,8 @@ class CartItemTest {
 - The second test checks if the JSON is being read as an instance of the `Accessory` type.
 - The third test checks if our implementation throws the expected exception when an unknown `itemCategory` is specified.
 
-:::postscript
-Source code
+---
+
+**Source code**
+
 - [jackson-polymorphic-requests](https://github.com/Microflash/guides/tree/main/java/jackson-polymorphic-requests)
-:::
