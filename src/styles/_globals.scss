@@ -84,6 +84,14 @@ button {
 	color: transparent;
 	font-size: var(--text-site-headline);
 	letter-spacing: -0.025em;
+
+	&::-moz-selection {
+		color: var(--color-site-stress);
+	}
+	
+	&::selection {
+		color: var(--color-site-stress);
+	}
 }
 
 .subheadline {

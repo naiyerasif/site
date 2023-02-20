@@ -2,7 +2,10 @@ import slugify, { slugifyWithCounter } from "@sindresorhus/slugify"
 
 export const defaults = {
 	decamelize: false,
-	customReplacements: [[".js", "js"]]
+	customReplacements: [
+		["+", "plus"],
+		[".js", "js"]
+	]
 }
 
 export class CountableSlugifier {
