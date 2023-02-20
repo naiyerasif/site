@@ -39,6 +39,12 @@
 	}
 }
 
+// hide the web components until they are defined
+:not(:defined),
+:where(p):empty {
+	display: none;
+}
+
 * {
 	box-decoration-break: clone;
 	scrollbar-color: var(--color-site-scrollbar) var(--background-site-scrollbar);
@@ -107,8 +113,11 @@
 :where(hr) {
 	display: block;
 	border: none;
-	background-color: var(--border-site-body);
 	block-size: var(--thickness-site-base);
+	background-color: transparent;
+	background-image: radial-gradient(circle, var(--color-site-marker) 1px, transparent 1px);
+	background-size: 8px 1px;
+	background-repeat: repeat;
 }
 
 :where(mark, del, ins) {
@@ -212,6 +221,10 @@
 
 :where(article) > * + * {
 	margin-block-start: var(--vgap-site-base);
+}
+
+:where(hr + *, * + hr) {
+	margin-block-start: var(--vgap-site-medium);
 }
 
 :is(h1, h2, h3, h4, h5, h6) {

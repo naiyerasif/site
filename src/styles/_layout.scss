@@ -3,7 +3,7 @@
 .site {
   --canvas: minmax(0, 1fr);
   --layout: min(var(--width-site-max), 100%);
-  --wrapper: minmax(0, calc(var(--hgap-site-base) * 7));
+  --wrapper: minmax(0, calc(var(--hgap-site-base) * 4));
   
   display: grid;
   grid-template-columns:
