@@ -5,34 +5,34 @@
 [data-theme="dark"] {
 	color-scheme: dark;
 
-	--background-site-body: hsl(216, 28%, 6%);
-	--background-site-showcase: hsl(218, 80%, 2%);
-	--background-site-command-bar: hsl(218, 80%, 2%);
-	--background-site-code: hsl(220, 13%, 17%);
-	--background-site-selection: hsl(158, 100%, 14%);
-	--background-site-note: hsl(208, 21%, 12%);
-	--background-site-commend: hsl(152, 100%, 7%);
-	--background-site-warn: hsl(15, 100%, 12%);
-	--background-site-deter: hsl(359, 100%, 14%);
-	--background-site-assert: hsl(215, 100%, 14%);
+	--background-site-body: hsl(240, 11%, 6%);
+	--background-site-showcase: hsl(240, 11%, 2%);
+	--background-site-command-bar: hsl(240, 11%, 2%);
+	--background-site-code: hsl(240, 8%, 18%);
+	--background-site-selection: hsl(162, 100%, 21%, 0.5);
+	--background-site-note: hsl(240, 6%, 16%);
+	--background-site-commend: hsl(160, 100%, 9%);
+	--background-site-warn: hsl(32, 100%, 12%);
+	--background-site-deter: hsl(352, 100%, 16%);
+	--background-site-assert: hsl(208, 100%, 15%);
 
-	--border-site-body: hsl(212, 12%, 21%);
-	--border-site-note: hsl(210, 16%, 27%);
-	--border-site-commend: hsl(158, 100%, 15%);
-	--border-site-warn: hsl(21, 100%, 24%);
-	--border-site-deter: hsl(356, 100%, 27%);
-	--border-site-assert: hsl(212, 97%, 28%);
+	--border-site-body: hsl(237, 18%, 22%);
+	--border-site-note: hsl(240, 6%, 28%);
+	--border-site-commend: hsl(161, 100%, 16%);
+	--border-site-warn: hsl(34, 100%, 21%);
+	--border-site-deter: hsl(350, 100%, 25%);
+	--border-site-assert: hsl(207, 100%, 25%);
 
-	--color-site-subtle: hsl(209, 15%, 66%);
-	--color-site-normal: hsl(210, 15%, 74%);
-	--color-site-emphasis: hsl(212, 16%, 84%);
-	--color-site-stress: hsl(206, 16%, 81%);
-	--color-site-commend: hsl(154, 33%, 49%);
-	--color-site-warn: hsl(19, 65%, 55%);
-	--color-site-deter: hsl(358, 93%, 65%);
-	--color-site-assert: hsl(215, 100%, 61%);
-	--color-site-marker: hsl(208, 14%, 39%);
-	--color-site-scrollbar: hsl(209, 14%, 41%);
+	--color-site-subtle: hsl(251, 10%, 68%);
+	--color-site-normal: hsl(251, 10%, 76%);
+	--color-site-emphasis: hsl(251, 10%, 82%);
+	--color-site-stress: hsl(251, 10%, 87%);
+	--color-site-commend: hsl(155, 47%, 53%);
+	--color-site-warn: hsl(32, 81%, 58%);
+	--color-site-deter: hsl(358, 100%, 73%);
+	--color-site-assert: hsl(213, 100%, 71%);
+	--color-site-marker: hsl(157, 8%, 38%);
+	--color-site-scrollbar: hsl(157, 9%, 39%);
 
 	--color-prettylights-syntax-comment: #8b949e;
 	--color-prettylights-syntax-constant: #79c0ff;
@@ -187,7 +187,7 @@
 	--offset-site-outline: 0.125em;
 	--inset-site-outline: calc(var(-offset-site-outline) * -1);
 
-	--hgap-site-adaptive: 1rem;
+	--hgap-site-adaptive: 1.25rem;
 	--thickness-site-adaptive: 0;
 	--radius-site-adaptive-base: 0;
 	--radius-site-adaptive-medium: 0;
