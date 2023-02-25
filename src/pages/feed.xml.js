@@ -24,7 +24,7 @@ export async function get() {
 		.sort((p1, p2) => compare(p1.data.date, p2.data.date))
 		.slice(0, siteInfo.maxFeedItems)
 		.map(post => {
-			const pageUrl = postPathname(post.slug)
+			const pageUrl = canonical(postPathname(post.slug))
 			return {
 				title: post.data.title,
 				date: new Date(post.data.date),
