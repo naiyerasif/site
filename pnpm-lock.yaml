@@ -1,14 +1,14 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@astrojs/sitemap': ^1.0.1
+  '@astrojs/sitemap': ^1.1.0
   '@generic-components/components': ^1.1.8
   '@microflash/rehype-slugify': ^1.0.0
   '@microflash/rehype-starry-night': ^2.1.0
   '@microflash/remark-callout-directives': ^1.5.0
   '@microflash/remark-figure-caption': ^1.0.0
   '@sindresorhus/slugify': ^2.2.0
-  astro: ^2.0.14
+  astro: ^2.0.17
   dayjs: ^1.11.7
   defu: ^6.1.2
   feed: ^4.2.2
@@ -16,7 +16,7 @@ specifiers:
   mdast-util-to-string: ^3.1.1
   postcss-combine-duplicated-selectors: ^10.0.3
   postcss-preset-env: ^8.0.1
-  puppeteer: ^19.7.1
+  puppeteer: ^19.7.2
   rehype-autolink-headings: ^6.1.1
   rehype-external-links: ^2.0.1
   rehype-stringify: ^9.0.3
@@ -31,14 +31,14 @@ specifiers:
   unlighthouse-puppeteer: ^0.4.9
 
 dependencies:
-  '@astrojs/sitemap': 1.0.1
+  '@astrojs/sitemap': 1.1.0
   '@generic-components/components': 1.1.8
   '@microflash/rehype-slugify': 1.0.0
   '@microflash/rehype-starry-night': 2.1.0
   '@microflash/remark-callout-directives': 1.5.0
   '@microflash/remark-figure-caption': 1.0.0
   '@sindresorhus/slugify': 2.2.0
-  astro: 2.0.14_sass@1.58.3
+  astro: 2.0.17_sass@1.58.3
   dayjs: 1.11.7
   feed: 4.2.2
   postcss-combine-duplicated-selectors: 10.0.3
@@ -58,7 +58,7 @@ devDependencies:
   defu: 6.1.2
   inquirer: 9.1.4
   mdast-util-to-string: 3.1.1
-  puppeteer: 19.7.1
+  puppeteer: 19.7.2
   unist-util-visit: 4.1.2
   unlighthouse-puppeteer: 0.4.9
 
@@ -79,8 +79,8 @@ packages:
     resolution: {integrity: sha512-lvPpoOA6Fc1NpJrPT65ZOhhFieYkiBds9wzOhWX55lXMUpNPu5CUxqzgDAkNSTIoXHZxkxHfi+6EpFNnRZBBYQ==}
     dev: false
 
-  /@astrojs/compiler/1.1.1:
-    resolution: {integrity: sha512-JRDEARnuUUOlKUE4XVu8+NoeNWpOHtYQW39uWjqTbpefMjL95og54vTKLHqeUajXWeY115zZtO7jIVdOmQ1IPQ==}
+  /@astrojs/compiler/1.2.0:
+    resolution: {integrity: sha512-O8yPCyuq+PU9Fjht2tIW6WzSWiq8qDF1e8uAX2x+SOGFzKqOznp52UlDG2mSf+ekf0Z3R34sb64O7SgX+asTxg==}
     dev: false
 
   /@astrojs/language-server/0.28.3:
@@ -101,13 +101,13 @@ packages:
       vscode-uri: 3.0.6
     dev: false
 
-  /@astrojs/markdown-remark/2.0.1_astro@2.0.14:
+  /@astrojs/markdown-remark/2.0.1_astro@2.0.17:
     resolution: {integrity: sha512-xQF1rXGJN18m+zZucwRRtmNehuhPMMhZhi6HWKrtpEAKnHSPk8lqf1GXgKH7/Sypglu8ivdECZ+EGs6kOYVasQ==}
     peerDependencies:
       astro: ^2.0.2
     dependencies:
       '@astrojs/prism': 2.0.0
-      astro: 2.0.14_sass@1.58.3
+      astro: 2.0.17_sass@1.58.3
       github-slugger: 1.5.0
       import-meta-resolve: 2.2.0
       rehype-raw: 6.1.1
@@ -131,15 +131,15 @@ packages:
       prismjs: 1.29.0
     dev: false
 
-  /@astrojs/sitemap/1.0.1:
-    resolution: {integrity: sha512-qexepZPH6/dLToI/njxr2FjvyxJU0HBAnQRNzEggF0ok811oSNC6su1DkyW2VKp0TNPbWoujuSbcb1yFOjnAqA==}
+  /@astrojs/sitemap/1.1.0:
+    resolution: {integrity: sha512-JnKZcbD0WdFxw2VAj3qXb0cYKuvk6nwBYPfUy+plSa9TC9hikQrDFpd7yapOPTRf3AdmUittzFckoTw/nUilCw==}
     dependencies:
       sitemap: 7.1.1
       zod: 3.19.1
     dev: false
 
-  /@astrojs/telemetry/2.0.0:
-    resolution: {integrity: sha512-RnWojVMIsql3GGWDP5pNWmhmBQVkCpxGNZ8yPr2cbmUqsUYGSvErhqfkLfro9j2/STi5UDmSpNgjPkQmXpgnKw==}
+  /@astrojs/telemetry/2.0.1:
+    resolution: {integrity: sha512-68BLBb9CcvQMkWHE6h6VTgm5g6agm3+xm8eb3cdkmX9nP1LSQ/fiD49Jb1qAgCtWcY8yQJiWQQXwcdyStD+VoA==}
     engines: {node: '>=16.12.0'}
     dependencies:
       ci-info: 3.7.0
@@ -148,16 +148,16 @@ packages:
       dset: 3.1.2
       is-docker: 3.0.0
       is-wsl: 2.2.0
-      undici: 5.18.0
+      undici: 5.20.0
       which-pm-runs: 1.1.0
     transitivePeerDependencies:
       - supports-color
     dev: false
 
-  /@astrojs/webapi/2.0.1:
-    resolution: {integrity: sha512-aOOHa86W5Ux77A3dS91YrVlSxtBSJsVK4UhvcXHY0gAl0ZrOStSKSBO45gZ6tFi2AiHu3bzpMtZjwrPHtl+cyg==}
+  /@astrojs/webapi/2.0.2:
+    resolution: {integrity: sha512-uSNtxLuvCWOcwy/DdIy30ocIcIUedEZpyhn1MHW3XuZ3PZHg4PMej3EP38Ns6uKgDKqMyEdscca9bMLuf4cO/w==}
     dependencies:
-      undici: 5.18.0
+      undici: 5.20.0
     dev: false
 
   /@babel/code-frame/7.18.6:
@@ -1228,12 +1228,12 @@ packages:
     dev: true
     optional: true
 
-  /@unlighthouse/cli/0.4.9_puppeteer@19.7.1:
+  /@unlighthouse/cli/0.4.9_puppeteer@19.7.2:
     resolution: {integrity: sha512-OEUtADg04geVWUZsZg9FMs4lzx/oQM3dW46H0Ystq6gpqZqPqD+UIoWZdG4vfPuwTqSuuI26EJemW4C4Wbo37g==}
     hasBin: true
     dependencies:
-      '@unlighthouse/core': 0.4.9_puppeteer@19.7.1
-      '@unlighthouse/server': 0.4.9_puppeteer@19.7.1
+      '@unlighthouse/core': 0.4.9_puppeteer@19.7.2
+      '@unlighthouse/server': 0.4.9_puppeteer@19.7.2
       better-opn: 3.0.2
       cac: 6.7.14
       consola: 2.15.3
@@ -1265,7 +1265,7 @@ packages:
       vue-router: 4.1.6_vue@3.2.47
     dev: true
 
-  /@unlighthouse/core/0.4.9_puppeteer@19.7.1:
+  /@unlighthouse/core/0.4.9_puppeteer@19.7.2:
     resolution: {integrity: sha512-JUSM78uxdwU+Jh6aLvK8B3vMj1rDLGKELJWq7Xd5TcYf2R93v0rQNkf1+rdeBWpPWl+nrrgJ2L3qco9AQE0cqw==}
     peerDependencies:
       puppeteer: '*'
@@ -1298,8 +1298,8 @@ packages:
       mlly: 1.1.0
       object-hash: 3.0.0
       pathe: 1.1.0
-      puppeteer: 19.7.1
-      puppeteer-cluster: 0.23.0_puppeteer@19.7.1
+      puppeteer: 19.7.2
+      puppeteer-cluster: 0.23.0_puppeteer@19.7.2
       puppeteer-core: 19.7.1
       regexparam: 2.0.1
       sanitize-filename: 1.6.3
@@ -1321,10 +1321,10 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@unlighthouse/server/0.4.9_puppeteer@19.7.1:
+  /@unlighthouse/server/0.4.9_puppeteer@19.7.2:
     resolution: {integrity: sha512-wxmC898KVTJqg8PB1cG9YhfgJcXm37TPpmv2o9DJ6p1hKZAN469tCFPm+fhVdUlybxJwOT3fhhZr6/OXFM6jjg==}
     dependencies:
-      '@unlighthouse/core': 0.4.9_puppeteer@19.7.1
+      '@unlighthouse/core': 0.4.9_puppeteer@19.7.2
       h3: 1.1.0
       listhen: 1.0.1
     transitivePeerDependencies:
@@ -1602,16 +1602,16 @@ packages:
     resolution: {integrity: sha512-I1jXZMjAgCMmxT4qxXfPXa6SthSoE8h6gkSI9BGGNv8mP8G/v0blc+qFnZu6K42vTOiuME596QaLO0TP3Lk0xg==}
     dev: false
 
-  /astro/2.0.14_sass@1.58.3:
-    resolution: {integrity: sha512-BiXnHyK3rj5Uz45V5p9jRi0xtJc/zxhCxnXYAekHHF1bVvvoa3aXMwl0GZ3Bc0mxP6vPLmbRcjNKdqfyZn1B3Q==}
+  /astro/2.0.17_sass@1.58.3:
+    resolution: {integrity: sha512-K/SAoe4Tfhg4XhOu1mFOp9qiC/m8YuBmL3//WAA+mcPTlg9A21nlXH/jmsfbizQdZn/AyoPrkTWQm1pnU05OsQ==}
     engines: {node: '>=16.12.0', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
-      '@astrojs/compiler': 1.1.1
+      '@astrojs/compiler': 1.2.0
       '@astrojs/language-server': 0.28.3
-      '@astrojs/markdown-remark': 2.0.1_astro@2.0.14
-      '@astrojs/telemetry': 2.0.0
-      '@astrojs/webapi': 2.0.1
+      '@astrojs/markdown-remark': 2.0.1_astro@2.0.17
+      '@astrojs/telemetry': 2.0.1
+      '@astrojs/webapi': 2.0.2
       '@babel/core': 7.20.12
       '@babel/generator': 7.20.14
       '@babel/parser': 7.20.15
@@ -1971,6 +1971,15 @@ packages:
       lighthouse-logger: 1.3.0
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /chromium-bidi/0.4.4_6o5gdkn34s2j2m26x63ssheuqa:
+    resolution: {integrity: sha512-4BX5cSaponuvVT1+SbLYTOAgDoVtX/Khoc9UsbFJ/AsPVUeFAM3RiIDFI6XFhLYMi9WmVJqh1ZH+dRpNKkKwiQ==}
+    peerDependencies:
+      devtools-protocol: '*'
+    dependencies:
+      devtools-protocol: 0.0.1094867
+      mitt: 3.0.0
     dev: true
 
   /ci-info/3.7.0:
@@ -3932,6 +3941,10 @@ packages:
     resolution: {integrity: sha512-bzfL1YUZsP41gmu/qjrEk0Q6i2ix/cVeAhbCbqH9u3zYutS1cLg00qhrD0M2MVdCcx4Sc0UpP2eBWo9rotpq6g==}
     dev: true
 
+  /mitt/3.0.0:
+    resolution: {integrity: sha512-7dX2/10ITVyqh4aOSVI9gdape+t9l2/8QxHrFmUXu4EEUpdlxl6RudZUPZoc+zuY2hk1j7XxVroIVIan/pD/SQ==}
+    dev: true
+
   /mkdirp-classic/0.5.3:
     resolution: {integrity: sha512-gKLcREMhtuZRwRAfqP3RFW+TK4JqApVBtOIftVgjuABpAtpxhPGaDcfvbhNvD0B8iD1oUr/txX35NjcaY6Ns/A==}
     dev: true
@@ -4659,13 +4672,13 @@ packages:
       once: 1.4.0
     dev: true
 
-  /puppeteer-cluster/0.23.0_puppeteer@19.7.1:
+  /puppeteer-cluster/0.23.0_puppeteer@19.7.2:
     resolution: {integrity: sha512-108terIWDzPrQopmoYSPd5yDoy3FGJ2dNnoGMkGYPs6xtkdhgaECwpfZkzaRToMQPZibUOz0/dSSGgPEdXEhkQ==}
     peerDependencies:
       puppeteer: '>=1.5.0'
     dependencies:
       debug: 4.3.4
-      puppeteer: 19.7.1
+      puppeteer: 19.7.2
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -4722,8 +4735,35 @@ packages:
       - utf-8-validate
     dev: true
 
-  /puppeteer/19.7.1:
-    resolution: {integrity: sha512-Hampj7jHlicySL1sSLHCwoFoRCi6RcEbnZmRE5brtbk0mp6Td33+9kWQD2eFs09772JIt00ybPKr50Gt7Y18Xg==}
+  /puppeteer-core/19.7.2:
+    resolution: {integrity: sha512-PvI+fXqgP0uGJxkyZcX51bnzjFA73MODZOAv0fSD35yR7tvbqwtMV3/Y+hxQ0AMMwzxkEebP6c7po/muqxJvmQ==}
+    engines: {node: '>=14.1.0'}
+    peerDependencies:
+      typescript: '>= 4.7.4'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      chromium-bidi: 0.4.4_6o5gdkn34s2j2m26x63ssheuqa
+      cross-fetch: 3.1.5
+      debug: 4.3.4
+      devtools-protocol: 0.0.1094867
+      extract-zip: 2.0.1
+      https-proxy-agent: 5.0.1
+      proxy-from-env: 1.1.0
+      rimraf: 3.0.2
+      tar-fs: 2.1.1
+      unbzip2-stream: 1.4.3
+      ws: 8.11.0
+    transitivePeerDependencies:
+      - bufferutil
+      - encoding
+      - supports-color
+      - utf-8-validate
+    dev: true
+
+  /puppeteer/19.7.2:
+    resolution: {integrity: sha512-4Lm7Qpe/LU95Svirei/jDLDvR5oMrl9BPGd7HMY5+Q28n+BhvKuW97gKkR+1LlI86bO8J3g8rG/Ll5kv9J1nlQ==}
     engines: {node: '>=14.1.0'}
     requiresBuild: true
     dependencies:
@@ -4731,10 +4771,9 @@ packages:
       https-proxy-agent: 5.0.1
       progress: 2.0.3
       proxy-from-env: 1.1.0
-      puppeteer-core: 19.7.1
+      puppeteer-core: 19.7.2
     transitivePeerDependencies:
       - bufferutil
-      - chromium-bidi
       - encoding
       - supports-color
       - typescript
@@ -5451,8 +5490,8 @@ packages:
       busboy: 1.6.0
     dev: true
 
-  /undici/5.18.0:
-    resolution: {integrity: sha512-1iVwbhonhFytNdg0P4PqyIAXbdlVZVebtPDvuM36m66mRw4OGrCm2MYynJv/UENFLdP13J1nPVQzVE2zTs1OeA==}
+  /undici/5.20.0:
+    resolution: {integrity: sha512-J3j60dYzuo6Eevbawwp1sdg16k5Tf768bxYK4TUJRH7cBM4kFCbf3mOnM/0E3vQYXvpxITbbWmBafaDbxLDz3g==}
     engines: {node: '>=12.18'}
     dependencies:
       busboy: 1.6.0
@@ -5575,10 +5614,10 @@ packages:
       vue:
         optional: true
     dependencies:
-      '@unlighthouse/cli': 0.4.9_puppeteer@19.7.1
+      '@unlighthouse/cli': 0.4.9_puppeteer@19.7.2
       '@unlighthouse/client': 0.4.9
-      '@unlighthouse/core': 0.4.9_puppeteer@19.7.1
-      puppeteer: 19.7.1
+      '@unlighthouse/core': 0.4.9_puppeteer@19.7.2
+      puppeteer: 19.7.2
     transitivePeerDependencies:
       - bufferutil
       - chromium-bidi

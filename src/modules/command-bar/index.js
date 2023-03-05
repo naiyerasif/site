@@ -37,7 +37,7 @@ export class CommandBar extends HTMLElement {
 		}
 	}
 	#commandHandler = (event) => {
-		if (event.ctrlKey && event.key === "k") {
+		if ((event.ctrlKey || event.metaKey) && event.key === "k") {
 			event.preventDefault()
 			this.#launcher.click()
 		}
