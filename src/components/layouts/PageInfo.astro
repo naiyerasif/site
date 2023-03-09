@@ -218,6 +218,14 @@ const mastodonUrl = siteInfo.networks.mastodon.uri
 }
 
 @font-face {
+	font-family: MakeSans;
+	font-display: swap;
+	src: url("/fonts/MakeSans-Black.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 900
+}
+
+@font-face {
 	font-family: JetBrains Mono;
 	font-display: swap;
 	src: url("/fonts/JetBrainsMono-Light.woff2") format("woff2");
@@ -261,11 +269,12 @@ const mastodonUrl = siteInfo.networks.mastodon.uri
 	--family-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 	--family-mono: ui-monospace, SFMono-Regular, "Roboto Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 	--family-site-sans: "Inter", var(--family-sans);
+	--family-site-stress: "MakeSans", var(--family-sans);
 	--family-site-mono: "JetBrains Mono", var(--family-mono);
 	--size-site-icon: 1.5rem;
 	--text-site-small: calc(0.8rem + 0.15vw);
 	--text-site-base: calc(1rem + 0.2vw);
-	--text-site-headline: calc(1.5rem + 2vw);
+	--text-site-headline: calc(2rem + 3vw);
 	--text-site-subheadline: calc(1rem + 0.5vw);
 }
 @supports (font-variation-settings: normal) {

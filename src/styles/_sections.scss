@@ -113,7 +113,7 @@
 		gap: 2ch;
 
 		img {
-			--hero-image-size: calc(48px + 4vw);
+			--hero-image-size: calc(48px + 6vw);
 			inline-size: var(--hero-image-size);
 			min-inline-size: var(--hero-image-size);
 			border-radius: var(--radius-site-round);

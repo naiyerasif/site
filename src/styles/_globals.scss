@@ -82,8 +82,11 @@ button {
 		var(--color-site-emphasis) 80%);
 	background-clip: text;
 	color: transparent;
+	font-family: var(--family-site-stress);
 	font-size: var(--text-site-headline);
+	font-weight: 900;
 	letter-spacing: -0.025em;
+	line-height: 2ex;
 
 	&::-moz-selection {
 		color: var(--color-site-stress);

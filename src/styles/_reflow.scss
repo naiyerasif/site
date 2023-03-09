@@ -229,6 +229,7 @@
 
 :is(h1, h2, h3, h4, h5, h6) {
 	font-weight: var(--font-site-bold);
+	text-wrap: balance;
 }
 
 :is(h2 + *, h3 + *, h4 + *, h5 + *, h6 + *) {
