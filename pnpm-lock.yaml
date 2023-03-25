@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@astrojs/sitemap': ^1.2.1
   '@generic-components/components': ^1.1.8
+  '@microflash/preset': ^0.6.2
   '@microflash/rehype-slugify': ^1.0.0
   '@microflash/rehype-starry-night': ^2.1.0
   '@microflash/remark-callout-directives': ^1.5.0
@@ -33,6 +34,7 @@ specifiers:
 dependencies:
   '@astrojs/sitemap': 1.2.1
   '@generic-components/components': 1.1.8
+  '@microflash/preset': 0.6.2
   '@microflash/rehype-slugify': 1.0.0
   '@microflash/rehype-starry-night': 2.1.0
   '@microflash/remark-callout-directives': 1.5.0
@@ -966,6 +968,10 @@ packages:
     resolution: {integrity: sha512-VCk040YLhQAK7rda9KIP3sXSc0NJft29oTBbVH87kmLYxm2KCWjJiN7grk1i/0Y6PHt9yh6OHcHAv3urk4lr+w==}
     dependencies:
       chevrotain: 10.4.2
+    dev: false
+
+  /@microflash/preset/0.6.2:
+    resolution: {integrity: sha512-oNgMR/sPr1p+zi162WsKrXTVv+N1ERLSenxwOto9nSHH5JQ0E9wA0pxXICov9WzoSNvJsb58VLnU7aDie8DXPg==}
     dev: false
 
   /@microflash/rehype-slugify/1.0.0:
