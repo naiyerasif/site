@@ -8,8 +8,8 @@ dependencies:
     specifier: ^1.1.8
     version: 1.1.8
   '@microflash/preset':
-    specifier: ^0.7.0
-    version: 0.7.0
+    specifier: ^0.7.1
+    version: 0.7.1
   '@microflash/rehype-slugify':
     specifier: ^1.0.0
     version: 1.0.0
@@ -26,8 +26,8 @@ dependencies:
     specifier: ^2.2.0
     version: 2.2.0
   astro:
-    specifier: ^2.1.7
-    version: 2.1.7(sass@1.60.0)
+    specifier: ^2.1.9
+    version: 2.1.9(sass@1.60.0)
   dayjs:
     specifier: ^1.11.7
     version: 1.11.7
@@ -38,8 +38,8 @@ dependencies:
     specifier: ^10.0.3
     version: 10.0.3(postcss@8.4.21)
   postcss-preset-env:
-    specifier: ^8.2.0
-    version: 8.2.0(postcss@8.4.21)
+    specifier: ^8.3.0
+    version: 8.3.0(postcss@8.4.21)
   rehype-autolink-headings:
     specifier: ^6.1.1
     version: 6.1.1
@@ -82,8 +82,8 @@ devDependencies:
     specifier: ^3.1.1
     version: 3.1.1
   puppeteer:
-    specifier: ^19.8.0
-    version: 19.8.0
+    specifier: ^19.8.2
+    version: 19.8.2
   unist-util-visit:
     specifier: ^4.1.2
     version: 4.1.2
@@ -130,13 +130,13 @@ packages:
       vscode-uri: 3.0.6
     dev: false
 
-  /@astrojs/markdown-remark@2.1.2(astro@2.1.7):
+  /@astrojs/markdown-remark@2.1.2(astro@2.1.9):
     resolution: {integrity: sha512-rYkmFEv2w7oEk6ZPgxHkhWzwcxSUGc1vJU0cbCu5sHF8iFNnc1cmMsjXWa5DrU5sCEf8VVYE1iFlbbnFzvHQJw==}
     peerDependencies:
       astro: ^2.1.5
     dependencies:
       '@astrojs/prism': 2.1.1
-      astro: 2.1.7(sass@1.60.0)
+      astro: 2.1.9(sass@1.60.0)
       github-slugger: 1.5.0
       import-meta-resolve: 2.2.0
       rehype-raw: 6.1.1
@@ -458,19 +458,6 @@ packages:
       '@csstools/css-tokenizer': 2.1.0
     dev: false
 
-  /@csstools/css-color-parser@1.0.0(@csstools/css-parser-algorithms@2.1.0)(@csstools/css-tokenizer@2.1.0):
-    resolution: {integrity: sha512-u3JrK+pQIGGnXe+YhohWwAwOum2y25NRdEjRQFD3moMnOJgmU/nj8BPAF6DDQAooy8Ty9RNKiAh2njuqwMgUNQ==}
-    engines: {node: ^14 || ^16 || >=18}
-    peerDependencies:
-      '@csstools/css-parser-algorithms': ^2.1.0
-      '@csstools/css-tokenizer': ^2.1.0
-    dependencies:
-      '@csstools/color-helpers': 2.0.0
-      '@csstools/css-calc': 1.0.1(@csstools/css-parser-algorithms@2.1.0)(@csstools/css-tokenizer@2.1.0)
-      '@csstools/css-parser-algorithms': 2.1.0(@csstools/css-tokenizer@2.1.0)
-      '@csstools/css-tokenizer': 2.1.0
-    dev: false
-
   /@csstools/css-color-parser@1.1.0(@csstools/css-parser-algorithms@2.1.0)(@csstools/css-tokenizer@2.1.0):
     resolution: {integrity: sha512-jRpIhjThaH8jxuJ8Q1H+jai/dekP5952kzLHTuN+rPI48eF2esf/18TMb3N/HtEgmnybhfiwUO6Ph2OkHi3jpA==}
     engines: {node: ^14 || ^16 || >=18}
@@ -509,6 +496,17 @@ packages:
       '@csstools/css-tokenizer': 2.1.0
     dev: false
 
+  /@csstools/media-query-list-parser@2.0.2(@csstools/css-parser-algorithms@2.1.0)(@csstools/css-tokenizer@2.1.0):
+    resolution: {integrity: sha512-8V6JD8Av1HttuClYr1ZBu0LRVe5Nnz4qrv8RppO8mobsX/USBHZy5JQOXYIlpOVhl46nzkx3X5cfH6CqUghjrQ==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      '@csstools/css-parser-algorithms': ^2.0.0
+      '@csstools/css-tokenizer': ^2.0.0
+    dependencies:
+      '@csstools/css-parser-algorithms': 2.1.0(@csstools/css-tokenizer@2.1.0)
+      '@csstools/css-tokenizer': 2.1.0
+    dev: false
+
   /@csstools/postcss-cascade-layers@3.0.1(postcss@8.4.21):
     resolution: {integrity: sha512-dD8W98dOYNOH/yX4V4HXOhfCOnvVAg8TtsL+qCGNoKXuq5z2C/d026wGWgySgC8cajXXo/wNezS31Glj5GcqrA==}
     engines: {node: ^14 || ^16 || >=18}
@@ -526,7 +524,7 @@ packages:
     peerDependencies:
       postcss: ^8.4
     dependencies:
-      '@csstools/css-color-parser': 1.0.0(@csstools/css-parser-algorithms@2.1.0)(@csstools/css-tokenizer@2.1.0)
+      '@csstools/css-color-parser': 1.1.0(@csstools/css-parser-algorithms@2.1.0)(@csstools/css-tokenizer@2.1.0)
       '@csstools/css-parser-algorithms': 2.1.0(@csstools/css-tokenizer@2.1.0)
       '@csstools/css-tokenizer': 2.1.0
       '@csstools/postcss-progressive-custom-properties': 2.1.1(postcss@8.4.21)
@@ -539,7 +537,7 @@ packages:
     peerDependencies:
       postcss: ^8.4
     dependencies:
-      '@csstools/css-color-parser': 1.0.0(@csstools/css-parser-algorithms@2.1.0)(@csstools/css-tokenizer@2.1.0)
+      '@csstools/css-color-parser': 1.1.0(@csstools/css-parser-algorithms@2.1.0)(@csstools/css-tokenizer@2.1.0)
       '@csstools/css-parser-algorithms': 2.1.0(@csstools/css-tokenizer@2.1.0)
       '@csstools/css-tokenizer': 2.1.0
       '@csstools/postcss-progressive-custom-properties': 2.1.1(postcss@8.4.21)
@@ -575,7 +573,7 @@ packages:
     peerDependencies:
       postcss: ^8.4
     dependencies:
-      '@csstools/css-color-parser': 1.0.0(@csstools/css-parser-algorithms@2.1.0)(@csstools/css-tokenizer@2.1.0)
+      '@csstools/css-color-parser': 1.1.0(@csstools/css-parser-algorithms@2.1.0)(@csstools/css-tokenizer@2.1.0)
       '@csstools/css-parser-algorithms': 2.1.0(@csstools/css-tokenizer@2.1.0)
       '@csstools/css-tokenizer': 2.1.0
       postcss: 8.4.21
@@ -632,6 +630,19 @@ packages:
       postcss: 8.4.21
     dev: false
 
+  /@csstools/postcss-media-minmax@1.0.0(postcss@8.4.21):
+    resolution: {integrity: sha512-qXHZ0QVDszKf4SsLazOEzFl+m+IkhHOigqMy/gHNIzAtqB3XeBQUa+dTi1ROmQBDH1HXktGwy+tafFBg9UoaxA==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/css-calc': 1.0.1(@csstools/css-parser-algorithms@2.1.0)(@csstools/css-tokenizer@2.1.0)
+      '@csstools/css-parser-algorithms': 2.1.0(@csstools/css-tokenizer@2.1.0)
+      '@csstools/css-tokenizer': 2.1.0
+      '@csstools/media-query-list-parser': 2.0.2(@csstools/css-parser-algorithms@2.1.0)(@csstools/css-tokenizer@2.1.0)
+      postcss: 8.4.21
+    dev: false
+
   /@csstools/postcss-media-queries-aspect-ratio-number-values@1.0.1(postcss@8.4.21):
     resolution: {integrity: sha512-V9yQqXdje6OfqDf6EL5iGOpi6N0OEczwYK83rql9UapQwFEryXlAehR5AqH8QqLYb6+y31wUXK6vMxCp0920Zg==}
     engines: {node: ^14 || ^16 || >=18}
@@ -670,7 +681,7 @@ packages:
     peerDependencies:
       postcss: ^8.4
     dependencies:
-      '@csstools/css-color-parser': 1.0.0(@csstools/css-parser-algorithms@2.1.0)(@csstools/css-tokenizer@2.1.0)
+      '@csstools/css-color-parser': 1.1.0(@csstools/css-parser-algorithms@2.1.0)(@csstools/css-tokenizer@2.1.0)
       '@csstools/css-parser-algorithms': 2.1.0(@csstools/css-tokenizer@2.1.0)
       '@csstools/css-tokenizer': 2.1.0
       '@csstools/postcss-progressive-custom-properties': 2.1.1(postcss@8.4.21)
@@ -1021,8 +1032,8 @@ packages:
       chevrotain: 10.4.2
     dev: false
 
-  /@microflash/preset@0.7.0:
-    resolution: {integrity: sha512-+Sw9Pm4b4RTisAS0pInxdsXUV/fJoB1emgj/bjUDFExK66pNbrx08nkC3skGjlWtwKm28F+WlUnAhe9KJEEYIQ==}
+  /@microflash/preset@0.7.1:
+    resolution: {integrity: sha512-q6f0r2Krreua3AoEhTF7z7LnYws/QOHBAVd7HgvX9Pg4bo7GZ0T/n6dRd9HVp1/qiT0cprQ3kVoYAjYrCDvFdA==}
     dev: false
 
   /@microflash/rehype-slugify@1.0.0:
@@ -1099,6 +1110,28 @@ packages:
 
   /@polka/url@1.0.0-next.21:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
+    dev: true
+
+  /@puppeteer/browsers@0.3.1:
+    resolution: {integrity: sha512-WTFVqWY7ipI+CsJRb6vEddYJ/lMl2bHYP5BjFDBM9JMKPjJNT4psXz6DLuJpi3EkG80Q0ef5Azzv3gKu9MvMUg==}
+    engines: {node: '>=14.1.0'}
+    hasBin: true
+    peerDependencies:
+      typescript: '>= 4.7.4'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      debug: 4.3.4
+      extract-zip: 2.0.1
+      https-proxy-agent: 5.0.1
+      progress: 2.0.3
+      proxy-from-env: 1.1.0
+      tar-fs: 2.1.1
+      unbzip2-stream: 1.4.3
+      yargs: 17.7.1
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /@rollup/pluginutils@5.0.2:
@@ -1325,12 +1358,12 @@ packages:
     dev: true
     optional: true
 
-  /@unlighthouse/cli@0.4.9(puppeteer@19.8.0):
+  /@unlighthouse/cli@0.4.9(puppeteer@19.8.2):
     resolution: {integrity: sha512-OEUtADg04geVWUZsZg9FMs4lzx/oQM3dW46H0Ystq6gpqZqPqD+UIoWZdG4vfPuwTqSuuI26EJemW4C4Wbo37g==}
     hasBin: true
     dependencies:
-      '@unlighthouse/core': 0.4.9(puppeteer@19.8.0)
-      '@unlighthouse/server': 0.4.9(puppeteer@19.8.0)
+      '@unlighthouse/core': 0.4.9(puppeteer@19.8.2)
+      '@unlighthouse/server': 0.4.9(puppeteer@19.8.2)
       better-opn: 3.0.2
       cac: 6.7.14
       consola: 2.15.3
@@ -1361,7 +1394,7 @@ packages:
       vue-router: 4.1.6(vue@3.2.47)
     dev: true
 
-  /@unlighthouse/core@0.4.9(puppeteer@19.8.0):
+  /@unlighthouse/core@0.4.9(puppeteer@19.8.2):
     resolution: {integrity: sha512-JUSM78uxdwU+Jh6aLvK8B3vMj1rDLGKELJWq7Xd5TcYf2R93v0rQNkf1+rdeBWpPWl+nrrgJ2L3qco9AQE0cqw==}
     peerDependencies:
       puppeteer: '*'
@@ -1394,9 +1427,9 @@ packages:
       mlly: 1.1.0
       object-hash: 3.0.0
       pathe: 1.1.0
-      puppeteer: 19.8.0
-      puppeteer-cluster: 0.23.0(puppeteer@19.8.0)
-      puppeteer-core: 19.8.0
+      puppeteer: 19.8.2
+      puppeteer-cluster: 0.23.0(puppeteer@19.8.2)
+      puppeteer-core: 19.8.1
       regexparam: 2.0.1
       sanitize-filename: 1.6.3
       sitemapper: 3.2.6
@@ -1416,10 +1449,10 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@unlighthouse/server@0.4.9(puppeteer@19.8.0):
+  /@unlighthouse/server@0.4.9(puppeteer@19.8.2):
     resolution: {integrity: sha512-wxmC898KVTJqg8PB1cG9YhfgJcXm37TPpmv2o9DJ6p1hKZAN469tCFPm+fhVdUlybxJwOT3fhhZr6/OXFM6jjg==}
     dependencies:
-      '@unlighthouse/core': 0.4.9(puppeteer@19.8.0)
+      '@unlighthouse/core': 0.4.9(puppeteer@19.8.2)
       h3: 1.1.0
       listhen: 1.0.1
     transitivePeerDependencies:
@@ -1696,8 +1729,8 @@ packages:
     resolution: {integrity: sha512-I1jXZMjAgCMmxT4qxXfPXa6SthSoE8h6gkSI9BGGNv8mP8G/v0blc+qFnZu6K42vTOiuME596QaLO0TP3Lk0xg==}
     dev: false
 
-  /astro@2.1.7(sass@1.60.0):
-    resolution: {integrity: sha512-Eaq8/mJTx+kbghfW5ZEJ8rKiEduo03Rn6R/fp/gJGpBSRm/0FiVxVsrpq5SV4kUPrttEi1zMEnEc2GP6JWfXeg==}
+  /astro@2.1.9(sass@1.60.0):
+    resolution: {integrity: sha512-UkbG0lgue1b/t4yMI+AkAGEfdOwcPS2RUYQ/QIurtKjP6W5gtKQveRTBuHH7iwiBziH+z8Ecc5/OAALoXSvMlQ==}
     engines: {node: '>=16.12.0', npm: '>=6.14.0'}
     hasBin: true
     peerDependencies:
@@ -1708,7 +1741,7 @@ packages:
     dependencies:
       '@astrojs/compiler': 1.3.0
       '@astrojs/language-server': 0.28.3
-      '@astrojs/markdown-remark': 2.1.2(astro@2.1.7)
+      '@astrojs/markdown-remark': 2.1.2(astro@2.1.9)
       '@astrojs/telemetry': 2.1.0
       '@astrojs/webapi': 2.1.0
       '@babel/core': 7.20.12
@@ -2074,8 +2107,8 @@ packages:
       - supports-color
     dev: true
 
-  /chromium-bidi@0.4.5(devtools-protocol@0.0.1107588):
-    resolution: {integrity: sha512-rkav9YzRfAshSTG3wNXF7P7yNiI29QAo1xBXElPoCoSQR5n20q3cOyVhDv6S7+GlF/CJ/emUxlQiR0xOPurkGg==}
+  /chromium-bidi@0.4.6(devtools-protocol@0.0.1107588):
+    resolution: {integrity: sha512-TQOkWRaLI/IWvoP8XC+7jO4uHTIiAUiklXU1T0qszlUFEai9LgKXIBXy3pOS3EnQZ3bQtMbKUPkug0fTAEHCSw==}
     peerDependencies:
       devtools-protocol: '*'
     dependencies:
@@ -2319,8 +2352,8 @@ packages:
     engines: {node: '>= 6'}
     dev: true
 
-  /cssdb@7.5.2:
-    resolution: {integrity: sha512-Xpu7Bf5Vlw+G7ikA2Lg/lVCRTSY8D5M5qFUgGNFyS4pa8ufGLyCBxIX/3if3krHlF1SKSfVPI/YsAWLDVEbocw==}
+  /cssdb@7.5.3:
+    resolution: {integrity: sha512-NQNRhrEnS6cW+RU/foLphb6xI/MDA70bI3Cy6VxJU8ilxgyTYz1X9zUzFGVTG5nGPylcKAGIt/UNc4deT56lQQ==}
     dev: false
 
   /cssesc@3.0.0:
@@ -3457,7 +3490,7 @@ packages:
       speedline-core: 1.4.3
       third-party-web: 0.17.1
       ws: 7.5.9
-      yargs: 17.6.2
+      yargs: 17.7.1
       yargs-parser: 21.1.1
     transitivePeerDependencies:
       - bufferutil
@@ -4585,15 +4618,6 @@ packages:
       postcss-value-parser: 4.2.0
     dev: false
 
-  /postcss-media-minmax@5.0.0(postcss@8.4.21):
-    resolution: {integrity: sha512-yDUvFf9QdFZTuCUg0g0uNSHVlJ5X1lSzDZjPSFaiCWvjgsvu8vEVxtahPrLMinIDEEGnx6cBe6iqdx5YWz08wQ==}
-    engines: {node: '>=10.0.0'}
-    peerDependencies:
-      postcss: ^8.1.0
-    dependencies:
-      postcss: 8.4.21
-    dev: false
-
   /postcss-nesting@11.2.2(postcss@8.4.21):
     resolution: {integrity: sha512-aOTiUniAB1bcPE6GGiynWRa6PZFPhOTAm5q3q5cem6QeSijIHHkWr6gs65ukCZMXeak8yXeZVbBJET3VM+HlhA==}
     engines: {node: ^14 || ^16 || >=18}
@@ -4642,8 +4666,8 @@ packages:
       postcss-value-parser: 4.2.0
     dev: false
 
-  /postcss-preset-env@8.2.0(postcss@8.4.21):
-    resolution: {integrity: sha512-m5wWWANGQlXFYpgIcuatUWXYFQDhSfxeet4RiwietcuDpnXWpkY9JbzegR73DP0V6MUbhiIIl0vVjfJyql+Esw==}
+  /postcss-preset-env@8.3.0(postcss@8.4.21):
+    resolution: {integrity: sha512-VFc/bhwRo37RoTVzCTCKDJLw0lwsqLRCTc7dkJkfs9S7XXfTbk7QkhbMWHd2L+iZsAsE5yqdSRBZ41/Q828TbA==}
     engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
       postcss: ^8.4
@@ -4659,6 +4683,7 @@ packages:
       '@csstools/postcss-logical-float-and-clear': 1.0.1(postcss@8.4.21)
       '@csstools/postcss-logical-resize': 1.0.1(postcss@8.4.21)
       '@csstools/postcss-logical-viewport-units': 1.0.2(postcss@8.4.21)
+      '@csstools/postcss-media-minmax': 1.0.0(postcss@8.4.21)
       '@csstools/postcss-media-queries-aspect-ratio-number-values': 1.0.1(postcss@8.4.21)
       '@csstools/postcss-nested-calc': 2.0.2(postcss@8.4.21)
       '@csstools/postcss-normalize-display-values': 2.0.1(postcss@8.4.21)
@@ -4674,7 +4699,7 @@ packages:
       css-blank-pseudo: 5.0.2(postcss@8.4.21)
       css-has-pseudo: 5.0.2(postcss@8.4.21)
       css-prefers-color-scheme: 8.0.2(postcss@8.4.21)
-      cssdb: 7.5.2
+      cssdb: 7.5.3
       postcss: 8.4.21
       postcss-attribute-case-insensitive: 6.0.2(postcss@8.4.21)
       postcss-clamp: 4.1.0(postcss@8.4.21)
@@ -4694,7 +4719,6 @@ packages:
       postcss-initial: 4.0.1(postcss@8.4.21)
       postcss-lab-function: 5.2.0(postcss@8.4.21)
       postcss-logical: 6.1.0(postcss@8.4.21)
-      postcss-media-minmax: 5.0.0(postcss@8.4.21)
       postcss-nesting: 11.2.2(postcss@8.4.21)
       postcss-opacity-percentage: 2.0.0(postcss@8.4.21)
       postcss-overflow-shorthand: 4.0.1(postcss@8.4.21)
@@ -4818,13 +4842,13 @@ packages:
       once: 1.4.0
     dev: true
 
-  /puppeteer-cluster@0.23.0(puppeteer@19.8.0):
+  /puppeteer-cluster@0.23.0(puppeteer@19.8.2):
     resolution: {integrity: sha512-108terIWDzPrQopmoYSPd5yDoy3FGJ2dNnoGMkGYPs6xtkdhgaECwpfZkzaRToMQPZibUOz0/dSSGgPEdXEhkQ==}
     peerDependencies:
       puppeteer: '>=1.5.0'
     dependencies:
       debug: 4.3.4
-      puppeteer: 19.8.0
+      puppeteer: 19.8.2
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -4852,8 +4876,8 @@ packages:
       - utf-8-validate
     dev: true
 
-  /puppeteer-core@19.8.0:
-    resolution: {integrity: sha512-5gBkLR9nae7chWDhI3mpj5QA+hPmjEOW29qw5ap5g51Uo5Lxe5Yip1uyQwZSjg5Wn/eyE9grh2Lyx3m8rPK90A==}
+  /puppeteer-core@19.8.1:
+    resolution: {integrity: sha512-7yPMzusYRvJ/laLaMFIQ01E9WakKkJJXLsMAymH6y5EKqYe5hhn68/SbvF+1YJMb843GftU7gT86Fw8y5jkn3w==}
     engines: {node: '>=14.14.0'}
     peerDependencies:
       typescript: '>= 4.7.4'
@@ -4861,7 +4885,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      chromium-bidi: 0.4.5(devtools-protocol@0.0.1107588)
+      chromium-bidi: 0.4.6(devtools-protocol@0.0.1107588)
       cross-fetch: 3.1.5
       debug: 4.3.4
       devtools-protocol: 0.0.1107588
@@ -4878,15 +4902,16 @@ packages:
       - utf-8-validate
     dev: true
 
-  /puppeteer@19.8.0:
-    resolution: {integrity: sha512-MpQClmttCUxv4bVokX/YSXLCU12CUApuRf0rIJyGknYcIrDQNkLUx1N7hNt88Ya4lq9VDsdiDEJ3bcPijqJYPQ==}
+  /puppeteer@19.8.2:
+    resolution: {integrity: sha512-LPdNVYMR6ddp4YS3GK1bqKsasCJj1aZjt9dNOKcnzKezuMoishlHY6bCnFLjTc34iqnGzIrJp07TQ9M+aML2+g==}
     requiresBuild: true
     dependencies:
+      '@puppeteer/browsers': 0.3.1
       cosmiconfig: 8.1.3
       https-proxy-agent: 5.0.1
       progress: 2.0.3
       proxy-from-env: 1.1.0
-      puppeteer-core: 19.8.0
+      puppeteer-core: 19.8.1
     transitivePeerDependencies:
       - bufferutil
       - encoding
@@ -5721,10 +5746,10 @@ packages:
       vue:
         optional: true
     dependencies:
-      '@unlighthouse/cli': 0.4.9(puppeteer@19.8.0)
+      '@unlighthouse/cli': 0.4.9(puppeteer@19.8.2)
       '@unlighthouse/client': 0.4.9
-      '@unlighthouse/core': 0.4.9(puppeteer@19.8.0)
-      puppeteer: 19.8.0
+      '@unlighthouse/core': 0.4.9(puppeteer@19.8.2)
+      puppeteer: 19.8.2
       vue: 3.2.47
     transitivePeerDependencies:
       - bufferutil
@@ -6123,8 +6148,8 @@ packages:
     resolution: {integrity: sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==}
     engines: {node: '>=12'}
 
-  /yargs@17.6.2:
-    resolution: {integrity: sha512-1/9UrdHjDZc0eOU0HxOHoS78C69UD3JRMvzlJ7S79S2nTaWRA/whGCTV8o9e/N/1Va9YIV7Q4sOxD8VV4pCWOw==}
+  /yargs@17.7.1:
+    resolution: {integrity: sha512-cwiTb08Xuv5fqF4AovYacTFNxk62th7LKJ6BL9IGUpTJrWoU7/7WdQGTP2SjKf1dUNBGzDd28p/Yfs/GI6JrLw==}
     engines: {node: '>=12'}
     dependencies:
       cliui: 8.0.1
