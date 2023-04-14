@@ -318,10 +318,6 @@
 	position: sticky;
 	top: 100vh;
 	padding: var(--vgap-site-large) var(--vgap-site-base);
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450' opacity='0.07'%3E%3Cdefs%3E%3Cfilter id='blurry2' x='-100%25' y='-100%25' width='400%25' height='400%25' filterUnits='objectBoundingBox' primitiveUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='40' x='0%25' y='0%25' width='100%25' height='100%25' in='SourceGraphic' edgeMode='none' result='blur'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url(%23blurry2)'%3E%3Cellipse rx='150' ry='150' cx='584.85126828893124' cy='272.37551866796883' fill='%2302805a'/%3E%3Cellipse rx='150' ry='150' cx='527.936080271305' cy='183.35784941005292' fill='%23db0b2f'/%3E%3Cellipse rx='150' ry='150' cx='421.1248247271851' cy='214.43680539417372' fill='%23eb993e'/%3E%3C/g%3E%3C/svg%3E");
-	background-repeat: no-repeat;
-	background-position: top;
-	background-size: cover;
 
 	&-container {
 		display: flex;
@@ -407,11 +403,4 @@
 	20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
 		opacity: 0.4;
 	}
-}
-
-body {
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450' opacity='0.07'%3E%3Cdefs%3E%3Cfilter id='blurry1' x='-100%25' y='-100%25' width='400%25' height='400%25' filterUnits='objectBoundingBox' primitiveUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='40' x='0%25' y='0%25' width='100%25' height='100%25' in='SourceGraphic' edgeMode='none' result='blur'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url(%23blurry1)'%3E%3Cellipse rx='150' ry='150' cx='633.1173498454561' cy='227.48973154346328' fill='%23318ce7'/%3E%3Cellipse rx='150' ry='150' cx='330.2664899860491' cy='153.6738534313602' fill='%23db0b2f'/%3E%3Cellipse rx='150' ry='150' cx='205.12574070689806' cy='237.07899440804044' fill='%23df9b7c'/%3E%3C/g%3E%3C/svg%3E");
-	background-repeat: no-repeat;
-	background-position: top;
-	background-size: cover;
 }
