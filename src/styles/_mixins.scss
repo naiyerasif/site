@@ -54,8 +54,7 @@ $named-instances: (
 }
 
 @mixin interactive-elements {
-	:where(a[href], area, button, input, label[for], select, summary, textarea, [onclick], [tabindex]:not([tabindex*="-"])),
-	:where(input[type="file"]):is(::-webkit-file-upload-button, ::file-selector-button) {
+	:where(a[href], area, button, input, label[for], select, summary, textarea, [onclick], [tabindex]:not([tabindex*="-"]), input[type="file"]::-webkit-file-upload-button, input[type="file"]::file-selector-button) {
 		@content;
 	}
 }
