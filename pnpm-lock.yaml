@@ -8,8 +8,8 @@ dependencies:
     specifier: ^1.1.8
     version: 1.1.8
   '@microflash/preset':
-    specifier: ^0.7.4
-    version: 0.7.4
+    specifier: ^0.7.5
+    version: 0.7.5
   '@microflash/rehype-slugify':
     specifier: ^1.0.0
     version: 1.0.0
@@ -38,8 +38,8 @@ dependencies:
     specifier: ^10.0.3
     version: 10.0.3(postcss@8.4.21)
   postcss-preset-env:
-    specifier: ^8.3.1
-    version: 8.3.1(postcss@8.4.21)
+    specifier: ^8.3.2
+    version: 8.3.2(postcss@8.4.21)
   rehype-autolink-headings:
     specifier: ^6.1.1
     version: 6.1.1
@@ -538,8 +538,8 @@ packages:
       postcss-value-parser: 4.2.0
     dev: false
 
-  /@csstools/postcss-gradients-interpolation-method@3.0.3(postcss@8.4.21):
-    resolution: {integrity: sha512-0i6HQ8V3jcGEEhhGPAQdMemPjXTOct9qDYLIzjsgKHhrHVwhjwBVcUV70658vJJmrJJvVXgZx2qc4S6okKZJpg==}
+  /@csstools/postcss-gradients-interpolation-method@3.0.4(postcss@8.4.21):
+    resolution: {integrity: sha512-GgKoY7OlvL65UPigEdlrvMAUCR5kOQCjtue2/36TPrBNoRS6KM2KOqmjIVsxEwYYwK+L28pdnM8r10m03hhZxA==}
     engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
       postcss: ^8.4
@@ -1016,8 +1016,8 @@ packages:
       chevrotain: 10.4.2
     dev: false
 
-  /@microflash/preset@0.7.4:
-    resolution: {integrity: sha512-76DVv/SrP0hdd4zHieDL0lJR0QznC9rVHTLHPyGEmoq+jFxgotXOkyOHo2AqOYslszf/PdeNQdJIgKOJnSd6JA==}
+  /@microflash/preset@0.7.5:
+    resolution: {integrity: sha512-umCO5EFEvVzG9VWLXpIYQNNAK5he6Db4tBd04/QDM5Blm9P5mXP722iLdf52TfB2coXM8ppdXsDF2ulihxdQtg==}
     dev: false
 
   /@microflash/rehype-slugify@1.0.0:
@@ -4650,8 +4650,8 @@ packages:
       postcss-value-parser: 4.2.0
     dev: false
 
-  /postcss-preset-env@8.3.1(postcss@8.4.21):
-    resolution: {integrity: sha512-k3Y8BXbVLBAufrla3CNmQJhMS1iRuT9LFlysYvzs1rU5E78+ShX2u0EUL6KpMi0pDJO3wZcuVYSR8cgukfoRtg==}
+  /postcss-preset-env@8.3.2(postcss@8.4.21):
+    resolution: {integrity: sha512-VSAOsfxTXzO/gX5QljC8x8hN3ABbD9iqqLgqHqohBdNI5FhJptwpl96kpu+kYvvzK7BWwaHYou0IeYrp+NqmcQ==}
     engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
       postcss: ^8.4
@@ -4660,7 +4660,7 @@ packages:
       '@csstools/postcss-color-function': 2.2.1(postcss@8.4.21)
       '@csstools/postcss-color-mix-function': 1.0.1(postcss@8.4.21)
       '@csstools/postcss-font-format-keywords': 2.0.2(postcss@8.4.21)
-      '@csstools/postcss-gradients-interpolation-method': 3.0.3(postcss@8.4.21)
+      '@csstools/postcss-gradients-interpolation-method': 3.0.4(postcss@8.4.21)
       '@csstools/postcss-hwb-function': 2.2.1(postcss@8.4.21)
       '@csstools/postcss-ic-unit': 2.0.2(postcss@8.4.21)
       '@csstools/postcss-is-pseudo-class': 3.2.0(postcss@8.4.21)
