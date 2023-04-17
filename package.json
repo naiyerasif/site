@@ -14,7 +14,7 @@
 	"dependencies": {
 		"@astrojs/sitemap": "^1.2.2",
 		"@generic-components/components": "^1.1.8",
-		"@microflash/preset": "^0.7.3",
+		"@microflash/preset": "^0.7.4",
 		"@microflash/rehype-slugify": "^1.0.0",
 		"@microflash/rehype-starry-night": "^2.1.0",
 		"@microflash/remark-callout-directives": "^1.5.0",
