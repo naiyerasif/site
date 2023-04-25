@@ -4,7 +4,7 @@
 	padding: calc(2.5rem + 0.5vw) var(--vgap-site-base) var(--vgap-site-medium);
 
 	.brand {
-		--logo-size: calc(42px + 0.5vw);
+		--logo-size: calc(36px + 0.5vw);
 		inline-size: var(--logo-size);
 		min-inline-size: var(--logo-size);
 		
@@ -349,7 +349,7 @@
 
 	&-secondary {
 		align-items: start;
-		gap: 1rem;
+		gap: 0.25rem;
 		font-size: var(--text-site-small);
 		inline-size: 100%;
 

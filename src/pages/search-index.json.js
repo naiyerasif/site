@@ -15,12 +15,6 @@ const defaults = [
 		"section": "Navigation"
 	},
 	{
-		"title": "Stacktrace",
-		"tags": ["projects", "career"],
-		"path": "/stacktrace/",
-		"section": "Navigation"
-	},
-	{
 		"title": "About",
 		"tags": ["about"],
 		"path": "/about/",
