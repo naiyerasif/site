@@ -14,13 +14,13 @@
 	"dependencies": {
 		"@astrojs/sitemap": "^1.2.2",
 		"@generic-components/components": "^1.1.8",
-		"@microflash/preset": "^0.7.5",
+		"@microflash/preset": "^0.7.6",
 		"@microflash/rehype-slugify": "^1.0.0",
 		"@microflash/rehype-starry-night": "^2.1.0",
 		"@microflash/remark-callout-directives": "^1.5.0",
 		"@microflash/remark-figure-caption": "^1.0.0",
 		"@sindresorhus/slugify": "^2.2.0",
-		"astro": "^2.3.1",
+		"astro": "^2.3.2",
 		"dayjs": "^1.11.7",
 		"feed": "^4.2.2",
 		"postcss-combine-duplicated-selectors": "^10.0.3",
@@ -33,7 +33,7 @@
 		"remark-parse": "^10.0.1",
 		"remark-rehype": "^10.1.0",
 		"remark-smartypants": "^2.0.0",
-		"sass": "^1.62.0",
+		"sass": "^1.62.1",
 		"unified": "^10.1.2"
 	},
 	"devDependencies": {
