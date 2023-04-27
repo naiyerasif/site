@@ -1,38 +1,13 @@
-.directive-tweet {
+.directive-embed {
+	text-align: start;
 	background-color: var(--background-site-showcase);
+	padding: 1em;
 	border: var(--thickness-site-base) solid var(--border-site-body);
 	border-radius: var(--radius-site-medium);
 	box-shadow: var(--shadow-size-site-base) var(--background-site-showcase);
-	padding: 1em;
 
-	&-header {
-		display: flex;
-		justify-content: space-between;
-	}
-
-	&-header + &-body {
-		margin-block-start: 1ch;
-	}
-
-	&-author {
-		display: flex;
-		gap: 1ch;
-		align-items: center;
-
-		&-image {
-			border-radius: var(--radius-site-round);
-			border: var(--thickness-site-base) solid var(--border-site-body);
-			inline-size: 48px;
-			block-size: 48px;
-		}
-
-		&-info {
-			font-size: var(--text-site-small);
-		}
-
-		&-title {
-			font-weight: var(--font-site-bold);
-		}
+	figure > * + * {
+		margin-block-start: 1em;
 	}
 }
 

@@ -7,7 +7,7 @@ import rehypeSlugify from "@microflash/rehype-slugify"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import remarkFigCaption from "@microflash/remark-figure-caption"
 import remarkCalloutDirectives from "@microflash/remark-callout-directives"
-import remarkTweetDirective from "./src/modules/generic-directives/remark-tweet-directive.js"
+import remarkEmbedDirective from "./src/modules/generic-directives/remark-embed-directive.js"
 import remarkYoutubeDirective from "./src/modules/generic-directives/remark-youtube-directive.js"
 import siteInfo from "./src/modules/universal/index.js"
 import { CountableSlugifier } from "./src/modules/slugifier/index.js"
@@ -42,7 +42,7 @@ export default defineConfig({
 				}
 			],
 			remarkDirective,
-			remarkTweetDirective,
+			remarkEmbedDirective,
 			remarkYoutubeDirective,
 			[
 				remarkCalloutDirectives,
