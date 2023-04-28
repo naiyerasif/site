@@ -4,9 +4,6 @@ dependencies:
   '@astrojs/sitemap':
     specifier: ^1.2.2
     version: 1.2.2
-  '@generic-components/components':
-    specifier: ^1.1.8
-    version: 1.1.8
   '@microflash/preset':
     specifier: ^0.7.6
     version: 0.7.6
@@ -960,10 +957,6 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
-
-  /@generic-components/components@1.1.8:
-    resolution: {integrity: sha512-QfEP2LGF6GSeX0bOwVwXdOIH5j7QoQa83mTfu4wxSm/t7ZKHSuE3vK6IaCmRFlUqN3OBPXoDr7o0PrGMwLpnHw==}
-    dev: false
 
   /@headlessui/vue@1.7.9(vue@3.2.47):
     resolution: {integrity: sha512-vgLBKszj+m2ozaPOnjWMGnspoLJcU/06vygdEAyAS4nDjp72yA7AYbOIEgdaspUhaMs585ApyiSm3jPTuIxAzg==}

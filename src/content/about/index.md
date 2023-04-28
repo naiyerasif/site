@@ -3,7 +3,7 @@ title: "Naiyer Asif"
 description: "About Naiyer Asif"
 user: "naiyer"
 date: "2019-06-30 05:14:56"
-update: "2022-04-23 11:32:41"
+update: "2023-04-28 15:34:33"
 ---
 
 I'm a software engineer working from India. Welcome to my corner on the web where I share my thoughts on software engineering, design, books, and other interesting stuff. Most of the posts here are guides and tutorials that document a concept or process. They serve as a reference for what I learn, and a source of ~~criticism and scorn~~ constructive feedback.
@@ -13,7 +13,6 @@ I'm a software engineer working from India. Welcome to my corner on the web wher
 - I work on an Aerospace product where I build microservices and enterprise API. Before this, I worked as a full-stack engineer at [Wipro Holmes](https://www.wipro.com/holmes/) and as an <abbr title="Extract Transform Load">ETL</abbr> consultant for [Suncorp](https://www.suncorp.com.au/).
 - I like solving problems and exploring ideas. I work in small bursts. For details about my technical experience, take a look at the [stacktrace](/stacktrace/).
 - I read a lot of science fiction, fantasy, manga and poetry.
-- I'm not tied to a specific ecosystem. I use Android, Linux, Windows, and iPadOS regularly. I do value cross-platform applications and services.
 
 ## About this site
 
@@ -62,8 +61,7 @@ You shouldn't get too hung up on the _stack_ or _tools_. Choose something that�
 
 - [Sara Soueidan](https://sarasoueidan.com/)'s wonderful articles influenced the focus indicators and many other accessibility related optimizations on this site
 - [Michelle Barker](https://css-irl.info/)'s article on [aspect-ratio](https://css-irl.info/aspect-ratio-is-great/) gave me a cue on styling the YouTube embeds
-- [Josh Comeau](https://www.joshwcomeau.com/)'s [Modern CSS Reset](https://www.joshwcomeau.com/css/custom-css-reset/), [Jeremy Thomas](https://jgthms.com/)'s [minireset](https://github.com/jgthms/minireset.css), and [Elly Loel](https://www.ellyloel.com/)'s [CSS Reset](https://gist.github.com/EllyLoel/4ff8a6472247e6dd2315fd4038926522) form the basis of the CSS reset that I've used
-- [Kitty Giraudel](https://kittygiraudel.com/)'s article on [using calc to figure out optimal line-height](https://kittygiraudel.com/2020/05/18/using-calc-to-figure-out-optimal-line-height/) influenced how I've setup the line-height
+- [Jesús Ricarte](https://www.super-simple.net/blog/)'s article on [using calc to figure out optimal line-height](https://kittygiraudel.com/2020/05/18/using-calc-to-figure-out-optimal-line-height/) influenced how I've setup the line-height
 - [Harry Roberts](https://twitter.com/csswizardry)'s excellent talk [Get Your Head Straight](https://speakerdeck.com/csswizardry/get-your-head-straight) influenced the structure of the `<head>` 
 - [Óscar Otero](https://oscarotero.com/)'s experimental [Lume plugin](https://github.com/lumeland/experimental-plugins/blob/3d99f245fc46f64344116f14f175821ac329ed12/reading_time/mod.ts) powers the reading time estimates
-- [Pascal Schilp](https://github.com/thepassle)'s [generic-components](https://github.com/thepassle/generic-components) library runs the Command Center web component under the hood
+- [Kitty Giraudel](https://kittygiraudel.com/)'s [a11y-dialog](https://github.com/KittyGiraudel/a11y-dialog) runs the Command Bar web component under the hood

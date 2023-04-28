@@ -129,38 +129,6 @@ button {
 	}
 }
 
-@keyframes fade-in {
-	from {
-		opacity: 0;
-	}
-}
-
-@keyframes slide-up {
-	from {
-		transform: translateY(10%);
-	}
-}
-
-:where(generic-dialog-overlay) {
-	backdrop-filter: blur(10px);
-
-	@media (prefers-reduced-motion: no-preference) {
-		animation: fade-in 200ms both;
-	}
-
-	&::part(dialog) {
-		inline-size: 100%;
-		max-inline-size: var(--width-site-base);
-		background-color: transparent;
-		border: none;
-		outline: none;
-
-		@media (prefers-reduced-motion: no-preference) {
-			animation: fade-in 400ms 200ms both, slide-up 400ms 200ms both;
-		}
-	}
-}
-
 .command-bar {
 	&-items {
 		background-color: var(--background-site-command-bar);
@@ -214,6 +182,18 @@ button {
 			block-size: 1em;
 			opacity: 0.5;
 		}
+
+		@include mixins.window-small {
+			.desktop {
+				display: none;
+			}
+		}
+
+		@include mixins.window-normal {
+			.mobile {
+				display: none;
+			}
+		}
 	}
 
 	&-section {
@@ -231,6 +211,7 @@ button {
 
 			&:is(:focus, :hover, :hover) {
 				background-color: var(--background-site-interaction);
+				outline-offset: -0.125em;
 			}
 		}
 
@@ -240,5 +221,53 @@ button {
 			font-weight: var(--font-site-semibold);
 			padding: 0.25rem 1rem;
 		}
+	}
+}
+
+.dialog-container,
+.dialog-overlay {
+	position: fixed;
+	inset: 0;
+}
+
+.dialog-container {
+	z-index: 5;
+	display: flex;
+
+	&[aria-hidden="true"] {
+		display: none;
+	}
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+}
+
+@keyframes slide-up {
+	from {
+		transform: translateY(10%);
+	}
+}
+
+.dialog-overlay {
+	backdrop-filter: blur(10px);
+
+	@media (prefers-reduced-motion: no-preference) {
+		animation: fade-in 200ms both;
+	}
+}
+
+.dialog-content {
+	margin: auto;
+	z-index: 6;
+	position: relative;
+	background-color: var(--background-site-command-bar);
+	inline-size: 100%;
+	max-inline-size: var(--width-site-base);
+
+	@media (prefers-reduced-motion: no-preference) {
+		animation: fade-in 400ms 200ms both, slide-up 400ms 200ms both;
 	}
 }
