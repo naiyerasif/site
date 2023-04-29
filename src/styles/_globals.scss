@@ -16,6 +16,7 @@ code {
 	touch-action: auto;
 }
 
+::part(button),
 button {
 	cursor: pointer;
 	touch-action: manipulation;
@@ -23,6 +24,8 @@ button {
 	border: var(--thickness-site-base) solid var(--border-site-interaction);
 	border-radius: var(--radius-site-base);
 	padding: 0.5rem;
+	color: var(--color-site-interaction);
+	background-color: var(--background-site-interaction);
 
 	&:not(:focus, :hover, :active) {
 		border-color: var(--background-site-interaction);

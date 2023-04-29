@@ -1,61 +1,61 @@
+const themeSwitcherTemplate = document.createElement("template")
+themeSwitcherTemplate.innerHTML = `
+<button type="button" role="switch" aria-live="polite" aria-checked="true" id="theme-switcher" part="button">
+	<slot name="theme-dark">Dark theme</slot>
+	<slot name="theme-light">Light theme</slot>
+</button>
+`
+
 export default class ThemeSwitcher extends HTMLElement {
 	static tagName = "theme-switcher"
-	static #eventName = "themechange"
-	static #darkTheme = "dark"
-	static #lightTheme = "light"
-	static #values = [ThemeSwitcher.#darkTheme, ThemeSwitcher.#lightTheme]
-	static #ariaLabels = ThemeSwitcher.#values.reduce((v, theme) => ({ ...v, [theme]: `${theme.charAt(0).toUpperCase()}${theme.substring(1)} theme`}), {})
 	
-	#switcher = null
-	#currentTheme = window.__theme || ThemeSwitcher.#darkTheme
-	#states = null
-	#clickHandler = () => this.#switchTheme()
+	static _themeChangeEvent = "themechange"
+	static _keyDarkTheme = "dark"
+	static _keyLightTheme = "light"
+	static _themes = [ThemeSwitcher._keyDarkTheme, ThemeSwitcher._keyLightTheme]
+	static _ariaLabels = ThemeSwitcher._themes.reduce((v, theme) => ({ ...v, [theme]: `${theme.charAt(0).toUpperCase()}${theme.substring(1)} theme`}), {})
+
+	_switch = null
+	_currentTheme = window.__theme || ThemeSwitcher._keyDarkTheme
+	_states = null
+	_switchHandler = () => this._switchTheme()
 
 	constructor() {
 		super()
 
-		this.innerHTML = this.#template()
-		this.#switcher = this.querySelector(`#${ThemeSwitcher.tagName}`)
-		this.#states = ThemeSwitcher.#values.reduce((v, theme) => ({ ...v, [theme]: this.querySelector(`#theme-${theme}`)}), {})
+		const shadowRoot = this.attachShadow({ mode: "open" })
+		shadowRoot.appendChild(themeSwitcherTemplate.content.cloneNode(true))
+		
+		this._switch = shadowRoot.querySelector(`#${ThemeSwitcher.tagName}`)
+		this._states = ThemeSwitcher._themes.reduce((v, theme) => ({ ...v, [theme]: shadowRoot.querySelector(`slot[name="theme-${theme}"]`)}), {})
 
-		document.addEventListener(ThemeSwitcher.#eventName, (event) => {
-			this.#currentTheme = event.detail.theme
-			this.#updateDom()
+		document.addEventListener(ThemeSwitcher._themeChangeEvent, (event) => {
+			this._currentTheme = event.detail.theme
+			this._updateTemplate()
 		})
 	}
 
 	connectedCallback() {
-		this.#updateDom()
-		this.#switcher.addEventListener("click", this.#clickHandler)
+		this._updateTemplate()
+		this._switch.addEventListener("click", this._switchHandler)
 	}
 
 	disconnectedCallback() {
-		this.#switcher.removeEventListener("click", this.#clickHandler)
+		this._switch.removeEventListener("click", this._switchHandler)
 	}
 
-	#switchTheme() {
-		const currentIndex = ThemeSwitcher.#values.indexOf(this.#currentTheme)
-		const nextIndex = (currentIndex + 1) % ThemeSwitcher.#values.length
-		const newTheme = ThemeSwitcher.#values[nextIndex]
+	_switchTheme() {
+		const currentIndex = ThemeSwitcher._themes.indexOf(this._currentTheme)
+		const nextIndex = (currentIndex + 1) % ThemeSwitcher._themes.length
+		const newTheme = ThemeSwitcher._themes[nextIndex]
 		window.__setPreferredTheme(newTheme)
-		this.#currentTheme = newTheme
-		this.#updateDom()
+		this._currentTheme = newTheme
+		this._updateTemplate()
 	}
 
-	#updateDom() {
-		this.#switcher.setAttribute("aria-label", ThemeSwitcher.#ariaLabels[this.#currentTheme])
-		ThemeSwitcher.#values.forEach(theme => this.#states[theme].style.display = theme === this.#currentTheme ? "revert" : "none")
-	}
-
-	#template() {
-		return `
-		<button type="button" role="switch" aria-live="polite" aria-checked="true" id="theme-switcher">
-			<svg role="img" class="icon" aria-hidden="true">
-				<use id="theme-dark" href="#moon"/>
-				<use id="theme-light" href="#sun"/>
-			</svg>
-		</button>
-		`
+	_updateTemplate() {
+		this._switch.setAttribute("aria-label", ThemeSwitcher._ariaLabels[this._currentTheme])
+		ThemeSwitcher._themes.forEach(theme => this._states[theme].style.display = theme === this._currentTheme ? "revert" : "none")
 	}
 }
 
