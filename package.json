@@ -12,7 +12,7 @@
 		"lighthouse": "unlighthouse-puppeteer --site http://localhost:8080"
 	},
 	"dependencies": {
-		"@astrojs/sitemap": "^1.2.2",
+		"@astrojs/sitemap": "^1.3.1",
 		"@generic-components/components": "^1.1.8",
 		"@microflash/preset": "^0.7.6",
 		"@microflash/rehype-slugify": "^1.0.0",
@@ -20,13 +20,13 @@
 		"@microflash/remark-callout-directives": "^1.5.0",
 		"@microflash/remark-figure-caption": "^1.0.0",
 		"@sindresorhus/slugify": "^2.2.0",
-		"astro": "^2.3.2",
+		"astro": "^2.4.5",
 		"dayjs": "^1.11.7",
 		"feed": "^4.2.2",
 		"postcss-combine-duplicated-selectors": "^10.0.3",
 		"postcss-preset-env": "^8.3.2",
 		"rehype-autolink-headings": "^6.1.1",
-		"rehype-external-links": "^2.0.1",
+		"rehype-external-links": "^2.1.0",
 		"rehype-stringify": "^9.0.3",
 		"remark-directive": "^2.0.1",
 		"remark-gfm": "^3.0.1",
@@ -38,11 +38,11 @@
 	},
 	"devDependencies": {
 		"defu": "^6.1.2",
-		"inquirer": "^9.2.0",
+		"inquirer": "^9.2.2",
 		"mdast-util-to-string": "^3.2.0",
-		"puppeteer": "^19.11.1",
+		"puppeteer": "^20.2.0",
 		"unist-util-visit": "^4.1.2",
-		"unlighthouse-puppeteer": "^0.4.9"
+		"unlighthouse-puppeteer": "^0.6.0"
 	},
 	"browserslist": [
 		"defaults, not IE > 0"
