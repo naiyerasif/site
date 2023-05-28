@@ -1,20 +1,21 @@
 ---
 slug: "2021/11/16/working-with-aws-on-local-using-localstack"
 title: "Working with AWS on local using LocalStack"
-description: "LocalStack is a container-based technology which brings a comprehensive set of AWS services on your local machine. It plays well with the official AWS CLI and SDK. Learn about how to setup LocalStack and use it with the AWS CLI."
+description: "Developing with AWS can be challenging on a local machine. With LocalStack, you can prototype with AWS services without connecting to the actual AWS environment."
 date: "2021-11-16 09:12:12"
-update: "2022-07-12 18:35:56"
+update: "2023-05-28 11:46:56"
 category: "guide"
 tags: ["cloud", "localstack", "aws"]
 ---
 
-Developing with AWS comes with its own set of challenges. If your organization has strict policies on cloud resources, prototyping with the AWS services can become a hassle. [LocalStack](https://localstack.dev) is a container-based technology which brings a comprehensive set of AWS services on your local machine. It plays well with the official AWS CLI and SDK. In this guide, I'll talk about how to setup LocalStack and use it with the AWS CLI.
+Developing with AWS comes with its own set of challenges. If your organization has strict policies on cloud resources, prototyping with the AWS services can become a hassle. [LocalStack](https://localstack.cloud/) is a cloud emulation layer that runs offline in a container on your local machine. Using LocalStack, you can run AWS services and Lambda functions without connecting to the actual AWS environment. You can use the familiar tools like the official AWS CLI and AWS SDK to interact with LocalStack seamlessly. In this guide, I'll talk about how to setup LocalStack and use it with the AWS CLI.
 
 :::setup
 The examples in this post use
 
-- Docker Engine 20.10.17
-- AWS CLI 2.7.14
+- Docker 23.0.5
+- AWS CLI 2.11.23
+- LocalStack 2.1.0
 :::
 
 ## Configure a local AWS account
@@ -33,10 +34,10 @@ Default output format [None]: json
 
 ## Launching the LocalStack container
 
-Pull the latest LocalStack image from Docker.
+Pull the latest LocalStack image from Docker (v2.1.0 at the time of writing).
 
 ```sh prompt{1}
-docker pull localstack/localstack:latest
+docker pull localstack/localstack:2.1.0
 ```
 
 Create a [Compose file](https://docs.docker.com/compose/compose-file/) as follows.
@@ -46,7 +47,7 @@ version: '3'
 
 services:
   aws:
-    image: localstack/localstack:latest
+    image: localstack/localstack:2.1.0
     environment:
       DEBUG: 1
       LAMBDA_DOCKER_NETWORK: my-local-aws-network
@@ -73,50 +74,49 @@ Once the container is up and running, open a terminal and ping the healthcheck e
 ```sh prompt{1} caption='Healthcheck for LocalStack container'
 curl localhost:4566/health
 {
-  "features": {
-    "initScripts": "initialized"
-  },
-  "services": {
-    "apigateway": "available",
-    "cloudformation": "available",
-    "cloudwatch": "available",
-    "config": "available",
-    "dynamodb": "available",
-    "dynamodbstreams": "available",
-    "ec2": "available",
-    "es": "available",
-    "events": "available",
-    "firehose": "available",
-    "iam": "available",
-    "kinesis": "available",
-    "kms": "available",
-    "lambda": "available",
-    "logs": "available",
-    "opensearch": "available",
-    "redshift": "available",
-    "resource-groups": "available",
-    "resourcegroupstaggingapi": "available",
-    "route53": "available",
-    "route53resolver": "available",
-    "s3": "available",
-    "s3control": "available",
-    "secretsmanager": "available",
-    "ses": "available",
-    "sns": "available",
-    "sqs": "available",
-    "ssm": "available",
-    "stepfunctions": "available",
-    "sts": "available",
-    "support": "available",
-    "swf": "available"
-  },
-  "version": "1.0.0.dev"
+	"services": {
+		"acm": "available",
+		"apigateway": "available",
+		"cloudformation": "available",
+		"cloudwatch": "available",
+		"config": "available",
+		"dynamodb": "available",
+		"dynamodbstreams": "available",
+		"ec2": "available",
+		"es": "available",
+		"events": "available",
+		"firehose": "available",
+		"iam": "available",
+		"kinesis": "available",
+		"kms": "available",
+		"lambda": "available",
+		"logs": "available",
+		"opensearch": "available",
+		"redshift": "available",
+		"resource-groups": "available",
+		"resourcegroupstaggingapi": "available",
+		"route53": "available",
+		"route53resolver": "available",
+		"s3": "available",
+		"s3control": "available",
+		"secretsmanager": "available",
+		"ses": "available",
+		"sns": "available",
+		"sqs": "available",
+		"ssm": "available",
+		"stepfunctions": "available",
+		"sts": "available",
+		"support": "available",
+		"swf": "available",
+		"transcribe": "available"
+	},
+	"version": "2.0.3.dev"
 }
 ```
 
 ## Working with AWS services
 
-You can now use the AWS services (such as S3, SNS, SQS, Secrets Manager, etc) through the port 4566. You can find the list of the core AWS services available on LocalStack [here](https://docs.localstack.cloud/aws/feature-coverage/). Let's explore some services with AWS CLI now.
+You can now use the AWS services (such as S3, SNS, SQS, Secrets Manager, etc) through the port 4566. You can find the list of the core AWS services available on LocalStack [here](https://docs.localstack.cloud/aws/feature-coverage/). Let's explore some services with the AWS CLI now.
 
 ### Saving objects on S3
 
@@ -166,14 +166,14 @@ Now, you can upload the `sample.json` file on the new bucket.
 
 ```sh prompt{1}
 aws --endpoint-url http://localhost:4566 s3 cp sample.json s3://my-bucket/inner/sample.json --content-type 'application/json'
-upload: .\sample.json to s3://my-bucket/inner/sample.json
+upload: ./sample.json to s3://my-bucket/inner/sample.json
 ```
 
 You can download the existing file from the S3 bucket as follows.
 
 ```sh prompt{1}
 aws --endpoint-url http://localhost:4566 s3 cp s3://my-bucket/inner/sample.json sample2.json --content-type 'application/json'
-download: s3://my-bucket/inner/sample.json to .\sample2.json
+download: s3://my-bucket/inner/sample.json to ./sample2.json
 ```
 
 To delete the file, you can use the following command.
@@ -246,7 +246,7 @@ aws --endpoint-url http://localhost:4566 sqs delete-message --queue-url http://l
 aws --endpoint-url http://localhost:4566 sqs delete-queue --queue-url http://localhost:4566/000000000000/my-queue
 ```
 
-For more operations, check the [sqs](https://docs.aws.amazon.com/cli/latest/reference/sqs/index.html) docs.
+For more operations, refer to the [sqs](https://docs.aws.amazon.com/cli/latest/reference/sqs/index.html) docs.
 
 ### Creating secrets with SecretsManager
 
@@ -310,12 +310,12 @@ aws --endpoint-url http://localhost:4566 secretsmanager delete-secret --secret-i
 }
 ```
 
-For more operations, check out the [secretsmanager](https://docs.aws.amazon.com/cli/latest/reference/secretsmanager/index.html) docs.
+For more operations, refer to the [secretsmanager](https://docs.aws.amazon.com/cli/latest/reference/secretsmanager/index.html) docs.
 
 ## Conclusion
 
-- LocalStack is geared toward CLI and SDK driven workflows. If you need a desktop app, you can check out [Commandeer](https://getcommandeer.com/), or LocalStack subscriptions which offer a Web UI.
-- Support for some [AWS services](https://docs.localstack.cloud/aws/feature-coverage/) (such as ElastiCache, ECS, EKS, etc) requires a subscription.
+- LocalStack works pretty nicely with command line tools. If you need a desktop app, you can try out [Commandeer](https://getcommandeer.com/), or LocalStack subscriptions which offer a Web UI.
+- Support for some [AWS services](https://docs.localstack.cloud/user-guide/aws/feature-coverage/) (such as ElastiCache, ECS, EKS, etc) requires a subscription.
 
 ---
 

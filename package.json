@@ -20,7 +20,7 @@
 		"@microflash/remark-callout-directives": "^1.5.0",
 		"@microflash/remark-figure-caption": "^1.0.0",
 		"@sindresorhus/slugify": "^2.2.1",
-		"astro": "^2.5.1",
+		"astro": "^2.5.5",
 		"dayjs": "^1.11.7",
 		"feed": "^4.2.2",
 		"postcss-combine-duplicated-selectors": "^10.0.3",
@@ -38,11 +38,11 @@
 	},
 	"devDependencies": {
 		"defu": "^6.1.2",
-		"inquirer": "^9.2.5",
+		"inquirer": "^9.2.6",
 		"mdast-util-to-string": "^3.2.0",
-		"puppeteer": "^20.2.1",
+		"puppeteer": "^20.4.0",
 		"unist-util-visit": "^4.1.2",
-		"unlighthouse-puppeteer": "^0.8.1"
+		"unlighthouse-puppeteer": "^0.8.6"
 	},
 	"browserslist": [
 		"defaults, not IE > 0"
