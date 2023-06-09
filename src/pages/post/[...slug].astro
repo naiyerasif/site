@@ -7,7 +7,7 @@ import BackToTop from "~components/atoms/BackToTop.astro"
 import Icon from "~components/atoms/Icon.astro"
 import format, { compare, format_date } from "~datetime"
 import readingTime from "~reading-time"
-import { source, postPathname } from "~universal"
+import { source, canonical, postPathname } from "~universal"
 
 export async function getStaticPaths() {
 	const posts = await getCollection("post")
@@ -27,7 +27,7 @@ const category = data.category
 const timeToRead = `${readingTime(post.body).readingTime} min read`
 const editSource = source(`main/src/content/post/${post.id}`)
 const shareableTitle = encodeURI(data.title)
-const shareableLink = postPathname(data.slug)
+const shareableLink = canonical(postPathname(data.slug))
 const shareViaMail = `mailto:?subject=${data.title}&body=Checkout this article I read! ${shareableLink}`
 const shareViaLinkedIn = `https://www.linkedin.com/sharing/share-offsite/?url=${shareableLink}`
 const shareViaHackerNews = `https://news.ycombinator.com/submitlink?u=${shareableLink}&t=${shareableTitle}`
