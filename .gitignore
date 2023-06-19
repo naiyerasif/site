@@ -1,0 +1,27 @@
+# build output
+dist/
+
+# type definitions
+.astro/
+*.d.ts
+
+# dependencies
+node_modules/
+
+# logs
+*.log*
+
+# environment variables
+.env*
+
+# macOS-specific files
+.DS_Store
+
+# unlighthouse
+.unlighthouse
+
+# vscode
+.vscode
+
+# local workspace
+.workspace
