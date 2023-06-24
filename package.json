@@ -1,0 +1,17 @@
+{
+	"name": "naiyerasif.com",
+	"private": true,
+	"type": "module",
+	"version": "4.0.0",
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"postinstall": "astro telemetry disable"
+	},
+	"dependencies": {
+		"astro": "^2.7.0"
+	},
+	"devDependencies": {
+	}
+}
