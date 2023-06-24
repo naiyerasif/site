@@ -2,6 +2,12 @@
 
 Personal website of [@naiyerasif](https://github.com/naiyerasif)
 
+## Development
+
+- To launch the development server, run `pnpm dev`
+- To generate a production build, run `pnpm build`
+- To update dependencies interactively, run `pnpm update --interactive --latest`
+
 ## Contributing
 
 Since this is my personal site, I'm not really looking for feature requests. I'd, however, appreciate bug reports and corrections. Please [create an issue](https://github.com/naiyerasif/naiyerasif.com/issues/new) on accessibility, browser rendering inconsistencies, performance bottlenecks, and general usability criticism.
