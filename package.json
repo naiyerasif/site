@@ -10,8 +10,7 @@
 		"postinstall": "astro telemetry disable"
 	},
 	"dependencies": {
-		"astro": "^2.7.0"
-	},
-	"devDependencies": {
+		"astro": "^2.7.0",
+		"sass": "^1.63.6"
 	}
 }
