@@ -1,0 +1,22 @@
+---
+import slugify from "~slugifier";
+
+const { name, alt, ...attribs } = Astro.props;
+
+const href = `#${name}`;
+const { "class": classValues, ...otherAttribs } = attribs;
+const attributes = otherAttribs || {};
+const ariaHidden = !alt;
+const id = !ariaHidden ? slugify(alt) : null;
+const classList = new Set([ "icon", ...classValues.split(" ") ]);
+
+if (id) {
+	attributes["aria-labelledby"] = id;
+} else {
+	attributes["aria-hidden"] = ariaHidden;
+}
+---
+<svg role="img" class:list={classList} {...attributes}>
+	{id && <title {id}>{alt}</title>}
+	<use {href}/>
+</svg>
