@@ -5,6 +5,7 @@
 			"~components/*": ["src/components/*"],
 			"~layouts/*": ["src/components/layouts/*"],
 			"~schema": ["src/modules/schema/index.js"],
+			"~slugifier": ["src/modules/slugifier/index.js"],
 			"~website": ["src/modules/website/index.js"]
 		}
 	}

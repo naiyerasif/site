@@ -10,6 +10,7 @@
 		"postinstall": "astro telemetry disable"
 	},
 	"dependencies": {
+		"@sindresorhus/slugify": "^2.2.1",
 		"astro": "^2.7.0",
 		"sass": "^1.63.6"
 	}
