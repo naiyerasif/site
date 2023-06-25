@@ -1,0 +1,17 @@
+{
+	"name": "Naiyer Asif",
+	"short_name": "Naiyer",
+	"description": "Personal space of Naiyer Asif on the web",
+	"categories": ["blog", "development", "design"],
+	"lang": "en-US",
+	"icons": [
+		{
+			"src": "google-touch-icon.png",
+			"sizes": "512x512"
+		}
+	],
+	"background_color": "#0e0e11",
+	"theme_color": "#0e0e11",
+	"display": "standalone",
+	"scope": "/"
+}
