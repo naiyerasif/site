@@ -1,0 +1,9 @@
+/projects /work 301
+/stacktrace /work 301
+/profile/naiyer /about 301
+/blog/:year/:month/:date/:slug /post/:year/:month/:date/:slug 301
+/blog /posts 301
+/blog/1 /posts/1 301
+/blog/2 /posts/2 301
+/blog/3 /posts/3 301
+/blog/4 /posts/4 301
