@@ -1,4 +1,5 @@
 import { z } from "astro:content";
+import { fullLink } from "~website";
 
 const contentTypes = ["website", "article", "profile"];
 const contentCategories = ["guide", "status", "opinion", "reference"];
@@ -7,7 +8,7 @@ const title = z.string().max(64);
 const description = z.string().max(200);
 const date = z.date();
 const update = z.date().optional();
-const image = z.string().optional();
+const image = z.string().default(fullLink("/images/opengraph/default.png"));
 const tagline = z.string().optional();
 
 const postSchema = z.object({
