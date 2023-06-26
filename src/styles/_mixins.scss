@@ -18,13 +18,13 @@
 }
 
 @mixin window-small {
-	@media screen and (max-width: 47.999rem) {
+	@media screen and (width < 48rem) {
 		@content;
 	}
 }
 
 @mixin window-normal {
-	@media screen and (min-width: 48rem) {
+	@media screen and (width >= 48rem) {
 		@content;
 	}
 }
