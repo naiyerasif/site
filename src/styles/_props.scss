@@ -82,3 +82,12 @@
 [data-theme="dark"] {
 	@include darkTheme;
 }
+
+:root {
+	--family-site-body: var(--family-site-sans);
+	--family-site-code: var(--family-site-mono);
+
+	--font-weight-site-regular: 400;
+	--font-weight-site-medium: 500;
+	--font-weight-site-bold: 700;
+}
