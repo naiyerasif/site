@@ -1,0 +1,134 @@
+@use "./mixins";
+
+/*! based on Preset v0.7.6 | MIT License | https://github.com/Microflash/preset */
+:where(html) {
+	box-sizing: border-box;
+	text-size-adjust: 100%;
+	block-size: 100%;
+
+	@media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolution: 2dppx) {
+		-moz-osx-font-smoothing: grayscale;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		&:focus-within {
+			scroll-behavior: smooth;
+		}
+	}
+}
+
+:where(body) {
+	min-block-size: 100%;
+	tab-size: 2;
+}
+
+* {
+	margin: 0;
+	line-height: calc(0.3rem + 2ex + 0.3rem);
+	overflow-wrap: break-word;
+
+	&,
+	&::before,
+	&::after {
+		box-sizing: inherit;
+	}
+}
+
+:where(:not(fieldset, progress, meter)) {
+	background-origin: border-box;
+	background-repeat: no-repeat;
+}
+
+:where(abbr[title]) {
+	text-decoration-line: underline;
+	text-decoration-style: dotted;
+	border-block-end: none;
+	cursor: help;
+}
+
+:where(ul, ol)[role="list"],
+:where(menu) {
+	list-style: none;
+}
+
+:where(img, svg, canvas, audio, video, iframe, embed, object) {
+	display: block;
+	max-inline-size: 100%;
+}
+
+:where(img, svg, video) {
+	block-size: auto;
+}
+
+:where(svg) {
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+:where(iframe) {
+	border: none;
+}
+
+:where(input, button, textarea, select, optgroup) {
+	color: inherit;
+	font: inherit;
+	font-size: inherit;
+	letter-spacing: inherit;
+	word-spacing: inherit;
+}
+
+:where(input[type="file"])::file-selector-button {
+	color: inherit;
+	font: inherit;
+	font-size: inherit;
+	letter-spacing: inherit;
+	word-spacing: inherit;
+}
+
+:where(textarea) {
+	resize: vertical;
+
+	@supports (resize: block) {
+		resize: block;
+	}
+}
+
+@include mixins.interactive-elements {
+	cursor: pointer;
+	touch-action: manipulation;
+	-webkit-tap-highlight-color: transparent;
+}
+
+:where(input[type="file"]) {
+	cursor: auto;
+}
+
+:where(button, button[type], input[type="button"], input[type="submit"], input[type="reset"]) {
+	-webkit-touch-callout: none;
+	user-select: none;
+}
+
+:where(input[type="file"])::file-selector-button {
+	-webkit-touch-callout: none;
+	user-select: none;
+}
+
+:where(button, button[type], input[type="button"], input[type="submit"], input[type="reset"])[disabled] {
+	cursor: not-allowed;
+}
+
+:where(table) {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	:where(:focus-visible) {
+		transition: outline-offset 145ms cubic-bezier(0.25, 0, 0.4, 1);
+	}
+
+	:where(:not(:active):focus-visible) {
+		transition-duration: 0.25s;
+	}
+}
