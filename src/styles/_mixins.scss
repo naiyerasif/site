@@ -1,5 +1,5 @@
 @mixin interactive-elements {
-	:where(a[href], area, button, input, label[for], select, summary, textarea, [onclick], [tabindex]:not([tabindex*="-"])) {
+	:where(a[href], area, button, input, label[for], select, summary, textarea, [tabindex]:not([tabindex*="-"]), [onclick], [role="button"]) {
 		@content;
 	}
 	
@@ -9,7 +9,7 @@
 }
 
 @mixin form-elements {
-	:where(button, input, label[for], select, textarea) {
+	:where(button, input, label[for], select, textarea, [role="button"]) {
 		@content;
 	}
 
