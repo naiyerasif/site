@@ -1,3 +1,5 @@
+@use "./mixins";
+
 @mixin lightTheme {
 	color-scheme: light;
 
@@ -170,7 +172,15 @@
 	--font-weight-site-regular: 400;
 	--font-weight-site-medium: 500;
 	--font-weight-site-bold: 700;
+}
 
+@include mixins.interactive-elements {
 	--color-site-link: var(--color-site-link-base);
-	--color-site-link-active: var(--color-site-link-active-base);
+	--border-site-form: var(--color-site-link);
+	--outline-site-form: transparent;
+
+	&:is(:focus, :focus-visible, :focus-within, :hover, :active) {
+		--color-site-link: var(--color-site-link-active-base);
+		--outline-site-form: var(--border-site-active, var(--border-site-base));
+	}
 }
