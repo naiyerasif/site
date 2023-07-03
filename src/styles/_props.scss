@@ -172,6 +172,44 @@
 	--font-weight-site-regular: 400;
 	--font-weight-site-medium: 500;
 	--font-weight-site-bold: 700;
+
+	--thickness-site-decoration: 0.2ex;
+	--thickness-site-hr: 1px;
+	--thickness-site-link-outline: 2px;
+	--thickness-site-form-outline: 5px;
+
+	--offset-site-link-outline: 0.125em;
+	--offset-site-form-outline: 0;
+
+	--radius-site-tiny: 4px;
+	--radius-site-small: 8px;
+	--radius-site-base: 1rem;
+	--radius-site-round: 1e5px;
+
+	--gap-site-base: 2rem;
+
+	--color-site-body: var(--color-site-base);
+	--color-site-del: var(--color-site-deter);
+	--color-site-emphasis: var(--color-site-stress);
+	--color-site-ins: var(--color-site-commend);
+	--color-site-mark: var(--color-site-warn);
+	--color-site-marker: var(--border-site-stress);
+	--color-site-placeholder: var(--color-site-subtle);
+	--color-site-scrollbar: var(--border-site-stress);
+	--color-site-table-active: var(--color-site-stress);
+	--background-site-body: var(--background-site-base);
+	--background-site-code: var(--background-site-subtle);
+	--background-site-del: var(--background-site-deter);
+	--background-site-ins: var(--background-site-commend);
+	--background-site-mark: var(--background-site-warn);
+	--background-site-scrollbar: transparent;
+	--background-site-selection: var(--border-site-subtle);
+	--background-site-summary: var(--background-site-stress);
+	--background-site-table: transparent;
+	--background-site-table-active: var(--background-site-summary);
+	--border-site-blockquote: var(--border-site-base);
+	--border-site-body: var(--border-site-base);
+	--border-site-hr: var(--border-site-stress);
 }
 
 @include mixins.interactive-elements {
