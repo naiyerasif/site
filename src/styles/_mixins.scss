@@ -8,6 +8,16 @@
 	}
 }
 
+@mixin form-elements {
+	:where(button, input, label[for], select, textarea) {
+		@content;
+	}
+
+	:where(input[type="file"])::file-selector-button {
+		@content;
+	}
+}
+
 @mixin icon($data-uri) {
 	content: "";
 	mask-image: url($data-uri);
