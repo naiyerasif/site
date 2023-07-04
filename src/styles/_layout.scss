@@ -1,0 +1,34 @@
+@use "./mixins";
+
+body {
+	--buffer: minmax(0, 1fr);
+	--site: min(var(--max-width-site-base), 100%);
+
+	display: grid;
+	grid-template-columns:
+		[buffer-start] var(--buffer)
+		[site-start] var(--site) [site-end]
+		var(--buffer) [buffer-end];
+
+	& > * {
+		grid-column: site;
+	}
+}
+
+.content {
+	--full: minmax(var(--gap-site-body), 1fr);
+	--content: min(var(--max-width-site-content), 100% - var(--gap-site-body) * 2);
+	--popout: minmax(0, var(--gap-site-body));
+
+	display: grid;
+	grid-template-columns:
+		[full-start] var(--full)
+		[popout-start] var(--popout)
+		[content-start] var(--content) [content-end]
+		var(--popout) [popout-end]
+		var(--full) [full-end];
+
+	& > * {
+		grid-column: content;
+	}
+}
