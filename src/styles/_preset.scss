@@ -55,6 +55,7 @@
 :where(img, svg, canvas, audio, video, iframe, embed, object) {
 	display: block;
 	max-inline-size: 100%;
+	flex-shrink: 0;
 }
 
 :where(img, svg, video) {
