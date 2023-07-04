@@ -41,12 +41,12 @@
 	}
 }
 
-@mixin popout($border-radius) {
+@mixin popout($radius-normal, $radius-small: 0) {
 	grid-column: full;
-	border-radius: 0;
+	border-radius: #{$radius-small};
 
 	@include window-normal {
 		grid-column: popout;
-		border-radius: #{$border-radius};
+		border-radius: #{$radius-normal};
 	}
 }
