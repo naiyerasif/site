@@ -2,6 +2,14 @@
 	font-weight: var(--font-weight-site-medium);
 }
 
+.spotlight {
+	font-family: var(--family-site-stress);
+}
+
+.subheadline {
+	font-size: var(--text-site-subheadline);
+}
+
 theme-switcher {
 	&::part(button) {
 		padding: 0.8ch;
