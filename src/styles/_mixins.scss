@@ -38,3 +38,13 @@
 		@content;
 	}
 }
+
+@mixin popout($border-radius) {
+	grid-column: full;
+	border-radius: 0;
+
+	@include window-normal {
+		grid-column: popout;
+		border-radius: #{$border-radius};
+	}
+}

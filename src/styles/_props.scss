@@ -173,6 +173,9 @@
 	--font-weight-site-medium: 500;
 	--font-weight-site-bold: 700;
 
+	--max-width-site-base: calc(50rem + 10vw);
+	--max-width-site-content: 65ch;
+
 	--thickness-site-decoration: 0.2ex;
 	--thickness-site-hr: 1px;
 	--thickness-site-link-outline: 2px;
@@ -187,6 +190,7 @@
 	--radius-site-round: 1e5px;
 
 	--gap-site-base: 2rem;
+	--gap-site-body: 32px;
 
 	--color-site-body: var(--color-site-base);
 	--color-site-del: var(--color-site-deter);
