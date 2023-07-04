@@ -1,3 +1,7 @@
+:where(input[type="file"]) {
+	padding: 0.25em;
+}
+
 .stress {
 	font-weight: var(--font-weight-site-medium);
 }
