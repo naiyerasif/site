@@ -3,9 +3,9 @@
 @mixin lightTheme {
 	color-scheme: light;
 
-	--background-site-base: hsl(15, 80%, 98%);
+	--background-site-base: hsl(15, 74%, 99%);
 	--background-site-subtle: hsl(17, 13%, 78%, 0.3);
-	--background-site-stress: hsl(22, 79%, 95%);
+	--background-site-stress: hsl(23, 81%, 77%, 0.8);
 	--background-site-note: hsl(17, 25%, 89%, 0.5);
 	--background-site-commend: hsl(147, 80%, 80%, 0.5);
 	--background-site-warn: hsl(29, 82%, 87%, 0.5);
@@ -78,9 +78,9 @@
 @mixin darkTheme {
 	color-scheme: dark;
 
-	--background-site-base: hsl(240, 7%, 6%);
+	--background-site-base: hsl(240, 7%, 3%);
 	--background-site-subtle: hsl(129, 4%, 32%, 0.5);
-	--background-site-stress: hsl(240, 9%, 2%);
+	--background-site-stress: hsl(151, 41%, 26%, 0.8);
 	--background-site-note: hsl(146, 15%, 22%, 0.5);
 	--background-site-commend: hsl(151, 43%, 19%, 0.5);
 	--background-site-warn: hsl(33, 73%, 19%, 0.5);
@@ -207,8 +207,8 @@
 	--background-site-ins: var(--background-site-commend);
 	--background-site-mark: var(--background-site-warn);
 	--background-site-scrollbar: transparent;
-	--background-site-selection: var(--border-site-subtle);
-	--background-site-summary: var(--background-site-stress);
+	--background-site-selection: var(--background-site-stress);
+	--background-site-summary: var(--background-site-note);
 	--background-site-table: transparent;
 	--background-site-table-active: var(--background-site-summary);
 	--border-site-blockquote: var(--border-site-base);
