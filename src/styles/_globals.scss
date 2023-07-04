@@ -1,0 +1,11 @@
+.stress {
+	font-weight: var(--font-weight-site-medium);
+}
+
+theme-switcher {
+	&::part(button) {
+		padding: 0.8ch;
+		border-color: transparent;
+		border-radius: var(--radius-site-icon);
+	}
+}
