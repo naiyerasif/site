@@ -188,8 +188,12 @@
 	--radius-site-small: 8px;
 	--radius-site-base: 1rem;
 	--radius-site-round: 1e5px;
+	--radius-site-icon: 12px;
 
+	--gap-site-small: 1rem;
 	--gap-site-base: 2rem;
+	--gap-site-medium: calc(48px + 2vw);
+	--gap-site-large: calc(60px + 3vw);
 	--gap-site-body: 32px;
 
 	--color-site-body: var(--color-site-base);
