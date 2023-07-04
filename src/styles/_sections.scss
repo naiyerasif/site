@@ -1,0 +1,78 @@
+@use "./mixins";
+
+body > :where(.header, .hero, .sidekick, .footer) {
+	padding-inline: var(--gap-site-body);
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-block: calc(2rem + 1vw);
+}
+
+.navbar-primary {
+	display: flex;
+	align-items: center;
+
+	& > *:not(:last-child) {
+		margin-inline-end: 0.5ch;
+	}
+
+	.brand {
+		--logo-size: calc(30px + 0.5vw);
+		inline-size: var(--logo-size);
+		flex-shrink: 0;
+
+		img {
+			border-radius: 0;
+		}
+	}
+
+	.breadcrumb-separator-ltr {
+		opacity: 0.6;
+	}
+}
+
+.navbar-normal {
+	display: flex;
+	align-items: center;
+
+	& > a {
+		padding-inline: 0.8ch;
+	}
+
+	@include mixins.window-small {
+		display: none;
+	}
+}
+
+.navbar-secondary {
+	display: flex;
+	align-items: center;
+}
+
+.navbar-small {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 10;
+	padding: 1ch var(--gap-site-body);
+	backdrop-filter: blur(25px);
+	max-inline-size: var(--max-width-site-base);
+	margin-inline: auto;
+
+	::part(button) {
+		padding: 0;
+		background-color: transparent;
+		outline-color: transparent;
+	}
+
+	@include mixins.window-normal {
+		display: none;
+	}
+}

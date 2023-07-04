@@ -1,0 +1,38 @@
+---
+import Icon from "~components/Icon.astro";
+import ThemeSwitcher from "~components/ThemeSwitcher.astro";
+import BackToTop from "~components/BackToTop.astro";
+import siteInfo from "~website";
+
+const { hint = "Home" } = Astro.props;
+const logoAlt = `${new URL(siteInfo.siteBase).host}'s logo'`;
+---
+
+<header class="header" id="header">
+	<div class="navbar-primary">
+		<a href="/" class="brand">
+			<img src="/favicon.svg" alt={logoAlt}>
+		</a>
+		<Icon name="chevron-right" class="breadcrumb-separator-ltr"/>
+		<div class="stress">{hint}</div>
+	</div>
+	<div class="navbar-secondary">
+		<nav class="navbar-normal">
+			<a href="/posts/" class="stress">Posts</a>
+			<a href="/about/" class="stress">About</a>
+			<ThemeSwitcher/>
+		</nav>
+		<!-- <CommandBar/> -->
+	</div>
+</header>
+
+<nav class="navbar-small">
+	<a href="/" class="button" title="Home">
+		<Icon name="site"/>
+	</a>
+	<a href="/posts/" class="button" title="Posts">
+		<Icon name="posts"/>
+	</a>
+	<!-- <CommandBar/> -->
+	<BackToTop/>
+</nav>
