@@ -1,24 +1,26 @@
 import { z } from "astro:content";
-import { fullLink } from "~website";
-
-const contentTypes = ["website", "article", "profile"];
-const contentCategories = ["guide", "status", "opinion", "reference"];
+import siteInfo, { fullLink } from "~website";
 
 const title = z.string().max(64);
-const description = z.string().max(200);
+const contentTypes = z.enum(["website", "article", "profile"]);
+const contentCategories = z.enum(["guide", "status", "opinion", "reference"]);
+const description = z.preprocess(val => val || siteInfo.description, z.string().max(200));
 const date = z.date();
 const update = z.date().optional();
-const image = z.string().default(fullLink("/images/opengraph/default.png"));
+const image = z.preprocess(
+	val => fullLink(val || "/images/opengraph/default.png"), 
+	z.string().url()
+);
 const tagline = z.string().optional();
 
 const postSchema = z.object({
 	title,
 	description,
-	type: z.enum(contentTypes).default("article"),
+	type: contentTypes.default("article"),
 	date,
 	update,
-	category: z.enum(contentCategories).default("guide"),
-	tags: z.array(z.string()),
+	category: contentCategories.default("guide"),
+	tags: z.array(z.string()).optional(),
 	image,
 	tagline,
 	outdated: z.boolean().optional()
@@ -27,7 +29,7 @@ const postSchema = z.object({
 const profileSchema = z.object({
 	title,
 	description,
-	type: z.enum(contentTypes).default("profile"),
+	type: contentTypes.default("profile"),
 	date,
 	update,
 	image,
@@ -37,7 +39,7 @@ const profileSchema = z.object({
 const pageSchema = z.object({
 	title,
 	description,
-	type: z.enum(contentTypes).default("website"),
+	type: contentTypes.default("website"),
 	date,
 	update,
 	image,
