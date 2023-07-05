@@ -1,3 +1,5 @@
+import { join } from "path/posix";
+
 const authorInfo = {
 	name: "Naiyer Asif",
 	networks: {
@@ -37,12 +39,14 @@ const siteInfo = {
 	maxTocDepth: 3
 };
 
+const editUrl = new URL(siteInfo.editBase);
+
 function fullLink(path, base = siteInfo.siteBase) {
 	return new URL(path, base).href;
 }
 
 function editLink(path) {
-	return fullLink(path, siteInfo.editBase);
+	return fullLink(join(editUrl.pathname, path), editUrl.origin);
 }
 
 export {
