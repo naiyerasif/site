@@ -1,0 +1,29 @@
+---
+import "../../styles/main.scss";
+import PageInfo from "./PageInfo.astro";
+import SkipLink from "../SkipLink.astro";
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+
+const { pageInfo, ...attribs } = Astro.props;
+const hero = Astro.slots.has("hero");
+const sidekick = Astro.slots.has("sidekick");
+const hint = pageInfo?.hint;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<PageInfo {pageInfo}/>
+	</head>
+	<body>
+		<SkipLink/>
+		<Header {hint}/>
+		{hero && <section class="hero"><slot name="hero"/></section>}
+		<main id="content" {...attribs}>
+			<slot/>
+		</main>
+		{sidekick && <section class="sidekick"><slot name="sidekick"/></section>}
+		<Footer/>
+	</body>
+</html>
