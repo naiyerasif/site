@@ -37,7 +37,8 @@ const profileSchema = z.object({
 	date,
 	update,
 	image,
-	tagline
+	tagline,
+	avatar: z.string()
 });
 
 const pageSchema = z.object({
