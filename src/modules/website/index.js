@@ -1,9 +1,26 @@
 const authorInfo = {
 	name: "Naiyer Asif",
 	networks: {
-		mastodon: { platform: "Mastodon", id: "@naiyer", link: "https://mastodon.design/@naiyer" },
-		github: { platform: "GitHub", id: "@naiyerasif", link: "https://github.com/naiyerasif" },
-		linkedin: { platform: "LinkedIn", id: "naiyerasif", link: "https://in.linkedin.com/in/naiyerasif" },
+		mastodon: {
+			platform: "Mastodon",
+			id: "@naiyer",
+			link: "https://mastodon.design/@naiyer"
+		},
+		github: {
+			platform: "GitHub",
+			id: "@naiyerasif",
+			link: "https://github.com/naiyerasif"
+		},
+		linkedin: {
+			platform: "LinkedIn",
+			id: "naiyerasif",
+			link: "https://in.linkedin.com/in/naiyerasif"
+		},
+		twitter: {
+			platform: "Twitter",
+			id: "@Microflash",
+			link: "https://twitter.com/Microflash"
+		}
 	}
 };
 
