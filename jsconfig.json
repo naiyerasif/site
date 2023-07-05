@@ -3,6 +3,7 @@
 		"baseUrl": ".",
 		"paths": {
 			"~components/*": ["src/components/*"],
+			"~datetime": ["src/modules/datetime/index.js"],
 			"~layouts/*": ["src/components/layouts/*"],
 			"~schema": ["src/modules/schema/index.js"],
 			"~slugifier": ["src/modules/slugifier/index.js"],

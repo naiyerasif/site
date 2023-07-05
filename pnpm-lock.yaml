@@ -11,6 +11,9 @@ dependencies:
   astro:
     specifier: ^2.7.2
     version: 2.7.2(sass@1.63.6)
+  dayjs:
+    specifier: ^1.11.9
+    version: 1.11.9
   postcss-combine-duplicated-selectors:
     specifier: ^10.0.3
     version: 10.0.3(postcss@8.4.24)
@@ -1479,6 +1482,10 @@ packages:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
     engines: {node: '>=4'}
     hasBin: true
+    dev: false
+
+  /dayjs@1.11.9:
+    resolution: {integrity: sha512-QvzAURSbQ0pKdIye2txOzNaHmxtUBXerpY0FJsFXUMKbIZeFm5ht1LS/jFsrncjnmtv8HsG0W2g6c0zUjZWmpA==}
     dev: false
 
   /debug@4.3.4:

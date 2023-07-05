@@ -12,6 +12,7 @@
 	"dependencies": {
 		"@sindresorhus/slugify": "^2.2.1",
 		"astro": "^2.7.2",
+		"dayjs": "^1.11.9",
 		"postcss-combine-duplicated-selectors": "^10.0.3",
 		"postcss-preset-env": "^8.5.1",
 		"sass": "^1.63.6"
