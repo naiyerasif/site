@@ -1,6 +1,6 @@
 @use "./mixins";
 
-body > :where(.header, .hero, .sidekick, .footer) {
+body > :where(.header, .hero, .sidekick) {
 	padding-inline: var(--gap-site-body);
 }
 
@@ -74,5 +74,38 @@ body > :where(.header, .hero, .sidekick, .footer) {
 
 	@include mixins.window-normal {
 		display: none;
+	}
+}
+.footer {
+	position: sticky;
+	top: 100vh;
+	padding-block: var(--gap-site-large);
+	display: flex;
+	flex-wrap: wrap;
+	align-items: end;
+
+	& > * {
+		flex: 1 1 100%;
+		padding: var(--gap-site-small) var(--gap-site-body);
+
+		@include mixins.window-normal {
+			flex-basis: 40%;
+		}
+	}
+
+	.stress.tagline {
+		font-size: 1.5rem;
+	}
+
+	.with-icon-ltr:first-of-type {
+		margin-block-start: 1ch;
+	}
+
+	&-copyright {
+		font-size: var(--text-site-small);
+
+		@include mixins.window-normal {
+			text-align: end;
+		}
 	}
 }

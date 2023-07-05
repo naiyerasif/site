@@ -1,0 +1,36 @@
+---
+import Sprites from "./Sprites.astro";
+import Icon from "~components/Icon.astro";
+import siteInfo from "~website";
+
+const authorInfo = siteInfo.author;
+const authorNetworks = authorInfo.networks;
+const siteAuthor = authorInfo.name;
+const siteIssueUrl = siteInfo.issueBase;
+---
+
+<footer class="footer">
+	<section class="stress tagline">
+		This footer exists to nudge you stop scrolling. You can take a break, sit back, and give yourself a moment.
+	</section>
+	<p>
+		<strong>Say hi!</strong> Interested in software, books, manga? We gotta chat. Reach out on 
+		<a href={authorNetworks.mastodon.link} aria-label={authorNetworks.mastodon.platform} rel="noopener noreferrer">{authorNetworks.mastodon.platform}</a>,
+		<a href={authorNetworks.github.link} aria-label={authorNetworks.github.platform} rel="noopener noreferrer">{authorNetworks.github.platform}</a>, or 
+		<a href={authorNetworks.linkedin.link} aria-label={authorNetworks.linkedin.platform} rel="noopener noreferrer">{authorNetworks.linkedin.platform}</a>.
+	</p>
+	<p>
+		<strong>Subscribe</strong> to my latest posts in your favorite RSS reader. <small>(<a href="https://aboutfeeds.com/" rel="nofollow noopener noreferrer">What's RSS?</a>)</small><br>
+		<a href="/feed.xml" class="with-icon-ltr"><Icon name="rss"/> Subscribe to Posts</a><br>
+		<a href="/all.xml" class="with-icon-ltr"><Icon name="rss"/> Subscribe to Posts and statuses</a>
+	</p>
+	<section class="footer-copyright">
+		<p class="stress">&copy; 2018 &mdash;&mdash; today, {siteAuthor}</p>
+		<div class="footer-links">
+			<a href="/privacy/">Privacy</a>
+			<a href={siteIssueUrl} rel="nofollow noopener noreferrer">Report an issue</a>
+			<a href="/sitemap-index.xml">Sitemap</a>
+		</div>
+	</section>
+</footer>
+<Sprites/>

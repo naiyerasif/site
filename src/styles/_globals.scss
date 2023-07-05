@@ -12,6 +12,16 @@
 
 .subheadline {
 	font-size: var(--text-site-subheadline);
+	text-wrap: balance;
+}
+
+.with-icon-ltr {
+	display: inline-flex;
+	align-items: center;
+
+	.icon {
+		margin-inline-end: 0.5ch;
+	}
 }
 
 theme-switcher {
