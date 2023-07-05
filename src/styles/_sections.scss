@@ -66,7 +66,8 @@ body > :where(.header, .hero, .sidekick) {
 	max-inline-size: var(--max-width-site-base);
 	margin-inline: auto;
 
-	::part(button) {
+	::part(button),
+	.button-link {
 		padding: 0;
 		background-color: transparent;
 		outline-color: transparent;
@@ -76,13 +77,27 @@ body > :where(.header, .hero, .sidekick) {
 		display: none;
 	}
 }
+
+.floating-back-to-top {
+	display: none;
+	border-radius: var(--radius-site-icon);
+
+	@include mixins.window-normal {
+		display: flex;
+		position: fixed;
+		inset-block-end: 1.5rem;
+		inset-inline-end: 1.5rem;
+		z-index: 10;
+		backdrop-filter: blur(25px);
+	}
+}
 .footer {
 	position: sticky;
 	top: 100vh;
 	padding-block: var(--gap-site-large);
 	display: flex;
 	flex-wrap: wrap;
-	align-items: end;
+	align-items: flex-end;
 
 	& > * {
 		flex: 1 1 100%;

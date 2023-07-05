@@ -11,7 +11,8 @@
 
 @mixin form-elements {
 	:where(button, input:not([type="file"]), select, textarea, [role="button"]),
-	::part(button) {
+	::part(button),
+	.button-link {
 		@content;
 	}
 

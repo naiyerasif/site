@@ -24,10 +24,9 @@
 	}
 }
 
-theme-switcher {
-	&::part(button) {
-		padding: 0.8ch;
-		border-color: transparent;
-		border-radius: var(--radius-site-icon);
-	}
+theme-switcher::part(button),
+.button-link {
+	padding: 0.8ch;
+	border-color: transparent;
+	border-radius: var(--radius-site-icon);
 }

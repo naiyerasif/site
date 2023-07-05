@@ -4,6 +4,7 @@ import PageInfo from "./PageInfo.astro";
 import SkipLink from "../SkipLink.astro";
 import Header from "./Header.astro";
 import Footer from "./Footer.astro";
+import BackToTop from "~components/BackToTop.astro";
 
 const { pageInfo, ...attribs } = Astro.props;
 const hero = Astro.slots.has("hero");
@@ -25,5 +26,8 @@ const hint = pageInfo?.hint;
 		</main>
 		{sidekick && <section class="sidekick"><slot name="sidekick"/></section>}
 		<Footer/>
+		<aside class="floating-back-to-top">
+			<BackToTop/>
+		</aside>
 	</body>
 </html>
