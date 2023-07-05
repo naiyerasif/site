@@ -1,0 +1,17 @@
+<a data-skiplink="true" href="#content">Skip to content</a>
+
+<style>
+	a[data-skiplink] {
+		position: absolute;
+		clip: rect(0, 0, 0, 0);
+		inset-inline-start: 0.5rem;
+		inset-block-start: 0.5rem;
+	}
+	a[data-skiplink]:focus {
+		clip: unset;
+		z-index: 20;
+		display: block;
+		padding: 0.2rem 0.5rem;
+		text-decoration: none;
+	}
+</style>
