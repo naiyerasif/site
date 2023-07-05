@@ -1,5 +1,5 @@
 import { z } from "astro:content";
-import siteInfo, { fullLink } from "~website";
+import siteInfo, { fullLink, editLink } from "~website";
 
 const title = z.string().max(64);
 const contentTypes = z.enum(["website", "article", "profile"]);
@@ -12,6 +12,10 @@ const image = z.preprocess(
 	z.string().url()
 );
 const tagline = z.string().optional();
+const url = z.preprocess(val => val && fullLink(val), z.string().url());
+const optionalUrl = z.preprocess(val => val && fullLink(val), z.string().url().optional());
+const optionalEditUrl = z.preprocess(val => val && editLink(val), z.string().startsWith(siteInfo.editBase).url().optional());
+const optionalInteger = z.number().int().optional();
 
 const postSchema = z.object({
 	title,
@@ -46,10 +50,25 @@ const pageSchema = z.object({
 	tagline
 });
 
+const pageInfoSchema = z.object({
+	title,
+	description,
+	url,
+	previous: optionalUrl,
+	next: optionalUrl,
+	source: optionalEditUrl,
+	image,
+	type: contentTypes.default("website"),
+	published: z.date().optional(), // add yyyy-MM-dd format validation
+	updated: z.date().optional(), // add yyyy-MM-dd format validation
+	timeToRead: optionalInteger
+});
+
 export {
 	contentTypes,
 	contentCategories,
 	postSchema,
 	profileSchema,
-	pageSchema
+	pageSchema,
+	pageInfoSchema
 };
