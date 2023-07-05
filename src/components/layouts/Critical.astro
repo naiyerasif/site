@@ -1,0 +1,186 @@
+<script is:inline>
+	(function () {
+		let preferredTheme;
+		try {
+			preferredTheme = localStorage.getItem("theme");
+		} catch (err) {}
+
+		function setTheme(newTheme) {
+			window.__theme = newTheme;
+			preferredTheme = newTheme;
+			document.documentElement.dataset.theme = newTheme;
+		}
+
+		const colorSchemeQuery = "(prefers-color-scheme: dark)";
+		const prefersDarkTheme = window.matchMedia(colorSchemeQuery);
+
+		window.__setPreferredTheme = function (newTheme) {
+			setTheme(newTheme);
+			try {
+				localStorage.setItem("theme", newTheme);
+			} catch (err) {}
+
+			document.firstElementChild.dispatchEvent(new CustomEvent("themechange", {
+				bubbles: true,
+				composed: true,
+				detail: { theme: newTheme }
+			}));
+		}
+
+		prefersDarkTheme.addEventListener("change", function (event) {
+			window.__setPreferredTheme(event.matches ? "dark" : "light");
+		});
+
+		setTheme(preferredTheme || (prefersDarkTheme.matches ? "dark" : "light"));
+	})();
+</script>
+
+<style is:inline>
+	@font-face {
+		font-family: Inter var;
+		font-display: swap;
+		src: url("/fonts/Inter-Regular.var.woff2") format("woff2");
+		font-style: normal;
+		font-weight: 100 900;
+		font-named-instance: "Regular";
+	}
+
+	@font-face {
+		font-family: Inter var;
+		font-display: swap;
+		src: url("/fonts/Inter-Italic.var.woff2") format("woff2");
+		font-style: italic;
+		font-weight: 100 900;
+		font-named-instance: "Italic";
+	}
+
+	@font-face {
+		font-family: JetBrains Mono var;
+		font-display: swap;
+		src: url("/fonts/JetBrainsMono.var.woff2") format("woff2");
+		font-style: normal;
+		font-weight: 100 900;
+		font-named-instance: "Regular";
+	}
+
+	@font-face {
+		font-family: Inter;
+		font-display: swap;
+		src: url("/fonts/Inter-Regular.woff2") format("woff2");
+		font-style: normal;
+		font-weight: 400;
+	}
+
+	@font-face {
+		font-family: Inter;
+		font-display: swap;
+		src: url("/fonts/Inter-Italic.woff2") format("woff2");
+		font-style: italic;
+		font-weight: 400;
+	}
+
+	@font-face {
+		font-family: Inter;
+		font-display: swap;
+		src: url("/fonts/Inter-Medium.woff2") format("woff2");
+		font-style: normal;
+		font-weight: 500;
+	}
+
+	@font-face {
+		font-family: Inter;
+		font-display: swap;
+		src: url("/fonts/Inter-MediumItalic.woff2") format("woff2");
+		font-style: italic;
+		font-weight: 500;
+	}
+
+	@font-face {
+		font-family: Inter;
+		font-display: swap;
+		src: url("/fonts/Inter-Bold.woff2") format("woff2");
+		font-style: normal;
+		font-weight: 700;
+	}
+
+	@font-face {
+		font-family: Inter;
+		font-display: swap;
+		src: url("/fonts/Inter-BoldItalic.woff2") format("woff2");
+		font-style: italic;
+		font-weight: 700;
+	}
+
+	@font-face {
+		font-family: MakeSans;
+		font-display: swap;
+		src: url("/fonts/MakeSans-Black.woff2") format("woff2");
+		font-style: normal;
+		font-weight: 900;
+	}
+
+	@font-face {
+		font-family: JetBrains Mono;
+		font-display: swap;
+		src: url("/fonts/JetBrainsMono-Regular.woff2") format("woff2");
+		font-style: normal;
+		font-weight: 400;
+	}
+
+	@font-face {
+		font-family: JetBrains Mono;
+		font-display: swap;
+		src: url("/fonts/JetBrainsMono-Medium.woff2") format("woff2");
+		font-style: normal;
+		font-weight: 500;
+	}
+
+	@font-face {
+		font-family: JetBrains Mono;
+		font-display: swap;
+		src: url("/fonts/JetBrainsMono-Bold.woff2") format("woff2");
+		font-style: normal;
+		font-weight: 700;
+	}
+
+	:root {
+		--family-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+			Ubuntu, Cantarell, Noto Sans, sans-serif, "Segoe UI", Roboto, Ubuntu,
+			Cantarell, "Noto Sans", "Liberation Sans", Arial, sans-serif,
+			"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+			"Noto Color Emoji";
+		--family-mono: ui-monospace, SFMono-Regular, "Roboto Mono", Menlo, Monaco,
+			Consolas, "Liberation Mono", "Courier New", monospace;
+		--family-site-sans: "Inter", var(--family-sans);
+		--family-site-stress: "MakeSans", var(--family-sans);
+		--family-site-mono: "JetBrains Mono", var(--family-mono);
+
+		--text-site-small: calc(0.8rem + 0.1vw);
+		--text-site-base: calc(0.9rem + 0.2vw);
+		--text-site-headline: calc(1.75rem + 3vw);
+		--text-site-subheadline: calc(0.9rem + 0.5vw);
+
+		--size-site-icon: 1.5rem;
+	}
+	@supports (font-variation-settings: normal) {
+		:root {
+			--family-site-sans: "Inter var", var(--family-sans);
+			--family-site-mono: "JetBrains Mono var", var(--family-mono);
+		}
+	}
+	:not(code, pre, kbd) {
+		font-feature-settings: "ss03", "ss04";
+	}
+	@media (hover: none) {
+		:root {
+			--size-site-icon: 24px;
+		}
+	}
+	.icon {
+		stroke: currentColor;
+		stroke-width: 2;
+		fill: none;
+		width: var(--size-site-icon);
+		height: var(--size-site-icon);
+	}
+</style>
