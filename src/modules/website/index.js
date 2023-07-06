@@ -18,11 +18,6 @@ const authorInfo = {
 			id: "naiyerasif",
 			link: "https://in.linkedin.com/in/naiyerasif"
 		},
-		twitter: {
-			platform: "Twitter",
-			id: "@Microflash",
-			link: "https://twitter.com/Microflash"
-		}
 	}
 };
 
