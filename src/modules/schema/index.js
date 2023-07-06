@@ -55,13 +55,14 @@ const pageInfoSchema = z.object({
 	title,
 	description,
 	url,
+	hint: z.string(),
 	previous: optionalUrl,
 	next: optionalUrl,
 	source: optionalEditUrl,
 	image,
 	type: contentTypes.default("website"),
-	published: z.date().optional(), // add yyyy-MM-dd format validation
-	updated: z.date().optional(), // add yyyy-MM-dd format validation
+	published: z.string().optional(), // add yyyy-MM-dd format validation
+	updated: z.string().optional(), // add yyyy-MM-dd format validation
 	timeToRead: optionalInteger
 });
 
