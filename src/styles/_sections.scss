@@ -152,6 +152,10 @@ main {
 			text-align: end;
 		}
 	}
+
+	&-links > *:not(:last-child) {
+		margin-inline-end: 1ch;
+	}
 }
 
 .glitch {
