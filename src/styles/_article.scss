@@ -1,0 +1,6 @@
+article.content {
+	& > p:first-of-type {
+		grid-column: popout;
+		font-size: 1.25em;
+	}
+}
