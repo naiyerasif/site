@@ -1,35 +1,11 @@
 ---
 import Critical from "./Critical.astro";
-import siteInfo, { fullLink } from "~website";
+import { pageInfoSchema } from "~schema";
+import siteInfo from "~website";
 
-function canonize(pageInfo) {
-	if (pageInfo.url) {
-		pageInfo.url = fullLink(pageInfo.url);
-	}
-
-	if (pageInfo.previous) {
-		pageInfo.previous = fullLink(pageInfo.previous);
-	}
-
-	if (pageInfo.next) {
-		pageInfo.next = fullLink(pageInfo.next);
-	}
-
-	if (pageInfo.source) {
-		pageInfo.source = fullLink(pageInfo.source);
-	}
-
-	pageInfo.description = pageInfo.description || siteInfo.description;
-	pageInfo.image = fullLink(pageInfo.image || "/images/opengraph/default.png");
-	pageInfo.type = pageInfo.type || "website";
-
-	return pageInfo;
-}
-
-const pageInfo = canonize(Astro.props.pageInfo);
+const pageInfo = pageInfoSchema.parse(Astro.props.pageInfo);
 const siteTitle = siteInfo.title;
 const siteAuthor = siteInfo.author.name;
-const twitterHandle = siteInfo.author.networks.twitter.id;
 const mastodonUrl = siteInfo.author.networks.mastodon.link;
 ---
 <meta charset="utf-8">
@@ -65,10 +41,8 @@ const mastodonUrl = siteInfo.author.networks.mastodon.link;
 <meta property="twitter:title" content={pageInfo.title}>
 {pageInfo.description && <meta property="twitter:description" content={pageInfo.description}>}
 <meta name="twitter:image:src" content={pageInfo.image}>
-<meta name="twitter:site" content={twitterHandle}>
-<meta name="twitter:creator" content={twitterHandle}>
 {pageInfo.timeToRead && <meta name="twitter:label1" content="Reading time">}
-{pageInfo.timeToRead && <meta name="twitter:data1" content={pageInfo.timeToRead}>}
+{pageInfo.timeToRead && <meta name="twitter:data1" content={`${pageInfo.timeToRead} min read`}>}
 <link rel="me" href={mastodonUrl}>
 <meta itemprop="name" content={pageInfo.title}>
 {pageInfo.description && <meta itemprop="description" content={pageInfo.description}>}
