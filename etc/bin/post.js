@@ -80,8 +80,8 @@ inquirer.prompt(questions).then((answers) => {
 	frontmatter.push(`slug: "${date.format("YYYY/MM/DD")}/${slug}"`);
 	frontmatter.push(`title: "${answers.title}"`);
 	if (answers.category !== "status") frontmatter.push(`description: ""`);
-	frontmatter.push(`date: "${answers.date}"`);
-	frontmatter.push(`update: "${answers.date}"`);
+	frontmatter.push(`date: ${answers.date}`);
+	frontmatter.push(`update: ${answers.date}`);
 	frontmatter.push(`category: "${answers.category}"`);
 	if (answers.category !== "status") frontmatter.push(`tags: [${answers.tags.map(tag => `"${tag}"`).join(", ")}]`);
 	frontmatter.push('---');
