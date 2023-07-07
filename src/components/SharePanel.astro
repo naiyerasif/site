@@ -1,0 +1,34 @@
+---
+import Icon from "./Icon.astro";
+import { pageInfoSchema } from "~schema";
+
+const shareInfo = pageInfoSchema.parse(Astro.props.pageInfo);
+const shareableTitle = encodeURI(shareInfo.title);
+
+const shareVia = [
+	{
+		platform: "mail",
+		title: "Share via email",
+		link: `mailto:?subject=${shareInfo.title}&body=Checkout this article I read! ${shareInfo.url}`
+	},
+	{
+		platform: "hackernews",
+		title: "Submit to Hacker News",
+		link: `https://news.ycombinator.com/submitlink?u=${shareInfo.url}&t=${shareableTitle}`
+	},
+	{
+		platform: "linkedin",
+		title: "Post on LinkedIn",
+		link: `https://www.linkedin.com/sharing/share-offsite/?url=${shareInfo.url}`
+	},
+	{
+		platform: "reddit",
+		title: "Post on Reddit",
+		link: `http://www.reddit.com/submit?url=${shareInfo.url}&title=${shareableTitle}`
+	}
+];
+---
+
+<div class="share-panel">
+	{shareVia.map(share => <a href={share.link} title={share.title} class="button-link" rel="noopener noreferrer" target="_blank"><Icon name={share.platform}/></a>)}
+</div>

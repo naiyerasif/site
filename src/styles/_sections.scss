@@ -203,6 +203,25 @@ main {
 			margin-inline-start: 1ch;
 		}
 	}
+
+	&-panels {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		margin-block-start: var(--gap-site-base);
+
+		@include mixins.window-normal {
+			flex-direction: row-reverse;
+		}
+	}
+}
+
+.share-panel,
+.action-panel {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
 }
 
 .pagination {
