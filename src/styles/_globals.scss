@@ -1,3 +1,5 @@
+@use "./mixins";
+
 :where(input[type="file"]) {
 	padding: 0.25em;
 }
@@ -6,6 +8,15 @@
 	cite:last-child {
 		font-size: var(--text-site-small);
 		color: var(--color-site-subtle);
+	}
+}
+
+:where(abbr[title]) {
+	@include mixins.window-small {
+		&::after {
+			content: " (" attr(title) ")";
+			color: var(--color-site-subtle);
+		}
 	}
 }
 
