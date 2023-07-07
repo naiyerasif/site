@@ -32,3 +32,18 @@ body {
 		grid-column: content;
 	}
 }
+
+.timeline {
+	--edge: minmax(0, 1fr);
+	--timeline: min(var(--max-width-site-content), 100%);
+
+	display: grid;
+	grid-template-columns:
+		[edge-start] var(--edge)
+		[timeline-start] var(--timeline) [timeline-end]
+		var(--edge) [edge-end];
+
+	& > * {
+		grid-column: timeline;
+	}
+}
