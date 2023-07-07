@@ -27,6 +27,12 @@
 	inline-size: 1em;
 	block-size: 1em;
 }
+
+:where(pre, code) {
+	cursor: auto;
+	touch-action: auto;
+}
+
 .stress {
 	font-weight: var(--font-weight-site-medium);
 }
