@@ -198,6 +198,27 @@ main {
 		display: flex;
 		align-items: center;
 		justify-content: center;
+
+		& > * + * {
+			margin-inline-start: 1ch;
+		}
+	}
+}
+
+.pagination {
+
+	&-item {
+		min-inline-size: 2ch;
+		text-align: center;
+
+		&.active {
+			font-weight: var(--font-weight-site-medium);
+			border-color: var(--border-site-stress);
+		}
+	}
+
+	&-separator {
+		opacity: 0.7;
 	}
 }
 
