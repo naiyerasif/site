@@ -179,6 +179,8 @@ main {
 	}
 
 	&[onclick]:is(:focus, :focus-within, :hover, :active) {
+		background-color: var(--background-site-subtle);
+
 		.card-category,
 		.card-body {
 			color: var(--color-site-stress);
