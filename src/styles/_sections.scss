@@ -192,6 +192,35 @@ main {
 	}
 }
 
+.toc {
+	grid-column: popout;
+	margin-block-end: var(--gap-site-base);
+	font-weight: var(--font-site-medium);
+
+	&-header {
+		text-transform: uppercase;
+		letter-spacing: 0.025em;
+		color: var(--color-site-subtle);
+		font-size: var(--text-site-small);
+		margin-block-end: 1ch;
+	}
+
+	&-items {
+		list-style-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%2353636e' opacity='0.8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 6v10c0 1.097.903 2 2 2h6'/%3E%3C/svg%3E");
+		padding: 0;
+	}
+
+	&-item {
+		$levels: 2 3 4 5 6;
+
+		@each $level in $levels {
+			&.toc-item-#{$level} {
+				margin-inline-start: 1em;
+			}
+		}
+	}
+}
+
 .content-recommendations {
 	font-weight: var(--font-site-medium);
 
