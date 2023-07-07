@@ -85,6 +85,28 @@
 	align-items: center;
 }
 
+.directive-youtube {
+
+	&-iframe-container {
+		position: relative;
+		padding-block-start: 25px;
+		padding-block-end: 56.25%;
+		height: 0;
+		@include mixins.popout(var(--radius-site-base));
+	}
+
+	&-iframe {
+		position: absolute;
+		inset-block-start: 0;
+		inset-inline-start: 0;
+		inline-size: 100%;
+		block-size: 100%;
+		aspect-ratio: 16/9;
+		object-fit: cover;
+		border-radius: inherit;
+	}
+}
+
 theme-switcher::part(button),
 .button-link {
 	padding: 0.8ch;
