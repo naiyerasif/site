@@ -211,7 +211,7 @@ main {
 .toc {
 	grid-column: popout;
 	margin-block-end: var(--gap-site-base);
-	font-weight: var(--font-site-medium);
+	font-weight: var(--font-weight-site-medium);
 
 	&-header {
 		text-transform: uppercase;
@@ -238,7 +238,7 @@ main {
 }
 
 .content-recommendations {
-	font-weight: var(--font-site-medium);
+	font-weight: var(--font-weight-site-medium);
 
 	& > * + * {
 		margin-block-start: var(--gap-site-base);
