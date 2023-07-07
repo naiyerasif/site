@@ -8,6 +8,10 @@ Personal website of [@naiyerasif](https://github.com/naiyerasif)
 - To generate a production build, run `pnpm build`
 - To update dependencies interactively, run `pnpm update --interactive --latest`
 
+## Authoring
+
+- To create a new post, run `pnpm post`
+
 ## Contributing
 
 Since this is my personal site, I'm not really looking for feature requests. I'd, however, appreciate bug reports and corrections. Please [create an issue](https://github.com/naiyerasif/naiyerasif.com/issues/new) on accessibility, browser rendering inconsistencies, performance bottlenecks, and general usability criticism.
