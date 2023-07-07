@@ -99,13 +99,14 @@
 }
 
 .directive-youtube {
+	@include mixins.popout(var(--radius-site-base));
 
 	&-iframe-container {
 		position: relative;
 		padding-block-start: 25px;
 		padding-block-end: 56.25%;
 		height: 0;
-		@include mixins.popout(var(--radius-site-base));
+		border-radius: inherit;
 	}
 
 	&-iframe {
