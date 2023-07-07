@@ -31,6 +31,7 @@ const siteInfo = {
 	editBase: "https://github.com/naiyerasif/site/edit/main",
 	issueBase: "https://github.com/naiyerasif/naiyer.dev/issues/new",
 	maxFeedItems: 20,
+	maxPageItems: 20,
 	maxTocDepth: 3
 };
 
@@ -44,8 +45,18 @@ function editLink(path) {
 	return fullLink(join(editUrl.pathname, path), editUrl.origin);
 }
 
+function postPathname(slug) {
+	return `/post/${slug}/`;
+}
+
+function paginationPathname(base, pageNumber) {
+	return pageNumber > 1 ? `/${base}/${pageNumber}/` : `/${base}/`;
+}
+
 export {
 	siteInfo as default,
 	fullLink,
-	editLink
+	editLink,
+	postPathname,
+	paginationPathname
 };
