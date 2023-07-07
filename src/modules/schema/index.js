@@ -15,7 +15,7 @@ const tagline = z.string().optional();
 const url = z.preprocess(val => val && fullLink(val), z.string().url());
 const optionalUrl = z.preprocess(val => val && fullLink(val), z.string().url().optional());
 const optionalEditUrl = z.preprocess(val => val && editLink(val), z.string().startsWith(siteInfo.editBase).url().optional());
-const optionalInteger = z.number().int().optional();
+const optionalInteger = z.preprocess(val => val > 0 ? val : undefined, z.number().int().optional());
 
 const postSchema = z.object({
 	title,
