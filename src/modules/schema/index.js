@@ -3,7 +3,7 @@ import siteInfo, { fullLink, editLink } from "~website";
 
 const title = z.string().max(64);
 const contentTypes = z.enum(["website", "article", "profile"]);
-const contentCategories = z.enum(["guide", "status", "opinion", "reference"]);
+const contentCategories = z.enum(["guide", "status", "opinion", "reference", "note"]);
 const description = z.preprocess(val => val || siteInfo.description, z.string().max(200));
 const date = z.date();
 const update = z.date().optional();
