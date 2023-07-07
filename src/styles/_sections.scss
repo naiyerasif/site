@@ -192,6 +192,31 @@ main {
 	}
 }
 
+.content-recommendations {
+	font-weight: var(--font-site-medium);
+
+	& > * + * {
+		margin-block-start: var(--gap-site-base);
+	}
+}
+
+.content-recommendation {
+	display: flex;
+
+	.decorator {
+		color: var(--color-site-subtle);
+		margin-inline-end: 1ch;
+	}
+
+	.hint {
+		font-size: var(--text-site-small);
+	}
+
+	a {
+		font-size: var(--text-site-subheadline);
+	}
+}
+
 .sidekick {
 
 	&-items {
