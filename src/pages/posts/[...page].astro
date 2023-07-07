@@ -1,0 +1,38 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "~layouts/Layout.astro";
+import PostCard from "~components/PostCard.astro";
+import StatusCard from "~components/StatusCard.astro";
+import Pagination from "~components/Pagination.astro";
+import siteInfo from "~website";
+import { compare } from "~datetime";
+
+export async function getStaticPaths({ paginate }) {
+	const posts = (await getCollection("post"))
+		.sort((p1, p2) => compare(p1.data.date, p2.data.date));
+	return paginate(posts, { pageSize: siteInfo.maxPageItems });
+}
+
+const { page } = Astro.props;
+const host = new URL(siteInfo.siteBase).hostname;
+
+const pageInfo = {
+	hint: `Posts`,
+	title: `Posts (Page ${page.currentPage})`,
+	description: `Posts on ${host}`,
+	url: Astro.url.pathname,
+	previous: page?.url?.prev,
+	next: page?.url?.next
+};
+---
+
+<Layout {pageInfo} class="timeline">
+	<div slot="hero">
+		<h1 class="headline">All posts</h1>
+		<p class="subheadline">{page.start + 1}&hellip;{page.end + 1} of {page.total}</p>
+	</div>
+	{page.data.map(entry => entry.data.category === "status" ? <StatusCard {entry} /> : <PostCard {entry} />)}
+	<div slot="sidekick" class="sidekick-items">
+		<Pagination currentPage={page.currentPage} totalPages={page.lastPage} base="posts"/>
+	</div>
+</Layout>
