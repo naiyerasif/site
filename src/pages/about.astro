@@ -1,0 +1,28 @@
+---
+import { getEntry } from "astro:content";
+import Layout from "~layouts/Layout.astro";
+
+const { data, render } = await getEntry("profile", "about");
+const { Content } = await render();
+
+const name = data.title.split(" ")[0];
+const avatar = `/images/profile/${data.avatar}`;
+
+const pageInfo = {
+	hint: "About",
+	title: "About",
+	description: data.description,
+	type: "profile",
+	url: Astro.url.pathname
+};
+---
+
+<Layout {pageInfo}>
+	<div class="hero-profile" slot="hero">
+		<img src={avatar} alt={data.title}>
+		<h1 class="headline">Hi, I&rsquo;m {name}</h1>
+	</div>
+	<article class="content">
+		<Content/>
+	</article>
+</Layout>
