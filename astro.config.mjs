@@ -44,7 +44,6 @@ export default defineConfig({
 				}
 			],
 			remarkDirective,
-			// remarkEmbedDirective, to embed tweets but we need to rethink this
 			remarkYoutubeDirective,
 			remarkTimeDirective,
 			[
