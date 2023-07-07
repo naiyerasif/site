@@ -8,6 +8,7 @@ import rehypeSlugify from "@microflash/rehype-slugify";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeStarryNight from "@microflash/rehype-starry-night";
 import remarkYoutubeDirective from "./src/modules/remark-youtube-directive/index.js";
+import remarkTimeDirective from "./src/modules/remark-time-directive/index.js";
 import siteInfo from "./src/modules/website/index.js";
 import { CountableSlugifier } from "./src/modules/slugifier/index.js";
 
@@ -45,6 +46,7 @@ export default defineConfig({
 			remarkDirective,
 			// remarkEmbedDirective, to embed tweets but we need to rethink this
 			remarkYoutubeDirective,
+			remarkTimeDirective,
 			[
 				remarkCalloutDirectives,
 				{
