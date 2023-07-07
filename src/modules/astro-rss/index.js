@@ -28,7 +28,20 @@ async function process(markdown) {
 		.use(remarkDirective)
 		.use(remarkYoutubeDirective)
 		.use(remarkTimeDirective)
-		.use(remarkCalloutDirectives)
+		.use(remarkCalloutDirectives, {
+			callouts: {
+				note: { tagName: "div" },
+				commend: { tagName: "div" },
+				warn: { tagName: "div" },
+				deter: { tagName: "div" },
+				assert: { tagName: "div" },
+				setup: {
+					title: "Setup",
+					hint: `<svg viewBox="0 0 24 24" role="img" aria-hidden="true" class="icon callout-hint"><path d="M17.665 3.473 13.626 7.5l2.879 2.871 4.039-4.027a5.556 5.556 0 0 1-1.16 6.181 5.626 5.626 0 0 1-6.207 1.166l-6.742 6.736A2.04 2.04 0 0 1 5.018 21a2.042 2.042 0 0 1-2.036-2.03c0-.527.206-1.035.574-1.413l6.74-6.74a5.585 5.585 0 0 1 1.17-6.187 5.595 5.595 0 0 1 6.199-1.157Z"/></svg>`,
+					tagName: "div"
+				}
+			}
+		})
 		.use(remarkRehype, { allowDangerousHtml: true })
 		.use(rehypeStringify, { allowDangerousHtml: true })
 		.process(markdown);
