@@ -2,6 +2,7 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
+			"~astro-rss": ["src/modules/astro-rss/index.js"],
 			"~components/*": ["src/components/*"],
 			"~datetime": ["src/modules/datetime/index.js"],
 			"~layouts/*": ["src/components/layouts/*"],

@@ -19,12 +19,19 @@
 		"@sindresorhus/slugify": "^2.2.1",
 		"astro": "^2.8.0",
 		"dayjs": "^1.11.9",
+		"feed": "^4.2.2",
 		"postcss-combine-duplicated-selectors": "^10.0.3",
 		"postcss-preset-env": "^9.0.0",
 		"rehype-autolink-headings": "^6.1.1",
 		"rehype-external-links": "^2.1.0",
+		"rehype-stringify": "^9.0.3",
 		"remark-directive": "^2.0.1",
-		"sass": "^1.63.6"
+		"remark-gfm": "^3.0.1",
+		"remark-parse": "^10.0.2",
+		"remark-rehype": "^10.1.0",
+		"remark-smartypants": "^2.0.0",
+		"sass": "^1.63.6",
+		"unified": "^10.1.2"
 	},
 	"devDependencies": {
 		"defu": "^6.1.2",
