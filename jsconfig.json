@@ -5,6 +5,7 @@
 			"~components/*": ["src/components/*"],
 			"~datetime": ["src/modules/datetime/index.js"],
 			"~layouts/*": ["src/components/layouts/*"],
+			"~reading-time": ["src/modules/reading-time/index.js"],
 			"~schema": ["src/modules/schema/index.js"],
 			"~slugifier": ["src/modules/slugifier/index.js"],
 			"~website": ["src/modules/website/index.js"]
