@@ -28,6 +28,44 @@
 	font-family: var(--family-site-stress);
 }
 
+.headline {
+	background: linear-gradient(to top right, 
+		var(--color-site-subtle) calc(19% - 1px), 
+		transparent 19%, 
+		transparent calc(20% - 1px), 
+		var(--color-site-base) 20%, 
+		var(--color-site-base) calc(39% - 1px), 
+		transparent 39%, 
+		transparent calc(40% - 1px), 
+		var(--color-site-stress) 40%, 
+		var(--color-site-stress) calc(59% - 1px), 
+		transparent 59%, 
+		transparent calc(60% - 1px), 
+		var(--color-site-subtle) 60%, 
+		var(--color-site-subtle) calc(79% - 1px), 
+		transparent 79%, 
+		transparent calc(80% - 1px), 
+		var(--color-site-stress) 80%);
+	background-clip: text;
+	color: transparent;
+	font-family: var(--family-site-stress);
+	font-size: var(--text-site-headline);
+	font-weight: 900;
+	text-wrap: balance;
+	letter-spacing: -0.025em;
+	line-height: 2ex;
+
+	::-moz-selection,
+	&::-moz-selection {
+		color: var(--color-site-stress);
+	}
+	
+	::selection,
+	&::selection {
+		color: var(--color-site-stress);
+	}
+}
+
 .subheadline {
 	font-size: var(--text-site-subheadline);
 	text-wrap: balance;
@@ -40,6 +78,11 @@
 	.icon {
 		margin-inline-end: 0.5ch;
 	}
+}
+
+.with-icon {
+	display: inline-flex;
+	align-items: center;
 }
 
 theme-switcher::part(button),

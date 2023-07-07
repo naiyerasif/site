@@ -190,6 +190,15 @@ main {
 	}
 }
 
+.sidekick {
+
+	&-items {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
 .footer {
 	position: sticky;
 	top: 100vh;
