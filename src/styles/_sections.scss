@@ -119,6 +119,77 @@ main {
 	}
 }
 
+.card {
+	padding: var(--gap-site-body);
+	border-radius: var(--radius-site-base);
+
+	&-details {
+		display: flex;
+		align-items: center;
+		color: var(--color-site-subtle);
+		font-size: var(--text-site-small);
+
+		& > *:not(:last-child) {
+			margin-inline-end: 1ch;
+		}
+
+		.divider {
+			margin: 0;
+			flex-grow: 1;
+		}
+	}
+
+	&-details + &-header {
+		margin-block-start: 0.5ch;
+		margin-block-end: 1ch;
+	}
+
+	&-details + &-body {
+		margin-block-start: 1ch;
+	}
+
+	&-header {
+		font-size: var(--text-site-subheadline);
+		font-weight: var(--font-weight-site-medium);
+	}
+
+	&-body {
+		font-size: var(--text-site-small);
+	}
+
+	&.status {
+		overflow: auto;
+
+		.card-body {
+			font-size: var(--text-site-base);
+
+			& > * + * {
+				margin-block-start: var(--gap-site-small);
+			}
+
+			.highlight:not(:last-child) {
+				margin-block-end: var(--gap-site-small);
+			}
+		}
+	}
+
+	&-category {
+		text-transform: capitalize;
+		color: var(--color-site-base);
+	}
+
+	&[onclick]:is(:focus, :focus-within, :hover, :active) {
+		.card-category,
+		.card-body {
+			color: var(--color-site-stress);
+		}
+	
+		.card-details {
+			color: var(--color-site-base);
+		}
+	}
+}
+
 .footer {
 	position: sticky;
 	top: 100vh;

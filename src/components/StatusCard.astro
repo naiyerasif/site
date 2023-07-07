@@ -1,0 +1,23 @@
+---
+import Time from "./Time.astro";
+import Icon from "./Icon.astro";
+import { postPathname } from "~website";
+
+const { entry } = Astro.props;
+const category = entry.data.category;
+const { Content } = await entry.render();
+---
+
+<div class={"card " + category}>
+	<div class="card-details">
+		<a href={postPathname(entry.slug)} title={entry.data.title}>
+			<Icon name="circle-dot"/>
+		</a>
+		<span class="card-category">Status</span>
+		<Time date={entry.data.date} />
+		<hr class="divider">
+	</div>
+	<div class="card-body">
+		<Content />
+	</div>
+</div>
