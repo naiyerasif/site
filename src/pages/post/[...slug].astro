@@ -30,6 +30,7 @@ const prevPage = prev ? postPathname(prev.slug) : undefined;
 const nextPage = next ? postPathname(next.slug) : undefined;
 const timeToRead = readingTime(post.body).readingTime;
 const showUpdate = compare(data.update, data.date) !== 0;
+const showReadingTime = timeToRead > 0;
 
 const pageInfo = {
 	hint: category,
@@ -42,7 +43,7 @@ const pageInfo = {
 	updated: showUpdate ? format(data.update, format_date) : undefined,
 	previous: prevPage,
 	next: nextPage,
-	timeToRead
+	timeToRead: showReadingTime ? timeToRead : undefined
 };
 ---
 
@@ -51,7 +52,7 @@ const pageInfo = {
 		<h1 class="headline">{data.title}</h1>
 		{data.tagline && <p class="subheadline">{data.tagline}</p>}
 		<div class="hero-post-details">
-			<Time date={data.date} />{showUpdate && <span class="update">updated on <Time date={data.update} /></span>}{category !== "status" && timeToRead && <span>~{`${timeToRead} min read`}</span>}
+			<Time date={data.date} />{showUpdate && <span class="update">updated on <Time date={data.update} /></span>}{category !== "status" && showReadingTime && <span>~{`${timeToRead} min read`}</span>}
 		</div>
 	</div>
 	<article class="content">
