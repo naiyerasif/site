@@ -49,7 +49,8 @@ const pageInfo = {
 <Layout {pageInfo}>
 	<div class="hero-post" slot="hero">
 		<h1 class="headline">{data.title}</h1>
-		<div class="subheadline">
+		{data.tagline && <p class="subheadline">{data.tagline}</p>}
+		<div class="hero-post-details">
 			<Time date={data.date} />{showUpdate && <span class="update">updated on <Time date={data.update} /></span>}{category !== "status" && timeToRead && <span>~{`${timeToRead} min read`}</span>}
 		</div>
 	</div>
