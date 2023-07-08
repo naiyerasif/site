@@ -109,10 +109,6 @@ main {
 		align-items: center;
 		gap: 3ch;
 
-		@include mixins.window-normal {
-			justify-content: center;
-		}
-
 		img {
 			--hero-image-size: calc(48px + 6vw);
 			inline-size: var(--hero-image-size);
