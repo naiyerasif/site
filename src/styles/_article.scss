@@ -27,4 +27,8 @@ article.content {
 	& > .highlight {
 		@include mixins.popout(var(--radius-site-base), var(--radius-site-small));
 	}
+
+	& > .figure {
+		@include mixins.popout(var(--radius-site-small));
+	}
 }
