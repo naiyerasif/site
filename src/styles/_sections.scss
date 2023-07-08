@@ -243,6 +243,7 @@ main {
 
 .content-recommendations {
 	font-weight: var(--font-weight-site-medium);
+	margin-block-start: var(--gap-site-medium);
 
 	& > * + * {
 		margin-block-start: var(--gap-site-base);
