@@ -29,7 +29,7 @@ const pageInfo = {
 <Layout {pageInfo} class="timeline">
 	<div slot="hero">
 		<h1 class="headline">All posts</h1>
-		<p class="subheadline">{page.start + 1}&hellip;{page.end + 1} of {page.total}</p>
+		<p class="subheadline">listing {page.start + 1}&hellip;{page.end + 1} of {page.total} posts</p>
 	</div>
 	{page.data.map(entry => entry.data.category === "status" ? <StatusCard {entry} /> : <PostCard {entry} />)}
 	<div slot="sidekick" class="sidekick-items">
