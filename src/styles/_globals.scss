@@ -77,6 +77,10 @@
 	&::selection {
 		color: var(--color-site-stress);
 	}
+
+	& + .subheadline {
+		margin-block-start: var(--gap-site-base);
+	}
 }
 
 .subheadline {
