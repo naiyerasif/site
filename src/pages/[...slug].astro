@@ -23,6 +23,10 @@ const pageInfo = {
 ---
 
 <Layout {pageInfo} class="main">
+	<div class="hero-profile" slot="hero">
+		<h1 class="headline">{data.title}</h1>
+		{data.tagline && <p class="subheadline">{data.tagline}</p>}
+	</div>
 	<article class="content">
 		<Content/>
 	</article>
