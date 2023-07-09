@@ -21,41 +21,41 @@ export default class ThemeSwitcher extends HTMLElement {
 	#switchHandler = () => this.#switchTheme();
 
 	constructor() {
-		super()
+		super();
 
-		const shadowRoot = this.attachShadow({ mode: "open" })
-		shadowRoot.appendChild(themeSwitcherTemplate.content.cloneNode(true))
+		const shadowRoot = this.attachShadow({ mode: "open" });
+		shadowRoot.appendChild(themeSwitcherTemplate.content.cloneNode(true));
 		
-		this.#switch = shadowRoot.querySelector(`#${ThemeSwitcher.tagName}`)
-		this.#states = ThemeSwitcher.#themes.reduce((v, theme) => ({ ...v, [theme]: shadowRoot.querySelector(`slot[name="theme-${theme}"]`)}), {})
+		this.#switch = shadowRoot.querySelector(`#${ThemeSwitcher.tagName}`);
+		this.#states = ThemeSwitcher.#themes.reduce((v, theme) => ({ ...v, [theme]: shadowRoot.querySelector(`slot[name="theme-${theme}"]`)}), {});
 
 		document.addEventListener(ThemeSwitcher.#themeChangeEvent, (event) => {
-			this.#currentTheme = event.detail.theme
-			this.#updateTemplate()
-		})
+			this.#currentTheme = event.detail.theme;
+			this.#updateTemplate();
+		});
 	}
 
 	connectedCallback() {
-		this.#updateTemplate()
-		this.#switch.addEventListener("click", this.#switchHandler)
+		this.#updateTemplate();
+		this.#switch.addEventListener("click", this.#switchHandler);
 	}
 
 	disconnectedCallback() {
-		this.#switch.removeEventListener("click", this.#switchHandler)
+		this.#switch.removeEventListener("click", this.#switchHandler);
 	}
 
 	#switchTheme() {
-		const currentIndex = ThemeSwitcher.#themes.indexOf(this.#currentTheme)
-		const nextIndex = (currentIndex + 1) % ThemeSwitcher.#themes.length
-		const newTheme = ThemeSwitcher.#themes[nextIndex]
-		window.__setPreferredTheme(newTheme)
-		this.#currentTheme = newTheme
-		this.#updateTemplate()
+		const currentIndex = ThemeSwitcher.#themes.indexOf(this.#currentTheme);
+		const nextIndex = (currentIndex + 1) % ThemeSwitcher.#themes.length;
+		const newTheme = ThemeSwitcher.#themes[nextIndex];
+		window.__setPreferredTheme(newTheme);
+		this.#currentTheme = newTheme;
+		this.#updateTemplate();
 	}
 
 	#updateTemplate() {
-		this.#switch.setAttribute("aria-label", ThemeSwitcher.#ariaLabels[this.#currentTheme])
-		ThemeSwitcher.#themes.forEach(theme => this.#states[theme].style.display = theme === this.#currentTheme ? "revert" : "none")
+		this.#switch.setAttribute("aria-label", ThemeSwitcher.#ariaLabels[this.#currentTheme]);
+		ThemeSwitcher.#themes.forEach(theme => this.#states[theme].style.display = theme === this.#currentTheme ? "revert" : "none");
 	}
 }
 
