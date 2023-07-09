@@ -89,6 +89,11 @@ main {
 		outline-color: transparent;
 	}
 
+	command-bar {
+		inline-size: var(--size-site-icon);
+		block-size: var(--size-site-icon);
+	}
+
 	@include mixins.window-normal {
 		display: none;
 	}

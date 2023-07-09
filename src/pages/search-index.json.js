@@ -19,6 +19,12 @@ const defaults = [
 		"tags": ["about"],
 		"path": "/about/",
 		"section": "Navigation"
+	},
+	{
+		"title": "Preferences",
+		"tags": ["preferences", "theme-switcher"],
+		"content": `<theme-switcher><svg role="img" class="icon" slot="theme-dark" aria-hidden="true"><use href="#moon"/></svg><svg role="img" class="icon" slot="theme-light" aria-hidden="true"><use href="#sun"/></svg></theme-switcher>`,
+		"section": "Preferences"
 	}
 ];
 
