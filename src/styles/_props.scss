@@ -3,43 +3,42 @@
 @mixin lightTheme {
 	color-scheme: light;
 
-	--background-site-base: hsl(15, 74%, 99%);
-	--background-site-subtle: hsl(17, 13%, 78%, 0.3);
-	--background-site-stress: hsl(23, 81%, 77%, 0.8);
-	--background-site-note: hsl(17, 25%, 89%, 0.5);
-	--background-site-commend: hsl(147, 80%, 80%, 0.5);
+	--background-site-base: hsl(285, 100%, 99%);
+	--background-site-subtle: hsl(120, 4%, 66%, 0.25);
+	--background-site-stress: hsl(148, 41%, 79%, 0.8);
+	--background-site-note: hsl(90, 7%, 88%, 0.5);
+	--background-site-commend: hsl(147, 82%, 80%, 0.5);
 	--background-site-warn: hsl(29, 82%, 87%, 0.5);
 	--background-site-deter: hsl(4, 73%, 91%, 0.5);
 	--background-site-assert: hsl(220, 91%, 92%, 0.5);
-	--background-site-codeblock: hsl(21, 79%, 89%, 0.125);
 
-	--color-site-base: hsl(20, 8%, 23%);
-	--color-site-subtle: hsl(18, 6%, 33%);
-	--color-site-stress: hsl(22, 15%, 11%);
-	--color-site-note: hsl(21, 14%, 23%);
-	--color-site-commend: hsl(151, 45%, 18%);
+	--color-site-base: hsl(120, 2%, 23%);
+	--color-site-subtle: hsl(120, 2%, 33%);
+	--color-site-stress: hsl(120, 2%, 19%);
+	--color-site-note: hsl(130, 5%, 23%);
+	--color-site-commend: hsl(151, 43%, 19%);
 	--color-site-warn: hsl(33, 73%, 19%);
 	--color-site-deter: hsl(356, 70%, 26%);
 	--color-site-assert: hsl(214, 66%, 25%);
 
-	--border-site-base: hsl(21, 43%, 78%);
-	--border-site-subtle: hsl(23, 81%, 77%, 0.5);
-	--border-site-stress: hsl(24, 54%, 54%);
-	--border-site-note: hsl(17, 13%, 78%);
+	--border-site-base: hsl(264, 3%, 68%);
+	--border-site-subtle: hsl(90, 13%, 94%, 0.5);
+	--border-site-stress: hsl(140, 8%, 55%);
+	--border-site-note: hsl(90, 3%, 77%);
 	--border-site-commend: hsl(148, 51%, 69%);
 	--border-site-warn: hsl(32, 85%, 72%);
 	--border-site-deter: hsl(4, 75%, 83%);
 	--border-site-assert: hsl(218, 89%, 82%);
 
-	--color-site-link-base: hsl(356, 66%, 41%);
-	--color-site-link-active-base: hsl(356, 68%, 36%);
-	--color-site-link-note: hsl(25, 18%, 19%);
-	--color-site-link-active-note: hsl(21, 26%, 11%);
-	--color-site-link-commend: hsl(151, 47%, 15%);
+	--color-site-link-base: hsl(152, 40%, 32%);
+	--color-site-link-active-base: hsl(151, 41%, 24%);
+	--color-site-link-note: hsl(141, 19%, 17%);
+	--color-site-link-active-note: hsl(148, 32%, 9%);
+	--color-site-link-commend: hsl(153, 47%, 15%);
 	--color-site-link-active-commend: hsl(151, 56%, 8%);
 	--color-site-link-warn: hsl(33, 77%, 15%);
 	--color-site-link-active-warn: hsl(32, 86%, 9%);
-	--color-site-link-deter: hsl(356, 74%, 21%);
+	--color-site-link-deter: hsl(356, 73%, 22%);
 	--color-site-link-active-deter: hsl(358, 82%, 13%);
 	--color-site-link-assert: hsl(214, 68%, 21%);
 	--color-site-link-active-assert: hsl(214, 77%, 12%);
@@ -82,14 +81,13 @@
 	--background-site-base: hsl(240, 7%, 3%);
 	--background-site-subtle: hsl(129, 4%, 32%, 0.5);
 	--background-site-stress: hsl(151, 41%, 26%, 0.8);
-	--background-site-note: hsl(146, 15%, 22%, 0.5);
+	--background-site-note: hsl(130, 5%, 23%, 0.5);
 	--background-site-commend: hsl(151, 43%, 19%, 0.5);
 	--background-site-warn: hsl(33, 73%, 19%, 0.5);
 	--background-site-deter: hsl(356, 70%, 26%, 0.5);
 	--background-site-assert: hsl(214, 66%, 25%, 0.5);
-	--background-site-codeblock: hsl(129, 4%, 32%, 0.125);
 
-	--color-site-base: hsl(90, 3%, 77%);
+	--color-site-base: hsl(90, 3%, 74%);
 	--color-site-subtle: hsl(105, 2%, 67%);
 	--color-site-stress: hsl(90, 7%, 88%);
 	--color-site-note: hsl(120, 7%, 77%);
@@ -98,10 +96,10 @@
 	--color-site-deter: hsl(4, 75%, 83%);
 	--color-site-assert: hsl(218, 89%, 82%);
 
-	--border-site-base: hsl(145, 11%, 30%);
-	--border-site-subtle: hsl(152, 39%, 38%, 0.5);
+	--border-site-base: hsl(100, 2%, 37%);
+	--border-site-subtle: hsl(130, 6%, 18%, 0.4);
 	--border-site-stress: hsl(141, 7%, 45%);
-	--border-site-note: hsl(143, 14%, 26%);
+	--border-site-note: hsl(135, 6%, 27%);
 	--border-site-commend: hsl(153, 43%, 22%);
 	--border-site-warn: hsl(33, 71%, 23%);
 	--border-site-deter: hsl(356, 69%, 31%);
@@ -109,8 +107,8 @@
 
 	--color-site-link-base: hsl(148, 51%, 69%);
 	--color-site-link-active-base: hsl(147, 82%, 80%);
-	--color-site-link-note: hsl(138, 30%, 87%);
-	--color-site-link-active-note: hsl(138, 53%, 93%);
+	--color-site-link-note: hsl(127, 13%, 88%);
+	--color-site-link-active-note: hsl(120, 25%, 94%);
 	--color-site-link-commend: hsl(147, 82%, 80%);
 	--color-site-link-active-commend: hsl(144, 93%, 89%);
 	--color-site-link-warn: hsl(29, 82%, 87%);

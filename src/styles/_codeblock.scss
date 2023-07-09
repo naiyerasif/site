@@ -1,7 +1,7 @@
 @use "./mixins";
 
 .highlight {
-	background-color: var(--background-site-codeblock);
+	background-color: var(--border-site-subtle);
 	border: var(--thickness-site-hr) solid var(--border-site-body);
 	border-radius: var(--radius-site-base);
 
