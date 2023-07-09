@@ -1,6 +1,7 @@
 ---
 import Icon from "~components/Icon.astro";
 import ThemeSwitcher from "~components/ThemeSwitcher.astro";
+import CommandBar from "~components/CommandBar.astro";
 import BackToTop from "~components/BackToTop.astro";
 import siteInfo from "~website";
 
@@ -22,7 +23,7 @@ const logoAlt = `${new URL(siteInfo.siteBase).host}'s logo'`;
 			<a href="/about/" class="stress">About</a>
 			<ThemeSwitcher/>
 		</nav>
-		<!-- <CommandBar/> -->
+		<CommandBar/>
 	</div>
 </header>
 
@@ -33,6 +34,6 @@ const logoAlt = `${new URL(siteInfo.siteBase).host}'s logo'`;
 	<a href="/posts/" class="button" title="Posts">
 		<Icon name="posts"/>
 	</a>
-	<!-- <CommandBar/> -->
+	<CommandBar/>
 	<BackToTop/>
 </nav>
