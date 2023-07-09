@@ -1,7 +1,8 @@
 @use "./mixins";
 
 article.content {
-	& > p:first-of-type:first-child {
+	& > p:first-of-type:first-child,
+	& > .toc + p:first-of-type {
 		grid-column: popout;
 		font-size: 1.25em;
 	}
