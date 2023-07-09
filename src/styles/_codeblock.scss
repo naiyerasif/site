@@ -2,7 +2,7 @@
 
 .highlight {
 	background-color: var(--border-site-subtle);
-	border: var(--thickness-site-hr) solid var(--border-site-body);
+	border: var(--thickness-site-form-outline) solid var(--border-site-subtle);
 	border-radius: var(--radius-site-base);
 
 	&:not(:last-child) {
@@ -19,7 +19,7 @@
 	&-header {
 		display: flex;
 		align-items: flex-start;
-		border-block-end: var(--thickness-site-hr) solid var(--border-site-body);
+		background-color: var(--border-site-subtle);
 		padding: 1ch;
 		font-size: var(--text-site-small);
 
