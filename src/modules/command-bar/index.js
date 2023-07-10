@@ -317,6 +317,10 @@ export class CommandBar extends HTMLElement {
 				openDialog(event);
 			}
 		});
+
+		document.addEventListener("opensearch", (event) => {
+			openDialog(event);
+		});
 	}
 
 	async connectedCallback() {
