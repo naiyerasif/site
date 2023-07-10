@@ -11,7 +11,7 @@ avatar: "naiyer.png"
 
 Most of the posts here are guides and tutorials that document a concept or process. They serve as a reference for what I learn, and a source of ~~criticism and scorn~~ constructive feedback.
 
-I like solving problems and exploring possibilites. I work in small bursts. I'm a prolific reader of science fiction, fantasy, manga and poetry. Professionally, I work on application design, microservices, and cloud integrations of an Aerospace product. You can find more about this on my [work](/work) page.
+I like solving problems and exploring ideas. I work in small bursts. I'm a prolific reader of science fiction, fantasy, manga, and poetry. Professionally, I work on application design, microservices, and cloud integrations of an Aerospace product. You can find more about this on my [work](/work) page.
 
 ## Frequently Asked Questions
 
@@ -39,3 +39,14 @@ It's built with [Astro](https://astro.build/). I'm not using any frontend framew
 ### Can you endorse my product?
 
 No.
+
+---
+
+## Credits
+
+- [Get Your Head Straight](https://speakerdeck.com/csswizardry/get-your-head-straight), [Harry Roberts](https://csswizardry.com/)
+- [A guide to designing accessible, WCAG-compliant focus indicators](https://www.sarasoueidan.com/blog/focus-indicators/), [Sara Soueidan](https://sarasoueidan.com/)
+- [Using calc to figure out optimal line-height](https://kittygiraudel.com/2020/05/18/using-calc-to-figure-out-optimal-line-height/), [Jesús Ricarte](https://www.super-simple.net/blog/)
+- [aspect-ratio](https://css-irl.info/aspect-ratio-is-great/), [Michelle Barker](https://css-irl.info/)
+- [Lume reading-time plugin](https://github.com/lumeland/experimental-plugins/blob/3d99f245fc46f64344116f14f175821ac329ed12/reading_time/mod.ts), [Óscar Otero](https://oscarotero.com/)
+- [Building a dialog component](https://web.dev/building-a-dialog-component/), [Adam Argyle](https://nerdy.dev/)
