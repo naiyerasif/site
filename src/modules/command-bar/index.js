@@ -2,6 +2,7 @@ const commandBarTemplate = document.createElement("template");
 commandBarTemplate.innerHTML = `
 <button type="button" role="switch" aria-live="polite" aria-checked="true" id="command-bar-launcher" aria-label="Launch CommandBar" part="button">
 	<svg role="img" class="icon" aria-hidden="true"><use href="#magnifier"/></svg>
+	<span class="label">Search</span> <kbd class="label"></kbd>
 </button>
 <dialog aria-label="CommandBar" id="command-bar">
 	<header class="command-bar-header">
@@ -54,6 +55,12 @@ commandBarTemplate.innerHTML = `
 	height: var(--size-site-icon);
 	flex-shrink: 0;
 }
+kbd {
+	background-color: var(--background-site-subtle);
+	border-radius: var(--radius-site-tiny);
+	font-size: 0.95em;
+	padding-inline: 0.5ch;
+}
 #command-bar::backdrop {
 	backdrop-filter: blur(25px);
 }
@@ -65,6 +72,34 @@ commandBarTemplate.innerHTML = `
 	border-radius: var(--radius-site-base);
 	background-color: var(--background-site-body);
 	padding: 0;
+}
+#command-bar-launcher .label {
+	display: none;
+}
+@media screen and (min-width: 48rem) {
+	#command-bar-launcher {
+		display: flex;
+		align-items: center;
+		border: 1px solid var(--border-site-body) !important;
+		font: inherit;
+		font-size: 0.9em;
+	}
+
+	#command-bar-launcher .label {
+		display: revert;
+	}
+
+	#command-bar-launcher .icon {
+		margin-inline-end: 0.5ch;
+	}
+
+	#command-bar-launcher kbd {
+		margin-inline-start: 5rem;
+		color: var(--color-site-base);
+		line-height: 1;
+		padding: 0.25rem 0.5rem;
+		border-radius: var(--radius-site-small);
+	}
 }
 .command-bar-header {
 	display: flex;
@@ -156,7 +191,7 @@ a:focus-visible {
 .command-bar-footer {
 	display: none;
 }
-@media screen and (width >= 48rem) {
+@media screen and (min-width: 48rem) {
 	.command-bar-footer {
 		display: flex;
 		flex-wrap: wrap;
@@ -167,12 +202,6 @@ a:focus-visible {
 		border-end-end-radius: inherit;
 		border-end-start-radius: inherit;
 		color: var(--color-site-base);
-	}
-	.command-bar-footer kbd {
-		background-color: var(--background-site-subtle);
-		border-radius: var(--radius-site-tiny);
-		font-size: 0.95em;
-		padding-inline: 0.5ch;
 	}
 	.command-bar-footer > *:not(:first-child)::before {
 		content: "";
@@ -242,6 +271,10 @@ export class CommandBar extends HTMLElement {
 		this.#searchBox = shadowRoot.querySelector(`#search-box`);
 		this.#resetter = shadowRoot.querySelector(`#search-box-resetter`);
 		this.#commands = shadowRoot.querySelector(`#commands`);
+
+		const launcherLabel = this.#launcher.querySelector("kbd");
+		launcherLabel.innerText = window.navigator.platform.indexOf("Mac") > -1 ?
+			"⌘+K" : "Ctrl+K";
 
 		const dialogOpenObserver = new MutationObserver(mutations => {
 			mutations.forEach(async mutation => {
