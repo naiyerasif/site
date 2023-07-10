@@ -29,7 +29,7 @@ const siteInfo = {
 	repository: "https://github.com/naiyerasif/site.git",
 	siteBase: "https://naiyerasif.com",
 	editBase: "https://github.com/naiyerasif/site/edit/main",
-	issueBase: "https://github.com/naiyerasif/naiyer.dev/issues/new",
+	issueBase: "https://github.com/naiyerasif/site/issues/new",
 	maxFeedItems: 20,
 	maxPageItems: 20,
 	maxTocDepth: 3
