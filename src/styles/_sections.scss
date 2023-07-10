@@ -106,6 +106,13 @@ main {
 	}
 }
 
+.navbar-tertiary {
+	
+	@include mixins.window-normal {
+		display: none;
+	}
+}
+
 .floating-back-to-top {
 	display: none;
 	border-radius: var(--radius-site-icon);
