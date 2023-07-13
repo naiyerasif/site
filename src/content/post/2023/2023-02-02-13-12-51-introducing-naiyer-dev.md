@@ -26,7 +26,7 @@ This site was located at [mflash.dev](https://mflash.dev). Microflash was my use
 
 The old domain will continue to work. The redirection rules will transparently take care of switching the domain and whatnot.[^1]
 
-[^1]: I've not configured the redirections yet but they'll be in effect sometime this month.
+[^1]: ~~I've not configured the redirections yet but they'll be in effect sometime this month.~~ Redirections are live!
 
 ## So, what's new?
 
