@@ -1,6 +1,6 @@
 const themeSwitcherTemplate = document.createElement("template");
 themeSwitcherTemplate.innerHTML = `
-<button type="button" role="switch" aria-live="polite" aria-checked="true" id="theme-switcher" part="button">
+<button type="button" role="switch" aria-live="polite" aria-checked="true" id="theme-switcher" part="button" style="display:flex">
 	<slot name="theme-dark">Dark theme</slot>
 	<slot name="theme-light">Light theme</slot>
 </button>

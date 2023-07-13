@@ -333,7 +333,7 @@ main {
 
 	&-item {
 		min-inline-size: 2ch;
-		text-align: center;
+		justify-content: center;
 
 		&.active {
 			font-weight: var(--font-weight-site-medium);
