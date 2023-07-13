@@ -28,7 +28,7 @@ Personal website of [@naiyerasif](https://github.com/naiyerasif)
 
 ## Contributing
 
-Since this is my personal site, I'm not really looking for feature requests. I'd, however, appreciate bug reports and corrections. Please [create an issue](https://github.com/naiyerasif/naiyerasif.com/issues/new) on accessibility, browser rendering inconsistencies, performance bottlenecks, and general usability criticism.
+Since this is my personal site, I'm not really looking for feature requests. I'd, however, appreciate bug reports and corrections. Please [create an issue](https://github.com/naiyerasif/site/issues/new) on accessibility, browser rendering inconsistencies, performance bottlenecks, and general usability criticism.
 
 ## License
 
