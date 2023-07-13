@@ -27,7 +27,7 @@ const siteInfo = {
 	description: `Personal space of ${authorInfo.name} on the web`,
 	author: authorInfo,
 	repository: "https://github.com/naiyerasif/site.git",
-	siteBase: "https://naiyerasif.com",
+	siteBase: "https://www.naiyerasif.com",
 	editBase: "https://github.com/naiyerasif/site/edit/main",
 	issueBase: "https://github.com/naiyerasif/site/issues/new",
 	maxFeedItems: 20,
