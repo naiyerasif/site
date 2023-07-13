@@ -33,6 +33,10 @@
 	touch-action: auto;
 }
 
+a .icon {
+	display: inline-block;
+}
+
 .stress {
 	font-weight: var(--font-weight-site-medium);
 }
@@ -130,4 +134,9 @@
 	padding: 0.8ch;
 	border-color: transparent;
 	border-radius: var(--radius-site-icon);
+}
+
+.button-link {
+	display: inline-flex;
+	align-items: center;
 }

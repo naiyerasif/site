@@ -179,6 +179,10 @@ main {
 			margin-inline-end: 1ch;
 		}
 
+		a {
+			display: inline-flex;
+		}
+
 		.divider {
 			margin: 0;
 			flex-grow: 1;
