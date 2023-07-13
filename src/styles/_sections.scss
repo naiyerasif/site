@@ -240,6 +240,14 @@ main {
 			color: var(--color-site-base);
 		}
 	}
+
+	&[onclick]:is(:focus, :focus-within, :hover) .card-header a {
+		text-decoration-style: solid;
+	}
+
+	&[onclick]:active .card-header a {
+		text-decoration-style: double;
+	}
 }
 
 .toc {
