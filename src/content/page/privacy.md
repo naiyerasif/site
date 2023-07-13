@@ -18,4 +18,4 @@ Occasionally, I do use **external services** (such as YouTube videos) on some pa
 
 ## Audits
 
-- [Blacklight Privacy Inspection](https://themarkup.org/blacklight?url=naiyerasif.com)
+- [Blacklight Privacy Inspection](https://themarkup.org/blacklight?url=www.naiyerasif.com)
