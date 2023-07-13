@@ -21,6 +21,11 @@ Personal website of [@naiyerasif](https://github.com/naiyerasif)
 
 - To launch a full lighthouse audit, run `pnpm lighthouse`
 
+### Additional audits
+
+- [Blacklight Privacy Inspection](https://themarkup.org/blacklight?url=www.naiyerasif.com)
+- [Website Carbon Report](https://www.websitecarbon.com/website/naiyerasif-com/)
+
 ## Contributing
 
 Since this is my personal site, I'm not really looking for feature requests. I'd, however, appreciate bug reports and corrections. Please [create an issue](https://github.com/naiyerasif/naiyerasif.com/issues/new) on accessibility, browser rendering inconsistencies, performance bottlenecks, and general usability criticism.
