@@ -43,6 +43,10 @@
 		font-style: normal;
 		font-weight: 100 900;
 		font-named-instance: "Regular";
+		/* disable optical-sizing */
+		font-variation-settings: "opsz" 14;
+		/* ss03=rounded quotes, cv05=small L with leg, cv06=no-spur small U */
+		font-feature-settings: "ss03", "cv05", "cv06";
 	}
 
 	@font-face {
@@ -52,6 +56,8 @@
 		font-style: italic;
 		font-weight: 100 900;
 		font-named-instance: "Italic";
+		font-variation-settings: "opsz" 14;
+		font-feature-settings: "ss03", "cv05", "cv06";
 	}
 
 	@font-face {
@@ -69,6 +75,8 @@
 		src: url("/fonts/Inter-Regular.woff2") format("woff2");
 		font-style: normal;
 		font-weight: 400;
+		font-variation-settings: "opsz" 14;
+		font-feature-settings: "ss03", "cv05", "cv06";
 	}
 
 	@font-face {
@@ -77,6 +85,8 @@
 		src: url("/fonts/Inter-Italic.woff2") format("woff2");
 		font-style: italic;
 		font-weight: 400;
+		font-variation-settings: "opsz" 14;
+		font-feature-settings: "ss03", "cv05", "cv06";
 	}
 
 	@font-face {
@@ -85,6 +95,8 @@
 		src: url("/fonts/Inter-Medium.woff2") format("woff2");
 		font-style: normal;
 		font-weight: 500;
+		font-variation-settings: "opsz" 14;
+		font-feature-settings: "ss03", "cv05", "cv06";
 	}
 
 	@font-face {
@@ -93,6 +105,8 @@
 		src: url("/fonts/Inter-MediumItalic.woff2") format("woff2");
 		font-style: italic;
 		font-weight: 500;
+		font-variation-settings: "opsz" 14;
+		font-feature-settings: "ss03", "cv05", "cv06";
 	}
 
 	@font-face {
@@ -101,6 +115,8 @@
 		src: url("/fonts/Inter-Bold.woff2") format("woff2");
 		font-style: normal;
 		font-weight: 700;
+		font-variation-settings: "opsz" 14;
+		font-feature-settings: "ss03", "cv05", "cv06";
 	}
 
 	@font-face {
@@ -109,6 +125,8 @@
 		src: url("/fonts/Inter-BoldItalic.woff2") format("woff2");
 		font-style: italic;
 		font-weight: 700;
+		font-variation-settings: "opsz" 14;
+		font-feature-settings: "ss03", "cv05", "cv06";
 	}
 
 	@font-face {
@@ -167,9 +185,6 @@
 			--family-site-sans: "Inter var", var(--family-sans);
 			--family-site-mono: "JetBrains Mono var", var(--family-mono);
 		}
-	}
-	:not(code, pre, kbd) {
-		font-feature-settings: "ss03", "ss04";
 	}
 	@media (hover: none) {
 		:root {
