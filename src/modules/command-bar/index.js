@@ -249,10 +249,8 @@ export class CommandBar extends HTMLElement {
 		this.#query = this.#searchBox.value;
 		
 		if (this.#query) {
-			if (this.#query.length > 3) {
-				this.#search();
-				this.#updateResults();
-			}
+			this.#search();
+			this.#updateResults();
 		} else {
 			this.#clearSearchBox();
 		}
@@ -352,7 +350,7 @@ export class CommandBar extends HTMLElement {
 	}
 
 	#search() {
-		if (this.#query && this.#query.length > 3) {
+		if (this.#query && this.#query.length > 2) {
 			const fuse = new Fuse(this.#searchIndex, CommandBar.#searchOptions);
 			this.#searchResults = fuse.search(this.#query)
 				.map(result => {
