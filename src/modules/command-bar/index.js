@@ -226,10 +226,9 @@ export class CommandBar extends HTMLElement {
 		includeMatches: true,
 		tokenize: true,
 		matchAllTokens: true,
-		threshold: 0.3,
+		threshold: 0.2,
 		location: 0,
 		distance: 600,
-		maxPatternLength: 32,
 		minMatchCharLength: 3,
 		keys: ["title", "tags"]
 	};
