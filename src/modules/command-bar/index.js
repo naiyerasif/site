@@ -483,7 +483,7 @@ export class CommandBar extends HTMLElement {
 
 	#unique(array) {
 		return array.filter(function (value, index, self) {
-			return self.indexOf(value) === index;
+			return self.findIndex(function (v) { return v.title === value.title }) === index;
 		});
 	}
 
