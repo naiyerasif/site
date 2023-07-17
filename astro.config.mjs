@@ -21,7 +21,12 @@ export default defineConfig({
 		port: 8080
 	},
 	scopedStyleStrategy: "class",
-	integrations: [sitemap()],
+	integrations: [sitemap({
+		filter: page =>
+			page !== `${siteInfo.siteBase}/search-index.json/` &&
+			page !== `${siteInfo.siteBase}/all.xml/` &&
+			page !== `${siteInfo.siteBase}/feed.xml/`
+	})],
 	vite: {
 		server: {
 			watch: {
