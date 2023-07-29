@@ -1,5 +1,3 @@
-@use "./mixins";
-
 body {
 	--buffer: minmax(0, 1fr);
 	--site: min(var(--max-width-site-base), 100%);
@@ -16,9 +14,9 @@ body {
 }
 
 .content {
-	--full: minmax(var(--gap-site-body), 1fr);
-	--content: min(var(--max-width-site-content), 100% - var(--gap-site-body) * 2);
-	--popout: minmax(0, var(--gap-site-body));
+	--full: minmax(var(--gap-site-edge), 1fr);
+	--content: min(var(--max-width-site-content), 100% - var(--gap-site-edge) * 2);
+	--popout: minmax(0, var(--gap-site-edge));
 
 	display: grid;
 	grid-template-columns:

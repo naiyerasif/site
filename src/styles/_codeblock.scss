@@ -1,27 +1,30 @@
 @use "./mixins";
 
 .highlight {
-	background-color: var(--border-site-subtle);
-	border: var(--thickness-site-form-outline) solid var(--border-site-subtle);
+	background-color: var(--background-site-codeblock);
+	border: var(--thickness-site-outline-form) solid var(--border-site-codeblock);
 	border-radius: var(--radius-site-base);
 
 	&:not(:last-child) {
-		margin-block-end: var(--gap-site-base);
+		margin-block-end: var(--gap-site-body);
 	}
 
 	&:focus-within {
-		outline-color: var(--border-site-base);
+		outline-color: var(--color-site-outline-form-base);
 		outline-style: solid;
-		outline-width: var(--thickness-site-form-outline);
-		outline-offset: var(--offset-site-form-outline);
+		outline-width: var(--thickness-site-outline-form);
+		outline-offset: 0;
 	}
 
 	&-header {
+		--radius-site-codeblock-header: calc(var(--radius-site-base) - 0.56ch);
 		display: flex;
 		align-items: flex-start;
-		background-color: var(--border-site-subtle);
-		padding: 1ch;
+		background-color: var(--border-site-codeblock);
+		padding: 0.4ch 0.2ch 0.8ch 0.2ch;
 		font-size: var(--text-site-small);
+		border-start-start-radius: var(--radius-site-codeblock-header);
+		border-start-end-radius: var(--radius-site-codeblock-header);
 
 		& > *:not(:last-child) {
 			margin-inline-end: 1ch;
@@ -47,7 +50,7 @@
 	}
 
 	.line {
-		border-inline-start: var(--thickness-site-link-outline) solid transparent;
+		border-inline-start: var(--thickness-site-outline-interaction) solid transparent;
 		padding-inline: 1em;
 
 		&:is(:focus:not(:focus-visible), :hover) {
@@ -79,6 +82,8 @@
 			user-select: none;
 			inline-size: 1em;
 			block-size: 1em;
+			min-inline-size: 1em;
+			min-block-size: 1em;
 		}
 	}
 }

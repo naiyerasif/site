@@ -176,7 +176,7 @@
 		--text-site-small: calc(0.8rem + 0.1vw);
 		--text-site-base: calc(1rem + 0.2vw);
 		--text-site-headline: calc(1.75rem + 3vw);
-		--text-site-subheadline: calc(1rem + 0.5vw);
+		--text-site-subheadline: calc(1.2rem + 0.4vw);
 
 		--size-site-icon: 1.5rem;
 	}
@@ -192,10 +192,11 @@
 		}
 	}
 	.icon {
-		stroke: currentColor;
 		stroke-width: 2;
 		fill: none;
 		width: var(--size-site-icon);
 		height: var(--size-site-icon);
+		min-width: var(--size-site-icon);
+		min-height: var(--size-site-icon);
 	}
 </style>

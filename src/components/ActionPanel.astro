@@ -6,7 +6,7 @@ const pageInfo = pageInfoSchema.parse(Astro.props.pageInfo);
 ---
 
 <div class="edit-panel">
-	<a href={pageInfo.source} class="button-link with-icon-ltr" rel="noopener noreferrer">
-		<Icon name="edit-line"/> Edit this post
+	<a href={pageInfo.source} rel="noopener noreferrer" class="button-link with-text">
+		<Icon name="edit-line" class="gap-end-small"/> Edit this post
 	</a>
 </div>

@@ -2,7 +2,6 @@
 import Icon from "~components/Icon.astro";
 import ThemeSwitcher from "~components/ThemeSwitcher.astro";
 import CommandBar from "~components/CommandBar.astro";
-import BackToTop from "~components/BackToTop.astro";
 import siteInfo from "~website";
 
 const { hint = "Home" } = Astro.props;
@@ -14,21 +13,23 @@ const logoAlt = `${new URL(siteInfo.siteBase).host}'s logo'`;
 		<a href="/" class="brand">
 			<img src="/favicon.svg" alt={logoAlt}>
 		</a>
-		<Icon name="chevron-right" class="breadcrumb-separator-ltr"/>
+		<Icon name="chevron-right" class="gap-start-small"/>
 		<div class="stress">{hint}</div>
 	</div>
 	<nav class="navbar-secondary">
 		<a href="/posts/" class="stress">Posts</a>
 		<a href="/about/" class="stress">About</a>
 		<ThemeSwitcher/>
-		<a href="/" class="button-link" title="Home">
+		<a href="/" title="Home" class="bottom-bar-item">
 			<Icon name="site"/>
 		</a>
-		<a href="/posts/" class="button-link" title="Posts">
+		<a href="/posts/" title="Posts" class="bottom-bar-item">
 			<Icon name="posts"/>
 		</a>
 		<CommandBar/>
-		<BackToTop/>
+		<a href="#top" title="Back to top" class="bottom-bar-item">
+			<Icon name="arrow-up"/>
+		</a>
 	</nav>
 	<nav class="navbar-tertiary">
 		<a onclick="document.dispatchEvent(new Event('opensearch'))" class="button-link" title="Launch CommandBar">

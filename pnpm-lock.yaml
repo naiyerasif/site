@@ -8,6 +8,9 @@ dependencies:
   '@astrojs/sitemap':
     specifier: ^2.0.1
     version: 2.0.1
+  '@microflash/preset':
+    specifier: ^1.0.0
+    version: 1.0.0
   '@microflash/rehype-slugify':
     specifier: ^1.0.0
     version: 1.0.0
@@ -1221,6 +1224,10 @@ packages:
     resolution: {integrity: sha512-VCk040YLhQAK7rda9KIP3sXSc0NJft29oTBbVH87kmLYxm2KCWjJiN7grk1i/0Y6PHt9yh6OHcHAv3urk4lr+w==}
     dependencies:
       chevrotain: 10.5.0
+    dev: false
+
+  /@microflash/preset@1.0.0:
+    resolution: {integrity: sha512-IXmaE6UT9Flp8ZvABqJX7z9PV7Kb5ElJgxMlmZOEWcCjwNnLW5aXJueO9GXlIG6lnpvOnF59KikqJ9P4kk3gtw==}
     dev: false
 
   /@microflash/rehype-slugify@1.0.0:

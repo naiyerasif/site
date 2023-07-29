@@ -1,11 +1,11 @@
 @use "./mixins";
 
 body > :where(.header, .hero, .main, .sidekick) {
-	padding-inline: var(--gap-site-body);
+	padding-inline: var(--gap-site-edge);
 }
 
 main {
-	padding-block: var(--gap-site-base);
+	padding-block: var(--gap-site-body);
 }
 
 .header {
@@ -33,29 +33,12 @@ main {
 		}
 	}
 
-	.breadcrumb-separator-ltr {
+	.icon {
 		opacity: 0.6;
 	}
 
 	.stress::first-letter {
 		text-transform: capitalize;
-	}
-}
-
-.navbar-normal {
-	display: flex;
-	align-items: center;
-
-	& > * + a {
-		margin-inline-start: 2ch;
-	}
-
-	& > theme-switcher {
-		margin-inline-start: 1.5ch;
-	}
-
-	@include mixins.window-small {
-		display: none;
 	}
 }
 
@@ -68,7 +51,7 @@ main {
 			margin-inline-start: 1.5ch;
 		}
 
-		& > .button-link {
+		& > .bottom-bar-item {
 			display: none;
 		}
 	}
@@ -82,7 +65,7 @@ main {
 		right: 0;
 		bottom: 0;
 		z-index: 10;
-		padding: 1ch var(--gap-site-body);
+		padding: 1ch var(--gap-site-edge);
 		backdrop-filter: blur(25px);
 		max-inline-size: var(--max-width-site-base);
 		margin-inline: auto;
@@ -92,22 +75,17 @@ main {
 			display: none;
 		}
 
-		::part(button),
-		.button-link {
-			padding: 0;
-			background-color: transparent;
-			outline-color: transparent;
-		}
-
 		command-bar {
 			inline-size: var(--size-site-icon);
 			block-size: var(--size-site-icon);
+			min-inline-size: var(--size-site-icon);
+			min-block-size: var(--size-site-icon);
+			margin-block-end: 0.15ch;
 		}
 	}
 }
 
 .navbar-tertiary {
-	
 	@include mixins.window-normal {
 		display: none;
 	}
@@ -115,7 +93,7 @@ main {
 
 .floating-back-to-top {
 	display: none;
-	border-radius: var(--radius-site-icon);
+	border-radius: var(--radius-site-button);
 
 	@include mixins.window-normal {
 		display: flex;
@@ -159,6 +137,8 @@ main {
 				display: inline-block;
 				inline-size: 1em;
 				block-size: 1em;
+				min-inline-size: 1em;
+				min-block-size: 1em;
 				opacity: 0.5;
 			}
 		}
@@ -166,7 +146,7 @@ main {
 }
 
 .card {
-	padding: var(--gap-site-body);
+	padding: var(--gap-site-edge);
 	border-radius: var(--radius-site-base);
 
 	&-details {
@@ -211,11 +191,9 @@ main {
 		overflow: auto;
 
 		.card-body {
-			font-size: var(--text-site-base);
+			--gap-site-vertical: var(--gap-site-small);
 
-			& > * + * {
-				margin-block-start: var(--gap-site-small);
-			}
+			font-size: var(--text-site-base);
 
 			.highlight:not(:last-child) {
 				margin-block-end: var(--gap-site-small);
@@ -228,25 +206,35 @@ main {
 		color: var(--color-site-base);
 	}
 
-	&[onclick]:is(:focus, :focus-within, :hover, :active) {
-		background-color: var(--background-site-subtle);
+	&[onclick] {
+		outline-offset: -0.25em;
 
-		.card-category,
-		.card-body {
-			color: var(--color-site-stress);
-		}
+		&:is(:focus, :focus-within, :hover, :active) {
+			background-color: var(--background-site-subtle);
 	
-		.card-details {
-			color: var(--color-site-base);
+			.card-category,
+			.card-body {
+				color: var(--color-site-stress);
+			}
+		
+			.card-details {
+				color: var(--color-site-base);
+			}
 		}
-	}
 
-	&[onclick]:is(:focus, :focus-within, :hover) .card-header a {
-		text-decoration-style: solid;
-	}
+		&:is(:focus, :focus-within, :hover) .card-header a {
+			text-decoration-style: solid;
+			text-decoration-thickness: var(--thickness-site-outline-interaction);
+		}
 
-	&[onclick]:active .card-header a {
-		text-decoration-style: double;
+		&:active .card-header a {
+			text-decoration-style: double;
+		}
+
+		&:focus-within .card-header a {
+			text-decoration-color: currentColor;
+			outline-color: transparent;
+		}
 	}
 }
 
@@ -341,12 +329,11 @@ main {
 .pagination {
 
 	&-item {
-		min-inline-size: 2ch;
+		min-inline-size: 3ch;
 		justify-content: center;
 
 		&.active {
 			font-weight: var(--font-weight-site-medium);
-			border-color: var(--border-site-stress);
 		}
 	}
 
@@ -365,7 +352,7 @@ main {
 
 	& > * {
 		flex: 1 1 100%;
-		padding: var(--gap-site-small) var(--gap-site-body);
+		padding: var(--gap-site-base) var(--gap-site-edge);
 
 		@include mixins.window-normal {
 			flex-basis: 40%;
@@ -374,10 +361,6 @@ main {
 
 	.stress.tagline {
 		font-size: 1.5rem;
-	}
-
-	.with-icon-ltr:first-of-type {
-		margin-block-start: 1ch;
 	}
 
 	&-copyright {

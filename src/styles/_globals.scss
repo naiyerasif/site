@@ -1,7 +1,15 @@
 @use "./mixins";
 
-:where(input[type="file"]) {
-	padding: 0.25em;
+@media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolution: 2dppx) {
+	:where(html) {
+		-moz-osx-font-smoothing: grayscale;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	:where(code, kbd, samp, tt, pre) {
+		-moz-osx-font-smoothing: auto;
+		-webkit-font-smoothing: auto;
+	}
 }
 
 :where(blockquote) {
@@ -26,6 +34,8 @@
 	text-decoration: none;
 	inline-size: 1em;
 	block-size: 1em;
+	min-inline-size: 1em;
+	min-block-size: 1em;
 }
 
 :where(pre, code) {
@@ -33,16 +43,8 @@
 	touch-action: auto;
 }
 
-a .icon {
-	display: inline-block;
-}
-
 .stress {
 	font-weight: var(--font-weight-site-medium);
-}
-
-.spotlight {
-	font-family: var(--family-site-stress);
 }
 
 .headline {
@@ -92,18 +94,17 @@ a .icon {
 	text-wrap: balance;
 }
 
-.with-icon-ltr {
+.icon-link {
 	display: inline-flex;
 	align-items: center;
-
-	.icon {
-		margin-inline-end: 0.5ch;
-	}
 }
 
-.with-icon {
-	display: inline-flex;
-	align-items: center;
+.gap-start-small {
+	margin-inline-start: 0.5ch;
+}
+
+.gap-end-small {
+	margin-inline-end: 0.5ch;
 }
 
 .directive-youtube {
@@ -129,14 +130,43 @@ a .icon {
 	}
 }
 
-::part(button),
-.button-link {
-	padding: 0.8ch;
-	border-color: transparent;
-	border-radius: var(--radius-site-icon);
+::part(button) {
+	cursor: pointer;
+
+	&[disabled] {
+		cursor: not-allowed;
+	}
 }
 
+::part(button),
 .button-link {
+	padding: 0.5rem;
+	border-color: transparent;
+	border-radius: var(--radius-site-button);
 	display: inline-flex;
 	align-items: center;
+}
+
+.button-link.with-text {
+	padding: 0.2rem 0.5rem;
+}
+
+.button-link.with-border {
+	background-color: var(--background-site-interaction-base);
+	border-color: var(--border-site-interaction-base);
+	border-style: solid;
+	border-width: var(--thickness-site-hr);
+}
+
+::part(button),
+.button-link {
+	&:is(:focus, :focus-visible, :focus-within, :hover, :active) {
+		background-color: var(--background-site-interaction-active);
+		border-color: var(--border-site-interaction-active);
+		outline-color: var(--color-site-outline-form);
+		outline-style: solid;
+		outline-width: var(--thickness-site-outline-form);
+		outline-offset: 0;
+		text-decoration-color: transparent;
+	}
 }

@@ -1,26 +1,3 @@
-@mixin interactive-elements {
-	:where(a[href], area, button, input:not([type="file"]), select, summary, textarea, [tabindex]:not([tabindex*="-"]), [onclick], [role="button"]),
-	::part(button) {
-		@content;
-	}
-	
-	:where(input[type="file"])::file-selector-button {
-		@content;
-	}
-}
-
-@mixin form-elements {
-	:where(button, input:not([type="file"]), select, textarea, [role="button"]),
-	::part(button),
-	.button-link {
-		@content;
-	}
-
-	:where(input[type="file"])::file-selector-button {
-		@content;
-	}
-}
-
 @mixin icon($data-uri) {
 	content: "";
 	mask-image: url($data-uri);

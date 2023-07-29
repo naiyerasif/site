@@ -6,7 +6,7 @@ commandBarTemplate.innerHTML = `
 </button>
 <dialog aria-label="CommandBar" id="command-bar">
 	<header class="command-bar-header">
-		<input id="search-box" placeholder="Search..." autofocus>
+		<input id="search-box" placeholder="Search..." part="input" autofocus>
 		<button type="reset" aria-label="Reset search" part="button" id="search-box-resetter">
 			<svg role="img" class="icon" aria-hidden="true"><use href="#reset"/></svg>
 		</button>
@@ -43,63 +43,43 @@ commandBarTemplate.innerHTML = `
 	</svg>
 </div>
 <style>
-:host {
-	font-size: calc(1rem + 0.2vw);
-	color: var(--color-site-base);
-}
 .icon {
 	stroke: currentColor;
 	stroke-width: 2;
 	fill: none;
 	width: var(--size-site-icon);
 	height: var(--size-site-icon);
-	flex-shrink: 0;
+	min-width: var(--size-site-icon);
+	min-height: var(--size-site-icon);
 }
 kbd {
 	background-color: var(--background-site-subtle);
-	border-radius: var(--radius-site-tiny);
-	font-size: 0.95em;
-	padding-inline: 0.5ch;
+	border-radius: var(--radius-site-small);
+	font-size: 0.85em;
+	line-height: 1;
+	padding: 0.5ch 1ch;
+	color: var(--color-site-base);
 }
 #command-bar::backdrop {
 	backdrop-filter: blur(25px);
 }
 #command-bar {
-	inline-size: calc(100% - 2px);
-	max-inline-size: var(--max-width-site-content);
+	width: calc(100% - 2px);
+	max-width: var(--max-width-site-content);
 	overflow: hidden;
 	border: var(--thickness-site-hr) solid var(--border-site-body);
 	border-radius: var(--radius-site-base);
 	background-color: var(--background-site-body);
 	padding: 0;
 }
+#command-bar-launcher {
+	padding: 0 !important;
+	background-color: transparent !important;
+	border-color: transparent !important;
+	outline-color: transparent !important;
+}
 #command-bar-launcher .label {
 	display: none;
-}
-@media screen and (min-width: 48rem) {
-	#command-bar-launcher {
-		display: flex;
-		align-items: center;
-		border: 1px solid var(--border-site-body) !important;
-		font: inherit;
-		font-size: 0.9em;
-	}
-
-	#command-bar-launcher .label {
-		display: revert;
-	}
-
-	#command-bar-launcher .icon {
-		margin-inline-end: 0.5ch;
-	}
-
-	#command-bar-launcher kbd {
-		margin-inline-start: 5rem;
-		color: var(--color-site-base);
-		line-height: 1;
-		padding: 0.25rem 0.5rem;
-		border-radius: var(--radius-site-small);
-	}
 }
 .command-bar-header {
 	display: flex;
@@ -108,43 +88,14 @@ kbd {
 	padding: 0.5rem;
 }
 .command-bar-header > * + * {
-	margin-inline-start: 1.5ch;
-}
-theme-switcher::part(button),
-#search-box {
-	inline-size: 100%;
-	accent-color: var(--color-site-link-base);
-	caret-color: var(--color-site-link-base);
-	background-color: var(--border-site-subtle);
-	border-radius: var(--radius-site-small);
-	border-color: var(--border-site-body);
-	border-style: solid;
-	border-width: var(--thickness-site-hr);
-	font-size: 1rem;
+	margin-left: 1rem;
 }
 #search-box {
-	padding: 0.65rem 0.75rem;
-}
-#search-box:is(:focus, :focus-visible, :focus-within, :hover, :active) {
-	border-color: var(--color-site-link-active-base);
-	outline-color: var(--border-site-base);
-	outline-style: solid;
-	outline-width: var(--thickness-site-form-outline);
-	outline-offset: var(--offset-site-form-outline);
-}
-theme-switcher::part(button) {
-	padding: 0.4rem;
-	border-radius: var(--radius-site-icon);
-	color: var(--color-site-link-base);
-}
-theme-switcher::part(button):is(:focus, :focus-visible, :focus-within, :hover, :active) {
-	outline-color: var(--border-site-base);
-	outline-style: solid;
-	outline-width: var(--thickness-site-form-outline);
-	outline-offset: var(--offset-site-form-outline);
+	width: 100%;
+	font: inherit;
 }
 #commands {
-	max-block-size: 420px;
+	max-height: 420px;
 	overflow-y: auto;
 }
 .command-bar-section-header {
@@ -159,20 +110,26 @@ theme-switcher::part(button):is(:focus, :focus-visible, :focus-within, :hover, :
 	border-block-start: var(--thickness-site-hr) solid var(--border-site-subtle);
 }
 a {
-	color: var(--color-site-link-base);
-	text-decoration-thickness: var(--thickness-site-decoration);
+	color: var(--color-site-interaction-base);
 	text-decoration-line: underline;
 	text-decoration-style: dotted;
 }
-a:is(:focus, :focus-within, :hover) {
-	text-decoration-style: solid;
+a:focus,
+a:focus-within,
+a:focus-visible,
+a:hover,
+a:active {
 	background-color: var(--background-site-commend);
+	color: var(--color-site-interaction-active);
+}
+a:focus,
+a:focus-within,
+a:hover {
+	text-decoration-style: solid;
+	text-decoration-thickness: var(--thickness-site-outline-interaction);
 }
 a:active {
 	text-decoration-style: double;
-}
-a:focus-visible {
-	border-radius: var(--radius-site-tiny);
 }
 .command-item {
 	display: flex;
@@ -180,18 +137,79 @@ a:focus-visible {
 	padding: 0.8rem 1rem;
 }
 .command-item:focus-visible {
-	outline-color: currentColor;
-	outline-style: double;
-	outline-width: var(--thickness-site-link-outline);
-	outline-offset: -0.125em;
+	border-radius: var(--radius-site-small);
+	text-decoration-color: transparent;
+	outline-color: var(--color-site-outline-form);
+	outline-style: solid;
+	outline-width: var(--thickness-site-outline-form);
+	outline-offset: -0.25em;
 }
 .command-item > .icon {
-	margin-inline-end: 1ch;
+	margin-right: 1ch;
+}
+theme-switcher::part(button) {
+	padding: 0.5rem;
+	background-color: var(--background-site-link-base);
+	border-color: var(--border-site-body);
+	border-style: solid;
+	border-width: var(--thickness-site-hr);
+	border-radius: var(--radius-site-button);
+	color: var(--color-site-link-base);
+	cursor: pointer;
+}
+#search-box-resetter:focus,
+#search-box-resetter:hover,
+#search-box-resetter:active,
+#command-bar-escaper:focus,
+#command-bar-escaper:hover,
+#command-bar-escaper:active,
+theme-switcher::part(button):focus,
+theme-switcher::part(button):hover,
+theme-switcher::part(button):active {
+	background-color: var(--background-site-link-active-base) !important;
+	border-color: var(--color-site-link-active-base) !important;
+	color: var(--color-site-link-active-base);
+	outline-color: var(--color-site-outline-form) !important;
+	outline-style: solid;
+	outline-width: var(--thickness-site-outline-form);
+	outline-offset: 0;
+}
+#search-box-resetter,
+#command-bar-escaper {
+	padding: 0.4rem !important;
 }
 .command-bar-footer {
 	display: none;
 }
 @media screen and (min-width: 48rem) {
+	#command-bar-launcher {
+		display: flex;
+		align-items: center;
+		font: inherit;
+		border-color: var(--border-site-interaction-base) !important;
+		padding: 0.4rem 0.5rem !important;
+	}
+	#command-bar-launcher:focus,
+	#command-bar-launcher:hover,
+	#command-bar-launcher:active {
+		border-color: var(--border-site-interaction-active) !important;
+		outline-color: var(--color-site-outline-form) !important;
+		background-color: var(--background-site-link-active-base) !important;
+	}
+	#command-bar-launcher:focus kbd,
+	#command-bar-launcher:hover kbd,
+	#command-bar-launcher:active kbd {
+		color: var(--color-site-stress);
+	}
+	#command-bar-launcher .label {
+		display: revert;
+	}
+	#command-bar-launcher .icon {
+		margin-inline-end: 0.5ch;
+	}
+	#command-bar-launcher kbd {
+		margin-left: 3rem;
+	}
 	.command-bar-footer {
 		display: flex;
 		flex-wrap: wrap;
@@ -199,8 +217,8 @@ a:focus-visible {
 		background-color: var(--border-site-subtle);
 		font-size: var(--text-site-small);
 		padding: 0.25rem 1rem;
-		border-end-end-radius: inherit;
-		border-end-start-radius: inherit;
+		border-bottom-right-radius: inherit;
+		border-bottom-left-radius: inherit;
 		color: var(--color-site-base);
 	}
 	.command-bar-footer > *:not(:first-child)::before {
@@ -211,8 +229,8 @@ a:focus-visible {
 		mask-size: contain;
 		background-color: currentColor;
 		display: inline-block;
-		inline-size: 1em;
-		block-size: 1em;
+		width: 1em;
+		height: 1em;
 		opacity: 0.5;
 	}
 }
