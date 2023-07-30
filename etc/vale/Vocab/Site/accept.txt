@@ -1,5 +1,5 @@
 changeset
 [Cc]odeblock|[Cc]odeblocks
 [Mm]onorepo
-rebase
+[Rr]ebase|[Rr]ebasing
 [Uu]secase|[Uu]secases
