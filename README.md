@@ -24,6 +24,7 @@ Personal website of [@naiyerasif](https://github.com/naiyerasif)
 ### Additional audits
 
 - [Blacklight Privacy Inspection](https://themarkup.org/blacklight?url=www.naiyerasif.com)
+- [Mozilla Observatory](https://observatory.mozilla.org/analyze/www.naiyerasif.com)
 - [Website Carbon Report](https://www.websitecarbon.com/website/naiyerasif-com/)
 
 ## Contributing
