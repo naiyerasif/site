@@ -40,7 +40,7 @@ const mastodonUrl = siteInfo.author.networks.mastodon.link;
 <meta name="twitter:card" content="summary">
 <meta property="twitter:title" content={pageInfo.title}>
 {pageInfo.description && <meta property="twitter:description" content={pageInfo.description}>}
-<meta name="twitter:image:src" content={pageInfo.image}>
+<meta name="twitter:image" content={pageInfo.image}>
 {pageInfo.timeToRead && <meta name="twitter:label1" content="Reading time">}
 {pageInfo.timeToRead && <meta name="twitter:data1" content={`${pageInfo.timeToRead} min read`}>}
 <link rel="me" href={mastodonUrl}>
