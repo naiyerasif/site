@@ -1,7 +1,7 @@
 @mixin lightTheme {
 	color-scheme: light;
 
-	--background-site-accent-subtle: hsl(90, 3%, 88%, 0.5);
+	--background-site-accent-subtle: hsl(90, 3%, 93%);
 	--background-site-accent: hsl(90, 3%, 99%);
 	--background-site-base: hsl(285, 100%, 99%);
 	--background-site-subtle: hsl(120, 4%, 66%, 0.25);
@@ -99,7 +99,7 @@
 @mixin darkTheme {
 	color-scheme: dark;
 
-	--background-site-accent-subtle: hsl(130, 6%, 18%, 0.5);
+	--background-site-accent-subtle: hsl(130, 6%, 12%);
 	--background-site-accent: hsl(120, 4%, 6%);
 	--background-site-base: hsl(240, 7%, 3%);
 	--background-site-subtle: hsl(129, 4%, 32%, 0.5);

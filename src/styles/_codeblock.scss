@@ -17,14 +17,11 @@
 	}
 
 	&-header {
-		--radius-site-codeblock-header: calc(var(--radius-site-base) - 0.56ch);
 		display: flex;
 		align-items: flex-start;
 		background-color: var(--border-site-codeblock);
 		padding: 0.4ch 0.2ch 0.8ch 0.2ch;
 		font-size: var(--text-site-small);
-		border-start-start-radius: var(--radius-site-codeblock-header);
-		border-start-end-radius: var(--radius-site-codeblock-header);
 
 		& > *:not(:last-child) {
 			margin-inline-end: 1ch;
