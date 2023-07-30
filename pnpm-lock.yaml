@@ -76,6 +76,9 @@ devDependencies:
   defu:
     specifier: ^6.1.2
     version: 6.1.2
+  html-entities:
+    specifier: ^2.4.0
+    version: 2.4.0
   inquirer:
     specifier: ^9.2.8
     version: 9.2.8
@@ -3487,6 +3490,10 @@ packages:
 
   /hookable@5.5.3:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}
+    dev: true
+
+  /html-entities@2.4.0:
+    resolution: {integrity: sha512-igBTJcNNNhvZFRtm8uA6xMY6xYleeDwn3PeBCkDz7tHttv4F2hsDI2aPgNERWzvRcNYHNT3ymRaQzllmXj4YsQ==}
     dev: true
 
   /html-escaper@3.0.3:

@@ -1,4 +1,5 @@
 import { getCollection } from "astro:content";
+import { encode } from "html-entities";
 import { postPathname } from "~website";
 
 const defaults = [
@@ -30,7 +31,7 @@ const defaults = [
 
 export async function get() {
 	const posts = (await getCollection("post"))
-		.map(post => ({ title: post.data.title, tags: post.data.tags, path: postPathname(post.slug) }));
+		.map(post => ({ title: encode(post.data.title), tags: post.data.tags, path: postPathname(post.slug) }));
 	return {
 		body: JSON.stringify([...defaults, ...posts]),
 	};

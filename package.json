@@ -37,6 +37,7 @@
 	},
 	"devDependencies": {
 		"defu": "^6.1.2",
+		"html-entities": "^2.4.0",
 		"inquirer": "^9.2.8",
 		"mdast-util-to-string": "^4.0.0",
 		"puppeteer": "^20.9.0",
