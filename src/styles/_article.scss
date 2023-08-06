@@ -37,4 +37,14 @@ article.content {
 	& > .figure {
 		@include mixins.popout(var(--radius-site-small));
 	}
+
+	.footnotes {
+		font-size: 0.8em;
+		margin-block-start: var(--gap-site-medium);
+		border-block-start: 1px dashed var(--border-site-body);
+
+		#footnote-label {
+			padding-block-start: var(--gap-site-medium);
+		}
+	}
 }
