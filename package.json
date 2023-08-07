@@ -38,7 +38,7 @@
 	"devDependencies": {
 		"defu": "^6.1.2",
 		"html-entities": "^2.4.0",
-		"inquirer": "^9.2.9",
+		"inquirer": "^9.2.10",
 		"mdast-util-to-string": "^4.0.0",
 		"puppeteer": "^21.0.1",
 		"unist-util-visit": "^5.0.0",
