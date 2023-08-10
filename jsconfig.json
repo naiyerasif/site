@@ -9,6 +9,7 @@
 			"~reading-time": ["src/modules/reading-time/index.js"],
 			"~schema": ["src/modules/schema/index.js"],
 			"~slugifier": ["src/modules/slugifier/index.js"],
+			"~toc": ["src/modules/table-of-contents/index.js"],
 			"~website": ["src/modules/website/index.js"]
 		}
 	}

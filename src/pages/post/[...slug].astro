@@ -8,7 +8,8 @@ import Toc from "~components/Toc.astro";
 import Time from "~components/Time.astro";
 import format, { compare, format_date } from "~datetime";
 import readingTime from "~reading-time";
-import { postPathname } from "~website";
+import toc from "~toc";
+import siteInfo, { postPathname } from "~website";
 
 export async function getStaticPaths() {
 	const posts = await getCollection("post");
@@ -58,7 +59,7 @@ const pageInfo = {
 	<article class="content">
 		{headings && headings.length > 0 && <nav class="toc">
 			<div class="toc-header">Table of Contents</div>
-			<Toc {headings}/>
+			<Toc headings={toc(headings, siteInfo.maxTocDepth)}/>
 		</nav>}
 		<Content/>
 		<div class="content-recommendations">
