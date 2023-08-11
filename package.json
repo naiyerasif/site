@@ -19,7 +19,7 @@
 		"@microflash/remark-callout-directives": "^1.6.0",
 		"@microflash/remark-figure-caption": "^1.0.0",
 		"@sindresorhus/slugify": "^2.2.1",
-		"astro": "^2.10.5",
+		"astro": "^2.10.6",
 		"dayjs": "^1.11.9",
 		"feed": "^4.2.2",
 		"postcss-combine-duplicated-selectors": "^10.0.3",
@@ -40,7 +40,7 @@
 		"html-entities": "^2.4.0",
 		"inquirer": "^9.2.10",
 		"mdast-util-to-string": "^4.0.0",
-		"puppeteer": "^21.0.2",
+		"puppeteer": "^21.0.3",
 		"unist-util-visit": "^5.0.0",
 		"unlighthouse-puppeteer": "^0.10.0"
 	},
