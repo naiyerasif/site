@@ -7,29 +7,43 @@ const authorInfo = siteInfo.author;
 const authorNetworks = authorInfo.networks;
 const siteAuthor = authorInfo.name;
 const siteIssueUrl = siteInfo.issueBase;
+
+const messages = [
+	`<p class="stress tagline">You can stop scrolling now. Take a break, sit back, and give yourself a moment.</p><p><cite>&mdash; Author of this site</cite></p>`,
+	`<p class="stress tagline"><del>Zoom out</del> <ins>Take a nap</ins> for perspective.</p><p><cite>&mdash; original quote from James Clear (paraphrased and fixed)</cite></p>`,
+	`<p class="stress tagline">6 hours of raging at a problem can save you 5 minutes of taking rest and solving it.</p><p><cite>&mdash; A senior software engineer</cite></p>`,
+	`<p class="stress tagline">Almost everything will work again if you unplug it for a few minutes...including you.</p><p><cite>&mdash; <a href="https://www.ted.com/talks/anne_lamott_12_truths_i_learned_from_life_and_writing" rel="nofollow noopener noreferrer">Anne Lamott</a></cite></p>`,
+];
+
+function randomMessage() {
+	return messages[Math.floor(Math.random() * messages.length)];
+}
 ---
 
 <footer class="footer">
-	<div class="stress tagline">
-		This footer exists to nudge you stop scrolling. You can take a break, sit back, and give yourself a moment.
+	<div class="footer-quote">
+		<Icon name="green-energy" class="footer-quote-decoration"/>
+		<Fragment set:html={randomMessage()}/>
 	</div>
-	<div>
-		<strong>Say hi!</strong> Interested in software, books, manga? We gotta chat. Reach out on 
-		<a href={authorNetworks.mastodon.link} aria-label={authorNetworks.mastodon.platform} rel="noopener noreferrer">{authorNetworks.mastodon.platform}</a>,
-		<a href={authorNetworks.github.link} aria-label={authorNetworks.github.platform} rel="noopener noreferrer">{authorNetworks.github.platform}</a>, or 
-		<a href={authorNetworks.linkedin.link} aria-label={authorNetworks.linkedin.platform} rel="noopener noreferrer">{authorNetworks.linkedin.platform}</a>.
-	</div>
-	<div>
-		<strong>Subscribe</strong> to my latest posts in your favorite RSS reader. <small>(<a href="https://aboutfeeds.com/" rel="nofollow noopener noreferrer">What's RSS?</a>)</small><br><br>
-		<a href="/feed.xml" class="icon-link"><Icon name="rss" class="gap-end-small"/> Subscribe to Posts</a><br>
-		<a href="/all.xml" class="icon-link"><Icon name="rss" class="gap-end-small"/> Subscribe to Posts and statuses</a>
-	</div>
-	<div class="footer-copyright">
-		<div class="stress">&copy; 2018 &mdash;&mdash; today, {siteAuthor}</div>
-		<div class="footer-links">
-			<a href="/privacy/">Privacy</a>
-			<a href={siteIssueUrl} rel="nofollow noopener noreferrer">Report an issue</a>
-			<a href="/sitemap-index.xml">Sitemap</a>
+	<div class="footer-sections">
+		<div>
+			<p><strong>Subscribe</strong> to my latest posts in your favorite RSS reader. <small>(<a href="https://aboutfeeds.com/" rel="nofollow noopener noreferrer">What's RSS?</a>)</small></p>
+			<a href="/feed.xml" class="icon-link"><Icon name="rss" class="gap-end-small"/> Subscribe to posts</a><br>
+			<a href="/all.xml" class="icon-link"><Icon name="rss" class="gap-end-small"/> Subscribe to posts and statuses</a>
+		</div>
+		<div>
+			<strong>Say hi!</strong> Interested in software, books, manga? We gotta chat. Reach out on 
+			<a href={authorNetworks.mastodon.link} aria-label={authorNetworks.mastodon.platform} rel="noopener noreferrer">{authorNetworks.mastodon.platform}</a>,
+			<a href={authorNetworks.github.link} aria-label={authorNetworks.github.platform} rel="noopener noreferrer">{authorNetworks.github.platform}</a>, or 
+			<a href={authorNetworks.linkedin.link} aria-label={authorNetworks.linkedin.platform} rel="noopener noreferrer">{authorNetworks.linkedin.platform}</a>.
+		</div>
+		<div class="footer-copyright">
+			<div class="stress">&copy; 2018 &mdash;&mdash; today, {siteAuthor}</div>
+			<div class="footer-links">
+				<a href="/privacy/">Privacy</a>
+				<a href={siteIssueUrl} rel="nofollow noopener noreferrer">Report an issue</a>
+				<a href="/sitemap-index.xml">Sitemap</a>
+			</div>
 		</div>
 	</div>
 </footer>

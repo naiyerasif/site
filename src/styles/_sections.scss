@@ -346,28 +346,56 @@ main {
 	position: sticky;
 	top: 100vh;
 	padding-block: var(--gap-site-large);
-	display: flex;
-	flex-wrap: wrap;
-	align-items: flex-end;
 
-	& > * {
-		flex: 1 1 100%;
-		padding: var(--gap-site-base) var(--gap-site-edge);
+	&-quote {
+		display: flex;
+		flex-wrap: wrap;
+		padding: var(--gap-site-medium) var(--gap-site-edge);
+
+		& > * {
+			flex-basis: 100%;
+		}
 
 		@include mixins.window-normal {
-			flex-basis: 40%;
+			text-align: center;
+		}
+
+		.stress.tagline {
+			font-size: calc(1.25rem + 1vw);
+			margin-block-end: 1rem;
+		}
+
+		cite {
+			font-size: 0.9rem;
+		}
+
+		&-decoration {
+			--size-site-icon: 2rem;
+			color: var(--color-site-commend);
+			margin-block-end: 2rem;
 		}
 	}
 
-	.stress.tagline {
-		font-size: 1.5rem;
+	&-sections {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+
+		& > * {
+			flex: 1 1 100%;
+			padding: var(--gap-site-base) var(--gap-site-edge);
+
+			@include mixins.window-normal {
+				flex-basis: 40%;
+			}
+		}
 	}
 
 	&-copyright {
 		font-size: var(--text-site-small);
 
 		@include mixins.window-normal {
-			text-align: end;
+			text-align: center;
 		}
 	}
 
