@@ -312,10 +312,6 @@ main {
 		align-items: center;
 		justify-content: space-between;
 		margin-block-start: var(--gap-site-base);
-
-		@include mixins.window-normal {
-			flex-direction: row-reverse;
-		}
 	}
 }
 
@@ -324,6 +320,11 @@ main {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
+	margin-block-start: 1rem;
+
+	& > *:not(:only-child, :last-child) {
+		margin-inline-end: 1rem;
+	}
 }
 
 .pagination {
