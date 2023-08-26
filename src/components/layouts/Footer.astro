@@ -7,23 +7,15 @@ const authorInfo = siteInfo.author;
 const authorNetworks = authorInfo.networks;
 const siteAuthor = authorInfo.name;
 const siteIssueUrl = siteInfo.issueBase;
-
-const messages = [
-	`<p class="stress tagline">You can stop scrolling now. Take a break, sit back, and give yourself a moment.</p><p><cite>&mdash; Author of this site</cite></p>`,
-	`<p class="stress tagline"><del>Zoom out</del> <ins>Take a nap</ins> for perspective.</p><p><cite>&mdash; original quote from James Clear (paraphrased and fixed)</cite></p>`,
-	`<p class="stress tagline">6 hours of raging at a problem can save you 5 minutes of taking rest and solving it.</p><p><cite>&mdash; A senior software engineer</cite></p>`,
-	`<p class="stress tagline">Almost everything will work again if you unplug it for a few minutes...including you.</p><p><cite>&mdash; <a href="https://www.ted.com/talks/anne_lamott_12_truths_i_learned_from_life_and_writing" rel="nofollow noopener noreferrer">Anne Lamott</a></cite></p>`,
-];
-
-function randomMessage() {
-	return messages[Math.floor(Math.random() * messages.length)];
-}
 ---
 
 <footer class="footer">
 	<div class="footer-quote">
 		<Icon name="green-energy" class="footer-quote-decoration"/>
-		<Fragment set:html={randomMessage()}/>
+		<random-quote></random-quote>
+		<noscript>
+			<p class="stress tagline">You can stop scrolling now. Take a break, sit back, and give yourself a moment.</p><p><cite>&mdash; Author of this site</cite></p>
+		</noscript>
 	</div>
 	<div class="footer-sections">
 		<div>
@@ -48,3 +40,22 @@ function randomMessage() {
 	</div>
 </footer>
 <Sprites/>
+
+<script>
+	export class RandomQuote extends HTMLElement {
+		static tagName = "random-quote";
+	
+		static #messages = [
+			`<p class="stress tagline">You can stop scrolling now. Take a break, sit back, and give yourself a moment.</p><p><cite>&mdash; Author of this site</cite></p>`,
+			`<p class="stress tagline"><del>Zoom out</del> <ins>Take a nap</ins> for perspective.</p><p><cite>&mdash; original quote from James Clear (paraphrased and fixed)</cite></p>`,
+			`<p class="stress tagline">6 hours of raging at a problem can save you 5 minutes of taking rest and solving it.</p><p><cite>&mdash; A senior software engineer</cite></p>`,
+			`<p class="stress tagline">Almost everything will work again if you unplug it for a few minutes...including you.</p><p><cite>&mdash; <a href="https://www.ted.com/talks/anne_lamott_12_truths_i_learned_from_life_and_writing" rel="nofollow noopener noreferrer">Anne Lamott</a></cite></p>`,
+		];
+	
+		connectedCallback() {
+			this.innerHTML = RandomQuote.#messages[Math.floor(Math.random() * RandomQuote.#messages.length)];
+		}
+	}
+
+	customElements.define(RandomQuote.tagName, RandomQuote);
+</script>
