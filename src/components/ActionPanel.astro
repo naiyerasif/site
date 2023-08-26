@@ -5,7 +5,7 @@ import { pageInfoSchema } from "~schema";
 const pageInfo = pageInfoSchema.parse(Astro.props.pageInfo);
 ---
 
-<div class="edit-panel">
+<div class="action-panel">
 	<a href={pageInfo.source} rel="noopener noreferrer" class="icon-link">
 		<Icon name="edit-line" class="gap-end-small"/> Edit this post
 	</a>

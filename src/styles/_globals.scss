@@ -12,6 +12,11 @@
 	}
 }
 
+// hide undefined custom elements
+:not(:defined) {
+	visibility: hidden;
+}
+
 :where(blockquote) {
 	cite:last-child {
 		font-size: var(--text-site-small);

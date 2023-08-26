@@ -9,8 +9,8 @@ dependencies:
     specifier: ^2.0.2
     version: 2.0.2
   '@microflash/preset':
-    specifier: ^1.0.0
-    version: 1.0.0
+    specifier: ^1.0.1
+    version: 1.0.1
   '@microflash/rehype-slugify':
     specifier: ^1.0.0
     version: 1.0.0
@@ -1363,8 +1363,8 @@ packages:
       chevrotain: 10.5.0
     dev: false
 
-  /@microflash/preset@1.0.0:
-    resolution: {integrity: sha512-IXmaE6UT9Flp8ZvABqJX7z9PV7Kb5ElJgxMlmZOEWcCjwNnLW5aXJueO9GXlIG6lnpvOnF59KikqJ9P4kk3gtw==}
+  /@microflash/preset@1.0.1:
+    resolution: {integrity: sha512-S2vOUvCu9OPGnKwZFDyK+KKoxAMf08iXT+aeGotMAB82deNnKCjciRENbFKXNuKLaecKH9qSo7rXsUBJdl9eWQ==}
     dev: false
 
   /@microflash/rehype-slugify@1.0.0:
