@@ -31,9 +31,12 @@ const logoAlt = `${new URL(siteInfo.siteBase).host}'s logo'`;
 			<Icon name="arrow-up"/>
 		</a>
 	</nav>
-	<nav class="navbar-tertiary">
-		<a onclick="document.dispatchEvent(new Event('opensearch'))" class="button-link" title="Launch CommandBar">
-			<Icon name="search"/>
-		</a>
-	</nav>
+	<nav class="navbar-tertiary"></nav>
 </header>
+
+<script>
+let navbarTertiary = document.querySelector(".navbar-tertiary");
+if (navbarTertiary) {
+	navbarTertiary.innerHTML = `<a onclick="document.dispatchEvent(new Event('opensearch'))" class="button-link" title="Launch CommandBar"><svg role="img" class="icon" aria-hidden="true"><use href="#search"/></svg></a>`
+}
+</script>
