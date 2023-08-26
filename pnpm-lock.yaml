@@ -21,8 +21,8 @@ dependencies:
     specifier: ^1.6.0
     version: 1.6.0
   '@microflash/remark-figure-caption':
-    specifier: ^1.0.1
-    version: 1.0.1
+    specifier: ^1.0.2
+    version: 1.0.2
   '@sindresorhus/slugify':
     specifier: ^2.2.1
     version: 2.2.1
@@ -1396,8 +1396,8 @@ packages:
       - supports-color
     dev: false
 
-  /@microflash/remark-figure-caption@1.0.1:
-    resolution: {integrity: sha512-jCGpE+qeVLMbwfxb98e6Xq/eAygggFziUGvaEna2SU7CTP817735Envnm0pF08rxCxmsHiZUAkCeFf4djo8//g==}
+  /@microflash/remark-figure-caption@1.0.2:
+    resolution: {integrity: sha512-kJIsblITH0+oTDGo4FArsaLVf2fykgwCxNWko/9c6FdWfkFlgosB/F0p6sTA3MYe/D69lBlAI17QKoDMGwmmCg==}
     dependencies:
       hast-util-whitespace: 2.0.1
       remark-parse: 10.0.2
