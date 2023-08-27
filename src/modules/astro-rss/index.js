@@ -5,8 +5,7 @@ import remarkGfm from "remark-gfm";
 import remarkSmartypants from "remark-smartypants";
 import remarkDirective from "remark-directive";
 import remarkCalloutDirectives from "@microflash/remark-callout-directives";
-import remarkYoutubeDirective from "../remark-youtube-directive/index.js";
-import remarkTimeDirective from "../remark-time-directive/index.js";
+import remarkCustomDirectives from "../remark-custom-directives/index.js";
 import remarkRehype from "remark-rehype";
 import rehypeFigure from "@microflash/rehype-figure";
 import rehypeStringify from "rehype-stringify";
@@ -25,8 +24,7 @@ async function process(markdown) {
 		.use(remarkGfm)
 		.use(remarkSmartypants)
 		.use(remarkDirective)
-		.use(remarkYoutubeDirective)
-		.use(remarkTimeDirective)
+		.use(remarkCustomDirectives)
 		.use(remarkCalloutDirectives, {
 			callouts: {
 				note: { tagName: "div" },

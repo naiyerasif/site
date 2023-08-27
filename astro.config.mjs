@@ -7,8 +7,7 @@ import rehypeFigure from "@microflash/rehype-figure";
 import rehypeSlugify from "@microflash/rehype-slugify";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeStarryNight from "@microflash/rehype-starry-night";
-import remarkYoutubeDirective from "./src/modules/remark-youtube-directive/index.js";
-import remarkTimeDirective from "./src/modules/remark-time-directive/index.js";
+import remarkCustomDirectives from "./src/modules/remark-custom-directives/index.js";
 import siteInfo from "./src/modules/website/index.js";
 import { CountableSlugifier } from "./src/modules/slugifier/index.js";
 
@@ -43,8 +42,7 @@ export default defineConfig({
 		syntaxHighlight: false,
 		remarkPlugins: [
 			remarkDirective,
-			remarkYoutubeDirective,
-			remarkTimeDirective,
+			remarkCustomDirectives,
 			[
 				remarkCalloutDirectives,
 				{
