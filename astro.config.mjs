@@ -1,9 +1,9 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
-import remarkFigureCaption from "@microflash/remark-figure-caption";
 import remarkDirective from "remark-directive";
 import remarkCalloutDirectives from "@microflash/remark-callout-directives";
 import rehypeExternalLinks from "rehype-external-links";
+import rehypeFigure from "@microflash/rehype-figure";
 import rehypeSlugify from "@microflash/rehype-slugify";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeStarryNight from "@microflash/rehype-starry-night";
@@ -42,12 +42,6 @@ export default defineConfig({
 	markdown: {
 		syntaxHighlight: false,
 		remarkPlugins: [
-			[
-				remarkFigureCaption,
-				{
-					figureClassName: "figure"
-				}
-			],
 			remarkDirective,
 			remarkYoutubeDirective,
 			remarkTimeDirective,
@@ -70,6 +64,7 @@ export default defineConfig({
 			]
 		],
 		rehypePlugins: [
+			[rehypeFigure, { className: "figure" }],
 			[
 				rehypeExternalLinks,
 				{

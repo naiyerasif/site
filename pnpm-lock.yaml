@@ -11,6 +11,9 @@ dependencies:
   '@microflash/preset':
     specifier: ^1.0.1
     version: 1.0.1
+  '@microflash/rehype-figure':
+    specifier: ^1.0.0
+    version: 1.0.0
   '@microflash/rehype-slugify':
     specifier: ^1.0.0
     version: 1.0.0
@@ -20,9 +23,6 @@ dependencies:
   '@microflash/remark-callout-directives':
     specifier: ^1.6.0
     version: 1.6.0
-  '@microflash/remark-figure-caption':
-    specifier: ^1.0.2
-    version: 1.0.2
   '@sindresorhus/slugify':
     specifier: ^2.2.1
     version: 2.2.1
@@ -1367,6 +1367,15 @@ packages:
     resolution: {integrity: sha512-S2vOUvCu9OPGnKwZFDyK+KKoxAMf08iXT+aeGotMAB82deNnKCjciRENbFKXNuKLaecKH9qSo7rXsUBJdl9eWQ==}
     dev: false
 
+  /@microflash/rehype-figure@1.0.0:
+    resolution: {integrity: sha512-iVuzNiEBgujJnNlmpxbvEOfRk/4P48LlxosC/d7OKVKQRw8qj8uj81+axwhDECcbehIe686tPc+ZydcCtV7RTw==}
+    dependencies:
+      hast-util-whitespace: 2.0.1
+      hastscript: 7.2.0
+      unist-util-remove: 3.1.1
+      unist-util-visit: 4.1.2
+    dev: false
+
   /@microflash/rehype-slugify@1.0.0:
     resolution: {integrity: sha512-pp9LB4zp8cxF+Pf6oXNpqCMNXAmFKeIP9Ab6MOb/SrzxDvGfi0O2RZwG7znXh7dmVgYa0//Dte4X5kcIf+G3/w==}
     dependencies:
@@ -1391,18 +1400,6 @@ packages:
       defu: 6.1.2
       hastscript: 7.2.0
       mdast-util-from-markdown: 1.3.1
-      unist-util-visit: 4.1.2
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /@microflash/remark-figure-caption@1.0.2:
-    resolution: {integrity: sha512-kJIsblITH0+oTDGo4FArsaLVf2fykgwCxNWko/9c6FdWfkFlgosB/F0p6sTA3MYe/D69lBlAI17QKoDMGwmmCg==}
-    dependencies:
-      hast-util-whitespace: 2.0.1
-      remark-parse: 10.0.2
-      unified: 10.1.2
-      unist-util-remove: 3.1.1
       unist-util-visit: 4.1.2
     transitivePeerDependencies:
       - supports-color

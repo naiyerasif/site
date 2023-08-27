@@ -3,12 +3,12 @@ import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
 import remarkSmartypants from "remark-smartypants";
-import remarkFigureCaption from "@microflash/remark-figure-caption";
 import remarkDirective from "remark-directive";
 import remarkCalloutDirectives from "@microflash/remark-callout-directives";
 import remarkYoutubeDirective from "../remark-youtube-directive/index.js";
 import remarkTimeDirective from "../remark-time-directive/index.js";
 import remarkRehype from "remark-rehype";
+import rehypeFigure from "@microflash/rehype-figure";
 import rehypeStringify from "rehype-stringify";
 import { fullLink } from "~website";
 
@@ -24,7 +24,6 @@ async function process(markdown) {
 		.use(remarkParse)
 		.use(remarkGfm)
 		.use(remarkSmartypants)
-		.use(remarkFigureCaption)
 		.use(remarkDirective)
 		.use(remarkYoutubeDirective)
 		.use(remarkTimeDirective)
@@ -43,6 +42,7 @@ async function process(markdown) {
 			}
 		})
 		.use(remarkRehype, { allowDangerousHtml: true })
+		.use(rehypeFigure)
 		.use(rehypeStringify, { allowDangerousHtml: true })
 		.process(markdown);
 	
