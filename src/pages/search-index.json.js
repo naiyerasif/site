@@ -29,10 +29,8 @@ const defaults = [
 	}
 ];
 
-export async function get() {
+export async function GET() {
 	const posts = (await getCollection("post"))
 		.map(post => ({ title: encode(post.data.title), tags: post.data.tags, path: postPathname(post.slug) }));
-	return {
-		body: JSON.stringify([...defaults, ...posts]),
-	};
+	return new Response(JSON.stringify([...defaults, ...posts]));
 }

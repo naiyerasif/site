@@ -58,7 +58,5 @@ export default async function(items, options) {
 		feedProcessor.addItem(item);
 	}
 
-	return {
-		body: feedProcessor.rss2(),
-	};
+	return new Response(feedProcessor.rss2());
 }

@@ -19,7 +19,6 @@ export default defineConfig({
 	server: {
 		port: 8080
 	},
-	scopedStyleStrategy: "class",
 	integrations: [sitemap({
 		filter: page =>
 			page !== `${siteInfo.siteBase}/search-index.json/` &&

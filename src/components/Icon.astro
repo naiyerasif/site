@@ -8,7 +8,7 @@ const { "class": classValues = "", ...otherAttribs } = attribs;
 const attributes = otherAttribs || {};
 const ariaHidden = !alt;
 const id = !ariaHidden ? slugify(alt) : null;
-const classList = new Set([ "icon", ...classValues.split(" ") ]);
+const classList = [ "icon", ...classValues.split(" ") ];
 
 if (id) {
 	attributes["aria-labelledby"] = id;

@@ -18,7 +18,7 @@ const options = {
 	}
 };
 
-export async function get() {
+export async function GET() {
 	const posts = (await getCollection("post"))
 		.sort((p1, p2) => compare(p1.data.date, p2.data.date))
 		.slice(0, siteInfo.maxFeedItems)
