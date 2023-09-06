@@ -9,7 +9,7 @@ category: "status"
 Today, [Node.js 20.6.0](https://github.com/nodejs/node/issues/49497) broke the build for this blog and I thought I'd just downgrade to the previously working version with the following command.
 
 ```sh prompt{1}
-brew install node@20.5.9
+brew install node@20.5.1
 ```
 
 Except that this doesn't work, unlike [scoop](https://scoop.sh/) on Windows.
