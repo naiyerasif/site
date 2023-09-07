@@ -1,5 +1,8 @@
+artifactory
 changeset
 [Cc]odeblock|[Cc]odeblocks
 [Mm]onorepo
+[Pp]ostgres
 [Rr]ebase|[Rr]ebasing
+[Tt]estcontainers
 [Uu]secase|[Uu]secases
