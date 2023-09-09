@@ -123,6 +123,10 @@
 		border-radius: inherit;
 	}
 
+	&-iframe-container + figcaption {
+		margin-block-start: var(--gap-site-vertical);
+	}
+
 	&-iframe {
 		position: absolute;
 		inset-block-start: 0;
