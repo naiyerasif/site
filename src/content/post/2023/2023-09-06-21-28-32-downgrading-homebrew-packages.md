@@ -6,7 +6,7 @@ update: 2023-09-06 21:28:32
 category: "status"
 ---
 
-Today, [Node.js 20.6.0](https://github.com/nodejs/node/issues/49497) broke the build for this blog and I thought I'd just downgrade to the previously working version with the following command.
+Today, Node.js 20.6.0 [broke the build](https://github.com/nodejs/node/issues/49497) for this blog and I thought I'd just downgrade to the previously working version with the following command.
 
 ```sh prompt{1}
 brew install node@20.5.1
