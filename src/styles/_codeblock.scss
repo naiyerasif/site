@@ -37,7 +37,9 @@
 
 	pre {
 		background-color: transparent;
-		border: none;
+		border-image: 
+			radial-gradient(#0000 71%, var(--border-site-codeblock) 72%)
+			49.9%/var(--radius-site-small);
 		overflow-x: auto;
 
 		& > code {
