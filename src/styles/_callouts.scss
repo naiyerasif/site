@@ -26,7 +26,7 @@
 		align-items: center;
 		color: var(--color-site-interaction-base);
 		background: var(--border-color-site-callout);
-		padding: 0.5ch var(--gap-site-callout) 1ch 1ch;
+		padding: 0.2ch 0.5ch 0.6ch;
 	}
 
 	&-title {
@@ -40,6 +40,9 @@
 	&-content {
 		--gap-site-vertical: 1rem;
 		padding: var(--gap-site-callout);
+		border-image: 
+			radial-gradient(#0000 71%, var(--border-color-site-callout) 72%)
+			49.9%/var(--radius-site-small);
 	}
 }
 
