@@ -1,17 +1,5 @@
 @use "./mixins";
 
-@media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolution: 2dppx) {
-	:where(html) {
-		-moz-osx-font-smoothing: grayscale;
-		-webkit-font-smoothing: antialiased;
-	}
-
-	:where(code, kbd, samp, tt, pre) {
-		-moz-osx-font-smoothing: auto;
-		-webkit-font-smoothing: auto;
-	}
-}
-
 // hide undefined custom elements
 :not(:defined) {
 	visibility: hidden;
@@ -46,10 +34,6 @@
 :where(pre, code) {
 	cursor: auto;
 	touch-action: auto;
-}
-
-.stress {
-	font-weight: var(--font-weight-site-medium);
 }
 
 .headline {

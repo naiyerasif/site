@@ -29,10 +29,6 @@
 		padding: 0.2ch 0.5ch 0.6ch;
 	}
 
-	&-title {
-		font-weight: var(--font-weight-site-medium);
-	}
-
 	&-hint + &-title {
 		margin-inline-start: 0.5ch;
 	}

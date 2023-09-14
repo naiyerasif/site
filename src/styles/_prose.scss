@@ -170,7 +170,7 @@
 }
 
 :where(b, strong) {
-	font-weight: var(--font-weight-site-bold);
+	font-weight: var(--font-weight-site-semibold);
 	color: var(--color-site-stress);
 }
 
@@ -255,7 +255,7 @@
 }
 
 :is(h1, h2, h3, h4, h5, h6) {
-	font-weight: var(--font-weight-site-bold);
+	font-weight: var(--font-weight-site-semibold);
 	// enable optical sizing
 	font-variation-settings: "opsz" 28;
 	color: var(--color-site-stress);
@@ -313,7 +313,7 @@
 }
 
 :where(dt) {
-	font-weight: var(--font-weight-site-bold);
+	font-weight: var(--font-weight-site-semibold);
 }
 
 :where(code, kbd, samp, tt, pre) {
@@ -353,7 +353,7 @@
 }
 
 :where(th) {
-	font-weight: var(--font-weight-site-medium);
+	font-weight: var(--font-weight-site-semibold);
 }
 
 :where(th, td) {

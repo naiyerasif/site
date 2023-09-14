@@ -37,7 +37,7 @@ main {
 		opacity: 0.6;
 	}
 
-	.stress::first-letter {
+	.hint::first-letter {
 		text-transform: capitalize;
 	}
 }
@@ -70,7 +70,7 @@ main {
 		max-inline-size: var(--max-width-site-base);
 		margin-inline: auto;
 
-		& > .stress,
+		& > .nav-link,
 		& > theme-switcher {
 			display: none;
 		}
@@ -180,23 +180,15 @@ main {
 
 	&-header {
 		font-size: var(--text-site-subheadline);
-		font-weight: var(--font-weight-site-medium);
-	}
-
-	&-body {
-		font-size: var(--text-site-small);
+		font-weight: var(--font-weight-site-semibold);
 	}
 
 	&.status {
 		overflow: auto;
 
 		.card-body {
-			--gap-site-vertical: var(--gap-site-small);
-
-			font-size: var(--text-site-base);
-
 			.highlight:not(:last-child) {
-				margin-block-end: var(--gap-site-small);
+				margin-block-end: var(--gap-site-vertical);
 			}
 		}
 	}
@@ -208,6 +200,11 @@ main {
 
 	&[onclick] {
 		outline-offset: -0.25em;
+
+		.card-body {
+			font-size: var(--text-site-small);
+			color: var(--color-site-subtle);
+		}
 
 		&:is(:focus, :focus-within, :hover, :active) {
 			background-color: var(--background-site-subtle);
@@ -241,7 +238,6 @@ main {
 .toc {
 	grid-column: popout;
 	margin-block-end: var(--gap-site-base);
-	font-weight: var(--font-weight-site-medium);
 
 	&-header {
 		text-transform: uppercase;
@@ -268,7 +264,7 @@ main {
 }
 
 .content-recommendations {
-	font-weight: var(--font-weight-site-medium);
+	font-weight: var(--font-weight-site-semibold);
 	margin-block-start: var(--gap-site-medium);
 
 	& > * + * {
@@ -334,7 +330,7 @@ main {
 		justify-content: center;
 
 		&.active {
-			font-weight: var(--font-weight-site-medium);
+			font-weight: var(--font-weight-site-semibold);
 		}
 	}
 
@@ -361,8 +357,9 @@ main {
 			text-align: center;
 		}
 
-		.stress.tagline {
+		.tagline {
 			font-size: calc(1.25rem + 1vw);
+			font-weight: var(--font-weight-site-semibold);
 			margin-block-end: 1rem;
 		}
 

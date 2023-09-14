@@ -101,7 +101,6 @@ kbd {
 .command-bar-section-header {
 	background-color: var(--background-site-note);
 	font-size: var(--text-site-small);
-	font-weight: var(--font-weight-site-medium);
 	color: var(--color-site-note);
 	line-height: 1;
 	padding: 0.5rem 1rem;

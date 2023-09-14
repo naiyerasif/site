@@ -214,16 +214,15 @@
 	--family-site-code: var(--family-site-mono);
 
 	--font-weight-site-regular: 400;
-	--font-weight-site-medium: 500;
-	--font-weight-site-bold: 700;
+	--font-weight-site-semibold: 600;
 
 	--max-width-site-base: calc(60rem + 10vw);
 	--max-width-site-content: 65ch;
 
 	--gap-site-small: 1rem;
 	--gap-site-base: 2rem;
-	--gap-site-medium: calc(48px + 2vw);
-	--gap-site-large: calc(60px + 3vw);
+	--gap-site-medium: calc(24px + 3vw);
+	--gap-site-large: calc(30px + 4vw);
 
 	--gap-site-body: var(--gap-site-base);
 	--gap-site-vertical: var(--gap-site-base);

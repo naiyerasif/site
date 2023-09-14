@@ -14,11 +14,11 @@ const logoAlt = `${new URL(siteInfo.siteBase).host}'s logo'`;
 			<img src="/favicon.svg" alt={logoAlt}>
 		</a>
 		<Icon name="chevron-right" class="gap-start-small"/>
-		<div class="stress">{hint}</div>
+		<div class="hint">{hint}</div>
 	</div>
 	<nav class="navbar-secondary">
-		<a href="/posts/" class="stress">Posts</a>
-		<a href="/about/" class="stress">About</a>
+		<a href="/posts/" class="nav-link">Posts</a>
+		<a href="/about/" class="nav-link">About</a>
 		<ThemeSwitcher/>
 		<a href="/" title="Home" class="bottom-bar-item">
 			<Icon name="site"/>
