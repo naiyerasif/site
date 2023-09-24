@@ -51,6 +51,7 @@ function keydown(event) {
         if (button instanceof HTMLElement) {
             event.preventDefault();
             copy(button);
+            toggleTextLabel(button);
         }
     }
 }

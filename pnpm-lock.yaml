@@ -18,8 +18,8 @@ dependencies:
     specifier: ^1.0.0
     version: 1.0.0
   '@microflash/rehype-starry-night':
-    specifier: ^2.1.1
-    version: 2.1.1
+    specifier: ^3.0.0
+    version: 3.0.0
   '@microflash/remark-callout-directives':
     specifier: ^1.6.0
     version: 1.6.0
@@ -1242,13 +1242,13 @@ packages:
       unist-util-visit: 4.1.2
     dev: false
 
-  /@microflash/rehype-starry-night@2.1.1:
-    resolution: {integrity: sha512-5Wx8fPI2zMUl9yP+N6wJh3G4BuFwEweo8lwm/79zRnq38yWbJjBjfmLg66FSxkMup+EV8N5JjDKLf+p5HxvMgA==}
+  /@microflash/rehype-starry-night@3.0.0:
+    resolution: {integrity: sha512-JEmR8kD/uwdP7C+kXVaNyEqmEahGCN1Lea+43tFLinrmVsYOLHm0rPuONVDBK5gwn2V7r/rY8mv+f5qzrRuK1A==}
     dependencies:
       '@microflash/fenceparser': 2.6.2
-      '@wooorm/starry-night': 1.7.0
-      hast-util-to-string: 2.0.0
-      unist-util-visit: 4.1.2
+      '@wooorm/starry-night': 3.0.0
+      hast-util-to-string: 3.0.0
+      unist-util-visit: 5.0.0
     dev: false
 
   /@microflash/remark-callout-directives@1.6.0:
@@ -1836,12 +1836,12 @@ packages:
     resolution: {integrity: sha512-7OjdcV8vQ74eiz1TZLzZP4JwqM5fA94K6yntPS5Z25r9HDuGNzaGdgvwKYq6S+MxwF0TFRwe50fIR/MYnakdkQ==}
     dev: true
 
-  /@wooorm/starry-night@1.7.0:
-    resolution: {integrity: sha512-ktO0nkddrovIoNW2jAUT+Cdd9n1bWjy1Ir4CdcmgTaT6E94HLlQfu7Yv62falclBEwvsuVp3bSBw23wtta1fNw==}
+  /@wooorm/starry-night@3.0.0:
+    resolution: {integrity: sha512-9bS69LSlh7btL0zP4nkgt2m+yfVCimBmCHfzhDuqC/gYK592n205YKNED/Ax9HwaqtjmZN0LzpAKJjppGFvzKw==}
     dependencies:
-      '@types/hast': 2.3.4
-      import-meta-resolve: 2.2.2
-      vscode-oniguruma: 1.7.0
+      '@types/hast': 3.0.0
+      import-meta-resolve: 3.0.0
+      vscode-oniguruma: 2.0.1
       vscode-textmate: 9.0.0
     dev: false
 
@@ -3573,6 +3573,12 @@ packages:
       '@types/hast': 2.3.4
     dev: false
 
+  /hast-util-to-string@3.0.0:
+    resolution: {integrity: sha512-OGkAxX1Ua3cbcW6EJ5pT/tslVb90uViVkcJ4ZZIMW/R33DX/AkcJcRrPebPwJkHYwlDHXz4aIwvAAaAdtrACFA==}
+    dependencies:
+      '@types/hast': 3.0.0
+    dev: false
+
   /hast-util-whitespace@2.0.1:
     resolution: {integrity: sha512-nAxA0v8+vXSBDt3AnRUNjyRIQ0rD+ntpbAp4LnPkumc5M9yUbSMa4XDU9Q6etY4f1Wp4bNgvc1yjiZtsTTrSng==}
     dev: false
@@ -3726,10 +3732,6 @@ packages:
       parent-module: 1.0.1
       resolve-from: 4.0.0
     dev: true
-
-  /import-meta-resolve@2.2.2:
-    resolution: {integrity: sha512-f8KcQ1D80V7RnqVm+/lirO9zkOxjGxhaTC1IPrBGd3MEfNgmNG67tSUO9gTi2F3Blr2Az6g1vocaxzkVnWl9MA==}
-    dev: false
 
   /import-meta-resolve@3.0.0:
     resolution: {integrity: sha512-4IwhLhNNA8yy445rPjD/lWh++7hMDOml2eHtd58eG7h+qK3EryMuuRbsHGPikCoAgIkkDnckKfWSk2iDla/ejg==}
@@ -6968,6 +6970,10 @@ packages:
 
   /vscode-oniguruma@1.7.0:
     resolution: {integrity: sha512-L9WMGRfrjOhgHSdOYgCt/yRMsXzLDJSL7BPrOZt73gU0iWO4mpqzqQzOz5srxqTvMBaR0XZTSrVWo4j55Rc6cA==}
+    dev: false
+
+  /vscode-oniguruma@2.0.1:
+    resolution: {integrity: sha512-poJU8iHIWnC3vgphJnrLZyI3YdqRlR27xzqDmpPXYzA93R4Gk8z7T6oqDzDoHjoikA2aS82crdXFkjELCdJsjQ==}
     dev: false
 
   /vscode-textmate@8.0.0:

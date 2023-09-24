@@ -9,13 +9,6 @@
 		margin-block-end: var(--gap-site-body);
 	}
 
-	&:focus-within {
-		outline-color: var(--color-site-outline-form-base);
-		outline-style: solid;
-		outline-width: var(--thickness-site-outline-form);
-		outline-offset: 0;
-	}
-
 	&-header {
 		display: flex;
 		align-items: flex-start;
@@ -35,12 +28,25 @@
 		border-radius: var(--radius-site-small);
 	}
 
+	clipboard-copy {
+		margin-inline-start: auto;
+		padding: 0.1ch 0.7ch;
+		font-size: 0.75rem;
+	}
+
 	pre {
 		background-color: transparent;
 		border-image: 
 			radial-gradient(#0000 71%, var(--border-site-codeblock) 72%)
 			49.9%/var(--radius-site-small);
 		overflow-x: auto;
+
+		&:focus-within {
+			outline-color: var(--color-site-outline-form-base);
+			outline-style: solid;
+			outline-width: var(--thickness-site-outline-form);
+			outline-offset: 0;
+		}
 
 		& > code {
 			display: grid;

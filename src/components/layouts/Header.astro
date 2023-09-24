@@ -35,6 +35,7 @@ const logoAlt = `${new URL(siteInfo.siteBase).host}'s logo'`;
 </header>
 
 <script>
+import "../../modules/clipboard-copy/index.js";
 let navbarTertiary = document.querySelector(".navbar-tertiary");
 if (navbarTertiary) {
 	navbarTertiary.innerHTML = `<a onclick="document.dispatchEvent(new Event('opensearch'))" class="button-link" title="Launch CommandBar"><svg role="img" class="icon" aria-hidden="true"><use href="#search"/></svg></a>`

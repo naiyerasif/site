@@ -7,6 +7,8 @@ import rehypeFigure from "@microflash/rehype-figure";
 import rehypeSlugify from "@microflash/rehype-slugify";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeStarryNight from "@microflash/rehype-starry-night";
+import rehypeStarryNightHeaderCaptionExtension from "@microflash/rehype-starry-night/header-caption-extension";
+import rehypeStarryNightHeaderLanguageExtension from "@microflash/rehype-starry-night/header-language-extension";
 import remarkCustomDirectives from "./src/modules/remark-custom-directives/index.js";
 import siteInfo from "./src/modules/website/index.js";
 import { CountableSlugifier } from "./src/modules/slugifier/index.js";
@@ -111,7 +113,24 @@ export default defineConfig({
 						conf: "ini",
 						json: "jsonc",
 						log: "sh"
-					}
+					},
+					headerExtensions: [
+						rehypeStarryNightHeaderLanguageExtension,
+						rehypeStarryNightHeaderCaptionExtension,
+						(headerOptions, children) => {
+							children.push({
+								type: "element",
+								tagName: "clipboard-copy",
+								properties: { className: ["highlight-copy"], for: headerOptions.id },
+								children: [
+									{
+										type: "text",
+										value: "Copy"
+									}
+								]
+							})
+						}
+					]
 				}
 			]
 		]

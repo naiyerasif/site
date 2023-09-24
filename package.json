@@ -16,7 +16,7 @@
 		"@microflash/preset": "^1.0.1",
 		"@microflash/rehype-figure": "^2.0.0",
 		"@microflash/rehype-slugify": "^1.0.0",
-		"@microflash/rehype-starry-night": "^2.1.1",
+		"@microflash/rehype-starry-night": "^3.0.0",
 		"@microflash/remark-callout-directives": "^1.6.0",
 		"@sindresorhus/slugify": "^2.2.1",
 		"astro": "^3.1.2",
