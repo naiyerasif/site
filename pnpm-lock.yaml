@@ -86,8 +86,8 @@ devDependencies:
     specifier: ^4.0.0
     version: 4.0.0
   puppeteer:
-    specifier: ^21.3.3
-    version: 21.3.3
+    specifier: ^21.3.4
+    version: 21.3.4
   unist-util-visit:
     specifier: ^5.0.0
     version: 5.0.0
@@ -5752,8 +5752,8 @@ packages:
       - utf-8-validate
     dev: true
 
-  /puppeteer-core@21.3.3:
-    resolution: {integrity: sha512-3Y8uwUnkUD5rKQ/WL6rtD4k70E10ke/j1k65sQArFHrv4TLra8+QQy7J3DvElBU8iJLMYz6UtsHBm2O0esVbGA==}
+  /puppeteer-core@21.3.4:
+    resolution: {integrity: sha512-iaG7ScTXOm9hlsBTBGGtr5dAAsA8IiWTx8E0Ghr0b5Ntl42bdcPS8EXjcERKocDhua2YqdlnFGs/cBxHY+VNyA==}
     engines: {node: '>=16.3.0'}
     dependencies:
       '@puppeteer/browsers': 1.7.1
@@ -5785,14 +5785,14 @@ packages:
       - utf-8-validate
     dev: true
 
-  /puppeteer@21.3.3:
-    resolution: {integrity: sha512-1JxiIH0v01LjApU6mKtE/NmVmosOhzNLD63U9zBdC/04zbuOo+UONQ3VkvkK2wKE26YCJTkK1z6fCH46qEZcNA==}
+  /puppeteer@21.3.4:
+    resolution: {integrity: sha512-kE67k1KR6hQs3g0Yf/i3GYOhTU8zC2dtcpHhtcSC9bGoVxRgqDo/hwVkDqlNKxJsJHuVX+qviWC7F0FdSjcFTA==}
     engines: {node: '>=16.3.0'}
     requiresBuild: true
     dependencies:
       '@puppeteer/browsers': 1.7.1
       cosmiconfig: 8.3.6
-      puppeteer-core: 21.3.3
+      puppeteer-core: 21.3.4
     transitivePeerDependencies:
       - bufferutil
       - encoding
