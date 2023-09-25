@@ -29,6 +29,7 @@ const category = data.category;
 const url = Astro.url.pathname;
 const prevPage = prev ? postPathname(prev.slug) : undefined;
 const nextPage = next ? postPathname(next.slug) : undefined;
+const hasRecommendations = prevPage || nextPage;
 const timeToRead = readingTime(post.body).readingTime;
 const showUpdate = compare(data.update, data.date) !== 0;
 const showReadingTime = timeToRead > 0;
@@ -62,7 +63,7 @@ const pageInfo = {
 			<Toc headings={toc(headings, siteInfo.maxTocDepth)}/>
 		</nav>}
 		<Content/>
-		<div class="content-recommendations">
+		{hasRecommendations && <div class="content-recommendations">
 			{prevPage && 
 				<div class="content-recommendation">
 					<div class="decorator">
@@ -85,7 +86,7 @@ const pageInfo = {
 					</div>
 				</div>
 			}
-		</div>
+		</div>}
 	</article>
 	<div slot="sidekick" class="sidekick-panels">
 		<ActionPanel {pageInfo}/>
