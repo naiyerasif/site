@@ -6,6 +6,11 @@ const postCollection = defineCollection({
 	schema: postSchema
 });
 
+const archiveCollection = defineCollection({
+	type: "content",
+	schema: postSchema
+});
+
 const profileCollection = defineCollection({
 	type: "content",
 	schema: profileSchema
@@ -18,6 +23,7 @@ const pageCollection = defineCollection({
 
 export const collections = {
 	"post": postCollection,
+	"archive": archiveCollection,
 	"profile": profileCollection,
 	"page": pageCollection,
 };

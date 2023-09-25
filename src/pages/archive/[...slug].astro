@@ -1,0 +1,94 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "~layouts/Layout.astro";
+import Icon from "~components/Icon.astro";
+import SharePanel from "~components/SharePanel.astro";
+import ActionPanel from "~components/ActionPanel.astro";
+import Toc from "~components/Toc.astro";
+import Time from "~components/Time.astro";
+import format, { compare, format_date } from "~datetime";
+import readingTime from "~reading-time";
+import toc from "~toc";
+import siteInfo, { postPathname } from "~website";
+
+export async function getStaticPaths() {
+	const posts = await getCollection("archive");
+	return posts.sort((p1, p2) => compare(p1.data.date, p2.data.date))
+		.map((post, index, posts) => ({ post: post, prev: posts[index - 1], next: posts[index + 1] }))
+		.map(entry => ({
+			params: { slug: entry.post.slug },
+			props: { entry }
+		}));
+}
+
+const { entry } = Astro.props;
+const { post, prev, next } = entry;
+const { data, render } = post;
+const { Content, headings } = await render();
+const category = data.category;
+const url = Astro.url.pathname;
+const prevPage = prev ? postPathname(prev.slug) : undefined;
+const nextPage = next ? postPathname(next.slug) : undefined;
+const timeToRead = readingTime(post.body).readingTime;
+const showUpdate = compare(data.update, data.date) !== 0;
+const showReadingTime = timeToRead > 0;
+
+const pageInfo = {
+	hint: category,
+	title: `${data.title} (Archived)`,
+	description: data.description,
+	url,
+	source: `src/content/post/${post.id}`,
+	type: "article",
+	published: format(data.date, format_date),
+	updated: showUpdate ? format(data.update, format_date) : undefined,
+	previous: prevPage,
+	next: nextPage,
+	timeToRead: showReadingTime ? timeToRead : undefined
+};
+---
+
+<Layout {pageInfo}>
+	<div class="hero-post" slot="hero">
+		<h1 class="headline">{data.title}</h1>
+		{data.tagline && <p class="subheadline">{data.tagline}</p>}
+		<div class="hero-post-details">
+			<Time date={data.date} />{showUpdate && <span class="update">updated on <Time date={data.update} /></span>}{category !== "status" && showReadingTime && <span>~{`${timeToRead} min read`}</span><mark>Archived</mark>}
+		</div>
+	</div>
+	<article class="content">
+		{headings && headings.length > 0 && <nav class="toc">
+			<div class="toc-header">Table of Contents</div>
+			<Toc headings={toc(headings, siteInfo.maxTocDepth)}/>
+		</nav>}
+		<Content/>
+		<div class="content-recommendations">
+			{prevPage && 
+				<div class="content-recommendation">
+					<div class="decorator">
+						<Icon name="arrow-left"/>
+					</div>
+					<div class="navigator">
+						<div class="hint">Previous</div>
+						<a href={prevPage}>{prev.data.title}</a>
+					</div>
+				</div>
+			}
+			{nextPage && 
+				<div class="content-recommendation">
+					<div class="decorator">
+						<Icon name="arrow-right"/>
+					</div>
+					<div class="navigator">
+						<div class="hint">Next</div>
+						<a href={nextPage}>{next.data.title}</a>
+					</div>
+				</div>
+			}
+		</div>
+	</article>
+	<div slot="sidekick" class="sidekick-panels">
+		<ActionPanel {pageInfo}/>
+		<SharePanel {pageInfo}/>
+	</div>
+</Layout>

@@ -9,5 +9,6 @@ Disallow: /
 
 User-agent: *
 Allow: /
+Disallow: /archive/
 
 Sitemap: https://www.naiyerasif.com/sitemap-index.xml
