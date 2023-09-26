@@ -21,13 +21,14 @@ const options = {
 export async function GET() {
 	const posts = (await getCollection("post"))
 		.filter(post => post.data.category !== "status")
-		.sort((p1, p2) => compare(p1.data.date, p2.data.date))
+		.sort((p1, p2) => compare(p1.data.update, p2.data.update))
 		.slice(0, siteInfo.maxFeedItems)
 		.map(post => {
 			const pageUrl = fullLink(postPathname(post.slug));
+			const showUpdate = compare(post.data.update, post.data.date) !== 0;
 			return {
-				title: post.data.title,
-				date: new Date(post.data.date),
+				title: showUpdate ? `[Updated] ${post.data.title}` : post.data.title,
+				date: new Date(post.data.update),
 				author: [{
 					name: author,
 					email: author,
