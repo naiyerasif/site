@@ -1,5 +1,6 @@
 artifactory
 changeset
+chatbot(s)
 [Cc]odeblock|[Cc]odeblocks
 [Mm]onorepo
 [Pp]ostgres
