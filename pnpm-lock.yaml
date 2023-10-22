@@ -9,8 +9,8 @@ dependencies:
     specifier: ^3.0.2
     version: 3.0.2
   '@microflash/preset':
-    specifier: ^1.0.1
-    version: 1.0.1
+    specifier: ^1.0.3
+    version: 1.0.3
   '@microflash/rehype-figure':
     specifier: ^2.0.0
     version: 2.0.0
@@ -1209,8 +1209,8 @@ packages:
       chevrotain: 10.5.0
     dev: false
 
-  /@microflash/preset@1.0.1:
-    resolution: {integrity: sha512-S2vOUvCu9OPGnKwZFDyK+KKoxAMf08iXT+aeGotMAB82deNnKCjciRENbFKXNuKLaecKH9qSo7rXsUBJdl9eWQ==}
+  /@microflash/preset@1.0.3:
+    resolution: {integrity: sha512-ggP11ZhpgSVhuOpWL9Xlst2LcVolHFfkTon/T7yvRm/AMRty4CFWugzIxgCoGuNf2G+n8gU4WY9m0DTVQ/06Og==}
     dev: false
 
   /@microflash/rehype-figure@2.0.0:
