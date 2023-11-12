@@ -19,7 +19,7 @@
 		"@microflash/rehype-starry-night": "^3.0.0",
 		"@microflash/remark-callout-directives": "^1.6.0",
 		"@sindresorhus/slugify": "^2.2.1",
-		"astro": "^3.5.2",
+		"astro": "^3.5.3",
 		"dayjs": "^1.11.10",
 		"feed": "^4.2.2",
 		"postcss-combine-duplicated-selectors": "^10.0.3",
