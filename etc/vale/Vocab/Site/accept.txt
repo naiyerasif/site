@@ -6,5 +6,6 @@ chatbot(s)
 [Pp]ostgres
 priviledges
 [Rr]ebase|[Rr]ebasing
+[Ss]pringdoc
 [Tt]estcontainers
 [Uu]secase|[Uu]secases
