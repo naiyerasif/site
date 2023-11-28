@@ -253,7 +253,7 @@ Since `OpenAPIProperties` allows you to control the `OpenAPI` object directly th
 
 ## Adding bearer tokens to requests
 
-On common usecase is to add a bearer token before calling an API. You can customize Swagger UI to allow you to configure a Bearer token once and use it in next requests automatically.
+One common usecase is to add a bearer token before calling an API. You can customize Swagger UI to allow you to configure a Bearer token once and use it in next requests automatically.
 
 Here's an example for to support adding a bearer token. Open `src/main/resources/application.yml` and add the highlighted configuration.
 

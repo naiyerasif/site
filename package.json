@@ -19,7 +19,7 @@
 		"@microflash/rehype-starry-night": "^3.0.0",
 		"@microflash/remark-callout-directives": "^1.6.0",
 		"@sindresorhus/slugify": "^2.2.1",
-		"astro": "^3.6.0",
+		"astro": "^3.6.1",
 		"dayjs": "^1.11.10",
 		"feed": "^4.2.2",
 		"postcss-combine-duplicated-selectors": "^10.0.3",
@@ -42,7 +42,7 @@
 		"mdast-util-to-string": "^4.0.0",
 		"puppeteer": "^21.5.2",
 		"unist-util-visit": "^5.0.0",
-		"unlighthouse-puppeteer": "^0.10.2"
+		"unlighthouse-puppeteer": "^0.10.4"
 	},
 	"browserslist": [
 		"defaults"
