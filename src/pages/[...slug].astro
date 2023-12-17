@@ -1,6 +1,9 @@
 ---
 import { getCollection } from "astro:content";
+import Icon from "~components/Icon.astro";
+import Time from "~components/Time.astro";
 import Layout from "~layouts/Layout.astro";
+import format, { compare, format_date } from "~datetime";
 
 export async function getStaticPaths() {
 	const pages = await getCollection("page");
@@ -13,20 +16,32 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { data, render } = entry;
 const { Content } = await render();
+const showUpdate = compare(data.update, data.date) !== 0;
 
 const pageInfo = {
-	hint: data.title,
 	title: data.title,
 	description: data.description,
-	url: Astro.url.pathname
+	url: Astro.url.pathname,
+	published: format(data.date, format_date),
+	updated: showUpdate ? format(data.update, format_date) : undefined,
 };
 ---
 
 <Layout {pageInfo}>
-	<div slot="hero">
-		<h1 class="headline">{data.title}</h1>
-		{data.tagline && <p class="subheadline">{data.tagline}</p>}
-	</div>
+	<Fragment slot="hero">
+		<div class="hero-header">
+			<a class="hero-back-nav" href="/"><Icon name="arrow-dash-left"/>Return to home</a>
+		</div>
+		<div class="hero-body">
+			<div class="hero-headline-text">
+				<h1 class="headline">{data.title}</h1>
+				{data.tagline && <p class="subheadline">{data.tagline}</p>}
+			</div>
+		</div>
+		<div class="hero-footer">
+			<span>Published on <Time date={data.date} /></span>{showUpdate && <span class="update">Updated on <Time date={data.update} /></span>}
+		</div>
+	</Fragment>
 	<article class="content">
 		<Content/>
 	</article>

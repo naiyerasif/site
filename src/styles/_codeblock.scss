@@ -1,36 +1,32 @@
-@use "./mixins";
+@use "mixins";
 
 .highlight {
 	background-color: var(--background-site-codeblock);
-	border: var(--thickness-site-outline-form) solid var(--border-site-codeblock);
-	border-radius: var(--radius-site-base);
-
-	&:not(:last-child) {
-		margin-block-end: var(--gap-site-body);
-	}
+	border: var(--thickness-site-md) solid var(--border-site-codeblock);
+	border-radius: var(--radius-site-og);
+	@include mixins.vertical-margin(0, var(--gap-site-body));
 
 	&-header {
 		display: flex;
-		align-items: flex-start;
+		align-items: center;
+		gap: 1ch;
 		background-color: var(--border-site-codeblock);
 		padding: 0.4ch 0.2ch 0.8ch 0.2ch;
-		font-size: var(--text-site-small);
-
-		& > *:not(:last-child) {
-			margin-inline-end: 1ch;
-		}
+		font-size: 0.7em;
 	}
 
 	&-language {
 		font-family: var(--family-site-code);
-		background-color: var(--background-site-code);
-		padding-inline: 0.75ch;
-		border-radius: var(--radius-site-small);
+		background-color: var(--background-site-codeblock);
+		padding: 0.1ch 1.2ch;
+		color: var(--color-site-assert-500);
+		border: 1px solid var(--border-site-form);
+		border-radius: var(--radius-site-xs);
 	}
 
 	clipboard-copy {
 		margin-inline-start: auto;
-		padding: 0.1ch 0.7ch;
+		padding: 0.1ch 1.2ch;
 		font-size: 0.75rem;
 	}
 
@@ -38,14 +34,14 @@
 		background-color: transparent;
 		border-image: 
 			radial-gradient(#0000 71%, var(--border-site-codeblock) 72%)
-			49.9%/var(--radius-site-small);
+			49.9%/var(--radius-site-sm);
 		overflow-x: auto;
 
 		&:focus-within {
-			outline-color: var(--color-site-outline-form-base);
+			outline-color: var(--color-site-outline);
 			outline-style: solid;
-			outline-width: var(--thickness-site-outline-form);
-			outline-offset: 0;
+			outline-width: var(--thickness-site-og);
+			outline-offset: var(--offset-site-outline);
 		}
 
 		& > code {
@@ -55,11 +51,15 @@
 	}
 
 	.line {
-		border-inline-start: var(--thickness-site-outline-interaction) solid transparent;
-		padding-inline: 1em;
+		border-inline-start: var(--thickness-site-og) solid transparent;
+		padding-inline: 1ch;
 
 		&:is(:focus:not(:focus-visible), :hover) {
-			background-color: var(--background-site-subtle);
+			background-color: var(--background-site-codeblock-active);
+
+			.line-number {
+				color: var(--color-prettylights-syntax-comment);
+			}
 		}
 
 		&-number {
@@ -70,7 +70,7 @@
 		}
 
 		&[data-highlighted] {
-			background: var(--background-site-note);
+			background: var(--background-site-codeblock-highlighted);
 			border-inline-start: 2px solid var(--color-prettylights-syntax-comment);
 
 			.line-number {
@@ -85,10 +85,7 @@
 			color: hsl(357, 63%, 58%);
 			display: inline-block;
 			user-select: none;
-			inline-size: 1em;
-			block-size: 1em;
-			min-inline-size: 1em;
-			min-block-size: 1em;
+			@include mixins.fixed-size(1em);
 		}
 	}
 }

@@ -8,7 +8,7 @@ const description = z.preprocess(val => val || siteInfo.description, z.string().
 const date = z.date();
 const update = z.date().optional();
 const image = z.preprocess(
-	val => fullLink(val || "/images/opengraph/default.png"), 
+	val => fullLink(val || siteInfo.ogImage), 
 	z.string().url()
 );
 const tagline = z.string().optional();
@@ -55,7 +55,6 @@ const pageInfoSchema = z.object({
 	title,
 	description,
 	url,
-	hint: z.string(),
 	previous: optionalUrl,
 	next: optionalUrl,
 	source: optionalEditUrl,

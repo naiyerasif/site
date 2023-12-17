@@ -2,14 +2,13 @@
 import Layout from "~layouts/Layout.astro";
 
 const pageInfo = {
-	hint: "Not found",
 	title: "404 Not found",
 	description: "Page not found",
 	url: Astro.url.pathname
 };
 ---
 
-<Layout {pageInfo} class="main glitch">
+<Layout {pageInfo} class="content glitch">
 	<div class="glitch-container">
 		<img src="/images/remix/remix-glitch.svg" alt="glitchy logo">
 	</div>

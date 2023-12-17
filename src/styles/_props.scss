@@ -1,72 +1,42 @@
 @mixin lightTheme {
 	color-scheme: light;
 
-	--background-site-accent-subtle: hsl(90, 3%, 93%);
-	--background-site-accent: hsl(90, 3%, 99%);
-	--background-site-base: hsl(285, 100%, 99%);
-	--background-site-subtle: hsl(120, 4%, 66%, 0.25);
-	--background-site-stress: hsl(148, 41%, 79%, 0.8);
-	--background-site-note: hsl(90, 7%, 88%, 0.3);
-	--background-site-commend: hsl(147, 82%, 80%, 0.3);
-	--background-site-warn: hsl(29, 82%, 87%, 0.3);
-	--background-site-deter: hsl(4, 73%, 91%, 0.3);
-	--background-site-assert: hsl(220, 91%, 92%, 0.3);
+	--color-site-canvas-400: hsl(0, 0%, 97%);
+	--color-site-canvas-500: hsl(0, 0%, 100%);
+	--color-site-canvas-600: hsl(151, 43%, 19%, 0.5);
+	--color-site-canvas-700: hsl(151, 43%, 19%, 0.35);
 
-	--background-site-link-base: hsl(120, 25%, 94%);
-	--background-site-link-active-base: hsl(127, 13%, 88%);
-	--background-site-link-note: hsl(90, 13%, 94%);
-	--background-site-link-active-note: hsl(90, 7%, 88%);
-	--background-site-link-commend: hsl(144, 93%, 89%);
-	--background-site-link-active-commend: hsl(147, 82%, 80%);
-	--background-site-link-warn: hsl(30, 81%, 94%);
-	--background-site-link-active-warn: hsl(29, 82%, 87%);
-	--background-site-link-deter: hsl(7, 74%, 95%);
-	--background-site-link-active-deter: hsl(4, 73%, 91%);
-	--background-site-link-assert: hsl(221, 90%, 96%);
-	--background-site-link-active-assert: hsl(220, 91%, 92%);
+	--color-site-accent-200: hsl(148, 37%, 59%, 0.4);
+	--color-site-accent-300: hsl(148, 37%, 59%, 0.5);
+	--color-site-accent-400: hsl(153, 43%, 22%);
+	--color-site-accent-500: hsl(151, 40%, 30%);
 
-	--color-site-link-base: hsl(152, 40%, 32%);
-	--color-site-link-active-base: hsl(151, 41%, 24%);
-	--color-site-link-note: hsl(141, 19%, 17%);
-	--color-site-link-active-note: hsl(148, 32%, 9%);
-	--color-site-link-commend: hsl(153, 47%, 15%);
-	--color-site-link-active-commend: hsl(151, 56%, 8%);
-	--color-site-link-warn: hsl(33, 77%, 15%);
-	--color-site-link-active-warn: hsl(32, 86%, 9%);
-	--color-site-link-deter: hsl(356, 73%, 22%);
-	--color-site-link-active-deter: hsl(358, 82%, 13%);
-	--color-site-link-assert: hsl(214, 68%, 21%);
-	--color-site-link-active-assert: hsl(214, 77%, 12%);
+	--color-site-note-300: hsl(0, 0%, 36%);
+	--color-site-note-400: hsl(0, 0%, 18%);
+	--color-site-note-500: hsl(0, 0%, 23%);
+	--color-site-note-600: hsl(90, 7%, 88%);
+	--color-site-note-700: hsl(90, 7%, 89%);
+	--color-site-note-800: hsl(90, 7%, 93%);
 
-	--color-site-outline-form-base: hsl(140, 8%, 55%, 0.6);
-	--color-site-outline-form-note: hsl(100, 1%, 56%, 0.6);
-	--color-site-outline-form-commend: hsl(150, 32%, 48%, 0.6);
-	--color-site-outline-form-warn: hsl(32, 54%, 49%, 0.6);
-	--color-site-outline-form-deter: hsl(0, 79%, 65%, 0.6);
-	--color-site-outline-form-assert: hsl(215, 76%, 62%, 0.6);
+	--color-site-commend-500: hsl(106, 61%, 23%);
+	--color-site-commend-600: hsl(103, 76%, 78%);
+	--color-site-commend-700: hsl(98, 77%, 93%, 0.3);
 
-	--color-site-accent-subtle: hsl(140, 8%, 55%);
-	--color-site-base: hsl(120, 2%, 23%);
-	--color-site-subtle: hsl(120, 2%, 33%);
-	--color-site-stress: hsl(120, 2%, 19%);
-	--color-site-note: hsl(130, 5%, 23%);
-	--color-site-commend: hsl(151, 43%, 19%);
-	--color-site-warn: hsl(33, 73%, 19%);
-	--color-site-deter: hsl(356, 70%, 26%);
-	--color-site-assert: hsl(214, 66%, 25%);
+	--color-site-warn-500: hsl(33, 69%, 27%);
+	--color-site-warn-600: hsl(29, 82%, 87%);
+	--color-site-warn-700: hsl(30, 81%, 94%, 0.3);
 
-	--border-site-accent-subtle: hsl(264, 3%, 68%, 0.5);
-	--border-site-base: hsl(264, 3%, 68%);
-	--border-site-subtle: hsl(90, 7%, 88%, 0.4);
-	--border-site-note: hsl(90, 3%, 77%);
-	--border-site-commend: hsl(148, 51%, 69%);
-	--border-site-warn: hsl(32, 85%, 72%);
-	--border-site-deter: hsl(4, 75%, 83%);
-	--border-site-assert: hsl(218, 89%, 82%);
+	--color-site-deter-500: hsl(356, 68%, 36%);
+	--color-site-deter-600: hsl(4, 73%, 91%);
+	--color-site-deter-700: hsl(7, 74%, 95%, 0.3);
+
+	--color-site-assert-500: hsl(213, 62%, 35%);
+	--color-site-assert-600: hsl(220, 91%, 92%);
+	--color-site-assert-700: hsl(221, 90%, 96%, 0.3);
 
 	--color-prettylights-syntax-comment: #6e7781;
 	--color-prettylights-syntax-constant: #0550ae;
-	--color-prettylights-syntax-entity: #8250df;
+	--color-prettylights-syntax-entity: #6639ba;
 	--color-prettylights-syntax-storage-modifier-import: #24292f;
 	--color-prettylights-syntax-entity-tag: #116329;
 	--color-prettylights-syntax-keyword: #cf222e;
@@ -99,68 +69,38 @@
 @mixin darkTheme {
 	color-scheme: dark;
 
-	--background-site-accent-subtle: hsl(130, 6%, 12%);
-	--background-site-accent: hsl(120, 4%, 6%);
-	--background-site-base: hsl(240, 7%, 3%);
-	--background-site-subtle: hsl(129, 4%, 32%, 0.5);
-	--background-site-stress: hsl(151, 41%, 26%, 0.8);
-	--background-site-note: hsl(130, 5%, 23%, 0.5);
-	--background-site-commend: hsl(151, 43%, 19%, 0.5);
-	--background-site-warn: hsl(33, 73%, 19%, 0.5);
-	--background-site-deter: hsl(356, 70%, 26%, 0.5);
-	--background-site-assert: hsl(214, 66%, 25%, 0.5);
+	--color-site-canvas-400: hsl(0, 0%, 7%);
+	--color-site-canvas-500: hsl(0, 0%, 0%);
+	--color-site-canvas-600: hsl(144, 93%, 89%, 0.5);
+	--color-site-canvas-700: hsl(144, 93%, 89%, 0.35);
 
-	--background-site-link-base: hsl(141, 19%, 17%);
-	--background-site-link-active-base: hsl(146, 15%, 22%);
-	--background-site-link-note: hsl(120, 2%, 19%);
-	--background-site-link-active-note: hsl(120, 2%, 23%);
-	--background-site-link-commend: hsl(153, 47%, 15%);
-	--background-site-link-active-commend: hsl(151, 43%, 19%);
-	--background-site-link-warn: hsl(33, 77%, 15%);
-	--background-site-link-active-warn: hsl(33, 73%, 19%);
-	--background-site-link-deter: hsl(356, 73%, 22%);
-	--background-site-link-active-deter: hsl(356, 70%, 26%);
-	--background-site-link-assert: hsl(214, 68%, 21%);
-	--background-site-link-active-assert: hsl(214, 66%, 25%);
+	--color-site-accent-200: hsl(151, 40%, 30%, 0.5);
+	--color-site-accent-300: hsl(151, 40%, 30%, 0.6);
+	--color-site-accent-400: hsl(147, 82%, 80%);
+	--color-site-accent-500: hsl(148, 37%, 59%);
 
-	--color-site-link-base: hsl(148, 51%, 69%);
-	--color-site-link-active-base: hsl(147, 82%, 80%);
-	--color-site-link-note: hsl(127, 13%, 88%);
-	--color-site-link-active-note: hsl(120, 25%, 94%);
-	--color-site-link-commend: hsl(147, 82%, 80%);
-	--color-site-link-active-commend: hsl(144, 93%, 89%);
-	--color-site-link-warn: hsl(29, 82%, 87%);
-	--color-site-link-active-warn: hsl(30, 81%, 94%);
-	--color-site-link-deter: hsl(4, 73%, 91%);
-	--color-site-link-active-deter: hsl(7, 74%, 95%);
-	--color-site-link-assert: hsl(220, 91%, 92%);
-	--color-site-link-active-assert: hsl(221, 90%, 96%);
+	--color-site-note-300: hsl(0, 0%, 58%);
+	--color-site-note-400: hsl(0, 0%, 88%);
+	--color-site-note-500: hsl(0, 0%, 74%);
+	--color-site-note-600: hsl(0, 0%, 22%);
+	--color-site-note-700: hsl(0, 0%, 16%);
+	--color-site-note-800: hsl(0, 0%, 13%);
 
-	--color-site-outline-form-base: hsl(139, 15%, 76%, 0.5);
-	--color-site-outline-form-note: hsl(120, 7%, 77%, 0.5);
-	--color-site-outline-form-commend: hsl(148, 51%, 69%, 0.5);
-	--color-site-outline-form-warn: hsl(32, 85%, 72%, 0.5);
-	--color-site-outline-form-deter: hsl(4, 75%, 83%, 0.5);
-	--color-site-outline-form-assert: hsl(218, 89%, 82%, 0.5);
+	--color-site-commend-500: hsl(105, 51%, 51%);
+	--color-site-commend-600: hsl(106, 70%, 13%);
+	--color-site-commend-700: hsl(108, 78%, 7%, 0.5);
 
-	--color-site-accent-subtle: hsl(141, 7%, 45%);
-	--color-site-base: hsl(90, 3%, 74%);
-	--color-site-subtle: hsl(105, 2%, 60%);
-	--color-site-stress: hsl(90, 7%, 88%);
-	--color-site-note: hsl(120, 7%, 77%);
-	--color-site-commend: hsl(148, 51%, 69%);
-	--color-site-warn: hsl(32, 85%, 72%);
-	--color-site-deter: hsl(4, 75%, 83%);
-	--color-site-assert: hsl(218, 89%, 82%);
+	--color-site-warn-500: hsl(32, 69%, 59%);
+	--color-site-warn-600: hsl(33, 77%, 15%);
+	--color-site-warn-700: hsl(32, 86%, 9%, 0.5);
 
-	--border-site-accent-subtle: hsl(100, 2%, 37%, 0.5);
-	--border-site-base: hsl(100, 2%, 37%);
-	--border-site-subtle: hsl(130, 6%, 18%, 0.45);
-	--border-site-note: hsl(135, 6%, 27%);
-	--border-site-commend: hsl(153, 43%, 22%);
-	--border-site-warn: hsl(33, 71%, 23%);
-	--border-site-deter: hsl(356, 69%, 31%);
-	--border-site-assert: hsl(214, 64%, 30%);
+	--color-site-deter-500: hsl(3, 77%, 74%);
+	--color-site-deter-600: hsl(356, 73%, 22%);
+	--color-site-deter-700: hsl(358, 82%, 13%, 0.5);
+
+	--color-site-assert-500: hsl(217, 91%, 73%);
+	--color-site-assert-600: hsl(214, 68%, 21%);
+	--color-site-assert-700: hsl(214, 77%, 12%, 0.5);
 
 	--color-prettylights-syntax-comment: #8b949e;
 	--color-prettylights-syntax-constant: #79c0ff;
@@ -210,109 +150,91 @@
 }
 
 :root {
+	--radius-site-xxs: 4px;
+	--radius-site-xs: 8px;
+	--radius-site-sm: 12px;
+	--radius-site-og: 1rem;
+	--radius-site-round: 1e5px;
+
+	--thickness-site-sm: 1px;
+	--thickness-site-og: 2px;
+	--thickness-site-md: 5px;
+
+	--gap-site-xs: .5rem;
+	--gap-site-sm: 1rem;
+	--gap-site-og: 2rem;
+	--gap-site-lg: 5rem;
+	--gap-site-xl: calc(24px + 3vw);
+	--gap-site-xxl: calc(30px + 4vw);
+}
+
+:root {
 	--family-site-body: var(--family-site-sans);
 	--family-site-code: var(--family-site-mono);
 
 	--font-weight-site-regular: 400;
 	--font-weight-site-semibold: 600;
 
-	--max-width-site-base: calc(60rem + 10vw);
-	--max-width-site-content: 65ch;
+	--max-width-site-body: calc(60rem + 10vw);
+	--max-width-site-content: 70ch;
+	--padding-site-body: 24px;
+	--line-height-site-body: calc(.3rem + 2ex + .3rem);
+	--backdrop-site-dialog: blur(25px);
+	--offset-site-outline: 0.125em;
+	--gap-site-body: var(--gap-site-og);
 
-	--gap-site-small: 1rem;
-	--gap-site-base: 2rem;
-	--gap-site-medium: calc(24px + 3vw);
-	--gap-site-large: calc(30px + 4vw);
-
-	--gap-site-body: var(--gap-site-base);
-	--gap-site-vertical: var(--gap-site-base);
-	--gap-site-edge: 32px;
-
-	--radius-site-tiny: 4px;
-	--radius-site-small: 8px;
-	--radius-site-base: 1rem;
-	--radius-site-round: 1e5px;
-
-	--radius-site-body: var(--radius-site-tiny);
-	--radius-site-form: var(--radius-site-small);
-	--radius-site-pre: var(--radius-site-base);
-	--radius-site-button: 12px;
-
-	--thickness-site-small: 1px;
-	--thickness-site-base: 2px;
-	--thickness-site-medium: 5px;
-
-	--thickness-site-body: var(--thickness-site-small);
-	--thickness-site-hr: var(--thickness-site-small);
-	--thickness-site-outline-interaction: var(--thickness-site-base);
-	--thickness-site-outline-form: var(--thickness-site-medium);
-
-	--offset-site-base: 0.125em;
-
-	--offset-site-outline-interaction: var(--offset-site-base);
-
-	--background-site-body: var(--background-site-base);
-	--background-site-code: var(--background-site-subtle);
-	--background-site-codeblock: var(--background-site-accent);
-	--background-site-del: var(--background-site-deter);
-	--background-site-ins: var(--background-site-commend);
-	--background-site-interaction-base: var(--background-site-link-base);
-	--background-site-interaction-active: var(--background-site-link-active-base);
-	--background-site-mark: var(--background-site-warn);
+	--background-site-body: var(--color-site-canvas-500);
+	--background-site-code: var(--color-site-note-600);
+	--background-site-codeblock: var(--color-site-canvas-400);
+	--background-site-codeblock-active: var(--color-site-warn-600);
+	--background-site-codeblock-highlighted: var(--color-site-note-700);
+	--background-site-del: var(--color-site-deter-600);
+	--background-site-ins: var(--color-site-commend-600);
+	--background-site-mark: var(--color-site-warn-600);
 	--background-site-scrollbar: transparent;
-	--background-site-selection: var(--background-site-stress);
+	--background-site-selection: var(--color-site-accent-300);
+	--background-site-summary: var(--color-site-canvas-400);
 	--background-site-table: transparent;
-	--background-site-table-active: var(--background-site-interaction-base);
+	--background-site-table-active: var(--color-site-accent-200);
+	--background-site-form: var(--color-site-canvas-400);
 
-	--color-site-accent: var(--color-site-link-base);
-	--color-site-body: var(--color-site-base);
-	--color-site-caption: var(--color-site-subtle);
-	--color-site-del: var(--color-site-deter);
-	--color-site-ins: var(--color-site-commend);
-	--color-site-interaction-base: var(--color-site-link-base);
-	--color-site-interaction-active: var(--color-site-link-active-base);
-	--color-site-mark: var(--color-site-warn);
-	--color-site-marker: var(--color-site-accent-subtle);
-	--color-site-outline-form: var(--color-site-outline-form-base);
+	--color-site-body: var(--color-site-note-500);
+	--color-site-caption: var(--color-site-note-300);
+	--color-site-link: var(--color-site-accent-500);
+	--color-site-del: var(--color-site-deter-500);
+	--color-site-form: var(--color-site-body);
+	--color-site-ins: var(--color-site-commend-500);
+	--color-site-mark: var(--color-site-warn-500);
+	--color-site-marker: var(--color-site-canvas-600);
+	--color-site-outline: var(--color-site-accent-400);
 	--color-site-placeholder: inherit;
-	--color-site-scrollbar: var(--color-site-accent-subtle);
+	--color-site-scrollbar: var(--color-site-canvas-600);
+	--color-site-stress: var(--color-site-note-400);
 	--color-site-table-active: var(--color-site-stress);
 
-	--border-site-blockquote: var(--border-site-accent-subtle);
-	--border-site-body: var(--border-site-base);
-	--border-site-codeblock: var(--background-site-accent-subtle);
-	--border-site-hr: var(--border-site-body);
-	--border-site-interaction-base: var(--border-site-body);
-	--border-site-interaction-active: var(--color-site-interaction-active);
+	--border-site-body: var(--color-site-canvas-700);
+	--border-site-blockquote: var(--border-site-body);
+	--border-site-codeblock: var(--color-site-note-800);
+	--border-site-form: var(--color-site-note-600);
+	--border-site-hr: var(--color-site-canvas-600);
 }
 
-// `color` and `border-color` properties for interactive elements
 :where(a[href], area, button, input, select, summary, textarea, [role="button"], [onclick], [tabindex]:not([tabindex*="-"])),
 :where(input[type="file"])::file-selector-button,
 ::part(button),
 ::part(input) {
-	--color-site-interaction: var(--color-site-interaction-base);
-	--border-site-interaction: var(--border-site-interaction-base);
-	--color-site-accent: var(--color-site-interaction);
-
 	&:is(:focus, :focus-visible, :focus-within, :hover, :active) {
-		--color-site-interaction: var(--color-site-interaction-active);
-		--border-site-interaction: var(--border-site-interaction-active);
+		--color-site-link: var(--color-site-accent-400);
 	}
 }
 
-// `background-color` for button and button-like elements
-:where(button, button[type], input[type="button"], input[type="submit"], input[type="reset"], select, summary, [role="button"], [onclick]),
-:where(input[type="file"])::file-selector-button {
-	--background-site-interaction: var(--background-site-interaction-base);
-
+:where(button, button[type], input:not([type="file"]), select, textarea, [role="button"]),
+:where(input[type="file"])::file-selector-button,
+::part(button),
+::part(input) {
 	&:is(:focus, :focus-visible, :focus-within, :hover, :active) {
-		--background-site-interaction: var(--background-site-interaction-active);
+		--border-site-form: var(--color-site-accent-500);
+		--background-site-form: var(--color-site-accent-200);
+		--color-site-form: var(--color-site-accent-400);
 	}
-}
-
-// `background-color` for input elements when they are active
-:where(input:not([type="file"], [type="checkbox"], [type="image"], [type="radio"], [type="range"]), textarea):is(:focus, :focus-visible, :focus-within, :hover, :active),
-::part(input):is(:focus, :focus-visible, :focus-within, :hover, :active) {
-	--background-site-interaction: var(--background-site-interaction-active);
 }

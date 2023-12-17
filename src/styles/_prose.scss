@@ -1,4 +1,6 @@
-/*! based on Prose v0.0.7 | MIT License | https://github.com/Microflash/prose */
+@use "mixins";
+
+/*! Prose v1.5.0 | MIT License | https://github.com/Microflash/prose */
 @mixin selection {
 	background: var(--background-site-selection);
 }
@@ -20,23 +22,12 @@
 	color: var(--color-site-marker);
 }
 
-:where(button, button[type], input:not([type="file"]), select, summary, textarea, [role="button"], [onclick]),
-:where(input[type="file"])::file-selector-button,
-::part(button),
-::part(input) {
-	&:is(:focus, :focus-visible, :focus-within, :hover, :active) {
-		outline-color: var(--color-site-outline-form);
-		outline-style: solid;
-		outline-width: var(--thickness-site-outline-form);
-		outline-offset: 0;
-	}
-}
-
-:where(a[href], area, [tabindex]:not([tabindex*="-"])):focus-visible {
-	outline-color: currentColor;
+:focus-visible {
+	border-radius: var(--radius-site-xxs);
+	outline-color: var(--color-site-outline);
 	outline-style: solid;
-	outline-width: var(--thickness-site-outline-interaction);
-	outline-offset: var(--offset-site-outline-interaction);
+	outline-width: var(--thickness-site-og);
+	outline-offset: var(--offset-site-outline);
 }
 
 :is(
@@ -45,16 +36,15 @@
 	::-webkit-inner-spin-button,
 	::-webkit-outer-spin-button
 ) {
-	color: var(--color-site-accent);
+	color: var(--color-site-link);
 }
 
 * {
 	box-decoration-break: clone;
-	text-decoration-thickness: var(--thickness-site-body);
 	text-underline-position: from-font;
 	text-decoration-skip-ink: auto;
-	accent-color: var(--color-site-accent);
-	caret-color: var(--color-site-accent);
+	accent-color: var(--color-site-link);
+	caret-color: var(--color-site-link);
 
 	scrollbar-color: var(--color-site-scrollbar) var(--background-site-scrollbar);
 
@@ -70,28 +60,30 @@
 
 :where(body) {
 	font-family: var(--family-site-body);
-	font-size: var(--text-site-base);
-	font-weight: var(--font-weight-site-regular);
+	font-size: var(--text-site-og);
 	font-kerning: normal;
-	text-rendering: optimizeLegibility;
+	font-weight: var(--font-weight-site-regular);
 	background-color: var(--background-site-body);
 	color: var(--color-site-body);
+	text-rendering: optimizeLegibility;
 	// See https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-overflow-scrolling
 	-webkit-overflow-scrolling: touch;
 }
 
 :where(a) {
-	color: var(--color-site-interaction);
+	--linkDecorationThickness: var(--thickness-site-sm);
+	color: var(--color-site-link);
 	text-decoration-line: underline;
 	text-decoration-style: dotted;
+	text-decoration-thickness: var(--linkDecorationThickness);
 
 	* {
 		color: currentColor;
 	}
 
 	&:is(:focus, :focus-within, :hover) {
+		--linkDecorationThickness: var(--thickness-site-og);
 		text-decoration-style: solid;
-		text-decoration-thickness: var(--thickness-site-outline-interaction);
 	}
 
 	&:active {
@@ -99,13 +91,9 @@
 	}
 
 	&:focus-visible {
-		text-decoration-color: transparent;
-		border-radius: var(--radius-site-body);
+		--linkDecorationThickness: var(--thickness-site-sm);
+		text-decoration-style: dotted;
 	}
-}
-
-:where(cite, dfn) {
-	font-style: italic;
 }
 
 :where(blockquote) {
@@ -121,48 +109,57 @@
 		border-radius: var(--radius-site-round);
 		background-color: var(--border-site-blockquote);
 	}
-
-	* {
-		--gap-site-vertical: 1rem;
-	}
 }
 
 :where(hr) {
 	display: block;
 	border: none;
-	block-size: var(--thickness-site-hr);
+	block-size: var(--thickness-site-sm);
 	background-color: transparent;
 	background-image: radial-gradient(circle, var(--border-site-hr) 1px, transparent 1px);
 	background-size: 8px 1px;
 	background-repeat: repeat;
 }
 
-:where(hr + *, * + hr) {
-	margin-block-start: calc(var(--gap-site-body) * 2.5);
-}
-
 :where(mark, del, ins) {
-	border-radius: var(--radius-site-body);
-	padding-inline: 0.5ch;
+	border-radius: 0.5ch;
+	padding-inline: 0.4ch;
 }
 
 :where(del) {
-	background-color: var(--background-site-del);
 	color: var(--color-site-del);
-	text-decoration-line: line-through;
+	background-color: var(--background-site-del);
+
+	&::before {
+		display: inline-block;
+		vertical-align: middle;
+		margin-inline-end: 0.3ch;
+		margin-block-end: 0.3ex;
+		@include mixins.icon("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M8 12h8'/%3E%3C/svg%3E");
+		user-select: none;
+		@include mixins.fixed-size(1em);
+	}
 }
 
 :where(ins) {
-	background-color: var(--background-site-ins);
 	color: var(--color-site-ins);
+	background-color: var(--background-site-ins);
+	text-decoration-color: transparent;
+
+	&::before {
+		display: inline-block;
+		vertical-align: middle;
+		margin-inline-end: 0.3ch;
+		margin-block-end: 0.3ex;
+		@include mixins.icon("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M8 12h8'/%3E%3Cpath d='M12 8v8'/%3E%3C/svg%3E");
+		user-select: none;
+		@include mixins.fixed-size(1em);
+	}
 }
 
 :where(mark) {
 	color: var(--color-site-mark);
 	background-color: var(--background-site-mark);
-	text-decoration-line: underline;
-	text-decoration-color: var(--color-site-mark);
-	text-decoration-style: double;
 }
 
 :where(i, em) {
@@ -175,13 +172,15 @@
 }
 
 :where(small) {
-	font-size: 0.9em;
+	font-size: 0.85em;
+}
+
+:where(cite, dfn, var) {
+	font-style: italic;
 }
 
 :where(sub, sup) {
 	font-size: 0.8em;
-	line-height: 0;
-	vertical-align: baseline;
 }
 
 :where(sub) {
@@ -192,27 +191,23 @@
 	vertical-align: super;
 }
 
-:where(var) {
-	letter-spacing: 0.1ch;
-}
-
 :where(details) {
-	--radius-site-details: calc(var(--radius-site-body) + 0.5em);
+	--detailsBorderRadius: calc(var(--radius-site-xxs) + 0.25em);
 
 	display: block;
 	border: 1px solid var(--border-site-body);
-	border-radius: var(--radius-site-details);
+	border-radius: var(--detailsBorderRadius);
 	padding: 0 0.75em 0;
 
 	summary {
-		background-color: var(--background-site-interaction);
+		background-color: var(--background-site-summary);
 		margin: 0 -0.75em 0;
 		padding: 0.25em 0.75em;
-		border-radius: var(--radius-site-details);
+		border-radius: var(--detailsBorderRadius);
 		cursor: pointer;
 
 		&:focus-visible {
-			border-radius: var(--radius-site-details);
+			border-radius: var(--detailsBorderRadius);
 		}
 	}
 
@@ -233,20 +228,12 @@
 }
 
 :where(img) {
-	border-radius: var(--radius-site-body);
-}
-
-:where(figure) {
-	text-align: center;
-
-	* {
-		--gap-site-vertical: 1rem;
-		margin-inline: auto;
-	}
+	border-radius: var(--radius-site-xxs);
 }
 
 :where(figcaption, caption) {
-	font-size: 0.8em;
+	font-style: italic;
+	font-size: 0.75em;
 	color: var(--color-site-caption);
 }
 
@@ -259,14 +246,6 @@
 	// enable optical sizing
 	font-variation-settings: "opsz" 28;
 	color: var(--color-site-stress);
-}
-
-:is(h2 + *, h3 + *, h4 + *, h5 + *, h6 + *) {
-	margin-block-start: 1.5em;
-}
-
-:is(* + h2, * + h3, * + h4, * + h5, * + h6) {
-	margin-block-start: 2em;
 }
 
 :where(h1) {
@@ -301,25 +280,19 @@
 	list-style-position: outside;
 }
 
-:where(li) {
-	& + li,
-	& > * + * {
-		margin-block-start: calc(var(--gap-site-body) * 0.3);
-	}
-}
-
 :where(dd) {
 	margin-inline-start: 2ch;
 }
 
 :where(dt) {
+	color: var(--color-site-stress);
 	font-weight: var(--font-weight-site-semibold);
 }
 
 :where(code, kbd, samp, tt, pre) {
 	font-family: var(--family-site-code);
 	font-size: 0.95em;
-	border-radius: var(--radius-site-body);
+	border-radius: 0.5ch;
 }
 
 :where(code, kbd, samp, tt) {
@@ -329,7 +302,7 @@
 
 :where(pre) {
 	overflow: hidden;
-	border-radius: var(--radius-site-pre);
+	border-radius: var(--radius-site-og);
 
 	code {
 		display: block;
@@ -387,18 +360,18 @@
 :where(input[type="file"])::file-selector-button,
 ::part(button),
 ::part(input) {
-	background-color: var(--background-site-interaction);
-	border-radius: var(--radius-site-form);
-	border-color: var(--border-site-interaction);
+	background-color: var(--background-site-form);
+	border-radius: var(--radius-site-xs);
+	border-color: var(--border-site-form);
 	border-style: solid;
-	border-width: var(--thickness-site-hr);
+	border-width: var(--thickness-site-sm);
 	padding: 0.2rem 0.5rem;
 }
 
 :where(button, button[type], input[type="button"], input[type="submit"], input[type="reset"], select),
 :where(input[type="file"])::file-selector-button,
 ::part(button) {
-	color: var(--color-site-interaction);
+	color: var(--color-site-form);
 }
 
 :where(input[type="file"], input[type="color"]) {
@@ -406,19 +379,35 @@
 }
 
 :where(fieldset) {
-	border-radius: var(--radius-site-form);
+	border-radius: var(--radius-site-xs);
 	border-color: var(--border-site-body);
 	border-style: solid;
-	border-width: var(--thickness-site-hr);
+	border-width: var(--thickness-site-og);
 }
 
-:where(
-	address,
-	aside, figure,
-	p, pre, blockquote, table,
-	img, canvas, audio, video, iframe, embed, object,
-	dl, ol, ul,
-	fieldset, form, progress, textarea
-):not(:last-child, :only-child) {
-	margin-block-end: var(--gap-site-vertical);
+// Spacing relationships
+:where(h1, h2, h3, h4, h5, h6) {
+	@include mixins.vertical-margin(0.5em, 1em);
+}
+
+:where(hr) {
+	@include mixins.vertical-margin(var(--gap-site-body));
+}
+
+:where(dd) {
+	@include mixins.vertical-margin(0, var(--gap-site-sm));
+}
+
+:where(p, blockquote, figure, ul, ol, dl, table, pre, details) {
+	--gap-site-block: var(--gap-site-body);
+	@include mixins.vertical-margin(0, var(--gap-site-block));
+}
+
+:where(li) > :is(p, blockquote, figure, ul, ol, dl, table, pre, details) {
+	--gap-site-block: var(--gap-site-sm);
+	margin-block-end: var(--gap-site-block);
+}
+
+:where(blockquote) > :is(p, blockquote, figure, ul, ol, dl, table, pre, details) {
+	--gap-site-block: var(--gap-site-sm);
 }

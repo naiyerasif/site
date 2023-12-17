@@ -1,0 +1,185 @@
+/*! Preset v1.5.0 | MIT License | https://github.com/Microflash/preset */
+
+// 1. Remove default margin in all browsers
+// 2. Set `line-height` based on x-height of the font and `font-size` to automatically adjust for all `font-size` values
+// 3. Prevent text overflow for inline elements
+// 4. Change from initial value `box-sizing: content-box` so that `inline-size` is not affected by `padding` or `border`
+* {
+	margin: 0; // 1
+	line-height: var(--line-height-site-body); // 2
+	overflow-wrap: break-word; // 3
+
+	&,
+	&::before,
+	&::after {
+		box-sizing: border-box; // 4
+	}
+}
+
+// 1. Allow percentage based `block-size` for the children of document
+// 2. Prevent adjustments of `font-size` after orientation changes
+// 3. Enable smooth scrolling when reduced-motion is unspecified
+:where(html) {
+	block-size: 100%; // 1
+	text-size-adjust: 100%; // 2
+
+	@media (prefers-reduced-motion: no-preference) {
+		&:focus-within {
+			scroll-behavior: smooth; // 3
+		}
+	}
+}
+
+// 1. Span the entire `block-size` to allow percentage based `block-size` for the children
+// 2. Standardize tab-based indentation size in code blocks
+:where(body) {
+	min-block-size: 100%; // 1
+	tab-size: 2; // 2
+}
+
+// Hide elements with `hidden` attribute
+:where([hidden]) {
+	display: none;
+}
+
+// Position the `background-image` to cover the box with no repetition
+:where(:not(fieldset, progress, meter)) {
+	background-origin: border-box;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+// 1. Add correct text-decoration for all browsers
+// 2. Remove `border-block-end` in favor of `text-decoration`
+// 3. Add explicit cursor to indicate changed behavior
+:where(abbr[title]) {
+	text-decoration-line: underline; // 1
+	text-decoration-style: dotted; // 1
+	border-block-end: none; // 2
+	cursor: help; // 3
+}
+
+// Balance the characters on each line for layout quality and legibility
+:where(h1, h2, h3, h4, h5, h6) {
+	text-wrap: balance;
+}
+
+// Balance the characters on last 4 lines to avoid orphans
+:where(p) {
+	text-wrap: pretty;
+}
+
+// 1. Remove whitespace around media caused by line-height
+// 2. Italicise alt text or title of media to visually distinguish from surrounding copy
+// 3. Set up margin for optional `shape-outside`
+:where(img, svg, video, canvas, iframe, embed, object) {
+	vertical-align: middle; // 1
+	font-style: italic; // 2
+	shape-margin: 0.75rem; // 3
+}
+
+// 1. Stop media from overflowing the container
+// 2. Maintain aspect-ratio based on `block-size` / `inline-size`
+:where(img, svg, video) {
+	max-inline-size: 100%; // 1
+	block-size: auto; // 2
+}
+
+// 1. Inherit `color` for stroke
+// 2. Keep the strokes rounded for SVGs without fill
+:where(svg:not([fill][class]), svg[fill="none"]:not([class])) {
+	stroke: currentColor; // 1
+	stroke-linecap: round; // 2
+	stroke-linejoin: round; // 2
+}
+
+// Remove border from iframe
+:where(iframe) {
+	border: none;
+}
+
+// Summary as list-item in all browsers
+:where(summary) {
+	display: list-item;
+}
+
+// Add blur to dialog backdrop
+:where(dialog)::backdrop {
+	backdrop-filter: var(--backdrop-site-dialog);
+}
+
+// Hide the document overflow when dialog is open
+:where(html:has(dialog[open])) {
+	overflow: hidden;
+}
+
+// 1. Prevent double borders
+// 2. Remove spacing between cells
+// 3. Put captions at the bottom
+:where(table) {
+	border-collapse: collapse; // 1
+	border-spacing: 0; // 2
+	caption-side: bottom; // 3
+}
+
+// Inherit the typography styles from the parent and not the operating system
+:where(input, button, textarea, select, optgroup),
+:where(input[type="file"])::file-selector-button {
+	color: inherit;
+	font: inherit;
+	letter-spacing: inherit;
+	word-spacing: inherit;
+}
+
+// 1. Prevent textarea to overflow the containers when resized horizontally
+// 2. Allow textarea to resize in block direction based on writing mode and direction values
+:where(textarea) {
+	resize: vertical; // 1
+
+	@supports (resize: block) {
+		resize: block; // 2
+	}
+}
+
+// Make sure textareas without a rows attribute are not tiny
+:where(textarea:not([rows])) {
+	min-block-size: 10em;
+}
+
+// Add explicit cursor to indicate clickable elements
+:where(a[href], area, button, input[type="button"], input[type="checkbox"], input[type="color"], input[type="date"], input[type="datetime-local"], input[type="image"], input[type="radio"], input[type="range"], input[type="reset"], input[type="submit"], input[type="time"], label[for], select, summary, [role="button"], [onclick], [tabindex]:not([tabindex*="-"])),
+:where(input[type="file"])::file-selector-button,
+::part(button) {
+	cursor: pointer;
+}
+
+// 1. Remove delay to generate click events on touch
+// 2. Remove tap highlight on Apple devices
+:where(a[href], area, button, input, label[for], select, summary, textarea, [role="button"], [onclick], [tabindex]:not([tabindex*="-"])),
+::part(button) {
+	touch-action: manipulation; // 1
+	-webkit-tap-highlight-color: transparent; // 2
+}
+
+// Ensure button text is not selectable
+:where(button, button[type], input[type="button"], input[type="submit"], input[type="reset"]),
+:where(input[type="file"])::file-selector-button {
+	-webkit-touch-callout: none;
+	user-select: none;
+}
+
+// Add explicit cursor to indicate disabled elements
+:where(button, button[type], input[type="button"], input[type="image"], input[type="submit"], input[type="reset"])[disabled] {
+	cursor: not-allowed;
+}
+
+// Animate focus outline
+@media (prefers-reduced-motion: no-preference) {
+	:where(:focus-visible) {
+		transition: outline-offset 145ms cubic-bezier(0.25, 0, 0.4, 1);
+	}
+
+	:where(:not(:active):focus-visible) {
+		transition-duration: 0.25s;
+	}
+}

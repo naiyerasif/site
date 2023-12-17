@@ -145,12 +145,12 @@
 		--family-site-stress: "MakeSans", var(--family-sans);
 		--family-site-mono: "JetBrains Mono", var(--family-mono);
 
-		--text-site-small: calc(0.8rem + 0.15vw);
-		--text-site-base: calc(0.95rem + 0.2vw);
+		--text-site-sm: calc(0.8rem + 0.15vw);
+		--text-site-og: calc(0.95rem + 0.2vw);
 		--text-site-headline: calc(1.75rem + 3vw);
 		--text-site-subheadline: calc(1.2rem + 0.4vw);
 
-		--size-site-icon: 1.5rem;
+		--size-site-icon-og: 1.5rem;
 	}
 	@supports (font-variation-settings: normal) {
 		:root {
@@ -160,15 +160,17 @@
 	}
 	@media (hover: none) {
 		:root {
-			--size-site-icon: 24px;
+			--size-site-icon-og: 24px;
 		}
 	}
 	.icon {
+		display: inline-block;
+		vertical-align: text-bottom;
 		stroke-width: 2;
 		fill: none;
-		width: var(--size-site-icon);
-		height: var(--size-site-icon);
-		min-width: var(--size-site-icon);
-		min-height: var(--size-site-icon);
+		width: var(--size-site-icon-og);
+		height: var(--size-site-icon-og);
+		min-width: var(--size-site-icon-og);
+		min-height: var(--size-site-icon-og);
 	}
 </style>

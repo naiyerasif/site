@@ -30,6 +30,7 @@ const siteInfo = {
 	siteBase: "https://www.naiyerasif.com",
 	editBase: "https://github.com/naiyerasif/site/edit/main",
 	issueBase: "https://github.com/naiyerasif/site/issues/new",
+	ogImage: "/images/opengraph/default.png",
 	maxFeedItems: 20,
 	maxPageItems: 20,
 	maxTocDepth: 3

@@ -24,7 +24,7 @@ async function process(markdown) {
 		.use(remarkGfm)
 		.use(remarkSmartypants)
 		.use(remarkDirective)
-		.use(remarkCustomDirectives)
+		.use(remarkCustomDirectives, { server: true })
 		.use(remarkCalloutDirectives, {
 			callouts: {
 				note: { tagName: "div" },

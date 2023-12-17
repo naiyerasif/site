@@ -1,0 +1,25 @@
+---
+import ThemeSwitcher from "~components/ThemeSwitcher.astro";
+import CommandBar from "~components/CommandBar.astro";
+import siteInfo from "~website";
+
+const logoAlt = `${new URL(siteInfo.siteBase).host}'s logo'`;
+---
+
+<header class="header" id="header">
+	<div class="navbar-primary">
+		<a href="/" class="brand">
+			<img src="/favicon.svg" alt={logoAlt}>
+		</a>
+	</div>
+	<nav class="navbar-secondary">
+		<a href="/posts/" class="nav-link">Posts</a>
+		<a href="/about/" class="nav-link">About</a>
+		<ThemeSwitcher/>
+		<CommandBar/>
+	</nav>
+</header>
+
+<script>
+import "../modules/clipboard-copy/index.js";
+</script>

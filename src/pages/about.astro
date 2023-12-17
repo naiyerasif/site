@@ -1,5 +1,6 @@
 ---
 import { getEntry } from "astro:content";
+import Icon from "~components/Icon.astro";
 import Layout from "~layouts/Layout.astro";
 
 const { data, render } = await getEntry("profile", "about");
@@ -9,7 +10,6 @@ const name = data.title.split(" ")[0];
 const avatar = `/images/profile/${data.avatar}`;
 
 const pageInfo = {
-	hint: "About",
 	title: "About",
 	description: data.description,
 	type: "profile",
@@ -18,10 +18,20 @@ const pageInfo = {
 ---
 
 <Layout {pageInfo}>
-	<div class="hero-profile" slot="hero">
-		<img src={avatar} alt={data.title}>
-		<h1 class="headline">About {name}</h1>
-	</div>
+	<Fragment slot="hero">
+		<div class="hero-header">
+			<a class="hero-back-nav" href="/"><Icon name="arrow-dash-left"/>Return to home</a>
+			<span class="hero-content-type">Profile</span>
+		</div>
+		<div class="hero-body">
+			<div class="hero-headline-image">
+				<img src={avatar} alt={data.title} class="avatar">
+			</div>
+			<div class="hero-headline-text">
+				<h1 class="headline">About {name}</h1>
+			</div>
+		</div>
+	</Fragment>
 	<article class="content">
 		<Content/>
 	</article>

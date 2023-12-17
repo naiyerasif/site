@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import Icon from "~components/Icon.astro";
 import Layout from "~layouts/Layout.astro";
 import PostCard from "~components/PostCard.astro";
 import StatusCard from "~components/StatusCard.astro";
@@ -17,7 +18,6 @@ const { page } = Astro.props;
 const host = new URL(siteInfo.siteBase).hostname;
 
 const pageInfo = {
-	hint: `Posts`,
 	title: `Posts (Page ${page.currentPage})`,
 	description: `Posts on ${host}`,
 	url: Astro.url.pathname,
@@ -26,11 +26,18 @@ const pageInfo = {
 };
 ---
 
-<Layout {pageInfo} class="timeline">
-	<div slot="hero">
-		<h1 class="headline">All posts</h1>
-		<p class="subheadline">listing {page.start + 1}&hellip;{page.end + 1} of {page.total} posts</p>
-	</div>
+<Layout {pageInfo} class="content">
+	<Fragment slot="hero">
+		<div class="hero-header">
+			<a class="hero-back-nav" href="/"><Icon name="arrow-dash-left"/>Return to home</a>
+		</div>
+		<div class="hero-body">
+			<div class="hero-headline-text">
+				<h1 class="headline">All the posts</h1>
+				<p class="subheadline">listing {page.start + 1}&hellip;{page.end + 1} of {page.total} posts</p>
+			</div>
+		</div>
+	</Fragment>
 	{page.data.map(entry => entry.data.category === "status" ? <StatusCard {entry} /> : <PostCard {entry} />)}
 	<div slot="sidekick" class="sidekick-items">
 		<Pagination currentPage={page.currentPage} totalPages={page.lastPage} base="posts"/>

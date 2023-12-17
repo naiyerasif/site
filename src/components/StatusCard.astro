@@ -10,12 +10,9 @@ const { Content } = await entry.render();
 
 <div class={"card " + category}>
 	<div class="card-details">
-		<a href={postPathname(entry.slug)} title={entry.data.title}>
-			<Icon name="circle-dot"/>
-		</a>
-		<span class="card-category">Status</span>
+		<a href={postPathname(entry.slug)} title={entry.data.title}><Icon name="circle-dot"/></a>
+		<span class="card-category">status</span> &mdash;
 		<Time date={entry.data.date} />
-		<hr class="divider" aria-hidden="true">
 	</div>
 	<div class="card-body">
 		<Content />

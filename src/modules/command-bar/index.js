@@ -47,36 +47,40 @@ commandBarTemplate.innerHTML = `
 	stroke: currentColor;
 	stroke-width: 2;
 	fill: none;
-	width: var(--size-site-icon);
-	height: var(--size-site-icon);
-	min-width: var(--size-site-icon);
-	min-height: var(--size-site-icon);
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	width: var(--size-site-icon-og);
+	height: var(--size-site-icon-og);
+	min-width: var(--size-site-icon-og);
+	min-height: var(--size-site-icon-og);
 }
 kbd {
-	background-color: var(--background-site-subtle);
-	border-radius: var(--radius-site-small);
+	background-color: var(--background-site-form);
+	border-radius: var(--radius-site-xxs);
 	font-size: 0.85em;
 	line-height: 1;
 	padding: 0.5ch 1ch;
-	color: var(--color-site-base);
+	color: var(--color-site-body);
 }
 #command-bar::backdrop {
-	backdrop-filter: blur(25px);
+	backdrop-filter: var(--backdrop-site-dialog);
 }
 #command-bar {
 	width: calc(100% - 2px);
 	max-width: var(--max-width-site-content);
 	overflow: hidden;
-	border: var(--thickness-site-hr) solid var(--border-site-body);
-	border-radius: var(--radius-site-base);
+	border: var(--thickness-site-sm) solid var(--border-site-body);
+	border-radius: var(--radius-site-og);
 	background-color: var(--background-site-body);
 	padding: 0;
 }
 #command-bar-launcher {
-	padding: 0 !important;
-	background-color: transparent !important;
-	border-color: transparent !important;
-	outline-color: transparent !important;
+	padding: 0.4rem !important;
+	line-height: 0;
+	border-radius: var(--radius-site-sm) !important;
+}
+::part(link) {
+	cursor: pointer;
 }
 #command-bar-launcher .label {
 	display: none;
@@ -85,31 +89,29 @@ kbd {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	gap: 1rem;
 	padding: 0.5rem;
-}
-.command-bar-header > * + * {
-	margin-left: 1rem;
 }
 #search-box {
 	width: 100%;
 	font: inherit;
 }
 #commands {
-	max-height: 420px;
+	max-height: 50vh;
 	overflow-y: auto;
 }
 .command-bar-section-header {
-	background-color: var(--background-site-note);
-	font-size: var(--text-site-small);
-	color: var(--color-site-note);
+	background-color: var(--color-site-note-700);
+	font-size: var(--text-site-sm);
+	color: var(--color-site-note-500);
 	line-height: 1;
 	padding: 0.5rem 1rem;
 }
 .command-bar-section-items > * + * {
-	border-block-start: var(--thickness-site-hr) solid var(--border-site-subtle);
+	border-block-start: var(--thickness-site-sm) solid var(--border-site-codeblock);
 }
 a {
-	color: var(--color-site-interaction-base);
+	color: var(--color-site-link);
 	text-decoration-line: underline;
 	text-decoration-style: dotted;
 }
@@ -118,14 +120,14 @@ a:focus-within,
 a:focus-visible,
 a:hover,
 a:active {
-	background-color: var(--background-site-commend);
-	color: var(--color-site-interaction-active);
+	background-color: var(--color-site-accent-200);
+	color: var(--color-site-accent-400);
 }
 a:focus,
 a:focus-within,
 a:hover {
 	text-decoration-style: solid;
-	text-decoration-thickness: var(--thickness-site-outline-interaction);
+	text-decoration-thickness: var(--thickness-site-og);
 }
 a:active {
 	text-decoration-style: double;
@@ -136,46 +138,15 @@ a:active {
 	padding: 0.8rem 1rem;
 }
 .command-item:focus-visible {
-	border-radius: var(--radius-site-small);
+	border-radius: var(--radius-site-sm);
 	text-decoration-color: transparent;
-	outline-color: var(--color-site-outline-form);
+	outline-color: var(--color-site-outline);
 	outline-style: solid;
-	outline-width: var(--thickness-site-outline-form);
+	outline-width: var(--thickness-site-og);
 	outline-offset: -0.25em;
 }
 .command-item > .icon {
 	margin-right: 1ch;
-}
-theme-switcher::part(button) {
-	padding: 0.5rem;
-	background-color: var(--background-site-link-base);
-	border-color: var(--border-site-body);
-	border-style: solid;
-	border-width: var(--thickness-site-hr);
-	border-radius: var(--radius-site-button);
-	color: var(--color-site-link-base);
-	cursor: pointer;
-}
-#search-box-resetter:focus,
-#search-box-resetter:hover,
-#search-box-resetter:active,
-#command-bar-escaper:focus,
-#command-bar-escaper:hover,
-#command-bar-escaper:active,
-theme-switcher::part(button):focus,
-theme-switcher::part(button):hover,
-theme-switcher::part(button):active {
-	background-color: var(--background-site-link-active-base) !important;
-	border-color: var(--color-site-link-active-base) !important;
-	color: var(--color-site-link-active-base);
-	outline-color: var(--color-site-outline-form) !important;
-	outline-style: solid;
-	outline-width: var(--thickness-site-outline-form);
-	outline-offset: 0;
-}
-#search-box-resetter,
-#command-bar-escaper {
-	padding: 0.4rem !important;
 }
 .command-bar-footer {
 	display: none;
@@ -185,15 +156,8 @@ theme-switcher::part(button):active {
 		display: flex;
 		align-items: center;
 		font: inherit;
-		border-color: var(--border-site-interaction-base) !important;
-		padding: 0.4rem 0.5rem !important;
-	}
-	#command-bar-launcher:focus,
-	#command-bar-launcher:hover,
-	#command-bar-launcher:active {
-		border-color: var(--border-site-interaction-active) !important;
-		outline-color: var(--color-site-outline-form) !important;
-		background-color: var(--background-site-link-active-base) !important;
+		border-color: var(--border-site-form) !important;
+		padding: 0.3rem 0.5rem !important;
 	}
 	#command-bar-launcher:focus kbd,
 	#command-bar-launcher:hover kbd,
@@ -213,12 +177,12 @@ theme-switcher::part(button):active {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
-		background-color: var(--border-site-subtle);
-		font-size: var(--text-site-small);
+		background-color: var(--color-site-note-700);
+		font-size: 0.8em;
 		padding: 0.25rem 1rem;
 		border-bottom-right-radius: inherit;
 		border-bottom-left-radius: inherit;
-		color: var(--color-site-base);
+		color: var(--color-site-body);
 	}
 	.command-bar-footer > *:not(:first-child)::before {
 		content: "";
@@ -453,13 +417,13 @@ export class CommandBar extends HTMLElement {
 			anchor.classList.add(cls);
 			anchor.setAttribute("href", item.path);
 			anchor.setAttribute("part", "link");
-			anchor.innerHTML = CommandBar.#anchorIcon + item.title;
+			anchor.innerHTML = (item.icon || CommandBar.#anchorIcon) + item.title;
 			return anchor;
 		} else {
 			const div = document.createElement("div");
 			div.classList.add(cls);
 			div.innerHTML = item.content;
-			return div;
+			return div.childNodes[0];
 		}
 	}
 

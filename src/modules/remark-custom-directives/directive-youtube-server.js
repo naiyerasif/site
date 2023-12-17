@@ -12,14 +12,16 @@ export default function process(node) {
 		} else {
 			let frameProperties = {
 				className: ["directive-youtube-iframe"],
-				videoid: attributes.id,
+				src: `https://www.youtube-nocookie.com/embed/${attributes.id}`,
+				allow: "join-ad-interest-group 'none'; run-ad-auction 'none'; encrypted-media; picture-in-picture; fullscreen",
+				loading: "lazy"
 			};
 
 			let title;
 
 			if (node.children) {
 				title = toString(node.children);
-				frameProperties.playlabel = title;
+				frameProperties.title = title;
 			}
 
 			const children = [
@@ -35,7 +37,7 @@ export default function process(node) {
 						{
 							type: "paragraph",
 							data: {
-								hName: "lite-youtube",
+								hName: "iframe",
 								hProperties: frameProperties
 							}
 						}

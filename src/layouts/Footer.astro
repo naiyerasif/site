@@ -20,8 +20,8 @@ const siteIssueUrl = siteInfo.issueBase;
 	<div class="footer-sections">
 		<div>
 			<p><strong>Subscribe</strong> to my latest posts in your favorite RSS reader. <small>(<a href="https://aboutfeeds.com/" rel="nofollow noopener noreferrer">What's RSS?</a>)</small></p>
-			<a href="/feed.xml" class="icon-link"><Icon name="rss" class="gap-end-small"/> Subscribe to posts</a><br>
-			<a href="/all.xml" class="icon-link"><Icon name="rss" class="gap-end-small"/> Subscribe to posts and statuses</a>
+			<a href="/feed.xml" class="icon-link-start"><Icon name="rss"/>Subscribe to posts</a><br>
+			<a href="/all.xml" class="icon-link-start"><Icon name="rss"/>Subscribe to posts and statuses</a>
 		</div>
 		<div>
 			<strong>Say hi!</strong> Interested in software, books, manga? We gotta chat. Reach out on 
@@ -46,6 +46,7 @@ const siteIssueUrl = siteInfo.issueBase;
 		static tagName = "random-quote";
 	
 		static #messages = [
+			`<p class="stress tagline">Finiteness is a feature.</p><p><cite>&mdash; Author of this site</cite></p>`,
 			`<p class="stress tagline">You can stop scrolling now. Take a break, sit back, and give yourself a moment.</p><p><cite>&mdash; Author of this site</cite></p>`,
 			`<p class="stress tagline"><del>Zoom out</del> <ins>Take a nap</ins> for perspective.</p><p><cite>&mdash; original quote from James Clear (paraphrased and fixed)</cite></p>`,
 			`<p class="stress tagline">6 hours of raging at a problem can save you 5 minutes of taking rest and solving it.</p><p><cite>&mdash; A senior software engineer</cite></p>`,

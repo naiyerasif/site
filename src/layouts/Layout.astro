@@ -1,7 +1,6 @@
 ---
-import "../../styles/main.scss";
+import "../styles/main.scss";
 import PageInfo from "./PageInfo.astro";
-import SkipLink from "../SkipLink.astro";
 import Header from "./Header.astro";
 import Footer from "./Footer.astro";
 import BackToTop from "~components/BackToTop.astro";
@@ -9,7 +8,6 @@ import BackToTop from "~components/BackToTop.astro";
 const { pageInfo, ...attribs } = Astro.props;
 const hero = Astro.slots.has("hero");
 const sidekick = Astro.slots.has("sidekick");
-const hint = pageInfo?.hint;
 ---
 
 <!DOCTYPE html>
@@ -18,8 +16,7 @@ const hint = pageInfo?.hint;
 		<PageInfo {pageInfo}/>
 	</head>
 	<body>
-		<SkipLink/>
-		<Header {hint}/>
+		<Header/>
 		{hero && <section class="hero"><slot name="hero"/></section>}
 		<main id="content" {...attribs}>
 			<slot/>
@@ -29,5 +26,6 @@ const hint = pageInfo?.hint;
 		<aside class="floating-back-to-top">
 			<BackToTop/>
 		</aside>
+		<script src="/vendor/lite-yt-embed@0.3.0.js" is:inline async></script>
 	</body>
 </html>

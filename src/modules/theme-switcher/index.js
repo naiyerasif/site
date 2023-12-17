@@ -33,6 +33,8 @@ export default class ThemeSwitcher extends HTMLElement {
 			this.#currentTheme = event.detail.theme;
 			this.#updateTemplate();
 		});
+
+		document.addEventListener("toggletheme", this.#switchHandler);
 	}
 
 	connectedCallback() {

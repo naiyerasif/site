@@ -35,7 +35,6 @@ const showUpdate = compare(data.update, data.date) !== 0;
 const showReadingTime = timeToRead > 0;
 
 const pageInfo = {
-	hint: category,
 	title: data.title,
 	description: data.description,
 	url,
@@ -50,13 +49,21 @@ const pageInfo = {
 ---
 
 <Layout {pageInfo}>
-	<div class="hero-post" slot="hero">
-		<h1 class="headline">{data.title}</h1>
-		{data.tagline && <p class="subheadline">{data.tagline}</p>}
-		<div class="hero-post-details">
-			<Time date={data.date} />{showUpdate && <span class="update">updated on <Time date={data.update} /></span>}{category !== "status" && showReadingTime && <span>~{`${timeToRead} min read`}</span>}
+	<Fragment slot="hero">
+		<div class="hero-header">
+			<a class="hero-back-nav" href="/"><Icon name="arrow-dash-left"/>Return to home</a>
+			<span class="hero-content-type">{category}</span>
 		</div>
-	</div>
+		<div class="hero-body">
+			<div class="hero-headline-text">
+				<h1 class="headline">{data.title}</h1>
+				{data.tagline && <p class="subheadline">{data.tagline}</p>}
+			</div>
+		</div>
+		<div class="hero-footer">
+			<span>Published on <Time date={data.date} /></span>{showUpdate && <span class="update">Updated on <Time date={data.update} /></span>}{category !== "status" && showReadingTime && <span>Takes approximately {`${timeToRead} min read`}</span>}
+		</div>
+	</Fragment>
 	<article class="content">
 		{headings && headings.length > 0 && <nav class="toc">
 			<div class="toc-header">Table of Contents</div>
