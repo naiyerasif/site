@@ -114,19 +114,15 @@ main#content + .footer,
 
 .pagination {
 	&-item {
-		min-inline-size: 3ch;
+		min-inline-size: 4ch;
 		justify-content: center;
 
-		&.button-link {
+		&.distinct-link {
 			padding: 0.2ch 1ch;
-			border-radius: var(--radius-site-sm);
-			border: 1px dotted;
 			border-color: transparent;
-			text-align: center;
 
 			&:is(:hover, :focus, :active) {
 				border-color: currentColor;
-				border-style: solid;
 			}
 		}
 

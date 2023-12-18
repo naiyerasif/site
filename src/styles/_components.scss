@@ -64,6 +64,18 @@ theme-switcher::part(button) {
 	}
 }
 
+.distinct-link {
+	--distinctLinkRadius: var(--radius-site-round);
+	display: inline-flex;
+	align-items: center;
+	border: 2px dotted currentColor;
+	border-radius: var(--radius-site-round);
+
+	&:is(:hover, :focus, :active) {
+		border-style: solid;
+	}
+}
+
 .hero {
 	--heroItemGap: 1rem;
 
@@ -85,21 +97,13 @@ theme-switcher::part(button) {
 	}
 
 	&-back-nav {
-		display: inline-flex;
-		align-items: center;
 		padding: var(--headerItemPadding);
-		border: 1px dotted currentColor;
-		border-radius: var(--radius-site-round);
-
-		&:is(:hover, :focus, :active) {
-			border-style: solid;
-		}
 	}
 
 	&-content-type {
 		text-transform: capitalize;
 		padding: var(--headerItemPadding);
-		border: 1px solid var(--background-site-code);
+		border: 2px solid var(--background-site-code);
 		border-radius: var(--radius-site-round);
 		background-color: var(--background-site-codeblock-highlighted);
 	}
@@ -220,45 +224,31 @@ theme-switcher::part(button) {
 }
 
 .more-link {
-	display: inline-flex;
-	align-items: center;
 	--size-site-icon-og: 2rem;
 	padding: 1ch 2ch;
-	border-radius: var(--radius-site-round);
-	border: 3px dotted currentColor;
-	text-align: center;
-	font-size: 1.5em;
-
-	&:is(:hover, :focus, :active) {
-		border-style: solid;
+	font-size: calc(1.1em + 0.5vw);
+	
+	@include mixins.window-normal {
+		border-width: 3px;
 	}
 }
 
 .floating-back-to-top {
 	--backToTopPos: 1.5rem;
-	display: flex;
 	position: fixed;
-	border-radius: var(--radius-site-sm);
+	border-radius: var(--radius-site-round);
 	inset-block-end: var(--backToTopPos);
 	inset-inline-end: var(--backToTopPos);
 	z-index: 10;
 	backdrop-filter: blur(25px);
 
 	a {
-		border-radius: inherit;
-		border: 1px dotted currentColor;
 		padding: 0.5ch;
-		line-height: 0;
-
-		&:is(:hover, :focus, :active) {
-			border-style: solid;
-		}
 
 		@include mixins.window-normal {
 			--size-site-icon-og: calc(0.75rem + 1.5vw);
 			padding: 1ch;
 			border-width: 3px;
-			border-radius: var(--radius-site-round);
 		}
 	}
 }

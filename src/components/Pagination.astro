@@ -20,10 +20,10 @@ const pages = Array.from({ length: totalPages }, (v, i) => i + 1)
 
 {
 	pages.map((page, index)=> page.active ? 
-		<a class="pagination-item button-link active" href={paginationPathname(base, page.pageNumber)} aria-current="page" aria-label={`Page ${page.pageNumber}`}>{currentPage}</a> : 
+		<a class="pagination-item distinct-link active" href={paginationPathname(base, page.pageNumber)} aria-current="page" aria-label={`Page ${page.pageNumber}`}>{currentPage}</a> : 
 		(page.disabled && !pages[index - 1].disabled ? 
 			<span class="pagination-separator">&hellip;</span> : 
-			(!page.disabled && <a class="pagination-item button-link" href={paginationPathname(base, page.pageNumber)} aria-label={`Page ${page.pageNumber}`}>{page.pageNumber}</a> )
+			(!page.disabled && <a class="pagination-item distinct-link" href={paginationPathname(base, page.pageNumber)} aria-label={`Page ${page.pageNumber}`}>{page.pageNumber}</a> )
 		)
 	)
 }
