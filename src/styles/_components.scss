@@ -56,7 +56,7 @@ theme-switcher::part(button) {
 }
 
 .brand {
-	--brandSize: calc(24px + 0.5vw);
+	--brandSize: calc(30px + 0.5vw);
 	@include mixins.fixed-size(var(--brandSize));
 
 	img {
