@@ -52,7 +52,7 @@ const pageInfo = {
 			</div>
 		</div>
 		<div class="hero-footer">
-			<span>Published on <Time date={data.date} /></span>{showUpdate && <span class="update">Updated on <Time date={data.update} /></span>}{category !== "status" && showReadingTime && <span>Takes approximately {`${timeToRead} min read`}</span>}
+			<span><Icon name="calendar" class="icon-sm"/> Published on <Time date={data.date} /></span>{showUpdate && <span class="update"><Icon name="calendar-edit" class="icon-sm"/> Updated on <Time date={data.update} /></span>}{category !== "status" && showReadingTime && <span><Icon name="clock" class="icon-sm"/> Takes about {`${timeToRead} min to read`}</span>}
 		</div>
 	</Fragment>
 	<article class="content">

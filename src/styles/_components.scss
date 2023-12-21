@@ -64,6 +64,16 @@ theme-switcher::part(button) {
 	}
 }
 
+.icon-sm {
+	--size-site-icon-og: 1.25rem;
+
+	@media (hover: none) {
+		:root {
+			--size-site-icon-og: 20px;
+		}
+	}
+}
+
 .distinct-link {
 	--distinctLinkRadius: var(--radius-site-round);
 	display: inline-flex;
@@ -111,6 +121,10 @@ theme-switcher::part(button) {
 	&-footer {
 		--heroItemGap: 0;
 		font-size: var(--text-site-sm);
+
+		.icon-sm {
+			color: var(--color-site-accent-500);
+		}
 
 		& > *:not(:last-child)::after {
 			@include mixins.icon("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='15' r='1'/%3E%3C/svg%3E");
