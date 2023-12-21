@@ -63,7 +63,8 @@ kbd {
 	color: var(--color-site-body);
 }
 #command-bar::backdrop {
-	backdrop-filter: var(--backdrop-site-dialog);
+	background-color: hsl(0, 0%, 10%, 0.5);
+	backdrop-filter: blur(25px);
 }
 #command-bar {
 	width: calc(100% - 2px);
