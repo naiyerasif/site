@@ -25,12 +25,6 @@
 	@include mixins.fixed-size(1em);
 }
 
-// restore automatic cursor and touch interactions for pre
-:where(pre, code) {
-	cursor: auto;
-	touch-action: auto;
-}
-
 :where(figcaption) {
 	margin-block-start: 0.5em;
 

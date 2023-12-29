@@ -47,6 +47,9 @@
 		& > code {
 			display: grid;
 			padding-inline: 0;
+			// restore automatic cursor and touch interactions
+			cursor: auto;
+			touch-action: auto;
 		}
 	}
 

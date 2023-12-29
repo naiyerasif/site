@@ -79,6 +79,9 @@
 
 	* {
 		color: currentColor;
+		cursor: pointer;
+		touch-action: manipulation;
+		-webkit-tap-highlight-color: transparent;
 	}
 
 	&:is(:focus, :focus-within, :hover) {
