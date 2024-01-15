@@ -8,6 +8,9 @@ dependencies:
   '@astrojs/sitemap':
     specifier: ^3.0.4
     version: 3.0.4
+  '@microflash/preset':
+    specifier: ^2.0.0
+    version: 2.0.0
   '@microflash/rehype-figure':
     specifier: ^2.0.0
     version: 2.0.0
@@ -1163,6 +1166,10 @@ packages:
     resolution: {integrity: sha512-VCk040YLhQAK7rda9KIP3sXSc0NJft29oTBbVH87kmLYxm2KCWjJiN7grk1i/0Y6PHt9yh6OHcHAv3urk4lr+w==}
     dependencies:
       chevrotain: 10.5.0
+    dev: false
+
+  /@microflash/preset@2.0.0:
+    resolution: {integrity: sha512-NZsbw6a8/AwdRut4l0VrfD7JXTjTz+WMJOt/CsUyukqmENyaxZU7FA3c6d29ckrdSf/J7y2fiyEYxRq03p2aPw==}
     dev: false
 
   /@microflash/rehype-figure@2.0.0:
