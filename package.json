@@ -12,14 +12,14 @@
 		"lighthouse": "unlighthouse-puppeteer --site http://localhost:8080"
 	},
 	"dependencies": {
-		"@astrojs/sitemap": "^3.0.4",
+		"@astrojs/sitemap": "^3.0.5",
 		"@microflash/preset": "^2.0.0",
 		"@microflash/rehype-figure": "^2.0.0",
 		"@microflash/rehype-slugify": "^1.0.0",
 		"@microflash/rehype-starry-night": "^3.5.0",
 		"@microflash/remark-callout-directives": "^2.0.0",
 		"@sindresorhus/slugify": "^2.2.1",
-		"astro": "^4.1.2",
+		"astro": "^4.2.1",
 		"dayjs": "^1.11.10",
 		"feed": "^4.2.2",
 		"postcss-preset-env": "^9.3.0",
@@ -31,7 +31,7 @@
 		"remark-parse": "^11.0.0",
 		"remark-rehype": "^11.1.0",
 		"remark-smartypants": "^2.1.0",
-		"sass": "^1.69.7",
+		"sass": "^1.70.0",
 		"unified": "^11.0.4"
 	},
 	"devDependencies": {
