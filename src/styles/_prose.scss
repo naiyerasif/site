@@ -46,8 +46,6 @@
 	accent-color: var(--color-site-link);
 	caret-color: var(--color-site-link);
 
-	scrollbar-color: var(--color-site-scrollbar) var(--background-site-scrollbar);
-
 	&::-webkit-scrollbar,
 	&::-webkit-scrollbar-track {
 		background-color: var(--background-site-scrollbar);
@@ -56,6 +54,8 @@
 	&::-webkit-scrollbar-thumb {
 		background-color: var(--color-site-scrollbar);
 	}
+
+	scrollbar-color: var(--color-site-scrollbar) var(--background-site-scrollbar);
 }
 
 :where(body) {
