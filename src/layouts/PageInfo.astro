@@ -11,15 +11,14 @@ const mastodonUrl = siteInfo.author.networks.mastodon.link;
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{pageInfo.title} &mdash; {siteTitle}</title>
-<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <meta name="color-scheme" content="dark light">
 <meta name="author" content={siteAuthor}>
 <meta name="theme-color" content="#070708" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#fefcfb" media="(prefers-color-scheme: light)">
-<link rel="mask-icon" href="/mask-icon.svg" color="#db0b2f">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
 <link rel="sitemap" href="/sitemap-index.xml">
 <link rel="alternate" type="application/rss+xml" href="/feed.xml">
 {pageInfo.url && <link rel="canonical" href={pageInfo.url}>}

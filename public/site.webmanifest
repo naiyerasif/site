@@ -5,10 +5,8 @@
 	"categories": ["blog", "development", "design"],
 	"lang": "en-US",
 	"icons": [
-		{
-			"src": "google-touch-icon.png",
-			"sizes": "512x512"
-		}
+		{ "src": "icon-192.png", "type": "image/png", "sizes": "192x192" },
+		{ "src": "icon-512.png", "type": "image/png", "sizes": "512x512" }
 	],
 	"background_color": "#070708",
 	"theme_color": "#070708",
