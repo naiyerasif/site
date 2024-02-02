@@ -64,6 +64,7 @@ kbd {
 }
 #command-bar::backdrop {
 	background-color: hsl(0, 0%, 10%, 0.5);
+	-webkit-backdrop-filter: blur(25px);
 	backdrop-filter: blur(25px);
 }
 #command-bar {

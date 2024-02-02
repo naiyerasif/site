@@ -248,6 +248,7 @@ theme-switcher::part(button) {
 	inset-block-end: var(--backToTopPos);
 	inset-inline-end: var(--backToTopPos);
 	z-index: 10;
+	-webkit-backdrop-filter: blur(25px);
 	backdrop-filter: blur(25px);
 
 	a {
