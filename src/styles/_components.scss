@@ -37,6 +37,12 @@
 	}
 }
 
+::part(button) {
+	cursor: pointer;
+	touch-action: manipulation;
+	-webkit-tap-highlight-color: transparent;
+}
+
 theme-switcher::part(button) {
 	padding: 0.4rem;
 	border-radius: var(--radius-site-sm);

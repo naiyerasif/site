@@ -81,8 +81,11 @@ kbd {
 	line-height: 0;
 	border-radius: var(--radius-site-sm) !important;
 }
+::part(button),
 ::part(link) {
 	cursor: pointer;
+	touch-action: manipulation;
+	-webkit-tap-highlight-color: transparent;
 }
 #command-bar-launcher .label {
 	display: none;

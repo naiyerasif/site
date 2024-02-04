@@ -222,6 +222,7 @@
 :where(a[href], area, button, input, select, summary, textarea, [role="button"], [onclick], [tabindex]:not([tabindex*="-"])),
 :where(input[type="file"])::file-selector-button,
 ::part(button),
+::part(link),
 ::part(input) {
 	&:is(:focus, :focus-visible, :focus-within, :hover, :active) {
 		--color-site-link: var(--color-site-accent-400);
