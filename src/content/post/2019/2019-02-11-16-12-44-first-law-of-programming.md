@@ -8,4 +8,4 @@ category: "status"
 
 > Lowering quality lengthens development time.
 >
-> <cite>&mdash; [First Law of Programming](https://wiki.c2.com/?FirstLawOfProgramming), :time[2014-12-08 00:00:00]</cite>
+> <cite>&mdash; [First Law of Programming](https://wiki.c2.com/?FirstLawOfProgramming), :time{datetime="2014-12-08T00:00:00.000Z"}</cite>

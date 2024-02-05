@@ -1,16 +1,13 @@
 import { visit } from "unist-util-visit";
 import { defu } from "defu";
-import timeDirective from "./directive-time.js";
 import youtubeDirective from "./directive-youtube.js";
 import youtubeDirectiveServer from "./directive-youtube-server.js";
 
 const directiveRegistryClient = {
-	time: (node) => timeDirective(node),
 	youtube: (node) => youtubeDirective(node),
 }
 
 const directiveRegistryServer = {
-	time: (node) => timeDirective(node),
 	youtube: (node) => youtubeDirectiveServer(node),
 }
 

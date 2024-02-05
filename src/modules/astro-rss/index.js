@@ -5,6 +5,7 @@ import remarkGfm from "remark-gfm";
 import remarkSmartypants from "remark-smartypants";
 import remarkDirective from "remark-directive";
 import remarkCalloutDirectives from "@microflash/remark-callout-directives";
+import remarkTimeDirective from "../remark-time-directive/index.js";
 import remarkCustomDirectives from "../remark-custom-directives/index.js";
 import remarkRehype from "remark-rehype";
 import rehypeFigure from "@microflash/rehype-figure";
@@ -24,6 +25,7 @@ async function process(markdown) {
 		.use(remarkGfm)
 		.use(remarkSmartypants)
 		.use(remarkDirective)
+		.use(remarkTimeDirective)
 		.use(remarkCustomDirectives, { server: true })
 		.use(remarkCalloutDirectives, {
 			callouts: {

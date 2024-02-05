@@ -263,7 +263,7 @@ curl -X POST 'http://localhost:4445/admin/oauth2/introspect' -H 'Content-Type: a
 
 **Previous versions**
 
-- [:time[2022-08-21 12:32:07]](/archive/2022/08/21/client-credentials-flow-with-ory-hydra--1): Discusses client credentials flow with Ory Hydra 1
+- [:time{datetime="2022-08-21T12:32:07.000Z"}](/archive/2022/08/21/client-credentials-flow-with-ory-hydra--1): Discusses client credentials flow with Ory Hydra 1
 
 **Source code**
 

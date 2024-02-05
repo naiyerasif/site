@@ -12,10 +12,30 @@ Personal website of [@naiyerasif](https://github.com/naiyerasif)
 
 - To create a new post, run `pnpm post`
 
+### Spellcheck
+
 [Vale](https://vale.sh) enforces the spellcheck and prose styling of this blog.
 
 - To verify a prose, run `vale <path>`
 - To sync packages and styles, run `vale sync`
+
+### Custom markdown directives
+
+The following custom directives are supported.
+
+#### Time directive
+
+The following directive
+
+```md
+:time{datetime="2024-01-14T05:12:48.000Z"}
+```
+
+gets converted to
+
+```html
+<time datetime="2024-01-14T05:12:48.000Z">Jan 14, 2024</time>
+```
 
 ## Audits
 

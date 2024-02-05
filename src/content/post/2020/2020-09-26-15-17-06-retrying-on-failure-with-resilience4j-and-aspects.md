@@ -566,7 +566,7 @@ Let's break down what's happening here.
 
 **Previous versions**
 
-- [:time[2020-09-26 15:17:06]](/archive/2020/09/26/retrying-on-failure-with-resilience4j-and-aspects--1/): Discusses method retry on failure with Resilience4J Retry 1.5.0, Spring Boot 2 and Java 15
+- [:time{datetime="2020-09-26T15:17:06.000Z"}](/archive/2020/09/26/retrying-on-failure-with-resilience4j-and-aspects--1/): Discusses method retry on failure with Resilience4J Retry 1.5.0, Spring Boot 2 and Java 15
 
 **Source code**
 

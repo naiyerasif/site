@@ -8,4 +8,4 @@ category: "status"
 
 > All engineering is reverse engineering if you document things poorly enough.
 > 
-> <cite>&mdash; [Ian Douglas Scott](https://fosstodon.org/@ids1024/111751290442259763), :time[2024-01-14 05:12:48]</cite>
+> <cite>&mdash; [Ian Douglas Scott](https://fosstodon.org/@ids1024/111751290442259763), :time{datetime="2024-01-14T05:12:48.000Z"}</cite>

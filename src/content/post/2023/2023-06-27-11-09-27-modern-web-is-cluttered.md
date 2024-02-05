@@ -12,4 +12,4 @@ category: "status"
 >
 > "oh."
 >
-> <cite>&mdash; [Chloé](https://mastodon.social/@carotte/110617398735423428), :time[2023-06-27 11:09:27]</cite>
+> <cite>&mdash; [Chloé](https://mastodon.social/@carotte/110617398735423428), :time{datetime="2023-06-27T11:09:27.000Z"}</cite>

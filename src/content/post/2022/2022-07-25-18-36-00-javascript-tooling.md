@@ -8,4 +8,4 @@ category: "status"
 
 > Every bit of joy that building things in JavaScript gives you, its tooling takes it all back.
 >
-> <cite>&mdash; [Sarah Dayan](https://twitter.com/frontstuff_io/status/1551554491270500352), :time[2022-07-25 13:06:31]</cite>
+> <cite>&mdash; [Sarah Dayan](https://twitter.com/frontstuff_io/status/1551554491270500352), :time{datetime="2022-07-25T13:06:31.000Z"}</cite>
