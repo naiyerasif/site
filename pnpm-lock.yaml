@@ -21,8 +21,8 @@ dependencies:
     specifier: ^3.5.0
     version: 3.5.0
   '@microflash/remark-callout-directives':
-    specifier: ^2.0.0
-    version: 2.0.0
+    specifier: ^3.1.0
+    version: 3.1.0
   '@sindresorhus/slugify':
     specifier: ^2.2.1
     version: 2.2.1
@@ -1170,11 +1170,11 @@ packages:
       unist-util-visit: 5.0.0
     dev: false
 
-  /@microflash/remark-callout-directives@2.0.0:
-    resolution: {integrity: sha512-SWb6kYBUI/Dq2XzHd+OqEoQ5Ciz69kJ4UWQJa/+nfiewT7IcSzRsjXxgiZWvScb1AbzZaraPVNVQjYaa0r6jAQ==}
+  /@microflash/remark-callout-directives@3.1.0:
+    resolution: {integrity: sha512-g/FIy36WmhTM7228vzQrxmiD52mKKpoEICA7Yt3Yt56icOGrqd/nJjrJcYeiadE6rvvIQuL1W6Up+7r173WIHg==}
     dependencies:
       defu: 6.1.4
-      hastscript: 8.0.0
+      hastscript: 9.0.0
       mdast-util-from-markdown: 2.0.0
       unist-util-visit: 5.0.0
     transitivePeerDependencies:
@@ -3779,7 +3779,6 @@ packages:
       hast-util-parse-selector: 4.0.0
       property-information: 6.2.0
       space-separated-tokens: 2.0.2
-    dev: true
 
   /hookable@5.5.3:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}
