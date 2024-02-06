@@ -27,8 +27,8 @@ dependencies:
     specifier: ^2.2.1
     version: 2.2.1
   astro:
-    specifier: ^4.3.2
-    version: 4.3.2(sass@1.70.0)
+    specifier: ^4.3.3
+    version: 4.3.3(sass@1.70.0)
   dayjs:
     specifier: ^1.11.10
     version: 1.11.10
@@ -2127,8 +2127,8 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /astro@4.3.2(sass@1.70.0):
-    resolution: {integrity: sha512-SJotHzKG/I32ruYWItMRJjtmNQh14mVS7kahu3XfYyxvo6nx08PGJBTSPbqPrW1sjeQPHwcpVDFx3yMMK2kaxQ==}
+  /astro@4.3.3(sass@1.70.0):
+    resolution: {integrity: sha512-8Vfcv8LuCfzkLj+NMk7i7pu5o0MPyDkYqUYWELSwKxWf85zJSNU4oLg4DlEZWbVpm5LeTfVrpSGrZGy5n4grBg==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
