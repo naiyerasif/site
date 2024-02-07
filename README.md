@@ -23,6 +23,29 @@ Personal website of [@naiyerasif](https://github.com/naiyerasif)
 
 The following custom directives are supported.
 
+#### Figure directive
+
+The following directive
+
+```md
+:::figure
+![a short description of the information an image conveys](./image.png)
+
+Captions are brief descriptions related to the image (for example commentary, attributions or quotations).
+:::
+```
+
+gets converted to
+
+```html
+<figure class="figure">
+	<img src="./image.png" alt="a short description of the information an image conveys">
+	<figcaption>
+		<p>Captions are brief descriptions related to the image (for example commentary, attributions or quotations).</p>
+	</figcaption>
+</figure>
+```
+
 #### Time directive
 
 The following directive

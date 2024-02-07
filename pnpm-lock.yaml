@@ -11,9 +11,6 @@ dependencies:
   '@microflash/preset':
     specifier: ^2.0.0
     version: 2.0.0
-  '@microflash/rehype-figure':
-    specifier: ^2.0.0
-    version: 2.0.0
   '@microflash/rehype-slugify':
     specifier: ^1.0.0
     version: 1.0.0
@@ -1140,15 +1137,6 @@ packages:
 
   /@microflash/preset@2.0.0:
     resolution: {integrity: sha512-NZsbw6a8/AwdRut4l0VrfD7JXTjTz+WMJOt/CsUyukqmENyaxZU7FA3c6d29ckrdSf/J7y2fiyEYxRq03p2aPw==}
-    dev: false
-
-  /@microflash/rehype-figure@2.0.0:
-    resolution: {integrity: sha512-mQodZlU7n+/YbOS6iJ9O6I+cT9dsOOImKsaOSiWh8bKycXRPCc16Fs3NGoofgupkYpJdX0oqjwmQL9j+tBcAGA==}
-    dependencies:
-      hast-util-whitespace: 3.0.0
-      hastscript: 8.0.0
-      unist-util-remove: 4.0.0
-      unist-util-visit: 5.0.0
     dev: false
 
   /@microflash/rehype-slugify@1.0.0:
@@ -6894,14 +6882,6 @@ packages:
     resolution: {integrity: sha512-fucsC7HjXvkB5R3kTCO7kUjRdrS0BJt3M/FPxmHMBOm8JQi2BsHAHFsy27E0EolP8rp0NzXsJ+jNPyDWvOJZPA==}
     dependencies:
       '@types/unist': 3.0.0
-    dev: false
-
-  /unist-util-remove@4.0.0:
-    resolution: {integrity: sha512-b4gokeGId57UVRX/eVKej5gXqGlc9+trkORhFJpu9raqZkZhU0zm8Doi05+HaiBsMEIJowL+2WtQ5ItjsngPXg==}
-    dependencies:
-      '@types/unist': 3.0.0
-      unist-util-is: 6.0.0
-      unist-util-visit-parents: 6.0.1
     dev: false
 
   /unist-util-stringify-position@3.0.3:
