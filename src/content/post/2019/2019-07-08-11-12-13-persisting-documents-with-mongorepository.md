@@ -54,7 +54,11 @@ Consider a fictional social network where a *user* can create an *account*. A si
 
 Let's start by defining a domain for the above story. The relationship between the `Account`, `User` and `Session` collections can be represented by the following diagram.
 
+:::figure
 ![Domain](/images/post/2019/2019-07-08-11-12-13-persisting-documents-with-mongorepository.svg)
+
+Relationship between Account, User and Session collections
+:::
 
 A Many-to-One relationship in MongoDB can be modeled with either [embedded documents](https://docs.mongodb.com/manual/tutorial/model-embedded-one-to-many-relationships-between-documents/) or [document references](https://docs.mongodb.com/manual/tutorial/model-referenced-one-to-many-relationships-between-documents/). You can add the latter behavior through a `@DBRef` annotation.
 

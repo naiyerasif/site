@@ -7,7 +7,12 @@ category: "status"
 ---
 
 > Tiny design detail: nested border radii look really funky if they're the same. To maintain the same curvature, the outer radius = inner radius + padding.
+>
+> :::figure
 > ![Nested border radii](/images/post/2023/2023-03-07-21-14-58-nested-border-radii-01.png)
+>
+> Nested border radii with mismatched curvature (left) and same curvature (right)
+> :::
 >
 > <cite>&mdash; [Lily Konings](https://twitter.com/lilykonings/status/1567317037126680576), :time{datetime="2022-09-07T01:01:15.000Z"}</cite>
 

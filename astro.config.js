@@ -3,13 +3,13 @@ import sitemap from "@astrojs/sitemap";
 import remarkDirective from "remark-directive";
 import remarkCalloutDirectives from "@microflash/remark-callout-directives";
 import rehypeExternalLinks from "rehype-external-links";
-import rehypeFigure from "@microflash/rehype-figure";
 import rehypeSlugify from "@microflash/rehype-slugify";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeStarryNight from "@microflash/rehype-starry-night";
 import rehypeStarryNightHeaderCaptionExtension from "@microflash/rehype-starry-night/header-caption-extension";
 import rehypeStarryNightHeaderLanguageExtension from "@microflash/rehype-starry-night/header-language-extension";
 import remarkTimeDirective from "./src/modules/remark-time-directive/index.js";
+import remarkFigureDirective from "./src/modules/remark-figure-directive/index.js";
 import remarkCustomDirectives from "./src/modules/remark-custom-directives/index.js";
 import siteInfo from "./src/modules/website/index.js";
 import { CountableSlugifier } from "./src/modules/slugifier/index.js";
@@ -45,6 +45,7 @@ export default defineConfig({
 		remarkPlugins: [
 			remarkDirective,
 			remarkTimeDirective,
+			remarkFigureDirective,
 			remarkCustomDirectives,
 			[
 				remarkCalloutDirectives,
@@ -61,7 +62,6 @@ export default defineConfig({
 			]
 		],
 		rehypePlugins: [
-			[rehypeFigure, { className: "figure" }],
 			[
 				rehypeExternalLinks,
 				{

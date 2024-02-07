@@ -43,25 +43,45 @@ We'll use [Okta](https://okta.com) as the identity provider (IdP) but you can us
 
 To get started with Okta, create a developer account and login to your dashboard. Open the *Application* tab and click on the *Add Application* button.
 
+:::figure
 ![Okta Applications screen](/images/post/2020/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-01.png)
+
+Okta's *Applications* screen
+:::
 
 On the *Create New Application* screen, select *Web* and press *Next*.
 
+:::figure
 ![Okta Create New Application platform selection screen](/images/post/2020/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-02.png)
+
+Creating a New Application
+:::
 
 On the next screen, provide a name for the app, scroll down till *Grant type allowed* section, and check *Client Credentials* and *Implicit (Hybrid)* options. Press *Done*.
 
+:::figure
 ![Okta Create New Application settings screen](/images/post/2020/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-03.png)
+
+Configuring the authentication flow details
+:::
 
 Open the newly created application. You should find the *Client ID* and *Client Secret* under the *General* tab. Copy these values somewhere; you'd need them later.
 
+:::figure
 ![Okta Application details screen](/images/post/2020/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-04.png)
+
+Generated client credentials for the new application
+:::
 
 Open *Authorization Servers* (available under the *API* tab). Under the *Settings* tab , you'll find the audience configured for the server and the issuer URL. Copy these values somewhere; you'd need them later.
 
 Switch to the *Scopes* tab, and click on the *Add Scope* button. Add a scope with the name `read:messages` and check *Include in public metadata* option.
 
+:::figure
 ![Okta Add Scope screen](/images/post/2020/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-05.png)
+
+Adding a custom scope
+:::
 
 Similarly, add another scope with the name `write:messages`. This finishes Okta setup.
 
@@ -372,7 +392,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 }
 ```
 
-![Local token validation flow](/images/post/2020/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-06.png)
+:::figure
+![A sequence depicting Local token validation flow](/images/post/2020/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-06.png)
+
+Local token validation flow
+:::
 
 Launch the application. Open a terminal and send the following request to the public endpoint using *httpie*.
 
@@ -623,7 +647,11 @@ Note that we are now calling the `opaqueToken` method on the `oauth2ResourceServ
 
 ### Testing the token introspection
 
-![Token introspection flow](/images/post/2020/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-07.png)
+:::figure
+![A sequence depicting token introspection flow](/images/post/2020/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-07.png)
+
+Token introspection flow
+:::
 
 Rerun the previous scenarios with *httpie* to see the introspection in action.
 
@@ -789,7 +817,11 @@ Note that we're now calling the `authenticationManagerResolver` method over the 
 
 ### Testing the hybrid approach
 
-![Hybrid token validation flow](/images/post/2020/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-08.png)
+:::figure
+![A sequence depicting hybrid token validation flow](/images/post/2020/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-08.png)
+
+Hybrid token validation flow
+:::
 
 As earlier, rerun the previous scenarios with *httpie* to see the hybrid approach in action.
 

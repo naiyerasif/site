@@ -26,14 +26,22 @@
 }
 
 :where(figcaption) {
-	margin-block-start: 0.5em;
+	position: relative;
+	padding: 0 0 0 1.5em;
+	margin-block-start: 1em;
+
+	& > *:not(:only-child):not(:last-child) {
+		--gap-site-block: 1em;
+	}
 
 	&::before {
-		@include mixins.icon("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16.375 6c-.249-.616-.842-.996-1.555-.996-.712 0-1.439.38-1.905.996L2.446 20a2.356 2.356 0 0 0-.444 1c-.193 1.096.549 1.999 1.645 2h16c1.097-.001 2.158-.904 2.351-2 .062-.351.03-.696-.092-1L16.375 6Z'/%3E%3C/svg%3E");
-		display: inline-block;
-		margin-inline-end: 1ch;
-		@include mixins.fixed-size(1em);
-		opacity: 0.7;
+		position: absolute;
+		content: "";
+		left: 0;
+		inline-size: 1ch;
+		block-size: 100%;
+		border-radius: var(--radius-site-round);
+		background-color: var(--border-site-form);
 	}
 }
 

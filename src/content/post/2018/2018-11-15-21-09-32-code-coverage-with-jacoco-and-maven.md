@@ -67,11 +67,19 @@ Jacoco runs the coverage by instrumenting the Java code through an agent. The fi
 
 Execute `mvn verify` command to see this in action. After the build, you'll notice a `jacoco.exec` file in the `target` directory. You can open this file in an IDE to see the results of coverage.
 
-![IntelliJ Idea Coverage window](/images/post/2018/2018-11-15-21-09-32-code-coverage-with-jacoco-and-maven-01.png)
+:::figure
+![IntelliJ Idea Coverage panel](/images/post/2018/2018-11-15-21-09-32-code-coverage-with-jacoco-and-maven-01.png)
+
+IntelliJ Idea Coverage panel
+:::
 
 Your editor may even show the coverage in the project window itself.
 
-![IntelliJ Idea Project window](/images/post/2018/2018-11-15-21-09-32-code-coverage-with-jacoco-and-maven-02.png)
+:::figure
+![IntelliJ Idea Project panel](/images/post/2018/2018-11-15-21-09-32-code-coverage-with-jacoco-and-maven-02.png)
+
+Coverage shown in IntelliJ Idea Project panel
+:::
 
 :::note
 These screenshots are from IntelliJ Idea; other editors/IDEs may display coverage information differently.
@@ -83,7 +91,11 @@ JaCoCo provides a fair amount of flexibility when it comes to configuration.
 
 When the `mvn jacoco:report` task fires up, it generates reports in HTML, CSV and XML formats in a directory `target/site/jacoco`. You can use those files to integrate with a static analysis tool (like SonarQube) or publish the HTML report for other people to view.
 
+:::figure
 ![JaCoCo coverage report](/images/post/2018/2018-11-15-21-09-32-code-coverage-with-jacoco-and-maven-03.png)
+
+JaCoCo coverage (HTML) report
+:::
 
 :::note
 The appearance of the report may vary depending on your browser preferences.

@@ -22,11 +22,19 @@ Download the installer (the `exe` file). When launched, it asks for a folder to 
 
 Right-click the Office installation `img` file and select **Mount**.
 
+:::figure
 ![Mounting Office installer](/images/post/2022/2022-04-15-18-52-10-customizing-microsoft-office-installation-01.png)
+
+Mounting the Office installer image on Windows
+:::
 
 This mounts the file as a drive (say `G:`).
 
+:::figure
 ![Mounted Office installer](/images/post/2022/2022-04-15-18-52-10-customizing-microsoft-office-installation-02.png)
+
+Office installer mounted as a drive on Windows
+:::
 
 ## Generate install configuration with the Office Customization Tool
 
@@ -34,7 +42,11 @@ The Office Deployment Tool requires a configuration file that describes which ap
 
 Open the browser and launch the [Office Customization Tool](https://config.office.com/deploymentsettings). Choose the architecture, the Office version, etc. At the bottom of the **Products and releases** section, you'd find a list of applications that you can toggle for installation. Pick and choose what you want and complete the rest of the configuration.
 
+:::figure
 ![Selecting Apps with Office Customization Tool](/images/post/2022/2022-04-15-18-52-10-customizing-microsoft-office-installation-03.png)
+
+Selecting Office applications to install with [Office Customization Tool](https://config.office.com/deploymentsettings)
+:::
 
 After you're done with your configuration, hit the **Export** button to download the configuration file. This is an `XML` file. Copy this file in the folder where the Office Deployment Tool was extracted (that's, `D://ODT/`). Open the file in an editor. A sample configuration file for Office Professional Plus would look like this.
 
@@ -69,6 +81,10 @@ Open PowerShell as the administrator at the location where the Office Deployment
 
 This command launches the customized install.
 
-![Installing Office with selected applications](/images/post/2022/2022-04-15-18-52-10-customizing-microsoft-office-installation-04.png)
+:::figure
+![Office installation splashscreen](/images/post/2022/2022-04-15-18-52-10-customizing-microsoft-office-installation-04.png)
+
+Installing Office with selected applications
+:::
 
 And that's how you can do a clean install of the Office suite ensuring you install only what you need.

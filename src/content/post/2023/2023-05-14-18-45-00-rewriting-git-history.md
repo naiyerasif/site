@@ -66,7 +66,11 @@ git rebase -i target
 
 You might want to drop, squash, or edit some commits. When you mark all the items for the action that you want to take on a commit and quit the rebase dialog, rebase will start immediately. It'll show you remaining items for rebase on a counter in the terminal.
 
+:::figure
 ![A rebase counter](/images/post/2023/2023-05-14-18-45-00-rewriting-git-history-01.png)
+
+A rebase counter displaying the current position of a rebase in progress
+:::
 
 #### Editing the changesets
 

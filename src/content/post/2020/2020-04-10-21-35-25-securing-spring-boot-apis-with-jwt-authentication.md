@@ -16,7 +16,11 @@ So, how does this work?
 - Once the login is successful, the application returns a JWT token. This token can be saved on the client-side (using localStorage, cookie, etc.). 
 - When a subsequent request is made to the application, the token should be sent with it in an `Authorization` header, often using a [Bearer schema](https://tools.ietf.org/html/rfc6750).
 
-![JWT-based authentication flow](/images/post/2020/2020-04-10-21-35-25-securing-spring-boot-apis-with-jwt-authentication-01.svg)
+:::figure
+![A sequence of JWT-based authentication flow](/images/post/2020/2020-04-10-21-35-25-securing-spring-boot-apis-with-jwt-authentication-01.svg)
+
+JWT-based authentication flow
+:::
 
 In this post, we'll create a Spring Boot API and secure it using Spring Security and JWT-based authentication.
 

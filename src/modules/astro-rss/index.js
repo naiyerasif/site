@@ -6,9 +6,9 @@ import remarkSmartypants from "remark-smartypants";
 import remarkDirective from "remark-directive";
 import remarkCalloutDirectives from "@microflash/remark-callout-directives";
 import remarkTimeDirective from "../remark-time-directive/index.js";
+import remarkFigureDirective from "../remark-figure-directive/index.js";
 import remarkCustomDirectives from "../remark-custom-directives/index.js";
 import remarkRehype from "remark-rehype";
-import rehypeFigure from "@microflash/rehype-figure";
 import rehypeStringify from "rehype-stringify";
 import { fullLink } from "~website";
 
@@ -26,6 +26,7 @@ async function process(markdown) {
 		.use(remarkSmartypants)
 		.use(remarkDirective)
 		.use(remarkTimeDirective)
+		.use(remarkFigureDirective)
 		.use(remarkCustomDirectives, { server: true })
 		.use(remarkCalloutDirectives, {
 			tagName: "div",
@@ -38,7 +39,6 @@ async function process(markdown) {
 			}
 		})
 		.use(remarkRehype, { allowDangerousHtml: true })
-		.use(rehypeFigure)
 		.use(rehypeStringify, { allowDangerousHtml: true })
 		.process(markdown);
 	

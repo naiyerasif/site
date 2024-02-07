@@ -18,8 +18,12 @@ I overhauled quite a few things.
 
 Layouts now emphasize the content and semantics around the content.
 
+:::figure
 ![Home Page (old on left, new on right)](/images/post/2022/2022-07-13-14-24-12-microflash-version-2-01.png)
 ![Post (old on left, new on right)](/images/post/2022/2022-07-13-14-24-12-microflash-version-2-02.png)
+
+Home Page and Post layouts (old on left, new on right)
+:::
 
 ### New design system
 
@@ -33,13 +37,21 @@ I have also cut down the amount of JavaScript being shipped to the browser (from
 
 The new version has an [all-green Lighthouse score](https://web.dev/measure/?url=https%3A%2F%2Fmflash.dev). The score aside, I have added skip links on each page, pronounced outlines for links and buttons, and necessary ARIA attributes to make the site accessible.
 
+:::figure
 ![Lighthouse scores](/images/post/2022/2022-07-13-14-24-12-microflash-version-2-03.png)
+
+Lighthouse score (source: [PageSpeed Insights](https://web.dev/measure/?url=https%3A%2F%2Fmflash.dev))
+:::
 
 ### Small carbon footprint
 
 The carbon footprint of the previous version was already small. The redesign [reduces](https://www.websitecarbon.com/website/mflash-dev/) this even further.
 
+:::figure
 ![Carbon impact estimates](/images/post/2022/2022-07-13-14-24-12-microflash-version-2-04.png)
+
+Carbon impact estimates (source: [Website Carbon](https://www.websitecarbon.com/website/mflash-dev/))
+:::
 
 ## Behind the scenes
 

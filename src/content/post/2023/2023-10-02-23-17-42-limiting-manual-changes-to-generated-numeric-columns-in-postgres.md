@@ -179,7 +179,11 @@ Note that you can't use `OVERRIDING SYSTEM VALUE` for the `update` statement.
 - Since the identity column definition is part of <abbr title="Data Definition Language">DDL</abbr>, it communicates the intent of restriction explicitly.
 - A static analysis tool can show the error messages before you execute the statements.
 
-![Error overlay in DataGrip for identity column](/images/post/2023/2023-10-02-23-17-42-limiting-manual-changes-to-generated-numeric-columns-in-postgres-01.png)
+	:::figure
+	![Error overlay in DataGrip for identity column](/images/post/2023/2023-10-02-23-17-42-limiting-manual-changes-to-generated-numeric-columns-in-postgres-01.png)
+
+	An overlay in DataGrip warning that only DEFAULT can be inserted into an identity column
+	:::
 
 - Error messages are specific and offer enough context to understand the issue.
 - Identity columns are always attached with a sequence. Any column type that can't use a value from a sequence isn't eligible for this approach. 
