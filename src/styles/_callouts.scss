@@ -24,6 +24,8 @@
 	}
 
 	&-content {
+		--gap-site-body: 1em;
+
 		padding: 1ch;
 		border-image: 
 			radial-gradient(#0000 71%, var(--calloutBorderColor) 72%)
