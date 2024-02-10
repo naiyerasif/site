@@ -13,7 +13,7 @@ const pageInfo = {
 		<img src="/images/remix/remix-glitch.svg" alt="glitchy logo">
 	</div>
 	<div class="subheadline">
-		<noscript>This page is missing. <a href="/">Take me home</a>.</noscript>
+		<noscript>This page is missing. <a href="/">Return to home</a>.</noscript>
 	</div>
 </Layout>
 
@@ -35,6 +35,6 @@ const pageInfo = {
 	customElements.define(Random404Messages.tagName, Random404Messages);
 
 	let headline = document.querySelector(".glitch .subheadline");
-	headline.innerHTML = `<random-404-messages></random-404-messages>
-		<a href="/">Take me home</a>, or <button onclick="document.dispatchEvent(new Event('opensearch'))">search</button> what you're looking for.`;
+	headline.innerHTML = `<random-404-messages></random-404-messages><br>
+		<a href="/">Return to home</a>, or <button onclick="document.dispatchEvent(new Event('opensearch'))">search</button> what you're looking for.`;
 </script>
