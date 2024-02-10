@@ -4,18 +4,25 @@ import { compare } from "~datetime";
 import siteInfo, { fullLink, postPathname } from "~website";
 
 const baseUrl = siteInfo.siteBase;
-const author = siteInfo.author.name;
+const authorName = siteInfo.author.name;
 const aboutUrl = fullLink("/about");
+
+const author = {
+	name: authorName,
+	email: siteInfo.author.networks.mastodon.id,
+	link: aboutUrl
+};
 
 const options = {
 	id: baseUrl,
-	title: siteInfo.title,
 	link: baseUrl,
+	title: siteInfo.title,
 	description: siteInfo.description,
-	copyright: `2018, ${author}`,
+	copyright: `${(new Date()).getFullYear()}, ${authorName}`,
 	feedLinks: {
-		rss: fullLink("/feed.xml")
-	}
+		rss: fullLink("/all.xml")
+	},
+	author
 };
 
 export async function GET() {
@@ -29,16 +36,12 @@ export async function GET() {
 			return {
 				title: showUpdate ? `[Updated] ${post.data.title}` : post.data.title,
 				date: new Date(post.data.update),
-				author: [{
-					name: author,
-					email: author,
-					link: aboutUrl
-				}],
+				author: [author],
 				content: post.body,
 				link: pageUrl,
 				id: pageUrl
-			}
+			};
 		});
-	
+
 	return rss(posts, options);
 }
