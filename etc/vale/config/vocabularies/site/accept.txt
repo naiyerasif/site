@@ -1,7 +1,9 @@
 artifactory
+[Aa]utoscaling
 changeset
 chatbot(s)
 [Cc]odeblock|[Cc]odeblocks
+[Hh]ealthcheck
 [Mm]onorepo
 [Pp]ostgres
 priviledges
