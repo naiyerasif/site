@@ -275,3 +275,7 @@ theme-switcher::part(button) {
 		}
 	}
 }
+
+.callout-setup .callout-content {
+	--gap-site-body: 0.5em;
+}
