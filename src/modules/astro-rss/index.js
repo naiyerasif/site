@@ -7,7 +7,7 @@ import remarkDirective from "remark-directive";
 import remarkCalloutDirectives from "@microflash/remark-callout-directives";
 import remarkTimeDirective from "../remark-time-directive/index.js";
 import remarkFigureDirective from "../remark-figure-directive/index.js";
-import remarkCustomDirectives from "../remark-custom-directives/index.js";
+import remarkYoutubeDirective from "../remark-youtube-directive/index.js";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 import { fullLink } from "~website";
@@ -27,7 +27,7 @@ async function process(markdown) {
 		.use(remarkDirective)
 		.use(remarkTimeDirective)
 		.use(remarkFigureDirective)
-		.use(remarkCustomDirectives, { server: true })
+		.use(remarkYoutubeDirective, { server: true })
 		.use(remarkCalloutDirectives, {
 			tagName: "div",
 			callouts: {

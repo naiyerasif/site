@@ -10,7 +10,7 @@ import rehypeStarryNightHeaderCaptionExtension from "@microflash/rehype-starry-n
 import rehypeStarryNightHeaderLanguageExtension from "@microflash/rehype-starry-night/header-language-extension";
 import remarkTimeDirective from "./src/modules/remark-time-directive/index.js";
 import remarkFigureDirective from "./src/modules/remark-figure-directive/index.js";
-import remarkCustomDirectives from "./src/modules/remark-custom-directives/index.js";
+import remarkYoutubeDirective from "./src/modules/remark-youtube-directive/index.js";
 import siteInfo from "./src/modules/website/index.js";
 import { CountableSlugifier } from "./src/modules/slugifier/index.js";
 
@@ -46,7 +46,7 @@ export default defineConfig({
 			remarkDirective,
 			remarkTimeDirective,
 			remarkFigureDirective,
-			remarkCustomDirectives,
+			remarkYoutubeDirective,
 			[
 				remarkCalloutDirectives,
 				{
