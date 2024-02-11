@@ -1,0 +1,26 @@
+{
+	"Abbreviation": {
+		"scope": "markdown",
+		"prefix": "abbr",
+		"body": ["<abbr title=\"$1\">$2</abbr>"],
+		"description": "Inserts an abbr element"
+	},
+	"Figure": {
+		"scope": "markdown",
+		"prefix": "fig",
+		"body": [
+			":::figure",
+			"![$1](/images/post/$2)",
+			"",
+			"$3"
+			":::"
+		],
+		"description": "Inserts a figure directive"
+	},
+	"Time": {
+		"scope": "markdown",
+		"prefix": "time",
+		"body": [":time{datetime=\"$1\"}"],
+		"description": "Inserts a time directive"
+	}
+}
