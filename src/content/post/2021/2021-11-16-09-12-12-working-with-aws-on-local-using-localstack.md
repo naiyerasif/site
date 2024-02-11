@@ -10,6 +10,11 @@ tags: ["cloud", "localstack", "aws"]
 
 Developing with AWS comes with its own set of challenges. If your organization has strict policies on cloud resources, prototyping with the AWS services can become a hassle. [LocalStack](https://localstack.cloud/) is a cloud emulation layer that runs offline in a container on your local machine. Using LocalStack, you can run AWS services without connecting to the actual AWS environment. You can use the familiar tools like the official AWS CLI and AWS SDK to interact with LocalStack seamlessly. In this guide, I'll talk about how to setup LocalStack and use it with the AWS CLI.
 
+:::assert{title=Series}
+1. *Working with AWS on local using LocalStack*
+2. [Using LocalStack for AWS Lambda with SQS trigger](/post/2024/02/11/using-localstack-for-aws-lambda-with-sqs-trigger/)
+:::
+
 :::setup
 The examples in this post use
 
@@ -327,5 +332,5 @@ For more operations, refer to the [secretsmanager](https://awscli.amazonaws.com/
 **Related**
 
 - [LocalStack docs](https://docs.localstack.cloud/overview/)
-- [Locker at Docker Hub](https://hub.docker.com/r/localstack/localstack)
+- [LocalStack on Docker Hub](https://hub.docker.com/r/localstack/localstack)
 - [AWS Command Line Interface Documentation](https://docs.aws.amazon.com/cli/)

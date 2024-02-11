@@ -16,7 +16,7 @@ In this post, we'll set up linting with TypeScript ESLint for a TypeScript proje
 1. [Using Express with TypeScript](/post/2019/01/12/using-express-with-typescript/)
 2. [Request logging with morgan](/post/2019/08/13/request-logging-with-morgan/)
 3. [Logging on Node.js with log4js-node](/post/2019/08/14/logging-on-nodejs-with-log4js-node/)
-4. **Linting with TypeScript ESLint**
+4. *Linting with TypeScript ESLint*
 5. [Developing an API with Express and Postgres](/post/2019/08/19/developing-an-api-with-express-and-postgres/)
 :::
 
