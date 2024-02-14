@@ -39,10 +39,10 @@ gets converted to
 
 ```html
 <figure class="figure">
-	<img src="./image.png" alt="a short description of the information an image conveys">
-	<figcaption>
-		<p>Captions are brief descriptions related to the image (for example commentary, attributions or quotations).</p>
-	</figcaption>
+  <img src="./image.png" alt="a short description of the information an image conveys">
+  <figcaption>
+    <p>Captions are brief descriptions related to the image (for example commentary, attributions or quotations).</p>
+  </figcaption>
 </figure>
 ```
 
@@ -58,6 +58,40 @@ gets converted to
 
 ```html
 <time datetime="2024-01-14T05:12:48.000Z">Jan 14, 2024</time>
+```
+
+#### Youtube directive
+
+Youtube directive has two output variants: `client` (for the website) and `server` (for the RSS feeds)
+
+The following directive
+
+```md
+::youtube[What is Git LFS?]{#9gaTargV5BY}
+```
+
+gets converted to the following HTML for the website.
+
+```html
+<figure id="9gaTargV5BY" class="directive-youtube">
+  <div class="directive-youtube-iframe-container">
+    <lite-youtube class="directive-youtube-iframe" videoid="9gaTargV5BY" playlabel="What is Git LFS?" style="background-image: url(&quot;https://i.ytimg.com/vi/9gaTargV5BY/hqdefault.jpg&quot;);">
+      <button type="button" class="lty-playbtn">
+        <span class="lyt-visually-hidden">What is Git LFS?</span>
+      </button>
+    </lite-youtube>
+  </div>
+  <figcaption>What is Git LFS?</figcaption>
+</figure>
+```
+
+It gets converted to the following HTML for the RSS feeds.
+
+```html
+<figure id="9gaTargV5BY">
+  <iframe src="https://www.youtube-nocookie.com/embed/9gaTargV5BY" allow="join-ad-interest-group &#x27;none&#x27;; run-ad-auction &#x27;none&#x27;; encrypted-media; picture-in-picture; fullscreen" loading="lazy" title="What is Git LFS?"></iframe>
+  <figcaption>What is Git LFS?</figcaption>
+</figure>
 ```
 
 ## Audits

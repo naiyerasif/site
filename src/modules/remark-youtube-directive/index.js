@@ -15,7 +15,6 @@ function youtube(node) {
 		console.warn("Missing youtube video id");
 	} else {
 		let frameProperties = {
-			className: ["directive-youtube-iframe"],
 			src: `https://www.youtube-nocookie.com/embed/${attributes.id}`,
 			allow: "join-ad-interest-group 'none'; run-ad-auction 'none'; encrypted-media; picture-in-picture; fullscreen",
 			loading: "lazy"
@@ -32,20 +31,9 @@ function youtube(node) {
 			{
 				type: "paragraph",
 				data: {
-					hName: "div",
-					hProperties: {
-						className: ["directive-youtube-iframe-container"]
-					}
-				},
-				children: [
-					{
-						type: "paragraph",
-						data: {
-							hName: "iframe",
-							hProperties: frameProperties
-						}
-					}
-				]
+					hName: "iframe",
+					hProperties: frameProperties
+				}
 			}
 		];
 
@@ -67,7 +55,7 @@ function youtube(node) {
 		node.children = children;
 
 		data.hName = "figure";
-		data.hProperties = defu({ className: ["directive-youtube"] }, attributes);
+		data.hProperties = attributes;
 	}
 }
 
