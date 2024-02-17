@@ -16,11 +16,8 @@
 		gap: 0.5ch;
 		color: var(--calloutColor);
 		background-color: var(--calloutBorderColor);
-		padding: 0 0.5ch var(--thickness-site-md);
-	}
-
-	&-hint {
-		line-height: 0;
+		padding: 0 0.25ch var(--thickness-site-md);
+		line-height: 1;
 	}
 
 	&-content {
