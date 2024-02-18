@@ -28,7 +28,7 @@ article.content {
 		margin-block-start: var(--gap-site-xl);
 		border-block-start: 1px dashed var(--border-site-body);
 
-		#footnote-label {
+		h2[id]:first-of-type {
 			padding-block-start: var(--gap-site-xl);
 		}
 	}
