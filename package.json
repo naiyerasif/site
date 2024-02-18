@@ -39,7 +39,7 @@
 		"html-entities": "^2.4.0",
 		"inquirer": "^9.2.14",
 		"mdast-util-to-string": "^4.0.0",
-		"puppeteer": "^22.0.0",
+		"puppeteer": "^22.1.0",
 		"unist-util-visit": "^5.0.0",
 		"unlighthouse-puppeteer": "^0.10.6"
 	},
