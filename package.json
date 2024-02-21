@@ -16,7 +16,7 @@
 		"@microflash/preset": "^2.0.0",
 		"@microflash/rehype-slugify": "^1.0.0",
 		"@microflash/rehype-starry-night": "^3.5.0",
-		"@microflash/remark-callout-directives": "^4.0.0",
+		"@microflash/remark-callout-directives": "^4.1.0",
 		"@sindresorhus/slugify": "^2.2.1",
 		"astro": "^4.4.1",
 		"dayjs": "^1.11.10",
@@ -30,7 +30,7 @@
 		"remark-parse": "^11.0.0",
 		"remark-rehype": "^11.1.0",
 		"remark-smartypants": "^2.1.0",
-		"sass": "^1.71.0",
+		"sass": "^1.71.1",
 		"unified": "^11.0.4"
 	},
 	"devDependencies": {
