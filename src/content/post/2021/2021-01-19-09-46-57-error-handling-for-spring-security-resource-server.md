@@ -5,7 +5,6 @@ description: "Spring's default exception handling may need customization in cert
 date: 2021-01-19 09:46:57
 update: 2021-01-19 09:46:57
 category: "guide"
-tags: ["spring", "security", "oauth2"]
 ---
 
 > This is a follow-up post for [Error handling for a Spring-based REST API](/post/2020/07/26/error-handling-for-a-spring-based-rest-api/) and [Protecting endpoints with Spring Security Resource Server](/post/2020/11/15/protecting-endpoints-with-spring-security-resource-server/).

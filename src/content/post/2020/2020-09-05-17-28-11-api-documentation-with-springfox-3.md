@@ -5,7 +5,6 @@ description: "Springfox v3 added support for OpenAPI 3 and Spring 5. Learn how t
 date: 2020-09-05 17:28:11
 update: 2020-09-05 17:28:11
 category: "guide"
-tags: ["spring", "springfox", "openapi", "swagger"]
 ---
 
 Recently, the popular [Springfox](https://github.com/springfox/springfox) project released the long-awaited v3 of their library with support for [OpenAPI 3](https://www.openapis.org/) and Spring 5 (only annotation-based API is supported). It also comes with a ready-to-use Spring Boot starter which replaces a host of dependencies that were required in earlier versions. This version fills a lot of gaps that another project [springdoc-openapi](https://springdoc.org/) had addressed for a while.

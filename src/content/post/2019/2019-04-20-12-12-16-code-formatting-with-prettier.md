@@ -5,7 +5,6 @@ description: "Discover how to configure Prettier, an opinionated code formatter,
 date: 2019-04-20 12:12:16
 update: 2020-02-06 22:43:31
 category: "guide"
-tags: ["prettier", "formatter"]
 ---
 
 [Prettier](https://prettier.io) is an opinionated code formatter that formats the code in a consistent style. It supports popular languages, libraries, and frameworks in the Node.js ecosystem and is widely used to enforce the style practices. 

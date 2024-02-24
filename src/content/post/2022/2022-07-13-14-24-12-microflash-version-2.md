@@ -5,7 +5,6 @@ description: "Introducing the redesign of this website. Here, I document the cha
 date: 2022-07-13 14:24:12
 update: 2022-07-21 13:57:10
 category: "opinion"
-tags: ["microflash"]
 ---
 
 After more than three years since its inception, here's the redesign of this site. There were three motivations behind this redesign: **improving accessibility and performance**, **consistent design**, and **faster local development**.

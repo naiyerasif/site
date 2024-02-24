@@ -5,7 +5,6 @@ description: "Micronaut Data is a database toolkit to generate the type-checked 
 date: 2020-04-05 16:29:09
 update: 2020-04-05 16:29:09
 category: "guide"
-tags: ["spring", "micronaut", "postgres"]
 ---
 
 `Repository` API of Spring Data is one of the most elegant and compelling features of Spring framework. It generates runtime implementations of the repositories. But what if those implementations can be generated at compile-time with type-checks that fail during compilation, rather than at runtime.

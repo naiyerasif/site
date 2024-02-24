@@ -5,7 +5,6 @@ description: "Method logging is a common pattern for gathering method-related da
 date: 2020-09-13 21:01:49
 update: 2021-09-02 16:21:00
 category: "guide"
-tags: ["aspectj", "log", "spring"]
 ---
 
 :::warn{title="Archived post"}

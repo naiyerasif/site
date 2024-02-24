@@ -5,7 +5,6 @@ description: "The default Microsoft Office installer installs a lot of apps on y
 date: 2022-04-15 18:52:10
 update: 2022-04-15 18:52:10
 category: "note"
-tags: ["microsoft", "office", "install"]
 ---
 
 I've installed the Microsoft Office suite on different machines over the years. But one thing had always bugged me: the default Office installer installs a lot of applications that I never use (looking at you, OneNote and Skype). I wanted a way to cherry-pick only the Office apps that I needed to use and exclude everything else from the installation. It turns out there is a way to accomplish this.

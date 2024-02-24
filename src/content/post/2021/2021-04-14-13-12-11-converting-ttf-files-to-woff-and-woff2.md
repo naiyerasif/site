@@ -5,7 +5,6 @@ description: "Typically, webfonts come in woff2 and woff formats. But sometimes,
 date: 2021-04-14 13:12:11
 update: 2021-04-14 13:12:11
 category: "note"
-tags: ["webfont", "conversion"]
 ---
 
 Recently, I came across a font that I wanted to use on a web application. By default, I usually rely on [woff2](https://caniuse.com/woff2) and [woff](https://caniuse.com/woff) formats to load webfonts. However, the said font was available only in TTF format. To convert the TTF files, I wanted tools that would work offline and wouldn't require uploading the original files.

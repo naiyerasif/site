@@ -5,7 +5,6 @@ description: "AspectJ manipulates Java bytecode at compile-time or load-time. Th
 date: 2021-10-10 15:12:18
 update: 2021-10-10 15:12:18
 category: "guide"
-tags: ["aspectj", "aop", "log"]
 ---
 
 > This is a follow-up post for [Logging methods with AspectJ in a Spring application](/post/2020/09/13/logging-methods-with-aspectj-in-a-spring-application/).

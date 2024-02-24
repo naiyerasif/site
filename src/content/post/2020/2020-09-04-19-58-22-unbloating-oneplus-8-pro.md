@@ -5,7 +5,6 @@ description: "Recently launched OnePlus 8 Pro comes with a lot of preinstalled b
 date: 2020-09-04 19:58:22
 update: 2020-10-11 05:42:23
 category: "note"
-tags: ["unbloat", "android", "oneplus"]
 ---
 
 > Install [Android Debug Bridge](https://developer.android.com/tools/adb) (ADB) to follow this guide.

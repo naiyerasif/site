@@ -5,7 +5,6 @@ description: "Learn how to customize the PowerShell Core prompt to display the c
 date: 2020-05-31 21:26:42
 update: 2020-05-31 21:26:42
 category: "note"
-tags: ["powershell", "prompt"]
 ---
 
 I've been using the [PowerShell Core](https://github.com/powershell/powershell) on [Windows Terminal](https://github.com/Microsoft/Terminal) for a while. I wanted to customize the prompt to display `>` on a newline and the current Git branch along with the working directory. You can do this by overriding the [`Prompt`](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_prompts?view=powershell-7) function and saving it in one of the [profiles](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles?view=powershell-7). Here's the snippet that I'm using:

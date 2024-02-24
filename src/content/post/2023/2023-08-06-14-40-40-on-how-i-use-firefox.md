@@ -5,7 +5,6 @@ description: "I've used Firefox for years, and I've picked up some habits to use
 date: 2023-08-06 14:40:40
 update: 2023-08-06 14:40:40
 category: "opinion"
-tags: ["firefox", "browser"]
 ---
 
 I've been using Firefox since ages. Here are some usage habits I've picked up along the way. May these come in handy in your need (if you're also a Firefox user), or persuade you to switch to Firefox (if you're not).

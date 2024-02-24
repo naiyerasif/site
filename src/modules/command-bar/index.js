@@ -216,7 +216,7 @@ export class CommandBar extends HTMLElement {
 		location: 0,
 		distance: 600,
 		minMatchCharLength: 3,
-		keys: ["title", "tags"]
+		keys: ["title"]
 	};
 	static #anchorIcon = `<svg role="img" class="icon" aria-hidden="true"><use href="#arrow-right"/></svg>`;
 

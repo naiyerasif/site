@@ -5,7 +5,6 @@ description: "Spring Boot's actuator module enables exposing useful details. Lea
 date: 2024-02-12 21:42:25
 update: 2024-02-12 21:42:25
 category: "note"
-tags: ["actuator", "springboot", "info"]
 ---
 
 Spring Boot's [actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html) module offers pretty useful capabilities to expose the details about an application. For example, the [`health`](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.endpoints.health) endpoint provides basic application health information. Similarly, you can expose any arbitrary information through the [`info`](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.endpoints.info) endpoint.

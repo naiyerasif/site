@@ -5,7 +5,6 @@ description: "Introducing the latest redesign of this website. Here are the moti
 date: 2023-02-02 13:12:51
 update: 2023-02-11 18:41:22
 category: opinion
-tags: ["site"]
 ---
 
 Barely a yearly has passed since I launched the last [version](/post/2022/07/13/microflash-version-2/) of this site and here I'm with a fresh rewrite. You might be thinking: developers and their never-ending blog rewrites, 🙄! But hear me out on why I did it.

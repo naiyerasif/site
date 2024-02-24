@@ -5,7 +5,6 @@ description: "New MacBooks removed function key shortcuts for adjusting keyboard
 date: 2023-05-09 12:09:10
 update: 2023-05-09 12:09:10
 category: "note"
-tags: ["macOS", "customization", "keyboard"]
 ---
 
 Recent versions of MacBook removed the function key shortcuts to quickly adjust the keyboard backlight brightness. Here's an approach on how you can remap Spotlight (F4) and Siri (F5) keys to restore this feature.

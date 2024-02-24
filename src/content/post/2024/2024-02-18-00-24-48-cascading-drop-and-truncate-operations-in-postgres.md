@@ -5,7 +5,6 @@ description: "Did you know that you can cascade the DROP and TRUNCATE commands i
 date: 2024-02-18 00:24:48
 update: 2024-02-18 00:24:48
 category: "note"
-tags: ["postgres", "cascade", "ddl"]
 ---
 
 <abbr title="Today I Learned">TIL</abbr> that you can specify `CASCADE` on `DROP` and `TRUNCATE` statements in Postgres. This comes handy when you're dealing with the database objects which are references on other objects (for example, foreign keys, [domains](https://www.postgresql.org/docs/current/domains.html), etc).

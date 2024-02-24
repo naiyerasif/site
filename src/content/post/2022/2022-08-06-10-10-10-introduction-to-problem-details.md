@@ -5,7 +5,6 @@ description: "Describing problems in the software engineering is just as hard as
 date: 2022-08-06 10:10:10
 update: 2022-08-06 10:10:10
 category: "guide"
-tags: ["problem", "http", "specification"]
 ---
 
 Describing problems in software engineering is just as hard as naming things. Specific ecosystems report things that go wrong differently. For example, we've [HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) to express client and server errors. However, such error codes may not be sufficient to describe the underlying issue that caused the error. The [Problem Details](https://datatracker.ietf.org/doc/html/rfc7807) specification proposes a standard way to describe such errors using JSON or XML.

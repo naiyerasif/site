@@ -5,7 +5,6 @@ description: "Failure is unavoidable in a complex distributed system. Service ti
 date: 2020-09-26 15:17:06
 update: 2023-11-25 12:36:31
 category: "guide"
-tags: ["retry", "resilience4j", "aspectj"]
 ---
 
 Failure is an inevitability in a complex distributed system. A service may time out, a filesystem may run out of space or an API endpoint may be unavailable because of a failed deployment. Regardless of the reason, *it is impossible to eliminate failure; the only option is to design for it*.

@@ -5,7 +5,6 @@ description: "A good release cadence is a sign of healthy product. It gives conf
 date: 2023-08-19 22:41:12
 update: 2023-08-19 22:41:12
 category: "note"
-tags: ["software", "delivery", "release"]
 ---
 
 > Release early. Release often. And listen to your ~~customers~~ users.

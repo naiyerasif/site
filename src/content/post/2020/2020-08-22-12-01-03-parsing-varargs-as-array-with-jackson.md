@@ -5,7 +5,6 @@ description: "Learn how to pass varargs using Jackson for a property on a Java c
 date: 2020-08-22 12:01:03
 update: 2020-08-22 12:01:03
 category: "note"
-tags: ["varargs", "serialization", "jackson"]
 ---
 
 Consider the following Java class where the setter for the `author` property accepts the values as varargs.

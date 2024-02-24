@@ -5,7 +5,6 @@ description: "Discover how to develop a secure Spring Boot API by using Spring S
 date: 2020-04-10 21:35:25
 update: 2020-11-05 19:31:55
 category: "guide"
-tags: ["spring", "security", "jwt", "auth"]
 ---
 
 JSON Web Tokens (JWTs) are stateless, compact, and self-contained [standard](https://tools.ietf.org/html/rfc7519) to transmit the information as a JSON object. This object is usually encoded and encrypted to ensure the authenticity of the message. JWTs are small enough to be sent through URLs. Since they are self-contained, applications can glean sufficient authentication information from them, saving trips to the database. Being stateless, JWTs are particularly suitable to work with REST and HTTP (which are also stateless).

@@ -5,7 +5,6 @@ description: "Failure is unavoidable in a complex distributed system. Service ti
 date: 2020-09-26 15:17:06
 update: 2020-09-26 15:17:06
 category: "guide"
-tags: ["retry", "resilience4j", "aspectj"]
 ---
 
 :::warn{title="Archived post"}

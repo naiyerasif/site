@@ -5,7 +5,6 @@ description: "Explore the integration of TypeScript, a widely adopted strongly-t
 date: 2019-01-12 10:11:13
 update: 2020-02-06 22:30:55
 category: "guide"
-tags: ["express", "typescript"]
 ---
 
 TypeScript [has been gaining](https://2019.stateofjs.com/javascript-flavors/typescript/) popularity and adoption for a while as a strongly-typed flavor of JavaScript. And Express [has been a fan-favorite](https://2019.stateofjs.com/back-end/express/) for writing JavaScript backends. So how do we use them together? Let's explore.

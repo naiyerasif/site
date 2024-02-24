@@ -5,7 +5,6 @@ description: "To prevent web crawlers from scraping your website to build AI mod
 date: 2023-09-30 20:41:51
 update: 2023-09-30 20:41:51
 category: "reference"
-tags: ["ai", "scraping"]
 ---
 
 Most AI chatbots and services crawl the web and [scrape](https://en.wikipedia.org/wiki/Web_scraping) websites to enrich their underlying models. Here's how you can prevent such web crawlers from scraping your website.

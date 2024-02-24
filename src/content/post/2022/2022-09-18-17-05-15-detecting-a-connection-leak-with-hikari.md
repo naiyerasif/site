@@ -5,7 +5,6 @@ description: "If a database connection is not closed properly, it may not return
 date: 2022-09-18 17:05:15
 update: 2022-09-18 17:05:15
 category: "guide"
-tags: ["hikari", "jdbc", "database"]
 ---
 
 Database connections are one of the most expensive resources for an app. That's why we use connection pools (like [Hikari](https://github.com/brettwooldridge/HikariCP)) to manage them. However, if a developer doesn't close a connection, it can stay open and may never be returned to the connection pool. This leads to a _connection leak_ which can throttle the app to a standstill.

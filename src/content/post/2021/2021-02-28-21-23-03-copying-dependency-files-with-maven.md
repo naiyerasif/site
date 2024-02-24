@@ -5,7 +5,6 @@ description: "Sometimes, a dependency needs to be moved to the target directory 
 date: 2021-02-28 21:23:03
 update: 2021-02-28 21:23:03
 category: "note"
-tags: ["maven", "java", "copy"]
 ---
 
 Sometimes, when I build an application with Maven, I need to move some dependency files to the target directory along with the application JAR. These files may not be used by the application directly and hence wouldn't be packaged in the application JAR.

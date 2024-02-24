@@ -5,7 +5,6 @@ description: "Springdoc is an open-source project that adds support for OpenAPI 
 date: 2020-06-27 00:30:07
 update: 2023-11-25 15:56:50
 category: "guide"
-tags: ["springdoc", "openapi", "documentation"]
 ---
 
 [OpenAPI Initiative](https://www.openapis.org/) is a widely adopted industry standard to describe and document API, with [Swagger](https://swagger.io/) being one of its most well-known implementations. [springdoc-openapi](https://springdoc.org/) is an actively maintained integration for Spring Boot applications to quickly generate and publish OpenAPI documentation. In this post, we'll explore how we can use Springdoc with a Spring Boot project.
