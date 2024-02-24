@@ -209,14 +209,11 @@ export class CommandBar extends HTMLElement {
 	static tagName = "command-bar";
 	static #searchOptions = {
 		shouldSort: true,
-		includeMatches: true,
-		tokenize: true,
-		matchAllTokens: true,
 		threshold: 0.2,
 		location: 0,
-		distance: 600,
+		distance: 300,
 		minMatchCharLength: 3,
-		keys: ["title"]
+		keys: [ "title", "description" ]
 	};
 	static #anchorIcon = `<svg role="img" class="icon" aria-hidden="true"><use href="#arrow-right"/></svg>`;
 

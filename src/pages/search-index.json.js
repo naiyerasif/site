@@ -17,24 +17,28 @@ const defaults = [
 	},
 	{
 		"title": "About",
+		"description": "About Naiyer Asif",
 		"path": "/about/",
 		"icon": `<svg role="img" class="icon" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>`,
 		"section": "Navigation"
 	},
 	{
 		"title": "Work",
+		"description": "A timeline of professional and open-source work",
 		"path": "/work/",
 		"icon": `<svg role="img" class="icon" aria-hidden="true"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>`,
 		"section": "Navigation"
 	},
 	{
 		"title": "Privacy",
+		"description": "Privacy statement about naiyerasif.com",
 		"path": "/privacy/",
 		"icon": `<svg role="img" class="icon" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg>`,
 		"section": "Navigation"
 	},
 	{
 		"title": "Theme Switcher",
+		"description": "Switch to your preferred theme",
 		"content": `<a class="command-item" onclick="document.dispatchEvent(new Event('toggletheme'))" part="link" tabindex="0"><svg role="img" class="icon" aria-hidden="true"><path d="M6 12h.01M8 8h.01M13 7h.01M17 10h.01M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>Switch theme</a>`,
 		"section": "Preferences"
 	}
@@ -42,6 +46,6 @@ const defaults = [
 
 export async function GET() {
 	const posts = (await getCollection("post"))
-		.map(post => ({ title: encode(post.data.title),  path: postPathname(post.slug) }));
+		.map(post => ({ title: encode(post.data.title), description: post.data.description,  path: postPathname(post.slug) }));
 	return new Response(JSON.stringify([...defaults, ...posts]));
 }
