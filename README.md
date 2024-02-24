@@ -23,6 +23,22 @@ Personal website of [@naiyerasif](https://github.com/naiyerasif)
 
 The following custom directives are supported.
 
+#### Chip directives
+
+The following directive
+
+```md
+:default[Semantics]
+```
+
+gets converted to
+
+```html
+<span class="chip chip-default">Semantics</span>
+```
+
+The following chip directives are available: `default`, `commend`, `warn`, `deter`, and `assert`
+
 #### Figure directive
 
 The following directive
