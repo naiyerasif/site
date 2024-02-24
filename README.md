@@ -46,6 +46,22 @@ gets converted to
 </figure>
 ```
 
+#### Sprite directive
+
+The following directive
+
+```md
+:sprite{href="#viking" .hint}
+```
+
+gets converted to
+
+```xml
+<svg role="img" aria-hidden="true" class="hint">
+  <use href="#work-aws-eventbridge"/>
+</svg>
+```
+
 #### Time directive
 
 The following directive
