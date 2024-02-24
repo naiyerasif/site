@@ -2,8 +2,11 @@
 import { getCollection } from "astro:content";
 import Icon from "~components/Icon.astro";
 import Time from "~components/Time.astro";
+import Toc from "~components/Toc.astro";
 import Layout from "~layouts/Layout.astro";
 import format, { compare, format_date } from "~datetime";
+import toc from "~toc";
+import siteInfo from "~website";
 
 export async function getStaticPaths() {
 	const pages = await getCollection("page");
@@ -15,7 +18,8 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { data, render } = entry;
-const { Content } = await render();
+const { Content, headings } = await render();
+const showToc = data.showToc && headings && headings.length > 0;
 const showUpdate = compare(data.update, data.date) !== 0;
 
 const pageInfo = {
@@ -43,6 +47,10 @@ const pageInfo = {
 		</div>
 	</Fragment>
 	<article class="content">
+		{showToc && <nav class="toc">
+			<div class="toc-header">Table of Contents</div>
+			<Toc headings={toc(headings, siteInfo.maxTocDepth)}/>
+		</nav>}
 		<Content/>
 	</article>
 </Layout>

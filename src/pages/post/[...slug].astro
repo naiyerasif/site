@@ -27,6 +27,7 @@ const { data, render } = post;
 const { Content, headings } = await render();
 const category = data.category;
 const url = Astro.url.pathname;
+const showToc = data.showToc && headings && headings.length > 0;
 const prevPage = prev ? postPathname(prev.slug) : undefined;
 const nextPage = next ? postPathname(next.slug) : undefined;
 const hasRecommendations = prevPage || nextPage;
@@ -65,7 +66,7 @@ const pageInfo = {
 		</div>
 	</Fragment>
 	<article class="content">
-		{headings && headings.length > 0 && <nav class="toc">
+		{showToc && <nav class="toc">
 			<div class="toc-header">Table of Contents</div>
 			<Toc headings={toc(headings, siteInfo.maxTocDepth)}/>
 		</nav>}

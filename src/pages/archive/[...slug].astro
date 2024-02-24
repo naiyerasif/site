@@ -23,6 +23,7 @@ const { data, render } = post;
 const { Content, headings } = await render();
 const category = data.category;
 const url = Astro.url.pathname;
+const showToc = data.showToc && headings && headings.length > 0;
 const timeToRead = readingTime(post.body).readingTime;
 const showUpdate = compare(data.update, data.date) !== 0;
 const showReadingTime = timeToRead > 0;
@@ -56,7 +57,7 @@ const pageInfo = {
 		</div>
 	</Fragment>
 	<article class="content">
-		{headings && headings.length > 0 && <nav class="toc">
+		{showToc && <nav class="toc">
 			<div class="toc-header">Table of Contents</div>
 			<Toc headings={toc(headings, siteInfo.maxTocDepth)}/>
 		</nav>}

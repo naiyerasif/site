@@ -4,7 +4,7 @@ import siteInfo, { fullLink, editLink } from "~website";
 const title = z.string().max(64);
 const description = z.preprocess(val => val || siteInfo.description, z.string().max(200));
 const image = z.preprocess(
-	val => fullLink(val || siteInfo.ogImage), 
+	val => fullLink(val || siteInfo.ogImage),
 	z.string().url()
 );
 const date = z.date();
@@ -30,7 +30,7 @@ const postSchema = z.object({
 	category: postCategories.default("guide"),
 	tagline,
 
-	outdated: z.boolean().optional()
+	showToc: z.boolean().default(true),
 });
 
 const profileSchema = z.object({
@@ -43,7 +43,8 @@ const profileSchema = z.object({
 	type: postTypes.default("profile"),
 	tagline,
 
-	avatar: z.string()
+	showToc: z.boolean().default(false),
+	avatar: z.string(),
 });
 
 const pageSchema = z.object({
@@ -54,7 +55,9 @@ const pageSchema = z.object({
 	update,
 
 	type: postTypes.default("website"),
-	tagline
+	tagline,
+
+	showToc: z.boolean().default(false),
 });
 
 const pageInfoSchema = z.object({
@@ -70,7 +73,7 @@ const pageInfoSchema = z.object({
 	previous: optionalUrl,
 	next: optionalUrl,
 	source: optionalEditUrl,
-	timeToRead
+	timeToRead,
 });
 
 export {
