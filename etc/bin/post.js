@@ -23,7 +23,7 @@ const questions = [
 		type: "list",
 		name: "category",
 		message: "Choose a type",
-		choices: ["Status", "Guide", "Note", "Reference", "Opinion"],
+		choices: ["Status", "Guide", "Tutorial", "Reference", "Explainer", "Opinion", "Note"],
 		default: "Guide",
 		filter(value) {
 			return value.toLowerCase();
@@ -55,20 +55,6 @@ const questions = [
 			}
 			return "Please enter a valid date";
 		}
-	},
-	{
-		type: "input",
-		name: "tags",
-		message: "Specify the tags (comma separated)",
-		filter(value) {
-			return value.split(",").map(tag => tag.trim());
-		},
-		validate(value) {
-			return !!value;
-		},
-		when(answers) {
-			return answers.category !== "status";
-		}
 	}
 ];
 
@@ -83,7 +69,6 @@ inquirer.prompt(questions).then((answers) => {
 	frontmatter.push(`date: ${answers.date}`);
 	frontmatter.push(`update: ${answers.date}`);
 	frontmatter.push(`category: "${answers.category}"`);
-	if (answers.category !== "status") frontmatter.push(`tags: [${answers.tags.map(tag => `"${tag}"`).join(", ")}]`);
 	frontmatter.push('---');
 
 	const filePath = join(process.cwd(), drafts, `${date.format('YYYY-MM-DD-HH-mm-ss')}-${slug}.md`);
