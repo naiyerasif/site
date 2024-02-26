@@ -1,5 +1,52 @@
 @use "mixins";
 
+body {
+	--bodyPopout: minmax(0, 1fr);
+	--bodyGap: minmax(var(--gap-inline-body), 1fr);
+	--bodyCopy: min(var(--max-width-body), 100% - var(--gap-inline-body) * 2);
+
+	padding-inline: var(--padding-inline-body);
+	display: grid;
+	grid-template-columns:
+		[bodyPopout-start] var(--bodyPopout)
+		[bodyGap-start] var(--bodyGap)
+		[bodyCopy-start] var(--bodyCopy) [bodyCopy-end]
+		var(--bodyGap) [bodyGap-end]
+		var(--bodyPopout) [bodyPopout-end];
+
+	& > * {
+		grid-column: bodyCopy;
+	}
+
+	& > .popout {
+		grid-column: bodyPopout;
+	}
+}
+
+.content {
+	--contentPopout: minmax(0, 1fr);
+	--contentGap: var(--gap-inline-body);
+	--contentCopy: min(var(--max-width-content), 100% - var(--gap-inline-body) * 2);
+
+	display: grid;
+	grid-template-columns:
+		[contentPopout-start] var(--contentPopout)
+		[contentGap-start] var(--contentGap)
+		[contentCopy-start] var(--contentCopy) [contentCopy-end]
+		var(--contentGap) [contentGap-end]
+		var(--contentPopout) [contentPopout-end];
+	
+	& > * {
+		grid-column: contentCopy;
+	}
+
+	& > .popout {
+		grid-column: contentGap;
+	}
+
+	@include mixins.flow;
+}
+
 // spacing utility
 .flow {
 	@include mixins.flow;
