@@ -1,0 +1,6 @@
+@use "mixins";
+
+// spacing utility
+.flow {
+	@include mixins.flow;
+}
