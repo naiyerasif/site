@@ -1,0 +1,28 @@
+@mixin fixedSize($inline-size, $block-size: $inline-size) {
+	inline-size: #{$inline-size};
+	block-size: #{$block-size};
+	// constraints for flex
+	min-inline-size: #{$inline-size};
+	min-block-size: #{$block-size};
+}
+
+@mixin flow {
+	& > * + * {
+		margin-block-start: var(--gap-flow, 2em);
+	}
+}
+
+@mixin icon($data-uri) {
+	content: "";
+	mask-image: url($data-uri);
+	mask-repeat: no-repeat;
+	mask-position: top center;
+	mask-size: contain;
+	background-color: currentColor;
+}
+
+@mixin onTouch {
+	@media (pointer: coarse), (any-hover: none) {
+		@content;
+	}
+}
