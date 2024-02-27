@@ -25,7 +25,7 @@
 				composed: true,
 				detail: { theme: newTheme }
 			}));
-		}
+		};
 
 		prefersDarkTheme.addEventListener("change", function (event) {
 			window.__setPreferredTheme(event.matches ? "dark" : "light");
@@ -134,44 +134,45 @@
 	}
 
 	:root {
-		--family-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
-			Ubuntu, Cantarell, Noto Sans, sans-serif, "Segoe UI", Roboto, Ubuntu,
-			Cantarell, "Noto Sans", "Liberation Sans", Arial, sans-serif,
-			"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-			"Noto Color Emoji";
-		--family-mono: ui-monospace, SFMono-Regular, "Roboto Mono", Menlo, Monaco,
-			Consolas, "Liberation Mono", "Courier New", monospace;
-		--family-site-sans: "Inter", var(--family-sans);
-		--family-site-stress: "MakeSans", var(--family-sans);
-		--family-site-mono: "JetBrains Mono", var(--family-mono);
+		--fontSansNative: ui-sans-serif, system-ui, -apple-system,
+			"Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", "Liberation Sans",
+			Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+			"Segoe UI Symbol", "Noto Color Emoji";
+		--fontMonoNative: ui-monospace, SFMono-Regular, "Roboto Mono",
+			Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+		--fontSans1: "Inter", var(--fontSansNative);
+		--fontSans2: "MakeSans", var(--fontSansNative);
+		--fontMono: "JetBrains Mono", var(--fontMonoNative);
 
-		--text-site-sm: calc(0.8rem + 0.15vw);
-		--text-site-og: calc(0.95rem + 0.2vw);
-		--text-site-headline: calc(1.75rem + 3vw);
-		--text-site-subheadline: calc(1.2rem + 0.4vw);
+		--x2-text-sm: calc(0.8rem + 0.15vw);
+		--x2-text-0: calc(0.95rem + 0.2vw);
 
-		--size-site-icon-og: 1.5rem;
+		--x2-text-title: calc(1.75rem + 3vw);
+		--x2-text-tagline: calc(1.2rem + 0.4vw);
+
+		--x2-size-icon-0: 1.5rem;
 	}
 	@supports (font-variation-settings: normal) {
 		:root {
-			--family-site-sans: "Inter var", var(--family-sans);
-			--family-site-mono: "JetBrains Mono var", var(--family-mono);
+			--fontSans1: "Inter var", var(--fontSansNative);
+			--fontMono: "JetBrains Mono var", var(--fontMonoNative);
 		}
 	}
-	@media (hover: none) {
+	@media (pointer: coarse), (any-hover: none) {
 		:root {
-			--size-site-icon-og: 24px;
+			--x2-size-icon-0: 24px;
 		}
 	}
-	.icon {
+	:where(.icon) {
+		--iconSize: var(--x2-size-icon, var(--x2-size-icon-0));
 		display: inline-block;
 		vertical-align: text-bottom;
 		stroke: currentColor;
 		stroke-width: 2;
 		fill: none;
-		width: var(--size-site-icon-og);
-		height: var(--size-site-icon-og);
-		min-width: var(--size-site-icon-og);
-		min-height: var(--size-site-icon-og);
+		width: var(--iconSize);
+		height: var(--iconSize);
+		min-width: var(--iconSize);
+		min-height: var(--iconSize);
 	}
 </style>
