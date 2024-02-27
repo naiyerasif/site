@@ -2,10 +2,10 @@
 
 body {
 	--bodyPopout: minmax(0, 1fr);
-	--bodyGap: minmax(var(--gap-inline-body), 1fr);
-	--bodyCopy: min(var(--max-width-body), 100% - var(--gap-inline-body) * 2);
+	--bodyGap: minmax(var(--x2-gap-inline-body), 1fr);
+	--bodyCopy: min(var(--x2-max-width-body), 100% - var(--x2-gap-inline-body) * 2);
 
-	padding-inline: var(--padding-inline-body);
+	padding-inline: var(--x2-padding-inline-body);
 	display: grid;
 	grid-template-columns:
 		[bodyPopout-start] var(--bodyPopout)
@@ -25,8 +25,8 @@ body {
 
 .content {
 	--contentPopout: minmax(0, 1fr);
-	--contentGap: var(--gap-inline-body);
-	--contentCopy: min(var(--max-width-content), 100% - var(--gap-inline-body) * 2);
+	--contentGap: var(--x2-gap-inline-body);
+	--contentCopy: min(var(--x2-max-width-content), 100% - var(--x2-gap-inline-body) * 2);
 
 	display: grid;
 	grid-template-columns:

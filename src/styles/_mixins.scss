@@ -8,7 +8,7 @@
 
 @mixin flow {
 	& > * + * {
-		margin-block-start: var(--gap-flow, 2em);
+		margin-block-start: var(--x2-gap-flow, 2em);
 	}
 }
 
