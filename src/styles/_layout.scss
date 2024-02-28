@@ -51,3 +51,19 @@ body {
 .flow {
 	@include mixins.flow;
 }
+
+.header {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1ch;
+	padding-block: calc(var(--x2-gap-inline-body) + 1vw);
+
+	.navbar-secondary {
+		display: flex;
+		align-items: center;
+		gap: 2ch;
+		font-size: 0.9em;
+	}
+}

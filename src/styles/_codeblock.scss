@@ -1,0 +1,93 @@
+@use "mixins";
+
+.highlight {
+	--x2-radius-outline: var(--x2-radius-0);
+	background-color: var(--x2-bg-codeblock);
+	border: var(--x2-line-width-lg) solid var(--x2-border-codeblock);
+	border-radius: var(--x2-radius-0);
+
+	&-header {
+		display: flex;
+		align-items: center;
+		gap: 1ch;
+		background-color: var(--x2-border-codeblock);
+		padding: 0.4ch 0.2ch 0.8ch 0.2ch;
+		font-size: 0.7em;
+	}
+
+	&-language {
+		font-family: var(--x2-font-code);
+		background-color: var(--x2-bg-codeblock);
+		padding: 0.1ch 1.2ch;
+		color: var(--x2-color-body-subtle);
+		border: 1px solid var(--x2-border-note);
+		border-radius: var(--x2-radius-xs);
+	}
+
+	clipboard-copy {
+		margin-inline-start: auto;
+		padding: 0.1ch 1.2ch;
+		font-size: 0.75rem;
+	}
+
+	pre {
+		background-color: transparent;
+		border-image: 
+			radial-gradient(#0000 71%, var(--x2-border-codeblock) 72%)
+			49.9%/var(--x2-radius-sm);
+		overflow-x: auto;
+
+		&:focus-within {
+			outline-style: solid;
+			outline-width: var(--x2-line-width-md);
+			outline-offset: var(--x2-outline-offset);
+		}
+
+		& > code {
+			display: grid;
+			padding-inline: 0;
+			// restore automatic cursor and touch interactions
+			cursor: auto;
+			touch-action: auto;
+		}
+	}
+
+	.line {
+		border-inline-start: var(--x2-line-width-0) solid transparent;
+		padding-inline: 1ch;
+
+		&:is(:focus:not(:focus-visible), :hover) {
+			background-color: var(--x2-bg-codeblock-active);
+
+			.line-number {
+				color: var(--color-prettylights-syntax-comment);
+			}
+		}
+
+		&-number {
+			user-select: none;
+			margin-inline-end: 1em;
+			text-align: right;
+			color: var(--color-prettylights-syntax-sublimelinter-gutter-mark);
+		}
+
+		&[data-highlighted] {
+			background: var(--x2-bg-codeblock-highlighted);
+			border-inline-start: 2px solid var(--color-prettylights-syntax-comment);
+
+			.line-number {
+				color: var(--color-prettylights-syntax-comment);
+			}
+		}
+
+		&-prompt::before {
+			margin-inline-end: 1ch;
+			vertical-align: middle;
+			@include mixins.icon("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 20 7.521-10.957M5 2h1.764a2 2 0 0 1 1.789 1.106l7.894 15.788A2 2 0 0 0 18.236 20H20'/%3E%3C/svg%3E");
+			color: hsl(357, 63%, 58%);
+			display: inline-block;
+			user-select: none;
+			@include mixins.fixedSize(1em);
+		}
+	}
+}

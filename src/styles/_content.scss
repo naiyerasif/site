@@ -1,0 +1,22 @@
+.content {
+	--popoutPadding: calc(var(--x2-gap-inline-body) + var(--x2-padding-inline-body) - var(--calloutBorderWidth));
+
+	& > blockquote,
+	& > figure,
+	& > .highlight,
+	& > .callout {
+		grid-column: contentGap;
+	}
+
+	& > blockquote {
+		--x2-padding-inline-blockquote: var(--popoutPadding);
+	}
+
+	& > .callout {
+		--x2-padding-callout-content: var(--popoutPadding);
+	}
+
+	& > figure {
+		--x2-padding-inline-figcaption: var(--popoutPadding);
+	}
+}

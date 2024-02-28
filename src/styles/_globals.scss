@@ -1,0 +1,46 @@
+@use "mixins";
+
+// hide undefined custom elements
+:not(:defined) {
+	visibility: hidden;
+}
+
+// expand abbreviations on devices without mouse
+:where(abbr[title]) {
+	@include mixins.onTouch {
+		text-decoration-color: transparent;
+
+		&::after {
+			content: " (" attr(title) ")";
+			color: var(--x2-color-body-subtle);
+		}
+	}
+}
+
+:where(figcaption) {
+	position: relative;
+	padding: 0 0 0 var(--x2-padding-inline-figcaption, 1.5em);
+
+	&::before {
+		position: absolute;
+		content: "";
+		left: 0;
+		inline-size: 1ch;
+		block-size: 100%;
+		border-radius: var(--x2-radius-max);
+		background-color: var(--x2-border-note);
+	}
+}
+
+// clipboard-copy is a button
+:where(clipboard-copy) {
+	background-color: var(--x2-bg-form);
+	border: var(--x2-line-width-sm) solid var(--x2-border-form);
+	color: var(--x2-color-form);
+}
+
+.brand {
+	--brandSize: calc(30px + 0.5vw);
+	display: inline-block;
+	@include mixins.fixedSize(var(--brandSize));
+}

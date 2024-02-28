@@ -38,14 +38,14 @@
 
 	&::-webkit-scrollbar,
 	&::-webkit-scrollbar-track {
-		background-color: var(--x2-bg-scrollbar);
+		background-color: var(--x2-bg-scrollbar, transparent);
 	}
 
 	&::-webkit-scrollbar-thumb {
-		background-color: var(--x2-color-scrollbar, transparent);
+		background-color: var(--x2-color-scrollbar);
 	}
 
-	scrollbar-color: var(--x2-color-scrollbar, transparent) var(--x2-bg-scrollbar);
+	scrollbar-color: var(--x2-color-scrollbar) var(--x2-bg-scrollbar, transparent);
 }
 
 :where(body) {
@@ -93,7 +93,7 @@
 	--x2-gap-flow: 1em;
 
 	position: relative;
-	padding: 0 0 0 1em;
+	padding: 0 0 0 var(--x2-padding-inline-blockquote, 1em);
 
 	&::before {
 		position: absolute;
