@@ -20,3 +20,29 @@
 		--x2-padding-inline-figcaption: var(--popoutPadding);
 	}
 }
+
+article.content {
+	& > p:first-of-type:first-child,
+	& > .callout + p:first-of-type,
+	& > .toc + p:first-of-type {
+		font-size: 1.25em;
+	}
+
+	:is(h1, h2, h3, h4, h5, h6) {
+		--x2-size-icon: 1ch;
+		a .icon {
+			display: none;
+			visibility: hidden;
+			vertical-align: text-top;
+			margin-inline-start: 0.25ch;
+		}
+
+		&:focus,
+		&:hover {
+			a .icon {
+				display: inline-block;
+				visibility: visible;
+			}
+		}
+	}
+}
