@@ -57,16 +57,21 @@
 }
 
 .glitch {
-	place-content: center;
-	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: var(--x2-padding-inline-body);
 
-	&-container {
-		--glitchImageSize: calc(10rem + 15vw);
-		inline-size: var(--glitchImageSize);
-		block-size: var(--glitchImageSize);
-		display: flex;
-		align-items: center;
-		margin-inline: auto;
+	figure {
+		.glitch-headline {
+			color: var(--x2-color-body-emphasis);
+		}
+
+		figcaption {
+			font-style: normal;
+			font-size: 1em;
+			@include mixins.flow;
+		}
 
 		img {
 			filter: drop-shadow(0 0 5rem var(--x2-border-deter));

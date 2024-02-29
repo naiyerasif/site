@@ -1,6 +1,7 @@
 ---
 import Sprites from "~components/Sprites.astro";
 import Icon from "~components/Icon.astro";
+import BackToTop from "~components/BackToTop.astro";
 import siteInfo from "~website";
 
 const authorInfo = siteInfo.author;
@@ -39,6 +40,9 @@ const siteIssueUrl = siteInfo.issueBase;
 		</div>
 	</div>
 </footer>
+<aside class="floating-back-to-top">
+	<BackToTop/>
+</aside>
 <Sprites/>
 
 <script>
