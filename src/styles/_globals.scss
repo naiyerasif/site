@@ -55,3 +55,35 @@
 	display: inline-block;
 	@include mixins.fixedSize(var(--brandSize));
 }
+
+.glitch {
+	place-content: center;
+	text-align: center;
+
+	&-container {
+		--glitchImageSize: calc(10rem + 15vw);
+		inline-size: var(--glitchImageSize);
+		block-size: var(--glitchImageSize);
+		display: flex;
+		align-items: center;
+		margin-inline: auto;
+
+		img {
+			filter: drop-shadow(0 0 5rem var(--x2-border-deter));
+
+			@media (prefers-reduced-motion: no-preference) {
+				animation: flicker 5s linear infinite;
+			}
+		}
+	}
+}
+
+@keyframes flicker {
+	0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+		opacity: .99;
+		
+	}
+	20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+		opacity: 0.4;
+	}
+}
