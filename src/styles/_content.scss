@@ -1,6 +1,6 @@
-.content {
-	--popoutPadding: calc(var(--x2-gap-inline-body) + var(--x2-padding-inline-body) - var(--calloutBorderWidth));
+@use "mixins";
 
+.content {
 	& > blockquote,
 	& > figure,
 	& > .highlight,
@@ -9,15 +9,15 @@
 	}
 
 	& > blockquote {
-		--x2-padding-inline-blockquote: var(--popoutPadding);
+		--x2-padding-inline-blockquote: calc(var(--x2-gap-inline-body) + var(--x2-padding-inline-body) - var(--blockquoteBorderWidth));
 	}
 
 	& > .callout {
-		--x2-padding-callout-content: var(--popoutPadding);
+		--x2-padding-callout-content: calc(var(--x2-gap-inline-body) + var(--x2-padding-inline-body) - var(--calloutBorderWidth));
 	}
 
 	& > figure {
-		--x2-padding-inline-figcaption: var(--popoutPadding);
+		--x2-padding-inline-figcaption: calc(var(--x2-gap-inline-body) + var(--x2-padding-inline-body) - var(--figcaptionBorderWidth));
 	}
 }
 
@@ -43,6 +43,16 @@ article.content {
 				display: inline-block;
 				visibility: visible;
 			}
+		}
+	}
+
+	.footnotes {
+		@include mixins.flow;
+		font-size: 0.85em;
+		border-block-start: 1px dashed var(--x2-border-body);
+
+		h2[id]:first-of-type {
+			padding-block-start: 1em;
 		}
 	}
 }

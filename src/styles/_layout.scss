@@ -18,6 +18,7 @@ body {
 		grid-column: bodyCopy;
 	}
 
+	& > #content,
 	& > .popout {
 		grid-column: bodyPopout;
 	}
@@ -47,9 +48,12 @@ body {
 	@include mixins.flow;
 }
 
-// spacing utility
-.flow {
-	@include mixins.flow;
+.header + main#content,
+.hero + main#content,
+main#content + .sidekick,
+main#content + .footer,
+.sidekick + .footer {
+	margin-block-start: calc(30px + 4vw);
 }
 
 .header {
@@ -66,4 +70,114 @@ body {
 		gap: 1rem;
 		font-size: 0.9em;
 	}
+}
+
+.hero {
+	--heroItemGap: 1em;
+
+	&-header,
+	&-body,
+	&-footer {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: var(--heroItemGap);
+	}
+
+	@include mixins.flow;
+
+	&-header {
+		--x2-padding-distinct-link: 0.5ch 1.5ch;
+
+		.hero-content-type {
+			text-transform: capitalize;
+			padding: var(--x2-padding-distinct-link);
+			border: var(--x2-line-width-0) solid var(--x2-border-note);
+			border-radius: var(--x2-radius-max);
+			background-color: var(--x2-bg-note);
+			color: var(--x2-color-body-subtle);
+		}
+	}
+
+	&-footer {
+		--heroItemGap: 0;
+		font-size: var(--x2-text-sm);
+
+		.icon {
+			--x2-size-icon: 1.25rem;
+			color: var(--x2-color-accent);
+		}
+
+		& > *:not(:last-child)::after {
+			@include mixins.icon("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='15' r='1'/%3E%3C/svg%3E");
+			display: inline-block;
+			@include mixins.fixedSize(1em);
+			opacity: 0.5;
+		}
+	}
+}
+
+.content-recommendations {
+	font-weight: var(--x2-text-semibold);
+	@include mixins.flow;
+}
+
+.content-recommendation {
+	display: flex;
+
+	.decorator {
+		color: var(--x2-color-caption);
+		margin-inline-end: 0.5rem;
+	}
+
+	.hint {
+		font-size: var(--x2-text-sm);
+	}
+
+	a {
+		font-size: var(--x2-text-tagline);
+	}
+}
+
+.sidekick {
+
+	&-items {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 1ch;
+	}
+
+	&-panels {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1ch;
+	}
+
+	.distinct-link {
+		--x2-line-width-distinct-link: var(--x2-line-width-md);
+		font-size: 1.5em;
+		
+		.icon {
+			--x2-size-icon: 1.4em;
+			margin-inline-start: 0.5ch;
+		}
+	}
+}
+
+.share-panel,
+.action-panel {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 1rem;
+}
+
+.footer {
+	position: sticky;
+	top: 100vh;
+	margin-block-end: calc(48px + 8vw);
 }

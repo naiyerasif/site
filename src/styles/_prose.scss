@@ -91,6 +91,7 @@
 
 :where(blockquote) {
 	--x2-gap-flow: 1em;
+	--blockquoteBorderWidth: 0.5ch;
 
 	position: relative;
 	padding: 0 0 0 var(--x2-padding-inline-blockquote, 1em);
@@ -99,7 +100,7 @@
 		position: absolute;
 		content: "";
 		left: 0;
-		inline-size: 0.5ch;
+		inline-size: var(--blockquoteBorderWidth);
 		block-size: 100%;
 		border-radius: var(--x2-radius-max);
 		background-color: var(--x2-border-body);
