@@ -66,5 +66,6 @@ No.
 - [aspect-ratio](https://css-irl.info/aspect-ratio-is-great/) &mdash; [Michelle Barker](https://css-irl.info/)
 - [Lume reading-time plugin](https://github.com/lumeland/experimental-plugins/blob/3d99f245fc46f64344116f14f175821ac329ed12/reading_time/mod.ts) &mdash; [Óscar Otero](https://oscarotero.com/)
 - [Building a dialog component](https://web.dev/building-a-dialog-component/) &mdash; [Adam Argyle](https://nerdy.dev/)
+- [Axiomatic CSS and Lobotomized Owls](https://alistapart.com/article/axiomatic-css-and-lobotomized-owls/) &mdash; [Heydon Pickering](https://heydonworks.com/)
 
 </section>
