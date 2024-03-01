@@ -96,6 +96,12 @@
 	}
 }
 
+.share-button {
+	border-color: transparent;
+	background-color: transparent;
+	padding: 0;
+}
+
 .avatar {
 	--avatarSize: calc(48px + 6vw);
 	inline-size: var(--avatarSize);

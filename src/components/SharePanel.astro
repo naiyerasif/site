@@ -30,5 +30,10 @@ const shareVia = [
 ---
 
 <div class="share-panel">
+	<share-url><button type="button" aria-live="polite" aria-label="Share link" class="share-button"><Icon name="share"/></button></share-url>
 	{shareVia.map(share => <a href={share.link} title={share.title} rel="noopener noreferrer" target="_blank"><Icon name={share.platform}/></a>)}
 </div>
+
+<script>
+	import "../modules/share-url/index.js";
+</script>
