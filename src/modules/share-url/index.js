@@ -46,7 +46,7 @@ export class ShareUrl extends HTMLElement {
 		if (navigator[this.options.action]) {
 			this.button.addEventListener("click", () => this.shareEvent());
 		} else {
-			console.log(this, this.button, this.options.action);
+			// console.log(this, this.button, this.options.action);
 			this.style.display = "none";
 		}
 	}
