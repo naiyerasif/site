@@ -23,22 +23,6 @@ Personal website of [@naiyerasif](https://github.com/naiyerasif)
 
 The following custom directives are supported.
 
-#### Chip directives
-
-The following directive
-
-```md
-:default[Semantics]
-```
-
-gets converted to
-
-```html
-<span class="chip chip-default">Semantics</span>
-```
-
-The following chip directives are available: `default`, `commend`, `warn`, `deter`, and `assert`
-
 #### Figure directive
 
 The following directive
@@ -60,22 +44,6 @@ gets converted to
     <p>Captions are brief descriptions related to the image (for example commentary, attributions or quotations).</p>
   </figcaption>
 </figure>
-```
-
-#### Sprite directive
-
-The following directive
-
-```md
-:sprite{href="#viking" .hint}
-```
-
-gets converted to
-
-```xml
-<svg role="img" aria-hidden="true" class="hint">
-  <use href="#work-aws-eventbridge"/>
-</svg>
 ```
 
 #### Time directive
