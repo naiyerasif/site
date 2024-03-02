@@ -1,3 +1,17 @@
+@mixin fixedSize($inline-size, $block-size: $inline-size) {
+	inline-size: #{$inline-size};
+	block-size: #{$block-size};
+	// constraints for flex
+	min-inline-size: #{$inline-size};
+	min-block-size: #{$block-size};
+}
+
+@mixin flow {
+	& > * + * {
+		margin-block-start: var(--x2-gap-flow, 2em);
+	}
+}
+
 @mixin icon($data-uri) {
 	content: "";
 	mask-image: url($data-uri);
@@ -7,31 +21,8 @@
 	background-color: currentColor;
 }
 
-@mixin fixed-size($inline-size, $block-size: $inline-size) {
-	inline-size: #{$inline-size};
-	block-size: #{$block-size};
-	min-inline-size: #{$inline-size};
-	min-block-size: #{$block-size};
-}
-
-@mixin vertical-margin($start, $end: $start) {
-	&:not(:first-child, :only-child) {
-		margin-block-start: #{$start};
-	}
-
-	&:not(:last-child, :only-child) {
-		margin-block-end: #{$end};
-	}
-}
-
-@mixin window-small {
-	@media screen and (width < 48rem) {
-		@content;
-	}
-}
-
-@mixin window-normal {
-	@media screen and (width >= 48rem) {
+@mixin onTouch {
+	@media (pointer: coarse), (any-hover: none) {
 		@content;
 	}
 }

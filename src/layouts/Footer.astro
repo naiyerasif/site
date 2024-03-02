@@ -1,6 +1,6 @@
 ---
 import Sprites from "~components/Sprites.astro";
-import Icon from "~components/Icon.astro";
+import BackToTop from "~components/BackToTop.astro";
 import siteInfo from "~website";
 
 const authorInfo = siteInfo.author;
@@ -11,34 +11,47 @@ const siteIssueUrl = siteInfo.issueBase;
 
 <footer class="footer">
 	<div class="footer-quote">
-		<Icon name="green-energy" class="footer-quote-decoration"/>
 		<random-quote></random-quote>
 		<noscript>
-			<p class="tagline">You can stop scrolling now. Take a break, sit back, and give yourself a moment.</p><p><cite>&mdash; Author of this site</cite></p>
+			<blockquote><p>You can stop scrolling now. Take a break, sit back, and give yourself a moment.</p><cite>&mdash; Author of this site</cite></blockquote>
 		</noscript>
 	</div>
 	<div class="footer-sections">
-		<div>
-			<p><strong>Subscribe</strong> to my latest posts in your favorite RSS reader. <small>(<a href="https://aboutfeeds.com/" rel="nofollow noopener noreferrer">What's RSS?</a>)</small></p>
-			<a href="/feed.xml" class="icon-link-start"><Icon name="rss"/>Subscribe to posts</a><br>
-			<a href="/all.xml" class="icon-link-start"><Icon name="rss"/>Subscribe to posts and statuses</a>
+		<div class="footer-subscribe">
+			<strong>Subscribe with RSS</strong>
+			(<small><a href="https://aboutfeeds.com/" rel="nofollow noopener noreferrer">What's RSS?</a></small>)
+			<ul>
+				<li><a href="/feed.xml">Just posts</a></li>
+				<li><a href="/feed.xml">Posts + statuses</a></li>
+			</ul>
 		</div>
-		<div>
-			<strong>Say hi!</strong> Interested in software, books, manga? We gotta chat. Reach out on 
-			<a href={authorNetworks.mastodon.link} aria-label={authorNetworks.mastodon.platform} rel="noopener noreferrer">{authorNetworks.mastodon.platform}</a>,
-			<a href={authorNetworks.github.link} aria-label={authorNetworks.github.platform} rel="noopener noreferrer">{authorNetworks.github.platform}</a>, or 
-			<a href={authorNetworks.linkedin.link} aria-label={authorNetworks.linkedin.platform} rel="noopener noreferrer">{authorNetworks.linkedin.platform}</a>.
+		<div class="footer-shortcuts">
+			<strong>Keyboard Shortcuts</strong>
+			<ul>
+				<li><kbd>ctrl+k</kbd> <kbd>cmd+k</kbd> : launch command bar</li>
+				<li><kbd>esc</kbd> : close command bar</li>
+			</ul>
 		</div>
-		<div class="footer-copyright">
-			<div>&copy; 2018 &mdash;&mdash; today, {siteAuthor}</div>
-			<div class="footer-links">
-				<a href="/privacy/">Privacy</a>
-				<a href={siteIssueUrl} rel="nofollow noopener noreferrer">Report an issue</a>
-				<a href="/sitemap-index.xml">Sitemap</a>
-			</div>
+	</div>
+	<div class="footer-nib">
+		<div class="footer-nib-copyright">
+			&copy; 2018 &mdash; today, {siteAuthor}
+		</div>
+		<div class="footer-nib-links">
+			<a href={authorNetworks.mastodon.link} aria-label={authorNetworks.mastodon.platform} rel="nofollow noopener noreferrer">{authorNetworks.mastodon.platform}</a>
+			<a href={authorNetworks.github.link} aria-label={authorNetworks.github.platform} rel="nofollow noopener noreferrer">{authorNetworks.github.platform}</a>
+			<a href={authorNetworks.linkedin.link} aria-label={authorNetworks.linkedin.platform} rel="nofollow noopener noreferrer">{authorNetworks.linkedin.platform}</a>
+		</div>
+		<div class="footer-nib-links">
+			<a href={siteIssueUrl} rel="nofollow noopener noreferrer">Report an issue</a>
+			<a href="/privacy/">Privacy</a>
+			<a href="/sitemap-index.xml">Sitemap</a>
 		</div>
 	</div>
 </footer>
+<aside class="floating-back-to-top">
+	<BackToTop/>
+</aside>
 <Sprites/>
 
 <script>
@@ -46,12 +59,12 @@ const siteIssueUrl = siteInfo.issueBase;
 		static tagName = "random-quote";
 	
 		static #messages = [
-			`<p class="stress tagline">Finiteness is a feature.</p><p><cite>&mdash; Author of this site</cite></p>`,
-			`<p class="stress tagline">You can stop scrolling now. Take a break, sit back, and give yourself a moment.</p><p><cite>&mdash; Author of this site</cite></p>`,
-			`<p class="stress tagline"><del>Zoom out</del> <ins>Take a nap</ins> for perspective.</p><p><cite>&mdash; original quote from James Clear (paraphrased and fixed)</cite></p>`,
-			`<p class="stress tagline">6 hours of raging at a problem can save you 5 minutes of taking rest and solving it.</p><p><cite>&mdash; A senior software engineer</cite></p>`,
-			`<p class="stress tagline">6 hours of raging at a problem can save you 5 minutes of taking rest and solving it.</p><p><cite>&mdash; A senior software engineer</cite></p>`,
-			`<p class="stress tagline">sometimes the best way to follow your dreams is to take a nap</p><p><cite>&mdash; <a href="https://fediverse.zachleat.com/@zachleat/111902455317042997" rel="nofollow noopener noreferrer">Zach Leatherman</a></cite></p>`,
+			`<blockquote><p>Finiteness is a feature.</p><cite>&mdash; Author of this site</cite></blockquote>`,
+			`<blockquote><p>You can stop scrolling now. Take a break, sit back, and give yourself a moment.</p><cite>&mdash; Author of this site</cite></blockquote>`,
+			`<blockquote><p><del>Zoom out</del> <ins>Take a nap</ins> for perspective.</p><cite>&mdash; original quote from James Clear (paraphrased and fixed)</cite></blockquote>`,
+			`<blockquote><p>6 hours of raging at a problem can save you 5 minutes of taking rest and solving it.</p><cite>&mdash; A senior software engineer</cite></blockquote>`,
+			`<blockquote><p>6 hours of raging at a problem can save you 5 minutes of taking rest and solving it.</p><cite>&mdash; A senior software engineer</cite></blockquote>`,
+			`<blockquote><p>sometimes the best way to follow your dreams is to take a nap</p><cite>&mdash; <a href="https://fediverse.zachleat.com/@zachleat/111902455317042997" rel="nofollow noopener noreferrer">Zach Leatherman</a></cite></blockquote>`,
 		];
 	
 		connectedCallback() {

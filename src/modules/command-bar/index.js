@@ -2,7 +2,6 @@ const commandBarTemplate = document.createElement("template");
 commandBarTemplate.innerHTML = `
 <button type="button" role="switch" aria-live="polite" aria-checked="true" id="command-bar-launcher" aria-label="Launch CommandBar" part="button">
 	<svg role="img" class="icon" aria-hidden="true"><use href="#magnifier"/></svg>
-	<span class="label">Search</span> <kbd class="label"></kbd>
 </button>
 <dialog aria-label="CommandBar" id="command-bar">
 	<header class="command-bar-header">
@@ -16,6 +15,8 @@ commandBarTemplate.innerHTML = `
 	</header>
 	<div id="commands" tabindex="-1"></div>
 	<footer class="command-bar-footer">
+		<strong>Keyboard shortcuts</strong>
+		<span><kbd id="command-bar-launch-sequence"></kbd> to launch</span>
 		<span><kbd>Tab</kbd> <kbd>Shift+Tab</kbd> to navigate</span>
 		<span><kbd>Esc</kbd> or click outside to close</span>
 	</footer>
@@ -44,23 +45,18 @@ commandBarTemplate.innerHTML = `
 </div>
 <style>
 .icon {
+	--iconSize: var(--x2-size-icon, var(--x2-size-icon-0));
+	display: inline-block;
+	vertical-align: text-bottom;
 	stroke: currentColor;
 	stroke-width: 2;
 	fill: none;
-	stroke-linecap: round;
 	stroke-linejoin: round;
-	width: var(--size-site-icon-og);
-	height: var(--size-site-icon-og);
-	min-width: var(--size-site-icon-og);
-	min-height: var(--size-site-icon-og);
-}
-kbd {
-	background-color: var(--background-site-form);
-	border-radius: var(--radius-site-xxs);
-	font-size: 0.85em;
-	line-height: 1;
-	padding: 0.5ch 1ch;
-	color: var(--color-site-body);
+	stroke-linecap: round;
+	width: var(--iconSize);
+	height: var(--iconSize);
+	min-width: var(--iconSize);
+	min-height: var(--iconSize);
 }
 #command-bar::backdrop {
 	background-color: hsl(0, 0%, 10%, 0.5);
@@ -69,26 +65,12 @@ kbd {
 }
 #command-bar {
 	width: calc(100% - 2px);
-	max-width: var(--max-width-site-content);
+	max-width: var(--x2-max-width-content);
 	overflow: hidden;
-	border: var(--thickness-site-sm) solid var(--border-site-body);
-	border-radius: var(--radius-site-og);
-	background-color: var(--background-site-body);
+	border: var(--x2-line-width-sm) solid var(--x2-border-body);
+	border-radius: var(--x2-radius-0);
+	background-color: var(--x2-bg-body);
 	padding: 0;
-}
-#command-bar-launcher {
-	padding: 0.4rem !important;
-	line-height: 0;
-	border-radius: var(--radius-site-sm) !important;
-}
-::part(button),
-::part(link) {
-	cursor: pointer;
-	touch-action: manipulation;
-	-webkit-tap-highlight-color: transparent;
-}
-#command-bar-launcher .label {
-	display: none;
 }
 .command-bar-header {
 	display: flex;
@@ -102,21 +84,21 @@ kbd {
 	font: inherit;
 }
 #commands {
-	max-height: 50vh;
+	max-height: 60vh;
 	overflow-y: auto;
 }
 .command-bar-section-header {
-	background-color: var(--color-site-note-700);
-	font-size: var(--text-site-sm);
-	color: var(--color-site-note-500);
+	background-color: var(--x2-border-note);
+	font-size: 0.8em;
+	color: var(--x2-color-body-emphasis);
 	line-height: 1;
 	padding: 0.5rem 1rem;
 }
 .command-bar-section-items > * + * {
-	border-block-start: var(--thickness-site-sm) solid var(--border-site-codeblock);
+	border-block-start: var(--x2-line-width-sm) solid var(--x2-border-codeblock);
 }
 a {
-	color: var(--color-site-link);
+	color: var(--x2-color-link);
 	text-decoration-line: underline;
 	text-decoration-style: dotted;
 }
@@ -125,14 +107,14 @@ a:focus-within,
 a:focus-visible,
 a:hover,
 a:active {
-	background-color: var(--color-site-accent-200);
-	color: var(--color-site-accent-400);
+	background-color: var(--x2-bg-accent-subtle);
+	color: var(--x2-color-accent-sharp);
 }
 a:focus,
 a:focus-within,
 a:hover {
 	text-decoration-style: solid;
-	text-decoration-thickness: var(--thickness-site-og);
+	text-decoration-thickness: var(--x2-line-width-0);
 }
 a:active {
 	text-decoration-style: double;
@@ -143,64 +125,45 @@ a:active {
 	padding: 0.8rem 1rem;
 }
 .command-item:focus-visible {
-	border-radius: var(--radius-site-sm);
+	border-radius: var(--x2-radius-sm);
 	text-decoration-color: transparent;
-	outline-color: var(--color-site-outline);
 	outline-style: solid;
-	outline-width: var(--thickness-site-og);
+	outline-width: var(--x2-line-width-md);
 	outline-offset: -0.25em;
 }
 .command-item > .icon {
 	margin-right: 1ch;
 }
 .command-bar-footer {
-	display: none;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	background-color: var(--x2-bg-note);
+	font-size: 0.8em;
+	padding: 0.25rem 1rem;
+	border-bottom-right-radius: inherit;
+	border-bottom-left-radius: inherit;
+	color: var(--x2-color-body-subtle);
 }
-@media screen and (min-width: 48rem) {
-	#command-bar-launcher {
-		display: flex;
-		align-items: center;
-		font: inherit;
-		border-color: var(--border-site-form) !important;
-		padding: 0.3rem 0.5rem !important;
-	}
-	#command-bar-launcher:focus kbd,
-	#command-bar-launcher:hover kbd,
-	#command-bar-launcher:active kbd {
-		color: var(--color-site-stress);
-	}
-	#command-bar-launcher .label {
-		display: revert;
-	}
-	#command-bar-launcher .icon {
-		margin-inline-end: 0.5ch;
-	}
-	#command-bar-launcher kbd {
-		margin-left: 3rem;
-	}
-	.command-bar-footer {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		background-color: var(--color-site-note-700);
-		font-size: 0.8em;
-		padding: 0.25rem 1rem;
-		border-bottom-right-radius: inherit;
-		border-bottom-left-radius: inherit;
-		color: var(--color-site-body);
-	}
-	.command-bar-footer > *:not(:first-child)::before {
-		content: "";
-		mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='15' r='1'/%3E%3C/svg%3E");
-		mask-repeat: no-repeat;
-		mask-position: top center;
-		mask-size: contain;
-		background-color: currentColor;
-		display: inline-block;
-		width: 1em;
-		height: 1em;
-		opacity: 0.5;
-	}
+.command-bar-footer > *:not(:first-child)::before {
+	content: "";
+	mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='15' r='1'/%3E%3C/svg%3E");
+	mask-repeat: no-repeat;
+	mask-position: top center;
+	mask-size: contain;
+	background-color: currentColor;
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	opacity: 0.5;
+}
+kbd {
+	background-color: var(--x2-bg-code);
+	border-radius: var(--x2-radius-xxs);
+	font-size: 0.85em;
+	line-height: 1;
+	padding: 0.25ch 0.75ch;
+	color: var(--x2-color-body);
 }
 </style>
 `;
@@ -252,7 +215,7 @@ export class CommandBar extends HTMLElement {
 		this.#resetter = shadowRoot.querySelector(`#search-box-resetter`);
 		this.#commands = shadowRoot.querySelector(`#commands`);
 
-		const launcherLabel = this.#launcher.querySelector("kbd");
+		const launcherLabel = shadowRoot.querySelector(`#command-bar-launch-sequence`);
 		launcherLabel.innerText = window.navigator.platform.indexOf("Mac") > -1 ?
 			"⌘+K" : "Ctrl+K";
 

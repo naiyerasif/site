@@ -1,14 +1,15 @@
 @use "mixins";
 
 .callout {
-	--calloutBgColor: var(--background-color-site-callout, var(--color-site-canvas-400));
-	--calloutColor: var(--color-site-callout, var(--color-site-note-500));
-	--calloutBorderColor: var(--border-color-site-callout, var(--color-site-note-600));
+	--calloutBgColor: var(--x2-bg-callout, var(--x2-bg-note));
+	--calloutColor: var(--x2-color-callout, var(--x2-color-body));
+	--calloutBorderColor: var(--x2-border-callout, var(--x2-border-note));
+	--calloutBorderWidth: var(--x2-line-width-lg);
+	--calloutContentPadding: var(--x2-padding-callout-content, 1em);
 
 	background-color: var(--calloutBgColor);
-	border: var(--thickness-site-md) solid var(--calloutBorderColor);
-	border-radius: var(--radius-site-og);
-	@include mixins.vertical-margin(0, var(--gap-site-body));
+	border: var(--calloutBorderWidth) solid var(--calloutBorderColor);
+	border-radius: var(--x2-radius-0);
 
 	&-indicator {
 		display: flex;
@@ -16,40 +17,39 @@
 		gap: 0.5ch;
 		color: var(--calloutColor);
 		background-color: var(--calloutBorderColor);
-		padding: 0 0.25ch var(--thickness-site-md);
-		line-height: 1;
+		padding: 0 0.25ch var(--calloutBorderWidth);
 	}
 
 	&-content {
-		--gap-site-body: 1em;
-
-		padding: 1ch;
+		--x2-gap-flow: 1em;
+		@include mixins.flow;
+		padding: var(--calloutContentPadding);
 		border-image: 
 			radial-gradient(#0000 71%, var(--calloutBorderColor) 72%)
-			49.9%/var(--radius-site-sm);
+			49.9%/var(--x2-radius-sm);
 	}
 }
 
 .callout-commend {
-	--background-color-site-callout: var(--color-site-commend-700);
-	--color-site-callout: var(--color-site-commend-500);
-	--border-color-site-callout: var(--color-site-commend-600);
+	--x2-bg-callout: var(--x2-bg-commend);
+	--x2-color-callout: var(--x2-color-commend);
+	--x2-border-callout: var(--x2-border-commend);
 }
 
 .callout-warn {
-	--background-color-site-callout: var(--color-site-warn-700);
-	--color-site-callout: var(--color-site-warn-500);
-	--border-color-site-callout: var(--color-site-warn-600);
+	--x2-bg-callout: var(--x2-bg-warn);
+	--x2-color-callout: var(--x2-color-warn);
+	--x2-border-callout: var(--x2-border-warn);
 }
 
 .callout-deter {
-	--background-color-site-callout: var(--color-site-deter-700);
-	--color-site-callout: var(--color-site-deter-500);
-	--border-color-site-callout: var(--color-site-deter-600);
+	--x2-bg-callout: var(--x2-bg-deter);
+	--x2-color-callout: var(--x2-color-deter);
+	--x2-border-callout: var(--x2-border-deter);
 }
 
 .callout-assert {
-	--background-color-site-callout: var(--color-site-assert-700);
-	--color-site-callout: var(--color-site-assert-500);
-	--border-color-site-callout: var(--color-site-assert-600);
+	--x2-bg-callout: var(--x2-bg-assert);
+	--x2-color-callout: var(--x2-color-assert);
+	--x2-border-callout: var(--x2-border-assert);
 }

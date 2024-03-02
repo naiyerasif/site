@@ -1,38 +1,42 @@
+@use "sass:color";
+@use "colors" as *;
+
 @mixin lightTheme {
 	color-scheme: light;
 
-	--color-site-canvas-400: hsl(0, 0%, 97%);
-	--color-site-canvas-500: hsl(0, 0%, 100%);
-	--color-site-canvas-600: hsl(151, 43%, 19%, 0.5);
-	--color-site-canvas-700: hsl(151, 43%, 19%, 0.35);
+	--x2-bg-body: hsl(0, 0%, 100%);
+	--x2-color-body: hsl(0, 0%, 23%);
+	--x2-color-body-emphasis: hsl(0, 0%, 18%);
+	--x2-color-body-subtle: hsl(0, 0%, 36%);;
+	--x2-border-body: #{$color-secondary-70};
 
-	--color-site-accent-200: hsl(148, 37%, 59%, 0.4);
-	--color-site-accent-300: hsl(148, 37%, 59%, 0.5);
-	--color-site-accent-400: hsl(153, 43%, 22%);
-	--color-site-accent-500: hsl(151, 40%, 30%);
+	--x2-bg-accent-subtle: #{color.change($color-primary-70, $alpha: 0.3)};
+	--x2-color-accent: #{$color-primary-40};
+	--x2-color-accent-sharp: #{$color-primary-30};
 
-	--color-site-note-300: hsl(0, 0%, 36%);
-	--color-site-note-400: hsl(0, 0%, 18%);
-	--color-site-note-500: hsl(0, 0%, 23%);
-	--color-site-note-600: hsl(90, 7%, 88%);
-	--color-site-note-700: hsl(90, 7%, 89%);
-	--color-site-note-800: hsl(90, 7%, 93%);
+	--x2-bg-subtle: hsl(0, 0%, 97%);
+	--x2-color-subtle: #{color.change($color-primary-25, $alpha: 0.5)};
+	--x2-bg-selection: #{color.change($color-primary-80, $alpha: 0.5)};
+	--x2-border-codeblock: hsl(90, 7%, 93%);
 
-	--color-site-commend-500: hsl(106, 61%, 23%);
-	--color-site-commend-600: hsl(103, 76%, 78%);
-	--color-site-commend-700: hsl(98, 77%, 93%, 0.3);
+	--x2-bg-note: hsl(90, 7%, 90%, 0.3);
+	--x2-border-note: #{$color-neutral-90};
 
-	--color-site-warn-500: hsl(33, 69%, 27%);
-	--color-site-warn-600: hsl(29, 82%, 87%);
-	--color-site-warn-700: hsl(30, 81%, 94%, 0.3);
+	--x2-bg-commend: #{color.change($color-green-95, $alpha: 0.3)};
+	--x2-color-commend: #{$color-green-35};
+	--x2-border-commend: hsl(102, 75%, 79%);
 
-	--color-site-deter-500: hsl(356, 68%, 36%);
-	--color-site-deter-600: hsl(4, 73%, 91%);
-	--color-site-deter-700: hsl(7, 74%, 95%, 0.3);
+	--x2-bg-warn: #{color.change($color-yellow-90, $alpha: 0.3)};
+	--x2-color-warn: #{$color-yellow-35};
+	--x2-border-warn: #{$color-yellow-90};
 
-	--color-site-assert-500: hsl(213, 62%, 35%);
-	--color-site-assert-600: hsl(220, 91%, 92%);
-	--color-site-assert-700: hsl(221, 90%, 96%, 0.3);
+	--x2-bg-deter: #{color.change($color-red-90, $alpha: 0.3)};
+	--x2-color-deter: #{$color-red-35};
+	--x2-border-deter: #{$color-red-90};
+
+	--x2-bg-assert: #{color.change($color-blue-90, $alpha: 0.3)};
+	--x2-color-assert: #{$color-blue-35};
+	--x2-border-assert: #{$color-blue-90};
 
 	--color-prettylights-syntax-comment: #6e7781;
 	--color-prettylights-syntax-constant: #0550ae;
@@ -69,38 +73,39 @@
 @mixin darkTheme {
 	color-scheme: dark;
 
-	--color-site-canvas-400: hsl(0, 0%, 7%);
-	--color-site-canvas-500: hsl(0, 0%, 0%);
-	--color-site-canvas-600: hsl(144, 93%, 89%, 0.5);
-	--color-site-canvas-700: hsl(144, 93%, 89%, 0.35);
+	--x2-bg-body: hsl(0, 0%, 0%);
+	--x2-color-body: hsl(0, 0%, 74%);
+	--x2-color-body-emphasis: hsl(0, 0%, 88%);
+	--x2-color-body-subtle: hsl(0, 0%, 58%);
+	--x2-border-body: #{$color-secondary-40};
 
-	--color-site-accent-200: hsl(151, 40%, 30%, 0.5);
-	--color-site-accent-300: hsl(151, 40%, 30%, 0.6);
-	--color-site-accent-400: hsl(147, 82%, 80%);
-	--color-site-accent-500: hsl(148, 37%, 59%);
+	--x2-bg-accent-subtle: #{color.change($color-primary-40, $alpha: 0.4)};
+	--x2-color-accent: #{$color-primary-70};
+	--x2-color-accent-sharp: #{$color-primary-90};
 
-	--color-site-note-300: hsl(0, 0%, 58%);
-	--color-site-note-400: hsl(0, 0%, 88%);
-	--color-site-note-500: hsl(0, 0%, 74%);
-	--color-site-note-600: hsl(0, 0%, 22%);
-	--color-site-note-700: hsl(0, 0%, 16%);
-	--color-site-note-800: hsl(0, 0%, 13%);
+	--x2-bg-subtle: hsl(0, 0%, 7%);
+	--x2-color-subtle: #{color.change($color-primary-95, $alpha: 0.5)};
+	--x2-bg-selection: #{color.change($color-primary-40, $alpha: 0.5)};
+	--x2-border-codeblock: hsl(0, 0%, 13%);
 
-	--color-site-commend-500: hsl(105, 51%, 51%);
-	--color-site-commend-600: hsl(106, 70%, 13%);
-	--color-site-commend-700: hsl(108, 78%, 7%, 0.5);
+	--x2-bg-note: hsl(0, 0%, 17%, 0.4);
+	--x2-border-note: hsl(0, 0%, 18%);
 
-	--color-site-warn-500: hsl(32, 69%, 59%);
-	--color-site-warn-600: hsl(33, 77%, 15%);
-	--color-site-warn-700: hsl(32, 86%, 9%, 0.5);
+	--x2-bg-commend: #{color.change($color-green-20, $alpha: 0.4)};
+	--x2-color-commend: #{$color-green-70};
+	--x2-border-commend: #{$color-green-20};
 
-	--color-site-deter-500: hsl(3, 77%, 74%);
-	--color-site-deter-600: hsl(356, 73%, 22%);
-	--color-site-deter-700: hsl(358, 82%, 13%, 0.5);
+	--x2-bg-warn: #{color.change($color-yellow-20, $alpha: 0.4)};
+	--x2-color-warn: #{$color-yellow-70};
+	--x2-border-warn: #{$color-yellow-20};
 
-	--color-site-assert-500: hsl(217, 91%, 73%);
-	--color-site-assert-600: hsl(214, 68%, 21%);
-	--color-site-assert-700: hsl(214, 77%, 12%, 0.5);
+	--x2-bg-deter: #{color.change($color-red-20, $alpha: 0.4)};
+	--x2-color-deter: #{$color-red-70};
+	--x2-border-deter: #{$color-red-20};
+
+	--x2-bg-assert: #{color.change($color-blue-20, $alpha: 0.4)};
+	--x2-color-assert: #{$color-blue-70};
+	--x2-border-assert: #{$color-blue-20};
 
 	--color-prettylights-syntax-comment: #8b949e;
 	--color-prettylights-syntax-constant: #79c0ff;
@@ -150,92 +155,78 @@
 }
 
 :root {
-	--radius-site-xxs: 4px;
-	--radius-site-xs: 8px;
-	--radius-site-sm: 12px;
-	--radius-site-og: 1rem;
-	--radius-site-round: 1e5px;
+	// values
+	--x2-text-regular: 400;
+	--x2-text-semibold: 600;
+	--x2-radius-xxs: 4px;
+	--x2-radius-xs: 8px;
+	--x2-radius-sm: 12px;
+	--x2-radius-0: 1rem;
+	--x2-radius-max: 1e5px;
+	--x2-line-width-sm: 1px;
+	--x2-line-width-0: 2px;
+	--x2-line-width-md: 3px;
+	--x2-line-width-lg: 5px;
 
-	--thickness-site-sm: 1px;
-	--thickness-site-og: 2px;
-	--thickness-site-md: 5px;
+	// baselines
+	--x2-padding-inline-body: 4px;
+	--x2-gap-inline-body: 20px;
+	--x2-max-width-body: calc(60rem + 10vw);
+	--x2-max-width-content: 70ch;
+	--x2-outline-offset: 0.125em;
 
-	--gap-site-xs: .5rem;
-	--gap-site-sm: 1rem;
-	--gap-site-og: 2rem;
-	--gap-site-lg: 5rem;
-	--gap-site-xl: calc(24px + 3vw);
-	--gap-site-xxl: calc(30px + 4vw);
+	// defaults
+	--x2-font-body: var(--fontSans1);
+	--x2-font-code: var(--fontMono);
+	--x2-text-body: var(--x2-text-0);
+	--x2-bg-code: var(--x2-border-note);
+	--x2-bg-codeblock: var(--x2-bg-subtle);
+	--x2-bg-codeblock-active: var(--x2-border-deter);
+	--x2-bg-codeblock-highlighted: var(--x2-border-note);
+	--x2-bg-del: var(--x2-border-deter);
+	--x2-bg-ins: var(--x2-border-commend);
+	--x2-bg-mark: var(--x2-border-warn);
+	--x2-bg-summary: var(--x2-bg-subtle);
+	--x2-bg-form: var(--x2-bg-subtle);
+	--x2-bg-table-active: var(--x2-bg-accent-subtle);
+	--x2-color-link: var(--x2-color-accent);
+	--x2-color-form: var(--x2-color-accent);
+	--x2-color-caption: var(--x2-color-body-subtle);
+	--x2-color-del: var(--x2-color-deter);
+	--x2-color-ins: var(--x2-color-commend);
+	--x2-color-mark: var(--x2-color-warn);
+	--x2-color-marker: var(--x2-color-subtle);
+	--x2-color-scrollbar: var(--x2-color-subtle);
+	--x2-color-separator: var(--x2-color-subtle);
+	--x2-color-table-active: var(--x2-color-body-emphasis);
+	--x2-border-form: var(--x2-border-note);
 }
 
-:root {
-	--family-site-body: var(--family-site-sans);
-	--family-site-code: var(--family-site-mono);
-
-	--font-weight-site-regular: 400;
-	--font-weight-site-semibold: 600;
-
-	--max-width-site-body: calc(60rem + 10vw);
-	--max-width-site-content: 70ch;
-	--padding-site-body: 24px;
-	--line-height-site-body: calc(.3rem + 2ex + .3rem);
-	--backdrop-site-dialog: blur(25px);
-	--offset-site-outline: 0.125em;
-	--gap-site-body: var(--gap-site-og);
-
-	--background-site-body: var(--color-site-canvas-500);
-	--background-site-code: var(--color-site-note-600);
-	--background-site-codeblock: var(--color-site-canvas-400);
-	--background-site-codeblock-active: var(--color-site-warn-600);
-	--background-site-codeblock-highlighted: var(--color-site-note-700);
-	--background-site-del: var(--color-site-deter-600);
-	--background-site-ins: var(--color-site-commend-600);
-	--background-site-mark: var(--color-site-warn-600);
-	--background-site-scrollbar: transparent;
-	--background-site-selection: var(--color-site-accent-300);
-	--background-site-summary: var(--color-site-canvas-400);
-	--background-site-table: transparent;
-	--background-site-table-active: var(--color-site-accent-200);
-	--background-site-form: var(--color-site-canvas-400);
-
-	--color-site-body: var(--color-site-note-500);
-	--color-site-caption: var(--color-site-note-300);
-	--color-site-link: var(--color-site-accent-500);
-	--color-site-del: var(--color-site-deter-500);
-	--color-site-form: var(--color-site-body);
-	--color-site-ins: var(--color-site-commend-500);
-	--color-site-mark: var(--color-site-warn-500);
-	--color-site-marker: var(--color-site-canvas-600);
-	--color-site-outline: var(--color-site-accent-400);
-	--color-site-placeholder: inherit;
-	--color-site-scrollbar: var(--color-site-canvas-600);
-	--color-site-stress: var(--color-site-note-400);
-	--color-site-table-active: var(--color-site-stress);
-
-	--border-site-body: var(--color-site-canvas-700);
-	--border-site-blockquote: var(--border-site-body);
-	--border-site-codeblock: var(--color-site-note-800);
-	--border-site-form: var(--color-site-note-600);
-	--border-site-hr: var(--color-site-canvas-600);
-}
-
-:where(a[href], area, button, input, select, summary, textarea, [role="button"], [onclick], [tabindex]:not([tabindex*="-"])),
+:where(a[href], area, button, input, select, summary, textarea, clipboard-copy, [role="button"], [onclick], [tabindex]:not([tabindex*="-"])),
 :where(input[type="file"])::file-selector-button,
-::part(button),
-::part(link),
-::part(input) {
+// for web components
+::part(button), ::part(link), ::part(input) {
 	&:is(:focus, :focus-visible, :focus-within, :hover, :active) {
-		--color-site-link: var(--color-site-accent-400);
+		--x2-color-link: var(--x2-color-accent-sharp);
 	}
 }
 
-:where(button, button[type], input:not([type="file"]), select, textarea, [role="button"]),
-:where(input[type="file"])::file-selector-button,
-::part(button),
-::part(input) {
+:where(button, button[type], input:not([type="file"]), select, textarea, [role="button"], clipboard-copy),
+:where(input[type="file"]),
+// for web components
+::part(button), ::part(input) {
 	&:is(:focus, :focus-visible, :focus-within, :hover, :active) {
-		--border-site-form: var(--color-site-accent-500);
-		--background-site-form: var(--color-site-accent-200);
-		--color-site-form: var(--color-site-accent-400);
+		--x2-border-form: var(--x2-color-accent);
+		--x2-color-form: var(--x2-color-accent-sharp);
+		--x2-color-outline: var(--x2-border-form);
+	}
+}
+
+:where(button, button[type], input[type="button"], input[type="submit"], input[type="reset"], select, clipboard-copy),
+:where(input[type="file"]),
+// for web components
+::part(button) {
+	&:is(:focus, :focus-visible, :focus-within, :hover, :active) {
+		--x2-bg-form: var(--x2-bg-accent-subtle);
 	}
 }

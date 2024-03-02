@@ -18,7 +18,7 @@ const pageInfo = {
 };
 ---
 
-<Layout {pageInfo} class="content">
+<Layout {pageInfo}>
 	<div slot="hero" class="hero-body">
 		<div class="hero-headline-text">
 			<h1 class="headline">Hi, I&CloseCurlyQuote;m Naiyer</h1>
@@ -27,6 +27,6 @@ const pageInfo = {
 	</div>
 	{posts.map(entry => entry.data.category === "status" ? <StatusCard {entry} /> : <PostCard {entry} />)}
 	<div slot="sidekick" class="sidekick-items">
-		<a href={paginationPathname("posts", 2)} class="icon-link-end more-link distinct-link">more posts<Icon name="arrow-right-long"/></a>
+		<a href={paginationPathname("posts", 2)} class="distinct-link">more posts<Icon name="arrow-right-long"/></a>
 	</div>
 </Layout>

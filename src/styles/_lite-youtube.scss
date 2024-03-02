@@ -1,9 +1,9 @@
 .directive-youtube-iframe-container {
-	border-radius: var(--gap-site-sm);
+	border-radius: var(--x2-radius-sm);
 }
 
 lite-youtube {
-	background-color: var(--background-site-body);
+	background-color: var(--x2-bg-body);
 	position: relative;
 	display: block;
 	contain: content;

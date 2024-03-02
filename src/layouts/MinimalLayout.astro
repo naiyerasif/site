@@ -1,0 +1,18 @@
+---
+import "../styles/main.scss";
+import PageInfo from "./PageInfo.astro";
+
+const { pageInfo, ...attribs } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<PageInfo {pageInfo}/>
+	</head>
+	<body>
+		<main id="content" {...attribs}>
+			<slot/>
+		</main>
+	</body>
+</html>
