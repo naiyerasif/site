@@ -46,6 +46,8 @@ gets converted to
 </figure>
 ```
 
+Specify a `.frame` class on the `figure` directive (with `:::figure{.frame}`) to add a border and shadow to the image.
+
 #### Time directive
 
 The following directive

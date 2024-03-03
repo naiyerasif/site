@@ -38,6 +38,9 @@
 	--x2-color-assert: #{$color-blue-35};
 	--x2-border-assert: #{$color-blue-90};
 
+	--x2-shadow-strength: 0.01;
+	--x2-shadow-color: 141, 19%, 17%;
+
 	--color-prettylights-syntax-comment: #6e7781;
 	--color-prettylights-syntax-constant: #0550ae;
 	--color-prettylights-syntax-entity: #6639ba;
@@ -107,6 +110,9 @@
 	--x2-color-assert: #{$color-blue-70};
 	--x2-border-assert: #{$color-blue-20};
 
+	--x2-shadow-strength: 0.25;
+	--x2-shadow-color: 138, 30%, 87%;
+
 	--color-prettylights-syntax-comment: #8b949e;
 	--color-prettylights-syntax-constant: #79c0ff;
 	--color-prettylights-syntax-entity: #d2a8ff;
@@ -174,6 +180,12 @@
 	--x2-max-width-body: calc(60rem + 10vw);
 	--x2-max-width-content: 70ch;
 	--x2-outline-offset: 0.125em;
+	--x2-shadow:
+		0 -1px 3px 0 hsl(var(--x2-shadow-color), calc(var(--x2-shadow-strength) + 0.02)),
+		0 1px 2px -5px hsl(var(--x2-shadow-color), calc(var(--x2-shadow-strength) + 0.02)),
+		0 2px 5px -5px hsl(var(--x2-shadow-color), calc(var(--x2-shadow-strength) + 0.04)),
+		0 4px 12px -5px hsl(var(--x2-shadow-color), calc(var(--x2-shadow-strength) + 0.05)),
+		0 12px 15px -5px hsl(var(--x2-shadow-color), calc(var(--x2-shadow-strength) + 0.07));
 
 	// defaults
 	--x2-font-body: var(--fontSans1);

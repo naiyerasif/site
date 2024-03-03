@@ -126,6 +126,16 @@
 	margin-block-start: 1rem;
 }
 
+figure.frame {
+	--x2-gap-flow: 2em;
+
+	img {
+		border: 1px solid var(--x2-border-note);
+		border-radius: var(--x2-radius-sm);
+		box-shadow: var(--x2-shadow);
+	}
+}
+
 .card {
 	--x2-gap-flow: 1em;
 	padding-block: 2em;
