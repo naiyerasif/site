@@ -5,6 +5,7 @@ chatbot(s)
 [Cc]odeblock|[Cc]odeblocks
 [Hh]ealthcheck
 [Mm]onorepo
+[Nn]ushell
 [Pp]ostgres
 priviledges
 [Rr]ebase|[Rr]ebasing
