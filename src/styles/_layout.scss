@@ -92,6 +92,10 @@ main#content + .footer,
 	&-header {
 		--x2-padding-distinct-link: 0.5ch 1.5ch;
 
+		.hero-back-nav .icon {
+			margin-inline-end: 0.5ch;
+		}
+
 		.hero-content-type {
 			text-transform: capitalize;
 			padding: var(--x2-padding-distinct-link);

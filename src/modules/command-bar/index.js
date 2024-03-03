@@ -1,16 +1,16 @@
 const commandBarTemplate = document.createElement("template");
 commandBarTemplate.innerHTML = `
 <button type="button" role="switch" aria-live="polite" aria-checked="true" id="command-bar-launcher" aria-label="Launch CommandBar" part="button">
-	<svg role="img" class="icon" aria-hidden="true"><use href="#magnifier"/></svg>
+	<svg role="img" class="icon" aria-hidden="true"><use href="#x2-magnifying-glass"/></svg>
 </button>
 <dialog aria-label="CommandBar" id="command-bar">
 	<header class="command-bar-header">
 		<input id="search-box" placeholder="Search..." part="input" autofocus>
 		<button type="reset" aria-label="Reset search" part="button" id="search-box-resetter">
-			<svg role="img" class="icon" aria-hidden="true"><use href="#reset"/></svg>
+			<svg role="img" class="icon" aria-hidden="true"><use href="#x2-reset"/></svg>
 		</button>
 		<button type="button" aria-label="Close CommandBar" part="button" id="command-bar-escaper">
-			<svg role="img" class="icon" aria-hidden="true"><use href="#close"/></svg>
+			<svg role="img" class="icon" aria-hidden="true"><use href="#x2-x"/></svg>
 		</button>
 	</header>
 	<div id="commands" tabindex="-1"></div>
@@ -23,23 +23,17 @@ commandBarTemplate.innerHTML = `
 </dialog>
 <div style="display:none">
 	<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-		<symbol viewBox="0 0 24 24" id="arrow-right">
+		<symbol viewBox="0 0 24 24" id="x2-arrow-right">
 			<path d="M6 12h12m-6-6 6 6-6 6"/>
 		</symbol>
-		<symbol viewBox="0 0 24 24" id="close">
-			<path d="m6 6 12 12M6 18 18 6"/>
-		</symbol>
-		<symbol viewBox="0 0 24 24" id="magnifier">
+		<symbol viewBox="0 0 24 24" id="x2-magnifying-glass">
 			<circle cx="10.5" cy="10.5" r="7.5"/><path d="m16 16 5 5"/>
 		</symbol>
-		<symbol viewBox="0 0 24 24" id="moon">
-			<path d="M13.355 2C18.238 2.684 22 6.882 22 11.951 22 17.497 17.497 22 11.951 22 6.882 22 2.684 18.238 2 13.355a8.018 8.018 0 0 0 5.932 2.616 8.043 8.043 0 0 0 8.039-8.039A8.018 8.018 0 0 0 13.355 2Z"/>
+		<symbol viewBox="0 0 24 24" id="x2-x">
+			<path d="m6 6 12 12M6 18 18 6"/>
 		</symbol>
-		<symbol viewBox="0 0 24 24" id="reset">
+		<symbol viewBox="0 0 24 24" id="x2-reset">
 			<path d="M9.375 13.75 5 9.375 9.375 5"/><path d="M5 9.375h9.188c2.64 0 4.812 2.172 4.812 4.812C19 16.828 16.828 19 14.188 19h-3.063"/>
-		</symbol>
-		<symbol viewBox="0 0 24 24" id="sun">
-			<path d="m9.321 2 .535 2m4.288 16 .535 2M3.036 6.824l1.787 1.033m14.354 8.286 1.787 1.033M2 14.679l2-.535m16-4.288 2-.535M7.857 19.177l-1.033 1.787M17.176 3.036l-1.033 1.787"/><circle cx="12" cy="12" r="4"/>
 		</symbol>
 	</svg>
 </div>
@@ -178,7 +172,7 @@ export class CommandBar extends HTMLElement {
 		minMatchCharLength: 3,
 		keys: [ "title", "description" ]
 	};
-	static #anchorIcon = `<svg role="img" class="icon" aria-hidden="true"><use href="#arrow-right"/></svg>`;
+	static #anchorIcon = `<svg role="img" class="icon" aria-hidden="true"><use href="#x2-arrow-right"/></svg>`;
 
 	#commandBar = null;
 	#launcher = null;

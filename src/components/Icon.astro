@@ -3,7 +3,7 @@ import slugify from "~slugifier";
 
 const { name, alt, ...attribs } = Astro.props;
 
-const href = `#${name}`;
+const href = `#x2-${name}`;
 const { "class": classValues = "", ...otherAttribs } = attribs;
 const attributes = otherAttribs || {};
 const ariaHidden = !alt;
