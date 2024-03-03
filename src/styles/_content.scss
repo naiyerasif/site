@@ -10,6 +10,7 @@
 
 	& > blockquote {
 		--x2-padding-inline-blockquote: calc(var(--x2-gap-inline-body) + var(--x2-padding-inline-body) - var(--blockquoteBorderWidth));
+		padding-inline-end: var(--x2-padding-inline-blockquote);
 	}
 
 	& > .callout {
