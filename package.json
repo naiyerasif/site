@@ -18,7 +18,7 @@
 		"@microflash/rehype-starry-night": "^3.5.0",
 		"@microflash/remark-callout-directives": "^4.1.0",
 		"@sindresorhus/slugify": "^2.2.1",
-		"astro": "^4.4.9",
+		"astro": "^4.4.10",
 		"dayjs": "^1.11.10",
 		"feed": "^4.2.2",
 		"postcss-preset-env": "^9.4.0",
@@ -36,7 +36,7 @@
 	"devDependencies": {
 		"defu": "^6.1.4",
 		"hastscript": "^9.0.0",
-		"html-entities": "^2.4.0",
+		"html-entities": "^2.5.2",
 		"inquirer": "^9.2.15",
 		"mdast-util-to-string": "^4.0.0",
 		"puppeteer": "^22.3.0",
