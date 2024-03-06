@@ -110,7 +110,7 @@ export default defineConfig({
 						conf: "ini",
 						json: "jsonc",
 						log: "sh",
-						"psql-console": "sql"
+						"psql": "sql"
 					},
 					headerExtensions: [
 						rehypeStarryNightHeaderLanguageExtension,
