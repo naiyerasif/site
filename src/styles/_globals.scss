@@ -54,7 +54,7 @@
 	-webkit-tap-highlight-color: transparent;
 }
 
-:where(theme-switcher, command-bar)::part(button) {
+:where(theme-switcher, bandwidth-mode-switcher, command-bar)::part(button) {
 	padding: 0.4rem;
 	border-radius: var(--x2-radius-sm);
 }
