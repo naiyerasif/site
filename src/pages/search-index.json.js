@@ -41,6 +41,12 @@ const defaults = [
 		"description": "Switch to your preferred theme",
 		"content": `<a class="command-item" onclick="document.dispatchEvent(new Event('toggletheme'))" part="link" tabindex="0"><svg role="img" class="icon" aria-hidden="true"><path d="M6 12h.01M8 8h.01M13 7h.01M17 10h.01M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>Switch theme</a>`,
 		"section": "Preferences"
+	},
+	{
+		"title": "Bandwidth Mode Switcher",
+		"description": "Switch to your preferred bandwidth mode",
+		"content": `<a class="command-item" onclick="document.dispatchEvent(new Event('togglebandwidthmode'))" part="link" tabindex="0"><svg role="img" class="icon" aria-hidden="true"><path d="M8 12h8m-4-4v8m1.881-13.823C18.502 3.058 22 7.124 22 12a9.95 9.95 0 0 1-1.616 5.449m-2.806 2.85A9.95 9.95 0 0 1 12 22C6.481 22 2 17.519 2 12c0-4.804 3.394-8.821 7.913-9.782"/></svg>Switch bandwidth mode</a>`,
+		"section": "Preferences"
 	}
 ];
 
