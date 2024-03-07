@@ -36,9 +36,14 @@
 
 	(function () {
 		let preferredBandwidthMode;
-		try {
-			preferredBandwidthMode = localStorage.getItem("bandwidth-mode");
-		} catch (err) {}
+		const queryParam = (new URL(document.location)).searchParams.has("minimal");
+		if (queryParam) {
+			preferredBandwidthMode = "minimal";
+		} else {
+			try {
+				preferredBandwidthMode = localStorage.getItem("bandwidth-mode");
+			} catch (err) {}
+		}
 
 		function setBandwidthMode(newBandwidthMode) {
 			window.__bandwidthMode = newBandwidthMode;
@@ -66,10 +71,7 @@
 			window.__setPreferredBandwidthMode(event.matches ? "minimal" : "normal");
 		});
 
-		const queryParam = (new URL(document.location)).searchParams.get("bandwidth-mode");
-		const queryParamMode = queryParam === "minimal" ? "minimal" : "normal";
-
-		setBandwidthMode(preferredBandwidthMode || queryParamMode || (prefersReducedData.matches ? "minimal" : "normal"));
+		setBandwidthMode(preferredBandwidthMode || (prefersReducedData.matches ? "minimal" : "normal"));
 	})();
 </script>
 
