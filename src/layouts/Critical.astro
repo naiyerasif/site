@@ -33,6 +33,44 @@
 
 		setTheme(preferredTheme || (prefersDarkTheme.matches ? "dark" : "light"));
 	})();
+
+	(function () {
+		let preferredBandwidthMode;
+		try {
+			preferredBandwidthMode = localStorage.getItem("bandwidth-mode");
+		} catch (err) {}
+
+		function setBandwidthMode(newBandwidthMode) {
+			window.__bandwidthMode = newBandwidthMode;
+			preferredBandwidthMode = newBandwidthMode;
+			document.documentElement.dataset.bandwidthMode = newBandwidthMode;
+			try {
+				localStorage.setItem("bandwidth-mode", newBandwidthMode);
+			} catch (err) {}
+		}
+
+		const reducedBandwidthQuery = "(prefers-reduced-data: reduce)";
+		const prefersReducedData = window.matchMedia(reducedBandwidthQuery);
+
+		window.__setPreferredBandwidthMode = function (newBandwidthMode) {
+			setBandwidthMode(newBandwidthMode);
+
+			document.firstElementChild.dispatchEvent(new CustomEvent("bandwidthmodechange", {
+				bubbles: true,
+				composed: true,
+				detail: { bandwidthMode: newBandwidthMode }
+			}));
+		};
+
+		prefersReducedData.addEventListener("change", function (event) {
+			window.__setPreferredBandwidthMode(event.matches ? "minimal" : "normal");
+		});
+
+		const queryParam = (new URL(document.location)).searchParams.get("bandwidth-mode");
+		const queryParamMode = queryParam === "minimal" ? "minimal" : "normal";
+
+		setBandwidthMode(preferredBandwidthMode || queryParamMode || (prefersReducedData.matches ? "minimal" : "normal"));
+	})();
 </script>
 
 <style is:inline>
@@ -157,6 +195,18 @@
 			--fontSans1: "Inter var", var(--fontSansNative);
 			--fontMono: "JetBrains Mono var", var(--fontMonoNative);
 		}
+	}
+	@media (prefers-reduced-data: reduce) {
+		:root:not([data-bandwidth-mode]) {
+			--fontSans1: var(--fontSansNative);
+			--fontSans2: var(--fontSansNative);
+			--fontMono: var(--fontMonoNative);
+		}
+	}
+	[data-bandwidth-mode="minimal"] {
+		--fontSans1: var(--fontSansNative);
+		--fontSans2: var(--fontSansNative);
+		--fontMono: var(--fontMonoNative);
 	}
 	@media (pointer: coarse), (any-hover: none) {
 		:root {
