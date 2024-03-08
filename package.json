@@ -18,7 +18,7 @@
 		"@microflash/rehype-starry-night": "^3.5.0",
 		"@microflash/remark-callout-directives": "^4.1.0",
 		"@sindresorhus/slugify": "^2.2.1",
-		"astro": "^4.4.14",
+		"astro": "^4.4.15",
 		"dayjs": "^1.11.10",
 		"feed": "^4.2.2",
 		"postcss-preset-env": "^9.5.0",
@@ -39,11 +39,12 @@
 		"html-entities": "^2.5.2",
 		"inquirer": "^9.2.15",
 		"mdast-util-to-string": "^4.0.0",
-		"puppeteer": "^22.4.0",
+		"puppeteer": "^22.4.1",
 		"unist-util-visit": "^5.0.0",
 		"unlighthouse-puppeteer": "^0.10.6"
 	},
 	"browserslist": [
 		"defaults"
-	]
+	],
+	"packageManager": "pnpm@8.15.4+sha256.cea6d0bdf2de3a0549582da3983c70c92ffc577ff4410cbf190817ddc35137c2"
 }

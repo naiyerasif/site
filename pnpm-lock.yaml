@@ -24,8 +24,8 @@ dependencies:
     specifier: ^2.2.1
     version: 2.2.1
   astro:
-    specifier: ^4.4.14
-    version: 4.4.14(sass@1.71.1)
+    specifier: ^4.4.15
+    version: 4.4.15(sass@1.71.1)
   dayjs:
     specifier: ^1.11.10
     version: 1.11.10
@@ -83,8 +83,8 @@ devDependencies:
     specifier: ^4.0.0
     version: 4.0.0
   puppeteer:
-    specifier: ^22.4.0
-    version: 22.4.0
+    specifier: ^22.4.1
+    version: 22.4.1
   unist-util-visit:
     specifier: ^5.0.0
     version: 5.0.0
@@ -2203,8 +2203,8 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /astro@4.4.14(sass@1.71.1):
-    resolution: {integrity: sha512-b8l8NyUP38sWDkCSx9PKTX8aISIXhEGCnsx5FugOTyMisYeeY2hwyaiUpL11WvNJafq28RY0RMO+HWBR6te6fA==}
+  /astro@4.4.15(sass@1.71.1):
+    resolution: {integrity: sha512-RTiAnlO8hDp6GqMVvaeJxyuCJhHNEho09lHshMNQBqgRabYPOJGW0HZZrbLRGNOqN9I14ivhZIunYGgAaGQpWw==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
@@ -6011,8 +6011,8 @@ packages:
       - utf-8-validate
     dev: true
 
-  /puppeteer-core@22.4.0:
-    resolution: {integrity: sha512-MZttAbttrxi6O/B//rY6zQihjFe/vXeCLb5YvKH2xG6yrcVESo0Hc5/Cv49omwZyZzAJ1BK8BnDeatDsj+3hMw==}
+  /puppeteer-core@22.4.1:
+    resolution: {integrity: sha512-l9nf8NcirYOHdID12CIMWyy7dqcJCVtgVS+YAiJuUJHg8+9yjgPiG2PcNhojIEEpCkvw3FxvnyITVfKVmkWpjA==}
     engines: {node: '>=18'}
     dependencies:
       '@puppeteer/browsers': 2.1.0
@@ -6045,15 +6045,15 @@ packages:
       - utf-8-validate
     dev: true
 
-  /puppeteer@22.4.0:
-    resolution: {integrity: sha512-tR+JsDbA2qD1DqRX4F9k9SxQhk6UzcaCN+Qux7+WrDceS7wcR7tlFmMNB8+g8zE4Fmr/iRTOtf5wNnTW9cGUFQ==}
+  /puppeteer@22.4.1:
+    resolution: {integrity: sha512-Mag1wRLanzwS4yEUyrDRBUgsKlH3dpL6oAfVwNHG09oxd0+ySsatMvYj7HwjynWy/S+Hg+XHLgjyC/F6CsL/lg==}
     engines: {node: '>=18'}
     hasBin: true
     requiresBuild: true
     dependencies:
       '@puppeteer/browsers': 2.1.0
       cosmiconfig: 9.0.0
-      puppeteer-core: 22.4.0
+      puppeteer-core: 22.4.1
     transitivePeerDependencies:
       - bufferutil
       - encoding
