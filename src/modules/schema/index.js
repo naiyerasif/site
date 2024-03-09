@@ -11,7 +11,7 @@ const date = z.date();
 const update = z.date().optional();
 
 const postTypes = z.enum(["website", "article", "profile"]);
-const postCategories = z.enum(["guide", "tutorial", "reference", "explainer", "opinion", "note", "status"]);
+const postCategories = z.enum(["guide", "tutorial", "reference", "explanation", "opinion", "status", "note"]);
 const tagline = z.string().optional();
 
 const url = z.preprocess(val => val && fullLink(val), z.string().url());

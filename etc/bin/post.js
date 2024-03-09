@@ -23,7 +23,7 @@ const questions = [
 		type: "list",
 		name: "category",
 		message: "Choose a type",
-		choices: ["Status", "Guide", "Tutorial", "Reference", "Explainer", "Opinion", "Note"],
+		choices: ["Status", "Guide", "Tutorial", "Reference", "Explanation", "Opinion"],
 		default: "Guide",
 		filter(value) {
 			return value.toLowerCase();
