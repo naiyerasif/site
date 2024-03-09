@@ -2,68 +2,91 @@ extends: conditional
 message: "Spell out '%s', if it's unfamiliar to the audience."
 level: suggestion
 ignorecase: false
-# Ensures that the existence of 'first' implies the existence of 'second'.
 first: '\b([A-Z]{3,5})\b'
 second: '(?:\b[A-Z][a-z]+ )+\(([A-Z]{3,5})\)'
-# ... with the exception of these:
 exceptions:
+  - ABAC
   - API
-  - ASP
   - AWS
+  - BIOS
   - CLI
   - CPU
   - CSS
   - CSV
   - DEBUG
+  - DELETE
   - DOM
+  - DOS
   - DPI
+  - DSL
+  - ERROR
   - FAQ
-  - GCC
-  - GDB
   - GET
+  - GIF
   - GPU
-  - GTK
   - GUI
+  - GUID
   - HTML
   - HTTP
   - HTTPS
   - IDE
+  - INFO
+  - IP
+  - IT
   - JAR
   - JDBC
   - JPA
+  - JPEG
   - JSON
   - JSX
-  - LESS
-  - LLDB
+  - JVM
+  - LAN
+  - LOL
   - MIT
   - MVC
-  - NET
+  - NAT
   - NOTE
-  - NVDA
+  - OEM
   - OSS
+  - PATCH
   - PATH
+  - PC
   - PDF
   - PHP
+  - PIN
+  - PNG
+  - POSIX
   - POST
+  - PUT
   - RAM
+  - RBAC
   - REPL
-  - RSA
+  - REST
+  - ROM
   - RSS
   - SCM
   - SCSS
   - SDK
+  - SFTP
   - SQL
+  - SSD
   - SSH
   - SSL
   - SVG
   - TBD
   - TCP
   - TODO
+  - TTL
+  - UNIX
   - URI
   - URL
   - USB
   - UTF
+  - UUID
+  - VLAN
+  - VPN
   - XML
   - XSS
   - YAML
+  - YML
   - ZIP

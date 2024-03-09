@@ -1,15 +1,15 @@
 extends: substitution
-message: "Consider using '%s' instead of '%s'."
-link: https://docs.microsoft.com/en-us/style-guide/word-choice/use-simple-words-concise-sentences
-ignorecase: true
+message: "Simplify '%s' as '%s'."
 level: warning
+ignorecase: true
 action:
   name: replace
 swap:
-  (?:give|gave) rise to: lead to
-  (?:previous|prior) to: before
-  a (?:large)? majority of: most
-  a (?:large)? number of: many
+  "(?:give|gave) rise to": lead to
+  "(?:previous|prior) to": before
+  "a (?:large)? majority of": most
+  "a (?:large)? number of": many|several
+  "a lot(?: of)?": many|much
   a myriad of: myriad
   adversely impact: hurt
   all across: across
@@ -20,6 +20,7 @@ swap:
   almost all: most
   almost never: seldom
   along the lines of: similar to
+  amongst: among
   an adequate number of: enough
   an appreciable number of: many
   an estimated: about
@@ -28,6 +29,7 @@ swap:
   as a matter of fact: in fact
   as a means of: to
   as a result of: because of
+  as long as: if|provided that
   as of yet: yet
   as per: per
   at a later date: later
@@ -38,20 +40,25 @@ swap:
   based on the fact that: because
   basic necessity: necessity
   because of the fact that: because
+  bring up: start|power on|open|switch on
   came to a realization: realized
   came to an abrupt end: ended abruptly
   carry out an evaluation of: evaluate
   close down: close
   closed down: closed
+  comes with: includes
   complete stranger: stranger
   completely separate: separate
   concerning the matter of: regarding
   conduct a review of: review
   conduct an investigation: investigate
   conduct experiments: experiment
+  connect with: connect to
   continue on: continue
+  deregister: unregister
   despite the fact that: although
   disappear from sight: disappear
+  dismiss: close
   drag and drop: drag
   drag-and-drop: drag
   doomed to fail: doomed
@@ -80,40 +87,54 @@ swap:
   in many cases: often
   in most cases: usually
   in order to: to
+  in other words: for example|that is
   in some cases: sometimes
   in spite of the fact that: although
   in spite of: despite
-  in the (?:very)? near future: soon
+  "in the (?:very)? near future": soon
   in the event that: if
   in the neighborhood of: roughly
   in the vicinity of: close to
+  invoke: start|call
   it would appear that: apparently
+  keep in mind: remember
+  kick off: start
+  leave out: omit
   lift up: lift
   made reference to: referred to
-  make reference to: refer to
+  make reference to: see
   mix together: mix
   none at all: none
   not in a position to: unable
   not possible: impossible
   of major importance: important
+  on the fly: dynamically|as needed|in real time|immediately
+  on the other hand: however|alternatively|conversely
+  opt into: opt in
+  opting into: opting in|opting in to
+  pain point: challenge|concern|difficulty|issue
   perform an assessment of: assess
   pertaining to: about
   place an order: order
   plays a key role in: is essential to
   present time: now
   readily apparent: apparent
+  right now: now
+  rule of thumb: rule
+  ships with|is shipped with: includes
+  so long as: if|when
   some of the: some
   span across: span
   subsequent to: after
   successfully complete: complete
-  sufficient number (?:of)?: enough
+  "sufficient number (?:of)?": enough
   take action: act
   take into account: consider
   the question as to whether: whether
   there is no doubt but that: doubtless
   this day and age: this age
   this is a subject that: this subject
-  time (?:frame|period): time
+  "time (?:frame|period)": time
   under the provisions of: under
   until such time as: until
   used for fuel purposes: used for fuel

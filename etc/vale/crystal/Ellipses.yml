@@ -1,8 +1,9 @@
 extends: existence
 message: "In general, don't use an ellipsis."
-nonword: true
 level: warning
+nonword: true
 action:
   name: remove
 tokens:
   - '\.\.\.'
+  - "…"

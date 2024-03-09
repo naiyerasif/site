@@ -1,12 +1,16 @@
 extends: substitution
-message: "Use '%s' instead of '%s'."
-ignorecase: true
+message: "Avoid latin. Use '%s' instead of '%s'."
 level: error
+ignorecase: true
 nonword: true
 action:
   name: replace
 swap:
   '\b(?:eg|e\.g\.)[\s,]': for example
   '\b(?:ie|i\.e\.)[\s,]': that is
+  '\betc\.': and other
+  '\bvs\.': against
+  via: over|through
   viz: namely
   ergo: therefore
+  versus: compared to

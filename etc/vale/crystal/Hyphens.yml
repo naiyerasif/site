@@ -11,3 +11,4 @@ action:
     - ' '
 tokens:
   - '\s[^\s-]+ly-'
+  - 'auto-\w+'

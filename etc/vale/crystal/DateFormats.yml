@@ -1,7 +1,7 @@
 extends: existence
 message: "Use 'July 31, 2016' format, not '%s'."
-ignorecase: true
 level: error
+ignorecase: true
 nonword: true
 tokens:
   - '\d{1,2}(?:\.|/)\d{1,2}(?:\.|/)\d{4}'
