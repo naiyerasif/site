@@ -17,12 +17,6 @@
 		],
 		"description": "Inserts a figure directive"
 	},
-	"Sprite": {
-		"scope": "markdown",
-		"prefix": "sprite",
-		"body": [":sprite{href=\"#$1\"}"],
-		"description": "Inserts a sprite directive"
-	},
 	"Time": {
 		"scope": "markdown",
 		"prefix": "time",
