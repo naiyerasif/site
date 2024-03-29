@@ -18,7 +18,7 @@
 		"@microflash/rehype-starry-night": "^3.5.0",
 		"@microflash/remark-callout-directives": "^4.1.0",
 		"@sindresorhus/slugify": "^2.2.1",
-		"astro": "^4.4.15",
+		"astro": "^4.5.12",
 		"dayjs": "^1.11.10",
 		"defu": "^6.1.4",
 		"feed": "^4.2.2",
