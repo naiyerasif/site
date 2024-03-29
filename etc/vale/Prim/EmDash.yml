@@ -1,0 +1,7 @@
+extends: existence
+message: "Add spaces around '%s'."
+level: error
+ignorecase: true
+nonword: true
+tokens:
+  - '(?<=\w)—(?=\w)'

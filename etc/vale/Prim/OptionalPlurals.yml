@@ -9,3 +9,4 @@ action:
     - '(s)'
 tokens:
   - '\b\w+\(s\)'
+  - '\b\w+\(es\)'

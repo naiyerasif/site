@@ -5,5 +5,4 @@ ignorecase: true
 action:
   name: replace
 swap:
-  'it is(?!\.)': it's
-  'it''s(?=\.)': it is
+  approximately: about

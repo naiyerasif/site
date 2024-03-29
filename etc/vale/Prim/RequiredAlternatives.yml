@@ -1,0 +1,28 @@
+extends: substitution
+message: "Use '%s' instead of '%s'."
+level: error
+ignorecase: true
+action:
+  name: replace
+swap:
+  24/7: 24x7
+  3\-D: 3D
+  Ajax: AJAX
+  autodetect: auto-detect
+  back slash: backslash
+  (?:bottle neck|bottle-neck)s?: bottleneck|bottlenecks
+  check lists?: checklist|checklists
+  check marks?: checkmark|checkmarks
+  down time: downtime
+  (?:dualboot|dual boot): dual-boot
+  hard copy: hardcopy
+  hardcoded: hard-coded
+  HTTPs: HTTPS
+  (?:file ?path|path ?name)s?: path|paths
+  (?:scroll bar|scroll-bar)s?: scrollbar|scrollbars
+  synch: sync
+  testcases?: test case|test cases
+  url:  URL
+  URL for: URL of
+  an URL: a URL
+  usecases?: use case|use cases

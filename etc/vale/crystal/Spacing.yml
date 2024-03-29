@@ -1,9 +1,0 @@
-extends: existence
-message: "'%s' should have one space."
-level: error
-nonword: true
-tokens:
-  - '[a-z]\s{2,}[a-z]' # only one space between words
-  - '[a-z][.?!:;",] {2,}[A-Z]' # no more than one space between sentences
-  - '[a-z][.?!:;",][A-Z]' # atleast one space between sentences
-  - '[\w.?!,\(\)\-":] {2,}[\w.?!,\(\)\-":]' # only one space after ,.?
