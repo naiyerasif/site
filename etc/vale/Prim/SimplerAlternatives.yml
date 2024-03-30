@@ -6,3 +6,4 @@ action:
   name: replace
 swap:
   approximately: about
+  state-of-the-art: modern|latest

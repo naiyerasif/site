@@ -8,4 +8,8 @@ swap:
   0-days?: zero-day|zero-days
   12 am: midnight
   12 pm: noon
+  anti-aliasing: antialiasing
+  anti-malware: antimalware
+  anti-spyware: antispyware
+  anti-virus: antivirus
   open-source: open source
