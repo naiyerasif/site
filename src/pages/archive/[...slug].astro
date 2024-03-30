@@ -44,7 +44,7 @@ const pageInfo = {
 	<Fragment slot="hero">
 		<div class="hero-header">
 			<a class="hero-back-nav distinct-link" href="/"><Icon name="long-arrow-left"/>Return to home</a>
-			<span class="hero-content-type">Archived {category}</span>
+			<span class="hero-content-type">{category}</span>
 		</div>
 		<div class="hero-body">
 			<div class="hero-headline-text">
@@ -53,7 +53,7 @@ const pageInfo = {
 			</div>
 		</div>
 		<div class="hero-footer">
-			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span class="update"><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}{category !== "status" && showReadingTime && <span><Icon name="clock"/> Takes about {`${timeToRead} min to read`}</span>}
+			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span class="update"><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}{category !== "status" && showReadingTime && <span><Icon name="clock"/> Takes about {`${timeToRead} min to read`}</span>}<span class="chip chip-warn">Archived</span>
 		</div>
 	</Fragment>
 	<article class="content">

@@ -5,6 +5,7 @@ description: "Ory Hydra is an open source implementation of the OAuth 2.0 Author
 date: 2022-08-21 12:32:07
 update: 2022-08-21 12:32:07
 category: "guide"
+state: "archived"
 ---
 
 :::warn{title="Archived post"}

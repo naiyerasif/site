@@ -34,6 +34,11 @@ const hasRecommendations = prevPage || nextPage;
 const timeToRead = readingTime(post.body).readingTime;
 const showUpdate = compare(data.update, data.date) !== 0;
 const showReadingTime = timeToRead > 0;
+const showState = !!data.state;
+const stateClasses = {
+	"working draft": "chip chip-assert",
+	"outdated": "chip chip-deter"
+};
 
 const pageInfo = {
 	title: data.title,
@@ -62,7 +67,7 @@ const pageInfo = {
 			</div>
 		</div>
 		<div class="hero-footer">
-			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span class="update"><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}{category !== "status" && showReadingTime && <span><Icon name="clock"/> Takes about {`${timeToRead} min to read`}</span>}
+			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span class="update"><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}{category !== "status" && showReadingTime && <span><Icon name="clock"/> Takes about {`${timeToRead} min to read`}</span>}{showState && <span class={stateClasses[data.state]}>{data.state}</span>}
 		</div>
 	</Fragment>
 	<article class="content">

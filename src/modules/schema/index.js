@@ -10,6 +10,7 @@ const image = z.preprocess(
 const date = z.date();
 const update = z.date().optional();
 
+const states = z.enum(["working draft", "archived", "outdated"]);
 const postTypes = z.enum(["website", "article", "profile"]);
 const postCategories = z.enum(["guide", "tutorial", "reference", "explanation", "opinion", "status", "note"]);
 const tagline = z.string().optional();
@@ -27,6 +28,7 @@ const postSchema = z.object({
 	update,
 
 	type: postTypes.default("article"),
+	state: states.optional(),
 	category: postCategories.default("guide"),
 	tagline,
 
@@ -41,6 +43,7 @@ const profileSchema = z.object({
 	update,
 
 	type: postTypes.default("profile"),
+	state: states.optional(),
 	tagline,
 
 	showToc: z.boolean().default(false),
@@ -55,6 +58,7 @@ const pageSchema = z.object({
 	update,
 
 	type: postTypes.default("website"),
+	state: states.optional(),
 	tagline,
 
 	showToc: z.boolean().default(false),
@@ -68,6 +72,7 @@ const pageInfoSchema = z.object({
 	updated: z.string().optional(), // add yyyy-MM-dd format validation
 
 	type: postTypes.default("website"),
+	state: states.optional(),
 
 	url,
 	previous: optionalUrl,
