@@ -1,0 +1,6 @@
+extends: existence
+message: "Use 'and' as a separator instead of '&'."
+level: warning
+nonword: true
+tokens:
+  - '\b\w+\s&\s\w+\b'

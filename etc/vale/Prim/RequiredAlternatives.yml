@@ -15,9 +15,12 @@ swap:
   check marks?: checkmark|checkmarks
   down time: downtime
   (?:dualboot|dual boot): dual-boot
+  e-mail: email
   hard copy: hardcopy
   hardcoded: hard-coded
   HTTPs: HTTPS
+  in depth: in-depth
+  on demand: on-demand
   (?:file ?path|path ?name)s?: path|paths
   (?:scroll bar|scroll-bar)s?: scrollbar|scrollbars
   synch: sync
@@ -26,3 +29,4 @@ swap:
   URL for: URL of
   an URL: a URL
   usecases?: use case|use cases
+  (?:WiFi|wifi): Wi-Fi

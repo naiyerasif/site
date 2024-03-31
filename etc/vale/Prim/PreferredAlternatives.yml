@@ -12,4 +12,7 @@ swap:
   anti-malware: antimalware
   anti-spyware: antispyware
   anti-virus: antivirus
+  chat ?bot?: chatbot
   open-source: open source
+  (?:cell ?phone|smart ?phone): phone|mobile phone
+  World Wide Web: web

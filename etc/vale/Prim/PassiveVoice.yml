@@ -6,8 +6,9 @@ raw:
   - \b(am|are|were|being|is|been|was|be)\b\s*
 tokens:
   - '[\w]+ed'
+  - arisen
   - awoken
-  - beat
+  - beaten
   - become
   - been
   - begun
@@ -20,6 +21,7 @@ tokens:
   - bled
   - blown
   - born
+  - borne
   - bought
   - bound
   - bred
@@ -38,16 +40,16 @@ tokens:
   - crept
   - cut
   - dealt
-  - dived
   - done
+  - dove
   - drawn
+  - dreamed
   - dreamt
   - driven
   - drunk
   - dug
   - eaten
   - fallen
-  - fed
   - felt
   - fit
   - fled
@@ -80,11 +82,10 @@ tokens:
   - lain
   - leapt
   - learnt
-  - led
   - left
   - lent
   - let
-  - lighted
+  - lit
   - lost
   - made
   - meant
@@ -94,10 +95,10 @@ tokens:
   - mown
   - overcome
   - overdone
+  - overseen
   - overtaken
   - overthrown
   - paid
-  - pled
   - proven
   - put
   - quit
@@ -116,24 +117,24 @@ tokens:
   - sewn
   - shaken
   - shaven
-  - shed
   - shod
   - shone
   - shorn
   - shot
   - shown
   - shrunk
+  - shrunken
   - shut
   - slain
   - slept
   - slid
   - slit
   - slung
+  - smelt
   - smitten
   - sold
   - sought
   - sown
-  - sped
   - spent
   - spilt
   - spit
@@ -161,17 +162,18 @@ tokens:
   - taken
   - taught
   - thought
-  - thrived
   - thrown
   - thrust
   - told
   - torn
   - trodden
+  - undergone
   - understood
+  - undertaken
   - upheld
   - upset
-  - wed
   - wept
+  - withdrawn
   - withheld
   - withstood
   - woken
