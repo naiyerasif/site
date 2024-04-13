@@ -30,10 +30,21 @@ jobs:
       - name: Build site
         run: pnpm build
 
-      - name: Publish to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+      - name: Deploy to Cloudflare Pages
+        id: deploy
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: ${{ vars.CLOUDFLARE_PROJECT_NAME }}
-          directory: dist
+          packageManager: pnpm
+          command: pages deploy dist --project-name=${{ vars.CLOUDFLARE_PROJECT_NAME }}
+
+      - name: Job summary
+        env:
+          DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
+        run: |
+          echo "# Deploying with Cloudflare Pages" >> $GITHUB_STEP_SUMMARY
+          echo "| Name | Result |" >> $GITHUB_STEP_SUMMARY
+          echo "| ---- | ------ |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Triggering commit:** | `$GITHUB_SHA` |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Deployment URL**: | $DEPLOYMENT_URL |" >> $GITHUB_STEP_SUMMARY
