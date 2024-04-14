@@ -7,7 +7,7 @@
 	--x2-bg-body: hsl(0, 0%, 100%);
 	--x2-color-body: hsl(0, 0%, 23%);
 	--x2-color-body-emphasis: hsl(0, 0%, 18%);
-	--x2-color-body-subtle: hsl(0, 0%, 36%);;
+	--x2-color-body-subtle: hsl(0, 0%, 36%);
 	--x2-border-body: #{$color-secondary-70};
 
 	--x2-bg-accent-subtle: #{color.change($color-primary-70, $alpha: 0.3)};
@@ -41,7 +41,7 @@
 	--x2-shadow-strength: 0.01;
 	--x2-shadow-color: 141, 19%, 17%;
 
-	--color-prettylights-syntax-comment: #6e7781;
+	--color-prettylights-syntax-comment: #57606a;
 	--color-prettylights-syntax-constant: #0550ae;
 	--color-prettylights-syntax-entity: #6639ba;
 	--color-prettylights-syntax-storage-modifier-import: #24292f;
