@@ -232,6 +232,10 @@ main#content + .footer,
 		&-links > * + * {
 			margin-inline-start: 1ch;
 		}
+
+		&.centered {
+			justify-content: center;
+		}
 	}
 
 	&-subscribe,
