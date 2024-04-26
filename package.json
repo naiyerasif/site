@@ -18,7 +18,7 @@
 		"@microflash/rehype-starry-night": "^3.6.0",
 		"@microflash/remark-callout-directives": "^4.1.0",
 		"@sindresorhus/slugify": "^2.2.1",
-		"astro": "^4.6.4",
+		"astro": "^4.7.0",
 		"dayjs": "^1.11.10",
 		"defu": "^6.1.4",
 		"feed": "^4.2.2",
@@ -33,14 +33,14 @@
 		"remark-gfm": "^4.0.0",
 		"remark-parse": "^11.0.0",
 		"remark-rehype": "^11.1.0",
-		"remark-smartypants": "^3.0.0",
+		"remark-smartypants": "^3.0.1",
 		"sass": "^1.75.0",
 		"unified": "^11.0.4",
 		"unist-util-visit": "^5.0.0"
 	},
 	"devDependencies": {
-		"inquirer": "^9.2.19",
-		"puppeteer": "^22.7.0",
+		"inquirer": "^9.2.20",
+		"puppeteer": "^22.7.1",
 		"unlighthouse-puppeteer": "^0.10.6"
 	},
 	"packageManager": "pnpm@9.0.6",
