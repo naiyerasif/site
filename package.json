@@ -19,7 +19,7 @@
 		"@microflash/remark-callout-directives": "^4.1.0",
 		"@sindresorhus/slugify": "^2.2.1",
 		"astro": "^4.7.0",
-		"dayjs": "^1.11.10",
+		"dayjs": "^1.11.11",
 		"defu": "^6.1.4",
 		"feed": "^4.2.2",
 		"hastscript": "^9.0.0",
