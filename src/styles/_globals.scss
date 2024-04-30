@@ -253,6 +253,11 @@ figure.frame {
 	}
 }
 
+.qr-code {
+	inline-size: calc(10rem + 10vw);
+	block-size: calc(10rem + 10vw);
+}
+
 .glitch {
 	display: flex;
 	align-items: center;
