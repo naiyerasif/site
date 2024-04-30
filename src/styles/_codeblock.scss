@@ -1,6 +1,6 @@
 @use "mixins";
 
-.highlight {
+.hl {
 	--x2-radius-outline: var(--x2-radius-0);
 	background-color: var(--x2-bg-codeblock);
 	border: var(--x2-line-width-lg) solid var(--x2-border-codeblock);

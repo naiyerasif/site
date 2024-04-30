@@ -19,7 +19,7 @@ In this post, we'll discuss how to customize error handling for a REST API prote
 
 In the case of Spring Security Resource Server, the `BearerTokenAuthenticationEntryPoint` and `BearerTokenAccessDeniedHandler` are the default implementations. You can override them by custom implementations, say `CustomOAuth2AuthenticationEntryPoint` and `CustomOAuth2AccessDeniedHandler`, using the configuration DSL as follows.
 
-```java {10-11}
+```java {10..11}
 // src/main/java/dev/mflash/guides/tokenval/introspection/security/SecurityConfiguration.java
 
 @EnableWebSecurity

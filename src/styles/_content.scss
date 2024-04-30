@@ -3,7 +3,7 @@
 .content {
 	& > blockquote,
 	& > figure,
-	& > .highlight,
+	& > .hl,
 	& > .callout {
 		grid-column: contentGap;
 	}

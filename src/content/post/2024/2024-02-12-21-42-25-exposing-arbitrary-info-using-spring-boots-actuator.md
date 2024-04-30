@@ -11,7 +11,7 @@ Spring Boot's [actuator](https://docs.spring.io/spring-boot/docs/current/referen
 
 For example, you can put the following configuration to expose the application's version and the Java version used by it.
 
-```yml {10-11} caption="application.yml"
+```yml {7..8} caption="application.yml"
 management:
   endpoints.web.exposure.include: health,info
   endpoint.info.enabled: true

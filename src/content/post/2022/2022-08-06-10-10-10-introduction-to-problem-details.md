@@ -68,7 +68,7 @@ Content-Type: application/problem+json
 
 ### Extended Problem Details with custom fields
 
-```json {10-16}
+```json {10..16}
 HTTP/1.1 400 Bad Request
 Content-Type: application/problem+json
 
@@ -90,7 +90,7 @@ Content-Type: application/problem+json
 
 ### Nested Problem Details for multiple problems
 
-```json {10-25}
+```json {10..25}
 HTTP/1.1 500 Internal Server Error
 Content-Type: application/problem+json
 

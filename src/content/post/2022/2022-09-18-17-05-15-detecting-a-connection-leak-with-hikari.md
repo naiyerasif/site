@@ -69,7 +69,7 @@ public interface BookRepository extends CrudRepository<Book, Long> {
 
 In the `application.yml`, we'll configure Hikari to have a maximum of 10 database connections in the pool and a minimum of 5 database connections while idling.
 
-```yml caption='application.yml' {6-9}
+```yml caption='application.yml' {6..9}
 spring:
   datasource:
     url: jdbc:h2:mem:sa
@@ -83,7 +83,7 @@ spring:
 
 Launch the app. After it is available for use, open a terminal and hit the `/book` endpoint in a loop.
 
-```sh prompt{1} {12-13}
+```sh prompt{1} {12..13}
 for x in 1..12 { curl http://localhost:8080/book/THRILLER }
 [{"id":"f949e352-1adb-4fc4-81e3-2fb31857c927","title":"No Plan B","genre":"THRILLER","author":"Lee Child"}]
 [{"id":"f949e352-1adb-4fc4-81e3-2fb31857c927","title":"No Plan B","genre":"THRILLER","author":"Lee Child"}]
@@ -147,7 +147,7 @@ Hikari complains about the connection not being available when the `BookReposito
 
 We can get more information about the exception by turning on the `TRACE` logs for Hikari as follows.
 
-```yml caption='application.yml' {11-13}
+```yml caption='application.yml' {11..13}
 spring:
   datasource:
     url: jdbc:h2:mem:sa
@@ -165,7 +165,7 @@ logging:
 
 After restarting the app and launching the `curl` in a loop with the same request as earlier, we get the following logs.
 
-```log {3-5}
+```log {3..5}
 2022-09-18 15:00:26.063 DEBUG 22540 --- [onnection adder] com.zaxxer.hikari.pool.HikariPool        : H2HikariPool - After adding stats (total=10, active=0, idle=10, waiting=0)
 ...
 2022-09-18 15:00:56.071 DEBUG 22540 --- [ool housekeeper] com.zaxxer.hikari.pool.HikariPool        : H2HikariPool - Pool stats (total=10, active=10, idle=0, waiting=1)
@@ -198,7 +198,7 @@ logging:
 
 After the app restart, when we launch the `curl` in a loop again, we encounter the following logs.
 
-```log {3-5,30}
+```log {3..5,30}
 2022-09-18 15:07:31.168 DEBUG 52980 --- [ool housekeeper] com.zaxxer.hikari.pool.HikariPool        : H2HikariPool - Pool stats (total=10, active=10, idle=0, waiting=1)
 2022-09-18 15:07:31.169 DEBUG 52980 --- [ool housekeeper] com.zaxxer.hikari.pool.HikariPool        : H2HikariPool - Fill pool skipped, pool is at sufficient level.
 2022-09-18 15:07:48.494  WARN 52980 --- [ool housekeeper] com.zaxxer.hikari.pool.ProxyLeakTask     : Connection leak detection triggered for conn0: url=jdbc:h2:mem:sa user=SA on thread http-nio-8080-exec-1, stack trace follows
@@ -243,7 +243,7 @@ Looking at the logs related to the connection leak, we find that the issue origi
 
 So, closing the `Stream` should return the connection to the pool. This can be done by wrapping the `findAllByGenre` call in a try-with-resources which takes care of closing the `Stream` after usage.
 
-```java {10,24-30}
+```java {10,24..30}
 package dev.mflash.guides.spring.hikari.leakdetection;
 
 import org.springframework.web.bind.annotation.GetMapping;

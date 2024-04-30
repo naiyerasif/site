@@ -193,7 +193,7 @@ spring.sql.init.mode: always
 
 You'd also need to configure the datasource to connect to the database.
 
-```yml caption="src/main/resources/application.yml" {2-5}
+```yml caption="src/main/resources/application.yml" {2..5}
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/brooklyn
@@ -239,7 +239,7 @@ With Docker Compose support in Spring Boot 3.1, Spring Boot can automatically st
 
 Add the `spring-boot-docker-compose` dependency in the `pom.xml`.
 
-```xml caption="pom.xml" {43-48}
+```xml caption="pom.xml" {43..48}
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -336,7 +336,7 @@ In this case, Docker will dynamically assign a host port available to it and Spr
 
 Start the app by running the `Launcher`. As the app comes up, Spring Boot searches for the Compose file, calls `docker compose up` and waits till the container becomes healthy.
 
-```log {3-12}
+```log {3..12}
 2023-09-08T00:40:39.376+05:30  INFO 16119 --- [           main] com.example.localdev.Launcher            : Starting Launcher using Java 17.0.6 with PID 16119 (/Users/demo/guides/spring/springboot3-local-dev-docker-compose/target/classes started by demo in /Users/demo/guides/spring/springboot3-local-dev-docker-compose)
 2023-09-08T00:40:39.377+05:30  INFO 16119 --- [           main] com.example.localdev.Launcher            : No active profile set, falling back to 1 default profile: "default"
 2023-09-08T00:40:39.398+05:30  INFO 16119 --- [           main] .s.b.d.c.l.DockerComposeLifecycleManager : Using Docker Compose file '/Users/demo/guides/spring/springboot3-local-dev-docker-compose/compose.yml'
@@ -404,7 +404,7 @@ While Docker Compose support is convenient, it is limited to a small set of imag
 
 To use the Testcontainers local development mode, remove the `spring-boot-docker-compose` dependency from the `pom.xml`, and add the Testcontainers dependencies.
 
-```xml caption="pom.xml" {48-62}
+```xml caption="pom.xml" {48..62}
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -508,7 +508,7 @@ public class LocalLauncher {
 
 Note that the `LocalLauncher` delegates the app launch to the original `Launcher` class, with an additional `LocalContainerConfiguration` which has the following implementation.
 
-```java {9-13}
+```java {9..13}
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.context.annotation.Bean;
@@ -531,7 +531,7 @@ The `@ServiceConnection` annotation on a `@Bean` creates a `ConnectionDetails` b
 
 To start the app, we'll run `LocalLauncher`. Spring Boot detects the image specified by the `ConnectionDetails` bean and launches it along with `testcontainers/ryuk` container. Ryuk monitors the Testcontainers containers and helps terminate them cleanly when you stop the app.
 
-```log {10-28}
+```log {10..28}
 2023-09-08T01:32:58.160+05:30  INFO 19673 --- [           main] com.example.localdev.Launcher            : Starting Launcher using Java 17.0.6 with PID 19673 (/Users/demo/guides/spring/springboot3-local-dev-testcontainers/target/classes started by demo in /Users/demo/guides/spring/springboot3-local-dev-testcontainers)
 2023-09-08T01:32:58.162+05:30  INFO 19673 --- [           main] com.example.localdev.Launcher            : No active profile set, falling back to 1 default profile: "default"
 2023-09-08T01:32:58.424+05:30  INFO 19673 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
@@ -569,7 +569,7 @@ Once the app is up, you can use the [sample requests](#using-docker-command-line
 
 One benefit of using Testcontainers is that you can inject custom configurations from the container to the Spring Boot app using the `DynamicPropertyRegistry`. Here's an example of registering Postgres connection details using the `DynamicPropertyRegistry`.
 
-```java {10-16}
+```java {10..16}
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.DynamicPropertyRegistry;

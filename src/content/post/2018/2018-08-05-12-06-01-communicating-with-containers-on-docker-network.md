@@ -52,7 +52,7 @@ public class Greeting {
 
 Configure an endpoint, say `/hello`, that returns a `Greeting` object.
 
-```java {6-9}
+```java {6..9}
 // greeter-api/src/main/java/dev/mflash/guides/greeter/GreetingController.java
 
 @Controller("/hello")
@@ -139,7 +139,7 @@ ng generate service Greeting
 
 Add a method (`getGreeting`) to call the backend service.
 
-```typescript {9-11}
+```typescript {9..11}
 // greeter-ui/src/app/greeting.service.ts
 
 @Injectable({

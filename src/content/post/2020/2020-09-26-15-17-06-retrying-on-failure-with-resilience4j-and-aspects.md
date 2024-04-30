@@ -208,7 +208,7 @@ public class RetryOnFailureIntervalFunctions {
 
 To get these functions based on the value of `BackoffStrategy` enum, we can define a factory method that would accept an instance of `@RetryOnFailure` annotation and return the corresponding function.
 
-```java {11-27}
+```java {11..27}
 package com.example.retry.aspect;
 
 import com.example.retry.annotation.BackoffStrategy;
@@ -281,7 +281,7 @@ public class RetryOnFailureIntervalFunctions {
 
 To apply an advice on methods decorated with `@RetryOnFailure` annotation, we need to define an aspect that contains the logic for the retry.
 
-```java {38-60}
+```java {38..60}
 package com.example.retry.aspect;
 
 import com.example.retry.annotation.BackoffStrategy;

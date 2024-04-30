@@ -150,7 +150,7 @@ Spring Security's `AuthenticationManager` works with a `UserDetails` object to h
 
 Add `spring-boot-starter-data-jdbc`, `h2` and `spring-boot-starter-security` in the `pom.xml`.
 
-```xml {28-41,54-58}
+```xml {28..41,54..58}
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -350,7 +350,7 @@ public class CustomUserConverter {
 
 Now, we can inject `CustomUserDetailsService` into Spring Security's `AuthenticationManager` to complete the integration of `CustomUser`.
 
-```java {16-18}
+```java {16..18}
 // src/main/java/dev/mflash/guides/jwtauth/security/SecurityConfiguration.java
 
 @EnableWebSecurity
@@ -529,7 +529,7 @@ Here, the `doFilterInternal` method extracts the `Authorization` header, fetches
 
 We need to register these filters and specify which endpoints are protected and which are accessible publicly in the `SecurityConfiguration`.
 
-```java {12-22,32-36}
+```java {12..22,32..36}
 // src/main/java/dev/mflash/guides/jwtauth/security/SecurityConfiguration.java
 
 @EnableWebSecurity
@@ -575,7 +575,7 @@ Here, we've
 
 Let's create a sample endpoint in `GenericController` that is secured with this implementation.
 
-```java {6,12-14,23}
+```java {6,12..14,23}
 // src/main/java/dev/mflash/guides/jwtauth/controller/GenericController.java
 
 public @Controller class GenericController {

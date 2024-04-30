@@ -119,7 +119,10 @@ export default defineConfig({
 							children.push({
 								type: "element",
 								tagName: "clipboard-copy",
-								properties: { className: ["highlight-copy"], for: headerOptions.id },
+								properties: {
+									className: [`${headerOptions.classNamePrefix}-copy`],
+									for: headerOptions.id
+								},
 								children: [
 									{
 										type: "text",

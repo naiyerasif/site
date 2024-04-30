@@ -214,7 +214,7 @@ public class LogEntryExitAspect {
 
 We've also defined `entry` and `exit` methods to prepare the log message based on the options received by the annotation.
 
-```java {11-21,31,35}
+```java {11..21,31,35}
 @Aspect
 @Component
 public class LogEntryExitAspect {
@@ -394,7 +394,7 @@ public class GreetingService {
 
 Inject this service in the `Launcher` and call it through `CommandLineRunner`.
 
-```java {10-14, 22-23}
+```java {10..14, 22..23}
 package com.example.method.logging;
 
 import org.springframework.boot.CommandLineRunner;

@@ -139,7 +139,7 @@ aws --endpoint-url http://localhost:4566 s3api create-bucket --bucket example-bu
 
 You can list all the buckets with the following command.
 
-```sh {4-7} prompt{1}
+```sh {4..7} prompt{1}
 aws --endpoint-url http://localhost:4566 s3api list-buckets
 {
 	"Buckets": [

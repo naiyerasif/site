@@ -13,7 +13,7 @@ For example, sometimes I'm interested in attaching the [Hotswap Agent](https://g
 
 That's where the `maven-dependency-plugin` comes in handy. I need to add HotSwap Agent as a dependency and configure the plugin to copy it to the target directory (defined by the `project.build.directory` property) as follows.
 
-```xml {28-32,41-62}
+```xml {28..32,41..62}
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

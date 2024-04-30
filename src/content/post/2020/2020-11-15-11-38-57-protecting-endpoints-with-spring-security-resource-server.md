@@ -237,7 +237,7 @@ In the `CustomTokenValidator`, we're checking the existence of a valid audience;
 
 To integrate the `CustomTokenValidator` with the `JwtDecoder` bean, we'll need a reference value of the `audience` against which we can run our validation. You can obtain the value of audience from the *Authorization Servers* > *default* > *Settings* tab from the Okta dashboard. Lets configure it in the `application.yml` file.
 
-```yml {3-4}
+```yml {3..4}
 # src/main/resources/application.yml
 
 auth:
@@ -288,7 +288,7 @@ public @SpringBootApplication class Launcher {
 
 Now, modify the `JwtDecoder` as follows.
 
-```java {6,9-10,15,17-19}
+```java {6,9..10,15,17..19}
 // src/main/java/dev/mflash/guides/tokenval/local/security/SecurityConfiguration.java
 
 @EnableWebSecurity
@@ -358,7 +358,7 @@ Here, we've exposed three endpoints, one is public `/spring-security-oidc/public
 
 We need to configure these protection rules in the `SecurityConfiguration` as follows.
 
-```java {14-20}
+```java {14..20}
 // src/main/java/dev/mflash/guides/tokenval/local/security/SecurityConfiguration.java
 
 @EnableWebSecurity
@@ -578,7 +578,7 @@ Since we don't care about the content or structure of the token being introspect
 
 To start with, open the `application.yml` file, and add the following configuration.
 
-```yml {12-15}
+```yml {12..15}
 # src/main/resources/application.yml
 
 auth:
@@ -622,7 +622,7 @@ public class CustomOpaqueTokenIntrospector implements OpaqueTokenIntrospector {
 
 Modify the `SecurityConfiguration` to use the `CustomOpaqueTokenIntrospector` as follows.
 
-```java {11,14-16}
+```java {11,14..16}
 // src/main/java/dev/mflash/guides/tokenval/introspection/security/SecurityConfiguration.java
 
 @EnableWebSecurity
@@ -749,7 +749,7 @@ Here, once the `RequestMatchingAuthenticationManagerResolver` receives a map of 
 
 Using the `RequestMatchingAuthenticationManagerResolver`, modify the `SecurityConfiguration` as follows.
 
-```java {19,22-31,33-37,39-41}
+```java {19,22..31,33..37,39..41}
 // src/main/java/dev/mflash/guides/tokenval/hybrid/security/SecurityConfiguration.java
 
 @EnableWebSecurity

@@ -214,7 +214,7 @@ Well, there's your message printed by the function.
 
 To finish things, you can delete the AWS resources with the following commands.
 
-```sh prompt{1-3}
+```sh prompt{1..3}
 aws --profile localstack sns unsubscribe --subscription-arn arn:aws:sns:us-east-1:000000000000:example-topic:2b999ba0-55fe-4abe-91e2-ce047ced5d8a
 aws --profile localstack lambda delete-function --function-name localstack-lambda-with-sns-trigger
 aws --profile localstack sns delete-topic --topic-arn arn:aws:sns:us-east-1:000000000000:example-topic

@@ -162,7 +162,7 @@ Looking at the logs, you can verify that the function is getting invoked since t
 
 To finish things, you can tear down the AWS resources with the following commands.
 
-```sh prompt{1-3}
+```sh prompt{1..2}
 aws --profile localstack lambda delete-function --function-name localstack-lambda-with-sqs-trigger
 aws --profile localstack sqs delete-queue --queue-url http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/ExampleQueue
 ```

@@ -215,7 +215,7 @@ This happens because `Account` has a field `created` of type `ZonedDateTime` whi
 
 Spring provides a `Converter` interface that you can implement for this purpose. We need two converters here: one to convert `ZonedDateTime` to `Date` and the other to convert `Date` to `ZonedDateTime`.
 
-```java {9-23}
+```java {9..23}
 // src/main/java/dev/mflash/guides/mongo/configuration/ZonedDateTimeConverters.java
 
 public class ZonedDateTimeConverters {
@@ -248,7 +248,7 @@ In the above `ZonedDateTimeConverters` implementation, we first define the `Zone
 
 Inject these converters through a `MongoCustomConversions` bean as follows:
 
-```java {8-10}
+```java {8..10}
 // src/main/java/dev/mflash/guides/mongo/configuration/MongoConfiguration.java
 
 @EnableMongoRepositories(MongoConfiguration.REPOSITORY_PACKAGE)
@@ -303,7 +303,7 @@ With this, we can pass a `CascadeType` value to the `@Cascade` annotation and co
 
 Annotate the desired fields with this annotation.
 
-```java {8-9}
+```java {8..9}
 // src/main/java/dev/mflash/guides/mongo/domain/Account.java
 
 @Data @Builder
@@ -455,7 +455,7 @@ public class AccountCascadeMongoEventListener extends AbstractMongoEventListener
 
 and inject it as a bean using `MongoConfiguration`.
 
-```java {8-10}
+```java {8..10}
 // src/main/java/dev/mflash/guides/mongo/configuration/MongoConfiguration.java
 
 @EnableMongoRepositories(MongoConfiguration.REPOSITORY_PACKAGE)

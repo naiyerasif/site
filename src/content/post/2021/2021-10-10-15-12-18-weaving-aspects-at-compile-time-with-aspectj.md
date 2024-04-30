@@ -225,7 +225,7 @@ Here, we use the `ProceedingJoinPoint` to extract
 
 With all this information available, we calculate the execution time and prepare log messages as follows.
 
-```java {43-46}
+```java {43..46}
 // src/main/java/dev/mflash/guides/java/aop/logging/aspect/LogEntryExitAspect.java
 
 import dev.mflash.guides.java.aop.logging.annotation.LogEntryExit;
@@ -333,7 +333,7 @@ Here
 
 To modify the bytecode of methods annotated by the `@LogEntryExit` annotation, you'll need to configure AspectJ Compiler (`ajc` in short). An easy way to do this is by using Mojo's [Aspect Maven Plugin](https://www.mojohaus.org/aspectj-maven-plugin/). Open your `pom.xml` and modify it as follows.
 
-```xml {15-33}
+```xml {15..33}
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

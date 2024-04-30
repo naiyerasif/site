@@ -72,7 +72,7 @@ CMD ["/bin/sh"]
 
 You can publish this image on [Docker Hub](https://hub.docker.com/) and use it in your pipeline as follows.
 
-```yml {9,12-22}
+```yml {9,12..22}
 # .circleci/config.yaml
 
 version: 2
@@ -110,7 +110,7 @@ Note that the above configuration sets an environment variable `GIT_LFS_SKIP_SMU
 
 You can do the same thing with GitHub Actions. In your configuration file, add the following steps. 
 
-```yml {7-18}
+```yml {7..18}
 # .github/workflows/deploy.yml
 
 jobs:

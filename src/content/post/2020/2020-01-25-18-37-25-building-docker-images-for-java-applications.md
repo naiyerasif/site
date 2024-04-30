@@ -74,7 +74,7 @@ CMD ["java", "-jar", "app.jar"]
 
 Many times, the image you build runs with a privileged (`root`) user. For development purposes, it is fine but it is not recommended in general (see [Principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) for more details). Therefore, you should create a non-root user and provide appropriate privileges to them to run the application and finally switch to that user in the image. For the `adoptopenjdk/openjdk11:alpine-jre` image, you can do something like this.
 
-```dockerfile {9-10}
+```dockerfile {9..10}
 FROM maven:3.6.3-jdk-11 as builder
 WORKDIR /usr/home/app
 COPY pom.xml .
