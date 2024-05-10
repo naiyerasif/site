@@ -41,7 +41,4 @@ jobs:
         env:
           DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
         run: |
-          echo "# Deploying with Cloudflare Pages" >> $GITHUB_STEP_SUMMARY
-          echo "| Name | Result |" >> $GITHUB_STEP_SUMMARY
-          echo "| ---- | ------ |" >> $GITHUB_STEP_SUMMARY
-          echo "| **Deployment URL**: | $DEPLOYMENT_URL |" >> $GITHUB_STEP_SUMMARY
+          echo "**Deployment URL**: $DEPLOYMENT_URL" >> $GITHUB_STEP_SUMMARY
