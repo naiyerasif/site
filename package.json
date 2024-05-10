@@ -18,14 +18,14 @@
 		"@microflash/rehype-starry-night": "^4.0.0",
 		"@microflash/remark-callout-directives": "^4.1.0",
 		"@sindresorhus/slugify": "^2.2.1",
-		"astro": "^4.7.0",
+		"astro": "^4.8.2",
 		"dayjs": "^1.11.11",
 		"defu": "^6.1.4",
 		"feed": "^4.2.2",
 		"hastscript": "^9.0.0",
 		"html-entities": "^2.5.2",
 		"mdast-util-to-string": "^4.0.0",
-		"postcss-preset-env": "^9.5.9",
+		"postcss-preset-env": "^9.5.11",
 		"rehype-autolink-headings": "^7.1.0",
 		"rehype-external-links": "^3.0.0",
 		"rehype-stringify": "^10.0.0",
@@ -34,16 +34,16 @@
 		"remark-parse": "^11.0.0",
 		"remark-rehype": "^11.1.0",
 		"remark-smartypants": "^3.0.1",
-		"sass": "^1.75.0",
+		"sass": "^1.77.0",
 		"unified": "^11.0.4",
 		"unist-util-visit": "^5.0.0"
 	},
 	"devDependencies": {
 		"inquirer": "^9.2.20",
-		"puppeteer": "^22.7.1",
+		"puppeteer": "^22.8.0",
 		"unlighthouse-puppeteer": "^0.10.6"
 	},
-	"packageManager": "pnpm@9.0.6",
+	"packageManager": "pnpm@9.1.0",
 	"browserslist": [
 		"defaults"
 	]
