@@ -12,13 +12,13 @@
 		"lighthouse": "unlighthouse-puppeteer --site http://localhost:8080"
 	},
 	"dependencies": {
-		"@astrojs/sitemap": "^3.1.4",
+		"@astrojs/sitemap": "^3.1.5",
 		"@microflash/preset": "^3.1.0",
 		"@microflash/rehype-slugify": "^1.0.0",
 		"@microflash/rehype-starry-night": "^4.0.0",
 		"@microflash/remark-callout-directives": "^4.1.0",
 		"@sindresorhus/slugify": "^2.2.1",
-		"astro": "^4.8.6",
+		"astro": "^4.8.7",
 		"dayjs": "^1.11.11",
 		"defu": "^6.1.4",
 		"feed": "^4.2.2",
