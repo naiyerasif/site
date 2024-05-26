@@ -59,7 +59,15 @@ const siteIssueUrl = siteInfo.issueBase;
 						</a>
 					</theme-switcher>
 				</li>
-				<li>Bandwidth mode: <bandwidth-mode-switcher></bandwidth-mode-switcher></li>
+				<li>
+					<data-saver>
+						Data Saver: 
+						<a role="switch" aria-live="polite" aria-checked="true" style="cursor:pointer" data-saver-switch>
+							<span data-saver-state="on">on</span>
+							<span data-saver-state="off">off</span>
+						</a>
+					</data-saver>
+				</li>
 			</ul>
 		</div>
 		<div class="footer-shortcuts">
@@ -90,8 +98,3 @@ const siteIssueUrl = siteInfo.issueBase;
 	<BackToTop/>
 </aside>
 <Sprites/>
-
-<script>
-	import "../modules/random-message/index.js";
-	import "../modules/bandwidth-mode-switcher/index.js";
-</script>

@@ -31,46 +31,43 @@ try {
 setTheme(currentTheme || (prefersDarkScheme.matches ? "dark" : "light"));
 </script>
 
-<script is:inline>
-	(function () {
-		let preferredBandwidthMode;
-		const queryParam = (new URL(document.location)).searchParams.has("minimal");
-		if (queryParam) {
-			preferredBandwidthMode = "minimal";
-		} else {
-			try {
-				preferredBandwidthMode = localStorage.getItem("bandwidth-mode");
-			} catch (err) {}
-		}
+<script type="module" is:inline>
+// toggle global values
+function setDataSaverPreference(dataSaverPref) {
+	window.__dataSaver = dataSaverPref;
+	document.documentElement.dataset.saver = dataSaverPref;
+	try {
+		localStorage.setItem("data-saver", dataSaverPref);
+	} catch (err) {}
+}
 
-		function setBandwidthMode(newBandwidthMode) {
-			window.__bandwidthMode = newBandwidthMode;
-			preferredBandwidthMode = newBandwidthMode;
-			document.documentElement.dataset.bandwidthMode = newBandwidthMode;
-			try {
-				localStorage.setItem("bandwidth-mode", newBandwidthMode);
-			} catch (err) {}
-		}
+// set data saver preference and emit an event to broadcast this change
+window.__setDataSaverPreference = function (dataSaverPref) {
+	setDataSaverPreference(dataSaverPref);
+	document.firstElementChild.dispatchEvent(new Event("datasaverchange", {
+		bubbles: true, // allows this event to bubble up throughout DOM tree
+		composed: true // allows other DOM elements to listen to this event
+	}));
+}
 
-		const reducedBandwidthQuery = "(prefers-reduced-data: reduce)";
-		const prefersReducedData = window.matchMedia(reducedBandwidthQuery);
+// watch for OS or browser preferences
+const prefersReducedData = window.matchMedia("(prefers-reduced-data: reduce)");
+prefersReducedData.addEventListener("change", function (event) {
+	window.__setDataSaverPreference(event.matches ? "on" : "off");
+});
 
-		window.__setPreferredBandwidthMode = function (newBandwidthMode) {
-			setBandwidthMode(newBandwidthMode);
-
-			document.firstElementChild.dispatchEvent(new CustomEvent("bandwidthmodechange", {
-				bubbles: true,
-				composed: true,
-				detail: { bandwidthMode: newBandwidthMode }
-			}));
-		};
-
-		prefersReducedData.addEventListener("change", function (event) {
-			window.__setPreferredBandwidthMode(event.matches ? "minimal" : "normal");
-		});
-
-		setBandwidthMode(preferredBandwidthMode || (prefersReducedData.matches ? "minimal" : "normal"));
-	})();
+// initialize the preferences when page loads
+// prefer queryParam over localStorage
+let currentDataSaverPref;
+const queryParam = (new URL(document.location)).searchParams.has("metered");
+if (queryParam) {
+	currentDataSaverPref = "on";
+} else {
+	try {
+		currentDataSaverPref = localStorage.getItem("data-saver");
+	} catch (err) {}
+}
+setDataSaverPreference(currentDataSaverPref || (prefersReducedData.matches ? "on" : "off"));
 </script>
 
 <style is:inline>
@@ -197,13 +194,13 @@ setTheme(currentTheme || (prefersDarkScheme.matches ? "dark" : "light"));
 		}
 	}
 	@media (prefers-reduced-data: reduce) {
-		:root:not([data-bandwidth-mode]) {
+		:root:not([data-saver]) {
 			--fontSans1: var(--fontSansNative);
 			--fontSans2: var(--fontSansNative);
 			--fontMono: var(--fontMonoNative);
 		}
 	}
-	[data-bandwidth-mode="minimal"] {
+	[data-saver="on"] {
 		--fontSans1: var(--fontSansNative);
 		--fontSans2: var(--fontSansNative);
 		--fontMono: var(--fontMonoNative);
