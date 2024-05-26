@@ -1,39 +1,37 @@
+<script type="module" is:inline>
+// toggle global values
+function setTheme(theme) {
+	window.__theme = theme;
+	document.documentElement.dataset.theme = theme;
+}
+
+// set a theme and emit an event to broadcast this change
+window.__setTheme = function (theme) {
+	setTheme(theme);
+	try {
+		localStorage.setItem("theme", theme);
+	} catch (err) {}
+	document.firstElementChild.dispatchEvent(new Event("themechange", {
+		bubbles: true, // allows this event to bubble up throughout DOM tree
+		composed: true // allows other DOM elements to listen to this event
+	}));
+}
+
+// watch for OS or browser preferences
+const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+prefersDarkScheme.addEventListener("change", function (event) {
+	window.__setTheme(event.matches ? "dark" : "light");
+});
+
+// initialize the preferences when page loads
+let currentTheme;
+try {
+	currentTheme = localStorage.getItem("theme");
+} catch (err) {}
+setTheme(currentTheme || (prefersDarkScheme.matches ? "dark" : "light"));
+</script>
+
 <script is:inline>
-	(function () {
-		let preferredTheme;
-		try {
-			preferredTheme = localStorage.getItem("theme");
-		} catch (err) {}
-
-		function setTheme(newTheme) {
-			window.__theme = newTheme;
-			preferredTheme = newTheme;
-			document.documentElement.dataset.theme = newTheme;
-		}
-
-		const colorSchemeQuery = "(prefers-color-scheme: dark)";
-		const prefersDarkTheme = window.matchMedia(colorSchemeQuery);
-
-		window.__setPreferredTheme = function (newTheme) {
-			setTheme(newTheme);
-			try {
-				localStorage.setItem("theme", newTheme);
-			} catch (err) {}
-
-			document.firstElementChild.dispatchEvent(new CustomEvent("themechange", {
-				bubbles: true,
-				composed: true,
-				detail: { theme: newTheme }
-			}));
-		};
-
-		prefersDarkTheme.addEventListener("change", function (event) {
-			window.__setPreferredTheme(event.matches ? "dark" : "light");
-		});
-
-		setTheme(preferredTheme || (prefersDarkTheme.matches ? "dark" : "light"));
-	})();
-
 	(function () {
 		let preferredBandwidthMode;
 		const queryParam = (new URL(document.location)).searchParams.has("minimal");

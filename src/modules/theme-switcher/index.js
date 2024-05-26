@@ -1,64 +1,49 @@
-const themeSwitcherTemplate = document.createElement("template");
-themeSwitcherTemplate.innerHTML = `
-<button type="button" role="switch" aria-live="polite" aria-checked="true" id="theme-switcher" part="button" style="display:flex">
-	<slot name="theme-dark">Dark theme</slot>
-	<slot name="theme-light">Light theme</slot>
-</button>
-`;
-
-export default class ThemeSwitcher extends HTMLElement {
-	static tagName = "theme-switcher";
-	
-	static #themeChangeEvent = "themechange";
-	static #keyDarkTheme = "dark";
-	static #keyLightTheme = "light";
-	static #themes = [ThemeSwitcher.#keyDarkTheme, ThemeSwitcher.#keyLightTheme];
-	static #ariaLabels = ThemeSwitcher.#themes.reduce((v, theme) => ({ ...v, [theme]: `${theme.charAt(0).toUpperCase()}${theme.substring(1)} theme`}), {});
-
-	#switch = null;
-	#currentTheme = window.__theme || ThemeSwitcher.#keyDarkTheme;
-	#states = null;
-	#switchHandler = () => this.#switchTheme();
-
-	constructor() {
-		super();
-
-		const shadowRoot = this.attachShadow({ mode: "open" });
-		shadowRoot.appendChild(themeSwitcherTemplate.content.cloneNode(true));
-		
-		this.#switch = shadowRoot.querySelector(`#${ThemeSwitcher.tagName}`);
-		this.#states = ThemeSwitcher.#themes.reduce((v, theme) => ({ ...v, [theme]: shadowRoot.querySelector(`slot[name="theme-${theme}"]`)}), {});
-
-		document.addEventListener(ThemeSwitcher.#themeChangeEvent, (event) => {
-			this.#currentTheme = event.detail.theme;
-			this.#updateTemplate();
-		});
-
-		document.addEventListener("toggletheme", this.#switchHandler);
+class ThemeSwitcher extends HTMLElement {
+	static register(tagName = "theme-switcher") {
+		if ("customElements" in window) {
+			customElements.define(tagName, ThemeSwitcher);
+		}
 	}
 
 	connectedCallback() {
-		this.#updateTemplate();
-		this.#switch.addEventListener("click", this.#switchHandler);
+		this.switch = this.querySelector("[data-theme-switch]");
+		this.states = this.querySelectorAll("[data-theme-state]");
+		this.themes = [];
+		for (const state of this.states) {
+			this.themes.push(state.dataset.themeState);
+		}
+		this._render();
+
+		document.addEventListener("themechange", this);
+		this.switch.addEventListener("click", this);
 	}
 
-	disconnectedCallback() {
-		this.#switch.removeEventListener("click", this.#switchHandler);
+	handleEvent(event) {
+		this[`_on_${event.type}`](event);
 	}
 
-	#switchTheme() {
-		const currentIndex = ThemeSwitcher.#themes.indexOf(this.#currentTheme);
-		const nextIndex = (currentIndex + 1) % ThemeSwitcher.#themes.length;
-		const newTheme = ThemeSwitcher.#themes[nextIndex];
-		window.__setPreferredTheme(newTheme);
-		this.#currentTheme = newTheme;
-		this.#updateTemplate();
+	_on_themechange(event) {
+		this._render();
 	}
 
-	#updateTemplate() {
-		this.#switch.setAttribute("aria-label", ThemeSwitcher.#ariaLabels[this.#currentTheme]);
-		ThemeSwitcher.#themes.forEach(theme => this.#states[theme].style.display = theme === this.#currentTheme ? "revert" : "none");
+	_on_click(event) {
+		this._switchTheme();
+	}
+
+	_switchTheme() {
+		const currentIndex = this.themes.indexOf(window.__theme);
+		const nextIndex = (currentIndex + 1) % this.themes.length;
+		const newTheme = this.themes[nextIndex];
+		window.__setTheme(newTheme);
+		this._render();
+	}
+
+	_render() {
+		this.switch.setAttribute("aria-label", `${window.__theme} theme`);
+		for (const state of this.states) {
+			state.style.display = window.__theme === state.dataset.themeState ? "revert" : "none";
+		}
 	}
 }
 
-customElements.define(ThemeSwitcher.tagName, ThemeSwitcher);
+ThemeSwitcher.register();
