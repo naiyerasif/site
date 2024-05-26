@@ -1,10 +1,5 @@
 @use "mixins";
 
-// hide undefined custom elements
-:not(:defined) {
-	visibility: hidden;
-}
-
 // expand abbreviations on devices without mouse
 :where(abbr[title]) {
 	@include mixins.onTouch {
@@ -46,17 +41,6 @@
 	background-color: var(--x2-bg-form);
 	border: var(--x2-line-width-sm) solid var(--x2-border-form);
 	color: var(--x2-color-form);
-}
-
-::part(button), ::part(link) {
-	cursor: pointer;
-	touch-action: manipulation;
-	-webkit-tap-highlight-color: transparent;
-}
-
-:where(theme-switcher, bandwidth-mode-switcher, command-bar)::part(button) {
-	padding: 0.4rem;
-	border-radius: var(--x2-radius-sm);
 }
 
 :where(blockquote) {

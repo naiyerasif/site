@@ -215,18 +215,14 @@
 }
 
 :where(a[href], area, button, input, select, summary, textarea, clipboard-copy, [role="button"], [onclick], [tabindex]:not([tabindex*="-"])),
-:where(input[type="file"])::file-selector-button,
-// for web components
-::part(button), ::part(link), ::part(input) {
+:where(input[type="file"])::file-selector-button {
 	&:is(:focus, :focus-visible, :focus-within, :hover, :active) {
 		--x2-color-link: var(--x2-color-accent-sharp);
 	}
 }
 
 :where(button, button[type], input:not([type="file"]), select, textarea, [role="button"], clipboard-copy),
-:where(input[type="file"]),
-// for web components
-::part(button), ::part(input) {
+:where(input[type="file"]) {
 	&:is(:focus, :focus-visible, :focus-within, :hover, :active) {
 		--x2-border-form: var(--x2-color-accent);
 		--x2-color-form: var(--x2-color-accent-sharp);
@@ -235,9 +231,7 @@
 }
 
 :where(button, button[type], input[type="button"], input[type="submit"], input[type="reset"], select, clipboard-copy),
-:where(input[type="file"]),
-// for web components
-::part(button) {
+:where(input[type="file"]) {
 	&:is(:focus, :focus-visible, :focus-within, :hover, :active) {
 		--x2-bg-form: var(--x2-bg-accent-subtle);
 	}
