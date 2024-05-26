@@ -3,7 +3,8 @@ slug: "2024/04/14/custom-job-summaries-for-github-actions"
 title: "Custom job summaries for GitHub Actions"
 date: 2024-04-14 21:34:02
 update: 2024-04-14 21:34:02
-category: "status"
+type: "status"
+category: "update"
 ---
 
 <abbr title="Today I Learned">TIL</abbr> that you can print custom job summaries for GitHub Actions by assigning a markdown string to the `GITHUB_STEP_SUMMARY` environment variable.

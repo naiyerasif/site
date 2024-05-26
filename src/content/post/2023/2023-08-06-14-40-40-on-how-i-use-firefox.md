@@ -4,6 +4,7 @@ title: "On how I use Firefox"
 description: "I've used Firefox for years, and I've picked up some habits to use it effectively. They'll help you too if you use Firefox or convince you to switch."
 date: 2023-08-06 14:40:40
 update: 2023-08-06 14:40:40
+type: "post"
 category: "opinion"
 ---
 

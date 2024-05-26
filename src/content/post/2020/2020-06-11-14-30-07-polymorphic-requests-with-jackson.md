@@ -4,6 +4,7 @@ title: "Polymorphic Requests with Jackson"
 description: "Learn about handling requests with varying structures in an API using Jackson by using polymorphism."
 date: 2020-06-11 14:30:07
 update: 2022-07-15 12:05:02
+type: "post"
 category: "guide"
 ---
 

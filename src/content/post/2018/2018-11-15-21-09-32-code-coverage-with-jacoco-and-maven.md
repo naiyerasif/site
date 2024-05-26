@@ -4,6 +4,7 @@ title: "Code Coverage with JaCoCo and Maven"
 description: "Learn to use JaCoCo, a popular Java code coverage tool. Integrate it with Maven to generate a coverage report, and measure how much code is executed during automated tests."
 date: 2018-11-15 21:09:32
 update: 2021-06-20 11:27:45
+type: "post"
 category: "guide"
 ---
 

@@ -3,7 +3,8 @@ slug: "2022/07/25/javascript-tooling"
 title: "JavaScript tooling"
 date: 2022-07-25 18:36:00
 update: 2022-07-25 18:36:00
-category: "status"
+type: "status"
+category: "quote"
 ---
 
 > Every bit of joy that building things in JavaScript gives you, its tooling takes it all back.

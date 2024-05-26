@@ -3,7 +3,8 @@ slug: "2023/03/07/nested-border-radii"
 title: "Nested border radii"
 date: 2023-03-07 21:14:58
 update: 2023-03-07 21:14:58
-category: "status"
+type: "status"
+category: "quote"
 ---
 
 > Tiny design detail: nested border radii look really funky if they're the same. To maintain the same curvature, the outer radius = inner radius + padding.

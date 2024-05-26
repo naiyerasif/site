@@ -4,6 +4,7 @@ title: "API Documentation with Springfox 3"
 description: "Springfox v3 added support for OpenAPI 3 and Spring 5. Learn how to use its Spring Boot starter to simplify the integration."
 date: 2020-09-05 17:28:11
 update: 2020-09-05 17:28:11
+type: "post"
 category: "guide"
 ---
 

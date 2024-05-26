@@ -3,7 +3,8 @@ slug: "2021/06/22/ideation-without-creation"
 title: "Ideation without creation"
 date: 2021-06-22 12:04:41
 update: 2021-06-22 12:04:41
-category: "status"
+type: "status"
+category: "quote"
 ---
 
 > [...] we as a professional society continually reward useless brainstorming and "ideation." Ideation without creation is wasted oxygen.

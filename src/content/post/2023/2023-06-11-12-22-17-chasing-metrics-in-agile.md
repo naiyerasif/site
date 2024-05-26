@@ -3,7 +3,8 @@ slug: "2023/07/11/chasing-metrics-in-agile"
 title: "Chasing metrics in Agile"
 date: 2023-06-11 12:22:17
 update: 2023-06-11 12:22:17
-category: "status"
+type: "status"
+category: "quote"
 ---
 
 > When a measure becomes a target, it ceases to be a good measure.

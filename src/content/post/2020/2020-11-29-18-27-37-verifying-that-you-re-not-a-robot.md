@@ -3,7 +3,8 @@ slug: "2020/11/29/verifying-that-you-re-not-a-robot"
 title: "Verifying that you're not a robot"
 date: 2020-11-29 18:27:37
 update: 2020-11-29 18:27:37
-category: "status"
+type: "status"
+category: "quote"
 ---
 
 > ::youtube[Verifying that you're not a robot]{#LButXcZ57pc}

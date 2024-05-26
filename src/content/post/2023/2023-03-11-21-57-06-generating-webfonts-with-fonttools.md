@@ -4,6 +4,7 @@ title: "Generating webfonts with fontTools"
 description: "Generate static or variable webfonts with fontTools from their ttf sources"
 date: 2023-03-11 21:57:06
 update: 2023-03-11 21:57:06
+type: "post"
 category: "note"
 ---
 

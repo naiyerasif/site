@@ -3,7 +3,8 @@ slug: "2021/04/30/alternative-way-to-parse-lists-with-jackson"
 title: "Alternative way to parse lists with Jackson"
 date: 2021-04-30 03:06:15
 update: 2021-04-30 03:06:15
-category: "status"
+type: "status"
+category: "update"
 ---
 
 You might be familiar using `TypeReference` API to parse lists, arrays, and maps.

@@ -4,6 +4,7 @@ title: "API documentation with springdoc-openapi"
 description: "Springdoc is an open-source project that adds support for OpenAPI Specification 3 (OAS 3) in a Spring Boot application. Learn how to use Springdoc with a reactive Spring Boot project."
 date: 2020-06-27 00:30:07
 update: 2023-11-25 15:56:50
+type: "post"
 category: "guide"
 ---
 

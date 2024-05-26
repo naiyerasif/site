@@ -4,6 +4,7 @@ title: "Querying JSON documents in Oracle"
 description: "Oracle added the native JSON support in the version 12c of their popular relational database system. Learn how to query JSON documents with the help of new conditions, data types, and functions."
 date: 2019-09-18 22:11:11
 update: 2020-03-14 00:48:09
+type: "post"
 category: "guide"
 ---
 

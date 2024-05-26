@@ -3,7 +3,8 @@ slug: "2020/09/07/forwarding-a-port-to-android-with-adb"
 title: "Forwarding a port to Android with ADB"
 date: 2020-09-07 16:11:22
 update: 2020-09-07 16:11:22
-category: "status"
+type: "status"
+category: "update"
 ---
 
 Say you are developing a web app which is accessible on the port `8080`. You want to open it on your Android device to verify if it works on an Android browser. You can do so by forwarding the port `8080` through [<abbr title="Android Debug Bridge">ADB</abbr>](https://developer.android.com/tools/releases/platform-tools).

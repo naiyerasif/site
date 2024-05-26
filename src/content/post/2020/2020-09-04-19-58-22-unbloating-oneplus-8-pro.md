@@ -4,6 +4,7 @@ title: "Unbloating OnePlus 8 Pro"
 description: "Recently launched OnePlus 8 Pro comes with a lot of preinstalled bloatware. Learn how to get rid of it using Android Debug Bridge."
 date: 2020-09-04 19:58:22
 update: 2020-10-11 05:42:23
+type: "post"
 category: "note"
 ---
 

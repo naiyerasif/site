@@ -4,6 +4,7 @@ title: "Default values in Postgres"
 description: "Setting a default value for a column in Postgres reduces the manual input during inserts and updates. It also ensures consistency in column initialization."
 date: 2024-03-05 23:48:37
 update: 2024-03-05 23:48:37
+type: "post"
 category: "note"
 ---
 

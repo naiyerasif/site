@@ -3,7 +3,8 @@ slug: "2023/08/27/browser-compatibility"
 title: "Browser compatibility"
 date: 2023-08-27 22:00:47
 update: 2023-08-27 22:00:47
-category: "status"
+type: "status"
+category: "quote"
 ---
 
 > Once again, web devs: If your site doesn't work on Firefox, it's broken.

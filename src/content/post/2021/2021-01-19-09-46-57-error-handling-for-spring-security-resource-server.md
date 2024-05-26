@@ -4,6 +4,7 @@ title: "Error handling for Spring Security Resource Server"
 description: "Spring's default exception handling may need customization in certain cases. Learn to customize error responses for a REST API protected with OAuth 2 using Spring Security Resource Server."
 date: 2021-01-19 09:46:57
 update: 2021-01-19 09:46:57
+type: "post"
 category: "guide"
 ---
 

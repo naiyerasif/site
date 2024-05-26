@@ -4,6 +4,7 @@ title: "Error handling for a Spring-based REST API"
 description: "Spring offers useful exception handling by default. Yet, there are situations where customization becomes necessary. Learn to customize error responses, particularly when Spring Security is involved."
 date: 2020-07-26 00:35:25
 update: 2020-07-26 00:35:25
+type: "post"
 category: "guide"
 ---
 

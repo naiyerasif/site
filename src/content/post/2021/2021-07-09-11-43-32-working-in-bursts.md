@@ -3,7 +3,8 @@ slug: "2021/07/09/working-in-bursts"
 title: "Working in bursts"
 date: 2021-07-09 11:43:32
 update: 2021-07-09 11:43:32
-category: "status"
+type: "status"
+category: "quote"
 ---
 
 > Yesterday I interviewed someone who described themselves as "working in bursts" and it resonated deeply.

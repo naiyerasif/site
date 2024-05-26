@@ -4,6 +4,7 @@ title: "Messaging with RabbitMQ and Spring Boot"
 description: "RabbitMQ is an open-source message broker that supports various messaging protocols. Learn to create a queue and interact with it using Spring Boot."
 date: 2018-12-13 20:20:54
 update: 2019-11-13 16:45:02
+type: "post"
 category: "guide"
 ---
 

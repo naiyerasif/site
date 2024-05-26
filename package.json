@@ -2,12 +2,12 @@
 	"name": "naiyerasif.com",
 	"private": true,
 	"type": "module",
-	"version": "4.5.0",
+	"version": "4.6.0",
 	"scripts": {
 		"dev": "astro dev",
 		"build": "astro build",
 		"preview": "astro preview",
-		"post": "node etc/bin/post.js",
+		"new": "node etc/bin/post.js",
 		"postinstall": "astro telemetry disable",
 		"lighthouse": "unlighthouse-puppeteer --site http://localhost:8080"
 	},

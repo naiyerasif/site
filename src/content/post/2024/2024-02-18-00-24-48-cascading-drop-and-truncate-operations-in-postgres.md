@@ -4,6 +4,7 @@ title: "Cascading DROP and TRUNCATE operations in Postgres"
 description: "Did you know that you can cascade the DROP and TRUNCATE commands in Postgres to automatically remove dependent objects like foreign keys, domains, etc?"
 date: 2024-02-18 00:24:48
 update: 2024-02-18 00:24:48
+type: "post"
 category: "note"
 ---
 
