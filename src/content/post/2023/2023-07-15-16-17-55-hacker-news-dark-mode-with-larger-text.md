@@ -3,7 +3,8 @@ slug: "2023/07/15/hacker-news-dark-mode-with-larger-text"
 title: "Hacker News dark mode with larger text"
 date: 2023-07-15 16:17:55
 update: 2023-07-15 16:17:55
-category: "status"
+type: "status"
+category: "update"
 ---
 
 To browse [Hacker News](https://news.ycombinator.com) with dark mode and larger text, add the following [uBlock filters](https://github.com/gorhill/uBlock/wiki/Dashboard:-My-filters). This works well enough on desktop and mobile.

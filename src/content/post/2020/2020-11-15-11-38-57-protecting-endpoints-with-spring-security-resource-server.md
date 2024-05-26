@@ -4,6 +4,7 @@ title: "Protecting endpoints with Spring Security Resource Server"
 description: "OAuth2 is widely recognized as the industry standard for authorization. Discover how to implement an service-to-service authorization flow using OAuth2 Resource Server starter in a Spring app."
 date: 2020-11-15 11:38:57
 update: 2020-11-15 11:38:57
+type: "post"
 category: "guide"
 ---
 

@@ -25,7 +25,7 @@ const pageInfo = {
 			<p class="subheadline">Book lover, software engineer and a fellow web wanderer</p>
 		</div>
 	</div>
-	{posts.map(entry => entry.data.category === "status" ? <StatusCard {entry} /> : <PostCard {entry} />)}
+	{posts.map(entry => entry.data.type === "status" ? <StatusCard {entry} /> : <PostCard {entry} />)}
 	<div slot="sidekick" class="sidekick-items">
 		<a href={paginationPathname("posts", 2)} class="distinct-link">more posts<Icon name="long-arrow-right"/></a>
 	</div>

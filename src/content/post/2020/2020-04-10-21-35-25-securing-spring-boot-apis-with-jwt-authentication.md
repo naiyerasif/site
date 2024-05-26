@@ -4,6 +4,7 @@ title: "Securing Spring Boot APIs with JWT Authentication"
 description: "Discover how to develop a secure Spring Boot API by using Spring Security and JSON Web Tokens. By implementing JWT-based authentication, you can minimize the need for frequent database queries."
 date: 2020-04-10 21:35:25
 update: 2020-11-05 19:31:55
+type: "post"
 category: "guide"
 ---
 

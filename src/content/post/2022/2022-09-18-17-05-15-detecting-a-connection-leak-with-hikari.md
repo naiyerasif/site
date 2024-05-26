@@ -4,6 +4,7 @@ title: "Detecting a connection leak with Hikari"
 description: "If a database connection is not closed properly, it may not return to the connection pool, causing a connection leak and throttling the app performance. Explore how to detect such leaks using Hikari."
 date: 2022-09-18 17:05:15
 update: 2022-09-18 17:05:15
+type: "post"
 category: "guide"
 ---
 

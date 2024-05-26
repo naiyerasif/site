@@ -4,6 +4,7 @@ title: "Retrying on failure with Resilience4J and Aspects"
 description: "Failure is unavoidable in a complex distributed system. Service timeouts, filesystem lockouts, and API unavailability are common. Learn how to recover from temporary failures using a retry pattern."
 date: 2020-09-26 15:17:06
 update: 2020-09-26 15:17:06
+type: "post"
 category: "guide"
 state: "archived"
 ---

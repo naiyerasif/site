@@ -4,6 +4,7 @@ title: "Request logging with morgan"
 description: "Stay informed about which Express endpoints are being called and when they are accessed, by logging request information with morgan."
 date: 2019-08-13 14:11:09
 update: 2019-08-13 14:11:09
+type: "post"
 category: "guide"
 ---
 

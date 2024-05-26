@@ -4,6 +4,7 @@ title: "Using Express with TypeScript"
 description: "Explore the integration of TypeScript, a widely adopted strongly-typed superset of JavaScript, with Express, a popular choice for developing JavaScript backends."
 date: 2019-01-12 10:11:13
 update: 2020-02-06 22:30:55
+type: "post"
 category: "guide"
 ---
 

@@ -4,6 +4,7 @@ title: "Privacy"
 description: "Privacy practices on naiyerasif.com"
 date: 2020-11-01 14:52:40
 update: 2023-07-10 16:14:11
+type: "post"
 ---
 
 [naiyerasif.com](/) (referred to as "this site"), maintained by me ([Naiyer Asif](/about/)), has no ads, no tracking or analytics, no affiliate links, no sponsored posts, and no paywall. It doesn't fingerprint your device or ask for your personal information.

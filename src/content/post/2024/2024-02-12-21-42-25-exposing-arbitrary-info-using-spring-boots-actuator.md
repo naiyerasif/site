@@ -4,6 +4,7 @@ title: "Exposing arbitrary info using Spring Boot's actuator"
 description: "Spring Boot's actuator module enables exposing useful details. Learn how to use the info endpoint to publish customized information about your application."
 date: 2024-02-12 21:42:25
 update: 2024-02-12 21:42:25
+type: "post"
 category: "note"
 ---
 

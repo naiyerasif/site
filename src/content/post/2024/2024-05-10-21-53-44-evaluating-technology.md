@@ -3,7 +3,8 @@ slug: "2024/05/10/evaluating-technology"
 title: "Evaluating Technology"
 date: 2024-05-10 21:53:44
 update: 2024-05-10 21:53:44
-category: "status"
+type: "status"
+category: "quote"
 ---
 
 > We tend to ask "How well does it work?", but what you should really be asking is "How well does it fail?"

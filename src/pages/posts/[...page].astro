@@ -38,7 +38,7 @@ const pageInfo = {
 			</div>
 		</div>
 	</Fragment>
-	{page.data.map(entry => entry.data.category === "status" ? <StatusCard {entry} /> : <PostCard {entry} />)}
+	{page.data.map(entry => entry.data.type === "status" ? <StatusCard {entry} /> : <PostCard {entry} />)}
 	<div slot="sidekick" class="sidekick-items">
 		<Pagination currentPage={page.currentPage} totalPages={page.lastPage} base="posts"/>
 	</div>

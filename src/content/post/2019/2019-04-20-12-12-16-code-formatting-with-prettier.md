@@ -4,6 +4,7 @@ title: "Code Formatting with Prettier"
 description: "Discover how to configure Prettier, an opinionated code formatter, to ensure consistent code styling. Integrate it with EditorConfig and ESLint to enforce style practices."
 date: 2019-04-20 12:12:16
 update: 2020-02-06 22:43:31
+type: "post"
 category: "guide"
 ---
 

@@ -4,6 +4,7 @@ title: "Using LocalStack for AWS Lambda with SQS trigger"
 description: "In event-driven systems, you may trigger AWS Lambda with SQS messages for ordered processing and buffered backlog handling. Explore deploying and invoking Lambda with SQS locally using LocalStack."
 date: 2024-02-11 17:38:21
 update: 2024-02-11 17:38:21
+type: "post"
 category: "guide"
 ---
 

@@ -4,6 +4,7 @@ title: "Building Docker images for Java applications"
 description: "Embrace Java in a cloud-native workflow with the increasing popularity of container-first Java frameworks. Learn to create optimized Docker images for Java apps packaged as JARs."
 date: 2020-01-25 18:37:25
 update: 2021-02-28 11:33:45
+type: "post"
 category: "guide"
 ---
 

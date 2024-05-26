@@ -10,7 +10,7 @@ Personal website of [@naiyerasif](https://github.com/naiyerasif)
 
 ## Authoring
 
-- To create a new post, run `pnpm post`
+- To create a new post, run `pnpm new`
 
 ### Spellcheck
 

@@ -4,6 +4,7 @@ title: "Converting TTF files to WOFF and WOFF2"
 description: "Typically, webfonts come in woff2 and woff formats. But sometimes, a font may be available only in TTF format. Explore how to locally convert the TTF files."
 date: 2021-04-14 13:12:11
 update: 2021-04-14 13:12:11
+type: "post"
 category: "note"
 ---
 

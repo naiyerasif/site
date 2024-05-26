@@ -3,9 +3,9 @@ slug: "2023/08/05/islamic-calendar-in-java"
 title: "Islamic calendar in Java"
 date: 2023-08-05 23:44:34
 update: 2023-08-05 23:44:34
-category: "status"
+type: "status"
+category: "update"
 ---
-
 
 <abbr title="Today I learned">TIL</abbr> that Java supports [Islamic calendar](https://en.wikipedia.org/wiki/Islamic_calendar) relative to Mecca (since Java 8).
 

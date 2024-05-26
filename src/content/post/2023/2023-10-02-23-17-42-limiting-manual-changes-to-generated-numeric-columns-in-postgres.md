@@ -4,6 +4,7 @@ title: "Limiting manual changes to generated numeric columns in Postgres"
 description: "Generated numeric columns, like internal row IDs, should be protected from unauthorized insert and update actions for compliance and data consistency. Learn how to enforce this with Postgres."
 date: 2023-10-02 23:17:42
 update: 2023-10-14 13:26:00
+type: "post"
 category: "guide"
 ---
 

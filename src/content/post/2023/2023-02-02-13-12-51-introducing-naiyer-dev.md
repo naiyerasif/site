@@ -4,7 +4,8 @@ title: "Introducing naiyer.dev"
 description: "Introducing the latest redesign of this website. Here are the motivations for the revamp, some website metrics and comparison with the old version, and the interesting ‘behind the scenes’ changes."
 date: 2023-02-02 13:12:51
 update: 2023-02-11 18:41:22
-category: opinion
+type: "post"
+category: "note"
 ---
 
 Barely a yearly has passed since I launched the last [version](/post/2022/07/13/microflash-version-2/) of this site and here I'm with a fresh rewrite. You might be thinking: developers and their never-ending blog rewrites, 🙄! But hear me out on why I did it.

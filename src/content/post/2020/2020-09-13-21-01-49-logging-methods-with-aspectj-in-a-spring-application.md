@@ -4,6 +4,7 @@ title: "Logging methods with AspectJ in a Spring application"
 description: "Method logging is a common pattern for gathering method-related data, such as execution time, inputs, and outputs. Learn how you can automate this process using AspectJ in a Spring application."
 date: 2020-09-13 21:01:49
 update: 2023-11-25 11:46:56
+type: "post"
 category: "guide"
 ---
 

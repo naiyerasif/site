@@ -4,6 +4,7 @@ title: "Uploading files with Spring Boot and Angular"
 description: "Explore how an Angular app and Spring Boot backend can manage file uploads. Additionally, explore strategies to handle lengthy upload processes."
 date: 2018-09-09 11:14:23
 update: 2020-03-08 21:16:19
+type: "post"
 category: "guide"
 ---
 

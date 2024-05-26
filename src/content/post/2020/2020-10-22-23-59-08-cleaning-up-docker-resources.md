@@ -4,6 +4,7 @@ title: "Cleaning up Docker resources"
 description: "In the past, we used manual scripts to remove stale Docker containers, images, volumes, etc. With Docker Engine 1.25, the prune command offers a simpler way to cleanup unused resources."
 date: 2020-10-22 23:59:08
 update: 2020-10-22 23:59:08
+type: "post"
 category: "note"
 ---
 
