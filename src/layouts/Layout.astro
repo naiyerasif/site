@@ -3,7 +3,8 @@ import "../styles/main.scss";
 import PageInfo from "./PageInfo.astro";
 import Header from "./Header.astro";
 import Footer from "./Footer.astro";
-import Client from "./Client.astro";
+import ClientBase from "./ClientBase.astro";
+import ClientExtended from "./ClientExtended.astro";
 
 const { pageInfo, ...attribs } = Astro.props;
 const hero = Astro.slots.has("hero");
@@ -23,6 +24,7 @@ const sidekick = Astro.slots.has("sidekick");
 		</main>
 		{sidekick && <section class="sidekick"><slot name="sidekick"/></section>}
 		<Footer/>
-		<Client/>
+		<ClientBase/>
+		<ClientExtended/>
 	</body>
 </html>
