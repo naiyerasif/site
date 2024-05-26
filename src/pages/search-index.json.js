@@ -36,16 +36,17 @@ const defaults = [
 		"icon": `<svg role="img" class="icon" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg>`,
 		"section": "Navigation"
 	},
+	// `href='#'` is required for links acting as buttons to enable click semantics (such as receiving keyboard focus, press enter to click, etc)
 	{
 		"title": "Theme Switcher",
 		"description": "Switch to your preferred theme",
-		"content": `<a class="command-item" onclick="document.dispatchEvent(new Event('toggletheme'))" part="link" tabindex="0"><svg role="img" class="icon" aria-hidden="true"><path d="M6 12h.01M8 8h.01M13 7h.01M17 10h.01M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>Switch theme</a>`,
+		"content": `<theme-switcher><a role="switch" aria-live="polite" aria-checked="true" data-theme-switch class="command-item" href="#"><span data-theme-state="dark"><svg role="img" class="icon" aria-hidden="true"><path d="M13.355 2C18.238 2.684 22 6.882 22 11.951 22 17.497 17.497 22 11.951 22 6.882 22 2.684 18.238 2 13.355a8.02 8.02 0 0 0 5.932 2.616 8.043 8.043 0 0 0 8.039-8.039A8.02 8.02 0 0 0 13.355 2"/></svg>Dark theme</span><span data-theme-state="light"><svg role="img" class="icon" aria-hidden="true"><path d="m9.321 2 .535 2m4.288 16 .535 2M3.036 6.824l1.787 1.033m14.354 8.286 1.787 1.033M2 14.679l2-.535m16-4.288 2-.535M7.857 19.177l-1.033 1.787M17.176 3.036l-1.033 1.787"/><circle cx="12" cy="12" r="4"/></svg>Light theme</span></a></theme-switcher>`,
 		"section": "Preferences"
 	},
 	{
-		"title": "Bandwidth Mode Switcher",
-		"description": "Switch to your preferred bandwidth mode",
-		"content": `<a class="command-item" onclick="document.dispatchEvent(new Event('togglebandwidthmode'))" part="link" tabindex="0"><svg role="img" class="icon" aria-hidden="true"><path d="M8 12h8m-4-4v8m1.881-13.823C18.502 3.058 22 7.124 22 12a9.95 9.95 0 0 1-1.616 5.449m-2.806 2.85A9.95 9.95 0 0 1 12 22C6.481 22 2 17.519 2 12c0-4.804 3.394-8.821 7.913-9.782"/></svg>Switch bandwidth mode</a>`,
+		"title": "Data Saver",
+		"description": "Toggle data saver mode",
+		"content": `<data-saver><a role="switch" aria-live="polite" aria-checked="true" style="cursor:pointer" data-saver-switch class="command-item" href="#"><span data-saver-state="on"><svg role="img" class="icon" aria-hidden="true"><path d="M8 12h8m-4-4v8m1.881-13.823C18.502 3.058 22 7.124 22 12a9.95 9.95 0 0 1-1.616 5.449m-2.806 2.85A9.95 9.95 0 0 1 12 22C6.481 22 2 17.519 2 12c0-4.804 3.394-8.821 7.913-9.782"/></svg>Data Saver on</span><span data-saver-state="off"><svg role="img" class="icon" aria-hidden="true"><path d="M13.881 2.088C18.502 2.969 22 7.035 22 11.911a9.95 9.95 0 0 1-1.616 5.449m-2.806 2.85A9.95 9.95 0 0 1 12 21.911c-5.519 0-10-4.481-10-10C2 7.107 5.394 3.09 9.913 2.129"/></svg>Data Saver off</span></a></data-saver>`,
 		"section": "Preferences"
 	}
 ];

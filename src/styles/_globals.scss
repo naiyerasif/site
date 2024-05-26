@@ -50,6 +50,77 @@
 	}
 }
 
+:where(command-bar) {
+	dialog {
+		width: calc(100% - 2px);
+		max-width: var(--x2-max-width-content);
+		overflow: hidden;
+		border: var(--x2-line-width-sm) solid var(--x2-border-body);
+		border-radius: var(--x2-radius-0);
+		background-color: var(--x2-bg-body);
+		padding: 0;
+
+		header {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			padding: 0.5rem;
+		}
+
+		input[autofocus] {
+			flex: 1;
+		}
+
+		#commands {
+			max-block-size: 60vh;
+			overflow-y: auto;
+		}
+
+		.cmdb-section-header {
+			background-color: var(--x2-border-note);
+			font-size: 0.8em;
+			color: var(--x2-color-body-emphasis);
+			line-height: 1;
+			padding: 0.5rem 1rem;
+		}
+
+		.command-item {
+			display: flex;
+			align-items: center;
+			padding: 0.75rem 1rem;
+			border-block-start: var(--x2-line-width-sm) solid var(--x2-border-codeblock);
+
+			&:focus-visible {
+				outline-offset: -0.25em;
+				background-color: var(--x2-bg-accent-subtle);
+			}
+
+			.icon {
+				margin-inline-end: 1ch;
+			}
+		}
+
+		footer {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			background-color: var(--x2-bg-note);
+			font-size: 0.8em;
+			padding: 0.25rem 1rem;
+			border-bottom-right-radius: inherit;
+			border-bottom-left-radius: inherit;
+			color: var(--x2-color-body-subtle);
+
+			& > *:not(:first-child)::before {
+				@include mixins.icon("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='15' r='1'/%3E%3C/svg%3E");
+				display: inline-block;
+				@include mixins.fixedSize(1em);
+				opacity: 0.5;
+			}
+		}
+	}
+}
+
 .brand {
 	--brandSize: calc(30px + 0.5vw);
 	display: inline-block;
