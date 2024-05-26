@@ -363,9 +363,7 @@
 }
 
 :where(button, button[type], input:not([type="file"]), select, textarea, [role="button"]),
-:where(input[type="file"])::file-selector-button,
-// for web components
-::part(button), ::part(input) {
+:where(input[type="file"])::file-selector-button {
 	--formBorderRadius: var(--x2-radius-xs);
 	--x2-radius-outline: var(--formBorderRadius);
 	background-color: var(--x2-bg-form);
@@ -375,9 +373,7 @@
 }
 
 :where(button, button[type], input[type="button"], input[type="submit"], input[type="reset"], select),
-:where(input[type="file"])::file-selector-button,
-// for web components
-::part(button) {
+:where(input[type="file"])::file-selector-button {
 	color: var(--x2-color-form);
 }
 

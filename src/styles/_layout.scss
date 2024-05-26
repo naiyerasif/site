@@ -274,17 +274,5 @@ main#content + .footer,
 			@include mixins.fixedSize(1.5rem);
 			color: var(--x2-color-warn);
 		}
-
-		theme-switcher,
-		bandwidth-mode-switcher {
-			display: inline-block;
-
-			&::part(button) {
-				border-color: transparent;
-				background-color: transparent;
-				padding: 0;
-				font: inherit;
-			}
-		}
 	}
 }
