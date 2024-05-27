@@ -36,6 +36,10 @@
 	}
 }
 
+:where(clipboard-copy, command-bar, theme-switcher, data-saver):not(:defined) {
+	visibility: hidden;
+}
+
 // clipboard-copy is a button
 :where(clipboard-copy) {
 	background-color: var(--x2-bg-form);
