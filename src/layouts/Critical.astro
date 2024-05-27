@@ -70,6 +70,22 @@ if (queryParam) {
 setDataSaverPreference(currentDataSaverPref || (prefersReducedData.matches ? "on" : "off"));
 </script>
 
+<script type="module" is:inline>
+const searchOptions = {
+	shouldSort: true,
+	threshold: 0.2,
+	location: 0,
+	distance: 300,
+	minMatchCharLength: 3,
+	keys: ["title", "description"]
+};
+
+window.__search = function (query, searchIndex) {
+	const fuse = new Fuse(searchIndex, searchOptions);
+	return fuse.search(query);
+}
+</script>
+
 <style is:inline>
 	@font-face {
 		font-family: Inter var;
