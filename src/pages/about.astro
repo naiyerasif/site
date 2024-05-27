@@ -36,23 +36,3 @@ const pageInfo = {
 		<Content/>
 	</article>
 </Layout>
-
-<script>
-	export class RandomGreeting extends HTMLElement {
-		static tagName = "random-greeting";
-	
-		static #messages = [
-			`Hi`,
-			`Kia ora`,
-			`Merhaba`,
-			`Khush Amdeed`,
-			`Hello`,
-		];
-	
-		connectedCallback() {
-			this.innerHTML = RandomGreeting.#messages[Math.floor(Math.random() * RandomGreeting.#messages.length)];
-		}
-	}
-
-	customElements.define(RandomGreeting.tagName, RandomGreeting);
-</script>

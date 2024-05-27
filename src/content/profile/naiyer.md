@@ -8,7 +8,11 @@ avatar: "naiyer.png"
 type: "post"
 ---
 
-👋 <random-greeting></random-greeting><noscript>Hi</noscript>! I'm a software engineer from India.
+<p class="greeting">
+<random-message selector="span">
+	👋 <span>Hi</span><span data-language="Maori" hidden>Kia ora</span><span data-language="Turkish" hidden>Merhaba</span><span data-language="Urdu" hidden>Khush Amdeed</span><span hidden>Hello</span>!
+</random-message> I'm a software engineer from India.
+</p>
 
 I like solving problems, and exploring ideas. I work in small bursts. Reading is my addiction. I love science fiction, manga, and poetry. My professional experience exists at the intersection of the backend, frontend, databases, and lately, cloud. With a lot of application design, requirements analysis and documentation sprinkled on top.
 
