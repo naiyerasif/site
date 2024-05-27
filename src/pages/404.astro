@@ -1,41 +1,21 @@
 ---
 import Layout from "~layouts/MinimalLayout.astro";
+import CommandBar from "~components/CommandBar.astro";
 
 const pageInfo = {
-	title: "404 Not found",
-	description: "Page not found",
+	title: "Page not found",
 	url: Astro.url.pathname
 };
 ---
 <Layout {pageInfo} class="glitch">
-	<figure>
-		<img src="/images/remix/remix-glitch.svg" alt="glitchy logo">
-		<figcaption class="glitch-info">
-			<noscript><strong>This page is missing.</strong> <a href="/">Return to home</a>.</noscript>
-		</figcaption>
-	</figure>
+	<section>
+		<img src="/favicon.svg" alt="glitchy logo" class="brand">
+		<random-message selector="p">
+			<p>This page is not available.</p>
+			<p hidden>There is nothing here.</p>
+			<p hidden>This link does not exist.</p>
+		</random-message>
+		<p><a href="/">Browse to home</a></p>
+		<CommandBar hrefText="Search what you were looking for"/>
+	</section>
 </Layout>
-
-<script>
-	export class Random404Messages extends HTMLElement {
-		static tagName = "random-404-messages";
-	
-		static #messages = [
-			`This page is missing.`,
-			`There’s nothing here.`,
-			`This link is broken.`,
-		];
-	
-		connectedCallback() {
-			this.textContent = Random404Messages.#messages[Math.floor(Math.random() * Random404Messages.#messages.length)];
-		}
-	}
-
-	customElements.define(Random404Messages.tagName, Random404Messages);
-
-	let headline = document.querySelector(".glitch .glitch-info");
-	headline.innerHTML = `<p class="glitch-headline"><random-404-messages></random-404-messages></p>
-		<p class="glitch-suggestion"><a href="/">Return to home</a>, or <command-bar></command-bar> search what you're looking for.</p>`;
-
-	import "../modules/command-bar/index.js";
-</script>
