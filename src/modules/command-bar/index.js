@@ -18,14 +18,6 @@ class CommandBar extends HTMLElement {
 		this.query = "";
 		this.searchIndex = [];
 		this.searchResults = [];
-		this.searchOptions = {
-			shouldSort: true,
-			threshold: 0.2,
-			location: 0,
-			distance: 300,
-			minMatchCharLength: 3,
-			keys: [ "title", "description" ]
-		};
 		this.anchorIcon = `<svg role="img" class="icon" aria-hidden="true"><use href="#x2-arrow-right"/></svg>`;
 
 		this.closeDialog = () => {
@@ -116,8 +108,7 @@ class CommandBar extends HTMLElement {
 
 	_search() {
 		if (this.query && this.query.length > 2) {
-			const fuse = new Fuse(this.searchIndex, this.searchOptions);
-			this.searchResults = fuse.search(this.query)
+			this.searchResults = window.__search(this.query, this.searchIndex)
 				.map(result => {
 					const { item } = result;
 					item.section = item.section || "Default";
