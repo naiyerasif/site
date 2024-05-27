@@ -316,6 +316,24 @@ figure.frame {
 	}
 }
 
+.greeting {
+	line-height: calc(2ex + 0.8rem);
+
+	span[data-language] {
+		position: relative;
+	
+		&::after {
+			position: absolute;
+			content: attr(data-language);
+			top: 2ch;
+			left: 0;
+			opacity: 0.6;
+			font-size: 0.6em;
+			text-transform: lowercase;
+		}
+	}
+}
+
 .glitch {
 	display: flex;
 	align-items: center;
