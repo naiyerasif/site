@@ -1,11 +1,17 @@
 ---
 import Icon from "./Icon.astro";
+
+const { hrefText } = Astro.props;
 ---
 
 <command-bar>
-	<button type="button" role="switch" aria-live="polite" aria-checked="true" aria-label="Launch command bar" data-cmdb-switch>
-		<Icon name="magnifying-glass"/>
-	</button>
+	{
+		hrefText ?
+		<a role="switch" aria-live="polite" aria-checked="true" data-cmdb-switch id="404-command-bar" href="#404-command-bar">{hrefText}</a> :
+		<button type="button" role="switch" aria-live="polite" aria-checked="true" aria-label="Launch command bar" data-cmdb-switch>
+			<Icon name="magnifying-glass"/>
+		</button>
+	}
 	<dialog aria-live="polite" aria-label="Command bar" id="cmdb">
 		<header>
 			<input placeholder="Search..." autofocus>
