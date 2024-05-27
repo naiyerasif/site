@@ -2,6 +2,7 @@
 import "../styles/main.scss";
 import PageInfo from "./PageInfo.astro";
 import ClientBase from "./ClientBase.astro";
+import Sprites from "~components/Sprites.astro";
 
 const { pageInfo, ...attribs } = Astro.props;
 ---
@@ -12,9 +13,10 @@ const { pageInfo, ...attribs } = Astro.props;
 		<PageInfo {pageInfo}/>
 	</head>
 	<body>
-		<main id="content" {...attribs}>
+		<main {...attribs}>
 			<slot/>
 		</main>
 		<ClientBase/>
+		<Sprites/>
 	</body>
 </html>

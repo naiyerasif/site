@@ -316,25 +316,12 @@ figure.frame {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: var(--x2-padding-inline-body);
 
-	figure {
-		.glitch-headline {
-			color: var(--x2-color-body-emphasis);
-		}
+	.brand {
+		margin-block-end: 1ch;
 
-		figcaption {
-			font-style: normal;
-			font-size: 1em;
-			@include mixins.flow;
-		}
-
-		img {
-			filter: drop-shadow(0 0 5rem var(--x2-border-deter));
-
-			@media (prefers-reduced-motion: no-preference) {
-				animation: flicker 5s linear infinite;
-			}
+		@media (prefers-reduced-motion: no-preference) {
+			animation: flicker 5s linear infinite;
 		}
 	}
 }
