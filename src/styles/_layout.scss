@@ -234,6 +234,12 @@ main#content + .footer,
 		}
 	}
 
+	&-psa {
+		color: var(--x2-color-body-subtle);
+		opacity: 0.75;
+		margin-block-start: var(--footerGap);
+	}
+
 	&-subscribe,
 	&-shortcuts,
 	&-preferences {
