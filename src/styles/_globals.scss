@@ -305,21 +305,22 @@ figure.frame {
 	}
 }
 
-.greeting {
-	line-height: calc(2ex + 0.8rem);
-
-	span[data-language] {
-		position: relative;
+.greeting span[data-language] {
+	position: relative;
 	
-		&::after {
-			position: absolute;
-			content: attr(data-language);
-			top: 2ch;
-			left: 0;
-			opacity: 0.6;
-			font-size: 0.6em;
-			text-transform: lowercase;
-		}
+	&::after {
+		position: absolute;
+		content: attr(data-language);
+		bottom: 3ch;
+		right: 0;
+		font-size: 0.6em;
+		text-transform: lowercase;
+		color: var(--x2-color-warn);
+		background-color: var(--x2-border-warn);
+		border: var(--x2-line-width-sm) solid var(--x2-border-warn);
+		border-radius: var(--x2-radius-max);
+		padding: 0.3ch 0.6ch;
+		line-height: 1;
 	}
 }
 
