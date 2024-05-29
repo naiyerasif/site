@@ -36,7 +36,7 @@
 	}
 }
 
-:where(clipboard-copy, command-bar, theme-switcher, data-saver):not(:defined) {
+:where(clipboard-copy, command-bar, theme-switcher, data-saver, footer-preferences):not(:defined) {
 	visibility: hidden;
 	display: none;
 }
@@ -302,16 +302,6 @@ figure.frame {
 		--x2-line-width-distinct-link: 0.15em;
 		--x2-size-icon: calc(1rem + 1.5vw);
 		padding: 0.5ch;
-	}
-}
-
-.js-only {
-	visibility: hidden;
-	display: none;
-
-	@media (scripting: none) {
-		visibility: visible;
-		display: revert;
 	}
 }
 

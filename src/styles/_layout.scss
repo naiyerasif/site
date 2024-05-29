@@ -242,7 +242,7 @@ main#content + .footer,
 
 	&-subscribe,
 	&-shortcuts,
-	&-preferences {
+	footer-preferences {
 		position: relative;
 		font-size: var(--x2-text-sm);
 		color: var(--x2-color-body-subtle);
@@ -271,7 +271,7 @@ main#content + .footer,
 		color: var(--x2-color-assert);
 	}
 
-	&-preferences {
+	footer-preferences {
 		&::before {
 			position: absolute;
 			left: 0;

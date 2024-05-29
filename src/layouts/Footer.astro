@@ -47,7 +47,7 @@ const siteIssueUrl = siteInfo.issueBase;
 				<li><a href="/feed.xml">Posts + statuses</a></li>
 			</ul>
 		</div>
-		<div class="footer-preferences js-only">
+		<footer-preferences>
 			<strong>Preferences</strong>
 			<ul>
 				<li>
@@ -69,7 +69,7 @@ const siteIssueUrl = siteInfo.issueBase;
 					</data-saver>
 				</li>
 			</ul>
-		</div>
+		</footer-preferences>
 		<div class="footer-shortcuts">
 			<strong>Keyboard Shortcuts</strong>
 			<ul>
@@ -105,3 +105,14 @@ const siteIssueUrl = siteInfo.issueBase;
 	<BackToTop/>
 </aside>
 <Sprites/>
+
+<script>
+class FooterPreferences extends HTMLElement {
+	static register(tagName = "footer-preferences") {
+		if ("customElements" in window) {
+			customElements.define(tagName, FooterPreferences);
+		}
+	}
+}
+FooterPreferences.register();
+</script>
