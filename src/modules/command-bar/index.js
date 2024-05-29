@@ -49,10 +49,6 @@ class CommandBar extends HTMLElement {
 				this._clearSearchBox();
 			}
 		}
-
-		if (window?.navigator?.platform?.indexOf("Mac") > -1) {
-			this.querySelector(`#cmdb-launch-sequence`).innerText = "⌘+K";
-		}
 	}
 
 	async connectedCallback() {
