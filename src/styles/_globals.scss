@@ -129,6 +129,13 @@
 	}
 }
 
+.icon-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.3rem;
+}
+
 .brand {
 	--brandSize: calc(30px + 0.5vw);
 	display: inline-block;
