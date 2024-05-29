@@ -76,3 +76,7 @@ lite-youtube.lyt-activated>.lty-playbtn {
 	white-space: nowrap;
 	width: 1px;
 }
+
+lite-youtube > a.lty-playbtn::after {
+	visibility: hidden;
+}

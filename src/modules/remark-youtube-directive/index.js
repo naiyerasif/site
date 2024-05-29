@@ -94,7 +94,31 @@ function youtubeLiteEmbed(node) {
 						data: {
 							hName: "lite-youtube",
 							hProperties: frameProperties
-						}
+						},
+						children: [
+							{
+								type: "link",
+								url: `https://youtu.be/${id}`,
+								title: "Play video",
+								data: {
+									hProperties: {
+										className: ["lty-playbtn"]
+									}
+								},
+								children: [
+									{
+										type: "paragraph",
+										data: {
+											hName: "span",
+											hProperties: {
+												className: ["lyt-visually-hidden"]
+											}
+										},
+										children: [{ type: "text", value: title }]
+									}
+								]
+							}
+						]
 					}
 				]
 			}
