@@ -18,10 +18,6 @@ I like solving problems, and exploring ideas. I work in small bursts. Reading is
 
 This is my personal site. Most of the posts here are technical essays, with occasional manifestations of my tea-infused opinions. They serve as a reference for what I learn, and a source of ~~criticism and scorn~~ <ins>constructive feedback</ins>.
 
-:::commend{title="Tip"}
-You can browse this site with JavaScript turned off, if that's your jam. Some features that depend on JavaScript such as search, theme switching, and copying code to clipboard will degrade gracefully.
-:::
-
 ## Frequently Asked Questions
 
 ### Can I use the code from this site?
