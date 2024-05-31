@@ -28,7 +28,7 @@ importers:
         version: 2.2.1
       astro:
         specifier: ^4.9.2
-        version: 4.9.2(@types/node@20.12.13)(sass@1.77.3)
+        version: 4.9.2(@types/node@20.12.13)(sass@1.77.4)
       dayjs:
         specifier: ^1.11.11
         version: 1.11.11
@@ -75,8 +75,8 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1
       sass:
-        specifier: ^1.77.3
-        version: 1.77.3
+        specifier: ^1.77.4
+        version: 1.77.4
       unified:
         specifier: ^11.0.4
         version: 11.0.4
@@ -3497,8 +3497,8 @@ packages:
   sanitize-filename@1.6.3:
     resolution: {integrity: sha512-y/52Mcy7aw3gRm7IrcGDFx/bCk4AhRh2eI9luHOQM86nZsqwiRkkq2GekHXBBD+SmPidc8i2PqtYZl+pWJ8Oeg==}
 
-  sass@1.77.3:
-    resolution: {integrity: sha512-WJHo+jmFp0dwRuymPmIovuxHaBntcCyja5hCB0yYY9wWrViEp4kF5Cdai98P72v6FzroPuABqu+ddLMbQWmwzA==}
+  sass@1.77.4:
+    resolution: {integrity: sha512-vcF3Ckow6g939GMA4PeU7b2K/9FALXk2KF9J87txdHzXbUF9XRQRwSxcAs/fGaTnJeBFd7UoV22j3lzMLdM0Pw==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -5498,7 +5498,7 @@ snapshots:
     dependencies:
       tslib: 2.6.2
 
-  astro@4.9.2(@types/node@20.12.13)(sass@1.77.3):
+  astro@4.9.2(@types/node@20.12.13)(sass@1.77.4):
     dependencies:
       '@astrojs/compiler': 2.8.0
       '@astrojs/internal-helpers': 0.4.0
@@ -5557,8 +5557,8 @@ snapshots:
       tsconfck: 3.0.3
       unist-util-visit: 5.0.0
       vfile: 6.0.1
-      vite: 5.2.11(@types/node@20.12.13)(sass@1.77.3)
-      vitefu: 0.2.5(vite@5.2.11(@types/node@20.12.13)(sass@1.77.3))
+      vite: 5.2.11(@types/node@20.12.13)(sass@1.77.4)
+      vitefu: 0.2.5(vite@5.2.11(@types/node@20.12.13)(sass@1.77.4))
       which-pm: 2.2.0
       yargs-parser: 21.1.1
       zod: 3.23.8
@@ -8228,7 +8228,7 @@ snapshots:
     dependencies:
       truncate-utf8-bytes: 1.0.2
 
-  sass@1.77.3:
+  sass@1.77.4:
     dependencies:
       chokidar: 3.6.0
       immutable: 4.3.6
@@ -8758,7 +8758,7 @@ snapshots:
       unist-util-stringify-position: 4.0.0
       vfile-message: 4.0.2
 
-  vite@5.2.11(@types/node@20.12.13)(sass@1.77.3):
+  vite@5.2.11(@types/node@20.12.13)(sass@1.77.4):
     dependencies:
       esbuild: 0.20.2
       postcss: 8.4.38
@@ -8766,11 +8766,11 @@ snapshots:
     optionalDependencies:
       '@types/node': 20.12.13
       fsevents: 2.3.3
-      sass: 1.77.3
+      sass: 1.77.4
 
-  vitefu@0.2.5(vite@5.2.11(@types/node@20.12.13)(sass@1.77.3)):
+  vitefu@0.2.5(vite@5.2.11(@types/node@20.12.13)(sass@1.77.4)):
     optionalDependencies:
-      vite: 5.2.11(@types/node@20.12.13)(sass@1.77.3)
+      vite: 5.2.11(@types/node@20.12.13)(sass@1.77.4)
 
   vscode-oniguruma@2.0.1: {}
 
