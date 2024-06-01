@@ -11,6 +11,7 @@ import rehypeStarryNightHeaderLanguageExtension from "@microflash/rehype-starry-
 import remarkTimeDirective from "./src/modules/remark-time-directive/index.js";
 import remarkFigureDirective from "./src/modules/remark-figure-directive/index.js";
 import remarkYoutubeDirective from "./src/modules/remark-youtube-directive/index.js";
+import rehypeLazyLoadImages from "./src/modules/rehype-lazy-load-images/index.js";
 import siteInfo from "./src/modules/website/index.js";
 import { CountableSlugifier } from "./src/modules/slugifier/index.js";
 
@@ -61,6 +62,7 @@ export default defineConfig({
 			]
 		],
 		rehypePlugins: [
+			rehypeLazyLoadImages,
 			[
 				rehypeExternalLinks,
 				{
