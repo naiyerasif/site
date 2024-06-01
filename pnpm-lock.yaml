@@ -12,8 +12,8 @@ importers:
         specifier: ^3.1.5
         version: 3.1.5
       '@microflash/preset':
-        specifier: ^3.1.0
-        version: 3.1.0
+        specifier: ^4.0.0
+        version: 4.0.0
       '@microflash/rehype-slugify':
         specifier: ^1.0.0
         version: 1.0.0
@@ -28,7 +28,7 @@ importers:
         version: 2.2.1
       astro:
         specifier: ^4.9.2
-        version: 4.9.2(@types/node@20.12.13)(sass@1.77.4)
+        version: 4.9.2(@types/node@20.13.0)(sass@1.77.4)
       dayjs:
         specifier: ^1.11.11
         version: 1.11.11
@@ -85,8 +85,8 @@ importers:
         version: 5.0.0
     devDependencies:
       inquirer:
-        specifier: ^9.2.22
-        version: 9.2.22
+        specifier: ^9.2.23
+        version: 9.2.23
       puppeteer:
         specifier: ^22.10.0
         version: 22.10.0
@@ -885,8 +885,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@inquirer/figures@1.0.2':
-    resolution: {integrity: sha512-4F1MBwVr3c/m4bAUef6LgkvBfSjzwH+OfldgHqcuacWwSUetFebM2wi58WfG9uk1rR98U6GwLed4asLJbwdV5w==}
+  '@inquirer/figures@1.0.3':
+    resolution: {integrity: sha512-ErXXzENMH5pJt5/ssXV0DfWUZqly8nGzf0UcBV9xTnP+KyffE2mqyxIMBrZ8ijQck2nU0TQm40EQB53YreyWHw==}
     engines: {node: '>=18'}
 
   '@jridgewell/gen-mapping@0.3.5':
@@ -914,8 +914,8 @@ packages:
   '@microflash/fenceparser@3.0.0':
     resolution: {integrity: sha512-FDn0pDfWSPDvj9A5HrOjWcqPaOBsMdjs+Sqi0Y4kecvw5UKRPMYexQZ7LSQ2v6PDHHNR6dQhpyLrIPBlVbgRUg==}
 
-  '@microflash/preset@3.1.0':
-    resolution: {integrity: sha512-RhSDlHKrSCSGeCMFL8iFgWOBlB0BvgLCrJDlhmyJtDwlqfGC0G/w/wDvT30BGio65PiLLnfN85YJmcffFj7Heg==}
+  '@microflash/preset@4.0.0':
+    resolution: {integrity: sha512-EvCSVJrhBuXlJc3FC+NLaXZqDrlT9awhKMIOBnZlLR4qJvElLwOIAT1hpp81zJDgJsC9yA0pedcn6O2d+HdzEw==}
 
   '@microflash/rehype-slugify@1.0.0':
     resolution: {integrity: sha512-pp9LB4zp8cxF+Pf6oXNpqCMNXAmFKeIP9Ab6MOb/SrzxDvGfi0O2RZwG7znXh7dmVgYa0//Dte4X5kcIf+G3/w==}
@@ -1251,8 +1251,8 @@ packages:
   '@types/node@20.12.12':
     resolution: {integrity: sha512-eWLDGF/FOSPtAvEqeRAQ4C8LSA7M1I7i0ky1I8U7kD1J5ITyW3AsRhQrKVoWf5pFKZ2kILsEGJhsI9r93PYnOw==}
 
-  '@types/node@20.12.13':
-    resolution: {integrity: sha512-gBGeanV41c1L171rR7wjbMiEpEI/l5XFQdLLfhr/REwpgDy/4U8y89+i8kRiLzDyZdOkXh+cRaTetUnCYutoXA==}
+  '@types/node@20.13.0':
+    resolution: {integrity: sha512-FM6AOb3khNkNIXPnHFDYaHerSv8uN22C91z098AnGccVu+Pcdhi+pNUFDi0iLmPIsVE0JBD0KVS7mzUYt4nRzQ==}
 
   '@types/responselike@1.0.3':
     resolution: {integrity: sha512-H/+L+UkTV33uf49PH5pCAUBVPNj2nDBXTN+qS1dOwyyg24l3CcicicCA7ca+HMvJBZcFgl5r8e+RR6elsb4Lyw==}
@@ -2351,8 +2351,8 @@ packages:
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
 
-  inquirer@9.2.22:
-    resolution: {integrity: sha512-SqLLa/Oe5rZUagTR9z+Zd6izyatHglbmbvVofo1KzuVB54YHleWzeHNLoR7FOICGOeQSqeLh1cordb3MzhGcEw==}
+  inquirer@9.2.23:
+    resolution: {integrity: sha512-kod5s+FBPIDM2xiy9fu+6wdU/SkK5le5GS9lh4FEBjBHqiMgD9lLFbCbuqFNAjNL2ZOy9Wd9F694IOzN9pZHBA==}
     engines: {node: '>=18'}
 
   intl-messageformat-parser@1.8.1:
@@ -4817,7 +4817,7 @@ snapshots:
   '@img/sharp-win32-x64@0.33.4':
     optional: true
 
-  '@inquirer/figures@1.0.2': {}
+  '@inquirer/figures@1.0.3': {}
 
   '@jridgewell/gen-mapping@0.3.5':
     dependencies:
@@ -4845,7 +4845,7 @@ snapshots:
       chevrotain: 11.0.3
       defu: 6.1.4
 
-  '@microflash/preset@3.1.0': {}
+  '@microflash/preset@4.0.0': {}
 
   '@microflash/rehype-slugify@1.0.0':
     dependencies:
@@ -5193,7 +5193,7 @@ snapshots:
       undici-types: 5.26.5
     optional: true
 
-  '@types/node@20.12.13':
+  '@types/node@20.13.0':
     dependencies:
       undici-types: 5.26.5
     optional: true
@@ -5498,7 +5498,7 @@ snapshots:
     dependencies:
       tslib: 2.6.2
 
-  astro@4.9.2(@types/node@20.12.13)(sass@1.77.4):
+  astro@4.9.2(@types/node@20.13.0)(sass@1.77.4):
     dependencies:
       '@astrojs/compiler': 2.8.0
       '@astrojs/internal-helpers': 0.4.0
@@ -5557,8 +5557,8 @@ snapshots:
       tsconfck: 3.0.3
       unist-util-visit: 5.0.0
       vfile: 6.0.1
-      vite: 5.2.11(@types/node@20.12.13)(sass@1.77.4)
-      vitefu: 0.2.5(vite@5.2.11(@types/node@20.12.13)(sass@1.77.4))
+      vite: 5.2.11(@types/node@20.13.0)(sass@1.77.4)
+      vitefu: 0.2.5(vite@5.2.11(@types/node@20.13.0)(sass@1.77.4))
       which-pm: 2.2.0
       yargs-parser: 21.1.1
       zod: 3.23.8
@@ -6671,9 +6671,9 @@ snapshots:
 
   inherits@2.0.4: {}
 
-  inquirer@9.2.22:
+  inquirer@9.2.23:
     dependencies:
-      '@inquirer/figures': 1.0.2
+      '@inquirer/figures': 1.0.3
       '@ljharb/through': 2.3.13
       ansi-escapes: 4.3.2
       chalk: 5.3.0
@@ -8758,19 +8758,19 @@ snapshots:
       unist-util-stringify-position: 4.0.0
       vfile-message: 4.0.2
 
-  vite@5.2.11(@types/node@20.12.13)(sass@1.77.4):
+  vite@5.2.11(@types/node@20.13.0)(sass@1.77.4):
     dependencies:
       esbuild: 0.20.2
       postcss: 8.4.38
       rollup: 4.18.0
     optionalDependencies:
-      '@types/node': 20.12.13
+      '@types/node': 20.13.0
       fsevents: 2.3.3
       sass: 1.77.4
 
-  vitefu@0.2.5(vite@5.2.11(@types/node@20.12.13)(sass@1.77.4)):
+  vitefu@0.2.5(vite@5.2.11(@types/node@20.13.0)(sass@1.77.4)):
     optionalDependencies:
-      vite: 5.2.11(@types/node@20.12.13)(sass@1.77.4)
+      vite: 5.2.11(@types/node@20.13.0)(sass@1.77.4)
 
   vscode-oniguruma@2.0.1: {}
 
