@@ -332,7 +332,7 @@ figure.frame {
 	.brand {
 		margin-block-end: 1ch;
 
-		@media (prefers-reduced-motion: no-preference) {
+		@media (prefers-reduced-motion: no-preference), (update: fast) {
 			animation: flicker 5s linear infinite;
 		}
 	}
