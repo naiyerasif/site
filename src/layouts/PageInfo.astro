@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from "astro:transitions";
 import Critical from "./Critical.astro";
 import { pageInfoSchema } from "~schema";
 import siteInfo from "~website";
@@ -60,3 +61,4 @@ const mastodonUrl = siteInfo.author.networks.mastodon.link;
 <meta name="generator" content={Astro.generator}>
 <Critical/>
 <script src="/vendor/fuse@7.0.0.basic.min.js" is:inline async></script>
+<ViewTransitions/>
