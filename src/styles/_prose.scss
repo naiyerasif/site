@@ -313,7 +313,9 @@
 }
 
 :where(dd) {
+	--x2-gap-flow: 1ch;
 	padding-inline-start: 1em;
+	@include mixins.flow;
 }
 
 :where(dt) {
