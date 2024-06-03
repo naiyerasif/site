@@ -11,12 +11,14 @@ type: "post"
 <p class="greeting">
 <random-message selector="span">
 	👋 <span>Hi</span><span data-language="Maori" hidden>Kia ora</span><span data-language="Turkish" hidden>Merhaba</span><span data-language="Urdu" hidden>Khush Amdeed</span><span hidden>Hello</span>!
-</random-message> I'm a software engineer from India.
+</random-message> I&rsquo;m a software engineer from India.
 </p>
 
-I like solving problems, and exploring ideas. I work in small bursts. Reading is my addiction. I love science fiction, manga, and poetry. My professional experience exists at the intersection of the backend, frontend, databases, and lately, cloud. With a lot of application design, requirements analysis and documentation sprinkled on top.
+This is my personal site. Most of the posts here are technical essays, with occasional sprinkles of my opinions. They serve as a reference for what I learn, and a source of ~~criticism and scorn~~ <ins>constructive feedback</ins>.
 
-This is my personal site. Most of the posts here are technical essays, with occasional manifestations of my tea-infused opinions. They serve as a reference for what I learn, and a source of ~~criticism and scorn~~ <ins>constructive feedback</ins>.
+I love to read, especially sci-fi, manga, and Urdu poetry. I also adore beautiful typography, natural landscapes, and alcohol-free fragrances. I am a tea person.
+
+Professionally, I have worked on the frontend, backend, and more recently, cloud. I enjoy tackling design and engineering problems, and I prefer to do so in short bursts with a healthy amount of pragmatism.
 
 ## Frequently Asked Questions
 
@@ -28,29 +30,29 @@ Yes. The content is licensed under the [Creative Commons Attribution 4.0 License
 All the examples on this site are __optimized for learning__ and __not for use in production__.
 :::
 
-Apply your discretion, review with your peers, and use what's best suited for _your usecase_.
+Apply your discretion, review with your peers, and use what is best suited for _your usecase_.
 
 ### I spotted a horrible mistake. How can I report it?
 
 - [File an issue](https://github.com/naiyerasif/site/issues/new)
-- Hit the edit link under a post and send me a PR.
-- Mention me [@naiyer@mastodon.design](https://mastodon.design/@naiyer) <small>([What's Mastodon?](https://en.wikipedia.org/wiki/Mastodon_(social_network)))</small>
+- Hit the edit link under a post and send me a PR
+- Mention me [@naiyer@mastodon.design](https://mastodon.design/@naiyer) <small>([What is Mastodon?](https://en.wikipedia.org/wiki/Mastodon_(social_network)))</small>
 
-I'd also appreciate bug reports and corrections on accessibility, browser rendering inconsistencies, performance bottlenecks, and general usability criticism.
+I would also appreciate bug reports and corrections on accessibility, browser rendering inconsistencies, performance bottlenecks, and general usability criticism.
 
-### What's this site built with?
+### What is this site built with?
 
-It's built with [Astro](https://astro.build/) and uses HTML, CSS, and web components.
+It is built with [Astro](https://astro.build/) and uses HTML, CSS, and web components.
 
-### What fonts are you using here? They look so easy on the eyes.
+### What fonts are you using here?
 
-I'm using [Inter](https://github.com/rsms/inter) for body copy, [Make Sans](https://herewemake.gumroad.com/l/makesans) for headings, and [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) for code.
+I am using [Inter](https://github.com/rsms/inter) for body copy, [Make Sans](https://herewemake.gumroad.com/l/makesans) for headings, and [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) for code.
 
-### Why don't you put some ads here to make quick money?
+### Why don't you put ads here to make some money?
 
-I didn't build this site to make money. The content here's not for steering droves of traffic or spark viral sensations. _This thing is not transactional_.
+I did not build this site to make money. The content here is not for steering droves of traffic or spark viral sensations. _This thing is not transactional_.
 
-If you're concerned about my finances, you can always recommend me for a software engineering position at your company. I'm *fleetingly* available on [LinkedIn](https://in.linkedin.com/in/naiyerasif) for leads.
+If you are concerned about my finances, you can recommend me for a software engineering position at your company. I am *fleetingly* available on [LinkedIn](https://in.linkedin.com/in/naiyerasif) for leads.
 
 ### Can you endorse my product?
 
