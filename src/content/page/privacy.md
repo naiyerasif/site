@@ -11,7 +11,7 @@ type: "post"
 
 ## External services
 
-This site includes YouTube videos on some pages. These videos have autoplay turned off and tracking opted-out. They follow [Google Privacy & Terms](https://policies.google.com/privacy).
+This site includes YouTube videos on some pages. These videos have autoplay turned off and tracking opted-out. They follow [Google Privacy Policy](https://policies.google.com/privacy).
 
 ## Media queries and custom fonts
 
