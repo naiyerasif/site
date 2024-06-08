@@ -7,6 +7,6 @@ type: "status"
 category: "update"
 ---
 
-I have used `touch` to create empty files for years (for example, `touch index.js`). <abbr title="Today I Learned">TIL</abbr> that `touch` was originally designed to update the access and modification timestamps of a file!
+I have used `touch` to create empty files for years (for example, `touch index.js`). Today I learned that `touch` was originally designed to update the access and modification timestamps of a file!
 
 Source: <https://www.man7.org/linux/man-pages/man1/touch.1.html>

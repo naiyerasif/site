@@ -7,6 +7,6 @@ type: "status"
 category: "update"
 ---
 
-I've been a big fan of <abbr title="Common Table Expressions">CTE</abbr>s. In many cases, they are easier to reason with. They are also faster when the same datasets need to be reused.
+I've been a big fan of CTEs (Common Table Expressions). In many cases, they are easier to reason with. They are also faster when the same datasets need to be reused.
 
 https://www.postgresql.org/docs/current/queries-with.html

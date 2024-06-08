@@ -1,10 +1,4 @@
 {
-	"Abbreviation": {
-		"scope": "markdown",
-		"prefix": "abbr",
-		"body": ["<abbr title=\"$1\">$2</abbr>"],
-		"description": "Inserts an abbr element"
-	},
 	"Figure": {
 		"scope": "markdown",
 		"prefix": "fig",

@@ -39,7 +39,7 @@ curl http://localhost:8080/actuator/info
 }
 ```
 
-By default, the actuator exposes only the `health` endpoint over HTTP and <abbr title="Java Management Extensions">JMX</abbr>. The `management.endpoint.info.enabled=true` flag enables the `info` endpoint and the `management.endpoints.web.exposure.include=health,info` property exposes both the `health` and `info` endpoints over HTTP.
+By default, the actuator exposes only the `health` endpoint over HTTP and JMX (Java Management Extensions). The `management.endpoint.info.enabled=true` flag enables the `info` endpoint and the `management.endpoints.web.exposure.include=health,info` property exposes both the `health` and `info` endpoints over HTTP.
 
 To customize the `info` endpoint, you need to enable the `env` contributor with the `management.info.env.enabled=true` flag. Once enabled, you can set `info.*` properties and the actuator would expose them through the `info` endpoint. 
 

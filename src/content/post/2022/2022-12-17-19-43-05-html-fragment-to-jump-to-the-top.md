@@ -7,6 +7,6 @@ type: "status"
 category: "update"
 ---
 
-<abbr title="Today I learned">TIL</abbr> that HTML5 spec specifies a `href="#top"` and `href="#"` fragment to quickly jump to the top of any document. No need to provide a matching anchor. Pretty handy stuff.
+Today I learned that HTML5 spec specifies a `href="#top"` and `href="#"` fragment to quickly jump to the top of any document. No need to provide a matching anchor. Pretty handy stuff.
 
 https://html.spec.whatwg.org/multipage/browsing-the-web.html#scroll-to-the-fragment-identifier

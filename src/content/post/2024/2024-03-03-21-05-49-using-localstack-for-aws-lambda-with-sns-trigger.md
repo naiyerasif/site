@@ -8,7 +8,7 @@ type: "post"
 category: "guide"
 ---
 
-<abbr title="Simple Notification Service">SNS</abbr> is often used to tackle a [pubsub](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern) workflow. You can also use it to [fan-out](https://en.wikipedia.org/wiki/Fan-out_(software)) a process. In many such cases, you may want to trigger an AWS Lambda function when an event arrives to a topic. In this post, I'll walk through how you can invoke an AWS Lambda through an SNS subscription using [LocalStack](https://localstack.cloud/).
+SNS (Simple Notification Service) is often used to tackle a [pubsub](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern) workflow. You can also use it to [fan-out](https://en.wikipedia.org/wiki/Fan-out_(software)) a process. In many such cases, you may want to trigger an AWS Lambda function when an event arrives to a topic. In this post, I'll walk through how you can invoke an AWS Lambda through an SNS subscription using [LocalStack](https://localstack.cloud/).
 
 :::assert{title=Series}
 1. [Working with AWS on local using LocalStack](/post/2021/11/16/working-with-aws-on-local-using-localstack/)
@@ -161,7 +161,7 @@ aws --profile localstack lambda create-function --function-name localstack-lambd
 ```
 
 - `mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout` prints out the project name and `mvn help:evaluate -Dexpression=project.version -q -DforceStdout` prints out the version specified in the `pom.xml` file. Thus, `(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)-(mvn help:evaluate -Dexpression=project.version -q -DforceStdout).jar` evaluates to `localstack-lambda-with-sns-trigger-0.0.1.jar`.
-- The role ARN `arn:aws:iam::000000000000:role/example-lambda-noop-role` is a fake role <abbr title="Amazon Resource Name">ARN</abbr> to satisfy AWS CLI which requires it for the `create-function` command. You can specify any arbitrary role ARN here.
+- The role ARN (Amazon Resource Name) `arn:aws:iam::000000000000:role/example-lambda-noop-role` is a fake role ARN to satisfy AWS CLI which requires it for the `create-function` command. You can specify any arbitrary role ARN here.
 
 > I'm using [Nushell](https://www.nushell.sh/) to run these commands. Depending on your shell, you might have to tweak them a bit.
 

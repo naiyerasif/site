@@ -176,7 +176,7 @@ Note that you can't use `OVERRIDING SYSTEM VALUE` for the `update` statement.
 
 ### Observations
 
-- Since the identity column definition is part of <abbr title="Data Definition Language">DDL</abbr>, it communicates the intent of restriction explicitly.
+- Since the identity column definition is part of DDL (Data Definition Language), it communicates the intent of restriction explicitly.
 - A static analysis tool can show the error messages before you execute the statements.
 
 	:::figure

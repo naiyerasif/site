@@ -7,7 +7,7 @@ type: "status"
 category: "update"
 ---
 
-<abbr title="Today I learned">TIL</abbr> you can use `brew autoremove` to prune unused dependencies installed by [Homebrew](https://brew.sh).
+Today I learned you can use `brew autoremove` to prune unused dependencies installed by [Homebrew](https://brew.sh).
 
 ```sh prompt{2,5}
 # dry run to preview what will be removed

@@ -8,7 +8,7 @@ type: "post"
 category: "note"
 ---
 
-<abbr title="Today I Learned">TIL</abbr> that you can specify `CASCADE` on `DROP` and `TRUNCATE` statements in Postgres. This comes handy when you're dealing with the database objects which are references on other objects (for example, foreign keys, [domains](https://www.postgresql.org/docs/current/domains.html), etc).
+Today I learned that you can specify `CASCADE` on `DROP` and `TRUNCATE` statements in Postgres. This comes handy when you're dealing with the database objects which are references on other objects (for example, foreign keys, [domains](https://www.postgresql.org/docs/current/domains.html), etc).
 
 Consider the following definitions of the `users` and `orders` tables.
 

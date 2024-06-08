@@ -8,7 +8,7 @@ type: "post"
 category: "guide"
 ---
 
-In an event-driven architecture, you might invoke an AWS Lambda function with an <abbr title="Simple Queue Service">SQS</abbr> message. SQS is useful to control the order of a process. It also acts as a buffer for temporary increases in load on a system. In this post, I'll discuss how you can deploy an AWS Lambda, and invoke it through an SQS on your local machine using [LocalStack](https://localstack.cloud/).
+In an event-driven architecture, you might invoke an AWS Lambda function with an SQS (Simple Queue Service) message. SQS is useful to control the order of a process. It also acts as a buffer for temporary increases in load on a system. In this post, I'll discuss how you can deploy an AWS Lambda, and invoke it through an SQS on your local machine using [LocalStack](https://localstack.cloud/).
 
 :::assert{title=Series}
 1. [Working with AWS on local using LocalStack](/post/2021/11/16/working-with-aws-on-local-using-localstack/)
@@ -91,7 +91,7 @@ aws --profile localstack lambda create-function --function-name localstack-lambd
 }
 ```
 
-> The role ARN `arn:aws:iam::000000000000:role/example-lambda-noop-role` is a fake role <abbr title="Amazon Resource Name">ARN</abbr> to satisfy AWS CLI; it's a required parameter for `create-function` command. LocalStack doesn't care about this role; and you're free to specify any arbitrary role ARN.
+> The role ARN (Amazon Resource Name) `arn:aws:iam::000000000000:role/example-lambda-noop-role` is a fake role ARN to satisfy AWS CLI; it's a required parameter for `create-function` command. LocalStack doesn't care about this role; and you're free to specify any arbitrary role ARN.
 
 ## Creating a queue
 

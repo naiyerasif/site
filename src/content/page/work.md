@@ -63,7 +63,7 @@ type: "post"
 
 ## 2016
 
-- Joined the [Suncorp](https://www.suncorp.com.au/) project as an <abbr title="Extract Transform Load">ETL</abbr> consultant
+- Joined the [Suncorp](https://www.suncorp.com.au/) project as an ETL (Extract Transform Load) consultant
 
 ## 2015
 

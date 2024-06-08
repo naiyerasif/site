@@ -7,7 +7,7 @@ type: "status"
 category: "update"
 ---
 
-<abbr title="Today I Learned">TIL</abbr> that you can print custom job summaries for GitHub Actions by assigning a markdown string to the `GITHUB_STEP_SUMMARY` environment variable.
+Today I learned that you can print custom job summaries for GitHub Actions by assigning a markdown string to the `GITHUB_STEP_SUMMARY` environment variable.
 
 For example, the following step configuration,
 

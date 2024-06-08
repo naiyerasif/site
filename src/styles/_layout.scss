@@ -238,6 +238,11 @@ main#content + .footer,
 		color: var(--x2-color-body-subtle);
 		opacity: 0.75;
 		margin-block-start: var(--footerGap);
+
+		.icon {
+			@include mixins.fixedSize(2ch);
+			vertical-align: text-top;
+		}
 	}
 
 	&-subscribe,

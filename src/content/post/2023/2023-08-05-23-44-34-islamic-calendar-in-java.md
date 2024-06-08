@@ -7,7 +7,7 @@ type: "status"
 category: "update"
 ---
 
-<abbr title="Today I learned">TIL</abbr> that Java supports [Islamic calendar](https://en.wikipedia.org/wiki/Islamic_calendar) relative to Mecca (since Java 8).
+Today I learned that Java supports [Islamic calendar](https://en.wikipedia.org/wiki/Islamic_calendar) relative to Mecca (since Java 8).
 
 ```java
 interface IslamicCalendarExample {

@@ -7,7 +7,7 @@ type: "status"
 category: "update"
 ---
 
-<abbr title="Today I learned">TIL</abbr> about "Period of the Day" pattern `B` to format a `java.time.Temporal` value in Java with `DateTimeFormatter`.
+Today I learned about "Period of the Day" pattern `B` to format a `java.time.Temporal` value in Java with `DateTimeFormatter`.
 
 ```java {5}
 import java.time.LocalDateTime;

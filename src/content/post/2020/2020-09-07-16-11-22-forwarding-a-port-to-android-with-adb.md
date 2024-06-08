@@ -7,7 +7,7 @@ type: "status"
 category: "update"
 ---
 
-Say you are developing a web app which is accessible on the port `8080`. You want to open it on your Android device to verify if it works on an Android browser. You can do so by forwarding the port `8080` through [<abbr title="Android Debug Bridge">ADB</abbr>](https://developer.android.com/tools/releases/platform-tools).
+Say you are developing a web app which is accessible on the port `8080`. You want to open it on your Android device to verify if it works on an Android browser. You can do so by forwarding the port `8080` through [ADB](https://developer.android.com/tools/releases/platform-tools) (Android Debug Bridge).
 
 Connect your Android device to your computer through USB and [turn on USB debugging](https://developer.android.com/studio/debug/dev-options#Enable-debugging). Open a terminal on your computer and type the following command.
 

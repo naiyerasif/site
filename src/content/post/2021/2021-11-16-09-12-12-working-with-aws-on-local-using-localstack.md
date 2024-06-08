@@ -114,7 +114,7 @@ curl http://localhost:4566/_localstack/health
 
 ## Working with AWS services
 
-You can now use the AWS services (such as S3, <abbr title="Simple Notification Service">SNS</abbr>, <abbr title="Simple Queue Service">SQS</abbr>, Secrets Manager, etc) through the port 4566. You can find the list of the core AWS services available on LocalStack [here](https://docs.localstack.cloud/user-guide/aws/feature-coverage/). Let's explore some services with the AWS CLI now.
+You can now use the AWS services (such as S3, SNS (Simple Notification Service), SQS (Simple Queue Service), Secrets Manager, etc) through the port 4566. You can find the list of the core AWS services available on LocalStack [here](https://docs.localstack.cloud/user-guide/aws/feature-coverage/). Let's explore some services with the AWS CLI now.
 
 ### Saving objects on S3
 
@@ -306,7 +306,7 @@ aws --profile localstack secretsmanager get-secret-value --secret-id example-sec
 }
 ```
 
-Finally, you can delete a secret with its <abbr title="Amazon Resource Name">ARN</abbr>.
+Finally, you can delete a secret with its ARN (Amazon Resource Name).
 
 ```sh prompt{1}
 aws --profile localstack secretsmanager delete-secret --secret-id arn:aws:secretsmanager:us-east-1:000000000000:secret:example-secret-SfIEUp
@@ -322,7 +322,7 @@ For more operations, refer to the [secretsmanager](https://awscli.amazonaws.com/
 ## Conclusion
 
 - LocalStack works pretty nicely with command line tools. If you need a desktop app, you can try out [Commandeer](https://getcommandeer.com/), or LocalStack's [Resource Browser](https://docs.localstack.cloud/user-guide/web-application/resource-browser/).
-- Support for some [AWS services](https://docs.localstack.cloud/user-guide/aws/feature-coverage/) (such as Autoscaling, <abbr title="Elastic Container Service">ECS</abbr>, ElastiCache, <abbr title="Relational Database Service">RDS</abbr>, X-Ray, etc) requires a subscription.
+- Support for some [AWS services](https://docs.localstack.cloud/user-guide/aws/feature-coverage/) (such as Autoscaling, ECS (Elastic Container Service), ElastiCache, RDS (Relational Database Service), X-Ray, etc) requires a subscription.
 
 ---
 

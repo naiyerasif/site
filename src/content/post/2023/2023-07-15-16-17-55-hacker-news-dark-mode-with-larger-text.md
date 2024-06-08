@@ -23,4 +23,4 @@ news.ycombinator.com###hnmain td[bgcolor="#000000"]
 
 Based on: https://letsblock.it/filters/hackernews-darkmode
 
-Also, <abbr title="Today I learned">TIL</abbr> that you can override site styles with [uBlock](https://github.com/gorhill/uBlock).
+Also, Today I learned that you can override site styles with [uBlock](https://github.com/gorhill/uBlock).

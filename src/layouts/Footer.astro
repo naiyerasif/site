@@ -1,6 +1,7 @@
 ---
 import Sprites from "~components/Sprites.astro";
 import BackToTop from "~components/BackToTop.astro";
+import Icon from "~components/Icon.astro";
 import siteInfo from "~website";
 
 const authorInfo = siteInfo.author;
@@ -93,7 +94,7 @@ const siteIssueUrl = siteInfo.issueBase;
 			<a href="/sitemap-index.xml">Sitemap</a>
 		</div>
 		<div class="footer-psa">
-			<abbr title="Public Service Announcement">PSA</abbr>:
+			<Icon name="info"/>
 			<random-message selector="span">
 				<span>You can activate data saver by visiting <a href="/?metered">naiyerasif.com/?metered</a>. Data saver prevents loading custom fonts on this site.</span>
 				<span hidden>You can browse this site with JavaScript switched off. Features that require JavaScript such as command bar, copying code to clipboard, etc will degrade gracefully.</span>

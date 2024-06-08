@@ -7,7 +7,7 @@ type: "status"
 category: "update"
 ---
 
-<abbr title="Today I learned">TIL</abbr> about `@media (scripting)` query with which you can detect using CSS if the browser supports JavaScript and whether it's active.
+Today I learned about `@media (scripting)` query with which you can detect using CSS if the browser supports JavaScript and whether it's active.
 
 <https://developer.mozilla.org/en-US/docs/Web/CSS/@media/scripting>
 
