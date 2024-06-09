@@ -28,6 +28,17 @@
 			radial-gradient(#0000 71%, var(--calloutBorderColor) 72%)
 			49.9%/var(--x2-radius-sm);
 	}
+
+	&.quote {
+		.callout-indicator {
+			display: none;
+			visibility: hidden;
+		}
+		.callout-content {
+			color: var(--calloutColor);
+			font-size: 1.125em;
+		}
+	}
 }
 
 .callout-commend {
