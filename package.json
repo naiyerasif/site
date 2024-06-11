@@ -15,10 +15,10 @@
 		"@astrojs/sitemap": "^3.1.5",
 		"@microflash/preset": "^4.0.2",
 		"@microflash/rehype-slugify": "^1.0.0",
-		"@microflash/rehype-starry-night": "^4.0.0",
-		"@microflash/remark-callout-directives": "^4.1.0",
+		"@microflash/rehype-starry-night": "^4.1.0",
+		"@microflash/remark-callout-directives": "^4.2.0",
 		"@sindresorhus/slugify": "^2.2.1",
-		"astro": "^4.10.1",
+		"astro": "^4.10.2",
 		"dayjs": "^1.11.11",
 		"defu": "^6.1.4",
 		"feed": "^4.2.2",
@@ -40,10 +40,10 @@
 	},
 	"devDependencies": {
 		"inquirer": "^9.2.23",
-		"puppeteer": "^22.10.0",
+		"puppeteer": "^22.10.1",
 		"unlighthouse-puppeteer": "^0.10.6"
 	},
-	"packageManager": "pnpm@9.2.0",
+	"packageManager": "pnpm@9.3.0",
 	"browserslist": [
 		"defaults"
 	]

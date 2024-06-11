@@ -30,10 +30,6 @@
 	}
 
 	&.quote {
-		.callout-indicator {
-			display: none;
-			visibility: hidden;
-		}
 		.callout-content {
 			color: var(--calloutColor);
 			font-size: 1.125em;
