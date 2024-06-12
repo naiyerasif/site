@@ -184,8 +184,10 @@ window.__search = function (query, searchIndex) {
 		font-weight: 600;
 	}
 
-	@view-transition {
-		navigation: auto;
+	@media (prefers-reduced-motion: no-preference), (update: fast) {
+		@view-transition {
+			navigation: auto;
+		}
 	}
 
 	:root {
