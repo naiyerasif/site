@@ -34,13 +34,13 @@
 		"remark-parse": "^11.0.0",
 		"remark-rehype": "^11.1.0",
 		"remark-smartypants": "^3.0.1",
-		"sass": "^1.77.4",
+		"sass": "^1.77.5",
 		"unified": "^11.0.4",
 		"unist-util-visit": "^5.0.0"
 	},
 	"devDependencies": {
 		"inquirer": "^9.2.23",
-		"puppeteer": "^22.10.1",
+		"puppeteer": "^22.11.0",
 		"unlighthouse-puppeteer": "^0.10.6"
 	},
 	"packageManager": "pnpm@9.3.0",

@@ -28,7 +28,7 @@ importers:
         version: 2.2.1
       astro:
         specifier: ^4.10.2
-        version: 4.10.2(@types/node@20.14.2)(sass@1.77.4)
+        version: 4.10.2(@types/node@20.14.2)(sass@1.77.5)
       dayjs:
         specifier: ^1.11.11
         version: 1.11.11
@@ -75,8 +75,8 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1
       sass:
-        specifier: ^1.77.4
-        version: 1.77.4
+        specifier: ^1.77.5
+        version: 1.77.5
       unified:
         specifier: ^11.0.4
         version: 11.0.4
@@ -88,8 +88,8 @@ importers:
         specifier: ^9.2.23
         version: 9.2.23
       puppeteer:
-        specifier: ^22.10.1
-        version: 22.10.1
+        specifier: ^22.11.0
+        version: 22.11.0
       unlighthouse-puppeteer:
         specifier: ^0.10.6
         version: 0.10.6(rollup@4.18.0)(vue@3.4.15)
@@ -1538,6 +1538,9 @@ packages:
   bare-events@2.3.1:
     resolution: {integrity: sha512-sJnSOTVESURZ61XgEleqmP255T6zTYwHPwE4r6SssIh0U9/uDvfpdoJYpVUerJJZH2fueO+CdT8ZT+OC/7aZDA==}
 
+  bare-events@2.4.2:
+    resolution: {integrity: sha512-qMKFd2qG/36aA4GwvKq8MxnPgCQAmBWmSyLWsJcbn8v03wvIPQ/hG1Ms8bPzndZxMDoHpxez5VOS+gC9Yi24/Q==}
+
   bare-fs@2.3.1:
     resolution: {integrity: sha512-W/Hfxc/6VehXlsgFtbB5B4xFcsCl+pAh30cYhoFyXErf6oGrwjh8SwiPAdHgpmWonKuYpZgGywN0SXt7dgsADA==}
 
@@ -1988,8 +1991,8 @@ packages:
   devtools-protocol@0.0.1232444:
     resolution: {integrity: sha512-pM27vqEfxSxRkTMnF+XCmxSEb6duO5R+t8A9DEEJgy4Wz2RVanje2mmj99B6A3zv2r/qGfYlOvYznUhuokizmg==}
 
-  devtools-protocol@0.0.1286932:
-    resolution: {integrity: sha512-wu58HMQll9voDjR4NlPyoDEw1syfzaBNHymMMZ/QOXiHRNluOnDgu9hp1yHOKYoMlxCh4lSSiugLITe6Fvu1eA==}
+  devtools-protocol@0.0.1299070:
+    resolution: {integrity: sha512-+qtL3eX50qsJ7c+qVyagqi7AWMoQCBGNfoyJZMwm/NSXVqLYbuitrWEEIzxfUmTNy7//Xe8yhMmQ+elj3uAqSg==}
 
   devtools-protocol@0.0.981744:
     resolution: {integrity: sha512-0cuGS8+jhR67Fy7qG3i3Pc7Aw494sb9yG9QgpG97SFVWwolgYjlhJg7n+UaHxOQT30d1TYu/EYe9k01ivLErIg==}
@@ -3437,18 +3440,18 @@ packages:
     resolution: {integrity: sha512-ArbnyA3U5SGHokEvkfWjW+O8hOxV1RSJxOgriX/3A4xZRqixt9ZFHD0yPgZQF05Qj0oAqi8H/7stDorjoHY90Q==}
     engines: {node: '>=16.13.2'}
 
-  puppeteer-core@22.10.1:
-    resolution: {integrity: sha512-t98x55ohn6eioM/e1dmhy6bG9iuQ+mvpNXyr+UppB789uvNKKOvy9YnWpKp4mVyKxi9BGsceHAFuovQGqQKyCQ==}
+  puppeteer-core@22.11.0:
+    resolution: {integrity: sha512-57YUjhRoSpZWg9lCssWsgzM1/X/1jQnkKbbspbeW0bhZTt3TD4WdNXEYI7KrFFnSvx21tyHhfWW0zlxzbwYSAA==}
     engines: {node: '>=18'}
 
   puppeteer@21.11.0:
     resolution: {integrity: sha512-9jTHuYe22TD3sNxy0nEIzC7ZrlRnDgeX3xPkbS7PnbdwYjl2o/z/YuCrRBwezdKpbTDTJ4VqIggzNyeRcKq3cg==}
     engines: {node: '>=16.13.2'}
-    deprecated: < 22.5.0 is no longer supported
+    deprecated: < 22.6.4 is no longer supported
     hasBin: true
 
-  puppeteer@22.10.1:
-    resolution: {integrity: sha512-yFT7BlyIa4B1SnE6ccBVt+nYpDNTtZtwNh9tL79d6eWlGh94YrdzQDH+WtG88mCuQIcjjcJgvTRfm8uljuMgUQ==}
+  puppeteer@22.11.0:
+    resolution: {integrity: sha512-U5U0Dx5Tsd/ec39BmflhcSFIK9UnZxGQfyUzvQVHivt6gIi6RgJqYL9MJaU90OG6tTz65XqzN4wF0ZyDyY0NuA==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -3607,8 +3610,8 @@ packages:
   sanitize-filename@1.6.3:
     resolution: {integrity: sha512-y/52Mcy7aw3gRm7IrcGDFx/bCk4AhRh2eI9luHOQM86nZsqwiRkkq2GekHXBBD+SmPidc8i2PqtYZl+pWJ8Oeg==}
 
-  sass@1.77.4:
-    resolution: {integrity: sha512-vcF3Ckow6g939GMA4PeU7b2K/9FALXk2KF9J87txdHzXbUF9XRQRwSxcAs/fGaTnJeBFd7UoV22j3lzMLdM0Pw==}
+  sass@1.77.5:
+    resolution: {integrity: sha512-oDfX1mukIlxacPdQqNb6mV2tVCrnE+P3nVYioy72V5tlk56CPNcO4TCuFcaCRKKfJ1M3lH95CleRS+dVKL2qMg==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -5741,7 +5744,7 @@ snapshots:
     dependencies:
       tslib: 2.6.3
 
-  astro@4.10.2(@types/node@20.14.2)(sass@1.77.4):
+  astro@4.10.2(@types/node@20.14.2)(sass@1.77.5):
     dependencies:
       '@astrojs/compiler': 2.8.0
       '@astrojs/internal-helpers': 0.4.0
@@ -5800,8 +5803,8 @@ snapshots:
       tsconfck: 3.1.0
       unist-util-visit: 5.0.0
       vfile: 6.0.1
-      vite: 5.2.13(@types/node@20.14.2)(sass@1.77.4)
-      vitefu: 0.2.5(vite@5.2.13(@types/node@20.14.2)(sass@1.77.4))
+      vite: 5.2.13(@types/node@20.14.2)(sass@1.77.5)
+      vitefu: 0.2.5(vite@5.2.13(@types/node@20.14.2)(sass@1.77.5))
       which-pm: 2.2.0
       yargs-parser: 21.1.1
       zod: 3.23.8
@@ -5854,9 +5857,12 @@ snapshots:
   bare-events@2.3.1:
     optional: true
 
+  bare-events@2.4.2:
+    optional: true
+
   bare-fs@2.3.1:
     dependencies:
-      bare-events: 2.3.1
+      bare-events: 2.4.2
       bare-path: 2.1.3
       bare-stream: 2.1.2
     optional: true
@@ -6064,9 +6070,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  chromium-bidi@0.5.23(devtools-protocol@0.0.1286932):
+  chromium-bidi@0.5.23(devtools-protocol@0.0.1299070):
     dependencies:
-      devtools-protocol: 0.0.1286932
+      devtools-protocol: 0.0.1299070
       mitt: 3.0.1
       urlpattern-polyfill: 10.0.0
       zod: 3.23.8
@@ -6331,7 +6337,7 @@ snapshots:
 
   devtools-protocol@0.0.1232444: {}
 
-  devtools-protocol@0.0.1286932: {}
+  devtools-protocol@0.0.1299070: {}
 
   devtools-protocol@0.0.981744: {}
 
@@ -8232,12 +8238,12 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  puppeteer-core@22.10.1:
+  puppeteer-core@22.11.0:
     dependencies:
       '@puppeteer/browsers': 2.2.3
-      chromium-bidi: 0.5.23(devtools-protocol@0.0.1286932)
+      chromium-bidi: 0.5.23(devtools-protocol@0.0.1299070)
       debug: 4.3.5
-      devtools-protocol: 0.0.1286932
+      devtools-protocol: 0.0.1299070
       ws: 8.17.0
     transitivePeerDependencies:
       - bufferutil
@@ -8256,12 +8262,12 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  puppeteer@22.10.1:
+  puppeteer@22.11.0:
     dependencies:
       '@puppeteer/browsers': 2.2.3
       cosmiconfig: 9.0.0
-      devtools-protocol: 0.0.1286932
-      puppeteer-core: 22.10.1
+      devtools-protocol: 0.0.1299070
+      puppeteer-core: 22.11.0
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -8515,7 +8521,7 @@ snapshots:
     dependencies:
       truncate-utf8-bytes: 1.0.2
 
-  sass@1.77.4:
+  sass@1.77.5:
     dependencies:
       chokidar: 3.6.0
       immutable: 4.3.6
@@ -9058,7 +9064,7 @@ snapshots:
       unist-util-stringify-position: 4.0.0
       vfile-message: 4.0.2
 
-  vite@5.2.13(@types/node@20.14.2)(sass@1.77.4):
+  vite@5.2.13(@types/node@20.14.2)(sass@1.77.5):
     dependencies:
       esbuild: 0.20.2
       postcss: 8.4.38
@@ -9066,11 +9072,11 @@ snapshots:
     optionalDependencies:
       '@types/node': 20.14.2
       fsevents: 2.3.3
-      sass: 1.77.4
+      sass: 1.77.5
 
-  vitefu@0.2.5(vite@5.2.13(@types/node@20.14.2)(sass@1.77.4)):
+  vitefu@0.2.5(vite@5.2.13(@types/node@20.14.2)(sass@1.77.5)):
     optionalDependencies:
-      vite: 5.2.13(@types/node@20.14.2)(sass@1.77.4)
+      vite: 5.2.13(@types/node@20.14.2)(sass@1.77.5)
 
   vscode-oniguruma@2.0.1: {}
 
