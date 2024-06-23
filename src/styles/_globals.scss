@@ -143,7 +143,7 @@
 }
 
 .avatar {
-	--avatarSize: calc(48px + 6vw);
+	--avatarSize: calc(56px + 4vw);
 	inline-size: var(--avatarSize);
 	border-radius: var(--x2-radius-max);
 }
