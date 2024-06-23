@@ -19,10 +19,10 @@ const pageInfo = {
 
 <Layout {pageInfo}>
 	<Fragment slot="hero">
-		<div class="hero-header">
-			<a class="hero-back-nav distinct-link" href="/"><Icon name="long-arrow-left"/>Return to home</a>
-			<span class="hero-content-type">Profile</span>
-		</div>
+		<nav class="hero-header breadcrumb" aria-label="breadcrumbs">
+			<a class="breadcrumb-item" href="/">Home</a>
+			<span class="breadcrumb-item">Profile</span>
+		</nav>
 		<div class="hero-body">
 			<div class="hero-headline-image">
 				<img src={avatar} alt={data.title} class="avatar">

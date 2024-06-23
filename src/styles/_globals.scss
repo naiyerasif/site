@@ -176,6 +176,27 @@ figure.frame {
 	}
 }
 
+.breadcrumb {
+	display: inline-flex;
+	align-items: center;
+
+	&-item + &-item {
+		&::before {
+			margin-inline: 0.5ch;
+			vertical-align: middle;
+			@include mixins.icon("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 2 8 22'/%3E%3C/svg%3E");
+			opacity: 0.5;
+			display: inline-block;
+			user-select: none;
+			@include mixins.fixedSize(1em);
+		}
+	}
+}
+
+.capitalized {
+	text-transform: capitalize;
+}
+
 .card {
 	--x2-gap-flow: 1em;
 	padding-block: 2em;

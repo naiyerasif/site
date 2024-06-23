@@ -25,7 +25,7 @@ const { entry } = Astro.props;
 const { post, prev, next } = entry;
 const { data, render } = post;
 const { Content, headings } = await render();
-const category = data.category;
+const category = data.type === "status" ? "status" : data.category;
 const url = Astro.url.pathname;
 const showToc = data.showToc && headings && headings.length > 0;
 const prevPage = prev ? postPathname(prev.slug) : undefined;
@@ -56,10 +56,10 @@ const pageInfo = {
 
 <Layout {pageInfo}>
 	<Fragment slot="hero">
-		<div class="hero-header">
-			<a class="hero-back-nav distinct-link" href="/"><Icon name="long-arrow-left"/>Return to home</a>
-			<span class="hero-content-type">{category}</span>
-		</div>
+		<nav class="hero-header breadcrumb">
+			<a class="breadcrumb-item" href="/">Home</a>
+			<span class="breadcrumb-item capitalized">{category}</span>
+		</nav>
 		<div class="hero-body">
 			<div class="hero-headline-text">
 				<h1 class="headline">{data.title}</h1>

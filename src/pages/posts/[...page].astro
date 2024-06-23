@@ -28,13 +28,13 @@ const pageInfo = {
 
 <Layout {pageInfo}>
 	<Fragment slot="hero">
-		<div class="hero-header">
-			<a class="hero-back-nav distinct-link" href="/"><Icon name="long-arrow-left"/>Return to home</a>
-		</div>
+		<nav class="hero-header breadcrumb">
+			<a class="breadcrumb-item" href="/">Home</a>
+			<span class="breadcrumb-item">{page.start + 1}&hellip;{page.end + 1} of {page.total} posts</span>
+		</nav>
 		<div class="hero-body">
 			<div class="hero-headline-text">
-				<h1 class="headline">All the posts</h1>
-				<p class="subheadline">listing {page.start + 1}&hellip;{page.end + 1} of {page.total} posts</p>
+				<h1 class="headline">Posts</h1>
 			</div>
 		</div>
 	</Fragment>

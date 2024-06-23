@@ -78,7 +78,6 @@ main#content + .footer,
 .hero {
 	--heroItemGap: 1em;
 
-	&-header,
 	&-body,
 	&-footer {
 		display: flex;
@@ -90,19 +89,7 @@ main#content + .footer,
 	@include mixins.flow;
 
 	&-header {
-		--x2-padding-distinct-link: 0.5ch 1.5ch;
-
-		.hero-back-nav .icon {
-			margin-inline-end: 0.5ch;
-		}
-
-		.hero-content-type {
-			text-transform: capitalize;
-			padding: var(--x2-padding-distinct-link);
-			border: var(--x2-line-width-0) solid var(--x2-border-note);
-			border-radius: var(--x2-radius-max);
-			background-color: var(--x2-bg-note);
-		}
+		font-size: var(--x2-text-sm);
 	}
 
 	&-footer {
