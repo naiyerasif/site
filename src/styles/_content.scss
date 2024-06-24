@@ -43,6 +43,12 @@ article.content {
 				visibility: visible;
 			}
 		}
+
+		@include mixins.onTouch {
+			a .icon {
+				visibility: visible;
+			}
+		}
 	}
 
 	.footnotes {

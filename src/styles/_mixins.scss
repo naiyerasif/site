@@ -20,3 +20,9 @@
 	mask-size: contain;
 	background-color: currentColor;
 }
+
+@mixin onTouch {
+	@media (pointer: coarse), (any-hover: none) {
+		@content;
+	}
+}
