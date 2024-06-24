@@ -32,7 +32,6 @@ article.content {
 	:is(h1, h2, h3, h4, h5, h6) {
 		--x2-size-icon: 1ch;
 		a .icon {
-			display: none;
 			visibility: hidden;
 			vertical-align: text-top;
 			margin-inline-start: 0.25ch;
@@ -41,8 +40,6 @@ article.content {
 		&:focus,
 		&:hover {
 			a .icon {
-				stroke-width: 3px;
-				display: inline-block;
 				visibility: visible;
 			}
 		}
