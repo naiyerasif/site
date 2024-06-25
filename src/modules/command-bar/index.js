@@ -156,7 +156,7 @@ class CommandBar extends HTMLElement {
 		const nodes = [];
 
 		if (this.recents && this.recents.length) {
-			nodes.push(this._getSectionItems(this.recents, "Recently searched", "recently-searched"));
+			nodes.push(this._getSectionItems(this.recents, "Recent search results", "recently-searched"));
 		}
 
 		if (items["Navigation"] && items["Navigation"].length) {

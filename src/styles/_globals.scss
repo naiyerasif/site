@@ -70,18 +70,16 @@
 		}
 
 		.cmdb-section-header {
-			background-color: var(--x2-border-note);
+			border-block-start: var(--x2-line-width-sm) solid var(--x2-border-note);
 			font-size: 0.8em;
-			color: var(--x2-color-body-emphasis);
-			line-height: 1;
-			padding: 0.5rem 1rem;
+			color: var(--x2-color-body-subtle);
+			padding: 0.25rem 1rem;
 		}
 
 		.command-item {
 			display: flex;
 			align-items: center;
 			padding: 0.75rem 1rem;
-			border-block-start: var(--x2-line-width-sm) solid var(--x2-border-codeblock);
 
 			&:focus,
 			&:hover {
