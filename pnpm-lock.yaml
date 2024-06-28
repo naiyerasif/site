@@ -85,8 +85,8 @@ importers:
         version: 5.0.0
     devDependencies:
       inquirer:
-        specifier: ^9.3.0
-        version: 9.3.0
+        specifier: ^9.3.1
+        version: 9.3.1
       puppeteer:
         specifier: ^22.12.1
         version: 22.12.1
@@ -2269,8 +2269,8 @@ packages:
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
 
-  inquirer@9.3.0:
-    resolution: {integrity: sha512-zdopqPUKWmnOcaBJYMMtjqWCB2HHXrteAou9tCYgkTJu01QheLfYOrkzigDfidPBtCizmkdpSU0fp2DKaMdFPA==}
+  inquirer@9.3.1:
+    resolution: {integrity: sha512-A5IdVr1I04XqPlwrGgTJMKmzRg5ropqNpSeqo0vj1ZmluSCNSFaPZz4eazdPrhVcZfej7fCEYvD2NYa1KjkTJA==}
     engines: {node: '>=18'}
 
   intl-messageformat-parser@1.8.1:
@@ -2506,12 +2506,6 @@ packages:
 
   lodash-es@4.17.21:
     resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
-
-  lodash.get@4.4.2:
-    resolution: {integrity: sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==}
-
-  lodash.set@4.3.2:
-    resolution: {integrity: sha512-4hNPN5jlm/N/HLMCO43v8BXKq9Z7QdAGc/VGrRD61w8gN9g/6jF9A4L1pbUgBLCffi0w9VsXfTOij5x8iTyFvg==}
 
   lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
@@ -6534,14 +6528,12 @@ snapshots:
 
   inherits@2.0.4: {}
 
-  inquirer@9.3.0:
+  inquirer@9.3.1:
     dependencies:
       '@inquirer/figures': 1.0.3
       ansi-escapes: 4.3.2
       cli-width: 4.1.0
       external-editor: 3.1.0
-      lodash.get: 4.4.2
-      lodash.set: 4.3.2
       mute-stream: 1.0.0
       ora: 5.4.1
       picocolors: 1.0.1
@@ -6781,10 +6773,6 @@ snapshots:
       p-locate: 5.0.0
 
   lodash-es@4.17.21: {}
-
-  lodash.get@4.4.2: {}
-
-  lodash.set@4.3.2: {}
 
   lodash@4.17.21: {}
 
