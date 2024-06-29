@@ -308,7 +308,7 @@ networks:
 Launch this stack by executing `docker-compose up -d` and browse to <http://localhost:4200>. You'll see the following message displayed on the browser window.
 
 :::figure
-![Greeter UI](/images/post/2018/2018-08-05-12-06-01-communicating-with-containers-on-docker-network-01.png)
+![Greeter UI](./images/2018-08-05-12-06-01-communicating-with-containers-on-docker-network-01.png)
 
 Greeter UI displaying the default greeting message
 :::
@@ -334,7 +334,7 @@ server {
 Rebuild the `greeter-ui` image, launch the stack again and browse to <http://localhost:4200>. You'd see the expected greeting message.
 
 :::figure
-![Greeter UI](/images/post/2018/2018-08-05-12-06-01-communicating-with-containers-on-docker-network-02.png)
+![Greeter UI](./images/2018-08-05-12-06-01-communicating-with-containers-on-docker-network-02.png)
 
 Greeter UI displaying the custom greeting message
 :::

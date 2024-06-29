@@ -41,7 +41,7 @@ The popularity of [Spotlight](https://en.wikipedia.org/wiki/Spotlight_(Apple)) i
 This version replaces the good old search with a Command bar (represented by &#8984; symbol).
 
 :::figure
-![Command bar with search box](/images/post/2023/2023-02-02-13-12-51-introducing-naiyer-dev-01.png)
+![Command bar with search box](./images/2023-02-02-13-12-51-introducing-naiyer-dev-01.png)
 
 Command bar in action
 :::
@@ -53,7 +53,7 @@ I've used [Fuse.js](https://fusejs.io/) to power the fuzzy search here. You can 
 I've switched from the traditional hamburger menu (which sat on top right in the previous version) to a bottom navigation bar on small screens.
 
 :::figure
-![Bottom navigation bar](/images/post/2023/2023-02-02-13-12-51-introducing-naiyer-dev-02.png)
+![Bottom navigation bar](./images/2023-02-02-13-12-51-introducing-naiyer-dev-02.png)
 
 Bottom navigation bar (visible only on small screens)
 :::

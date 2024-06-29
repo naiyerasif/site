@@ -1,6 +1,6 @@
 ---
 import { getEntry } from "astro:content";
-import Icon from "~components/Icon.astro";
+import { Image } from "astro:assets";
 import Layout from "~layouts/Layout.astro";
 
 const { data, render } = await getEntry("profile", "about");
@@ -25,7 +25,7 @@ const pageInfo = {
 		</nav>
 		<div class="hero-body">
 			<div class="hero-headline-image">
-				<img src={avatar} alt={data.title} class="avatar">
+				<Image src={data.avatar} alt={data.title} class="avatar"/>
 			</div>
 			<div class="hero-headline-text">
 				<h1 class="headline">About {name}</h1>

@@ -180,7 +180,7 @@ Note that you can't use `OVERRIDING SYSTEM VALUE` for the `update` statement.
 - A static analysis tool can show the error messages before you execute the statements.
 
 	:::figure
-	![Error overlay in DataGrip for identity column](/images/post/2023/2023-10-02-23-17-42-limiting-manual-changes-to-generated-numeric-columns-in-postgres-01.png)
+	![Error overlay in DataGrip for identity column](./images/2023-10-02-23-17-42-limiting-manual-changes-to-generated-numeric-columns-in-postgres-01.png)
 
 	An overlay in DataGrip warning that only DEFAULT can be inserted into an identity column
 	:::

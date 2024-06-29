@@ -23,7 +23,7 @@ Download the installer (the `exe` file). When launched, it asks for a folder to 
 Right-click the Office installation `img` file and select **Mount**.
 
 :::figure
-![Mounting Office installer](/images/post/2022/2022-04-15-18-52-10-customizing-microsoft-office-installation-01.png)
+![Mounting Office installer](./images/2022-04-15-18-52-10-customizing-microsoft-office-installation-01.png)
 
 Mounting the Office installer image on Windows
 :::
@@ -31,7 +31,7 @@ Mounting the Office installer image on Windows
 This mounts the file as a drive (say `G:`).
 
 :::figure
-![Mounted Office installer](/images/post/2022/2022-04-15-18-52-10-customizing-microsoft-office-installation-02.png)
+![Mounted Office installer](./images/2022-04-15-18-52-10-customizing-microsoft-office-installation-02.png)
 
 Office installer mounted as a drive on Windows
 :::
@@ -43,7 +43,7 @@ The Office Deployment Tool requires a configuration file that describes which ap
 Open the browser and launch the [Office Customization Tool](https://config.office.com/deploymentsettings). Choose the architecture, the Office version, etc. At the bottom of the **Products and releases** section, you'd find a list of applications that you can toggle for installation. Pick and choose what you want and complete the rest of the configuration.
 
 :::figure
-![Selecting Apps with Office Customization Tool](/images/post/2022/2022-04-15-18-52-10-customizing-microsoft-office-installation-03.png)
+![Selecting Apps with Office Customization Tool](./images/2022-04-15-18-52-10-customizing-microsoft-office-installation-03.png)
 
 Selecting Office applications to install with [Office Customization Tool](https://config.office.com/deploymentsettings)
 :::
@@ -82,7 +82,7 @@ Open PowerShell as the administrator at the location where the Office Deployment
 This command launches the customized install.
 
 :::figure
-![Office installation splashscreen](/images/post/2022/2022-04-15-18-52-10-customizing-microsoft-office-installation-04.png)
+![Office installation splashscreen](./images/2022-04-15-18-52-10-customizing-microsoft-office-installation-04.png)
 
 Installing Office with selected applications
 :::

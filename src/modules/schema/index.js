@@ -53,14 +53,14 @@ const postSchema = z.object({
 	message: "Invalid category for the content type"
 });
 
-const profileSchema = z.object({
+const profileSchema = ({ image }) => z.object({
 	title,
 	description,
 	tagline,
 	date,
 	update,
 	type: contentTypes,
-	avatar: z.string(),
+	avatar: image(),
 
 	ogImage,
 	ogType: ogTypes.default("profile"),

@@ -17,7 +17,7 @@ So, how does this work?
 - When a subsequent request is made to the application, the token should be sent with it in an `Authorization` header, often using a [Bearer schema](https://tools.ietf.org/html/rfc6750).
 
 :::figure
-![A sequence of JWT-based authentication flow](/images/post/2020/2020-04-10-21-35-25-securing-spring-boot-apis-with-jwt-authentication-01.svg)
+![A sequence of JWT-based authentication flow](./images/2020-04-10-21-35-25-securing-spring-boot-apis-with-jwt-authentication-01.svg)
 
 JWT-based authentication flow
 :::

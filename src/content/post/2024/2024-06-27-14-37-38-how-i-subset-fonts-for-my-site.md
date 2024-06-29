@@ -11,7 +11,7 @@ category: "guide"
 When I revamped this site last year, I also opted to use the latest version of [Inter](https://rsms.me/inter/) — v4. This version came with some lovely updates, such as a display variant with support for optical sizing, humanist style italics, round quotes and commas, and so on. Sadly, it also bumped the file size of the font (by 150% in case of the variable font). Large font files can degrade the performance of a web page so this was a noticeable regression.
 
 :::figure{.frame}
-![Inter font properties and layout features](/images/post/2024/2024-06-27-14-37-38-how-i-subset-fonts-for-my-site-01.png)
+![Inter font properties and layout features](./images/2024-06-27-14-37-38-how-i-subset-fonts-for-my-site-01.png)
 
 Out of box, Inter 4.0 variable font supports 2926 glyphs, 9 weights, and 44 layout features.
 :::
@@ -136,7 +136,7 @@ Subsetting Inter.var.woff2... ━━━━━━━━━━━━━━━━�
 After successful run, I got 12 font files in the `output` directory (three for each input font file). A Latin subset now stood at 70 kB compared to 337 kB earlier.
 
 :::figure{.frame}
-![Inter font properties and layout features of the Latin subset](/images/post/2024/2024-06-27-14-37-38-how-i-subset-fonts-for-my-site-02.png)
+![Inter font properties and layout features of the Latin subset](./images/2024-06-27-14-37-38-how-i-subset-fonts-for-my-site-02.png)
 
 Latin subset of Inter 4.0 variable font supports 444 glyphs, 9 weights, and 15 layout features.
 :::
