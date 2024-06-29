@@ -48,6 +48,13 @@ const siteIssueUrl = siteInfo.issueBase;
 				<li><a href="/feed.xml">Posts + statuses</a></li>
 			</ul>
 		</div>
+		<div class="footer-shortcuts">
+			<strong>Keyboard Shortcuts</strong>
+			<ul>
+				<li><kbd>ctrl+k</kbd> or <kbd>cmd+k</kbd> : launch command bar</li>
+				<li><kbd>esc</kbd> : close command bar</li>
+			</ul>
+		</div>
 		<footer-preferences>
 			<strong>Preferences</strong>
 			<ul>
@@ -60,24 +67,8 @@ const siteIssueUrl = siteInfo.issueBase;
 						</a>
 					</theme-switcher>
 				</li>
-				<li>
-					<data-saver>
-						Data Saver: 
-						<a role="switch" aria-live="polite" aria-checked="true" data-saver-switch id="footer-data-saver" href="#footer-data-saver">
-							<span data-saver-state="on">on</span>
-							<span data-saver-state="off">off</span>
-						</a>
-					</data-saver>
-				</li>
 			</ul>
 		</footer-preferences>
-		<div class="footer-shortcuts">
-			<strong>Keyboard Shortcuts</strong>
-			<ul>
-				<li><kbd>ctrl+k</kbd> or <kbd>cmd+k</kbd> : launch command bar</li>
-				<li><kbd>esc</kbd> : close command bar</li>
-			</ul>
-		</div>
 	</div>
 	<div class="footer-nib">
 		<div class="footer-nib-copyright">
@@ -96,8 +87,7 @@ const siteIssueUrl = siteInfo.issueBase;
 		<div class="footer-psa">
 			<Icon name="info"/>
 			<random-message selector="span">
-				<span>You can activate data saver by visiting <a href="/?metered">naiyerasif.com/?metered</a>. Data saver prevents loading custom fonts on this site.</span>
-				<span hidden>You can browse this site with JavaScript switched off. Features that require JavaScript such as command bar, copying code to clipboard, etc will degrade gracefully.</span>
+				<span>You can browse this site with JavaScript switched off. Features that require JavaScript such as command bar, copying code to clipboard, etc will degrade gracefully.</span>
 			</random-message>
 		</div>
 	</div>

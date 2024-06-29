@@ -32,45 +32,6 @@ setTheme(currentTheme || (prefersDarkScheme.matches ? "dark" : "light"));
 </script>
 
 <script type="module" is:inline>
-// toggle global values
-function setDataSaverPreference(dataSaverPref) {
-	window.__dataSaver = dataSaverPref;
-	document.documentElement.dataset.saver = dataSaverPref;
-	try {
-		localStorage.setItem("data-saver", dataSaverPref);
-	} catch (err) {}
-}
-
-// set data saver preference and emit an event to broadcast this change
-window.__setDataSaverPreference = function (dataSaverPref) {
-	setDataSaverPreference(dataSaverPref);
-	document.firstElementChild.dispatchEvent(new Event("datasaverchange", {
-		bubbles: true, // allows this event to bubble up throughout DOM tree
-		composed: true // allows other DOM elements to listen to this event
-	}));
-}
-
-// watch for OS or browser preferences
-const prefersReducedData = window.matchMedia("(prefers-reduced-data: reduce)");
-prefersReducedData.addEventListener("change", function (event) {
-	window.__setDataSaverPreference(event.matches ? "on" : "off");
-});
-
-// initialize the preferences when page loads
-// prefer queryParam over localStorage
-let currentDataSaverPref;
-const queryParam = (new URL(document.location)).searchParams.has("metered");
-if (queryParam) {
-	currentDataSaverPref = "on";
-} else {
-	try {
-		currentDataSaverPref = localStorage.getItem("data-saver");
-	} catch (err) {}
-}
-setDataSaverPreference(currentDataSaverPref || (prefersReducedData.matches ? "on" : "off"));
-</script>
-
-<script type="module" is:inline>
 const searchOptions = {
 	shouldSort: true,
 	threshold: 0.2,
@@ -366,18 +327,6 @@ window.__search = function (query, searchIndex) {
 			--fontSans1: "Inter var", var(--fontSansNative);
 			--fontMono: "JetBrains Mono var", var(--fontMonoNative);
 		}
-	}
-	@media (prefers-reduced-data: reduce) {
-		:root:not([data-saver]) {
-			--fontSans1: var(--fontSansNative);
-			--fontSans2: var(--fontSansNative);
-			--fontMono: var(--fontMonoNative);
-		}
-	}
-	[data-saver="on"] {
-		--fontSans1: var(--fontSansNative);
-		--fontSans2: var(--fontSansNative);
-		--fontMono: var(--fontMonoNative);
 	}
 	@media (pointer: coarse), (any-hover: none) {
 		:root {

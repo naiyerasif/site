@@ -42,12 +42,6 @@ const defaults = [
 		"description": "Switch to your preferred theme",
 		"content": `<theme-switcher><a role="switch" aria-live="polite" aria-checked="true" data-theme-switch class="command-item" href="#"><span data-theme-state="dark"><svg viewBox="0 0 24 24" role="img" class="icon" aria-hidden="true"><path d="M13.355 2C18.238 2.684 22 6.882 22 11.951 22 17.497 17.497 22 11.951 22 6.882 22 2.684 18.238 2 13.355a8.02 8.02 0 0 0 5.932 2.616 8.043 8.043 0 0 0 8.039-8.039A8.02 8.02 0 0 0 13.355 2"/></svg>Dark theme</span><span data-theme-state="light"><svg viewBox="0 0 24 24" role="img" class="icon" aria-hidden="true"><path d="m9.321 2 .535 2m4.288 16 .535 2M3.036 6.824l1.787 1.033m14.354 8.286 1.787 1.033M2 14.679l2-.535m16-4.288 2-.535M7.857 19.177l-1.033 1.787M17.176 3.036l-1.033 1.787"/><circle cx="12" cy="12" r="4"/></svg>Light theme</span></a></theme-switcher>`,
 		"section": "Preferences"
-	},
-	{
-		"title": "Data Saver",
-		"description": "Toggle data saver mode",
-		"content": `<data-saver><a role="switch" aria-live="polite" aria-checked="true" style="cursor:pointer" data-saver-switch class="command-item" href="#"><span data-saver-state="on"><svg viewBox="0 0 24 24" role="img" class="icon" aria-hidden="true"><path d="M8 12h8m-4-4v8m1.881-13.823C18.502 3.058 22 7.124 22 12a9.95 9.95 0 0 1-1.616 5.449m-2.806 2.85A9.95 9.95 0 0 1 12 22C6.481 22 2 17.519 2 12c0-4.804 3.394-8.821 7.913-9.782"/></svg>Data Saver on</span><span data-saver-state="off"><svg viewBox="0 0 24 24" role="img" class="icon" aria-hidden="true"><path d="M13.881 2.088C18.502 2.969 22 7.035 22 11.911a9.95 9.95 0 0 1-1.616 5.449m-2.806 2.85A9.95 9.95 0 0 1 12 21.911c-5.519 0-10-4.481-10-10C2 7.107 5.394 3.09 9.913 2.129"/></svg>Data Saver off</span></a></data-saver>`,
-		"section": "Preferences"
 	}
 ];
 

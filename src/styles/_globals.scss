@@ -24,7 +24,7 @@
 	}
 }
 
-:where(clipboard-copy, command-bar, theme-switcher, data-saver, footer-preferences):not(:defined) {
+:where(clipboard-copy, command-bar, theme-switcher, footer-preferences):not(:defined) {
 	visibility: hidden;
 	display: none;
 }
