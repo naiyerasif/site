@@ -221,17 +221,6 @@ main#content + .footer,
 		}
 	}
 
-	&-psa {
-		color: var(--x2-color-body-subtle);
-		opacity: 0.75;
-		margin-block-start: var(--footerGap);
-
-		.icon {
-			@include mixins.fixedSize(2ch);
-			vertical-align: text-top;
-		}
-	}
-
 	&-subscribe,
 	&-shortcuts,
 	footer-preferences {
