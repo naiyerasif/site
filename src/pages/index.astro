@@ -8,6 +8,7 @@ import siteInfo, { paginationPathname } from "~website";
 import { compare } from "~datetime";
 
 const posts = (await getCollection("post"))
+	.filter(post => post.data.state !== "outdated")
 	.sort((p1, p2) => compare(p1.data.date, p2.data.date))
 	.slice(0, siteInfo.maxPageItems);
 

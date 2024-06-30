@@ -10,6 +10,7 @@ import { compare } from "~datetime";
 
 export async function getStaticPaths({ paginate }) {
 	const posts = (await getCollection("post"))
+		.filter(post => post.data.state !== "outdated")
 		.sort((p1, p2) => compare(p1.data.date, p2.data.date));
 	return paginate(posts, { pageSize: siteInfo.maxPageItems });
 }

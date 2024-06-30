@@ -47,6 +47,7 @@ const defaults = [
 
 export async function GET() {
 	const posts = (await getCollection("post"))
+		.filter(post => post.data.state !== "outdated")
 		.map(post => ({ title: encode(post.data.title), description: post.data.description,  path: postPathname(post.slug) }));
 	return new Response(JSON.stringify([...defaults, ...posts]));
 }

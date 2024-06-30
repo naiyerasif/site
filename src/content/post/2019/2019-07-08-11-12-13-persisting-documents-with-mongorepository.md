@@ -6,7 +6,12 @@ date: 2019-07-08 11:12:13
 update: 2020-10-26 10:10:01
 type: "post"
 category: "guide"
+state: "outdated"
 ---
+
+:::deter{title="Outdated post"}
+This post is severely outdated. It was written before MongoDB offered ACID guarantees. This is no longer valid, and Spring Data MongoDB now [supports](https://docs.spring.io/spring-data/mongodb/reference/mongodb/client-session-transactions.html) transactions natively.
+:::
 
 [Spring Data MongoDB](https://spring.io/projects/spring-data-mongodb) provides a variety of ways to work with a MongoDB database: low-level `MongoReader` and `MongoWriter` APIs, and higher-level `MongoTemplate` and `MongoOperations` APIs that make use of Query, Criteria and Update DSLs. It also provides a repository-style programming model through the `MongoRepository` interface which adds convenient abstractions to work with MongoDB.
 
