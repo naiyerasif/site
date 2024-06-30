@@ -10,7 +10,7 @@ category: "guide"
 
 Method logging is a common pattern to collect data about a method. This could be execution time, the inputs and outputs of the method, etc. You can do this by using a logger but since this is a repetitive task, it makes sense to automate it. That's exactly what we'll do in this post.
 
-:::setup
+:::note{.sm}
 The code written for this post uses:
 
 - Java 21

@@ -10,7 +10,7 @@ category: "guide"
 
 Besides JavaScript or TypeScript, you can also lint the [Sass](https://sass-lang.com/) (or SCSS) files, using a linter called [stylelint](https://github.com/stylelint/stylelint). `stylelint` is a widely used linter that works with SCSS, Sass, Less and SugarSS. It supports a plugin system through which we can extend its behavior. 
 
-:::setup
+:::note{.sm}
 You can use any Node.js project using Sass to follow the examples.
 :::
 

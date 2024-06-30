@@ -18,7 +18,7 @@ Express is frequently used to create APIs in Node.js applications; these can be 
 5. *Developing an API with Express and Postgres*
 :::
 
-:::setup
+:::note{.sm}
 You can pick the Node.js application created in the post [Linting with TypeScript ESLint](/post/2019/08/16/linting-with-typescript-eslint/) to follow this post.
 :::
 

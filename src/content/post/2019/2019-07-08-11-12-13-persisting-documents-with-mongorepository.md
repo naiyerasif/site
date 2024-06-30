@@ -12,7 +12,7 @@ category: "guide"
 
 In this post, we'll explore how to persist documents with `MongoRepository`, create custom converters for specific data types and cascade the documents.
 
-:::setup
+:::note{.sm}
 The examples in this post use
 
 - Java 15

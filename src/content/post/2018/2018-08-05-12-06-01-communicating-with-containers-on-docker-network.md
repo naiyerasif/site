@@ -12,7 +12,7 @@ Say, you've an Angular app that talks to a backend service through a network. Bo
 
 Let's run through some scenarios on how you can achieve this.
 
-:::setup
+:::note{.sm}
 The examples in this post use
 
 - Java 13

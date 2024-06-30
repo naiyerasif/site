@@ -20,7 +20,7 @@ In this post, we'll explore the uses of `log4js-node` to print the logs on the c
 5. [Developing an API with Express and Postgres](/post/2019/08/19/developing-an-api-with-express-and-postgres/)
 :::
 
-:::setup
+:::note{.sm}
 You can pick the Node.js application created in the post [Request logging with morgan](/post/2019/08/13/request-logging-with-morgan/) to follow this post.
 :::
 

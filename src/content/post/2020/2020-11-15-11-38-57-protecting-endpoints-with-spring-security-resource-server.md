@@ -26,7 +26,7 @@ The `aud` claim is an optional claim that becomes useful when multiple clients a
 
 We'll discuss multiple ways of validating a token through Spring Security and the scenarios where one approach makes sense over the other.
 
-:::setup
+:::note{.sm}
 The examples in this post use
 
 - Java 15

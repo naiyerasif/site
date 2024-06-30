@@ -21,7 +21,7 @@ A backoff strategy is an algorithm that decides
 
 In this post, we'll explore how to implement a retry pattern for a Java method that may throw an exception. We'll use a library called [Resilience4J](https://github.com/resilience4j/resilience4j) which provides several fault-tolerance implementations including circuit breaking, retry, fallback, rate and time limiting, caching, etc. We'll only use the **Resilience4J Retry** module of this library.
 
-:::setup
+:::note{.sm}
 The code written for this post uses:
 
 - Java 21

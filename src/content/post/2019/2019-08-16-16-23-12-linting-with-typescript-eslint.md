@@ -20,7 +20,7 @@ In this post, we'll set up linting with TypeScript ESLint for a TypeScript proje
 5. [Developing an API with Express and Postgres](/post/2019/08/19/developing-an-api-with-express-and-postgres/)
 :::
 
-:::setup
+:::note{.sm}
 You can pick the Node.js application created in the post [Logging on Node.js with log4js-node](/post/2019/08/14/logging-on-nodejs-with-log4js-node/) to follow this post.
 :::
 

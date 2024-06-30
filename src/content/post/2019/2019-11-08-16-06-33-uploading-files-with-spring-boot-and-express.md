@@ -10,7 +10,7 @@ category: "guide"
 
 In a traditional microservice premise, a client application (e.g., an Angular frontend) rarely hits a backend service directly. Usually, a middleware (e.g., an Express application) sits between the backend and client, facilitating the communication, as a [backend for frontend](https://developer.ibm.com/patterns/create-backend-for-frontend-application-architecture/). In this post, we'll explore how Express can facilitate a file upload with a reactive Spring backend and an Angular frontend.
 
-:::setup
+:::note{.sm}
 The examples in this post use
 
 - Java 13

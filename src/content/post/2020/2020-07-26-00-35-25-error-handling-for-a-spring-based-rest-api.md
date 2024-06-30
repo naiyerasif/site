@@ -18,7 +18,7 @@ This is a pretty common occurrence and customizing the error response so that it
 
 In this post, we'll explore some of the ways to customize error responses returned by a REST API. We'll also cover some usecases when Spring Security comes into the picture.
 
-:::setup
+:::note{.sm}
 The code written for this post uses:
 
 - Java 14

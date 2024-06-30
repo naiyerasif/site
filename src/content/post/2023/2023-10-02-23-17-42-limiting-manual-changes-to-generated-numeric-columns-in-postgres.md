@@ -10,7 +10,7 @@ category: "guide"
 
 A generated numeric column is often used to keep the internal id of a row in a table. For compliance and consistency, you may want to restrict the insert and update operations on such columns. Such restrictions may outright disallow the insert and update operations, or allow them only through the approved generation mechanisms. Let's take a look at this with an example.
 
-:::setup
+:::note{.sm}
 The examples in this post use 
 
 - Postgres 16 running in a Docker container

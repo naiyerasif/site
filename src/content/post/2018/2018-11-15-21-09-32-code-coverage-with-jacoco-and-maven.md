@@ -12,7 +12,7 @@ Code coverage is a measure of how much of your code executes when the automated 
 
 In this post, we'll integrate JaCoCo with a Java application. We'll also generate a coverage report that can be viewed in a browser.
 
-:::setup
+:::note{.sm}
 The examples in this post use
 
 - Java 16

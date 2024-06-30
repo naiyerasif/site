@@ -24,7 +24,7 @@ JWT-based authentication flow
 
 In this post, we'll create a Spring Boot API and secure it using Spring Security and JWT-based authentication.
 
-:::setup
+:::note{.sm}
 The code written for this post uses
 
 - Java 15

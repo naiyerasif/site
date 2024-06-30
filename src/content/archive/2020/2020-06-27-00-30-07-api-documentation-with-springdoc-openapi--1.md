@@ -17,7 +17,7 @@ This post covers Springdoc integration with Spring Boot 2 and Java 14. Please co
 
 Springdoc is a relatively young [open-source](https://github.com/springdoc/springdoc-openapi) project that adds several new features not available in Springfox at the moment, including the support for OpenAPI Specification 3 (OAS 3) and functional and reactive Spring APIs to create REST endpoints. In this post, we'll explore how we can use Springdoc with a Spring Boot project.
 
-:::setup
+:::note{.sm}
 The code written for this post uses:
 
 - Java 14

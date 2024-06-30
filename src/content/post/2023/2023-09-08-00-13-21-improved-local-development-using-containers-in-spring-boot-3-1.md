@@ -12,7 +12,7 @@ Spring Boot 3.1 added important integrations with [Docker Compose](https://docs.
 
 Let's take a look at these features with an example project.
 
-:::setup
+:::note{.sm}
 The examples in this post use
 
 - Spring Boot 3.1.3

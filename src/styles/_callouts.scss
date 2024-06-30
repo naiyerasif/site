@@ -13,7 +13,6 @@
 
 	&-indicator {
 		display: flex;
-		align-items: center;
 		gap: 0.5ch;
 		color: var(--calloutColor);
 		background-color: var(--calloutBorderColor);
@@ -33,6 +32,16 @@
 		.callout-content {
 			color: var(--calloutColor);
 			font-size: 1.125em;
+		}
+	}
+
+	&.sm {
+		.callout-content {
+			font-size: 0.9em;
+
+			li {
+				--x2-gap-flow: 0;
+			}
 		}
 	}
 }

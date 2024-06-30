@@ -16,7 +16,7 @@ In an event-driven architecture, you might invoke an AWS Lambda function with an
 3. [Using LocalStack for AWS Lambda with SNS trigger](/post/2024/03/03/using-localstack-for-aws-lambda-with-sns-trigger/)
 :::
 
-:::setup
+:::note{.sm}
 The examples in this post use
 
 - Docker 25.0.2
