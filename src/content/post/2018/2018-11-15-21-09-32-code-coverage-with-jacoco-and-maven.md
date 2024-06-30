@@ -274,7 +274,7 @@ If the instruction coverage falls below 75%, executing `mvn verify` will throw a
 ```log {5}
 ...
 [INFO] --- jacoco:0.8.12:check (check-for-unit-tests) @ jacoco-coverage-with-maven ---
-[INFO] Loading execution data file /Users/naiyer/dev/guides/java/jacoco-coverage-with-maven/target/jacoco.exec
+[INFO] Loading execution data file ~/guides/java/jacoco-coverage-with-maven/target/jacoco.exec
 [INFO] Analyzed bundle 'jacoco-coverage-with-maven' with 6 classes
 [WARNING] Rule violated for bundle jacoco-coverage-with-maven: instructions covered ratio is 0.55, but expected minimum is 0.75
 [INFO] ------------------------------------------------------------------------
