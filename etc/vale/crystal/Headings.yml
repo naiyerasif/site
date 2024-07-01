@@ -1,9 +1,0 @@
-extends: capitalization
-message: "Use sentence-style capitalization in '%s'."
-level: suggestion
-scope: heading
-match: $sentence
-exceptions:
-  - gRPC
-  - macOS
-  - tl;dr
