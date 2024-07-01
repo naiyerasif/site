@@ -54,7 +54,7 @@ This means I would get three output files for each input font file.
 
 Now that I knew about the unicode range suitable for this site, I needed a script to generate the subsets. [In the past](/post/2023/03/11/generating-webfonts-with-fonttools/), I had used [`fontTools`](https://github.com/fonttools/fonttools) to tweak the font files. I used the following script[^1] using the built-in subsetting tool called `pyftsubset` in `fontTools`. 
 
-[^1]: Copied and modified from the [original script]([copied](https://ryanccn.dev/posts/performance-tales-fonts/)) by Ryan Cao
+[^1]: Copied and modified from the [original script](https://ryanccn.dev/posts/performance-tales-fonts/) by Ryan Cao
 
 ```python
 import subprocess
