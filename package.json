@@ -40,7 +40,7 @@
 		"unist-util-visit": "^5.0.0"
 	},
 	"devDependencies": {
-		"inquirer": "^9.3.1",
+		"inquirer": "^9.3.2",
 		"puppeteer": "^22.12.1",
 		"unlighthouse-puppeteer": "^0.10.6"
 	},
