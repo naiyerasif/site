@@ -13,7 +13,7 @@
 	},
 	"dependencies": {
 		"@astrojs/sitemap": "^3.1.6",
-		"@microflash/preset": "^4.0.2",
+		"@microflash/preset": "^4.0.3",
 		"@microflash/rehype-slugify": "^1.0.0",
 		"@microflash/rehype-starry-night": "^4.1.0",
 		"@microflash/remark-callout-directives": "^4.3.1",
@@ -25,7 +25,7 @@
 		"hastscript": "^9.0.0",
 		"html-entities": "^2.5.2",
 		"mdast-util-to-string": "^4.0.0",
-		"postcss-preset-env": "^9.5.15",
+		"postcss-preset-env": "^9.6.0",
 		"rehype-autolink-headings": "^7.1.0",
 		"rehype-external-links": "^3.0.0",
 		"rehype-stringify": "^10.0.0",
@@ -33,18 +33,18 @@
 		"remark-gfm": "^4.0.0",
 		"remark-parse": "^11.0.0",
 		"remark-rehype": "^11.1.0",
-		"remark-smartypants": "^3.0.1",
+		"remark-smartypants": "^3.0.2",
 		"sass": "^1.77.6",
 		"sharp": "^0.33.4",
 		"unified": "^11.0.5",
 		"unist-util-visit": "^5.0.0"
 	},
 	"devDependencies": {
-		"inquirer": "^9.3.4",
+		"inquirer": "^9.3.5",
 		"puppeteer": "^22.12.1",
 		"unlighthouse-puppeteer": "^0.10.6"
 	},
-	"packageManager": "pnpm@9.4.0",
+	"packageManager": "pnpm@9.5.0",
 	"browserslist": [
 		"defaults"
 	]
