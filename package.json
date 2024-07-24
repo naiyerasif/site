@@ -41,7 +41,7 @@
 	},
 	"devDependencies": {
 		"inquirer": "^9.3.5",
-		"puppeteer": "^22.12.1",
+		"puppeteer": "^22.13.1",
 		"unlighthouse-puppeteer": "^0.10.6"
 	},
 	"packageManager": "pnpm@9.6.0",
