@@ -8,10 +8,13 @@ function createNode(text) {
     return node;
 }
 export function copyNode(node) {
-    const clone = node.cloneNode(true)
-    clone.querySelectorAll("[aria-hidden]").forEach(ignorable => ignorable.remove());
+    const clone = node.cloneNode(true);
+    clone.querySelectorAll("[aria-hidden], [data-unselectable], [data-line-removed]")
+				.forEach(ignorable => ignorable.remove());
     if ('clipboard' in navigator) {
-        return navigator.clipboard.writeText(clone.textContent || '');
+        return navigator.clipboard.writeText(
+					clone.textContent.replace(/(\r\n|\r|\n){2,}/g, '$1\n') || ''
+				);
     }
     const selection = getSelection();
     if (selection == null) {
