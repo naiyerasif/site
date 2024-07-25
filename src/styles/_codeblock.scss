@@ -63,7 +63,7 @@
 
 	.line {
 		--hlLinePaddingLeft: calc(var(--hl-line-marker-gutter-factor, 0) * 1.5ch + 1ch);
-		--hlLineMarkerOffset: calc((var(--hlLinePaddingLeft) * -1) + 0.5ch);
+		--hlLineMarkerOffset: calc((var(--hlLinePaddingLeft) * -1) + 0.25ch);
 		border-inline-start: var(--x2-line-width-0) solid var(--hlLineBorderColor);
 		padding-inline-start: var(--hlLinePaddingLeft);
 		padding-inline-end: 1ch;
