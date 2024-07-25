@@ -24,7 +24,7 @@ Grab a sample Spring Boot application from [here](https://github.com/Microflash/
 
 Bring up an instance of Postgres using Docker with the following `Compose` file (available in the preceding code sample).
 
-```yaml caption='compose.yml'
+```yaml title="compose.yml"
 services:
   postgres:
     image: postgres:16-alpine
@@ -44,7 +44,7 @@ docker compose up -d
 
 To begin with, open `pom.xml` and add the `springdoc-openapi-starter-webmvc-ui` dependency. This starter will enable the OpenAPI integration automatically.
 
-```xml {37..41} caption='pom.xml'
+```xml {37..41} title="pom.xml"
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -233,7 +233,7 @@ public class OpenAPIConfiguration {
 
 Now, open `application.yml` and add the following configuration to customize the document information.
 
-```yaml {8..15} caption='application.yml'
+```yaml {8..15} title="application.yml"
 spring:
   datasource:
     password: stacy
@@ -269,7 +269,7 @@ One common usecase is to add a bearer token before calling an API. You can custo
 
 Here's an example for to support adding a bearer token. Open `src/main/resources/application.yml` and add the highlighted configuration.
 
-```yaml {16..24} caption='application.yml'
+```yaml {16..24} title="application.yml"
 spring:
   datasource:
     password: stacy

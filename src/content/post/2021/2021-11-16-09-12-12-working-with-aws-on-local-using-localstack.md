@@ -28,7 +28,7 @@ The examples in this post use
 
 LocalStack works with a local AWS account which you can configure with the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html). Launch the `aws configure` command as follows.
 
-```sh caption='Configuring the AWS account' prompt{1}
+```sh title="Configuring the AWS account" prompt{1}
 aws configure --profile localstack
 AWS Access Key ID [None]: gwen
 AWS Secret Access Key [None]: stacy
@@ -46,7 +46,7 @@ The preceding command creates two files, `credentials` and `config`, at `~/.aws`
 
 Create a [Compose file](https://docs.docker.com/compose/compose-file/) as follows.
 
-```yaml caption='compose.yml'
+```yaml title="compose.yml"
 services:
   localstack:
     container_name: localstack-with-aws-cli
@@ -67,7 +67,7 @@ docker compose up -d
 
 Once the container is up and running, open a terminal and ping the healthcheck endpoint. If things are working, you would see the status of the available services as "available".
 
-```sh prompt{1} caption='Healthcheck for LocalStack container'
+```sh prompt{1} title="Healthcheck for LocalStack container"
 curl http://localhost:4566/_localstack/health
 {
 	"services": {
@@ -120,7 +120,7 @@ You can now use the AWS services (such as S3, SNS (Simple Notification Service),
 
 Create a sample JSON file as follows, to save it on S3.
 
-```json caption='sample.json'
+```json title="sample.json"
 {
 	"key": "contributor_covenant",
 	"name": "Contributor Covenant",

@@ -22,7 +22,7 @@ The examples in this post use
 
 Create a Maven project with the following `pom.xml`.
 
-```xml caption="pom.xml"
+```xml title="pom.xml"
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -89,7 +89,7 @@ Copy the [sample code](https://github.com/Microflash/guides/tree/main/java/jacoc
 
 Add the JaCoCo plugin in the `pom.xml` with the following configuration.
 
-```xml caption="pom.xml" {56..77}
+```xml title="pom.xml" {56..77}
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -222,7 +222,7 @@ You may require a project to have certain coverage. If the tests fail to pass th
 
 Consider the following configuration.
 
-```xml caption="pom.xml JaCoCo plugin section" {21..40}
+```xml title="pom.xml JaCoCo plugin section" {21..40}
 <plugin>
 	<groupId>org.jacoco</groupId>
 	<artifactId>jacoco-maven-plugin</artifactId>

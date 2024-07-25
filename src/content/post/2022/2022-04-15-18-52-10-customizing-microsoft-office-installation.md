@@ -50,7 +50,7 @@ Selecting Office applications to install with [Office Customization Tool](https:
 
 After you're done with your configuration, hit the **Export** button to download the configuration file. This is an `XML` file. Copy this file in the folder where the Office Deployment Tool was extracted (that's, `D://ODT/`). Open the file in an editor. A sample configuration file for Office Professional Plus would look like this.
 
-```xml {2..3} caption='Configuration.xml'
+```xml {2..3} title="Configuration.xml"
 <Configuration ID="fc113a98-bff0-4eda-8928-41de78dcac57">
 	<Add OfficeClientEdition="64" SourcePath="G:">
 		<Product ID="ProPlus2021Retail" PIDKEY="<product_id_for_activation>">

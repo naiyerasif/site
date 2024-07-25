@@ -11,7 +11,7 @@ Say you are developing a web app which is accessible on the port `8080`. You wan
 
 Connect your Android device to your computer through USB and [turn on USB debugging](https://developer.android.com/studio/debug/dev-options#Enable-debugging). Open a terminal on your computer and type the following command.
 
-```sh caption="Forwad a port to Android with adb"
+```sh title="Forwad a port to Android with adb"
 adb forward tcp:8080 tcp:8080
 ```
 

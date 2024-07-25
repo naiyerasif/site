@@ -5,9 +5,7 @@ import remarkCalloutDirectives from "@microflash/remark-callout-directives";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlugify from "@microflash/rehype-slugify";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeStarryNight from "@microflash/rehype-starry-night";
-import rehypeStarryNightHeaderCaptionExtension from "@microflash/rehype-starry-night/header-caption-extension";
-import rehypeStarryNightHeaderLanguageExtension from "@microflash/rehype-starry-night/header-language-extension";
+import rehypeStarryNight, { defaultPluginPack } from "@microflash/rehype-starry-night";
 import remarkTimeDirective from "./src/modules/remark-time-directive/index.js";
 import remarkFigureDirective from "./src/modules/remark-figure-directive/index.js";
 import remarkYoutubeDirective from "./src/modules/remark-youtube-directive/index.js";
@@ -104,26 +102,25 @@ export default defineConfig({
 						conf: "ini",
 						json: "jsonc",
 						log: "sh",
-						"psql": "sql"
+						psql: "sql"
 					},
-					headerExtensions: [
-						rehypeStarryNightHeaderLanguageExtension,
-						rehypeStarryNightHeaderCaptionExtension,
-						(headerOptions, children) => {
-							children.push({
-								type: "element",
-								tagName: "clipboard-copy",
-								properties: {
-									className: [`${headerOptions.classNamePrefix}-copy`],
-									for: headerOptions.id
-								},
-								children: [
-									{
-										type: "text",
-										value: "Copy"
-									}
-								]
-							})
+					plugins: [
+						...defaultPluginPack,
+						{
+							type: "header",
+							plugin: (globalOptions, nodes) => {
+								nodes.push({
+									type: "element",
+									tagName: "clipboard-copy",
+									properties: {
+										className: [`${globalOptions.classNamePrefix}-copy`],
+										for: globalOptions.id
+									},
+									children: [
+										{ type: "text", value: "Copy" }
+									]
+								});
+							}
 						}
 					]
 				}

@@ -70,7 +70,7 @@ public interface BookRepository extends CrudRepository<Book, Long> {
 
 In the `application.yml`, we'll configure Hikari to have a maximum of 10 database connections in the pool and a minimum of 5 database connections while idling.
 
-```yml caption='application.yml' {6..9}
+```yml title="application.yml" {6..9}
 spring:
   datasource:
     url: jdbc:h2:mem:sa
@@ -148,7 +148,7 @@ Hikari complains about the connection not being available when the `BookReposito
 
 We can get more information about the exception by turning on the `TRACE` logs for Hikari as follows.
 
-```yml caption='application.yml' {11..13}
+```yml title="application.yml" {11..13}
 spring:
   datasource:
     url: jdbc:h2:mem:sa
@@ -180,7 +180,7 @@ As seen in the logs, after serving 10 requests, all the connections in the pool 
 
 To investigate connection leaks, Hikari offers a `leakDetectionThreshold` property which determines for how long a connection can stay out of the pool. Once this threshold is crossed, Hikari throws an exception alerting about a potential connection leak. For the current scenario, we can set it to 30 seconds.
 
-```yml {10} caption='application.yml'
+```yml {10} title="application.yml"
 spring:
   datasource:
     url: jdbc:h2:mem:sa

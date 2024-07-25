@@ -14,7 +14,7 @@ While generally avoided, rewriting Git history is occasionally needed for securi
 
 If you want to go back to a specific commit on a branch, you can do so with any of the following commands.
 
-```sh caption="Resetting head to a specific commit"
+```sh title="Resetting head to a specific commit"
 git reset <commit_sha>
 git reset --soft <commit_sha>
 git reset --hard <commit_sha>

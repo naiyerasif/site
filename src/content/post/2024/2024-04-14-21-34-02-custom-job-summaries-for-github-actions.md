@@ -11,7 +11,7 @@ Today I learned that you can print custom job summaries for GitHub Actions by as
 
 For example, the following step configuration,
 
-```yml caption='deploy.yml'
+```yml title="deploy.yml"
 - name: Job summary
   run: |
     echo "# Deployment result" >> $GITHUB_STEP_SUMMARY

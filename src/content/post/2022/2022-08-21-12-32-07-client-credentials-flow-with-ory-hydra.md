@@ -22,7 +22,7 @@ The code written for this post uses:
 
 Create a [Docker Compose](https://docs.docker.com/compose/) file with the following details.
 
-```yml caption='compose.yml'
+```yml title="compose.yml"
 services:
 
   hydra:
@@ -92,7 +92,7 @@ You can test Hydra using Hydra CLI available in the `hydra` container.
 
 Let's start by creating a client. Since we're testing the Client Credentials flow, specify the `client_credentials` as a grant type.
 
-```sh prompt{1} caption='Creating a client'
+```sh prompt{1} title="Creating a client"
 docker compose exec hydra hydra create client --endpoint http://localhost:4445/ --format json --secret my-secret-0 --grant-type client_credentials --scope api
 {
 	"client_id": "5c5e8527-cf67-421a-9cd3-c695289cacfc",
@@ -127,7 +127,7 @@ docker compose exec hydra hydra create client --endpoint http://localhost:4445/ 
 
 With this client, you can now generate a token.
 
-```sh prompt{1} caption='Generating a token'
+```sh prompt{1} title="Generating a token"
 docker compose exec hydra hydra perform client-credentials --endpoint http://localhost:4444/ --format json --client-id 5c5e8527-cf67-421a-9cd3-c695289cacfc --client-secret my-secret-0
 {
 	"access_token": "ory_at_-5rDH2nrSNhZDmmbjdvfQPSo0-OBlDUN4N85NsYMdAc.9SO7MGTK0Vi8iCWXQ_UVDOvQSs_rGEaPz2OfT_xNLRs",
@@ -138,7 +138,7 @@ docker compose exec hydra hydra perform client-credentials --endpoint http://loc
 
 When you introspect this token, you'll receive the response whether the token is active.
 
-```sh prompt{1} caption='Introspecting a token'
+```sh prompt{1} title="Introspecting a token"
 docker compose exec hydra hydra introspect token --endpoint http://localhost:4445/ --format json ory_at_-5rDH2nrSNhZDmmbjdvfQPSo0-OBlDUN4N85NsYMdAc.9SO7MGTK0Vi8iCWXQ_UVDOvQSs_rGEaPz2OfT_xNLRs
 {
 	"active": true,
@@ -168,7 +168,7 @@ Although Hydra CLI is convenient, it's not practical when the applications need 
 
 You can create a client by calling the `/admin/clients` endpoint which is a part of the admin API. Once again, specify the `client_credentials` as a grant type.
 
-```sh prompt{1} caption='Creating a client'
+```sh prompt{1} title="Creating a client"
 curl -X POST 'http://localhost:4445/admin/clients' -H 'Content-Type: application/json' --data-raw '{ "access_token_strategy": "opaque", "client_name": "MyClient1", "client_secret": "my-secret-1", "grant_types": ["client_credentials"], "scope": "api" }'
 {
 	"client_id": "125c8f60-9f83-44b2-bd15-f8627d9d1418",
@@ -215,7 +215,7 @@ curl -X POST 'http://localhost:4445/admin/clients' -H 'Content-Type: application
 
 After creating a client, you can generate a token using the client id and secret of the client as follows.
 
-```sh prompt{1} caption='Generating a token'
+```sh prompt{1} title="Generating a token"
 curl -u '125c8f60-9f83-44b2-bd15-f8627d9d1418:my-secret-1' -X POST 'http://localhost:4444/oauth2/token' -H 'Content-Type: application/x-www-form-urlencoded' --data-raw 'grant_type=client_credentials&scope=api'
 {
 	"access_token": "ory_at_mfXDWtV4g1XY0Q8HAkX-xAdfaCEBg8GDAgPQQiNckOs.soLf6p5AOS6HVipYMwNWmVtIfnmCAnDy04yQywF6RLg",
@@ -227,7 +227,7 @@ curl -u '125c8f60-9f83-44b2-bd15-f8627d9d1418:my-secret-1' -X POST 'http://local
 
 You can now introspect this token with the `/introspect` endpoint which is a part of the admin API. The response specifies whether the token is active.
 
-```sh prompt{1} caption='Introspecting a token'
+```sh prompt{1} title="Introspecting a token"
 curl -X POST 'http://localhost:4445/admin/oauth2/introspect' -H 'Content-Type: application/x-www-form-urlencoded' --data-raw 'token=ory_at_mfXDWtV4g1XY0Q8HAkX-xAdfaCEBg8GDAgPQQiNckOs.soLf6p5AOS6HVipYMwNWmVtIfnmCAnDy04yQywF6RLg&scop=api'
 {
 	"active": true,

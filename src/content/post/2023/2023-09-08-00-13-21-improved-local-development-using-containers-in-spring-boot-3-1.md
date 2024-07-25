@@ -26,7 +26,7 @@ The examples in this post use
 
 Let's create a Spring Boot app that exposes some endpoints with Spring Data REST. We'll use Postgres as the database for this example. Create a Maven project with the following `pom.xml`.
 
-```xml caption="pom.xml"
+```xml title="pom.xml"
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -146,7 +146,7 @@ public class Launcher {
 
 You'd need a Postgres database running on local for this app. Let's create a Compose file, `compose.yml`, to describe the database image and set the credentials and database name.
 
-```yml caption="compose.yml"
+```yml title="compose.yml"
 services:
   postgres:
     image: postgres:15-alpine
@@ -164,7 +164,7 @@ For local development, you might need to run some initialization script to creat
 
 Create a file `src/main/resources/schema.sql` and dump the following `create` statements in it.
 
-```sql caption="src/main/resources/schema.sql"
+```sql title="src/main/resources/schema.sql"
 create extension if not exists "uuid-ossp";
 
 create table notes (
@@ -179,7 +179,7 @@ create table notes (
 
 To add some sample data, create a file `src/main/resources/data.sql` and add the following statement.
 
-```sql caption="src/main/resources/data.sql"
+```sql title="src/main/resources/data.sql"
 insert into notes (title, body, read_only)
 values ('Blocking OpenAI web crawler', 'Disallow routes for GPTBot in robots.txt', false),
        ('Goodhart`s Law', 'When a measure becomes a target, it ceases to be a good measure.', false),
@@ -188,13 +188,13 @@ values ('Blocking OpenAI web crawler', 'Disallow routes for GPTBot in robots.txt
 
 Spring Boot automatically executes the scripts `schema.sql` and `data.sql` on the classpath for the _embedded_ databases. Since Postgres isn't an embedded database, we need to explicitly enable this behavior with the following configuration in the `src/main/resources/application.yml` file.
 
-```yml caption="src/main/resources/application.yml"
+```yml title="src/main/resources/application.yml"
 spring.sql.init.mode: always
 ```
 
 You'd also need to configure the datasource to connect to the database.
 
-```yml caption="src/main/resources/application.yml" {2..5}
+```yml title="src/main/resources/application.yml" {2..5}
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/brooklyn
@@ -240,7 +240,7 @@ With Docker Compose support in Spring Boot 3.1, Spring Boot can automatically st
 
 Add the `spring-boot-docker-compose` dependency in the `pom.xml`.
 
-```xml caption="pom.xml" {43..48}
+```xml title="pom.xml" {43..48}
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -313,13 +313,13 @@ Add the `spring-boot-docker-compose` dependency in the `pom.xml`.
 
 Since Docker Support module will automatically inject the database configuration from Compose file, let's remove the datasource properties from `application.yml`.
 
-```yml caption="src/main/resources/application.yml"
+```yml title="src/main/resources/application.yml"
 spring.sql.init.mode: always
 ```
 
 We can also get rid of port mapping `5432:5432` in the `Compose` file.
 
-```yml caption="compose.yml" {5}
+```yml title="compose.yml" {5}
 services:
   postgres:
     image: postgres:15-alpine
@@ -364,7 +364,7 @@ You can use custom images as long as they behave the same way as the standard im
 
 If the custom image has a different name, for example `mycompany/postgres` instead of `postgres`, you'll have to specify a label to help Spring Boot map an image configuration to a correct service connection.
 
-```yml caption="compose.yml" {10,11}
+```yml title="compose.yml" {10,11}
 services:
   postgres:
     image: mycompany/postgres:15-alpine
@@ -382,7 +382,7 @@ services:
 
 Sometimes, you may want to turn off Docker Support for some containers. You can exclude them by adding a label `org.springframework.boot.ignore: true`.
 
-```yml caption="compose.yml" {6,7}
+```yml title="compose.yml" {6,7}
 services:
   redis:
     image: redis:6-alpine
@@ -405,7 +405,7 @@ While Docker Compose support is convenient, it is limited to a small set of imag
 
 To use the Testcontainers local development mode, remove the `spring-boot-docker-compose` dependency from the `pom.xml`, and add the Testcontainers dependencies.
 
-```xml caption="pom.xml" {48..62}
+```xml title="pom.xml" {48..62}
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

@@ -31,7 +31,7 @@ You can start with [configuring a local AWS account for LocalStack](/post/2021/1
 
 Create a Maven project with the following `pom.xml` file.
 
-```xml caption="pom.xml"
+```xml title="pom.xml"
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

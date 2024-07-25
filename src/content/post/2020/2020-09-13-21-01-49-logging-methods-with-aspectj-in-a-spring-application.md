@@ -21,7 +21,7 @@ The code written for this post uses:
 
 Generate a Maven project using the following `pom.xml`.
 
-```xml caption='pom.xml'
+```xml title="pom.xml"
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

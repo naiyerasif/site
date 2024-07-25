@@ -30,7 +30,7 @@ Start with [configuring a local AWS account for LocalStack](/post/2021/11/16/wor
 
 Let's write a small handler in JavaScript that would print the message from an SQS event.
 
-```js caption="index.mjs"
+```js title="index.mjs"
 export const handler = async (event) => {
 	const messages = event.Records.map(record => record.body);
 	messages.forEach(message => console.log(message));

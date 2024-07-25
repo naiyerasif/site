@@ -26,7 +26,7 @@ RUN apk del .build-deps
 
 To convert a bunch of `ttf` files, you can dump them into a folder (say, `.workspace`) and then invoke the following script.
 
-```python caption="woff2.py"
+```python title="woff2.py"
 import glob
 import os
 from fontTools.ttLib import TTFont

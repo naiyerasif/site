@@ -2,6 +2,10 @@
 
 .hl {
 	--x2-radius-outline: var(--x2-radius-0);
+	--hlLineBorderColor: transparent;
+	--hlLineBgColor: transparent;
+	--hlLineNumberColor: var(--color-prettylights-syntax-sublimelinter-gutter-mark);
+
 	background-color: var(--x2-bg-codeblock);
 	border: var(--x2-line-width-lg) solid var(--x2-border-codeblock);
 	border-radius: var(--x2-radius-0);
@@ -49,45 +53,89 @@
 			// restore automatic cursor and touch interactions
 			cursor: auto;
 			touch-action: auto;
+			white-space: var(--x2-hl-code-white-space, pre);
+		}
+
+		&[data-pre-wrap] > code {
+			--x2-hl-code-white-space: pre-wrap;
 		}
 	}
 
 	.line {
-		border-inline-start: var(--x2-line-width-0) solid transparent;
-		padding-inline: 1ch;
+		--hlLinePaddingLeft: calc(var(--hl-line-marker-gutter-factor, 0) * 1.5ch + 1ch);
+		--hlLineMarkerOffset: calc((var(--hlLinePaddingLeft) * -1) + 0.5ch);
+		border-inline-start: var(--x2-line-width-0) solid var(--hlLineBorderColor);
+		padding-inline-start: var(--hlLinePaddingLeft);
+		padding-inline-end: 1ch;
+		background-color: var(--hlLineBgColor);
+
+		&[data-highlighted] {
+			--hlLineNumberColor: var(--color-prettylights-syntax-comment);
+			--hlLineBgColor: var(--x2-hl-line-highlight-background-color);
+			--hlLineBorderColor: var(--hlLineNumberColor);
+		}
+
+		&[data-line-added] {
+			--hlLineNumberColor: var(--x2-hl-line-number-added-color);
+			--hlLineBgColor: var(--x2-hl-line-added-background-color);
+			position: relative;
+
+			&::before {
+				position: absolute;
+				top: 0.5ch;
+				display: inline-block;
+				margin-inline-start: var(--hlLineMarkerOffset);
+				@include mixins.icon("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' fill-rule='evenodd' clip-rule='evenodd' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12h12m-6-6v12'/%3E%3C/svg%3E");
+				user-select: none;
+				text-decoration: none;
+				background-color: var(--hlLineNumberColor);
+				@include mixins.fixedSize(var(--x2-hl-line-prompt-size));
+			}
+		}
+
+		&[data-line-removed] {
+			--hlLineNumberColor: var(--x2-hl-line-number-removed-color);
+			--hlLineBgColor: var(--x2-hl-line-removed-background-color);
+			position: relative;
+
+			&::before {
+				position: absolute;
+				top: 0.5ch;
+				display: inline-block;
+				margin-inline-start: var(--hlLineMarkerOffset);
+				@include mixins.icon("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' fill-rule='evenodd' clip-rule='evenodd' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12h12'/%3E%3C/svg%3E");
+				user-select: none;
+				text-decoration: none;
+				background-color: var(--hlLineNumberColor);
+				@include mixins.fixedSize(var(--x2-hl-line-prompt-size));
+			}
+		}
 
 		&:is(:focus:not(:focus-visible), :hover) {
-			background-color: var(--x2-bg-codeblock-active);
-
-			.line-number {
-				color: var(--color-prettylights-syntax-comment);
-			}
+			--hlLineNumberColor: var(--color-prettylights-syntax-comment);
+			--hlLineBgColor: var(--x2-hl-line-active-background-color);
 		}
 
 		&-number {
+			--hlLineNumberWidth: calc(var(--hl-line-number-gutter-factor) * 1ch);
+			display: inline-block;
 			user-select: none;
 			margin-inline-end: 1em;
 			text-align: right;
-			color: var(--color-prettylights-syntax-sublimelinter-gutter-mark);
-		}
-
-		&[data-highlighted] {
-			background: var(--x2-bg-codeblock-highlighted);
-			border-inline-start: 2px solid var(--color-prettylights-syntax-comment);
-
-			.line-number {
-				color: var(--color-prettylights-syntax-comment);
-			}
+			color: var(--hlLineNumberColor);
+			inline-size: var(--hlLineNumberWidth);
 		}
 
 		&-prompt::before {
+			display: inline-block;
 			margin-inline-end: 1ch;
 			vertical-align: middle;
 			@include mixins.icon("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 20 7.521-10.957M5 2h1.764a2 2 0 0 1 1.789 1.106l7.894 15.788A2 2 0 0 0 18.236 20H20'/%3E%3C/svg%3E");
-			color: hsl(357, 63%, 58%);
-			display: inline-block;
 			user-select: none;
-			@include mixins.fixedSize(1em);
+			text-decoration: none;
+			color: var(--x2-hl-line-prompt-color);
+			background-color: currentColor;
+			@include mixins.fixedSize(var(--x2-hl-line-prompt-size));
 		}
 	}
 }

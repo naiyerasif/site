@@ -9,7 +9,7 @@ category: "update"
 
 Today I learned you can redirect a command output directly to the clipboard on Mac using `pbcopy`. No need to fumble with text selection to copy it.
 
-```sh prompt{1} caption='Copying date to clipboard in Nushell'
+```sh prompt{1} title="Copying date to clipboard in Nushell"
 date now | date format '%Y-%M-%d' | pbcopy
 ```
 
