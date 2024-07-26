@@ -41,6 +41,12 @@
 	--x2-shadow-strength: 0.10;
 	--x2-shadow-color: 141, 19%, 17%;
 
+	--x2-hl-line-active-background-color: var(--x2-border-assert);
+	--x2-hl-line-number-added-color: #{$color-green-40};
+	--x2-hl-line-added-background-color: hsl(103, 76%, 83%);
+	--x2-hl-line-number-removed-color: #{$color-red-40};
+	--x2-hl-line-removed-background-color: #{$color-red-90};
+
 	--color-prettylights-syntax-comment: #57606a;
 	--color-prettylights-syntax-constant: #0550ae;
 	--color-prettylights-syntax-constant-other-reference-link: #0a3069;
@@ -112,6 +118,12 @@
 
 	--x2-shadow-strength: 0.25;
 	--x2-shadow-color: 138, 30%, 27%;
+
+	--x2-hl-line-active-background-color: #{$color-blue-25};
+	--x2-hl-line-number-added-color: var(--x2-color-commend);
+	--x2-hl-line-added-background-color: hsl(106, 70%, 12%);
+	--x2-hl-line-number-removed-color: var(--x2-color-deter);
+	--x2-hl-line-removed-background-color: hsl(356, 73%, 17%);
 
 	--color-prettylights-syntax-comment: #8b949e;
 	--color-prettylights-syntax-constant: #79c0ff;
@@ -216,12 +228,7 @@
 	// codeblock
 	--x2-hl-line-prompt-size: 1em;
 	--x2-hl-line-prompt-color: hsl(357, 63%, 58%);
-	--x2-hl-line-active-background-color: var(--x2-border-assert);
 	--x2-hl-line-highlight-background-color: var(--x2-border-note);
-	--x2-hl-line-number-added-color: var(--x2-color-commend);
-	--x2-hl-line-added-background-color: var(--x2-border-commend);
-	--x2-hl-line-number-removed-color: var(--x2-color-deter);
-	--x2-hl-line-removed-background-color: var(--x2-border-deter);
 }
 
 :where(a[href], area, button, input, select, summary, textarea, clipboard-copy, [role="button"], [onclick], [tabindex]:not([tabindex*="-"])),
