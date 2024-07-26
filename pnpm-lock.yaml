@@ -88,8 +88,8 @@ importers:
         version: 5.0.0
     devDependencies:
       inquirer:
-        specifier: ^9.3.5
-        version: 9.3.5
+        specifier: ^9.3.6
+        version: 9.3.6
       puppeteer:
         specifier: ^22.14.0
         version: 22.14.0
@@ -843,8 +843,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@inquirer/figures@1.0.3':
-    resolution: {integrity: sha512-ErXXzENMH5pJt5/ssXV0DfWUZqly8nGzf0UcBV9xTnP+KyffE2mqyxIMBrZ8ijQck2nU0TQm40EQB53YreyWHw==}
+  '@inquirer/figures@1.0.5':
+    resolution: {integrity: sha512-79hP/VWdZ2UVc9bFGJnoQ/lQMpL74mGgzSYX1xUqCVk7/v73vJCMw1VuyWN1jGkZ9B3z7THAbySqGbCNefcjfA==}
     engines: {node: '>=18'}
 
   '@jridgewell/gen-mapping@0.3.5':
@@ -2286,8 +2286,8 @@ packages:
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
 
-  inquirer@9.3.5:
-    resolution: {integrity: sha512-SVRCRovA7KaT6nqWB2mCNpTvU4cuZ0hOXo5KPyiyOcNNUIZwq/JKtvXuDJNaxfuJKabBYRu1ecHze0YEwDYoRQ==}
+  inquirer@9.3.6:
+    resolution: {integrity: sha512-riK/iQB2ctwkpWYgjjWIRv3MBLt2gzb2Sj0JNQNbyTXgyXsLWcDPJ5WS5ZDTCx7BRFnJsARtYh+58fjP5M2Y0Q==}
     engines: {node: '>=18'}
 
   intl-messageformat-parser@1.8.1:
@@ -4773,7 +4773,7 @@ snapshots:
   '@img/sharp-win32-x64@0.33.4':
     optional: true
 
-  '@inquirer/figures@1.0.3': {}
+  '@inquirer/figures@1.0.5': {}
 
   '@jridgewell/gen-mapping@0.3.5':
     dependencies:
@@ -6565,9 +6565,9 @@ snapshots:
 
   inherits@2.0.4: {}
 
-  inquirer@9.3.5:
+  inquirer@9.3.6:
     dependencies:
-      '@inquirer/figures': 1.0.3
+      '@inquirer/figures': 1.0.5
       ansi-escapes: 4.3.2
       cli-width: 4.1.0
       external-editor: 3.1.0
