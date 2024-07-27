@@ -53,11 +53,11 @@
 			// restore automatic cursor and touch interactions
 			cursor: auto;
 			touch-action: auto;
-			white-space: var(--x2-hl-code-white-space, pre);
+			white-space: var(--hlCodeWhiteSpace, pre);
 		}
 
 		&[data-pre-wrap] > code {
-			--x2-hl-code-white-space: pre-wrap;
+			--hlCodeWhiteSpace: pre-wrap;
 		}
 	}
 
