@@ -5,6 +5,10 @@ on:
     branches: 
       - main
 
+env:
+  # speed up the build by stopping wrangler action from downloading useless browser binaries
+  PUPPETEER_SKIP_DOWNLOAD: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
