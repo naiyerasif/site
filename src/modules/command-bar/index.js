@@ -8,17 +8,19 @@ class CommandBar extends HTMLElement {
 	constructor() {
 		super();
 
+		this.query = "";
+		this.searchIndex = [];
+		this.searchResults = [];
+		this.anchorIcon = `<svg role="img" class="icon" aria-hidden="true"><use href="#x2-arrow-right"/></svg>`;
+	}
+
+	async connectedCallback() {
 		this.dialog = this.querySelector("#cmdb");
 		this.launcher = this.querySelector("[data-cmdb-switch]");
 		this.escaper = this.querySelector("[data-cmdb-esc]");
 		this.searchBox = this.querySelector("input[autofocus]");
 		this.resetter = this.querySelector("[data-cmdb-reset]");
 		this.commands = this.querySelector("#commands");
-
-		this.query = "";
-		this.searchIndex = [];
-		this.searchResults = [];
-		this.anchorIcon = `<svg role="img" class="icon" aria-hidden="true"><use href="#x2-arrow-right"/></svg>`;
 
 		this.closeDialog = () => {
 			this.dialog.close();
@@ -49,9 +51,7 @@ class CommandBar extends HTMLElement {
 				this._clearSearchBox();
 			}
 		}
-	}
 
-	async connectedCallback() {
 		this.dialog.addEventListener("click", this.escapeHandler);
 		this.launcher.addEventListener("click", this.openDialog);
 		this.escaper.addEventListener("click", this.closeDialog);
