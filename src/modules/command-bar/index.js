@@ -22,26 +22,26 @@ class CommandBar extends HTMLElement {
 		this.resetter = this.querySelector("[data-cmdb-reset]");
 		this.commands = this.querySelector("#commands");
 
-		this.closeDialog = () => {
+		const closeDialog = (event) => {
 			this.dialog.close();
 		}
 
-		this.openDialog = (event) => {
+		const openDialog = (event) => {
 			this.dialog.showModal();
 			event?.stopPropagation();
 		}
 
-		this.escapeHandler = ({target:dialog}) => {
+		const escapeHandler = ({target:dialog}) => {
 			if (dialog.nodeName === "DIALOG") {
-				this.closeDialog();
+				closeDialog();
 			}
 		};
 
-		this.resetHandler = () => {
+		const resetHandler = (event) => {
 			this._clearSearchBox();
 		}
 
-		this.searchHandler = (event) => {
+		const searchHandler = (event) => {
 			this.query = this.searchBox.value;
 
 			if (this.query) {
@@ -52,11 +52,13 @@ class CommandBar extends HTMLElement {
 			}
 		}
 
-		this.dialog.addEventListener("click", this.escapeHandler);
-		this.launcher.addEventListener("click", this.openDialog);
-		this.escaper.addEventListener("click", this.closeDialog);
-		this.resetter.addEventListener("click", this.resetHandler);
-		this.searchBox.addEventListener("keyup", this.searchHandler);
+		const { signal } = this.controller = new AbortController();
+
+		this.dialog.addEventListener("click", escapeHandler, { signal });
+		this.launcher.addEventListener("click", openDialog, { signal });
+		this.escaper.addEventListener("click", closeDialog, { signal });
+		this.resetter.addEventListener("click", resetHandler, { signal });
+		this.searchBox.addEventListener("keyup", searchHandler, { signal });
 
 		// focus on the search box
 		const dialogOpenObserver = new MutationObserver(mutations => {
@@ -79,7 +81,7 @@ class CommandBar extends HTMLElement {
 		document.addEventListener("keydown", (event) => {
 			if ((event.ctrlKey || event.metaKey) && event.key === "k") {
 				event.preventDefault();
-				this.openDialog(event);
+				openDialog(event);
 			}
 		});
 
@@ -88,11 +90,7 @@ class CommandBar extends HTMLElement {
 	}
 
 	disconnectedCallback() {
-		this.dialog.removeEventListener("click", this.escapeHandler);
-		this.launcher.removeEventListener("click", this.openDialog);
-		this.escaper.removeEventListener("click", this.closeDialog);
-		this.resetter.removeEventListener("click", this.resetHandler);
-		this.searchBox.removeEventListener("keyup", this.searchHandler);
+		this.controller.abort();
 	}
 
 	_clearSearchBox() {
