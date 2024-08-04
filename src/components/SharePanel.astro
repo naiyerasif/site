@@ -1,15 +1,22 @@
 ---
 import Icon from "./Icon.astro";
 import { pageInfoSchema } from "~schema";
+import siteInfo from "~website";
 
 const shareInfo = pageInfoSchema.parse(Astro.props.pageInfo);
 const shareableTitle = encodeURI(shareInfo.title);
+const mastodonHandle = encodeURI(siteInfo.author.networks.mastodon.id);
 
 const shareVia = [
 	{
 		platform: "mail",
 		title: "Share via email",
 		link: `mailto:?subject=${shareInfo.title}&body=Checkout this article I read! ${shareInfo.url}`
+	},
+	{
+		platform: "mastodon",
+		title: "Post on Mastodon",
+		link: `https://elk.zone/intent/post?text=${shareInfo.title}%20(by%20${mastodonHandle})%0A%0A${shareInfo.url}`
 	},
 	{
 		platform: "hackernews",
