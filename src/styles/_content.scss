@@ -23,11 +23,6 @@
 }
 
 article.content {
-	& > p:first-of-type:first-child,
-	& > .callout + p:first-of-type,
-	& > .toc + p:first-of-type {
-		font-size: 1.25em;
-	}
 
 	:is(h1, h2, h3, h4, h5, h6) {
 		--x2-size-icon: 1ch;
