@@ -27,8 +27,8 @@ importers:
         specifier: ^2.2.1
         version: 2.2.1
       astro:
-        specifier: ^4.13.2
-        version: 4.13.2(@types/node@22.1.0)(sass@1.77.6)
+        specifier: ^4.13.3
+        version: 4.13.3(@types/node@22.2.0)(sass@1.77.6)
       dayjs:
         specifier: ^1.11.12
         version: 1.11.12
@@ -1189,8 +1189,8 @@ packages:
   '@types/node@22.0.2':
     resolution: {integrity: sha512-yPL6DyFwY5PiMVEwymNeqUTKsDczQBJ/5T7W/46RwLU/VH+AA8aT5TZkvBviLKLbbm0hlfftEkGrNzfRk/fofQ==}
 
-  '@types/node@22.1.0':
-    resolution: {integrity: sha512-AOmuRF0R2/5j1knA3c6G3HOk523Ga+l+ZXltX8SF1+5oqcXijjfTd8fY3XRZqSihEu9XhtQnKYLmkFaoxgsJHw==}
+  '@types/node@22.2.0':
+    resolution: {integrity: sha512-bm6EG6/pCpkxDf/0gDNDdtDILMOHgaQBVOJGdwsqClnxA3xL6jtMv76rLBc006RVMWbmaf0xbmom4Z/5o2nRkQ==}
 
   '@types/responselike@1.0.3':
     resolution: {integrity: sha512-H/+L+UkTV33uf49PH5pCAUBVPNj2nDBXTN+qS1dOwyyg24l3CcicicCA7ca+HMvJBZcFgl5r8e+RR6elsb4Lyw==}
@@ -1357,8 +1357,8 @@ packages:
     resolution: {integrity: sha512-x1FCFnFifvYDDzTaLII71vG5uvDwgtmDTEVWAxrgeiR8VjMONcCXJx7E+USjDtHlwFmt9MysbqgF9b9Vjr6w+w==}
     engines: {node: '>=4'}
 
-  astro@4.13.2:
-    resolution: {integrity: sha512-bdfUV6zfOWOV/IbROqVx+1cuAFXY0PZpVxr4JO9YxCKa5AfQRR8RKXJ2k8QUjalA6dmxQ9FgAQw3FRrzHVOGEQ==}
+  astro@4.13.3:
+    resolution: {integrity: sha512-MyhmM0v5sphiVwxAm5jjKxWeuPZijWPJ8Ajdign9QzEmLWSH8vUYIJWx/dWRQ6vF1I0jXrksoj3wtw5nzXt9nw==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -5131,7 +5131,7 @@ snapshots:
       undici-types: 6.11.1
     optional: true
 
-  '@types/node@22.1.0':
+  '@types/node@22.2.0':
     dependencies:
       undici-types: 6.13.0
     optional: true
@@ -5436,7 +5436,7 @@ snapshots:
     dependencies:
       tslib: 2.6.3
 
-  astro@4.13.2(@types/node@22.1.0)(sass@1.77.6):
+  astro@4.13.3(@types/node@22.2.0)(sass@1.77.6):
     dependencies:
       '@astrojs/compiler': 2.10.2
       '@astrojs/internal-helpers': 0.4.1
@@ -5493,8 +5493,8 @@ snapshots:
       tsconfck: 3.1.1
       unist-util-visit: 5.0.0
       vfile: 6.0.2
-      vite: 5.4.0(@types/node@22.1.0)(sass@1.77.6)
-      vitefu: 0.2.5(vite@5.4.0(@types/node@22.1.0)(sass@1.77.6))
+      vite: 5.4.0(@types/node@22.2.0)(sass@1.77.6)
+      vitefu: 0.2.5(vite@5.4.0(@types/node@22.2.0)(sass@1.77.6))
       which-pm: 3.0.0
       yargs-parser: 21.1.1
       zod: 3.23.8
@@ -8600,19 +8600,19 @@ snapshots:
       unist-util-stringify-position: 4.0.0
       vfile-message: 4.0.2
 
-  vite@5.4.0(@types/node@22.1.0)(sass@1.77.6):
+  vite@5.4.0(@types/node@22.2.0)(sass@1.77.6):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.4.41
       rollup: 4.20.0
     optionalDependencies:
-      '@types/node': 22.1.0
+      '@types/node': 22.2.0
       fsevents: 2.3.3
       sass: 1.77.6
 
-  vitefu@0.2.5(vite@5.4.0(@types/node@22.1.0)(sass@1.77.6)):
+  vitefu@0.2.5(vite@5.4.0(@types/node@22.2.0)(sass@1.77.6)):
     optionalDependencies:
-      vite: 5.4.0(@types/node@22.1.0)(sass@1.77.6)
+      vite: 5.4.0(@types/node@22.2.0)(sass@1.77.6)
 
   vscode-oniguruma@2.0.1: {}
 
