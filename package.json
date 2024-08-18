@@ -18,7 +18,7 @@
 		"@microflash/rehype-starry-night": "^7.0.0",
 		"@microflash/remark-callout-directives": "^4.3.1",
 		"@sindresorhus/slugify": "^2.2.1",
-		"astro": "^4.13.4",
+		"astro": "^4.14.2",
 		"dayjs": "^1.11.12",
 		"defu": "^6.1.4",
 		"feed": "^4.2.2",
@@ -35,7 +35,7 @@
 		"remark-rehype": "^11.1.0",
 		"remark-smartypants": "^3.0.2",
 		"sass": "^1.77.6",
-		"sharp": "^0.33.4",
+		"sharp": "^0.33.5",
 		"unified": "^11.0.5",
 		"unist-util-visit": "^5.0.0"
 	},
