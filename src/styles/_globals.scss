@@ -211,6 +211,7 @@ figure.frame {
 
 	& + & {
 		border-block-start: var(--x2-line-width-sm) solid var(--x2-border-note);
+		border-image: linear-gradient(to right, transparent 0%, var(--x2-border-note) 25% 75%, transparent 100%) 1;
 	}
 
 	blockquote {
