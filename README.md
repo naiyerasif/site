@@ -8,7 +8,7 @@ Personal website of [@naiyerasif](https://github.com/naiyerasif)
 - To generate a production build, run `pnpm build`
 - To update dependencies interactively, run `pnpm update --interactive --latest`
 
-## Authoring
+## Writing posts
 
 - To create a new post, run `pnpm new`
 
@@ -16,12 +16,12 @@ Personal website of [@naiyerasif](https://github.com/naiyerasif)
 
 [Vale](https://vale.sh) enforces the spellcheck and prose styling of this blog.
 
-- To verify a prose, run `vale <path>`
+- To verify a post, run `vale <path>`
 - To sync packages and styles, run `vale sync`
 
-### Custom markdown directives
+### Markdown extensions
 
-The following custom directives are supported.
+This blog uses the following custom markdown extensions on top of [GFM](https://github.github.com/gfm/).
 
 #### Figure directive
 
@@ -62,9 +62,9 @@ gets converted to
 <time datetime="2024-01-14T05:12:48.000Z">Jan 14, 2024</time>
 ```
 
-#### Youtube directive
+#### YouTube directive
 
-Youtube directive has two output variants: `client` (for the website) and `server` (for the RSS feeds)
+YouTube directive has two output variants: `client` (for the website) and `server` (for the RSS feeds)
 
 The following directive
 
@@ -108,7 +108,7 @@ It gets converted to the following HTML for the RSS feeds.
 
 ## Contributing
 
-Since this is my personal site, I'm not really looking for feature requests. I'd, however, appreciate bug reports and corrections. Please [create an issue](https://github.com/naiyerasif/site/issues/new) on accessibility, browser rendering inconsistencies, performance bottlenecks, and general usability criticism.
+Since this is my personal site, I am not really looking for feature requests. I would, however, appreciate bug reports and corrections. Please [create an issue](https://github.com/naiyerasif/site/issues/new) on accessibility, browser rendering inconsistencies, performance bottlenecks, and general usability criticism.
 
 ## License
 
