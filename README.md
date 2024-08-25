@@ -1,37 +1,29 @@
-# Microflash [![deploy](https://github.com/Microflash/site/workflows/deploy/badge.svg)](https://github.com/Microflash/site/actions)
+# Microflash [![deploy](https://github.com/Microflash/site/actions/workflows/deploy.yml/badge.svg)](https://github.com/Microflash/site/actions/workflows/deploy.yml)
 
-Personal website of Naiyer ([@Microflash](https://www.twitter.com/Microflash))
+Personal website of [@naiyerasif](https://github.com/naiyerasif)
 
-## Acknowledgements
+## Development
 
-This site was made possible by
+- Install [Deno](https://deno.land/) and [Lume](https://lume.land/)
+- Run `lume --serve` to serve the site at port `8080`
+- Run `lume` to generate a production build
 
-- [Gridsome](https://gridsome.org/): a Jamstack framework for Vue.js
-- [Gridsome Portfolio Starter](https://github.com/drehimself/gridsome-portfolio-starter): a simple portfolio theme for Gridsome
-- [Gridsome Casper V3 Starter](https://github.com/jammeryhq/gridsome-starter-casper-v3): a Gridsome starter based on the Casper theme for Ghost
-- [Fuse.js](https://fusejs.io/): a lightweight fuzzy-search in JavaScript
-- [Shiki](https://github.com/shikijs/shiki): a beautiful syntax highlighter based on TextMate grammar
-- [Spritely](https://github.com/Microflash/spritely): a handy Node.js CLI to generate SVG sprites
-- [Bourbon](https://www.bourbon.io/): a lightweight Sass tool set
-- [Animate.css](https://github.com/daneden/animate.css): a cross-browser library of CSS animations
+## Deployment
 
-## Technologies
+The deployment on [Netlify](https://www.netlify.com/) is automated through [GitHub Actions](./.github/workflows/deploy.yml).
 
-This site uses
+## Affordances
 
-- [CSS properties](https://css-tricks.com/guides/css-custom-properties/) for responsive design and theme switching
-- [GraphQL](https://graphql.org/) for querying data
-- [Vue.js](https://vuejs.org/) as the frontend framework
-- [Sass](https://sass-lang.com/) as the CSS preprocessor
-- [Inter](https://rsms.me/inter/) as the body font
-- [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) as the `monospace` font
-- a [custom icon pack](https://github.com/Microflash/site/blob/main/static/assets/images/icons.svg) based on [Feather](https://feathericons.com/)
-- [Yarn](https://github.com/yarnpkg/yarn) as the package manager
-- [Git LFS](https://github.com/git-lfs/git-lfs) to version large files
-- [GitHub Actions](https://github.com/features/actions) for continuous integration
-- [Netlify](https://netlify.com/) to host the site
-- [Affinity Designer](https://affinity.serif.com/en-gb/designer/) to create icons, diagrams and illustrations
+Install [Velociraptor](https://velociraptor.run) to use the affordances.
+
+### Creating a draft
+
+```sh
+vr post -t '${title}' -c '${category}' -d '${date in YYYY-MM-DD HH:mm:ss format}' -h '${comma separated tags}'
+```
+
+The draft will be created in `.workspace/posts` directory.
 
 ## License
 
-The source of this site is available under [MIT](./LICENSE), the content under [CC by SA](https://creativecommons.org/licenses/by-sa/4.0/).
+The source code of this site is available under [MIT](./LICENSE.md), the content under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).

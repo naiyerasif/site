@@ -1,0 +1,84 @@
+.highlight {
+	--app-bg-highlight: var(--sugar-bg-code);
+	--app-border-highlight: 1px solid var(--sugar-border-code);
+	background-color: var(--app-bg-highlight);
+	border-radius: var(--app-radius-adaptive-base);
+	border: var(--app-border-highlight);
+}
+
+.highlight:not(:last-child) {
+	margin-block-end: var(--sugar-gap-base);
+}
+
+.highlight:focus-within {
+	outline-color: var(--sugar-border-code);
+	outline-style: solid;
+	outline-width: 0.25ch;
+	outline-offset: -0.125em;
+}
+
+.highlight-header {
+	display: flex;
+	align-items: center;
+	border-block-end: var(--app-border-highlight);
+	padding: 1ch;
+	font-size: var(--sugar-text-sm);
+}
+
+.highlight-header>*:not(:last-child) {
+	margin-inline-end: 1ch;
+}
+
+.highlight-language {
+	font-family: var(--sugar-font-mono);
+	background-color: var(--sugar-bg-assert);
+	color: var(--sugar-color-assert);
+	padding: 0.2ch 0.6ch;
+	border-radius: var(--sugar-radius-sm);
+}
+
+.highlight pre {
+	background-color: transparent;
+	border: none;
+	overflow-x: auto;
+}
+
+.highlight pre>code {
+	display: grid;
+	padding-inline: 0;
+}
+
+.highlight pre .line {
+	border-inline-start: 2px solid transparent;
+}
+
+.highlight pre .line:focus:not(:focus-visible),
+.highlight pre .line:hover {
+	background-color: var(--sugar-bg-warn);
+}
+
+.highlight pre .line-number {
+	user-select: none;
+	padding-inline: 1.2em;
+	text-align: right;
+	color: var(--color-prettylights-syntax-sublimelinter-gutter-mark);
+}
+
+.highlight pre .line-standalone {
+	padding-inline: 1.2em;
+}
+
+.highlight pre .line-prompt {
+	user-select: none;
+	margin-inline-end: 1ch;
+	color: var(--color-prettylights-syntax-sublimelinter-gutter-mark);
+}
+
+.highlight pre .line-highlighted {
+	background: var(--sugar-bg-note);
+	border-inline-start: 2px solid var(--color-prettylights-syntax-comment);
+}
+
+.highlight pre .line-highlighted .line-number {
+	color: var(--color-prettylights-syntax-comment);
+}

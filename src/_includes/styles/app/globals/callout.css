@@ -1,0 +1,118 @@
+.callout {
+	--app-color-callout: var(--sugar-color-body);
+	--app-border-callout: 1px solid var(--app-border-color-callout);
+	border: var(--app-border-callout);
+	border-radius: var(--sugar-radius-base);
+	background-color: var(--app-bg-callout);
+}
+
+.callout-content {
+	padding: 2ch;
+}
+
+.callout-content:first-child,
+.callout-content:only-child {
+	margin-block-start: 0;
+}
+
+.callout-content:last-child,
+.callout-content:only-child {
+	margin-block-end: 0;
+}
+
+.callout-indicator {
+	display: flex;
+	align-items: center;
+	border-block-end: var(--app-border-callout);
+	padding: 1ch;
+}
+
+.callout-hint {
+	margin-inline-end: 0.5ch;
+	color: var(--app-color-callout);
+}
+
+.callout-label {
+	margin-inline-start: 0.5ch;
+	font-size: var(--sugar-text-sm);
+	font-weight: var(--sugar-font-bold);
+	color: var(--sugar-color-emphasis);
+	letter-spacing: 0.04em;
+}
+
+.callout-note,
+.callout-setup {
+	--app-bg-callout: var(--sugar-bg-note);
+	--app-color-callout: var(--sugar-color-base);
+	--app-border-color-callout: var(--sugar-border-note);
+}
+
+.callout-commend {
+	--app-bg-callout: var(--sugar-bg-commend);
+	--app-color-callout: var(--sugar-color-commend);
+	--app-border-color-callout: var(--sugar-border-commend);
+}
+
+.callout-warn {
+	--app-bg-callout: var(--sugar-bg-warn);
+	--app-color-callout: var(--sugar-color-warn);
+	--app-border-color-callout: var(--sugar-border-warn);
+}
+
+.callout-deter {
+	--app-bg-callout: var(--sugar-bg-deter);
+	--app-color-callout: var(--sugar-color-deter);
+	--app-border-color-callout: var(--sugar-border-deter);
+}
+
+.callout-assert {
+	--app-bg-callout: var(--sugar-bg-assert);
+	--app-color-callout: var(--sugar-color-assert);
+	--app-border-color-callout: var(--sugar-border-assert);
+}
+
+.callout-footnote,
+.callout-setup {
+	font-size: var(--sugar-text-sm);
+}
+
+.callout-footnote {
+	margin-block-start: calc(var(--sugar-gap-base) * 2);
+	border-radius: 0;
+	border-block-start: 1px solid var(--sugar-border-note);
+}
+
+.callout-footnote > * {
+	padding-inline: 0;
+}
+
+.callout-footnote p + ul,
+.callout-setup p + ul {
+	margin-block-start: calc(var(--sugar-gap-base) * -0.5);
+}
+
+.toc {
+	margin-block-end: var(--sugar-gap-base);
+}
+
+.toc-body {
+	font-size: var(--sugar-text-sm);
+	list-style: none;
+	padding: 0;
+}
+
+.toc .toc-item-3 {
+	padding-inline-start: 2ch;
+}
+
+.toc .toc-item-4 {
+	padding-inline-start: 4ch;
+}
+
+.toc .toc-item-5 {
+	padding-inline-start: 6ch;
+}
+
+.toc .toc-item-6 {
+	padding-inline-start: 8ch;
+}

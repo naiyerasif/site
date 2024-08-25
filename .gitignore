@@ -1,8 +1,2 @@
-.env
-.gitlab
-.temp
-.*cache
-.vscode
-node_modules
-public
-search.json
+.workspace
+dist

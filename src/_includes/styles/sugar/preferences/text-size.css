@@ -1,0 +1,21 @@
+:root:not([data-text-size]), /* fallback when JavaScript is not available */
+[data-text-size='regular'] {
+	--sugar-text-sm: calc(0.75rem + 0.2vw);
+	--sugar-text-base: calc(0.9rem + 0.3vw);
+	--sugar-text-md: calc(1rem + 0.4vw);
+	--sugar-text-xl: calc(1.5rem + 2vw);
+}
+
+[data-text-size='medium'] {
+	--sugar-text-sm: calc(0.85rem + 0.2vw);
+	--sugar-text-base: calc(1rem + 0.3vw);
+	--sugar-text-md: calc(1.1rem + 0.4vw);
+	--sugar-text-xl: calc(1.6rem + 2vw);
+}
+
+[data-text-size='large'] {
+	--sugar-text-sm: calc(0.95rem + 0.2vw);
+	--sugar-text-base: calc(1.1rem + 0.3vw);
+	--sugar-text-md: calc(1.2rem + 0.4vw);
+	--sugar-text-xl: calc(1.7rem + 2vw);
+}
