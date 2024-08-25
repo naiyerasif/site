@@ -2,17 +2,17 @@
 slug: "2021/10/10/weaving-aspects-at-compile-time-with-aspectj"
 title: "Weaving aspects at compile-time with AspectJ"
 description: "AspectJ manipulates Java bytecode at compile-time or load-time. The process is called weaving. Learn how to use compile-time weaving to log method entry and exit in Java."
-date: "2021-10-10 15:12:18"
-update: "2021-10-10 15:12:18"
+date: 2021-10-10 15:12:18
+update: 2021-10-10 15:12:18
+type: "post"
 category: "guide"
-tags: ["aspectj", "aop", "log"]
 ---
 
 > This is a follow-up post for [Logging methods with AspectJ in a Spring application](/post/2020/09/13/logging-methods-with-aspectj-in-a-spring-application/).
 
 [AspectJ](https://www.eclipse.org/aspectj/) manipulates Java bytecode at compile-time or load-time. The process is called _weaving_. Depending on when it is performed, it is called _compile-time_ or _load-time_ weaving. Using the same example discussed in [Logging methods with AspectJ in a Spring application](/post/2020/09/13/logging-methods-with-aspectj-in-a-spring-application/) that uses Spring AOP, we'll discuss how to log methods using Java and AspectJ (without any framework).
 
-:::setup
+:::note{.sm}
 The code written for this post uses:
 
 - Java 16
@@ -23,7 +23,7 @@ The code written for this post uses:
 
 Create a Maven project using the following `pom.xml`.
 
-```xml caption='pom.xml'
+```xml title="pom.xml"
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -226,7 +226,7 @@ Here, we use the `ProceedingJoinPoint` to extract
 
 With all this information available, we calculate the execution time and prepare log messages as follows.
 
-```java {43-46}
+```java {43..46}
 // src/main/java/dev/mflash/guides/java/aop/logging/aspect/LogEntryExitAspect.java
 
 import dev.mflash.guides.java.aop.logging.annotation.LogEntryExit;
@@ -334,7 +334,7 @@ Here
 
 To modify the bytecode of methods annotated by the `@LogEntryExit` annotation, you'll need to configure AspectJ Compiler (`ajc` in short). An easy way to do this is by using Mojo's [Aspect Maven Plugin](https://www.mojohaus.org/aspectj-maven-plugin/). Open your `pom.xml` and modify it as follows.
 
-```xml {15-33}
+```xml {15..33}
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

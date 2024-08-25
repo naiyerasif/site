@@ -1,0 +1,59 @@
+@use "mixins";
+
+.content {
+	& > blockquote,
+	& > figure,
+	& > .hl,
+	& > .callout {
+		grid-column: contentGap;
+	}
+
+	& > blockquote {
+		--x2-padding-inline-blockquote: calc(var(--x2-gap-inline-body) + var(--x2-padding-inline-body) - var(--blockquoteBorderWidth));
+		padding-inline-end: var(--x2-padding-inline-blockquote);
+	}
+
+	& > .callout {
+		--x2-padding-callout-content: calc(var(--x2-gap-inline-body) + var(--x2-padding-inline-body) - var(--calloutBorderWidth));
+	}
+
+	& > figure {
+		--x2-padding-inline-figcaption: calc(var(--x2-gap-inline-body) + var(--x2-padding-inline-body) - var(--figcaptionBorderWidth));
+	}
+}
+
+article.content {
+
+	:is(h1, h2, h3, h4, h5, h6) {
+		--x2-size-icon: 1ch;
+		a .icon {
+			visibility: hidden;
+			vertical-align: text-top;
+			margin-inline-start: 0.25ch;
+		}
+
+		&:focus,
+		&:hover {
+			a .icon {
+				visibility: visible;
+			}
+		}
+
+		@include mixins.onTouch {
+			a .icon {
+				visibility: visible;
+			}
+		}
+	}
+
+	.footnotes {
+		@include mixins.flow;
+		font-size: 0.85em;
+		border-block-start: 1px dashed var(--x2-border-body);
+
+		h2[id]:first-of-type {
+			padding-block-start: 1em;
+			font-size: var(--x2-text-0);
+		}
+	}
+}

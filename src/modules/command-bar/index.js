@@ -1,273 +1,254 @@
-export class CommandBar extends HTMLElement {
-	static tagName = "command-bar"
-	static #searchOptions = {
-		shouldSort: true,
-		includeMatches: true,
-		tokenize: true,
-		matchAllTokens: true,
-		threshold: 0.3,
-		location: 0,
-		distance: 600,
-		maxPatternLength: 32,
-		minMatchCharLength: 3,
-		keys: ["title", "tags"]
-	}
-	static #anchorIcon = `<svg role="img" class="icon" aria-hidden="true"><use href="#arrow-right"/></svg>`
-
-	#commandBar = null
-	#launcher = null
-	#escaper = null
-	#searchBox = null
-	#resetter = null
-	#searchIndex = []
-	#searchResults = []
-	#query = ""
-	#recents = []
-	#commands = null
-	#searchHandler = (event) => {
-		this.#query = this.#searchBox.value
-		
-		if (this.#query) {
-			if (this.#query.length > 3) {
-				this.#search()
-				this.#updateResults()
-			}
-		} else {
-			this.#clearSearchBox()
+class CommandBar extends HTMLElement {
+	static register(tagName = "command-bar") {
+		if ("customElements" in window) {
+			customElements.define(tagName, CommandBar);
 		}
 	}
-	#commandHandler = (event) => {
-		if ((event.ctrlKey || event.metaKey) && event.key === "k") {
-			event.preventDefault()
-			this.#launcher.click()
-		}
-	}
-	#focusHandler = (event) => {
-		this.#searchBox.focus()
-	}
-	#escapeHandler = () => this.#commandBar.close()
-	#resetHandler = () => this.#clearSearchBox()
 
 	constructor() {
-		super()
+		super();
 
-		this.innerHTML = this.#template()
-
-		this.#commandBar = this.querySelector(`#${CommandBar.tagName}`)
-		this.#launcher = this.querySelector(`button[slot="invoker"]`)
-		this.#escaper = this.querySelector(`button[part="escaper"]`)
-		this.#searchBox = this.querySelector(`#search-box`)
-		this.#resetter = this.querySelector(`button[part="resetter"]`)
-		this.#commands = this.querySelector(`#commands`)
+		this.query = "";
+		this.searchIndex = [];
+		this.searchResults = [];
+		this.anchorIcon = `<svg role="img" class="icon" aria-hidden="true"><use href="#x2-arrow-right"/></svg>`;
 	}
 
 	async connectedCallback() {
-		this.#commandBar.addEventListener("dialog-opened", this.#focusHandler)
-		document.addEventListener("keydown", this.#commandHandler)
-		this.#escaper.addEventListener("click", this.#escapeHandler)
-		this.#resetter.addEventListener("click", this.#resetHandler)
-		this.#searchBox.addEventListener("keyup", this.#searchHandler)
+		this.dialog = this.querySelector("#cmdb");
+		this.launcher = this.querySelector("[data-cmdb-switch]");
+		this.escaper = this.querySelector("[data-cmdb-esc]");
+		this.searchBox = this.querySelector("input[autofocus]");
+		this.resetter = this.querySelector("[data-cmdb-reset]");
+		this.commands = this.querySelector("#commands");
 
-		await this.#setupCommands()
-		this.#updateResults()
+		const closeDialog = (event) => {
+			this.dialog.close();
+		}
+
+		const openDialog = (event) => {
+			this.dialog.showModal();
+			event?.stopPropagation();
+		}
+
+		const escapeHandler = ({target:dialog}) => {
+			if (dialog.nodeName === "DIALOG") {
+				closeDialog();
+			}
+		};
+
+		const resetHandler = (event) => {
+			this._clearSearchBox();
+		}
+
+		const searchHandler = (event) => {
+			this.query = this.searchBox.value;
+
+			if (this.query) {
+				this._search();
+				this._updateResults();
+			} else {
+				this._clearSearchBox();
+			}
+		}
+
+		const { signal } = this.controller = new AbortController();
+
+		this.dialog.addEventListener("click", escapeHandler, { signal });
+		this.launcher.addEventListener("click", openDialog, { signal });
+		this.escaper.addEventListener("click", closeDialog, { signal });
+		this.resetter.addEventListener("click", resetHandler, { signal });
+		this.searchBox.addEventListener("keyup", searchHandler, { signal });
+
+		// focus on the search box
+		const dialogOpenObserver = new MutationObserver(mutations => {
+			mutations.forEach(async mutation => {
+				if (mutation.attributeName === "open") {
+					const dialog = mutation.target;
+					const isOpen = dialog.hasAttribute("open");
+					if (!isOpen) return;
+
+					const focussedOnSearch = this.activeElement?.nodeName === "INPUT";
+					if (!focussedOnSearch) {
+						this.searchBox.click();
+					}
+				}
+			});
+		});
+		dialogOpenObserver.observe(this.dialog, {attributes:true});
+
+		// open command bar with keyboard shortcut
+		document.addEventListener("keydown", (event) => {
+			if ((event.ctrlKey || event.metaKey) && event.key === "k") {
+				event.preventDefault();
+				openDialog(event);
+			}
+		});
+
+		await this._setupCommands();
+		this._updateResults();
 	}
 
 	disconnectedCallback() {
-		this.#commandBar.removeEventListener("dialog-opened", this.#focusHandler)
-		document.removeEventListener("keydown", this.#commandHandler)
-		this.#escaper.removeEventListener("click", this.#escapeHandler)
-		this.#resetter.removeEventListener("click", this.#resetHandler)
-		this.#searchBox.removeEventListener("keyup", this.#searchHandler)
+		this.controller.abort();
 	}
 
-	#updateResults() {
-		const items = this.#getItemsToDisplay()
-
-		if (items && items.length) {
-			this.#commands.replaceChildren(...items)
-		}
+	_clearSearchBox() {
+		this.searchBox.value = "";
+		this.searchResults = [];
+		this.query = "";
+		this._updateResults();
 	}
 
-	#clearSearchBox() {
-		this.#searchBox.value = ""
-		this.#searchResults = []
-		this.#query = ""
-		this.#updateResults()
-	}
-
-	#search() {
-		if (this.#query && this.#query.length > 3) {
-			const fuse = new Fuse(this.#searchIndex, CommandBar.#searchOptions)
-			this.#searchResults = fuse.search(this.#query)
+	_search() {
+		if (this.query && this.query.length > 2) {
+			this.searchResults = window.__search(this.query, this.searchIndex)
 				.map(result => {
-					const { item } = result
-					item.section = item.section || "Default"
-					return item
-				})
+					const { item } = result;
+					item.section = item.section || "Default";
+					return item;
+				});
 
-			if (this.#searchResults && this.#searchResults.length) {
-				this.#setRecents(this.#searchResults.filter(result => result.section === "Default"))
+			if (this.searchResults && this.searchResults.length) {
+				this._setRecents(this.searchResults.filter(result => result.section === "Default"));
 			}
 		}
 	}
 
-	#getItemsToDisplay() {
-		return this.#searchResults && this.#searchResults.length ? [this.#getSearchResults()] : this.#getDefaultCommands()
+	_updateResults() {
+		const items = this._getItemsToDisplay();
+
+		if (items && items.length) {
+			this.commands.replaceChildren(...items);
+		}
 	}
 
-	#getSearchResults() {
-		const searchResults = document.createElement("section")
-		searchResults.classList.add("command-bar-section")
-		searchResults.classList.add("search-results")
-
-		const numberOfResults = this.#searchResults.length
-		const searchResultsHeader = document.createElement("div")
-		searchResultsHeader.classList.add("command-bar-section-header")
-		searchResultsHeader.innerText = numberOfResults > 1 ? numberOfResults + " results" : numberOfResults + " result"
-		searchResults.appendChild(searchResultsHeader)
-
-		const sectionItems = document.createElement("div")
-		sectionItems.classList.add("command-bar-section-items")
-
-		this.#searchResults.forEach(item => {
-			sectionItems.appendChild(this.#getItemToDisplay(item, "command-item"))
-		})
-
-		searchResults.appendChild(sectionItems)
-		return searchResults
+	_getItemsToDisplay() {
+		return this.searchResults && this.searchResults.length ? [this._getSearchResults()] : this._getDefaultCommands();
 	}
 
-	#getDefaultCommands() {
-		const items = this.#groupBy(this.#searchIndex, "section")
-		const nodes = []
+	_getSearchResults() {
+		const searchResults = document.createElement("section");
+		searchResults.classList.add("cmdb-section");
+		searchResults.classList.add("search-results");
 
-		if (this.#recents && this.#recents.length) {
-			nodes.push(this.#getSectionItems(this.#recents, "Recently searched", "recently-searched"))
+		const numberOfResults = this.searchResults.length;
+		const searchResultsHeader = document.createElement("div");
+		searchResultsHeader.classList.add("cmdb-section-header");
+		searchResultsHeader.innerText = numberOfResults > 1 ? numberOfResults + " results" : numberOfResults + " result";
+		searchResults.appendChild(searchResultsHeader);
+
+		const sectionItems = document.createElement("div");
+		sectionItems.classList.add("cmdb-section-items");
+
+		this.searchResults.forEach(item => {
+			sectionItems.appendChild(this._getItemToDisplay(item, "command-item"));
+		});
+
+		searchResults.appendChild(sectionItems);
+		return searchResults;
+	}
+
+	_getDefaultCommands() {
+		const items = this._groupBy(this.searchIndex, "section");
+		const nodes = [];
+
+		if (this.recents && this.recents.length) {
+			nodes.push(this._getSectionItems(this.recents, "Recent search results", "recently-searched"));
 		}
 
 		if (items["Navigation"] && items["Navigation"].length) {
-			nodes.push(this.#getSectionItems(items["Navigation"], "Navigation", "navigation"))
+			nodes.push(this._getSectionItems(items["Navigation"], "Navigation", "navigation"));
 		}
 
 		if (items["Preferences"] && items["Preferences"].length) {
-			nodes.push(this.#getSectionItems(items["Preferences"], "Preferences", "preferences"))
+			nodes.push(this._getSectionItems(items["Preferences"], "Preferences", "preferences"));
 		}
 
-		return nodes
+		return nodes;
 	}
 
-	#getSectionItems(items, title, cls) {
-		const section = document.createElement("section")
-		section.classList.add("command-bar-section")
-		section.classList.add(cls)
+	_getSectionItems(items, title, cls) {
+		const section = document.createElement("section");
+		section.classList.add("cmdb-section");
+		section.classList.add(cls);
 
-		const sectionHeader = document.createElement("div")
-		sectionHeader.classList.add("command-bar-section-header")
-		sectionHeader.innerText = title
-		section.appendChild(sectionHeader)
+		const sectionHeader = document.createElement("div");
+		sectionHeader.classList.add("cmdb-section-header");
+		sectionHeader.innerText = title;
+		section.appendChild(sectionHeader);
 
-		const sectionItems = document.createElement("div")
-		sectionItems.classList.add("command-bar-section-items")
+		const sectionItems = document.createElement("div");
+		sectionItems.classList.add("cmdb-section-items");
 
 		items.forEach(item => {
-			sectionItems.appendChild(this.#getItemToDisplay(item, "command-item"))
-		})
+			sectionItems.appendChild(this._getItemToDisplay(item, "command-item"));
+		});
 
-		section.appendChild(sectionItems)
-		return section
+		section.appendChild(sectionItems);
+		return section;
 	}
 
-	#getItemToDisplay(item, cls) {
+	_getItemToDisplay(item, cls) {
 		if (item.path) {
-			const anchor = document.createElement("a")
-			anchor.classList.add(cls)
-			anchor.setAttribute("href", item.path)
-			anchor.innerHTML = CommandBar.#anchorIcon + item.title
-			return anchor
+			const anchor = document.createElement("a");
+			anchor.classList.add(cls);
+			anchor.setAttribute("href", item.path);
+			anchor.setAttribute("part", "link");
+			anchor.innerHTML = (item.icon || this.anchorIcon) + item.title;
+			return anchor;
 		} else {
-			const div = document.createElement("div")
-			div.classList.add(cls)
-			div.innerHTML = item.content
-			return div
+			const div = document.createElement("div");
+			div.classList.add(cls);
+			div.innerHTML = item.content;
+			return div.childNodes[0];
 		}
 	}
 
-	async #setupCommands() {
-		this.#searchIndex = (await (await fetch("/search-index.json")).json())
+	async _setupCommands() {
+		this.searchIndex = (await (await fetch("/search-index.json")).json())
 			.map(item => {
 				item.section = item.section || "Default"
 				return item
-			})
+			});
 
-		this.#getRecents()
+		this._getRecents();
 	}
 
-	#getRecents() {
+	_getRecents() {
 		try {
-			const storedSearchItems = localStorage.getItem("search-items")
+			const storedSearchItems = localStorage.getItem("search-items");
 			
 			if (storedSearchItems && storedSearchItems.length) {
-				this.#recents = JSON.parse(storedSearchItems).slice(0, 5)
+				this.recents = JSON.parse(storedSearchItems).slice(0, 5);
 			}
 		} catch (err) {}
 	}
 
-	#setRecents(searchResults) {
+	_setRecents(searchResults) {
 		try {
-			if (this.#recents && this.#recents.length > 1) {
-				this.#recents = this.#unique([...searchResults, ...this.#recents]).slice(0, 5)
+			if (this.recents && this.recents.length > 1) {
+				this.recents = this._unique([...searchResults, ...this.recents]).slice(0, 5);
 			} else {
-				this.#recents = this.#unique(searchResults).slice(0, 5)
+				this.recents = this._unique(searchResults).slice(0, 5);
 			}
 			
-			localStorage.setItem("search-items", JSON.stringify(this.#recents))
+			localStorage.setItem("search-items", JSON.stringify(this.recents));
 		} catch (err) {}
 	}
 
-	#unique(array) {
+	_unique(array) {
 		return array.filter(function (value, index, self) {
-			return self.indexOf(value) === index
-		})
+			return self.findIndex(function (v) { return v.title === value.title }) === index;
+		});
 	}
 
-	#groupBy(array, key) {
+	_groupBy(array, key) {
 		return array.reduce(function(storage, item) {
-			(storage[item[key]] = storage[item[key]] || []).push(item)
-			return storage
-		}, {})
-	}
-
-	#template() {
-		return `
-		<generic-dialog close-on-outside-click close-on-escape id="command-bar">
-			<button slot="invoker" type="button" aria-label="Open command bar">
-				<svg role="img" class="icon" aria-hidden="true">
-					<use href="#command-key"/>
-				</svg>
-			</button>
-			<section slot="content" class="command-bar-items">
-				<header class="command-bar-header">
-					<input id="search-box" placeholder="Search for something...">
-					<button part="resetter" type="reset" aria-label="Reset search">
-						<svg role="img" class="icon" aria-hidden="true">
-							<use href="#undo"/>
-						</svg>
-					</button>
-					<button part="escaper" type="button" aria-label="Close command bar">
-						<svg role="img" class="icon" aria-hidden="true">
-							<use href="#x"/>
-						</svg>
-					</button>
-				</header>
-				<div id="commands" tabindex="-1"></div>
-				<footer class="command-bar-footer">
-					<span><kbd>Tab</kbd> <kbd>Shift+Tab</kbd> to navigate</span>
-					<span><kbd>Esc</kbd> or click outside to close</span>
-				</footer>
-			</section>
-		</generic-dialog>
-		`
+			(storage[item[key]] = storage[item[key]] || []).push(item);
+			return storage;
+		}, {});
 	}
 }
 
-customElements.define(CommandBar.tagName, CommandBar)
+CommandBar.register();

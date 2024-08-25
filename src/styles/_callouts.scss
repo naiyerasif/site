@@ -1,60 +1,71 @@
+@use "mixins";
+
 .callout {
-	--callout-color: var(--color-site-emphasis);
-	--callout-background: var(--background-site-note);
-	--callout-radius: var(--radius-site-medium);
-	--callout-padding: var(--hgap-site-adaptive);
-	--callout-border: var(--thickness-site-base) solid var(--callout-border-color, var(--border-site-note));
-	border: var(--callout-border);
-	border-radius: var(--callout-radius);
-	background: var(--callout-background);
-	box-shadow: var(--shadow-size-site-base) var(--callout-background);
-	padding: var(--callout-padding);
+	--calloutBgColor: var(--x2-bg-callout, var(--x2-bg-note));
+	--calloutColor: var(--x2-color-callout, var(--x2-color-body));
+	--calloutBorderColor: var(--x2-border-callout, var(--x2-border-note));
+	--calloutBorderWidth: var(--x2-line-width-lg);
+	--calloutContentPadding: var(--x2-padding-callout-content, 1em);
+
+	background-color: var(--calloutBgColor);
+	border: var(--calloutBorderWidth) solid var(--calloutBorderColor);
+	border-radius: var(--x2-radius-0);
 
 	&-indicator {
 		display: flex;
-		align-items: center;
+		gap: 0.5ch;
+		color: var(--calloutColor);
+		background-color: var(--calloutBorderColor);
+		padding: 0 0.25ch var(--calloutBorderWidth);
 	}
 
-	&-hint {
-		color: var(--callout-color);
+	&-content {
+		--x2-gap-flow: 1em;
+		@include mixins.flow;
+		padding: var(--calloutContentPadding);
+		border-image: 
+			radial-gradient(#0000 71%, var(--calloutBorderColor) 72%)
+			49.9%/var(--x2-radius-sm);
 	}
 
-	&-title {
-		color: var(--callout-color);
-		font-size: 0.9em;
-		font-weight: var(--font-site-semibold);
-		letter-spacing: 0.04em;
+	&.quote {
+		.callout-content {
+			color: var(--calloutColor);
+			font-size: 1.125em;
+		}
 	}
 
-	&-hint + &-title {
-		margin-inline-start: calc(var(--callout-padding) / 3);
-	}
+	&.sm {
+		.callout-content {
+			font-size: 0.9em;
 
-	&-indicator + &-content {
-		margin-block-start: var(--callout-padding);
+			li {
+				--x2-gap-flow: 0;
+			}
+		}
 	}
 }
 
 .callout-commend {
-	--callout-background: var(--background-site-commend);
-	--callout-color: var(--color-site-commend);
-	--callout-border-color: var(--border-site-commend);
+	--x2-bg-callout: var(--x2-bg-commend);
+	--x2-color-callout: var(--x2-color-commend);
+	--x2-border-callout: var(--x2-border-commend);
 }
 
 .callout-warn {
-	--callout-background: var(--background-site-warn);
-	--callout-color: var(--color-site-warn);
-	--callout-border-color: var(--border-site-warn);
+	--x2-bg-callout: var(--x2-bg-warn);
+	--x2-color-callout: var(--x2-color-warn);
+	--x2-border-callout: var(--x2-border-warn);
 }
 
 .callout-deter {
-	--callout-background: var(--background-site-deter);
-	--callout-color: var(--color-site-deter);
-	--callout-border-color: var(--border-site-deter);
+	--x2-bg-callout: var(--x2-bg-deter);
+	--x2-color-callout: var(--x2-color-deter);
+	--x2-border-callout: var(--x2-border-deter);
 }
 
 .callout-assert {
-	--callout-background: var(--background-site-assert);
-	--callout-color: var(--color-site-assert);
-	--callout-border-color: var(--border-site-assert);
+	--x2-bg-callout: var(--x2-bg-assert);
+	--x2-color-callout: var(--x2-color-assert);
+	--x2-border-callout: var(--x2-border-assert);
 }

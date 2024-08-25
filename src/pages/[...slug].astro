@@ -1,35 +1,55 @@
 ---
-import { getCollection } from "astro:content"
-import Layout from "~components/layouts/Layout.astro"
-import BackToTop from "~components/atoms/BackToTop.astro"
+import { getCollection } from "astro:content";
+import Time from "~components/Time.astro";
+import Toc from "~components/Toc.astro";
+import Layout from "~layouts/Layout.astro";
+import format, { compare, format_date } from "~datetime";
+import toc from "~toc";
+import siteInfo from "~website";
 
 export async function getStaticPaths() {
-	const pages = await getCollection("pages")
+	const pages = await getCollection("page");
 	return pages.map(entry => ({
 			params: { slug: entry.slug },
 			props: { entry }
-		}))
+		}));
 }
 
-const { entry } = Astro.props
-const { data, render } = entry
-const { Content, headings } = await render()
+const { entry } = Astro.props;
+const { data, render } = entry;
+const { Content, headings } = await render();
+const showToc = data.showToc && headings && headings.length > 0;
+const showUpdate = compare(data.update, data.date) !== 0;
 
 const pageInfo = {
-	hint: data.title,
 	title: data.title,
 	description: data.description,
-	url: Astro.url.pathname
-}
+	url: Astro.url.pathname,
+	published: format(data.date, format_date),
+	updated: showUpdate ? format(data.update, format_date) : undefined,
+};
 ---
 
 <Layout {pageInfo}>
+	<Fragment slot="hero">
+		<nav class="hero-header breadcrumb">
+			<a class="breadcrumb-item" href="/">Home</a>
+		</nav>
+		<div class="hero-body">
+			<div class="hero-headline-text">
+				<h1 class="headline">{data.title}</h1>
+				{data.tagline && <p class="subheadline">{data.tagline}</p>}
+			</div>
+		</div>
+		<div class="hero-footer">
+			<span>Published on <Time date={data.date} /></span>{showUpdate && <span class="update">Updated on <Time date={data.update} /></span>}
+		</div>
+	</Fragment>
 	<article class="content">
+		{showToc && <nav class="toc">
+			<div class="toc-header">Table of Contents</div>
+			<Toc headings={toc(headings, siteInfo.maxTocDepth)}/>
+		</nav>}
 		<Content/>
 	</article>
-	<div class="sidekick">
-		<div class="sidekick-items">
-			<BackToTop />
-		</div>
-	</div>
 </Layout>

@@ -1,24 +1,24 @@
 ---
 slug: "2019/01/12/using-express-with-typescript"
 title: "Using Express with TypeScript"
-description: "TypeScript has been gaining popularity and adoption for a while as a strongly-typed flavor of JavaScript. And Express has been a fan-favorite for writing JavaScript backend. So how do we use them together?"
-date: "2019-01-12 10:11:13"
-update: "2020-02-06 22:30:55"
+description: "Explore the integration of TypeScript, a widely adopted strongly-typed superset of JavaScript, with Express, a popular choice for developing JavaScript backends."
+date: 2019-01-12 10:11:13
+update: 2020-02-06 22:30:55
+type: "post"
 category: "guide"
-tags: ["express", "typescript"]
 ---
 
 TypeScript [has been gaining](https://2019.stateofjs.com/javascript-flavors/typescript/) popularity and adoption for a while as a strongly-typed flavor of JavaScript. And Express [has been a fan-favorite](https://2019.stateofjs.com/back-end/express/) for writing JavaScript backends. So how do we use them together? Let's explore.
 
 :::assert{title=Series}
-1. [Using Express with TypeScript](/post/2019/01/12/using-express-with-typescript/)
+1. *Using Express with TypeScript*
 2. [Request logging with morgan](/post/2019/08/13/request-logging-with-morgan/)
 3. [Logging on Node.js with log4js-node](/post/2019/08/14/logging-on-nodejs-with-log4js-node/)
 4. [Linting with TypeScript ESLint](/post/2019/08/16/linting-with-typescript-eslint/)
 5. [Developing an API with Express and Postgres](/post/2019/08/19/developing-an-api-with-express-and-postgres/)
 :::
 
-:::setup
+:::note{.sm}
 The examples in this post use
 
 - Node.js 12

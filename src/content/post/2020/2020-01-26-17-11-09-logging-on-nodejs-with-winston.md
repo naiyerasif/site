@@ -1,18 +1,18 @@
 ---
 slug: "2020/01/26/logging-on-nodejs-with-winston"
 title: "Logging on Node.js with winston"
-description: "winston is a popular logger for Node.js to format and store the logs. It supports custom logging levels, streaming logs and custom transports to save the logs. Explore how to log messages to the console as well as a file."
-date: "2020-01-26 17:11:09"
-update: "2020-01-26 17:11:09"
+description: "Learn to use winston, a widely-used logger for Node.js that supports custom log levels, log streaming, and custom transports. Explore how to format and store logs both to the console and a file."
+date: 2020-01-26 17:11:09
+update: 2020-01-26 17:11:09
+type: "post"
 category: "guide"
-tags: ["winston", "nodejs", "log"]
 ---
 
 `winston` is very popular logger for Node.js, providing simple API to store and format the logs. It provides support for custom logging levels, streaming logs and custom transports to save the logs. Another useful feature is the ability to query the logs based on filters like duration and keywords.
 
 In this post, we'll explore how `winston` can be used to log to the console as well as a file.
 
-:::setup
+:::note{.sm}
 You can pick the Node.js application created in the post [Request logging with morgan](/post/2019/08/13/request-logging-with-morgan/) to follow this post.
 :::
 

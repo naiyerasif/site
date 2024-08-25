@@ -1,11 +1,11 @@
 ---
 slug: "2021/03/27/content-negotiation-in-spring-boot"
 title: "Content negotiation in Spring Boot"
-description: "You might be required to provide the response in different formats depending on the client. One might accept JSON while the other can only work with XML. Learn how to handle this with Spring Boot."
-date: "2021-03-27 11:03:46"
-update: "2022-07-16 11:24:33"
+description: "Sometimes, one client may prefer JSON while another may require XML response from your API. Discover how to deliver responses in different formats based on the client's requirements using Spring Boot."
+date: 2021-03-27 11:03:46
+update: 2022-07-16 11:24:33
+type: "post"
 category: "guide"
-tags: ["spring", "content", "negotiation"]
 ---
 
 In situations where an API is being consumed by multiple systems, you might be required to provide the response in different formats depending on the client. One client might accept JSON while the other can only work with XML. That's where the Request Content Negotiation comes into picture. In this post, we'll explore a specific usecase of the request content negotiation where a client sends their preferences for the mediatype of their choice.
@@ -14,7 +14,7 @@ In situations where an API is being consumed by multiple systems, you might be r
 Request Content Negotiation is a server-driven content negotiation where a client sends several HTTP headers along with the URL. These headers describe the preferences of the client. The server takes them as hints and generates the appropriate response to send to the client. If the server can't prepare a response per the client preferences, it may respond with a `406 Not Acceptable` or `413 Unsupported Media Type` status.
 :::
 
-:::setup
+:::note{.sm}
 The examples in this post use
 
 - Java 18

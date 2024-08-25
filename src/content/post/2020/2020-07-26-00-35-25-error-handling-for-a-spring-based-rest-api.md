@@ -1,11 +1,11 @@
 ---
 slug: "2020/07/26/error-handling-for-a-spring-based-rest-api"
 title: "Error handling for a Spring-based REST API"
-description: "Spring Boot provides useful defaults to handle exceptions and formulate a helpful response. However, in many cases, some customization might be needed. Learn how to customize error responses returned by a REST API with some usecases when Spring Security comes into the picture."
-date: "2020-07-26 00:35:25"
-update: "2020-07-26 00:35:25"
+description: "Spring offers useful exception handling by default. Yet, there are situations where customization becomes necessary. Learn to customize error responses, particularly when Spring Security is involved."
+date: 2020-07-26 00:35:25
+update: 2020-07-26 00:35:25
+type: "post"
 category: "guide"
-tags: ["spring", "security", "rest"]
 ---
 
 Spring Boot provides pretty nifty defaults to handle exceptions and formulate a helpful response in case anything goes wrong. Still, for any number of reasons, an exception can be thrown at runtime and the consumers of your API may get a garbled exception message (or worse, no message at all) with a `500 Internal Server Error` response.
@@ -18,7 +18,7 @@ This is a pretty common occurrence and customizing the error response so that it
 
 In this post, we'll explore some of the ways to customize error responses returned by a REST API. We'll also cover some usecases when Spring Security comes into the picture.
 
-:::setup
+:::note{.sm}
 The code written for this post uses:
 
 - Java 14

@@ -2,15 +2,15 @@
 slug: "2019/09/18/querying-json-documents-in-oracle"
 title: "Querying JSON documents in Oracle"
 description: "Oracle added the native JSON support in the version 12c of their popular relational database system. Learn how to query JSON documents with the help of new conditions, data types, and functions."
-date: "2019-09-18 22:11:11"
-update: "2020-03-14 00:48:09"
+date: 2019-09-18 22:11:11
+update: 2020-03-14 00:48:09
+type: "post"
 category: "guide"
-tags: ["json", "oracle", "database"]
 ---
 
 Oracle added the native JSON support in the version 12c of their popular relational database system. With the help of new conditions and functions, you can create queries, indexes, transactions and views for JSON documents. 
 
-:::setup
+:::note{.sm}
 The examples in this post use
 
 - Oracle 12c
@@ -73,7 +73,7 @@ CREATE TABLE BIOS (
 
 We know that `fname`, `contrib` and `recognition` are JSON fields. To ensure this, we can apply constraints using `IS JSON` condition, as follows.
 
-```sql {6-8}
+```sql {6..8}
 CREATE TABLE BIOS (
   id INTEGER PRIMARY KEY,
   fname CLOB,

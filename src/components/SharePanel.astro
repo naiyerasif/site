@@ -1,0 +1,46 @@
+---
+import Icon from "./Icon.astro";
+import { pageInfoSchema } from "~schema";
+import siteInfo from "~website";
+
+const shareInfo = pageInfoSchema.parse(Astro.props.pageInfo);
+const shareableTitle = encodeURI(shareInfo.title);
+const mastodonHandle = encodeURI(siteInfo.author.networks.mastodon.id);
+
+const shareVia = [
+	{
+		platform: "mail",
+		title: "Share via email",
+		link: `mailto:?subject=${shareInfo.title}&body=Checkout this article I read! ${shareInfo.url}`
+	},
+	{
+		platform: "mastodon",
+		title: "Post on Mastodon",
+		link: `https://elk.zone/intent/post?text=${shareInfo.title}%20(by%20${mastodonHandle})%0A%0A${shareInfo.url}`
+	},
+	{
+		platform: "hackernews",
+		title: "Submit to Hacker News",
+		link: `https://news.ycombinator.com/submitlink?u=${shareInfo.url}&t=${shareableTitle}`
+	},
+	{
+		platform: "linkedin",
+		title: "Post on LinkedIn",
+		link: `https://www.linkedin.com/sharing/share-offsite/?url=${shareInfo.url}`
+	},
+	{
+		platform: "reddit",
+		title: "Post on Reddit",
+		link: `http://www.reddit.com/submit?url=${shareInfo.url}&title=${shareableTitle}`
+	}
+];
+---
+
+<div class="share-panel">
+	<share-url><button type="button" aria-live="polite" aria-label="Share link" class="share-button"><Icon name="share"/></button></share-url>
+	{shareVia.map(share => <a href={share.link} title={share.title} rel="noopener noreferrer" target="_blank"><Icon name={share.platform}/></a>)}
+</div>
+
+<script>
+	import "../modules/share-url/index.js";
+</script>

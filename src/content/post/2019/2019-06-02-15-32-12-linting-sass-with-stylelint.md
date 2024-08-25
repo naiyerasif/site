@@ -1,16 +1,16 @@
 ---
 slug: "2019/06/02/linting-sass-with-stylelint"
 title: "Linting Sass with stylelint"
-description: "stylelint is a widely used linter that works with Sass, Less and SugarSS. It supports a plugin system to extend its behavior. So, how to use it to lint the Sass files to avoid errors and enforce consistency?"
-date: "2019-06-02 15:32:12"
-update: "2019-08-08 20:21:01"
+description: "Learn how to utilize stylelint, a widely-used linter for CSS, Sass, and Less files. Explore its plugin system to extend functionality and ensure error-free code and consistency in your Sass files."
+date: 2019-06-02 15:32:12
+update: 2019-08-08 20:21:01
+type: "post"
 category: "guide"
-tags: ["stylelint", "sass", "lint"]
 ---
 
 Besides JavaScript or TypeScript, you can also lint the [Sass](https://sass-lang.com/) (or SCSS) files, using a linter called [stylelint](https://github.com/stylelint/stylelint). `stylelint` is a widely used linter that works with SCSS, Sass, Less and SugarSS. It supports a plugin system through which we can extend its behavior. 
 
-:::setup
+:::note{.sm}
 You can use any Node.js project using Sass to follow the examples.
 :::
 

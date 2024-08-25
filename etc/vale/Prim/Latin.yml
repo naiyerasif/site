@@ -1,0 +1,18 @@
+extends: substitution
+message: "Avoid latin. Use '%s' instead of '%s'."
+level: error
+ignorecase: true
+nonword: true
+action:
+  name: replace
+swap:
+  circa: around|about
+  '\b(?:eg|e\.g\.)[\s,]': for example
+  ergo: therefore
+  '\bet al\.': and others
+  '\betc\.': and other(s)
+  '\b(?:ie|i\.e\.)[\s,]': that is
+  '\bvs\.': against
+  versus: against
+  '\bvia': over|through
+  '\bviz\.': namely

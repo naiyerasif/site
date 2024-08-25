@@ -1,43 +1,45 @@
 ---
-import { getCollection } from "astro:content"
-import Layout from "~components/layouts/Layout.astro"
-import PostCard from "~components/layouts/PostCard.astro"
-import StatusCard from "~components/layouts/StatusCard.astro"
-import Icon from "~components/atoms/Icon.astro"
-import Pagination from "~components/widgets/Pagination.astro"
-import { compare } from "~datetime"
+import { getCollection } from "astro:content";
+import Layout from "~layouts/Layout.astro";
+import PostCard from "~components/PostCard.astro";
+import StatusCard from "~components/StatusCard.astro";
+import Pagination from "~components/Pagination.astro";
+import siteInfo from "~website";
+import { compare } from "~datetime";
 
 export async function getStaticPaths({ paginate }) {
 	const posts = (await getCollection("post"))
-		.sort((p1, p2) => compare(p1.data.date, p2.data.date))
-	return paginate(posts, { pageSize: 10 })
+		.filter(post => post.data.state !== "outdated")
+		.sort((p1, p2) => compare(p1.data.date, p2.data.date));
+	return paginate(posts, { pageSize: siteInfo.maxPageItems });
 }
 
-const { page } = Astro.props
+const { page } = Astro.props;
+const host = new URL(siteInfo.siteBase).hostname;
 
 const pageInfo = {
-	hint: `Posts`,
 	title: `Posts (Page ${page.currentPage})`,
-	description: "Posts on naiyer.dev",
+	description: `Posts on ${host}`,
 	url: Astro.url.pathname,
 	previous: page?.url?.prev,
 	next: page?.url?.next
-}
+};
 ---
 
-<Layout {pageInfo} class="compact">
-	<div class="subheadline with-icon" slot="hero">
-		<Icon name="posts"/>
-		<span>Posts &mdash;&mdash; {page.start + 1}&hellip;{page.end + 1} of {page.total}</span>
-	</div>
-	<div class="showcase">
-		{page.data.map(entry => entry.data.category === "status" ? <StatusCard {entry} /> : <PostCard {entry} />)}
-	</div>
-	<div class="sidekick">
-		<div class="sidekick-flex-items">
-			<div class="pagination">
-				<Pagination currentPage={page.currentPage} totalPages={page.lastPage} base="posts"/>
+<Layout {pageInfo}>
+	<Fragment slot="hero">
+		<nav class="hero-header breadcrumb">
+			<a class="breadcrumb-item" href="/">Home</a>
+			<span class="breadcrumb-item">{page.start + 1}&hellip;{page.end + 1} of {page.total} posts</span>
+		</nav>
+		<div class="hero-body">
+			<div class="hero-headline-text">
+				<h1 class="headline">Posts</h1>
 			</div>
 		</div>
+	</Fragment>
+	{page.data.map(entry => entry.data.type === "status" ? <StatusCard {entry} /> : <PostCard {entry} />)}
+	<div slot="sidekick" class="sidekick-items">
+		<Pagination currentPage={page.currentPage} totalPages={page.lastPage} base="posts"/>
 	</div>
 </Layout>

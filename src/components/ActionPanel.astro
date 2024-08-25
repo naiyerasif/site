@@ -1,0 +1,12 @@
+---
+import Icon from "./Icon.astro";
+import { pageInfoSchema } from "~schema";
+
+const pageInfo = pageInfoSchema.parse(Astro.props.pageInfo);
+---
+
+<div class="action-panel">
+	<a href={pageInfo.source} rel="noopener noreferrer" class="icon-link-start">
+		<Icon name="pencil"/>Edit this post
+	</a>
+</div>

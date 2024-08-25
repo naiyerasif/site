@@ -1,11 +1,11 @@
 ---
 slug: "2021/06/19/creating-deep-copies-in-java"
 title: "Creating deep copies in Java"
-description: "There are no built-in mechanisms to create deep copies of an object in Java. You can implement the Cloneable interface in your class and override the clone() method. Or, you can use some ways to do this described in this post."
-date: "2021-06-19 10:56:39"
-update: "2021-06-19 10:56:39"
+description: "Java lacks built-in mechanisms for creating deep copies of objects. Explore the various methods to achieve deep copying in Java."
+date: 2021-06-19 10:56:39
+update: 2021-06-19 10:56:39
+type: "post"
 category: "guide"
-tags: ["java", "jackson", "kryo", "copy"]
 ---
 
 The need to create copies is pretty common in programming. In a nutshell, you may need the copy of an object's reference (called a *shallow copy*) or the copy of the object's data (called a *deep copy*), depending on the requirement. Java makes it pretty straightforward to create shallow copies of an object; you need to implement the `Cloneable` interface on its class and override the `clone()` method. However, there are no in-built mechanisms to create deep copies of an object in Java. In this guide, we'll explore some ways to do this for different usecases.
@@ -23,7 +23,7 @@ public interface Copyable<T> {
 
 You can implement this interface in the classes that need to provide deep copies.
 
-```java {6-12,21-26}
+```java {6..12,21..26}
 public class Book implements Copyable<Book> {
 
   private String title;
@@ -122,7 +122,7 @@ Assuming you've got a Maven project, add the `jackson-databind` dependency in `p
 
 You won't need to modify the original classes in this case.
 
-```java {20-22}
+```java {20..22}
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -195,7 +195,7 @@ Assuming you have a Maven project, add the `kryo` dependency in `pom.xml`.
 
 As in the previous approach, you won't need to do any changes to the source code of the classes.
 
-```java {19-21}
+```java {19..21}
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.esotericsoftware.kryo.Kryo;

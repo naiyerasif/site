@@ -1,11 +1,11 @@
 ---
 slug: "2021/02/28/copying-dependency-files-with-maven"
 title: "Copying dependency files with Maven"
-description: "Sometimes we need to move a dependency to the target directory along with the application JAR. These files may not be used by the application directly and hence wouldn’t be packaged in the application’s JAR as part of the build process. Learn how to do this while building the application with Maven."
-date: "2021-02-28 21:23:03"
-update: "2021-02-28 21:23:03"
+description: "Sometimes, a dependency needs to be moved to the target directory alongside the application JAR as a part of Maven build process. Learn how to copy such files that are not packaged with your app."
+date: 2021-02-28 21:23:03
+update: 2021-02-28 21:23:03
+type: "post"
 category: "note"
-tags: ["maven", "java", "copy"]
 ---
 
 Sometimes, when I build an application with Maven, I need to move some dependency files to the target directory along with the application JAR. These files may not be used by the application directly and hence wouldn't be packaged in the application JAR.
@@ -14,7 +14,7 @@ For example, sometimes I'm interested in attaching the [Hotswap Agent](https://g
 
 That's where the `maven-dependency-plugin` comes in handy. I need to add HotSwap Agent as a dependency and configure the plugin to copy it to the target directory (defined by the `project.build.directory` property) as follows.
 
-```xml {28-32,41-62}
+```xml {28..32,41..62}
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

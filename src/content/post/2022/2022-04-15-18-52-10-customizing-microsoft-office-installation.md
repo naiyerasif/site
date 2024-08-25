@@ -1,11 +1,11 @@
 ---
 slug: "2022/04/15/customizing-microsoft-office-installation"
 title: "Customizing Microsoft Office installation"
-description: "I wanted a way to cherry-pick only the Office apps that I really needed to use and exclude everything else from the installation. Turns out there is a way to accomplish this."
-date: "2022-04-15 18:52:10"
-update: "2022-04-15 18:52:10"
+description: "The default Microsoft Office installer installs a lot of apps on your Windows machine. Learn how you can install only the needed Office apps."
+date: 2022-04-15 18:52:10
+update: 2022-04-15 18:52:10
+type: "post"
 category: "note"
-tags: ["microsoft", "office", "install"]
 ---
 
 I've installed the Microsoft Office suite on different machines over the years. But one thing had always bugged me: the default Office installer installs a lot of applications that I never use (looking at you, OneNote and Skype). I wanted a way to cherry-pick only the Office apps that I needed to use and exclude everything else from the installation. It turns out there is a way to accomplish this.
@@ -22,11 +22,19 @@ Download the installer (the `exe` file). When launched, it asks for a folder to 
 
 Right-click the Office installation `img` file and select **Mount**.
 
-![Mounting Office installer](/images/post/2022/2022-04-15-18-52-10-customizing-microsoft-office-installation-01.png)
+:::figure
+![Mounting Office installer](./images/2022-04-15-18-52-10-customizing-microsoft-office-installation-01.png)
+
+Mounting the Office installer image on Windows
+:::
 
 This mounts the file as a drive (say `G:`).
 
-![Mounted Office installer](/images/post/2022/2022-04-15-18-52-10-customizing-microsoft-office-installation-02.png)
+:::figure
+![Mounted Office installer](./images/2022-04-15-18-52-10-customizing-microsoft-office-installation-02.png)
+
+Office installer mounted as a drive on Windows
+:::
 
 ## Generate install configuration with the Office Customization Tool
 
@@ -34,11 +42,15 @@ The Office Deployment Tool requires a configuration file that describes which ap
 
 Open the browser and launch the [Office Customization Tool](https://config.office.com/deploymentsettings). Choose the architecture, the Office version, etc. At the bottom of the **Products and releases** section, you'd find a list of applications that you can toggle for installation. Pick and choose what you want and complete the rest of the configuration.
 
-![Selecting Apps with Office Customization Tool](/images/post/2022/2022-04-15-18-52-10-customizing-microsoft-office-installation-03.png)
+:::figure
+![Selecting Apps with Office Customization Tool](./images/2022-04-15-18-52-10-customizing-microsoft-office-installation-03.png)
+
+Selecting Office applications to install with [Office Customization Tool](https://config.office.com/deploymentsettings)
+:::
 
 After you're done with your configuration, hit the **Export** button to download the configuration file. This is an `XML` file. Copy this file in the folder where the Office Deployment Tool was extracted (that's, `D://ODT/`). Open the file in an editor. A sample configuration file for Office Professional Plus would look like this.
 
-```xml {2-3} caption='Configuration.xml'
+```xml {2..3} title="Configuration.xml"
 <Configuration ID="fc113a98-bff0-4eda-8928-41de78dcac57">
 	<Add OfficeClientEdition="64" SourcePath="G:">
 		<Product ID="ProPlus2021Retail" PIDKEY="<product_id_for_activation>">
@@ -69,6 +81,10 @@ Open PowerShell as the administrator at the location where the Office Deployment
 
 This command launches the customized install.
 
-![Installing Office with selected applications](/images/post/2022/2022-04-15-18-52-10-customizing-microsoft-office-installation-04.png)
+:::figure
+![Office installation splashscreen](./images/2022-04-15-18-52-10-customizing-microsoft-office-installation-04.png)
+
+Installing Office with selected applications
+:::
 
 And that's how you can do a clean install of the Office suite ensuring you install only what you need.

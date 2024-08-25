@@ -1,18 +1,18 @@
 ---
 slug: "2018/08/05/communicating-with-containers-on-docker-network"
 title: "Communicating with containers on Docker network"
-description: "Say, you’ve an Angular application that talks to a service through a network. Both of them are running in separate containers, which can be on the same or different docker stack. How would you keep the service privately accessible only to the Angular application which is exposed to the host?"
-date: "2018-08-05 12:06:01"
-update: "2020-03-08 21:22:13"
+description: "Discover how to ensure private access to the backend of your Angular app, running in distinct containers, while the Angular app remains exposed to the host."
+date: 2018-08-05 12:06:01
+update: 2020-03-08 21:22:13
+type: "post"
 category: "guide"
-tags: ["containers", "docker", "network"]
 ---
 
 Say, you've an Angular app that talks to a backend service through a network. Both of them are running in separate containers, which can be on the same or different Docker stack(s). You want only the Angular container to be publicly accessible through a port.
 
 Let's run through some scenarios on how you can achieve this.
 
-:::setup
+:::note{.sm}
 The examples in this post use
 
 - Java 13
@@ -53,7 +53,7 @@ public class Greeting {
 
 Configure an endpoint, say `/hello`, that returns a `Greeting` object.
 
-```java {6-9}
+```java {6..9}
 // greeter-api/src/main/java/dev/mflash/guides/greeter/GreetingController.java
 
 @Controller("/hello")
@@ -140,7 +140,7 @@ ng generate service Greeting
 
 Add a method (`getGreeting`) to call the backend service.
 
-```typescript {9-11}
+```typescript {9..11}
 // greeter-ui/src/app/greeting.service.ts
 
 @Injectable({
@@ -307,7 +307,11 @@ networks:
 
 Launch this stack by executing `docker-compose up -d` and browse to <http://localhost:4200>. You'll see the following message displayed on the browser window.
 
-![Greeter UI](/images/post/2018/2018-08-05-12-06-01-communicating-with-containers-on-docker-network-01.png)
+:::figure
+![Greeter UI](./images/2018-08-05-12-06-01-communicating-with-containers-on-docker-network-01.png)
+
+Greeter UI displaying the default greeting message
+:::
 
 This is the default greeting message; we're not getting the message from the backend service. A quick look on the Networks tab in Devtools reveals that we're getting a `502 Bad Gateway` for the request at <http://0.0.0.0:8084/hello?name=Microflash>. That's because Docker assigns some random host to a service; in this case, it is not `0.0.0.0`.
 
@@ -329,7 +333,11 @@ server {
 
 Rebuild the `greeter-ui` image, launch the stack again and browse to <http://localhost:4200>. You'd see the expected greeting message.
 
-![Greeter UI](/images/post/2018/2018-08-05-12-06-01-communicating-with-containers-on-docker-network-02.png)
+:::figure
+![Greeter UI](./images/2018-08-05-12-06-01-communicating-with-containers-on-docker-network-02.png)
+
+Greeter UI displaying the custom greeting message
+:::
 
 ## Scenario 2: Containers on different Docker stacks
 

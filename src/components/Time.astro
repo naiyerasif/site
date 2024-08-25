@@ -1,0 +1,9 @@
+---
+import format, { format_iso } from "~datetime";
+
+const { date, ...attribs } = Astro.props;
+const displayDate = format(date);
+const isoDate = format(date, format_iso);
+---
+
+<time datetime={isoDate} {...attribs}>{displayDate}</time>

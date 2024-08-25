@@ -1,0 +1,29 @@
+---
+import { paginationPathname } from "~website";
+
+const { currentPage, totalPages, base } = Astro.props;
+
+function disabled(pageNumber) {
+	if (totalPages <= 6) return false;
+	if (pageNumber <=1 || pageNumber >= totalPages) return false;
+	if (currentPage == pageNumber - 1 || currentPage == pageNumber || currentPage == pageNumber + 1) return false;
+	return true;
+}
+
+const pages = Array.from({ length: totalPages }, (v, i) => i + 1)
+	.map(pageNumber => ({
+		pageNumber,
+		active: currentPage === pageNumber,
+		disabled: disabled(pageNumber)
+	}));
+---
+
+{
+	pages.map((page, index)=> page.active ? 
+		<a class="pagination-item distinct-link active" href={paginationPathname(base, page.pageNumber)} aria-current="page" aria-label={`Page ${page.pageNumber}`}>{currentPage}</a> : 
+		(page.disabled && !pages[index - 1].disabled ? 
+			<span class="pagination-separator">&hellip;</span> : 
+			(!page.disabled && <a class="pagination-item distinct-link" href={paginationPathname(base, page.pageNumber)} aria-label={`Page ${page.pageNumber}`}>{page.pageNumber}</a> )
+		)
+	)
+}

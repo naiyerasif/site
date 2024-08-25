@@ -1,0 +1,22 @@
+---
+import "../styles/main.scss";
+import PageInfo from "./PageInfo.astro";
+import ClientBase from "./ClientBase.astro";
+import Sprites from "~components/Sprites.astro";
+
+const { pageInfo, ...attribs } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<PageInfo {pageInfo}/>
+	</head>
+	<body>
+		<main {...attribs}>
+			<slot/>
+		</main>
+		<ClientBase/>
+		<Sprites/>
+	</body>
+</html>

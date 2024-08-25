@@ -1,11 +1,11 @@
 ---
 slug: "2021/01/19/error-handling-for-spring-security-resource-server"
 title: "Error handling for Spring Security Resource Server"
-description: "Spring Boot provides useful defaults to handle exceptions and formulate a helpful response. However, in many cases, some customization might be needed. Learn how to accomplish this for a REST API protected with OAuth 2 using Spring Security Resource Server."
-date: "2021-01-19 09:46:57"
-update: "2021-01-19 09:46:57"
+description: "Spring's default exception handling may need customization in certain cases. Learn to customize error responses for a REST API protected with OAuth 2 using Spring Security Resource Server."
+date: 2021-01-19 09:46:57
+update: 2021-01-19 09:46:57
+type: "post"
 category: "guide"
-tags: ["spring", "security", "oauth2"]
 ---
 
 > This is a follow-up post for [Error handling for a Spring-based REST API](/post/2020/07/26/error-handling-for-a-spring-based-rest-api/) and [Protecting endpoints with Spring Security Resource Server](/post/2020/11/15/protecting-endpoints-with-spring-security-resource-server/).
@@ -20,7 +20,7 @@ In this post, we'll discuss how to customize error handling for a REST API prote
 
 In the case of Spring Security Resource Server, the `BearerTokenAuthenticationEntryPoint` and `BearerTokenAccessDeniedHandler` are the default implementations. You can override them by custom implementations, say `CustomOAuth2AuthenticationEntryPoint` and `CustomOAuth2AccessDeniedHandler`, using the configuration DSL as follows.
 
-```java {10-11}
+```java {10..11}
 // src/main/java/dev/mflash/guides/tokenval/introspection/security/SecurityConfiguration.java
 
 @EnableWebSecurity

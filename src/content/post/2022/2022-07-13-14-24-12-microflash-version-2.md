@@ -2,10 +2,10 @@
 slug: "2022/07/13/microflash-version-2"
 title: "Microflash: Version 2"
 description: "Introducing the redesign of this website. Here, I document the changes done, some website metrics and comparison with the old version, and the notable ‘behind the scenes’ changes."
-date: "2022-07-13 14:24:12"
-update: "2022-07-21 13:57:10"
-category: "opinion"
-tags: ["microflash"]
+date: 2022-07-13 14:24:12
+update: 2022-07-21 13:57:10
+type: "post"
+category: "note"
 ---
 
 After more than three years since its inception, here's the redesign of this site. There were three motivations behind this redesign: **improving accessibility and performance**, **consistent design**, and **faster local development**.
@@ -18,8 +18,12 @@ I overhauled quite a few things.
 
 Layouts now emphasize the content and semantics around the content.
 
-![Home Page (old on left, new on right)](/images/post/2022/2022-07-13-14-24-12-microflash-version-2-01.png)
-![Post (old on left, new on right)](/images/post/2022/2022-07-13-14-24-12-microflash-version-2-02.png)
+:::figure
+![Home Page (old on left, new on right)](./images/2022-07-13-14-24-12-microflash-version-2-01.png)
+![Post (old on left, new on right)](./images/2022-07-13-14-24-12-microflash-version-2-02.png)
+
+Home Page and Post layouts (old on left, new on right)
+:::
 
 ### New design system
 
@@ -33,13 +37,21 @@ I have also cut down the amount of JavaScript being shipped to the browser (from
 
 The new version has an [all-green Lighthouse score](https://web.dev/measure/?url=https%3A%2F%2Fmflash.dev). The score aside, I have added skip links on each page, pronounced outlines for links and buttons, and necessary ARIA attributes to make the site accessible.
 
-![Lighthouse scores](/images/post/2022/2022-07-13-14-24-12-microflash-version-2-03.png)
+:::figure
+![Lighthouse scores](./images/2022-07-13-14-24-12-microflash-version-2-03.png)
+
+Lighthouse score (source: [PageSpeed Insights](https://web.dev/measure/?url=https%3A%2F%2Fmflash.dev))
+:::
 
 ### Small carbon footprint
 
 The carbon footprint of the previous version was already small. The redesign [reduces](https://www.websitecarbon.com/website/mflash-dev/) this even further.
 
-![Carbon impact estimates](/images/post/2022/2022-07-13-14-24-12-microflash-version-2-04.png)
+:::figure
+![Carbon impact estimates](./images/2022-07-13-14-24-12-microflash-version-2-04.png)
+
+Carbon impact estimates (source: [Website Carbon](https://www.websitecarbon.com/website/mflash-dev/))
+:::
 
 ## Behind the scenes
 

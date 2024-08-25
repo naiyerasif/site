@@ -1,0 +1,103 @@
+---
+import Sprites from "~components/Sprites.astro";
+import BackToTop from "~components/BackToTop.astro";
+import Icon from "~components/Icon.astro";
+import siteInfo from "~website";
+
+const authorInfo = siteInfo.author;
+const authorNetworks = authorInfo.networks;
+const siteAuthor = authorInfo.name;
+const siteIssueUrl = siteInfo.issueBase;
+---
+
+<footer class="footer">
+	<div class="footer-quote">
+		<random-message selector="blockquote">
+			<blockquote>
+				<p>You can stop scrolling now. Take a break, sit back, and give yourself a moment.</p>
+				<cite>&mdash; Author of this site</cite>
+			</blockquote>
+			<blockquote hidden>
+				<p>Finiteness is a feature.</p>
+				<cite>&mdash; Author of this site</cite>
+			</blockquote>
+			<blockquote hidden>
+				<p>You can stop scrolling now. Take a break, sit back, and give yourself a moment.</p>
+				<cite>&mdash; Author of this site</cite>
+			</blockquote>
+			<blockquote hidden>
+				<p><del>Zoom out</del> <ins>Take a nap</ins> for perspective.</p>
+				<cite>&mdash; original quote from James Clear (paraphrased and fixed)</cite>
+			</blockquote>
+			<blockquote hidden>
+				<p>6 hours of raging at a problem can save you 5 minutes of taking rest and solving it.</p>
+				<cite>&mdash; A senior software engineer</cite>
+			</blockquote>
+			<blockquote hidden>
+				<p>sometimes the best way to follow your dreams is to take a nap</p>
+				<cite>&mdash; <a href="https://fediverse.zachleat.com/@zachleat/111902455317042997" rel="nofollow noopener noreferrer">Zach Leatherman</a></cite>
+			</blockquote>
+		</random-message>
+	</div>
+	<div class="footer-sections">
+		<div class="footer-subscribe">
+			<strong>Subscribe with RSS</strong>
+			(<small><a href="https://aboutfeeds.com/" rel="nofollow noopener noreferrer">What's RSS?</a></small>)
+			<ul>
+				<li><a href="/feed.xml">Just posts</a></li>
+				<li><a href="/feed.xml">Posts + statuses</a></li>
+			</ul>
+		</div>
+		<div class="footer-shortcuts">
+			<strong>Keyboard Shortcuts</strong>
+			<ul>
+				<li><kbd>ctrl+k</kbd> or <kbd>cmd+k</kbd> : launch command bar</li>
+				<li><kbd>esc</kbd> : close command bar</li>
+			</ul>
+		</div>
+		<footer-preferences>
+			<strong>Preferences</strong>
+			<ul>
+				<li>
+					<theme-switcher>
+						Current theme: 
+						<a role="switch" aria-live="polite" aria-checked="true" data-theme-switch id="footer-theme-switcher" href="#footer-theme-switcher">
+							<span data-theme-state="dark">Dark</span>
+							<span data-theme-state="light">Light</span>
+						</a>
+					</theme-switcher>
+				</li>
+			</ul>
+		</footer-preferences>
+	</div>
+	<div class="footer-nib">
+		<div class="footer-nib-copyright">
+			&copy; 2018 &mdash; today, {siteAuthor}
+		</div>
+		<div class="footer-nib-links">
+			<a href={authorNetworks.mastodon.link} aria-label={authorNetworks.mastodon.platform} rel="nofollow noopener noreferrer">{authorNetworks.mastodon.platform}</a>
+			<a href={authorNetworks.github.link} aria-label={authorNetworks.github.platform} rel="nofollow noopener noreferrer">{authorNetworks.github.platform}</a>
+			<a href={authorNetworks.linkedin.link} aria-label={authorNetworks.linkedin.platform} rel="nofollow noopener noreferrer">{authorNetworks.linkedin.platform}</a>
+		</div>
+		<div class="footer-nib-links">
+			<a href={siteIssueUrl} rel="nofollow noopener noreferrer">Report an issue</a>
+			<a href="/privacy/">Privacy</a>
+			<a href="/sitemap-index.xml">Sitemap</a>
+		</div>
+	</div>
+</footer>
+<aside class="floating-back-to-top">
+	<BackToTop/>
+</aside>
+<Sprites/>
+
+<script>
+class FooterPreferences extends HTMLElement {
+	static register(tagName = "footer-preferences") {
+		if ("customElements" in window) {
+			customElements.define(tagName, FooterPreferences);
+		}
+	}
+}
+FooterPreferences.register();
+</script>

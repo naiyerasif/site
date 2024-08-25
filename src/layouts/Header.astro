@@ -1,0 +1,26 @@
+---
+import Icon from "~components/Icon.astro";
+import CommandBar from "~components/CommandBar.astro";
+import siteInfo from "~website";
+
+const logoAlt = `${new URL(siteInfo.siteBase).host}'s logo'`;
+---
+
+<header class="header" id="header">
+	<div class="navbar-primary">
+		<a href="/" class="brand">
+			<img src="/favicon.svg" alt={logoAlt}>
+		</a>
+	</div>
+	<nav class="navbar-secondary">
+		<a href="/posts/" class="nav-link">Posts</a>
+		<a href="/about/" class="nav-link">About</a>
+		<theme-switcher>
+			<button type="button" role="switch" aria-live="polite" aria-checked="true" aria-label="Switch theme" class="icon-btn" data-theme-switch>
+				<Icon name="moon" data-theme-state="dark"/>
+				<Icon name="sun" data-theme-state="light"/>
+			</button>
+		</theme-switcher>
+		<CommandBar/>
+	</nav>
+</header>

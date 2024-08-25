@@ -1,16 +1,15 @@
 {
 	"name": "Naiyer Asif",
 	"short_name": "Naiyer",
-	"description": "Musings on software engineering and other stuff from Naiyer Asif",
+	"description": "Personal space of Naiyer Asif on the web",
 	"categories": ["blog", "development", "design"],
 	"lang": "en-US",
 	"icons": [
-		{
-			"src": "google-touch-icon.png",
-			"sizes": "512x512"
-		}
+		{ "src": "icon-192.png", "type": "image/png", "sizes": "192x192" },
+		{ "src": "icon-512.png", "type": "image/png", "sizes": "512x512" }
 	],
-	"background_color": "#0e0e11",
-	"theme_color": "#0e0e11",
-	"display": "standalone"
+	"background_color": "#000",
+	"theme_color": "#000",
+	"display": "standalone",
+	"scope": "/"
 }

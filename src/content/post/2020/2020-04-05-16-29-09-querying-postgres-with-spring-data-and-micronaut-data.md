@@ -1,11 +1,11 @@
 ---
 slug: "2020/04/05/querying-postgres-with-spring-data-and-micronaut-data"
 title: "Querying Postgres with Spring Data and Micronaut Data"
-description: "Micronaut Data is a database toolkit that generates the code at compile-time with type checks to ensure the repository methods fail early when incorrectly implemented. Learn how to use it with a JDBC backend and Spring Data Repository."
-date: "2020-04-05 16:29:09"
-update: "2020-04-05 16:29:09"
+description: "Micronaut Data is a database toolkit to generate the type-checked repository methods at compile-time ensuring early failure when incorrectly implemented. Learn how to use it with Spring Data and JDBC."
+date: 2020-04-05 16:29:09
+update: 2020-04-05 16:29:09
+type: "post"
 category: "guide"
-tags: ["spring", "micronaut", "postgres"]
 ---
 
 `Repository` API of Spring Data is one of the most elegant and compelling features of Spring framework. It generates runtime implementations of the repositories. But what if those implementations can be generated at compile-time with type-checks that fail during compilation, rather than at runtime.
@@ -17,7 +17,7 @@ Micronaut Data is one of the projects under [Micronaut Framework](https://micron
 
 It works with multiple backends (including JPA and JDBC), provides a traditional synchronous API as well as reactive APIs for RxJava and Project Reactor, and integrates nicely with Spring Data and Spring Data JPA. In this post, we'll learn how to use its JDBC backend with a Spring Data `Repository`.
 
-:::setup
+:::note{.sm}
 The examples in this post use
 
 - Java 11

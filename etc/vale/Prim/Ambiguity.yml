@@ -1,0 +1,6 @@
+extends: existence
+message: "Avoid ambiguity. Don't use '%s'."
+level: error
+ignorecase: true
+tokens:
+  - and/or

@@ -1,0 +1,9 @@
+{
+	"name": "crystal",
+	"author": "Naiyer Asif",
+	"description": "A Vale-compatible implementation of crystal prose style",
+	"lang": "en",
+	"license": "MIT",
+	"vale_version": ">=1.0.0",
+	"version": "0.0.1"
+}

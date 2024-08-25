@@ -1,11 +1,11 @@
 ---
 slug: "2020/01/25/building-docker-images-for-java-applications"
 title: "Building Docker images for Java applications"
-description: "With the rise of container-first Java frameworks, there’s never been a better time to embrace Java in a continuous cloud-native workflow. Learn how to improve and enhance building the Docker images for Java applications that are packaged as JARs."
-date: "2020-01-25 18:37:25"
-update: "2021-02-28 11:33:45"
+description: "Embrace Java in a cloud-native workflow with the increasing popularity of container-first Java frameworks. Learn to create optimized Docker images for Java apps packaged as JARs."
+date: 2020-01-25 18:37:25
+update: 2021-02-28 11:33:45
+type: "post"
 category: "guide"
-tags: ["docker", "security", "java", "distroless"]
 ---
 
 With the rise of the container-first Java frameworks ([Micronaut](https://micronaut.io/), [Quarkus](https://quarkus.io/), etc) and the JVM itself [evolving](https://blogs.oracle.com/java-platform-group/java-se-support-for-docker-cpu-and-memory-limits) to work smoothly with containers, there's been never a better time to embrace Java in a continuous cloud-native workflow. In this post, we'll examine some of the practices that can improve and enhance building the Docker images for Java applications that are packaged as JARs.
@@ -75,7 +75,7 @@ CMD ["java", "-jar", "app.jar"]
 
 Many times, the image you build runs with a privileged (`root`) user. For development purposes, it is fine but it is not recommended in general (see [Principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) for more details). Therefore, you should create a non-root user and provide appropriate privileges to them to run the application and finally switch to that user in the image. For the `adoptopenjdk/openjdk11:alpine-jre` image, you can do something like this.
 
-```dockerfile {9-10}
+```dockerfile {9..10}
 FROM maven:3.6.3-jdk-11 as builder
 WORKDIR /usr/home/app
 COPY pom.xml .

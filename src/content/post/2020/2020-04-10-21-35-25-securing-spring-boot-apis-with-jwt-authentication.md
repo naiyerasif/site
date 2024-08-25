@@ -1,11 +1,11 @@
 ---
 slug: "2020/04/10/securing-spring-boot-apis-with-jwt-authentication"
 title: "Securing Spring Boot APIs with JWT Authentication"
-description: "JSON Web Tokens (JWTs) are a standard to transmit the information as a JSON object. An application can glean sufficient authentication information from them, saving trips to the database. Learn how to create a Spring Boot API and secure it using Spring Security and JWT-based authentication."
-date: "2020-04-10 21:35:25"
-update: "2020-11-05 19:31:55"
+description: "Discover how to develop a secure Spring Boot API by using Spring Security and JSON Web Tokens. By implementing JWT-based authentication, you can minimize the need for frequent database queries."
+date: 2020-04-10 21:35:25
+update: 2020-11-05 19:31:55
+type: "post"
 category: "guide"
-tags: ["spring", "security", "jwt", "auth"]
 ---
 
 JSON Web Tokens (JWTs) are stateless, compact, and self-contained [standard](https://tools.ietf.org/html/rfc7519) to transmit the information as a JSON object. This object is usually encoded and encrypted to ensure the authenticity of the message. JWTs are small enough to be sent through URLs. Since they are self-contained, applications can glean sufficient authentication information from them, saving trips to the database. Being stateless, JWTs are particularly suitable to work with REST and HTTP (which are also stateless).
@@ -16,11 +16,15 @@ So, how does this work?
 - Once the login is successful, the application returns a JWT token. This token can be saved on the client-side (using localStorage, cookie, etc.). 
 - When a subsequent request is made to the application, the token should be sent with it in an `Authorization` header, often using a [Bearer schema](https://tools.ietf.org/html/rfc6750).
 
-![JWT-based authentication flow](/images/post/2020/2020-04-10-21-35-25-securing-spring-boot-apis-with-jwt-authentication-01.svg)
+:::figure
+![A sequence of JWT-based authentication flow](./images/2020-04-10-21-35-25-securing-spring-boot-apis-with-jwt-authentication-01.svg)
+
+JWT-based authentication flow
+:::
 
 In this post, we'll create a Spring Boot API and secure it using Spring Security and JWT-based authentication.
 
-:::setup
+:::note{.sm}
 The code written for this post uses
 
 - Java 15
@@ -147,7 +151,7 @@ Spring Security's `AuthenticationManager` works with a `UserDetails` object to h
 
 Add `spring-boot-starter-data-jdbc`, `h2` and `spring-boot-starter-security` in the `pom.xml`.
 
-```xml {28-41,54-58}
+```xml {28..41,54..58}
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -347,7 +351,7 @@ public class CustomUserConverter {
 
 Now, we can inject `CustomUserDetailsService` into Spring Security's `AuthenticationManager` to complete the integration of `CustomUser`.
 
-```java {16-18}
+```java {16..18}
 // src/main/java/dev/mflash/guides/jwtauth/security/SecurityConfiguration.java
 
 @EnableWebSecurity
@@ -526,7 +530,7 @@ Here, the `doFilterInternal` method extracts the `Authorization` header, fetches
 
 We need to register these filters and specify which endpoints are protected and which are accessible publicly in the `SecurityConfiguration`.
 
-```java {12-22,32-36}
+```java {12..22,32..36}
 // src/main/java/dev/mflash/guides/jwtauth/security/SecurityConfiguration.java
 
 @EnableWebSecurity
@@ -572,7 +576,7 @@ Here, we've
 
 Let's create a sample endpoint in `GenericController` that is secured with this implementation.
 
-```java {6,12-14,23}
+```java {6,12..14,23}
 // src/main/java/dev/mflash/guides/jwtauth/controller/GenericController.java
 
 public @Controller class GenericController {

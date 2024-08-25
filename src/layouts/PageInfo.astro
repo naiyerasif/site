@@ -1,0 +1,64 @@
+---
+import Critical from "./Critical.astro";
+import { pageInfoSchema } from "~schema";
+import siteInfo from "~website";
+
+const {
+	title,
+	description,
+	url,
+	image,
+	type,
+	published,
+	updated,
+	previous,
+	next,
+	source,
+	timeToRead
+} = pageInfoSchema.parse(Astro.props.pageInfo);
+const siteTitle = siteInfo.title;
+const siteAuthor = siteInfo.author.name;
+const mastodonUrl = siteInfo.author.networks.mastodon.link;
+const mastodonId = siteInfo.author.networks.mastodon.id;
+---
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title} &mdash; {siteTitle}</title>
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="color-scheme" content="dark light">
+<meta name="author" content={siteAuthor}>
+<meta name="theme-color" content="#000" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#fff" media="(prefers-color-scheme: light)">
+<link rel="sitemap" href="/sitemap-index.xml">
+<link rel="alternate" type="application/rss+xml" href="/feed.xml">
+<link rel="canonical" href={url}>
+{source && <link rel="source" href={source}>}
+{previous && <link rel="prev" aria-label="Previous page" href={previous}>}
+{next && <link rel="next" aria-label="Next page" href={next}>}
+<meta name="description" content={description}>
+<meta property="og:type" content={type}>
+<meta property="og:site_name" content={siteTitle}>
+<meta property="og:locale" content="en">
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+<meta property="og:url" content={url}>
+<meta property="og:image" content={image}>
+<meta property="og:image:alt" content={description}>
+{published && <meta property="article:published_time" content={published}>}
+{updated && <meta property="article:modified_time" content={updated}>}
+<meta name="twitter:image:src" content={image}>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content={title}>
+<meta name="twitter:description" content={description}>
+{timeToRead && <meta name="twitter:label1" content="Reading time">}
+{timeToRead && <meta name="twitter:data1" content={`${timeToRead} min read`}>}
+<link rel="me" href={mastodonUrl}>
+<meta property="fediverse:creator" content={mastodonId}>
+<meta itemprop="name" content={title}>
+<meta itemprop="description" content={description}>
+<meta name="generator" content={Astro.generator}>
+<Critical/>
+<script src="/vendor/fuse@7.0.0.basic.min.js" is:inline async></script>

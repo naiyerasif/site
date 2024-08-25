@@ -1,11 +1,11 @@
 ---
 slug: "2023/03/11/generating-webfonts-with-fonttools"
 title: "Generating webfonts with fontTools"
-description: "How to generate webfonts with fontTools from ttf sources"
-date: "2023-03-11 21:57:06"
-update: "2023-03-11 21:57:06"
+description: "Generate static or variable webfonts with fontTools from their ttf sources"
+date: 2023-03-11 21:57:06
+update: 2023-03-11 21:57:06
+type: "post"
 category: "note"
-tags: ["webfonts", "fonttools"]
 ---
 
 Previously, I wrote a note on ways to [convert ttf fonts to woff and woff2 formats](/post/2021/04/14/converting-ttf-files-to-woff-and-woff2/). Unfortunately, those methods gave me mixed results when it comes to [variable fonts](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/Variable_Fonts_Guide). Many times, I found that [axes](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variation-settings#registered_and_custom_axes) were messed up after conversion.
@@ -26,7 +26,7 @@ RUN apk del .build-deps
 
 To convert a bunch of `ttf` files, you can dump them into a folder (say, `.workspace`) and then invoke the following script.
 
-```python caption="woff2.py"
+```python title="woff2.py"
 import glob
 import os
 from fontTools.ttLib import TTFont

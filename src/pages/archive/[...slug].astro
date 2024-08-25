@@ -1,0 +1,66 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "~layouts/Layout.astro";
+import Icon from "~components/Icon.astro";
+import Toc from "~components/Toc.astro";
+import Time from "~components/Time.astro";
+import format, { compare, format_date } from "~datetime";
+import readingTime from "~reading-time";
+import toc from "~toc";
+import siteInfo from "~website";
+
+export async function getStaticPaths() {
+	const posts = await getCollection("archive");
+	return posts.sort((p1, p2) => compare(p1.data.date, p2.data.date))
+		.map(post => ({
+			params: { slug: post.slug },
+			props: { post }
+		}));
+}
+
+const { post } = Astro.props;
+const { data, render } = post;
+const { Content, headings } = await render();
+const category = data.type === "status" ? "status" : data.category;
+const url = Astro.url.pathname;
+const showToc = data.showToc && headings && headings.length > 0;
+const timeToRead = readingTime(post.body).readingTime;
+const showUpdate = compare(data.update, data.date) !== 0;
+const showReadingTime = timeToRead > 0;
+
+const pageInfo = {
+	title: `${data.title} (Archived)`,
+	description: data.description,
+	url,
+	source: `src/content/post/${post.id}`,
+	type: "article",
+	published: format(data.date, format_date),
+	updated: showUpdate ? format(data.update, format_date) : undefined,
+	timeToRead: showReadingTime ? timeToRead : undefined
+};
+---
+
+<Layout {pageInfo}>
+	<Fragment slot="hero">
+		<nav class="hero-header breadcrumb">
+			<a class="breadcrumb-item" href="/">Home</a>
+			<span class="breadcrumb-item">{category}</span>
+		</nav>
+		<div class="hero-body">
+			<div class="hero-headline-text">
+				<h1 class="headline">{data.title}</h1>
+				{data.tagline && <p class="subheadline">{data.tagline}</p>}
+			</div>
+		</div>
+		<div class="hero-footer">
+			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span class="update"><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}{category !== "status" && showReadingTime && <span><Icon name="clock"/> Takes about {`${timeToRead} min to read`}</span>}<span class="chip chip-warn">Archived</span>
+		</div>
+	</Fragment>
+	<article class="content">
+		{showToc && <nav class="toc">
+			<div class="toc-header">Table of Contents</div>
+			<Toc headings={toc(headings, siteInfo.maxTocDepth)}/>
+		</nav>}
+		<Content/>
+	</article>
+</Layout>

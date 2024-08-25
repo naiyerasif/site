@@ -1,34 +1,37 @@
 ---
-import { getEntryBySlug } from "astro:content"
-import Layout from "~components/layouts/Layout.astro"
-import { capitalize } from "~universal"
-import BackToTop from "~components/atoms/BackToTop.astro"
+import { getEntry } from "astro:content";
+import { Image } from "astro:assets";
+import Layout from "~layouts/Layout.astro";
 
-const { data, render } = await getEntryBySlug("about", "index")
-const { Content } = await render()
+const { data, render } = await getEntry("profile", "about");
+const { Content } = await render();
 
-const name = capitalize(data.user)
-const avatar = `/images/${data.user}.png`
+const name = data.title.split(" ")[0];
 
 const pageInfo = {
-	hint: "About",
-	title: data.title,
+	title: "About",
 	description: data.description,
+	type: "profile",
 	url: Astro.url.pathname
-}
+};
 ---
 
 <Layout {pageInfo}>
-	<div class="profile-metadata" slot="hero">
-		<img src={avatar} alt={data.title}>
-		<h1 class="headline">Hi, I&rsquo;m {name}</h1>
-	</div>
+	<Fragment slot="hero">
+		<nav class="hero-header breadcrumb" aria-label="breadcrumbs">
+			<a class="breadcrumb-item" href="/">Home</a>
+			<span class="breadcrumb-item">Profile</span>
+		</nav>
+		<div class="hero-body">
+			<div class="hero-headline-image">
+				<Image src={data.avatar} alt={data.title} class="avatar"/>
+			</div>
+			<div class="hero-headline-text">
+				<h1 class="headline">About {name}</h1>
+			</div>
+		</div>
+	</Fragment>
 	<article class="content">
 		<Content/>
 	</article>
-	<div class="sidekick">
-		<div class="sidekick-items">
-			<BackToTop />
-		</div>
-	</div>
 </Layout>

@@ -1,11 +1,11 @@
 ---
 slug: "2020/09/05/using-git-lfs-in-ci"
 title: "Using Git LFS in CI"
-description: "Git LFS is the recommended way to version large binary files alongside the source code in Git. Your CI will pull these objects every time it runs the pipeline which can be a problem if you’ve limited bandwidth. What can you do get around this issue?"
-date: "2020-09-05 12:31:38"
-update: "2020-09-05 12:31:38"
+description: "A limited transfer bandwidth on Git LFS objects can break your CI which pull them every time it runs the pipeline. Learn how you can get around this by using a lockfile."
+date: 2020-09-05 12:31:38
+update: 2020-09-05 12:31:38
+type: "post"
 category: "guide"
-tags: ["git", "lfs", "ci"]
 ---
 
 [Git LFS](https://git-lfs.github.com/) is a great way to version large binary files alongside the source code in Git. It replaces the actual files with text pointers in the Git repository and stores them on a remote server that works with Git LFS (e.g., GitHub.com, Azure DevOps, etc.). When you clone a repository with LFS objects, you'll receive the pointers instead. You'll have to install [the Git LFS client](https://github.com/git-lfs/git-lfs/releases/latest) which will convert these pointers into actual files during the checkout; this process is called **smudging**. You can watch an introduction to how this works on the following YouTube video.
@@ -73,7 +73,7 @@ CMD ["/bin/sh"]
 
 You can publish this image on [Docker Hub](https://hub.docker.com/) and use it in your pipeline as follows.
 
-```yml {9,12-22}
+```yml {9,12..22}
 # .circleci/config.yaml
 
 version: 2
@@ -111,7 +111,7 @@ Note that the above configuration sets an environment variable `GIT_LFS_SKIP_SMU
 
 You can do the same thing with GitHub Actions. In your configuration file, add the following steps. 
 
-```yml {7-18}
+```yml {7..18}
 # .github/workflows/deploy.yml
 
 jobs:

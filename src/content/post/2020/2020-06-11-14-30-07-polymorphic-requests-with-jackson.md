@@ -1,16 +1,16 @@
 ---
 slug: "2020/06/11/polymorphic-requests-with-jackson"
 title: "Polymorphic Requests with Jackson"
-description: "How should you receive requests of different structure through an API using Jackson? This post talks about how polymorphism can be used in such cases and the Jackson configuration required to handle them."
-date: "2020-06-11 14:30:07"
-update: "2022-07-15 12:05:02"
+description: "Learn about handling requests with varying structures in an API using Jackson by using polymorphism."
+date: 2020-06-11 14:30:07
+update: 2022-07-15 12:05:02
+type: "post"
 category: "guide"
-tags: ["jackson", "polymorphic", "deserialization"]
 ---
 
 While building a generalized API, you may come across scenarios where the structure of the incoming request can change based on certain characteristics. In Java, such scenarios are handled with polymorphism which involves introducing an interface to represent multiple types. In this post, we'll explore how to handle polymorphic requests using [Jackson](https://github.com/FasterXML/jackson), a popular data-processing library for Java.
 
-:::setup
+:::note{.sm}
 The code written for this post uses:
 
 - Java 18
@@ -21,7 +21,7 @@ The code written for this post uses:
 
 Create a Maven project using the following `pom.xml`.
 
-```xml caption='pom.xml'
+```xml title="pom.xml"
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

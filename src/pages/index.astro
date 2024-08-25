@@ -1,34 +1,33 @@
 ---
-import { getCollection } from "astro:content"
-import Layout from "~components/layouts/Layout.astro"
-import PostCard from "~components/layouts/PostCard.astro"
-import StatusCard from "~components/layouts/StatusCard.astro"
-import Icon from "~components/atoms/Icon.astro"
-import { compare } from "~datetime"
-import siteInfo, { paginationPathname } from "~universal"
+import { getCollection } from "astro:content";
+import Layout from "~layouts/Layout.astro";
+import PostCard from "~components/PostCard.astro";
+import StatusCard from "~components/StatusCard.astro";
+import Icon from "~components/Icon.astro";
+import siteInfo, { paginationPathname } from "~website";
+import { compare } from "~datetime";
 
 const posts = (await getCollection("post"))
+	.filter(post => post.data.state !== "outdated")
 	.sort((p1, p2) => compare(p1.data.date, p2.data.date))
-	.slice(0, 10)
+	.slice(0, siteInfo.maxPageItems);
 
 const pageInfo = {
-	hint: "Home",
 	title: "Home",
 	description: siteInfo.description,
 	url: Astro.url.pathname
-}
+};
 ---
 
-<Layout {pageInfo} class="compact">
-	<div class="subheadline" slot="hero">
-		I'm <strong>Naiyer</strong>, a problem solver, software engineer, and book lover. Welcome to my personal site. Here are my recents posts.
-	</div>
-	<div class="showcase">
-		{posts.map(entry => entry.data.category === "status" ? <StatusCard {entry} /> : <PostCard {entry} />)}
-	</div>
-	<div class="sidekick">
-		<div class="sidekick-items">
-			<a href={paginationPathname("posts", 2)} class="button with-text">more posts <Icon name="arrow-right-2"/></a>
+<Layout {pageInfo}>
+	<div slot="hero" class="hero-body">
+		<div class="hero-headline-text">
+			<h1 class="headline">Hi, I&CloseCurlyQuote;m Naiyer</h1>
+			<p class="subheadline">Book lover, software engineer and a fellow web wanderer</p>
 		</div>
+	</div>
+	{posts.map(entry => entry.data.type === "status" ? <StatusCard {entry} /> : <PostCard {entry} />)}
+	<div slot="sidekick" class="sidekick-items">
+		<a href={paginationPathname("posts", 2)} class="distinct-link">more posts<Icon name="long-arrow-right"/></a>
 	</div>
 </Layout>

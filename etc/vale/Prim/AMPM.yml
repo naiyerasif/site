@@ -1,0 +1,9 @@
+extends: existence
+message: "Use 'am' or 'pm' else 'a.m.' or 'p.m.' (preceded by a space)."
+level: error
+nonword: true
+tokens:
+  - '\d{1,2}\s*[AP]M'
+  - '\d{1,2}\s*[AP]\.[M]\.'
+  - '\d{1,2}[ap]m'
+  - '\d{1,2}[ap]\.[m]\.'

@@ -5,35 +5,44 @@ on:
     branches: 
       - main
 
+env:
+  # speed up the build by stopping wrangler action from downloading useless browser binaries
+  PUPPETEER_SKIP_DOWNLOAD: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup PNPM
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8.6.3
+        uses: pnpm/action-setup@v3
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile --prod
 
       - name: Build site
         run: pnpm build
 
-      - name: Publish on Netlify
-        uses: netlify/actions/cli@master
+      - name: Deploy to Cloudflare Pages
+        id: deploy
+        uses: cloudflare/wrangler-action@v3
         with:
-          args: deploy --prod --dir=dist
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          packageManager: pnpm
+          command: pages deploy dist --project-name=${{ vars.CLOUDFLARE_PROJECT_NAME }} --commit-dirty=true
+
+      - name: Job summary
         env:
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
+        run: |
+          echo "**Deployment URL**: $DEPLOYMENT_URL" >> $GITHUB_STEP_SUMMARY

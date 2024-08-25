@@ -1,18 +1,23 @@
 ---
 slug: "2019/07/08/persisting-documents-with-mongorepository"
 title: "Persisting documents with MongoRepository"
-description: "Spring Data MongoDB provides a variety of ways to work with a MongoDB database. One of the ways is the repository-style programming model that adds convenient abstractions to work with MongoDB. Learn how to persist documents, cascade them, and create custom converters for specific data types."
-date: "2019-07-08 11:12:13"
-update: "2020-10-26 10:10:01"
+description: "Learn to use Spring Data with MongoDB. Explore the repository-style programming model to persist and cascade documents, and create custom converters for specific data types."
+date: 2019-07-08 11:12:13
+update: 2020-10-26 10:10:01
+type: "post"
 category: "guide"
-tags: ["spring", "repository", "mongodb"]
+state: "outdated"
 ---
+
+:::deter{title="Outdated post"}
+This post is severely outdated. It was written before MongoDB offered ACID guarantees. This is no longer valid, and Spring Data MongoDB now [supports](https://docs.spring.io/spring-data/mongodb/reference/mongodb/client-session-transactions.html) transactions natively.
+:::
 
 [Spring Data MongoDB](https://spring.io/projects/spring-data-mongodb) provides a variety of ways to work with a MongoDB database: low-level `MongoReader` and `MongoWriter` APIs, and higher-level `MongoTemplate` and `MongoOperations` APIs that make use of Query, Criteria and Update DSLs. It also provides a repository-style programming model through the `MongoRepository` interface which adds convenient abstractions to work with MongoDB.
 
 In this post, we'll explore how to persist documents with `MongoRepository`, create custom converters for specific data types and cascade the documents.
 
-:::setup
+:::note{.sm}
 The examples in this post use
 
 - Java 15
@@ -54,7 +59,11 @@ Consider a fictional social network where a *user* can create an *account*. A si
 
 Let's start by defining a domain for the above story. The relationship between the `Account`, `User` and `Session` collections can be represented by the following diagram.
 
-![Domain](/images/post/2019/2019-07-08-11-12-13-persisting-documents-with-mongorepository.svg)
+:::figure
+![Domain](./images/2019-07-08-11-12-13-persisting-documents-with-mongorepository.svg)
+
+Relationship between Account, User and Session collections
+:::
 
 A Many-to-One relationship in MongoDB can be modeled with either [embedded documents](https://docs.mongodb.com/manual/tutorial/model-embedded-one-to-many-relationships-between-documents/) or [document references](https://docs.mongodb.com/manual/tutorial/model-referenced-one-to-many-relationships-between-documents/). You can add the latter behavior through a `@DBRef` annotation.
 
@@ -212,7 +221,7 @@ This happens because `Account` has a field `created` of type `ZonedDateTime` whi
 
 Spring provides a `Converter` interface that you can implement for this purpose. We need two converters here: one to convert `ZonedDateTime` to `Date` and the other to convert `Date` to `ZonedDateTime`.
 
-```java {9-23}
+```java {9..23}
 // src/main/java/dev/mflash/guides/mongo/configuration/ZonedDateTimeConverters.java
 
 public class ZonedDateTimeConverters {
@@ -245,7 +254,7 @@ In the above `ZonedDateTimeConverters` implementation, we first define the `Zone
 
 Inject these converters through a `MongoCustomConversions` bean as follows:
 
-```java {8-10}
+```java {8..10}
 // src/main/java/dev/mflash/guides/mongo/configuration/MongoConfiguration.java
 
 @EnableMongoRepositories(MongoConfiguration.REPOSITORY_PACKAGE)
@@ -300,7 +309,7 @@ With this, we can pass a `CascadeType` value to the `@Cascade` annotation and co
 
 Annotate the desired fields with this annotation.
 
-```java {8-9}
+```java {8..9}
 // src/main/java/dev/mflash/guides/mongo/domain/Account.java
 
 @Data @Builder
@@ -452,7 +461,7 @@ public class AccountCascadeMongoEventListener extends AbstractMongoEventListener
 
 and inject it as a bean using `MongoConfiguration`.
 
-```java {8-10}
+```java {8..10}
 // src/main/java/dev/mflash/guides/mongo/configuration/MongoConfiguration.java
 
 @EnableMongoRepositories(MongoConfiguration.REPOSITORY_PACKAGE)

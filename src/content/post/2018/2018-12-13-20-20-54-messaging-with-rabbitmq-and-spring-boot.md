@@ -1,18 +1,18 @@
 ---
 slug: "2018/12/13/messaging-with-rabbitmq-and-spring-boot"
 title: "Messaging with RabbitMQ and Spring Boot"
-description: "RabbitMQ is an open-source message broker that implements several messaging protocols. It can be used as an exchange server (or broker). Learn how to create a queue with RabbitMQ and interact with it using Spring Boot."
-date: "2018-12-13 20:20:54"
-update: "2019-11-13 16:45:02"
+description: "RabbitMQ is an open-source message broker that supports various messaging protocols. Learn to create a queue and interact with it using Spring Boot."
+date: 2018-12-13 20:20:54
+update: 2019-11-13 16:45:02
+type: "post"
 category: "guide"
-tags: ["rabbitmq", "spring", "queue"]
 ---
 
 [RabbitMQ](https://www.rabbitmq.com/) is an open-source message broker that implements several messaging protocols, including AMQP and STOMP. It is frequently used to queue messages and interact with queues. A RabbitMQ server acts as an exchange server (or broker). Clients, written in a variety of languages, enable applications to publish and consume the messages in the queue. 
 
 In this post, we'll learn how to create a queue with RabbitMQ and interact with it using Spring Boot.
 
-:::setup
+:::note{.sm}
 The examples in this post use
 
 - Java 13
@@ -144,7 +144,7 @@ public @Service class Publisher implements CommandLineRunner {
 
 Note that all the published messages are serialized as byte arrays by default. To properly serialize the list of `Book`s, we need to define a message converter for `RabbitTemplate` as an instance of `Jackson2JsonMessageConverter`.
 
-```java {21-29}
+```java {21..29}
 // src/main/java/dev/mflash/guides/rabbitmq/configuration/RabbitMQConfiguration.java
 
 public @Configuration class RabbitMQConfiguration {
@@ -204,7 +204,7 @@ A `CountDownLatch` is used to wait for several threads to complete (here, it is 
 
 To convert the incoming message into a list of books, we'll have to provide the `MessageConverter` to a `RabbitListener`. This can be done by injecting the `MessageConverter` through an instance of `SimpleRabbitListenerContainerFactory` as follows.
 
-```java {21-27}
+```java {21..27}
 // src/main/java/dev/mflash/guides/rabbitmq/configuration/RabbitMQConfiguration.java
 
 public @Configuration class RabbitMQConfiguration {

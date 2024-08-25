@@ -1,70 +1,82 @@
 ---
-import { getCollection } from "astro:content"
-import Layout from "~components/layouts/Layout.astro"
-import Time from "~components/atoms/Time.astro"
-import Toc from "~components/atoms/Toc.astro"
-import BackToTop from "~components/atoms/BackToTop.astro"
-import Icon from "~components/atoms/Icon.astro"
-import format, { compare, format_date } from "~datetime"
-import readingTime from "~reading-time"
-import { source, canonical, postPathname } from "~universal"
+import { getCollection } from "astro:content";
+import Layout from "~layouts/Layout.astro";
+import Icon from "~components/Icon.astro";
+import SharePanel from "~components/SharePanel.astro";
+import ActionPanel from "~components/ActionPanel.astro";
+import Toc from "~components/Toc.astro";
+import Time from "~components/Time.astro";
+import format, { compare, format_date } from "~datetime";
+import readingTime from "~reading-time";
+import toc from "~toc";
+import siteInfo, { postPathname } from "~website";
 
 export async function getStaticPaths() {
-	const posts = await getCollection("post")
+	const posts = await getCollection("post");
 	return posts.sort((p1, p2) => compare(p1.data.date, p2.data.date))
 		.map((post, index, posts) => ({ post: post, prev: posts[index - 1], next: posts[index + 1] }))
 		.map(entry => ({
 			params: { slug: entry.post.slug },
 			props: { entry }
-		}))
+		}));
 }
 
-const { entry } = Astro.props
-const { post, prev, next } = entry
-const { data, render } = post
-const { Content, headings } = await render()
-const category = data.category
-const timeToRead = `${readingTime(post.body).readingTime} min read`
-const editSource = source(`main/src/content/post/${post.id}`)
-const shareableTitle = encodeURI(data.title)
-const shareableLink = canonical(postPathname(data.slug))
-const shareViaMail = `mailto:?subject=${data.title}&body=Checkout this article I read! ${shareableLink}`
-const shareViaLinkedIn = `https://www.linkedin.com/sharing/share-offsite/?url=${shareableLink}`
-const shareViaHackerNews = `https://news.ycombinator.com/submitlink?u=${shareableLink}&t=${shareableTitle}`
-const shareViaReddit = `http://www.reddit.com/submit?url=${shareableLink}&title=${shareableTitle}`
-
-const prevPage = prev ? postPathname(prev.slug) : null
-const nextPage = next ? postPathname(next.slug) : null
+const { entry } = Astro.props;
+const { post, prev, next } = entry;
+const { data, render } = post;
+const { Content, headings } = await render();
+const category = data.type === "status" ? "status" : data.category;
+const url = Astro.url.pathname;
+const showToc = data.showToc && headings && headings.length > 0;
+const prevPage = prev ? postPathname(prev.slug) : undefined;
+const nextPage = next ? postPathname(next.slug) : undefined;
+const hasRecommendations = prevPage || nextPage;
+const timeToRead = readingTime(post.body).readingTime;
+const showUpdate = compare(data.update, data.date) !== 0;
+const showReadingTime = timeToRead > 0;
+const showState = !!data.state;
+const stateClasses = {
+	"draft": "chip chip-assert",
+	"outdated": "chip chip-deter"
+};
 
 const pageInfo = {
-	hint: category,
 	title: data.title,
 	description: data.description,
-	url: Astro.url.pathname,
-	source: editSource,
+	url,
+	source: `src/content/post/${post.id}`,
 	type: "article",
 	published: format(data.date, format_date),
-	updated: data.update !== data.date ? format(data.update, format_date) : null,
+	updated: showUpdate ? format(data.update, format_date) : undefined,
 	previous: prevPage,
 	next: nextPage,
-	timeToRead: timeToRead
-}
+	timeToRead: showReadingTime ? timeToRead : undefined
+};
 ---
 
 <Layout {pageInfo}>
-	<div class="post-metadata" slot="hero">
-		<h1 class="headline">{data.title}</h1>
-		<div class="metadata">
-			<Time date={data.date} />{data.update !== data.date && <span class="update">updated on <Time date={data.update} /></span>}{category !== "status" && timeToRead && <span>~{timeToRead}</span>}
+	<Fragment slot="hero">
+		<nav class="hero-header breadcrumb">
+			<a class="breadcrumb-item" href="/">Home</a>
+			<span class="breadcrumb-item capitalized">{category}</span>
+		</nav>
+		<div class="hero-body">
+			<div class="hero-headline-text">
+				<h1 class="headline">{data.title}</h1>
+				{data.tagline && <p class="subheadline">{data.tagline}</p>}
+			</div>
 		</div>
-	</div>
+		<div class="hero-footer">
+			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span class="update"><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}{category !== "status" && showReadingTime && <span><Icon name="clock"/> Takes about {`${timeToRead} min to read`}</span>}{showState && <span class={stateClasses[data.state]}>{data.state}</span>}
+		</div>
+	</Fragment>
 	<article class="content">
-		{headings && headings.length > 0 && <nav class="toc">
+		{showToc && <nav class="toc">
 			<div class="toc-header">Table of Contents</div>
-			<Toc {headings}/>
+			<Toc headings={toc(headings, siteInfo.maxTocDepth)}/>
 		</nav>}
 		<Content/>
-		<div class="content-recommendations">
+		{hasRecommendations && <div class="content-recommendations">
 			{prevPage && 
 				<div class="content-recommendation">
 					<div class="decorator">
@@ -87,26 +99,10 @@ const pageInfo = {
 					</div>
 				</div>
 			}
-		</div>
+		</div>}
 	</article>
-	<div class="sidekick">
-		<div class="sidekick-flex-items">
-			<a href={shareViaMail} title="Share via email" class="button" rel="noopener noreferrer" target="_blank">
-				<Icon name="mail"/>
-			</a>
-			<a href={shareViaLinkedIn} title="Post on LinkedIn" class="button" rel="noopener noreferrer" target="_blank">
-				<Icon name="linkedin"/>
-			</a>
-			<a href={shareViaHackerNews} title="Submit to Hacker News" class="button" rel="noopener noreferrer" target="_blank">
-				<Icon name="hacker-news"/>
-			</a>
-			<a href={shareViaReddit} title="Post on Reddit" class="button" rel="noopener noreferrer" target="_blank">
-				<Icon name="reddit"/>
-			</a>
-			<a href={editSource} title="Edit the post" class="button" rel="noopener noreferrer">
-				<Icon name="edit-line"/>
-			</a>
-			<BackToTop />
-		</div>
+	<div slot="sidekick" class="sidekick-panels">
+		<ActionPanel {pageInfo}/>
+		<SharePanel {pageInfo}/>
 	</div>
 </Layout>

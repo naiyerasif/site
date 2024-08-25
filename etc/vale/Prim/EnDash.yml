@@ -1,0 +1,12 @@
+extends: existence
+message: "Remove the spaces around '%s'."
+level: error
+ignorecase: true
+nonword: true
+action:
+  name: edit
+  params:
+    - remove
+    - ' '
+tokens:
+  - '(?:\s?–|–\s?)'

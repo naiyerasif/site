@@ -1,0 +1,40 @@
+@use "mixins";
+
+.chip {
+	--chipBgColor: var(--x2-bg-chip, var(--x2-bg-note));
+	--chipColor: var(--x2-color-chip, var(--x2-color-body));
+	--chipBorderColor: var(--x2-border-chip, var(--x2-border-note));
+	--chipBorderWidth: var(--x2-line-width-sm);
+	--chipContentPadding: var(--x2-padding-chip-content, 0.3ch 1ch);
+
+	background-color: var(--chipBgColor);
+	border: var(--chipBorderWidth) solid var(--chipBorderColor);
+	border-radius: var(--x2-radius-max);
+	color: var(--chipColor);
+	padding: var(--chipContentPadding);
+	text-transform: capitalize;
+}
+
+.chip-commend {
+	--x2-bg-chip: var(--x2-bg-commend);
+	--x2-color-chip: var(--x2-color-commend);
+	--x2-border-chip: var(--x2-border-commend);
+}
+
+.chip-warn {
+	--x2-bg-chip: var(--x2-bg-warn);
+	--x2-color-chip: var(--x2-color-warn);
+	--x2-border-chip: var(--x2-border-warn);
+}
+
+.chip-deter {
+	--x2-bg-chip: var(--x2-bg-deter);
+	--x2-color-chip: var(--x2-color-deter);
+	--x2-border-chip: var(--x2-border-deter);
+}
+
+.chip-assert {
+	--x2-bg-chip: var(--x2-bg-assert);
+	--x2-color-chip: var(--x2-color-assert);
+	--x2-border-chip: var(--x2-border-assert);
+}

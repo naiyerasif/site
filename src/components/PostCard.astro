@@ -1,0 +1,21 @@
+---
+import Time from "./Time.astro";
+import { postPathname } from "~website";
+
+const { entry } = Astro.props;
+const category = entry.data.category;
+const path = postPathname(entry.slug);
+---
+
+<div class={"content card " + category}>
+	<div class="card-details">
+		<span class="card-category">{entry.data.category}</span> &mdash;
+		<Time date={entry.data.date} />
+	</div>
+	<div class="card-header">
+		<a href={path}>{entry.data.title}</a>	
+	</div>
+	{entry.data.tagline ? 
+		<div class="card-tagline">{entry.data.tagline}</div> :
+		<div class="card-body">{entry.data.description}</div>}
+</div>

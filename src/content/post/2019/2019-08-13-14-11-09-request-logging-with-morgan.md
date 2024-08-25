@@ -1,24 +1,24 @@
 ---
 slug: "2019/08/13/request-logging-with-morgan"
 title: "Request logging with morgan"
-description: "Imagine developing an application with multiple APIs and remaining in the bind which of those were being used by the client and when! morgan can help by logging useful request information for an Express application."
-date: "2019-08-13 14:11:09"
-update: "2019-08-13 14:11:09"
+description: "Stay informed about which Express endpoints are being called and when they are accessed, by logging request information with morgan."
+date: 2019-08-13 14:11:09
+update: 2019-08-13 14:11:09
+type: "post"
 category: "guide"
-tags: ["morgan", "log", "express"]
 ---
 
 Imagine developing an Express application with several endpoints and remaining in the bind which of those were being used by the client application and when! Some form of logging can help in this situation, just to tell about the endpoint and the timestamp when it was requested by the client. Express makes this easy through [morgan](https://github.com/expressjs/morgan).
 
 :::assert{title=Series}
 1. [Using Express with TypeScript](/post/2019/01/12/using-express-with-typescript/)
-2. [Request logging with morgan](/post/2019/08/13/request-logging-with-morgan/)
+2. *Request logging with morgan*
 3. [Logging on Node.js with log4js-node](/post/2019/08/14/logging-on-nodejs-with-log4js-node/)
 4. [Linting with TypeScript ESLint](/post/2019/08/16/linting-with-typescript-eslint/)
 5. [Developing an API with Express and Postgres](/post/2019/08/19/developing-an-api-with-express-and-postgres/)
 :::
 
-:::setup
+:::note{.sm}
 You can pick the Node.js application created in the post [Using Express with TypeScript](/post/2019/01/12/using-express-with-typescript/) to follow this post.
 :::
 

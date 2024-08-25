@@ -1,4 +1,4 @@
-import slugify, { slugifyWithCounter } from "@sindresorhus/slugify"
+import slugify, { slugifyWithCounter } from "@sindresorhus/slugify";
 
 export const defaults = {
 	decamelize: false,
@@ -6,28 +6,28 @@ export const defaults = {
 		["+", "plus"],
 		[".js", "js"]
 	]
-}
+};
 
 export class CountableSlugifier {
-	#slugifier
+	#slugifier;
 
 	constructor() {
-		this.#slugifier = slugifyWithCounter()
+		this.#slugifier = slugifyWithCounter();
 	}
 
 	reset() {
-		this.#slugifier.reset()
+		this.#slugifier.reset();
 	}
 
 	slugify(text, options = defaults) {
-		return this.#slugifier(text, options)
+		return this.#slugifier(text, options);
 	}
 
 	static slugifier() {
-		return new CountableSlugifier()
+		return new CountableSlugifier();
 	}
 }
 
 export default function (text, options = defaults) {
-	return slugify(text, options)
+	return slugify(text, options);
 }

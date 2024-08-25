@@ -1,42 +1,46 @@
-import { getCollection } from "astro:content"
-import rss from "~astro-rss"
-import { compare } from "~datetime"
-import siteInfo, { canonical, postPathname } from "~universal"
+import { getCollection } from "astro:content";
+import rss from "~astro-rss";
+import { compare } from "~datetime";
+import siteInfo, { fullLink, postPathname } from "~website";
 
-const baseUrl = siteInfo.base
-const author = siteInfo.author
-const aboutUrl = canonical("/about")
+const baseUrl = siteInfo.siteBase;
+const authorName = siteInfo.author.name;
+const aboutUrl = fullLink("/about");
+
+const author = {
+	name: authorName,
+	email: siteInfo.author.networks.mastodon.id,
+	link: aboutUrl
+};
 
 const options = {
 	id: baseUrl,
-	title: siteInfo.title,
 	link: baseUrl,
+	title: siteInfo.title,
 	description: siteInfo.description,
-	copyright: `2018, ${author}`,
+	copyright: `${(new Date()).getFullYear()}, ${authorName}`,
 	feedLinks: {
-		rss: canonical("/all.xml")
-	}
-}
+		rss: fullLink("/all.xml")
+	},
+	author
+};
 
-export async function get() {
+export async function GET() {
 	const posts = (await getCollection("post"))
-		.sort((p1, p2) => compare(p1.data.date, p2.data.date))
+		.sort((p1, p2) => compare(p1.data.update, p2.data.update))
 		.slice(0, siteInfo.maxFeedItems)
 		.map(post => {
-			const pageUrl = canonical(postPathname(post.slug))
+			const pageUrl = fullLink(postPathname(post.slug));
+			const showUpdate = compare(post.data.update, post.data.date) !== 0;
 			return {
-				title: post.data.title,
-				date: new Date(post.data.date),
-				author: [{
-					name: author,
-					email: author,
-					link: aboutUrl
-				}],
+				title: showUpdate ? `[Updated] ${post.data.title}` : post.data.title,
+				date: post.data.update,
+				author: [author],
 				content: post.body,
 				link: pageUrl,
 				id: pageUrl
-			}
-		})
-	
-	return rss(posts, options)
+			};
+		});
+
+	return rss(posts, options);
 }

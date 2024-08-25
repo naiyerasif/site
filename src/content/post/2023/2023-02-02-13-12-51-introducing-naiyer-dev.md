@@ -2,10 +2,10 @@
 slug: "2023/02/02/introducing-naiyer-dev"
 title: "Introducing naiyer.dev"
 description: "Introducing the latest redesign of this website. Here are the motivations for the revamp, some website metrics and comparison with the old version, and the interesting ‘behind the scenes’ changes."
-date: "2023-02-02 13:12:51"
-update: "2023-02-11 18:41:22"
-category: opinion
-tags: ["site"]
+date: 2023-02-02 13:12:51
+update: 2023-02-11 18:41:22
+type: "post"
+category: "note"
 ---
 
 Barely a yearly has passed since I launched the last [version](/post/2022/07/13/microflash-version-2/) of this site and here I'm with a fresh rewrite. You might be thinking: developers and their never-ending blog rewrites, 🙄! But hear me out on why I did it.
@@ -26,7 +26,7 @@ This site was located at [mflash.dev](https://mflash.dev). Microflash was my use
 
 The old domain will continue to work. The redirection rules will transparently take care of switching the domain and whatnot.[^1]
 
-[^1]: I've not configured the redirections yet but they'll be in effect sometime this month.
+[^1]: ~~I've not configured the redirections yet but they'll be in effect sometime this month.~~ Redirections are live!
 
 ## So, what's new?
 
@@ -40,7 +40,11 @@ The popularity of [Spotlight](https://en.wikipedia.org/wiki/Spotlight_(Apple)) i
 
 This version replaces the good old search with a Command bar (represented by &#8984; symbol).
 
-![Command bar in action](/images/post/2023/2023-02-02-13-12-51-introducing-naiyer-dev-01.png)
+:::figure
+![Command bar with search box](./images/2023-02-02-13-12-51-introducing-naiyer-dev-01.png)
+
+Command bar in action
+:::
 
 I've used [Fuse.js](https://fusejs.io/) to power the fuzzy search here. You can search posts, navigation, and even preferences (such as theme) to surface relevant results for you.
 
@@ -48,7 +52,11 @@ I've used [Fuse.js](https://fusejs.io/) to power the fuzzy search here. You can 
 
 I've switched from the traditional hamburger menu (which sat on top right in the previous version) to a bottom navigation bar on small screens.
 
-![Bottom navigation bar](/images/post/2023/2023-02-02-13-12-51-introducing-naiyer-dev-02.png)
+:::figure
+![Bottom navigation bar](./images/2023-02-02-13-12-51-introducing-naiyer-dev-02.png)
+
+Bottom navigation bar (visible only on small screens)
+:::
 
 You'll have reachable access to home, posts, command bar and a link to jump to the top all the time.
 

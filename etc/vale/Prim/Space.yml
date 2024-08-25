@@ -1,0 +1,9 @@
+extends: existence
+message: "'%s' should have one space between them."
+level: error
+nonword: true
+tokens:
+  - '\w+\s{2,}\w+' # only one space between words
+  - '\w+[.?!:;",]\s{2,}[A-Z][a-z]+\b' # no more than one space between sentences
+  - '\w+[.?!:;",][A-Z][a-z]+\b' # atleast one space between sentences
+  - '[\w.?!,\(\)\-":]\s{2,}\S+' # only one space after ,.?!

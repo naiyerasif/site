@@ -1,18 +1,18 @@
 ---
 slug: "2019/04/20/code-formatting-with-prettier"
 title: "Code Formatting with Prettier"
-description: "Prettier is an opinionated code formatter that formats the code in a consistent style. It supports popular languages, libraries, and frameworks and is widely used to enforce the style practices. Learn how to configure it to work with EditorConfig and ESLint."
-date: "2019-04-20 12:12:16"
-update: "2020-02-06 22:43:31"
+description: "Discover how to configure Prettier, an opinionated code formatter, to ensure consistent code styling. Integrate it with EditorConfig and ESLint to enforce style practices."
+date: 2019-04-20 12:12:16
+update: 2020-02-06 22:43:31
+type: "post"
 category: "guide"
-tags: ["prettier", "formatter"]
 ---
 
 [Prettier](https://prettier.io) is an opinionated code formatter that formats the code in a consistent style. It supports popular languages, libraries, and frameworks in the Node.js ecosystem and is widely used to enforce the style practices. 
 
 In this post, we'll integrate it with a Node.js application and explore on how to configure it to work with EditorConfig and ESLint. 
 
-:::setup
+:::note{.sm}
 You can pick the Node.js application created in the post [Using Express with TypeScript](/post/2019/01/12/using-express-with-typescript/) to start with.
 :::
 

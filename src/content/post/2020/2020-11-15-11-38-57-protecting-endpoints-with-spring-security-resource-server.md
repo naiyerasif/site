@@ -1,11 +1,11 @@
 ---
 slug: "2020/11/15/protecting-endpoints-with-spring-security-resource-server"
 title: "Protecting endpoints with Spring Security Resource Server"
-description: "OAuth2 is the industry standard for providing authorization. Spring Security provides an OAuth2 Resource Server starter to implement an authorization layer. Learn how to implement a service-to-service authorization flow using client-credentials grant type and audience claim."
-date: "2020-11-15 11:38:57"
-update: "2020-11-15 11:38:57"
+description: "OAuth2 is widely recognized as the industry standard for authorization. Discover how to implement an service-to-service authorization flow using OAuth2 Resource Server starter in a Spring app."
+date: 2020-11-15 11:38:57
+update: 2020-11-15 11:38:57
+type: "post"
 category: "guide"
-tags: ["spring", "security", "oauth2", "introspection"]
 ---
 
 In any modern application, you'll encounter multiple services talking to each other and even communicating with third-party services to provide useful functionalities. Some of these services may expose endpoints (also called *resources*) to serve data and perform actions of varying risk, cost and criticality. Therefore, it becomes prudent to protect the endpoints to provide appropriate access to the clients to reduce the chances of misuse and security breaches. [OAuth2](https://oauth.net/2/) is the industry standard for providing authorization. Spring Security provides an [OAuth2 Resource Server](https://docs.spring.io/spring-security/site/docs/current/reference/html5/#oauth2resourceserver) starter that we can use to implement an authorization layer.
@@ -26,7 +26,7 @@ The `aud` claim is an optional claim that becomes useful when multiple clients a
 
 We'll discuss multiple ways of validating a token through Spring Security and the scenarios where one approach makes sense over the other.
 
-:::setup
+:::note{.sm}
 The examples in this post use
 
 - Java 15
@@ -43,25 +43,45 @@ We'll use [Okta](https://okta.com) as the identity provider (IdP) but you can us
 
 To get started with Okta, create a developer account and login to your dashboard. Open the *Application* tab and click on the *Add Application* button.
 
-![Okta Applications screen](/images/post/2020/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-01.png)
+:::figure
+![Okta Applications screen](./images/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-01.png)
+
+Okta's *Applications* screen
+:::
 
 On the *Create New Application* screen, select *Web* and press *Next*.
 
-![Okta Create New Application platform selection screen](/images/post/2020/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-02.png)
+:::figure
+![Okta Create New Application platform selection screen](./images/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-02.png)
+
+Creating a New Application
+:::
 
 On the next screen, provide a name for the app, scroll down till *Grant type allowed* section, and check *Client Credentials* and *Implicit (Hybrid)* options. Press *Done*.
 
-![Okta Create New Application settings screen](/images/post/2020/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-03.png)
+:::figure
+![Okta Create New Application settings screen](./images/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-03.png)
+
+Configuring the authentication flow details
+:::
 
 Open the newly created application. You should find the *Client ID* and *Client Secret* under the *General* tab. Copy these values somewhere; you'd need them later.
 
-![Okta Application details screen](/images/post/2020/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-04.png)
+:::figure
+![Okta Application details screen](./images/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-04.png)
+
+Generated client credentials for the new application
+:::
 
 Open *Authorization Servers* (available under the *API* tab). Under the *Settings* tab , you'll find the audience configured for the server and the issuer URL. Copy these values somewhere; you'd need them later.
 
 Switch to the *Scopes* tab, and click on the *Add Scope* button. Add a scope with the name `read:messages` and check *Include in public metadata* option.
 
-![Okta Add Scope screen](/images/post/2020/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-05.png)
+:::figure
+![Okta Add Scope screen](./images/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-05.png)
+
+Adding a custom scope
+:::
 
 Similarly, add another scope with the name `write:messages`. This finishes Okta setup.
 
@@ -218,7 +238,7 @@ In the `CustomTokenValidator`, we're checking the existence of a valid audience;
 
 To integrate the `CustomTokenValidator` with the `JwtDecoder` bean, we'll need a reference value of the `audience` against which we can run our validation. You can obtain the value of audience from the *Authorization Servers* > *default* > *Settings* tab from the Okta dashboard. Lets configure it in the `application.yml` file.
 
-```yml {3-4}
+```yml {3..4}
 # src/main/resources/application.yml
 
 auth:
@@ -269,7 +289,7 @@ public @SpringBootApplication class Launcher {
 
 Now, modify the `JwtDecoder` as follows.
 
-```java {6,9-10,15,17-19}
+```java {6,9..10,15,17..19}
 // src/main/java/dev/mflash/guides/tokenval/local/security/SecurityConfiguration.java
 
 @EnableWebSecurity
@@ -339,7 +359,7 @@ Here, we've exposed three endpoints, one is public `/spring-security-oidc/public
 
 We need to configure these protection rules in the `SecurityConfiguration` as follows.
 
-```java {14-20}
+```java {14..20}
 // src/main/java/dev/mflash/guides/tokenval/local/security/SecurityConfiguration.java
 
 @EnableWebSecurity
@@ -372,7 +392,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 }
 ```
 
-![Local token validation flow](/images/post/2020/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-06.png)
+:::figure
+![A sequence depicting Local token validation flow](./images/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-06.png)
+
+Local token validation flow
+:::
 
 Launch the application. Open a terminal and send the following request to the public endpoint using *httpie*.
 
@@ -555,7 +579,7 @@ Since we don't care about the content or structure of the token being introspect
 
 To start with, open the `application.yml` file, and add the following configuration.
 
-```yml {12-15}
+```yml {12..15}
 # src/main/resources/application.yml
 
 auth:
@@ -599,7 +623,7 @@ public class CustomOpaqueTokenIntrospector implements OpaqueTokenIntrospector {
 
 Modify the `SecurityConfiguration` to use the `CustomOpaqueTokenIntrospector` as follows.
 
-```java {11,14-16}
+```java {11,14..16}
 // src/main/java/dev/mflash/guides/tokenval/introspection/security/SecurityConfiguration.java
 
 @EnableWebSecurity
@@ -623,7 +647,11 @@ Note that we are now calling the `opaqueToken` method on the `oauth2ResourceServ
 
 ### Testing the token introspection
 
-![Token introspection flow](/images/post/2020/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-07.png)
+:::figure
+![A sequence depicting token introspection flow](./images/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-07.png)
+
+Token introspection flow
+:::
 
 Rerun the previous scenarios with *httpie* to see the introspection in action.
 
@@ -722,7 +750,7 @@ Here, once the `RequestMatchingAuthenticationManagerResolver` receives a map of 
 
 Using the `RequestMatchingAuthenticationManagerResolver`, modify the `SecurityConfiguration` as follows.
 
-```java {19,22-31,33-37,39-41}
+```java {19,22..31,33..37,39..41}
 // src/main/java/dev/mflash/guides/tokenval/hybrid/security/SecurityConfiguration.java
 
 @EnableWebSecurity
@@ -789,7 +817,11 @@ Note that we're now calling the `authenticationManagerResolver` method over the 
 
 ### Testing the hybrid approach
 
-![Hybrid token validation flow](/images/post/2020/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-08.png)
+:::figure
+![A sequence depicting hybrid token validation flow](./images/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-08.png)
+
+Hybrid token validation flow
+:::
 
 As earlier, rerun the previous scenarios with *httpie* to see the hybrid approach in action.
 

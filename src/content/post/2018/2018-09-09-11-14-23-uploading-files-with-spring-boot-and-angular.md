@@ -1,18 +1,18 @@
 ---
 slug: "2018/09/09/uploading-files-with-spring-boot-and-angular"
 title: "Uploading files with Spring Boot and Angular"
-description: "File upload is a common feature in many web applications. How to upload a file through an Angular application and Spring service? And what to do if the upload takes a while?"
-date: "2018-09-09 11:14:23"
-update: "2020-03-08 21:16:19"
+description: "Explore how an Angular app and Spring Boot backend can manage file uploads. Additionally, explore strategies to handle lengthy upload processes."
+date: 2018-09-09 11:14:23
+update: 2020-03-08 21:16:19
+type: "post"
 category: "guide"
-tags: ["spring", "angular", "upload"]
 ---
 
 Give yourself some time in software development and you'll eventually come across file upload problems of varying complexity. Consider this one: you want a Spring backend to upload a file through an Angular app. Since the files can be large and the network may be slow, the upload can take a while to complete. Hence, you also want to display the progress of the upload on the Angular app.
 
 To solve this problem, we can modify the Spring Boot application described in [Uploading files](https://spring.io/guides/gs/uploading-files/) guide for our needs. And then we can create an Angular app to provide a UI.
 
-:::setup
+:::note{.sm}
 The examples in this post use
 
 - Java 13
@@ -147,7 +147,7 @@ There are three endpoints configured here.
 
 Lastly, enable CORS to accept the requests from the Angular frontend.
 
-```java {10-12}
+```java {10..12}
 // src/main/java/dev/mflash/guides/upload/Launcher.java
 
 @EnableConfigurationProperties(StorageProperties.class)

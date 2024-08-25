@@ -1,0 +1,30 @@
+---
+import "../styles/main.scss";
+import PageInfo from "./PageInfo.astro";
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+import ClientBase from "./ClientBase.astro";
+import ClientExtended from "./ClientExtended.astro";
+
+const { pageInfo, ...attribs } = Astro.props;
+const hero = Astro.slots.has("hero");
+const sidekick = Astro.slots.has("sidekick");
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<PageInfo {pageInfo}/>
+	</head>
+	<body>
+		<Header/>
+		{hero && <section class="hero"><slot name="hero"/></section>}
+		<main id="content" {...attribs}>
+			<slot/>
+		</main>
+		{sidekick && <section class="sidekick"><slot name="sidekick"/></section>}
+		<Footer/>
+		<ClientBase/>
+		<ClientExtended/>
+	</body>
+</html>
