@@ -40,7 +40,8 @@
 		"unist-util-visit": "^5.0.0"
 	},
 	"devDependencies": {
-		"inquirer": "^9.3.6",
+		"@clack/prompts": "^0.7.0",
+		"picocolors": "^1.0.1",
 		"puppeteer": "^23.1.1",
 		"unlighthouse-puppeteer": "^0.10.6"
 	},
