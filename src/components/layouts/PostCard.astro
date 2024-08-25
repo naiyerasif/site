@@ -1,0 +1,19 @@
+---
+import Time from "~components/atoms/Time.astro"
+import { postPathname } from "~universal"
+
+const { entry } = Astro.props
+const category = entry.data.category
+const path = postPathname(entry.slug)
+---
+
+<div class={"card " + category} onclick={`location.href='${path}'`}>
+	<div class="card-meta">
+		<span class="post-category">{entry.data.category}</span>
+		<Time date={entry.data.date} />
+	</div>
+	<div class="card-header">
+		<a href={path}>{entry.data.title}</a>	
+	</div>
+	<div class="card-body">{entry.data.description}</div>
+</div>

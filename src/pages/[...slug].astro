@@ -1,0 +1,35 @@
+---
+import { getCollection } from "astro:content"
+import Layout from "~components/layouts/Layout.astro"
+import BackToTop from "~components/atoms/BackToTop.astro"
+
+export async function getStaticPaths() {
+	const pages = await getCollection("pages")
+	return pages.map(entry => ({
+			params: { slug: entry.slug },
+			props: { entry }
+		}))
+}
+
+const { entry } = Astro.props
+const { data, render } = entry
+const { Content, headings } = await render()
+
+const pageInfo = {
+	hint: data.title,
+	title: data.title,
+	description: data.description,
+	url: Astro.url.pathname
+}
+---
+
+<Layout {pageInfo}>
+	<article class="content">
+		<Content/>
+	</article>
+	<div class="sidekick">
+		<div class="sidekick-items">
+			<BackToTop />
+		</div>
+	</div>
+</Layout>

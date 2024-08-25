@@ -1,0 +1,34 @@
+---
+import { getEntryBySlug } from "astro:content"
+import Layout from "~components/layouts/Layout.astro"
+import { capitalize } from "~universal"
+import BackToTop from "~components/atoms/BackToTop.astro"
+
+const { data, render } = await getEntryBySlug("about", "index")
+const { Content } = await render()
+
+const name = capitalize(data.user)
+const avatar = `/images/${data.user}.png`
+
+const pageInfo = {
+	hint: "About",
+	title: data.title,
+	description: data.description,
+	url: Astro.url.pathname
+}
+---
+
+<Layout {pageInfo}>
+	<div class="profile-metadata" slot="hero">
+		<img src={avatar} alt={data.title}>
+		<h1 class="headline">Hi, I&rsquo;m {name}</h1>
+	</div>
+	<article class="content">
+		<Content/>
+	</article>
+	<div class="sidekick">
+		<div class="sidekick-items">
+			<BackToTop />
+		</div>
+	</div>
+</Layout>

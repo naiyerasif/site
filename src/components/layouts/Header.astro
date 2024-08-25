@@ -1,0 +1,39 @@
+---
+import Icon from "~components/atoms/Icon.astro"
+import ThemeSwitcher from "~components/widgets/ThemeSwitcher.astro"
+import CommandBar from "~components/widgets/CommandBar.astro"
+import BackToTop from "~components/atoms/BackToTop.astro"
+
+const { hint = "Home" } = Astro.props
+---
+
+<header class="wrapper header" id="header">
+	<div class="navbar">
+		<div class="navbar-primary">
+			<a href="/" class="brand">
+				<img src="/favicon.svg" alt="naiyer.dev's logo">
+			</a>
+			<Icon name="chevron-right"/>
+			<div class="hint">{hint}</div>
+		</div>
+		<div class="navbar-secondary">
+			<nav class="menu-items">
+				<a href="/posts/">Posts</a>
+				<a href="/about/">About</a>
+				<ThemeSwitcher/>
+			</nav>
+			<CommandBar/>
+		</div>
+	</div>
+</header>
+
+<nav class="navbar-tertiary">
+	<a href="/" class="button" title="Home">
+		<Icon name="site"/>
+	</a>
+	<a href="/posts/" class="button" title="Posts">
+		<Icon name="posts"/>
+	</a>
+	<CommandBar/>
+	<BackToTop />
+</nav>

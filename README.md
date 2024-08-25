@@ -1,28 +1,27 @@
-# Microflash [![deploy](https://github.com/Microflash/site/actions/workflows/deploy.yml/badge.svg)](https://github.com/Microflash/site/actions/workflows/deploy.yml)
+# naiyer.dev
 
 Personal website of [@naiyerasif](https://github.com/naiyerasif)
 
 ## Development
 
-- Install [Deno](https://deno.land/) and [Lume](https://lume.land/)
-- Run `lume --serve` to serve the site at port `8080`
-- Run `lume` to generate a production build
+- To launch the development server, run `pnpm dev` 
+- To generate a production build, run `pnpm build`
+- To create a new post, run `pnpm post`
 
-## Deployment
+## Authoring
 
-The deployment on [Netlify](https://www.netlify.com/) is automated through [GitHub Actions](./.github/workflows/deploy.yml).
+[Vale](https://vale.sh) enforces the spellcheck and prose styling of this blog.
 
-## Affordances
+- To verify a prose, run `vale <path>`
+- To sync packages and styles, run `vale sync`
 
-Install [Velociraptor](https://velociraptor.run) to use the affordances.
+## Audits
 
-### Creating a draft
+- To launch a full lighthouse audit, run `pnpm lighthouse` (this may take a while to audit all the pages)
 
-```sh
-vr post -t '${title}' -c '${category}' -d '${date in YYYY-MM-DD HH:mm:ss format}' -h '${comma separated tags}'
-```
+## Contributing
 
-The draft will be created in `.workspace/posts` directory.
+Since this is my personal site, I'm not really looking for feature requests. I'd, however, appreciate bug reports and corrections. Please [create an issue](https://github.com/naiyerasif/naiyer.dev/issues/new) on accessibility, browser rendering inconsistencies, performance bottlenecks, and general usability criticism.
 
 ## License
 

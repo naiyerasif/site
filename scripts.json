@@ -1,8 +1,0 @@
-{
-	"scripts": {
-		"post": {
-			"cmd": "etc/bin/post.ts",
-			"allow": ["net", "read", "write", "env"]
-		}
-	}
-}

@@ -1,0 +1,47 @@
+---
+import Icon from "./Icon.astro"
+---
+
+<a data-skiplink="true" href="#content">Skip to main content<Icon name="arrow-down"/></a>
+
+<style>
+a[data-skiplink] {
+	position: fixed;
+	/* keep it on viewport */
+	top: 0px;
+	left: 0px;
+	/* give it non-zero size, VoiceOver on Safari requires at least 2 pixels before allowing buttons to be activated. */
+	width: 4px;
+	height: 4px;
+	/* visually hide it with overflow and opacity */
+	opacity: 0;
+	overflow: hidden;
+	/* remove any margin or padding */
+	border: none;
+	margin: 0;
+	padding: 0;
+	/* ensure no other style sets display to none */
+	display: block;
+	visibility: visible;
+	pointer-events: none;
+}
+a[data-skiplink]:focus {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: auto;
+	width: auto;
+	margin: auto;
+	opacity: 1;
+	pointer-events: auto;
+	padding: 0.5rem;
+	background: var(--background-site-deter);
+	font-weight: var(--font-site-semibold);
+	font-size: var(--text-site-small);
+	outline-offset: -0.125em;
+}
+</style>

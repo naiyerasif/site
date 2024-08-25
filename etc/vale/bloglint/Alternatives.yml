@@ -1,0 +1,189 @@
+extends: substitution
+message: "Use '%s' instead of '%s'."
+level: warning
+ignorecase: false
+action:
+  name: replace
+swap:
+  '(?:agent|virtual assistant|intelligent personal assistant)': personal digital assistant
+  '(?:API Console|dev|developer) key': API key
+  'audio(?:-| )book': audiobook
+  'back(?:-| )light': backlight
+  '(?:cell ?phone|smart ?phone)': phone|mobile phone
+  'chat ?bots?': chatbot(s)
+  '(?:dev|developer|APIs) console': API console
+  '(?:e-mail|Email|E-mail)': email
+  '(?:file ?path|path ?name)': path
+  '(?:internet bot|web robot)s?': bot(s)
+  '(?:kill|terminate|abort)': stop|exit|cancel|end
+  '(?:OAuth ?2|Oauth)': OAuth 2.0
+  '(?:ok|Okay)': OK|okay
+  '(?:WiFi|wifi)': Wi-Fi
+  '[\.]+apk': APK
+  '3\-D': 3D
+  'tap (?:&|and) hold': touch & hold
+  'un(?:check|select)': clear
+  above: preceding
+  abundance: plenty
+  accelerate: speed up
+  accentuate: stress
+  accompany: go with
+  accomplish: carry out|do
+  accorded: given
+  accordingly: so
+  accrue: add
+  account name: username
+  acquiesce: agree
+  acquire: get|buy
+  action bar: app bar
+  additional: more|extra
+  adjacent to: next to
+  adjustment: change
+  admin: administrator
+  admissible: allowed
+  advantageous: helpful
+  advise: tell
+  afterwards: afterward
+  aggregate: total
+  Ajax: AJAX
+  (?i)a\.k\.a|aka: or|also known as
+  API explorer: APIs Explorer
+  alleviate: ease
+  allocate: assign|divide
+  alphabetic: alphabetical
+  alternatively: or
+  alternatives: choices|options
+  ameliorate: improve
+  amend: change
+  anti-aliasing: antialiasing
+  anti-malware: antimalware
+  anti-spyware: antispyware
+  anti-virus: antivirus
+  anticipate: expect
+  apparent: clear|plain
+  appendixes: appendices
+  application: app
+  approx\.: approximately
+  ascertain: discover|find out
+  assistance: help
+  attain: meet
+  attempt: try
+  authorize: allow
+  authN: authentication
+  authZ: authorization
+  autoupdate: automatically update
+  belated: late
+  bestow: give
+  cease: stop|en
+  cellular data: mobile data
+  cellular network: mobile network
+  chapter: documents|pages|sections
+  check box: checkbox
+  check: select
+  CLI: command-line tool
+  click on: click|click in
+  collaborate: work together
+  commence: begin
+  compensate: pay
+  comprise: form|include
+  confer: give|award
+  consequently: so
+  consolidate: merge
+  constitutes: forms
+  contains: has
+  content type: media type
+  convene: meet
+  curated roles: predefined roles
+  data are: data is
+  demonstrate: show|prove
+  depart: leave
+  designate: choose
+  desire: want|wish
+  determine: decide|find
+  detrimental: bad|harmful
+  disabled?: turn off|off
+  disclose: share|tell
+  discontinue: stop
+  disseminate: send|give
+  eliminate: end
+  elucidate: explain
+  employ: use
+  enclosed: inside|included
+  encounter: meet
+  endeavor: try
+  enumerate: count
+  ephemeral IP address: ephemeral external IP address
+  equitable: fair
+  equivalent: equal
+  exclusively: only
+  expedite: hurry
+  facilitate: ease
+  females: women
+  fewer data: less data
+  file name: filename
+  finalize: complete|finish
+  firewalls: firewall rules
+  frequently: often
+  functionality: capability|feature
+  Google account: Google Account
+  Google accounts: Google Accounts
+  Googling: search with Google
+  grayed-out: unavailable
+  HTTPs: HTTPS
+  identical: same
+  in order to: to
+  incorrect: wrong
+  indication: sign
+  ingest: import|load
+  initiate: start|begin
+  itemized: listed
+  jeopardize: risk
+  k8s: Kubernetes
+  liaise: work with|partner with
+  long press: touch & hold
+  maintain: keep|support
+  methodology: method
+  modify: change
+  monitor: check|watch
+  multiple: many
+  necessitate: cause
+  network IP address: internal IP address
+  notify: tell
+  numerous: many
+  omnibox: address bar
+  objective: aim|goal
+  obligate: bind|compel
+  open-source: open source
+  optimum: best|most
+  overview screen: recents screen
+  permit: let
+  portion: part
+  possess: own
+  previous: earlier
+  previously: before
+  procure: buy
+  provide: give|offer
+  purchase: buy
+  regex: regular expression
+  relocate: move
+  SHA1: SHA-1|HAS-SHA1
+  sign into: sign in to
+  sign-?on: single sign-on
+  solicit: request
+  static IP address: static external IP address
+  state-of-the-art: latest
+  stylesheet: style sheet
+  subsequent: later|next
+  substantial: large
+  sufficient: enough
+  synch: sync
+  tablename: table name
+  tablet: device
+  terminate: end
+  touch: tap
+  transmit: send
+  url:  URL
+  utilization: use
+  utilize: use
+  vs\.: versus
+  World Wide Web: web
