@@ -28,7 +28,7 @@ importers:
         version: 2.2.1
       astro:
         specifier: ^4.14.5
-        version: 4.14.5(@types/node@22.5.0)(rollup@4.21.0)(sass@1.77.6)(typescript@5.5.4)
+        version: 4.14.5(@types/node@22.5.0)(rollup@4.21.0)(sass@1.77.8)(typescript@5.5.4)
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
@@ -75,8 +75,8 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
       sass:
-        specifier: ^1.77.6
-        version: 1.77.6
+        specifier: ^1.77.8
+        version: 1.77.8
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
@@ -2209,8 +2209,8 @@ packages:
   image-ssim@0.2.0:
     resolution: {integrity: sha512-W7+sO6/yhxy83L0G7xR8YAc5Z5QFtYEXXRV6EaE8tuYBZJnA3gVgp3q7X7muhLZVodeb9UfvjSbwt9VJwjIYAg==}
 
-  immutable@4.3.6:
-    resolution: {integrity: sha512-Ju0+lEMyzMVZarkTn/gqRpdqd5dOPaz1mCZ0SH3JV6iFw81PldE/PEB1hWVEA288HPt4WXW8O7AWxB10M+03QQ==}
+  immutable@4.3.7:
+    resolution: {integrity: sha512-1hqclzwYwjRDFLjcFxOM5AYkkG0rpFPpr1RLPMEuGczoS7YA8gLhy8SWXYRAA/XwfEHpfo3cw5JGioS32fnMRw==}
 
   import-fresh@3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
@@ -3343,8 +3343,8 @@ packages:
   sanitize-filename@1.6.3:
     resolution: {integrity: sha512-y/52Mcy7aw3gRm7IrcGDFx/bCk4AhRh2eI9luHOQM86nZsqwiRkkq2GekHXBBD+SmPidc8i2PqtYZl+pWJ8Oeg==}
 
-  sass@1.77.6:
-    resolution: {integrity: sha512-ByXE1oLD79GVq9Ht1PeHWCPMPB8XHpBuz1r85oByKHjZY6qV6rWnQovQzXJXuQ/XyE1Oj3iPk3lo28uzaRA2/Q==}
+  sass@1.77.8:
+    resolution: {integrity: sha512-4UHg6prsrycW20fqLGPShtEvo/WyHRVRHwOP4DzkUrObWoWI05QBSfzU71TVB7PFaL104TwNaHpjlWXAZbQiNQ==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -5349,7 +5349,7 @@ snapshots:
     dependencies:
       tslib: 2.7.0
 
-  astro@4.14.5(@types/node@22.5.0)(rollup@4.21.0)(sass@1.77.6)(typescript@5.5.4):
+  astro@4.14.5(@types/node@22.5.0)(rollup@4.21.0)(sass@1.77.8)(typescript@5.5.4):
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/internal-helpers': 0.4.1
@@ -5410,8 +5410,8 @@ snapshots:
       tsconfck: 3.1.1(typescript@5.5.4)
       unist-util-visit: 5.0.0
       vfile: 6.0.2
-      vite: 5.4.2(@types/node@22.5.0)(sass@1.77.6)
-      vitefu: 0.2.5(vite@5.4.2(@types/node@22.5.0)(sass@1.77.6))
+      vite: 5.4.2(@types/node@22.5.0)(sass@1.77.8)
+      vitefu: 0.2.5(vite@5.4.2(@types/node@22.5.0)(sass@1.77.8))
       which-pm: 3.0.0
       xxhash-wasm: 1.0.2
       yargs-parser: 21.1.1
@@ -6452,7 +6452,7 @@ snapshots:
 
   image-ssim@0.2.0: {}
 
-  immutable@4.3.6: {}
+  immutable@4.3.7: {}
 
   import-fresh@3.3.0:
     dependencies:
@@ -8002,10 +8002,10 @@ snapshots:
     dependencies:
       truncate-utf8-bytes: 1.0.2
 
-  sass@1.77.6:
+  sass@1.77.8:
     dependencies:
       chokidar: 3.6.0
-      immutable: 4.3.6
+      immutable: 4.3.7
       source-map-js: 1.2.0
 
   sax@1.2.4: {}
@@ -8515,7 +8515,7 @@ snapshots:
       unist-util-stringify-position: 4.0.0
       vfile-message: 4.0.2
 
-  vite@5.4.2(@types/node@22.5.0)(sass@1.77.6):
+  vite@5.4.2(@types/node@22.5.0)(sass@1.77.8):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.4.41
@@ -8523,11 +8523,11 @@ snapshots:
     optionalDependencies:
       '@types/node': 22.5.0
       fsevents: 2.3.3
-      sass: 1.77.6
+      sass: 1.77.8
 
-  vitefu@0.2.5(vite@5.4.2(@types/node@22.5.0)(sass@1.77.6)):
+  vitefu@0.2.5(vite@5.4.2(@types/node@22.5.0)(sass@1.77.8)):
     optionalDependencies:
-      vite: 5.4.2(@types/node@22.5.0)(sass@1.77.6)
+      vite: 5.4.2(@types/node@22.5.0)(sass@1.77.8)
 
   vscode-oniguruma@2.0.1: {}
 

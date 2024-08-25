@@ -47,9 +47,9 @@ article.content {
 	}
 
 	.footnotes {
-		@include mixins.flow;
 		font-size: 0.85em;
 		border-block-start: 1px dashed var(--x2-border-body);
+		@include mixins.flow;
 
 		h2[id]:first-of-type {
 			padding-block-start: 1em;

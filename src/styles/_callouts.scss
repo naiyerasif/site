@@ -21,11 +21,11 @@
 
 	&-content {
 		--x2-gap-flow: 1em;
-		@include mixins.flow;
 		padding: var(--calloutContentPadding);
 		border-image: 
 			radial-gradient(#0000 71%, var(--calloutBorderColor) 72%)
 			49.9%/var(--x2-radius-sm);
+		@include mixins.flow;
 	}
 
 	&.quote {
