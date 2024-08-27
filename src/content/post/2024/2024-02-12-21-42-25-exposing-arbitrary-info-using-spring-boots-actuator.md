@@ -4,8 +4,7 @@ title: "Exposing arbitrary info using Spring Boot's actuator"
 description: "Spring Boot's actuator module enables exposing useful details. Learn how to use the info endpoint to publish customized information about your application."
 date: 2024-02-12 21:42:25
 update: 2024-02-12 21:42:25
-type: "post"
-category: "note"
+type: "note"
 ---
 
 Spring Boot's [actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html) module offers pretty useful capabilities to expose the details about an application. For example, the [`health`](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.endpoints.health) endpoint provides basic application health information. Similarly, you can expose any arbitrary information through the [`info`](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.endpoints.info) endpoint.

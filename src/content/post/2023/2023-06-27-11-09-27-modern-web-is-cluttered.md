@@ -4,7 +4,6 @@ title: "Modern web is cluttered"
 date: 2023-06-27 11:09:27
 update: 2023-06-27 11:09:27
 type: "status"
-category: "quote"
 ---
 
 > "Why are people saying the modern Web is cluttered and unuseable? It's really not that bad..."

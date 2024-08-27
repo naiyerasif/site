@@ -4,7 +4,6 @@ title: "Downgrading homebrew packages"
 date: 2023-09-06 21:28:32
 update: 2023-09-06 21:28:32
 type: "status"
-category: "update"
 ---
 
 Today, Node.js 20.6.0 [broke the build](https://github.com/nodejs/node/issues/49497) for this blog and I thought I'd just downgrade to the previously working version with the following command.

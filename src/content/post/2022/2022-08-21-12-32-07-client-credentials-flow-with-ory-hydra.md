@@ -4,8 +4,7 @@ title: "Client Credentials flow with Ory Hydra"
 description: "Ory Hydra is an open source implementation of the OAuth 2.0 Authorization and OpenID Connect Core 1.0 frameworks. Learn to set it up using Docker, create a client and test a Client Credentials flow."
 date: 2022-08-21 12:32:07
 update: 2023-09-26 21:17:30
-type: "post"
-category: "guide"
+type: "guide"
 ---
 
 [Ory Hydra](https://github.com/ory/hydra) is an open source OpenID Connect Provider. It implements OAuth 2.0 Authorization Framework and the OpenID Connect Core 1.0 framework. It can issue OAuth 2.0 Access, Refresh, and ID tokens. This can be useful to test the token flow during the development on a local machine. In this post, we'll setup Hydra using Docker, create a client and test a `client_credentials` flow through Hydra CLI and `curl`.

@@ -4,8 +4,7 @@ title: "Communicating with containers on Docker network"
 description: "Discover how to ensure private access to the backend of your Angular app, running in distinct containers, while the Angular app remains exposed to the host."
 date: 2018-08-05 12:06:01
 update: 2020-03-08 21:22:13
-type: "post"
-category: "guide"
+type: "guide"
 ---
 
 Say, you've an Angular app that talks to a backend service through a network. Both of them are running in separate containers, which can be on the same or different Docker stack(s). You want only the Angular container to be publicly accessible through a port.

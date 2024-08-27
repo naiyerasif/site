@@ -4,8 +4,7 @@ title: "Logging on Node.js with log4js-node"
 description: "console.log is an overused logging anti-pattern. Enter log4js, which offers enhanced logging capabilities for a more comprehensive server-side logging solution."
 date: 2019-08-14 17:11:09
 update: 2019-09-22 20:19:17
-type: "post"
-category: "guide"
+type: "guide"
 ---
 
 `console.log` has been a prevalent anti-pattern inherited by Node.js developers from years of printing to the console on a browser. While this is useful for quick debugging, it doesn't sit well with server-side design; it's hard to turn it off selectively, add log levels to it or redirect the logs to a file or database. Some good alternatives to the `console.log` are [winston](https://github.com/winstonjs/winston) and [log4js-node](https://github.com/log4js-node/log4js-node).

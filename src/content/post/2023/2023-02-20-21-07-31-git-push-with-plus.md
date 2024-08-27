@@ -4,7 +4,6 @@ title: "Git push with +"
 date: 2023-02-20 21:07:31
 update: 2023-02-20 21:07:31
 type: "status"
-category: "update"
 ---
 
 Today I learned that `+` sets a force flag on a Git [refspec](https://git-scm.com/book/en/v2/Git-Internals-The-Refspec). That means I can force push to a branch with any of the following commands:

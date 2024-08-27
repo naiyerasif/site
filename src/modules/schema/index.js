@@ -1,6 +1,6 @@
 import { z } from "astro:content";
 import siteInfo, { fullLink, editLink } from "~website";
-import content from "./content.js";
+import types from "./types.js";
 
 const title = z.string().max(64);
 const description = z.preprocess(
@@ -11,8 +11,7 @@ const date = z.date();
 const update = z.date().optional();
 const tagline = z.string().optional();
 const states = z.enum(["draft", "archived", "outdated"]);
-const contentTypes = z.enum([...Object.keys(content)]).default("post");
-const categories = z.enum([...Object.values(content).flatMap(v => v)]);
+const contentTypes = z.enum([...types]).default("guide");
 const url = z.preprocess(
 	val => val && fullLink(val),
 	z.string().url()
@@ -43,14 +42,11 @@ const postSchema = z.object({
 	date,
 	update,
 	type: contentTypes,
-	category: categories.default("guide"),
 	state: states.optional(),
 	showToc: z.boolean().default(true),
 
 	ogImage,
 	ogType: ogTypes.default("article"),
-}).refine(data => content[data.type].includes(data.category), {
-	message: "Invalid category for the content type"
 });
 
 const profileSchema = ({ image }) => z.object({
@@ -59,7 +55,6 @@ const profileSchema = ({ image }) => z.object({
 	tagline,
 	date,
 	update,
-	type: contentTypes,
 	avatar: image(),
 
 	ogImage,
@@ -72,7 +67,6 @@ const pageSchema = z.object({
 	tagline,
 	date,
 	update,
-	type: contentTypes,
 	state: states.optional(),
 	showToc: z.boolean().default(false),
 

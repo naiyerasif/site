@@ -4,7 +4,6 @@ title: "First Law of Programming"
 date: 2019-02-11 16:12:44
 update: 2019-02-11 16:12:44
 type: "status"
-category: "quote"
 ---
 
 > Lowering quality lengthens development time.

@@ -4,8 +4,7 @@ title: "Code Coverage with JaCoCo and Maven"
 description: "JaCoCo is a popular tool for measuring code coverage in Java applications. In this post, we will integrate JaCoCo using Maven, and create a coverage report you can view in the browser."
 date: 2018-11-15 21:09:32
 update: 2024-07-01 00:15:49
-type: "post"
-category: "guide"
+type: "guide"
 ---
 
 [JaCoCo](https://www.jacoco.org/jacoco/) is a popular Java library for measuring code coverage, that is, how much of your code runs during automated tests. It can generate coverage reports that you can use to assess the effectiveness of your tests.

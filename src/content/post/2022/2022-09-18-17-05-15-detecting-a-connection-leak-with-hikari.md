@@ -4,8 +4,7 @@ title: "Detecting a connection leak with Hikari"
 description: "Failing to close connections can cause leaks, throttling the application. This post covers creating, detecting, and fixing such leaks using Hikari connection pool."
 date: 2022-09-18 17:05:15
 update: 2024-07-28 14:16:12
-type: "post"
-category: "guide"
+type: "guide"
 ---
 
 Database connections are one of the most expensive resources in an application. That is why we use connection pools (such as [Hikari](https://github.com/brettwooldridge/HikariCP)) to manage them. However, if a developer fails to close a connection, it can stay open and may never return to the connection pool. This leads to a _connection leak_ which can throttle the application to a standstill.

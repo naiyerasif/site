@@ -4,8 +4,7 @@ title: "Polymorphic Requests with Jackson"
 description: "Learn about handling requests with varying structures in an API using Jackson by using polymorphism."
 date: 2020-06-11 14:30:07
 update: 2022-07-15 12:05:02
-type: "post"
-category: "guide"
+type: "guide"
 ---
 
 While building a generalized API, you may come across scenarios where the structure of the incoming request can change based on certain characteristics. In Java, such scenarios are handled with polymorphism which involves introducing an interface to represent multiple types. In this post, we'll explore how to handle polymorphic requests using [Jackson](https://github.com/FasterXML/jackson), a popular data-processing library for Java.

@@ -4,8 +4,7 @@ title: "Improved local development using containers in Spring Boot 3.1"
 description: "Spring Boot 3.1 introduces new Docker Compose and Testcontainers integrations, simplifying local development by automating container management."
 date: 2023-09-08 00:13:21
 update: 2023-09-08 00:13:21
-type: "post"
-category: "guide"
+type: "guide"
 ---
 
 Spring Boot 3.1 added important integrations with [Docker Compose](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#features.docker-compose) and [Testcontainers](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#features.testing.testcontainers). With these integrations, you won't have to manage your containers manually while bringing up the local development environment on your machine. Spring Boot will automatically manage this for you.

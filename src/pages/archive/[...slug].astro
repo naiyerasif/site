@@ -21,7 +21,6 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { data, render } = post;
 const { Content, headings } = await render();
-const category = data.type === "status" ? "status" : data.category;
 const url = Astro.url.pathname;
 const showToc = data.showToc && headings && headings.length > 0;
 const timeToRead = readingTime(post.body).readingTime;
@@ -44,7 +43,7 @@ const pageInfo = {
 	<Fragment slot="hero">
 		<nav class="hero-header breadcrumb">
 			<a class="breadcrumb-item" href="/">Home</a>
-			<span class="breadcrumb-item">{category}</span>
+			<span class="breadcrumb-item">{data.type}</span>
 		</nav>
 		<div class="hero-body">
 			<div class="hero-headline-text">
@@ -53,7 +52,7 @@ const pageInfo = {
 			</div>
 		</div>
 		<div class="hero-footer">
-			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span class="update"><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}{category !== "status" && showReadingTime && <span><Icon name="clock"/> Takes about {`${timeToRead} min to read`}</span>}<span class="chip chip-warn">Archived</span>
+			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span class="update"><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}{data.type !== "status" && showReadingTime && <span><Icon name="clock"/> Takes about {`${timeToRead} min to read`}</span>}<span class="chip chip-warn">Archived</span>
 		</div>
 	</Fragment>
 	<article class="content">

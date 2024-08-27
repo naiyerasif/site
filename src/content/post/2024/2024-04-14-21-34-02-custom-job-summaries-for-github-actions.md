@@ -4,7 +4,6 @@ title: "Custom job summaries for GitHub Actions"
 date: 2024-04-14 21:34:02
 update: 2024-04-14 21:34:02
 type: "status"
-category: "update"
 ---
 
 Today I learned that you can print custom job summaries for GitHub Actions by assigning a markdown string to the `GITHUB_STEP_SUMMARY` environment variable.

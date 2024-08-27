@@ -4,7 +4,6 @@ title: "Syntax vs semantics"
 date: 2020-11-01 08:10:05
 update: 2020-11-01 08:10:05
 type: "status"
-category: "quote"
 ---
 
 > The novice looks at the syntax, the enlightened sees the semantics.

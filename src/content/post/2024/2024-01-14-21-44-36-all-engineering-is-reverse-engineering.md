@@ -4,7 +4,6 @@ title: "All engineering is reverse engineering"
 date: 2024-01-14 21:44:36
 update: 2024-01-14 21:44:36
 type: "status"
-category: "quote"
 ---
 
 > All engineering is reverse engineering if you document things poorly enough.

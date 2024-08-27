@@ -8,7 +8,7 @@ import dayjs from "dayjs";
 import timezone from "dayjs/plugin/timezone.js";
 import utc from "dayjs/plugin/utc.js";
 import slugify from "../../src/modules/slugifier/index.js";
-import content from "../../src/modules/schema/content.js";
+import types from "../../src/modules/schema/types.js";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -24,14 +24,8 @@ async function main() {
 		type: () =>
 			p.select({
 				message: "Select the content type",
-				initialValue: "post",
-				options: Object.keys(content).map(t => ({ value: t, label: t }))
-			}),
-		category: ({ results }) =>
-			p.select({
-				message: "Select a category",
 				initialValue: "guide",
-				options: content[results.type].map(t => ({ value: t, label: t }))
+				options: types.map(t => ({ value: t, label: t }))
 			}),
 		title: () =>
 			p.text({
@@ -64,7 +58,6 @@ async function main() {
 	frontmatter.push(`date: ${answers.date}`);
 	frontmatter.push(`update: ${answers.date}`);
 	frontmatter.push(`type: "${answers.type}"`);
-	frontmatter.push(`category: "${answers.category}"`);
 	frontmatter.push('---');
 
 	const fileName = `${date.format('YYYY-MM-DD-HH-mm-ss')}-${slug}.md`;

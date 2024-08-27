@@ -4,8 +4,7 @@ title: "Weaving aspects at compile-time with AspectJ"
 description: "AspectJ manipulates Java bytecode at compile-time or load-time. The process is called weaving. Learn how to use compile-time weaving to log method entry and exit in Java."
 date: 2021-10-10 15:12:18
 update: 2021-10-10 15:12:18
-type: "post"
-category: "guide"
+type: "guide"
 ---
 
 > This is a follow-up post for [Logging methods with AspectJ in a Spring application](/post/2020/09/13/logging-methods-with-aspectj-in-a-spring-application/).

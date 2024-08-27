@@ -4,8 +4,7 @@ title: "Blocking AI web crawlers"
 description: "To prevent web crawlers from scraping your website to build AI models, you can take certain measures. You can disallow them through robots.txt and block their IP ranges."
 date: 2023-09-30 20:41:51
 update: 2024-06-23 00:19:53
-type: "post"
-category: "reference"
+type: "reference"
 ---
 
 Most AI chatbots and services typically browse the internet and [scrape](https://en.wikipedia.org/wiki/Web_scraping) information from websites to enrich their internal models. Here are some steps you can take to prevent such web crawlers from scraping your website.

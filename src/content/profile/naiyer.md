@@ -5,7 +5,6 @@ description: "About Naiyer Asif"
 date: 2019-06-30 05:14:56
 update: 2023-07-08 21:12:34
 avatar: "./images/naiyer.png"
-type: "post"
 ---
 
 <p class="greeting">

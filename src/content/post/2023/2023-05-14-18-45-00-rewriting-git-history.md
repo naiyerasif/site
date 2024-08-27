@@ -4,8 +4,7 @@ title: "Rewriting Git history"
 description: "Usually Git history should not be altered, but you may need it for security purposes, or for maintaining clarity. Here are ways to rewrite history."
 date: 2023-05-14 18:45:00
 update: 2023-08-10 21:32:12
-type: "post"
-category: "note"
+type: "note"
 ---
 
 While generally avoided, rewriting Git history is occasionally needed for security reasons, or for maintaining a cleaner history. Here are some approaches to achieve this.

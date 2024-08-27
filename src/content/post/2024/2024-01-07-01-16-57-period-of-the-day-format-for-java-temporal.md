@@ -4,7 +4,6 @@ title: "Period of the Day format for Java Temporal"
 date: 2024-01-07 01:33:06
 update: 2024-01-07 01:33:06
 type: "status"
-category: "update"
 ---
 
 Today I learned about "Period of the Day" pattern `B` to format a `java.time.Temporal` value in Java with `DateTimeFormatter`.

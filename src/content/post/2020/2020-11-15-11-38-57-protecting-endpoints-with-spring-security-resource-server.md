@@ -4,8 +4,7 @@ title: "Protecting endpoints with Spring Security Resource Server"
 description: "OAuth2 is widely recognized as the industry standard for authorization. Discover how to implement an service-to-service authorization flow using OAuth2 Resource Server starter in a Spring app."
 date: 2020-11-15 11:38:57
 update: 2020-11-15 11:38:57
-type: "post"
-category: "guide"
+type: "guide"
 ---
 
 In any modern application, you'll encounter multiple services talking to each other and even communicating with third-party services to provide useful functionalities. Some of these services may expose endpoints (also called *resources*) to serve data and perform actions of varying risk, cost and criticality. Therefore, it becomes prudent to protect the endpoints to provide appropriate access to the clients to reduce the chances of misuse and security breaches. [OAuth2](https://oauth.net/2/) is the industry standard for providing authorization. Spring Security provides an [OAuth2 Resource Server](https://docs.spring.io/spring-security/site/docs/current/reference/html5/#oauth2resourceserver) starter that we can use to implement an authorization layer.

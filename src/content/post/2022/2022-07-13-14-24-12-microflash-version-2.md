@@ -4,8 +4,7 @@ title: "Microflash: Version 2"
 description: "Introducing the redesign of this website. Here, I document the changes done, some website metrics and comparison with the old version, and the notable ‘behind the scenes’ changes."
 date: 2022-07-13 14:24:12
 update: 2022-07-21 13:57:10
-type: "post"
-category: "note"
+type: "note"
 ---
 
 After more than three years since its inception, here's the redesign of this site. There were three motivations behind this redesign: **improving accessibility and performance**, **consistent design**, and **faster local development**.

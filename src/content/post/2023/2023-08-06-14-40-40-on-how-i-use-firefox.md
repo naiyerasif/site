@@ -4,8 +4,7 @@ title: "On how I use Firefox"
 description: "I have been using Firefox for years and have picked up some tips. Whether you are using it or thinking of switching, these could be handy!"
 date: 2023-08-06 14:40:40
 update: 2024-08-24 22:58:16
-type: "post"
-category: "opinion"
+type: "opinion"
 ---
 
 I have been using Firefox for ages. Here are some habits and configurations I have picked up along the way. May these come in handy if you are also a Firefox user, or persuade you to switch to Firefox if you are not.

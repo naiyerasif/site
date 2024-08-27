@@ -4,7 +4,6 @@ title: "Scaling a video with FFmpeg using Nushell"
 date: 2023-12-29 22:22:41
 update: 2023-12-29 22:22:41
 type: "status"
-category: "update"
 ---
 
 I've been using the following [Nushell](https://www.nushell.sh/) script for a while to scale down high resolution videos with [FFmpeg](https://ffmpeg.org/).

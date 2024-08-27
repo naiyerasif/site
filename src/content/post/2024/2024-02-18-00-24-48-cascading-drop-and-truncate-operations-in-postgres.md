@@ -4,8 +4,7 @@ title: "Cascading DROP and TRUNCATE operations in Postgres"
 description: "Did you know that you can cascade the DROP and TRUNCATE commands in Postgres to automatically remove dependent objects like foreign keys, domains, etc?"
 date: 2024-02-18 00:24:48
 update: 2024-02-18 00:24:48
-type: "post"
-category: "note"
+type: "note"
 ---
 
 Today I learned that you can specify `CASCADE` on `DROP` and `TRUNCATE` statements in Postgres. This comes handy when you're dealing with the database objects which are references on other objects (for example, foreign keys, [domains](https://www.postgresql.org/docs/current/domains.html), etc).

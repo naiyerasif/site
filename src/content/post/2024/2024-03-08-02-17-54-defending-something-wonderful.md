@@ -4,7 +4,6 @@ title: "Defending something wonderful"
 date: 2024-03-08 02:17:54
 update: 2024-03-08 02:17:54
 type: "status"
-category: "quote"
 ---
 
 > If you have something wonderful, if you do not defend it, you will lose it.

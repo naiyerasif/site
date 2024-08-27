@@ -4,8 +4,7 @@ title: "Creating deep copies in Java"
 description: "Java lacks built-in mechanisms for creating deep copies of objects. Explore the various methods to achieve deep copying in Java."
 date: 2021-06-19 10:56:39
 update: 2021-06-19 10:56:39
-type: "post"
-category: "guide"
+type: "guide"
 ---
 
 The need to create copies is pretty common in programming. In a nutshell, you may need the copy of an object's reference (called a *shallow copy*) or the copy of the object's data (called a *deep copy*), depending on the requirement. Java makes it pretty straightforward to create shallow copies of an object; you need to implement the `Cloneable` interface on its class and override the `clone()` method. However, there are no in-built mechanisms to create deep copies of an object in Java. In this guide, we'll explore some ways to do this for different usecases.

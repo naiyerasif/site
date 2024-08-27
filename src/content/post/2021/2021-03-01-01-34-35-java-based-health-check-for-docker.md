@@ -4,8 +4,7 @@ title: "Java-based health check for Docker"
 description: "Docker tracks the status of a container as it transitions between various states using server events. Learn to improve the accuracy of health status reporting for a Java app running on Tomcat."
 date: 2021-03-01 01:34:35
 update: 2021-09-02 16:20:56
-type: "post"
-category: "guide"
+type: "guide"
 ---
 
 When you launch a container, Docker maintains its status as it transitions between several states. When you list the containers (using `docker ps` or `docker container ls`), the status of those states is displayed under `CREATED` and `STATUS` labels. These states are tracked through the server events; you can list them in real-time using the [`docker events`](https://docs.docker.com/engine/reference/commandline/events/) command.

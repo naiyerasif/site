@@ -4,7 +4,6 @@ title: "WHY I LEFT DEVELOPER RELATIONS"
 date: 2023-09-04 12:24:12
 update: 2023-09-04 12:24:12
 type: "status"
-category: "quote"
 ---
 
 > ::youtube[WHY I LEFT DEVELOPER RELATIONS]{#_p0LYU_mA_0}

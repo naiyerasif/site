@@ -4,8 +4,7 @@ title: "Parsing varargs as array with Jackson"
 description: "Learn how to pass varargs using Jackson for a property on a Java class."
 date: 2020-08-22 12:01:03
 update: 2020-08-22 12:01:03
-type: "post"
-category: "note"
+type: "note"
 ---
 
 Consider the following Java class where the setter for the `author` property accepts the values as varargs.

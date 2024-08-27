@@ -4,8 +4,7 @@ title: "Using abbreviations on the web"
 description: "The <abbr> element may sound enticing for abbreviations. However, it does not work well on touch devices and screen readers, requiring adjustments for optimal experience."
 date: 2024-06-09 16:12:35
 update: 2024-06-09 23:56:15
-type: "post"
-category: "reference"
+type: "reference"
 ---
 
 While working on the web, you might reach out to the [`<abbr>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr) (abbreviation) element to represent abbreviations, acronyms, and [numeronyms](https://en.wikipedia.org/wiki/Numeronym), as suggested by the [HTML Standard](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-abbr-element). The `<abbr>` element is well supported in the browsers, and on the surface, it appears to be a perfect fit. Realities on the ground are, unfortunately, not so good.

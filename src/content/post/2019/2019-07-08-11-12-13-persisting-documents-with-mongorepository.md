@@ -4,8 +4,7 @@ title: "Persisting documents with MongoRepository"
 description: "Learn to use Spring Data with MongoDB. Explore the repository-style programming model to persist and cascade documents, and create custom converters for specific data types."
 date: 2019-07-08 11:12:13
 update: 2020-10-26 10:10:01
-type: "post"
-category: "guide"
+type: "guide"
 state: "outdated"
 ---
 

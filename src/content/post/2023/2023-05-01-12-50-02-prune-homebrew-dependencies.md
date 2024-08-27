@@ -4,7 +4,6 @@ title: "Prune homebrew dependencies"
 date: 2023-05-01 12:50:02
 update: 2023-05-01 12:50:02
 type: "status"
-category: "update"
 ---
 
 Today I learned you can use `brew autoremove` to prune unused dependencies installed by [Homebrew](https://brew.sh).

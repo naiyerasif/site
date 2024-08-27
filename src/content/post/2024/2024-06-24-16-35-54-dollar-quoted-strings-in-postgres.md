@@ -4,7 +4,6 @@ title: "Dollar-quoted strings in Postgres"
 date: 2024-06-24 16:35:54
 update: 2024-06-24 16:35:54
 type: "status"
-category: "update"
 ---
 
 Today I learned that you can have multi-line strings in Postgres using [dollar-quoted strings](https://www.postgresql.org/docs/current/sql-syntax-lexical.html#SQL-SYNTAX-DOLLAR-QUOTING).

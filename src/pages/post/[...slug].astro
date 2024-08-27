@@ -25,7 +25,6 @@ const { entry } = Astro.props;
 const { post, prev, next } = entry;
 const { data, render } = post;
 const { Content, headings } = await render();
-const category = data.type === "status" ? "status" : data.category;
 const url = Astro.url.pathname;
 const showToc = data.showToc && headings && headings.length > 0;
 const prevPage = prev ? postPathname(prev.slug) : undefined;
@@ -58,7 +57,7 @@ const pageInfo = {
 	<Fragment slot="hero">
 		<nav class="hero-header breadcrumb">
 			<a class="breadcrumb-item" href="/">Home</a>
-			<span class="breadcrumb-item capitalized">{category}</span>
+			<span class="breadcrumb-item capitalized">{data.type}</span>
 		</nav>
 		<div class="hero-body">
 			<div class="hero-headline-text">
@@ -67,7 +66,7 @@ const pageInfo = {
 			</div>
 		</div>
 		<div class="hero-footer">
-			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span class="update"><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}{category !== "status" && showReadingTime && <span><Icon name="clock"/> Takes about {`${timeToRead} min to read`}</span>}{showState && <span class={stateClasses[data.state]}>{data.state}</span>}
+			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span class="update"><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}{data.type !== "status" && showReadingTime && <span><Icon name="clock"/> Takes about {`${timeToRead} min to read`}</span>}{showState && <span class={stateClasses[data.state]}>{data.state}</span>}
 		</div>
 	</Fragment>
 	<article class="content">
