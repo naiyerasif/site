@@ -10,6 +10,7 @@ import format, { compare, format_date } from "~datetime";
 import readingTime from "~reading-time";
 import toc from "~toc";
 import siteInfo, { postPathname } from "~website";
+import { states } from "../../modules/schema/states.js";
 
 export async function getStaticPaths() {
 	const posts = await getCollection("post");
@@ -34,9 +35,6 @@ const timeToRead = readingTime(post.body).readingTime;
 const showUpdate = compare(data.update, data.date) !== 0;
 const showReadingTime = timeToRead > 0;
 const showState = !!data.state;
-const stateClasses = {
-	"outdated": "chip chip-deter"
-};
 
 const pageInfo = {
 	title: data.title,
@@ -65,7 +63,7 @@ const pageInfo = {
 			</div>
 		</div>
 		<div class="hero-footer">
-			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span class="update"><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}{data.type !== "status" && showReadingTime && <span><Icon name="clock"/> Takes about {`${timeToRead} min to read`}</span>}{showState && <span class={stateClasses[data.state]}>{data.state}</span>}
+			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span class="update"><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}{data.type !== "status" && showReadingTime && <span><Icon name="clock"/> Takes about {`${timeToRead} min to read`}</span>}{showState && <span class={`chip chip-${states[data.state].semantics}`}>{states[data.state].label}</span>}
 		</div>
 	</Fragment>
 	<article class="content">

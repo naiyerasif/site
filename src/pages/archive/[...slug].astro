@@ -8,6 +8,7 @@ import format, { compare, format_date } from "~datetime";
 import readingTime from "~reading-time";
 import toc from "~toc";
 import siteInfo from "~website";
+import { states } from "../../modules/schema/states.js";
 
 export async function getStaticPaths() {
 	const posts = await getCollection("archive");
@@ -26,6 +27,7 @@ const showToc = data.showToc && headings && headings.length > 0;
 const timeToRead = readingTime(post.body).readingTime;
 const showUpdate = compare(data.update, data.date) !== 0;
 const showReadingTime = timeToRead > 0;
+const state = states.archived;
 
 const pageInfo = {
 	title: `${data.title} (Archived)`,
@@ -43,7 +45,7 @@ const pageInfo = {
 	<Fragment slot="hero">
 		<nav class="hero-header breadcrumb">
 			<a class="breadcrumb-item" href="/">Home</a>
-			<span class="breadcrumb-item">{data.type}</span>
+			<span class="breadcrumb-item capitalized">{data.type}</span>
 		</nav>
 		<div class="hero-body">
 			<div class="hero-headline-text">
@@ -52,7 +54,7 @@ const pageInfo = {
 			</div>
 		</div>
 		<div class="hero-footer">
-			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span class="update"><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}{data.type !== "status" && showReadingTime && <span><Icon name="clock"/> Takes about {`${timeToRead} min to read`}</span>}<span class="chip chip-warn">Archived</span>
+			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span class="update"><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}{data.type !== "status" && showReadingTime && <span><Icon name="clock"/> Takes about {`${timeToRead} min to read`}</span>}<span class={`chip chip-${state.semantics}`}>{state.label}</span>
 		</div>
 	</Fragment>
 	<article class="content">

@@ -1,6 +1,7 @@
 import { z } from "astro:content";
 import siteInfo, { fullLink, editLink } from "~website";
 import types from "./types.js";
+import statesAsList from "./states.js";
 
 const title = z.string().max(64);
 const description = z.preprocess(
@@ -10,7 +11,7 @@ const description = z.preprocess(
 const date = z.date();
 const update = z.date().optional();
 const tagline = z.string().optional();
-const states = z.enum(["archived", "outdated"]);
+const state = z.enum([...statesAsList]).optional();
 const contentTypes = z.enum([...types]).default("guide");
 const url = z.preprocess(
 	val => val && fullLink(val),
@@ -42,7 +43,7 @@ const postSchema = z.object({
 	date,
 	update,
 	type: contentTypes,
-	state: states.optional(),
+	state,
 	showToc: z.boolean().default(true),
 
 	ogImage,
@@ -67,7 +68,7 @@ const pageSchema = z.object({
 	tagline,
 	date,
 	update,
-	state: states.optional(),
+	state,
 	showToc: z.boolean().default(false),
 
 	ogImage,
