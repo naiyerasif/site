@@ -10,5 +10,6 @@ I have used the following conventions throughout this site on new posts.
 
 ## Personas and users
 
-- **Database schema names**: `northwind`
+- **Database name**: `northwind`
+- **Database schema names**: `serenity`
 - **Database users**: `gizem`, `victoria`
