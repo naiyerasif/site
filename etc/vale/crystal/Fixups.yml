@@ -5,38 +5,13 @@ ignorecase: true
 action:
   name: replace
 swap:
-  "24/7": 24x7
-  3\-D: 3D
-  A11Y|a11y: accessibility
-  Ajax: AJAX
   "audio(?:-| )book": audiobook
-  autodetect: auto-detect
   "back(?:-| )light": backlight
-  back slash: backslash
   "[bB]asic [aA]uth": Basic HTTP authentication|Basic authentication
-  "bottle neck|bottle-neck": bottleneck
   "(?:cell ?phone|smart ?phone)": phone|mobile phone
   "chat ?bot?": chatbot
-  check list: checklist
-  check mark: checkmark
-  down time: downtime
-  dualboot|dual boot: dual-boot
   "(?:e-mail|Email|E-mail)": email
   "(?:file ?path|path ?name)": path
-  G11N|g11n: globalization
-  hard copy: hardcopy
-  hardcoded: hard-coded
-  HTTPs: HTTPS
-  in depth: in-depth
   "(?:OAuth ?2|Oauth)": OAuth 2.0
   "(?:ok|Okay)": OK|okay
-  on demand: on-demand
   "quote mark|quote(?! mark)": quotation mark
-  scroll bar|scroll-bar: scrollbar
-  synch: sync
-  testcase: test case
-  url:  URL
-  URL for: URL of
-  an URL: a URL
-  usecase: use case
-  "(?:WiFi|wifi)": Wi-Fi

@@ -7,65 +7,37 @@ action:
 swap:
   a11y: accessibility
   (?i)a\.k\.a|aka: or|also known as
-  "aren't": are not
   authN: authentication
   authZ: authorization
-  "can't": cannot
-  "could've": could have
-  "couldn't": could not
-  "didn't": did not
-  "don't": do not
-  "doesn't": does not
   g11n: globalization
-  "hadn't": had not
-  "hasn't": has not
-  "haven't": have not
   "he'd": he had|he would
   "he's": he is|he has
   "he'll": he will|he shall
   "here'd": here had|here would
   "here's": here is|here has
   "how'd": how did|how would
-  "how's": how is
-  "how'll": how will
-  "I'm": I am
   "I'd": I had|I would
-  "I've": I have
-  "I'll": I will
   i18n: internationalization
-  "isn't": is not
   "it'd": it had|it would
   "it's": it is|it has
   "it'll": it will|it shall
   k8s: Kubernetes
-  "let's": let us
   l10n: localization
   p13n: personalization
   regex: regular expression
   "she'd": she had|she would
   "she's": she is|she has
   "she'll": she will|she shall
-  "should've": should have
-  "shouldn't": should not
   "somebody'd": somebody had|somebody would
   "someone'd": someone had|someone would
   "that'd": that had|that would
   "that's": that is|that has
-  "that'll": that will
-  "they're": they are
   "they'd": they had|they would
-  "they've": they have
   "they'll": they will|they shall
   "there'd": there would|there had
   "there's": there is|there has
-  "wasn't": was not
-  "we're": we are
-  "we've": we have
-  "we'll": we will
   "we'd": we would|we had
-  "weren't": were not
   "what'd": what did
-  "what's": what is
   "what'll": what will
   "when'd": when did
   "when's": when is|when has
@@ -75,19 +47,9 @@ swap:
   "where'll": where will
   "which'd": which would|which had
   "who'd": who had|who would
-  "who're": who are
   "who's": who is|who has
-  "who'll": who will
-  "why're": why are
   "why'd": why did|why would
   "why's": why is|why has
-  "will've": will have
-  "won't": will not
   "w/(?!o) ": "with "
   "w/o": without
-  "would've": would have
-  "wouldn't": would not
-  "you're": you are
   "you'd": you had|you would
-  "you've": you have
-  "you'll": you will
