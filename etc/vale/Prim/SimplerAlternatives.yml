@@ -5,5 +5,5 @@ ignorecase: true
 action:
   name: replace
 swap:
-  approximately: about
+  approximately: about|around
   state-of-the-art: modern|latest

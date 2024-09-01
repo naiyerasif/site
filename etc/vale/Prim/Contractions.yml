@@ -7,6 +7,7 @@ action:
 swap:
   a11y: accessibility
   (?i)a\.k\.a|aka: or|also known as
+  '\bapprox\.\s': about|around
   authN: authentication
   authZ: authorization
   g11n: globalization
