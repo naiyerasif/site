@@ -3,24 +3,24 @@ slug: "privacy"
 title: "Privacy"
 description: "Privacy practices on naiyerasif.com"
 date: 2020-11-01 14:52:40
-update: 2024-06-01 23:30:17
+update: 2024-09-01 14:51:16
 ---
 
-[naiyerasif.com](/) (referred to as "this site"), maintained by me ([Naiyer Asif](/about/)), has no ads, no tracking or analytics, no affiliate links, no sponsored posts, and no paywall. It does not fingerprint your device or request any personal information.
+[naiyerasif.com](/) (referred to as "this site"), maintained by yours truly ([Naiyer Asif](/about/)), has no ads, no tracking or analytics, no affiliate links, no sponsored posts, and no paywall. It doesn't fingerprint your device or request any personal information.
 
 ## External services
 
-This site includes YouTube videos on some pages. These videos have autoplay turned off and tracking opted-out. They follow [Google Privacy Policy](https://policies.google.com/privacy).
+You might spot some YouTube videos here and there. They've autoplay turned off and tracking opted-out. They follow [Google Privacy Policy](https://policies.google.com/privacy).
 
-## Media queries and custom fonts
+## Media queries and fonts
 
-This site uses CSS [Media Queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#media_features) to detect your preferences for color scheme, internet speed, and motion, and saves them in your browser's [local storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). Based on these preferences, it adjusts your experience, like reducing animations if you have limited them in your settings.
+This site uses CSS [Media Queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#media_features) to tailor your experience based on your color scheme and motion preferences. All this happens locally in your browser.
 
-This site uses custom fonts that are _self-hosted_ to prevent your IP address from being shared with a third-party font provider.
+The fonts used on this site are self-hosted, to keep your IP address private, and avoid sharing it with third-party font providers.
 
 ## Cloudflare
 
-Cloudflare hosts and serves this site. Whenever you visit it, Cloudflare's [privacy policy](https://www.cloudflare.com/privacypolicy/) applies.
+Cloudflare helps host and serve this site. When you visit, Cloudflare's [privacy policy](https://www.cloudflare.com/privacypolicy/) applies.
 
 ## Audits
 
