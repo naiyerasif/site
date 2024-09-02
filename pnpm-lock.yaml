@@ -18,8 +18,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       '@microflash/rehype-starry-night':
-        specifier: ^7.0.0
-        version: 7.0.0
+        specifier: ^7.1.0
+        version: 7.1.0
       '@microflash/remark-callout-directives':
         specifier: ^4.3.1
         version: 4.3.1
@@ -844,8 +844,8 @@ packages:
   '@microflash/rehype-slugify@1.0.0':
     resolution: {integrity: sha512-pp9LB4zp8cxF+Pf6oXNpqCMNXAmFKeIP9Ab6MOb/SrzxDvGfi0O2RZwG7znXh7dmVgYa0//Dte4X5kcIf+G3/w==}
 
-  '@microflash/rehype-starry-night@7.0.0':
-    resolution: {integrity: sha512-MtilbqvyNyYECLPIyHStApxgWu/22hmS1m0MC5om5mcXMRvRz3cyOAvGH7e/4b0cDL6JME+kAk8Amb6W+jVZTg==}
+  '@microflash/rehype-starry-night@7.1.0':
+    resolution: {integrity: sha512-DwdGCPlbQM/UrCzZlVsP6Yb4YjkLVg9kreopdRSz28YSVb5z448j2bPNiyk0QSwG/l8r4EkeDOm31kGwEy4cwQ==}
 
   '@microflash/remark-callout-directives@4.3.1':
     resolution: {integrity: sha512-ZCS8+6ykJ4AqKPi6w1q3oV8RnRkaU+jOyT8b8LcvF1sNe9aufqgkInXvE93lrYyD7+04cVtmdtiUa07dI7KTNA==}
@@ -1270,8 +1270,8 @@ packages:
   '@vue/shared@3.4.15':
     resolution: {integrity: sha512-KzfPTxVaWfB+eGcGdbSf4CWdaXcGDqckoeXUh7SB3fZdEtzPCK2Vq9B/lRRL3yutax/LWITz+SwvgyOxz5V75g==}
 
-  '@wooorm/starry-night@3.4.0':
-    resolution: {integrity: sha512-6MeHZWLJFl+NJhwj8ehfNTIEtCRph+g8/MVvBYiOAt8CgMoysH08ikouyIUUO42Fl8whHz3d+tdwUHQeuQqQkg==}
+  '@wooorm/starry-night@3.5.0':
+    resolution: {integrity: sha512-nYnfdeWS0ApqIFqr4ezLjr6pyYuqiG5Ywc2aJ4u1EY3qzf2oCTfLv7sMjEQSuSzPWUIH+a39eVbGUiRrFKZElA==}
 
   accepts@1.3.8:
     resolution: {integrity: sha512-PYAthTa2m2VKxuvSD3DPC/Gy+U+sOA1LAuT8mkmRuvw+NACSaeXEQ+NHcVF7rONl6qcaxV3Uuemwawk+7+SJLw==}
@@ -4691,10 +4691,10 @@ snapshots:
       hast-util-to-string: 2.0.0
       unist-util-visit: 4.1.2
 
-  '@microflash/rehype-starry-night@7.0.0':
+  '@microflash/rehype-starry-night@7.1.0':
     dependencies:
       '@microflash/fenceparser': 3.0.0
-      '@wooorm/starry-night': 3.4.0
+      '@wooorm/starry-night': 3.5.0
       defu: 6.1.4
       hast-util-to-string: 3.0.0
       hastscript: 9.0.0
@@ -5265,7 +5265,7 @@ snapshots:
 
   '@vue/shared@3.4.15': {}
 
-  '@wooorm/starry-night@3.4.0':
+  '@wooorm/starry-night@3.5.0':
     dependencies:
       '@types/hast': 3.0.4
       import-meta-resolve: 4.1.0
