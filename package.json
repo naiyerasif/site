@@ -6,6 +6,7 @@
 	"scripts": {
 		"dev": "astro dev",
 		"build": "astro build",
+		"postprocess": "node etc/bin/fixFeedImageUrls.js",
 		"preview": "astro preview",
 		"new": "node etc/bin/post.js",
 		"postinstall": "astro telemetry disable",
@@ -19,6 +20,7 @@
 		"@microflash/remark-callout-directives": "^4.3.1",
 		"@sindresorhus/slugify": "^2.2.1",
 		"astro": "^4.15.2",
+		"cheerio": "^1.0.0",
 		"dayjs": "^1.11.13",
 		"defu": "^6.1.4",
 		"feed": "^4.2.2",
