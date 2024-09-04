@@ -11,6 +11,7 @@ mixin
 [Mm]onorepo
 numeronym(s)
 [Nn]ushell
+Outro
 [Pp]ostgres
 priviledges
 [Rr]ebase|[Rr]ebasing
