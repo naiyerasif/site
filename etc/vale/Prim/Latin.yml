@@ -6,9 +6,9 @@ nonword: true
 action:
   name: replace
 swap:
-  circa: around|about
+  \bcirca\b: around|about
   '\b(?:eg|e\.g\.)[\s,]': for example
-  ergo: therefore
+  \bergo\b: therefore
   '\bet al\.': and others
   '\betc\.': and other(s)
   '\b(?:ie|i\.e\.)[\s,]': that is
