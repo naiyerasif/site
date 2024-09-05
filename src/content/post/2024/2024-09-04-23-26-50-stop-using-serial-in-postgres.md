@@ -3,7 +3,7 @@ slug: "2024/09/04/stop-using-serial-in-postgres"
 title: "Stop using SERIAL in Postgres"
 description: "Postgres has supported identity columns since version 10. Use them instead of SERIAL for a better experience."
 date: 2024-09-04 23:26:50
-update: 2024-09-04 23:26:50
+update: 2024-09-05 19:57:21
 type: "opinion"
 tagline: "Use identity columns instead."
 ---
@@ -22,7 +22,7 @@ Internally, Postgres generates a sequence for both `serial` and identity columns
 
 Picture this: the database owner `victoria` creates a table like this:
 
-```sql title="schema definition of events table"
+```sql title="Schema definition of events table"
 create table events (
 	id serial primary key,
 	created_at timestamptz not null default current_timestamp
@@ -74,7 +74,7 @@ insert into pings default values;
 -- DETAIL: Key (id)=(1) already exists.
 ```
 
-What happened? The first insert with `id` as "1" didn't advance the sequence. Postgres didn't issue any warning or error.
+What happened? The first insert with `id` as 1 didn't advance the sequence. Postgres didn't issue any warning or error.
 
 Now, let's try the same thing with an identity column.
 
@@ -150,7 +150,7 @@ Can you spot `serial` now?
 The only clue is the `default` set on the `id` column, and the fact that it owns the sequence `events_id_seq`. 
 
 :::assert
-Postgres sets it this way to ensure the sequence is automatically dropped if you delete the `id` column or the `events` table with a `drop..cascade` statement.
+Postgres sets the `owned by` relationship this way to ensure the sequence is automatically dropped if you delete the `id` column or the `events` table with a `drop..cascade` statement.
 :::
 
 Using identity columns, you can create the same table as follows.
@@ -226,4 +226,4 @@ By contrast, the identity columns _are_ SQL standard.
 
 ## Outro
 
-`serial` has many other quirks. While you can still use it, why not give identity columns a whirl? They're SQL standard, offer better ergonomics, and come with built-in safety guarantees. They will simplify your work and help avoid many paper cuts you would otherwise get with `serial`.
+`serial` has many other quirks. While you can still use it, why not give identity columns a whirl? They're SQL standard, offer better ergonomics, and come with built-in safety guarantees. They will simplify your work and help avoid many paper cuts you would otherwise face with `serial`.
