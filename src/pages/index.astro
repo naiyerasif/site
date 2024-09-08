@@ -21,10 +21,10 @@ const pageInfo = {
 
 <Layout {pageInfo}>
 	<div slot="hero" class="hero-body">
-		<div class="hero-headline-text">
+		<hgroup class="hero-headline-text">
 			<h1 class="headline">Hi, I&CloseCurlyQuote;m Naiyer</h1>
 			<p class="subheadline">Book lover, software engineer and a fellow web wanderer</p>
-		</div>
+		</hgroup>
 	</div>
 	{posts.map(entry => entry.data.type === "status" ? <StatusCard {entry} /> : <PostCard {entry} />)}
 	<div slot="sidekick" class="sidekick-items">

@@ -57,10 +57,10 @@ const pageInfo = {
 			<span class="breadcrumb-item capitalized">{data.type}</span>
 		</nav>
 		<div class="hero-body">
-			<div class="hero-headline-text">
+			<hgroup class="hero-headline-text">
 				<h1 class="headline">{data.title}</h1>
 				{data.tagline && <p class="subheadline">{data.tagline}</p>}
-			</div>
+			</hgroup>
 		</div>
 		<div class="hero-footer">
 			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span class="update"><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}{data.type !== "status" && showReadingTime && <span><Icon name="clock"/> Takes about {`${timeToRead} min to read`}</span>}{showState && <span class={`chip chip-${states[data.state].semantics}`}>{states[data.state].label}</span>}

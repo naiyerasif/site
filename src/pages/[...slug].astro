@@ -36,10 +36,10 @@ const pageInfo = {
 			<a class="breadcrumb-item" href="/">Home</a>
 		</nav>
 		<div class="hero-body">
-			<div class="hero-headline-text">
+			<hgroup class="hero-headline-text">
 				<h1 class="headline">{data.title}</h1>
 				{data.tagline && <p class="subheadline">{data.tagline}</p>}
-			</div>
+			</hgroup>
 		</div>
 		<div class="hero-footer">
 			<span>Published on <Time date={data.date} /></span>{showUpdate && <span class="update">Updated on <Time date={data.update} /></span>}

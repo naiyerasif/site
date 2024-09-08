@@ -33,9 +33,9 @@ const pageInfo = {
 			<span class="breadcrumb-item">{page.start + 1}&hellip;{page.end + 1} of {page.total} posts</span>
 		</nav>
 		<div class="hero-body">
-			<div class="hero-headline-text">
+			<hgroup class="hero-headline-text">
 				<h1 class="headline">Posts</h1>
-			</div>
+			</hgroup>
 		</div>
 	</Fragment>
 	{page.data.map(entry => entry.data.type === "status" ? <StatusCard {entry} /> : <PostCard {entry} />)}
