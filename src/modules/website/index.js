@@ -5,8 +5,8 @@ const authorInfo = {
 	networks: {
 		mastodon: {
 			platform: "Mastodon",
-			id: "@naiyer@mastodon.design",
-			link: "https://mastodon.design/@naiyer"
+			id: "@naiyer@mastodon.social",
+			link: "https://mastodon.social/@naiyer"
 		},
 		github: {
 			platform: "GitHub",
