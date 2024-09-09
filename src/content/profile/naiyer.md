@@ -33,7 +33,7 @@ Yes. The code is licensed under the [Creative Commons Attribution 4.0 License](h
 
 - [File an issue](https://github.com/naiyerasif/site/issues/new)
 - Click the edit link under a post and send me a PR
-- Mention me [@naiyer@mastodon.design](https://mastodon.design/@naiyer) <small>([What is Mastodon?](https://en.wikipedia.org/wiki/Mastodon_(social_network)))</small>
+- Mention me [@naiyer@mastodon.social](https://mastodon.social/@naiyer) <small>([What is Mastodon?](https://en.wikipedia.org/wiki/Mastodon_(social_network)))</small>
 
 I also welcome bug reports and corrections on accessibility, browser rendering inconsistencies, performance bottlenecks, and general usability concerns.
 
