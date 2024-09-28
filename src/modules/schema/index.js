@@ -1,5 +1,5 @@
 import { z } from "astro:content";
-import siteInfo, { fullLink, editLink } from "~website";
+import siteInfo, { fullLink, editLink } from "../website/index.js";
 import types from "./types.js";
 import statesAsList from "./states.js";
 

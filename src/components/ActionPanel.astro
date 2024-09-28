@@ -1,6 +1,6 @@
 ---
 import Icon from "./Icon.astro";
-import { pageInfoSchema } from "~schema";
+import { pageInfoSchema } from "../modules/schema/index.js";
 
 const pageInfo = pageInfoSchema.parse(Astro.props.pageInfo);
 ---

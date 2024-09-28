@@ -1,6 +1,6 @@
 import { getCollection } from "astro:content";
 import { encode } from "html-entities";
-import { postPathname } from "~website";
+import { postPathname } from "../modules/website/index.js";
 
 const defaults = [
 	{

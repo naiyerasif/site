@@ -10,7 +10,7 @@ import remarkFigureDirective from "../remark-figure-directive/index.js";
 import remarkYoutubeDirective from "../remark-youtube-directive/index.js";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
-import { fullLink } from "~website";
+import { fullLink } from "../website/index.js";
 
 function canonize(html) {
 	const relativeRefs = /(href|src)=("|')((?=\.{1,2}\/|\/).+?)\2/gi;

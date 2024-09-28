@@ -1,5 +1,5 @@
 ---
-import format, { format_iso } from "~datetime";
+import format, { format_iso } from "../modules/datetime/index.js";
 
 const { date, ...attribs } = Astro.props;
 const displayDate = format(date);

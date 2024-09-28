@@ -1,13 +1,13 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from "~layouts/Layout.astro";
-import Icon from "~components/Icon.astro";
-import Toc from "~components/Toc.astro";
-import Time from "~components/Time.astro";
-import format, { compare, format_date } from "~datetime";
-import readingTime from "~reading-time";
-import toc from "~toc";
-import siteInfo from "~website";
+import Layout from "../../layouts/Layout.astro";
+import Icon from "../../components/Icon.astro";
+import Toc from "../../components/Toc.astro";
+import Time from "../../components/Time.astro";
+import format, { compare, format_date } from "../../modules/datetime/index.js";
+import readingTime from "../../modules/reading-time/index.js";
+import toc from "../../modules/table-of-contents/index.js";
+import siteInfo from "../../modules/website/index.js";
 import { states } from "../../modules/schema/states.js";
 
 export async function getStaticPaths() {

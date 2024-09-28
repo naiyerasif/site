@@ -1,7 +1,7 @@
 ---
 import Time from "./Time.astro";
 import Icon from "./Icon.astro";
-import { postPathname } from "~website";
+import { postPathname } from "../modules/website/index.js";
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();

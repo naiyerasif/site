@@ -1,7 +1,7 @@
 import { getCollection } from "astro:content";
-import rss from "~astro-rss";
-import { compare } from "~datetime";
-import siteInfo, { fullLink, postPathname } from "~website";
+import rss from "../modules/astro-rss/index.js";
+import { compare } from "../modules/datetime/index.js";
+import siteInfo, { fullLink, postPathname } from "../modules/website/index.js";
 
 const baseUrl = siteInfo.siteBase;
 const authorName = siteInfo.author.name;
