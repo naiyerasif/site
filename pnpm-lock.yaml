@@ -18,8 +18,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       '@microflash/rehype-starry-night':
-        specifier: ^7.1.0
-        version: 7.1.0
+        specifier: ^7.1.1
+        version: 7.1.1
       '@microflash/remark-callout-directives':
         specifier: ^4.3.1
         version: 4.3.1
@@ -838,8 +838,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@microflash/fenceparser@3.0.0':
-    resolution: {integrity: sha512-FDn0pDfWSPDvj9A5HrOjWcqPaOBsMdjs+Sqi0Y4kecvw5UKRPMYexQZ7LSQ2v6PDHHNR6dQhpyLrIPBlVbgRUg==}
+  '@microflash/fenceparser@3.1.0':
+    resolution: {integrity: sha512-kjEByW5ViReO+rJx6cYZBnG067Orp/H2uBF3ofPmMT2up0uJtVgSqeb+ARdK+67VomHX6lPCBQGCeD9HkV8nCA==}
 
   '@microflash/preset@4.1.0':
     resolution: {integrity: sha512-EpIiIWBPBBtLcXUR+r5/rybZnNBk0HHJzh0SbA/MOsWX2h88ZJUZpRhCEQJn0kd36wO4J2w0le29PxWnpq68Cw==}
@@ -847,8 +847,8 @@ packages:
   '@microflash/rehype-slugify@1.0.0':
     resolution: {integrity: sha512-pp9LB4zp8cxF+Pf6oXNpqCMNXAmFKeIP9Ab6MOb/SrzxDvGfi0O2RZwG7znXh7dmVgYa0//Dte4X5kcIf+G3/w==}
 
-  '@microflash/rehype-starry-night@7.1.0':
-    resolution: {integrity: sha512-DwdGCPlbQM/UrCzZlVsP6Yb4YjkLVg9kreopdRSz28YSVb5z448j2bPNiyk0QSwG/l8r4EkeDOm31kGwEy4cwQ==}
+  '@microflash/rehype-starry-night@7.1.1':
+    resolution: {integrity: sha512-RbPtlMSf3kO4LJExHmftjptuMPDsA+ev1/jDvqiGwkkpxzElKkGmyp+rp0Z0U5XFS+OGKLRRJZZCYOk4TqSCUg==}
 
   '@microflash/remark-callout-directives@4.3.1':
     resolution: {integrity: sha512-ZCS8+6ykJ4AqKPi6w1q3oV8RnRkaU+jOyT8b8LcvF1sNe9aufqgkInXvE93lrYyD7+04cVtmdtiUa07dI7KTNA==}
@@ -2259,8 +2259,8 @@ packages:
   hast-util-to-string@2.0.0:
     resolution: {integrity: sha512-02AQ3vLhuH3FisaMM+i/9sm4OXGSq1UhOOCpTLLQtHdL3tZt7qil69r8M8iDkZYyC0HCFylcYoP+8IO7ddta1A==}
 
-  hast-util-to-string@3.0.0:
-    resolution: {integrity: sha512-OGkAxX1Ua3cbcW6EJ5pT/tslVb90uViVkcJ4ZZIMW/R33DX/AkcJcRrPebPwJkHYwlDHXz4aIwvAAaAdtrACFA==}
+  hast-util-to-string@3.0.1:
+    resolution: {integrity: sha512-XelQVTDWvqcl3axRfI0xSeoVKzyIFPwsAGSLIsKdJKQMXDYJS4WYrBNF/8J7RdhIcFI2BOHgAifggsvsxp/3+A==}
 
   hast-util-to-text@4.0.2:
     resolution: {integrity: sha512-KK6y/BN8lbaq654j7JgBydev7wuNMcID54lkRav1P0CaE1e47P72AWWPiGKXTJU271ooYzcvTAn/Zt0REnvc7A==}
@@ -4851,7 +4851,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@microflash/fenceparser@3.0.0':
+  '@microflash/fenceparser@3.1.0':
     dependencies:
       chevrotain: 11.0.3
       defu: 6.1.4
@@ -4865,12 +4865,12 @@ snapshots:
       hast-util-to-string: 2.0.0
       unist-util-visit: 4.1.2
 
-  '@microflash/rehype-starry-night@7.1.0':
+  '@microflash/rehype-starry-night@7.1.1':
     dependencies:
-      '@microflash/fenceparser': 3.0.0
+      '@microflash/fenceparser': 3.1.0
       '@wooorm/starry-night': 3.5.0
       defu: 6.1.4
-      hast-util-to-string: 3.0.0
+      hast-util-to-string: 3.0.1
       hastscript: 9.0.0
       unist-util-visit: 5.0.0
 
@@ -6573,7 +6573,7 @@ snapshots:
     dependencies:
       '@types/hast': 2.3.4
 
-  hast-util-to-string@3.0.0:
+  hast-util-to-string@3.0.1:
     dependencies:
       '@types/hast': 3.0.4
 
