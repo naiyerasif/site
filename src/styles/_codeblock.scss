@@ -38,6 +38,10 @@
 		margin-inline-start: auto;
 		padding: var(--hlHeadingItemPadding);
 		border-radius: var(--x2-radius-sm);
+
+		&:not(:hover, :active, :focus) {
+			background-color: var(--x2-bg-codeblock);
+		}
 	}
 
 	pre {
