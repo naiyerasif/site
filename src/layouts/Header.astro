@@ -8,8 +8,8 @@ const logoAlt = `${new URL(siteInfo.siteBase).host}'s logo'`;
 
 <header class="header" id="header">
 	<div class="navbar-primary">
-		<a href="/" class="brand">
-			<img src="/favicon.svg" alt={logoAlt}>
+		<a href="/" class="brand" style="--brandSize:2.25rem">
+			<img src="/favicon.svg" alt={logoAlt} style="width:var(--brandSize);height:var(--brandSize)">
 		</a>
 	</div>
 	<nav class="navbar-secondary">
