@@ -1,6 +1,22 @@
 ---
 import Icon from "./Icon.astro";
 ---
-<a href="#top" title="Back to top">
+<a href="#top" title="Back to top" id="backToTop">
 	<Icon name="back-to-top"/>
 </a>
+
+<!-- Hack for Safari since it still does not support smooth scrolling -->
+<script type="module" is:inline>
+	if (navigator.userAgent.indexOf("Safari") > -1) {
+		const backToTop = document.getElementById("backToTop");
+		if (backToTop) {
+			backToTop.addEventListener("click", function (e) {
+				e.preventDefault();
+				document.querySelector("body > header").scrollIntoView({
+					behavior: "smooth",
+					block: "center"
+				});
+			})
+		}
+	}
+</script>
