@@ -6,6 +6,7 @@
 	--calloutBorderColor: var(--x2-border-callout, var(--x2-border-note));
 	--calloutBorderWidth: var(--x2-line-width-lg);
 	--calloutContentPadding: var(--x2-padding-callout-content, 1em);
+	--x2-size-icon: 1.25em;
 
 	background-color: var(--calloutBgColor);
 	border: var(--calloutBorderWidth) solid var(--calloutBorderColor);
@@ -16,7 +17,13 @@
 		gap: 0.5ch;
 		color: var(--calloutColor);
 		background-color: var(--calloutBorderColor);
-		padding: 0 0.25ch var(--calloutBorderWidth);
+		padding: 0 0 var(--calloutBorderWidth);
+		font-size: 0.9em;
+	}
+
+	&-hint {
+		display: flex;
+		align-items: center;
 	}
 
 	&-content {

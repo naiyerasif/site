@@ -2,6 +2,7 @@
 
 .hl {
 	--x2-radius-outline: var(--x2-radius-0);
+	--hlHeadingItemPadding: 0.1em 0.6em;
 	--hlLineBorderColor: transparent;
 	--hlLineBgColor: transparent;
 	--hlLineNumberColor: var(--color-prettylights-syntax-sublimelinter-gutter-mark);
@@ -13,25 +14,30 @@
 	&-header {
 		display: flex;
 		align-items: center;
-		gap: 1ch;
+		gap: 0.5em;
 		background-color: var(--x2-border-codeblock);
-		padding: 0.4ch 0.2ch 0.8ch 0.2ch;
-		font-size: 0.7em;
+		padding-block-end: var(--x2-line-width-lg);
+
+		& > * {
+			font-size: 0.7em;
+		}
 	}
 
 	&-language {
 		font-family: var(--x2-font-code);
 		background-color: var(--x2-bg-codeblock);
-		padding: 0.1ch 1.2ch;
+		padding: var(--hlHeadingItemPadding);
 		color: var(--x2-color-body-subtle);
 		border: 1px solid var(--x2-border-note);
-		border-radius: var(--x2-radius-xs);
+		border-radius: var(--x2-radius-sm);
+		min-inline-size: 5ch;
+		text-align: center;
 	}
 
 	clipboard-copy {
 		margin-inline-start: auto;
-		padding: 0.1ch 1.2ch;
-		font-size: 0.75rem;
+		padding: var(--hlHeadingItemPadding);
+		border-radius: var(--x2-radius-sm);
 	}
 
 	pre {
@@ -43,7 +49,7 @@
 
 		&:focus-within {
 			outline-style: solid;
-			outline-width: var(--x2-line-width-md);
+			outline-width: var(--x2-outline-width);
 			outline-offset: var(--x2-outline-offset);
 		}
 
@@ -89,7 +95,7 @@
 				user-select: none;
 				text-decoration: none;
 				background-color: var(--hlLineNumberColor);
-				@include mixins.fixedSize(var(--x2-hl-line-prompt-size));
+				@include mixins.size(var(--x2-hl-line-prompt-size));
 			}
 		}
 
@@ -107,7 +113,7 @@
 				user-select: none;
 				text-decoration: none;
 				background-color: var(--hlLineNumberColor);
-				@include mixins.fixedSize(var(--x2-hl-line-prompt-size));
+				@include mixins.size(var(--x2-hl-line-prompt-size));
 			}
 		}
 
@@ -135,7 +141,7 @@
 			text-decoration: none;
 			color: var(--x2-hl-line-prompt-color);
 			background-color: currentColor;
-			@include mixins.fixedSize(var(--x2-hl-line-prompt-size));
+			@include mixins.size(var(--x2-hl-line-prompt-size));
 		}
 	}
 }

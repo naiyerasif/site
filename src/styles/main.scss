@@ -2,13 +2,14 @@
 
 @use "props";
 @use "@microflash/preset";
-@use "prose";
+@use "baseline";
+@use "auxiliary";
 
 @use "layout";
-@use "syntax";
-@use "codeblock";
+@use "content";
+@use "components";
 @use "callouts";
 @use "chips";
-@use "content";
-@use "globals";
+@use "codeblock";
+@use "syntax";
 @use "lite-youtube";

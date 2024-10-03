@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import Icon from "../components/Icon.astro";
 import Time from "../components/Time.astro";
 import Toc from "../components/Toc.astro";
 import Layout from "../layouts/Layout.astro";
@@ -36,13 +37,13 @@ const pageInfo = {
 			<a class="breadcrumb-item" href="/">Home</a>
 		</nav>
 		<div class="hero-body">
-			<hgroup class="hero-headline-text">
-				<h1 class="headline">{data.title}</h1>
-				{data.tagline && <p class="subheadline">{data.tagline}</p>}
+			<hgroup>
+				<h1>{data.title}</h1>
+				{data.tagline && <p>{data.tagline}</p>}
 			</hgroup>
 		</div>
 		<div class="hero-footer">
-			<span>Published on <Time date={data.date} /></span>{showUpdate && <span class="update">Updated on <Time date={data.update} /></span>}
+			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}
 		</div>
 	</Fragment>
 	<article class="content">

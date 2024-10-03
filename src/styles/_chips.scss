@@ -5,7 +5,7 @@
 	--chipColor: var(--x2-color-chip, var(--x2-color-body));
 	--chipBorderColor: var(--x2-border-chip, var(--x2-border-note));
 	--chipBorderWidth: var(--x2-line-width-sm);
-	--chipContentPadding: var(--x2-padding-chip-content, 0.3ch 1ch);
+	--chipContentPadding: var(--x2-padding-chip-content, 0.3ch 1ch 0.5ch);
 
 	background-color: var(--chipBgColor);
 	border: var(--chipBorderWidth) solid var(--chipBorderColor);

@@ -23,12 +23,10 @@ const pageInfo = {
 			<span class="breadcrumb-item">Profile</span>
 		</nav>
 		<div class="hero-body">
-			<div class="hero-headline-image">
-				<Image src={data.avatar} alt={data.title} class="avatar"/>
-			</div>
-			<div class="hero-headline-text">
-				<h1 class="headline">About {name}</h1>
-			</div>
+			<Image src={data.avatar} alt={data.title} class="avatar"/>
+			<hgroup>
+				<h1>About {name}</h1>
+			</hgroup>
 		</div>
 	</Fragment>
 	<article class="content">

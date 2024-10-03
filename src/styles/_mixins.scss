@@ -1,4 +1,4 @@
-@mixin fixedSize($inline-size, $block-size: $inline-size) {
+@mixin size($inline-size, $block-size: $inline-size) {
 	inline-size: #{$inline-size};
 	block-size: #{$block-size};
 	// constraints for flex
@@ -23,6 +23,18 @@
 
 @mixin onTouch {
 	@media (pointer: coarse), (any-hover: none) {
+		@content;
+	}
+}
+
+@mixin whenDark {
+	@media (prefers-color-scheme: dark) {
+		@content;
+	}
+}
+
+@mixin whenAnimated {
+	@media (prefers-reduced-motion: no-preference), (update: fast) {
 		@content;
 	}
 }

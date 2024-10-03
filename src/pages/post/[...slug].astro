@@ -57,13 +57,13 @@ const pageInfo = {
 			<span class="breadcrumb-item capitalized">{data.type}</span>
 		</nav>
 		<div class="hero-body">
-			<hgroup class="hero-headline-text">
-				<h1 class="headline">{data.title}</h1>
-				{data.tagline && <p class="subheadline">{data.tagline}</p>}
+			<hgroup>
+				<h1>{data.title}</h1>
+				{data.tagline && <p>{data.tagline}</p>}
 			</hgroup>
 		</div>
 		<div class="hero-footer">
-			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span class="update"><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}{data.type !== "status" && showReadingTime && <span><Icon name="clock"/> Takes about {`${timeToRead} min to read`}</span>}{showState && <span class={`chip chip-${states[data.state].semantics}`}>{states[data.state].label}</span>}
+			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}{data.type !== "status" && showReadingTime && <span><Icon name="clock"/> Takes about {`${timeToRead} min to read`}</span>}{showState && <span class={`chip chip-${states[data.state].semantics}`}>{states[data.state].label}</span>}
 		</div>
 	</Fragment>
 	<article class="content">
@@ -72,27 +72,19 @@ const pageInfo = {
 			<Toc headings={toc(headings, siteInfo.maxTocDepth)}/>
 		</nav>}
 		<Content/>
-		{hasRecommendations && <div class="content-recommendations">
+		{hasRecommendations && <div class="recs">
 			{prevPage && 
-				<div class="content-recommendation">
-					<div class="decorator">
-						<Icon name="arrow-left"/>
-					</div>
-					<div class="navigator">
-						<div class="hint">Previous</div>
-						<a href={prevPage}>{prev.data.title}</a>
-					</div>
+				<div class="rec">
+					<Icon name="arrow-left"/>
+					<div class="hint">Previous</div>
+					<a href={prevPage}>{prev.data.title}</a>
 				</div>
 			}
 			{nextPage && 
-				<div class="content-recommendation">
-					<div class="decorator">
-						<Icon name="arrow-right"/>
-					</div>
-					<div class="navigator">
-						<div class="hint">Next</div>
-						<a href={nextPage}>{next.data.title}</a>
-					</div>
+				<div class="rec">
+					<Icon name="arrow-right"/>
+					<div class="hint">Next</div>
+					<a href={nextPage}>{next.data.title}</a>
 				</div>
 			}
 		</div>}

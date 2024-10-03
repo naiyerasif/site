@@ -1,3 +1,5 @@
+@use "sass:math";
+@use "vars" as *;
 @use "mixins";
 
 .content {
@@ -8,23 +10,21 @@
 		grid-column: contentGap;
 	}
 
-	& > blockquote {
-		--x2-padding-inline-blockquote: calc(var(--x2-gap-inline-body) + var(--x2-padding-inline-body) - var(--blockquoteBorderWidth));
-		padding-inline-end: var(--x2-padding-inline-blockquote);
-	}
-
 	& > .callout {
-		--x2-padding-callout-content: calc(var(--x2-gap-inline-body) + var(--x2-padding-inline-body) - var(--calloutBorderWidth));
+		--x2-padding-callout-content: calc(#{$x2-gap-body} - var(--calloutBorderWidth));
 	}
 
-	& > figure {
-		--x2-padding-inline-figcaption: calc(var(--x2-gap-inline-body) + var(--x2-padding-inline-body) - var(--figcaptionBorderWidth));
+	& > blockquote {
+		margin-inline-start: calc(var(--blockquoteBorderWidth) + #{math.div($x2-gap-body-offset, 2)});
+	}
+
+	& > figure figcaption {
+		margin-inline-start: #{$x2-gap-body-offset};
 	}
 }
 
 article.content {
-
-	:is(h1, h2, h3, h4, h5, h6) {
+	:where(h1, h2, h3, h4, h5, h6) {
 		--x2-size-icon: 1ch;
 		a .icon {
 			visibility: hidden;

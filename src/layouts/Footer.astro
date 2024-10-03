@@ -1,4 +1,5 @@
 ---
+import Icon from "../components/Icon.astro";
 import IconPack from "../components/IconPack.astro";
 import BackToTop from "../components/BackToTop.astro";
 import siteInfo from "../modules/website/index.js";
@@ -10,44 +11,38 @@ const siteIssueUrl = siteInfo.issueBase;
 ---
 
 <footer class="footer">
-	<div class="footer-quote">
-		<random-message selector="blockquote">
-			<blockquote>
-				<p>You can stop scrolling now. Take a break, sit back, and give yourself a moment.</p>
+	<div class="intro">
+		<random-message selector=".quote">
+			<div class="quote">
+				<p>You can stop scrolling now. Take a break and relax.</p>
 				<cite>&mdash; Author of this site</cite>
-			</blockquote>
-			<blockquote hidden>
+			</div>
+			<div class="quote" hidden>
+				<p>Sometimes the best way to follow your dreams is to take a nap.</p>
+				<cite>&mdash; <a href="https://fediverse.zachleat.com/@zachleat/111902455317042997" rel="nofollow noopener noreferrer">Zach Leatherman</a></cite>
+			</div>
+			<div class="quote" hidden>
 				<p>Finiteness is a feature.</p>
 				<cite>&mdash; Author of this site</cite>
-			</blockquote>
-			<blockquote hidden>
-				<p>You can stop scrolling now. Take a break, sit back, and give yourself a moment.</p>
+			</div>
+			<div class="quote" hidden>
+				<p>Recharge before a reattempt.</p>
 				<cite>&mdash; Author of this site</cite>
-			</blockquote>
-			<blockquote hidden>
-				<p><del>Zoom out</del> <ins>Take a nap</ins> for perspective.</p>
-				<cite>&mdash; original quote from James Clear (paraphrased and fixed)</cite>
-			</blockquote>
-			<blockquote hidden>
-				<p>6 hours of raging at a problem can save you 5 minutes of taking rest and solving it.</p>
-				<cite>&mdash; A senior software engineer</cite>
-			</blockquote>
-			<blockquote hidden>
-				<p>sometimes the best way to follow your dreams is to take a nap</p>
-				<cite>&mdash; <a href="https://fediverse.zachleat.com/@zachleat/111902455317042997" rel="nofollow noopener noreferrer">Zach Leatherman</a></cite>
-			</blockquote>
+			</div>
 		</random-message>
 	</div>
-	<div class="footer-sections">
-		<div class="footer-subscribe">
+	<div class="info">
+		<div class="subscribe">
+			<Icon name="rss" style="color:var(--x2-color-deter)"/>
 			<strong>Subscribe with RSS</strong>
-			(<small><a href="https://aboutfeeds.com/" rel="nofollow noopener noreferrer">What's RSS?</a></small>)
+			(<small><a href="https://aboutfeeds.com/" rel="nofollow noopener noreferrer">What&CloseCurlyQuote;s RSS?</a></small>)
 			<ul>
 				<li><a href="/feed.xml">Just posts</a></li>
 				<li><a href="/all.xml">Posts + statuses</a></li>
 			</ul>
 		</div>
-		<div class="footer-shortcuts">
+		<div class="shortcuts">
+			<Icon name="keyboard" style="color:var(--x2-color-assert)"/>
 			<strong>Keyboard Shortcuts</strong>
 			<ul>
 				<li><kbd>ctrl+k</kbd> or <kbd>cmd+k</kbd> : launch command bar</li>
@@ -55,6 +50,7 @@ const siteIssueUrl = siteInfo.issueBase;
 			</ul>
 		</div>
 		<footer-preferences>
+			<Icon name="preferences" style="color:var(--x2-color-warn)"/>
 			<strong>Preferences</strong>
 			<ul>
 				<li>
@@ -69,16 +65,14 @@ const siteIssueUrl = siteInfo.issueBase;
 			</ul>
 		</footer-preferences>
 	</div>
-	<div class="footer-nib">
-		<div class="footer-nib-copyright">
-			&copy; 2018 &mdash; today, {siteAuthor}
+	<div class="outro">
+		<div class="copyright">&copy; 2018 &mdash; today, {siteAuthor}</div>
+		<div class="socials">
+			<a href={authorNetworks.mastodon.link} aria-label={authorNetworks.mastodon.platform} rel="noopener noreferrer"><Icon name="mastodon"/></a>
+			<a href={authorNetworks.github.link} aria-label={authorNetworks.github.platform} rel="noopener noreferrer"><Icon name="github"/></a>
+			<a href={authorNetworks.linkedin.link} aria-label={authorNetworks.linkedin.platform} rel="noopener noreferrer"><Icon name="linkedin"/></a>
 		</div>
-		<div class="footer-nib-links">
-			<a href={authorNetworks.mastodon.link} aria-label={authorNetworks.mastodon.platform} rel="nofollow noopener noreferrer">{authorNetworks.mastodon.platform}</a>
-			<a href={authorNetworks.github.link} aria-label={authorNetworks.github.platform} rel="nofollow noopener noreferrer">{authorNetworks.github.platform}</a>
-			<a href={authorNetworks.linkedin.link} aria-label={authorNetworks.linkedin.platform} rel="nofollow noopener noreferrer">{authorNetworks.linkedin.platform}</a>
-		</div>
-		<div class="footer-nib-links">
+		<div class="extras">
 			<a href={siteIssueUrl} rel="nofollow noopener noreferrer">Report an issue</a>
 			<a href="/privacy/">Privacy</a>
 			<a href="/sitemap-index.xml">Sitemap</a>

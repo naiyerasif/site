@@ -21,9 +21,9 @@ const pageInfo = {
 
 <Layout {pageInfo}>
 	<div slot="hero" class="hero-body">
-		<hgroup class="hero-headline-text">
-			<h1 class="headline">Hi, I&CloseCurlyQuote;m Naiyer</h1>
-			<p class="subheadline">Book lover, software engineer and a fellow web wanderer</p>
+		<hgroup>
+			<h1>Hi, I&CloseCurlyQuote;m Naiyer</h1>
+			<p>Book lover, software engineer and a fellow web wanderer</p>
 		</hgroup>
 	</div>
 	{posts.map(entry => entry.data.type === "status" ? <StatusCard {entry} /> : <PostCard {entry} />)}

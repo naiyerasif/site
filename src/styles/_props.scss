@@ -1,63 +1,55 @@
 @use "sass:color";
-@use "colors" as *;
+@use "vars" as *;
+@use "mixins";
 
 @mixin lightTheme {
 	color-scheme: light;
 
-	--x2-bg-body: hsl(0, 0%, 100%);
-	--x2-color-body: hsl(0, 0%, 23%);
-	--x2-color-body-emphasis: hsl(0, 0%, 18%);
-	--x2-color-body-subtle: hsl(0, 0%, 36%);
-	--x2-border-body: #{$color-secondary-70};
+	--x2-bg-accent-subtle: #{color.change($x2-primary-90, $chroma: 10%, $space: oklch)};
+	--x2-color-accent: #{$x2-primary-40};
+	--x2-color-accent-sharp: #{$x2-primary-30};
 
-	--x2-bg-accent-subtle: #{color.change($color-primary-70, $alpha: 0.3)};
-	--x2-color-accent: #{$color-primary-40};
-	--x2-color-accent-sharp: #{$color-primary-30};
+	--x2-bg-body: #{$x2-neutral-99};
+	--x2-bg-body-emphasis: #{$x2-neutral-95};
+	--x2-color-body: #{$x2-neutral-20};
+	--x2-color-body-emphasis: #{$x2-neutral-10};
+	--x2-color-body-subtle: #{$x2-neutral-50};
+	--x2-border-body: #{$x2-neutral-70};
 
-	--x2-bg-subtle: hsl(0, 0%, 97%);
-	--x2-color-subtle: #{color.change($color-primary-25, $alpha: 0.5)};
-	--x2-bg-selection: #{color.change($color-primary-80, $alpha: 0.5)};
-	--x2-border-codeblock: hsl(90, 7%, 93%);
+	--x2-bg-note: #{$x2-neutral-98};
+	--x2-border-note: #{$x2-neutral-90};
 
-	--x2-bg-note: hsl(90, 7%, 90%, 0.3);
-	--x2-border-note: #{$color-neutral-90};
+	--x2-bg-commend: #{$x2-commend-98};
+	--x2-color-commend: #{$x2-commend-30};
+	--x2-border-commend: #{$x2-commend-90};
 
-	--x2-bg-commend: #{color.change($color-green-95, $alpha: 0.3)};
-	--x2-color-commend: #{$color-green-35};
-	--x2-border-commend: hsl(102, 75%, 79%);
+	--x2-bg-warn: #{$x2-warn-98};
+	--x2-color-warn: #{$x2-warn-30};
+	--x2-border-warn: #{$x2-warn-90};
 
-	--x2-bg-warn: #{color.change($color-yellow-90, $alpha: 0.3)};
-	--x2-color-warn: #{$color-yellow-35};
-	--x2-border-warn: #{$color-yellow-90};
+	--x2-bg-deter: #{$x2-deter-98};
+	--x2-color-deter: #{$x2-deter-30};
+	--x2-border-deter: #{$x2-deter-90};
 
-	--x2-bg-deter: #{color.change($color-red-90, $alpha: 0.3)};
-	--x2-color-deter: #{$color-red-35};
-	--x2-border-deter: #{$color-red-90};
+	--x2-bg-assert: #{$x2-assert-98};
+	--x2-color-assert: #{$x2-assert-30};
+	--x2-border-assert: #{$x2-assert-90};
 
-	--x2-bg-assert: #{color.change($color-blue-90, $alpha: 0.3)};
-	--x2-color-assert: #{$color-blue-35};
-	--x2-border-assert: #{$color-blue-90};
+	--x2-bg-selection: #{color.change($x2-primary-80, $alpha: 0.5, $space: oklch)};
+	--x2-bg-codeblock: #{color.change($x2-neutral-99, $lightness: 100%, $space: oklch)};
+	--x2-border-codeblock: #{color.change($x2-neutral-90, $lightness: 94%, $space: oklch)};
 
-	--x2-shadow-strength: 0.10;
-	--x2-shadow-color: 141, 19%, 17%;
-
-	--x2-hl-line-active-background-color: var(--x2-border-assert);
-	--x2-hl-line-number-added-color: #{$color-green-40};
-	--x2-hl-line-added-background-color: hsl(103, 76%, 83%);
-	--x2-hl-line-number-removed-color: #{$color-red-40};
-	--x2-hl-line-removed-background-color: #{$color-red-90};
-
-	--color-prettylights-syntax-comment: #57606a;
+	--color-prettylights-syntax-comment: #59636e;
 	--color-prettylights-syntax-constant: #0550ae;
 	--color-prettylights-syntax-constant-other-reference-link: #0a3069;
 	--color-prettylights-syntax-entity: #6639ba;
-	--color-prettylights-syntax-storage-modifier-import: #24292f;
+	--color-prettylights-syntax-storage-modifier-import: #1f2328;
 	--color-prettylights-syntax-entity-tag: #0550ae;
 	--color-prettylights-syntax-keyword: #cf222e;
 	--color-prettylights-syntax-string: #0a3069;
 	--color-prettylights-syntax-variable: #953800;
 	--color-prettylights-syntax-brackethighlighter-unmatched: #82071e;
-	--color-prettylights-syntax-brackethighlighter-angle: #57606a;
+	--color-prettylights-syntax-brackethighlighter-angle: #59636e;
 	--color-prettylights-syntax-invalid-illegal-text: #f6f8fa;
 	--color-prettylights-syntax-invalid-illegal-bg: #82071e;
 	--color-prettylights-syntax-carriage-return-text: #f6f8fa;
@@ -65,77 +57,68 @@
 	--color-prettylights-syntax-string-regexp: #116329;
 	--color-prettylights-syntax-markup-list: #3b2300;
 	--color-prettylights-syntax-markup-heading: #0550ae;
-	--color-prettylights-syntax-markup-italic: #24292f;
-	--color-prettylights-syntax-markup-bold: #24292f;
+	--color-prettylights-syntax-markup-italic: #1f2328;
+	--color-prettylights-syntax-markup-bold: #1f2328;
 	--color-prettylights-syntax-markup-deleted-text: #82071e;
 	--color-prettylights-syntax-markup-deleted-bg: #ffebe9;
 	--color-prettylights-syntax-markup-inserted-text: #116329;
 	--color-prettylights-syntax-markup-inserted-bg: #dafbe1;
 	--color-prettylights-syntax-markup-changed-text: #953800;
 	--color-prettylights-syntax-markup-changed-bg: #ffd8b5;
-	--color-prettylights-syntax-markup-ignored-text: #eaeef2;
+	--color-prettylights-syntax-markup-ignored-text: #d1d9e0;
 	--color-prettylights-syntax-markup-ignored-bg: #0550ae;
 	--color-prettylights-syntax-meta-diff-range: #8250df;
-	--color-prettylights-syntax-sublimelinter-gutter-mark: #8c959f;
+	--color-prettylights-syntax-sublimelinter-gutter-mark: #818b98;
 }
 
 @mixin darkTheme {
 	color-scheme: dark;
 
-	--x2-bg-body: hsl(0, 0%, 0%);
-	--x2-color-body: hsl(0, 0%, 74%);
-	--x2-color-body-emphasis: hsl(0, 0%, 88%);
-	--x2-color-body-subtle: hsl(0, 0%, 58%);
-	--x2-border-body: #{$color-secondary-40};
+	--x2-bg-accent-subtle: #{$x2-primary-25};
+	--x2-color-accent: #{$x2-primary-70};
+	--x2-color-accent-sharp: #{$x2-primary-80};
 
-	--x2-bg-accent-subtle: #{color.change($color-primary-40, $alpha: 0.4)};
-	--x2-color-accent: #{$color-primary-70};
-	--x2-color-accent-sharp: #{$color-primary-90};
+	--x2-bg-body: #{$x2-neutral-5};
+	--x2-bg-body-emphasis: #{$x2-neutral-15};
+	--x2-color-body: #{$x2-neutral-80};
+	--x2-color-body-emphasis: #{$x2-neutral-90};
+	--x2-color-body-subtle: #{$x2-neutral-60};
+	--x2-border-body: #{$x2-neutral-35};
 
-	--x2-bg-subtle: hsl(0, 0%, 7%);
-	--x2-color-subtle: #{color.change($color-primary-95, $alpha: 0.5)};
-	--x2-bg-selection: #{color.change($color-primary-40, $alpha: 0.5)};
-	--x2-border-codeblock: hsl(0, 0%, 15%);
+	--x2-bg-note: #{$x2-neutral-5};
+	--x2-border-note: #{$x2-neutral-20};
 
-	--x2-bg-note: hsl(0, 0%, 17%, 0.4);
-	--x2-border-note: hsl(0, 0%, 18%);
+	--x2-bg-commend: #{$x2-commend-5};
+	--x2-color-commend: #{$x2-commend-80};
+	--x2-border-commend: #{$x2-commend-20};
 
-	--x2-bg-commend: #{color.change($color-green-20, $alpha: 0.4)};
-	--x2-color-commend: #{$color-green-70};
-	--x2-border-commend: #{$color-green-20};
+	--x2-bg-warn: #{$x2-warn-5};
+	--x2-color-warn: #{$x2-warn-80};
+	--x2-border-warn: #{$x2-warn-20};
 
-	--x2-bg-warn: #{color.change($color-yellow-20, $alpha: 0.4)};
-	--x2-color-warn: #{$color-yellow-70};
-	--x2-border-warn: #{$color-yellow-20};
+	--x2-bg-deter: #{$x2-deter-5};
+	--x2-color-deter: #{$x2-deter-80};
+	--x2-border-deter: #{$x2-deter-20};
 
-	--x2-bg-deter: #{color.change($color-red-20, $alpha: 0.4)};
-	--x2-color-deter: #{$color-red-70};
-	--x2-border-deter: #{$color-red-20};
+	--x2-bg-assert: #{$x2-assert-5};
+	--x2-color-assert: #{$x2-assert-80};
+	--x2-border-assert: #{$x2-assert-20};
 
-	--x2-bg-assert: #{color.change($color-blue-20, $alpha: 0.4)};
-	--x2-color-assert: #{$color-blue-70};
-	--x2-border-assert: #{$color-blue-20};
+	--x2-bg-selection: #{color.change($x2-primary-40, $alpha: 0.4, $space: oklch)};
+	--x2-bg-codeblock: #{color.change($x2-neutral-5, $lightness: 15%, $space: oklch)};
+	--x2-border-codeblock: #{color.change($x2-neutral-20, $lightness: 25%, $space: oklch)};
 
-	--x2-shadow-strength: 0.25;
-	--x2-shadow-color: 138, 30%, 27%;
-
-	--x2-hl-line-active-background-color: #{$color-blue-25};
-	--x2-hl-line-number-added-color: var(--x2-color-commend);
-	--x2-hl-line-added-background-color: hsl(106, 70%, 12%);
-	--x2-hl-line-number-removed-color: var(--x2-color-deter);
-	--x2-hl-line-removed-background-color: hsl(356, 73%, 17%);
-
-	--color-prettylights-syntax-comment: #8b949e;
+	--color-prettylights-syntax-comment: #9198a1;
 	--color-prettylights-syntax-constant: #79c0ff;
 	--color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
 	--color-prettylights-syntax-entity: #d2a8ff;
-	--color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+	--color-prettylights-syntax-storage-modifier-import: #f0f6fc;
 	--color-prettylights-syntax-entity-tag: #7ee787;
 	--color-prettylights-syntax-keyword: #ff7b72;
 	--color-prettylights-syntax-string: #a5d6ff;
 	--color-prettylights-syntax-variable: #ffa657;
 	--color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
-	--color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+	--color-prettylights-syntax-brackethighlighter-angle: #9198a1;
 	--color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
 	--color-prettylights-syntax-invalid-illegal-bg: #8e1519;
 	--color-prettylights-syntax-carriage-return-text: #f0f6fc;
@@ -143,18 +126,18 @@
 	--color-prettylights-syntax-string-regexp: #7ee787;
 	--color-prettylights-syntax-markup-list: #f2cc60;
 	--color-prettylights-syntax-markup-heading: #1f6feb;
-	--color-prettylights-syntax-markup-italic: #c9d1d9;
-	--color-prettylights-syntax-markup-bold: #c9d1d9;
+	--color-prettylights-syntax-markup-italic: #f0f6fc;
+	--color-prettylights-syntax-markup-bold: #f0f6fc;
 	--color-prettylights-syntax-markup-deleted-text: #ffdcd7;
 	--color-prettylights-syntax-markup-deleted-bg: #67060c;
 	--color-prettylights-syntax-markup-inserted-text: #aff5b4;
 	--color-prettylights-syntax-markup-inserted-bg: #033a16;
 	--color-prettylights-syntax-markup-changed-text: #ffdfb6;
 	--color-prettylights-syntax-markup-changed-bg: #5a1e02;
-	--color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+	--color-prettylights-syntax-markup-ignored-text: #f0f6fc;
 	--color-prettylights-syntax-markup-ignored-bg: #1158c7;
 	--color-prettylights-syntax-meta-diff-range: #d2a8ff;
-	--color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+	--color-prettylights-syntax-sublimelinter-gutter-mark: #3d444d;
 }
 
 :root:not([data-theme]),
@@ -162,7 +145,7 @@
 	@include lightTheme;
 }
 
-@media (prefers-color-scheme: dark) {
+@include mixins.whenDark {
 	:root:not([data-theme]) {
 		@include darkTheme;
 	}
@@ -173,9 +156,37 @@
 }
 
 :root {
-	// values
+	// layout
+	--x2-max-width-body: 72rem;
+	--x2-max-width-content: 48rem;
+
+	// font
 	--x2-text-regular: 400;
 	--x2-text-semibold: 600;
+	--x2-font-body: var(--fontSans1);
+	--x2-font-fancy: var(--fontSans2);
+	--x2-font-code: var(--fontMono);
+	--x2-text-body: var(--x2-text-0);
+
+	// colors
+	--x2-bg-code: var(--x2-border-note);
+	--x2-bg-del: var(--x2-border-deter);
+	--x2-bg-ins: var(--x2-border-commend);
+	--x2-bg-mark: var(--x2-border-warn);
+	--x2-bg-summary: var(--x2-bg-body-emphasis);
+	--x2-bg-table-active: var(--x2-bg-body-emphasis);
+
+	--x2-color-caption: var(--x2-color-body-subtle);
+	--x2-color-del: var(--x2-color-deter);
+	--x2-color-ins: var(--x2-color-commend);
+	--x2-color-mark: var(--x2-color-warn);
+	--x2-color-table-active: var(--x2-color-body-emphasis);
+	--x2-color-scrollbar: #{$x2-primary-50};
+	--x2-color-decoration: #{$x2-neutral-50};
+	--x2-color-marker: var(--x2-color-decoration);
+	--x2-color-separator: var(--x2-color-decoration);
+
+	// borders
 	--x2-radius-xxs: 4px;
 	--x2-radius-xs: 8px;
 	--x2-radius-sm: 12px;
@@ -183,59 +194,27 @@
 	--x2-radius-max: 1e5px;
 	--x2-line-width-sm: 1px;
 	--x2-line-width-0: 2px;
-	--x2-line-width-md: 3px;
 	--x2-line-width-lg: 5px;
 
-	// baselines
-	--x2-padding-inline-body: 4px;
-	--x2-gap-inline-body: 20px;
-	--x2-max-width-body: calc(60rem + 10vw);
-	--x2-max-width-content: 65ch;
-	--x2-outline-offset: 0.125em;
-	--x2-shadow:
-		0 -1px 3px 0 hsl(var(--x2-shadow-color), calc(var(--x2-shadow-strength) + 0.02)),
-		0 1px 2px -5px hsl(var(--x2-shadow-color), calc(var(--x2-shadow-strength) + 0.02)),
-		0 2px 5px -5px hsl(var(--x2-shadow-color), calc(var(--x2-shadow-strength) + 0.04)),
-		0 4px 12px -5px hsl(var(--x2-shadow-color), calc(var(--x2-shadow-strength) + 0.05)),
-		0 12px 15px -5px hsl(var(--x2-shadow-color), calc(var(--x2-shadow-strength) + 0.07));
-
-	// defaults
-	--x2-font-body: var(--fontSans1);
-	--x2-font-code: var(--fontMono);
-	--x2-text-body: var(--x2-text-0);
-	--x2-bg-code: var(--x2-border-note);
-	--x2-bg-codeblock: var(--x2-bg-subtle);
-	--x2-bg-codeblock-active: var(--x2-border-assert);
-	--x2-bg-codeblock-highlighted: var(--x2-border-note);
-	--x2-bg-del: var(--x2-border-deter);
-	--x2-bg-ins: var(--x2-border-commend);
-	--x2-bg-mark: var(--x2-border-warn);
-	--x2-bg-summary: var(--x2-bg-subtle);
-	--x2-bg-form: var(--x2-bg-subtle);
-	--x2-bg-table-active: var(--x2-bg-accent-subtle);
+	// interactives
+	--x2-bg-form: var(--x2-bg-body-emphasis);
 	--x2-color-link: var(--x2-color-accent);
 	--x2-color-form: var(--x2-color-accent);
-	--x2-color-caption: var(--x2-color-body-subtle);
-	--x2-color-del: var(--x2-color-deter);
-	--x2-color-ins: var(--x2-color-commend);
-	--x2-color-mark: var(--x2-color-warn);
-	--x2-color-marker: var(--x2-color-subtle);
-	--x2-color-scrollbar: var(--x2-color-subtle);
-	--x2-color-separator: var(--x2-color-subtle);
-	--x2-color-table-active: var(--x2-color-body-emphasis);
 	--x2-border-form: var(--x2-border-note);
+	--x2-outline-offset: 0.125em;
+	--x2-outline-width: 0.2em;
 
 	// codeblock
+	--x2-bg-codeblock-active: var(--x2-border-assert);
+	--x2-bg-codeblock-highlighted: var(--x2-border-note);
 	--x2-hl-line-prompt-size: 1em;
-	--x2-hl-line-prompt-color: hsl(357, 63%, 58%);
+	--x2-hl-line-prompt-color: #{$x2-deter-50};
 	--x2-hl-line-highlight-background-color: var(--x2-border-note);
-}
-
-:where(a[href], area, button, input, select, summary, textarea, clipboard-copy, [role="button"], [onclick], [tabindex]:not([tabindex*="-"])),
-:where(input[type="file"])::file-selector-button {
-	&:is(:focus, :focus-visible, :focus-within, :hover, :active) {
-		--x2-color-link: var(--x2-color-accent-sharp);
-	}
+	--x2-hl-line-active-background-color: var(--x2-border-assert);
+	--x2-hl-line-number-added-color: var(--x2-color-commend);
+	--x2-hl-line-added-background-color: var(--x2-border-commend);
+	--x2-hl-line-number-removed-color: var(--x2-color-deter);
+	--x2-hl-line-removed-background-color: var(--x2-border-deter);
 }
 
 :where(button, button[type], input:not([type="file"]), select, textarea, [role="button"], clipboard-copy),
@@ -244,6 +223,13 @@
 		--x2-border-form: var(--x2-color-accent);
 		--x2-color-form: var(--x2-color-accent-sharp);
 		--x2-color-outline: var(--x2-border-form);
+	}
+}
+
+:where(a[href], area, button, input, select, summary, textarea, clipboard-copy, [role="button"], [onclick], [tabindex]:not([tabindex*="-"])),
+:where(input[type="file"])::file-selector-button {
+	&:is(:focus, :focus-visible, :focus-within, :hover, :active) {
+		--x2-color-link: var(--x2-color-accent-sharp);
 	}
 }
 
