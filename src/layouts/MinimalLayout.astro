@@ -2,7 +2,7 @@
 import "../styles/main.scss";
 import PageInfo from "./PageInfo.astro";
 import ClientBase from "./ClientBase.astro";
-import Sprites from "../components/Sprites.astro";
+import IconPack from "../components/IconPack.astro";
 
 const { pageInfo, ...attribs } = Astro.props;
 ---
@@ -17,6 +17,6 @@ const { pageInfo, ...attribs } = Astro.props;
 			<slot/>
 		</main>
 		<ClientBase/>
-		<Sprites/>
+		<IconPack/>
 	</body>
 </html>

@@ -26,21 +26,21 @@ const defaults = [
 		"title": "Work",
 		"description": "A timeline of professional and open-source work",
 		"path": "/work/",
-		"icon": `<svg viewBox="0 0 24 24" role="img" class="icon" aria-hidden="true"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>`,
+		"icon": `<svg viewBox="0 0 24 24" role="img" class="icon" aria-hidden="true"><path d="m2.576 16.484.14 1.823A4 4 0 0 0 6.704 22h10.592a4 4 0 0 0 3.988-3.693l.14-1.823M22 8.995A3 3 0 0 0 19.002 6H5a3.004 3.004 0 0 0-3.001 3H2c0 3.311 4.481 6 10 6s10-2.689 10-6zM12 15v3M8 6l.621-2.485A2 2 0 0 1 10.562 2h2.876c.918 0 1.718.625 1.941 1.515L16 6"/></svg>`,
 		"section": "Navigation"
 	},
 	{
 		"title": "Privacy",
 		"description": "Privacy statement about naiyerasif.com",
 		"path": "/privacy/",
-		"icon": `<svg viewBox="0 0 24 24" role="img" class="icon" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg>`,
+		"icon": `<svg viewBox="0 0 24 24" role="img" class="icon" aria-hidden="true"><circle cx="12" cy="12" r="2.5"/><path d="M12 2s-2 2-4.5 3S3 6 3 6c0 12 9 16 9 16s9-4 9-16c0 0-2 0-4.5-1S12 2 12 2"/></svg>`,
 		"section": "Navigation"
 	},
 	// `href='#'` is required for links acting as buttons to enable click semantics (such as receiving keyboard focus, press enter to click, etc)
 	{
 		"title": "Theme Switcher",
 		"description": "Switch to your preferred theme",
-		"content": `<theme-switcher><a role="switch" aria-live="polite" aria-checked="true" data-theme-switch class="command-item" href="#"><span data-theme-state="dark"><svg viewBox="0 0 24 24" role="img" class="icon" aria-hidden="true"><path d="M13.355 2C18.238 2.684 22 6.882 22 11.951 22 17.497 17.497 22 11.951 22 6.882 22 2.684 18.238 2 13.355a8.02 8.02 0 0 0 5.932 2.616 8.043 8.043 0 0 0 8.039-8.039A8.02 8.02 0 0 0 13.355 2"/></svg>Dark theme</span><span data-theme-state="light"><svg viewBox="0 0 24 24" role="img" class="icon" aria-hidden="true"><path d="m9.321 2 .535 2m4.288 16 .535 2M3.036 6.824l1.787 1.033m14.354 8.286 1.787 1.033M2 14.679l2-.535m16-4.288 2-.535M7.857 19.177l-1.033 1.787M17.176 3.036l-1.033 1.787"/><circle cx="12" cy="12" r="4"/></svg>Light theme</span></a></theme-switcher>`,
+		"content": `<theme-switcher><a role="switch" aria-live="polite" aria-checked="true" data-theme-switch class="command-item" href="#"><span data-theme-state="dark"><svg viewBox="0 0 24 24" role="img" class="icon" aria-hidden="true"><path d="M12.617 2.019C17.849 2.338 22 6.688 22 12c0 5.519-4.481 10-10 10-5.312 0-9.662-4.151-9.981-9.383A7.48 7.48 0 0 0 7.5 15c4.139 0 7.5-3.361 7.5-7.5a7.48 7.48 0 0 0-2.383-5.481"/></svg>Dark theme</span><span data-theme-state="light"><svg viewBox="0 0 24 24" role="img" class="icon" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="m16.142 2-.889 2.146M8.747 19.854 7.858 22M2 7.858l2.146.889m15.708 6.506 2.146.889M7.858 2l.889 2.146m6.506 15.708L16.142 22M2 16.142l2.146-.889m15.708-6.506L22 7.858"/></svg>Light theme</span></a></theme-switcher>`,
 		"section": "Preferences"
 	}
 ];
