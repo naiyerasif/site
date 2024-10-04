@@ -94,7 +94,7 @@ body > .header {
 	}
 
 	&-footer {
-		--heroItemGap: 1ch;
+		--heroItemGap: 0;
 		font-size: var(--x2-text-sm);
 
 		.icon {
