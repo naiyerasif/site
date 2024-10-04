@@ -23,11 +23,11 @@ class CommandBar extends HTMLElement {
 		this.commands = this.querySelector("#commands");
 
 		const closeDialog = (event) => {
-			this.dialog.close();
+			window.__viewTransition(() => this.dialog.close());
 		}
 
 		const openDialog = (event) => {
-			this.dialog.showModal();
+			window.__viewTransition(() => this.dialog.showModal());
 			event?.stopPropagation();
 		}
 

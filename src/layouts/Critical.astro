@@ -47,6 +47,19 @@ window.__search = function (query, searchIndex) {
 }
 </script>
 
+<script type="module" is:inline>
+	window.__viewTransition = function (callback) {
+		const noMotionPref = window.matchMedia("(prefers-reduced-motion: no-preference)");
+		const hasHighRefreshRate = window.matchMedia("(update: fast)");
+		const hasViewTransitionSupport = "startViewTransition" in document && typeof document.startViewTransition === "function";
+		if (noMotionPref && hasHighRefreshRate && hasViewTransitionSupport) {
+			document.startViewTransition(callback);
+			return;
+		}
+		callback();
+	}
+</script>
+
 <style is:inline>
 	/* latin */
 	@font-face {
