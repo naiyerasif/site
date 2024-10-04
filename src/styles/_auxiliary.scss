@@ -1,17 +1,6 @@
 @use "vars" as *;
 @use "mixins";
 
-// subtle background for transparent images
-:where(img) {
-	background-image: radial-gradient(
-		circle at center,
-		var(--x2-border-codeblock) 1px,
-		transparent 0
-	);
-	background-size: 10px 10px;
-	background-repeat: round;
-}
-
 // external link indicator
 :where(a[rel*="nofollow"])::after {
 	@include mixins.icon("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='m12.5 13.268-4.616 4.616a1.25 1.25 0 0 1-1.768-1.768l4.616-4.616-3.616-3.616A1.25 1.25 0 0 1 8 5.75h9A1.248 1.248 0 0 1 18.25 7v9a1.25 1.25 0 0 1-2.134.884L12.5 13.268Z'/%3E%3C/svg%3E");

@@ -21,6 +21,17 @@
 	& > figure figcaption {
 		margin-inline-start: #{$x2-gap-body-offset};
 	}
+
+	// subtle background for transparent images
+	:where(img) {
+		background-image: radial-gradient(
+			circle at center,
+			var(--x2-border-codeblock) 1px,
+			transparent 0
+		);
+		background-size: 10px 10px;
+		background-repeat: round;
+	}
 }
 
 article.content {
