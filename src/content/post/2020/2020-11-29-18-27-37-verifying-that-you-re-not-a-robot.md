@@ -8,4 +8,4 @@ type: "status"
 
 > ::youtube[Verifying that you're not a robot]{#LButXcZ57pc}
 >
-> <cite>&mdash; [Stevie Martin](https://www.youtube.com/watch?v=LButXcZ57pc), :time{datetime="2020-11-29T18:27:37.000Z"}</cite>
+> <cite>&mdash; [Stevie Martin](https://www.youtube.com/watch?v=LButXcZ57pc), :time[2020-11-29T18:27:37]</cite>

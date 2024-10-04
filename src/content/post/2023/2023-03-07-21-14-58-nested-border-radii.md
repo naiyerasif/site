@@ -14,7 +14,7 @@ type: "status"
 > Nested border radii with mismatched curvature (left) and same curvature (right)
 > :::
 >
-> <cite>&mdash; [Lily Konings](https://twitter.com/lilykonings/status/1567317037126680576), :time{datetime="2022-09-07T01:01:15.000Z"}</cite>
+> <cite>&mdash; [Lily Konings](https://twitter.com/lilykonings/status/1567317037126680576), :time[2022-09-07T01:01:15]</cite>
 
 - Andy Bell wrote about this technique using CSS properties: https://set.studio/relative-rounded-corners/
 - Adam Argyle discussed an alternative approach using `overflow-clip-margin`: https://nerdy.dev/perfect-nested-radius-with-overflow-clip-margin

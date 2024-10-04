@@ -1,8 +1,11 @@
 import { h } from "hastscript";
 import { visit } from "unist-util-visit";
-import format from "../datetime/index.js";
+import { toString } from "mdast-util-to-string";
+import format, { format_iso } from "../datetime/index.js";
 
-// :time{datetime="2011-11-18T14:54:39.929Z"}
+// :time[2011-11-18T14:54:39.929Z]
+// :time[2011-11-18T14:54:39]
+// :time[2011-11-18]
 export default function remarkTimeDirective() {
 	return (tree) => {
 		visit(tree, (node) => {
@@ -10,18 +13,20 @@ export default function remarkTimeDirective() {
 				if (node.name !== "time") return;
 
 				const data = node.data || (node.data = {});
-				const { datetime, ...attributes } = node.attributes || {};
+				const content = toString(node.children || []).trim();
 
-				if (!datetime) return;
+				if (content.length < 1) return;
 
 				node.children = [
 					{
 						type: "text",
-						value: format(datetime)
+						value: format(content)
 					}
 				];
+				const datetime = format(content, format_iso);
+				const attributes = node.attributes || {};
 
-				const { tagName, properties } = h(node.name, { datetime, ...attributes });
+				const { tagName, properties } = h(node.name, { ...attributes, datetime });
 				data.hName = tagName;
 				data.hProperties = properties;
 			}

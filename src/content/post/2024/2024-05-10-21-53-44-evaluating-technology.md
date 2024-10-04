@@ -8,4 +8,4 @@ type: "status"
 
 > We tend to ask "How well does it work?", but what you should really be asking is "How well does it fail?"
 > 
-> <cite>&mdash; [Jeremy Keith](https://adactio.com/articles/12839), :time{datetime="2017-09-19T10:30:50.000Z"}</cite>
+> <cite>&mdash; [Jeremy Keith](https://adactio.com/articles/12839), :time[2017-09-19T10:30:50]</cite>

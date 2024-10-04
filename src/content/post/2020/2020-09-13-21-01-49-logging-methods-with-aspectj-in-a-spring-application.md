@@ -551,7 +551,7 @@ In this test,
 
 **Previous versions**
 
-- [:time{datetime="2021-09-02T16:21:00.000Z"}](/archive/2020/09/13/logging-methods-with-aspectj-in-a-spring-application--1): Discusses method logging with Spring Boot 2 on Java 16
+- [:time[2021-09-02T16:21]](/archive/2020/09/13/logging-methods-with-aspectj-in-a-spring-application--1): Discusses method logging with Spring Boot 2 on Java 16
 
 **Source code**
 

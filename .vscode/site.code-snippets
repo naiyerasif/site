@@ -14,7 +14,7 @@
 	"Time": {
 		"scope": "markdown",
 		"prefix": "time",
-		"body": [":time{datetime=\"$1\"}"],
+		"body": [":time[$1]"],
 		"description": "Inserts a time directive"
 	}
 }

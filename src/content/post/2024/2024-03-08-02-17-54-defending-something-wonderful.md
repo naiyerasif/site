@@ -10,4 +10,4 @@ type: "status"
 >
 > If you do not defend the magic and the things that make it wonderful, it's just not going to stay magical by itself.
 >
-> <cite>&mdash; [Zeynep Tufekci](https://zeynep.me/) at [30th Anniversary of the World Wide Web](https://youtu.be/pJrAUGpFnPw?t=7668), :time{datetime="2019-03-19T00:00:00.000Z"}</cite>
+> <cite>&mdash; [Zeynep Tufekci](https://zeynep.me/) at [30th Anniversary of the World Wide Web](https://youtu.be/pJrAUGpFnPw?t=7668), :time[2019-03-19]</cite>

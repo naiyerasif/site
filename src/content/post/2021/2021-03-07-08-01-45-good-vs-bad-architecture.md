@@ -8,4 +8,4 @@ type: "status"
 
 > If you think good architecture is expensive, try bad architecture.
 >
-> <cite>&mdash; [Brian Foote and Joseph Yoder](http://www.laputan.org/mud/), :time{datetime="1999-06-26T00:00:00.000Z"}</cite>
+> <cite>&mdash; [Brian Foote and Joseph Yoder](http://www.laputan.org/mud/), :time[1999-06-26]</cite>

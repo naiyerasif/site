@@ -50,16 +50,20 @@ Specify a `.frame` class on the `figure` directive (with `:::figure{.frame}`) to
 
 #### Time directive
 
-The following directive
+The following directives
 
 ```md
-:time{datetime="2024-01-14T05:12:48.000Z"}
+:time[2024-01-14T05:12:48]
+:time[2024-01-14T05:12]
+:time[2024-01-14]
 ```
 
-gets converted to
+get converted to
 
 ```html
 <time datetime="2024-01-14T05:12:48.000Z">Jan 14, 2024</time>
+<time datetime="2024-01-14T05:12:00.000Z">Jan 14, 2024</time>
+<time datetime="2024-01-14T00:00:00.000Z">Jan 14, 2024</time>
 ```
 
 #### YouTube directive

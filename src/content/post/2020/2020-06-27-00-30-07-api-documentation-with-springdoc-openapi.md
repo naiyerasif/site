@@ -325,7 +325,7 @@ You can inspect [`io.swagger.v3.oas.models.OpenAPI`](https://github.com/swagger-
 
 **Previous versions**
 
-- [:time{datetime="2020-06-27T00:30:07.000Z"}](/archive/2020/06/27/api-documentation-with-springdoc-openapi--1/): Discusses Springdoc integration with Spring Boot 2 and Java 14
+- [:time[2020-06-27T00:30:07]](/archive/2020/06/27/api-documentation-with-springdoc-openapi--1/): Discusses Springdoc integration with Spring Boot 2 and Java 14
 
 **Source code**
 

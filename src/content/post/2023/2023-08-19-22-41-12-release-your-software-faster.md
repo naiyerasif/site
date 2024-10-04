@@ -9,7 +9,7 @@ type: "note"
 
 > Release early. Release often. And listen to your ~~customers~~ users.
 >
-> <cite>&mdash; [Eric Raymond](http://www.catb.org/~esr/writings/cathedral-bazaar/cathedral-bazaar/ar01s04.html) (paraphrased), :time{datetime="2002-08-02T09:02:14.000Z"}</cite> 
+> <cite>&mdash; [Eric Raymond](http://www.catb.org/~esr/writings/cathedral-bazaar/cathedral-bazaar/ar01s04.html) (paraphrased), :time[2002-08-02T09:02:14]</cite> 
 
 In general, do what's sensible for your users, and applicable to your project.
 

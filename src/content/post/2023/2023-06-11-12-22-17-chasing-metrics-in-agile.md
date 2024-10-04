@@ -8,6 +8,6 @@ type: "status"
 
 > When a measure becomes a target, it ceases to be a good measure.
 >
-> <cite>&mdash; Goodhart's Law, [Marilyn Strathern](https://archive.org/details/ImprovingRatingsAuditInTheBritishUniversitySystem), :time{datetime="2018-07-23T16:10:24.000Z"}</cite>
+> <cite>&mdash; Goodhart's Law, [Marilyn Strathern](https://archive.org/details/ImprovingRatingsAuditInTheBritishUniversitySystem), :time[2018-07-23T16:10:24]</cite>
 
 Chase feedback, not metrics.

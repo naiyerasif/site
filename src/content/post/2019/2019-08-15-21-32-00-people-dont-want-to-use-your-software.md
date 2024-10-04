@@ -12,4 +12,4 @@ type: "status"
 >
 > Your product is only as good as the experiences it enables people to have.
 >
-> <cite>&mdash; [Sahil Lavingia](https://twitter.com/shl/status/1162031786248900609), :time{datetime="2019-08-15T16:02:22.000Z"}</cite>
+> <cite>&mdash; [Sahil Lavingia](https://twitter.com/shl/status/1162031786248900609), :time[2019-08-15T16:02:22]</cite>
