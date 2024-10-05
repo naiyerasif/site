@@ -17,7 +17,7 @@
 		gap: 0.5ch;
 		color: var(--calloutColor);
 		background-color: var(--calloutBorderColor);
-		padding: 0 0 var(--calloutBorderWidth);
+		padding: 0 var(--calloutBorderWidth) var(--calloutBorderWidth);
 		font-size: 0.9em;
 	}
 
