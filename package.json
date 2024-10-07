@@ -19,7 +19,7 @@
 		"@microflash/rehype-starry-night": "^7.1.1",
 		"@microflash/remark-callout-directives": "^4.3.1",
 		"@sindresorhus/slugify": "^2.2.1",
-		"astro": "^4.15.11",
+		"astro": "^4.15.12",
 		"cheerio": "^1.0.0",
 		"dayjs": "^1.11.13",
 		"defu": "^6.1.4",
@@ -44,10 +44,10 @@
 	"devDependencies": {
 		"@clack/prompts": "^0.7.0",
 		"picocolors": "^1.1.0",
-		"puppeteer": "^23.5.0",
+		"puppeteer": "^23.5.1",
 		"unlighthouse-puppeteer": "^0.10.6"
 	},
-	"packageManager": "pnpm@9.11.0",
+	"packageManager": "pnpm@9.12.1",
 	"browserslist": [
 		"defaults"
 	]
