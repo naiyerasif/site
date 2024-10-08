@@ -193,7 +193,7 @@ spring.sql.init.mode: always
 
 You'd also need to configure the datasource to connect to the database.
 
-```yml title="src/main/resources/application.yml" {2..5}
+```yml title="src/main/resources/application.yml" ins{2..5}
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/brooklyn
@@ -239,7 +239,7 @@ With Docker Compose support in Spring Boot 3.1, Spring Boot can automatically st
 
 Add the `spring-boot-docker-compose` dependency in the `pom.xml`.
 
-```xml title="pom.xml" {43..48}
+```xml title="pom.xml" ins{43..48}
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -312,17 +312,24 @@ Add the `spring-boot-docker-compose` dependency in the `pom.xml`.
 
 Since Docker Support module will automatically inject the database configuration from Compose file, let's remove the datasource properties from `application.yml`.
 
-```yml title="src/main/resources/application.yml"
-spring.sql.init.mode: always
+```yml title="src/main/resources/application.yml" del{2..5}
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/brooklyn
+    username: gwen
+    password: stacy
+
+  sql.init.mode: always
 ```
 
 We can also get rid of port mapping `5432:5432` in the `Compose` file.
 
-```yml title="compose.yml" {5}
+```yml title="compose.yml" del{5} ins{6}
 services:
   postgres:
     image: postgres:15-alpine
     ports:
+      - 5432:5432
       - 5432
     environment:
       POSTGRES_USER: gwen
@@ -404,7 +411,7 @@ While Docker Compose support is convenient, it is limited to a small set of imag
 
 To use the Testcontainers local development mode, remove the `spring-boot-docker-compose` dependency from the `pom.xml`, and add the Testcontainers dependencies.
 
-```xml title="pom.xml" {48..62}
+```xml title="pom.xml" del{43..48} ins{54..68}
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -447,6 +454,12 @@ To use the Testcontainers local development mode, remove the `spring-boot-docker
 			<optional>true</optional>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-docker-compose</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
