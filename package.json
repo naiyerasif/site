@@ -19,7 +19,7 @@
 		"@microflash/rehype-starry-night": "^7.1.1",
 		"@microflash/remark-callout-directives": "^4.3.1",
 		"@sindresorhus/slugify": "^2.2.1",
-		"astro": "^4.15.12",
+		"astro": "^4.16.0",
 		"cheerio": "^1.0.0",
 		"dayjs": "^1.11.13",
 		"defu": "^6.1.4",
@@ -27,7 +27,7 @@
 		"hastscript": "^9.0.0",
 		"html-entities": "^2.5.2",
 		"mdast-util-to-string": "^4.0.0",
-		"postcss-preset-env": "^10.0.6",
+		"postcss-preset-env": "^10.0.7",
 		"rehype-autolink-headings": "^7.1.0",
 		"rehype-external-links": "^3.0.0",
 		"rehype-stringify": "^10.0.1",
@@ -44,7 +44,7 @@
 	"devDependencies": {
 		"@clack/prompts": "^0.7.0",
 		"picocolors": "^1.1.0",
-		"puppeteer": "^23.5.1",
+		"puppeteer": "^23.5.2",
 		"unlighthouse-puppeteer": "^0.10.6"
 	},
 	"packageManager": "pnpm@9.12.1",
