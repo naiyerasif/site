@@ -90,10 +90,11 @@
 
 :where(blockquote) {
 	--x2-gap-flow: 1em;
-	--blockquoteBorderWidth: 6px;
+	--blockquoteBorderWidth: var(--x2-line-width-lg);
+	--blockquotePadding: 0.8em;
 
 	position: relative;
-	padding: 0 var(--x2-padding-inline-end-blockquote, 1em) 0 var(--x2-padding-inline-start-blockquote, 1em);
+	padding: 0 var(--blockquotePadding) 0;
 
 	&::before {
 		position: absolute;
