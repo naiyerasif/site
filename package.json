@@ -36,7 +36,7 @@
 		"remark-parse": "^11.0.0",
 		"remark-rehype": "^11.1.1",
 		"remark-smartypants": "^3.0.2",
-		"sass": "^1.79.4",
+		"sass": "^1.79.5",
 		"sharp": "^0.33.5",
 		"unified": "^11.0.5",
 		"unist-util-visit": "^5.0.0"
@@ -44,7 +44,7 @@
 	"devDependencies": {
 		"@clack/prompts": "^0.7.0",
 		"picocolors": "^1.1.0",
-		"puppeteer": "^23.5.2",
+		"puppeteer": "^23.5.3",
 		"unlighthouse-puppeteer": "^0.10.6"
 	},
 	"packageManager": "pnpm@9.12.1",
