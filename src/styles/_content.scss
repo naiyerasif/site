@@ -15,7 +15,9 @@
 	}
 
 	& > blockquote {
-		margin-inline-start: calc(var(--blockquoteBorderWidth) + #{math.div($x2-gap-body-offset, 2)});
+		--x2-padding-inline-start-blockquote: calc(#{$x2-gap-body} - var(--blockquoteBorderWidth));
+		--x2-padding-inline-end-blockquote: #{$x2-gap-body};
+		margin-inline-start: var(--blockquoteBorderWidth);
 	}
 
 	& > figure figcaption {
