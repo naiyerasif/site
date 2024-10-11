@@ -1,5 +1,6 @@
 artifactory
 autoplay
+[Aa]utocorrect
 [Aa]utoscaling
 changeset
 chatbot(s)
