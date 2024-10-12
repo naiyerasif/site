@@ -329,11 +329,43 @@ window.__search = function (query, searchIndex) {
 	--fontSans2: "MakeSans", var(--fontSansNative);
 	--fontMono: "JetBrains Mono", var(--fontMonoNative);
 
-	--x2-text-sm: calc(0.8rem + 0.15vw);
-	--x2-text-0: calc(1rem + 0.2vw);
+	// see: https://utopia.fyi/type/calculator?c=320,16,1.125,2056,21,1.25,6,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12
 
-	--x2-text-title: calc(1.7rem + 2.5vw);
-	--x2-text-tagline: calc(1.2rem + 0.3vw);
+	--fluid-min-width: 320;
+	--fluid-max-width: 2056;
+
+	--fluid-screen: 100vw;
+	--fluid-bp: calc((var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) / (var(--fluid-max-width) - var(--fluid-min-width)));
+
+	@media screen and (min-width: 2056px) {
+		--fluid-screen: calc(var(--fluid-max-width) * 1px);
+	}
+
+	--f--1-min: 14.22;
+	--f--1-max: 16.80;
+	--fs--1: calc(((var(--f--1-min) / 16) * 1rem) + (var(--f--1-max) - var(--f--1-min)) * var(--fluid-bp));
+
+	--f-0-min: 16.00;
+	--f-0-max: 21.00;
+	--fs-0: calc(((var(--f-0-min) / 16) * 1rem) + (var(--f-0-max) - var(--f-0-min)) * var(--fluid-bp));
+
+	--f-1-min: 18.00;
+	--f-1-max: 26.25;
+	--fs-1: calc(((var(--f-1-min) / 16) * 1rem) + (var(--f-1-max) - var(--f-1-min)) * var(--fluid-bp));
+
+	--f-6-min: 32.44;
+	--f-6-max: 80.11;
+	--fs-6: calc(((var(--f-6-min) / 16) * 1rem) + (var(--f-6-max) - var(--f-6-min)) * var(--fluid-bp));
+
+	--fs--1: clamp(0.8889rem, 0.8592rem + 0.1485vw, 1.05rem);
+	--fs-0: clamp(1rem, 0.9424rem + 0.288vw, 1.3125rem);
+	--fs-1: clamp(1.125rem, 1.03rem + 0.4752vw, 1.6406rem);
+	--fs-6: clamp(2.0273rem, 1.4781rem + 2.7461vw, 5.0068rem);
+
+	--x2-text-sm: var(--fs--1);
+	--x2-text-0: var(--fs-0);
+	--x2-text-title: var(--fs-6);
+	--x2-text-tagline: var(--fs-1);
 
 	--x2-size-icon-0: 1.5rem;
 
