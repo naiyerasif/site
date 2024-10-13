@@ -51,18 +51,15 @@ If you're concerned about my finances, you can recommend me for a software engin
 
 No.
 
-<section data-footnotes="" class="footnotes">
-
 ## Credits
 
-- [Get Your Head Straight](https://speakerdeck.com/csswizardry/get-your-head-straight) &mdash; [Harry Roberts](https://csswizardry.com/)
-- [A guide to designing accessible, WCAG-conformant focus indicators](https://www.sarasoueidan.com/blog/focus-indicators/) &mdash; [Sara Soueidan](https://sarasoueidan.com/)
-- [Using calc to figure out optimal line-height](https://kittygiraudel.com/2020/05/18/using-calc-to-figure-out-optimal-line-height/) &mdash; [Jesús Ricarte](https://www.super-simple.net/blog/)
-- [lite-youtube-embed](https://github.com/paulirish/lite-youtube-embed) &mdash; [Paul Irish](https://www.paulirish.com/)
-- [Aspect Ratio is Great](https://css-irl.info/aspect-ratio-is-great/), [Detecting Hover-Capable Devices](https://css-irl.info/detecting-hover-capable-devices/) &mdash; [Michelle Barker](https://css-irl.info/)
-- [Lume reading-time plugin](https://github.com/lumeland/experimental-plugins/blob/3d99f245fc46f64344116f14f175821ac329ed12/reading_time/mod.ts) &mdash; [Óscar Otero](https://oscarotero.com/)
-- [Building a dialog component](https://web.dev/building-a-dialog-component/) &mdash; [Adam Argyle](https://nerdy.dev/)
-- [Axiomatic CSS and Lobotomized Owls](https://alistapart.com/article/axiomatic-css-and-lobotomized-owls/) &mdash; [Heydon Pickering](https://heydonworks.com/)
-- [Share URL](https://github.com/NigelOToole/share-url) &mdash; [Nigel O Toole](https://www.purestructure.com/)
-
-</section>
+- Harry Roberts, [Get Your Head Straight](https://speakerdeck.com/csswizardry/get-your-head-straight) [2021]
+- Sara Soueidan, [A guide to designing accessible, WCAG-conformant focus indicators](https://www.sarasoueidan.com/blog/focus-indicators/) [2023]
+- Jesús Ricarte, [Using calc to figure out optimal line-height](https://kittygiraudel.com/2020/05/18/using-calc-to-figure-out-optimal-line-height/) [2020]
+- Paul Irish, [lite-youtube-embed](https://github.com/paulirish/lite-youtube-embed)
+- Michelle Barker, [Aspect Ratio is Great](https://css-irl.info/aspect-ratio-is-great/) [2022], [Detecting Hover-Capable Devices](https://css-irl.info/detecting-hover-capable-devices/) [2021]
+- Óscar Otero, [Lume reading-time plugin](https://github.com/lumeland/experimental-plugins/blob/3d99f245fc46f64344116f14f175821ac329ed12/reading_time/mod.ts)
+- Adam Argyle, [Building a dialog component](https://web.dev/articles/building/a-dialog-component/) [2022]
+- Heydon Pickering, [Axiomatic CSS and Lobotomized Owls](https://alistapart.com/article/axiomatic-css-and-lobotomized-owls/) [2014]
+- Nigel O Toole, [Share URL](https://github.com/NigelOToole/share-url)
+- James Gilyead, Trys Mudford, [utopia.fyi](https://utopia.fyi)
