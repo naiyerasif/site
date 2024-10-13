@@ -15,11 +15,11 @@
 	}
 
 	& > blockquote {
-		margin-inline-start: calc(#{$x2-gap-body} - var(--blockquotePadding));
+		margin-inline: calc(#{$x2-gap-body} - var(--blockquotePadding));
 	}
 
 	& > figure figcaption {
-		margin-inline-start: #{$x2-gap-body-offset};
+		margin-inline: calc(#{$x2-gap-body} - var(--figcaptionPadding));
 	}
 
 	// subtle background for transparent images
@@ -35,10 +35,6 @@
 }
 
 article.content {
-	& > blockquote {
-		margin-inline: calc(#{$x2-gap-body} - var(--blockquotePadding));
-	}
-
 	:where(h1, h2, h3, h4, h5, h6) {
 		--x2-size-icon: 1ch;
 		a .icon {

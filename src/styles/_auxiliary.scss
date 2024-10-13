@@ -30,9 +30,10 @@
 }
 
 :where(figcaption) {
-	--figcaptionBorderWidth: 1ch;
+	--figcaptionBorderWidth: var(--x2-line-width-lg);
+	--figcaptionPadding: var(--x2-padding-inline-figcaption, 1.125em);
 	position: relative;
-	padding: 0 0 0 var(--x2-padding-inline-figcaption, 1.5em);
+	padding: 0 var(--figcaptionPadding) 0;
 
 	&::before {
 		position: absolute;
@@ -41,7 +42,7 @@
 		inline-size: var(--figcaptionBorderWidth);
 		block-size: 100%;
 		border-radius: var(--x2-radius-max);
-		background-color: var(--x2-border-note);
+		background-color: var(--x2-border-assert);
 	}
 }
 

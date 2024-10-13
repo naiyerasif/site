@@ -198,10 +198,6 @@
 		border-block-start: var(--x2-line-width-sm) solid var(--x2-border-note);
 	}
 
-	blockquote {
-		padding-inline-end: #{$x2-gap-body};
-	}
-
 	&-details {
 		display: flex;
 		align-items: center;
