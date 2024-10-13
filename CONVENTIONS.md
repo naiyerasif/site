@@ -13,3 +13,9 @@ I have used the following conventions throughout this site on new posts.
 - **Database name**: `northwind`
 - **Database schema names**: `serenity`
 - **Database users**: `gizem`, `victoria`
+
+## Citations
+
+Link citations have following structure. Year is optional and usually quoted for articles.
+
+`<authors>, <link> [<year>]`
