@@ -179,6 +179,13 @@
 	--x2-gap-flow: 1em;
 	padding-block: 3rem;
 
+	&:not(:first-child) {
+		background: radial-gradient(
+			ellipse var(--x2-max-width-content) 240px at top,
+			var(--x2-bg-separator), transparent
+		);
+	}
+
 	&:first-child {
 		padding-block-start: 0;
 	}

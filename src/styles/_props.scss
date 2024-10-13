@@ -39,6 +39,8 @@
 	--x2-bg-codeblock: #{color.change($x2-neutral-99, $lightness: 100%, $space: oklch)};
 	--x2-border-codeblock: #{color.change($x2-neutral-90, $lightness: 94%, $space: oklch)};
 
+	--x2-bg-separator: #{$x2-neutral-95};
+
 	--color-prettylights-syntax-comment: #59636e;
 	--color-prettylights-syntax-constant: #0550ae;
 	--color-prettylights-syntax-constant-other-reference-link: #0a3069;
@@ -107,6 +109,8 @@
 	--x2-bg-selection: #{color.change($x2-primary-40, $alpha: 0.4, $space: oklch)};
 	--x2-bg-codeblock: #{color.change($x2-neutral-5, $lightness: 15%, $space: oklch)};
 	--x2-border-codeblock: #{color.change($x2-neutral-20, $lightness: 25%, $space: oklch)};
+
+	--x2-bg-separator: #{$x2-neutral-10};
 
 	--color-prettylights-syntax-comment: #9198a1;
 	--color-prettylights-syntax-constant: #79c0ff;
