@@ -10,7 +10,7 @@
 		"preview": "astro preview",
 		"new": "node etc/bin/post.js",
 		"postinstall": "astro telemetry disable",
-		"lighthouse": "unlighthouse-puppeteer --site http://localhost:8080"
+		"lighthouse": "unlighthouse --site http://localhost:8080"
 	},
 	"dependencies": {
 		"@astrojs/sitemap": "^3.2.1",
@@ -44,8 +44,7 @@
 	"devDependencies": {
 		"@clack/prompts": "^0.7.0",
 		"picocolors": "^1.1.0",
-		"puppeteer": "^23.5.3",
-		"unlighthouse-puppeteer": "^0.10.6"
+		"unlighthouse": "^0.14.0"
 	},
 	"packageManager": "pnpm@9.12.2",
 	"browserslist": [
