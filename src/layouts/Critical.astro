@@ -48,21 +48,19 @@ window.__search = function (query, searchIndex) {
 </script>
 
 <script type="module" is:inline>
-	window.__viewTransition = function (callback) {
-		const noMotionPref = window.matchMedia("(prefers-reduced-motion: no-preference)");
-		const hasHighRefreshRate = window.matchMedia("(update: fast)");
-		const hasViewTransitionSupport = "startViewTransition" in document && typeof document.startViewTransition === "function";
-		if (noMotionPref && hasHighRefreshRate && hasViewTransitionSupport) {
-			document.startViewTransition(callback);
-			return;
-		}
-		callback();
+window.__viewTransition = function(callback) {
+	const noMotionPref = window.matchMedia("(prefers-reduced-motion: no-preference)");
+	const hasHighRefreshRate = window.matchMedia("(update: fast)");
+	const hasViewTransitionSupport = "startViewTransition" in document && typeof document.startViewTransition === "function";
+	if (noMotionPref && hasHighRefreshRate && hasViewTransitionSupport) {
+		document.startViewTransition(callback);
+		return;
 	}
+	callback();
+};
 </script>
 
-<style lang="scss" is:inline>
-@use "../styles/mixins";
-
+<style is:inline>
 /* latin */
 @font-face {
 	font-family: Inter var;
@@ -312,7 +310,7 @@ window.__search = function (query, searchIndex) {
 	font-weight: 600;
 }
 
-@include mixins.whenAnimated {
+@media (prefers-reduced-motion: no-preference), (update: fast) {
 	@view-transition {
 		navigation: auto;
 	}
@@ -329,17 +327,12 @@ window.__search = function (query, searchIndex) {
 	--fontSans2: "MakeSans", var(--fontSansNative);
 	--fontMono: "JetBrains Mono", var(--fontMonoNative);
 
-	// see: https://utopia.fyi/type/calculator?c=320,16,1.125,2056,21,1.25,6,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12
-
+	/* @link: https://utopia.fyi/type/calculator?c=320,16,1.125,2056,21,1.25,6,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
 	--fluid-min-width: 320;
 	--fluid-max-width: 2056;
 
 	--fluid-screen: 100vw;
 	--fluid-bp: calc((var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) / (var(--fluid-max-width) - var(--fluid-min-width)));
-
-	@media screen and (min-width: 2056px) {
-		--fluid-screen: calc(var(--fluid-max-width) * 1px);
-	}
 
 	--f--1-min: 14.22;
 	--f--1-max: 16.80;
@@ -368,13 +361,23 @@ window.__search = function (query, searchIndex) {
 	--x2-text-tagline: var(--fs-1);
 
 	--x2-size-icon-0: 1.5rem;
+}
 
-	@supports (font-variation-settings: normal) {
+@media screen and (min-width: 2056px) {
+	:root {
+		--fluid-screen: calc(var(--fluid-max-width) * 1px);
+	}
+}
+
+@supports (font-variation-settings: normal) {
+	:root {
 		--fontSans1: "Inter var", var(--fontSansNative);
 		--fontMono: "JetBrains Mono var", var(--fontMonoNative);
 	}
+}
 
-	@include mixins.onTouch {
+@media (pointer: coarse), (any-hover: none) {
+	:root {
 		--x2-size-icon-0: 24px;
 	}
 }
