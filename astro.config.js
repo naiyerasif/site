@@ -99,6 +99,7 @@ export default defineConfig({
 				rehypeStarryNight,
 				{
 					aliases: {
+						brewfile: "shell",
 						conf: "ini",
 						json: "jsonc",
 						log: "sh",
