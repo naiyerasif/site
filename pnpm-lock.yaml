@@ -21,8 +21,8 @@ importers:
         specifier: ^7.1.1
         version: 7.1.1
       '@microflash/remark-callout-directives':
-        specifier: ^4.3.1
-        version: 4.3.1
+        specifier: ^4.3.2
+        version: 4.3.2
       '@sindresorhus/slugify':
         specifier: ^2.2.1
         version: 2.2.1
@@ -1006,8 +1006,8 @@ packages:
   '@microflash/rehype-starry-night@7.1.1':
     resolution: {integrity: sha512-RbPtlMSf3kO4LJExHmftjptuMPDsA+ev1/jDvqiGwkkpxzElKkGmyp+rp0Z0U5XFS+OGKLRRJZZCYOk4TqSCUg==}
 
-  '@microflash/remark-callout-directives@4.3.1':
-    resolution: {integrity: sha512-ZCS8+6ykJ4AqKPi6w1q3oV8RnRkaU+jOyT8b8LcvF1sNe9aufqgkInXvE93lrYyD7+04cVtmdtiUa07dI7KTNA==}
+  '@microflash/remark-callout-directives@4.3.2':
+    resolution: {integrity: sha512-RWb9gS5bPMLN7CkBpPrbh6jP4yEzHleF0QHTxE748nh53b4I/YyBchORLchX8OxNdUmXbNa2bazvfv80tgbF7Q==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -2627,8 +2627,8 @@ packages:
   mdast-util-from-markdown@2.0.0:
     resolution: {integrity: sha512-n7MTOr/z+8NAX/wmhhDji8O3bRvPTV/U0oTCaZJkjhPSKTPhS3xufVhKGF8s1pJ7Ox4QgoIU7KHseh09S+9rTA==}
 
-  mdast-util-from-markdown@2.0.1:
-    resolution: {integrity: sha512-aJEUyzZ6TzlsX2s5B4Of7lN7EQtAxvtradMMglCQDyaTFgse6CmtmdJ15ElnVRlCg1vpNyVtbem0PWzlNieZsA==}
+  mdast-util-from-markdown@2.0.2:
+    resolution: {integrity: sha512-uZhTV/8NBuw0WHkPTrCqDOl0zVe1BIng5ZtHoDk49ME1qqcjYmmLmOf0gELgcRMxN4w2iuIeVso5/6QymSrgmA==}
 
   mdast-util-gfm-autolink-literal@2.0.0:
     resolution: {integrity: sha512-FyzMsduZZHSc3i0Px3PQcBT4WJY/X/RCtEJKuybiC6sjPqLv7h1yqAkmILZtuxMSsUyaLUWNp71+vQH2zqp5cg==}
@@ -4865,11 +4865,11 @@ snapshots:
       hastscript: 9.0.0
       unist-util-visit: 5.0.0
 
-  '@microflash/remark-callout-directives@4.3.1':
+  '@microflash/remark-callout-directives@4.3.2':
     dependencies:
       defu: 6.1.4
       hastscript: 9.0.0
-      mdast-util-from-markdown: 2.0.1
+      mdast-util-from-markdown: 2.0.2
       unist-util-visit: 5.0.0
     transitivePeerDependencies:
       - supports-color
@@ -6901,10 +6901,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  mdast-util-from-markdown@2.0.1:
+  mdast-util-from-markdown@2.0.2:
     dependencies:
       '@types/mdast': 4.0.4
-      '@types/unist': 3.0.2
+      '@types/unist': 3.0.3
       decode-named-character-reference: 1.0.2
       devlop: 1.1.0
       mdast-util-to-string: 4.0.0
