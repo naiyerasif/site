@@ -56,7 +56,7 @@ const mastodonId = siteInfo.author.networks.mastodon.id;
 {timeToRead && <meta name="twitter:label1" content="Reading time">}
 {timeToRead && <meta name="twitter:data1" content={`${timeToRead} min read`}>}
 <link rel="me" href={mastodonUrl}>
-<meta property="fediverse:creator" content={mastodonId}>
+<meta name="fediverse:creator" content={mastodonId}>
 <meta itemprop="name" content={title}>
 <meta itemprop="description" content={description}>
 <meta name="generator" content={Astro.generator}>
