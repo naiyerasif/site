@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Icon from "../../components/Icon.astro";
 import SharePanel from "../../components/SharePanel.astro";
@@ -17,19 +17,19 @@ export async function getStaticPaths() {
 	return posts.sort((p1, p2) => compare(p1.data.date, p2.data.date))
 		.map((post, index, posts) => ({ post: post, prev: posts[index - 1], next: posts[index + 1] }))
 		.map(entry => ({
-			params: { slug: entry.post.slug },
+			params: { id: entry.post.id },
 			props: { entry }
 		}));
 }
 
 const { entry } = Astro.props;
 const { post, prev, next } = entry;
-const { data, render } = post;
-const { Content, headings } = await render();
+const { data } = post;
+const { Content, headings } = await render(post);
 const url = Astro.url.pathname;
 const showToc = data.showToc && headings && headings.length > 0;
-const prevPage = prev ? postPathname(prev.slug) : undefined;
-const nextPage = next ? postPathname(next.slug) : undefined;
+const prevPage = prev ? postPathname(prev.id) : undefined;
+const nextPage = next ? postPathname(next.id) : undefined;
 const hasRecommendations = prevPage || nextPage;
 const timeToRead = readingTime(post.body).readingTime;
 const showUpdate = compare(data.update, data.date) !== 0;

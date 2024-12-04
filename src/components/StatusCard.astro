@@ -1,15 +1,16 @@
 ---
+import { render } from "astro:content";
 import Time from "./Time.astro";
 import Icon from "./Icon.astro";
 import { postPathname } from "../modules/website/index.js";
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 ---
 
 <div class="content card status">
 	<div class="card-details">
-		<a href={postPathname(entry.slug)} title={entry.data.title}><Icon name="beacon"/></a>
+		<a href={postPathname(entry.id)} title={entry.data.title}><Icon name="beacon"/></a>
 		<span class="card-type">status</span> &mdash;
 		<Time date={entry.data.date} />
 	</div>

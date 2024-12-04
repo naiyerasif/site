@@ -31,7 +31,7 @@ export async function GET() {
 		.sort((p1, p2) => compare(p1.data.update, p2.data.update))
 		.slice(0, siteInfo.maxFeedItems)
 		.map(post => {
-			const pageUrl = fullLink(postPathname(post.slug));
+			const pageUrl = fullLink(postPathname(post.id));
 			const showUpdate = compare(post.data.update, post.data.date) !== 0;
 			return {
 				title: showUpdate ? `[Updated] ${post.data.title}` : post.data.title,

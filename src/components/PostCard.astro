@@ -3,7 +3,7 @@ import Time from "./Time.astro";
 import { postPathname } from "../modules/website/index.js";
 
 const { entry } = Astro.props;
-const path = postPathname(entry.slug);
+const path = postPathname(entry.id);
 ---
 
 <div class="content card">

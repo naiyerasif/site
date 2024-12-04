@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Icon from "../../components/Icon.astro";
 import Toc from "../../components/Toc.astro";
@@ -14,14 +14,14 @@ export async function getStaticPaths() {
 	const posts = await getCollection("archive");
 	return posts.sort((p1, p2) => compare(p1.data.date, p2.data.date))
 		.map(post => ({
-			params: { slug: post.slug },
+			params: { id: post.id },
 			props: { post }
 		}));
 }
 
 const { post } = Astro.props;
-const { data, render } = post;
-const { Content, headings } = await render();
+const { data } = post;
+const { Content, headings } = await render(post);
 const url = Astro.url.pathname;
 const showToc = data.showToc && headings && headings.length > 0;
 const timeToRead = readingTime(post.body).readingTime;

@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Icon from "../components/Icon.astro";
 import Time from "../components/Time.astro";
 import Toc from "../components/Toc.astro";
@@ -11,14 +11,14 @@ import siteInfo from "../modules/website/index.js";
 export async function getStaticPaths() {
 	const pages = await getCollection("page");
 	return pages.map(entry => ({
-			params: { slug: entry.slug },
+			params: { id: entry.id },
 			props: { entry }
 		}));
 }
 
 const { entry } = Astro.props;
-const { data, render } = entry;
-const { Content, headings } = await render();
+const { data } = entry;
+const { Content, headings } = await render(entry);
 const showToc = data.showToc && headings && headings.length > 0;
 const showUpdate = compare(data.update, data.date) !== 0;
 
