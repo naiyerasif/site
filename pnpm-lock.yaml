@@ -78,7 +78,7 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
       sass:
-        specifier: ^1.81.1
+        specifier: ^1.82.0
         version: 1.82.0
       sharp:
         specifier: ^0.33.5
