@@ -33,7 +33,7 @@ const pageInfo = {
 	title: `${data.title} (Archived)`,
 	description: data.description,
 	url,
-	source: `src/content/post/${post.id}`,
+	source: post.filePath,
 	type: "article",
 	published: format(data.date, format_date),
 	updated: showUpdate ? format(data.update, format_date) : undefined,
