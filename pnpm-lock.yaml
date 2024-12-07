@@ -93,6 +93,9 @@ importers:
       '@clack/prompts':
         specifier: ^0.8.2
         version: 0.8.2
+      '@material/material-color-utilities':
+        specifier: ^0.3.0
+        version: 0.3.0
       picocolors:
         specifier: ^1.1.1
         version: 1.1.1
@@ -1053,6 +1056,9 @@ packages:
 
   '@lhci/utils@0.14.0':
     resolution: {integrity: sha512-LyP1RbvYQ9xNl7uLnl5AO8fDRata9MG/KYfVFKFkYenlsVS6QJsNjLzWNEoMIaE4jOPdQQlSp4tO7dtnyDxzbQ==}
+
+  '@material/material-color-utilities@0.3.0':
+    resolution: {integrity: sha512-ztmtTd6xwnuh2/xu+Vb01btgV8SQWYCaK56CkRK8gEkWe5TuDyBcYJ0wgkMRn+2VcE9KUmhvkz+N9GHrqw/C0g==}
 
   '@microflash/fenceparser@3.1.0':
     resolution: {integrity: sha512-kjEByW5ViReO+rJx6cYZBnG067Orp/H2uBF3ofPmMT2up0uJtVgSqeb+ARdK+67VomHX6lPCBQGCeD9HkV8nCA==}
@@ -4815,6 +4821,8 @@ snapshots:
       - encoding
       - supports-color
       - utf-8-validate
+
+  '@material/material-color-utilities@0.3.0': {}
 
   '@microflash/fenceparser@3.1.0':
     dependencies:
