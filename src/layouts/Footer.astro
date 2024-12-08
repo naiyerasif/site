@@ -5,8 +5,8 @@ import BackToTop from "../components/BackToTop.astro";
 import siteInfo from "../modules/website/index.js";
 
 const authorInfo = siteInfo.author;
-const authorNetworks = authorInfo.networks;
-const siteAuthor = authorInfo.name;
+const authorPresence = authorInfo.presence;
+const authorName = authorInfo.name;
 const siteIssueUrl = siteInfo.issueBase;
 ---
 
@@ -66,11 +66,9 @@ const siteIssueUrl = siteInfo.issueBase;
 		</footer-preferences>
 	</div>
 	<div class="outro">
-		<div class="copyright">&copy; 2018 &mdash; today, {siteAuthor}</div>
+		<div class="copyright">&copy; 2018 &mdash; today, {authorName}</div>
 		<div class="socials">
-			<a href={authorNetworks.mastodon.link} aria-label={authorNetworks.mastodon.platform} rel="noopener noreferrer"><Icon name="mastodon"/></a>
-			<a href={authorNetworks.github.link} aria-label={authorNetworks.github.platform} rel="noopener noreferrer"><Icon name="github"/></a>
-			<a href={authorNetworks.linkedin.link} aria-label={authorNetworks.linkedin.platform} rel="noopener noreferrer"><Icon name="linkedin"/></a>
+			{Object.entries(authorPresence).map(([network, details]) => <a href={details.url} aria-label={details.title} rel="noopener noreferrer"><Icon name={network}/></a>)}
 		</div>
 		<div class="extras">
 			<a href={siteIssueUrl} rel="nofollow noopener noreferrer">Report an issue</a>

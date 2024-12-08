@@ -18,8 +18,8 @@ const {
 } = pageInfoSchema.parse(Astro.props.pageInfo);
 const siteTitle = siteInfo.title;
 const siteAuthor = siteInfo.author.name;
-const mastodonUrl = siteInfo.author.networks.mastodon.link;
-const mastodonId = siteInfo.author.networks.mastodon.id;
+const mastodonUrl = siteInfo.author.presence.mastodon.url;
+const mastodonId = siteInfo.author.presence.mastodon.id;
 ---
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">

@@ -5,7 +5,7 @@ import siteInfo from "../modules/website/index.js";
 
 const shareInfo = pageInfoSchema.parse(Astro.props.pageInfo);
 const shareableTitle = encodeURI(shareInfo.title);
-const mastodonHandle = encodeURI(siteInfo.author.networks.mastodon.id);
+const mastodonHandle = encodeURI(siteInfo.author.presence.mastodon.id);
 
 const shareVia = [
 	{

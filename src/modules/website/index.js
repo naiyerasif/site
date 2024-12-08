@@ -1,47 +1,53 @@
+import pkg from "../../../package.json" with { type: "json" };
 import { join } from "path/posix";
 
-const authorInfo = {
-	name: "Naiyer Asif",
-	networks: {
-		mastodon: {
-			platform: "Mastodon",
-			id: "@naiyer@mastodon.social",
-			link: "https://mastodon.social/@naiyer"
-		},
-		github: {
-			platform: "GitHub",
-			id: "@naiyerasif",
-			link: "https://github.com/naiyerasif"
-		},
-		linkedin: {
-			platform: "LinkedIn",
-			id: "naiyerasif",
-			link: "https://in.linkedin.com/in/naiyerasif"
-		},
-	}
-};
-
 const siteInfo = {
-	version: "4.0.0",
-	title: authorInfo.name,
-	description: `Personal space of ${authorInfo.name} on the web`,
-	author: authorInfo,
-	repository: "https://github.com/naiyerasif/site.git",
+	version: pkg.version,
+	author: {
+		name: "Naiyer Asif",
+		presence: {
+			mastodon: {
+				id: "@naiyer@mastodon.social",
+				title: "Mastodon",
+				url: "https://mastodon.social/@naiyer"
+			},
+			github: {
+				id: "@naiyerasif",
+				title: "GitHub",
+				url: "https://github.com/naiyerasif"
+			},
+			linkedin: {
+				id: "naiyerasif",
+				title: "LinkedIn",
+				url: "https://in.linkedin.com/in/naiyerasif"
+			},
+		},
+	},
 	siteBase: "https://www.naiyerasif.com",
-	editBase: "https://github.com/naiyerasif/site/edit/main",
-	issueBase: "https://github.com/naiyerasif/site/issues/new",
+	repository: "https://github.com/naiyerasif/site",
 	ogImage: "/images/opengraph/default.png",
 	maxFeedItems: 20,
 	maxPageItems: 20,
-	maxTocDepth: 3
-};
-
-const editUrl = new URL(siteInfo.editBase);
+	maxTocDepth: 3,
+	get title() {
+		return this.author.name;
+	},
+	get description() {
+		return `Personal space of ${this.author.name} on the web`;
+	},
+	get editBase() {
+		return `${this.repository}/edit/main`;
+	},
+	get issueBase() {
+		return `${this.repository}/issues/new`;
+	}
+}
 
 function fullLink(path, base = siteInfo.siteBase) {
 	return new URL(path, base).href;
 }
 
+const editUrl = new URL(siteInfo.editBase);
 function editLink(path) {
 	return fullLink(join(editUrl.pathname, path), editUrl.origin);
 }
