@@ -2,13 +2,14 @@
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import PostCard from "../components/PostCard.astro";
-import StatusCard from "../components/StatusCard.astro";
+import PingCard from "../components/PingCard.astro";
 import Icon from "../components/Icon.astro";
 import siteInfo, { paginationPathname } from "../modules/website/index.js";
 import { compare } from "../modules/datetime/index.js";
+import { PostType, Status } from "../modules/schema/defs.js";
 
 const posts = (await getCollection("post"))
-	.filter(post => post.data.state !== "outdated")
+	.filter(post => post.data.state !== Status.outdated.id)
 	.sort((p1, p2) => compare(p1.data.date, p2.data.date))
 	.slice(0, siteInfo.maxPageItems);
 
@@ -26,7 +27,7 @@ const pageInfo = {
 			<p>Book lover, software engineer and a fellow web wanderer</p>
 		</hgroup>
 	</div>
-	{posts.map(entry => entry.data.type === "status" ? <StatusCard {entry} /> : <PostCard {entry} />)}
+	{posts.map(entry => entry.data.type === PostType.ping.id ? <PingCard {entry} /> : <PostCard {entry} />)}
 	<div slot="sidekick" class="sidekick-items">
 		<a href={paginationPathname("posts", 2)} class="distinct-link">more posts<Icon name="arrow-right"/></a>
 	</div>

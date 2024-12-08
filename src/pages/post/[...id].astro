@@ -10,7 +10,7 @@ import format, { compare, format_date } from "../../modules/datetime/index.js";
 import readingTime from "../../modules/reading-time/index.js";
 import toc from "../../modules/table-of-contents/index.js";
 import siteInfo, { postPathname } from "../../modules/website/index.js";
-import { states } from "../../modules/schema/states.js";
+import { PostType, Status } from "../../modules/schema/defs.js";
 
 export async function getStaticPaths() {
 	const posts = await getCollection("post");
@@ -34,7 +34,7 @@ const hasRecommendations = prevPage || nextPage;
 const timeToRead = readingTime(post.body).readingTime;
 const showUpdate = compare(data.update, data.date) !== 0;
 const showReadingTime = timeToRead > 0;
-const showState = !!data.state;
+const showStatus = !!data.status;
 
 const pageInfo = {
 	title: data.title,
@@ -54,7 +54,7 @@ const pageInfo = {
 	<Fragment slot="hero">
 		<nav class="hero-header breadcrumb">
 			<a class="breadcrumb-item" href="/">Home</a>
-			<span class="breadcrumb-item capitalized">{data.type}</span>
+			<span class="breadcrumb-item">{PostType[data.type].label}</span>
 		</nav>
 		<div class="hero-body">
 			<hgroup>
@@ -63,7 +63,7 @@ const pageInfo = {
 			</hgroup>
 		</div>
 		<div class="hero-footer">
-			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}{data.type !== "status" && showReadingTime && <span><Icon name="clock"/> Takes about {`${timeToRead} min to read`}</span>}{showState && <span class={`chip chip-${states[data.state].semantics}`}>{states[data.state].label}</span>}
+			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}{data.type !== PostType.ping.id && showReadingTime && <span><Icon name="clock"/> Takes about {`${timeToRead} min to read`}</span>}{showStatus && <span class={`chip chip-${Status[data.status].tone.id}`}>{Status[data.status].label}</span>}
 		</div>
 	</Fragment>
 	<article class="content">

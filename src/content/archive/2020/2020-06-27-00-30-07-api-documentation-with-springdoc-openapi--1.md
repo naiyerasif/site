@@ -5,7 +5,7 @@ description: "Springdoc is an open-source project that adds support for OpenAPI 
 date: 2020-06-27 00:30:07
 update: 2020-06-27 00:30:07
 type: "guide"
-state: "archived"
+status: "archived"
 ---
 
 :::warn{title="Archived post"}

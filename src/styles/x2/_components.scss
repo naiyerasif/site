@@ -154,10 +154,6 @@
 	}
 }
 
-.capitalized {
-	text-transform: capitalize;
-}
-
 .breadcrumb {
 	display: inline-flex;
 	align-items: center;
@@ -204,10 +200,6 @@
 		gap: 1ch;
 		color: var(--x2-color-body-subtle);
 		font-size: var(--x2-text-sm);
-	}
-
-	&-type {
-		@extend .capitalized;
 	}
 
 	&-header {

@@ -11,7 +11,6 @@ const { Content } = await render(entry);
 <div class="content card status">
 	<div class="card-details">
 		<a href={postPathname(entry.id)} title={entry.data.title}><Icon name="beacon"/></a>
-		<span class="card-type">status</span> &mdash;
 		<Time date={entry.data.date} />
 	</div>
 	<Content />

@@ -2,6 +2,7 @@
 import { getEntry, render } from "astro:content";
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
+import { PageType } from "../modules/schema/defs.js";
 
 const profile = await getEntry("profile", "about");
 const { data } = profile;
@@ -12,7 +13,7 @@ const name = data.title.split(" ")[0];
 const pageInfo = {
 	title: "About",
 	description: data.description,
-	type: "profile",
+	type: PageType.profile.id,
 	url: Astro.url.pathname
 };
 ---

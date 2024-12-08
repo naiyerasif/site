@@ -8,7 +8,7 @@ import dayjs from "dayjs";
 import timezone from "dayjs/plugin/timezone.js";
 import utc from "dayjs/plugin/utc.js";
 import slugify from "../../src/modules/slugifier/index.js";
-import types from "../../src/modules/schema/types.js";
+import { PostType } from "../../src/modules/schema/defs.js";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -23,9 +23,9 @@ async function main() {
 	const answers = await p.group({
 		type: () =>
 			p.select({
-				message: "Select the content type",
-				initialValue: "guide",
-				options: types.map(t => ({ value: t, label: t }))
+				message: "Select the post type",
+				initialValue: PostType.guide.id,
+				options: Object.values(PostType).map(t => ({ value: t.id, label: t.label }))
 			}),
 		title: () =>
 			p.text({
@@ -54,7 +54,7 @@ async function main() {
 	frontmatter.push('---');
 	frontmatter.push(`slug: "${date.format("YYYY/MM/DD")}/${slug}"`);
 	frontmatter.push(`title: "${answers.title}"`);
-	if (answers.type !== "status") frontmatter.push(`description: ""`);
+	if (answers.type !== PostType.ping.id) frontmatter.push(`description: ""`);
 	frontmatter.push(`date: ${answers.date}`);
 	frontmatter.push(`update: ${answers.date}`);
 	frontmatter.push(`type: "${answers.type}"`);

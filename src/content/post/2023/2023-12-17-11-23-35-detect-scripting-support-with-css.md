@@ -3,7 +3,7 @@ slug: "2023/12/17/detect-scripting-support-with-css"
 title: "Detect scripting support with CSS"
 date: 2023-12-17 11:23:35
 update: 2023-12-17 11:23:35
-type: "status"
+type: "ping"
 ---
 
 Today I learned about `@media (scripting)` query with which you can detect using CSS if the browser supports JavaScript and whether it's active.

@@ -5,7 +5,7 @@ description: "Method logging is a common pattern for gathering method-related da
 date: 2020-09-13 21:01:49
 update: 2021-09-02 16:21:00
 type: "guide"
-state: "archived"
+status: "archived"
 ---
 
 :::warn{title="Archived post"}

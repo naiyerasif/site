@@ -1,7 +1,6 @@
 import { z } from "astro:content";
 import siteInfo, { fullLink, editLink } from "../website/index.js";
-import types from "./types.js";
-import statesAsList from "./states.js";
+import { PageType, PostType, Status } from "./defs.js";
 
 const title = z.string().max(64);
 const description = z.preprocess(
@@ -11,8 +10,8 @@ const description = z.preprocess(
 const date = z.date();
 const update = z.date().optional();
 const tagline = z.string().optional();
-const state = z.enum([...statesAsList]).optional();
-const contentTypes = z.enum([...types]).default("guide");
+const status = z.enum(Object.keys(Status)).optional();
+const postType = z.enum(Object.keys(PostType)).default(PostType.guide.id);
 const url = z.preprocess(
 	val => val && fullLink(val),
 	z.string().url()
@@ -34,7 +33,7 @@ const ogImage = z.preprocess(
 	val => fullLink(val || siteInfo.ogImage),
 	z.string().url()
 );
-const ogTypes = z.enum(["website", "article", "profile"]);
+const ogTypes = z.enum(Object.keys(PageType));
 
 const postSchema = z.object({
 	title,
@@ -42,12 +41,12 @@ const postSchema = z.object({
 	tagline,
 	date,
 	update,
-	type: contentTypes,
-	state,
+	type: postType,
+	status,
 	showToc: z.boolean().default(true),
 
 	ogImage,
-	ogType: ogTypes.default("article"),
+	ogType: ogTypes.default(PageType.article.id),
 });
 
 const profileSchema = ({ image }) => z.object({
@@ -59,7 +58,7 @@ const profileSchema = ({ image }) => z.object({
 	avatar: image(),
 
 	ogImage,
-	ogType: ogTypes.default("profile"),
+	ogType: ogTypes.default(PageType.profile.id),
 });
 
 const pageSchema = z.object({
@@ -68,11 +67,11 @@ const pageSchema = z.object({
 	tagline,
 	date,
 	update,
-	state,
+	status,
 	showToc: z.boolean().default(false),
 
 	ogImage,
-	ogType: ogTypes.default("website"),
+	ogType: ogTypes.default(PageType.website.id),
 });
 
 const pageInfoSchema = z.object({
@@ -80,7 +79,7 @@ const pageInfoSchema = z.object({
 	description,
 	url,
 	image: ogImage,
-	type: ogTypes.default("website"),
+	type: ogTypes.default(PageType.website.id),
 	published: z.string().optional(), // add yyyy-MM-dd format validation
 	updated: z.string().optional(), // add yyyy-MM-dd format validation
 	previous: optionalUrl,

@@ -5,7 +5,7 @@ description: "Learn to use Spring Data with MongoDB. Explore the repository-styl
 date: 2019-07-08 11:12:13
 update: 2020-10-26 10:10:01
 type: "guide"
-state: "outdated"
+status: "outdated"
 ---
 
 :::deter{title="Outdated post"}

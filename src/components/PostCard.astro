@@ -1,14 +1,16 @@
 ---
 import Time from "./Time.astro";
 import { postPathname } from "../modules/website/index.js";
+import { PostType } from "../modules/schema/defs.js";
 
 const { entry } = Astro.props;
 const path = postPathname(entry.id);
+const label = PostType[entry.data.type].label;
 ---
 
 <div class="content card">
 	<div class="card-details">
-		<span class="card-type">{entry.data.type}</span> &mdash;
+		<span>{label}</span> &mdash;
 		<Time date={entry.data.date} />
 	</div>
 	<div class="card-header">

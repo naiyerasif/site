@@ -3,7 +3,7 @@ slug: "2023/09/20/custom-nodejs-version-on-codebuild"
 title: "Custom Node.js version on CodeBuild"
 date: 2023-09-20 21:12:11
 update: 2023-09-20 21:12:11
-type: "status"
+type: "ping"
 ---
 
 Today I learned that Amazon Linux [runtime](https://docs.aws.amazon.com/codebuild/latest/userguide/available-runtimes.html) comes with [n](https://github.com/tj/n), a Node.js version manager, out of box. So, if you needed Node.js 17 on Amazon Linux 2 `x86_64 standard:5.0` (which comes with Node.js 18), you can install it with `n` during the `install` phase in your [buildspec.yml](https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html) file.

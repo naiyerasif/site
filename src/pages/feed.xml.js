@@ -2,6 +2,7 @@ import { getCollection } from "astro:content";
 import rss from "../modules/astro-rss/index.js";
 import { compare } from "../modules/datetime/index.js";
 import siteInfo, { fullLink, postPathname } from "../modules/website/index.js";
+import { PostType } from "../modules/schema/defs.js";
 
 const baseUrl = siteInfo.siteBase;
 const authorName = siteInfo.author.name;
@@ -27,7 +28,7 @@ const options = {
 
 export async function GET() {
 	const posts = (await getCollection("post"))
-		.filter(post => post.data.type !== "status")
+		.filter(post => post.data.type !== PostType.ping.id)
 		.sort((p1, p2) => compare(p1.data.update, p2.data.update))
 		.slice(0, siteInfo.maxFeedItems)
 		.map(post => {
