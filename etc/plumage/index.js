@@ -8,7 +8,6 @@ import { blendedPalette, standalonePalette } from "./api.js";
 
 const colors = {
 	primary: "#02805a",
-	secondary: "#0d110e",
 	neutral: "#ffffff",
 	commend: "#2abf1d",
 	deter: "#db0b2f",
