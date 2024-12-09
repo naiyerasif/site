@@ -323,8 +323,8 @@ window.__viewTransition = function(callback) {
 		"Segoe UI Symbol", "Noto Color Emoji";
 	--fontMonoNative: ui-monospace, SFMono-Regular, "Roboto Mono",
 		Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-	--fontSans1: "Inter", var(--fontSansNative);
-	--fontSans2: "MakeSans", var(--fontSansNative);
+	--fontSansBodyCopy: "Inter", var(--fontSansNative);
+	--fontSansFancyCopy: "MakeSans", var(--fontSansNative);
 	--fontMono: "JetBrains Mono", var(--fontMonoNative);
 
 	/* @link: https://utopia.fyi/type/calculator?c=320,16,1.125,2056,21,1.25,6,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
@@ -371,7 +371,7 @@ window.__viewTransition = function(callback) {
 
 @supports (font-variation-settings: normal) {
 	:root {
-		--fontSans1: "Inter var", var(--fontSansNative);
+		--fontSansBodyCopy: "Inter var", var(--fontSansNative);
 		--fontMono: "JetBrains Mono var", var(--fontMonoNative);
 	}
 }
