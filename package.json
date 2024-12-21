@@ -19,7 +19,7 @@
 		"@microflash/rehype-starry-night": "^7.1.1",
 		"@microflash/remark-callout-directives": "^4.3.2",
 		"@sindresorhus/slugify": "^2.2.1",
-		"astro": "^5.0.5",
+		"astro": "^5.1.1",
 		"cheerio": "^1.0.0",
 		"dayjs": "^1.11.13",
 		"defu": "^6.1.4",
@@ -42,7 +42,7 @@
 		"unist-util-visit": "^5.0.0"
 	},
 	"devDependencies": {
-		"@clack/prompts": "^0.8.2",
+		"@clack/prompts": "^0.9.0",
 		"@material/material-color-utilities": "^0.3.0",
 		"picocolors": "^1.1.1",
 		"unlighthouse": "^0.14.1"
