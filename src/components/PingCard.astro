@@ -8,10 +8,12 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 ---
 
-<div class="content card status">
-	<div class="card-details">
+<div class="card" data-post-type="ping">
+	<div class="card-meta">
 		<a href={postPathname(entry.id)} title={entry.data.title}><Icon name="beacon"/></a>
 		<Time date={entry.data.date} />
 	</div>
-	<Content />
+	<div class="card-body">
+		<Content />
+	</div>
 </div>

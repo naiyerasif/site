@@ -355,12 +355,12 @@ window.__viewTransition = function(callback) {
 	--fs-1: clamp(1.125rem, 1.03rem + 0.4752vw, 1.6406rem);
 	--fs-6: clamp(2.0273rem, 1.4781rem + 2.7461vw, 5.0068rem);
 
-	--x2-text-sm: var(--fs--1);
-	--x2-text-0: var(--fs-0);
-	--x2-text-title: var(--fs-6);
-	--x2-text-tagline: var(--fs-1);
+	--x3-text-sm: var(--fs--1);
+	--x3-text-base: var(--fs-0);
+	--x3-text-title: var(--fs-6);
+	--x3-text-tagline: var(--fs-1);
 
-	--x2-size-icon-0: 1.5rem;
+	--x3-size-icon-base: 1.5rem;
 }
 
 @media screen and (min-width: 2056px) {
@@ -378,21 +378,30 @@ window.__viewTransition = function(callback) {
 
 @media (pointer: coarse), (any-hover: none) {
 	:root {
-		--x2-size-icon-0: 24px;
+		--x3-size-icon-base: 24px;
 	}
 }
 
 .icon,
+.chip svg,
 .callout-hint svg {
-	--iconSize: var(--x2-size-icon, var(--x2-size-icon-0));
+	--iconSize: var(--x3-size-icon, var(--x3-size-icon-base));
+	--iconStroke: var(--x3-stroke-icon, 2);
+	--iconColor: var(--x3-fg-icon, currentColor);
 	display: inline-block;
 	vertical-align: middle;
-	stroke: currentColor;
-	stroke-width: 2;
+	stroke: var(--iconColor);
+	stroke-width: var(--iconStroke);
 	fill: none;
 	width: var(--iconSize);
 	height: var(--iconSize);
-	min-width: var(--iconSize);
-	min-height: var(--iconSize);
+	flex: none; /* prevent squeezed icons */
+}
+
+/* hide undefined custom elements which don't have non-javascript fallbacks
+   TODO: use `data-require=js` attribute to streamline this rule in future */
+:where(clipboard-copy, command-bar, theme-switcher, footer-preferences):not(:defined) {
+	visibility: hidden;
+	display: none;
 }
 </style>

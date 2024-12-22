@@ -24,7 +24,7 @@ Right-click the Office installation `img` file and select **Mount**.
 :::figure
 ![Mounting Office installer](./images/2022-04-15-18-52-10-customizing-microsoft-office-installation-01.png)
 
-Mounting the Office installer image on Windows
+::caption[Mounting the Office installer image on Windows]
 :::
 
 This mounts the file as a drive (say `G:`).
@@ -32,7 +32,7 @@ This mounts the file as a drive (say `G:`).
 :::figure
 ![Mounted Office installer](./images/2022-04-15-18-52-10-customizing-microsoft-office-installation-02.png)
 
-Office installer mounted as a drive on Windows
+::caption[Office installer mounted as a drive on Windows]
 :::
 
 ## Generate install configuration with the Office Customization Tool
@@ -44,7 +44,7 @@ Open the browser and launch the [Office Customization Tool](https://config.offic
 :::figure
 ![Selecting Apps with Office Customization Tool](./images/2022-04-15-18-52-10-customizing-microsoft-office-installation-03.png)
 
-Selecting Office applications to install with [Office Customization Tool](https://config.office.com/deploymentsettings)
+::caption[Selecting Office applications to install with [Office Customization Tool](https://config.office.com/deploymentsettings)]
 :::
 
 After you're done with your configuration, hit the **Export** button to download the configuration file. This is an `XML` file. Copy this file in the folder where the Office Deployment Tool was extracted (that's, `D://ODT/`). Open the file in an editor. A sample configuration file for Office Professional Plus would look like this.
@@ -83,7 +83,7 @@ This command launches the customized install.
 :::figure
 ![Office installation splashscreen](./images/2022-04-15-18-52-10-customizing-microsoft-office-installation-04.png)
 
-Installing Office with selected applications
+::caption[Installing Office with selected applications]
 :::
 
 And that's how you can do a clean install of the Office suite ensuring you install only what you need.

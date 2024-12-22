@@ -13,10 +13,10 @@ I have been using Firefox for ages. Here are some habits and configurations I ha
 
 One of the reasons why I continue using Firefox is the [Multi-Account Containers](https://addons.mozilla.org/en-US/firefox/addon/multi-account-containers/) extension. If you juggle several Instagram accounts or need to access different AWS consoles with various roles, this extension is a lifesaver. It lets you open separate sessions on the same site within a single browser window, without the hassle of switching profiles. Imagine staying logged into Google on one container tab to watch YouTube, while keeping your search history out of Google's reach in another. This is a useful way to limit how much personal data tech corporations can collect, giving you more control over your privacy.
 
-:::figure{.frame}
+:::figure{.popout.popout-image.frame}
 ![Hacker News, YouTube and Instagram running separately in container tabs](./images/2023-08-06-14-40-40-on-how-i-use-firefox-01.png)
 
-Firefox containers in action
+::caption[Firefox containers in action]
 :::
 
 ## Search modifiers

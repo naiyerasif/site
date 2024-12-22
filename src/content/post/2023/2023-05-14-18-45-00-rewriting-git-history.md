@@ -68,7 +68,7 @@ You might want to drop, squash, or edit some commits. When you mark all the item
 :::figure
 ![A rebase counter](./images/2023-05-14-18-45-00-rewriting-git-history-01.png)
 
-A rebase counter displaying the current position of a rebase in progress
+::caption[A rebase counter displaying the current position of a rebase in progress]
 :::
 
 #### Editing the changesets

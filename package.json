@@ -16,7 +16,7 @@
 		"@astrojs/sitemap": "^3.2.1",
 		"@microflash/preset": "^5.0.3",
 		"@microflash/rehype-slugify": "^1.0.0",
-		"@microflash/rehype-starry-night": "^7.1.1",
+		"@microflash/rehype-starry-night": "^7.2.0",
 		"@microflash/remark-callout-directives": "^4.3.2",
 		"@sindresorhus/slugify": "^2.2.1",
 		"astro": "^5.1.1",

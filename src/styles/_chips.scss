@@ -1,0 +1,50 @@
+@use "mixins";
+
+.chip {
+	--chipBg: var(--x3-bg-chip, var(--x3-bg-note));
+	--chipFg: var(--x3-fg-chip, var(--x3-fg-base));
+	--chipPaddingBlock: 0.5ch;
+	--chipPaddingInline: 0.8ch;
+	--chipPadding: var(--chipPaddingBlock) var(--chipPaddingInline);
+	--chipPaddingOffset: calc((var(--chipPaddingBlock) - var(--chipPaddingInline)) / 2);
+	
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5ch;
+	@include mixins.texture;
+	background-color: var(--chipBg);
+	color: var(--chipFg);
+	border-radius: var(--x3-radius-max);
+	padding: var(--chipPadding);
+	line-height: 1;
+	font-size: 0.75em;
+	--x3-size-icon: 1.25em;
+
+	svg:first-child {
+		margin-inline-start: var(--chipPaddingOffset);
+	}
+
+	svg:last-child {
+		margin-inline-end: var(--chipPaddingOffset);
+	}
+
+	&-commend {
+		--x3-bg-chip: var(--x3-bg-commend);
+		--x3-fg-chip: var(--x3-fg-commend);
+	}
+
+	&-warn {
+		--x3-bg-chip: var(--x3-bg-warn);
+		--x3-fg-chip: var(--x3-fg-warn);
+	}
+
+	&-deter {
+		--x3-bg-chip: var(--x3-bg-deter);
+		--x3-fg-chip: var(--x3-fg-deter);
+	}
+
+	&-assert {
+		--x3-bg-chip: var(--x3-bg-assert);
+		--x3-fg-chip: var(--x3-fg-assert);
+	}
+}

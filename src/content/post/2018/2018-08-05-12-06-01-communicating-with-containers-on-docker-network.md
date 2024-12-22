@@ -11,7 +11,7 @@ Say, you've an Angular app that talks to a backend service through a network. Bo
 
 Let's run through some scenarios on how you can achieve this.
 
-:::note{.sm}
+:::note{.setup}
 The examples in this post use
 
 - Java 13
@@ -309,7 +309,7 @@ Launch this stack by executing `docker-compose up -d` and browse to <http://loca
 :::figure
 ![Greeter UI](./images/2018-08-05-12-06-01-communicating-with-containers-on-docker-network-01.png)
 
-Greeter UI displaying the default greeting message
+::caption[Greeter UI displaying the default greeting message]
 :::
 
 This is the default greeting message; we're not getting the message from the backend service. A quick look on the Networks tab in Devtools reveals that we're getting a `502 Bad Gateway` for the request at <http://0.0.0.0:8084/hello?name=Microflash>. That's because Docker assigns some random host to a service; in this case, it is not `0.0.0.0`.
@@ -335,7 +335,7 @@ Rebuild the `greeter-ui` image, launch the stack again and browse to <http://loc
 :::figure
 ![Greeter UI](./images/2018-08-05-12-06-01-communicating-with-containers-on-docker-network-02.png)
 
-Greeter UI displaying the custom greeting message
+::caption[Greeter UI displaying the custom greeting message]
 :::
 
 ## Scenario 2: Containers on different Docker stacks

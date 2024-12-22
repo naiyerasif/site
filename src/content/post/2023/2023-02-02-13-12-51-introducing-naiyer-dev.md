@@ -42,7 +42,7 @@ This version replaces the good old search with a Command bar (represented by &#8
 :::figure
 ![Command bar with search box](./images/2023-02-02-13-12-51-introducing-naiyer-dev-01.png)
 
-Command bar in action
+::caption[Command bar in action]
 :::
 
 I've used [Fuse.js](https://fusejs.io/) to power the fuzzy search here. You can search posts, navigation, and even preferences (such as theme) to surface relevant results for you.
@@ -54,7 +54,7 @@ I've switched from the traditional hamburger menu (which sat on top right in the
 :::figure
 ![Bottom navigation bar](./images/2023-02-02-13-12-51-introducing-naiyer-dev-02.png)
 
-Bottom navigation bar (visible only on small screens)
+::caption[Bottom navigation bar (visible only on small screens)]
 :::
 
 You'll have reachable access to home, posts, command bar and a link to jump to the top all the time.

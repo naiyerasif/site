@@ -8,8 +8,8 @@
 		{ "src": "icon-192.png", "type": "image/png", "sizes": "192x192" },
 		{ "src": "icon-512.png", "type": "image/png", "sizes": "512x512" }
 	],
-	"background_color": "#0d110e",
-	"theme_color": "#0d110e",
+	"background_color": "#101112",
+	"theme_color": "#101112",
 	"display": "standalone",
 	"scope": "/"
 }

@@ -6,6 +6,8 @@ update: 2020-11-29 18:27:37
 type: "ping"
 ---
 
+:::figure{.source.youtube}
 > ::youtube[Verifying that you're not a robot]{#LButXcZ57pc}
->
-> <cite>&mdash; [Stevie Martin](https://www.youtube.com/watch?v=LButXcZ57pc), :time[2020-11-29T18:27:37]</cite>
+
+::caption[[Stevie Martin](https://www.youtube.com/watch?v=LButXcZ57pc), :time[2020-11-29T18:27:37]]
+:::

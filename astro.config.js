@@ -112,13 +112,22 @@ export default defineConfig({
 							plugin: (globalOptions, nodes) => {
 								nodes.push({
 									type: "element",
-									tagName: "clipboard-copy",
+									tagName: "div",
 									properties: {
-										className: [`${globalOptions.classNamePrefix}-copy`],
-										for: globalOptions.id
+										className: [`${globalOptions.classNamePrefix}-actions`],
 									},
 									children: [
-										{ type: "text", value: "Copy" }
+										{
+											type: "element",
+											tagName: "clipboard-copy",
+											properties: {
+												className: [`${globalOptions.classNamePrefix}-copy`],
+												for: globalOptions.id
+											},
+											children: [
+												{ type: "text", value: "Copy" }
+											]
+										}
 									]
 								});
 							}

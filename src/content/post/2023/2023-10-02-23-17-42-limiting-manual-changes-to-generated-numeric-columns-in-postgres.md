@@ -9,7 +9,7 @@ type: "guide"
 
 A generated numeric column is often used to keep the internal id of a row in a table. For compliance and consistency, you may want to restrict the insert and update operations on such columns. Such restrictions may outright disallow the insert and update operations, or allow them only through the approved generation mechanisms. Let's take a look at this with an example.
 
-:::note{.sm}
+:::note{.setup}
 The examples in this post use 
 
 - Postgres 16 running in a Docker container
@@ -81,9 +81,11 @@ and title = 'cauldron';
 - The `GRANT` based approach works not only with numeric but other types of columns as well.
 - This approach requires a careful permission management since table level permissions can override the column level permissions.
 
+	:::figure
 	> Granting the privilege at the table level and then revoking it for one column will not do what one might wish: the table-level grant is unaffected by a column-level operation.
-	> 
-	> <cite>&mdash; [Postgres GRANT statement](https://www.postgresql.org/docs/current/sql-grant.html)</cite>
+	
+	::caption[[Postgres GRANT statement](https://www.postgresql.org/docs/current/sql-grant.html)]
+	:::
 
 	For example, if you grant `jessica` all priviledges on the `notes` table, the column level restrictions will stop working.
 
@@ -181,7 +183,7 @@ Note that you can't use `OVERRIDING SYSTEM VALUE` for the `update` statement.
 	:::figure
 	![Error overlay in DataGrip for identity column](./images/2023-10-02-23-17-42-limiting-manual-changes-to-generated-numeric-columns-in-postgres-01.png)
 
-	An overlay in DataGrip warning that only DEFAULT can be inserted into an identity column
+	::caption[An overlay in DataGrip warning that only DEFAULT can be inserted into an identity column]
 	:::
 
 - Error messages are specific and offer enough context to understand the issue.

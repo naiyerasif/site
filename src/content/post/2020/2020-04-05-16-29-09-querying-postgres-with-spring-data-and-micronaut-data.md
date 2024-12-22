@@ -16,7 +16,7 @@ Micronaut Data is one of the projects under [Micronaut Framework](https://micron
 
 It works with multiple backends (including JPA and JDBC), provides a traditional synchronous API as well as reactive APIs for RxJava and Project Reactor, and integrates nicely with Spring Data and Spring Data JPA. In this post, we'll learn how to use its JDBC backend with a Spring Data `Repository`.
 
-:::note{.sm}
+:::note{.setup}
 The examples in this post use
 
 - Java 11

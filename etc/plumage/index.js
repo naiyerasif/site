@@ -8,7 +8,6 @@ import { blendedPalette, standalonePalette } from "./api.js";
 
 const colors = {
 	primary: "#02805a",
-	secondary: "#578e7e",
 	neutral: "#ffffff",
 	commend: "#2abf1d",
 	deter: "#db0b2f",
@@ -17,8 +16,8 @@ const colors = {
 };
 
 const themes = {
-	light: "#fbfefb",
-	dark: "#0d110e"
+	light: "#fcfcfc",
+	dark: "#101112"
 };
 
 function cssProperties(palette, prefix = "color") {

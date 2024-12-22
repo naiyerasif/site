@@ -11,7 +11,7 @@ type: "guide"
 
 In this post, we will integrate JaCoCo using Maven, and generate a coverage report that you can view in the browser.
 
-:::note{.sm}
+:::note{.setup}
 The examples in this post use
 
 - Java 21
@@ -183,28 +183,28 @@ Run `mvn verify` command in a terminal to see this in action. After this command
 
 Press <kbd>Shift</kbd> key twice and search "Import external coverage report" option in IntelliJ IDEA. Clicking the result should open file manager using which you can navigate and select the `target/jacoco.exec` file. Alternatively, open Coverage tool window by navigating to _View_ > _Tool Windows_ and selecting _Coverage_. Click _Import a report collected in CI from disk_ and select the `target/jacoco.exec` file. On successful import of the file, IntelliJ IDEA should display the coverage of each file as follows. You can open a file in the editor and it will show the lines covered by tests on the gutter.
 
-:::figure{.frame}
+:::figure{.popout.popout-image.frame}
 ![Coverage in IntelliJ IDEA](./images/2018-11-15-21-09-32-code-coverage-with-jacoco-and-maven-01.png)
 
-Coverage imported from JaCoCo report showing line coverage of Factorial class
+::caption[Coverage imported from JaCoCo report showing line coverage of `Factorial` class]
 :::
 
 IntelliJ IDEA also displays the coverage in the Project panel against each file.
 
-:::figure{.frame}
+:::figure{.popout.popout-image.frame}
 ![Coverage for each file in Project panel](./images/2018-11-15-21-09-32-code-coverage-with-jacoco-and-maven-02.png)
 
-IntelliJ IDEA shows the coverage against each file in the Project panel
+::caption[IntelliJ IDEA shows the coverage against each file in the Project panel]
 :::
 
 ### Viewing the report in browser
 
 With the current configuration in the `pom.xml` file, JaCoCo also generates the coverage report in HTML format which you can view in the browser. Open the `target/site/jacoco/index.html` file in the browser.
 
-:::figure{.frame}
+:::figure{.popout.popout-image.frame}
 ![JaCoCo coverage report open in the browser](./images/2018-11-15-21-09-32-code-coverage-with-jacoco-and-maven-03.png)
 
-JaCoCo coverage report in the browser. The appearance of the report may vary depending on your browser preferences.
+::caption[JaCoCo coverage report in the browser. The appearance of the report may vary depending on your browser preferences.]
 :::
 
 :::assert{title="Customizing the HTML report"}

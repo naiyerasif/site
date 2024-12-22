@@ -11,7 +11,7 @@ type: "guide"
 
 In this post, we'll integrate it with a Node.js application and explore on how to configure it to work with EditorConfig and ESLint. 
 
-:::note{.sm}
+:::note{.setup}
 You can pick the Node.js application created in the post [Using Express with TypeScript](/post/2019/01/12/using-express-with-typescript/) to start with.
 :::
 

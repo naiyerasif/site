@@ -3,13 +3,12 @@
 @use "props";
 @use "@microflash/preset";
 @use "baseline";
-@use "auxiliary";
+@use "flow";
 
 @use "layout";
-@use "content";
 @use "components";
 @use "callouts";
 @use "chips";
 @use "codeblock";
 @use "syntax";
-@use "lite-youtube";
+@use "youtube";

@@ -6,6 +6,8 @@ update: 2023-09-04 12:24:12
 type: "ping"
 ---
 
+:::figure{.source.youtube}
 > ::youtube[WHY I LEFT DEVELOPER RELATIONS]{#_p0LYU_mA_0}
 >
-> <cite>&mdash; [Ali Diamond](https://www.youtube.com/watch?v=_p0LYU_mA_0), :time[2023-08-30T16:13:03]</cite>
+::caption[[Ali Diamond](https://www.youtube.com/watch?v=_p0LYU_mA_0), :time[2023-08-30T16:13:03]]
+:::

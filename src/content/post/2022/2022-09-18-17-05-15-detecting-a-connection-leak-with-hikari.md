@@ -11,7 +11,7 @@ Database connections are one of the most expensive resources in an application. 
 
 In this post, we will create a scenario leading to a connection leak, and learn a way to detect and fix it.
 
-:::note{.sm}
+:::note{.setup}
 The examples in this post use
 
 - Spring Boot 3.3.2

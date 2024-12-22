@@ -9,7 +9,7 @@ type: "guide"
 
 Oracle added the native JSON support in the version 12c of their popular relational database system. With the help of new conditions and functions, you can create queries, indexes, transactions and views for JSON documents. 
 
-:::note{.sm}
+:::note{.setup}
 The examples in this post use
 
 - Oracle 12c

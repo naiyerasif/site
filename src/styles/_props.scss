@@ -1,0 +1,265 @@
+@use "sass:color";
+@use "mixins";
+@use "colors" as *;
+
+@mixin lightTheme {
+	color-scheme: light;
+
+	--x3-fg-primary-base: #{$x3-color-primary-45};
+	--x3-fg-primary-intense: #{$x3-color-primary-35};
+
+	--x3-fg-secondary-base: #{$x3-color-primary-80};
+	--x3-fg-secondary-intense: #{$x3-color-primary-70};
+
+	--x3-bg-primary-base: #{color.change($x3-color-primary-95, $chroma: 10%, $space: oklch)};
+	--x3-bg-secondary-base: #{color.change($x3-color-primary-93, $chroma: 10%, $space: oklch)};
+
+	--x3-fg-gentle: #{$x3-color-neutral-45};
+	--x3-fg-intense: #{$x3-color-neutral-5};
+
+	--x3-bg-gentle: #{$x3-color-neutral-98};
+	--x3-bg-intense: #{$x3-color-neutral-95};
+
+	--x3-fg-base: #{$x3-color-neutral-20};
+	--x3-fg-note: var(--x3-fg-intense);
+	--x3-fg-commend: #{$x3-color-commend-35};
+	--x3-fg-assert: #{$x3-color-assert-35};
+	--x3-fg-warn: #{$x3-color-warn-35};
+	--x3-fg-deter: #{$x3-color-deter-35};
+
+	--x3-bg-base: #{$x3-color-neutral-99};
+	--x3-bg-note: #{$x3-color-neutral-90};
+	--x3-bg-commend: #{color.change($x3-color-commend-90, $chroma: 20%, $lightness: 92%, $space: oklch)};
+	--x3-bg-assert: #{$x3-color-assert-90};
+	--x3-bg-warn: #{$x3-color-warn-90};
+	--x3-bg-deter: #{$x3-color-deter-90};
+
+	--x3-border-base: #{$x3-color-neutral-80};
+	--x3-border-note: var(--x3-border-base);
+	--x3-border-commend: #{$x3-color-commend-80};
+	--x3-border-assert: #{$x3-color-assert-80};
+	--x3-border-warn: #{$x3-color-warn-80};
+	--x3-border-deter: #{$x3-color-deter-80};
+
+	--baseline-bg-text-selection: #{color.change($x3-color-warn-75, $alpha: 0.4, $space: oklch)};
+
+	--x3-texture-fx-1: hsla(0, 0%, 0%, 0.02);
+	--x3-texture-fx-2: hsla(0, 0%, 100%, 0);
+	--x3-texture-fx-3: hsla(0, 0%, 100%, 0.5);
+
+	--color-prettylights-syntax-comment: #59636e;
+	--color-prettylights-syntax-constant: #0550ae;
+	--color-prettylights-syntax-constant-other-reference-link: #0a3069;
+	--color-prettylights-syntax-entity: #6639ba;
+	--color-prettylights-syntax-storage-modifier-import: #1f2328;
+	--color-prettylights-syntax-entity-tag: #0550ae;
+	--color-prettylights-syntax-keyword: #cf222e;
+	--color-prettylights-syntax-string: #0a3069;
+	--color-prettylights-syntax-variable: #953800;
+	--color-prettylights-syntax-brackethighlighter-unmatched: #82071e;
+	--color-prettylights-syntax-brackethighlighter-angle: #59636e;
+	--color-prettylights-syntax-invalid-illegal-text: #f6f8fa;
+	--color-prettylights-syntax-invalid-illegal-bg: #82071e;
+	--color-prettylights-syntax-carriage-return-text: #f6f8fa;
+	--color-prettylights-syntax-carriage-return-bg: #cf222e;
+	--color-prettylights-syntax-string-regexp: #116329;
+	--color-prettylights-syntax-markup-list: #3b2300;
+	--color-prettylights-syntax-markup-heading: #0550ae;
+	--color-prettylights-syntax-markup-italic: #1f2328;
+	--color-prettylights-syntax-markup-bold: #1f2328;
+	--color-prettylights-syntax-markup-deleted-text: #82071e;
+	--color-prettylights-syntax-markup-deleted-bg: #ffebe9;
+	--color-prettylights-syntax-markup-inserted-text: #116329;
+	--color-prettylights-syntax-markup-inserted-bg: #dafbe1;
+	--color-prettylights-syntax-markup-changed-text: #953800;
+	--color-prettylights-syntax-markup-changed-bg: #ffd8b5;
+	--color-prettylights-syntax-markup-ignored-text: #d1d9e0;
+	--color-prettylights-syntax-markup-ignored-bg: #0550ae;
+	--color-prettylights-syntax-meta-diff-range: #8250df;
+	--color-prettylights-syntax-sublimelinter-gutter-mark: #818b98;
+}
+
+@mixin darkTheme {
+	color-scheme: dark;
+
+	--x3-fg-primary-base: #{$x3-color-primary-75};
+	--x3-fg-primary-intense: #{$x3-color-primary-90};
+
+	--x3-fg-secondary-base: #{$x3-color-primary-40};
+	--x3-fg-secondary-intense: #{$x3-color-primary-55};
+
+	--x3-bg-primary-base: #{$x3-color-primary-20};
+	--x3-bg-secondary-base: #{$x3-color-primary-25};
+
+	--x3-fg-gentle: #{$x3-color-neutral-60};
+	--x3-fg-intense: #{$x3-color-neutral-90};
+
+	--x3-bg-gentle: #{$x3-color-neutral-10};
+	--x3-bg-intense: #{$x3-color-neutral-15};
+
+	--x3-fg-base: #{$x3-color-neutral-80};
+	--x3-fg-note: var(--x3-fg-gentle);
+	--x3-fg-commend: #{$x3-color-commend-75};
+	--x3-fg-assert: #{$x3-color-assert-75};
+	--x3-fg-warn: #{$x3-color-warn-75};
+	--x3-fg-deter: #{$x3-color-deter-70};
+
+	--x3-bg-base: #{$x3-color-neutral-5};
+	--x3-bg-note: #{$x3-color-neutral-20};
+	--x3-bg-commend: #{$x3-color-commend-20};
+	--x3-bg-assert: #{$x3-color-assert-20};
+	--x3-bg-warn: #{$x3-color-warn-20};
+	--x3-bg-deter: #{$x3-color-deter-15};
+
+	--x3-border-base: #{$x3-color-neutral-35};
+	--x3-border-note: var(--x3-border-base);
+	--x3-border-commend: #{$x3-color-commend-35};
+	--x3-border-assert: #{$x3-color-assert-35};
+	--x3-border-warn: #{$x3-color-warn-35};
+	--x3-border-deter: #{$x3-color-deter-30};
+
+	--baseline-bg-text-selection: #{color.change($x3-color-warn-50, $alpha: 0.4, $space: oklch)};
+
+	--x3-texture-fx-1: hsla(0, 0%, 0%, 0);
+	--x3-texture-fx-2: hsla(0, 0%, 100%, 0);
+	--x3-texture-fx-3: hsla(0, 0%, 100%, 0.1);
+
+	--color-prettylights-syntax-comment: #9198a1;
+	--color-prettylights-syntax-constant: #79c0ff;
+	--color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+	--color-prettylights-syntax-entity: #d2a8ff;
+	--color-prettylights-syntax-storage-modifier-import: #f0f6fc;
+	--color-prettylights-syntax-entity-tag: #7ee787;
+	--color-prettylights-syntax-keyword: #ff7b72;
+	--color-prettylights-syntax-string: #a5d6ff;
+	--color-prettylights-syntax-variable: #ffa657;
+	--color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+	--color-prettylights-syntax-brackethighlighter-angle: #9198a1;
+	--color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+	--color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+	--color-prettylights-syntax-carriage-return-text: #f0f6fc;
+	--color-prettylights-syntax-carriage-return-bg: #b62324;
+	--color-prettylights-syntax-string-regexp: #7ee787;
+	--color-prettylights-syntax-markup-list: #f2cc60;
+	--color-prettylights-syntax-markup-heading: #1f6feb;
+	--color-prettylights-syntax-markup-italic: #f0f6fc;
+	--color-prettylights-syntax-markup-bold: #f0f6fc;
+	--color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+	--color-prettylights-syntax-markup-deleted-bg: #67060c;
+	--color-prettylights-syntax-markup-inserted-text: #aff5b4;
+	--color-prettylights-syntax-markup-inserted-bg: #033a16;
+	--color-prettylights-syntax-markup-changed-text: #ffdfb6;
+	--color-prettylights-syntax-markup-changed-bg: #5a1e02;
+	--color-prettylights-syntax-markup-ignored-text: #f0f6fc;
+	--color-prettylights-syntax-markup-ignored-bg: #1158c7;
+	--color-prettylights-syntax-meta-diff-range: #d2a8ff;
+	--color-prettylights-syntax-sublimelinter-gutter-mark: #3d444d;
+}
+
+:root:not([data-theme]),
+[data-theme="light"] {
+	@include lightTheme;
+}
+
+@include mixins.whenDark {
+	:root:not([data-theme]) {
+		@include darkTheme;
+	}
+}
+
+[data-theme="dark"] {
+	@include darkTheme;
+}
+
+:root {
+	// layout
+	--x3-span-body: 65rem;
+	--x3-span-post: 46rem;
+	--x3-span-feature: 75rem;
+	--x3-gap-body: 24px;
+	--x3-gap-base: calc(2rem + 2vw);
+	--x3-gap-md: calc(3rem + 3vw);
+	--x3-gap-lg: calc(4rem + 4vw);
+
+	// typography
+	--x3-font-body: var(--fontSansBodyCopy);
+	--x3-font-fancy: var(--fontSansFancyCopy);
+	--x3-font-code: var(--fontMono);
+	--x3-text-regular: 400;
+	--x3-text-semibold: 600;
+
+	// border
+	--x3-radius-xxs: 4px;
+	--x3-radius-xs: 8px;
+	--x3-radius-sm: 12px;
+	--x3-radius-base: 1rem;
+	--x3-radius-max: 1e5px;
+	--x3-border-width-sm: 1px;
+	--x3-border-width-base: 2px;
+
+	// codeblock
+	--x3-hl-line-prompt-color: #{$x3-color-deter-50};
+
+	// baseline
+	--baseline-text-regular: var(--x3-text-regular);
+	--baseline-text-bold: var(--x3-text-semibold);
+	--baseline-font-body: var(--x3-font-body);
+	--baseline-font-code: var(--x3-font-code);
+	--baseline-text-body: var(--x3-text-base);
+	--baseline-fg-body: var(--x3-fg-base);
+	--baseline-fg-accent: var(--x3-fg-primary-base);
+	--baseline-fg-emphasis: var(--x3-fg-intense);
+	--baseline-fg-table-active: var(--x3-fg-intense);
+	--baseline-fg-caption: var(--x3-fg-gentle);
+	--baseline-fg-click-navigation: var(--x3-fg-primary-base);
+	--baseline-fg-decoration-navigation: var(--x3-fg-secondary-base);
+	--baseline-fg-marker: #{$x3-color-neutral-50};
+	--baseline-fg-mark: var(--x3-fg-warn);
+	--baseline-fg-scrollbar: #{$x3-color-primary-50};
+	--baseline-fg-separator: var(--x3-border-base);
+	--baseline-bg-body: var(--x3-bg-base);
+	--baseline-bg-code: var(--x3-bg-note);
+	--baseline-bg-mark: var(--x3-bg-warn);
+	--baseline-bg-form: var(--x3-bg-intense);
+	--baseline-bg-summary: var(--x3-bg-intense);
+	--baseline-bg-table-active: var(--x3-bg-intense);
+	--baseline-border-body: var(--x3-border-base);
+	--baseline-border-form: var(--x3-border-base);
+	--baseline-radius-image: var(--x3-radius-xxs);
+	--baseline-radius-outline: var(--x3-radius-xxs);
+	--baseline-radius-details: var(--x3-radius-xs);
+	--baseline-radius-form: var(--x3-radius-xs);
+	--baseline-radius-max: var(--x3-radius-max);
+	--baseline-decoration-width-link: var(--x3-border-width-base);
+	--baseline-transition-function: cubic-bezier(0.25, 0, 0.4, 1);
+
+	@include mixins.withLinearTransitionTimingFunction {
+		--baseline-transition-function: linear(0, 0.009, 0.035 2.1%, 0.141 4.4%, 0.723 12.9%, 0.938 16.7%, 1.017, 1.077, 1.121, 1.149 24.3%, 1.159, 1.163, 1.161, 1.154 29.9%, 1.129 32.8%, 1.051 39.6%, 1.017 43.1%, 0.991, 0.977 51%, 0.974 53.8%, 0.975 57.1%, 0.997 69.8%, 1.003 76.9%, 1);
+	}
+}
+
+@include mixins.navigableElements {
+	&:is(:focus, :focus-visible, :focus-within, :hover, :active) {
+		--baseline-fg-click-navigation: var(--x3-fg-primary-intense);
+		--baseline-fg-decoration-navigation: var(--x3-fg-secondary-intense);
+	}
+}
+
+@include mixins.formElements {
+	&:is(:focus, :focus-visible, :focus-within, :hover, :active) {
+		--baseline-fg-outline: var(--x3-fg-primary-intense);
+		--baseline-border-form: var(--x3-fg-secondary-intense);
+	}
+}
+
+@include mixins.buttonLikeElements {
+	--baseline-fg-form: var(--x3-fg-primary-base);
+	--baseline-bg-form: var(--x3-bg-primary-base);
+	--baseline-border-form: var(--x3-fg-secondary-base);
+
+	&:is(:focus, :focus-visible, :focus-within, :hover, :active) {
+		--baseline-fg-form: var(--x3-fg-primary-intense);
+		--baseline-bg-form: var(--x3-bg-secondary-base);
+		--baseline-border-form: var(--x3-fg-secondary-intense);
+	}
+}

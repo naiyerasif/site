@@ -20,15 +20,15 @@ const pageInfo = {
 };
 ---
 
-<Layout {pageInfo}>
+<Layout {pageInfo} class="feed">
 	<div slot="hero" class="hero-body">
 		<hgroup>
 			<h1>Hi, I&CloseCurlyQuote;m Naiyer</h1>
-			<p>Book lover, software engineer and a fellow web wanderer</p>
+			<p>Book lover, software engineer, and a fellow web wanderer</p>
 		</hgroup>
 	</div>
 	{posts.map(entry => entry.data.type === PostType.ping.id ? <PingCard {entry} /> : <PostCard {entry} />)}
 	<div slot="sidekick" class="sidekick-items">
-		<a href={paginationPathname("posts", 2)} class="distinct-link">more posts<Icon name="arrow-right"/></a>
+		<a href={paginationPathname("posts", 2)} class="button-link">more posts<Icon name="arrow-right"/></a>
 	</div>
 </Layout>

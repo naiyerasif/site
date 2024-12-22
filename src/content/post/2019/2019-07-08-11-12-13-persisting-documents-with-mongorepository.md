@@ -16,7 +16,7 @@ This post is severely outdated. It was written before MongoDB offered ACID guara
 
 In this post, we'll explore how to persist documents with `MongoRepository`, create custom converters for specific data types and cascade the documents.
 
-:::note{.sm}
+:::note{.setup}
 The examples in this post use
 
 - Java 15
@@ -61,7 +61,7 @@ Let's start by defining a domain for the above story. The relationship between t
 :::figure
 ![Domain](./images/2019-07-08-11-12-13-persisting-documents-with-mongorepository.svg)
 
-Relationship between Account, User and Session collections
+::caption[Relationship between Account, User and Session collections]
 :::
 
 A Many-to-One relationship in MongoDB can be modeled with either [embedded documents](https://docs.mongodb.com/manual/tutorial/model-embedded-one-to-many-relationships-between-documents/) or [document references](https://docs.mongodb.com/manual/tutorial/model-referenced-one-to-many-relationships-between-documents/). You can add the latter behavior through a `@DBRef` annotation.

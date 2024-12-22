@@ -6,6 +6,8 @@ update: 2024-03-03 22:52:53
 type: "ping"
 ---
 
+:::figure{.source.youtube}
 > ::youtube[Fonts hanging out]{#BXbW42uTKYo}
->
-> <cite>&mdash; [Elle Cordova](https://www.youtube.com/watch?v=BXbW42uTKYo), :time[2024-02-23]</cite>
+
+::caption[[Elle Cordova](https://www.youtube.com/watch?v=BXbW42uTKYo), :time[2024-02-23]]
+:::

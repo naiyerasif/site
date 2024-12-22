@@ -53,5 +53,5 @@ In case you're wondering, the `com.local.KeyRemapping.plist` file adds a backgro
 :::figure
 ![Background item for KeyRemapping.plist](./images/2023-05-09-12-09-10-remap-function-keys-to-adjust-keyboard-brightness-on-macos-01.png)
 
-Background item for `com.local.KeyRemapping.plist` (found under System Settings > General > Login Items & Extensions)
+::caption[Background item for `com.local.KeyRemapping.plist` (found under System Settings > General > Login Items & Extensions)]
 :::

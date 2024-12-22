@@ -17,7 +17,7 @@ Imagine developing an Express application with several endpoints and remaining i
 5. [Developing an API with Express and Postgres](/post/2019/08/19/developing-an-api-with-express-and-postgres/)
 :::
 
-:::note{.sm}
+:::note{.setup}
 You can pick the Node.js application created in the post [Using Express with TypeScript](/post/2019/01/12/using-express-with-typescript/) to follow this post.
 :::
 

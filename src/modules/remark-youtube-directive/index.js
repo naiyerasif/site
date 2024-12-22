@@ -140,20 +140,24 @@ function youtubeLiteEmbed(node) {
 		}
 
 		node.children = children;
-
 		data.hName = "figure";
-		data.hProperties = defu({ className: ["directive-youtube"] }, attributes);
+		attributes["class"] = `directive-youtube ${attributes["class"]}`
+		data.hProperties = attributes;
 	}
 }
 
 export default function remarkYoutubeDirective(userOptions = {}) {
 	const { server } = defu(userOptions, defaults);
 	return (tree) => {
-		visit(tree, (node) => node.type === "leafDirective", (node) => {
-			if (server) {
-				youtube(node);
-			} else {
-				youtubeLiteEmbed(node);
+		visit(tree, (node) => {
+			if (node.type === "leafDirective") {
+				if (node.name !== "youtube") return;
+
+				if (server) {
+					youtube(node);
+				} else {
+					youtubeLiteEmbed(node);
+				}
 			}
 		});
 	};

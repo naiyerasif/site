@@ -18,12 +18,12 @@ So, how does this work?
 :::figure
 ![A sequence of JWT-based authentication flow](./images/2020-04-10-21-35-25-securing-spring-boot-apis-with-jwt-authentication-01.svg)
 
-JWT-based authentication flow
+::caption[JWT-based authentication flow]
 :::
 
 In this post, we'll create a Spring Boot API and secure it using Spring Security and JWT-based authentication.
 
-:::note{.sm}
+:::note{.setup}
 The code written for this post uses
 
 - Java 15

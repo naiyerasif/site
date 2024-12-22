@@ -11,7 +11,7 @@ In any modern application, you'll encounter multiple services talking to each ot
 
 If you're looking for an introduction on OAuth2 and OpenID Connect, please review the following video.
 
-::youtube[Explain it to Me Like I’m 5: Oauth2 and OpenID]{#5th6CSQTdpM}
+::youtube[Explain it to Me Like I’m 5: Oauth2 and OpenID]{#5th6CSQTdpM .popout.popout-video}
 
 In this post, we'll discuss how to implement a service-to-service authorization flow using [client-credentials](https://oauth.net/2/grant-types/client-credentials/) grant type and [audience](https://tools.ietf.org/html/rfc7519#section-4.1.3) claim.
 
@@ -25,7 +25,7 @@ The `aud` claim is an optional claim that becomes useful when multiple clients a
 
 We'll discuss multiple ways of validating a token through Spring Security and the scenarios where one approach makes sense over the other.
 
-:::note{.sm}
+:::note{.setup}
 The examples in this post use
 
 - Java 15
@@ -45,7 +45,7 @@ To get started with Okta, create a developer account and login to your dashboard
 :::figure
 ![Okta Applications screen](./images/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-01.png)
 
-Okta's *Applications* screen
+::caption[Okta's *Applications* screen]
 :::
 
 On the *Create New Application* screen, select *Web* and press *Next*.
@@ -53,7 +53,7 @@ On the *Create New Application* screen, select *Web* and press *Next*.
 :::figure
 ![Okta Create New Application platform selection screen](./images/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-02.png)
 
-Creating a New Application
+::caption[Creating a New Application]
 :::
 
 On the next screen, provide a name for the app, scroll down till *Grant type allowed* section, and check *Client Credentials* and *Implicit (Hybrid)* options. Press *Done*.
@@ -61,7 +61,7 @@ On the next screen, provide a name for the app, scroll down till *Grant type all
 :::figure
 ![Okta Create New Application settings screen](./images/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-03.png)
 
-Configuring the authentication flow details
+::caption[Configuring the authentication flow details]
 :::
 
 Open the newly created application. You should find the *Client ID* and *Client Secret* under the *General* tab. Copy these values somewhere; you'd need them later.
@@ -69,7 +69,7 @@ Open the newly created application. You should find the *Client ID* and *Client 
 :::figure
 ![Okta Application details screen](./images/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-04.png)
 
-Generated client credentials for the new application
+::caption[Generated client credentials for the new application]
 :::
 
 Open *Authorization Servers* (available under the *API* tab). Under the *Settings* tab , you'll find the audience configured for the server and the issuer URL. Copy these values somewhere; you'd need them later.
@@ -79,7 +79,7 @@ Switch to the *Scopes* tab, and click on the *Add Scope* button. Add a scope wit
 :::figure
 ![Okta Add Scope screen](./images/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-05.png)
 
-Adding a custom scope
+::caption[Adding a custom scope]
 :::
 
 Similarly, add another scope with the name `write:messages`. This finishes Okta setup.
@@ -391,10 +391,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 }
 ```
 
-:::figure
+:::figure{.popout.popout-image}
 ![A sequence depicting Local token validation flow](./images/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-06.png)
 
-Local token validation flow
+::caption[Local token validation flow]
 :::
 
 Launch the application. Open a terminal and send the following request to the public endpoint using *httpie*.
@@ -646,10 +646,10 @@ Note that we are now calling the `opaqueToken` method on the `oauth2ResourceServ
 
 ### Testing the token introspection
 
-:::figure
+:::figure{.popout.popout-image}
 ![A sequence depicting token introspection flow](./images/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-07.png)
 
-Token introspection flow
+::caption[Token introspection flow]
 :::
 
 Rerun the previous scenarios with *httpie* to see the introspection in action.
@@ -816,10 +816,10 @@ Note that we're now calling the `authenticationManagerResolver` method over the 
 
 ### Testing the hybrid approach
 
-:::figure
+:::figure{.popout.popout-image}
 ![A sequence depicting hybrid token validation flow](./images/2020-11-15-11-38-57-protecting-endpoints-with-spring-security-resource-server-08.png)
 
-Hybrid token validation flow
+::caption[Hybrid token validation flow]
 :::
 
 As earlier, rerun the previous scenarios with *httpie* to see the hybrid approach in action.

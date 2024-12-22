@@ -1,0 +1,85 @@
+@mixin size($inlineSize, $blockSize: $inlineSize) {
+	block-size: #{$blockSize};
+	inline-size: #{$inlineSize};
+	// prevent squeezing if element is flex item
+	flex: none;
+}
+
+@mixin flow {
+	& > * + * {
+		margin-block-start: var(--x3-gap-flow, 2em);
+	}
+}
+
+@mixin icon($dataUri) {
+	content: "";
+	mask-image: #{$dataUri};
+	mask-repeat: no-repeat;
+	mask-position: top center;
+	mask-size: contain;
+	background-color: currentColor;
+}
+
+@mixin texture {
+	background-image: radial-gradient(76% 151% at 52% -52%, var(--x3-texture-fx-2) 0%, var(--x3-texture-fx-1) 100%);
+	box-shadow: var(--x3-texture-fx-1) 0px 0px 0px 0px, var(--x3-texture-fx-1) 0px 0px 0px 0px, var(--x3-texture-fx-3) 0px 2px 4px 0px inset;
+}
+
+// subtle background until the content has been loaded
+@mixin placeholderBackground {
+	background-image: radial-gradient(
+		circle at center,
+		var(--x3-bg-note) 1px,
+		transparent 0
+	);
+	background-size: 10px 10px;
+	background-repeat: round;
+}
+
+// selectors
+@mixin navigableElements {
+	:where(a[href], area, button, input, select, summary, textarea, [role="button"], [onclick], [tabindex]:not([tabindex*="-"])),
+	:where(input[type="file"])::file-selector-button {
+		@content;
+	}
+}
+
+@mixin formElements {
+	:where(button, input:not([type="file"]), select, textarea, [role="button"]),
+	:where(input[type="file"])::file-selector-button {
+		@content;
+	}
+}
+
+@mixin buttonLikeElements {
+	:where(button, input[type="button"], input[type="image"], input[type="submit"], input[type="reset"], select, [role="button"]),
+	:where(input[type="file"])::file-selector-button {
+		@content;
+	}
+}
+
+// queries
+@mixin onTouch {
+	@media (pointer: coarse), (any-hover: none) {
+		@content;
+	}
+}
+
+@mixin whenDark {
+	@media (prefers-color-scheme: dark) {
+		@content;
+	}
+}
+
+@mixin whenAnimated {
+	@media (prefers-reduced-motion: no-preference), (update: fast) {
+		@content;
+	}
+}
+
+// progressive opt in to use linear timing function
+@mixin withLinearTransitionTimingFunction {
+	@supports (transition-timing-function: linear(0, 1)) {
+		@content;
+	}
+}

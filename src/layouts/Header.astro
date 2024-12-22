@@ -8,19 +8,19 @@ const logoAlt = `${new URL(siteInfo.siteBase).host}'s logo'`;
 
 <header class="header" id="header">
 	<div class="navbar-primary">
-		<a href="/" class="brand" style="--brandSize:2.25rem">
+		<a href="/" class="brand" style="--brandSize:2.4rem">
 			<img src="/favicon.svg" alt={logoAlt} style="width:var(--brandSize);height:var(--brandSize)">
 		</a>
 	</div>
 	<nav class="navbar-secondary">
-		<a href="/posts/">Posts</a>
-		<a href="/about/">About</a>
-		<theme-switcher>
-			<button type="button" role="switch" aria-live="polite" aria-checked="true" aria-label="Switch theme" class="icon-btn" data-theme-switch>
+		<a href="/posts/" class="nav-item">Posts</a>
+		<a href="/about/" class="nav-item">About</a>
+		<theme-switcher class="nav-item">
+			<button type="button" role="switch" aria-live="polite" aria-checked="true" aria-label="Switch theme" data-theme-switch>
 				<Icon name="moon" data-theme-state="dark"/>
 				<Icon name="sun" data-theme-state="light"/>
 			</button>
 		</theme-switcher>
-		<CommandBar/>
+		<CommandBar class="nav-item"/>
 	</nav>
 </header>

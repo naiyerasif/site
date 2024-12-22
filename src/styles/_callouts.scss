@@ -1,0 +1,63 @@
+.callout {
+	--calloutFg: var(--x3-fg-callout, var(--x3-fg-note));
+	--calloutBorder: var(--x3-border-callout, var(--x3-border-note));
+	--calloutBorderWidth: var(--x3-border-width-base);
+
+	padding-inline-start: 1ch;
+	border-inline-start: var(--calloutBorderWidth) solid var(--calloutBorder);
+
+	&-indicator {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 0.5ch;
+		color: var(--calloutFg);
+	}
+
+	&-hint {
+		display: flex;
+		margin-block-start: 0.125em;
+		grid-column: 1;
+	}
+
+	&-title {
+		grid-column: 2;
+	}
+
+	&-content {
+		margin-block-start: 1ch;
+
+		&:first-child {
+			color: var(--calloutFg);
+		}
+	}
+
+	&-commend {
+		--x3-fg-callout: var(--x3-fg-commend);
+		--x3-border-callout: var(--x3-border-commend);
+	}
+
+	&-assert {
+		--x3-fg-callout: var(--x3-fg-assert);
+		--x3-border-callout: var(--x3-border-assert);
+	}
+
+	&-warn {
+		--x3-fg-callout: var(--x3-fg-warn);
+		--x3-border-callout: var(--x3-border-warn);
+	}
+
+	&-deter {
+		--x3-fg-callout: var(--x3-fg-deter);
+		--x3-border-callout: var(--x3-border-deter);
+	}
+
+	&.setup {
+		font-size: 0.9em;
+		padding-inline-start: 1em;
+
+		p + :where(ul, ol, dl),
+		li {
+			--x3-gap-flow: 0;
+		}
+	}
+}

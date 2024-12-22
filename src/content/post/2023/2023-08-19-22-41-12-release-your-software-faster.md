@@ -7,9 +7,11 @@ update: 2023-08-19 22:41:12
 type: "note"
 ---
 
-> Release early. Release often. And listen to your ~~customers~~ users.
->
-> <cite>&mdash; [Eric Raymond](http://www.catb.org/~esr/writings/cathedral-bazaar/cathedral-bazaar/ar01s04.html) (paraphrased), :time[2002-08-02T09:02:14]</cite> 
+:::figure
+> Release early. Release often. And listen to your ~~customers~~ <ins>users</ins>.
+
+::caption[[Eric Raymond](http://www.catb.org/~esr/writings/cathedral-bazaar/cathedral-bazaar/ar01s04.html) (paraphrased), :time[2002-08-02T09:02:14]]
+:::
 
 In general, do what's sensible for your users, and applicable to your project.
 

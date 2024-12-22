@@ -19,38 +19,69 @@ Personal website of [@naiyerasif](https://github.com/naiyerasif)
 - To verify a post, run `vale <path>`
 - To sync packages and styles, run `vale sync`
 
-### Markdown extensions
+## Markdown extensions
 
 This blog uses the following custom markdown extensions on top of [GFM](https://github.github.com/gfm/).
 
-#### Figure directive
+### `figure` and `caption` directives
 
-The following directive
+The combination of `figure` and `caption` directives tackles the following usecases.
+
+#### Adding a caption for image
+
+The following markdown
 
 ```md
 :::figure
 ![a short description of the information an image conveys](./image.png)
 
-Captions are brief descriptions related to the image (for example commentary, attributions or quotations).
+::caption[Captions are brief descriptions related to the image (for example commentary, attributions or quotations).]
 :::
 ```
 
 gets converted to
 
 ```html
-<figure class="figure">
-  <img src="./image.png" alt="a short description of the information an image conveys">
+<figure>
+  <p>
+    <img src="./image.png" alt="a short description of the information an image conveys">
+  </p>
   <figcaption>
-    <p>Captions are brief descriptions related to the image (for example commentary, attributions or quotations).</p>
+    Captions are brief descriptions related to the image (for example commentary, attributions or quotations).
   </figcaption>
 </figure>
 ```
 
-Specify a `.frame` class on the `figure` directive (with `:::figure{.frame}`) to add a border and shadow to the image.
+Specify
+- `.popout.popout-image` classes to bleed the image out of wrapper
+- `.frame` class to add border to the image
 
-#### Time directive
+#### Wrapping `blockquote` and citation together
 
-The following directives
+The following markdown
+
+```md
+:::figure
+> A fantastic quote
+
+::caption[With a useful citation]
+:::
+```
+
+gets converted to
+
+```html
+<figure>
+  <blockquote>
+    <p>A fantastic quote</p>
+  </blockquote>
+  <figcaption>With a useful citation</figcaption>
+</figure>
+```
+
+### `time` directive
+
+The following markdown
 
 ```md
 :time[2024-01-14T05:12:48]
@@ -66,11 +97,11 @@ get converted to
 <time datetime="2024-01-14T00:00:00.000Z">Jan 14, 2024</time>
 ```
 
-#### YouTube directive
+### `youtube` directive
 
-YouTube directive has two output variants: `client` (for the website) and `server` (for the RSS feeds)
+`youtube` directive has two output variants: `client` (for the website) and `server` (for the RSS feeds)
 
-The following directive
+The following markdown
 
 ```md
 ::youtube[What is Git LFS?]{#9gaTargV5BY}
@@ -99,6 +130,8 @@ It gets converted to the following HTML for the RSS feeds.
   <figcaption>What is Git LFS?</figcaption>
 </figure>
 ```
+
+Specify `.popout.popout-video` classes to bleed the video out of wrapper.
 
 ## Audits
 

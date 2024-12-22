@@ -9,10 +9,10 @@ type: "guide"
 
 When I revamped this site last year, I also opted to use the latest version of [Inter](https://rsms.me/inter/) — v4. This version came with some lovely updates, such as a display variant with support for optical sizing, humanist style italics, round quotes and commas, and so on. Sadly, it also bumped the file size of the font (by 150% in case of the variable font). Large font files can degrade the performance of a web page so this was a noticeable regression.
 
-:::figure{.frame}
+:::figure{.popout.popout-image.frame}
 ![Inter font properties and layout features](./images/2024-06-27-14-37-38-how-i-subset-fonts-for-my-site-01.png)
 
-Out of box, Inter 4.0 variable font supports 2926 glyphs, 9 weights, and 44 layout features.
+::caption[Out of box, Inter 4.0 variable font supports 2926 glyphs, 9 weights, and 44 layout features.]
 :::
 
 Inter is so large because it supports many languages and [OpenType features](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_fonts/OpenType_fonts_guide). _This is fantastic for a workhorse font._ Supporting different languages and layout features makes Inter a truly versatile font suited for use in so many places. However, this site is mostly in English, with occasional symbols and Greek characters thrown in. I can just include the support for those characters to get the job done. And that is where, subsetting comes into picture.
@@ -134,10 +134,10 @@ Subsetting Inter.var.woff2... ━━━━━━━━━━━━━━━━�
 
 After successful run, I got 12 font files in the `output` directory (three for each input font file). A Latin subset now stood at 70 kB compared to 337 kB earlier.
 
-:::figure{.frame}
+:::figure{.popout.popout-image.frame}
 ![Inter font properties and layout features of the Latin subset](./images/2024-06-27-14-37-38-how-i-subset-fonts-for-my-site-02.png)
 
-Latin subset of Inter 4.0 variable font supports 444 glyphs, 9 weights, and 15 layout features.
+::caption[Latin subset of Inter 4.0 variable font supports 444 glyphs, 9 weights, and 15 layout features.]
 :::
 
 Note that this approach works nicely for both variable and static fonts.

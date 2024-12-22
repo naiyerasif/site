@@ -15,7 +15,7 @@ SNS (Simple Notification Service) is often used to tackle a [pubsub](https://en.
 3. *Using LocalStack for AWS Lambda with SNS trigger*
 :::
 
-:::note{.sm}
+:::note{.setup}
 The examples in this post use
 
 - Java 21

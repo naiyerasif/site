@@ -11,7 +11,7 @@ type: "guide"
 
 In this post, we'll learn how to create a queue with RabbitMQ and interact with it using Spring Boot.
 
-:::note{.sm}
+:::note{.setup}
 The examples in this post use
 
 - Java 13

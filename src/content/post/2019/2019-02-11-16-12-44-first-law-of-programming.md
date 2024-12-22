@@ -6,6 +6,8 @@ update: 2019-02-11 16:12:44
 type: "ping"
 ---
 
+:::figure
 > Lowering quality lengthens development time.
->
-> <cite>&mdash; [First Law of Programming](https://wiki.c2.com/?FirstLawOfProgramming), :time[2014-12-08]</cite>
+
+::caption[<cite>[First Law of Programming](https://wiki.c2.com/?FirstLawOfProgramming)</cite>, :time[2014-12-08]]
+:::

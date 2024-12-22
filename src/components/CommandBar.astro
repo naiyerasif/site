@@ -8,17 +8,17 @@ const { hrefText } = Astro.props;
 	{
 		hrefText ?
 		<a role="switch" aria-live="polite" aria-checked="true" data-cmdb-switch id="404-command-bar" href="#404-command-bar">{hrefText}</a> :
-		<button type="button" role="switch" aria-live="polite" aria-checked="true" aria-label="Launch command bar" class="icon-btn" data-cmdb-switch>
+		<button type="button" role="switch" aria-live="polite" aria-checked="true" aria-label="Launch command bar" class="nav-item" data-cmdb-switch>
 			<Icon name="magnifying-glass"/>
 		</button>
 	}
 	<dialog aria-live="polite" aria-label="Command bar" id="cmdb">
 		<header>
 			<input placeholder="Search..." autofocus>
-			<button type="reset" aria-live="polite" aria-label="Reset search" class="icon-btn" data-cmdb-reset>
+			<button type="reset" aria-live="polite" aria-label="Reset search" data-cmdb-reset>
 				<Icon name="reset"/>
 			</button>
-			<button type="button" aria-live="polite" aria-label="Close command bar" class="icon-btn" data-cmdb-esc>
+			<button type="button" aria-live="polite" aria-label="Close command bar" data-cmdb-esc>
 				<Icon name="x"/>
 			</button>
 		</header>

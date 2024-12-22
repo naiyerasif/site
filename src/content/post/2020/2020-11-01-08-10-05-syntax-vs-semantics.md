@@ -6,6 +6,8 @@ update: 2020-11-01 08:10:05
 type: "ping"
 ---
 
+:::figure{.source.twitter}
 > The novice looks at the syntax, the enlightened sees the semantics.
->
-> <cite>&mdash; [Venkat Subramaniam](https://twitter.com/venkat_s/status/1322668777482276865), :time[2020-10-31T22:36:25]</cite>
+
+::caption[[Venkat Subramaniam](https://twitter.com/venkat_s/status/1322668777482276865), :time[2020-10-31T22:36:25]]
+:::

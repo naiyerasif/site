@@ -13,7 +13,7 @@ In situations where an API is being consumed by multiple systems, you might be r
 Request Content Negotiation is a server-driven content negotiation where a client sends several HTTP headers along with the URL. These headers describe the preferences of the client. The server takes them as hints and generates the appropriate response to send to the client. If the server can't prepare a response per the client preferences, it may respond with a `406 Not Acceptable` or `413 Unsupported Media Type` status.
 :::
 
-:::note{.sm}
+:::note{.setup}
 The examples in this post use
 
 - Java 18

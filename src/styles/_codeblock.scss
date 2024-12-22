@@ -1,0 +1,159 @@
+@use "mixins";
+
+.hl {
+	--hlLinePromptSize: 1em;
+	--hlLineBorderColor: transparent;
+	--hlLineBgColor: transparent;
+	--hlLineNumberColor: var(--color-prettylights-syntax-sublimelinter-gutter-mark);
+	--hlBorderRadius: var(--x3-radius-xs);
+
+	&-header {
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		gap: 0.5rem;
+
+		color: var(--baseline-fg-caption);
+		background-color: var(--x3-bg-gentle);
+		border-start-start-radius: var(--hlBorderRadius);
+		border-start-end-radius: var(--hlBorderRadius);
+		border: 1px solid var(--x3-border-note);
+		border-block-end: none;
+		padding: 0.5rem;
+
+		& > * {
+			font-size: 0.75rem;
+		}
+	}
+
+	&-language {
+		grid-column: 1;
+
+		span {
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			min-inline-size: 5ch;
+			text-align: center;
+			padding: 0.5ch 0.8ch;
+			background-color: var(--x3-bg-warn);
+			color: var(--x3-fg-warn);
+			border: 1px solid var(--x3-border-warn);
+			border-radius: var(--x3-radius-max);
+		}
+	}
+
+	&-actions {
+		grid-column: 3;
+		text-align: end;
+	}
+
+	&-title {
+		grid-column: 2;
+	}
+
+	clipboard-copy {
+		flex: none;
+		padding: 0.4em 0.6em;
+		border-radius: var(--x3-radius-max);
+	}
+	
+	pre {
+		border: 1px solid var(--x3-border-note);
+		border-radius: 0;
+		border-end-start-radius: var(--hlBorderRadius);
+		border-end-end-radius: var(--hlBorderRadius);
+		overflow-x: auto;
+
+		&:focus-within {
+			outline-color: var(--x3-border-note);
+			outline-style: solid;
+			outline-width: 0.2em;
+			outline-offset: 0.125em;
+		}
+
+		& > code {
+			display: grid;
+			padding: 1ch 0;
+			// restore automatic cursor and touch interactions
+			cursor: auto;
+			touch-action: auto;
+		}
+	}
+
+	.line {
+		--hlLinePaddingLeft: calc(var(--hl-line-marker-gutter-factor, 0) * 1.5ch + 1ch);
+		--hlLineMarkerOffset: calc((var(--hlLinePaddingLeft) * -1) + 0.25ch);
+		border-inline-start: var(--x3-border-width-base) solid var(--hlLineBorderColor);
+		padding-inline-start: var(--hlLinePaddingLeft);
+		padding-inline-end: 1ch;
+		background-color: var(--hlLineBgColor);
+
+		&[data-highlighted] {
+			--hlLineNumberColor: var(--color-prettylights-syntax-comment);
+			--hlLineBgColor: var(--x3-bg-note);
+			--hlLineBorderColor: var(--x3-fg-note);
+		}
+
+		&[data-line-added] {
+			--hlLineNumberColor: var(--x3-fg-commend);
+			--hlLineBgColor: var(--x3-bg-commend);
+			position: relative;
+
+			&::before {
+				position: absolute;
+				top: 0.5ch;
+				display: inline-block;
+				margin-inline-start: var(--hlLineMarkerOffset);
+				@include mixins.icon(url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' fill-rule='evenodd' clip-rule='evenodd' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12h12m-6-6v12'/%3E%3C/svg%3E"));
+				user-select: none;
+				text-decoration: none;
+				background-color: var(--hlLineNumberColor);
+				@include mixins.size(var(--hlLinePromptSize));
+			}
+		}
+
+		&[data-line-removed] {
+			--hlLineNumberColor: var(--x3-fg-deter);
+			--hlLineBgColor: var(--x3-bg-deter);
+			position: relative;
+
+			&::before {
+				position: absolute;
+				top: 0.5ch;
+				display: inline-block;
+				margin-inline-start: var(--hlLineMarkerOffset);
+				@include mixins.icon(url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' fill-rule='evenodd' clip-rule='evenodd' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12h12'/%3E%3C/svg%3E"));
+				user-select: none;
+				text-decoration: none;
+				background-color: var(--hlLineNumberColor);
+				@include mixins.size(var(--hlLinePromptSize));
+			}
+		}
+
+		&:is(:focus:not(:focus-visible), :hover) {
+			--hlLineNumberColor: var(--color-prettylights-syntax-comment);
+			--hlLineBgColor: var(--x3-bg-assert);
+		}
+
+		&-number {
+			--hlLineNumberWidth: calc(var(--hl-line-number-gutter-factor) * 1ch);
+			display: inline-block;
+			user-select: none;
+			margin-inline-end: 1ch;
+			text-align: right;
+			color: var(--hlLineNumberColor);
+			inline-size: var(--hlLineNumberWidth);
+		}
+
+		&-prompt::before {
+			display: inline-block;
+			margin-inline-end: 1ch;
+			vertical-align: middle;
+			@include mixins.icon(url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 20 7.521-10.957M5 2h1.764a2 2 0 0 1 1.789 1.106l7.894 15.788A2 2 0 0 0 18.236 20H20'/%3E%3C/svg%3E"));
+			user-select: none;
+			text-decoration: none;
+			color: var(--x3-hl-line-prompt-color);
+			background-color: currentColor;
+			@include mixins.size(var(--hlLinePromptSize));
+		}
+	}
+}

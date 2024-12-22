@@ -41,7 +41,7 @@ const pageInfo = {
 };
 ---
 
-<Layout {pageInfo}>
+<Layout {pageInfo} class="popout">
 	<Fragment slot="hero">
 		<nav class="hero-header breadcrumb">
 			<a class="breadcrumb-item" href="/">Home</a>
@@ -57,7 +57,7 @@ const pageInfo = {
 			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span class="update"><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}{data.type !== PostType.ping.id && showReadingTime && <span><Icon name="clock"/> Takes about {`${timeToRead} min to read`}</span>}<span class={`chip chip-${status.tone.id}`}>{status.label}</span>
 		</div>
 	</Fragment>
-	<article class="content">
+	<article class="post">
 		{showToc && <nav class="toc">
 			<div class="toc-header">Table of Contents</div>
 			<Toc headings={toc(headings, siteInfo.maxTocDepth)}/>
