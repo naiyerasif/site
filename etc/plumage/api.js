@@ -2,7 +2,7 @@ import { TonalPalette, argbFromHex, hexFromArgb, themeFromSourceColor } from "@m
 
 // APIs to generate color palettes based on Material 3
 
-const selectedTones = [5, 7, 10, 15, 20, 25, 30, 35, 40, 50, 60, 70, 80, 90, 95, 98, 99];
+const selectedTones = [2, 5, 7, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 93, 95, 98];
 
 function paletteFromArgb(argb) {
 	const tones = TonalPalette.fromInt(argb);
