@@ -330,21 +330,25 @@ figure {
 	}
 }
 
-.greeting span[data-language] {
-	position: relative;
+random-message {
+	font-size: var(--x3-text-tagline);
 
-	&::after {
-		position: absolute;
-		content: attr(data-language);
-		bottom: 3ch;
-		right: 0;
-		font-size: 0.7em;
-		text-transform: lowercase;
-		color: var(--x3-fg-warn);
-		background-color: var(--x3-bg-warn);
-		border-radius: var(--x3-radius-max);
-		padding: 0.4ch 0.8ch;
-		line-height: 1;
+	span[data-language] {
+		position: relative;
+	
+		&::after {
+			position: absolute;
+			content: attr(data-language);
+			bottom: 3ch;
+			right: 0;
+			font-size: 0.65em;
+			text-transform: lowercase;
+			color: var(--x3-fg-warn);
+			background-color: var(--x3-bg-warn);
+			border-radius: var(--x3-radius-max);
+			padding: 0.4ch 0.8ch;
+			line-height: 1;
+		}
 	}
 }
 

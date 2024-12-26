@@ -8,8 +8,6 @@ const profile = await getEntry("profile", "about");
 const { data } = profile;
 const { Content } = await render(profile);
 
-const name = data.title.split(" ")[0];
-
 const pageInfo = {
 	title: "About",
 	description: data.description,
@@ -27,7 +25,7 @@ const pageInfo = {
 		<div class="hero-body">
 			<Image src={data.avatar} alt={data.title} class="avatar"/>
 			<hgroup>
-				<h1>About {name}</h1>
+				<h1>About me</h1>
 			</hgroup>
 		</div>
 	</Fragment>

@@ -125,6 +125,7 @@ body > .header {
 	&-footer {
 		--x3-size-icon: 1.25em;
 		--x3-fg-icon: var(--baseline-fg-accent);
+		--x3-gap-flow: 2rem;
 
 		.icon {
 			margin-inline-end: 0.5ch;
