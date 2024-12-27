@@ -1,10 +1,25 @@
+@use "mixins";
+
 .callout {
 	--calloutFg: var(--x3-fg-callout, var(--x3-fg-note));
+	--calloutBg: var(--x3-bg-callout, var(--x3-bg-note));
 	--calloutBorder: var(--x3-border-callout, var(--x3-border-note));
 	--calloutBorderWidth: var(--x3-border-width-base);
 
+	position: relative;
 	padding-inline-start: 1ch;
 	border-inline-start: var(--calloutBorderWidth) solid var(--calloutBorder);
+
+	&::before {
+		content: "";
+		position: absolute;
+		@include mixins.size(100%);
+		background-color: var(--calloutBg);
+		border-radius: var(--x3-radius-max);
+		filter: blur(5rem);
+		z-index: -1;
+		opacity: var(--x3-bg-callout-opacity);
+	}
 
 	&-indicator {
 		display: grid;
@@ -33,21 +48,25 @@
 
 	&-commend {
 		--x3-fg-callout: var(--x3-fg-commend);
+		--x3-bg-callout: var(--x3-bg-commend);
 		--x3-border-callout: var(--x3-border-commend);
 	}
 
 	&-assert {
 		--x3-fg-callout: var(--x3-fg-assert);
+		--x3-bg-callout: var(--x3-bg-assert);
 		--x3-border-callout: var(--x3-border-assert);
 	}
 
 	&-warn {
 		--x3-fg-callout: var(--x3-fg-warn);
+		--x3-bg-callout: var(--x3-bg-warn);
 		--x3-border-callout: var(--x3-border-warn);
 	}
 
 	&-deter {
 		--x3-fg-callout: var(--x3-fg-deter);
+		--x3-bg-callout: var(--x3-bg-deter);
 		--x3-border-callout: var(--x3-border-deter);
 	}
 
