@@ -20,5 +20,8 @@ node_modules/
 # unlighthouse
 .unlighthouse
 
+# vscode
+.vscode
+
 # local workspace
 .workspace
