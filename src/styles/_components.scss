@@ -241,7 +241,7 @@ figure {
 	// 56rem = var(--x3-span-post) + 12rem (as offset)
 	@media (min-width: 58rem) {
 		display: grid;
-		grid-template-columns: var(--x3-span-post) 1fr;
+		grid-template-columns: var(--x3-span-post) minmax(0, 1fr);
 		gap: 2rem;
 	}
 
