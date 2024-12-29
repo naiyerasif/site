@@ -3,34 +3,31 @@
 .callout {
 	--calloutFg: var(--x3-fg-callout, var(--x3-fg-note));
 	--calloutBg: var(--x3-bg-callout, var(--x3-bg-note));
-	--calloutBorder: var(--x3-border-callout, var(--x3-border-note));
-	--calloutBorderWidth: var(--x3-border-width-base);
-
-	position: relative;
-	padding-inline-start: 1ch;
-	border-inline-start: var(--calloutBorderWidth) solid var(--calloutBorder);
-
-	&::before {
-		content: "";
-		position: absolute;
-		@include mixins.size(100%);
-		background-color: var(--calloutBg);
-		border-radius: var(--x3-radius-max);
-		filter: blur(5rem);
-		z-index: -1;
-		opacity: var(--x3-bg-callout-opacity);
-	}
+	--calloutBorderWidth: var(--x3-border-width-sm);
+	--calloutBorder: var(--calloutBorderWidth) solid var(--x3-border-callout, var(--x3-border-note));
+	--calloutBorderRadius: var(--x3-radius-xs);
+	
+	border: var(--calloutBorder);
+	border-radius: var(--calloutBorderRadius);
 
 	&-indicator {
+		--calloutIndicatorPadding: calc(var(--calloutBorderRadius) - var(--calloutBorderWidth));
 		display: grid;
 		grid-template-columns: auto minmax(0, 1fr);
 		gap: 0.5ch;
 		color: var(--calloutFg);
+		background-color: var(--calloutBg);
+		border-block-end: var(--calloutBorder);
+		border-start-start-radius: var(--calloutIndicatorPadding);
+		border-start-end-radius: var(--calloutIndicatorPadding);
+		padding: 0.25rem 0.5rem 0.35rem;
+		font-size: 0.9em;
+		--x3-size-icon: 1.9775ch;
 	}
 
 	&-hint {
 		display: flex;
-		margin-block-start: 0.125em;
+		margin-block-start: 0.3ch;
 		grid-column: 1;
 	}
 
@@ -38,12 +35,26 @@
 		grid-column: 2;
 	}
 
-	.callout-indicator + .callout-content {
-		margin-block-start: 1ch;
-	}
+	&-content {
+		position: relative;
+		padding: 1ch;
 
-	&-content:first-child {
-		color: var(--calloutFg);
+		&::before {
+			content: "";
+			position: absolute;
+			@include mixins.size(100%);
+			background-color: var(--calloutBg);
+			border-radius: var(--x3-radius-max);
+			filter: blur(5rem);
+			z-index: -1;
+			top: 0;
+			left: 0;
+			opacity: var(--x3-bg-callout-opacity);
+		}
+
+		&:first-child {
+			color: var(--calloutFg);
+		}
 	}
 
 	&-commend {
@@ -70,10 +81,9 @@
 		--x3-border-callout: var(--x3-border-deter);
 	}
 
-	&.setup {
+	&.setup &-content {
 		font-size: 0.9em;
-		padding-inline-start: 1em;
-
+		
 		p + :where(ul, ol, dl),
 		li {
 			--x3-gap-flow: 0;

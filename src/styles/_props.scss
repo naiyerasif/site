@@ -100,7 +100,7 @@
 	--x3-bg-intense: #{$x3-color-neutral-15};
 
 	--x3-fg-base: #{$x3-color-neutral-80};
-	--x3-fg-note: var(--x3-fg-gentle);
+	--x3-fg-note: var(--x3-fg-base);
 	--x3-fg-commend: #{$x3-color-commend-75};
 	--x3-fg-assert: #{$x3-color-assert-75};
 	--x3-fg-warn: #{$x3-color-warn-75};
