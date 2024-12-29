@@ -38,12 +38,11 @@ const mastodonId = siteInfo.author.presence.mastodon.id;
 {source && <link rel="source" href={source}>}
 {previous && <link rel="prev" aria-label="Previous page" href={previous}>}
 {next && <link rel="next" aria-label="Next page" href={next}>}
-<meta name="description" content={description}>
+<meta property="og:description" name="description" content={description}>
 <meta property="og:type" content={type}>
 <meta property="og:site_name" content={siteTitle}>
 <meta property="og:locale" content="en">
 <meta property="og:title" content={title}>
-<meta property="og:description" content={description}>
 <meta property="og:url" content={url}>
 <meta property="og:image" content={image}>
 <meta property="og:image:alt" content={description}>
