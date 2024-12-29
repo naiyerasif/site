@@ -38,12 +38,12 @@
 		grid-column: 2;
 	}
 
-	&-content {
+	.callout-indicator + .callout-content {
 		margin-block-start: 1ch;
+	}
 
-		&:first-child {
-			color: var(--calloutFg);
-		}
+	&-content:first-child {
+		color: var(--calloutFg);
 	}
 
 	&-commend {
