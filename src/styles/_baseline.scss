@@ -23,10 +23,6 @@
 
 ::marker {
 	color: var(--baseline-fg-marker);
-	// lines up the numeric markers nicely
-	// subject to the availablity of `tnum` opentype feature
-	// this has to be enabled by default or manually with `font-feature-settings: "tnum"`
-	font-variant-numeric: tabular-nums;
 }
 
 :focus-visible {
@@ -293,6 +289,15 @@
 
 :where(ol, ul) {
 	list-style-position: outside;
+}
+
+:where(ol) {
+	::marker {
+		// lines up the numeric markers nicely
+		// subject to the availablity of `tnum` opentype feature
+		// this has to be enabled by default or manually with `font-feature-settings: "tnum"`
+		font-variant-numeric: tabular-nums;
+	}
 }
 
 :where(dt) {
