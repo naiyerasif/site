@@ -8,12 +8,10 @@
 	@include mixins.size(1em);
 }
 
-:where(ol) {
-	padding: 0 0 0 2em;
-
-	::marker {
-		font-family: var(--baseline-font-code);
-	}
+:where(ol, ul) {
+	// this works for single character list markers
+	// anything longer will require more padding
+	padding: 0 0 0 1.25em;
 }
 
 // table with rounded radius
@@ -317,12 +315,7 @@ figure {
 	}
 
 	&-items {
-		::marker {
-			font-family: var(--x3-font-body);
-		}
-
 		list-style-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%237e9688' opacity='0.7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1v6a2 2 0 0 0 2 2h8'/%3E%3C/svg%3E");
-		padding-inline-start: 1em;
 
 		li {
 			--x3-gap-flow: 0;
