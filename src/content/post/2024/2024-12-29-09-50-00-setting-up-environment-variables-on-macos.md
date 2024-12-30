@@ -29,7 +29,7 @@ Now, let's say you want to add `/opt/homebrew/bin` and `/Library/Java/JavaVirtua
 
 2. Add the following lines to the file, with each path on a separate line:
    
-   ```plaintext title="/etc/paths.d/additional-paths"
+   ```txt title="/etc/paths.d/additional-paths"
    /opt/homebrew/bin
    /Library/Java/JavaVirtualMachines/zulu-23.jdk/Contents/Home/bin
    ```
