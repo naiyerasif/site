@@ -83,3 +83,9 @@
 		@content;
 	}
 }
+
+@mixin withVariableFonts {
+	@supports (font-variation-settings: normal) {
+		@content;
+	}
+}
