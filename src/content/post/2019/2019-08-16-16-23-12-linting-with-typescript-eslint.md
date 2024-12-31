@@ -11,7 +11,7 @@ type: "guide"
 
 In this post, we'll set up linting with TypeScript ESLint for a TypeScript project.
 
-:::assert{title=Series}
+:::assert{title="Series"}
 1. [Using Express with TypeScript](/post/2019/01/12/using-express-with-typescript/)
 2. [Request logging with morgan](/post/2019/08/13/request-logging-with-morgan/)
 3. [Logging on Node.js with log4js-node](/post/2019/08/14/logging-on-nodejs-with-log4js-node/)

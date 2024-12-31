@@ -9,7 +9,7 @@ type: "guide"
 
 TypeScript [has been gaining](https://2019.stateofjs.com/javascript-flavors/typescript/) popularity and adoption for a while as a strongly-typed flavor of JavaScript. And Express [has been a fan-favorite](https://2019.stateofjs.com/back-end/express/) for writing JavaScript backends. So how do we use them together? Let's explore.
 
-:::assert{title=Series}
+:::assert{title="Series"}
 1. *Using Express with TypeScript*
 2. [Request logging with morgan](/post/2019/08/13/request-logging-with-morgan/)
 3. [Logging on Node.js with log4js-node](/post/2019/08/14/logging-on-nodejs-with-log4js-node/)

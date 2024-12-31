@@ -20,9 +20,6 @@ importers:
       '@microflash/rehype-starry-night':
         specifier: ^7.2.0
         version: 7.2.0
-      '@microflash/remark-callout-directives':
-        specifier: ^4.3.2
-        version: 4.3.2
       '@sindresorhus/slugify':
         specifier: ^2.2.1
         version: 2.2.1
@@ -47,6 +44,9 @@ importers:
       html-entities:
         specifier: ^2.5.2
         version: 2.5.2
+      mdast-util-from-markdown:
+        specifier: ^2.0.2
+        version: 2.0.2
       mdast-util-to-string:
         specifier: ^4.0.0
         version: 4.0.0
@@ -1072,9 +1072,6 @@ packages:
   '@microflash/rehype-starry-night@7.2.0':
     resolution: {integrity: sha512-meSco2HQ4qqSvCYGdxm/eBjog8VDpR4H+H+e0d3SaVJLgoDb5fZWsejOZHEy2MCJXWvnEatpI8Bf4Df8Xu78Lw==}
 
-  '@microflash/remark-callout-directives@4.3.2':
-    resolution: {integrity: sha512-RWb9gS5bPMLN7CkBpPrbh6jP4yEzHleF0QHTxE748nh53b4I/YyBchORLchX8OxNdUmXbNa2bazvfv80tgbF7Q==}
-
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -1967,15 +1964,6 @@ packages:
       supports-color:
         optional: true
 
-  debug@4.3.4:
-    resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
-    engines: {node: '>=6.0'}
-    peerDependencies:
-      supports-color: '*'
-    peerDependenciesMeta:
-      supports-color:
-        optional: true
-
   debug@4.3.7:
     resolution: {integrity: sha512-Er2nc/H7RrMXZBFCEim6TCmMk02Z8vLC2Rbi1KEBggpo0fS6l0S1nnapwmIi3yW/+GOJap1Krg4w0Hg80oCqgQ==}
     engines: {node: '>=6.0'}
@@ -2748,9 +2736,6 @@ packages:
   mdast-util-find-and-replace@3.0.1:
     resolution: {integrity: sha512-SG21kZHGC3XRTSUhtofZkBzZTJNM5ecCi0SK2IMKmSXR8vO3peL+kb1O0z7Zl83jKtutG4k5Wv/W7V3/YHvzPA==}
 
-  mdast-util-from-markdown@2.0.0:
-    resolution: {integrity: sha512-n7MTOr/z+8NAX/wmhhDji8O3bRvPTV/U0oTCaZJkjhPSKTPhS3xufVhKGF8s1pJ7Ox4QgoIU7KHseh09S+9rTA==}
-
   mdast-util-from-markdown@2.0.2:
     resolution: {integrity: sha512-uZhTV/8NBuw0WHkPTrCqDOl0zVe1BIng5ZtHoDk49ME1qqcjYmmLmOf0gELgcRMxN4w2iuIeVso5/6QymSrgmA==}
 
@@ -2933,9 +2918,6 @@ packages:
 
   ms@2.0.0:
     resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==}
-
-  ms@2.1.2:
-    resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
 
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
@@ -5006,15 +4988,6 @@ snapshots:
       hastscript: 9.0.0
       unist-util-visit: 5.0.0
 
-  '@microflash/remark-callout-directives@4.3.2':
-    dependencies:
-      defu: 6.1.4
-      hastscript: 9.0.0
-      mdast-util-from-markdown: 2.0.2
-      unist-util-visit: 5.0.0
-    transitivePeerDependencies:
-      - supports-color
-
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
       '@nodelib/fs.stat': 2.0.5
@@ -6162,10 +6135,6 @@ snapshots:
     dependencies:
       ms: 2.0.0
 
-  debug@4.3.4:
-    dependencies:
-      ms: 2.1.2
-
   debug@4.3.7:
     dependencies:
       ms: 2.1.3
@@ -7120,7 +7089,7 @@ snapshots:
       '@types/mdast': 4.0.3
       '@types/unist': 3.0.2
       devlop: 1.1.0
-      mdast-util-from-markdown: 2.0.0
+      mdast-util-from-markdown: 2.0.2
       mdast-util-to-markdown: 2.1.0
       parse-entities: 4.0.1
       stringify-entities: 4.0.3
@@ -7134,23 +7103,6 @@ snapshots:
       escape-string-regexp: 5.0.0
       unist-util-is: 6.0.0
       unist-util-visit-parents: 6.0.1
-
-  mdast-util-from-markdown@2.0.0:
-    dependencies:
-      '@types/mdast': 4.0.3
-      '@types/unist': 3.0.2
-      decode-named-character-reference: 1.0.2
-      devlop: 1.1.0
-      mdast-util-to-string: 4.0.0
-      micromark: 4.0.0
-      micromark-util-decode-numeric-character-reference: 2.0.1
-      micromark-util-decode-string: 2.0.0
-      micromark-util-normalize-identifier: 2.0.0
-      micromark-util-symbol: 2.0.0
-      micromark-util-types: 2.0.0
-      unist-util-stringify-position: 4.0.0
-    transitivePeerDependencies:
-      - supports-color
 
   mdast-util-from-markdown@2.0.2:
     dependencies:
@@ -7181,7 +7133,7 @@ snapshots:
     dependencies:
       '@types/mdast': 4.0.3
       devlop: 1.1.0
-      mdast-util-from-markdown: 2.0.0
+      mdast-util-from-markdown: 2.0.2
       mdast-util-to-markdown: 2.1.0
       micromark-util-normalize-identifier: 2.0.0
     transitivePeerDependencies:
@@ -7190,7 +7142,7 @@ snapshots:
   mdast-util-gfm-strikethrough@2.0.0:
     dependencies:
       '@types/mdast': 4.0.3
-      mdast-util-from-markdown: 2.0.0
+      mdast-util-from-markdown: 2.0.2
       mdast-util-to-markdown: 2.1.0
     transitivePeerDependencies:
       - supports-color
@@ -7200,7 +7152,7 @@ snapshots:
       '@types/mdast': 4.0.3
       devlop: 1.1.0
       markdown-table: 3.0.3
-      mdast-util-from-markdown: 2.0.0
+      mdast-util-from-markdown: 2.0.2
       mdast-util-to-markdown: 2.1.0
     transitivePeerDependencies:
       - supports-color
@@ -7209,14 +7161,14 @@ snapshots:
     dependencies:
       '@types/mdast': 4.0.3
       devlop: 1.1.0
-      mdast-util-from-markdown: 2.0.0
+      mdast-util-from-markdown: 2.0.2
       mdast-util-to-markdown: 2.1.0
     transitivePeerDependencies:
       - supports-color
 
   mdast-util-gfm@3.0.0:
     dependencies:
-      mdast-util-from-markdown: 2.0.0
+      mdast-util-from-markdown: 2.0.2
       mdast-util-gfm-autolink-literal: 2.0.0
       mdast-util-gfm-footnote: 2.0.0
       mdast-util-gfm-strikethrough: 2.0.0
@@ -7446,7 +7398,7 @@ snapshots:
   micromark@4.0.0:
     dependencies:
       '@types/debug': 4.1.12
-      debug: 4.3.4
+      debug: 4.4.0
       decode-named-character-reference: 1.0.2
       devlop: 1.1.0
       micromark-core-commonmark: 2.0.0
@@ -7502,8 +7454,6 @@ snapshots:
   mrmime@2.0.0: {}
 
   ms@2.0.0: {}
-
-  ms@2.1.2: {}
 
   ms@2.1.3: {}
 
@@ -8158,7 +8108,7 @@ snapshots:
   remark-parse@11.0.0:
     dependencies:
       '@types/mdast': 4.0.3
-      mdast-util-from-markdown: 2.0.0
+      mdast-util-from-markdown: 2.0.2
       micromark-util-types: 2.0.0
       unified: 11.0.5
     transitivePeerDependencies:

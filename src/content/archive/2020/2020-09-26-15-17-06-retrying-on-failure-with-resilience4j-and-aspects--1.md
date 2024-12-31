@@ -16,7 +16,7 @@ Failure is an inevitability in a complex distributed system. A service may time 
 
 In particular, we may want to prevent failure in our system in the first place. That's where techniques like [rate-limiting](https://www.cloudflare.com/learning/bots/what-is-rate-limiting/) come into the picture which prevent an undesirable load on a system. However, in case a failure occurs, we may want to prevent it to cascade any further by using approaches such as [circuit-breaking](https://docs.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker) that restrain failure from spreading beyond a certain part of our system. Even better, if we know that a failure lasts only for a short time (a *transient failure*), we may attempt to recover from it by using recovery strategies. One such strategy is the **retry pattern** where we retry a call to a service for a given number of attempts using a carefully selected **backoff strategy**. 
 
-:::note{title='Backoff Strategy'}
+:::note{title="Backoff Strategy"}
 A backoff strategy is an algorithm that decides
 - how to attempt a retry
 - what should be the duration between the retries, and

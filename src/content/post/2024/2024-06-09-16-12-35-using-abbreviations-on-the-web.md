@@ -31,7 +31,7 @@ You can fix this behavior with the following CSS rule.
 
 The `pointer: coarse` media query checks if you are using a device with an input mechanism of limited accuracy (such as fingers on a touchscreen). The `any-hover: none` media query checks if none of the input mechanisms on your device support hover (such as a Surface tablet not attached with a keyboard). In such cases, you would see the `title` appended after the `<abbr>` element.
 
-:::commend{.quote showIndicator="false"}
+:::commend
 If you have no other option but to use the `<abbr>` element, display the expansion of the abbreviation on devices that do not support the hover state.
 :::
 
@@ -41,7 +41,7 @@ If you have no other option but to use the `<abbr>` element, display the expansi
 
 In the end, you might as well spell out the expansion after the abbreviation. This is precisely what Web Accessibility Initiative (WAI) [suggests](https://www.w3.org/WAI/WCAG21/Understanding/abbreviations).
 
-:::commend{.quote showIndicator="false"}
+:::commend
 If the abbreviation has only one meaning within a document, mention the expansion on its first occurrence, or all occurrences, in the document.
 :::
 
@@ -51,7 +51,7 @@ During the GPS (Global Positioning System) workshop, participants learned how it
 
 You can also specify the expansions with a dedicated glossary in the document. This is especially useful when a lot of abbreviations or technical terms are used in a document.
 
-:::commend{.quote showIndicator="false"}
+:::commend
 If the abbreviation means different things within a document, mention the expansion on all occurrences to avoid ambiguity.
 :::
 

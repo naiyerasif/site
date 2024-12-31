@@ -4,7 +4,7 @@ import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
 import remarkSmartypants from "remark-smartypants";
 import remarkDirective from "remark-directive";
-import remarkCalloutDirectives from "@microflash/remark-callout-directives";
+import remarkCalloutDirectives from "../remark-callout-directives/index.js";
 import remarkTimeDirective from "../remark-time-directive/index.js";
 import remarkFigureDirective from "../remark-figure-directive/index.js";
 import remarkYoutubeDirective from "../remark-youtube-directive/index.js";

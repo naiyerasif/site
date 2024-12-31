@@ -9,7 +9,7 @@ type: "guide"
 
 In situations where an API is being consumed by multiple systems, you might be required to provide the response in different formats depending on the client. One client might accept JSON while the other can only work with XML. That's where the Request Content Negotiation comes into picture. In this post, we'll explore a specific usecase of the request content negotiation where a client sends their preferences for the mediatype of their choice.
 
-:::note{title='Request Content Negotiation'}
+:::note{title="Request Content Negotiation"}
 Request Content Negotiation is a server-driven content negotiation where a client sends several HTTP headers along with the URL. These headers describe the preferences of the client. The server takes them as hints and generates the appropriate response to send to the client. If the server can't prepare a response per the client preferences, it may respond with a `406 Not Acceptable` or `413 Unsupported Media Type` status.
 :::
 

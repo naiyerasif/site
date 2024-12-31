@@ -15,11 +15,11 @@ If you're looking for an introduction on OAuth2 and OpenID Connect, please revie
 
 In this post, we'll discuss how to implement a service-to-service authorization flow using [client-credentials](https://oauth.net/2/grant-types/client-credentials/) grant type and [audience](https://tools.ietf.org/html/rfc7519#section-4.1.3) claim.
 
-:::note{title='Client Credentials'}
+:::note{title="Client Credentials"}
 This is a grant type when a client tries to access their own resources (rather than a user's). Such clients are implicitly trusted through a *client_id* and *client_secret*, using which they obtain an *access token*. The access token is used in the subsequent requests to access the resources. The extent of access is determined by one or more *scopes*.
 :::
 
-:::note{title='Audience claim'}
+:::note{title="Audience claim"}
 The `aud` claim is an optional claim that becomes useful when multiple clients are accessing a resource. It identifies which token is intended for which client and can be used by the application to prevent a resource access when an access token meant for one audience is sent by another or when an access token without an audience is sent by a client.
 :::
 
@@ -570,7 +570,7 @@ Here,
 
 Any tokens that you validate locally are, by definition, stale. This is because there will always be some time difference between the instance an Authorization Server generates a token and the instance a Resource Server receives a snapshot of that token. The longer a client uses that token, the higher is the chance that it is not valid. In low-risk scenarios, you may not care much about it. However, when a client requests a sensitive resource, you may want to make absolutely sure that the accompanying token is valid. In such scenarios, you may defer the token validation to your identity provider through a process called *introspection*. 
 
-:::note{title=Introspection}
+:::note{title="Introspection"}
 Token introspection is a method through which an OAuth2 Authorization Server ascertains the active state of a token and determines additional information about the token (such as `client_id`, `scope`, etc). This is done by sending a POST request to a standard *introspection* endpoint along with the token.
 :::
 

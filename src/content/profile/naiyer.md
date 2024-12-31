@@ -24,7 +24,7 @@ Outside the tech bubble, I like to explore the vocabularies and nuances of langu
 
 Yes. The code here is licensed under the [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by-sa/4.0/).
 
-:::deter{title=Disclaimer}
+:::deter{title="Disclaimer"}
 **I've optimized the examples for learning, not for use in production.** Use your discretion, review with peers, and choose what fits your needs.
 :::
 

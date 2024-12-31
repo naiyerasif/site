@@ -120,7 +120,7 @@ public @Controller class GenericController {
 }
 ```
 
-:::note{title=WebMvc.fn}
+:::note{title="WebMvc.fn"}
 With Spring 5.2, a new functional way of writing controllers has been introduced (called [`WebMvc.fn`](https://spring.io/blog/2019/04/03/spring-tips-webmvc-fn-the-functional-dsl-for-spring-mvc)). `WebMvc.fn` introduces the following key concepts.
 
 - **HandlerFunction** which accepts a `ServerRequest` and provides a `ServerResponse`. A `ServerRequest` object encapsulates all kinds of requests, including path variables, request body, etc, which were traditionally parsed using annotations. A `ServerResponse` is analogous to a response wrapped in a `ResponseEntity`.
@@ -372,7 +372,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 }
 ```
 
-:::note{title=PasswordEncoder}
+:::note{title="PasswordEncoder"}
 If you're starting afresh, you can choose a `PasswordEncoder` of your choosing, say `BCryptPasswordEncoder`, and things will work fine. However, there are chances that your application is using multiple encoders to store the passwords. A typical password record may look like this (a prefix enclosed in braces followed by the actual hash): `{bcrypt}$2a$10$LYB29GePiC3/ieDvmqCfL.Y6GEk9vEoZVZR2/EQ9nacnY43aQ4LO6`
 
 The `createDelegatingPasswordEncoder` comes to rescue here. It figures out the correct password encoding algorithm by reading the prefix and performs the corresponding encoding and decoding operations.

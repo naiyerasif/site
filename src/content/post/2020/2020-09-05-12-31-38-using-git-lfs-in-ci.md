@@ -17,7 +17,7 @@ Many Git vendors put certain bandwidth limits on LFS pulls. For example, GitHub 
 
 Every LFS asset has a unique 64-character object identifier (OID). You can create a lockfile (say, `.lfs-assets-id`) containing the OIDs of all the LFS objects and use it as a key to generating a cache.
 
-:::note{title=Lockfile}
+:::note{title="Lockfile"}
 A lockfile stores the specific versions of the dependencies specified by a management system (e.g., a package manager, file system, etc). In other words, it *locks* the versions of those dependencies. Common examples of the lockfiles are `package-lock.json` used by the [Node Package Manager](https://docs.npmjs.com/configuring-npm/package-lock-json.html), `Cargo.lock` used by [Cargo](https://doc.rust-lang.org/cargo/), etc. The purpose of a lockfile is to enable the system to recreate the dependency graph accurately. In a CI environment, a lockfile helps ensure that your pipelines are immutable.
 :::
 

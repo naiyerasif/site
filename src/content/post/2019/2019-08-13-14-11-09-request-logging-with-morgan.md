@@ -9,7 +9,7 @@ type: "guide"
 
 Imagine developing an Express application with several endpoints and remaining in the bind which of those were being used by the client application and when! Some form of logging can help in this situation, just to tell about the endpoint and the timestamp when it was requested by the client. Express makes this easy through [morgan](https://github.com/expressjs/morgan).
 
-:::assert{title=Series}
+:::assert{title="Series"}
 1. [Using Express with TypeScript](/post/2019/01/12/using-express-with-typescript/)
 2. *Request logging with morgan*
 3. [Logging on Node.js with log4js-node](/post/2019/08/14/logging-on-nodejs-with-log4js-node/)

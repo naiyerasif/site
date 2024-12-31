@@ -52,7 +52,7 @@ docker-compose up -d
 
 ## Define a domain
 
-:::assert{title=Story}
+:::assert{title="Story"}
 Consider a fictional social network where a *user* can create an *account*. A sign in by a user from a distinct location creates a *session* associated with that location. Since a user can sign in from different locations, multiple sessions may exist for an account. A user may decide to delete their account; if this happens, the corresponding sessions should also be deleted.
 :::
 

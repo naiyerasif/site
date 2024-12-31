@@ -180,7 +180,7 @@ public class LogEntryExitAspect {
 
 There's a lot to digest here. The `LogEntryExitAspect` class has a `log` method that accepts a `JoinPoint`.
 
-:::note{title=JointPoint}
+:::note{title="JointPoint"}
 As *AspectJ in Action* says, a *join point* is an identifiable execution point in a system. A call to a method is a join point, and so is field access. [Chapter 3 'Understanding the join point model', pp 53] For more details, refer to [AOP Concepts](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#aop-introduction-defn) docs.
 :::
 
