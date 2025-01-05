@@ -12,8 +12,8 @@ importers:
         specifier: ^3.2.1
         version: 3.2.1
       '@microflash/preset':
-        specifier: ^5.0.3
-        version: 5.0.3
+        specifier: ^5.0.4
+        version: 5.0.4
       '@microflash/rehype-slugify':
         specifier: ^1.0.0
         version: 1.0.0
@@ -1060,8 +1060,8 @@ packages:
   '@microflash/fenceparser@3.1.0':
     resolution: {integrity: sha512-kjEByW5ViReO+rJx6cYZBnG067Orp/H2uBF3ofPmMT2up0uJtVgSqeb+ARdK+67VomHX6lPCBQGCeD9HkV8nCA==}
 
-  '@microflash/preset@5.0.3':
-    resolution: {integrity: sha512-W/GaBK1UKZSPVU4R3hCXbDWoDzxtmVIIFjS5wyV8MzLOeaSp0QpsAE+khUNMM+VFfG9Z3AlTNDkGLeTHfcnZiw==}
+  '@microflash/preset@5.0.4':
+    resolution: {integrity: sha512-QG+5Vxe/QlB0klJj9wjJFL0GmojTHb3LgnavU6KE9gqA0psgTqUn1uU2kNy91GbXyvu/AEcYE9qvk8jdIogBPg==}
 
   '@microflash/rehype-slugify@1.0.0':
     resolution: {integrity: sha512-pp9LB4zp8cxF+Pf6oXNpqCMNXAmFKeIP9Ab6MOb/SrzxDvGfi0O2RZwG7znXh7dmVgYa0//Dte4X5kcIf+G3/w==}
@@ -4921,7 +4921,7 @@ snapshots:
       chevrotain: 11.0.3
       defu: 6.1.4
 
-  '@microflash/preset@5.0.3': {}
+  '@microflash/preset@5.0.4': {}
 
   '@microflash/rehype-slugify@1.0.0':
     dependencies:

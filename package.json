@@ -14,7 +14,7 @@
 	},
 	"dependencies": {
 		"@astrojs/sitemap": "^3.2.1",
-		"@microflash/preset": "^5.0.3",
+		"@microflash/preset": "^5.0.4",
 		"@microflash/rehype-slugify": "^1.0.0",
 		"@microflash/rehype-starry-night": "^7.2.1",
 		"@sindresorhus/slugify": "^2.2.1",
