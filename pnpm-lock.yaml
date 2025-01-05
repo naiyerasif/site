@@ -18,14 +18,14 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       '@microflash/rehype-starry-night':
-        specifier: ^7.2.0
-        version: 7.2.0
+        specifier: ^7.2.1
+        version: 7.2.1
       '@sindresorhus/slugify':
         specifier: ^2.2.1
         version: 2.2.1
       astro:
         specifier: ^5.1.2
-        version: 5.1.2(@types/node@22.10.5)(jiti@2.4.2)(rollup@4.29.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.6.2)
+        version: 5.1.2(@types/node@22.10.5)(jiti@2.4.2)(rollup@4.29.1)(sass@1.83.1)(tsx@4.19.2)(typescript@5.6.2)
       cheerio:
         specifier: ^1.0.0
         version: 1.0.0
@@ -78,8 +78,8 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
       sass:
-        specifier: ^1.83.0
-        version: 1.83.0
+        specifier: ^1.83.1
+        version: 1.83.1
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
@@ -1066,8 +1066,8 @@ packages:
   '@microflash/rehype-slugify@1.0.0':
     resolution: {integrity: sha512-pp9LB4zp8cxF+Pf6oXNpqCMNXAmFKeIP9Ab6MOb/SrzxDvGfi0O2RZwG7znXh7dmVgYa0//Dte4X5kcIf+G3/w==}
 
-  '@microflash/rehype-starry-night@7.2.0':
-    resolution: {integrity: sha512-meSco2HQ4qqSvCYGdxm/eBjog8VDpR4H+H+e0d3SaVJLgoDb5fZWsejOZHEy2MCJXWvnEatpI8Bf4Df8Xu78Lw==}
+  '@microflash/rehype-starry-night@7.2.1':
+    resolution: {integrity: sha512-gXFkazyv5AX0VnZ3qV/wiyRi4AjYe4JxrFEM4M/ifZU+xYzLOhR639NeqVOP/DLLyAl2x1u+Bzzn4XdeKVjT0g==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -1550,8 +1550,8 @@ packages:
   '@vue/shared@3.5.13':
     resolution: {integrity: sha512-/hnE/qP5ZoGpol0a5mDi45bOd7t3tjYJBjsgCsivow7D48cJeV5l05RD82lPqi7gRiphZM37rnhW1l6ZoCNNnQ==}
 
-  '@wooorm/starry-night@3.5.0':
-    resolution: {integrity: sha512-nYnfdeWS0ApqIFqr4ezLjr6pyYuqiG5Ywc2aJ4u1EY3qzf2oCTfLv7sMjEQSuSzPWUIH+a39eVbGUiRrFKZElA==}
+  '@wooorm/starry-night@3.6.0':
+    resolution: {integrity: sha512-AoDrqWZCZVymY48BClDaSuLgOe5vnl99S4hrqqg5OJ44x9NHo4s5LzOypKC3e6jGIUqHDfaDMvou8pelkq3dCw==}
 
   acorn@8.14.0:
     resolution: {integrity: sha512-cl669nCJTZBsL97OF4kUQm5g5hC2uihk0NxY3WENAC0TYdILVkAyHymAntgxGkl7K+t0cXIrH5siy5S4XkFycA==}
@@ -1766,8 +1766,8 @@ packages:
     resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==}
     engines: {node: '>= 8.10.0'}
 
-  chokidar@4.0.1:
-    resolution: {integrity: sha512-n8enUVCED/KVRQlab1hr3MVpcVMvxtZjmEa956u+4YijlmQED223XMSYj2tLuKvr4jcCTzNNMpQDUer72MMmzA==}
+  chokidar@4.0.3:
+    resolution: {integrity: sha512-Qgzu8kfBvo+cA4962jnP1KkS6Dop5NS6g7R5LFYJr4b8Ub94PPQXUksCw9PvXoeXPRRddRNC5C1JQUR2SMGtnA==}
     engines: {node: '>= 14.16.0'}
 
   chrome-launcher@1.1.2:
@@ -3449,8 +3449,8 @@ packages:
   sanitize-filename@1.6.3:
     resolution: {integrity: sha512-y/52Mcy7aw3gRm7IrcGDFx/bCk4AhRh2eI9luHOQM86nZsqwiRkkq2GekHXBBD+SmPidc8i2PqtYZl+pWJ8Oeg==}
 
-  sass@1.83.0:
-    resolution: {integrity: sha512-qsSxlayzoOjdvXMVLkzF84DJFc2HZEL/rFyGIKbbilYtAvlCxyuzUeff9LawTn4btVnLKg75Z8MMr1lxU1lfGw==}
+  sass@1.83.1:
+    resolution: {integrity: sha512-EVJbDaEs4Rr3F0glJzFSOvtg2/oy2V/YrGFPqPY24UqcLDWcI9ZY5sN+qyO3c/QCZwzgfirvhXvINiJCE/OLcA==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -4930,10 +4930,10 @@ snapshots:
       hast-util-to-string: 2.0.0
       unist-util-visit: 4.1.2
 
-  '@microflash/rehype-starry-night@7.2.0':
+  '@microflash/rehype-starry-night@7.2.1':
     dependencies:
       '@microflash/fenceparser': 3.1.0
-      '@wooorm/starry-night': 3.5.0
+      '@wooorm/starry-night': 3.6.0
       defu: 6.1.4
       hast-util-to-string: 3.0.1
       hastscript: 9.0.0
@@ -5557,7 +5557,7 @@ snapshots:
 
   '@vue/shared@3.5.13': {}
 
-  '@wooorm/starry-night@3.5.0':
+  '@wooorm/starry-night@3.6.0':
     dependencies:
       '@types/hast': 3.0.4
       import-meta-resolve: 4.1.0
@@ -5611,7 +5611,7 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  astro@5.1.2(@types/node@22.10.5)(jiti@2.4.2)(rollup@4.29.1)(sass@1.83.0)(tsx@4.19.2)(typescript@5.6.2):
+  astro@5.1.2(@types/node@22.10.5)(jiti@2.4.2)(rollup@4.29.1)(sass@1.83.1)(tsx@4.19.2)(typescript@5.6.2):
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/internal-helpers': 0.4.2
@@ -5663,8 +5663,8 @@ snapshots:
       unist-util-visit: 5.0.0
       unstorage: 1.14.4
       vfile: 6.0.3
-      vite: 6.0.7(@types/node@22.10.5)(jiti@2.4.2)(sass@1.83.0)(tsx@4.19.2)
-      vitefu: 1.0.5(vite@6.0.7(@types/node@22.10.5)(jiti@2.4.2)(sass@1.83.0)(tsx@4.19.2))
+      vite: 6.0.7(@types/node@22.10.5)(jiti@2.4.2)(sass@1.83.1)(tsx@4.19.2)
+      vitefu: 1.0.5(vite@6.0.7(@types/node@22.10.5)(jiti@2.4.2)(sass@1.83.1)(tsx@4.19.2))
       which-pm: 3.0.0
       xxhash-wasm: 1.1.0
       yargs-parser: 21.1.1
@@ -5885,7 +5885,7 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
-  chokidar@4.0.1:
+  chokidar@4.0.3:
     dependencies:
       readdirp: 4.0.2
 
@@ -8101,9 +8101,9 @@ snapshots:
     dependencies:
       truncate-utf8-bytes: 1.0.2
 
-  sass@1.83.0:
+  sass@1.83.1:
     dependencies:
-      chokidar: 4.0.1
+      chokidar: 4.0.3
       immutable: 5.0.3
       source-map-js: 1.2.1
     optionalDependencies:
@@ -8594,7 +8594,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.2
 
-  vite@6.0.7(@types/node@22.10.5)(jiti@2.4.2)(sass@1.83.0)(tsx@4.19.2):
+  vite@6.0.7(@types/node@22.10.5)(jiti@2.4.2)(sass@1.83.1)(tsx@4.19.2):
     dependencies:
       esbuild: 0.24.2
       postcss: 8.4.49
@@ -8603,12 +8603,12 @@ snapshots:
       '@types/node': 22.10.5
       fsevents: 2.3.3
       jiti: 2.4.2
-      sass: 1.83.0
+      sass: 1.83.1
       tsx: 4.19.2
 
-  vitefu@1.0.5(vite@6.0.7(@types/node@22.10.5)(jiti@2.4.2)(sass@1.83.0)(tsx@4.19.2)):
+  vitefu@1.0.5(vite@6.0.7(@types/node@22.10.5)(jiti@2.4.2)(sass@1.83.1)(tsx@4.19.2)):
     optionalDependencies:
-      vite: 6.0.7(@types/node@22.10.5)(jiti@2.4.2)(sass@1.83.0)(tsx@4.19.2)
+      vite: 6.0.7(@types/node@22.10.5)(jiti@2.4.2)(sass@1.83.1)(tsx@4.19.2)
 
   vscode-oniguruma@2.0.1: {}
 
