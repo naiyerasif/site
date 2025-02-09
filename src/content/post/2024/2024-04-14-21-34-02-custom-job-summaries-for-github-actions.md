@@ -25,7 +25,7 @@ generates a job summary like this:
 :::figure{.frame}
 ![Screenshot of Job Summary for a GitHub Action job](./images/2024-04-14-21-34-02-custom-job-summaries-for-github-actions-01.png)
 
-Job Summary of a finished GitHub Action job
+::caption[Job Summary of a finished GitHub Action job]
 :::
 
 See the following references for more examples.
