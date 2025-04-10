@@ -12,31 +12,25 @@ swap:
   authZ: authorization
   g11n: globalization
   "he'd": he had|he would
-  "he's": he is|he has
   "he'll": he will|he shall
   "here'd": here had|here would
-  "here's": here is|here has
   "how'd": how did|how would
   "I'd": I had|I would
   i18n: internationalization
   "it'd": it had|it would
-  "it's": it is|it has
   "it'll": it will|it shall
   k8s: Kubernetes
   l10n: localization
   p13n: personalization
   regex: regular expression
   "she'd": she had|she would
-  "she's": she is|she has
   "she'll": she will|she shall
   "somebody'd": somebody had|somebody would
   "someone'd": someone had|someone would
   "that'd": that had|that would
-  "that's": that is|that has
   "they'd": they had|they would
   "they'll": they will|they shall
   "there'd": there would|there had
-  "there's": there is|there has
   "we'd": we would|we had
   "what'd": what did
   "what'll": what will
@@ -48,9 +42,8 @@ swap:
   "where'll": where will
   "which'd": which would|which had
   "who'd": who had|who would
-  "who's": who is|who has
   "why'd": why did|why would
   "why's": why is|why has
-  "w/(?!o) ": "with "
+  'w/(?!o)\s': with
   "w/o": without
   "you'd": you had|you would
