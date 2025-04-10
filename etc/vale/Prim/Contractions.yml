@@ -7,7 +7,7 @@ action:
 swap:
   a11y: accessibility
   (?i)a\.k\.a|aka: or|also known as
-  '\bapprox\.\s': about|around
+  \bapprox\.\s: about|around
   authN: authentication
   authZ: authorization
   g11n: globalization
@@ -44,6 +44,6 @@ swap:
   "who'd": who had|who would
   "why'd": why did|why would
   "why's": why is|why has
-  'w/(?!o)\s': with
-  "w/o": without
+  w/(?!o)\s: with
+  w/o: without
   "you'd": you had|you would

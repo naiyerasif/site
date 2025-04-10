@@ -7,12 +7,12 @@ action:
   name: replace
 swap:
   \bcirca\b: around|about
-  '\b(?:eg|e\.g\.)[\s,]': for example
+  \b(?:eg|e\.g\.)[\s,]: for example
   \bergo\b: therefore
-  '\bet al\.': and others
-  '\betc\.': and other(s)
-  '\b(?:ie|i\.e\.)[\s,]': that is
-  '\bvs\.': against
+  \bet al\.: and others
+  \betc\.: and other(s)
+  \b(?:ie|i\.e\.)[\s,]: that is
+  \bvs\.: against
   versus: against
-  '\bvia': over|through
-  '\bviz\.': namely
+  \bvia: over|through
+  \bviz\.: namely

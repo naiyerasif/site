@@ -6,4 +6,4 @@ action:
   name: remove
 tokens:
   - '\.\.\.'
-  - "…"
+  - '…'

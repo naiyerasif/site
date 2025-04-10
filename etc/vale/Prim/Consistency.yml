@@ -1,20 +1,17 @@
 extends: substitution
 message: "Use '%s' instead of '%s'."
-level: error
+level: warning
 ignorecase: true
 action:
   name: replace
 swap:
   24/7: 24x7
   3\-D: 3D
-  Ajax: AJAX
   audio(?:-| )books?: audiobook|audiobooks
   autodetect: auto-detect
   back(?:-| )light: backlight
   back\s(slash|slashes): backslash|backslashes
-  '[bB]asic [aA]uth': Basic HTTP authentication|Basic authentication
   bottle(?:-| )necks?: bottleneck|bottlenecks
-  (?:cell ?phone|smart ?phone): phone|mobile phone
   chat(?:-| )bots?: chatbot|chatbots
   check lists?: checklist|checklists
   check marks?: checkmark|checkmarks
@@ -28,13 +25,17 @@ swap:
   (?:OAuth ?2|Oauth): OAuth 2.0
   ok: OK
   on demand: on-demand
+  open-source: open source
   (?:file ?path|path ?name)s?: path|paths
+  (?:cell ?phone|smart ?phone): phone|mobile phone
   (?:quote mark|quotemark)s?: quotation mark|quotation marks
   scroll(?:-| )bars?: scrollbar|scrollbars
   synch: sync
   testcases?: test case|test cases
+  unbloat: debloat
   url:  URL
   URL for: URL of
   an URL: a URL
   usecases?: use case|use cases
   (?:WiFi|wifi): Wi-Fi
+  World Wide Web: web
