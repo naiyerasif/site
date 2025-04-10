@@ -3,7 +3,7 @@ slug: "2023/06/27/modern-web-is-cluttered"
 title: "Modern web is cluttered"
 date: 2023-06-27 11:09:27
 update: 2023-06-27 11:09:27
-type: "ping"
+type: "note"
 ---
 
 :::figure{.source.mastodon}

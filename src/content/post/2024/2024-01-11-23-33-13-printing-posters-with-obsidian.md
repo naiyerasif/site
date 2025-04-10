@@ -3,7 +3,7 @@ slug: "2024/01/11/printing-posters-with-obsidian"
 title: "Printing posters with Obsidian"
 date: 2024-01-11 23:33:13
 update: 2024-01-11 23:33:13
-type: "ping"
+type: "note"
 ---
 
 Playing with custom CSS snippets in [@obsidian](https://obsidian.md) to print out some posters. I've snippets for generating other documents as well (for example, my resume). Haven't opened Word or Pages for a long while.

@@ -3,7 +3,7 @@ slug: "2024/08/09/is-html-a-programming-language"
 title: "Is HTML a programming language?"
 date: 2024-08-09 23:51:45
 update: 2024-08-09 23:51:45
-type: "ping"
+type: "note"
 ---
 
 Today I learned that you can load images specific to a color scheme using the `media` attribute of [`<source>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source) element.

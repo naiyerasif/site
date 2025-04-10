@@ -272,7 +272,7 @@ figure {
 		}
 	}
 
-	&:not([data-post-type="ping"]) &-body {
+	&:not([data-post-type="note"]) &-body {
 		font-size: var(--x3-text-sm);
 	}
 

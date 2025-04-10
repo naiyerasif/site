@@ -28,7 +28,7 @@ const options = {
 
 export async function GET() {
 	const posts = (await getCollection("post"))
-		.filter(post => post.data.type !== PostType.ping.id)
+		.filter(post => post.data.type !== PostType.note.id)
 		.sort((p1, p2) => compare(p1.data.update, p2.data.update))
 		.slice(0, siteInfo.maxFeedItems)
 		.map(post => {

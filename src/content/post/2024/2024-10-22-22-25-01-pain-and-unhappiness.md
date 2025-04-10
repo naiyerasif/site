@@ -3,7 +3,7 @@ slug: "2024/10/22/pain-and-unhappiness"
 title: "Pain and unhappiness"
 date: 2024-10-22 22:25:01
 update: 2024-10-22 22:25:01
-type: "ping"
+type: "note"
 ---
 
 :::figure

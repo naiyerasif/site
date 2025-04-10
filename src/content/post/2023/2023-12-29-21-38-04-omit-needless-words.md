@@ -3,7 +3,7 @@ slug: "2023/12/29/omit-needless-words"
 title: "Omit needless words"
 date: 2023-12-29 21:38:04
 update: 2023-12-29 21:38:04
-type: "ping"
+type: "note"
 ---
 
 :::figure

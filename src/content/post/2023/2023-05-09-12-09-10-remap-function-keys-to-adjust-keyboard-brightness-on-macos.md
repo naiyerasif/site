@@ -4,7 +4,7 @@ title: "Remap function keys to adjust keyboard brightness on macOS"
 description: "New MacBooks removed function key shortcuts for adjusting keyboard backlight brightness. Remap F4 and F5 keys to restore this feature."
 date: 2023-05-09 12:09:10
 update: 2024-09-18 20:36:51
-type: "note"
+type: "guide"
 ---
 
 Recent versions of MacBook removed the function key shortcuts to quickly adjust the keyboard backlight brightness. Here is an approach on how you can remap Spotlight (F4) and Siri (F5) keys to restore this feature.

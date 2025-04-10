@@ -3,7 +3,7 @@ slug: "2024/07/03/people-who-dont-write-things-down"
 title: "People who don't write things down"
 date: 2024-07-03 23:09:47
 update: 2024-07-03 23:09:47
-type: "ping"
+type: "note"
 ---
 
 :::figure

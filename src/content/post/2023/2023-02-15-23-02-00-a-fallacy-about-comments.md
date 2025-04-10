@@ -3,7 +3,7 @@ slug: "2023/02/15/a-fallacy-about-comments"
 title: "A fallacy about comments"
 date: 2023-02-15 23:02:00
 update: 2023-02-15 23:02:00
-type: "ping"
+type: "note"
 ---
 
 :::figure{.source.twitter}

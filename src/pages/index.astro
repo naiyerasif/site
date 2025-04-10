@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import PostCard from "../components/PostCard.astro";
-import PingCard from "../components/PingCard.astro";
+import NoteCard from "../components/NoteCard.astro";
 import Icon from "../components/Icon.astro";
 import siteInfo, { paginationPathname } from "../modules/website/index.js";
 import { compare } from "../modules/datetime/index.js";
@@ -27,7 +27,7 @@ const pageInfo = {
 			<p>Book lover, software engineer, and a fellow web wanderer</p>
 		</hgroup>
 	</div>
-	{posts.map(entry => entry.data.type === PostType.ping.id ? <PingCard {entry} /> : <PostCard {entry} />)}
+	{posts.map(entry => entry.data.type === PostType.note.id ? <NoteCard {entry} /> : <PostCard {entry} />)}
 	<div slot="sidekick" class="sidekick-items">
 		<a href={paginationPathname("posts", 2)} class="button-link">more posts<Icon name="arrow-right"/></a>
 	</div>

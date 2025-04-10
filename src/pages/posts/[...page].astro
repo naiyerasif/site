@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import PostCard from "../../components/PostCard.astro";
-import PingCard from "../../components/PingCard.astro";
+import NoteCard from "../../components/NoteCard.astro";
 import Pagination from "../../components/Pagination.astro";
 import siteInfo from "../../modules/website/index.js";
 import { compare } from "../../modules/datetime/index.js";
@@ -39,7 +39,7 @@ const pageInfo = {
 			</hgroup>
 		</div>
 	</Fragment>
-	{page.data.map(entry => entry.data.type === PostType.ping.id ? <PingCard {entry} /> : <PostCard {entry} />)}
+	{page.data.map(entry => entry.data.type === PostType.note.id ? <NoteCard {entry} /> : <PostCard {entry} />)}
 	<div slot="sidekick" class="sidekick-items">
 		<Pagination currentPage={page.currentPage} totalPages={page.lastPage} base="posts"/>
 	</div>

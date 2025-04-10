@@ -3,7 +3,7 @@ slug: "2024/05/10/evaluating-technology"
 title: "Evaluating Technology"
 date: 2024-05-10 21:53:44
 update: 2024-05-10 21:53:44
-type: "ping"
+type: "note"
 ---
 
 :::figure

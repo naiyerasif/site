@@ -3,7 +3,7 @@ slug: "2021/06/22/ideation-without-creation"
 title: "Ideation without creation"
 date: 2021-06-22 12:04:41
 update: 2021-06-22 12:04:41
-type: "ping"
+type: "note"
 ---
 
 :::figure

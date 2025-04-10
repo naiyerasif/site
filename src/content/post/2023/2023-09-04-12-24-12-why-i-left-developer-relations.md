@@ -3,7 +3,7 @@ slug: "2023/09/04/why-i-left-developer-relations"
 title: "WHY I LEFT DEVELOPER RELATIONS"
 date: 2023-09-04 12:24:12
 update: 2023-09-04 12:24:12
-type: "ping"
+type: "note"
 ---
 
 :::figure{.source.youtube}

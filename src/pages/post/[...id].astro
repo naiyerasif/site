@@ -63,7 +63,7 @@ const pageInfo = {
 			</hgroup>
 		</div>
 		<div class="hero-footer">
-			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}{data.type !== PostType.ping.id && showReadingTime && <span><Icon name="clock"/> Takes about {`${timeToRead} min to read`}</span>}{showStatus && <span class={`chip chip-${Status[data.status].tone.id}`}>{Status[data.status].label}</span>}
+			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}{data.type !== PostType.note.id && showReadingTime && <span><Icon name="clock"/> Takes about {`${timeToRead} min to read`}</span>}{showStatus && <span class={`chip chip-${Status[data.status].tone.id}`}>{Status[data.status].label}</span>}
 		</div>
 	</Fragment>
 	<article class="post">
