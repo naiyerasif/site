@@ -155,6 +155,17 @@
 	font-style: italic;
 }
 
+:where(data)::after {
+	content: attr(value);
+	font-family: var(--baseline-font-code);
+	font-size: 0.95em;
+	background-color: var(--baseline-bg-summary);
+	padding-inline: 0.25ch;
+	border: 1px solid var(--baseline-border-body);
+	border-radius: 0.5ch;
+	margin-inline-start: 0.25ch;
+}
+
 :where(kbd) {
 	display: inline-block;
 	font-family: var(--baseline-font-code);
