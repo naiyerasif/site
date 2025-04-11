@@ -1,5 +1,4 @@
 ---
-import Icon from "../components/Icon.astro";
 import IconPack from "../components/IconPack.astro";
 import BackToTop from "../components/BackToTop.astro";
 import siteInfo from "../modules/website/index.js";
@@ -13,67 +12,61 @@ const siteIssueUrl = siteInfo.issueBase;
 <footer class="footer">
 	<div class="intro">
 		<random-message selector=".quote">
-			<div class="quote">
-				<p>You can stop scrolling now. Take a break and relax.</p>
-				<cite>&mdash; Author of this site</cite>
-			</div>
-			<div class="quote" hidden>
-				<p>Sometimes the best way to follow your dreams is to take a nap.</p>
-				<cite>&mdash; <a href="https://fediverse.zachleat.com/@zachleat/111902455317042997" rel="nofollow noopener noreferrer">Zach Leatherman</a></cite>
-			</div>
-			<div class="quote" hidden>
-				<p>Finiteness is a feature.</p>
-				<cite>&mdash; Author of this site</cite>
-			</div>
-			<div class="quote" hidden>
-				<p>Recharge before a reattempt.</p>
-				<cite>&mdash; Author of this site</cite>
-			</div>
+			<figure class="quote">
+				<blockquote>You've reached the footer&mdash;take a break and relax.</blockquote>
+			</figure>
+			<figure class="quote" hidden>
+				<blockquote>Finiteness is a feature.</blockquote>
+			</figure>
+			<figure class="quote" hidden>
+				<blockquote>Sometimes the best way to follow your dreams is to take a nap.</blockquote>
+				<figcaption>
+					<cite><a href="https://fediverse.zachleat.com/@zachleat/111902455317042997" rel="nofollow noopener noreferrer">Zach Leatherman</a></cite>
+				</figcaption>
+			</figure>
+			<figure class="quote" hidden>
+				<blockquote>Almost everything will work again if you unplug it for a few minutes.</blockquote>
+				<figcaption>
+					Anne Lamott, <cite><a href="https://youtu.be/X41iulkRqZU?t=187" rel="nofollow noopener noreferrer">12 truths I learned from life and writing</a></cite>
+				</figcaption>
+			</figure>
 		</random-message>
 	</div>
-	<div class="info">
-		<div class="subscribe">
+	<div class="outro">
+		<div class="outro-group">
+			<a href="/">Home</a>
+			<a href="/posts/">Posts</a>
+		</div>
+		<div class="outro-group">
 			<strong>Subscribe with RSS</strong>
 			<small>(<a href="https://aboutfeeds.com/" rel="nofollow noopener noreferrer">What&CloseCurlyQuote;s RSS?</a>)</small>
-			<Icon name="rss" style="--x3-fg-icon:var(--x3-fg-deter)"/>
-			<ul>
-				<li><a href="/feed.xml">Posts</a></li>
-				<li><a href="/all.xml">Posts + notes</a></li>
-			</ul>
-		</div>
-		<div class="shortcuts">
-			<strong>Keyboard Shortcuts</strong>
-			<Icon name="keyboard" style="--x3-fg-icon:var(--x3-fg-assert)"/>
-			<ul>
-				<li><kbd>ctrl</kbd> <kbd>k</kbd> or <kbd>cmd</kbd> <kbd>k</kbd> &middot; launch command bar</li>
-				<li><kbd>esc</kbd> &middot; close command bar</li>
-			</ul>
+			<a href="/feed.xml">Posts</a>
+			<a href="/all.xml">Posts + notes</a>
 		</div>
 		<footer-preferences>
-			<strong>Preferences</strong>
-			<Icon name="preferences" style="--x3-fg-icon:var(--x3-fg-warn)"/>
-			<ul>
-				<li>
-					<theme-switcher>
-						Current theme &middot;
-						<a role="switch" aria-live="polite" aria-checked="true" data-theme-switch id="footer-theme-switcher" href="#footer-theme-switcher">
-							<span data-theme-state="dark">Dark</span>
-							<span data-theme-state="light">Light</span>
-						</a>
-					</theme-switcher>
-				</li>
-			</ul>
+			<theme-switcher>
+				<strong>Theme</strong>
+				<a role="switch" aria-live="polite" aria-checked="true" data-theme-switch id="footer-theme-switcher" href="#footer-theme-switcher">
+					<span data-theme-state="dark">Dark</span>
+					<span data-theme-state="light">Light</span>
+				</a>
+			</theme-switcher>
 		</footer-preferences>
-	</div>
-	<div class="outro">
-		<div class="copyright">&copy; 2018 &mdash; today, {authorName}</div>
-		<div class="socials">
-			{Object.entries(authorPresence).map(([network, details]) => <a href={details.url} aria-label={details.title} rel="noopener noreferrer"><Icon name={network}/></a>)}
+		<div class="outro-group">
+			<strong>Keyboard Shortcuts</strong>
+			<span><kbd>ctrl</kbd> <kbd>k</kbd> or <kbd>cmd</kbd> <kbd>k</kbd> - launch command bar,</span>
+			<span><kbd>esc</kbd> - close command bar</span>
 		</div>
-		<div class="extras">
+		<div class="outro-group">
 			<a href={siteIssueUrl} rel="nofollow noopener noreferrer">Report an issue</a>
 			<a href="/privacy/">Privacy</a>
 			<a href="/sitemap-index.xml">Sitemap</a>
+		</div>
+	</div>
+	<div class="outro">
+		<div class="outro-group">&copy; 2018 &mdash; today, <a href="/about/">{authorName}</a></div>
+		<div class="outro-group">
+			{Object.entries(authorPresence).map(([network, details]) => <a href={details.url} rel="noopener noreferrer">{details.title}</a>)}
 		</div>
 	</div>
 </footer>

@@ -204,71 +204,68 @@ body > .header {
 }
 
 body > .footer {
-	--x3-gap-flow: 3rem;
+	--x3-gap-flow: 1ch;
 
 	position: sticky;
 	top: 100vh;
 	padding-block: var(--x3-gap-lg);
 	@include mixins.flow;
-
-	ul {
-		margin-block-start: 1ch;
-
-		li {
-			--x3-gap-flow: 0.25ch;
-		}
+	
+	.intro,
+	.outro {
+		display: flex;
+		justify-content: center;
 	}
 
-	.intro .quote {
-		text-align: end;
-		color: var(--x3-fg-body-subtle);
+	.intro {
+		.quote {
+			text-align: center;
+			max-inline-size: 70ch;
+			padding-block: calc(10vw - 1rem);
+		}
 
-		p {
+		blockquote {
 			font-family: var(--x3-font-fancy);
-			font-size: var(--x3-text-title);
+			font-size: 1.8em;
 			text-wrap: balance;
 			// needed on Safari else it will show `open-quote` as hanging punctuation
 			hanging-punctuation: none;
+			padding-inline-start: 0;
+			border-inline-start: none;
 
 			&::before {
 				content: open-quote;
-				opacity: 0.5;
+				opacity: 0.6;
 			}
 
 			&::after {
 				content: close-quote;
-				opacity: 0.5;
+				opacity: 0.6;
 			}
 		}
 	}
 
-	.info {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(min(100%, 30ch), 1fr));
-		gap: 2rem;
-		font-size: var(--x3-text-sm);
-
-		.icon {
-			--x3-size-icon: 1.25em;
-			vertical-align: text-bottom;
-			margin-inline-start: 0.25ch;
-		}
-	}
-
 	.outro {
+		font-size: 0.75em;
 		display: flex;
 		flex-wrap: wrap;
-		align-items: center;
-		justify-content: space-between;
-		gap: 2ch;
-		font-size: var(--x3-text-sm);
-		
-		.socials,
-		.extras {
+		justify-content: center;
+		gap: var(--x3-gap-flow);
+
+		& > *:not(:last-child)::after {
+			@include mixins.icon(url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='15' r='1'/%3E%3C/svg%3E"));
+			display: inline-block;
+			@include mixins.size(1em);
+			opacity: 0.5;
+		}
+
+		& > *,
+		theme-switcher {
 			display: flex;
-			align-items: center;
 			flex-wrap: wrap;
-			gap: 1ch;
+			gap: var(--x3-gap-flow);
+			justify-content: center;
+			align-items: center;
 		}
 	}
 }
