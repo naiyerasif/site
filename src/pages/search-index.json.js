@@ -23,20 +23,6 @@ const defaults = [
 		"icon": `<svg viewBox="0 0 24 24" role="img" class="icon" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>`,
 		"section": "Navigation"
 	},
-	{
-		"title": "Work",
-		"description": "A timeline of professional and open-source work",
-		"path": "/work/",
-		"icon": `<svg viewBox="0 0 24 24" role="img" class="icon" aria-hidden="true"><path d="m2.576 16.484.14 1.823A4 4 0 0 0 6.704 22h10.592a4 4 0 0 0 3.988-3.693l.14-1.823M22 8.995A3 3 0 0 0 19.002 6H5a3.004 3.004 0 0 0-3.001 3H2c0 3.311 4.481 6 10 6s10-2.689 10-6zM12 15v3M8 6l.621-2.485A2 2 0 0 1 10.562 2h2.876c.918 0 1.718.625 1.941 1.515L16 6"/></svg>`,
-		"section": "Navigation"
-	},
-	{
-		"title": "Privacy",
-		"description": "Privacy statement about naiyerasif.com",
-		"path": "/privacy/",
-		"icon": `<svg viewBox="0 0 24 24" role="img" class="icon" aria-hidden="true"><circle cx="12" cy="12" r="2.5"/><path d="M12 2s-2 2-4.5 3S3 6 3 6c0 12 9 16 9 16s9-4 9-16c0 0-2 0-4.5-1S12 2 12 2"/></svg>`,
-		"section": "Navigation"
-	},
 	// `href='#'` is required for links acting as buttons to enable click semantics (such as receiving keyboard focus, press enter to click, etc)
 	{
 		"title": "Theme Switcher",
