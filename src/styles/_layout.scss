@@ -268,4 +268,11 @@ body > .footer {
 			align-items: center;
 		}
 	}
+
+	@include mixins.onTouch {
+		.shortcuts {
+			visibility: hidden;
+			display: none;
+		}
+	}
 }
