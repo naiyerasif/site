@@ -400,7 +400,7 @@ window.__viewTransition = function(callback) {
 /* hide undefined custom elements which don't have non-javascript fallbacks
    TODO: use `data-require=js` attribute to streamline this rule in future */
 :where(clipboard-copy, command-bar, theme-switcher, footer-preferences):not(:defined) {
-	visibility: hidden;
-	display: none;
+	visibility: hidden !important;
+	display: none !important;
 }
 </style>
