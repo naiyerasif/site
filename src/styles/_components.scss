@@ -343,6 +343,18 @@ random-message {
 			line-height: 1;
 		}
 	}
+
+	audio-player {
+		display: inline-block;
+		vertical-align: middle;
+		line-height: 1;
+		button {
+			--baseline-radius-outline: var(--x3-radius-max);
+			padding: 0;
+			border-radius: var(--baseline-radius-outline);
+			border: none;
+		}
+	}
 }
 
 .share-panel,

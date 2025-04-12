@@ -9,7 +9,7 @@ avatar: "./images/naiyer.png"
 
 <random-message selector="span">
 	👋 <span>Hi</span><span data-language="Maori" hidden>Kia ora</span><span data-language="Turkish" hidden>Merhaba</span><span data-language="Urdu" hidden>Khush Amdeed</span><span hidden>Hello</span>!
-	I&rsquo;m Naiyer, from India.
+	I&rsquo;m Naiyer <audio-player><audio><source src="/audio/profile/naiyer/namedrop.mp3" type="audio/mpeg"/><source src="/audio/profile/naiyer/namedrop.m4a" type="audio/mp4"/></audio><button></button></audio-player><noscript><audio controls><source src="/audio/profile/naiyer/namedrop.mp3" type="audio/mpeg"/><source src="/audio/profile/naiyer/namedrop.m4a" type="audio/mp4"/></audio></noscript> , from India.
 </random-message>
 
 I work as a software engineer, focused on backend and cloud, with occasional forays into frontend. I relish tackling design and engineering problems, preferably in short bursts, with a healthy dose of pragmatism. When I'm not working, I'm reading.
