@@ -348,7 +348,11 @@ random-message {
 		display: inline-block;
 		vertical-align: middle;
 		line-height: 1;
+
 		button {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
 			--baseline-radius-outline: var(--x3-radius-max);
 			padding: 0;
 			border-radius: var(--baseline-radius-outline);
