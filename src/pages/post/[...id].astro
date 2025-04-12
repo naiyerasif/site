@@ -7,7 +7,6 @@ import ActionPanel from "../../components/ActionPanel.astro";
 import Toc from "../../components/Toc.astro";
 import Time from "../../components/Time.astro";
 import format, { compare, format_date } from "../../modules/datetime/index.js";
-import readingTime from "../../modules/reading-time/index.js";
 import toc from "../../modules/table-of-contents/index.js";
 import siteInfo, { postPathname } from "../../modules/website/index.js";
 import { PostType, Status } from "../../modules/schema/defs.js";
@@ -31,9 +30,7 @@ const showToc = data.showToc && headings && headings.length > 0;
 const prevPage = prev ? postPathname(prev.id) : undefined;
 const nextPage = next ? postPathname(next.id) : undefined;
 const hasRecommendations = prevPage || nextPage;
-const timeToRead = readingTime(post.body).readingTime;
 const showUpdate = compare(data.update, data.date) !== 0;
-const showReadingTime = timeToRead > 0;
 const showStatus = !!data.status;
 
 const pageInfo = {
@@ -45,8 +42,7 @@ const pageInfo = {
 	published: format(data.date, format_date),
 	updated: showUpdate ? format(data.update, format_date) : undefined,
 	previous: prevPage,
-	next: nextPage,
-	timeToRead: showReadingTime ? timeToRead : undefined
+	next: nextPage
 };
 ---
 
@@ -63,7 +59,7 @@ const pageInfo = {
 			</hgroup>
 		</div>
 		<div class="hero-footer">
-			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}{data.type !== PostType.note.id && showReadingTime && <span><Icon name="clock"/> Takes about {`${timeToRead} min to read`}</span>}{showStatus && <span class={`chip chip-${Status[data.status].tone.id}`}>{Status[data.status].label}</span>}
+			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}{showStatus && <span class={`chip chip-${Status[data.status].tone.id}`}>{Status[data.status].label}</span>}
 		</div>
 	</Fragment>
 	<article class="post">

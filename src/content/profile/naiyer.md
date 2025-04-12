@@ -55,7 +55,6 @@ No.
 - Jesús Ricarte, [Using calc to figure out optimal line-height](https://kittygiraudel.com/2020/05/18/using-calc-to-figure-out-optimal-line-height/) [2020]
 - Paul Irish, [lite-youtube-embed](https://github.com/paulirish/lite-youtube-embed)
 - Michelle Barker, [Aspect Ratio is Great](https://css-irl.info/aspect-ratio-is-great/) [2022], [Detecting Hover-Capable Devices](https://css-irl.info/detecting-hover-capable-devices/) [2021]
-- Óscar Otero, [Lume reading-time plugin](https://github.com/lumeland/experimental-plugins/blob/3d99f245fc46f64344116f14f175821ac329ed12/reading_time/mod.ts)
 - Adam Argyle, [Building a dialog component](https://web.dev/articles/building/a-dialog-component/) [2022]
 - Heydon Pickering, [Axiomatic CSS and Lobotomized Owls](https://alistapart.com/article/axiomatic-css-and-lobotomized-owls/) [2014], [The blockquote element](https://heydonworks.com/article/the-blockquote-element/) [2024]
 - Nigel O Toole, [Share URL](https://github.com/NigelOToole/share-url)

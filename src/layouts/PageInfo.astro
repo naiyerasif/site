@@ -13,8 +13,7 @@ const {
 	updated,
 	previous,
 	next,
-	source,
-	timeToRead
+	source
 } = pageInfoSchema.parse(Astro.props.pageInfo);
 const siteTitle = siteInfo.title;
 const siteAuthor = siteInfo.author.name;
@@ -52,8 +51,6 @@ const mastodonId = siteInfo.author.presence.mastodon.id;
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content={title}>
 <meta name="twitter:description" content={description}>
-{timeToRead && <meta name="twitter:label1" content="Reading time">}
-{timeToRead && <meta name="twitter:data1" content={`${timeToRead} min read`}>}
 <link rel="me" href={mastodonUrl}>
 <meta name="fediverse:creator" content={mastodonId}>
 <meta itemprop="name" content={title}>

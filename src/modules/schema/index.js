@@ -85,7 +85,6 @@ const pageInfoSchema = z.object({
 	previous: optionalUrl,
 	next: optionalUrl,
 	source: optionalEditUrl,
-	timeToRead,
 });
 
 export {

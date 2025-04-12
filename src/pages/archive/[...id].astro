@@ -5,7 +5,6 @@ import Icon from "../../components/Icon.astro";
 import Toc from "../../components/Toc.astro";
 import Time from "../../components/Time.astro";
 import format, { compare, format_date } from "../../modules/datetime/index.js";
-import readingTime from "../../modules/reading-time/index.js";
 import toc from "../../modules/table-of-contents/index.js";
 import siteInfo from "../../modules/website/index.js";
 import { PostType, Status } from "../../modules/schema/defs.js";
@@ -24,9 +23,7 @@ const { data } = post;
 const { Content, headings } = await render(post);
 const url = Astro.url.pathname;
 const showToc = data.showToc && headings && headings.length > 0;
-const timeToRead = readingTime(post.body).readingTime;
 const showUpdate = compare(data.update, data.date) !== 0;
-const showReadingTime = timeToRead > 0;
 const status = Status.archived;
 
 const pageInfo = {
@@ -36,8 +33,7 @@ const pageInfo = {
 	source: post.filePath,
 	type: "article",
 	published: format(data.date, format_date),
-	updated: showUpdate ? format(data.update, format_date) : undefined,
-	timeToRead: showReadingTime ? timeToRead : undefined
+	updated: showUpdate ? format(data.update, format_date) : undefined
 };
 ---
 
@@ -54,7 +50,7 @@ const pageInfo = {
 			</hgroup>
 		</div>
 		<div class="hero-footer">
-			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span class="update"><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}{data.type !== PostType.note.id && showReadingTime && <span><Icon name="clock"/> Takes about {`${timeToRead} min to read`}</span>}<span class={`chip chip-${status.tone.id}`}>{status.label}</span>
+			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span class="update"><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}<span class={`chip chip-${status.tone.id}`}>{status.label}</span>
 		</div>
 	</Fragment>
 	<article class="post">
