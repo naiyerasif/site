@@ -133,6 +133,36 @@ It gets converted to the following HTML for the RSS feeds.
 
 Specify `.popout.popout-video` classes to bleed the video out of wrapper.
 
+### `attrib` directive
+
+You can wrap any markdown node in `attrib` directive. All the properties on this directive will be automatically added to the first child of the wrapped markdown node.
+
+For example, the following markdown
+
+```md
+:attrib[**emphasized text**]{#tagline}
+
+::attrib[`console.log('hello!')`]{.lang-js}
+
+:::attrib{start="2025"}
+1. First
+2. Second
+:::
+```
+
+returns this HTML.
+
+```html
+<strong id="tagline">emphasized text</strong>
+
+<code class="lang-js">console.log('hello!')</code>
+
+<ol start="2025">
+  <li>First</li>
+  <li>Second</li>
+</ol>
+```
+
 ## Audits
 
 - To launch a full lighthouse audit, run `pnpm lighthouse`
