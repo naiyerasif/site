@@ -7,7 +7,7 @@ update: 2025-04-12 01:18:43
 tagline: Site updates, improvements, and everything else
 ---
 
-<div class="timeline">
+:::attrib{.timeline}
 
 - :time[2023-07-13 21:49:06]
 
@@ -117,4 +117,4 @@ tagline: Site updates, improvements, and everything else
 	
 	[Inception!](https://github.com/naiyerasif/site/commit/2c7b6db3b7e013c5b6609c597cef10f84e53a1b7) Built with <data value="0.6.5">[Gridsome](https://github.com/gridsome/gridsome)</data> and <data value="2.6.10">[Vue](https://github.com/vuejs/vue)</data>
 
-</div>
+:::

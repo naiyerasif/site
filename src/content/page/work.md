@@ -7,7 +7,7 @@ update: 2025-04-12 22:55:18
 tagline: A timeline of professional and open source work
 ---
 
-<div class="timeline">
+:::attrib{.timeline}
 
 - 2023
 
@@ -54,4 +54,4 @@ tagline: A timeline of professional and open source work
 	
 	- Started working for [Wipro](https://www.wipro.com/) as a Project Engineer
 
-</div>
+:::
