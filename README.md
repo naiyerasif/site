@@ -163,6 +163,18 @@ returns this HTML.
 </ol>
 ```
 
+Custom wrapper element can be created by using `is` attribute. For example,
+
+```md
+:attrib[initialized]{.chip.chip-assert is="span"}
+```
+
+generates this HTML.
+
+```html
+<span class="chip chip-assert">initialized</span>
+```
+
 ## Audits
 
 - To launch a full lighthouse audit, run `pnpm lighthouse`
