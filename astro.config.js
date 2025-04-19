@@ -9,6 +9,7 @@ import remarkCalloutDirectives from "./src/modules/remark-callout-directives/ind
 import remarkTimeDirective from "./src/modules/remark-time-directive/index.js";
 import remarkFigureDirective from "./src/modules/remark-figure-directive/index.js";
 import remarkYoutubeDirective from "./src/modules/remark-youtube-directive/index.js";
+import remarkAttributesDirective from "./src/modules/remark-attributes-directive/index.js";
 import siteInfo from "./src/modules/website/index.js";
 import { CountableSlugifier } from "./src/modules/slugifier/index.js";
 
@@ -50,7 +51,8 @@ export default defineConfig({
 				{
 					tagName: "div"
 				}
-			]
+			],
+			remarkAttributesDirective
 		],
 		rehypePlugins: [
 			[
