@@ -407,30 +407,31 @@ random-message {
 .post {
 	ol.timeline,
 	ul.timeline {
-		--timeline-border-color: var(--x3-border-assert);
-		--timeline-label-color: var(--x3-fg-assert);
-		--timeline-padding: 1.25rem;
+		--timelineBorderColor: var(--timeline-border-color, var(--x3-border-assert));
+		--timelineLabelColor: var(--timeline-label-color, var(--x3-fg-assert));
+		--timelinePadding: 1.25rem;
+
 		list-style: none;
 		font-size: var(--x3-text-sm);
-		border-inline-start: var(--x3-border-width-base) solid var(--timeline-border-color);
-		padding-inline-start: var(--timeline-padding);
+		border-inline-start: var(--x3-border-width-base) solid var(--timelineBorderColor);
+		padding-inline-start: var(--timelinePadding);
 		
 		& > li > :first-child {
 			font-weight: var(--x3-text-semibold);
-			color: var(--timeline-label-color);
+			color: var(--timelineLabelColor);
 			position: relative;
 			padding-block-start: 2em;
 
 			&::before {
 				position: absolute;
 				content: "";
-				background-image: radial-gradient(circle, var(--timeline-border-color));
+				background-image: radial-gradient(circle, var(--timelineBorderColor));
 				background-color: transparent;
 				background-size: 10px 2px;
 				background-repeat: repeat;
 				top: 1em;
-				margin-inline-start: calc(var(--timeline-padding) * -1);
-				@include mixins.size(calc(100% + var(--timeline-padding)), 2px);
+				margin-inline-start: calc(var(--timelinePadding) * -1);
+				@include mixins.size(calc(100% + var(--timelinePadding)), 2px);
 			}
 		}
 	}

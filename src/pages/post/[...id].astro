@@ -68,25 +68,26 @@ const pageInfo = {
 			<Toc headings={toc(headings, siteInfo.maxTocDepth)}/>
 		</nav>}
 		<Content/>
-		{hasRecommendations && <div class="recs">
+	</article>
+	<Fragment slot="sidekick">
+		<div class="sidekick-panels">
+			<ActionPanel {pageInfo}/>
+			<SharePanel {pageInfo}/>
+		</div>
+
+		{hasRecommendations && <ul class="rec">
 			{prevPage && 
-				<div class="rec">
-					<Icon name="arrow-left"/>
+				<li class="rec-prev">
 					<div class="hint">Previous</div>
 					<a href={prevPage}>{prev.data.title}</a>
-				</div>
+				</li>
 			}
 			{nextPage && 
-				<div class="rec">
-					<Icon name="arrow-right"/>
+				<li class="rec-next">
 					<div class="hint">Next</div>
 					<a href={nextPage}>{next.data.title}</a>
-				</div>
+				</li>
 			}
-		</div>}
-	</article>
-	<div slot="sidekick" class="sidekick-panels">
-		<ActionPanel {pageInfo}/>
-		<SharePanel {pageInfo}/>
-	</div>
+		</ul>}
+	</Fragment>
 </Layout>

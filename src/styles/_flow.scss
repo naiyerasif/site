@@ -2,7 +2,7 @@
 
 :where(
 	blockquote, figure, figcaption, caption, details, article, ul, ol, dl, dd, li,
-	.feed, .card-body, .post, .hero, .recs, .callout-content, .footnotes
+	.feed, .card-body, .post, .hero, .callout-content, .footnotes
 ) {
 	@include mixins.flow;
 }
