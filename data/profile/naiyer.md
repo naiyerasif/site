@@ -7,6 +7,10 @@ update: 2024-09-01 14:28:34
 avatar: "./images/naiyer.png"
 ---
 
+:::figure{.avatar}
+![Naiyer](./images/naiyer.png)
+:::
+
 <random-message selector="span">
 	👋 <span>Hi</span><span data-language="Maori" hidden>Kia ora</span><span data-language="Turkish" hidden>Merhaba</span><span data-language="Urdu" hidden>Khush Amdeed</span><span hidden>Hello</span>!
 	I&rsquo;m Naiyer <audio-player><audio><source src="/audio/profile/naiyer/namedrop.mp3" type="audio/mpeg"/><source src="/audio/profile/naiyer/namedrop.m4a" type="audio/mp4"/></audio><button></button></audio-player><noscript><audio controls><source src="/audio/profile/naiyer/namedrop.mp3" type="audio/mpeg"/><source src="/audio/profile/naiyer/namedrop.m4a" type="audio/mp4"/></audio></noscript> , from India.

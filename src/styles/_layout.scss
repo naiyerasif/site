@@ -147,11 +147,12 @@ body > .header {
 			}
 		}
 	}
+}
 
-	.avatar {
-		inline-size: calc(56px + 4vw);
-		border-radius: var(--x3-radius-max);
-	}
+.avatar p img {
+	inline-size: calc(96px + 2vw);
+	border: 1px solid var(--x3-bg-intense);
+	border-radius: var(--x3-radius-max);
 }
 
 .sidekick {
