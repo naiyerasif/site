@@ -2,7 +2,7 @@ import { h } from "hastscript";
 import { SKIP, visit } from "unist-util-visit";
 import { defu } from "defu";
 
-export default function remarkAttributesDirective() {
+export default function remarkElementDirective() {
 	return (tree) => {
 		visit(tree, (node, index, parent) => {
 			if (typeof index !== "number" || !parent) return;
@@ -12,7 +12,7 @@ export default function remarkAttributesDirective() {
 				node.type === "leafDirective" ||
 				node.type === "containerDirective"
 			) {
-				if (node.name !== "attrib" || !node.children?.length) return;
+				if (node.name !== "el" || !node.children?.length) return;
 
 				const { is = "", ...attribs } = node.attributes || {};
 

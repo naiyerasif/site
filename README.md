@@ -133,18 +133,18 @@ It gets converted to the following HTML for the RSS feeds.
 
 Specify `.popout.popout-video` classes to bleed the video out of wrapper.
 
-### `attrib` directive
+### `el` directive
 
-You can wrap any markdown node in `attrib` directive. All the properties on this directive will be automatically added to the first child of the wrapped markdown node.
+You can wrap any markdown node in `el` directive. All the properties on this directive will be automatically added to the first child of the wrapped markdown node.
 
 For example, the following markdown
 
 ```md
-:attrib[**emphasized text**]{#tagline}
+:el[**emphasized text**]{#tagline}
 
-::attrib[`console.log('hello!')`]{.lang-js}
+::el[`console.log('hello!')`]{.lang-js}
 
-:::attrib{start="2025"}
+:::el{start="2025"}
 1. First
 2. Second
 :::
@@ -166,7 +166,7 @@ returns this HTML.
 Custom wrapper element can be created by using `is` attribute. For example,
 
 ```md
-:attrib[initialized]{.chip.chip-assert is="span"}
+:el[initialized]{.chip.chip-assert is="span"}
 ```
 
 generates this HTML.
