@@ -9,7 +9,6 @@
 		"postprocess": "node etc/bin/fixFeedImageUrls.js",
 		"preview": "astro preview",
 		"new": "node etc/bin/post.js",
-		"postinstall": "astro telemetry disable",
 		"lighthouse": "unlighthouse --site http://localhost:8080"
 	},
 	"dependencies": {
@@ -18,7 +17,7 @@
 		"@microflash/rehype-slugify": "^1.0.0",
 		"@microflash/rehype-starry-night": "^7.3.1",
 		"@sindresorhus/slugify": "^2.2.1",
-		"astro": "^5.7.5",
+		"astro": "^5.7.9",
 		"cheerio": "^1.0.0",
 		"dayjs": "^1.11.13",
 		"defu": "^6.1.4",
@@ -47,8 +46,5 @@
 		"picocolors": "^1.1.1",
 		"unlighthouse": "^0.16.3"
 	},
-	"packageManager": "pnpm@10.9.0",
-	"browserslist": [
-		"defaults"
-	]
+	"packageManager": "pnpm@10.10.0"
 }
