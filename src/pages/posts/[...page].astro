@@ -29,13 +29,10 @@ const pageInfo = {
 
 <Layout {pageInfo} class="feed">
 	<Fragment slot="hero">
-		<nav class="hero-header breadcrumb">
-			<a class="breadcrumb-item" href="/">Home</a>
-			<span class="breadcrumb-item">{page.start + 1}&hellip;{page.end + 1} of {page.total} posts</span>
-		</nav>
 		<div class="hero-body">
 			<hgroup>
 				<h1>Posts</h1>
+				<p>{page.start + 1}&hellip;{page.end + 1} of {page.total} posts</p>
 			</hgroup>
 		</div>
 	</Fragment>

@@ -73,7 +73,7 @@ body > .header {
 	align-items: center;
 	justify-content: space-between;
 	gap: 1ch;
-	padding-block: var(--x3-gap-body);
+	padding-block: var(--x3-gap-body) var(--x3-gap-base);
 
 	.brand {
 		display: inline-flex;
@@ -87,11 +87,11 @@ body > .header {
 		gap: 1rem;
 
 		.nav-item {
-			font-size: 0.9em;
 			--x3-size-icon: var(--x3-size-icon-sm);
+			font-size: var(--x3-text-sm);
 
 			svg {
-				stroke-width: 2.5;
+				stroke-width: 3;
 			}
 		}
 
@@ -117,15 +117,11 @@ body > .header {
 		gap: 1em;
 	}
 
-	&-header,
-	&-footer {
-		font-size: var(--x3-text-sm);
-	}
-
 	&-footer {
 		--x3-size-icon: 1.25em;
 		--x3-fg-icon: var(--baseline-fg-accent);
 		--x3-gap-flow: 2rem;
+		font-size: var(--x3-text-sm);
 
 		.icon {
 			margin-inline-end: 0.5ch;

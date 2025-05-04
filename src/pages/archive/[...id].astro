@@ -7,7 +7,7 @@ import Time from "../../components/Time.astro";
 import format, { compare, format_date } from "../../modules/datetime/index.js";
 import toc from "../../modules/table-of-contents/index.js";
 import siteInfo from "../../modules/website/index.js";
-import { PostType, Status } from "../../modules/schema/defs.js";
+import { Status } from "../../modules/schema/defs.js";
 
 export async function getStaticPaths() {
 	const posts = await getCollection("archive");
@@ -39,10 +39,6 @@ const pageInfo = {
 
 <Layout {pageInfo} class="popout">
 	<Fragment slot="hero">
-		<nav class="hero-header breadcrumb">
-			<a class="breadcrumb-item" href="/">Home</a>
-			<span class="breadcrumb-item">{PostType[data.type].label}</span>
-		</nav>
 		<div class="hero-body">
 			<hgroup>
 				<h1>{data.title}</h1>
