@@ -87,8 +87,8 @@ body > .header {
 		gap: 1rem;
 
 		.nav-item {
-			--x3-size-icon: 1.25rem;
 			font-size: 0.9em;
+			--x3-size-icon: var(--x3-size-icon-sm);
 
 			svg {
 				stroke-width: 2.5;
