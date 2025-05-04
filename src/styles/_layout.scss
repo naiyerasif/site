@@ -24,7 +24,8 @@ body {
 	}
 }
 
-.post {
+.post,
+.card {
 	--postPopout: minmax(0, 1fr);
 	--postGap: var(--x3-gap-body);
 	--postCopy: min(var(--x3-span-post), 100% - (var(--x3-gap-body) * 2));

@@ -235,20 +235,13 @@ figure {
 }
 
 .card {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.5rem;
-
-	// 56rem = var(--x3-span-post) + 12rem (as offset)
-	@media (min-width: 58rem) {
-		display: grid;
-		grid-template-columns: var(--x3-span-post) minmax(0, 1fr);
-		gap: 2rem;
+	&:not(:first-child) {
+		padding-block-start: var(--x3-gap-base);
 	}
 
-	&-body {
-		max-inline-size: var(--x3-span-post);
-		inline-size: 100%;
+	&:not(:last-child) {
+		border-block-end: var(--x3-border-width-base) solid var(--x3-bg-gentle);
+		padding-block-end: var(--x3-gap-base);
 	}
 
 	&-meta {
@@ -264,14 +257,6 @@ figure {
 
 		.chip {
 			font-size: var(--x3-text-sm);
-		}
-
-		@media (min-width: 56rem) {
-			// align-self: start;
-			order: 2;
-			flex-direction: column;
-			align-items: start;
-			// flex-grow: 1;
 		}
 	}
 
