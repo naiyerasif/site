@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@astrojs/sitemap':
-        specifier: ^3.3.1
-        version: 3.3.1
+        specifier: ^3.4.0
+        version: 3.4.0
       '@microflash/preset':
         specifier: ^6.0.0
         version: 6.0.0
@@ -25,7 +25,7 @@ importers:
         version: 2.2.1
       astro:
         specifier: ^5.7.12
-        version: 5.7.12(@types/node@22.15.17)(jiti@2.4.2)(rollup@4.40.2)(sass@1.87.0)(tsx@4.19.2)(typescript@5.6.2)
+        version: 5.7.12(@types/node@22.15.17)(jiti@2.4.2)(rollup@4.40.2)(sass@1.88.0)(tsx@4.19.2)(typescript@5.6.2)
       cheerio:
         specifier: ^1.0.0
         version: 1.0.0
@@ -36,8 +36,8 @@ importers:
         specifier: ^6.1.4
         version: 6.1.4
       feed:
-        specifier: ^4.2.2
-        version: 4.2.2
+        specifier: ^5.0.1
+        version: 5.0.1
       hastscript:
         specifier: ^9.0.1
         version: 9.0.1
@@ -78,8 +78,8 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
       sass:
-        specifier: ^1.87.0
-        version: 1.87.0
+        specifier: ^1.88.0
+        version: 1.88.0
       sharp:
         specifier: ^0.34.1
         version: 0.34.1
@@ -122,8 +122,8 @@ packages:
     resolution: {integrity: sha512-GilTHKGCW6HMq7y3BUv9Ac7GMe/MO9gi9GW62GzKtth0SwukCu/qp2wLiGpEujhY+VVhaG9v7kv/5vFzvf4NYw==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=22.0.0}
 
-  '@astrojs/sitemap@3.3.1':
-    resolution: {integrity: sha512-GRnDUCTviBSNfXJ0Jmur+1/C+z3g36jy79VyYggfe1uNyEYSTcmAfTTCmbytrRvJRNyJJnSfB/77Gnm9PiXRRg==}
+  '@astrojs/sitemap@3.4.0':
+    resolution: {integrity: sha512-C5m/xsKvRSILKM3hy47n5wKtTQtJXn8epoYuUmCCstaE9XBt20yInym3Bz2uNbEiNfv11bokoW0MqeXPIvjFIQ==}
 
   '@astrojs/telemetry@3.2.1':
     resolution: {integrity: sha512-SSVM820Jqc6wjsn7qYfV9qfeQvePtVc1nSofhyap7l0/iakUKywj3hfy3UJAOV4sGV4Q/u450RD4AaCaFvNPlg==}
@@ -2281,9 +2281,9 @@ packages:
       picomatch:
         optional: true
 
-  feed@4.2.2:
-    resolution: {integrity: sha512-u5/sxGfiMfZNtJ3OvQpXcvotFpYkL0n9u9mM2vkui2nGo8b4wvDkJ8gAkYqbA8QpGyFCv3RK0Z+Iv+9veCS9bQ==}
-    engines: {node: '>=0.4.0'}
+  feed@5.0.1:
+    resolution: {integrity: sha512-kOveKLHucVZ6RI91bdWAts9O0L1N2mGzRGVCDQPRnHh4HmgqLdN66Cp/5dMeJZGn/qnBslWliwX37FEBq8DCIA==}
+    engines: {node: '>=20', pnpm: '>=10'}
 
   figures@6.1.0:
     resolution: {integrity: sha512-d+l3qxjSesT4V7v2fh+QnmFnUWv9lSpjarhShNTgBOfA0ttejbQUAlHLitbjkoRiDulW0OPoQPYIGhIC8ohejg==}
@@ -2543,8 +2543,8 @@ packages:
   immediate@3.0.6:
     resolution: {integrity: sha512-XXOFtyqDjNDAQxVfYxuF7g9Il/IbWmmlQg2MYKOH8ExIT1qg6xc4zyS3HaEEATgs1btfzxq15ciUiY7gjSXRGQ==}
 
-  immutable@5.1.1:
-    resolution: {integrity: sha512-3jatXi9ObIsPGr3N5hGw/vWWcTkq6hUYhpQz4k0wLC+owqWi/LiugIw9x0EdNZ2yGedKN/HzePiBvaJRXa0Ujg==}
+  immutable@5.1.2:
+    resolution: {integrity: sha512-qHKXW1q6liAk1Oys6umoaZbDRqjcjgSrbnrifHsfsttza7zcvRAsL7mMV6xWcyhwQy7Xj5v4hhbr6b+iDYwlmQ==}
 
   import-fresh@3.3.1:
     resolution: {integrity: sha512-TR3KfrTZTYLPB6jUjfx6MF9WcWrHL9su5TObK4ZkYgBdWKPOFoSoQIdEuTuR82pmtxH2spWG9h6etwfr1pLBqQ==}
@@ -3639,13 +3639,10 @@ packages:
   sanitize-filename@1.6.3:
     resolution: {integrity: sha512-y/52Mcy7aw3gRm7IrcGDFx/bCk4AhRh2eI9luHOQM86nZsqwiRkkq2GekHXBBD+SmPidc8i2PqtYZl+pWJ8Oeg==}
 
-  sass@1.87.0:
-    resolution: {integrity: sha512-d0NoFH4v6SjEK7BoX810Jsrhj7IQSYHAHLi/iSpgqKc7LaIDshFRlSg5LOymf9FqQhxEHs2W5ZQXlvy0KD45Uw==}
+  sass@1.88.0:
+    resolution: {integrity: sha512-sF6TWQqjFvr4JILXzG4ucGOLELkESHL+I5QJhh7CNaE+Yge0SI+ehCatsXhJ7ymU1hAFcIS3/PBpjdIbXoyVbg==}
     engines: {node: '>=14.0.0'}
     hasBin: true
-
-  sax@1.2.4:
-    resolution: {integrity: sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==}
 
   sax@1.4.1:
     resolution: {integrity: sha512-+aWOz7yVScEGoKNd4PA10LZ8sk0A/z5+nXQG5giUO5rprX9jgYsTdov9qCchZiPIZezbZH+jRut8nPodFAX4Jg==}
@@ -3663,6 +3660,11 @@ packages:
 
   semver@7.7.1:
     resolution: {integrity: sha512-hlq8tAfn0m/61p4BVRcPzIGr6LKiMwo4VM6dGi6pt4qcRkmNzTcWq6eCEjEh+qXjkMDvPlOFFSGwQjoEa6gyMA==}
+    engines: {node: '>=10'}
+    hasBin: true
+
+  semver@7.7.2:
+    resolution: {integrity: sha512-RF0Fw+rO5AMf9MAyaRXI4AV0Ulj5lMHqVxxdSgiVbixSCXoEmmX/jk0CuJw4+3SqroYO9VoUh+HcuJivvtJemA==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -4326,9 +4328,6 @@ packages:
   zod@3.24.2:
     resolution: {integrity: sha512-lY7CDW43ECgW9u1TcT3IoXHflywfVqDYze4waEz812jR/bZ8FHDsl7pFQoSZTz5N+2NqRXs8GBwnAwo3ZNxqhQ==}
 
-  zod@3.24.3:
-    resolution: {integrity: sha512-HhY1oqzWCQWuUqvBFnsyrtZRhyPeR7SUGv+C4+MsisMuVfSPx8HpwWqH8tRahSlt6M3PiFAcoeFhZAqIXTxoSg==}
-
   zod@3.24.4:
     resolution: {integrity: sha512-OdqJE9UDRPwWsrHjLN2F8bPxvwJBK22EHLWtanu0LSYr5YqzsaaW3RMgmjwr8Rypg5k+meEJdSPXJZXE/yqOMg==}
 
@@ -4376,11 +4375,11 @@ snapshots:
     dependencies:
       prismjs: 1.30.0
 
-  '@astrojs/sitemap@3.3.1':
+  '@astrojs/sitemap@3.4.0':
     dependencies:
       sitemap: 8.0.0
       stream-replace-string: 2.0.0
-      zod: 3.24.3
+      zod: 3.24.4
 
   '@astrojs/telemetry@3.2.1':
     dependencies:
@@ -5305,7 +5304,7 @@ snapshots:
       extract-zip: 2.0.1
       progress: 2.0.3
       proxy-agent: 6.5.0
-      semver: 7.7.1
+      semver: 7.7.2
       tar-fs: 3.0.8
       unbzip2-stream: 1.4.3
       yargs: 17.7.2
@@ -5896,7 +5895,7 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  astro@5.7.12(@types/node@22.15.17)(jiti@2.4.2)(rollup@4.40.2)(sass@1.87.0)(tsx@4.19.2)(typescript@5.6.2):
+  astro@5.7.12(@types/node@22.15.17)(jiti@2.4.2)(rollup@4.40.2)(sass@1.88.0)(tsx@4.19.2)(typescript@5.6.2):
     dependencies:
       '@astrojs/compiler': 2.12.0
       '@astrojs/internal-helpers': 0.6.1
@@ -5950,8 +5949,8 @@ snapshots:
       unist-util-visit: 5.0.0
       unstorage: 1.16.0
       vfile: 6.0.3
-      vite: 6.3.5(@types/node@22.15.17)(jiti@2.4.2)(sass@1.87.0)(tsx@4.19.2)
-      vitefu: 1.0.6(vite@6.3.5(@types/node@22.15.17)(jiti@2.4.2)(sass@1.87.0)(tsx@4.19.2))
+      vite: 6.3.5(@types/node@22.15.17)(jiti@2.4.2)(sass@1.88.0)(tsx@4.19.2)
+      vitefu: 1.0.6(vite@6.3.5(@types/node@22.15.17)(jiti@2.4.2)(sass@1.88.0)(tsx@4.19.2))
       xxhash-wasm: 1.1.0
       yargs-parser: 21.1.1
       yocto-spinner: 0.2.2
@@ -6693,7 +6692,7 @@ snapshots:
     optionalDependencies:
       picomatch: 4.0.2
 
-  feed@4.2.2:
+  feed@5.0.1:
     dependencies:
       xml-js: 1.6.11
 
@@ -7060,7 +7059,7 @@ snapshots:
 
   immediate@3.0.6: {}
 
-  immutable@5.1.1: {}
+  immutable@5.1.2: {}
 
   import-fresh@3.3.1:
     dependencies:
@@ -8605,15 +8604,13 @@ snapshots:
     dependencies:
       truncate-utf8-bytes: 1.0.2
 
-  sass@1.87.0:
+  sass@1.88.0:
     dependencies:
       chokidar: 4.0.3
-      immutable: 5.1.1
+      immutable: 5.1.2
       source-map-js: 1.2.1
     optionalDependencies:
       '@parcel/watcher': 2.5.1
-
-  sax@1.2.4: {}
 
   sax@1.4.1: {}
 
@@ -8624,6 +8621,8 @@ snapshots:
   semver@6.3.1: {}
 
   semver@7.7.1: {}
+
+  semver@7.7.2: {}
 
   sharp@0.33.5:
     dependencies:
@@ -9137,7 +9136,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.2
 
-  vite@6.3.5(@types/node@22.15.17)(jiti@2.4.2)(sass@1.87.0)(tsx@4.19.2):
+  vite@6.3.5(@types/node@22.15.17)(jiti@2.4.2)(sass@1.88.0)(tsx@4.19.2):
     dependencies:
       esbuild: 0.25.4
       fdir: 6.4.4(picomatch@4.0.2)
@@ -9149,12 +9148,12 @@ snapshots:
       '@types/node': 22.15.17
       fsevents: 2.3.3
       jiti: 2.4.2
-      sass: 1.87.0
+      sass: 1.88.0
       tsx: 4.19.2
 
-  vitefu@1.0.6(vite@6.3.5(@types/node@22.15.17)(jiti@2.4.2)(sass@1.87.0)(tsx@4.19.2)):
+  vitefu@1.0.6(vite@6.3.5(@types/node@22.15.17)(jiti@2.4.2)(sass@1.88.0)(tsx@4.19.2)):
     optionalDependencies:
-      vite: 6.3.5(@types/node@22.15.17)(jiti@2.4.2)(sass@1.87.0)(tsx@4.19.2)
+      vite: 6.3.5(@types/node@22.15.17)(jiti@2.4.2)(sass@1.88.0)(tsx@4.19.2)
 
   vscode-oniguruma@2.0.1: {}
 
@@ -9230,7 +9229,7 @@ snapshots:
 
   xml-js@1.6.11:
     dependencies:
-      sax: 1.2.4
+      sax: 1.4.1
 
   xxhash-wasm@1.1.0: {}
 
@@ -9277,8 +9276,6 @@ snapshots:
   zod@3.23.8: {}
 
   zod@3.24.2: {}
-
-  zod@3.24.3: {}
 
   zod@3.24.4: {}
 

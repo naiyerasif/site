@@ -12,7 +12,7 @@
 		"lighthouse": "unlighthouse --site http://localhost:8080"
 	},
 	"dependencies": {
-		"@astrojs/sitemap": "^3.3.1",
+		"@astrojs/sitemap": "^3.4.0",
 		"@microflash/preset": "^6.0.0",
 		"@microflash/rehype-slugify": "^1.0.0",
 		"@microflash/rehype-starry-night": "^7.3.1",
@@ -21,7 +21,7 @@
 		"cheerio": "^1.0.0",
 		"dayjs": "^1.11.13",
 		"defu": "^6.1.4",
-		"feed": "^4.2.2",
+		"feed": "^5.0.1",
 		"hastscript": "^9.0.1",
 		"html-entities": "^2.6.0",
 		"mdast-util-from-markdown": "^2.0.2",
@@ -35,7 +35,7 @@
 		"remark-parse": "^11.0.0",
 		"remark-rehype": "^11.1.2",
 		"remark-smartypants": "^3.0.2",
-		"sass": "^1.87.0",
+		"sass": "^1.88.0",
 		"sharp": "^0.34.1",
 		"unified": "^11.0.5",
 		"unist-util-visit": "^5.0.0"
@@ -46,5 +46,5 @@
 		"picocolors": "^1.1.1",
 		"unlighthouse": "^0.16.3"
 	},
-	"packageManager": "pnpm@10.10.0"
+	"packageManager": "pnpm@10.11.0"
 }
