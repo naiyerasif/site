@@ -7,6 +7,7 @@ chatbot(s)
 [Cc]odeblock|[Cc]odeblocks
 corepack
 [Hh]ealthcheck
+[Hh]ikari
 [Hh]omebrew
 mixin
 [Mm]onorepo
