@@ -55,8 +55,9 @@
 		padding: 0.4em 0.6em;
 		border-radius: var(--x3-radius-max);
 	}
-	
+
 	pre {
+		background-color: var(--x3-bg-base);
 		border: 1px solid var(--x3-border-note);
 		border-radius: 0;
 		border-end-start-radius: var(--hlBorderRadius);
