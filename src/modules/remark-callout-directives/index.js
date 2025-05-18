@@ -6,45 +6,40 @@ import { defu } from "defu";
 function generate(title, children, hint) {
 	const nodes = [];
 
+	if (hint) {
+		nodes.push({
+			type: "html",
+			value: hint
+		});
+	}
+
 	if (title) {
 		const [titleNode] = fromMarkdown(title).children;
 		nodes.push({
 			type: "paragraph",
 			data: {
-				hProperties: { className: ["callout-title"] }
-			},
-			children: [{
-				type: "strong",
-				children: titleNode.children
-			}]
-		});
-	}
-
-	nodes.push(...children);
-	
-	return [
-		{
-			type: "paragraph",
-			data: {
 				hName: "div",
-				hProperties: { className: ["callout-hint"] }
+				hProperties: { className: ["callout-title"] },
 			},
 			children: [
 				{
-					type: "html",
-					value: hint
+					type: "strong",
+					children: titleNode.children,
 				}
 			]
+		})
+	}
+
+	nodes.push({
+		type: "paragraph",
+		data: {
+			hName: "div",
+			hProperties: { className: ["callout-content"] },
 		},
-		{
-			type: "paragraph",
-			data: {
-				hName: "div",
-				hProperties: { className: ["callout-content"] }
-			},
-			children: nodes
-		}
-	];
+		children: children,
+	});
+
+	return nodes;
 }
 
 const defaults = {
@@ -89,11 +84,7 @@ export default function remarkCalloutDirectives(userOptions = {}) {
 					class: "class" in attributes ? `callout callout-${calloutType} ${attributes.class}` : `callout callout-${calloutType}`
 				};
 
-				node.children = generate(
-					title,
-					node.children,
-					callout.hint
-				);
+				node.children = generate(title, node.children, callout.hint);
 
 				const tagName = callout.tagName || options.tagName || "aside";
 				const hast = h(tagName, node.attributes);

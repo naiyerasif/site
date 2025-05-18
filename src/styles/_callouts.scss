@@ -1,51 +1,42 @@
-@use "sass:math";
 @use "mixins";
 
 .callout {
 	--calloutFg: var(--x3-fg-callout, var(--x3-fg-note));
 	--calloutBg: var(--x3-bg-callout, var(--x3-bg-note));
-	--calloutBorderRadius: var(--x3-radius-xs);
-	--calloutBorder: var(--x3-border-width-sm) solid var(--x3-border-callout, var(--x3-border-note));
+	--calloutBorderColor: var(--x3-border-callout, var(--x3-border-note));
+	--calloutBorderRadius: var(--x3-radius-max);
 
+	margin-inline-start: 0.55rem;
+	padding-inline-start: 1.25rem;
 	position: relative;
-	display: flex;
-	gap: 0.5rem;
-	padding: 1ch;
-	border: var(--calloutBorder);
-	border-radius: var(--calloutBorderRadius);
+	background-image: radial-gradient(at right top, var(--calloutBg), transparent 60%, transparent);
+	border-start-end-radius: var(--x3-radius-xs);
+
+	&::before {
+		position: absolute;
+		content: "";
+		left: 0;
+		bottom: 0;
+		inline-size: 0.25rem;
+		block-size: calc(100% - 2rem);
+		border-radius: var(--calloutBorderRadius);
+		background-color: var(--calloutBorderColor);
+	}
 
 	* {
 		--x3-gap-flow: 0.5em;
 	}
 
-	&::before {
-		content: "";
+	.icon {
 		position: absolute;
-		@include mixins.size(100%);
-		background-color: var(--calloutBg);
-		border-radius: var(--x3-radius-max);
-		filter: blur(5rem);
-		z-index: -1;
-		top: 0;
-		left: 0;
-		opacity: var(--x3-bg-callout-opacity);
-	}
-
-	&-hint,
-	&-content &-title *,
-	&-content > :first-child {
+		left: -0.6rem;
+		top: 0.25ch;
 		color: var(--calloutFg);
 	}
 
-	&-hint {
-		display: flex;
-		align-items: start;
-		flex: none;
-		padding-block-start: 0.2ch;
-	}
-
-	&-content {
-		flex-grow: 1;
+	.icon + &-content *,
+	&-title * {
+		color: var(--calloutFg);
 	}
 
 	&-commend {
