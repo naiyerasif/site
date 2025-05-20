@@ -4,13 +4,15 @@
 	--hlLinePromptSize: 1em;
 	--hlLineBorderColor: transparent;
 	--hlLineBgColor: transparent;
-	--hlLineNumberColor: var(--color-prettylights-syntax-sublimelinter-gutter-mark);
+	--hlLineNumberColor: var(--x3-border-note);
 	--hlBorderRadius: var(--x3-radius-xs);
+	font-size: 0.9em;
 
 	&-header {
+		--hlHeaderBlockPadding: 0.3em;
+		--hlHeaderInlinePadding: 0.6em;
 		display: grid;
 		grid-template-columns: auto minmax(0, 1fr) auto;
-		gap: 0.5rem;
 
 		color: var(--baseline-fg-caption);
 		background-color: var(--x3-bg-gentle);
@@ -18,26 +20,19 @@
 		border-start-end-radius: var(--hlBorderRadius);
 		border: 1px solid var(--x3-border-note);
 		border-block-end: none;
-		padding: 0.5rem;
-
-		& > * {
-			font-size: 0.75rem;
-		}
+		font-size: 0.75em;
 	}
 
 	&-language {
 		grid-column: 1;
+		padding: var(--hlHeaderBlockPadding) var(--hlHeaderInlinePadding);
 
 		span {
-			text-transform: uppercase;
-			letter-spacing: 1px;
-			min-inline-size: 5ch;
-			text-align: center;
-			padding: 0.5ch 0.8ch;
-			background-color: var(--x3-bg-warn);
+			display: inline-block;
+			font-family: var(--x3-font-code);
 			color: var(--x3-fg-warn);
-			border: 1px solid var(--x3-border-warn);
-			border-radius: var(--x3-radius-max);
+			text-align: center;
+			min-inline-size: 3ch;
 		}
 	}
 
@@ -48,12 +43,17 @@
 
 	&-title {
 		grid-column: 2;
+		padding: var(--hlHeaderBlockPadding) var(--hlHeaderInlinePadding);
+		border-inline-start: 1px solid var(--x3-border-note);
 	}
 
 	clipboard-copy {
 		flex: none;
-		padding: 0.4em 0.6em;
-		border-radius: var(--x3-radius-max);
+		padding: var(--hlHeaderBlockPadding) var(--hlHeaderInlinePadding);
+		border-radius: 0;
+		border-start-end-radius: var(--hlBorderRadius);
+		min-block-size: calc(100% + 2px);
+		margin: -1px;
 	}
 
 	pre {
