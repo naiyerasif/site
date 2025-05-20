@@ -20,7 +20,7 @@ The examples in this post use
 
 Let's login with the `root` user in the Postgres instance and create a sample table, say `notes`, for our example.
 
-```sql
+```pgsql
 create table notes (
 	id      serial primary key,
 	title   text not null,
@@ -32,7 +32,7 @@ Here, a `notes_id_seq` sequence generates the values for the `id` column. The `s
 
 Let's create a new user `jessica` and assign the permissions to perform `select` and `delete` operations on the `notes` table.
 
-```sql {11, 12}
+```pgsql {11, 12}
 create user jessica with password 'drew';
 
 -- select and delete permissions on notes table
@@ -51,7 +51,7 @@ At the end, we allow `jessica` to insert and update the `notes` table. These per
 
 When `jessica` tries to query the table or insert a record with the `title` and `content` columns, things will work as expected.
 
-```sql
+```pgsql
 -- this works for jessica
 select * from notes;
 
@@ -62,7 +62,7 @@ values ('cauldron', 'brochete');
 
 However, when `jessica` tries to insert or update a value on the `id` column, Postgres throws an error.
 
-```sql
+```pgsql
 -- this won't work since jessica doesn't have insert access on `id` column
 -- ERROR: permission denied for table notes
 insert into notes (id, title, content)
@@ -89,7 +89,7 @@ and title = 'cauldron';
 
 	For example, if you grant `jessica` all priviledges on the `notes` table, the column level restrictions will stop working.
 
-	```sql
+	```pgsql
 	grant all privileges on notes to jessica;
 
 	-- now jessica can do this
@@ -111,7 +111,7 @@ The `GENERATED ALWAYS` clause ensures that
 
 Let's alter the `notes` table to see this in action.
 
-```sql {7}
+```pgsql {7}
 -- drop the default definiton of `id` column
 alter table notes alter id drop default;
 
@@ -125,7 +125,7 @@ Since the `notes` table already has two records with the highest value of the `i
 
 If `jessica` tries to update the `id` column of an existing record with a different numeric value, Postgres will throw an error.
 
-```sql
+```pgsql
 -- this will still not work since `id` can only be update with `DEFAULT` value
 -- ERROR: column "id" can only be updated to DEFAULT
 -- Detail: Column "id" is an identity column defined as GENERATED ALWAYS.
@@ -137,7 +137,7 @@ and title = 'cauldron';
 
 To prevent the error, `jessica` can use `DEFAULT` keyword to update an existing `id`. This will update the respective record with the next generated value from the implicit sequence associated with the identity column.
 
-```sql
+```pgsql
 -- this will work since `id` is updated with `DEFAULT` value
 update notes
 set id = DEFAULT
@@ -147,7 +147,7 @@ and title = 'cauldron';
 
 Similarly, inserting an explicit numeric value in the `id` column will also throw an error.
 
-```sql
+```pgsql
 -- this throws error since `id` can only be auto-generated
 -- ERROR: cannot insert a non-DEFAULT value into column "id"
 -- Detail: Column "id" is an identity column defined as GENERATED ALWAYS.
@@ -158,7 +158,7 @@ values (4, 'maximus', 'tolerance');
 
 However, the insert will work when the `DEFAULT` keyword is used. It will create a new record with the next generated value from the implicit sequence associated with the identity column.
 
-```sql
+```pgsql
 -- this will work since the value inserted is `DEFAULT`
 insert into notes (id, title, content)
 values (DEFAULT, 'maximus', 'tolerance');
@@ -166,7 +166,7 @@ values (DEFAULT, 'maximus', 'tolerance');
 
 You can override this behavior with `OVERRIDING SYSTEM VALUE` clause. This should be generally avoided since it defeats the purpose of restricting the changes on the `id` column.
 
-```sql
+```pgsql
 -- this will also work since we're using OVERRIDING SYSTEM VALUE
 insert into notes (id, title, content)
 overriding system value
