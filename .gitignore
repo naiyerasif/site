@@ -10,6 +10,7 @@ node_modules/
 
 # logs
 *.log*
+!*.log.js
 
 # environment variables
 .env*

@@ -12,6 +12,9 @@ import remarkYoutubeDirective from "./src/modules/remark-youtube-directive/index
 import remarkElementDirective from "./src/modules/remark-element-directive/index.js";
 import siteInfo from "./src/modules/website/index.js";
 import { CountableSlugifier } from "./src/modules/slugifier/index.js";
+import sourcePgsql from "./src/modules/textmate/source.pgsql.js";
+import textLog from "./src/modules/textmate/text.log.js";
+import { all } from "@wooorm/starry-night";
 
 const slugifier = CountableSlugifier.slugifier();
 
@@ -104,9 +107,12 @@ export default defineConfig({
 						brewfile: "shell",
 						conf: "ini",
 						json: "jsonc",
-						log: "sh",
-						psql: "sql"
 					},
+					grammars: [
+						sourcePgsql,
+						textLog,
+						...all
+					],
 					plugins: [
 						...defaultPluginPack,
 						{

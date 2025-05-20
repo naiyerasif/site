@@ -23,6 +23,9 @@ importers:
       '@sindresorhus/slugify':
         specifier: ^2.2.1
         version: 2.2.1
+      '@wooorm/starry-night':
+        specifier: ^3.7.0
+        version: 3.7.0
       astro:
         specifier: ^5.7.13
         version: 5.7.13(@types/node@22.15.18)(jiti@2.4.2)(rollup@4.41.0)(sass@1.89.0)(tsx@4.19.2)(typescript@5.6.2)
