@@ -8,14 +8,14 @@ type: "note"
 
 Today I learned that you can have multi-line strings in Postgres using [dollar-quoted strings](https://www.postgresql.org/docs/current/sql-syntax-lexical.html#SQL-SYNTAX-DOLLAR-QUOTING).
 
-```postgresql
+```pgsql
 SELECT $$This is
 a multi-line string with 'quotes'$$ as multi_line_string;
 ```
 
 This works because Postgres writes the content between the dollar-quotes literally without any escaping. You can even nest them, and disambiguate them by optionally adding tags between the dollar signs.
 
-```postgresql
+```pgsql
 $function$
 BEGIN
   RETURN $json${

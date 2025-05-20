@@ -11,7 +11,7 @@ Today I learned that you can specify `CASCADE` on `DROP` and `TRUNCATE` statemen
 
 Consider the following definitions of the `users` and `orders` tables.
 
-```sql
+```pgsql
 -- create users and orders table
 create table users (id serial primary key, name text not null);
 create table orders (
@@ -27,7 +27,7 @@ insert into orders (user_id) values (1), (2), (3), (1);
 
 The `orders.user_id` column references the `users.id` column (a foreign key relationship). You can print this information with the `\d+ spring.orders` command on [`psql`](https://www.postgresql.org/docs/current/app-psql.html) (`spring` is the schema name here).
 
-```psql prompt{1}
+```pgsql prompt{1}
 \d+ spring.orders
 #                                       Table "spring.orders"
 #  Column     |            Type             | Nullable |              Default               | Storage 
@@ -44,7 +44,7 @@ The `orders.user_id` column references the `users.id` column (a foreign key rela
 
 The creation of the `users` and `orders` tables also creates two sequences automatically that generate the `id` columns (all thanks to the `serial` keyword).
 
-```sql
+```pgsql
 select c.relname sequence_name
 from pg_class c
 where c.relkind = 'S'
@@ -60,7 +60,7 @@ order by c.relname;
 
 If you try to drop the `users` table, the database complains with the following error message.
 
-```sql {4} prompt{1}
+```pgsql {4} prompt{1}
 drop table users;
 # ERROR:  cannot drop table users because other objects depend on it
 # DETAIL:  constraint orders_user_id_fkey on table orders depends on table users
@@ -69,14 +69,14 @@ drop table users;
 
 The last line of the error message nudges you to use `CASCADE` on the `DROP` statement which drops the foreign key reference from the `orders` table and lets you continue with the deletion of the `users` table.
 
-```sql prompt{1}
+```pgsql prompt{1}
 drop table users cascade;
 # NOTICE:  drop cascades to constraint orders_user_id_fkey on table orders
 ```
 
 You can verify the removal of the foreign key reference from the `orders` table with the following command.
 
-```psql prompt{1}
+```pgsql prompt{1}
 \d+ spring.orders
 #                                       Table "spring.orders"
 #  Column     |            Type             | Nullable |              Default               | Storage 
@@ -95,7 +95,7 @@ Similarly, you can apply `CASCADE` while dropping other objects such as domains,
 
 Similarly, if you try to `TRUNCATE` the `users` table (instead of dropping it), the database complains with the following error message.
 
-```sql {4} prompt{1}
+```pgsql {4} prompt{1}
 truncate table users;
 # ERROR:  cannot truncate a table referenced in a foreign key constraint
 # DETAIL:  Table "orders" references "users".
@@ -104,14 +104,14 @@ truncate table users;
 
 Once again, the last line of the error message nudges you to use `CASCADE` on the `TRUNCATE` statement which will truncate both the `users` and `orders` tables.
 
-```sql prompt{1}
+```pgsql prompt{1}
 truncate table users cascade;
 # NOTICE:  truncate cascades to table "orders"
 ```
 
 However, the preceding command won't reset the sequences associated with the `users.id` and `orders.id`. You can verify this behavior by querying the `last_value` of the sequences.
 
-```sql
+```pgsql
 select last_value from orders_id_seq;
 #  last_value
 # ------------
@@ -129,14 +129,14 @@ This happens because the `TRUNCATE` runs with the `CONTINUE IDENTITY` clause by 
 
 To reset the sequences, you can run the `TRUNCATE` with the `RESTART IDENTITY` clause.
 
-```sql prompt{1}
+```pgsql prompt{1}
 truncate table users restart identity cascade;
 # NOTICE:  truncate cascades to table "orders"
 ```
 
 You can verify the `last_value` of the sequences which should be reset.
 
-```sql
+```pgsql
 select last_value from users_id_seq;
 #  last_value
 # ------------

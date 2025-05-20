@@ -11,7 +11,7 @@ You can set a default value for a column in Postgres. They help initializing col
 
 For example, you can set a default value of the `created_date` and `modified_date` columns of a table, say `todos`.
 
-```sql {4,5}
+```pgsql {4,5}
 create table todos (
 	id serial primary key,
 	content text not null,
@@ -22,7 +22,7 @@ create table todos (
 
 Postgres automatically fills the values of these columns when you insert a record in the table only with the value for the `content` column.
 
-```sql prompt{1, 3}
+```pgsql prompt{1, 3}
 insert into todos (content) values ('update password');
 
 select * from todos;
@@ -33,7 +33,7 @@ select * from todos;
 
 You can even use `DEFAULT` to populate the values, if needed. For example, when you edit an existing value of the `content` column, you might want to update the `modified_date` with the latest timestamp.
 
-```sql {3} prompt{6}
+```pgsql {3} prompt{6}
 update todos
 set content = 'autorotate password',
     modified_date = default
@@ -47,7 +47,7 @@ select * from todos;
 
 If every column of a table has a default value specified, you can insert a new record with just the default values without specifying them explicitly for each column.
 
-```sql {11} prompt{2,11,13}
+```pgsql {11} prompt{2,11,13}
 -- enable extension to generate UUID
 create extension if not exists "uuid-ossp";
 
