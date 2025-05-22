@@ -7,7 +7,7 @@ update: 2025-04-12 01:18:43
 tagline: Site updates, improvements, and everything else
 ---
 
-:::el{.timeline}
+:::elx{.timeline}
 
 - :time[2023-07-13 21:49:06]
 
@@ -114,7 +114,7 @@ tagline: Site updates, improvements, and everything else
 	- Created and published [remark-starry-night](https://github.com/Microflash/remark-starry-night) to integrate Starry Night for syntax highlighting, and [fenceparser](https://github.com/Microflash/fenceparser) to parse codeblock metadata
 
 - :time[2019-06-30 13:37:56]
-	
+
 	[Inception!](https://github.com/naiyerasif/site/commit/2c7b6db3b7e013c5b6609c597cef10f84e53a1b7) Built with <data value="0.6.5">[Gridsome](https://github.com/gridsome/gridsome)</data> and <data value="2.6.10">[Vue](https://github.com/vuejs/vue)</data>
 
 :::

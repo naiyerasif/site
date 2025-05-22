@@ -7,7 +7,7 @@ update: 2025-04-12 22:55:18
 tagline: A timeline of professional and open source work
 ---
 
-:::el{.timeline}
+:::elx{.timeline}
 
 - 2023
 
@@ -28,7 +28,7 @@ tagline: A timeline of professional and open source work
 	- Published [remark-figure-caption](https://github.com/Microflash/remark-figure-caption), a Remark plugin to transform images with alt text to figures with captions
 
 - 2020
-	
+
 	**Open source**
 
 	- Published [Spritely](https://github.com/Microflash/spritely), a Node.js command-line tool to generate SVG sprites
@@ -51,7 +51,7 @@ tagline: A timeline of professional and open source work
 	- Joined the [Suncorp](https://www.suncorp.com.au/) project as an ETL (Extract Transform Load) consultant
 
 - 2015
-	
+
 	- Started working for [Wipro](https://www.wipro.com/) as a Project Engineer
 
 :::

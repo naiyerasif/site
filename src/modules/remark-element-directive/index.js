@@ -2,19 +2,24 @@ import { h } from "hastscript";
 import { SKIP, visit } from "unist-util-visit";
 import { defu } from "defu";
 
-export default function remarkElementDirective() {
+const defaults = {
+	name: "elx"
+}
+
+export default function remarkElementDirective(userOptions = {}) {
+	const { name } = defu(userOptions, defaults);
 	return (tree) => {
 		visit(tree, (node, index, parent) => {
 			if (typeof index !== "number" || !parent) return;
-			
+
 			if (
 				node.type === "textDirective" ||
 				node.type === "leafDirective" ||
 				node.type === "containerDirective"
 			) {
-				if (node.name !== "el" || !node.children?.length) return;
+				if (node.name !== name || !node.children?.length) return;
 
-				const { is = "", ...attribs } = node.attributes || {};
+				const { "data-element": is = "", ...attribs } = node.attributes || {};
 
 				if (is) {
 					const data = node.data || (node.data = {});
