@@ -15,9 +15,9 @@ const { id, label } = PostType[entry.data.type];
 	</div>
 	<div class="card-body">
 		<div class="card-header">
-			<a class="card-header" href={path}>{entry.data.title}</a>	
+			<a href={path}>{entry.data.title}</a>
 		</div>
-		{entry.data.tagline ? 
+		{entry.data.tagline ?
 			<div class="card-tagline">{entry.data.tagline}</div> :
 			<div class="card-description">{entry.data.description}</div>}
 	</div>

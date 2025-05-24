@@ -267,6 +267,7 @@ figure {
 	&-header {
 		font-size: var(--x3-text-tagline);
 		font-weight: var(--x3-text-semibold);
+		text-wrap: balance;
 	}
 }
 
