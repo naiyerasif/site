@@ -66,6 +66,7 @@
 	&.setup &-content {
 		li {
 			--x3-gap-flow: 0;
+			font-variant-numeric: tabular-nums lining-nums;
 		}
 	}
 }
