@@ -1,7 +1,7 @@
 ---
 slug: "2024/02/11/using-localstack-for-aws-lambda-with-sqs-trigger"
 title: "Using LocalStack for AWS Lambda with SQS trigger"
-description: "In event-driven systems, you may trigger AWS Lambda with SQS messages for ordered processing and buffered backlog handling. Explore deploying and invoking Lambda with SQS locally using LocalStack."
+description: "In event-driven systems, you may trigger AWS Lambda with SQS messages for ordered processing and buffered backlog handling. Explore deploying and triggering Lambda with SQS locally using LocalStack."
 date: 2024-02-11 17:38:21
 update: 2025-05-24 18:30:11
 type: "guide"
@@ -161,7 +161,7 @@ docker logs $"(docker ps --filter ancestor=public.ecr.aws/lambda/nodejs:22 -q)"
 ```
 
 :::note
-LocalStack uses the [official AWS Docker base images](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html) pulled from [Amazon ECR registry](https://gallery.ecr.aws/lambda/) to run a function in a container. That's why, we're fetching the container id of the container using `public.ecr.aws/lambda/nodejs:22` and passing it to `docker logs` command to print the logs.
+LocalStack uses the [official AWS Docker base images](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html) pulled from [Amazon ECR registry](https://gallery.ecr.aws/lambda/) to run a function in a container. That's why, we're fetching the container id using `public.ecr.aws/lambda/nodejs:22` and passing it to `docker logs` command to print the logs.
 :::
 
 Looking at the logs, you can verify that the function is getting triggered since the message `Hello, Gwen!` that we just published on the queue is getting printed.

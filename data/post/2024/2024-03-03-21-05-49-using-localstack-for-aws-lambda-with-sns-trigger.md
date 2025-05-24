@@ -199,7 +199,7 @@ aws --profile localstack sns publish --topic-arn arn:aws:sns:us-east-1:000000000
 }
 ```
 
-To verify if the Lambda was invoked, check the logs of the container used for running the function.
+To verify if the Lambda was triggered, check the logs of the container used for running the function.
 
 ```sh {2} prompt{1} output{2}
 docker logs $"(docker ps --filter ancestor=public.ecr.aws/lambda/java:21 -q)"
@@ -209,7 +209,7 @@ Liberty, equality, fraternity!
 Well, there's your message printed by the function.
 
 :::note
-LocalStack uses the [official AWS Docker base images](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html) pulled from [Amazon ECR registry](https://gallery.ecr.aws/lambda/) to run a function in a container. That's why, we're fetching the container id of the container using `public.ecr.aws/lambda/java:21` and passing it to `docker logs` command to print the logs.
+LocalStack uses the [official AWS Docker base images](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html) pulled from [Amazon ECR registry](https://gallery.ecr.aws/lambda/) to run a function in a container. That's why, we're fetching the container id using `public.ecr.aws/lambda/java:21` and passing it to `docker logs` command to print the logs.
 :::
 
 ## Cleaning up the resources
