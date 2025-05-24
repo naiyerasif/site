@@ -18,6 +18,7 @@ Outro
 priviledges
 [Rr]ebase|[Rr]ebasing
 [Ss]crollbar(s)
+[Ss]erverless
 Siri
 Sonoma
 [Ss]pringdoc

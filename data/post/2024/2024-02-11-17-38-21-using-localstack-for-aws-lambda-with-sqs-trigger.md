@@ -13,6 +13,7 @@ In an event-driven architecture, you might trigger an AWS Lambda function by a m
 1. [Working with AWS on local using LocalStack](/post/2021/11/16/working-with-aws-on-local-using-localstack/)
 2. *Using LocalStack for AWS Lambda with SQS trigger*
 3. [Using LocalStack for AWS Lambda with SNS trigger](/post/2024/03/03/using-localstack-for-aws-lambda-with-sns-trigger/)
+4. [Using LocalStack for AWS Lambda with EventBridge rule trigger](/post/2024/08/11/using-localstack-for-aws-lambda-with-eventbridge-rule-trigger/)
 :::
 
 :::note{.setup}
