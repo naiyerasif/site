@@ -1,6 +1,6 @@
 # Site conventions
 
-I have used the following conventions throughout this site on new posts.
+These are the current conventions I use throughout this site.
 
 ## Project conventions
 
@@ -13,6 +13,11 @@ I have used the following conventions throughout this site on new posts.
 - **Database name**: `northwind`
 - **Database schema names**: `serenity`
 - **Database users**: `gizem`, `victoria`
+
+## Username and password
+
+- **Username**: `gwen`
+- **Password**: `stacy`
 
 ## Citations
 
