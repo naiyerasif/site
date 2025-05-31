@@ -114,13 +114,11 @@ def mock_module(module_name: str, **attributes):
 
 As a bonus, this implementation restores the original module after mocking. Here's how you can use it.
 
-```python del{5,8} ins{6}
+```python
 from mockutils import mock_module
 from testcontainers.localstack import LocalStackContainer
 
 
-mock_module('clients', s3=localstack_container.get_client('s3'))
 with mock_module('clients', s3=localstack_container.get_client('s3')):
     # do something with your mock
-    sys.modules.pop('clients', None)
 ```

@@ -28,7 +28,7 @@ importers:
         version: 3.7.0
       astro:
         specifier: ^5.8.1
-        version: 5.8.1(@types/node@22.15.29)(jiti@2.4.2)(rollup@4.41.1)(sass@1.89.0)(tsx@4.19.2)(typescript@5.6.2)
+        version: 5.8.1(@types/node@22.15.29)(jiti@2.4.2)(rollup@4.41.1)(sass@1.89.1)(tsx@4.19.2)(typescript@5.6.2)
       cheerio:
         specifier: ^1.0.0
         version: 1.0.0
@@ -81,8 +81,8 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
       sass:
-        specifier: ^1.89.0
-        version: 1.89.0
+        specifier: ^1.89.1
+        version: 1.89.1
       sharp:
         specifier: ^0.34.2
         version: 0.34.2
@@ -3682,8 +3682,8 @@ packages:
   sanitize-filename@1.6.3:
     resolution: {integrity: sha512-y/52Mcy7aw3gRm7IrcGDFx/bCk4AhRh2eI9luHOQM86nZsqwiRkkq2GekHXBBD+SmPidc8i2PqtYZl+pWJ8Oeg==}
 
-  sass@1.89.0:
-    resolution: {integrity: sha512-ld+kQU8YTdGNjOLfRWBzewJpU5cwEv/h5yyqlSeJcj6Yh8U4TDA9UA5FPicqDz/xgRPWRSYIQNiFks21TbA9KQ==}
+  sass@1.89.1:
+    resolution: {integrity: sha512-eMLLkl+qz7tx/0cJ9wI+w09GQ2zodTkcE/aVfywwdlRcI3EO19xGnbmJwg/JMIm+5MxVJ6outddLZ4Von4E++Q==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -5951,7 +5951,7 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  astro@5.8.1(@types/node@22.15.29)(jiti@2.4.2)(rollup@4.41.1)(sass@1.89.0)(tsx@4.19.2)(typescript@5.6.2):
+  astro@5.8.1(@types/node@22.15.29)(jiti@2.4.2)(rollup@4.41.1)(sass@1.89.1)(tsx@4.19.2)(typescript@5.6.2):
     dependencies:
       '@astrojs/compiler': 2.12.0
       '@astrojs/internal-helpers': 0.6.1
@@ -6006,8 +6006,8 @@ snapshots:
       unist-util-visit: 5.0.0
       unstorage: 1.16.0
       vfile: 6.0.3
-      vite: 6.3.5(@types/node@22.15.29)(jiti@2.4.2)(sass@1.89.0)(tsx@4.19.2)
-      vitefu: 1.0.6(vite@6.3.5(@types/node@22.15.29)(jiti@2.4.2)(sass@1.89.0)(tsx@4.19.2))
+      vite: 6.3.5(@types/node@22.15.29)(jiti@2.4.2)(sass@1.89.1)(tsx@4.19.2)
+      vitefu: 1.0.6(vite@6.3.5(@types/node@22.15.29)(jiti@2.4.2)(sass@1.89.1)(tsx@4.19.2))
       xxhash-wasm: 1.1.0
       yargs-parser: 21.1.1
       yocto-spinner: 0.2.3
@@ -8687,7 +8687,7 @@ snapshots:
     dependencies:
       truncate-utf8-bytes: 1.0.2
 
-  sass@1.89.0:
+  sass@1.89.1:
     dependencies:
       chokidar: 4.0.3
       immutable: 5.1.2
@@ -9236,7 +9236,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.2
 
-  vite@6.3.5(@types/node@22.15.29)(jiti@2.4.2)(sass@1.89.0)(tsx@4.19.2):
+  vite@6.3.5(@types/node@22.15.29)(jiti@2.4.2)(sass@1.89.1)(tsx@4.19.2):
     dependencies:
       esbuild: 0.25.5
       fdir: 6.4.5(picomatch@4.0.2)
@@ -9248,12 +9248,12 @@ snapshots:
       '@types/node': 22.15.29
       fsevents: 2.3.3
       jiti: 2.4.2
-      sass: 1.89.0
+      sass: 1.89.1
       tsx: 4.19.2
 
-  vitefu@1.0.6(vite@6.3.5(@types/node@22.15.29)(jiti@2.4.2)(sass@1.89.0)(tsx@4.19.2)):
+  vitefu@1.0.6(vite@6.3.5(@types/node@22.15.29)(jiti@2.4.2)(sass@1.89.1)(tsx@4.19.2)):
     optionalDependencies:
-      vite: 6.3.5(@types/node@22.15.29)(jiti@2.4.2)(sass@1.89.0)(tsx@4.19.2)
+      vite: 6.3.5(@types/node@22.15.29)(jiti@2.4.2)(sass@1.89.1)(tsx@4.19.2)
 
   vscode-oniguruma@2.0.1: {}
 
