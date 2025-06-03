@@ -9,6 +9,7 @@ corepack
 [Hh]ealthcheck
 [Hh]ikari
 [Hh]omebrew
+metaclass
 mixin
 [Mm]onorepo
 numeronym(s)
@@ -16,6 +17,8 @@ numeronym(s)
 Outro
 [Pp]ostgres
 priviledges
+Psycopg
+[Pp]ytest
 [Rr]ebase|[Rr]ebasing
 [Ss]crollbar(s)
 [Ss]erverless
@@ -27,4 +30,5 @@ Sonoma
 [Tt]rackpad
 [Uu]nicode
 [Uu]secase|[Uu]secases
+uv
 zsh

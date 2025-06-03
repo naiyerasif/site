@@ -27,7 +27,6 @@ In this example, I'm trying to mock the following module using [`testcontainers[
 ```python title="clients.py"
 import boto3
 
-
 s3 = boto3.client("s3")
 ```
 :::
