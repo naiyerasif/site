@@ -2,11 +2,14 @@
 import IconPack from "../components/IconPack.astro";
 import BackToTop from "../components/BackToTop.astro";
 import siteInfo from "../modules/website/index.js";
+import format from "../modules/datetime/index.js";
 
 const authorInfo = siteInfo.author;
 const authorPresence = authorInfo.presence;
 const authorName = authorInfo.name;
 const siteIssueUrl = siteInfo.issueBase;
+
+const lastUpdated = format(new Date())
 ---
 
 <footer class="footer">
@@ -32,44 +35,39 @@ const siteIssueUrl = siteInfo.issueBase;
 			</figure>
 		</random-message>
 	</div>
-	<div class="outro">
-		<div class="outro-group">
+	<div class="catalog">
+		<section>
 			<a href="/">Home</a>
 			<a href="/posts/">Posts</a>
-		</div>
-		<div class="outro-group">
-			<strong>Subscribe with RSS</strong>
-			<small>(<a href="https://aboutfeeds.com/" rel="nofollow noopener noreferrer">What&CloseCurlyQuote;s RSS?</a>)</small>
+			<footer-preferences>
+				<theme-switcher>
+					<strong>Theme</strong> - 
+					<a role="switch" aria-live="polite" aria-checked="true" data-theme-switch id="footer-theme-switcher" href="#footer-theme-switcher">
+						<span data-theme-state="dark">Dark</span>
+						<span data-theme-state="light">Light</span>
+					</a>
+				</theme-switcher>
+			</footer-preferences>
+		</section>
+		<section>
+			<strong>Subscribe with RSS</strong><br>
+			<small>(<a href="https://aboutfeeds.com/" rel="nofollow noopener noreferrer">What&CloseCurlyQuote;s RSS?</a>)</small><br>
 			<a href="/feed.xml">Posts</a>
 			<a href="/all.xml">Posts + notes</a>
-		</div>
-		<footer-preferences>
-			<theme-switcher>
-				<strong>Theme</strong>
-				<a role="switch" aria-live="polite" aria-checked="true" data-theme-switch id="footer-theme-switcher" href="#footer-theme-switcher">
-					<span data-theme-state="dark">Dark</span>
-					<span data-theme-state="light">Light</span>
-				</a>
-			</theme-switcher>
-		</footer-preferences>
-		<footer-preferences class="shortcuts">
-			<strong>Keyboard Shortcuts</strong>
-			<span><kbd>ctrl</kbd> <kbd>k</kbd> or <kbd>cmd</kbd> <kbd>k</kbd> - launch command bar,</span>
-			<span><kbd>esc</kbd> - close command bar</span>
-		</footer-preferences>
-		<div class="outro-group">
+		</section>
+		<section>
+			<strong>Follow around</strong><br>
+			{Object.entries(authorPresence).map(([network, details]) => <a href={details.url} rel="noopener noreferrer">{details.title}</a>)}
+		</section>
+		<section>
+			<strong>Misc</strong><br>
 			<a href={siteIssueUrl} rel="nofollow noopener noreferrer">Report an issue</a>
 			<a href="/privacy/">Privacy</a>
 			<a href="/sitemap-index.xml">Sitemap</a>
 			<a href="/changelog/">Changelog</a>
-		</div>
+		</section>
 	</div>
-	<div class="outro">
-		<div class="outro-group">&copy; 2018 &mdash; today, <a href="/about/">{authorName}</a></div>
-		<div class="outro-group">
-			{Object.entries(authorPresence).map(([network, details]) => <a href={details.url} rel="noopener noreferrer">{details.title}</a>)}
-		</div>
-	</div>
+	<div class="outro">&copy; 2018, <a href="/about/">{authorName}</a> (updated on {lastUpdated})</div>
 </footer>
 <aside class="floating-back-to-top">
 	<BackToTop/>

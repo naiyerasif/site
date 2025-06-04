@@ -219,20 +219,17 @@ body > .header {
 }
 
 body > .footer {
-	--x3-gap-flow: 1ch;
+	--x3-gap-flow: 2rem;
 
 	position: sticky;
 	top: 100vh;
 	padding-block: var(--x3-gap-lg);
 	@include mixins.flow;
-	
-	.intro,
-	.outro {
-		display: flex;
-		justify-content: center;
-	}
 
 	.intro {
+		display: flex;
+		justify-content: center;
+
 		.quote {
 			text-align: center;
 			max-inline-size: 70ch;
@@ -259,35 +256,28 @@ body > .footer {
 			}
 		}
 	}
-
-	.outro {
+	
+	.catalog {
 		font-size: 0.75em;
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		gap: var(--x3-gap-flow);
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(20ch, 1fr));
+		gap: 1rem;
 
-		& > *:not(:last-child)::after {
-			@include mixins.icon(url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='15' r='1'/%3E%3C/svg%3E"));
+		a {
 			display: inline-block;
-			@include mixins.size(1em);
-			opacity: 0.5;
-		}
 
-		& > *,
-		theme-switcher {
-			display: flex;
-			flex-wrap: wrap;
-			gap: var(--x3-gap-flow);
-			justify-content: center;
-			align-items: center;
+			&:not(:only-child) {
+				margin-inline-end: 1ch;
+			}
 		}
 	}
 
-	@include mixins.onTouch {
-		.shortcuts {
-			visibility: hidden;
-			display: none;
-		}
+	footer-preferences {
+		display: block;
+		margin-block-start: 1rem;
+	}
+
+	.outro {
+		font-size: 0.75em;
 	}
 }
