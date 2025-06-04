@@ -87,6 +87,35 @@
 		border-block-end: var(--x3-border-width-sm) solid var(--x3-border-base);
 	}
 
+	footer {
+		font-size: 0.75em;
+		color: var(--baseline-fg-body);
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.3ch;
+		padding: 0.5rem 0.75rem 0.75rem;
+		border-block-start: var(--x3-border-width-sm) solid var(--x3-border-base);
+
+		& > *:not(:last-child)::after {
+			@include mixins.icon(url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='12 0 12 24'/%3E%3C/svg%3E"));
+			display: inline-block;
+			@include mixins.size(1.5em);
+			vertical-align: middle;
+			opacity: 0.5;
+			margin-inline-start: 0.2ch;
+		}
+
+		kbd:last-of-type {
+			margin-inline-end: 0.5ch;
+		}
+
+		@include mixins.onTouch {
+			visibility: hidden;
+			display: none;
+		}
+	}
+	
 	input[autofocus] {
 		flex-grow: 1;
 		padding-inline: 1rem;
