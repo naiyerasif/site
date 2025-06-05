@@ -1,15 +1,14 @@
 ---
 import IconPack from "../components/IconPack.astro";
 import BackToTop from "../components/BackToTop.astro";
+import Time from "../components/Time.astro";
 import siteInfo from "../modules/website/index.js";
-import format from "../modules/datetime/index.js";
 
 const authorInfo = siteInfo.author;
 const authorPresence = authorInfo.presence;
 const authorName = authorInfo.name;
 const siteIssueUrl = siteInfo.issueBase;
-
-const lastUpdated = format(new Date())
+const now = new Date();
 ---
 
 <footer class="footer">
@@ -41,7 +40,7 @@ const lastUpdated = format(new Date())
 			<a href="/posts/">Posts</a>
 			<footer-preferences>
 				<theme-switcher>
-					<strong>Theme</strong> - 
+					<strong>Theme</strong> &middot;
 					<a role="switch" aria-live="polite" aria-checked="true" data-theme-switch id="footer-theme-switcher" href="#footer-theme-switcher">
 						<span data-theme-state="dark">Dark</span>
 						<span data-theme-state="light">Light</span>
@@ -50,7 +49,7 @@ const lastUpdated = format(new Date())
 			</footer-preferences>
 		</section>
 		<section>
-			<strong>Subscribe with RSS</strong><br>
+			<strong>Subscribe with RSS</strong>
 			<small>(<a href="https://aboutfeeds.com/" rel="nofollow noopener noreferrer">What&CloseCurlyQuote;s RSS?</a>)</small><br>
 			<a href="/feed.xml">Posts</a>
 			<a href="/all.xml">Posts + notes</a>
@@ -60,14 +59,13 @@ const lastUpdated = format(new Date())
 			{Object.entries(authorPresence).map(([network, details]) => <a href={details.url} rel="noopener noreferrer">{details.title}</a>)}
 		</section>
 		<section>
-			<strong>Misc</strong><br>
 			<a href={siteIssueUrl} rel="nofollow noopener noreferrer">Report an issue</a>
 			<a href="/privacy/">Privacy</a>
 			<a href="/sitemap-index.xml">Sitemap</a>
 			<a href="/changelog/">Changelog</a>
 		</section>
 	</div>
-	<div class="outro">&copy; 2018, <a href="/about/">{authorName}</a> (updated on {lastUpdated})</div>
+	<div class="outro">&copy; 2018, <a href="/about/">{authorName}</a> (updated on <Time date={now} />)</div>
 </footer>
 <aside class="floating-back-to-top">
 	<BackToTop/>
