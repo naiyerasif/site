@@ -256,9 +256,14 @@ body > .footer {
 			}
 		}
 	}
-	
+
+	.outro,
 	.catalog {
 		font-size: 0.75em;
+	}
+	
+	.catalog {
+		
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(20ch, 1fr));
 		gap: 1rem;
@@ -274,10 +279,5 @@ body > .footer {
 
 	footer-preferences {
 		display: block;
-		margin-block-start: 1rem;
-	}
-
-	.outro {
-		font-size: 0.75em;
 	}
 }
