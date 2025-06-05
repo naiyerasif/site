@@ -88,7 +88,7 @@ conf = Configuration()
 We'll export an instance of `Configuration` for use in other modules.
 
 - `@dataclass(frozen=True)` makes the `Configuration` immutable. Once initialized, it won't change.
-- `Configuration` is a singleton so that we load it just once. `Configuration` inherits this behavior from the following metaclass.
+- `Configuration` is a singleton so that we load it just once. It inherits this behavior from the following metaclass.
   
   ```python title="app/singleton.py"
   class Singleton(type):
@@ -115,7 +115,7 @@ s3 = boto3.client("s3")
 secretsmanager = boto3.client("secretsmanager")
 ```
 
-You might be wondering&mdash;why not use `boto3` directly? If we do that, we'll have to mock `boto3` in our tests. Mocking `boto3` can be tricky since it's a generic library with a large API. By wrapping only the clients we need in a separate module, we only have to mock `s3` and `secretsmanager`.
+You might be wondering&mdash;why not use `boto3` directly? If we do that, we'll have to mock `boto3` in our tests. This can be tricky since `boto3` is a generic library with a large API. By wrapping only the clients we need in a separate module, we only have to mock `s3` and `secretsmanager`.
 
 Now that the groundwork is in place, let's create a utility to connect to the database.
 
