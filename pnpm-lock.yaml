@@ -18,14 +18,14 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       '@microflash/rehype-starry-night':
-        specifier: ^7.3.1
-        version: 7.3.1
+        specifier: ^7.3.2
+        version: 7.3.2
       '@sindresorhus/slugify':
         specifier: ^2.2.1
         version: 2.2.1
       '@wooorm/starry-night':
-        specifier: ^3.7.0
-        version: 3.7.0
+        specifier: ^3.8.0
+        version: 3.8.0
       astro:
         specifier: ^5.9.0
         version: 5.9.0(@types/node@22.15.29)(jiti@2.4.2)(rollup@4.41.1)(sass@1.89.1)(tsx@4.19.2)(typescript@5.6.2)
@@ -1074,8 +1074,8 @@ packages:
   '@microflash/rehype-slugify@1.0.0':
     resolution: {integrity: sha512-pp9LB4zp8cxF+Pf6oXNpqCMNXAmFKeIP9Ab6MOb/SrzxDvGfi0O2RZwG7znXh7dmVgYa0//Dte4X5kcIf+G3/w==}
 
-  '@microflash/rehype-starry-night@7.3.1':
-    resolution: {integrity: sha512-z32jpWMuN9aJYGughYjQrZdD3zdPtgSUcyTv+a++JCJZblTf9L7vlu1xyZXytrJJRmDc66yGZjlMmz+jkefCPA==}
+  '@microflash/rehype-starry-night@7.3.2':
+    resolution: {integrity: sha512-thkQFOB4j453WkvaoLxd4Yb6LrdydCfuv1nnngcF56VGXIV4DCHqiY3+7KTeC4zDdyM7B+wJVPa0W+fmeMn9uw==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -1576,8 +1576,8 @@ packages:
   '@vue/shared@3.5.13':
     resolution: {integrity: sha512-/hnE/qP5ZoGpol0a5mDi45bOd7t3tjYJBjsgCsivow7D48cJeV5l05RD82lPqi7gRiphZM37rnhW1l6ZoCNNnQ==}
 
-  '@wooorm/starry-night@3.7.0':
-    resolution: {integrity: sha512-Gg3yXUub8jwz10x4PAeMjmgYzzwUVMGXWfk33jA32XL1iQX9lt8798943ONpjnJIyYSeDysxI8gMNegCU38low==}
+  '@wooorm/starry-night@3.8.0':
+    resolution: {integrity: sha512-BWRm0tCzWCmv1ucBh6frL2uFRvYFj/LWmJzr+rJsdF/JsJ1+bBkeiyExH1iWQS18IH22HFu7f4QgG99OU1nklA==}
 
   acorn@8.14.1:
     resolution: {integrity: sha512-OvQ/2pUDKmgfCg++xsTX1wGxfTaszcHVcTctW4UJB4hibJx2HXxxO5UmVgyjMa+ZDsiaf5wWLXYpRWMmBI0QHg==}
@@ -5241,10 +5241,10 @@ snapshots:
       hast-util-to-string: 2.0.0
       unist-util-visit: 4.1.2
 
-  '@microflash/rehype-starry-night@7.3.1':
+  '@microflash/rehype-starry-night@7.3.2':
     dependencies:
       '@microflash/fenceparser': 3.1.1
-      '@wooorm/starry-night': 3.7.0
+      '@wooorm/starry-night': 3.8.0
       defu: 6.1.4
       hast-util-to-string: 3.0.1
       hastscript: 9.0.1
@@ -5894,7 +5894,7 @@ snapshots:
 
   '@vue/shared@3.5.13': {}
 
-  '@wooorm/starry-night@3.7.0':
+  '@wooorm/starry-night@3.8.0':
     dependencies:
       '@types/hast': 3.0.4
       import-meta-resolve: 4.1.0
