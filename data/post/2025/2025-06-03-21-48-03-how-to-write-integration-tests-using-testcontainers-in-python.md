@@ -335,7 +335,7 @@ In `test_read_text_file`, we begin by uploading a sample text file to the S3 buc
 You can now run this test as follows.
 
 ```sh prompt{1} output{2..10}
-uv run --env-file=.env -m pytest -p no:warnings
+uv run -m pytest -p no:warnings
 ======================== test session starts ========================
 platform darwin -- Python 3.13.3, pytest-8.4.0, pluggy-1.6.0
 rootdir: ~/guides/python/testcontainers-integration-tests-with-pytest
