@@ -2,7 +2,7 @@
 
 .chip {
 	--chipBg: var(--x3-bg-chip, var(--x3-bg-note));
-	--chipFg: var(--x3-fg-chip, var(--x3-fg-base));
+	--chipFg: var(--x3-fg-chip, var(--x3-fg-note));
 	--chipPaddingBlock: 0.5ch;
 	--chipPaddingInline: 0.8ch;
 	--chipPadding: var(--chipPaddingBlock) var(--chipPaddingInline);

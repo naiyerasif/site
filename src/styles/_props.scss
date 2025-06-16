@@ -5,43 +5,43 @@
 @mixin lightTheme {
 	color-scheme: light;
 
-	--x3-fg-primary-base: #{$x3-color-primary-45};
-	--x3-fg-primary-intense: #{$x3-color-primary-35};
+	--x3-fg-primary-base: #{$x4-color-primary-45};
+	--x3-fg-primary-intense: #{$x4-color-primary-35};
 
-	--x3-fg-secondary-base: #{$x3-color-primary-80};
-	--x3-fg-secondary-intense: #{$x3-color-primary-70};
+	--x3-fg-secondary-base: #{$x4-color-primary-80};
+	--x3-fg-secondary-intense: #{$x4-color-primary-70};
 
-	--x3-bg-primary-base: #{color.change($x3-color-primary-95, $chroma: 10%, $space: oklch)};
-	--x3-bg-secondary-base: #{color.change($x3-color-primary-93, $chroma: 10%, $space: oklch)};
+	--x3-bg-primary-base: #{color.change($x4-color-primary-95, $chroma: 10%, $space: oklch)};
+	--x3-bg-secondary-base: #{color.change($x4-color-primary-93, $chroma: 10%, $space: oklch)};
 
-	--x3-fg-gentle: #{$x3-color-neutral-45};
-	--x3-fg-intense: #{$x3-color-neutral-5};
+	--x3-fg-gentle: #{$x4-color-note-45};
+	--x3-fg-intense: #{$x4-color-neutral-5};
 
-	--x3-bg-gentle: #{$x3-color-neutral-98};
-	--x3-bg-intense: #{$x3-color-neutral-95};
+	--x3-bg-gentle: #{$x4-color-neutral-98};
+	--x3-bg-intense: #{$x4-color-neutral-95};
 
-	--x3-fg-base: #{$x3-color-neutral-20};
-	--x3-fg-note: var(--x3-fg-intense);
-	--x3-fg-commend: #{$x3-color-commend-35};
-	--x3-fg-assert: #{$x3-color-assert-35};
-	--x3-fg-warn: #{$x3-color-warn-35};
-	--x3-fg-deter: #{$x3-color-deter-35};
+	--x3-fg-base: #{$x4-color-neutral-20};
+	--x3-fg-note: #{$x4-color-note-35};
+	--x3-fg-commend: #{$x4-color-commend-35};
+	--x3-fg-assert: #{$x4-color-assert-35};
+	--x3-fg-warn: #{$x4-color-warn-35};
+	--x3-fg-deter: #{$x4-color-deter-35};
 
-	--x3-bg-base: #{$x3-color-neutral-99};
-	--x3-bg-note: #{$x3-color-neutral-90};
-	--x3-bg-commend: #{color.change($x3-color-commend-90, $chroma: 20%, $lightness: 92%, $space: oklch)};
-	--x3-bg-assert: #{$x3-color-assert-90};
-	--x3-bg-warn: #{$x3-color-warn-90};
-	--x3-bg-deter: #{$x3-color-deter-90};
+	--x3-bg-base: #{$site-color-light};
+	--x3-bg-note: #{$x4-color-note-93};
+	--x3-bg-commend: #{$x4-color-commend-93};
+	--x3-bg-assert: #{$x4-color-assert-93};
+	--x3-bg-warn: #{$x4-color-warn-93};
+	--x3-bg-deter: #{$x4-color-deter-93};
 
-	--x3-border-base: #{$x3-color-neutral-80};
-	--x3-border-note: var(--x3-border-base);
-	--x3-border-commend: #{$x3-color-commend-80};
-	--x3-border-assert: #{$x3-color-assert-80};
-	--x3-border-warn: #{$x3-color-warn-80};
-	--x3-border-deter: #{$x3-color-deter-80};
+	--x3-border-base: #{$x4-color-neutral-80};
+	--x3-border-note: #{$x4-color-note-80};
+	--x3-border-commend: #{$x4-color-commend-80};
+	--x3-border-assert: #{$x4-color-assert-80};
+	--x3-border-warn: #{$x4-color-warn-80};
+	--x3-border-deter: #{$x4-color-deter-80};
 
-	--baseline-bg-text-selection: #{color.change($x3-color-warn-75, $alpha: 0.4, $space: oklch)};
+	--baseline-bg-text-selection: #{color.change($x4-color-warn-75, $alpha: 0.4, $space: oklch)};
 
 	--x3-texture-fx-1: hsla(0, 0%, 0%, 0.02);
 	--x3-texture-fx-2: hsla(0, 0%, 100%, 0);
@@ -84,43 +84,43 @@
 @mixin darkTheme {
 	color-scheme: dark;
 
-	--x3-fg-primary-base: #{$x3-color-primary-75};
-	--x3-fg-primary-intense: #{$x3-color-primary-90};
+	--x3-fg-primary-base: #{$x4-color-primary-75};
+	--x3-fg-primary-intense: #{$x4-color-primary-90};
 
-	--x3-fg-secondary-base: #{$x3-color-primary-40};
-	--x3-fg-secondary-intense: #{$x3-color-primary-55};
+	--x3-fg-secondary-base: #{$x4-color-primary-40};
+	--x3-fg-secondary-intense: #{$x4-color-primary-55};
 
-	--x3-bg-primary-base: #{$x3-color-primary-20};
-	--x3-bg-secondary-base: #{$x3-color-primary-25};
+	--x3-bg-primary-base: #{$x4-color-primary-20};
+	--x3-bg-secondary-base: #{$x4-color-primary-25};
 
-	--x3-fg-gentle: #{$x3-color-neutral-60};
-	--x3-fg-intense: #{$x3-color-neutral-90};
+	--x3-fg-gentle: #{$x4-color-note-60};
+	--x3-fg-intense: #{$x4-color-neutral-90};
 
-	--x3-bg-gentle: #{$x3-color-neutral-10};
-	--x3-bg-intense: #{$x3-color-neutral-15};
+	--x3-bg-gentle: #{$x4-color-neutral-10};
+	--x3-bg-intense: #{$x4-color-neutral-15};
 
-	--x3-fg-base: #{$x3-color-neutral-80};
-	--x3-fg-note: var(--x3-fg-base);
-	--x3-fg-commend: #{$x3-color-commend-75};
-	--x3-fg-assert: #{$x3-color-assert-75};
-	--x3-fg-warn: #{$x3-color-warn-75};
-	--x3-fg-deter: #{$x3-color-deter-70};
+	--x3-fg-base: #{$x4-color-neutral-80};
+	--x3-fg-note: #{$x4-color-note-75};
+	--x3-fg-commend: #{$x4-color-commend-75};
+	--x3-fg-assert: #{$x4-color-assert-75};
+	--x3-fg-warn: #{$x4-color-warn-75};
+	--x3-fg-deter: #{$x4-color-deter-75};
 
-	--x3-bg-base: #{$x3-color-neutral-5};
-	--x3-bg-note: #{$x3-color-neutral-20};
-	--x3-bg-commend: #{$x3-color-commend-20};
-	--x3-bg-assert: #{$x3-color-assert-20};
-	--x3-bg-warn: #{$x3-color-warn-20};
-	--x3-bg-deter: #{$x3-color-deter-15};
+	--x3-bg-base: #{$site-color-dark};
+	--x3-bg-note: #{$x4-color-note-15};
+	--x3-bg-commend: #{$x4-color-commend-15};
+	--x3-bg-assert: #{$x4-color-assert-15};
+	--x3-bg-warn: #{$x4-color-warn-15};
+	--x3-bg-deter: #{$x4-color-deter-15};
 
-	--x3-border-base: #{$x3-color-neutral-35};
-	--x3-border-note: var(--x3-border-base);
-	--x3-border-commend: #{$x3-color-commend-35};
-	--x3-border-assert: #{$x3-color-assert-35};
-	--x3-border-warn: #{$x3-color-warn-35};
-	--x3-border-deter: #{$x3-color-deter-30};
+	--x3-border-base: #{$x4-color-neutral-35};
+	--x3-border-note: #{$x4-color-note-35};
+	--x3-border-commend: #{$x4-color-commend-35};
+	--x3-border-assert: #{$x4-color-assert-35};
+	--x3-border-warn: #{$x4-color-warn-35};
+	--x3-border-deter: #{$x4-color-deter-30};
 
-	--baseline-bg-text-selection: #{color.change($x3-color-warn-50, $alpha: 0.4, $space: oklch)};
+	--baseline-bg-text-selection: #{color.change($x4-color-warn-50, $alpha: 0.4, $space: oklch)};
 
 	--x3-texture-fx-1: hsla(0, 0%, 0%, 0);
 	--x3-texture-fx-2: hsla(0, 0%, 100%, 0);
@@ -203,7 +203,7 @@
 	--x3-border-width-base: 2px;
 
 	// codeblock
-	--x3-hl-line-prompt-color: #{$x3-color-deter-50};
+	--x3-hl-line-prompt-color: #{$x4-color-deter-50};
 
 	// baseline
 	--baseline-text-regular: var(--x3-text-regular);
@@ -218,9 +218,9 @@
 	--baseline-fg-caption: var(--x3-fg-gentle);
 	--baseline-fg-click-navigation: var(--x3-fg-primary-base);
 	--baseline-fg-decoration-navigation: var(--x3-fg-secondary-base);
-	--baseline-fg-marker: #{$x3-color-neutral-50};
+	--baseline-fg-marker: var(--x3-border-note);
 	--baseline-fg-mark: var(--x3-fg-warn);
-	--baseline-fg-scrollbar: #{$x3-color-primary-50};
+	--baseline-fg-scrollbar: #{$x4-color-primary-50};
 	--baseline-fg-separator: var(--x3-border-base);
 	--baseline-bg-body: var(--x3-bg-base);
 	--baseline-bg-code: var(--x3-bg-note);

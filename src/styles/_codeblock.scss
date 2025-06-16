@@ -96,7 +96,7 @@
 
 		&[data-line-added] {
 			--hlLineNumberColor: var(--x3-fg-commend);
-			--hlLineBgColor: var(--x3-bg-commend);
+			--hlLineBgColor: var(--x3-bg-primary-base);
 			position: relative;
 
 			&::before {
@@ -132,7 +132,11 @@
 
 		&:is(:focus:not(:focus-visible), :hover) {
 			--hlLineNumberColor: var(--color-prettylights-syntax-comment);
-			--hlLineBgColor: var(--x3-bg-assert);
+			--hlLineBgColor: var(--x3-bg-intense);
+			outline-width: 1px;
+			outline-offset: -1px;
+			outline-color: var(--hlLineNumberColor);
+			outline-style: dotted;
 		}
 
 		&-number {

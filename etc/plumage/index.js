@@ -7,16 +7,17 @@ import { writeFile } from "fs/promises";
 import { blendedPalette, standalonePalette } from "./api.js";
 
 const colors = {
-	primary: "#02805a",
-	neutral: "#ffffff",
-	commend: "#2abf1d",
-	deter: "#db0b2f",
+	primary: "#1c9761",
+	neutral: "#000000",
+	note: "#f4eddb",
+	commend: "#449a3f",
+	deter: "#da1f1f",
 	warn: "#eb993e",
 	assert: "#318ce7"
 };
 
 const themes = {
-	light: "#fcfcfc",
+	light: "#fefdfb",
 	dark: "#101112"
 };
 
@@ -45,4 +46,7 @@ async function writeThemeFile(fileName, content) {
 	}
 };
 
-writeThemeFile("./src/styles/_colors.scss", scssProperties(standalonePalette(colors)));
+writeThemeFile(
+	"./src/styles/_colors.scss",
+	scssProperties(standalonePalette(colors), "x4-color")
+);
