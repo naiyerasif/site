@@ -4,7 +4,6 @@ title: "Naiyer Asif"
 description: "About Naiyer Asif"
 date: 2019-06-30 05:14:56
 update: 2024-09-01 14:28:34
-avatar: "./images/naiyer.png"
 ---
 
 :::figure{.avatar}

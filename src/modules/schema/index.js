@@ -24,10 +24,6 @@ const optionalEditUrl = z.preprocess(
 	val => val && editLink(val),
 	z.string().startsWith(siteInfo.editBase).url().optional()
 );
-const timeToRead = z.preprocess(
-	val => val > 0 ? val : undefined,
-	z.number().int().optional()
-);
 
 const ogImage = z.preprocess(
 	val => fullLink(val || siteInfo.ogImage),
@@ -49,13 +45,12 @@ const postSchema = z.object({
 	ogType: ogTypes.default(PageType.article.id),
 });
 
-const profileSchema = ({ image }) => z.object({
+const profileSchema = z.object({
 	title,
 	description,
 	tagline,
 	date,
 	update,
-	avatar: image(),
 
 	ogImage,
 	ogType: ogTypes.default(PageType.profile.id),
