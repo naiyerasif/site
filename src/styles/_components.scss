@@ -455,13 +455,12 @@ random-message {
 }
 
 .glitch {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding-block: var(--x3-gap-body);
-	grid-row: 1 / -1;
-
 	--baseline-radius-form: var(--x3-radius-max);
+	padding-block: var(--x3-gap-lg);
+
+	section {
+		@include mixins.flow;
+	}
 
 	&-logo {
 		margin-block-end: 1ch;
