@@ -34,7 +34,7 @@
 		color: var(--calloutFg);
 	}
 
-	.icon + &-content > :first-child,
+	.icon + &-content *:not(a),
 	&-title * {
 		color: var(--calloutFg);
 	}
