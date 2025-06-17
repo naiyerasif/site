@@ -46,19 +46,19 @@ const defaults = {
 	aliases: {},
 	callouts: {
 		note: {
-			hint: `<svg role="img" class="icon"><title>Note</title><use href="#x2-callout-note"/></svg>`
+			hint: `<svg role="img" class="icon"><title>Note</title><use href="#x4-callout-note"/></svg>`
 		},
 		commend: {
-			hint: `<svg role="img" class="icon"><title>Success</title><use href="#x2-callout-commend"/></svg>`
+			hint: `<svg role="img" class="icon"><title>Success</title><use href="#x4-callout-commend"/></svg>`
 		},
 		warn: {
-			hint: `<svg role="img" class="icon"><title>Warning</title><use href="#x2-callout-warn"/></svg>`
+			hint: `<svg role="img" class="icon"><title>Warning</title><use href="#x4-callout-warn"/></svg>`
 		},
 		deter: {
-			hint: `<svg role="img" class="icon"><title>Danger</title><use href="#x2-callout-deter"/></svg>`
+			hint: `<svg role="img" class="icon"><title>Danger</title><use href="#x4-callout-deter"/></svg>`
 		},
 		assert: {
-			hint: `<svg role="img" class="icon"><title>Info</title><use href="#x2-callout-assert"/></svg>`
+			hint: `<svg role="img" class="icon"><title>Info</title><use href="#x4-callout-assert"/></svg>`
 		}
 	}
 };

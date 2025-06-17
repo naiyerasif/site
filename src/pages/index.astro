@@ -29,6 +29,6 @@ const pageInfo = {
 	</div>
 	{posts.map(entry => entry.data.type === PostType.note.id ? <NoteCard {entry} /> : <PostCard {entry} />)}
 	<div slot="sidekick" class="sidekick-items">
-		<a href={paginationPathname("posts", 2)} class="button-link">more posts<Icon name="arrow-right"/></a>
+		<a href={paginationPathname("posts", 2)} class="button-link"><Icon name="twist-right-up"/> more posts</a>
 	</div>
 </Layout>

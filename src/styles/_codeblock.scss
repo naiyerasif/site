@@ -104,7 +104,7 @@
 				top: 0.5ch;
 				display: inline-block;
 				margin-inline-start: var(--hlLineMarkerOffset);
-				@include mixins.icon(url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' fill-rule='evenodd' clip-rule='evenodd' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12h12m-6-6v12'/%3E%3C/svg%3E"));
+				@include mixins.icon(url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' fill-rule='evenodd' clip-rule='evenodd' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12h12m-6-6v12'/%3E%3C/svg%3E"));
 				user-select: none;
 				text-decoration: none;
 				background-color: var(--hlLineNumberColor);
@@ -122,7 +122,7 @@
 				top: 0.5ch;
 				display: inline-block;
 				margin-inline-start: var(--hlLineMarkerOffset);
-				@include mixins.icon(url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' fill-rule='evenodd' clip-rule='evenodd' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12h12'/%3E%3C/svg%3E"));
+				@include mixins.icon(url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' fill-rule='evenodd' clip-rule='evenodd' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12h12'/%3E%3C/svg%3E"));
 				user-select: none;
 				text-decoration: none;
 				background-color: var(--hlLineNumberColor);
@@ -153,7 +153,7 @@
 			display: inline-block;
 			margin-inline-end: 0.5ch;
 			vertical-align: middle;
-			@include mixins.icon(url("data:image/svg+xml,%3Csvg viewBox='0 0 17 24' xmlns='http://www.w3.org/2000/svg' width='17' height='24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m8.03 7.8-5.4 11.7m.67-18q1.372.208 2.379.639a5.7 5.7 0 0 1 1.732 1.13 6 6 0 0 1 1.218 1.714q.494 1.014.828 2.378a131 131 0 0 0 1.456 5.338q.711 2.39 1.545 4.11T14.37 19.5'/%3E%3C/svg%3E"));
+			@include mixins.icon(url("data:image/svg+xml,%3Csvg viewBox='0 0 17 24' xmlns='http://www.w3.org/2000/svg' width='17' height='24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m8.03 7.8-5.4 11.7m.67-18q1.372.208 2.379.639a5.7 5.7 0 0 1 1.732 1.13 6 6 0 0 1 1.218 1.714q.494 1.014.828 2.378a131 131 0 0 0 1.456 5.338q.711 2.39 1.545 4.11T14.37 19.5'/%3E%3C/svg%3E"));
 			user-select: none;
 			text-decoration: none;
 			color: var(--x3-hl-line-prompt-color);

@@ -7,13 +7,13 @@ const defaults = [
 	{
 		"title": "Home",
 		"path": "/",
-		"icon": `<svg viewBox="0 0 24 24" role="img" class="icon" aria-hidden="true"><path d="M7.455 4C4.442 4 2 6.436 2 9.441v8.745a1.82 1.82 0 0 0 3.294 1.059L8.9 14.243a.911.911 0 0 1 1.426-.063l4.192 4.839c.518.598 1.271.981 2.063.981h2.692c.723 0 1.417-.326 1.928-.836.512-.51.799-1.202.799-1.924v-4.71c0-1.107-.44-2.168-1.224-2.95l-4.374-4.363A4.17 4.17 0 0 0 13.459 4H7.455Z"/><polyline points="18 16.01 18 16"/></svg>`,
+		"icon": `<svg viewBox="0 0 24 24" role="img" class="icon" aria-hidden="true"><path d="M7.25 4.5A5.25 5.25 0 0 0 2 9.75v7.748a1.999 1.999 0 0 0 3.68 1.086l2.727-4.218a1.497 1.497 0 0 1 2.4-.159l2.916 3.416a5.35 5.35 0 0 0 4.069 1.877h.001A4.207 4.207 0 0 0 22 15.293v-1.929a4.5 4.5 0 0 0-1.318-3.182l-4.364-4.364A4.5 4.5 0 0 0 13.136 4.5zM18 14.99V15"/></svg>`,
 		"section": "Navigation"
 	},
 	{
 		"title": "Posts",
 		"path": "/posts/",
-		"icon": `<svg viewBox="0 0 24 24" role="img" class="icon" aria-hidden="true"><path d="M13 8h4v4h-4V8ZM7 8h2m-2 4h2m-2 4h10"/><path d="M21 6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6Z"/></svg>`,
+		"icon": `<svg viewBox="0 0 24 24" role="img" class="icon" aria-hidden="true"><path d="M15 12.5h6m-6-6h6m-18 7 3.553-7.724a.5.5 0 0 1 .894 0L11 13.5m-8 5h18m-17.08-7h6.16"/></svg>`,
 		"section": "Navigation"
 	},
 	{

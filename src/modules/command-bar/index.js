@@ -11,7 +11,7 @@ class CommandBar extends HTMLElement {
 		this.query = "";
 		this.searchIndex = [];
 		this.searchResults = [];
-		this.anchorIcon = `<svg role="img" class="icon" aria-hidden="true"><use href="#x2-arrow-right"/></svg>`;
+		this.anchorIcon = `<svg role="img" class="icon" aria-hidden="true"><use href="#x4-twist-right-up"/></svg>`;
 	}
 
 	async connectedCallback() {

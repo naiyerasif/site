@@ -35,13 +35,13 @@ class AudioPlayer extends HTMLElement {
 
 	_renderPause() {
 		this.button.innerHTML = `
-			<svg role="img" class="icon" aria-hidden="true"><use href="#x2-circle-stop"/></svg>
+			<svg role="img" class="icon" aria-hidden="true"><use href="#x4-circle-stop"/></svg>
 		`;
 	}
 
 	_renderPlay() {
 		this.button.innerHTML = `
-			<svg role="img" class="icon" aria-hidden="true"><use href="#x2-circle-play"/></svg>
+			<svg role="img" class="icon" aria-hidden="true"><use href="#x4-circle-play"/></svg>
 		`;
 	}
 
