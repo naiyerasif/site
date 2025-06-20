@@ -12,6 +12,10 @@
 	padding: 0 0 0 1.25em;
 }
 
+:where(sub, sup) > a {
+	text-decoration-color: transparent;
+}
+
 // table with rounded radius
 :where(table) {
 	--tableRadius: var(--x3-radius-xs);
