@@ -34,7 +34,8 @@
 		color: var(--calloutFg);
 	}
 
-	.icon + &-content *:not(a),
+	.icon + &-content > p,
+	.icon + &-content > p *:not(a),
 	&-title * {
 		color: var(--calloutFg);
 	}
