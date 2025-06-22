@@ -9,7 +9,7 @@ type: "guide"
 
 If your organization has strict policies on cloud resources, prototyping with the AWS services can become a hassle. [LocalStack](https://localstack.cloud/) is a cloud emulation layer that runs offline in a container on your local machine. Using LocalStack, you can run AWS services without connecting to the actual AWS environment. You can use the familiar tools like the official AWS CLI and AWS SDK to interact with LocalStack seamlessly. In this post, we'll setup LocalStack and use it with the AWS CLI.
 
-:::assert{title="Series"}
+:::assert{label="Series"}
 1. *Working with AWS on local using LocalStack*
 2. [Using LocalStack for AWS Lambda with SQS trigger](/post/2024/02/11/using-localstack-for-aws-lambda-with-sqs-trigger/)
 3. [Using LocalStack for AWS Lambda with SNS trigger](/post/2024/03/03/using-localstack-for-aws-lambda-with-sns-trigger/)
@@ -195,7 +195,7 @@ aws --endpoint-url http://localhost:4566 s3api delete-bucket --bucket example-bu
 
 Check the [s3](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html) and [s3api](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3api/index.html) docs for more operations to try.
 
-:::commend{title="Tip"}
+:::commend{title="Configure the endpoint URL globally"}
 If you don't want to pass `--endpoint-url http://localhost:4566` to AWS CLI repeatedly, open `~/.aws/config` file (`%USERPROFILE%/.aws/config` if you're on Windows) in a text editor and change it as follows.
 
 ```ini {4,5}

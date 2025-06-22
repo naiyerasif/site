@@ -91,7 +91,7 @@ values ('Royal Gambit', 'Daniel O''Malley', array['Fantasy', 'Science Fiction'])
 			 ('System Collapse', 'Martha Wells', array['Science Fiction', 'Space Opera']);
 ```
 
-:::commend{title="Tip"}
+:::commend
 Put these SQL statements in `src/main/resources/data.sql` file and Spring Boot will automatically run them as a part of [initialization](https://docs.spring.io/spring-boot/how-to/data-initialization.html#howto.data-initialization.using-basic-sql-scripts).
 :::
 

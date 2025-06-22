@@ -43,7 +43,7 @@ CMD ["java", "-jar", "app.jar"]
 
 `adoptopenjdk/openjdk11:alpine-jre` is only 150 MB in size. Hence the resultant image is about 165 MB, which is around a third the size of the JDK-based image.
 
-:::assert{title="Tips"}
+:::commend
 - Use JRE-based images to run the Java applications, unless you specifically need the JDK.
 - Use smaller variants of the base images, if your application doesn't specifically depend on the functionality available in the full-fledged images. This could save you disk space and speed-up your build pipeline. Linux-based Docker images often come in different variants many of which (like `slim` and `alpine` variants) are significantly smaller in size.
 :::

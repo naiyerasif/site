@@ -265,7 +265,7 @@ EXPOSE 4200
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-:::assert{title="Tip"}
+:::commend
 Create a `.dockerignore` file in the root of the Angular project and add `node_modules` and `dist` directories in it to prevent Docker from copying them while creating the image.
 :::
 

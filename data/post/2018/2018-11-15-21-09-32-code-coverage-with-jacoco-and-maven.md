@@ -207,7 +207,7 @@ With the current configuration in the `pom.xml` file, JaCoCo also generates the 
 ::caption[JaCoCo coverage report in the browser. The appearance of the report may vary depending on your browser preferences.]
 :::
 
-:::assert{title="Customizing the HTML report"}
+:::note{title="Customizing the HTML report"}
 You can customize the look and feel of the HTML report by editing the `target/site/jacoco/jacoco-resources/report.css` file. You can specify the title of the report using the `title` in the configuration (see `pom.xml` earlier).
 :::
 

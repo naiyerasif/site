@@ -4,70 +4,78 @@
 	--calloutFg: var(--x3-fg-callout, var(--x3-fg-note));
 	--calloutBg: var(--x3-bg-callout, var(--x3-bg-note));
 	--calloutBorderColor: var(--x3-border-callout, var(--x3-border-note));
-	--calloutBorderRadius: var(--x3-radius-max);
+	--calloutBorderRadius: var(--x3-radius-base);
+	--calloutBorderWidth: 0.25rem;
+	--calloutPadding: 1rem;
+	--calloutHintPadding: 0.5ch 0.8ch;
 
-	margin-inline-start: 0.55rem;
-	padding-inline-start: 1.25rem;
+	padding-inline-start: var(--calloutPadding);
+	border-radius: var(--calloutBorderRadius);
+	background-image: radial-gradient(at right bottom, var(--calloutBg), transparent 50%, transparent);
 	position: relative;
-	background-image: radial-gradient(at right top, var(--calloutBg), transparent 60%, transparent);
-	border-start-end-radius: var(--x3-radius-xs);
 
 	&::before {
 		position: absolute;
 		content: "";
 		left: 0;
 		bottom: 0;
-		inline-size: 0.25rem;
-		block-size: calc(100% - 2rem);
+		inline-size: var(--calloutBorderWidth);
+		block-size: 100%;
 		border-radius: var(--calloutBorderRadius);
 		background-color: var(--calloutBorderColor);
 	}
 
-	* {
-		--x3-gap-flow: 0.5em;
-	}
+	&-hint {
+		--x3-size-icon: 1.25em;
 
-	.icon {
-		position: absolute;
-		left: -0.63rem;
-		top: 0.25ch;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5ch;
+		@include mixins.texture;
+		background-color: var(--calloutBg);
 		color: var(--calloutFg);
+		border-radius: 0.5em;
+		padding: var(--calloutHintPadding);
+		vertical-align: bottom;
+		line-height: 1;
+		font-size: 0.8em;
+		margin-inline-end: 0.5ch;
 	}
 
-	.icon + &-content > p,
-	.icon + &-content > p *:not(a),
-	&-title * {
+	&-title {
 		color: var(--calloutFg);
-	}
 
-	&-commend {
-		--x3-fg-callout: var(--x3-fg-commend);
-		--x3-bg-callout: var(--x3-bg-commend);
-		--x3-border-callout: var(--x3-border-commend);
-	}
-
-	&-assert {
-		--x3-fg-callout: var(--x3-fg-assert);
-		--x3-bg-callout: var(--x3-bg-assert);
-		--x3-border-callout: var(--x3-border-assert);
-	}
-
-	&-warn {
-		--x3-fg-callout: var(--x3-fg-warn);
-		--x3-bg-callout: var(--x3-bg-warn);
-		--x3-border-callout: var(--x3-border-warn);
-	}
-
-	&-deter {
-		--x3-fg-callout: var(--x3-fg-deter);
-		--x3-bg-callout: var(--x3-bg-deter);
-		--x3-border-callout: var(--x3-border-deter);
-	}
-
-	&.setup &-content {
-		li {
-			--x3-gap-flow: 0;
-			font-variant-numeric: tabular-nums lining-nums;
+		* {
+			color: inherit;
 		}
 	}
+
+	&.setup li {
+		--x3-gap-flow: 0;
+		font-variant-numeric: tabular-nums lining-nums;
+	}
+}
+
+[data-callout="commend"] {
+	--x3-fg-callout: var(--x3-fg-commend);
+	--x3-bg-callout: var(--x3-bg-commend);
+	--x3-border-callout: var(--x3-border-commend);
+}
+
+[data-callout="assert"] {
+	--x3-fg-callout: var(--x3-fg-assert);
+	--x3-bg-callout: var(--x3-bg-assert);
+	--x3-border-callout: var(--x3-border-assert);
+}
+
+[data-callout="warn"] {
+	--x3-fg-callout: var(--x3-fg-warn);
+	--x3-bg-callout: var(--x3-bg-warn);
+	--x3-border-callout: var(--x3-border-warn);
+}
+
+[data-callout="deter"] {
+	--x3-fg-callout: var(--x3-fg-deter);
+	--x3-bg-callout: var(--x3-bg-deter);
+	--x3-border-callout: var(--x3-border-deter);
 }
