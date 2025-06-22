@@ -19,7 +19,6 @@
 		border-start-start-radius: var(--hlBorderRadius);
 		border-start-end-radius: var(--hlBorderRadius);
 		border: 1px solid var(--x3-border-note);
-		border-block-end: none;
 		font-size: 0.75em;
 	}
 
@@ -60,6 +59,7 @@
 		background-color: var(--x3-bg-base);
 		border: 1px solid var(--x3-border-note);
 		border-radius: 0;
+		border-block-start: none;
 		border-end-start-radius: var(--hlBorderRadius);
 		border-end-end-radius: var(--hlBorderRadius);
 		overflow-x: auto;
