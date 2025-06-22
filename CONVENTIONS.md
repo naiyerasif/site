@@ -1,26 +1,30 @@
 # Site conventions
 
-These are the current conventions I use throughout this site.
+**Version** `2025.2`
 
-## Project conventions
+These are the conventions I use throughout this site.
 
-- Projects follow `<platform><version>-<subplatform>-<context>` naming convention, for example, `springboot3-redis-pubsub`, `localstack-aws-lambda-with-sqs`, and so on.
-- Packages and examples use one of the [reserved](https://www.rfc-editor.org/rfc/rfc2606.html) example domains, such as <https://example.com>, <https://example.org>, or <https://example.net>.
-- Java packages follow `com.example.<platform>.<context>` naming convention, for example, `com.example.springboot3.redis.pubsub`
+## Project
 
-## Personas and users
+- Use the `<platform><version>-<subplatform>-<context>` naming pattern for the projects, for example, `springboot3-redis-pubsub`, `localstack-aws-lambda-with-sqs`, and so on
+- Use one of the [reserved example domains](https://www.rfc-editor.org/rfc/rfc2606.html) to prefix Java package names, such as `com.example` (default), `org.example`, or `net.example`
+- Use `<reserved example domain>.<platform>.<context>` convention for Java package names, for example, `com.example.springboot3.redis.pubsub`
 
-- **Database name**: `northwind`
-- **Database schema names**: `serenity`
-- **Database users**: `gizem`, `victoria`
+## Placeholder
 
-## Username and password
+- Use either angle brackets (for example, `<placeholder>`), or variable-style notation (for example, `$placeholder`). Prefer variable-style notation, as it is easier to copy and paste.
 
-- **Username**: `gwen`
-- **Password**: `stacy`
+## Database
+
+| Type                     | Value               |
+| ------------------------ | ------------------- |
+| **Database username**    | `gwen`              |
+| **Database password**    | `stacy`             |
+| **Database name**        | `northwind`         |
+| **Database schema name** | `serenity`          |
+| **Database users**       | `gizem`, `victoria` |
 
 ## Citations
 
-Link citations have following structure. Year is optional and usually quoted for articles.
-
-`<authors>, <link> [<year>]`
+- For link citations, use this format: `<authors?>, <link> [<timestamp?>]`. Include authors if identified by the source. Include a timestamp to indicate the recency. Include the publication date, or publication year if available.
+- For book or paper citations, use this format: `<authors?>, <title>, <publisher> [<edition>]`. Include authors if identified by the source. The edition should be the year of publication (preferred) or the edition number specified by the source.
