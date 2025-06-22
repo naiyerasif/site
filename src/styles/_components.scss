@@ -160,7 +160,7 @@
 // header links
 article {
 	:where(h1, h2, h3, h4, h5, h6) {
-		--x3-size-icon: 1ch;
+		--x3-size-icon: 0.8em;
 		a .icon {
 			visibility: hidden;
 			vertical-align: text-top;
