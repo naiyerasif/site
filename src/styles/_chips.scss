@@ -14,10 +14,10 @@
 	@include mixins.texture;
 	background-color: var(--chipBg);
 	color: var(--chipFg);
-	border-radius: var(--x3-radius-max);
+	border-radius: 0.5em;
 	padding: var(--chipPadding);
 	line-height: 1;
-	font-size: 0.75em;
+	font-size: 0.9em;
 	--x3-size-icon: 1.25em;
 
 	svg:first-child {
