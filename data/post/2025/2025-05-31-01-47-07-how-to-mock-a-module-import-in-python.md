@@ -58,7 +58,7 @@ sys.modules.pop('clients', None)
 
 ```python title="mockutils.py"
 import sys
-from typings import ModuleType, Dict
+from typings import ModuleType
 
 
 def mock_module(module_name: str, **attributes):

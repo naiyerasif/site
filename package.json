@@ -18,7 +18,7 @@
 		"@microflash/rehype-starry-night": "^7.3.2",
 		"@sindresorhus/slugify": "^2.2.1",
 		"@wooorm/starry-night": "^3.8.0",
-		"astro": "^5.10.0",
+		"astro": "^5.10.1",
 		"cheerio": "^1.1.0",
 		"dayjs": "^1.11.13",
 		"defu": "^6.1.4",
@@ -47,5 +47,5 @@
 		"picocolors": "^1.1.1",
 		"unlighthouse": "^0.16.3"
 	},
-	"packageManager": "pnpm@10.12.1"
+	"packageManager": "pnpm@10.12.2"
 }
