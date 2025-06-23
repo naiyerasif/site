@@ -7,7 +7,7 @@
 	--calloutBorderRadius: var(--x3-radius-base);
 	--calloutBorderWidth: 0.25rem;
 	--calloutPadding: 1rem;
-	--calloutHintPadding: 0.5ch 0.8ch;
+	--calloutHintPadding: 0.5ch;
 
 	padding-inline-start: var(--calloutPadding);
 	border-radius: var(--calloutBorderRadius);
@@ -30,15 +30,13 @@
 
 		display: inline-flex;
 		align-items: center;
-		gap: 0.5ch;
+		gap: 0.4ch;
 		@include mixins.texture;
 		background-color: var(--calloutBg);
 		color: var(--calloutFg);
 		border-radius: 0.5em;
-		padding: var(--calloutHintPadding);
+		padding-inline: var(--calloutHintPadding);
 		vertical-align: bottom;
-		line-height: 1;
-		font-size: 0.8em;
 		margin-inline-end: 0.5ch;
 	}
 

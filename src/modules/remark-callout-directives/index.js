@@ -93,23 +93,23 @@ const defaults = {
 	callouts: {
 		note: {
 			label: "Note",
-			hint: `<svg role="img" class="icon"><title>Note</title><use href="#x4-callout-note"/></svg>`
+			hint: `<svg role="img" class="icon"><use href="#x4-callout-note"/></svg>`
 		},
 		commend: {
 			label: "Tip",
-			hint: `<svg role="img" class="icon"><title>Success</title><use href="#x4-callout-commend"/></svg>`
+			hint: `<svg role="img" class="icon"><use href="#x4-callout-commend"/></svg>`
 		},
 		warn: {
 			label: "Warning",
-			hint: `<svg role="img" class="icon"><title>Warning</title><use href="#x4-callout-warn"/></svg>`
+			hint: `<svg role="img" class="icon"><use href="#x4-callout-warn"/></svg>`
 		},
 		deter: {
 			label: "Caution",
-			hint: `<svg role="img" class="icon"><title>Danger</title><use href="#x4-callout-deter"/></svg>`
+			hint: `<svg role="img" class="icon"><use href="#x4-callout-deter"/></svg>`
 		},
 		assert: {
 			label: "Important",
-			hint: `<svg role="img" class="icon"><title>Info</title><use href="#x4-callout-assert"/></svg>`
+			hint: `<svg role="img" class="icon"><use href="#x4-callout-assert"/></svg>`
 		}
 	}
 };
