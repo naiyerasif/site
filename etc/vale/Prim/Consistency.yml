@@ -18,11 +18,12 @@ swap:
   down time: downtime
   (?:dualboot|dual boot): dual-boot
   e-mail: email
+  endusers?: end user|end users
   hard\s(copy|copies): hardcopy|hardcopies
   hardcoded: hard-coded
   HTTPs: HTTPS
   in depth: in-depth
-  (?:OAuth ?2|Oauth): OAuth 2.0
+  'OAuth(?: 2(?:\.(?!0)|(?!(\.0)))|(?!( 2\.0| 2)))': OAuth 2.0
   ok: OK
   on demand: on-demand
   open-source: open source
@@ -33,6 +34,8 @@ swap:
   synch: sync
   testcases?: test case|test cases
   unbloat: debloat
+  unbloated: debloated
+  unbloating: debloating
   url:  URL
   URL for: URL of
   an URL: a URL

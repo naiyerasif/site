@@ -2,13 +2,14 @@ extends: conditional
 message: "Spell out '%s', if it's unfamiliar to the audience."
 level: suggestion
 ignorecase: false
-first: '\b([A-Z]{3,5})\b'
-second: '(?:\b[A-Z][a-z]+ )+\(([A-Z]{3,5})\)'
+first: '\b(?=\w{3,})(?=(?:[A-Z][a-z]?){2,})(?!(?:[A-Z][a-z]+)+\b)[A-Za-z]{3,}\b'
+second: '(?:\b[A-Z][a-z]+\s+)+\(([A-Za-z]{3,})\)'
 exceptions:
   - ABAC
   - API
   - AWS
   - BIOS
+  - CAPTCHA
   - CLI
   - CPU
   - CSS
@@ -26,31 +27,29 @@ exceptions:
   - GPU
   - GUI
   - GUID
+  - INFO
+  - HEAD
   - HTML
   - HTTP
   - HTTPS
   - IDE
-  - INFO
-  - IP
-  - IT
   - JAR
   - JDBC
+  - JDK
   - JPA
   - JPEG
   - JSON
   - JSX
   - JVM
   - LAN
+  - LaTeX
   - LOL
   - MIT
   - MVC
-  - NAT
-  - NOTE
   - OEM
   - OSS
   - PATCH
   - PATH
-  - PC
   - PDF
   - PHP
   - PIN
@@ -60,6 +59,7 @@ exceptions:
   - PUT
   - RAM
   - RBAC
+  - ReCAPTCHA
   - REPL
   - REST
   - ROM
@@ -76,6 +76,7 @@ exceptions:
   - TBD
   - TCP
   - TODO
+  - TRACE
   - TTL
   - UNIX
   - URI
@@ -84,7 +85,12 @@ exceptions:
   - UTF
   - UUID
   - VLAN
+  - VoLTE
+  - VoIP
   - VPN
+  - WARN
+  - WebP
+  - WiFi
   - XML
   - XSS
   - YAML

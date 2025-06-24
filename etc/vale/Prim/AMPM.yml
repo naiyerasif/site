@@ -1,5 +1,5 @@
 extends: existence
-message: "Use 'am' or 'pm' else 'a.m.' or 'p.m.' (preceded by a space)."
+message: "Use 'am / pm' else 'a.m. / p.m.' (preceded by a space)."
 level: error
 nonword: true
 tokens:

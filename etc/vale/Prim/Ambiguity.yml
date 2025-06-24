@@ -4,3 +4,4 @@ level: error
 ignorecase: true
 tokens:
   - and/or
+  - or/and
