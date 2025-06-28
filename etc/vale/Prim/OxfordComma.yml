@@ -4,4 +4,4 @@ level: suggestion
 scope: sentence
 nonword: true
 tokens:
-  - '\b[\w\s]+?(?:,\s*[\w\s]+){1,}\s+(?:and|or)\s+[\w\s]+[.?!]?'
+  - '(?:[^\s,]+,){1,} \w+ (?:and|or) \w+[.?!]'

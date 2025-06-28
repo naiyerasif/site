@@ -1,0 +1,18 @@
+extends: substitution
+message: "Use '%s' instead of '%s'."
+level: suggestion
+ignorecase: true
+action:
+  name: replace
+swap:
+  as a matter of fact: in fact
+  (?:cell ?phone|smart ?phone): phone
+  (?:file ?path|path ?name)s?: path|paths
+  has the (?:ability|capability|capacity) to: can
+  in lieu of: instead of
+  pain points?: challenge|concern|difficulty|issue
+  state-of-the-art: modern|latest
+  take into account: consider
+  taking into account: considering
+  (?:took|taken) into account: considered
+  whether or not: whether

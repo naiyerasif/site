@@ -1,9 +1,0 @@
-extends: existence
-message: "Put a nonbreaking space between the number and the unit in '%s'."
-level: error
-nonword: true
-tokens:
-  - \d+(?:B|kB|MB|GB|TB)
-  - \d+(?:ns|ms|s|min|h|d)
-  - \d+(?:kg|mg)
-  - \d+(?:km|cm|mm)

@@ -1,7 +1,0 @@
-extends: existence
-message: "Always spell out the name of the month."
-level: error
-ignorecase: true
-nonword: true
-tokens:
-  - '\b\d{1,2}/\d{1,2}/(?:\d{4}|\d{2})\b'

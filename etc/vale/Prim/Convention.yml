@@ -8,29 +8,31 @@ swap:
   24/7: 24x7
   3\-D: 3D
   audio(?:-| )books?: audiobook|audiobooks
+  auto-correct: autocorrect
   autodetect: auto-detect
+  autoupdate: auto-update
   back(?:-| )light: backlight
   back\s(slash|slashes): backslash|backslashes
   bottle(?:-| )necks?: bottleneck|bottlenecks
   chat(?:-| )bots?: chatbot|chatbots
   check lists?: checklist|checklists
   check marks?: checkmark|checkmarks
-  down time: downtime
+  down(?:-| )time: downtime
   (?:dualboot|dual boot): dual-boot
   e-mail: email
-  endusers?: end user|end users
+  enduser: end user|end-user
+  endusers: end users|end-users
+  (?:hardcoded|hard coded): hard-coded
   hard\s(copy|copies): hardcopy|hardcopies
-  hardcoded: hard-coded
   HTTPs: HTTPS
   in depth: in-depth
+  on demand: on-demand
   'OAuth(?: 2(?:\.(?!0)|(?!(\.0)))|(?!( 2\.0| 2)))': OAuth 2.0
   ok: OK
-  on demand: on-demand
-  open-source: open source
-  (?:file ?path|path ?name)s?: path|paths
-  (?:cell ?phone|smart ?phone): phone|mobile phone
+  (?:opensource|open-source): open source
   (?:quote mark|quotemark)s?: quotation mark|quotation marks
   scroll(?:-| )bars?: scrollbar|scrollbars
+  spell(?:-| )check: spellcheck
   synch: sync
   testcases?: test case|test cases
   unbloat: debloat
