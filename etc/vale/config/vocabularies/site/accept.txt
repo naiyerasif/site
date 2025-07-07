@@ -5,6 +5,7 @@ corepack
 [Hh]ealthcheck
 [Hh]ikari
 [Hh]omebrew
+[Kk]anban
 metaclass
 mixin
 [Mm]onorepo

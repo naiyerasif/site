@@ -15,7 +15,7 @@ update: 2025-06-17 18:22:04
 	I&rsquo;m Naiyer <audio-player><audio><source src="/audio/profile/naiyer/namedrop.mp3" type="audio/mpeg"/><source src="/audio/profile/naiyer/namedrop.m4a" type="audio/mp4"/></audio><button aria-label="Pronounce name"></button></audio-player><noscript><audio controls><source src="/audio/profile/naiyer/namedrop.mp3" type="audio/mpeg"/><source src="/audio/profile/naiyer/namedrop.m4a" type="audio/mp4"/></audio></noscript> &mdash; from India.
 </random-message>
 
-I work as a software engineer, focused on backend and cloud, with occasional forays into frontend. I relish tackling design and engineering problems, preferably in short bursts, with a healthy dose of pragmatism. I like to improve bit by bit every day. This often means learning new things, refactoring code, writing documentation, and improving processes.
+I work as a software engineer, focused on backend and cloud, with occasional contributions to frontend. I relish tackling design and engineering problems, preferably in short bursts, with a healthy dose of pragmatism. I like to improve bit by bit every day. This often means learning new things, refactoring code, writing documentation, and improving processes.
 
 When I'm not working, I'm reading. I enjoy Urdu poetry, manga, and science fiction. I'm partial to alcohol-free fragrances and a withering sense of humor. Given steady supply of tea and snacks, I can also be a formidable listener.
 
@@ -23,9 +23,7 @@ When I'm not working, I'm reading. I enjoy Urdu poetry, manga, and science ficti
 
 This site is my little corner on the web. It is mostly technical essays and small whimsical updates whenever I learn something new.
 
-A post on this site starts as an outline in [Obsidian](https://obsidian.md) or a kanban board on [Todoist](https://www.todoist.com). I draft the posts in Obsidian, then move them into the site's project directory for further refinement.
-
-This site is built with the web platform &mdash; it is just HTML, CSS, and custom elements. I use [Astro](https://astro.build) to generate it. For typography, I use [Inter](https://github.com/rsms/inter) for body copy, [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) for code, and [Make Sans](https://herewemake.gumroad.com/l/makesans) for headings. I don't collect any [analytics](/privacy/).
+This site uses the web platform &mdash; it is just HTML, CSS, and custom elements. I use [Astro](https://astro.build) to generate it. For typography, I use [Inter](https://github.com/rsms/inter) for body copy, [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) for code, and [Make Sans](https://herewemake.gumroad.com/l/makesans) for headings. I don't collect any [analytics](/privacy/).
 
 ## Frequently Asked Questions
 
@@ -37,9 +35,6 @@ Yes &mdash; it's licensed under [Creative Commons Attribution 4.0 License](https
 **I've optimized the examples for learning, not for use in production.** Use your discretion, review with peers, and choose what fits your needs.
 :::
 
-### Do you write all the content yourself?
-
-Yes. English isn't my first language so I use [Prim](https://github.com/Microflash/Prim), [alex](https://github.com/errata-ai/alex), and [proselint](https://github.com/errata-ai/proselint) to ensure a consistent writing style.
 
 ### How can I stay updated with new posts?
 
