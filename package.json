@@ -37,7 +37,7 @@
 		"remark-rehype": "^11.1.2",
 		"remark-smartypants": "^3.0.2",
 		"sass": "^1.89.2",
-		"sharp": "^0.34.2",
+		"sharp": "^0.34.3",
 		"unified": "^11.0.5",
 		"unist-util-visit": "^5.0.0"
 	},
@@ -47,5 +47,5 @@
 		"picocolors": "^1.1.1",
 		"unlighthouse": "^0.17.1"
 	},
-	"packageManager": "pnpm@10.12.4"
+	"packageManager": "pnpm@10.13.1"
 }
