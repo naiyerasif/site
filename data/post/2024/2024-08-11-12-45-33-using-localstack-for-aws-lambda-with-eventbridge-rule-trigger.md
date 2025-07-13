@@ -144,7 +144,7 @@ Don't forget to set the source as `example-source`. Else the `ScheduledEventLamb
 
 Let's put the event on the event bus.
 
-```sh prompt{1} output{2..5}
+```sh prompt{1} output{2..9}
 aws --profile localstack events put-events --entries file://events.json
 {
 	"FailedEntryCount": 0,

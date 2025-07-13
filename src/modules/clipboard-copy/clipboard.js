@@ -13,7 +13,7 @@ export function copyNode(node) {
 				.forEach(ignorable => ignorable.remove());
     if ('clipboard' in navigator) {
         return navigator.clipboard.writeText(
-					clone.textContent.replace(/(\r\n|\r|\n){2,}/g, '$1\n') || ''
+					clone.textContent.replace(/(\r\n|\r|\n){2,}/g, '$1\n').trim() || ''
 				);
     }
     const selection = getSelection();
