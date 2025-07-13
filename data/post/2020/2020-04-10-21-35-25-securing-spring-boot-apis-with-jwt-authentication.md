@@ -1,714 +1,1508 @@
 ---
 slug: "2020/04/10/securing-spring-boot-apis-with-jwt-authentication"
 title: "Securing Spring Boot APIs with JWT Authentication"
-description: "Discover how to develop a secure Spring Boot API by using Spring Security and JSON Web Tokens. By implementing JWT-based authentication, you can minimize the need for frequent database queries."
+description: "Implement stateless authentication with JWTs in Spring Security, customize user management, and add support for alternative signing algorithms."
 date: 2020-04-10 21:35:25
-update: 2020-11-05 19:31:55
+update: 2025-07-13 15:00:40
 type: "guide"
 ---
 
-JSON Web Tokens (JWTs) are stateless, compact, and self-contained [standard](https://tools.ietf.org/html/rfc7519) to transmit the information as a JSON object. This object is usually encoded and encrypted to ensure the authenticity of the message. JWTs are small enough to be sent through URLs. Since they are self-contained, applications can glean sufficient authentication information from them, saving trips to the database. Being stateless, JWTs are particularly suitable to work with REST and HTTP (which are also stateless).
+JSON Web Token (JWT) is an [open standard](https://datatracker.ietf.org/doc/html/rfc7519) to send information (known as _claims_) as a JSON object. When digitally signed using a secret key or a public/private key pair, the recipient can verify and trust the claims.
 
-So, how does this work?
+JWTs are compact and self-contained, making them well-suited for authentication and authorization. It's no surprise that industry standards like OAuth 2.0 and OpenID Connect (OIDC) use them to send identity and access information across systems.
 
-- When an application is secured using a JWT-based authentication, it requires a user to login with their credentials. These credentials can be backed by a database, a dedicated Identity and Access Management (IAM) system, etc. 
-- Once the login is successful, the application returns a JWT token. This token can be saved on the client-side (using localStorage, cookie, etc.). 
-- When a subsequent request is made to the application, the token should be sent with it in an `Authorization` header, often using a [Bearer schema](https://tools.ietf.org/html/rfc6750).
+JWT-based authentication typically begins with a login using credentials (such as a username and password). The application verifies them against the information stored in a database or an Identity and Access Management (IAM) system. If the login is successful, the server issues a JWT and sends it to the client. To access protected endpoints, the client includes this token in the Authorization header. The server then validates the token before allowing access.
 
-:::figure
-![A sequence of JWT-based authentication flow](./images/2020-04-10-21-35-25-securing-spring-boot-apis-with-jwt-authentication-01.svg)
+:::figure{.popout.popout-image}
+![Private endpoint access without authentication: Client to Server: GET /private. Server: Verify JWT (failed). Server to Client: 401 Unauthorized. Login with credentials: Client to Server: POST /token with Authorization: Basic base64 of username and password. Server: Verify credentials (success). Server: Generate JWT. Server to Client: 200 OK: token. Client: Store token. Private endpoint access with authentication: Client to Server: GET /private with Authorization: Bearer token. Server: Verify JWT (success). Server to Client: 200 OK: private data. Done.](./images/2020-04-10-21-35-25-securing-spring-boot-apis-with-jwt-authentication-01.svg)
 
-::caption[JWT-based authentication flow]
+::caption[JWT-based authentication sequence]
 :::
 
-In this post, we'll create a Spring Boot API and secure it using Spring Security and JWT-based authentication.
+Let's implement this flow using Spring Boot and Spring Security.
 
 :::note{.setup}
-The code written for this post uses
+The examples in this post use
 
-- Java 15
-- Spring Boot 2.3.5
-- Java JWT 0.11.2
-- H2 database (in-memory)
-- httpie 2.3.0
-- Maven 3.6.3
+- Spring Boot 3.5.0
+- Java JWT 0.12.6
+- Java 21
+- Maven 3.9.10
 :::
 
-[httpie](https://httpie.io/) is a user-friendly HTTP client with first-class JSON support and many other features. We'll use it to send requests to our APIs.
+## JWT-based authentication flow
 
-## Configure the project
+Create a Maven project using the following `pom.xml`.
 
-Generate a Spring Boot project with [Spring Initializr](https://start.spring.io/), and add the `spring-boot-starter-web` as a dependency.
-
-```xml
+```xml title="pom.xml"
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.3.5.RELEASE</version>
-    <relativePath/> <!-- lookup parent from repository -->
-  </parent>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.5.0</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
 
-  <groupId>dev.mflash.guides</groupId>
-  <artifactId>spring-security-jwt-auth</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+	<groupId>com.example</groupId>
+	<artifactId>spring-security-jwt-auth</artifactId>
+	<version>1.0.0</version>
 
-  <properties>
-    <java.version>15</java.version>
-  </properties>
+	<properties>
+		<java.version>21</java.version>
+	</properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+		</dependency>
 
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>org.junit.vintage</groupId>
-          <artifactId>junit-vintage-engine</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-  </dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-      </plugin>
-    </plugins>
-  </build>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>
 ```
 
-## Create some endpoints
+### Implementing the endpoints
 
-Let's create some endpoints to begin with. Here's a `GenericController` that exposes a GET endpoint which returns a message. This is the functional way of implementing a controller.
+Let's implement two endpoints:
+
+- `/public` will be accessible without authentication and return a generic greeting
+- `/private` will be accessible only to authenticated users. It will return a personalized greeting that includes the name of the logged-in user.
 
 ```java
-// src/main/java/dev/mflash/guides/jwtauth/controller/GenericController.java
+package com.example.jwt.web;
 
-public @Controller class GenericController {
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-  public static final String PUBLIC_ENDPOINT_URL = "/jwt/public";
+@RestController
+public class GreetingController {
 
-  private ServerResponse publicEndpoint(ServerRequest request) {
-    return ServerResponse.ok().contentType(APPLICATION_JSON).body(messageMap("public"));
-  }
+	public static final String PUBLIC_ENDPOINT = "/public";
+	public static final String PRIVATE_ENDPOINT = "/private";
 
-  private Map<String, String> messageMap(String type) {
-    return Map.of("message", String.format("Hello, world! This is a %s endpoint", type));
-  }
+	@GetMapping(PUBLIC_ENDPOINT)
+	public String greetPublic() {
+		return "Hello, World!";
+	}
 
-  public @Bean RouterFunction<ServerResponse> genericRoutes() {
-    return route()
-        .GET(PUBLIC_ENDPOINT_URL, this::publicEndpoint)
-        .build();
-  }
+	@GetMapping(PRIVATE_ENDPOINT)
+	public String greetPrivate(Authentication authentication) {
+		return "Hello, " + authentication.getName() + "!";
+	}
 }
 ```
 
-:::note{title="WebMvc.fn"}
-With Spring 5.2, a new functional way of writing controllers has been introduced (called [`WebMvc.fn`](https://spring.io/blog/2019/04/03/spring-tips-webmvc-fn-the-functional-dsl-for-spring-mvc)). `WebMvc.fn` introduces the following key concepts.
+### Configuring public/private key pair
 
-- **HandlerFunction** which accepts a `ServerRequest` and provides a `ServerResponse`. A `ServerRequest` object encapsulates all kinds of requests, including path variables, request body, etc, which were traditionally parsed using annotations. A `ServerResponse` is analogous to a response wrapped in a `ResponseEntity`.
-- **RouterFunction** which configures the endpoints and their content-type. Traditionally, this was handled using annotations; now it's done through functions. After defining the routes, the request is sent to a handler function which provides the expected response.
-:::
+To sign the JWT, we'll use an [RSA](https://en.wikipedia.org/wiki/RSA_cryptosystem) public/private key pair. First, generate the keys by running the following utility.
 
-Launch the application and send the request to the endpoint.
+```java
+package com.example.jwt;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.security.*;
+
+public class RSAKeyGenerator {
+
+	static final KeyPairGenerator KEY_PAIR_GENERATOR;
+	static final PEMEncoder PEM_ENCODER = PEMEncoder.of();
+
+	static {
+		try {
+			KEY_PAIR_GENERATOR = KeyPairGenerator.getInstance("RSA");
+			KEY_PAIR_GENERATOR.initialize(2048);
+		} catch (NoSuchAlgorithmException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public static void main(String[] args) throws IOException {
+		var keyPair = KEY_PAIR_GENERATOR.generateKeyPair();
+		writeKeyPair(keyPair, Paths.get("src/main/resources"));
+	}
+
+	static void writeKeyPair(KeyPair keyPair, Path parent) throws IOException {
+		var publicKeyPath = Paths.get(parent.toString(), "public.pem");
+		Files.writeString(publicKeyPath, PEM_ENCODER.encodeToString(keyPair.getPublic()));
+		var privateKeyPath = Paths.get(parent.toString(), "private.pem");
+		Files.writeString(privateKeyPath, PEM_ENCODER.encodeToString(keyPair.getPrivate()));
+	}
+}
+```
+
+In `RSAKeyGenerator` utility,
+
+- we initialize a 2048-bit RSA `KeyPairGenerator`. The `main` method uses it to create an RSA key pair.
+- the `writeKeyPair` method writes the public and private keys in the corresponding `public.pem` and `private.pem` files under the specified directory (it is `src/main/resources` here).
+
+We're using the following implementation of `PEMENcoder` to convert the keys to [PEM](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) format.
+
+```java
+package com.example.jwt;
+
+import java.security.Key;
+import java.security.PublicKey;
+import java.util.Base64;
+
+public final class PEMEncoder {
+
+	private PEMEncoder() {}
+
+	public static PEMEncoder of() {
+		return new PEMEncoder();
+	}
+
+	public String encodeToString(Key key) {
+		var marker = key instanceof PublicKey ? "PUBLIC KEY" : "PRIVATE KEY";
+		String base64 = Base64.getMimeEncoder(64, "\n".getBytes()).encodeToString(key.getEncoded());
+		return "-----BEGIN " + marker + "-----\n" + base64 + "\n-----END " + marker + "-----";
+	}
+}
+```
+
+Alternatively, you can use [`openssl`](https://openssl-library.org/) to generate the keys.
 
 ```sh
-$ http :8080/jwt/public
-HTTP/1.1 200 
-# other headers
-{
-  "message": "Hello, world! This is a public endpoint"
+openssl genpkey -algorithm rsa -out private.pem -pkeyopt rsa_keygen_bits:2048
+openssl pkey -in private.pem -pubout -out public.pem
+```
+
+To sign the tokens, the application needs access to the generated RSA keys. Specify the paths to the `.pem` files in the `src/main/resources/application.yml` configuration file.
+
+```yml
+jwt:
+  private-key: classpath:private.pem
+  public-key: classpath:public.pem
+```
+
+Next, use Spring's configuration processor to automatically parse the RSA public and private keys. Additionally, configure the token expiration duration to 1 hour (3600 seconds) as default.
+
+```java
+package com.example.jwt;
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.bind.DefaultValue;
+
+import java.security.interfaces.RSAPrivateKey;
+import java.security.interfaces.RSAPublicKey;
+
+@ConfigurationProperties("jwt")
+public record JwtProperties(
+		RSAPublicKey publicKey,
+		RSAPrivateKey privateKey,
+		@DefaultValue("3600") long expiry) {
 }
 ```
 
-## Enable User registration with Spring Security
+Enable this configuration in the application launcher.
 
-Spring Security's `AuthenticationManager` works with a `UserDetails` object to handle the authentication. For a custom user, say `CustomUser`, we'll have to provide a corresponding `UserDetails` object. This can be done by
+```java {8}
+package com.example.jwt;
 
-- defining a `CustomUser` and `CustomUserRepository`
-- extending `UserDetailsService` interface and overriding its `loadUserByUsername` method to return the details for a `CustomUser`, and
-- adding this service to the `AuthenticationManager` through a configuration.
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
-> In our case, we're going to save the `CustomUser` in an in-memory H2 database. You can use other databases (such as Postgres or MongoDB) to do the same. You can even integrate `UserDetailsService` with solutions like LDAP, OIDC, etc., if needed.
+@SpringBootApplication
+@EnableConfigurationProperties(JwtProperties.class)
+public class Launcher {
 
-Add `spring-boot-starter-data-jdbc`, `h2` and `spring-boot-starter-security` in the `pom.xml`.
+	public static void main(String[] args) {
+		SpringApplication.run(Launcher.class, args);
+	}
+}
+```
 
-```xml {28..41,54..58}
+### Configuring the JWT encoder and decoder
+
+With the prerequisites in place, let's proceed to configure Spring Security as follows.
+
+```java
+package com.example.jwt;
+
+import com.example.jwt.web.GreetingController;
+import com.nimbusds.jose.jwk.JWK;
+import com.nimbusds.jose.jwk.JWKSet;
+import com.nimbusds.jose.jwk.RSAKey;
+import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
+import com.nimbusds.jose.jwk.source.JWKSource;
+import com.nimbusds.jose.proc.SecurityContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.security.oauth2.jwt.JwtEncoder;
+import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
+import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
+import org.springframework.security.oauth2.server.resource.web.BearerTokenAuthenticationEntryPoint;
+import org.springframework.security.oauth2.server.resource.web.access.BearerTokenAccessDeniedHandler;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
+
+@Configuration
+public class SecurityConfiguration {
+
+	private final JwtProperties jwtProperties;
+
+	SecurityConfiguration(JwtProperties jwtProperties) {
+		this.jwtProperties = jwtProperties;
+	}
+
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+		http
+				.authorizeHttpRequests(authorize -> authorize
+						.requestMatchers(HttpMethod.GET, GreetingController.PUBLIC_ENDPOINT).permitAll()
+						.anyRequest().authenticated()
+				)
+				.csrf((csrf) -> csrf.ignoringRequestMatchers("/token"))
+				.httpBasic(Customizer.withDefaults())
+				.oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
+				.sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+				.exceptionHandling((exceptions) -> exceptions
+						.authenticationEntryPoint(new BearerTokenAuthenticationEntryPoint())
+						.accessDeniedHandler(new BearerTokenAccessDeniedHandler())
+				);
+		return http.build();
+	}
+
+	@Bean
+	UserDetailsService users() {
+		return new InMemoryUserDetailsManager(
+				User.withUsername("user")
+						.password("{noop}password")
+						.authorities("app")
+						.build()
+		);
+	}
+
+	@Bean
+	JwtDecoder jwtDecoder() {
+		return NimbusJwtDecoder.withPublicKey(jwtProperties.publicKey()).build();
+	}
+
+	@Bean
+	JwtEncoder jwtEncoder() {
+		JWK jwk = new RSAKey.Builder(jwtProperties.publicKey()).privateKey(jwtProperties.privateKey()).build();
+		JWKSource<SecurityContext> jwks = new ImmutableJWKSet<>(new JWKSet(jwk));
+		return new NimbusJwtEncoder(jwks);
+	}
+}
+```
+
+Let's walk through what this configuration is doing.
+
+- We inject the `JwtProperties` containing the RSA public and private keys. We use the public key to configure the `JwtDecoder` bean for validating and parsing the incoming tokens. Further, we convert the key pair to a [JSON Web Key](https://datatracker.ietf.org/doc/html/rfc7517) (JWK) and wrap it in a JWK Set, which we use to initialize the `JwtEncoder` bean for generating signed tokens. Spring Security picks up these beans with the default OAuth 2.0 resource server configuration provided through `oauth2 -> oauth2.jwt(Customizer.withDefaults())`.
+- We configure the `/public` endpoint to be accessible without authentication; all other endpoints will require authentication.
+- We also disable [CSRF](https://owasp.org/www-community/attacks/csrf) protection for the `/token` endpoint, which issues new tokens, since this interaction is entirely stateless and does not rely on cookies or sessions.
+- Since this application only exposes REST APIs, we disable session creation by setting the session management policy to `STATELESS`.
+- To return appropriate 401 and 403 responses, we configure the error handling through Spring's BearerToken exception handlers.
+- We also configure a `UserDetailsService` with a single in-memory user. Spring uses `PasswordEncoder` prefixes to interpret the password formats. If we don't specify a prefix or configure a default encoder, Spring throws an exception at runtime. Prefixing the password with `{noop}` supresses this exception. It also tells Spring to treat this password as plaintext.
+
+	:::deter
+	This `UserDetailsService` implementation is **not secure** and should be used only for testing and demonstration purposes.
+	:::
+
+### Implementing the token endpoint
+
+Now, let's implement the `/token` endpoint that issues new tokens.
+
+```java
+package com.example.jwt.web;
+
+import com.example.jwt.JwtProperties;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.oauth2.jwt.JwtClaimsSet;
+import org.springframework.security.oauth2.jwt.JwtEncoder;
+import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.time.Instant;
+import java.util.stream.Collectors;
+
+@RestController
+public record TokenController(JwtProperties jwtProperties, JwtEncoder jwtEncoder) {
+
+	public static final String TOKEN_ENDPOINT = "/token";
+
+	@PostMapping(TOKEN_ENDPOINT)
+	public String token(Authentication authentication) {
+		Instant now = Instant.now();
+		String scope = authentication.getAuthorities().stream()
+				.map(GrantedAuthority::getAuthority)
+				.collect(Collectors.joining(" "));
+		JwtClaimsSet claims = JwtClaimsSet.builder()
+				.issuer("self")
+				.issuedAt(now)
+				.expiresAt(now.plusSeconds(jwtProperties.expiry()))
+				.subject(authentication.getName())
+				.claim("scope", scope)
+				.build();
+		return this.jwtEncoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
+	}
+}
+```
+
+To generate a token, we first define a set of claims using `JwtClaimsSet`. In this case, we include authenticated user's name, token issuance and expiration times, and so on. We then use the `JwtEncoder` bean, which we configured earlier, to encode and sign the claims into a JWT.
+
+### Testing the application
+
+Launch the application and use the following commands to test the authentication flow.
+
+```sh prompt{2,6,10} output{3,7,11}
+# access private endpoint without authentication
+curl localhost:8080/private -v
+< HTTP/1.1 401
+
+# generate a new token
+curl -X POST localhost:8080/token -u user:password
+eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoidXNlciIsImV4cCI6MTc1MDQyNTE4MSwiaWF0IjoxNzUwNDIxNTgxLCJzY29wZSI6ImFwcCJ9.pAl3hp3OpP5WV9LgwpuA-lNzCjxT300Vkp0VI-XfTJet9IuZgOEQiHR2s07my-6DNjvN18K4zHWPypQRhTbCe54N0v33KQtvBf8x1E8d_YQVEHhtPRGa_wna4eVHESEeL4p8DC1kivfKDXAvhKf3LNhLRpbdjfjpD9rz8yEJ3KPKJku_jDRlD55LxVX4ywQ-4NTup_QoPyGwlUD2m_5_w3PJ70ZlpJrxTRhj_IiSHOCbRiiihKJxG9X8eQE3QVqeIRtsNgW5hcqIwEoM5h2n_qRoaCkN99VneKIyIoTLYHEE2w4XhBbRR8bhFsGal_nbkk5cnuKf_xAuQRuLNeeShw
+
+# access private endpoint with token
+curl localhost:8080/private -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoidXNlciIsImV4cCI6MTc1MDQyNTE4MSwiaWF0IjoxNzUwNDIxNTgxLCJzY29wZSI6ImFwcCJ9.pAl3hp3OpP5WV9LgwpuA-lNzCjxT300Vkp0VI-XfTJet9IuZgOEQiHR2s07my-6DNjvN18K4zHWPypQRhTbCe54N0v33KQtvBf8x1E8d_YQVEHhtPRGa_wna4eVHESEeL4p8DC1kivfKDXAvhKf3LNhLRpbdjfjpD9rz8yEJ3KPKJku_jDRlD55LxVX4ywQ-4NTup_QoPyGwlUD2m_5_w3PJ70ZlpJrxTRhj_IiSHOCbRiiihKJxG9X8eQE3QVqeIRtsNgW5hcqIwEoM5h2n_qRoaCkN99VneKIyIoTLYHEE2w4XhBbRR8bhFsGal_nbkk5cnuKf_xAuQRuLNeeShw'
+Hello, user!
+```
+
+Let's write integration tests to verify different behaviors as follows.
+
+```java
+package com.example.jwt.web;
+
+import com.example.jwt.SecurityConfiguration;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.context.annotation.Import;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@WebMvcTest({ GreetingController.class, TokenController.class })
+@Import(SecurityConfiguration.class)
+public class GreetingControllerTest {
+
+	@Autowired
+	private MockMvc mvc;
+
+	@Test
+	@DisplayName("Should greet user on public endpoint")
+	void shouldGreetUserOnPublicEndpoint() throws Exception {
+		this.mvc.perform(get(GreetingController.PUBLIC_ENDPOINT))
+				.andExpect(content().string("Hello, World!"));
+	}
+
+	@Test
+	@DisplayName("Should greet user when authenticated")
+	void shouldGreetUserWhenAuthenticated() throws Exception {
+		MvcResult result = this.mvc.perform(post(TokenController.TOKEN_ENDPOINT)
+						.with(httpBasic("user", "password")))
+				.andExpect(status().isOk())
+				.andReturn();
+
+		String token = result.getResponse().getContentAsString();
+
+		this.mvc.perform(get(GreetingController.PRIVATE_ENDPOINT)
+						.header("Authorization", "Bearer " + token))
+				.andExpect(content().string("Hello, user!"));
+	}
+
+	@Test
+	@DisplayName("Should deny access when unauthenticated")
+	void shouldDenyAccessWhenUnauthenticated() throws Exception {
+		this.mvc.perform(get(TokenController.TOKEN_ENDPOINT))
+				.andExpect(status().isUnauthorized());
+	}
+
+	@Test
+	@DisplayName("Should deny access for invalid token")
+	void shouldDenyAccessForInvalidToken() throws Exception {
+		String token = "fake.token.attempt";
+
+		this.mvc.perform(get(GreetingController.PRIVATE_ENDPOINT)
+						.header("Authorization", "Bearer " + token))
+				.andExpect(status().isUnauthorized());
+	}
+}
+```
+
+- We start by loading the required controllers through `@WebMvcTest` and importing the `SecurityConfiguration`.
+- `shouldGreetUserOnPublicEndpoint` checks if the `/public` endpoint is accessible without authentication.
+- `shouldGreetUserWhenAuthenticated` verifies the complete flow of token generation and access to the `/private` endpoint.
+- `shouldDenyAccessWhenUnauthenticated` checks if the token generation fails in absence of credentials.
+- `shouldDenyAccessForInvalidToken` validates that access is denied for invalid token.
+
+## Verifying credentials using a database
+
+Let's try a more realistic scenario where user details are stored in a database. In this case, the application should authenticate users by validating their credentials against records in the database before issuing the token.
+
+To start, update the `pom.xml` to include the dependencies for Spring Data JDBC and H2 in-memory database.
+
+```xml title="pom.xml" ins{32..40}
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.3.5.RELEASE</version>
-    <relativePath/> <!-- lookup parent from repository -->
-  </parent>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.5.0</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
 
-  <groupId>dev.mflash.guides</groupId>
-  <artifactId>spring-security-jwt-auth</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+	<groupId>com.example</groupId>
+	<artifactId>spring-security-jwt-auth</artifactId>
+	<version>1.0.0</version>
 
-  <properties>
-    <java.version>15</java.version>
-  </properties>
+	<properties>
+		<java.version>21</java.version>
+	</properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+		</dependency>
 
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-jdbc</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-      <scope>runtime</scope>
-    </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-security</artifactId>
-    </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>org.junit.vintage</groupId>
-          <artifactId>junit-vintage-engine</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-      </plugin>
-    </plugins>
-  </build>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>
 ```
 
-### Create an API to save `CustomUser`
+Add the database configuration in the `application.yml` file.
 
-Since we would need a table to save the `CustomUser` objects, let's create a `schema.sql` file to initialize it.
+```yml title="application.yml" ins{5,6}
+jwt:
+  private-key: classpath:private.pem
+  public-key: classpath:public.pem
 
-```sql
--- src/main/resources/schema.sql
+spring.datasource:
+  url: jdbc:h2:mem:sa
+```
 
-DROP TABLE IF EXISTS custom_user;
+Spring Security uses a `UserDetailsService` to load user-specific data during the authentication process. To integrate with a custom database, we can implement a custom `UserDetailsService` to load user details.
 
-CREATE TABLE custom_user (
-	id INT AUTO_INCREMENT PRIMARY KEY,
-	email VARCHAR(250) NOT NULL,
-	name VARCHAR(250) NOT NULL,
-	password VARCHAR(250) NOT NULL
+### Implementing a custom `UserDetailsService`
+
+Say, we have a `custom_user` table that stores usernames and passwords.
+
+```sql title="data.sql"
+create table if not exists custom_user (
+	id uuid default random_uuid() primary key,
+	username varchar(50) not null unique,
+	password varchar(500) not null
 );
 ```
 
-> Spring provides multiple ways to initialize a database schema through scripts available on the classpath. Check out the [docs](https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto-database-initialization) for more details.
-
-In this case, Spring will read the `schema.sql` file and execute the statements specified in it whenever the application is launched.
-
-Define an entity corresponding to this table.
-
-```java
-// src/main/java/dev/mflash/guides/jwtauth/security/CustomUser.java
-
-public class CustomUser {
-
-  private @Id int id;
-  private String email;
-  private String name;
-  private String password;
-
-  // getters, setters, etc.
-}
-```
-
-Define a repository to save and fetch the user. For this application, we'll treat the `email` as the username of a `CustomUser`.
-
-```java
-// src/main/java/dev/mflash/guides/jwtauth/security/CustomUserRepository.java
-
-public interface CustomUserRepository extends CrudRepository<CustomUser, Long> {
-
-  Optional<CustomUser> findByEmail(String email);
-}
-```
-
-To let a user register on the application, expose an endpoint to create a new `CustomUser`.
-
-```java
-// src/main/java/dev/mflash/guides/jwtauth/controller/UserRegistrationController.java
-
-public @Controller class UserRegistrationController {
-
-  public static final String REGISTRATION_URL = "/user/register";
-
-  private final CustomUserRepository repository;
-  private final PasswordEncoder passwordEncoder;
-
-  public UserRegistrationController(CustomUserRepository repository, PasswordEncoder passwordEncoder) {
-    this.repository = repository;
-    this.passwordEncoder = passwordEncoder;
-  }
-
-  private ServerResponse register(ServerRequest request) throws ServletException, IOException {
-    final CustomUser newUser = request.body(CustomUser.class);
-    newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
-    repository.save(newUser);
-    return ServerResponse.ok().contentType(APPLICATION_JSON)
-        .body(Map.of("message", String.format("Registration successful for %s", newUser.getName())));
-  }
-
-  public @Bean RouterFunction<ServerResponse> registrationRoutes() {
-    return route()
-        .POST(REGISTRATION_URL, this::register)
-        .build();
-  }
-}
-```
-
-**Note** that we're encoding the plaintext password sent by the user before saving it into the database. `PasswordEncoder` is not provided by default; we'll have to inject it through a configuration.
-
-### Integrate the user management with Spring Security
-
-Implement the `UserDetailsService` which provides `loadUserByUsername` method to convert `CustomUser` for Spring Security by specifying that the `email` is the username field.
-
-```java
-// src/main/java/dev/mflash/guides/jwtauth/security/CustomUserDetailsService.java
-
-public @Service class CustomUserDetailsService implements UserDetailsService {
-
-  private static final String PLACEHOLDER = UUID.randomUUID().toString();
-  private static final User DEFAULT_USER = new User(PLACEHOLDER, PLACEHOLDER, List.of());
-  private final CustomUserRepository repository;
-
-  public CustomUserDetailsService(CustomUserRepository repository) {
-    this.repository = repository;
-  }
-
-  public @Override UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-    return repository.findByEmail(email)
-        .map(CustomUserConverter::toUser)
-        .orElse(DEFAULT_USER);
-  }
-}
-```
-
-`CustomUserConverter` is a utility class that provides methods to convert `CustomUser` into other objects.
-
-```java
-// src/main/java/dev/mflash/guides/jwtauth/security/CustomUserConverter.java
-
-public class CustomUserConverter {
-
-  public static User toUser(CustomUser user) {
-    return new User(user.getEmail(), user.getPassword(), List.of());
-  }
-
-  public static UsernamePasswordAuthenticationToken toAuthenticationToken(CustomUser user) {
-    return new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword(), List.of());
-  }
-}
-```
-
-Now, we can inject `CustomUserDetailsService` into Spring Security's `AuthenticationManager` to complete the integration of `CustomUser`.
-
-```java {16..18}
-// src/main/java/dev/mflash/guides/jwtauth/security/SecurityConfiguration.java
-
-@EnableWebSecurity
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-
-  private final CustomUserDetailsService userDetailsService;
-
-  public SecurityConfiguration(CustomUserDetailsService userDetailsService) {
-    this.userDetailsService = userDetailsService;
-  }
-
-  public @Bean PasswordEncoder passwordEncoder() {
-    return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-  }
-
-  protected @Override void configure(AuthenticationManagerBuilder auth) throws Exception {
-    auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-  }
-}
-```
-
-:::note{title="PasswordEncoder"}
-If you're starting afresh, you can choose a `PasswordEncoder` of your choosing, say `BCryptPasswordEncoder`, and things will work fine. However, there are chances that your application is using multiple encoders to store the passwords. A typical password record may look like this (a prefix enclosed in braces followed by the actual hash): `{bcrypt}$2a$10$LYB29GePiC3/ieDvmqCfL.Y6GEk9vEoZVZR2/EQ9nacnY43aQ4LO6`
-
-The `createDelegatingPasswordEncoder` comes to rescue here. It figures out the correct password encoding algorithm by reading the prefix and performs the corresponding encoding and decoding operations.
+:::commend
+Put this SQL statement in `src/main/resources/data.sql` and Spring Boot will automatically use it during application startup as part of the [database initialization](https://docs.spring.io/spring-boot/how-to/data-initialization.html#howto.data-initialization.using-basic-sql-scripts) process.
 :::
 
-Note that the same `PasswordEncoder` is used by `UserRegistrationController` to encode the password of a new user.
-
-## Add Authentication and Authorization filters
-
-To work with JWT, add the following dependencies in `pom.xml`.
-
-```xml
-<!-- Rest of the POM file -->
-
-  <dependencies>
-    <dependency>
-      <groupId>io.jsonwebtoken</groupId>
-      <artifactId>jjwt-api</artifactId>
-      <version>0.11.2</version>
-    </dependency>
-    <dependency>
-      <groupId>io.jsonwebtoken</groupId>
-      <artifactId>jjwt-impl</artifactId>
-      <version>0.11.2</version>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.jsonwebtoken</groupId>
-      <artifactId>jjwt-jackson</artifactId>
-      <version>0.11.2</version>
-      <scope>runtime</scope>
-    </dependency>
-  </dependencies>
-```
-
-Create a `TokenManager` class that'll generate and parse the JWT tokens.
+Let's define a `CustomUser` record to map the entries from the `custom_user` table.
 
 ```java
-// src/main/java/dev/mflash/guides/jwtauth/security/TokenManager.java
+package com.example.jwt.userdetails;
 
-public class TokenManager {
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import org.springframework.data.annotation.Id;
 
-  private static final SecretKey SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS512);
-  public static final String TOKEN_PREFIX = "Bearer ";
-  private static final int TOKEN_EXPIRY_DURATION = 10; // in days
+import java.util.UUID;
 
-  public static String generateToken(String subject) {
-    return Jwts.builder()
-        .setSubject(subject)
-        .setExpiration(Date.from(ZonedDateTime.now().plusDays(TOKEN_EXPIRY_DURATION).toInstant()))
-        .signWith(SECRET_KEY)
-        .compact();
-  }
+@JsonIgnoreProperties(value = { "id" })
+public record CustomUser(@Id UUID id, String username, @JsonProperty(access = Access.WRITE_ONLY) String password) {
 
-  public static String parseToken(String token) {
-    return Jwts.parserBuilder()
-        .setSigningKey(SECRET_KEY)
-        .build()
-        .parseClaimsJws(token.replace(TOKEN_PREFIX, ""))
-        .getBody()
-        .getSubject();
-  }
+	public CustomUser(String username, String password) {
+		this(null, username, password);
+	}
 }
 ```
 
-`SECRET_KEY` is a randomly-generated key using the `HS512` algorithm (there are [other algorithms](https://github.com/jwtk/jjwt#signature-algorithms-keys), as well). This key is used for signing the tokens by `generateToken` method and subsequently to read them by `parseToken` method. We've also set the tokens to expire after 10 days (through `TOKEN_EXPIRY_DURATION` constant).
-
-Now, define an `AuthenticationFilter` to verify the correct user.
+Next, create a `Repository` to read the data from the database.
 
 ```java
-// src/main/java/dev/mflash/guides/jwtauth/security/CustomAuthenticationFilter.java
+package com.example.jwt.userdetails;
 
-public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+import org.springframework.data.repository.CrudRepository;
 
-  public static final String AUTH_HEADER_KEY = "Authorization";
+public interface CustomUserRepository extends CrudRepository<CustomUser, String> {
 
-  private final AuthenticationManager authenticationManager;
-
-  public CustomAuthenticationFilter(AuthenticationManager authenticationManager) {
-    this.authenticationManager = authenticationManager;
-  }
-
-  public @Override Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
-      throws AuthenticationException {
-    try {
-      var user = new ObjectMapper().readValue(request.getInputStream(), CustomUser.class);
-      return authenticationManager.authenticate(CustomUserConverter.toAuthenticationToken(user));
-    } catch (IOException e) {
-      throw new AuthenticationCredentialsNotFoundException("Failed to resolve authentication credentials", e);
-    }
-  }
-
-  protected @Override void successfulAuthentication(HttpServletRequest request, HttpServletResponse response,
-      FilterChain chain, Authentication authResult) throws IOException, ServletException {
-    response.addHeader(AUTH_HEADER_KEY,
-        TOKEN_PREFIX + generateToken(((User) authResult.getPrincipal()).getUsername()));
-  }
+	CustomUser findByUsername(String username);
 }
 ```
 
-Here, 
-
-- the `attemptAuthentication` method extracts the user from the request and tries to authenticate them with the help of `AuthenticationManager`. 
-- On successful authentication, a token is generated by `TokenManager` and attached to the header of the response (see `successfulAuthentication` method). This token will be used for subsequent requests and will be checked every time a request arrives. 
-  
-On successful verification of the token, access to the application will be enabled with the help of the `doFilterInternal` method of the `CustomAuthorizationFilter`.
+Finally, implement a custom `UserDetailsService` as follows.
 
 ```java
-// src/main/java/dev/mflash/guides/jwtauth/security/CustomAuthorizationFilter.java
+package com.example.jwt.userdetails;
 
-public class CustomAuthorizationFilter extends BasicAuthenticationFilter {
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
-  public CustomAuthorizationFilter(AuthenticationManager authenticationManager) {
-    super(authenticationManager);
-  }
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
-  protected @Override void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
-      throws IOException, ServletException {
+@Service
+public record CustomUserDetailsService(CustomUserRepository userRepository) implements UserDetailsService {
 
-    String header = request.getHeader(AUTH_HEADER_KEY);
+	private static final PasswordEncoder PASSWORD_ENCODER = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
-    if (Objects.isNull(header) || !header.startsWith(TOKEN_PREFIX)) {
-      chain.doFilter(request, response);
-      return;
-    }
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		CustomUser customUser = this.userRepository.findByUsername(username);
+		if (customUser == null) {
+			throw new UsernameNotFoundException("username " + username + " is not found");
+		}
+		return new CustomUserDetails(customUser);
+	}
 
-    UsernamePasswordAuthenticationToken authentication = getAuthentication(request);
-    SecurityContextHolder.getContext().setAuthentication(authentication);
-    chain.doFilter(request, response);
-  }
+	public void saveUser(CustomUser newUser) {
+		this.userRepository.save(new CustomUser(newUser.username(), PASSWORD_ENCODER.encode(newUser.password())));
+	}
 
-  private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
-    String header = request.getHeader(AUTH_HEADER_KEY);
+	record CustomUserDetails(CustomUser customUser) implements UserDetails {
 
-    if (Objects.nonNull(header) && header.startsWith(TOKEN_PREFIX)) {
-      try {
-        String username = parseToken(header);
-        return new UsernamePasswordAuthenticationToken(username, null, List.of());
-      } catch (ExpiredJwtException e) {
-        throw new AccessDeniedException("Expired token");
-      } catch (UnsupportedJwtException | MalformedJwtException e) {
-        throw new AccessDeniedException("Unsupported token");
-      } catch (Exception e) {
-        throw new AccessDeniedException("User authorization not resolved");
-      }
-    } else {
-      throw new AccessDeniedException("Authorization token not found");
-    }
-  }
+		private static final List<GrantedAuthority> ROLE_USER = Collections
+				.unmodifiableList(AuthorityUtils.createAuthorityList("ROLE_USER"));
+
+		@Override
+		public Collection<? extends GrantedAuthority> getAuthorities() {
+			return ROLE_USER;
+		}
+
+		@Override
+		public String getPassword() {
+			return customUser.password();
+		}
+
+		@Override
+		public String getUsername() {
+			return customUser.username();
+		}
+	}
 }
 ```
 
-Here, the `doFilterInternal` method extracts the `Authorization` header, fetches the authentication status, and updates the `SecurityContext`. If the authentication fails, the request to the application is denied by the filter.
+- We use a `CustomUserDetails` record to map the `CustomUser` as a `UserDetails` object. This allows us to implement the `loadUserByUsername` method which Spring Security calls during authentication to validate user credentials.
+- We also define a `saveUser` method to persist new user records in the database. Note that we don't store passwords in plaintext; they're encoded by a `PasswordEncoder`.
 
-We need to register these filters and specify which endpoints are protected and which are accessible publicly in the `SecurityConfiguration`.
+### Configuring user registration endpoint
 
-```java {12..22,32..36}
-// src/main/java/dev/mflash/guides/jwtauth/security/SecurityConfiguration.java
-
-@EnableWebSecurity
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-
-  private final CustomUserDetailsService userDetailsService;
-
-  public SecurityConfiguration(CustomUserDetailsService userDetailsService) {
-    this.userDetailsService = userDetailsService;
-  }
-
-  protected @Override void configure(HttpSecurity http) throws Exception {
-    http.cors().and()
-        .csrf().disable()
-        .authorizeRequests()
-        .antMatchers(PUBLIC_ENDPOINT_URL).permitAll()
-        .antMatchers(POST, REGISTRATION_URL).permitAll()
-        .anyRequest().authenticated().and()
-        .addFilter(new CustomAuthenticationFilter(authenticationManager()))
-        .addFilter(new CustomAuthorizationFilter(authenticationManager()))
-        .sessionManagement().sessionCreationPolicy(STATELESS);
-  }
-
-  public @Bean PasswordEncoder passwordEncoder() {
-    return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-  }
-
-  protected @Override void configure(AuthenticationManagerBuilder auth) throws Exception {
-    auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-  }
-
-  public @Bean CorsConfigurationSource corsConfigurationSource() {
-    final var source = new UrlBasedCorsConfigurationSource();
-    source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
-    return source;
-  }
-}
-```
-
-Here, we've
-- allowed the user registration endpoint and an endpoint from `GenericController` to be accessible publicly, and restricted all other URLs to be accessible only after authentication.
-- disabled the session management of Spring Security by setting the `SessionCreationPolicy` to be `STATELESS` since JWT authentication is stateless.
-
-Let's create a sample endpoint in `GenericController` that is secured with this implementation.
-
-```java {6,12..14,23}
-// src/main/java/dev/mflash/guides/jwtauth/controller/GenericController.java
-
-public @Controller class GenericController {
-
-  public static final String PUBLIC_ENDPOINT_URL = "/jwt/public";
-  public static final String PRIVATE_ENDPOINT_URL = "/jwt/private";
-
-  private ServerResponse publicEndpoint(ServerRequest request) {
-    return ServerResponse.ok().contentType(APPLICATION_JSON).body(messageMap("public"));
-  }
-
-  private ServerResponse privateEndpoint(ServerRequest request) {
-    return ServerResponse.ok().contentType(APPLICATION_JSON).body(messageMap("private"));
-  }
-
-  private Map<String, String> messageMap(String type) {
-    return Map.of("message", String.format("Hello, world! This is a %s endpoint", type));
-  }
-
-  public @Bean RouterFunction<ServerResponse> genericRoutes() {
-    return route()
-        .GET(PUBLIC_ENDPOINT_URL, this::publicEndpoint)
-        .GET(PRIVATE_ENDPOINT_URL, this::privateEndpoint)
-        .build();
-  }
-}
-```
-
-## Testing the application
-
-Launch the application, and try to hit the <http://localhost:8080/jwt/private> endpoint.
-
-```sh
-$ http :8080/jwt/private
-HTTP/1.1 403
-# other headers
-{
-    "error": "Forbidden",
-    "message": "",
-    "path": "/jwt/private",
-    "status": 403,
-    "timestamp": "2020-11-05T11:32:30.771+00:00"
-}
-```
-
-The response `403 Forbidden` is expected, since this endpoint is no longer accessible publicly. Now, register as a new user.
-
-```sh
-$ http POST :8080/user/register name='Arya Antrix' email=arya.antrix@example.com password=pa55word
-HTTP/1.1 200
-# other headers
-{
-    "message": "Registration successful for Arya Antrix"
-}
-```
-
-and login with this user.
-
-```sh
-$ http POST :8080/login email=arya.antrix@example.com password=pa55word
-HTTP/1.1 200
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhcnlhLmFudHJpeEBleGFtcGxlLmNvbSIsImV4cCI6MTYwNTQ0NjUyNn0.lxeHhzdaDxa_PEF3zzhIsft6M3qexjJA2CyrPzAFrAZOP7zgP1slec5w41v08R_9LC7Bnbb7loIwNGn5GlVohg
-# other headers
-```
-
-You'll receive a response `200 OK` with an `Authorization` header that contains a `Bearer` token. Use this token and hit the <http://localhost:8080/jwt/private> endpoint, again. This time, you'll get a successful response.
-
-```sh {1}
-$ http :8080/jwt/private 'Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhcnlhLmFudHJpeEBleGFtcGxlLmNvbSIsImV4cCI6MTYwNTQ0NjUyNn0.lxeHhzdaDxa_PEF3zzhIsft6M3qexjJA2CyrPzAFrAZOP7zgP1slec5w41v08R_9LC7Bnbb7loIwNGn5GlVohg'
-HTTP/1.1 200
-# other headers
-{
-    "message": "Hello, world! This is a private endpoint"
-}
-```
-
-You can use the above scenarios to write some unit tests (using Spring's [`MockMvc`](https://spring.io/guides/gs/testing-web/) and [AssertJ](https://assertj.github.io/doc/) assertions).
+To support user registration, let's expose a `/user` endpoint as follows.
 
 ```java
-// src/test/java/dev/mflash/guides/jwtauth/controller/GenericControllerTest.java
+package com.example.jwt.web;
 
+import com.example.jwt.userdetails.CustomUser;
+import com.example.jwt.userdetails.CustomUserDetailsService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public record UserController(CustomUserDetailsService customUserDetailsService) {
+
+	public static final String USER_ENDPOINT = "/user";
+
+	@PostMapping(USER_ENDPOINT)
+	public String register(@RequestBody CustomUser newUser) {
+		customUserDetailsService.saveUser(newUser);
+		return "User '%s' registered successfully".formatted(newUser.username());
+	}
+}
+```
+
+We're using the `CustomUserDetailsService.saveUser` method here to save the user details in the database.
+
+### Updating the security configuration
+
+Now that we've integrated database-backed user management, we can remove the `InMemoryUserDetailsManager` bean from the security configuration. Additionally, we need to make the user registration endpoint publicly accessible so that new users can create an account without authentication. Since this endpoint is completely stateless, we can disable the CSRF protection for it.
+
+
+```java ins{5,43,46} del{18,19,26,57..65}
+package com.example.jwt;
+
+import com.example.jwt.web.GreetingController;
+import com.example.jwt.web.TokenController;
+import com.example.jwt.web.UserController;
+import com.nimbusds.jose.jwk.JWK;
+import com.nimbusds.jose.jwk.JWKSet;
+import com.nimbusds.jose.jwk.RSAKey;
+import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
+import com.nimbusds.jose.jwk.source.JWKSource;
+import com.nimbusds.jose.proc.SecurityContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.security.oauth2.jwt.JwtEncoder;
+import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
+import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
+import org.springframework.security.oauth2.server.resource.web.BearerTokenAuthenticationEntryPoint;
+import org.springframework.security.oauth2.server.resource.web.access.BearerTokenAccessDeniedHandler;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
+
+@Configuration
+public class SecurityConfiguration {
+
+	private final JwtProperties jwtProperties;
+
+	SecurityConfiguration(JwtProperties jwtProperties) {
+		this.jwtProperties = jwtProperties;
+	}
+
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+		http
+				.authorizeHttpRequests(authorize -> authorize
+						.requestMatchers(HttpMethod.GET, GreetingController.PUBLIC_ENDPOINT).permitAll()
+						.requestMatchers(UserController.USER_ENDPOINT).permitAll()
+						.anyRequest().authenticated()
+				)
+				.csrf((csrf) -> csrf.ignoringRequestMatchers(TokenController.TOKEN_ENDPOINT, UserController.USER_ENDPOINT))
+				.httpBasic(Customizer.withDefaults())
+				.oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
+				.sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+				.exceptionHandling((exceptions) -> exceptions
+						.authenticationEntryPoint(new BearerTokenAuthenticationEntryPoint())
+						.accessDeniedHandler(new BearerTokenAccessDeniedHandler())
+				);
+		return http.build();
+	}
+
+	@Bean
+	UserDetailsService users() {
+		return new InMemoryUserDetailsManager(
+				User.withUsername("user")
+						.password("{noop}password")
+						.authorities("app")
+						.build()
+		);
+	}
+
+	@Bean
+	JwtDecoder jwtDecoder() {
+		return NimbusJwtDecoder.withPublicKey(jwtProperties.publicKey()).build();
+	}
+
+	@Bean
+	JwtEncoder jwtEncoder() {
+		JWK jwk = new RSAKey.Builder(jwtProperties.publicKey()).privateKey(jwtProperties.privateKey()).build();
+		JWKSource<SecurityContext> jwks = new ImmutableJWKSet<>(new JWKSet(jwk));
+		return new NimbusJwtEncoder(jwks);
+	}
+}
+```
+
+### Testing the application
+
+Launch the application and use the following commands to test the changes.
+
+```sh prompt{2,6,10,14} output{3,7,11,15}
+# access private endpoint without authentication
+curl localhost:8080/private -v
+< HTTP/1.1 401
+
+# register a new user
+curl localhost:8080/user -d '{"username": "victoria", "password": "roth"}' -H "Content-Type: application/json"
+User 'victoria' registered successfully
+
+# generate a new token
+curl -X POST localhost:8080/token -u victoria:roth
+eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoidmljdG9yaWEiLCJleHAiOjE3NTA0NDI0MDQsImlhdCI6MTc1MDQzODgwNCwic2NvcGUiOiJST0xFX1VTRVIifQ.iviW7HrK_VhUetpUYSxQnFJ5IrOTngE9e8JGGLZGK_F5ZGsj_oVO9GakNp2-qPSr3iPEScj8XNDlDG0WvA-Qr_QtZXsTX1BwtH4ocy0YhJvPofRGHi3j4Wj_MfGk0UVrv9gawZu684UflqsounsEgdI-CelwQeYKIUqaaXnFyqt5D9swdS8VbPrYFkxu1CWDtkVRzx7Zf1iutLN6jHxD7jaDsFf2arE3ojuoP4UB1tGhGdzLUoEN9mhR7Q6aJfrgTN7RhY7szbuY67QD-_q3AH5g8TK1JWpHNsg33QfIDZKgdnNPJg_nMm-xFDHAnVSoN_amm09b3xQWxJ3vl-G95g
+
+# access private endpoint with token
+curl localhost:8080/private -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoidmljdG9yaWEiLCJleHAiOjE3NTA0NDI0MDQsImlhdCI6MTc1MDQzODgwNCwic2NvcGUiOiJST0xFX1VTRVIifQ.iviW7HrK_VhUetpUYSxQnFJ5IrOTngE9e8JGGLZGK_F5ZGsj_oVO9GakNp2-qPSr3iPEScj8XNDlDG0WvA-Qr_QtZXsTX1BwtH4ocy0YhJvPofRGHi3j4Wj_MfGk0UVrv9gawZu684UflqsounsEgdI-CelwQeYKIUqaaXnFyqt5D9swdS8VbPrYFkxu1CWDtkVRzx7Zf1iutLN6jHxD7jaDsFf2arE3ojuoP4UB1tGhGdzLUoEN9mhR7Q6aJfrgTN7RhY7szbuY67QD-_q3AH5g8TK1JWpHNsg33QfIDZKgdnNPJg_nMm-xFDHAnVSoN_amm09b3xQWxJ3vl-G95g'
+Hello, victoria!
+```
+
+
+Let's also update the integration tests.
+
+```java ins{9..11,23,24,40..53,57,66} del{3,7,8,21,22,56,65}
+package com.example.jwt.web;
+
+import com.example.jwt.SecurityConfiguration;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.context.annotation.Import;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@WebMvcTest({ GreetingController.class, TokenController.class })
+@Import(SecurityConfiguration.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-@ExtendWith(SpringExtension.class)
-class GenericControllerTest {
+public class GreetingControllerTest {
 
-  private @Autowired MockMvc mvc;
+	@Autowired
+	private MockMvc mvc;
 
-  @Test
-  @DisplayName("Should be able to access public endpoint without auth")
-  void shouldBeAbleToAccessPublicEndpointWithoutAuth() throws Exception {
-    MockHttpServletResponse response = mvc.perform(get(PUBLIC_ENDPOINT_URL))
-        .andExpect(status().isOk())
-        .andReturn().getResponse();
+	@Test
+	@DisplayName("Should greet user on public endpoint")
+	void shouldGreetUserOnPublicEndpoint() throws Exception {
+		this.mvc.perform(get(GreetingController.PUBLIC_ENDPOINT))
+				.andExpect(content().string("Hello, World!"));
+	}
 
-    assertThat(response.getContentAsString()).isNotEmpty();
-  }
+	@Test
+	@DisplayName("Should greet user when authenticated")
+	void shouldGreetUserWhenAuthenticated() throws Exception {
+		String username = "victoria";
+		String password = "secret";
+		String userRegistrationRequest = /* language=json */ """
+				{
+				  "username": "%s",
+				  "password": "%s"
+				}
+				""".formatted(username, password);
 
-  @Test
-  @DisplayName("Should get forbidden on private endpoint without auth")
-  void shouldGetForbiddenOnPrivateEndpointWithoutAuth() throws Exception {
-    mvc.perform(get(PRIVATE_ENDPOINT_URL))
-        .andExpect(status().isForbidden())
-        .andReturn();
-  }
+		this.mvc.perform(post(UserController.USER_ENDPOINT)
+						.contentType(MediaType.APPLICATION_JSON)
+						.content(userRegistrationRequest))
+				.andExpect(status().isOk())
+				.andReturn();
 
-  @Test
-  @DisplayName("Should be able to access private endpoint with auth")
-  @WithMockUser(username = "jwtUser")
-  void shouldBeAbleToAccessPrivateEndpointWithAuth() throws Exception {
-    MockHttpServletResponse response = mvc.perform(get(PRIVATE_ENDPOINT_URL))
-        .andExpect(status().isOk())
-        .andReturn().getResponse();
+		MvcResult result = this.mvc.perform(post(TokenController.TOKEN_ENDPOINT)
+						.with(httpBasic("user", "password")))
+						.with(httpBasic(username, password)))
+				.andExpect(status().isOk())
+				.andReturn();
 
-    assertThat(response.getContentAsString()).isNotEmpty();
-  }
+		String token = result.getResponse().getContentAsString();
+
+		this.mvc.perform(get(GreetingController.PRIVATE_ENDPOINT)
+						.header("Authorization", "Bearer " + token))
+				.andExpect(content().string("Hello, user!"));
+				.andExpect(content().string("Hello, victoria!"));
+	}
+
+	@Test
+	@DisplayName("Should deny access when unauthenticated")
+	void shouldDenyAccessWhenUnauthenticated() throws Exception {
+		this.mvc.perform(get(TokenController.TOKEN_ENDPOINT))
+				.andExpect(status().isUnauthorized());
+	}
+
+	@Test
+	@DisplayName("Should deny access for invalid token")
+	void shouldDenyAccessForInvalidToken() throws Exception {
+		String token = "fake.token.attempt";
+
+		this.mvc.perform(get(GreetingController.PRIVATE_ENDPOINT)
+						.header("Authorization", "Bearer " + token))
+				.andExpect(status().isUnauthorized());
+	}
 }
 ```
 
-Here,
+Note that we can no longer use `@WebMvcTest` since our tests rely on the database layer as well. At this point, it is more appropriate to use `@SpringBootTest` along with `@AutoConfigureMockMvc` to start the full application context, and test credential verification and token issuance for accessing the `/private` endpoint.
 
-- the first test verifies that the public endpoint is accessible without any authentication
-- the second test verifies that the application returns a proper error status (403 Forbidden) when the private endpoint receives a request without any authentication, and
-- the final test verifies that once a user has been authenticated successfully, they're able to access the private endpoint.
+## Customizing signature algorithm
+
+Depending on your requirement, you may want to use a different signature algorithm, such as [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm), instead of RSA to sign the JWTs. Since [ECDSA is not supported](https://bitbucket.org/connect2id/nimbus-jose-jwt/issues/555/support-for-ed25519-verifier-into) by Spring Boot out of the box, it requires custom implementation. Let's see how we can do that.
+
+To get started, we need a Java library that supports ECDSA, such as `jjwt`. Let's add its dependencies in the `pom.xml`.
+
+```xml title="pom.xml" ins{20,32..48}
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.5.0</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+	<groupId>com.example</groupId>
+	<artifactId>spring-security-jwt-auth</artifactId>
+	<version>1.0.0</version>
+
+	<properties>
+		<java.version>21</java.version>
+		<jjwt.version>0.12.6</jjwt.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-api</artifactId>
+			<version>${jjwt.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-impl</artifactId>
+			<version>${jjwt.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-jackson</artifactId>
+			<version>${jjwt.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+```
+
+### Configuring public/private ECDSA key pair
+
+First, generate the keys by running the following `EdDSAKeyGenerator` utility.
+
+```java {16}
+package com.example.jwt;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.security.*;
+
+public class EdDSAKeyGenerator {
+
+	static final KeyPairGenerator KEY_PAIR_GENERATOR;
+	static final PEMEncoder PEM_ENCODER = PEMEncoder.of();
+
+	static {
+		try {
+			KEY_PAIR_GENERATOR = KeyPairGenerator.getInstance("Ed25519");
+		} catch (NoSuchAlgorithmException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public static void main(String[] args) throws IOException {
+		var keyPair = KEY_PAIR_GENERATOR.generateKeyPair();
+		writeKeyPair(keyPair, Paths.get("src/main/resources"));
+	}
+
+	static void writeKeyPair(KeyPair keyPair, Path parent) throws IOException {
+		var publicKeyPath = Paths.get(parent.toString(), "public.pem");
+		Files.writeString(publicKeyPath, PEM_ENCODER.encodeToString(keyPair.getPublic()));
+		var privateKeyPath = Paths.get(parent.toString(), "private.pem");
+		Files.writeString(privateKeyPath, PEM_ENCODER.encodeToString(keyPair.getPrivate()));
+	}
+}
+```
+
+This utility is identical to `RSAKeyGenerator` utility we used earlier to generate RSA key pair, except for the algorithm name.
+
+Alternatively, you can use `openssl` to generate the keys.
+
+```sh
+openssl genpkey -algorithm ed25519 -out private.pem
+openssl pkey -in private.pem -pubout -out public.pem
+```
+
+Spring does not support loading the ECDSA key pair out of box. We'll have to implement a utility to read the keys from the PEM files, as follows.
+
+```java
+package com.example.jwt;
+
+import java.security.KeyFactory;
+import java.security.NoSuchAlgorithmException;
+import java.security.interfaces.EdECPrivateKey;
+import java.security.interfaces.EdECPublicKey;
+import java.security.spec.InvalidKeySpecException;
+
+public class EdDSAKeyReader {
+
+	static final PEMDecoder PEM_DECODER;
+
+	static {
+		try {
+			PEM_DECODER = PEMDecoder.withFactory(KeyFactory.getInstance("Ed25519"));
+		} catch (NoSuchAlgorithmException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public static EdECPublicKey publicKey(String pem) {
+		try {
+			return PEM_DECODER.decode(pem, EdECPublicKey.class);
+		} catch (InvalidKeySpecException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public static EdECPrivateKey privateKey(String pem) {
+		try {
+			return PEM_DECODER.decode(pem, EdECPrivateKey.class);
+		} catch (InvalidKeySpecException e) {
+			throw new RuntimeException(e);
+		}
+	}
+}
+```
+
+Note that `EdDSAKeyReader` is not doing much on its own; it just initializes the `PEMDecoder` with a `KeyFactory` that supports ECDSA algorithm. `PEMDecoder` uses an appropriate `EncodedKeySpec` to load the keys and cast them to expected types.
+
+```java
+package com.example.jwt;
+
+import java.security.Key;
+import java.security.KeyFactory;
+import java.security.PublicKey;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.X509EncodedKeySpec;
+import java.util.Base64;
+
+public final class PEMDecoder {
+
+	private final KeyFactory keyFactory;
+
+	private PEMDecoder(KeyFactory keyFactory) {
+		this.keyFactory = keyFactory;
+	}
+
+	public static PEMDecoder withFactory(KeyFactory keyFactory) {
+		return new PEMDecoder(keyFactory);
+	}
+
+	public <K extends Key> K decode(String str, Class<K> keyClazz) throws InvalidKeySpecException {
+		var isPublicKey = PublicKey.class.isAssignableFrom(keyClazz);
+		var marker = isPublicKey ? "PUBLIC KEY" : "PRIVATE KEY";
+		String base64 = str
+				.replaceAll("-----BEGIN " + marker + "-----", "")
+				.replaceAll("-----END " + marker + "-----", "")
+				.replaceAll("\\s", "");
+		var key = Base64.getDecoder().decode(base64);
+		return (K) (
+				isPublicKey ?
+					keyFactory.generatePublic(new X509EncodedKeySpec(key)) :
+					keyFactory.generatePrivate(new PKCS8EncodedKeySpec(key))
+		);
+	}
+}
+```
+
+We can now use Spring Configuration Processor to load an ECDSA key pair as follows.
+
+```java {26,27}
+package com.example.jwt;
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.bind.ConstructorBinding;
+import org.springframework.boot.context.properties.bind.DefaultValue;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.security.interfaces.EdECPrivateKey;
+import java.security.interfaces.EdECPublicKey;
+import java.util.Set;
+
+@ConfigurationProperties("jwt")
+public final class JwtProperties {
+	static final Set<String> REGISTERED_NAMES = Set.of("iss", "sub", "aud", "exp", "nbf", "iat", "jti");
+
+	private final EdECPublicKey publicKey;
+	private final EdECPrivateKey privateKey;
+	private final long expiry;
+
+	@ConstructorBinding
+	public JwtProperties(Path publicKey, Path privateKey, @DefaultValue("3600") long expiry) throws IOException {
+		var pub = Files.readString(publicKey);
+		var priv = Files.readString(privateKey);
+		this.publicKey = EdDSAKeyReader.publicKey(pub);
+		this.privateKey = EdDSAKeyReader.privateKey(priv);
+		this.expiry = expiry;
+	}
+
+	public EdECPublicKey publicKey() {
+		return this.publicKey;
+	}
+
+	public EdECPrivateKey privateKey() {
+		return this.privateKey;
+	}
+
+	public long expiry() {
+		return this.expiry;
+	}
+}
+```
+
+Note that we've also declared a set called `REGISTERED_NAMES`. These are the names of standard JWT claims that we'll use later to encode and decode the JWTs signed by the keys we've just configured.
+
+### Implementing custom ECDSA JWT encoder
+
+To issue a JWT signed with ECDSA, let's implement a custom encoder as follows.
+
+```java
+package com.example.jwt;
+
+import io.jsonwebtoken.JwtBuilder;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Jwk;
+import io.jsonwebtoken.security.JwkSet;
+import org.springframework.security.oauth2.jose.jws.JwsAlgorithm;
+import org.springframework.security.oauth2.jwt.*;
+import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
+
+import java.security.Key;
+import java.security.PublicKey;
+import java.time.Instant;
+import java.util.*;
+
+public record CustomJwtEncoder(JwkSet jwkSet, JwsAlgorithm defaultAlgorithm) implements JwtEncoder {
+
+	public CustomJwtEncoder(JwkSet jwkSet) {
+		this(jwkSet, CustomJwsAlgorithm.EdDSA);
+	}
+
+	enum CustomJwsAlgorithm implements JwsAlgorithm {
+		RSA("RSA"),
+		EdDSA("EdDSA");
+
+		private final String name;
+
+		CustomJwsAlgorithm(String name) {
+			this.name = name;
+		}
+
+		@Override
+		public String getName() {
+			return this.name;
+		}
+	}
+
+	@Override
+	public Jwt encode(JwtEncoderParameters parameters) throws JwtEncodingException {
+		try {
+			JwsHeader headers = Objects.requireNonNullElse(parameters.getJwsHeader(), JwsHeader.with(defaultAlgorithm).build());
+			JwtClaimsSet claims = parameters.getClaims();
+			Key signingKey = this.jwkSet.getKeys().stream()
+					.filter(jwk -> jwk.getAlgorithm().equals(headers.getAlgorithm().getName()))
+					.findAny()
+					.map(Jwk::toKey)
+					.orElseThrow();
+			var jws = convert(claims, signingKey);
+			return new Jwt(jws, claims.getIssuedAt(), claims.getExpiresAt(), headers.getHeaders(), claims.getClaims());
+		} catch (Exception e) {
+			throw new JwtEncodingException("Failed to encode JWT", e);
+		}
+	}
+
+	private static String convert(JwtClaimsSet claims, Key signingKey) {
+		if (signingKey instanceof PublicKey) {
+			throw new IllegalArgumentException("Signing token with public key is not supported");
+		}
+
+		JwtBuilder builder = Jwts.builder();
+		Object issuer = claims.getClaim("iss");
+		if (issuer != null) {
+			builder.issuer(issuer.toString());
+		}
+
+		String subject = claims.getSubject();
+		if (StringUtils.hasText(subject)) {
+			builder.subject(subject);
+		}
+
+		List<String> audience = claims.getAudience();
+		if (!CollectionUtils.isEmpty(audience)) {
+			builder.audience().add(audience);
+		}
+
+		Instant expiresAt = claims.getExpiresAt();
+		if (expiresAt != null) {
+			builder.expiration(Date.from(expiresAt));
+		}
+
+		Instant notBefore = claims.getNotBefore();
+		if (notBefore != null) {
+			builder.notBefore(Date.from(notBefore));
+		}
+
+		Instant issuedAt = claims.getIssuedAt();
+		if (issuedAt != null) {
+			builder.issuedAt(Date.from(issuedAt));
+		}
+
+		String jwtId = claims.getId();
+		if (StringUtils.hasText(jwtId)) {
+			builder.id(jwtId);
+		}
+
+		Map<String, Object> customClaims = new HashMap<>();
+		claims.getClaims().forEach((name, value) -> {
+			if (!JwtProperties.REGISTERED_NAMES.contains(name)) {
+				customClaims.put(name, value);
+			}
+		});
+
+		if (!customClaims.isEmpty()) {
+			Objects.requireNonNull(builder);
+			customClaims.forEach(builder::claim);
+		}
+
+		return builder.signWith(signingKey).compact();
+	}
+}
+```
+
+- This encoder accepts a `JwsAlgorithm`; we're setting `CustomJwsAlgorithm.EdDSA` as the default value here.
+- The `encode` method accepts the encoding parameters and parses all the claims to build a JWT. Finally, it signs the JWT with the configured `JwsAlgorithm` and returns it.
+- Note that we're using the `REGISTERED_NAMES` from `JwtProperties` to identify the custom claims.
+
+### Implementing custom ECDSA JWT decoder
+
+To verify the claims, Spring Security also needs a decoder. Let's implement a custom decoder that supports ECDSA as follows.
+
+```java
+package com.example.jwt;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
+import io.jsonwebtoken.JwtParser;
+import io.jsonwebtoken.Jwts;
+import org.springframework.security.oauth2.jwt.BadJwtException;
+import org.springframework.security.oauth2.jwt.Jwt;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.security.oauth2.jwt.JwtException;
+import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
+
+import java.security.PublicKey;
+import java.util.*;
+
+public record CustomJwtDecoder(JwtParser parser) implements JwtDecoder {
+
+	public CustomJwtDecoder(PublicKey publicKey) {
+		this(Jwts.parser().verifyWith(publicKey).build());
+	}
+
+	@Override
+	public Jwt decode(String token) throws JwtException {
+		try {
+			var jws = parser.parseSignedClaims(token);
+			return convert(token, jws);
+		} catch (Exception e) {
+			throw new BadJwtException("Failed to decode token", e);
+		}
+	}
+
+	private static Jwt convert(String token, Jws<Claims> jws) {
+		var builder = Jwt.withTokenValue(token)
+				.headers((h) -> h.putAll(jws.getHeader()));
+
+		var claims = jws.getPayload();
+
+		String issuer = claims.getIssuer();
+		if (StringUtils.hasText(issuer)) {
+			builder.issuer(issuer);
+		}
+
+		String subject = claims.getSubject();
+		if (StringUtils.hasText(subject)) {
+			builder.subject(subject);
+		}
+
+		Set<String> audience = claims.getAudience();
+		if (!CollectionUtils.isEmpty(audience)) {
+			builder.audience(audience);
+		}
+
+		Date expiresAt = claims.getExpiration();
+		if (expiresAt != null) {
+			builder.expiresAt(expiresAt.toInstant());
+		}
+
+		Date notBefore = claims.getNotBefore();
+		if (notBefore != null) {
+			builder.notBefore(notBefore.toInstant());
+		}
+
+		Date issuedAt = claims.getIssuedAt();
+		if (issuedAt != null) {
+			builder.issuedAt(issuedAt.toInstant());
+		}
+
+		String jwtId = claims.getId();
+		if (StringUtils.hasText(jwtId)) {
+			builder.jti(jwtId);
+		}
+
+		Map<String, Object> customClaims = new HashMap<>();
+		claims.forEach((name, value) -> {
+			if (!JwtProperties.REGISTERED_NAMES.contains(name)) {
+				customClaims.put(name, value);
+			}
+		});
+
+		if (!customClaims.isEmpty()) {
+			Objects.requireNonNull(builder);
+			customClaims.forEach(builder::claim);
+		}
+
+		return builder.build();
+	}
+}
+```
+
+This decoder uses the `PublicKey` to decode the token. It parses all the claims and returns the JWT. Once again, we're using the `REGISTERED_NAMES` from `JwtProperties` to identify the custom claims.
+
+### Updating the security configuration
+
+Now that we've implemented the encoder and decoder, let's use them in the security configuration like this.
+
+```java ins{12,13,28..30,63,71..76} del{6..11,22,23,62,68..70}
+package com.example.jwt;
+
+import com.example.jwt.web.GreetingController;
+import com.example.jwt.web.TokenController;
+import com.example.jwt.web.UserController;
+import com.nimbusds.jose.jwk.JWK;
+import com.nimbusds.jose.jwk.JWKSet;
+import com.nimbusds.jose.jwk.RSAKey;
+import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
+import com.nimbusds.jose.jwk.source.JWKSource;
+import com.nimbusds.jose.proc.SecurityContext;
+import io.jsonwebtoken.security.Jwks;
+import io.jsonwebtoken.security.PrivateJwk;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.security.oauth2.jwt.JwtEncoder;
+import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
+import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
+import org.springframework.security.oauth2.server.resource.web.BearerTokenAuthenticationEntryPoint;
+import org.springframework.security.oauth2.server.resource.web.access.BearerTokenAccessDeniedHandler;
+import org.springframework.security.web.SecurityFilterChain;
+
+import java.security.KeyPair;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+
+@Configuration
+public class SecurityConfiguration {
+
+	private final JwtProperties jwtProperties;
+
+	SecurityConfiguration(JwtProperties jwtProperties) {
+		this.jwtProperties = jwtProperties;
+	}
+
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+		http
+				.authorizeHttpRequests(authorize -> authorize
+						.requestMatchers(HttpMethod.GET, GreetingController.PUBLIC_ENDPOINT).permitAll()
+						.requestMatchers(UserController.USER_ENDPOINT).permitAll()
+						.anyRequest().authenticated()
+				)
+				.csrf((csrf) -> csrf.ignoringRequestMatchers(TokenController.TOKEN_ENDPOINT, UserController.USER_ENDPOINT))
+				.httpBasic(Customizer.withDefaults())
+				.oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
+				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+				.exceptionHandling(exceptions -> exceptions
+						.authenticationEntryPoint(new BearerTokenAuthenticationEntryPoint())
+						.accessDeniedHandler(new BearerTokenAccessDeniedHandler())
+				);
+		return http.build();
+	}
+
+	@Bean
+	JwtDecoder jwtDecoder() {
+		return NimbusJwtDecoder.withPublicKey(jwtProperties.publicKey()).build();
+		return new CustomJwtDecoder(jwtProperties.publicKey());
+	}
+
+	@Bean
+	JwtEncoder jwtEncoder() {
+		JWK jwk = new RSAKey.Builder(jwtProperties.publicKey()).privateKey(jwtProperties.privateKey()).build();
+		JWKSource<SecurityContext> jwks = new ImmutableJWKSet<>(new JWKSet(jwk));
+		return new NimbusJwtEncoder(jwks);
+		PrivateJwk<PrivateKey, PublicKey, ?> jwk = Jwks.builder()
+				.keyPair(new KeyPair(jwtProperties.publicKey(), jwtProperties.privateKey()))
+				.algorithm(jwtProperties.privateKey().getAlgorithm())
+				.build();
+		var jwkSet = Jwks.set().add(jwk).build();
+		return new CustomJwtEncoder(jwkSet);
+	}
+}
+```
+
+We're just replacing the previous encoder and decoder with our custom implementations. You can launch the application and [rerun the existing tests](#testing-the-application-2).
 
 ---
 
 **Source code**
 
 - [spring-security-jwt-auth](https://github.com/Microflash/guides/tree/main/spring/spring-security-jwt-auth)
+- [spring-security-jwt-auth-custom-user](https://github.com/Microflash/guides/tree/main/spring/spring-security-jwt-auth-custom-user)
+- [spring-security-jwt-auth-eddsa](https://github.com/Microflash/guides/tree/main/spring/spring-security-jwt-auth-eddsa)
 
 **Related**
 
-- [Introduction to JSON Web Tokens](https://jwt.io/introduction/)
-- [Verify Access Tokens for Custom APIs](https://auth0.com/docs/api-auth/tutorials/verify-access-token)
-- [Database Initialization](https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto-database-initialization)
+- [Introduction to JSON Web Tokens](https://jwt.io/introduction)
