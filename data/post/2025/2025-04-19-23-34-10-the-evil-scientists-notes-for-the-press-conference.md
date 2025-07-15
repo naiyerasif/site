@@ -8,7 +8,7 @@ type: "note"
 
 :::figure
 > :::figure
-> ![The Evil Scientist’s Notes for the Press Conference: Say LABORATORY not LAIR. Say ASSISTANTS not HENCHMEN AND GOONS. Say GAME-CHANGING TECHNOLOGY not DOOMSDAY MACHINE. Say GENERAL PUBLIC not HELPLESS VICTIMS. Say CHALLENGE ENTRENCHED HIERARCHIES not BRING THE WORLD TO ITS KNEES.](./images/2025-04-19-23-34-10-the-evil-scientists-notes-for-the-press-conference-01.jpg)
+> ![The Evil Scientist’s Notes for the Press Conference: Say LABORATORY not LAIR. Say ASSISTANTS not HENCHMEN AND GOONS. Say GAME-CHANGING TECHNOLOGY not DOOMSDAY MACHINE. Say GENERAL PUBLIC not HELPLESS VICTIMS. Say CHALLENGE ENTRENCHED HIERARCHIES not BRING THE WORLD TO ITS KNEES.](./images/2025-04-19-23-34-10-the-evil-scientists-notes-for-the-press-conference-01.webp)
 >
 > ::caption[The Evil Scientist's Notes for the Press Conference]
 > :::
