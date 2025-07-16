@@ -7,7 +7,7 @@ const defaults = [
 	{
 		"title": "Home",
 		"path": "/",
-		"icon": `<svg viewBox="0 0 24 24" role="img" class="icon" aria-hidden="true"><path d="M7.25 4.5A5.25 5.25 0 0 0 2 9.75v7.748a1.999 1.999 0 0 0 3.68 1.086l2.727-4.218a1.497 1.497 0 0 1 2.4-.159l2.916 3.416a5.35 5.35 0 0 0 4.069 1.877h.001A4.207 4.207 0 0 0 22 15.293v-1.929a4.5 4.5 0 0 0-1.318-3.182l-4.364-4.364A4.5 4.5 0 0 0 13.136 4.5zM18 14.99V15"/></svg>`,
+		"icon": `<svg viewBox="0 0 24 24" role="img" class="icon" aria-hidden="true"><circle cx="12" cy="14" r="3"/><path d="m2 12 10-9 10 9"/><path d="M20 10.186v8.803a2.01 2.01 0 0 1-1.997 2l-12 .024-.003.001c-1.097 0-2-.903-2-2v-8.828"/></svg>`,
 		"section": "Navigation"
 	},
 	{
