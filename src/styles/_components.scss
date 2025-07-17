@@ -408,32 +408,40 @@ random-message {
 .post {
 	ol.timeline,
 	ul.timeline {
-		--timelineBorderColor: var(--timeline-border-color, var(--x3-border-assert));
-		--timelineLabelColor: var(--timeline-label-color, var(--x3-fg-assert));
+		--timelineLabelColor: var(--timeline-label-color, var(--x3-fg-note));
+		--timelineBorderColor: var(--timeline-border-color, var(--x3-border-note));
 		--timelinePadding: 1.25rem;
 
 		list-style: none;
-		font-size: var(--x3-text-sm);
-		border-inline-start: var(--x3-border-width-base) solid var(--timelineBorderColor);
-		padding-inline-start: var(--timelinePadding);
-		
-		& > li > :first-child {
-			font-weight: var(--x3-text-semibold);
-			color: var(--timelineLabelColor);
-			position: relative;
-			padding-block-start: 2em;
+		padding-inline-start: 0;
 
-			&::before {
-				position: absolute;
-				content: "";
-				background-image: radial-gradient(circle, var(--timelineBorderColor));
-				background-color: transparent;
-				background-size: 10px 2px;
-				background-repeat: repeat;
-				top: 1em;
-				margin-inline-start: calc(var(--timelinePadding) * -1);
-				@include mixins.size(calc(100% + var(--timelinePadding)), 2px);
+		& > li {
+			border-block-start: var(--x3-border-width-base) solid var(--timelineBorderColor);
+			border-inline-start: var(--x3-border-width-base) solid var(--timelineBorderColor);
+			border-start-start-radius: var(--x3-radius-sm);
+			padding: var(--timelinePadding) 0 0 var(--timelinePadding);
+			margin-block-start: calc(var(--timelinePadding) * 2);
+			position: relative;
+
+			ul {
+				list-style-type: disc;
 			}
+
+			& > :first-child {
+				position: absolute;
+				font-weight: var(--x3-text-semibold);
+				color: var(--timelineLabelColor);
+				inset-block-start: calc(var(--timelinePadding) * -2);
+				inset-inline-start: 0;
+			}
+
+			& > :nth-child(2) {
+				margin-block-start: 0;
+			}
+		}
+
+		& > li + li {
+			margin-block-start: 4rem;
 		}
 	}
 }
