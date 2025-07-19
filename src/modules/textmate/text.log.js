@@ -27,15 +27,15 @@ const grammar = {
 		},
 		{
 			match: "\\b(DEBUG|Debug)\\b|(?i)\\b(debug)\\:",
-			name: "markup.changed log.debug",
+			name: "markup.other log.debug",
 		},
 		{
 			match: "(?i)\\[(debug|dbug|dbg|de|d)\\]",
-			name: "markup.changed log.debug",
+			name: "markup.other log.debug",
 		},
 		{
 			match: "(?=^[\\s\\d\\p]*)\\bD\\b",
-			name: "markup.changed log.debug",
+			name: "markup.other log.debug",
 		},
 		{
 			match: "\\b(HINT|INFO|INFORMATION|Info|NOTICE|II)\\b|(?i)\\b(info|information)\\:",
@@ -51,27 +51,27 @@ const grammar = {
 		},
 		{
 			match: "\\b(WARNING|WARN|Warn|WW)\\b|(?i)\\b(warning)\\:",
-			name: "markup.deleted log.warning",
+			name: "markup.changed log.warning",
 		},
 		{
 			match: "(?i)\\[(warning|warn|wrn|wn|w)\\]",
-			name: "markup.deleted log.warning",
+			name: "markup.changed log.warning",
 		},
 		{
 			match: "(?=^[\\s\\d\\p]*)\\bW\\b",
-			name: "markup.deleted log.warning",
+			name: "markup.changed log.warning",
 		},
 		{
 			match: "\\b(ALERT|CRITICAL|EMERGENCY|ERROR|FAILURE|FAIL|Fatal|FATAL|Error|EE)\\b|(?i)\\b(error)\\:",
-			name: "string.regexp, strong log.error",
+			name: "markup.deleted log.error",
 		},
 		{
 			match: "(?i)\\[(error|eror|err|er|e|fatal|fatl|ftl|fa|f)\\]",
-			name: "string.regexp, strong log.error",
+			name: "markup.deleted log.error",
 		},
 		{
 			match: "(?=^[\\s\\d\\p]*)\\bE\\b",
-			name: "string.regexp, strong log.error",
+			name: "markup.deleted log.error",
 		},
 		{
 			match: "\\b\\d{4}-\\d{2}-\\d{2}(?=T|\\b)",
