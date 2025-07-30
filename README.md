@@ -181,9 +181,9 @@ generates this HTML.
 
 ### Additional audits
 
-- [Blacklight Privacy Inspection](https://themarkup.org/blacklight?url=www.naiyerasif.com)
-- [Mozilla Observatory](https://observatory.mozilla.org/analyze/www.naiyerasif.com)
-- [Website Carbon Report](https://www.websitecarbon.com/website/naiyerasif-com/)
+- [Blacklight Privacy Inspection](https://themarkup.org/blacklight?url=naiyer.dev)
+- [Mozilla Observatory](https://observatory.mozilla.org/analyze/naiyer.dev)
+- [Website Carbon Report](https://www.websitecarbon.com/website/naiyer-dev/)
 
 ## Contributing
 

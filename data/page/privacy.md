@@ -1,12 +1,12 @@
 ---
 slug: "privacy"
 title: "Privacy"
-description: "Privacy practices on naiyerasif.com"
+description: "Privacy practices on naiyer.dev"
 date: 2020-11-01 14:52:40
 update: 2024-12-27 23:11:31
 ---
 
-[naiyerasif.com](/) (referred to as "this site"), maintained by [Naiyer Asif](/about/), has no ads, no tracking or analytics, no affiliate links, no sponsored posts, and no paywall. It doesn't fingerprint your device or request any personal information.
+[naiyer.dev](/) (referred to as "this site"), maintained by [Naiyer Asif](/about/), has no ads, no tracking or analytics, no affiliate links, no sponsored posts, and no paywall. It doesn't fingerprint your device or request any personal information.
 
 ## External services
 
@@ -24,4 +24,4 @@ Cloudflare helps host and serve this site. When you visit, Cloudflare's [privacy
 
 ## Audits
 
-- [Blacklight Privacy Inspection](https://themarkup.org/blacklight?url=www.naiyerasif.com)
+- [Blacklight Privacy Inspection](https://themarkup.org/blacklight?url=naiyer.dev)

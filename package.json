@@ -1,8 +1,8 @@
 {
-	"name": "naiyerasif.com",
+	"name": "naiyer.dev",
 	"private": true,
 	"type": "module",
-	"version": "4.9.0",
+	"version": "4.9.5",
 	"scripts": {
 		"dev": "astro dev",
 		"build": "astro build",

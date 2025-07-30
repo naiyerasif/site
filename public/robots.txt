@@ -71,4 +71,4 @@ User-agent: *
 Allow: /
 Disallow: /archive/
 
-Sitemap: https://www.naiyerasif.com/sitemap-index.xml
+Sitemap: https://naiyer.dev/sitemap-index.xml
