@@ -3,7 +3,6 @@
 // external link indicator
 :where(a[rel*="nofollow"]) {
 	text-decoration-style: dotted;
-	text-decoration-color: currentColor;
 }
 
 :where(ol, ul) {
