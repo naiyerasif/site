@@ -1,4 +1,17 @@
 <script type="module" is:inline>
+window.__viewTransition = function(callback) {
+	const noMotionPref = window.matchMedia("(prefers-reduced-motion: no-preference)");
+	const hasHighRefreshRate = window.matchMedia("(update: fast)");
+	const hasViewTransitionSupport = "startViewTransition" in document && typeof document.startViewTransition === "function";
+	if (noMotionPref && hasHighRefreshRate && hasViewTransitionSupport) {
+		document.startViewTransition(callback);
+		return;
+	}
+	callback();
+};
+</script>
+
+<script type="module" is:inline>
 // toggle global values
 function setTheme(theme) {
 	window.__theme = theme;
@@ -7,7 +20,7 @@ function setTheme(theme) {
 
 // set a theme and emit an event to broadcast this change
 window.__setTheme = function (theme) {
-	setTheme(theme);
+	window.__viewTransition(() => setTheme(theme));
 	try {
 		localStorage.setItem("theme", theme);
 	} catch (err) {}
@@ -28,7 +41,7 @@ let currentTheme;
 try {
 	currentTheme = localStorage.getItem("theme");
 } catch (err) {}
-setTheme(currentTheme || (prefersDarkScheme.matches ? "dark" : "light"));
+window.__viewTransition(() => setTheme(currentTheme || (prefersDarkScheme.matches ? "dark" : "light")));
 </script>
 
 <script type="module" is:inline>
@@ -45,19 +58,6 @@ window.__search = function (query, searchIndex) {
 	const fuse = new Fuse(searchIndex, searchOptions);
 	return fuse.search(query);
 }
-</script>
-
-<script type="module" is:inline>
-window.__viewTransition = function(callback) {
-	const noMotionPref = window.matchMedia("(prefers-reduced-motion: no-preference)");
-	const hasHighRefreshRate = window.matchMedia("(update: fast)");
-	const hasViewTransitionSupport = "startViewTransition" in document && typeof document.startViewTransition === "function";
-	if (noMotionPref && hasHighRefreshRate && hasViewTransitionSupport) {
-		document.startViewTransition(callback);
-		return;
-	}
-	callback();
-};
 </script>
 
 <style is:inline>
