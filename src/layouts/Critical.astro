@@ -41,7 +41,7 @@ let currentTheme;
 try {
 	currentTheme = localStorage.getItem("theme");
 } catch (err) {}
-window.__viewTransition(() => setTheme(currentTheme || (prefersDarkScheme.matches ? "dark" : "light")));
+setTheme(currentTheme || (prefersDarkScheme.matches ? "dark" : "light"));
 </script>
 
 <script type="module" is:inline>
