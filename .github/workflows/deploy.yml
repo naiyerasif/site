@@ -2,7 +2,7 @@ name: deploy
 
 on:
   push:
-    branches: 
+    branches:
       - main
 
 env:
@@ -35,14 +35,14 @@ jobs:
           pnpm build
           pnpm run postprocess
 
-      - name: Deploy to Cloudflare Pages
+      - name: Deploy to Cloudflare Workers
         id: deploy
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           packageManager: pnpm
-          command: pages deploy dist --project-name=${{ vars.CLOUDFLARE_PROJECT_NAME }} --commit-dirty=true
+          command: deploy --commit-dirty=true
 
       - name: Job summary
         env:
