@@ -1,7 +1,7 @@
 ---
 slug: "changelog"
 title: "Changelog"
-description: "All the changes on naiyer.dev"
+description: "All the changes on naiyerasif.com"
 date: 2025-04-12 01:18:43
 update: 2025-04-12 01:18:43
 tagline: Site updates, improvements, and everything else

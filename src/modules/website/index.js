@@ -23,7 +23,7 @@ const siteInfo = {
 			},
 		},
 	},
-	siteBase: "https://naiyer.dev",
+	siteBase: "https://naiyerasif.com",
 	repository: "https://github.com/naiyerasif/site",
 	ogImage: "/images/opengraph/default.png",
 	maxFeedItems: 20,

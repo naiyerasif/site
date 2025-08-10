@@ -1,8 +1,8 @@
 {
-	"name": "naiyer.dev",
+	"name": "naiyerasif.com",
 	"private": true,
 	"type": "module",
-	"version": "4.9.5",
+	"version": "4.9.6",
 	"scripts": {
 		"dev": "astro dev",
 		"build": "astro build",
@@ -47,5 +47,5 @@
 		"picocolors": "^1.1.1",
 		"unlighthouse": "^0.17.2"
 	},
-	"packageManager": "pnpm@10.13.1"
+	"packageManager": "pnpm@10.14.0"
 }

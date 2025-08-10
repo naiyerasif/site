@@ -4,7 +4,7 @@ import { parse, join } from "path";
 import { readdirSync, readFileSync, writeFileSync } from "fs";
 import * as cheerio from "cheerio";
 
-const baseUrl = "naiyer.dev";
+const baseUrl = "naiyerasif.com";
 const dist = join(process.cwd(), "dist");
 const asset = join(dist, "_astro");
 
