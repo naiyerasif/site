@@ -5,25 +5,15 @@
 	--calloutBg: var(--x3-bg-callout, var(--x3-bg-note));
 	--calloutBorderColor: var(--x3-border-callout, var(--x3-border-note));
 	--calloutBorderRadius: var(--x3-radius-base);
-	--calloutBorderWidth: 0.25rem;
-	--calloutPadding: 1rem;
+	--calloutBorderWidth: var(--x3-border-width-base);
+	--calloutPadding: 1ch;
 	--calloutHintPadding: 0.5ch;
 
-	padding-inline-start: var(--calloutPadding);
+	padding: var(--calloutPadding);
 	border-radius: var(--calloutBorderRadius);
-	background-image: radial-gradient(at right bottom, var(--calloutBg), transparent 50%, transparent);
-	position: relative;
+	border: var(--calloutBorderWidth) dotted var(--calloutBorderColor);
 
-	&::before {
-		position: absolute;
-		content: "";
-		left: 0;
-		bottom: 0;
-		inline-size: var(--calloutBorderWidth);
-		block-size: 100%;
-		border-radius: var(--calloutBorderRadius);
-		background-color: var(--calloutBorderColor);
-	}
+	background-image: radial-gradient(at right bottom, var(--calloutBg), transparent 40%, transparent);
 
 	&-hint {
 		--x3-size-icon: 1.25em;
