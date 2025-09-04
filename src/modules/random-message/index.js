@@ -1,18 +1,25 @@
 class RandomMessage extends HTMLElement {
 	static register(tagName = "random-message") {
-		if ("customElements" in window) {
-			customElements.define(tagName, RandomMessage);
+		if ("customElements" in window && !customElements.get(tagName)) {
+			customElements.define(tagName, this);
 		}
 	}
 
 	connectedCallback() {
-		const selector = this.getAttribute("selector") || "[data-random-message]";
+		this.setup();
+	}
+
+	setup() {
+		const selector = this.getAttribute("selector") || "[randomized]";
 		const messageNodes = this.querySelectorAll(selector);
-		const randomNode = messageNodes[Math.floor(Math.random() * messageNodes.length)];
-		for (const messageNode of messageNodes) {
-			messageNode.setAttribute("hidden", "");
+		// there should be atleast two nodes to randomize
+		if (messageNodes.length > 1) {
+			for (const messageNode of messageNodes) {
+				messageNode.hidden = true;
+			}
+			const randomNode = messageNodes[Math.floor(Math.random() * messageNodes.length)];
+			randomNode.hidden = false;
 		}
-		randomNode.removeAttribute("hidden");
 	}
 }
 
