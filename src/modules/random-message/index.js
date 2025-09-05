@@ -6,10 +6,6 @@ class RandomMessage extends HTMLElement {
 	}
 
 	connectedCallback() {
-		this.setup();
-	}
-
-	setup() {
 		const selector = this.getAttribute("selector") || "[randomized]";
 		const messageNodes = this.querySelectorAll(selector);
 		// there should be atleast two nodes to randomize
