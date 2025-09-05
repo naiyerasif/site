@@ -1,14 +1,19 @@
 class AudioPlayer extends HTMLElement {
 	static register(tagName = "audio-player") {
-		if ("customElements" in window) {
-			customElements.define(tagName, AudioPlayer);
+		if ("customElements" in window && !customElements.get(tagName)) {
+			customElements.define(tagName, this);
 		}
 	}
 
 	connectedCallback() {
 		this._renderPlay();
-		this.button.addEventListener("click", this);
-		this.player.addEventListener("ended", this);
+		const { signal } = this.abortController = new AbortController();
+		this.button.addEventListener("click", this, { signal });
+		this.player.addEventListener("ended", this, { signal });
+	}
+
+	disconnectedCallback() {
+		this.abortController.abort();
 	}
 
 	handleEvent(event) {
