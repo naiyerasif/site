@@ -240,8 +240,6 @@ body > .footer {
 			font-family: var(--x3-font-fancy);
 			font-size: 1.8em;
 			text-wrap: balance;
-			// needed on Safari else it will show `open-quote` as hanging punctuation
-			hanging-punctuation: none;
 			padding-inline-start: 0;
 			border-inline-start: none;
 
