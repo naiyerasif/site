@@ -13,12 +13,12 @@
 	},
 	"dependencies": {
 		"@astrojs/sitemap": "^3.5.1",
-		"@microflash/preset": "^7.0.0",
+		"@microflash/preset": "^7.0.1",
 		"@microflash/rehype-slugify": "^1.0.0",
 		"@microflash/rehype-starry-night": "^7.3.2",
-		"@sindresorhus/slugify": "^2.2.1",
+		"@sindresorhus/slugify": "^3.0.0",
 		"@wooorm/starry-night": "^3.8.0",
-		"astro": "^5.13.5",
+		"astro": "^5.13.7",
 		"cheerio": "^1.1.2",
 		"dayjs": "^1.11.18",
 		"defu": "^6.1.4",
@@ -36,7 +36,7 @@
 		"remark-parse": "^11.0.0",
 		"remark-rehype": "^11.1.2",
 		"remark-smartypants": "^3.0.2",
-		"sass": "^1.92.0",
+		"sass": "^1.92.1",
 		"sharp": "^0.34.3",
 		"unified": "^11.0.5",
 		"unist-util-visit": "^5.0.0"
@@ -47,5 +47,5 @@
 		"picocolors": "^1.1.1",
 		"unlighthouse": "^0.17.2"
 	},
-	"packageManager": "pnpm@10.15.1"
+	"packageManager": "pnpm@10.16.1"
 }
