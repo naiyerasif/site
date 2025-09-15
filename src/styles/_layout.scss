@@ -74,7 +74,7 @@ body > .header {
 	align-items: center;
 	justify-content: space-between;
 	gap: 1ch;
-	padding-block: var(--x3-gap-body) var(--x3-gap-base);
+	padding-block: var(--x3-gap-body);
 
 	.brand {
 		display: inline-flex;
@@ -85,24 +85,34 @@ body > .header {
 		--baseline-radius-form: var(--x3-radius-max);
 		display: flex;
 		align-items: center;
-		gap: 1rem;
+		gap: calc(1rem + 1.5vw);
+		gap: clamp(1.125rem, 0.7783rem + 1.7333vw, 3.0056rem);
 
 		.nav-item {
 			--x3-size-icon: var(--x3-size-icon-sm);
 			font-size: var(--x3-text-sm);
-
-			svg {
-				stroke-width: 2.5;
-			}
 		}
 
 		& > * {
 			flex: none;
 		}
 	}
+
+	theme-switcher,
+	command-bar {
+		line-height: 0;
+		& > button[role="switch"] {
+			padding: 0;
+			background-color: transparent;
+			border: none;
+			box-shadow: none;
+		}
+	}
 }
 
 .hero {
+	margin-block-start: var(--x3-gap-body);
+
 	& + * {
 		margin-block-start: var(--x3-gap-md);
 	}
