@@ -8,7 +8,7 @@ type: "guide"
 status: "archived"
 ---
 
-:::warn{label="Archived"}
+:::warn{title="Archived"}
 This post covers method retry on failure with Resilience4J Retry 1.5.0, Spring Boot 2 and Java 15. Please consult [the updated version of this post](/post/2020/09/26/retrying-on-failure-with-resilience4j-and-aspects/), where Resilience4J Retry 2.1.0, Spring Boot 3 and Java 21 are used.
 :::
 

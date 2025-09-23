@@ -8,7 +8,7 @@ type: "guide"
 status: "archived"
 ---
 
-:::warn{label="Archived"}
+:::warn{title="Archived"}
 This post covers the use of Ory Hydra 1.11.9, but the information provided here is not applicable to Ory Hydra 2. Please consult [the updated version of this post](/post/2022/08/21/client-credentials-flow-with-ory-hydra), which specifically addresses the client credentials flow using Ory Hydra 2.
 :::
 

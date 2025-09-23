@@ -8,7 +8,7 @@ type: "guide"
 status: "archived"
 ---
 
-:::warn{label="Archived"}
+:::warn{title="Archived"}
 This post covers Springdoc integration with Spring Boot 2 and Java 14. Please consult [the updated version of this post](/post/2020/06/27/api-documentation-with-springdoc-openapi/), where Sprindoc starter with Spring Boot 3 and Java 21 is used.
 :::
 

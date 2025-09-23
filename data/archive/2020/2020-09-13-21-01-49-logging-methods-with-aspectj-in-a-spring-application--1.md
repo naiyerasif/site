@@ -8,7 +8,7 @@ type: "guide"
 status: "archived"
 ---
 
-:::warn{label="Archived"}
+:::warn{title="Archived"}
 This post covers method logging with Spring Boot 2 and Java 16. Please consult [the updated version of this post](/post/2020/09/13/logging-methods-with-aspectj-in-a-spring-application/), where Spring Boot 3 and Java 21 are used.
 :::
 

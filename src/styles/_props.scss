@@ -34,12 +34,18 @@
 	--x3-bg-warn: #{$x4-color-warn-93};
 	--x3-bg-deter: #{$x4-color-deter-93};
 
+	--x3-bg-note-gentle: #{color.change($x4-color-note-95, $chroma: 2%, $space: oklch)};
+	--x3-bg-commend-gentle: #{color.change($x4-color-commend-95, $chroma: 10%, $space: oklch)};
+	--x3-bg-assert-gentle: #{$x4-color-assert-95};
+	--x3-bg-warn-gentle: #{$x4-color-warn-95};
+	--x3-bg-deter-gentle: #{$x4-color-deter-95};
+
 	--x3-border-base: #{$x4-color-neutral-80};
-	--x3-border-note: #{$x4-color-note-80};
-	--x3-border-commend: #{$x4-color-commend-80};
-	--x3-border-assert: #{$x4-color-assert-80};
-	--x3-border-warn: #{$x4-color-warn-80};
-	--x3-border-deter: #{$x4-color-deter-80};
+	--x3-border-note: #{$x4-color-note-85};
+	--x3-border-commend: #{color.change($x4-color-commend-85, $chroma: 33%, $space: oklch)};
+	--x3-border-assert: #{$x4-color-assert-85};
+	--x3-border-warn: #{$x4-color-warn-85};
+	--x3-border-deter: #{$x4-color-deter-85};
 
 	--baseline-bg-text-selection: #{color.change($x4-color-warn-75, $alpha: 0.4, $space: oklch)};
 
@@ -113,12 +119,18 @@
 	--x3-bg-warn: #{$x4-color-warn-15};
 	--x3-bg-deter: #{$x4-color-deter-15};
 
+	--x3-bg-note-gentle: #{color.change($x4-color-note-10, $chroma: 2%, $space: oklch)};
+	--x3-bg-commend-gentle: #{$x4-color-commend-10};
+	--x3-bg-assert-gentle: #{$x4-color-assert-10};
+	--x3-bg-warn-gentle: #{$x4-color-warn-10};
+	--x3-bg-deter-gentle: #{color.change($x4-color-deter-10, $chroma: 64%, $space: oklch)};
+
 	--x3-border-base: #{$x4-color-neutral-35};
-	--x3-border-note: #{$x4-color-note-35};
-	--x3-border-commend: #{$x4-color-commend-35};
-	--x3-border-assert: #{$x4-color-assert-35};
-	--x3-border-warn: #{$x4-color-warn-35};
-	--x3-border-deter: #{$x4-color-deter-30};
+	--x3-border-note: #{$x4-color-note-30};
+	--x3-border-commend: #{$x4-color-commend-30};
+	--x3-border-assert: #{$x4-color-assert-30};
+	--x3-border-warn: #{$x4-color-warn-30};
+	--x3-border-deter: #{$x4-color-deter-25};
 
 	--baseline-bg-text-selection: #{color.change($x4-color-warn-50, $alpha: 0.4, $space: oklch)};
 

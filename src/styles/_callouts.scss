@@ -2,39 +2,39 @@
 
 .callout {
 	--calloutFg: var(--x3-fg-callout, var(--x3-fg-note));
-	--calloutBg: var(--x3-bg-callout, var(--x3-bg-note));
+	--calloutBg: var(--x3-bg-callout, var(--x3-bg-note-gentle));
 	--calloutBorderColor: var(--x3-border-callout, var(--x3-border-note));
 	--calloutBorderRadius: var(--x3-radius-base);
-	--calloutBorderWidth: var(--x3-border-width-base);
+	--calloutBorderWidth: var(--x3-border-width-sm);
 	--calloutPadding: 1ch;
-	--calloutHintPadding: 0.5ch;
 
-	padding: var(--calloutPadding);
+	display: flex;
+	font-size: 0.95em;
 	border-radius: var(--calloutBorderRadius);
-	border: var(--calloutBorderWidth) dotted var(--calloutBorderColor);
-
-	background-image: radial-gradient(at right bottom, var(--calloutBg), transparent 40%, transparent);
 
 	&-hint {
-		--x3-size-icon: 1.25em;
-
-		display: inline-flex;
-		align-items: center;
-		gap: 0.4ch;
-		@include mixins.texture;
-		background-color: var(--calloutBg);
+		flex: none;
 		color: var(--calloutFg);
-		border-radius: 0.5em;
-		padding-inline: var(--calloutHintPadding);
-		vertical-align: bottom;
-		margin-inline-end: 0.5ch;
+		background-color: var(--calloutBorderColor);
+		border-start-start-radius: inherit;
+		border-end-start-radius: inherit;
+		padding: var(--calloutPadding);
+		line-height: 1.5;
 	}
 
-	&-title {
-		color: var(--calloutFg);
+	&-body {
+		flex: 1;
+		overflow: auto;
+		padding: var(--calloutPadding);
+		background-color: var(--calloutBg);
+		border-start-end-radius: inherit;
+		border-end-end-radius: inherit;
+		@include mixins.flow;
+		border-block: var(--calloutBorderWidth) dotted var(--calloutBorderColor);
+		border-inline-end: var(--calloutBorderWidth) dotted var(--calloutBorderColor);
 
-		* {
-			color: inherit;
+		& > strong:first-of-type {
+			color: var(--calloutFg);
 		}
 	}
 
@@ -46,24 +46,24 @@
 
 [data-callout="commend"] {
 	--x3-fg-callout: var(--x3-fg-commend);
-	--x3-bg-callout: var(--x3-bg-commend);
+	--x3-bg-callout: var(--x3-bg-commend-gentle);
 	--x3-border-callout: var(--x3-border-commend);
 }
 
 [data-callout="assert"] {
 	--x3-fg-callout: var(--x3-fg-assert);
-	--x3-bg-callout: var(--x3-bg-assert);
+	--x3-bg-callout: var(--x3-bg-assert-gentle);
 	--x3-border-callout: var(--x3-border-assert);
 }
 
 [data-callout="warn"] {
 	--x3-fg-callout: var(--x3-fg-warn);
-	--x3-bg-callout: var(--x3-bg-warn);
+	--x3-bg-callout: var(--x3-bg-warn-gentle);
 	--x3-border-callout: var(--x3-border-warn);
 }
 
 [data-callout="deter"] {
 	--x3-fg-callout: var(--x3-fg-deter);
-	--x3-bg-callout: var(--x3-bg-deter);
+	--x3-bg-callout: var(--x3-bg-deter-gentle);
 	--x3-border-callout: var(--x3-border-deter);
 }

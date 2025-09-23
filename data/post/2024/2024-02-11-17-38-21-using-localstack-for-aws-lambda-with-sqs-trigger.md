@@ -9,7 +9,7 @@ type: "guide"
 
 In an event-driven architecture, you might trigger an AWS Lambda function by a message from SQS (Simple Queue Service). SQS helps control the order of message processing, and serves as a buffer to handle temporary spikes in load on a system. In this post, we'll deploy an AWS Lambda, and trigger it through SQS locally using [LocalStack](https://localstack.cloud/).
 
-:::assert{label="Series"}
+:::assert{title="Series"}
 1. [Working with AWS on local using LocalStack](/post/2021/11/16/working-with-aws-on-local-using-localstack/)
 2. *Using LocalStack for AWS Lambda with SQS trigger*
 3. [Using LocalStack for AWS Lambda with SNS trigger](/post/2024/03/03/using-localstack-for-aws-lambda-with-sns-trigger/)

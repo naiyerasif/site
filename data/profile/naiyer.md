@@ -31,7 +31,7 @@ This site uses the web platform &mdash; it is just HTML, CSS, and custom element
 
 Yes &mdash; it's licensed under [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by-sa/4.0/).
 
-:::deter{label="Disclaimer"}
+:::deter{title="Disclaimer"}
 **I've optimized the examples for learning, not for use in production.** Use your discretion, review with peers, and choose what fits your needs.
 :::
 

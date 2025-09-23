@@ -1,91 +1,42 @@
 import { visit } from "unist-util-visit";
-import { fromMarkdown } from "mdast-util-from-markdown";
 import { h } from "hastscript";
 import { defu } from "defu";
 
-function getFirstParagraph(children) {
-	const node = children[0];
-
-	if (
-		node &&
-		node.type === "paragraph" &&
-		(
-			!node.data ||
-			!node.data.hName ||
-			node.data.hName === "p"
-		)
-	) {
-		return node;
-	}
-
-	return null;
-}
-
-function generate(label, children, hint, title) {
-	const hintChildren = [];
-
-	if (hint) {
-		hintChildren.push({
-			type: "html",
-			value: hint
-		});
-	}
-
-	hintChildren.push({
-		type: "text",
-		value: `${label} `
-	});
-
-	const hintNode = {
-		type: "strong",
-		data: {
-			hProperties: { className: ["callout-hint"] },
-		},
-		children: hintChildren
-	};
-
-	const nodes = [];
-
-	if (title) {
-		nodes.push(hintNode);
-		const [titleNode] = fromMarkdown(title).children;
-		nodes.push({
-			type: "strong",
-			data: {
-				hProperties: { className: ["callout-title"] },
-			},
-			children: titleNode.children,
-		});
-		nodes.push({
+function generate(title, children, hint) {
+	return [
+		{
 			type: "paragraph",
 			data: {
 				hName: "div",
-				hProperties: { className: ["callout-content"] },
+				hProperties: { className: ["callout-hint"] }
 			},
-			children: children,
-		});
-	} else {
-		const firstParagraph = getFirstParagraph(children);
-		if (firstParagraph) {
-			firstParagraph.children = [
-				hintNode,
-				...firstParagraph.children
-			];
-			nodes.push(...children);
-		} else {
-			nodes.push(hintNode);
-			nodes.push({
-				type: "paragraph",
-				data: {
-					hName: "div",
-					hProperties: { className: ["callout-content"] },
+			children: [
+				{
+					type: "html",
+					value: hint
+				}
+			]
+		},
+		{
+			type: "paragraph",
+			data: {
+				hName: "div",
+				hProperties: { className: ["callout-body"] }
+			},
+			children: [
+				{
+					type: "strong",
+					children: [
+						{
+							type: "text",
+							value: `${title} `
+						}
+					]
 				},
-				children: children,
-			});
+				...children
+			]
 		}
-	}
-	
-	return nodes;
+	]
 }
 
 const defaults = {
@@ -128,7 +79,7 @@ export default function remarkCalloutDirectives(userOptions = {}) {
 				const calloutType = aliases[node.name];
 				const callout = callouts[calloutType];
 				const data = node.data || (node.data = {});
-				const { title, label = callout.label, ...attributes } = node.attributes;
+				const { title, ...attributes } = node.attributes;
 
 				node.attributes = {
 					...attributes,
@@ -136,7 +87,7 @@ export default function remarkCalloutDirectives(userOptions = {}) {
 					dataCallout: calloutType
 				};
 
-				node.children = generate(label, node.children, callout.hint, title);
+				node.children = generate(title || callout.label, node.children, callout.hint);
 
 				const tagName = callout.tagName || options.tagName || "aside";
 				const hast = h(tagName, node.attributes);
