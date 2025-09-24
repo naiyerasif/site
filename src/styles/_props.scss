@@ -123,7 +123,7 @@
 	--x3-bg-commend-gentle: #{$x4-color-commend-10};
 	--x3-bg-assert-gentle: #{$x4-color-assert-10};
 	--x3-bg-warn-gentle: #{$x4-color-warn-10};
-	--x3-bg-deter-gentle: #{color.change($x4-color-deter-10, $chroma: 64%, $space: oklch)};
+	--x3-bg-deter-gentle: #{$x4-color-deter-10};
 
 	--x3-border-base: #{$x4-color-neutral-35};
 	--x3-border-note: #{$x4-color-note-30};
