@@ -133,6 +133,7 @@ body > .header {
 		--x3-fg-icon: var(--baseline-fg-accent);
 		--x3-gap-flow: 2rem;
 		font-size: var(--x3-text-sm);
+		margin-block-start: var(--x3-gap-body);
 
 		.icon {
 			margin-inline-end: 0.5ch;
