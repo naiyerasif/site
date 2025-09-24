@@ -20,6 +20,7 @@
 		border-end-start-radius: inherit;
 		padding: var(--calloutPadding);
 		line-height: 1.5;
+		max-inline-size: fit-content; // prevent Safari from enlarging inline-size more than icon size
 	}
 
 	&-body {
