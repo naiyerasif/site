@@ -92,9 +92,9 @@
 :where(hr) {
 	display: block;
 	border: none;
-	block-size: 1px;
+	block-size: 5rem;
 	background-color: transparent;
-	background-image: radial-gradient(circle, var(--baseline-fg-separator) 2px, transparent 1px);
+	background-image: radial-gradient(circle, var(--baseline-fg-separator) 1px, transparent 1px);
 	background-size: 10px 1px;
 	background-repeat: repeat;
 }
