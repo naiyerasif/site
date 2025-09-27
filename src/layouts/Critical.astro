@@ -146,12 +146,13 @@ window.__search = function (query, searchIndex) {
 }
 
 @font-face {
-	font-family: JetBrains Mono var;
+	font-family: Google Sans Code var;
 	font-display: swap;
-	src: url("/fonts/JetBrainsMono.var.woff2") format("woff2");
+	src: url("/fonts/GoogleSansCode.var.woff2") format("woff2");
 	font-style: normal;
-	font-weight: 100 900;
+	font-weight: 300 800;
 	font-named-instance: "Regular";
+	font-feature-settings: "ss01";
 }
 
 @font-face {
@@ -295,19 +296,21 @@ window.__search = function (query, searchIndex) {
 }
 
 @font-face {
-	font-family: JetBrains Mono;
+	font-family: Google Sans Code;
 	font-display: swap;
-	src: url("/fonts/JetBrainsMono-Regular.woff2") format("woff2");
+	src: url("/fonts/GoogleSansCode-Regular.woff2") format("woff2");
 	font-style: normal;
 	font-weight: 400;
+	font-feature-settings: "ss01";
 }
 
 @font-face {
-	font-family: JetBrains Mono;
+	font-family: Google Sans Code;
 	font-display: swap;
-	src: url("/fonts/JetBrainsMono-SemiBold.woff2") format("woff2");
+	src: url("/fonts/GoogleSansCode-SemiBold.woff2") format("woff2");
 	font-style: normal;
 	font-weight: 600;
+	font-feature-settings: "ss01";
 }
 
 @media (prefers-reduced-motion: no-preference), (update: fast) {
@@ -325,7 +328,7 @@ window.__search = function (query, searchIndex) {
 		Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 	--fontSansBodyCopy: "Inter", var(--fontSansNative);
 	--fontSansFancyCopy: "MakeSans", var(--fontSansNative);
-	--fontMono: "JetBrains Mono", var(--fontMonoNative);
+	--fontMono: "Google Sans Code", var(--fontMonoNative);
 
 	/* @link: https://utopia.fyi/type/calculator?c=320,16,1.125,2056,21,1.25,6,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
 	--fluid-min-width: 320;
@@ -373,7 +376,7 @@ window.__search = function (query, searchIndex) {
 @supports (font-variation-settings: normal) {
 	:root {
 		--fontSansBodyCopy: "Inter var", var(--fontSansNative);
-		--fontMono: "JetBrains Mono var", var(--fontMonoNative);
+		--fontMono: "Google Sans Code var", var(--fontMonoNative);
 	}
 }
 
