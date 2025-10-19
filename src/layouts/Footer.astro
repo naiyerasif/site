@@ -1,4 +1,5 @@
 ---
+import Icon from "../components/Icon.astro";
 import IconPack from "../components/IconPack.astro";
 import BackToTop from "../components/BackToTop.astro";
 import Time from "../components/Time.astro";
@@ -12,73 +13,51 @@ const now = new Date();
 ---
 
 <footer class="footer">
-	<div class="intro">
-		<random-message selector=".quote">
-			<figure class="quote">
-				<blockquote>You've reached the footer&mdash;take a break and relax.</blockquote>
-			</figure>
-			<figure class="quote" hidden>
-				<blockquote>Finiteness is a feature.</blockquote>
-			</figure>
-			<figure class="quote" hidden>
-				<blockquote>Sometimes the best way to follow your dreams is to take a nap.</blockquote>
-				<figcaption>
-					<cite><a href="https://fediverse.zachleat.com/@zachleat/111902455317042997" rel="nofollow noopener noreferrer">Zach Leatherman</a></cite>
-				</figcaption>
-			</figure>
-			<figure class="quote" hidden>
-				<blockquote>Almost everything will work again if you unplug it for a few minutes.</blockquote>
-				<figcaption>
-					Anne Lamott, <cite><a href="https://youtu.be/X41iulkRqZU?t=187" rel="nofollow noopener noreferrer">12 truths I learned from life and writing</a></cite>
-				</figcaption>
-			</figure>
-		</random-message>
-	</div>
-	<div class="catalog">
-		<section>
-			<a href="/">Home</a>
-			<a href="/posts/">Posts</a>
-			<footer-preferences>
-				<theme-switcher>
-					<strong>Theme</strong> &middot;
-					<a role="switch" aria-live="polite" aria-checked="true" data-theme-switch id="footer-theme-switcher" href="#footer-theme-switcher">
-						<span data-theme-state="dark">Dark</span>
-						<span data-theme-state="light">Light</span>
-					</a>
-				</theme-switcher>
-			</footer-preferences>
-		</section>
-		<section>
-			<strong>Subscribe with RSS</strong>
-			<small>(<a href="https://aboutfeeds.com/" rel="nofollow noopener noreferrer">What&CloseCurlyQuote;s RSS?</a>)</small><br>
+	<random-message selector="figure">
+		<figure>
+			<blockquote>You&rsquo;ve reached the footer&mdash;take a break and relax.</blockquote>
+		</figure>
+		<figure hidden>
+			<blockquote>Finiteness is a feature.</blockquote>
+		</figure>
+		<figure hidden>
+			<blockquote>Sometimes the best way to follow your dreams is to take a nap.</blockquote>
+			<figcaption>
+				<cite><a href="https://fediverse.zachleat.com/@zachleat/111902455317042997" rel="nofollow noopener noreferrer">Zach Leatherman</a></cite>
+			</figcaption>
+		</figure>
+		<figure hidden>
+			<blockquote>Almost everything will work again if you unplug it for a few minutes.</blockquote>
+			<figcaption>
+				Anne Lamott, <cite><a href="https://youtu.be/X41iulkRqZU?t=187" rel="nofollow noopener noreferrer">12 truths I learned from life and writing</a></cite>
+			</figcaption>
+		</figure>
+	</random-message>
+	<div class="footer-nav">
+		<div class="footer-nav-items">
+			<a href="/"><Icon name="home" alt="Home"/></a>
+			<a href="/posts"><Icon name="posts" alt="Posts"/></a>
+		</div>
+		<div class="footer-nav-items">
+			<Icon name="rss"/>
 			<a href="/feed.xml">Posts</a>
-			<a href="/all.xml">Posts + notes</a>
-		</section>
-		<section>
-			<strong>Follow around</strong><br>
-			{Object.entries(authorPresence).map(([network, details]) => <a href={details.url} rel="nofollow noopener noreferrer">{details.title}</a>)}
-		</section>
-		<section>
+			<a href="/all.xml">Posts+notes</a>
+		</div>
+		<div class="footer-nav-items">
+			{Object.entries(authorPresence).map(([network, details]) => <a href={details.url} rel="nofollow noopener noreferrer"><Icon name={network} alt={details.title}/></a>)}
+		</div>
+		<div class="footer-nav-items">
 			<a href={siteIssueUrl} rel="nofollow noopener noreferrer">Report an issue</a>
 			<a href="/privacy/">Privacy</a>
 			<a href="/sitemap-index.xml">Sitemap</a>
 			<a href="/changelog/">Changelog</a>
-		</section>
+		</div>
 	</div>
-	<div class="outro">&copy; 2018, <a href="/about/">{authorName}</a> (updated on <Time date={now} />)</div>
+	<div class="footer-nav">
+		<div class="footer-nav-outro">
+			<div>&copy; 2018, <a href="/about/">{authorName}</a> (updated on <Time date={now} />)</div>
+			<BackToTop/>
+		</div>
+	</div>
 </footer>
-<aside class="floating-back-to-top">
-	<BackToTop/>
-</aside>
 <IconPack/>
-
-<script>
-class FooterPreferences extends HTMLElement {
-	static register(tagName = "footer-preferences") {
-		if ("customElements" in window) {
-			customElements.define(tagName, FooterPreferences);
-		}
-	}
-}
-FooterPreferences.register();
-</script>

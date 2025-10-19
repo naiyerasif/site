@@ -45,12 +45,13 @@ const postSchema = z.object({
 	ogType: ogTypes.default(PageType.article.id),
 });
 
-const profileSchema = z.object({
+const profileSchema = ({ image }) => z.object({
 	title,
 	description,
 	tagline,
 	date,
 	update,
+	avatar: image(),
 
 	ogImage,
 	ogType: ogTypes.default(PageType.profile.id),

@@ -18,11 +18,11 @@ const sidekick = Astro.slots.has("sidekick");
 	</head>
 	<body>
 		<Header/>
-		{hero && <section class="hero"><slot name="hero"/></section>}
+		{hero && <div class="hero"><slot name="hero"/></div>}
 		<main id="content" {...attribs}>
 			<slot/>
 		</main>
-		{sidekick && <section class="sidekick"><slot name="sidekick"/></section>}
+		{sidekick && <div class="sidekick"><slot name="sidekick"/></div>}
 		<Footer/>
 		<ClientBase/>
 		<ClientExtended/>

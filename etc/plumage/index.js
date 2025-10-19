@@ -4,8 +4,9 @@
 // Usage: node ./etc/plumage/index.js
 
 import { writeFile } from "fs/promises";
-import { blendedPalette, standalonePalette } from "./api.js";
+import standalonePalette from "./api.js";
 
+// original colors
 const colors = {
 	primary: "#1c9761",
 	neutral: "#000000",
@@ -16,10 +17,25 @@ const colors = {
 	assert: "#318ce7"
 };
 
-const themes = {
-	light: "#fefdfb",
-	dark: "#101112"
-};
+// harmonized colors using https://github.com/evilmartians/harmonizer
+const base = {
+	light: {
+		primary: "#13b667",
+		neutral: "#fefdfb",
+		commend: "#6ab139",
+		deter: "#fc775c",
+		warn: "#d69200",
+		assert: "#3ba3ff"
+	},
+	dark: {
+		primary: "#18b667",
+		neutral: "#101112",
+		commend: "#6ab13a",
+		deter: "#fb775c",
+		warn: "#d69200",
+		assert: "#3ca3ff"
+	}
+}
 
 function cssProperties(palette, prefix = "color") {
 	return ":root {\n" +
@@ -47,6 +63,6 @@ async function writeThemeFile(fileName, content) {
 };
 
 writeThemeFile(
-	"./src/styles/_colors.scss",
-	scssProperties(standalonePalette(colors), "x4-color")
+	`./src/styles/_colors.scss`,
+	Object.entries(base).map(([k, v]) => scssProperties(standalonePalette(v), `x-${k}`)).join('\n\n')
 );

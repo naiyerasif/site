@@ -10,7 +10,7 @@ const { id, label } = PostType[entry.data.type];
 
 <div class="card" data-post-type={id}>
 	<div class="card-meta">
-		<span class="chip chip-note">{label}</span>
+		<small class="chip chip-note">{label}</small>
 		<Time date={entry.data.date} />
 	</div>
 	<div class="card-body">

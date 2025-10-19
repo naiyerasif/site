@@ -3,7 +3,7 @@
 @mixin text-selection {
 	/// maintain text contrast ratio of 4.5:1
 	/// @link https://developer.mozilla.org/en-US/docs/Web/CSS/::selection#accessibility
-	background-color: var(--baseline-bg-text-selection);
+	background-color: var(--y-selection-bg-color);
 }
 
 ::-moz-selection {
@@ -22,55 +22,55 @@
 }
 
 ::marker {
-	color: var(--baseline-fg-marker);
+	color: var(--y-theme-marker-color);
 }
 
 :focus-visible {
-	border-radius: var(--baseline-radius-outline);
-	outline-color: var(--baseline-fg-outline, currentColor);
+	border-radius: var(--y-outline-radius, .15em);
+	outline-color: var(--y-outline-color, currentColor);
 	outline-style: solid;
-	outline-width: var(--baseline-width-outline, 0.2em);
-	outline-offset: var(--baseline-offset-outline, 0.125em);
+	outline-width: var(--y-outline-width, 0.15em);
+	outline-offset: var(--y-outline-offset, 0.25ch);
 }
 
 ::-webkit-scrollbar,
 ::-webkit-scrollbar-track {
-	background-color: var(--baseline-bg-scrollbar, transparent);
+	background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-	background-color: var(--baseline-fg-scrollbar);
+	background-color: var(--y-accent-color);
+}
+
+:where(html) {
+	color: var(--y-body-color);
+	background-color: var(--y-body-bg-color);
+	scrollbar-color: var(--y-accent-color) transparent;
 }
 
 * {
 	box-decoration-break: clone;
 }
 
-:where(html) {
-	background-color: var(--baseline-bg-body);
-	scrollbar-color: var(--baseline-fg-scrollbar) var(--baseline-bg-scrollbar, transparent);
-}
-
 :where(body) {
-	font-family: var(--baseline-font-body);
-	font-size: var(--baseline-text-body);
+	font-family: var(--y-body-font);
+	font-size: var(--y-normal-text);
+	font-weight: var(--y-regular-text);
 	font-kerning: normal;
-	font-weight: var(--baseline-text-regular);
-	color: var(--baseline-fg-body);
 	text-decoration-skip-ink: auto;
 	text-underline-position: from-font;
 	/// @link https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-overflow-scrolling
 	-webkit-overflow-scrolling: touch;
-	accent-color: var(--baseline-fg-accent);
-	caret-color: var(--baseline-fg-accent);
+	accent-color: var(--y-accent-color);
+	caret-color: var(--y-accent-color);
 }
 
 :where(a) {
-	color: var(--baseline-fg-click-navigation);
+	color: var(--y-link-color);
 	text-decoration-line: underline;
 	text-decoration-style: solid;
-	text-decoration-thickness: var(--baseline-decoration-width-link);
-	text-decoration-color: var(--baseline-fg-decoration-navigation, currentColor);
+	text-decoration-thickness: var(--y-link-decoration-width, 0.2ex);
+	text-decoration-color: var(--y-link-decoration-color, currentColor);
 
 	* {
 		color: currentColor;
@@ -85,23 +85,23 @@
 }
 
 :where(blockquote) {
-	padding-inline-start: 1ch;
-	border-inline-start: 1px solid var(--baseline-border-body);
+	padding-inline-start: var(--y-blockquote-padding, 1ch);
+	border-inline-start: 1px solid var(--y-theme-border);
 }
 
 :where(hr) {
 	display: block;
 	border: none;
-	block-size: 5rem;
+	block-size: 3rem;
 	background-color: transparent;
-	background-image: radial-gradient(circle, var(--baseline-fg-separator) 1px, transparent 1px);
+	background-image: radial-gradient(circle, var(--y-theme-border) 1px, transparent 1px);
 	background-size: 10px 1px;
 	background-repeat: repeat;
 }
 
 :where(mark) {
-	color: var(--baseline-fg-mark);
-	background-color: var(--baseline-bg-mark);
+	color: var(--y-mark-color);
+	background-color: var(--y-mark-bg-color);
 	border-radius: 0.25ch;
 	padding-inline: 0.25ch;
 }
@@ -137,16 +137,16 @@
 }
 
 :where(i, em) {
-	color: var(--baseline-fg-emphasis);
+	color: var(--y-emphasis-color);
 }
 
 :where(b, strong) {
-	font-weight: var(--baseline-text-bold);
-	color: var(--baseline-fg-emphasis);
+	font-weight: var(--y-emphasized-text);
+	color: var(--y-emphasis-color);
 }
 
 :where(small) {
-	font-size: 0.85em;
+	font-size: var(--y-small-text);
 }
 
 :where(cite, dfn, var) {
@@ -155,26 +155,24 @@
 
 :where(data)::after {
 	content: attr(value);
-	font-family: var(--baseline-font-code);
+	font-family: var(--y-mono-font);
 	font-size: 0.95em;
-	background-color: var(--baseline-bg-summary);
 	padding-inline: 0.25ch;
-	border: 1px solid var(--baseline-border-body);
+	border: 1px solid var(--y-theme-border);
 	border-radius: 0.5ch;
 	margin-inline-start: 0.25ch;
 }
 
 :where(kbd) {
 	display: inline-block;
-	font-family: var(--baseline-font-code);
+	font-family: var(--y-mono-font);
 	font-size: 0.9em;
 	cursor: default;
-	background-color: var(--baseline-bg-code);
-	border: 1px solid var(--baseline-border-body);
+	background-color: var(--y-theme-bg-color, var(--y-code-bg-color));
+	border: 1px solid var(--y-theme-border);
 	border-radius: 0.33em;
-	box-shadow: 0 2px 0 1px var(--baseline-border-body);
-	line-height: 1;
-	padding: 0.4ch 0.6ch;
+	box-shadow: 0 2px 0 1px var(--y-theme-border);
+	padding-inline: 0.5ch;
 	position: relative;
 	text-align: center;
 	top: -1px;
@@ -186,24 +184,24 @@
 	}
 
 	&:is(:focus, :hover, :active) {
-		box-shadow: 0 1px 0 .5px var(--baseline-border-body);
+		box-shadow: 0 1px 0 .5px var(--y-theme-border);
 		top: 1px;
 
 		@include mixins.whenAnimated {
-			transition: box-shadow 145ms var(--baseline-transition-function);
+			transition: box-shadow 145ms var(--y-transition-function);
 		}
 	}
 }
 
 :where(code, samp, tt, pre) {
-	font-family: var(--baseline-font-code);
+	font-family: var(--y-mono-font);
 	font-size: 0.95em;
 	border-radius: 0.5ch;
 }
 
 :where(code, samp, tt) {
-	background-color: var(--baseline-bg-code);
-	padding-inline: 0.5ch;
+	border: 1px solid var(--y-theme-border);
+	padding-inline: 0.3ch;
 }
 
 :where(pre) {
@@ -219,30 +217,32 @@
 }
 
 :where(details) {
-	--detailsBorderRadius: calc(var(--baseline-radius-details) + 0.25em);
+	--z-details-vgap: var(--y-flow-gap, 0.5em);
+	--z-details-hgap: calc(var(--z-details-vgap) * 1.5);
+
 	display: block;
-	border: 1px solid var(--baseline-border-body);
-	border-radius: var(--detailsBorderRadius);
-	padding: 0 1em 0;
+	border: 1px solid var(--y-theme-border);
+	border-radius: var(--y-details-radius);
+	padding: 0 var(--z-details-hgap) 0;
 
 	summary {
 		@include mixins.texture;
-		background-color: var(--baseline-bg-summary);
-		margin: 0 -1em 0;
-		padding: 0.25em 1em 0.4em;
-		border-radius: var(--detailsBorderRadius);
+		background-color: var(--y-theme-canvas-color, var(--y-note-canvas-color));
+		margin: 0 calc(var(--z-details-hgap) * -1) 0;
+		padding: 0.25em var(--z-details-hgap) 0.25em;
+		border-radius: var(--y-details-radius);
 		cursor: pointer;
 
 		&:focus-visible {
-			border-radius: var(--detailsBorderRadius);
+			border-radius: var(--y-details-radius);
 		}
 	}
 
 	&[open] {
-		padding-block-end: 1em;
+		padding-block-end: var(--z-details-vgap);
 
 		summary {
-			border-block-end: 1px solid var(--baseline-border-body);
+			border-block-end: 1px solid var(--y-theme-border);
 			border-end-start-radius: 0;
 			border-end-end-radius: 0;
 		}
@@ -254,12 +254,12 @@
 }
 
 :where(img) {
-	border-radius: var(--baseline-radius-image);
+	border-radius: var(--y-media-radius);
 }
 
 :where(figcaption, caption) {
 	font-size: 0.75em;
-	color: var(--baseline-fg-caption);
+	color: var(--y-caption-color);
 }
 
 :where(p:empty) {
@@ -267,37 +267,37 @@
 }
 
 :is(h1, h2, h3, h4, h5, h6) {
-	font-weight: var(--baseline-text-bold);
+	font-weight: var(--y-emphasized-text);
 	// enable optical sizing
 	font-variation-settings: "opsz" 28;
-	color: var(--baseline-fg-emphasis);
+	color: var(--y-emphasis-color);
 }
 
 :where(h1) {
-	font-size: 2.5rem;
+	font-size: 2.0273rem;
 }
 
 :where(h2) {
-	font-size: 1.85rem;
+	font-size: 1.802rem;
 }
 
 :where(h3) {
-	font-size: 1.5rem;
+	font-size: 1.6018rem;
 	opacity: 0.95;
 }
 
 :where(h4) {
-	font-size: 1.25rem;
+	font-size: 1.4238rem;
 	opacity: 0.9;
 }
 
 :where(h5) {
-	font-size: 1.125rem;
+	font-size: 1.2656rem;
 	opacity: 0.85;
 }
 
 :where(h6) {
-	font-size: 1rem;
+	font-size: 1.125rem;
 	opacity: 0.8;
 }
 
@@ -315,8 +315,8 @@
 }
 
 :where(dt) {
-	color: var(--baseline-fg-emphasis);
-	font-weight: var(--baseline-text-bold);
+	color: var(--y-emphasis-color);
+	font-weight: var(--y-emphasized-text);
 }
 
 :where(dd) {
@@ -324,52 +324,77 @@
 }
 
 :where(table) {
+	--z-table-border-width: 0.5px;
+
 	display: block;
 	overflow-x: auto;
 	max-inline-size: fit-content;
+	font-size: 0.9em;
 	// make all numbers of the same size
 	// progressive enhancement: supported in fonts with this opentype feature
 	font-variant-numeric: tabular-nums;
+	border-collapse: separate;
+	border-spacing: 0;
+	border: var(--z-table-border-width) solid var(--y-theme-border);
+	border-radius: calc(var(--y-table-radius) + var(--z-table-border-width));
 
 	pre {
 		white-space: pre-wrap;
 	}
+
+	th, td {
+		border-width: var(--z-table-border-width);
+	}
+
+	tr:first-child {
+		th:first-child {
+			border-start-start-radius: var(--y-table-radius);
+		}
+
+		th:last-child {
+			border-start-end-radius: var(--y-table-radius);
+		}
+	}
+
+	tr:last-child {
+		td:first-child {
+			border-end-start-radius: var(--y-table-radius);
+		}
+
+		td:last-child {
+			border-end-end-radius: var(--y-table-radius);
+		}
+	}
 }
 
 :where(th) {
-	font-weight: var(--baseline-text-bold);
+	font-weight: var(--y-emphasized-text);
 }
 
 :where(th, td) {
 	font-size: 1em;
 	padding: 0.25rem 0.75rem;
-	border: 1px solid var(--baseline-border-body);
+	border: 1px solid var(--y-theme-border);
 }
 
 :where(thead, tfoot) {
 	tr {
 		th, td {
-			background-color: var(--baseline-bg-table-active);
+			background-color: var(--y-theme-canvas-color);
 		}
 	}
 
 	th,
 	td {
-		color: var(--baseline-fg-table-active);
-	}
-}
-
-:where(tbody) {
-	tr {
-		background-color: var(--baseline-bg-table, transparent);
+		color: var(--y-emphasis-color);
 	}
 }
 
 @include mixins.formElements {
-	--baseline-radius-outline: var(--baseline-radius-form);
-	background-color: var(--baseline-bg-form);
-	border: 1px solid var(--baseline-border-form);
-	border-radius: var(--baseline-radius-form);
+	--y-outline-radius: var(--y-form-radius);
+	background-color: var(--y-form-bg-color);
+	border: 1px solid var(--y-form-border);
+	border-radius: var(--y-form-radius);
 	padding: 0.2rem 0.5rem;
 }
 
@@ -379,7 +404,7 @@
 	gap: 0.5ch;
 	line-height: 1.1;
 	padding-block: 0.5rem;
-	color: var(--baseline-fg-form);
+	color: var(--y-button-color);
 	@include mixins.texture;
 }
 
@@ -389,7 +414,8 @@
 }
 
 :where(input[type="file"]) {
-	--baseline-fg-outline: var(--x3-fg-primary-intense);
+	--y-outline-color: var(--y-strong-accent-color);
+	--y-outline-radius: var(--y-form-radius);
 }
 
 :where(input[type="color"]) {
@@ -401,9 +427,9 @@
 @supports (-apple-pay-button-style: inherit) {
 	:where(input[type="range"]) {
 		&::-webkit-slider-runnable-track {
-			background-color: var(--baseline-fg-click-navigation);
+			background-color: var(--y-button-color);
 			height: 0.3rem;
-			border-radius: var(--baseline-radius-max);
+			border-radius: var(--x-radius-max);
 		}
 	
 		&::-webkit-slider-thumb {
@@ -418,10 +444,10 @@
 	::-webkit-inner-spin-button,
 	::-webkit-outer-spin-button
 ) {
-	color: var(--baseline-fg-accent);
+	color: var(--y-accent-color);
 }
 
 :where(fieldset) {
-	border: 1px solid var(--baseline-border-body);
-	border-radius: var(--baseline-radius-form);
+	border: 1px solid var(--y-theme-border);
+	border-radius: var(--y-form-radius);
 }

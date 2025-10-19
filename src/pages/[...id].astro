@@ -1,6 +1,5 @@
 ---
 import { getCollection, render } from "astro:content";
-import Icon from "../components/Icon.astro";
 import Time from "../components/Time.astro";
 import Toc from "../components/Toc.astro";
 import Layout from "../layouts/Layout.astro";
@@ -40,7 +39,7 @@ const pageInfo = {
 			</hgroup>
 		</div>
 		<div class="hero-footer">
-			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}
+			<small>Published on <Time date={data.date} /></small>{showUpdate && <small>Updated on <Time date={data.update} /></small>}
 		</div>
 	</Fragment>
 	<article class="post">

@@ -320,17 +320,17 @@ window.__search = function (query, searchIndex) {
 }
 
 :root {
-	--fontSansNative: ui-sans-serif, system-ui, -apple-system,
+	--x-native-sans-font: ui-sans-serif, system-ui, -apple-system,
 		"Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", "Liberation Sans",
 		Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
 		"Segoe UI Symbol", "Noto Color Emoji";
-	--fontMonoNative: ui-monospace, SFMono-Regular, "Roboto Mono",
+	--x-native-mono-font: ui-monospace, SFMono-Regular, "Roboto Mono",
 		Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-	--fontSansBodyCopy: "Inter", var(--fontSansNative);
-	--fontSansFancyCopy: "MakeSans", var(--fontSansNative);
-	--fontMono: "Google Sans Code", var(--fontMonoNative);
+	--y-body-font: "Inter", var(--x-native-sans-font);
+	--y-fancy-font: "MakeSans", var(--x-native-sans-font);
+	--y-mono-font: "Google Sans Code", var(--x-native-mono-font);
 
-	/* @link: https://utopia.fyi/type/calculator?c=320,16,1.125,2056,21,1.25,6,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+	/* @link: https://utopia.fyi/type/calculator/?c=320,16,1.125,2056,20,1.2,6,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
 	--fluid-min-width: 320;
 	--fluid-max-width: 2056;
 
@@ -338,33 +338,33 @@ window.__search = function (query, searchIndex) {
 	--fluid-bp: calc((var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) / (var(--fluid-max-width) - var(--fluid-min-width)));
 
 	--f--1-min: 14.22;
-	--f--1-max: 16.80;
-	--fs--1: calc(((var(--f--1-min) / 16) * 1rem) + (var(--f--1-max) - var(--f--1-min)) * var(--fluid-bp));
+	--f--1-max: 16.67;
+	--x--1: calc(((var(--f--1-min) / 16) * 1rem) + (var(--f--1-max) - var(--f--1-min)) * var(--fluid-bp));
 
 	--f-0-min: 16.00;
-	--f-0-max: 21.00;
-	--fs-0: calc(((var(--f-0-min) / 16) * 1rem) + (var(--f-0-max) - var(--f-0-min)) * var(--fluid-bp));
+	--f-0-max: 20.00;
+	--x-0: calc(((var(--f-0-min) / 16) * 1rem) + (var(--f-0-max) - var(--f-0-min)) * var(--fluid-bp));
 
 	--f-1-min: 18.00;
-	--f-1-max: 26.25;
-	--fs-1: calc(((var(--f-1-min) / 16) * 1rem) + (var(--f-1-max) - var(--f-1-min)) * var(--fluid-bp));
+	--f-1-max: 24.00;
+	--x-1: calc(((var(--f-1-min) / 16) * 1rem) + (var(--f-1-max) - var(--f-1-min)) * var(--fluid-bp));
 
 	--f-6-min: 32.44;
-	--f-6-max: 80.11;
-	--fs-6: calc(((var(--f-6-min) / 16) * 1rem) + (var(--f-6-max) - var(--f-6-min)) * var(--fluid-bp));
+	--f-6-max: 59.72;
+	--x-6: calc(((var(--f-6-min) / 16) * 1rem) + (var(--f-6-max) - var(--f-6-min)) * var(--fluid-bp));
 
-	--fs--1: clamp(0.8889rem, 0.8592rem + 0.1485vw, 1.05rem);
-	--fs-0: clamp(1rem, 0.9424rem + 0.288vw, 1.3125rem);
-	--fs-1: clamp(1.125rem, 1.03rem + 0.4752vw, 1.6406rem);
-	--fs-6: clamp(2.0273rem, 1.4781rem + 2.7461vw, 5.0068rem);
+	--x--1: clamp(0.8889rem, 0.8607rem + 0.1408vw, 1.0417rem);
+	--x-0: clamp(1rem, 0.9539rem + 0.2304vw, 1.25rem);
+	--x-1: clamp(1.125rem, 1.0559rem + 0.3456vw, 1.5rem);
+	--x-6: clamp(2.0273rem, 1.713rem + 1.5716vw, 3.7325rem);
 
-	--x3-text-sm: var(--fs--1);
-	--x3-text-base: var(--fs-0);
-	--x3-text-title: var(--fs-6);
-	--x3-text-tagline: var(--fs-1);
+	--y-small-text: var(--x--1);
+	--y-normal-text: var(--x-0);
+	--y-title-text: var(--x-6);
+	--y-tagline-text: var(--x-1);
 
-	--x3-size-icon-sm: 1.25rem;
-	--x3-size-icon-base: 1.5rem;
+	--x-icon-small: 1.25rem;
+	--x-icon-normal: 1.5rem;
 }
 
 @media screen and (min-width: 2056px) {
@@ -375,36 +375,36 @@ window.__search = function (query, searchIndex) {
 
 @supports (font-variation-settings: normal) {
 	:root {
-		--fontSansBodyCopy: "Inter var", var(--fontSansNative);
-		--fontMono: "Google Sans Code var", var(--fontMonoNative);
+		--y-body-font: "Inter var", var(--x-native-sans-font);
+		--y-mono-font: "Google Sans Code var", var(--x-native-mono-font);
 	}
 }
 
 @media (pointer: coarse), (any-hover: none) {
 	:root {
-		--x3-size-icon-sm: 20px;
-		--x3-size-icon-base: 24px;
+		--x-icon-small: 20px;
+		--x-icon-normal: 24px;
 	}
 }
 
 .icon,
 .chip svg {
-	--iconSize: var(--x3-size-icon, var(--x3-size-icon-base));
-	--iconStroke: var(--x3-stroke-icon, 2);
-	--iconColor: var(--x3-fg-icon, currentColor);
+	--z-icon-size: var(--y-icon-size, var(--x-icon-normal));
+	--z-icon-stroke: var(--y-icon-stroke, 2);
+	--z-icon-color: var(--y-icon-color, currentColor);
 	display: inline-block;
 	vertical-align: middle;
-	stroke: var(--iconColor);
-	stroke-width: var(--iconStroke);
+	stroke: var(--z-icon-color);
+	stroke-width: var(--z-icon-stroke);
 	fill: none;
-	width: var(--iconSize);
-	height: var(--iconSize);
+	width: var(--z-icon-size);
+	height: var(--z-icon-size);
 	flex: none; /* prevent squeezed icons */
 }
 
 /* hide undefined custom elements which don't have non-javascript fallbacks
    TODO: use `data-require=js` attribute to streamline this rule in future */
-:where(clipboard-copy, command-bar, theme-switcher, footer-preferences):not(:defined) {
+:where(clipboard-copy, command-bar, theme-switcher):not(:defined) {
 	visibility: hidden !important;
 	display: none !important;
 }

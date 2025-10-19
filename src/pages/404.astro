@@ -1,23 +1,28 @@
 ---
-import Layout from "../layouts/MinimalLayout.astro";
-import CommandBar from "../components/CommandBar.astro";
+import Layout from "../layouts/Layout.astro";
 
 const pageInfo = {
 	title: "Page not found",
 	url: Astro.url.pathname
 };
 ---
-<Layout {pageInfo} class="glitch">
-	<section>
-		<img src="/favicon.svg" alt="glitchy logo" class="glitch-logo">
-		<random-message selector="p">
-			<p>Page not here anymore</p>
-			<p hidden>Page not available</p>
-			<p hidden>Page not found</p>
-		</random-message>
-		<ul>
-			<li><CommandBar hrefText="Search this site"/></li>
-			<li><a href="/">Return to the homepage</a></li>
+<Layout {pageInfo} class="popout glitch">
+	<Fragment slot="hero">
+		<div class="hero-body">
+			<hgroup>
+				<h1>404</h1>
+				<random-message selector="p">
+					<p>Page not here anymore</p>
+					<p hidden>Page not available</p>
+					<p hidden>Page not found</p>
+				</random-message>
+			</hgroup>
+		</div>
+	</Fragment>
+	<article class="post">
+		<ul class="notfound-opts">
+			<li class="notfound-opts-home"><a href="/">Return to the homepage</a></li>
+			<li class="notfound-opts-search"><a onclick="document.dispatchEvent(new KeyboardEvent('keydown', {'key': 'k', 'ctrlKey': true}))">Search what you&rsquo;re looking for</a></li>
 		</ul>
-	</section>
+	</article>
 </Layout>

@@ -4,12 +4,8 @@ title: "Naiyer Asif"
 description: "About Naiyer Asif"
 date: 2019-06-30 05:14:56
 update: 2025-06-17 18:22:04
+avatar: "./images/naiyer.png"
 ---
-
-:::figure{.avatar}
-![Naiyer](./images/naiyer.png)
-:::
-
 <random-message selector="span">
 	👋 <span>Hi</span><span data-language="Māori" hidden>Kia ora</span><span data-language="Turkish" hidden>Merhaba</span><span data-language="Farsi" hidden>Salâm</span><span hidden>Hello</span>!
 	I&rsquo;m Naiyer <audio-player><audio><source src="/audio/profile/naiyer/namedrop.mp3" type="audio/mpeg"/><source src="/audio/profile/naiyer/namedrop.m4a" type="audio/mp4"/></audio><button aria-label="Pronounce name"></button></audio-player><noscript><audio controls><source src="/audio/profile/naiyer/namedrop.mp3" type="audio/mpeg"/><source src="/audio/profile/naiyer/namedrop.m4a" type="audio/mp4"/></audio></noscript> &mdash; from India.

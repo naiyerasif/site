@@ -133,48 +133,6 @@ It gets converted to the following HTML for the RSS feeds.
 
 Specify `.popout.popout-video` classes to bleed the video out of wrapper.
 
-### `elx` directive
-
-You can wrap any markdown node in `elx` directive. All the properties on this directive will be automatically added to the first child of the wrapped markdown node.
-
-For example, the following markdown
-
-```md
-:elx[**emphasized text**]{#tagline}
-
-::elx[`console.log('hello!')`]{.lang-js}
-
-:::elx{start="2025"}
-1. First
-2. Second
-:::
-```
-
-returns this HTML.
-
-```html
-<strong id="tagline">emphasized text</strong>
-
-<code class="lang-js">console.log('hello!')</code>
-
-<ol start="2025">
-  <li>First</li>
-  <li>Second</li>
-</ol>
-```
-
-Custom wrapper element can be created by using `data-element` attribute. For example,
-
-```md
-:elx[initialized]{.chip.chip-assert data-element="span"}
-```
-
-generates this HTML.
-
-```html
-<span class="chip chip-assert">initialized</span>
-```
-
 ## Audits
 
 - To launch a full lighthouse audit, run `pnpm lighthouse`

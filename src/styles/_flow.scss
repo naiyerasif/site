@@ -8,16 +8,16 @@
 }
 
 :where(
-	blockquote, details, figure, caption, dd + dt,
+	blockquote, figure, caption, dd + dt,
 	.hero, .card, .card-body
 ) > * {
-	--x3-gap-flow: 1em;
+	--y-flow-gap: 1em;
 }
 
-:where(ul, ol, dl, .callout-body) > * {
-	--x3-gap-flow: 0.5em;
+:where(ul, ol, dl, details, .callout-body) > * {
+	--y-flow-gap: 0.5em;
 }
 
 article p + :where(ul, ol, dl) {
-	--x3-gap-flow: 1em;
+	--y-flow-gap: 1em;
 }

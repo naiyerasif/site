@@ -1,24 +1,31 @@
 @use "mixins";
 
 .callout {
-	--calloutFg: var(--x3-fg-callout, var(--x3-fg-note));
-	--calloutBg: var(--x3-bg-callout, var(--x3-bg-note-gentle));
-	--calloutBorderColor: var(--x3-border-callout, var(--x3-border-note));
-	--calloutBorderRadius: var(--x3-radius-base);
-	--calloutBorderWidth: var(--x3-border-width-sm);
-	--calloutPadding: 1ch;
+	--y-theme-border: var(--y-callout-border, var(--y-note-border));
+	--y-theme-color: var(--y-callout-color, var(--y-note-color));
+	--y-theme-marker-color: var(--y-theme-border);
+	--y-theme-canvas-color: var(--y-callout-canvas-color, var(--y-note-canvas-color));
+	--y-theme-bg-color: var(--y-callout-bg-color, var(--y-note-bg-color));
+	--z-callout-radius: var(--x-radius-root);
+	--z-callout-border-width: var(--x-border-sm);
+	--z-callout-padding: 1ch;
 
 	display: flex;
-	font-size: 0.95em;
-	border-radius: var(--calloutBorderRadius);
+	border-radius: var(--z-callout-radius);
+	accent-color: var(--y-theme-color);
+	caret-color: var(--y-theme-color);
+
+	details > ::marker {
+		--y-theme-marker-color: var(--y-theme-color);
+	}
 
 	&-hint {
 		flex: none;
-		color: var(--calloutFg);
-		background-color: var(--calloutBorderColor);
+		color: var(--y-theme-color);
+		background-color: var(--y-theme-border);
 		border-start-start-radius: inherit;
 		border-end-start-radius: inherit;
-		padding: var(--calloutPadding);
+		padding: var(--z-callout-padding);
 		line-height: 1.5;
 		max-inline-size: fit-content; // prevent Safari from enlarging inline-size more than icon size
 	}
@@ -26,45 +33,56 @@
 	&-body {
 		flex: 1;
 		overflow: auto;
-		padding: var(--calloutPadding);
-		background-color: var(--calloutBg);
+		padding: var(--z-callout-padding);
+		background-color: var(--y-theme-bg-color);
 		border-start-end-radius: inherit;
 		border-end-end-radius: inherit;
 		@include mixins.flow;
-		border-block: var(--calloutBorderWidth) dotted var(--calloutBorderColor);
-		border-inline-end: var(--calloutBorderWidth) dotted var(--calloutBorderColor);
+		border-block: var(--z-callout-border-width) dotted var(--y-theme-border);
+		border-inline-end: var(--z-callout-border-width) dotted var(--y-theme-border);
 
 		& > strong:first-of-type {
-			color: var(--calloutFg);
+			color: var(--y-theme-color);
 		}
 	}
 
 	&.setup li {
-		--x3-gap-flow: 0;
+		--y-flow-gap: 0;
 		font-variant-numeric: tabular-nums lining-nums;
 	}
 }
 
+[data-callout="note"] {
+	--y-callout-color: var(--y-note-color);
+	--y-callout-bg-color: var(--y-note-bg-color);
+	--y-callout-border: var(--y-note-border);
+	--y-callout-canvas-color: var(--y-note-canvas-color);
+}
+
 [data-callout="commend"] {
-	--x3-fg-callout: var(--x3-fg-commend);
-	--x3-bg-callout: var(--x3-bg-commend-gentle);
-	--x3-border-callout: var(--x3-border-commend);
+	--y-callout-color: var(--y-commend-color);
+	--y-callout-bg-color: var(--y-commend-bg-color);
+	--y-callout-border: var(--y-commend-border);
+	--y-callout-canvas-color: var(--y-commend-canvas-color);
 }
 
 [data-callout="assert"] {
-	--x3-fg-callout: var(--x3-fg-assert);
-	--x3-bg-callout: var(--x3-bg-assert-gentle);
-	--x3-border-callout: var(--x3-border-assert);
+	--y-callout-color: var(--y-assert-color);
+	--y-callout-bg-color: var(--y-assert-bg-color);
+	--y-callout-border: var(--y-assert-border);
+	--y-callout-canvas-color: var(--y-assert-canvas-color);
 }
 
 [data-callout="warn"] {
-	--x3-fg-callout: var(--x3-fg-warn);
-	--x3-bg-callout: var(--x3-bg-warn-gentle);
-	--x3-border-callout: var(--x3-border-warn);
+	--y-callout-color: var(--y-warn-color);
+	--y-callout-bg-color: var(--y-warn-bg-color);
+	--y-callout-border: var(--y-warn-border);
+	--y-callout-canvas-color: var(--y-warn-canvas-color);
 }
 
 [data-callout="deter"] {
-	--x3-fg-callout: var(--x3-fg-deter);
-	--x3-bg-callout: var(--x3-bg-deter-gentle);
-	--x3-border-callout: var(--x3-border-deter);
+	--y-callout-color: var(--y-deter-color);
+	--y-callout-bg-color: var(--y-deter-bg-color);
+	--y-callout-border: var(--y-deter-border);
+	--y-callout-canvas-color: var(--y-deter-canvas-color);
 }

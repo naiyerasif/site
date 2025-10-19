@@ -1,12 +1,12 @@
 @use "mixins";
 
 .directive-youtube-iframe-container {
-	border-radius: var(--x3-radius-xs);
+	border-radius: var(--x-radius-sm);
 	@include mixins.placeholderBackground;
 }
 
 lite-youtube {
-	background-color: var(--x3-bg-base);
+	background-color: var(--y-body-bg-color);
 	position: relative;
 	display: block;
 	contain: content;

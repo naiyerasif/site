@@ -1,7 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
-import Icon from "../../components/Icon.astro";
 import Toc from "../../components/Toc.astro";
 import Time from "../../components/Time.astro";
 import format, { compare, format_date } from "../../modules/datetime/index.js";
@@ -46,14 +45,13 @@ const pageInfo = {
 			</hgroup>
 		</div>
 		<div class="hero-footer">
-			<span><Icon name="calendar"/> Published on <Time date={data.date} /></span>{showUpdate && <span class="update"><Icon name="calendar-edit"/> Updated on <Time date={data.update} /></span>}<span class={`chip chip-${status.tone.id}`}>{status.label}</span>
-		</div>
-	</Fragment>
-	<article class="post">
-		{showToc && <nav class="toc">
+			<small>Published on <Time date={data.date} /></small>{showUpdate && <small>Updated on <Time date={data.update} /></small>}<small class={`chip chip-${status.tone.id}`}>{status.label}</small>{showToc && <nav class="toc">
 			<div class="toc-header">Table of Contents</div>
 			<Toc headings={toc(headings, siteInfo.maxTocDepth)}/>
 		</nav>}
+		</div>
+	</Fragment>
+	<article class="post">
 		<Content/>
 	</article>
 </Layout>

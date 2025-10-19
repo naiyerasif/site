@@ -7,7 +7,7 @@
 
 @mixin flow {
 	& > * + * {
-		margin-block-start: var(--x3-gap-flow, 2em);
+		margin-block-start: var(--y-flow-gap, 2em);
 	}
 }
 
@@ -21,17 +21,17 @@
 }
 
 @mixin texture {
-	background-image: radial-gradient(76% 151% at 52% -52%, var(--x3-texture-fx-2) 0%, var(--x3-texture-fx-1) 100%);
-	box-shadow: var(--x3-texture-fx-1) 0px 0px 0px 0px, var(--x3-texture-fx-1) 0px 0px 0px 0px, var(--x3-texture-fx-3) 0px 2px 4px 0px inset;
+	background-image:
+		radial-gradient(76% 151% at 52% -52%, var(--x-texture-fx-2) 0%, var(--x-texture-fx-1) 100%);
+	box-shadow:
+		var(--x-texture-fx-1) 0px 0px 0px 0px,
+		var(--x-texture-fx-1) 0px 0px 0px 0px,
+		var(--x-texture-fx-3) 0px 2px 4px 0px inset;
 }
 
 // subtle background until the content has been loaded
 @mixin placeholderBackground {
-	background-image: radial-gradient(
-		circle at center,
-		var(--x3-bg-note) 1px,
-		transparent 0
-	);
+	background-image: radial-gradient(circle at center, var(--y-note-bg-color) 1px, transparent 0);
 	background-size: 10px 10px;
 	background-repeat: round;
 }
