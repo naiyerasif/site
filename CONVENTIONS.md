@@ -1,6 +1,6 @@
 # Site conventions
 
-**Version** `2025.2`
+**Version** `2025.4`
 
 These are the conventions I use throughout this site.
 
@@ -28,3 +28,11 @@ These are the conventions I use throughout this site.
 
 - For link citations, use this format: `<authors?>, <link> [<timestamp?>]`. Include authors if identified by the source. Include a timestamp to indicate the recency. Include the publication date, or publication year if available.
 - For book or paper citations, use this format: `<authors?>, <title>, <publisher> [<edition>]`. Include authors if identified by the source. The edition should be the year of publication (preferred) or the edition number specified by the source.
+
+## Design System
+
+This site uses RSL naming convention for CSS properties.
+
+- Raw properties are abstract exports from a design tool (denoted with `--x` prefix)
+- Semantic properties are derived from raw properties (denoted with `--y` prefix). They are also used to expose APIs for a component.
+- Local properties are internally scoped to a component (denoted with `--z` prefix). They should never be modified outside the scope of a component in which they are defined.
