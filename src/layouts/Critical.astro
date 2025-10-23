@@ -20,14 +20,16 @@ function setTheme(theme) {
 
 // set a theme and emit an event to broadcast this change
 window.__setTheme = function (theme) {
-	window.__viewTransition(() => setTheme(theme));
-	try {
-		localStorage.setItem("theme", theme);
-	} catch (err) {}
-	document.firstElementChild.dispatchEvent(new Event("themechange", {
-		bubbles: true, // allows this event to bubble up throughout DOM tree
-		composed: true // allows other DOM elements to listen to this event
-	}));
+	window.__viewTransition(() => {
+		setTheme(theme);
+		try {
+			localStorage.setItem("theme", theme);
+		} catch (err) {}
+		document.firstElementChild.dispatchEvent(new Event("themechange", {
+			bubbles: true, // allows this event to bubble up throughout DOM tree
+			composed: true // allows other DOM elements to listen to this event
+		}));
+	});
 }
 
 // watch for OS or browser preferences
