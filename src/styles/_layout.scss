@@ -162,9 +162,27 @@ main.feed {
 }
 
 main.glitch {
+	.post {
+		--y-flow-gap: 1em;
+
+		div {
+			display: flex;
+			align-items: center;
+			gap: 1ch;
+		}
+	}
+
 	& + .footer {
 		visibility: hidden;
 		display: none;
+	}
+
+	.glitch-home .icon {
+		color: var(--y-warn-color);
+	}
+
+	.glitch-search .icon {
+		color: var(--y-assert-color);
 	}
 }
 
