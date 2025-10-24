@@ -35,27 +35,19 @@ const now = new Date();
 	</random-message>
 	<div class="footer-nav">
 		<div class="footer-nav-items">
-			<a href="/"><Icon name="home" alt="Home"/></a>
-			<a href="/posts"><Icon name="posts" alt="Posts"/></a>
+			<a href="/feed.xml"><Icon name="rss"/>Posts</a>
+			<a href="/all.xml"><Icon name="rss"/>Posts+notes</a>
+			{Object.entries(authorPresence).map(([network, details]) => <a href={details.url} rel="nofollow noopener noreferrer"><Icon name={network} alt={details.title}/>{details.title}</a>)}
 		</div>
 		<div class="footer-nav-items">
-			<Icon name="rss"/>
-			<a href="/feed.xml">Posts</a>
-			<a href="/all.xml">Posts+notes</a>
-		</div>
-		<div class="footer-nav-items">
-			{Object.entries(authorPresence).map(([network, details]) => <a href={details.url} rel="nofollow noopener noreferrer"><Icon name={network} alt={details.title}/></a>)}
-		</div>
-		<div class="footer-nav-items">
-			<a href={siteIssueUrl} rel="nofollow noopener noreferrer">Report an issue</a>
 			<a href="/privacy/">Privacy</a>
 			<a href="/sitemap-index.xml">Sitemap</a>
 			<a href="/changelog/">Changelog</a>
+			<a href={siteIssueUrl} rel="nofollow noopener noreferrer">Report an issue</a>
 		</div>
-	</div>
-	<div class="footer-nav">
-		<div class="footer-nav-outro">
-			<div>&copy; 2018, <a href="/about/">{authorName}</a> (updated on <Time date={now} />)</div>
+		<div class="footer-nav-items">
+			<div>&copy; 2018, <a href="/about/">{authorName}</a></div>
+			<div>Updated on <Time date={now} /></div>
 			<BackToTop/>
 		</div>
 	</div>

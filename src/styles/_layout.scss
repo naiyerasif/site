@@ -245,6 +245,8 @@ body > .footer {
 
 	random-message {
 		margin-block-start: calc((var(--x-gap-root) * -1) - 2ch);
+		margin-block-end: var(--x-gap-root);
+		text-align: end;
 
 		figcaption {
 			--y-flow-gap: 0.5em;
@@ -268,32 +270,18 @@ body > .footer {
 	.footer-nav {
 		display: flex;
 		flex-wrap: wrap;
-		align-items: center;
-		gap: 1ch;
+		align-items: end;
+		justify-content: space-between;
+		gap: 2rem;
 
 		&-items {
-			display: inline-flex;
-			flex-wrap: wrap;
-			align-items: center;
-			gap: 1ch;
-
-			&:not(:last-child)::after {
-				@include mixins.icon(url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='15' r='1'/%3E%3C/svg%3E"));
-				display: inline-block;
-				@include mixins.size(1em);
-				opacity: 0.5;
-			}
-		}
-
-		&-outro {
 			display: flex;
+			flex-direction: column;
 			flex-wrap: wrap;
-			align-items: end;
-			justify-content: space-between;
 			gap: 0.5ch;
-			inline-size: 100%;
+			flex: none;
 
-			#backToTop {
+			a {
 				display: inline-flex;
 				align-items: center;
 				gap: 0.5ch;
