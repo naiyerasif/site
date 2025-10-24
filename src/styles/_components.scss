@@ -389,11 +389,13 @@ dl.timeline {
 		&::before {
 			position: absolute;
 			content: "";
-			left: -1.25ch;
+			left: -1em;
 			bottom: 0;
-			inline-size: 3px;
+			inline-size: 6px;
 			block-size: 100%;
-			border-radius: var(--x-radius-root);
+			mask:
+				radial-gradient(4.5px at calc(100% + 1.8px) 50%,#0000 calc(99% - 2px),#000 calc(101% - 2px) 99%,#0000 101%) calc(50% - 2.5px + .5px) calc(50% - 6px)/ 5px 12px  repeat-y,
+				radial-gradient(4.5px at -1.8px 50%,#0000 calc(99% - 2px),#000 calc(101% - 2px) 99%,#0000 101%) calc(50% + 2.5px) 50%/5px 12px  repeat-y;
 			background-color: var(--y-assert-canvas-color);
 		}
 	}
