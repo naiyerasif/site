@@ -261,7 +261,7 @@ body > .footer {
 			padding: 1ch 1.5ch;
 			border: none;
 			border-radius: calc(var(--x-radius-root) * 1.5);
-			border-end-start-radius: var(--x-radius-xs);
+			border-end-end-radius: var(--x-radius-xs);
 			max-inline-size: fit-content;
 			@include mixins.texture;
 		}
@@ -272,7 +272,7 @@ body > .footer {
 		flex-wrap: wrap;
 		align-items: end;
 		justify-content: space-between;
-		gap: 2rem;
+		gap: 1rem;
 
 		&-items {
 			display: flex;
