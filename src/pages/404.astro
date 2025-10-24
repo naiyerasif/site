@@ -8,18 +8,16 @@ const pageInfo = {
 };
 ---
 <Layout {pageInfo} class="popout glitch">
-	<Fragment slot="hero">
-		<div class="hero-body">
-			<hgroup>
-				<h1>404</h1>
-				<random-message selector="p">
-					<p>Page not here anymore</p>
-					<p hidden>Page not available</p>
-					<p hidden>Page not found</p>
-				</random-message>
-			</hgroup>
-		</div>
-	</Fragment>
+	<div slot="hero" class="hero-body">
+		<hgroup>
+			<h1>404</h1>
+			<random-message selector="p">
+				<p>Page not here anymore</p>
+				<p hidden>Page not available</p>
+				<p hidden>Page not found</p>
+			</random-message>
+		</hgroup>
+	</div>
 	<article class="post">
 		<div class="glitch-home"><Icon name="home"/> <a href="/">Go to homepage</a></div>
 		<div class="glitch-search"><Icon name="magnifying-glass"/> <a onclick="document.dispatchEvent(new KeyboardEvent('keydown', {'key': 'k', 'ctrlKey': true}))">Search what you&rsquo;re looking for</a></div>

@@ -28,14 +28,12 @@ const pageInfo = {
 ---
 
 <Layout {pageInfo} class="popout feed">
-	<Fragment slot="hero">
-		<div class="hero-body">
-			<hgroup>
-				<h1>Posts</h1>
-				<p>{page.start + 1}&hellip;{page.end + 1} of {page.total} posts</p>
-			</hgroup>
-		</div>
-	</Fragment>
+	<div slot="hero" class="hero-body">
+		<hgroup>
+			<h1>Posts</h1>
+			<p>{page.start + 1}&hellip;{page.end + 1} of {page.total} posts</p>
+		</hgroup>
+	</div>
 	{page.data.map(entry => entry.data.type === PostType.note.id ? <NoteCard {entry} /> : <PostCard {entry} />)}
 	<div slot="sidekick" class="sidekick-items">
 		<Pagination currentPage={page.currentPage} totalPages={page.lastPage} base="posts"/>

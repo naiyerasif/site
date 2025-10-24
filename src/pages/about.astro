@@ -17,14 +17,12 @@ const pageInfo = {
 ---
 
 <Layout {pageInfo} class="popout">
-	<Fragment slot="hero">
-		<div class="hero-body">
-			<hgroup class="with-avatar">
-				<Image src={data.avatar} alt={data.title} class="avatar"/>
-				<h1>About</h1>
-			</hgroup>
-		</div>
-	</Fragment>
+	<div slot="hero" class="hero-body">
+		<hgroup class="with-avatar">
+			<Image src={data.avatar} alt={data.title} class="avatar"/>
+			<h1>About</h1>
+		</hgroup>
+	</div>
 	<article class="post">
 		<Content/>
 	</article>
