@@ -51,8 +51,71 @@ function paginationPathname(base, pageNumber) {
 	return pageNumber > 1 ? `/${base}/${pageNumber}/` : `/${base}/`;
 }
 
+const calloutOptions = {
+	tagName: "div",
+	callouts: {
+		note: {
+			label: "Note",
+			hint: `<svg role="img" class="icon"><use href="#x4-callout-note"/></svg>`
+		},
+		commend: {
+			label: "Tip",
+			hint: `<svg role="img" class="icon"><use href="#x4-callout-commend"/></svg>`
+		},
+		warn: {
+			label: "Warning",
+			hint: `<svg role="img" class="icon"><use href="#x4-callout-warn"/></svg>`
+		},
+		deter: {
+			label: "Caution",
+			hint: `<svg role="img" class="icon"><use href="#x4-callout-deter"/></svg>`
+		},
+		assert: {
+			label: "Important",
+			hint: `<svg role="img" class="icon"><use href="#x4-callout-assert"/></svg>`
+		}
+	},
+	generate(title, children, prefs) {
+		return [
+			{
+				type: "paragraph",
+				data: {
+					hName: "div",
+					hProperties: { className: ["callout-hint"] }
+				},
+				children: [
+					{
+						type: "html",
+						value: prefs.hint
+					}
+				]
+			},
+			{
+				type: "paragraph",
+				data: {
+					hName: "div",
+					hProperties: { className: ["callout-body"] }
+				},
+				children: [
+					{
+						type: "strong",
+						children: [
+							{
+								type: "text",
+								value: `${title} `
+							}
+						]
+					},
+					...children
+				]
+			}
+		]
+	}
+}
+
 export {
 	siteInfo as default,
+	calloutOptions,
 	fullLink,
 	postPathname,
 	paginationPathname

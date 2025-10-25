@@ -4,13 +4,13 @@ import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
 import remarkSmartypants from "remark-smartypants";
 import remarkDirective from "remark-directive";
-import remarkCalloutDirectives from "../remark-callout-directives/index.js";
+import remarkCalloutDirectives from "@microflash/remark-callout-directives";
 import remarkTimeDirective from "../remark-time-directive/index.js";
 import remarkFigureDirective from "../remark-figure-directive/index.js";
 import remarkYoutubeDirective from "../remark-youtube-directive/index.js";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
-import { fullLink } from "../website/index.js";
+import { fullLink, calloutOptions } from "../website/index.js";
 
 function canonize(html) {
 	const relativeRefs = /(href|src)=("|')((?=\.{1,2}\/|\/).+?)\2/gi;
@@ -28,7 +28,7 @@ async function process(markdown) {
 		.use(remarkTimeDirective)
 		.use(remarkFigureDirective)
 		.use(remarkYoutubeDirective, { server: true })
-		.use(remarkCalloutDirectives, { tagName: "div" })
+		.use(remarkCalloutDirectives, calloutOptions)
 		.use(remarkRehype, { allowDangerousHtml: true })
 		.use(rehypeStringify, { allowDangerousHtml: true })
 		.process(markdown);

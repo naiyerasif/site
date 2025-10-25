@@ -50,39 +50,39 @@
 		--y-flow-gap: 0;
 		font-variant-numeric: tabular-nums lining-nums;
 	}
-}
 
-[data-callout="note"] {
-	--y-callout-color: var(--y-note-color);
-	--y-callout-bg-color: var(--y-note-bg-color);
-	--y-callout-border: var(--y-note-border);
-	--y-callout-canvas-color: var(--y-note-canvas-color);
-}
+	&-note {
+		--y-callout-color: var(--y-note-color);
+		--y-callout-bg-color: var(--y-note-bg-color);
+		--y-callout-border: var(--y-note-border);
+		--y-callout-canvas-color: var(--y-note-canvas-color);
+	}
 
-[data-callout="commend"] {
-	--y-callout-color: var(--y-commend-color);
-	--y-callout-bg-color: var(--y-commend-bg-color);
-	--y-callout-border: var(--y-commend-border);
-	--y-callout-canvas-color: var(--y-commend-canvas-color);
-}
+	&-commend {
+		--y-callout-color: var(--y-commend-color);
+		--y-callout-bg-color: var(--y-commend-bg-color);
+		--y-callout-border: var(--y-commend-border);
+		--y-callout-canvas-color: var(--y-commend-canvas-color);
+	}
 
-[data-callout="assert"] {
-	--y-callout-color: var(--y-assert-color);
-	--y-callout-bg-color: var(--y-assert-bg-color);
-	--y-callout-border: var(--y-assert-border);
-	--y-callout-canvas-color: var(--y-assert-canvas-color);
-}
+	&-assert {
+		--y-callout-color: var(--y-assert-color);
+		--y-callout-bg-color: var(--y-assert-bg-color);
+		--y-callout-border: var(--y-assert-border);
+		--y-callout-canvas-color: var(--y-assert-canvas-color);
+	}
 
-[data-callout="warn"] {
-	--y-callout-color: var(--y-warn-color);
-	--y-callout-bg-color: var(--y-warn-bg-color);
-	--y-callout-border: var(--y-warn-border);
-	--y-callout-canvas-color: var(--y-warn-canvas-color);
-}
+	&-warn {
+		--y-callout-color: var(--y-warn-color);
+		--y-callout-bg-color: var(--y-warn-bg-color);
+		--y-callout-border: var(--y-warn-border);
+		--y-callout-canvas-color: var(--y-warn-canvas-color);
+	}
 
-[data-callout="deter"] {
-	--y-callout-color: var(--y-deter-color);
-	--y-callout-bg-color: var(--y-deter-bg-color);
-	--y-callout-border: var(--y-deter-border);
-	--y-callout-canvas-color: var(--y-deter-canvas-color);
+	&-deter {
+		--y-callout-color: var(--y-deter-color);
+		--y-callout-bg-color: var(--y-deter-bg-color);
+		--y-callout-border: var(--y-deter-border);
+		--y-callout-canvas-color: var(--y-deter-canvas-color);
+	}
 }

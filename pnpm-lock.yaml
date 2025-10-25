@@ -20,6 +20,9 @@ importers:
       '@microflash/rehype-starry-night':
         specifier: ^7.4.0
         version: 7.4.0
+      '@microflash/remark-callout-directives':
+        specifier: ^5.0.0
+        version: 5.0.0
       '@sindresorhus/slugify':
         specifier: ^3.0.0
         version: 3.0.0
@@ -1201,6 +1204,9 @@ packages:
 
   '@microflash/rehype-starry-night@7.4.0':
     resolution: {integrity: sha512-Bi+vzdh+JCdr0nTbDi8e/PDYEQdMjI3Bss+VWfVtmYCm6sXarqHyK8dRV9otm694qENQlzZYQMX+VA/MTel9gg==}
+
+  '@microflash/remark-callout-directives@5.0.0':
+    resolution: {integrity: sha512-kLpV/WKqOuQMJfYe+2MaTQ4El12qJslZHSSF8c1/y1wBGT1w3bd3T3zgVLrDN1/SZyoDa2mT5n+Ous+gtMWRKA==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -6287,6 +6293,15 @@ snapshots:
       hast-util-to-string: 3.0.1
       hastscript: 9.0.1
       unist-util-visit: 5.0.0
+
+  '@microflash/remark-callout-directives@5.0.0':
+    dependencies:
+      defu: 6.1.4
+      hastscript: 9.0.1
+      mdast-util-from-markdown: 2.0.2
+      unist-util-visit: 5.0.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
