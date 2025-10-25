@@ -1,5 +1,4 @@
 import { visit } from "unist-util-visit";
-import { defu } from "defu";
 import { toString } from "mdast-util-to-string";
 
 const defaults = {
@@ -147,7 +146,7 @@ function youtubeLiteEmbed(node) {
 }
 
 export default function remarkYoutubeDirective(userOptions = {}) {
-	const { server } = defu(userOptions, defaults);
+	const server = userOptions?.server || defaults.server;
 	return (tree) => {
 		visit(tree, (node) => {
 			if (node.type === "leafDirective") {
