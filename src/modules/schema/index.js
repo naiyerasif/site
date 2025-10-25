@@ -1,5 +1,5 @@
 import { z } from "astro:content";
-import siteInfo, { fullLink, editLink } from "../website/index.js";
+import siteInfo, { fullLink } from "../website/index.js";
 import { PageType, PostType, Status } from "./defs.js";
 
 const title = z.string().max(64);
@@ -19,10 +19,6 @@ const url = z.preprocess(
 const optionalUrl = z.preprocess(
 	val => val && fullLink(val),
 	z.string().url().optional()
-);
-const optionalEditUrl = z.preprocess(
-	val => val && editLink(val),
-	z.string().startsWith(siteInfo.editBase).url().optional()
 );
 
 const ogImage = z.preprocess(
@@ -79,8 +75,7 @@ const pageInfoSchema = z.object({
 	published: z.string().optional(), // add yyyy-MM-dd format validation
 	updated: z.string().optional(), // add yyyy-MM-dd format validation
 	previous: optionalUrl,
-	next: optionalUrl,
-	source: optionalEditUrl,
+	next: optionalUrl
 });
 
 export {

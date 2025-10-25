@@ -12,8 +12,7 @@ const {
 	published,
 	updated,
 	previous,
-	next,
-	source
+	next
 } = pageInfoSchema.parse(Astro.props.pageInfo);
 const siteTitle = siteInfo.title;
 const siteAuthor = siteInfo.author.name;
@@ -34,7 +33,6 @@ const mastodonId = siteInfo.author.presence.mastodon.id;
 <link rel="sitemap" href="/sitemap-index.xml">
 <link rel="alternate" type="application/rss+xml" href="/feed.xml">
 <link rel="canonical" href={url}>
-{source && <link rel="source" href={source}>}
 {previous && <link rel="prev" aria-label="Previous page" href={previous}>}
 {next && <link rel="next" aria-label="Next page" href={next}>}
 <meta property="og:description" name="description" content={description}>

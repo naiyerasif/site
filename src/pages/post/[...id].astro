@@ -2,7 +2,6 @@
 import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import SharePanel from "../../components/SharePanel.astro";
-import ActionPanel from "../../components/ActionPanel.astro";
 import Toc from "../../components/Toc.astro";
 import Time from "../../components/Time.astro";
 import format, { compare, format_date } from "../../modules/datetime/index.js";
@@ -66,7 +65,6 @@ const pageInfo = {
 	</article>
 	<Fragment slot="sidekick">
 		<div class="sidekick-panels">
-			<ActionPanel {pageInfo}/>
 			<SharePanel {pageInfo}/>
 		</div>
 

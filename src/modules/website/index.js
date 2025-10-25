@@ -1,5 +1,4 @@
 import pkg from "../../../package.json" with { type: "json" };
-import { join } from "path/posix";
 
 const siteInfo = {
 	version: pkg.version,
@@ -35,9 +34,6 @@ const siteInfo = {
 	get description() {
 		return `Personal space of ${this.author.name} on the web`;
 	},
-	get editBase() {
-		return `${this.repository}/edit/main`;
-	},
 	get issueBase() {
 		return `${this.repository}/issues/new`;
 	}
@@ -45,11 +41,6 @@ const siteInfo = {
 
 function fullLink(path, base = siteInfo.siteBase) {
 	return new URL(path, base).href;
-}
-
-const editUrl = new URL(siteInfo.editBase);
-function editLink(path) {
-	return fullLink(join(editUrl.pathname, path), editUrl.origin);
 }
 
 function postPathname(slug) {
@@ -63,7 +54,6 @@ function paginationPathname(base, pageNumber) {
 export {
 	siteInfo as default,
 	fullLink,
-	editLink,
 	postPathname,
 	paginationPathname
 };

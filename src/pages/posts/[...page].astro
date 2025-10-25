@@ -31,7 +31,7 @@ const pageInfo = {
 	<div slot="hero" class="hero-body">
 		<hgroup>
 			<h1>Posts</h1>
-			<p>{page.start + 1}&hellip;{page.end + 1} of {page.total} posts</p>
+			<p>{page.start + 1}&hellip;{page.end + 1} of {page.total} entries</p>
 		</hgroup>
 	</div>
 	{page.data.map(entry => entry.data.type === PostType.note.id ? <NoteCard {entry} /> : <PostCard {entry} />)}
