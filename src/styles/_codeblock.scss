@@ -95,7 +95,7 @@
 
 		&[data-line-added] {
 			--z-hl-line-number-color: var(--y-commend-color);
-			--z-hl-line-bg-color: var(--y-accent-bg-color);
+			--z-hl-line-bg-color: var(--y-commend-bg-color);
 			position: relative;
 
 			&::before {
@@ -131,7 +131,7 @@
 
 		&:is(:focus:not(:focus-visible), :hover) {
 			--z-hl-line-number-color: var(--color-prettylights-syntax-comment);
-			--z-hl-line-bg-color: var(--y-note-canvas-color);
+			--z-hl-line-bg-color: var(--y-note-bg-color);
 			outline-width: 1px;
 			outline-offset: -1px;
 			outline-color: var(--z-hl-line-number-color);

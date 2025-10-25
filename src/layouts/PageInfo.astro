@@ -1,5 +1,4 @@
 ---
-import Critical from "./Critical.astro";
 import { pageInfoSchema } from "../modules/schema/index.js";
 import siteInfo from "../modules/website/index.js";
 
@@ -54,5 +53,4 @@ const mastodonId = siteInfo.author.presence.mastodon.id;
 <meta itemprop="name" content={title}>
 <meta itemprop="description" content={description}>
 <meta name="generator" content={Astro.generator}>
-<Critical/>
 <script src="/vendor/fuse@7.0.0.basic.min.js" is:inline async></script>

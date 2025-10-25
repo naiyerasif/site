@@ -1,6 +1,7 @@
 ---
 import "../styles/main.scss";
 import PageInfo from "./PageInfo.astro";
+import Critical from "./Critical.astro";
 import Header from "./Header.astro";
 import Footer from "./Footer.astro";
 import ClientBase from "./ClientBase.astro";
@@ -15,6 +16,7 @@ const sidekick = Astro.slots.has("sidekick");
 <html lang="en">
 	<head>
 		<PageInfo {pageInfo}/>
+		<Critical/>
 	</head>
 	<body>
 		<Header/>
