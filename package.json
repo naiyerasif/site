@@ -25,6 +25,7 @@
 		"feed": "^5.1.0",
 		"hastscript": "^9.0.1",
 		"html-entities": "^2.6.0",
+		"lite-youtube-embed": "^0.3.3",
 		"mdast-util-to-string": "^4.0.0",
 		"postcss-preset-env": "^10.4.0",
 		"rehype-autolink-headings": "^7.1.0",
