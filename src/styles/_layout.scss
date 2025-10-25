@@ -239,40 +239,13 @@ body > .footer {
 	margin-block-start: var(--y-body-gap);
 	@include mixins.flow;
 
-	:not(random-message) {
-		font-size: var(--y-small-text);
-	}
-
-	random-message {
-		margin-block-start: calc((var(--x-gap-root) * -1) - 2ch);
-		margin-block-end: var(--x-gap-root);
-		text-align: end;
-
-		figcaption {
-			--y-flow-gap: 0.5em;
-			font-size: var(--y-small-text);
-		}
-
-		blockquote {
-			display: inline-block;
-			background-color: var(--y-assert-canvas-color);
-			text-wrap: balance;
-			font-size: var(--y-normal-text);
-			padding: 1ch 1.5ch;
-			border: none;
-			border-radius: calc(var(--x-radius-root) * 1.5);
-			border-end-end-radius: var(--x-radius-xs);
-			max-inline-size: fit-content;
-			@include mixins.texture;
-		}
-	}
-
 	.footer-nav {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: end;
 		justify-content: space-between;
 		gap: 1rem;
+		font-size: var(--y-small-text);
 
 		&-items {
 			display: flex;
