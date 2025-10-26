@@ -378,9 +378,12 @@ random-message {
 	}
 }
 
-dl.timeline {
+dl {
+	--z-tl-color: var(--y-tl-color, var(--y-emphasis-color));
+	--z-tl-border: var(--y-tl-border, var(--y-body-border));
+
 	dt {
-		color: var(--y-assert-color);
+		color: var(--z-tl-color);
 	}
 
 	dd {
@@ -396,11 +399,36 @@ dl.timeline {
 			mask:
 				radial-gradient(4.5px at calc(100% + 1.8px) 50%,#0000 calc(99% - 2px),#000 calc(101% - 2px) 99%,#0000 101%) calc(50% - 2.5px + .5px) calc(50% - 6px)/ 5px 12px  repeat-y,
 				radial-gradient(4.5px at -1.8px 50%,#0000 calc(99% - 2px),#000 calc(101% - 2px) 99%,#0000 101%) calc(50% + 2.5px) 50%/5px 12px  repeat-y;
-			background-color: var(--y-assert-canvas-color);
+			background-color: var(--z-tl-border);
 		}
 	}
 
 	dd + dt {
 		margin-block-start: 2rem;
+	}
+
+	&.note {
+		--y-tl-color: var(--y-note-color);
+		--y-tl-border: var(--y-note-canvas-color);
+	}
+
+	&.assert {
+		--y-tl-color: var(--y-assert-color);
+		--y-tl-border: var(--y-assert-canvas-color);
+	}
+
+	&.commend {
+		--y-tl-color: var(--y-commend-color);
+		--y-tl-border: var(--y-commend-canvas-color);
+	}
+
+	&.warn {
+		--y-tl-color: var(--y-warn-color);
+		--y-tl-border: var(--y-warn-canvas-color);
+	}
+
+	&.deter {
+		--y-tl-color: var(--y-deter-color);
+		--y-tl-border: var(--y-deter-canvas-color);
 	}
 }
