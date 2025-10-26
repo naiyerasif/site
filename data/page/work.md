@@ -7,7 +7,7 @@ update: 2025-04-12 22:55:18
 tagline: A timeline of professional and open source work
 ---
 
-:::dl{.timeline}
+:::dl{.assert}
 
 - 2023
 
