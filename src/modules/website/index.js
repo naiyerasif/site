@@ -55,23 +55,23 @@ const calloutOptions = {
 	tagName: "div",
 	callouts: {
 		note: {
-			label: "Note",
+			title: "Note",
 			hint: `<svg role="img" class="icon"><use href="#x4-callout-note"/></svg>`
 		},
 		commend: {
-			label: "Tip",
+			title: "Tip",
 			hint: `<svg role="img" class="icon"><use href="#x4-callout-commend"/></svg>`
 		},
 		warn: {
-			label: "Warning",
+			title: "Warning",
 			hint: `<svg role="img" class="icon"><use href="#x4-callout-warn"/></svg>`
 		},
 		deter: {
-			label: "Caution",
+			title: "Caution",
 			hint: `<svg role="img" class="icon"><use href="#x4-callout-deter"/></svg>`
 		},
 		assert: {
-			label: "Important",
+			title: "Important",
 			hint: `<svg role="img" class="icon"><use href="#x4-callout-assert"/></svg>`
 		}
 	},
