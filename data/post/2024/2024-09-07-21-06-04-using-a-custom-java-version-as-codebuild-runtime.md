@@ -19,4 +19,6 @@ phases:
   # use Java 22 in the next phases
 ```
 
-> ~~You'll need to manually set `JAVA_HOME`, `JRE_HOME`, and `JDK_HOME` because these variables don't get set properly &mdash; at least for now (there is an [issue](https://github.com/aws/aws-codebuild-docker-images/issues/738) tracking it).~~ AWS has patched the `JAVA_HOME` issue, so setting the runtime is now enough.
+:::assert{title='Update [Oct 07, 2024]'}
+~~You'll need to manually set `JAVA_HOME`, `JRE_HOME`, and `JDK_HOME` because these variables don't get set properly &mdash; at least for now (there is an [issue](https://github.com/aws/aws-codebuild-docker-images/issues/738) tracking it).~~ AWS has patched the `JAVA_HOME` issue, so setting the runtime is now enough.
+:::
