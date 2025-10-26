@@ -234,9 +234,8 @@ body > .footer {
 	position: sticky;
 	top: 100vh;
 	top: 100dvh;
-	padding-block: var(--x-gap-root) var(--x-gap-lg);
+	padding-block: var(--x-gap-lg);
 	border-block-start: 1px dotted var(--y-body-border);
-	margin-block-start: var(--y-body-gap);
 	@include mixins.flow;
 
 	.footer-nav {
