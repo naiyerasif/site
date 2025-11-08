@@ -148,13 +148,13 @@ window.__search = function (query, searchIndex) {
 }
 
 @font-face {
-	font-family: Google Sans Code var;
+	font-family: JetBrains Mono var;
 	font-display: swap;
-	src: url("/fonts/GoogleSansCode.var.woff2") format("woff2");
+	src: url("/fonts/JetBrainsMono.var.woff2") format("woff2");
 	font-style: normal;
-	font-weight: 300 800;
+	font-weight: 100 900;
 	font-named-instance: "Regular";
-	font-feature-settings: "ss01";
+	font-feature-settings: "calt" 0;
 }
 
 @font-face {
@@ -298,21 +298,21 @@ window.__search = function (query, searchIndex) {
 }
 
 @font-face {
-	font-family: Google Sans Code;
+	font-family: JetBrains Mono;
 	font-display: swap;
-	src: url("/fonts/GoogleSansCode-Regular.woff2") format("woff2");
+	src: url("/fonts/JetBrainsMono-Regular.woff2") format("woff2");
 	font-style: normal;
 	font-weight: 400;
-	font-feature-settings: "ss01";
+	font-feature-settings: "calt" 0;
 }
 
 @font-face {
-	font-family: Google Sans Code;
+	font-family: JetBrains Mono;
 	font-display: swap;
-	src: url("/fonts/GoogleSansCode-SemiBold.woff2") format("woff2");
+	src: url("/fonts/JetBrainsMono-SemiBold.woff2") format("woff2");
 	font-style: normal;
 	font-weight: 600;
-	font-feature-settings: "ss01";
+	font-feature-settings: "calt" 0;
 }
 
 @media (prefers-reduced-motion: no-preference), (update: fast) {
@@ -330,7 +330,7 @@ window.__search = function (query, searchIndex) {
 		Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 	--y-body-font: "Inter", var(--x-native-sans-font);
 	--y-fancy-font: "MakeSans", var(--x-native-sans-font);
-	--y-mono-font: "Google Sans Code", var(--x-native-mono-font);
+	--y-mono-font: "JetBrains Mono", var(--x-native-mono-font);
 
 	/* @link: https://utopia.fyi/type/calculator/?c=320,16,1.125,2056,20,1.2,6,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
 	--fluid-min-width: 320;
@@ -378,7 +378,7 @@ window.__search = function (query, searchIndex) {
 @supports (font-variation-settings: normal) {
 	:root {
 		--y-body-font: "Inter var", var(--x-native-sans-font);
-		--y-mono-font: "Google Sans Code var", var(--x-native-mono-font);
+		--y-mono-font: "JetBrains Mono var", var(--x-native-mono-font);
 	}
 }
 

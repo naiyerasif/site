@@ -6,7 +6,6 @@
 	--z-hl-line-bg-color: transparent;
 	--z-hl-line-number-color: var(--y-note-border);
 	--z-hl-radius: var(--x-radius-sm);
-	font-size: 0.9em;
 
 	&-header {
 		--z-hl-header-padding: 0.3em 0.6em;
@@ -18,7 +17,7 @@
 		border-start-start-radius: var(--z-hl-radius);
 		border-start-end-radius: var(--z-hl-radius);
 		border: 1px solid var(--y-note-border);
-		font-size: 0.75em;
+		font-size: 0.7em;
 	}
 
 	&-language {
