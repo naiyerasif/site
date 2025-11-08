@@ -19,7 +19,7 @@
 		"@microflash/remark-callout-directives": "^5.0.0",
 		"@sindresorhus/slugify": "^3.0.0",
 		"@wooorm/starry-night": "^3.8.0",
-		"astro": "^5.15.3",
+		"astro": "^5.15.4",
 		"cheerio": "^1.1.2",
 		"dayjs": "^1.11.19",
 		"feed": "^5.1.0",
@@ -37,7 +37,7 @@
 		"remark-rehype": "^11.1.2",
 		"remark-smartypants": "^3.0.2",
 		"sass": "^1.93.3",
-		"sharp": "^0.34.4",
+		"sharp": "^0.34.5",
 		"unified": "^11.0.5",
 		"unist-util-visit": "^5.0.0"
 	},
