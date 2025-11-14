@@ -45,7 +45,9 @@ const pageInfo = {
 			</hgroup>
 		</div>
 		<div class="hero-footer">
-			<small>Published on <Time date={data.date} /></small>{showUpdate && <small>Updated on <Time date={data.update} /></small>}<small class={`chip chip-${status.tone.id}`}>{status.label}</small>{showToc && <nav class="toc">
+			<small>Published on <Time date={data.date} /></small>{showUpdate && <small>Updated on <Time date={data.update} /></small>}<small class={`chip chip-${status.tone.id}`}>{status.label}</small>
+		</div>
+		{showToc && <nav class="toc">
 			<div class="toc-header">Table of Contents</div>
 			<Toc headings={toc(headings, siteInfo.maxTocDepth)}/>
 		</nav>}
