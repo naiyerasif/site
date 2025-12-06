@@ -1,9 +1,9 @@
 ---
 slug: "2020/06/11/polymorphic-requests-with-jackson"
 title: "Polymorphic Requests with Jackson"
-description: "Learn about handling requests with varying structures in an API using Jackson by using polymorphism."
+description: "Tackling dynamic API payloads in Java can get complex. Learn how Jackson, with Java interfaces, provides a flexible approach to handle them."
 date: 2020-06-11 14:30:07
-update: 2022-07-15 12:05:02
+update: 2025-12-06 21:20:36
 type: "guide"
 ---
 
@@ -12,10 +12,10 @@ While building a generalized API, you may come across scenarios where the struct
 :::note{.setup}
 The code written for this post uses:
 
-- Java 18
-- Jackson Databind 2.13.3
-- JUnit 5.8.2
-- Maven 3.8.6
+- Java 25
+- Jackson Databind 3.0.3
+- JUnit 6.0.1
+- Maven 3.9.11
 :::
 
 Create a Maven project using the following `pom.xml`.
@@ -23,36 +23,33 @@ Create a Maven project using the following `pom.xml`.
 ```xml title="pom.xml"
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>dev.mflash.guides.java</groupId>
-	<artifactId>jackson-polymorphic-requests</artifactId>
-	<version>1.0.0</version>
+	<groupId>com.example</groupId>
+	<artifactId>jackson3-polymorphic-requests</artifactId>
+	<version>2.0.0</version>
 
 	<properties>
-		<encoding>UTF-8</encoding>
-		<project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
-		<java.version>18</java.version>
+		<java.version>25</java.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
-		<jackson.version>2.13.3</jackson.version>
-		<junit.version>5.8.2</junit.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<junit.version>6.0.1</junit.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
+			<groupId>tools.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>${jackson.version}</version>
+			<version>3.0.3</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-core</artifactId>
-			<version>3.23.1</version>
+			<version>3.27.6</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -74,14 +71,12 @@ Create a Maven project using the following `pom.xml`.
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.0.0-M7</version>
+				<version>3.5.4</version>
 			</plugin>
 		</plugins>
 	</build>
 </project>
 ```
-
-## The scenario
 
 Consider a shopping cart app. A customer may add items from different categories into the shopping cart. The API that saves the items in the shopping cart should be able to handle different types of items with different attributes.
 
@@ -89,6 +84,8 @@ Say, the following `CartItem` interface represents different types of items base
 
 
 ```java
+package com.example.jackson.polymorphic;
+
 sealed interface CartItem permits Software, Accessory {
 
 	ItemCategory itemCategory();
@@ -98,7 +95,7 @@ sealed interface CartItem permits Software, Accessory {
 The `Software` may have software-specific properties.
 
 ```java
-package dev.mflash.guides.java.jackson.polymorphic;
+package com.example.jackson.polymorphic;
 
 public record Software(
 		String os,
@@ -118,7 +115,7 @@ public record Software(
 The `Accessory` may have a different set of properties.
 
 ```java
-package dev.mflash.guides.java.jackson.polymorphic;
+package com.example.jackson.polymorphic;
 
 import java.util.List;
 
@@ -137,7 +134,7 @@ public record Accessory(
 }
 ```
 
-When a customer adds a software to the shopping cart, your app may receive a JSON that may look like this.
+When a customer adds a software to the shopping cart, your app may receive a JSON like this.
 
 ```json
 {
@@ -150,10 +147,10 @@ When a customer adds a software to the shopping cart, your app may receive a JSO
 }
 ```
 
-What you'd like for your API is to receive the JSON as an instance of `CartItem` of type `Software`. Instead, Jackson throws the following exception.
+What you'd like for your API is to receive an instance of `CartItem` of type `Software`. Instead, Jackson throws the following exception.
 
 ```sh
-com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Cannot construct instance of `dev.mflash.guides.java.jackson.polymorphic.CartItem` (no Creators, like default constructor, exist): abstract types either need to be mapped to concrete types, have custom deserializer, or contain additional type information
+tools.jackson.databind.exc.InvalidDefinitionException: Cannot construct instance of `com.example.jackson.polymorphic.CartItem` (no Creators, like default constructor, exist): abstract types either need to be mapped to concrete types, have custom deserializer, or contain additional type information
 ```
 
 Jackson can't find a way to initialize an instance of `CartItem` of type `Software` because it can't find a constructor to do so.
@@ -163,7 +160,7 @@ Jackson can't find a way to initialize an instance of `CartItem` of type `Softwa
 Add the following annotations on the `CartItem` interface.
 
 ```java {3..10}
-package dev.mflash.guides.java.jackson.polymorphic;
+package com.example.jackson.polymorphic;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -179,33 +176,31 @@ sealed interface CartItem permits Software, Accessory {
 }
 ```
 
-In this change,
 - `@JsonTypeInfo` annotation tells Jackson that the identity of an instance should be determined by a property called `itemCategory`.
-- `@JsonSubTypes` annotations tell Jackson that if the `itemCategory` has a value `SOFTWARE`, the JSON should be deserialized as an object of `Software` type. Similarly, if the `itemCategory` has a value `ACCESSORY`, the JSON should be deserialized as an object of `Accessory` type.
+- `@JsonSubTypes` annotations tell Jackson that if the `itemCategory` has a value `SOFTWARE`, the JSON should be deserialized as an instance of `Software` type. Similarly, if the `itemCategory` has a value `ACCESSORY`, the JSON should be deserialized as an instance of `Accessory` type.
 
 ## Testing the implementation
 
 Here are some JUnit tests to verify the implemented behavior.
 
 ```java
-package dev.mflash.guides.java.jackson.polymorphic;
+package com.example.jackson.polymorphic;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchException;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.exc.InvalidTypeIdException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import tools.jackson.databind.exc.InvalidTypeIdException;
+import tools.jackson.databind.json.JsonMapper;
 
 class CartItemTest {
 
-	private static final ObjectMapper mapper = new ObjectMapper();
+	private static final JsonMapper mapper = new JsonMapper();
 
 	@Test
 	@DisplayName("Should parse item as Software")
-	void shouldParseItemAsSoftware() throws JsonProcessingException {
+	void shouldParseItemAsSoftware() {
 		final var item = """
 				{
 					"itemCategory": "SOFTWARE",
@@ -224,7 +219,7 @@ class CartItemTest {
 
 	@Test
 	@DisplayName("Should parse item as Accessory")
-	void shouldParseItemAsAccessory() throws JsonProcessingException {
+	void shouldParseItemAsAccessory() {
 		final var item = """
 				{
 					"itemCategory": "ACCESSORY",
@@ -267,4 +262,4 @@ class CartItemTest {
 
 **Source code**
 
-- [jackson-polymorphic-requests](https://github.com/Microflash/guides/tree/main/java/jackson-polymorphic-requests)
+- [jackson3-polymorphic-requests](https://github.com/Microflash/backstage/tree/main/java/jackson3-polymorphic-requests)
