@@ -76,12 +76,8 @@
 
 			&:not(:only-child)::before {
 				display: inline-block;
-				content: attr(data-line-number);
+				content: "";
 				user-select: none;
-				margin-inline-end: 1ch;
-				text-align: end;
-				color: var(--z-hl-line-number-color);
-				inline-size: calc(var(--hl-line-gutter) * 1ch);
 			}
 
 			&:where(:focus:not(:focus-visible), :hover) {
@@ -106,11 +102,13 @@
 		[data-line-inserted] {
 			--z-hl-line-number-color: var(--y-commend-color);
 			--z-hl-line-bg-color: var(--y-commend-bg-color);
+			--z-hl-line-border: var(--y-commend-border);
 		}
 
 		[data-line-deleted] {
 			--z-hl-line-number-color: var(--y-deter-color);
 			--z-hl-line-bg-color: var(--y-deter-bg-color);
+			--z-hl-line-border: var(--y-deter-border);
 		}
 
 		[data-line-output] {
