@@ -4,7 +4,6 @@ import Layout from "../layouts/Layout.astro";
 import PostCard from "../components/PostCard.astro";
 import NoteCard from "../components/NoteCard.astro";
 import Icon from "../components/Icon.astro";
-import DragTrail from "../components/DragTrail.astro";
 import siteInfo, { paginationPathname } from "../modules/website/index.js";
 import { compare } from "../modules/datetime/index.js";
 import { PostType, Status } from "../modules/schema/defs.js";
@@ -32,5 +31,4 @@ const pageInfo = {
 	<div slot="sidekick" class="sidekick-items">
 		<a href={paginationPathname("posts", 2)} class="button-link"><Icon name="twist-right-up"/> more posts</a>
 	</div>
-	<DragTrail/>
 </Layout>
