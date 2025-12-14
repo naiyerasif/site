@@ -18,8 +18,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       '@microflash/rehype-starry-night':
-        specifier: ^7.4.0
-        version: 7.4.0
+        specifier: ^8.0.0
+        version: 8.0.0
       '@microflash/remark-callout-directives':
         specifier: ^5.0.0
         version: 5.0.0
@@ -1238,8 +1238,8 @@ packages:
   '@microflash/rehype-slugify@1.0.0':
     resolution: {integrity: sha512-pp9LB4zp8cxF+Pf6oXNpqCMNXAmFKeIP9Ab6MOb/SrzxDvGfi0O2RZwG7znXh7dmVgYa0//Dte4X5kcIf+G3/w==}
 
-  '@microflash/rehype-starry-night@7.4.0':
-    resolution: {integrity: sha512-Bi+vzdh+JCdr0nTbDi8e/PDYEQdMjI3Bss+VWfVtmYCm6sXarqHyK8dRV9otm694qENQlzZYQMX+VA/MTel9gg==}
+  '@microflash/rehype-starry-night@8.0.0':
+    resolution: {integrity: sha512-DkY++S0Ua1DXf60Yq2mRs5HpUcaAIEhOjol04z40As4874muqrTcWWTL/s9IW43prLJH2xE+oN1GrQpXT26xOw==}
 
   '@microflash/remark-callout-directives@5.0.0':
     resolution: {integrity: sha512-kLpV/WKqOuQMJfYe+2MaTQ4El12qJslZHSSF8c1/y1wBGT1w3bd3T3zgVLrDN1/SZyoDa2mT5n+Ous+gtMWRKA==}
@@ -6480,7 +6480,7 @@ snapshots:
       hast-util-to-string: 2.0.0
       unist-util-visit: 4.1.2
 
-  '@microflash/rehype-starry-night@7.4.0':
+  '@microflash/rehype-starry-night@8.0.0':
     dependencies:
       '@microflash/fenceparser': 4.0.0
       '@wooorm/starry-night': 3.8.0

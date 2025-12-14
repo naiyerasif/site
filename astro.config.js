@@ -5,7 +5,12 @@ import remarkCalloutDirectives from "@microflash/remark-callout-directives";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlugify from "@microflash/rehype-slugify";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeStarryNight, { defaultPluginPack } from "@microflash/rehype-starry-night";
+import rehypeStarryNight from "@microflash/rehype-starry-night";
+import {
+	titlePlugin,
+	languageIndicatorPlugin,
+	lineAnnotationPlugin
+} from "@microflash/rehype-starry-night/plugins";
 import remarkTimeDirective from "./src/modules/remark-time-directive/index.js";
 import remarkFigureDirective from "./src/modules/remark-figure-directive/index.js";
 import remarkYoutubeDirective from "./src/modules/remark-youtube-directive/index.js";
@@ -109,30 +114,25 @@ export default defineConfig({
 						...all
 					],
 					plugins: [
-						...defaultPluginPack,
+						titlePlugin,
+						lineAnnotationPlugin,
+						languageIndicatorPlugin,
 						{
-							type: "header",
-							plugin: (globalOptions, nodes) => {
-								nodes.push({
-									type: "element",
-									tagName: "div",
-									properties: {
-										className: [`${globalOptions.classNamePrefix}-actions`],
-									},
-									children: [
-										{
-											type: "element",
-											tagName: "clipboard-copy",
-											properties: {
-												className: [`${globalOptions.classNamePrefix}-copy`],
-												for: globalOptions.id
-											},
-											children: [
-												{ type: "text", value: "Copy" }
-											]
-										}
-									]
-								});
+							type: "footer",
+							apply: (opts, nodes) => {
+								if (opts.id) {
+									nodes.push({
+										type: "element",
+										tagName: "clipboard-copy",
+										properties: {
+											className: [`${opts.namespace}-copy`],
+											for: opts.id
+										},
+										children: [
+											{ type: "text", value: "Copy" }
+										]
+									});
+								}
 							}
 						}
 					]
