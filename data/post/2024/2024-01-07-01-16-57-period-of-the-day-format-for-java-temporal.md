@@ -2,7 +2,7 @@
 slug: "2024/01/07/period-of-the-day-format-for-java-temporal"
 title: "Period of the Day format for Java Temporal"
 date: 2024-01-07 01:33:06
-update: 2024-01-07 01:33:06
+update: 2025-12-22 21:26:42
 type: "note"
 ---
 
@@ -14,14 +14,14 @@ import java.time.format.DateTimeFormatter;
 
 void main() {
 	var formatter = DateTimeFormatter.ofPattern("B");
-	System.out.println(formatter.format(LocalDateTime.now()));
+	IO.println(formatter.format(LocalDateTime.now()));
 }
 ```
 
-Running this program with Java 21 prints the following.
+Running this program with Java 25 prints the following.
 
 ```sh prompt{1}
-java --enable-preview --source 21 PeriodOfDay.java
+java PeriodOfDay.java
 at night
 ```
 
