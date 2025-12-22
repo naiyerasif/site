@@ -19,7 +19,7 @@
 		"@microflash/remark-callout-directives": "^5.0.0",
 		"@sindresorhus/slugify": "^3.0.0",
 		"@wooorm/starry-night": "^3.8.0",
-		"astro": "^5.16.5",
+		"astro": "^5.16.6",
 		"cheerio": "^1.1.2",
 		"dayjs": "^1.11.19",
 		"feed": "^5.1.0",
@@ -36,7 +36,7 @@
 		"remark-parse": "^11.0.0",
 		"remark-rehype": "^11.1.2",
 		"remark-smartypants": "^3.0.2",
-		"sass": "^1.96.0",
+		"sass": "^1.97.1",
 		"sharp": "^0.34.5",
 		"unified": "^11.0.5",
 		"unist-util-visit": "^5.0.0"
@@ -47,5 +47,5 @@
 		"picocolors": "^1.1.1",
 		"unlighthouse": "^0.17.4"
 	},
-	"packageManager": "pnpm@10.25.0"
+	"packageManager": "pnpm@10.26.1"
 }
