@@ -1,50 +1,51 @@
 ---
 slug: "2020/09/13/logging-methods-with-aspectj-in-a-spring-application"
 title: "Logging methods with AspectJ in a Spring application"
-description: "Method logging is a common pattern for gathering method-related data, such as execution time, inputs, and outputs. Learn how you can automate this process using AspectJ in a Spring application."
+description: "Method logging is a useful technique to collect method execution time, input parameters, and return values. Explore how to build a reusable component to do this using AspectJ and Spring AOP."
 date: 2020-09-13 21:01:49
-update: 2023-11-25 11:46:56
+update: 2025-12-22 23:32:58
 type: "guide"
 ---
 
-Method logging is a common pattern to collect data about a method. This could be execution time, the inputs and outputs of the method, etc. You can do this by using a logger but since this is a repetitive task, it makes sense to automate it. That's exactly what we'll do in this post.
+Method logging is a useful technique for collecting runtime data, such as execution time, input parameters, and return values, about a method. While we can do this manually, it becomes tedious at scale. It makes sense to be lazy here and automate it. In this post, we'll build a consistent and reusable method logging approach using aspects and Spring AOP.
 
 :::note{.setup}
-The code written for this post uses:
+The code in this post is written using:
 
-- Java 21
-- Spring Boot 3.2.0
-- AspectJ 1.9.20
-- Maven 3.9.5
+- Java 25
+- Spring Boot 4.0.1
+- AspectJ 1.9.25.1
+- Maven 3.9.12
 :::
 
 Generate a Maven project using the following `pom.xml`.
 
 ```xml title="pom.xml"
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-				 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+				 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.0</version>
+		<version>4.0.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
 	<groupId>com.example</groupId>
-	<artifactId>springboot3-aop-method-logging</artifactId>
-	<version>2.0.0</version>
+	<artifactId>springboot4-aop-method-logging</artifactId>
+	<version>3.0.0</version>
 
 	<properties>
-		<java.version>21</java.version>
+		<java.version>25</java.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 
 		<dependency>
@@ -76,14 +77,14 @@ Generate a Maven project using the following `pom.xml`.
 </project>
 ```
 
-## Define an annotation to log a method
+## Implement an advice for logging a method
 
-You can create aspects by configuring an advice in a variety of ways. You can apply an advice on all classes in specified packages. But, you may not need to log *all* the methods, or you may want to log some methods differently. To do this, you can define an annotation, as follows, and annotate the methods that you need to log. By passing values to the annotation, you can customize the logging behavior.
+We can create aspects in several ways, for example, by applying an advice to all classes within a specific package. However, a more pragmatic and intentional approach is to log only the methods decorated with a custom annotation. This annotation can accept options with which we can customize the logging behavior.
 
 ```java
 package com.example.method.logging.annotation;
 
-import org.springframework.boot.logging.LogLevel;
+import org.slf4j.event.Level;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -95,7 +96,7 @@ import java.time.temporal.ChronoUnit;
 @Target(ElementType.METHOD)
 public @interface LogEntryExit {
 
-	LogLevel value() default LogLevel.INFO;
+	Level value() default Level.INFO;
 
 	ChronoUnit unit() default ChronoUnit.SECONDS;
 
@@ -107,19 +108,17 @@ public @interface LogEntryExit {
 }
 ```
 
-The `@LogEntryExit` annotation can accept
+`@LogEntryExit` supports the following options to tweak logging behavior.
 
-- a `value` that declares the logging level; by default, it is `INFO`.
-- a `showExecutionTime` flag to enable logging the execution time of the method; by default, it is `true`.
-- a `unit` that declares the unit of the duration of execution; by default, it is `seconds`.
-- a `showArgs` flag to toggle whether to display the arguments received by the method; by default, it is `false`.
-- a `showResult` flag to toggle whether to display the result returned by the method; by default, it is `false`.
+- `value` specifies the logging level.
+- `showExecutionTime` enables logging the duration of method execution.
+- `unit` defines the time unit used to calculate the duration of method execution.
+- `showArgs` enables logging of the method arguments.
+- `showResult` enables logging of the method's return value.
 
-## Define the aspect with an advice to log the methods
+To apply the advice around the methods annotated with `@LogEntryExit`, we can use the following aspect.
 
-Apply the advice around the methods annotated with `@LogEntryExit` annotation, as follows.
-
-```java
+```java {26,46,52}
 package com.example.method.logging.aspect;
 
 import com.example.method.logging.annotation.LogEntryExit;
@@ -130,7 +129,7 @@ import org.aspectj.lang.reflect.CodeSignature;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.logging.LogLevel;
+import org.slf4j.event.Level;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
@@ -151,9 +150,7 @@ public class LogEntryExitAspect {
 		var methodSignature = (MethodSignature) point.getSignature();
 		Method method = methodSignature.getMethod();
 
-		Logger logger = LoggerFactory.getLogger(method.getDeclaringClass());
 		var annotation = method.getAnnotation(LogEntryExit.class);
-		LogLevel level = annotation.value();
 		ChronoUnit unit = annotation.unit();
 		boolean showArgs = annotation.showArgs();
 		boolean showResult = annotation.showResult();
@@ -161,214 +158,67 @@ public class LogEntryExitAspect {
 		String methodName = method.getName();
 		Object[] methodArgs = point.getArgs();
 		String[] methodParams = codeSignature.getParameterNames();
+		Level level = annotation.value();
+		Logger logger = LoggerFactory.getLogger(method.getDeclaringClass());
 
-		log(logger, level, entry(methodName, showArgs, methodParams, methodArgs));
+		logger.atLevel(level).log(entry(methodName, showArgs, methodParams, methodArgs));
 
 		var start = Instant.now();
 		var response = point.proceed();
 		var end = Instant.now();
 		var duration = String.format("%s %s", unit.between(start, end), unit.name().toLowerCase());
 
-		log(logger, level, exit(methodName, duration, response, showResult, showExecutionTime));
+		logger.atLevel(level).log(exit(methodName, duration, response, showResult, showExecutionTime));
 
 		return response;
 	}
 
-	// ...
+	static String entry(String methodName, boolean showArgs, String[] params, Object[] args) {
+		var message = new StringJoiner(" ").add("Started").add(methodName).add("method");
+
+		if (showArgs && Objects.nonNull(params) && Objects.nonNull(args) && params.length == args.length) {
+
+			Map<String, Object> values = new HashMap<>(params.length);
+
+			for (int i = 0; i < params.length; i++) {
+				values.put(params[i], args[i]);
+			}
+
+			message.add("with args:").add(values.toString());
+		}
+
+		return message.toString();
+	}
+
+	static String exit(String methodName, String duration, Object result, boolean showResult, boolean showExecutionTime) {
+		var message = new StringJoiner(" ").add("Finished").add(methodName).add("method");
+
+		if (showExecutionTime) {
+			message.add("in").add(duration);
+		}
+
+		if (showResult) {
+			message.add("with return:").add(result.toString());
+		}
+
+		return message.toString();
+	}
 }
 ```
 
-There's a lot to digest here. The `LogEntryExitAspect` class has a `log` method that accepts a `JoinPoint`.
+- `@Aspect` tells Spring this bean contains AOP advice. Spring AOP uses Spring IoC container, and creates [AOP proxies](https://docs.spring.io/spring-framework/reference/core/aop/introduction-proxies.html) that apply this aspect at runtime.
+- The `@Around` advice selects the methods annotated with `@LogEntryExit`, using `@annotation(com.example.method.logging.annotation.LogEntryExit)` pointcut expression.
+- When the selected method starts executing, it activates the `log` method which applies the advice _around_ `ProceedingJoinPoint`, and _proceeds_ with the original execution.
 
 :::note{title="JointPoint"}
-As *AspectJ in Action* says, a *join point* is an identifiable execution point in a system. A call to a method is a join point, and so is field access. [Chapter 3 'Understanding the join point model', pp 53] For more details, refer to [AOP Concepts](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#aop-introduction-defn) docs.
+A _join point_ is an identifiable execution point in a system. Calling or executing a method, constructor or exception handler is a join point, and so is reading or writing a field. In [Spring AOP](https://docs.spring.io/spring-framework/reference/core/aop/introduction-defn.html), a join point always represents a method execution.
 :::
 
-Here, we want to apply an advice *around* a method that's annotated by `@LogEntryExit` annotation, and proceed with the execution. That's what a `ProceedingJoinPoint` provides the support for.
-
-Furthermore, we obtain
-- `CodeSignature` to get the parameter names of the join point.
-- `MethodSignature` to find the current instance of the `@LogEntryExit` annotation and its associated options. Using them, we customize the logging output by calling a static `log` method.
-- `MethodSignature` to fetch the details of the class that contains the method. `MethodSignature` also provides the method's name and the list of arguments it receives.
-
-The following static `log` method logs the messages based on the log level specified in the annotation. We need to do this because Spring Boot uses **SLF4J 1.7** which doesn't offer an API to pass the log level at runtime.
-
-```java
-@Aspect
-@Component
-public class LogEntryExitAspect {
-
-	// ...
-
-	static void log(Logger logger, LogLevel level, String message) {
-		switch (level) {
-			case DEBUG -> logger.debug(message);
-			case TRACE -> logger.trace(message);
-			case WARN -> logger.warn(message);
-			case ERROR, FATAL -> logger.error(message);
-			default -> logger.info(message);
-		}
-	}
-}
-```
-
-We've also defined `entry` and `exit` methods to prepare the log message based on the options received by the annotation.
-
-```java {11..21,31,35}
-@Aspect
-@Component
-public class LogEntryExitAspect {
-
-	// ...
-
-	static String entry(String methodName, boolean showArgs, String[] params, Object[] args) {
-		StringJoiner message = new StringJoiner(" ")
-				.add("Started").add(methodName).add("method");
-
-		if (showArgs && Objects.nonNull(params) && Objects.nonNull(args) && params.length == args.length) {
-
-			Map<String, Object> values = new HashMap<>(params.length);
-
-			for (int i = 0; i < params.length; i++) {
-				values.put(params[i], args[i]);
-			}
-
-			message.add("with args:")
-					.add(values.toString());
-		}
-
-		return message.toString();
-	}
-
-	static String exit(String methodName, String duration, Object result, boolean showResult, boolean showExecutionTime) {
-		StringJoiner message = new StringJoiner(" ")
-				.add("Finished").add(methodName).add("method");
-
-		if (showExecutionTime) {
-			message.add("in").add(duration);
-		}
-
-		if (showResult) {
-			message.add("with return:").add(result.toString());
-		}
-
-		return message.toString();
-	}
-
-	// ...
-}
-```
-
-In the `entry` method, we generate a map of parameters and arguments of the method, and add them to the log message if `showArgs` flag is `true`. Similarly, we add the duration of execution, and the result returned by the method to the log message based on the `showExecutionTime` and `showResult` flags respectively.
-
-Together the entire implementation looks like this.
-
-```java
-package com.example.method.logging.aspect;
-
-import com.example.method.logging.annotation.LogEntryExit;
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.reflect.CodeSignature;
-import org.aspectj.lang.reflect.MethodSignature;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.logging.LogLevel;
-import org.springframework.stereotype.Component;
-
-import java.lang.reflect.Method;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.StringJoiner;
-
-@Aspect
-@Component
-public class LogEntryExitAspect {
-
-	@Around("@annotation(com.example.method.logging.annotation.LogEntryExit)")
-	public Object log(ProceedingJoinPoint point) throws Throwable {
-		var codeSignature = (CodeSignature) point.getSignature();
-		var methodSignature = (MethodSignature) point.getSignature();
-		Method method = methodSignature.getMethod();
-
-		Logger logger = LoggerFactory.getLogger(method.getDeclaringClass());
-		var annotation = method.getAnnotation(LogEntryExit.class);
-		LogLevel level = annotation.value();
-		ChronoUnit unit = annotation.unit();
-		boolean showArgs = annotation.showArgs();
-		boolean showResult = annotation.showResult();
-		boolean showExecutionTime = annotation.showExecutionTime();
-		String methodName = method.getName();
-		Object[] methodArgs = point.getArgs();
-		String[] methodParams = codeSignature.getParameterNames();
-
-		log(logger, level, entry(methodName, showArgs, methodParams, methodArgs));
-
-		var start = Instant.now();
-		var response = point.proceed();
-		var end = Instant.now();
-		var duration = String.format("%s %s", unit.between(start, end), unit.name().toLowerCase());
-
-		log(logger, level, exit(methodName, duration, response, showResult, showExecutionTime));
-
-		return response;
-	}
-
-	static String entry(String methodName, boolean showArgs, String[] params, Object[] args) {
-		StringJoiner message = new StringJoiner(" ")
-				.add("Started").add(methodName).add("method");
-
-		if (showArgs && Objects.nonNull(params) && Objects.nonNull(args) && params.length == args.length) {
-
-			Map<String, Object> values = new HashMap<>(params.length);
-
-			for (int i = 0; i < params.length; i++) {
-				values.put(params[i], args[i]);
-			}
-
-			message.add("with args:")
-					.add(values.toString());
-		}
-
-		return message.toString();
-	}
-
-	static String exit(String methodName, String duration, Object result, boolean showResult, boolean showExecutionTime) {
-		StringJoiner message = new StringJoiner(" ")
-				.add("Finished").add(methodName).add("method");
-
-		if (showExecutionTime) {
-			message.add("in").add(duration);
-		}
-
-		if (showResult) {
-			message.add("with return:").add(result.toString());
-		}
-
-		return message.toString();
-	}
-
-	static void log(Logger logger, LogLevel level, String message) {
-		switch (level) {
-			case DEBUG -> logger.debug(message);
-			case TRACE -> logger.trace(message);
-			case WARN -> logger.warn(message);
-			case ERROR, FATAL -> logger.error(message);
-			default -> logger.info(message);
-		}
-	}
-}
-```
-
-Spring AOP works in tandem with Spring IoC container by creating dynamic proxies for AOP proxies (more details [here](https://docs.spring.io/spring-framework/reference/core/aop/introduction-proxies.html)). Thus, we need to mark the aspect as a bean (using `Component` stereotype annotation).
+In this example, the `ProceedingJoinPoint` provides us method parameter names through `CodeSignature`, and supplies class details, method arguments, and the options defined on the `@LogEntryExit` annotation through `MethodSignature`. This helps us write the `entry` and `exit` methods used to print the logs.
 
 ## Method logging in action
 
-Create a `GreetingService` with a method annotated with `@LogEntryExit` annotation as follows.
+Create a `GreetingService` with a method annotated with `@LogEntryExit` as follows.
 
 ```java {11}
 package com.example.method.logging;
@@ -394,48 +244,45 @@ public class GreetingService {
 
 Inject this service in the `Launcher` and call it through `CommandLineRunner`.
 
-```java {10..14, 22..23}
+```java {15..21}
 package com.example.method.logging;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class Launcher implements CommandLineRunner {
+public class Launcher {
 
-	private final GreetingService greetingService;
-
-	public Launcher(GreetingService greetingService) {
-		this.greetingService = greetingService;
-	}
-
-	public static void main(String... args) {
+	void main(String... args) {
 		SpringApplication.run(Launcher.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		greetingService.greet("Joe");
-		greetingService.greet("Jane");
+	@Bean
+	public CommandLineRunner commandLineRunner(GreetingService greetingService) {
+		return _ -> {
+			greetingService.greet("Joe");
+			greetingService.greet("Jane");
+		};
 	}
 }
 ```
 
-Launch the application and you'd see the method logs on the console.
+Launch the application and inspect the method logs.
 
 ```log
-2023-11-25T11:12:26.991  INFO 3502 --- [main] c.e.method.logging.GreetingService : Started greet method with args: {name=Joe}
-2023-11-25T11:12:26.991  INFO 3502 --- [main] c.e.method.logging.GreetingService : Finished greet method in 0 millis with return: Hello, Joe!
-2023-11-25T11:12:26.991  INFO 3502 --- [main] c.e.method.logging.GreetingService : Started greet method with args: {name=Jane}
-2023-11-25T11:12:26.991  INFO 3502 --- [main] c.e.method.logging.GreetingService : Finished greet method in 0 millis with return: Hello, Jane!
+2025-12-22T23:04:38.209 INFO 2033 --- [main] c.e.method.logging.GreetingService : Started greet method with args: {name=Joe}
+2025-12-22T23:04:38.209 INFO 2033 --- [main] c.e.method.logging.GreetingService : Finished greet method in 0 millis with return: Hello, Joe!
+2025-12-22T23:04:38.209 INFO 2033 --- [main] c.e.method.logging.GreetingService : Started greet method with args: {name=Jane}
+2025-12-22T23:04:38.209 INFO 2033 --- [main] c.e.method.logging.GreetingService : Finished greet method in 0 millis with return: Hello, Jane!
 ```
 
-Feel free to play with other options of the `@LogEntryExit` annotation.
+Feel free to experiment with other `@LogEntryExit` options.
 
 ## Testing the aspect
 
-To test whether the `log` method is applying the advice on the annotated method, you can check the logged events and apply assertions on them. Unfortunately, **SLF4J** doesn't offer an API to do this. But, you can leverage [Logback](http://logback.qos.ch/)'s API (the default underlying logger in Spring) to get a list of logged events. To do this, define a custom appender.
+To verify that the `log` method is applying advice to annotated methods, we can inspect the emitted log events and assert against them in the tests. Unfortunately, **SLF4J** doesn't offer an API to capture log output programmatically. However, we can use [Logback](http://logback.qos.ch/)'s appender API to implement an `AspectAppender` to capture a list of logged events.
 
 ```java
 package com.example.method.logging;
@@ -448,16 +295,16 @@ import java.util.List;
 
 public class AspectAppender extends AppenderBase<ILoggingEvent> {
 
-  public final List<ILoggingEvent> events = new ArrayList<>();
+	final List<ILoggingEvent> events = new ArrayList<>();
 
-  @Override
-  protected void append(ILoggingEvent event) {
-    events.add(event);
-  }
+	@Override
+	protected void append(ILoggingEvent event) {
+		events.add(event);
+	}
 }
 ```
 
-Use this appender in the JUnit test to verify positive and negative scenarios for the aspect.
+Now, we can attach this appender to the logger of `GreetingService`. Whenever its public methods are called, a logging event is added to the list maintained by `AspectAppender` using which we can test the captured events.
 
 ```java
 package com.example.method.logging;
@@ -469,15 +316,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
 import org.slf4j.LoggerFactory;
 import org.springframework.aop.aspectj.annotation.AspectJProxyFactory;
 import org.springframework.aop.framework.AopProxy;
 import org.springframework.aop.framework.DefaultAopProxyFactory;
-
-import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -530,35 +372,27 @@ class LogEntryExitAspectTest {
 
 		assertThat(aspectAppender.events).isEmpty();
 	}
-
-	// ...
 }
 ```
 
-In this test,
-- the `setUp` method initializes the `GreetingService` by wrapping it in a `AopProxy`. It also initializes the `AspectAppender` defined earlier and attaches it to the logger of the `GreetingService`; whenever the methods of this service get called, a logging event gets added to the list maintained by `AspectAppender`.
-- the `cleanUp` method tears down the appender.
-- the first test `Should fire advice with logs` verifies the positive case where the entry and exit are logged when the `GreetingService.greet` method is called.
-- the second test `Should not fire advice without annotation` verifies the negative case where neither entry nor exit is logged for a method without `@LogEntryExit` annotation.
+## Outro
 
-## Limitations of this approach
-
-- You can't selectively ignore the logged arguments. If a value is sensitive (for legal or security reasons), this implementation isn't flexible enough to handle such a usecase (although, you can extend it to handle such usecases).
-- This approach relies on Spring AOP; you can't annotate methods that are not part of a Spring bean.
-- All the limitations of Spring AOP and Aspects apply to this approach; you can't log private methods and you can't extend this approach for advising the fields.
+- You can't selectively exclude specific arguments from being logged. If you're dealing with legally sensitive data, highly personal information, or secrets, you'll have to use a more specialized approach to mask such information.
+- This approach relies on Spring AOP, so only methods of Spring-managed beans can be annotated and logged.
+- All standard Spring AOP limitations apply here: you can't use this approach to advise private methods and field access.
 
 ---
 
 **Previous versions**
 
-- [:time[2021-09-02T16:21]](/archive/2020/09/13/logging-methods-with-aspectj-in-a-spring-application--1): Discusses method logging with Spring Boot 2 on Java 16
+- [:time[2023-11-25T11:46:56]](/archive/2020/09/13/logging-methods-with-aspectj-in-a-spring-application--1): Discusses method logging with Spring Boot 3 on Java 21
 
 **Source code**
 
-- [springboot3-aop-method-logging](https://github.com/Microflash/guides/tree/main/spring/springboot3-aop-method-logging)
+- [springboot4-aop-method-logging](https://github.com/Microflash/backstage/tree/main/spring/springboot4-aop-method-logging)
 
 **Related**
 
 - [Aspect Oriented Programming with Spring](https://docs.spring.io/spring-framework/reference/core/aop.html)
-- [AspectJ in Action](https://livebook.manning.com/book/aspectj-in-action-second-edition/chapter-3/18) by Ramnivas Laddad
-- [The AspectJ Project](https://www.eclipse.org/aspectj/)
+- Ramnivas Laddad, [AspectJ in Action](https://www.manning.com/books/aspectj-in-action-second-edition), Manning [2009]
+- [The AspectJ Project](https://eclipse.dev/aspectj/)
