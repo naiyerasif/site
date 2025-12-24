@@ -9,7 +9,7 @@ status: "archived"
 ---
 
 :::warn{title="Archived"}
-This post covers the use of Ory Hydra 1.11.9, but the information provided here is not applicable to Ory Hydra 2. Please consult [the updated version of this post](/post/2022/08/21/client-credentials-flow-with-ory-hydra), which specifically addresses the client credentials flow using Ory Hydra 2.
+This post covers the use of Ory Hydra 1.11.9, but the information provided here is not applicable to Ory Hydra 25.4.0. Please consult [the updated version of this post](/post/2022/08/21/client-credentials-flow-with-ory-hydra), which specifically addresses the client credentials flow using Ory Hydra 25.4.0.
 :::
 
 [Ory Hydra](https://github.com/ory/hydra) is an open source OpenID Connect Provider. It implements OAuth 2.0 Authorization Framework and the OpenID Connect Core 1.0 framework. It can issue OAuth 2.0 Access, Refresh, and ID tokens. This can be useful to test the token flow during the development on a local machine. In this post, we'll setup Hydra using Docker, create a client and test a `client_credentials` flow through Hydra CLI and `curl`.
@@ -243,6 +243,10 @@ curl -X POST 'http://localhost:4445/oauth2/introspect' -H 'Content-Type: applica
 - You can also pass a `hydra.yml` file with the [configuration](https://www.ory.sh/docs/hydra/reference/configuration) to customize the behavior of Hydra. In this post, the default configuration is used.
 
 ---
+
+**Source code**
+
+- [ory-hydra-1--client-credentials-flow](https://github.com/Microflash/backstage/tree/main/%40/archives/misc/ory-hydra-1--client-credentials-flow)
 
 **Related**
 
