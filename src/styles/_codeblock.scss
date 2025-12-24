@@ -95,8 +95,8 @@
 
 		[data-line-marked] {
 			--z-hl-line-number-color: var(--color-prettylights-syntax-comment);
-			--z-hl-line-bg-color: var(--y-note-bg-color);
-			--z-hl-line-border: var(--y-note-border);
+			--z-hl-line-bg-color: var(--y-warn-bg-color);
+			--z-hl-line-border: var(--y-warn-border);
 		}
 
 		[data-line-inserted] {
