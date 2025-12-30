@@ -9,7 +9,7 @@ function createNode(text) {
 }
 export function copyNode(node) {
     const clone = node.cloneNode(true);
-    clone.querySelectorAll("[aria-hidden], [data-line-output], [data-line-deleted]")
+    clone.querySelectorAll("[aria-hidden], [data-line-output], [data-line-deleted], .diff")
 				.forEach(ignorable => ignorable.remove());
     if ('clipboard' in navigator) {
         return navigator.clipboard.writeText(
