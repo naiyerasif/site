@@ -3,71 +3,49 @@ slug: "2020/06/27/api-documentation-with-springdoc-openapi"
 title: "API documentation with springdoc-openapi"
 description: "Springdoc is an open-source project that adds support for OpenAPI Specification 3 (OAS 3) in a Spring Boot application. Learn how to use Springdoc with a reactive Spring Boot project."
 date: 2020-06-27 00:30:07
-update: 2023-11-25 15:56:50
+update: 2025-12-30 20:46:37
 type: "guide"
 ---
 
 [OpenAPI Initiative](https://www.openapis.org/) is a widely adopted industry standard to describe and document API, with [Swagger](https://swagger.io/) being one of its most well-known implementations. [springdoc-openapi](https://springdoc.org/) is an actively maintained integration for Spring Boot applications to quickly generate and publish OpenAPI documentation. In this post, we'll explore how we can use Springdoc with a Spring Boot project.
 
 :::note{.setup}
-The code written for this post uses:
+The examples in this post use:
 
-- Java 21
-- Spring Boot 3.2.0
-- springdoc-openapi 2.2.0
-- Postgres 16
-- Maven 3.9.5
+- Spring Boot 4.0.1
+- Java 25
+- springdoc-openapi 3.0.0
+- Testcontainers 2.0.3
+- Docker 28.5.2
+- Maven 3.9.12
 :::
 
-Grab a sample Spring Boot application from [here](https://github.com/Microflash/guides/tree/main/%40sample/spring/springboot3-notes-api) to get started. It has a ready to use REST API exposed through the `NotesRestController` which we'll enhance gradually for a better OpenAPI integration.
+We'll start with a [sample Spring Boot application](https://github.com/Microflash/backstage/tree/cadc1328ec0d9ce57e1797fca92fe2ad077ee3ae/%40/templates/springboot4-tasks-api) that exposes a REST API through the `TaskRestController`. We'll gradually enhance this application for a better OpenAPI integration. First, let's add the `springdoc-openapi-starter-webmvc-ui` dependency in `pom.xml` to enable the OpenAPI integration.
 
-Bring up an instance of Postgres using Docker with the following `Compose` file (available in the preceding code sample).
-
-```yaml title="compose.yml"
-services:
-  postgres:
-    image: postgres:16-alpine
-    ports:
-      - 5432:5432
-    environment:
-      POSTGRES_USER: gwen
-      POSTGRES_PASSWORD: stacy
-      POSTGRES_DB: brooklyn
-```
-
-Run the following command to launch the container.
-
-```sh prompt{1}
-docker compose up -d
-```
-
-To begin with, open `pom.xml` and add the `springdoc-openapi-starter-webmvc-ui` dependency. This starter will enable the OpenAPI integration automatically.
-
-```xml {37..41} title="pom.xml"
+```xml title="pom.xml" ins{36..40}
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-				 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.0</version>
+		<version>4.0.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
 	<groupId>com.example</groupId>
-	<artifactId>springboot3-springdoc-integration</artifactId>
-	<version>2.0.0</version>
+	<artifactId>springboot4-springdoc-integration</artifactId>
+	<version>3.0.0</version>
 
 	<properties>
-		<java.version>21</java.version>
+		<java.version>25</java.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter-webmvc</artifactId>
 		</dependency>
 
 		<dependency>
@@ -83,13 +61,28 @@ To begin with, open `pom.xml` and add the `springdoc-openapi-starter-webmvc-ui` 
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-			<version>2.2.0</version>
+			<version>3.0.0</version>
 		</dependency>
 
 		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-testcontainers</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>testcontainers-junit-jupiter</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>testcontainers-postgresql</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -98,14 +91,6 @@ To begin with, open `pom.xml` and add the `springdoc-openapi-starter-webmvc-ui` 
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</exclude>
-					</excludes>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
@@ -113,10 +98,10 @@ To begin with, open `pom.xml` and add the `springdoc-openapi-starter-webmvc-ui` 
 </project>
 ```
 
-Launch the application with `Launcher` and navigate to <http://localhost:8080/swagger-ui.html>. You should see the default Swagger UI.
+Launch the application with `LocalLauncher` and open <http://localhost:8080/swagger-ui.html> in a browser. You should see the default Swagger UI.
 
-:::figure
-![Default Swagger UI without any customization](./images/2020-06-27-00-30-07-api-documentation-with-springdoc-openapi-01.png)
+:::figure{.frame}
+![Default Swagger UI without any customization](./images/2020-06-27-00-30-07-api-documentation-with-springdoc-openapi-01.webp)
 
 ::caption[Default Swagger UI generated by springdoc-openapi without any customization]
 :::
@@ -125,13 +110,12 @@ Launch the application with `Launcher` and navigate to <http://localhost:8080/sw
 
 You can improve the default UI by adding description to the endpoint with the `@Operation` annotation. To describe the controller, you can use `@Tag` annotation.
 
-```java {3,4,15,24,32,38,44,50}
+```java ins{4,5,14,20,27,33,39}
 package com.example.springdoc.adapter.web;
 
+import com.example.springdoc.adapter.database.Task;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -139,53 +123,43 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(NotesRestController.CONTEXT)
-@Tag(name = NotesRestController.CONTEXT, description = "Operations to manage notes")
-@RequiredArgsConstructor
-public class NotesRestController {
+@RequestMapping(TaskRestController.CONTEXT)
+@Tag(name = TaskRestController.CONTEXT, description = "Operations to manage tasks")
+public record TaskRestController(TaskService service) {
 
-	static final String CONTEXT = "/v1/notes";
-
-	private final NoteService noteService;
+	static final String CONTEXT = "/v1/tasks";
 
 	@GetMapping
-	@Operation(summary = "Returns a list of notes for a list of ids")
-	public List<NoteWebView> query(@RequestParam Optional<List<UUID>> id) {
-		return id.isPresent() && !id.get().isEmpty() ?
-				noteService.queryByIds(id.get()) :
-				noteService.queryAll();
+	@Operation(summary = "Returns tasks, optionally filtered by one or more ids")
+	public List<Task> query(@RequestParam Optional<List<UUID>> id) {
+		var hasId = id.isPresent() && !id.get().isEmpty();
+		return hasId ? service.queryByIds(id.get()) : service.queryAll();
 	}
 
 	@PutMapping
-	@Operation(summary = "Creates a new note")
-	public Optional<NoteWebView> createNewNote(@RequestBody NoteWebView note) {
-		return noteService.create(note);
-	}
-
-	@PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	@Operation(summary = "Creates a new note from the uploaded markdown file")
-	public Optional<NoteWebView> uploadNewNote(@ModelAttribute NoteFileView note) {
-		return noteService.create(note);
+	@Operation(summary = "Creates a new task")
+	public Optional<Task> createTask(@RequestBody Task task) {
+		return service.save(task);
 	}
 
 	@PatchMapping
-	@Operation(summary = "Patches an existing note")
-	public Optional<NoteWebView> editNote(@RequestBody NoteWebView note) {
-		return noteService.edit(note);
+	@Operation(summary = "Modifies an existing task")
+	public Optional<Task> editTask(@RequestBody Task task) {
+		return service.edit(task);
 	}
 
 	@DeleteMapping("/{ids}")
-	@Operation(summary = "Deletes notes for a list of ids")
-	public List<NoteWebView> deleteNotesById(@PathVariable List<UUID> ids) {
-		return noteService.deleteByIds(ids);
+	@Operation(summary = "Deletes one or more tasks by ids")
+	public List<Task> deleteTasksById(@PathVariable List<UUID> ids) {
+		return service.deleteByIds(ids);
 	}
 }
 ```
 
 If you reload <http://localhost:8080/swagger-ui.html> after application restart, you'd notice the descriptions appearing on Swagger UI. This is a good way to offer some context about your API.
 
-:::figure
-![Swagger UI with endpoint descriptions](./images/2020-06-27-00-30-07-api-documentation-with-springdoc-openapi-02.png)
+:::figure{.frame}
+![Swagger UI with endpoint descriptions](./images/2020-06-27-00-30-07-api-documentation-with-springdoc-openapi-02.webp)
 
 ::caption[Swagger UI with endpoint descriptions specified with `@Operation` annotation]
 :::
@@ -203,13 +177,12 @@ import io.swagger.v3.oas.models.OpenAPI;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties("openapi")
-public class OpenAPIProperties extends OpenAPI {
-}
+public class OpenAPIProperties extends OpenAPI {}
 ```
 
-> Note that we're inheriting `OpenAPI` class here. This will give us flexibility to customize Swagger UI purely through declarative configuration in `application.yml` instead of writing Java code.
+Note that we're inheriting `OpenAPI` class here. This will give us flexibility to customize Swagger UI through declarative configuration in `application.yml` instead of writing Java code.
 
-Now, we'll inject an `OpenAPI` bean manually with the following `@Configuration`.
+Now, we'll inject an `OpenAPI` bean with the following `@Configuration`.
 
 ```java {9}
 package com.example.springdoc;
@@ -232,30 +205,32 @@ public class OpenAPIConfiguration {
 
 Now, open `application.yml` and add the following configuration to customize the document information.
 
-```yaml {8..15} title="application.yml"
+```yaml title="application.yml" ins{8..15}
 spring:
-  datasource:
-    password: stacy
-    username: gwen
-    url: jdbc:postgresql://localhost:5432/brooklyn
-  sql.init.mode: always
+  profiles.active: local
+  jackson:
+    default-property-inclusion: non_null
+    deserialization:
+      fail-on-unknown-properties: false
 
 openapi:
   info:
-    title: "Notes API"
-    description: "A demo of Springdoc integration with custom configuration"
+    title: "Tasks API"
+    description: "Springdoc integration with custom configuration"
     version: "@project.version@"
     license:
       name: MIT
       url: "https://opensource.org/licenses/MIT"
 ```
 
-> Note that Spring will [automatically expand](https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.properties-and-configuration.expand-properties.maven) the `@project.version@` to the version specified in `pom.xml`.
+:::note
+Spring will [automatically expand](https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.properties-and-configuration.expand-properties.maven) `@project.version@` to the version specified in `pom.xml`.
+:::
 
 Restart the application and reload <http://localhost:8080/swagger-ui.html>. You'd notice that our custom document information appearing on UI.
 
-:::figure
-![Swagger UI with customized document information](./images/2020-06-27-00-30-07-api-documentation-with-springdoc-openapi-03.png)
+:::figure{.frame}
+![Swagger UI with customized document information](./images/2020-06-27-00-30-07-api-documentation-with-springdoc-openapi-03.webp)
 
 ::caption[Swagger UI with customized document information using Info API]
 :::
@@ -268,18 +243,18 @@ One common usecase is to add a bearer token before calling an API. You can custo
 
 Here's an example for to support adding a bearer token. Open `src/main/resources/application.yml` and add the highlighted configuration.
 
-```yaml {16..24} title="application.yml"
+```yaml title="application.yml" ins{16..24}
 spring:
-  datasource:
-    password: stacy
-    username: gwen
-    url: jdbc:postgresql://localhost:5432/brooklyn
-  sql.init.mode: always
+  profiles.active: local
+  jackson:
+    default-property-inclusion: non_null
+    deserialization:
+      fail-on-unknown-properties: false
 
 openapi:
   info:
-    title: "Notes API"
-    description: "A demo of Springdoc integration with custom configuration"
+    title: "Tasks API"
+    description: "Springdoc integration with custom configuration"
     version: "@project.version@"
     license:
       name: MIT
@@ -297,39 +272,35 @@ openapi:
 
 After the application restart, when you reload <http://localhost:8080/swagger-ui.html>, you'd notice an Authorize button on the right.
 
-:::figure
-![Swagger UI with Authorize button to add a bearer token](./images/2020-06-27-00-30-07-api-documentation-with-springdoc-openapi-04.png)
+:::figure{.frame}
+![Swagger UI with Authorize button to add a bearer token](./images/2020-06-27-00-30-07-api-documentation-with-springdoc-openapi-04.webp)
 
 ::caption[Swagger UI with Authorize button to add a bearer token (on top right and against every endpoint)]
 :::
 
 When you click the Authorize button, you'd get a dialog to enter a token.
 
-:::figure
-![Swagger UI dialog to enter a bearer token](./images/2020-06-27-00-30-07-api-documentation-with-springdoc-openapi-05.png)
+:::figure{.frame}
+![Swagger UI dialog to enter a bearer token](./images/2020-06-27-00-30-07-api-documentation-with-springdoc-openapi-05.webp)
 
 ::caption[Swagger UI dialog to save a bearer token which is used for subsequent API requests]
 :::
 
 Once you've added a token, it'll be automatically sent with next request through the Swagger UI.
 
-:::figure
-![An API response with Authorization header](./images/2020-06-27-00-30-07-api-documentation-with-springdoc-openapi-06.png)
+:::figure{.frame}
+![An API response with Authorization header](./images/2020-06-27-00-30-07-api-documentation-with-springdoc-openapi-06.webp)
 
 ::caption[An example API request with automatically attached Authorization header]
 :::
 
-You can inspect [`io.swagger.v3.oas.models.OpenAPI`](https://github.com/swagger-api/swagger-core/blob/master/modules/swagger-models/src/main/java/io/swagger/v3/oas/models/OpenAPI.java) class to explore other configuration possibilities.
+You can inspect [`io.swagger.v3.oas.models.OpenAPI`](https://github.com/swagger-api/swagger-core/blob/b313104e30d9e07af77e46fa83c3f046950ed0cc/modules/swagger-models/src/main/java/io/swagger/v3/oas/models/OpenAPI.java#L25) class to explore other configurations.
 
 ---
 
-**Previous versions**
-
-- [:time[2020-06-27T00:30:07]](/archive/2020/06/27/api-documentation-with-springdoc-openapi--1/): Discusses Springdoc integration with Spring Boot 2 and Java 14
-
 **Source code**
 
-- [springboot3-springdoc-integration](https://github.com/Microflash/guides/tree/main/spring/springboot3-springdoc-integration)
+- [springboot4-springdoc-integration](https://github.com/Microflash/backstage/tree/main/spring/springboot4-springdoc-integration)
 
 **Related**
 
