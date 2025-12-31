@@ -1,253 +1,535 @@
 ---
 slug: "2018/12/13/messaging-with-rabbitmq-and-spring-boot"
 title: "Messaging with RabbitMQ and Spring Boot"
-description: "RabbitMQ is an open-source message broker that supports various messaging protocols. Learn to create a queue and interact with it using Spring Boot."
+description: "A hands-on look at how RabbitMQ routes messages through exchanges to queues, with a focus on topic exchanges using Spring AMQP with Spring Boot."
 date: 2018-12-13 20:20:54
-update: 2019-11-13 16:45:02
+update: 2025-12-31 23:50:00
 type: "guide"
 ---
 
-[RabbitMQ](https://www.rabbitmq.com/) is an open-source message broker that implements several messaging protocols, including AMQP and STOMP. It is frequently used to queue messages and interact with queues. A RabbitMQ server acts as an exchange server (or broker). Clients, written in a variety of languages, enable applications to publish and consume the messages in the queue. 
+[RabbitMQ](https://www.rabbitmq.com/) is an open source message broker. It supports a variety of messaging and streaming protocols, and can be used to implement message queues, which is the focus of this post. A typical message flow in RabbitMQ works as follows: a producer sends a message to an exchange, which routes the message to one or more queues based on rules defined by the exchange type. To receive messages, a queue must be bound to at least one exchange; this association is called a _binding_. Consumers subscribe to these queues and process the stored messages.
 
-In this post, we'll learn how to create a queue with RabbitMQ and interact with it using Spring Boot.
+:::figure{.popout.popout-image}
+![This diagram shows a producer that sends messages to a RabbitMQ broker, which routes them through different exchange types. Direct exchanges deliver messages to specific queues, topic exchanges route messages based on routing keys, and fanout exchanges broadcast messages to multiple queues. A consumer subscribes to these queues and consumes the published messages.](./images/2018-12-13-20-20-54-messaging-with-rabbitmq-and-spring-boot-01.svg)
 
-:::note{.setup}
-The examples in this post use
-
-- Java 13
-- Spring Boot 2.2.5
-- RabbitMQ 3 running as a Docker container
+::caption[Message flow in RabbitMQ through different exchange types]
 :::
 
-Create a Spring Boot application with `spring-boot-starter-amqp` and [jackson-databind](https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind) as the dependencies.
+RabbitMQ supports several types of exchanges, including direct, fanout, topic, and others. [Spring AMQP](https://docs.spring.io/spring-boot/reference/messaging/amqp.html) project provides support for many of these exchange types. In this post, we'll focus on topic exchange, which uses routing keys to decide how to route the message to queues.
 
-## Create a RabbitMQ broker
+:::note{.setup}
+The examples in this post use:
 
-Let's start by setting up a RabbitMQ broker; you can choose to [install](https://www.rabbitmq.com/download.html) it on your machine or run it as a container. For later, create a `docker-compose.yml` file in the project's root and add the following configuration.
+- Java 25
+- Spring Boot 4.0.1
+- RabbitMQ 4
+- Testcontainers 2.0.3
+- Docker 28.5.2
+- Maven 3.9.12
+:::
 
-```yaml
-version: '3.1'
+Create a Spring Boot application using the following `pom.xml` file.
 
-services:
+```xml title="pom.xml"
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>4.0.1</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
 
-  rabbitmq:
-    image: "rabbitmq:3-management"
-    container_name: "rmq3"
-    hostname: "albatross"
-    restart: "no"
-    environment:
-      RABBITMQ_DEFAULT_USER: "rabbitmq"
-      RABBITMQ_DEFAULT_PASS: "rabbitmq"
-    labels:
-      NAME: "rabbitmq1"
-    ports:
-      - "5672:5672"
-      - "15672:15672"
+	<groupId>com.example</groupId>
+	<artifactId>springboot4-messaging-rabbitmq</artifactId>
+	<version>2.0.0</version>
+
+	<properties>
+		<java.version>25</java.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-testcontainers</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>testcontainers-junit-jupiter</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>testcontainers-rabbitmq</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>properties</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<argLine>@{argLine} -javaagent:${org.mockito:mockito-core:jar}</argLine>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
 ```
 
-Now, execute the following command on CLI.
-
-```sh
-docker-compose up -d
-```
-
-This will launch a RabbitMQ3 container. To access the management console, point your browser at <http://localhost:15672/> and login with the same username and password as set in `docker-compose.yml`.
-
-## Define a domain
-
-Say, you want to publish a list of books in a message and then consume it. To do so, define a simple Book class as follows.
+Declare a queue, a topic exchange, and a binding that connects the queue to the topic exchange using a routing key. Here, all of these components are registered through a configuration.
 
 ```java
-// src/main/java/dev/mflash/guides/rabbitmq/domain/Book.java
+package com.example.messaging.rabbitmq;
 
-public class Book {
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.TopicExchange;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-  private final String isbn;
-  private final String title;
-  private final String author;
+@Configuration
+public class RabbitConfiguration {
 
-  // constructors, getters and setters, etc.
+	public static final String QUEUE_NAME = "message-queue";
+	public static final String MESSAGE_TOPIC_EXCHANGE = "message-topic-exchange";
+	public static final String ROUTING_KEY = "message.#";
+
+	@Bean
+	Queue queue() {
+		return new Queue(QUEUE_NAME, false);
+	}
+
+	@Bean
+	TopicExchange exchange() {
+		return new TopicExchange(MESSAGE_TOPIC_EXCHANGE);
+	}
+
+	@Bean
+	Binding binding(Queue queue, TopicExchange exchange) {
+		return BindingBuilder.bind(queue).to(exchange).with(ROUTING_KEY);
+	}
 }
 ```
 
-Let's create a list of books to publish them on a queue.
-
-## Configure Queue, Topic Exchange and Routing Key
-
-A typical RabbitMQ queue has 
-- a name to identify it, 
-- an optional routing key to selectively process messages, and 
-- an exchange to route the messages to a queue based on the value of a routing key. 
-
-A topic exchange works on a wildcard match of a routing pattern. Topic exchange is not the only type of exchange available for use but it'll suffice for this guide. To bind a queue with an exchange and a routing key, we'll have to create a `Binding` which can be injected through a Bean as follows.
+We also need a RabbitMQ server for our application to interact with. To do this, let's use [Testcontainers](https://docs.spring.io/spring-boot/reference/testing/testcontainers.html) to launch a RabbitMQ container using Docker on application start. Testcontainers will automatically register the required configurations (such as the username and password) with its [service connection](https://docs.spring.io/spring-boot/reference/testing/testcontainers.html#testing.testcontainers.service-connections) support.
 
 ```java
-// src/main/java/dev/mflash/guides/rabbitmq/configuration/RabbitMQConfiguration.java
+package com.example.messaging.rabbitmq;
 
-public @Configuration class RabbitMQConfiguration {
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+import org.springframework.context.annotation.Bean;
+import org.testcontainers.rabbitmq.RabbitMQContainer;
 
-  public static final String TOPIC_EXCHANGE_NAME = "mflash-exchange";
-  public static final String QUEUE_NAME = "mflash-queue";
-  private static final String ROUTING_KEY = "books.#";
+@TestConfiguration(proxyBeanMethods = false)
+public class LocalConfiguration {
 
-  public @Bean TopicExchange topicExchange() {
-    return new TopicExchange(TOPIC_EXCHANGE_NAME);
-  }
-
-  public @Bean Queue queue() {
-    return new Queue(QUEUE_NAME);
-  }
-
-  public @Bean Binding binding() {
-    return BindingBuilder.bind(queue()).to(topicExchange()).with(ROUTING_KEY);
-  }
+	@Bean
+	@ServiceConnection
+	public RabbitMQContainer rabbitContainer() {
+		return new RabbitMQContainer("rabbitmq:4-management-alpine");
+	}
 }
 ```
 
-## Create a Publisher
-
-A publisher or producer sends the messages in a queue. In our case, it’ll send a list of books. We'll use a `RabbitTemplate` object injected through Spring to send this list in the queue.
+Let's register `LocalConfiguration` with a custom application launcher, `LocalLauncher` just for local testing.
 
 ```java
-// src/main/java/dev/mflash/guides/rabbitmq/service/Publisher.java
+package com.example.messaging.rabbitmq;
 
-public @Service class Publisher implements CommandLineRunner {
+import org.springframework.boot.SpringApplication;
 
-  private final RabbitTemplate rabbitTemplate;
-  private final Reader reader;
+class LocalLauncher {
 
-  public Publisher(RabbitTemplate rabbitTemplate, Reader reader) {
-    this.rabbitTemplate = rabbitTemplate;
-    this.reader = reader;
-  }
-
-  public @Override void run(String... args) throws Exception {
-    rabbitTemplate
-        .convertAndSend(RabbitMQConfiguration.TOPIC_EXCHANGE_NAME, "books.new", getBooks());
-    reader.getLatch().await(10, TimeUnit.SECONDS);
-  }
-
-  private List<Book> getBooks() {
-    List<Book> books = new ArrayList<>();
-    books.add(new BookBuilder().isbn("978-1250078308").title("Archenemies").author("Marissa Meyer")
-        .build());
-    books.add(new BookBuilder().isbn("978-0399555770").title("Skyward").author("Brandon Sanderson")
-        .build());
-    books.add(new BookBuilder().isbn("978-0374285067").title("Void Star").author("Zachary Mason")
-        .build());
-
-    return books;
-  }
+	static void main(String... args) {
+		SpringApplication
+				.from(Launcher::main)
+				.with(LocalConfiguration.class)
+				.run(args);
+	}
 }
 ```
 
-Note that all the published messages are serialized as byte arrays by default. To properly serialize the list of `Book`s, we need to define a message converter for `RabbitTemplate` as an instance of `Jackson2JsonMessageConverter`.
+We'll use this launcher to run the application later.
 
-```java {21..29}
-// src/main/java/dev/mflash/guides/rabbitmq/configuration/RabbitMQConfiguration.java
+## Exchanging string messages
 
-public @Configuration class RabbitMQConfiguration {
+Let's register a consumer to receive string messages from the queue configured in `RabbitConfiguration` we just defined.
 
-  public static final String TOPIC_EXCHANGE_NAME = "mflash-exchange";
-  public static final String QUEUE_NAME = "mflash-queue";
-  private static final String ROUTING_KEY = "books.#";
+```java {9}
+package com.example.messaging.rabbitmq;
 
-  public @Bean TopicExchange topicExchange() {
-    return new TopicExchange(TOPIC_EXCHANGE_NAME);
-  }
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.stereotype.Service;
 
-  public @Bean Queue queue() {
-    return new Queue(QUEUE_NAME);
-  }
+@Service
+public class Receiver {
 
-  public @Bean Binding binding() {
-    return BindingBuilder.bind(queue()).to(topicExchange()).with(ROUTING_KEY);
-  }
-
-  public @Bean RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
-    final var rabbitTemplate = new RabbitTemplate(connectionFactory);
-    rabbitTemplate.setMessageConverter(messageConverter());
-    return rabbitTemplate;
-  }
-
-  public @Bean MessageConverter messageConverter() {
-    return new Jackson2JsonMessageConverter();
-  }
+	@RabbitListener(queues = RabbitConfiguration.QUEUE_NAME)
+	public void receive(final String message) {
+		IO.println("Received: " + message);
+	}
 }
 ```
 
-## Create a Consumer
+To trigger message consumption, let's publish a sample message using a `RabbitTemplate` configured by the Spring AMQP starter. We can inject it for a `CommandLineRunner` which runs on application start.
 
-A reader or consumer will read the messages published by the publisher. In our case, we'll simply print the list.
+```java {16..26}
+package com.example.messaging.rabbitmq;
+
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+@SpringBootApplication
+public class Launcher {
+
+	static void main(String... args) {
+		SpringApplication.run(Launcher.class, args);
+	}
+
+	@Bean
+	CommandLineRunner commandLineRunner(RabbitTemplate rabbitTemplate) {
+		return _ -> {
+			IO.println("Sending message...");
+			rabbitTemplate.convertAndSend(
+					RabbitConfiguration.MESSAGE_TOPIC_EXCHANGE,
+					RabbitConfiguration.ROUTING_KEY,
+					"Hello World!"
+			);
+		};
+	}
+}
+```
+
+When we launch the application using `LocalLauncher`, we should see the message being consumed through the log output, as follows.
+
+```log
+2025-12-30T23:10:46.578 INFO 7488 --- [main] c.example.messaging.rabbitmq.Launcher : Started Launcher in 3.87 seconds (process running for 4.104)
+Sending message...
+Received: Hello World!
+```
+
+We can also write an integration test using Testcontainers to verify the message consumption, as shown below.
 
 ```java
-// src/main/java/dev/mflash/guides/rabbitmq/service/Reader.java
+package com.example.messaging.rabbitmq;
 
-public @Service class Reader {
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
+import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
 
-  private CountDownLatch latch = new CountDownLatch(1);
+import static org.mockito.Mockito.timeout;
+import static org.mockito.Mockito.verify;
 
-  @RabbitListener(queues = RabbitMQConfiguration.QUEUE_NAME, containerFactory = "listenerContainerFactory")
-  public void receiveMessage(final List<Book> books) {
-    books.forEach(System.out::println);
-    latch.countDown();
-  }
+@SpringBootTest
+@Import(LocalConfiguration.class)
+class ReceiverTest {
 
-  public CountDownLatch getLatch() {
-    return latch;
-  }
+	private @Autowired RabbitTemplate rabbitTemplate;
+	private @MockitoSpyBean Receiver receiver;
+
+	@Test
+	@DisplayName("Should receive text message on message-queue")
+	void shouldReceiveTextMessageOnMessageQueue() {
+		var message = "Hello World!";
+
+		rabbitTemplate.convertAndSend(
+				RabbitConfiguration.MESSAGE_TOPIC_EXCHANGE,
+				RabbitConfiguration.ROUTING_KEY,
+				message
+		);
+
+		verify(receiver, timeout(1000)).receive(message);
+	}
 }
 ```
 
-A `CountDownLatch` is used to wait for several threads to complete (here, it is set to 1).
+## Exchanging complex messages
 
-To convert the incoming message into a list of books, we'll have to provide the `MessageConverter` to a `RabbitListener`. This can be done by injecting the `MessageConverter` through an instance of `SimpleRabbitListenerContainerFactory` as follows.
+Eventually, you may want to exchange more complex objects through the queue rather than simple strings. By default, Spring AMQP configures a `SimpleMessageConverter` with the `RabbitTemplate` that supports strings, `Serializable` instances, and byte arrays. More complex types, however, require a specialized `MessageConverter`, such as `JacksonJsonMessageConverter`. To use it, we need to add the `jackson-databind` dependency in `pom.xml`.
 
-```java {21..27}
-// src/main/java/dev/mflash/guides/rabbitmq/configuration/RabbitMQConfiguration.java
+```xml title="pom.xml" ins{26..29}
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>4.0.1</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
 
-public @Configuration class RabbitMQConfiguration {
+	<groupId>com.example</groupId>
+	<artifactId>springboot4-messaging-rabbitmq</artifactId>
+	<version>2.0.0</version>
 
-  public static final String TOPIC_EXCHANGE_NAME = "mflash-exchange";
-  public static final String QUEUE_NAME = "mflash-queue";
-  private static final String ROUTING_KEY = "books.#";
+	<properties>
+		<java.version>25</java.version>
+	</properties>
 
-  public @Bean TopicExchange topicExchange() {
-    return new TopicExchange(TOPIC_EXCHANGE_NAME);
-  }
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
 
-  public @Bean Queue queue() {
-    return new Queue(QUEUE_NAME);
-  }
+		<dependency>
+			<groupId>tools.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
 
-  public @Bean Binding binding() {
-    return BindingBuilder.bind(queue()).to(topicExchange()).with(ROUTING_KEY);
-  }
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-testcontainers</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>testcontainers-junit-jupiter</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>testcontainers-rabbitmq</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 
-  public @Bean SimpleRabbitListenerContainerFactory listenerContainerFactory(
-      ConnectionFactory connectionFactory) {
-    final var factory = new SimpleRabbitListenerContainerFactory();
-    factory.setConnectionFactory(connectionFactory);
-    factory.setMessageConverter(messageConverter());
-    return factory;
-  }
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>properties</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<argLine>@{argLine} -javaagent:${org.mockito:mockito-core:jar}</argLine>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
-  public @Bean RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
-    final var rabbitTemplate = new RabbitTemplate(connectionFactory);
-    rabbitTemplate.setMessageConverter(messageConverter());
-    return rabbitTemplate;
-  }
+</project>
+```
 
-  public @Bean MessageConverter messageConverter() {
-    return new Jackson2JsonMessageConverter();
-  }
+Next, we need to inject `JacksonJsonMessageConverter` into `RabbitConfiguration` so that Spring AMQP uses it as the preferred `MessageConverter` instead of the default `SimpleMessageConverter`.
+
+```java ins{7,8,34..37}
+package com.example.messaging.rabbitmq;
+
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.TopicExchange;
+import org.springframework.amqp.support.converter.JacksonJsonMessageConverter;
+import org.springframework.amqp.support.converter.SmartMessageConverter;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class RabbitConfiguration {
+
+	public static final String QUEUE_NAME = "message-queue";
+	public static final String MESSAGE_TOPIC_EXCHANGE = "message-topic-exchange";
+	public static final String ROUTING_KEY = "message.#";
+
+	@Bean
+	Queue queue() {
+		return new Queue(QUEUE_NAME, false);
+	}
+
+	@Bean
+	TopicExchange exchange() {
+		return new TopicExchange(MESSAGE_TOPIC_EXCHANGE);
+	}
+
+	@Bean
+	Binding binding(Queue queue, TopicExchange exchange) {
+		return BindingBuilder.bind(queue).to(exchange).with(ROUTING_KEY);
+	}
+
+	@Bean
+	SmartMessageConverter messageConverter() {
+		return new JacksonJsonMessageConverter();
+	}
 }
 ```
 
-When the application is launched, the publisher will publish the list of books on a queue called `mflash-queue`. After 10 seconds, the consumer will be called to print the message received from the queue.
+Now, suppose we want to consume the instances of `Book` from the queue.
+
+```java
+package com.example.messaging.rabbitmq;
+
+public record Book(String title, String author) {}
+```
+
+To do this, modify the consumer to accept a `Book`.
+
+```java del{10..12} ins{13..15}
+package com.example.messaging.rabbitmq;
+
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.stereotype.Service;
+
+@Service
+public class Receiver {
+
+	@RabbitListener(queues = RabbitConfiguration.QUEUE_NAME)
+	public void receive(final String message) {
+		IO.println("Received: " + message);
+	}
+	public void receive(final Book book) {
+		IO.println("Received: " + book);
+	}
+}
+```
+
+And publish a `Book` through the `RabbitTemplate` using `CommandLineRunner` as follows.
+
+```java del{23} ins{24}
+package com.example.messaging.rabbitmq;
+
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+@SpringBootApplication
+public class Launcher {
+
+	static void main(String... args) {
+		SpringApplication.run(Launcher.class, args);
+	}
+
+	@Bean
+	CommandLineRunner commandLineRunner(RabbitTemplate rabbitTemplate) {
+		return _ -> {
+			IO.println("Sending message...");
+			rabbitTemplate.convertAndSend(
+					RabbitConfiguration.MESSAGE_TOPIC_EXCHANGE,
+					RabbitConfiguration.ROUTING_KEY,
+					"Hello World!"
+					new Book("Platform Decay", "Martha Wells")
+			);
+		};
+	}
+}
+```
+
+Launch the application using `LocalLauncher` again, and you should see the message consumption in the logs.
+
+```log
+2025-12-30T23:25:00.277 INFO 7876 --- [main] c.example.messaging.rabbitmq.Launcher : Started Launcher in 3.946 seconds (process running for 4.191)
+Sending message...
+Received: Book[title=Platform Decay, author=Martha Wells]
+```
+
+As before, we can validate this usecase with an integration test using Testcontainers, as shown below.
+
+```java
+package com.example.messaging.rabbitmq;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
+import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
+
+import static org.mockito.Mockito.timeout;
+import static org.mockito.Mockito.verify;
+
+@SpringBootTest
+@Import(LocalConfiguration.class)
+class ReceiverTest {
+
+	private @Autowired RabbitTemplate rabbitTemplate;
+	private @MockitoSpyBean Receiver receiver;
+
+	@Test
+	@DisplayName("Should receive book message on message-queue")
+	void shouldReceiveBookMessageOnMessageQueue() {
+		var book = new Book("The Faith of Beasts", "James S A Corey");
+
+		rabbitTemplate.convertAndSend(
+				RabbitConfiguration.MESSAGE_TOPIC_EXCHANGE,
+				RabbitConfiguration.ROUTING_KEY,
+				book
+		);
+
+		verify(receiver, timeout(1000)).receive(book);
+	}
+}
+```
 
 ---
 
 **Source code**
 
-- [spring-messaging-rabbitmq](https://github.com/Microflash/guides/tree/main/spring/spring-messaging-rabbitmq)
+- [springboot4-messaging-rabbitmq](https://github.com/Microflash/backstage/tree/main/spring/springboot4-messaging-rabbitmq)
+
+**Related**
+
+- [RabbitMQ tutorial](https://www.rabbitmq.com/tutorials/tutorial-one-spring-amqp)
+- [RabbitMQ docs](https://www.rabbitmq.com/docs)
