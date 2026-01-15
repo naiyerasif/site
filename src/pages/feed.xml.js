@@ -10,7 +10,6 @@ const aboutUrl = fullLink("/about");
 
 const author = {
 	name: authorName,
-	email: siteInfo.author.presence.mastodon.id,
 	link: aboutUrl
 };
 
