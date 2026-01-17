@@ -1,7 +1,6 @@
 ---
 slug: "2023/09/30/blocking-ai-web-crawlers"
 title: "Blocking AI web crawlers"
-description: "To prevent web crawlers from scraping your website to build AI models, you can take certain measures. You can disallow them through robots.txt and block their IP ranges."
 date: 2023-09-30 20:41:51
 update: 2024-06-23 00:19:53
 type: "reference"

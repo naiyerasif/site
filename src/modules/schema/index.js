@@ -3,10 +3,6 @@ import siteInfo, { fullLink } from "../website/index.js";
 import { PageType, PostType, Status } from "./defs.js";
 
 const title = z.string().max(64);
-const description = z.preprocess(
-	val => val || siteInfo.description,
-	z.string().max(200)
-);
 const date = z.date();
 const update = z.date().optional();
 const tagline = z.string().optional();
@@ -29,7 +25,6 @@ const ogTypes = z.enum(Object.keys(PageType));
 
 const postSchema = z.object({
 	title,
-	description,
 	tagline,
 	date,
 	update,
@@ -43,7 +38,6 @@ const postSchema = z.object({
 
 const profileSchema = ({ image }) => z.object({
 	title,
-	description,
 	tagline,
 	date,
 	update,
@@ -55,7 +49,6 @@ const profileSchema = ({ image }) => z.object({
 
 const pageSchema = z.object({
 	title,
-	description,
 	tagline,
 	date,
 	update,
@@ -68,7 +61,6 @@ const pageSchema = z.object({
 
 const pageInfoSchema = z.object({
 	title,
-	description,
 	url,
 	image: ogImage,
 	type: ogTypes.default(PageType.website.id),

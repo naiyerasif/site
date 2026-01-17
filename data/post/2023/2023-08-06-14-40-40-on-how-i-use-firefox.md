@@ -1,7 +1,6 @@
 ---
 slug: "2023/08/06/on-how-i-use-firefox"
 title: "On how I use Firefox"
-description: "I have been using Firefox for years and have picked up some tips. Whether you are using it or thinking of switching, these could be handy!"
 date: 2023-08-06 14:40:40
 update: 2024-08-24 22:58:16
 type: "opinion"

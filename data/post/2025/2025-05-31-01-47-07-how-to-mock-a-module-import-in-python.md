@@ -1,7 +1,6 @@
 ---
 slug: "2025/05/31/how-to-mock-a-module-import-in-python"
 title: "How to mock a module import in Python"
-description: "When writing tests, it is quite common to mock a module. Explore how to do this safely, with proper cleanup to avoid side effects."
 date: 2025-05-31 01:47:07
 update: 2025-05-31 01:47:07
 type: "guide"

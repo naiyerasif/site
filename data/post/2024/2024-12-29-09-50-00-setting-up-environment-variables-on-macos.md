@@ -1,7 +1,6 @@
 ---
 slug: "2024/12/29/setting-up-environment-variables-on-macos"
 title: "Setting up environment variables on macOS"
-description: "If you switch between shells, updating PATH and environment variables for each shell's configuration file can become tedious. Fortunately, macOS offers utilities to simplify this process."
 date: 2024-12-29 18:26:56
 update: 2024-12-29 18:26:56
 type: "reference"

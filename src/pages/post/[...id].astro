@@ -33,7 +33,6 @@ const showStatus = !!data.status;
 
 const pageInfo = {
 	title: data.title,
-	description: data.description,
 	url,
 	source: post.filePath,
 	type: "article",
@@ -69,12 +68,12 @@ const pageInfo = {
 		</div>
 
 		{hasRecommendations && <ul class="rec">
-			{prevPage && 
+			{prevPage &&
 				<li class="rec-prev">
 					<strong class="hint">Previous post</strong> &mdash; <a href={prevPage}>{prev.data.title}</a>
 				</li>
 			}
-			{nextPage && 
+			{nextPage &&
 				<li class="rec-next">
 					<strong class="hint">Next post</strong> &mdash; <a href={nextPage}>{next.data.title}</a>
 				</li>

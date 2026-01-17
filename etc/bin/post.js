@@ -54,7 +54,6 @@ async function main() {
 	frontmatter.push('---');
 	frontmatter.push(`slug: "${date.format("YYYY/MM/DD")}/${slug}"`);
 	frontmatter.push(`title: "${answers.title}"`);
-	if (answers.type !== PostType.note.id) frontmatter.push(`description: ""`);
 	frontmatter.push(`date: ${answers.date}`);
 	frontmatter.push(`update: ${answers.date}`);
 	frontmatter.push(`type: "${answers.type}"`);

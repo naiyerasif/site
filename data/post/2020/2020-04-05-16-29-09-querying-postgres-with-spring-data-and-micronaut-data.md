@@ -1,7 +1,6 @@
 ---
 slug: "2020/04/05/querying-postgres-with-spring-data-and-micronaut-data"
 title: "Querying Postgres with Spring Data and Micronaut Data"
-description: "Micronaut Data is a database toolkit to generate the type-checked repository methods at compile-time ensuring early failure when incorrectly implemented. Learn how to use it with Spring Data and JDBC."
 date: 2020-04-05 16:29:09
 update: 2020-04-05 16:29:09
 type: "guide"

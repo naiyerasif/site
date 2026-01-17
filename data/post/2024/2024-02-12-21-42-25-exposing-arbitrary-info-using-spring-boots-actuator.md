@@ -1,7 +1,6 @@
 ---
 slug: "2024/02/12/exposing-arbitrary-info-using-spring-boots-actuator"
 title: "How to show custom info using Spring Boot Actuator"
-description: "Spring Boot Actuator provides an info endpoint to display application details. You can customize it to include metadata, build information, and custom properties."
 date: 2024-02-12 21:42:25
 update: 2025-09-21T15:36:07
 type: "guide"

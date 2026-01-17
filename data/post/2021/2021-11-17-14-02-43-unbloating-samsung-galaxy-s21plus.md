@@ -1,7 +1,6 @@
 ---
 slug: "2021/11/17/unbloating-samsung-galaxy-s21plus"
 title: "Unbloating Samsung Galaxy S21+"
-description: "Samsung phones traditionally come with a ton of preinstalled bloatware. Learn how to get rid of it using Android Debug Bridge."
 date: 2021-11-17 14:02:43
 update: 2022-06-13 16:00:31
 type: "guide"

@@ -1,7 +1,6 @@
 ---
 slug: "2025/06/03/how-to-write-integration-tests-using-testcontainers-in-python"
 title: "How to write integration tests using Testcontainers in Python"
-description: "If your application uses cloud services or databases, integration tests help verify its behavior. Testcontainers can spin up real dependencies using Docker for your integration tests."
 date: 2025-06-03 21:48:03
 update: 2025-06-03 21:48:03
 type: "guide"

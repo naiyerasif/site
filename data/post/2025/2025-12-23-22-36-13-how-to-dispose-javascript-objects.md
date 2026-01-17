@@ -1,7 +1,6 @@
 ---
 slug: "2025/12/23/how-to-dispose-javascript-objects"
 title: "How to dispose JavaScript objects"
-description: "JavaScript has no built-in equivalent to Java's try-with-resources or Python's with statement. Until a native solution lands, here's a pattern you can use today for deterministic resource cleanup."
 date: 2025-12-23 22:36:13
 update: 2025-12-23 22:36:13
 type: "guide"

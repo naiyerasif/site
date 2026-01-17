@@ -1,7 +1,6 @@
 ---
 slug: "2024/09/04/stop-using-serial-in-postgres"
 title: "Stop using SERIAL in Postgres"
-description: "Postgres has supported identity columns since version 10. Use them instead of SERIAL for a better experience."
 date: 2024-09-04 23:26:50
 update: 2024-09-05 19:57:21
 type: "opinion"

@@ -1,7 +1,6 @@
 ---
 slug: "2021/03/27/content-negotiation-in-spring-boot"
 title: "Content negotiation in Spring Boot"
-description: "Sometimes, one client may prefer JSON while another may require XML response from your API. Discover how to deliver responses in different formats based on the client's requirements using Spring Boot."
 date: 2021-03-27 11:03:46
 update: 2022-07-16 11:24:33
 type: "guide"

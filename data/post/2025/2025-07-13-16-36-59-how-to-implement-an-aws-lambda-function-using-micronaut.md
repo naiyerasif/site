@@ -1,7 +1,6 @@
 ---
 slug: "2025/07/13/how-to-implement-an-aws-lambda-function-using-micronaut"
 title: "How to implement an AWS Lambda function using Micronaut"
-description: "Trying out AWS Lambda with Java? In this post, we look at how to get started with Micronaut and use its dependency injection to simplify the development experience."
 date: 2025-07-13 16:36:59
 update: 2025-07-13 16:36:59
 type: "guide"

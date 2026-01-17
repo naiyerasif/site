@@ -1,7 +1,6 @@
 ---
 slug: "2024/06/27/how-i-subset-fonts-for-my-site"
 title: "How I subset fonts for my site"
-description: "Large font files can degrade web performance, so removing unnecessary characters to reduce font file size is essential. This process, called subsetting, is what I'll cover in this guide."
 date: 2024-06-27 14:37:38
 update: 2024-06-27 14:37:38
 type: "guide"

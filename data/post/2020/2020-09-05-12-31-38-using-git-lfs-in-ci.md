@@ -1,7 +1,6 @@
 ---
 slug: "2020/09/05/using-git-lfs-in-ci"
 title: "Using Git LFS in CI"
-description: "A limited transfer bandwidth on Git LFS objects can break your CI which pull them every time it runs the pipeline. Learn how you can get around this by using a lockfile."
 date: 2020-09-05 12:31:38
 update: 2020-09-05 12:31:38
 type: "guide"

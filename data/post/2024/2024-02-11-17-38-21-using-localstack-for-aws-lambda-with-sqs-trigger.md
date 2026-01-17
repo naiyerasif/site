@@ -1,7 +1,6 @@
 ---
 slug: "2024/02/11/using-localstack-for-aws-lambda-with-sqs-trigger"
 title: "Using LocalStack for AWS Lambda with SQS trigger"
-description: "In event-driven systems, you may trigger AWS Lambda with SQS messages for ordered processing and buffered backlog handling. Explore deploying and triggering Lambda with SQS locally using LocalStack."
 date: 2024-02-11 17:38:21
 update: 2025-05-24 18:30:11
 type: "guide"

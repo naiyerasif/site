@@ -1,7 +1,6 @@
 ---
 slug: "2021/10/10/weaving-aspects-at-compile-time-with-aspectj"
 title: "Weaving aspects at compile-time with AspectJ"
-description: "AspectJ is an aspect-oriented programming (AOP) extension for Java that manipulates bytecode at compile-time or load-time. This post explores compile-time weaving to log method entry and exit."
 date: 2021-10-10 15:12:18
 update: 2025-12-22 20:45:46
 type: "guide"

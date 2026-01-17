@@ -1,7 +1,6 @@
 ---
 slug: "2020/08/04/skipping-the-gitlab-ci"
 title: "Skipping the GitLab CI"
-description: "GitLab CI is a valuable tool for executing CI pipelines with Docker. Learn how to skip it when making changes to README or LICENSE files."
 date: 2020-08-04 11:34:58
 update: 2020-08-04 11:34:58
 type: "guide"

@@ -18,7 +18,6 @@ const defaults = [
 	},
 	{
 		"title": "About",
-		"description": "About Naiyer Asif",
 		"path": "/about/",
 		"icon": `<svg role="img" class="icon" aria-hidden="true"><use href="#x4-callout-note"/></svg>`,
 		"section": "Navigation"
@@ -30,7 +29,6 @@ export async function GET() {
 		.filter(post => post.data.state !== Status.outdated.id)
 		.map(post => ({
 			title: encode(post.data.title),
-			description: post.data.description,
 			path: postPathname(post.id)
 		}));
 	return new Response(JSON.stringify([...defaults, ...posts]));

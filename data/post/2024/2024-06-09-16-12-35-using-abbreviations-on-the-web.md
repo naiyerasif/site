@@ -1,7 +1,6 @@
 ---
 slug: "2024/06/09/using-abbreviations-on-the-web"
 title: "Using abbreviations on the web"
-description: "The <abbr> element may sound enticing for abbreviations. However, it does not work well on touch devices and screen readers, requiring adjustments for optimal experience."
 date: 2024-06-09 16:12:35
 update: 2024-06-09 23:56:15
 type: "reference"

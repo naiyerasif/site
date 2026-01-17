@@ -1,7 +1,6 @@
 ---
 slug: "2022/08/06/introduction-to-problem-details"
 title: "Introduction to Problem Details"
-description: "Describing problems in the software engineering is just as hard as naming things. The Problem Details specification proposes a standard way to convey the details when something goes wrong."
 date: 2022-08-06 10:10:10
 update: 2022-08-06 10:10:10
 type: "guide"

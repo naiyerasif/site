@@ -1,7 +1,6 @@
 ---
 slug: "2019/06/02/linting-sass-with-stylelint"
 title: "Linting Sass with stylelint"
-description: "Learn how to utilize stylelint, a widely-used linter for CSS, Sass, and Less files. Explore its plugin system to extend functionality and ensure error-free code and consistency in your Sass files."
 date: 2019-06-02 15:32:12
 update: 2019-08-08 20:21:01
 type: "guide"

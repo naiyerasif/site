@@ -1,7 +1,6 @@
 ---
 slug: "2019/12/23/syncing-with-a-massive-git-upstream"
 title: "Syncing with a massive Git upstream"
-description: "Contribution to repositories with extensive history or large size can be challenging. Git pulls the entire history on a clone, but you can do better."
 date: 2019-12-23 14:23:12
 update: 2019-12-23 14:23:12
 type: "guide"

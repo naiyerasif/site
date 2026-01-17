@@ -1,7 +1,6 @@
 ---
 slug: "2024/03/03/using-localstack-for-aws-lambda-with-sns-trigger"
 title: "Using LocalStack for AWS Lambda with SNS trigger"
-description: "You can use SNS to build pubsub workflows and fan-out processes. This guide explains how you can trigger Lambda with SNS subscription using LocalStack."
 date: 2024-03-03 21:05:49
 update: 2025-05-24 19:27:45
 type: "guide"

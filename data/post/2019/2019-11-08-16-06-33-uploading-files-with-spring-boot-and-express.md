@@ -1,7 +1,6 @@
 ---
 slug: "2019/11/08/uploading-files-with-spring-boot-and-express"
 title: "Uploading files with Spring Boot and Express"
-description: "Discover how to utilize Express as a Backend for the Frontend (BFF) to upload files between the backend (Spring) and frontend (Angular), leveraging the power of Express as an middleware."
 date: 2019-11-08 16:06:33
 update: 2020-03-18 21:50:11
 type: "guide"

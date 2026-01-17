@@ -1,7 +1,6 @@
 ---
 slug: "work"
 title: "Work"
-description: "Professional and work-adjacent experience of Naiyer Asif"
 date: 2020-03-07 17:51:56
 update: 2025-04-12 22:55:18
 tagline: A timeline of professional and open source work

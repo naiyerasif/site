@@ -1,7 +1,6 @@
 ---
 slug: "2020/04/10/securing-spring-boot-apis-with-jwt-authentication"
 title: "Securing Spring Boot APIs with JWT Authentication"
-description: "Implement stateless authentication with JWTs in Spring Security, customize user management, and add support for alternative signing algorithms."
 date: 2020-04-10 21:35:25
 update: 2025-12-30 13:35:32
 type: "guide"

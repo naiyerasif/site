@@ -1,7 +1,6 @@
 ---
 slug: "2019/08/19/developing-an-api-with-express-and-postgres"
 title: "Developing an API with Express and Postgres"
-description: "Express is a popular choice for Node.js APIs. Explore building a CRUD API with Postgres, organizing routes, enabling hot-reloading and injecting environment variables for seamless local development."
 date: 2019-08-19 21:43:03
 update: 2020-02-06 23:26:09
 type: "guide"

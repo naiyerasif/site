@@ -23,7 +23,6 @@ const showUpdate = compare(data.update, data.date) !== 0;
 
 const pageInfo = {
 	title: data.title,
-	description: data.description,
 	url: Astro.url.pathname,
 	published: format(data.date, format_date),
 	updated: showUpdate ? format(data.update, format_date) : undefined,

@@ -1,7 +1,6 @@
 ---
 slug: "2022/04/15/customizing-microsoft-office-installation"
 title: "Customizing Microsoft Office installation"
-description: "The default Microsoft Office installer installs a lot of apps on your Windows machine. Learn how you can install only the needed Office apps."
 date: 2022-04-15 18:52:10
 update: 2022-04-15 18:52:10
 type: "guide"

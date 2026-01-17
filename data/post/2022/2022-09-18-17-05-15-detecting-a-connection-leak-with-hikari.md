@@ -1,7 +1,6 @@
 ---
 slug: "2022/09/18/detecting-a-connection-leak-with-hikari"
 title: "Detecting a connection leak with Hikari"
-description: "Database connections are expensive. Unclosed database connections can leak and throttle an application. This post shows how to detect a connection leak using Hikari and fix it."
 date: 2022-09-18 17:05:15
 update: 2025-05-19 00:52:07
 type: "guide"

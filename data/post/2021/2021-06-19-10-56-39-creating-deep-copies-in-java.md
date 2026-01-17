@@ -1,7 +1,6 @@
 ---
 slug: "2021/06/19/creating-deep-copies-in-java"
 title: "Creating deep copies in Java"
-description: "Java lacks built-in mechanisms for creating deep copies of objects. Explore the various methods to achieve deep copying in Java."
 date: 2021-06-19 10:56:39
 update: 2021-06-19 10:56:39
 type: "guide"

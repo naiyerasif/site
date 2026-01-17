@@ -1,7 +1,6 @@
 ---
 slug: "2020/05/31/customize-the-powershell-prompt"
 title: "Customize the PowerShell prompt"
-description: "Learn how to customize the PowerShell Core prompt to display the current Git branch using VT sequences and save it in a profile."
 date: 2020-05-31 21:26:42
 update: 2020-05-31 21:26:42
 type: "guide"

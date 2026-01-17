@@ -1,7 +1,6 @@
 ---
 slug: "2018/12/13/messaging-with-rabbitmq-and-spring-boot"
 title: "Messaging with RabbitMQ and Spring Boot"
-description: "A hands-on look at how RabbitMQ routes messages through exchanges to queues, with a focus on topic exchanges using Spring AMQP with Spring Boot."
 date: 2018-12-13 20:20:54
 update: 2025-12-31 23:50:00
 type: "guide"

@@ -1,7 +1,6 @@
 ---
 slug: "2024/08/11/using-localstack-for-aws-lambda-with-eventbridge-rule-trigger"
 title: "Using LocalStack for AWS Lambda with EventBridge rule trigger"
-description: "Amazon EventBridge is a serverless service that can be used to trigger AWS Lambda through rules. This posts shows how to do this locally using LocalStack."
 date: 2024-08-11 12:45:33
 update: 2025-05-24 22:44:21
 type: "guide"

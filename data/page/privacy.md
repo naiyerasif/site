@@ -1,7 +1,6 @@
 ---
 slug: "privacy"
 title: "Privacy"
-description: "Privacy practices on naiyerasif.com"
 date: 2020-11-01 14:52:40
 update: 2025-10-25T14:35:31
 ---

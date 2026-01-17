@@ -1,7 +1,6 @@
 ---
 slug: "2018/08/05/communicating-with-containers-on-docker-network"
 title: "Communicating with containers on Docker network"
-description: "Discover how to ensure private access to the backend of your Angular app, running in distinct containers, while the Angular app remains exposed to the host."
 date: 2018-08-05 12:06:01
 update: 2020-03-08 21:22:13
 type: "guide"

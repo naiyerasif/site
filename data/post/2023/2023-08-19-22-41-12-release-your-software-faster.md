@@ -1,7 +1,6 @@
 ---
 slug: "2023/08/19/release-your-software-faster"
 title: "Release your software faster"
-description: "A good release cadence is a sign of healthy product. It gives confidence that features will ship and patches will be fixed in time. Here are some thoughts on how to release your software faster."
 date: 2023-08-19 22:41:12
 update: 2023-08-19 22:41:12
 type: "opinion"

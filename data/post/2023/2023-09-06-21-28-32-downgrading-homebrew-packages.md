@@ -1,7 +1,6 @@
 ---
 slug: "2023/09/06/downgrading-homebrew-packages"
 title: "Downgrading homebrew packages"
-description: "A short and straightforward guide on how to downgrade Homebrew packages"
 date: 2023-09-06 21:28:32
 update: 2025-09-24T23:48:08
 type: "guide"

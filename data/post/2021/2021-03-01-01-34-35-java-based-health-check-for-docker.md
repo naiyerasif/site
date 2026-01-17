@@ -1,7 +1,6 @@
 ---
 slug: "2021/03/01/java-based-health-check-for-docker"
 title: "Java-based health check for Docker"
-description: "Docker tracks the status of a container as it transitions between various states using server events. Learn to improve the accuracy of health status reporting for a Java app running on Tomcat."
 date: 2021-03-01 01:34:35
 update: 2021-09-02 16:20:56
 type: "guide"

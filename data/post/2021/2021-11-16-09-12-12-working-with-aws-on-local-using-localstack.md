@@ -1,7 +1,6 @@
 ---
 slug: "2021/11/16/working-with-aws-on-local-using-localstack"
 title: "Working with AWS on local using LocalStack"
-description: "Developing with AWS can be challenging on a local machine. With LocalStack, you can prototype with AWS services without connecting to the actual AWS environment."
 date: 2021-11-16 09:12:12
 update: 2025-05-24 17:05:24
 type: "guide"

@@ -1,7 +1,6 @@
 ---
 slug: "2019/08/14/logging-on-nodejs-with-log4js-node"
 title: "Logging on Node.js with log4js-node"
-description: "console.log is an overused logging anti-pattern. Enter log4js, which offers enhanced logging capabilities for a more comprehensive server-side logging solution."
 date: 2019-08-14 17:11:09
 update: 2019-09-22 20:19:17
 type: "guide"

@@ -1,7 +1,6 @@
 ---
 slug: "2020/01/26/logging-on-nodejs-with-winston"
 title: "Logging on Node.js with winston"
-description: "Learn to use winston, a widely-used logger for Node.js that supports custom log levels, log streaming, and custom transports. Explore how to format and store logs both to the console and a file."
 date: 2020-01-26 17:11:09
 update: 2020-01-26 17:11:09
 type: "guide"

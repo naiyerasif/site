@@ -1,7 +1,6 @@
 ---
 slug: "2020/06/11/polymorphic-requests-with-jackson"
 title: "Polymorphic Requests with Jackson"
-description: "Tackling dynamic API payloads in Java can get complex. Learn how Jackson, with Java interfaces, provides a flexible approach to handle them."
 date: 2020-06-11 14:30:07
 update: 2025-12-06 21:20:36
 type: "guide"

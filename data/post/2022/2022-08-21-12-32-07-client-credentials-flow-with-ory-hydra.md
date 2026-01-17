@@ -1,7 +1,6 @@
 ---
 slug: "2022/08/21/client-credentials-flow-with-ory-hydra"
 title: "Client Credentials flow with Ory Hydra"
-description: "Ory Hydra is an open source OAuth 2.0 and OpenID Connect server. In this post, we'll set it up locally with Docker to test a client credentials OAuth2 flow using its REST API."
 date: 2022-08-21 12:32:07
 update: 2025-12-24 14:44:18
 type: "guide"

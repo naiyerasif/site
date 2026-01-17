@@ -1,7 +1,6 @@
 ---
 slug: "2022/07/23/nushell-playbook"
 title: "Nushell Playbook"
-description: "A collection of useful Nushell patterns, workflows and configurations"
 date: 2022-07-23 11:25:13
 update: 2025-06-22 12:32:33
 type: "reference"
