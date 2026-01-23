@@ -15,11 +15,11 @@
 		"@astrojs/sitemap": "^3.7.0",
 		"@microflash/preset": "^8.0.1",
 		"@microflash/rehype-slugify": "^1.0.0",
-		"@microflash/rehype-starry-night": "^8.0.0",
+		"@microflash/rehype-starry-night": "^8.0.1",
 		"@microflash/remark-callout-directives": "^5.0.0",
 		"@sindresorhus/slugify": "^3.0.0",
-		"@wooorm/starry-night": "^3.8.0",
-		"astro": "^5.16.11",
+		"@wooorm/starry-night": "^3.9.0",
+		"astro": "^5.16.15",
 		"cheerio": "^1.1.2",
 		"dayjs": "^1.11.19",
 		"feed": "^5.2.0",
@@ -36,10 +36,10 @@
 		"remark-parse": "^11.0.0",
 		"remark-rehype": "^11.1.2",
 		"remark-smartypants": "^3.0.2",
-		"sass": "^1.97.2",
+		"sass": "^1.97.3",
 		"sharp": "^0.34.5",
 		"unified": "^11.0.5",
-		"unist-util-visit": "^5.0.0"
+		"unist-util-visit": "^5.1.0"
 	},
 	"devDependencies": {
 		"@clack/prompts": "^0.11.0",
@@ -47,5 +47,5 @@
 		"picocolors": "^1.1.1",
 		"unlighthouse": "^0.17.4"
 	},
-	"packageManager": "pnpm@10.28.0"
+	"packageManager": "pnpm@10.28.1"
 }
