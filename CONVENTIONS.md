@@ -1,12 +1,16 @@
-# Site conventions
+# Conventions
 
-**Version** `2025.4`
+**Version** `2026.1`
 
 These are the conventions I use throughout this site.
 
+## Posts
+
+Posts are immutable, except for minor corrections. If there's a drastic change, publish a new post, and mark the older version as archived with a redirect to new post.
+
 ## Project
 
-- Use the `<platform><version>-<subplatform>-<context>` naming pattern for the projects, for example, `springboot3-redis-pubsub`, `localstack-aws-lambda-with-sqs`, and so on
+- Name the projects with `<platform><version>-<subplatform>-<context>` pattern, for example, `springboot4-redis-pubsub`, `localstack4-aws-lambda-with-sqs`, and so on
 - Use one of the [reserved example domains](https://www.rfc-editor.org/rfc/rfc2606.html) to prefix Java package names, such as `com.example` (default), `org.example`, or `net.example`
 - Use `<reserved example domain>.<platform>.<context>` convention for Java package names, for example, `com.example.springboot3.redis.pubsub`
 
@@ -31,8 +35,8 @@ These are the conventions I use throughout this site.
 
 ## Design System
 
-This site uses RSL naming convention for CSS properties.
+Use RSL naming convention for CSS properties.
 
-- Raw properties are abstract exports from a design tool (denoted with `--x` prefix)
-- Semantic properties are derived from raw properties (denoted with `--y` prefix). They are also used to expose APIs for a component.
+- Root properties are abstract exports from a design tool (denoted with `--x` prefix)
+- Semantic properties are derived from root properties (denoted with `--y` prefix). They are also used to expose APIs for a component.
 - Local properties are internally scoped to a component (denoted with `--z` prefix). They should never be modified outside the scope of a component in which they are defined.
