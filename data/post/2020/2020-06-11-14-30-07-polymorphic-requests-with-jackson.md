@@ -2,7 +2,7 @@
 slug: "2020/06/11/polymorphic-requests-with-jackson"
 title: "Polymorphic Requests with Jackson"
 date: 2020-06-11 14:30:07
-update: 2025-12-06 21:20:36
+update: 2026-02-19 07:46:15
 type: "guide"
 ---
 
@@ -12,9 +12,9 @@ While building a generalized API, you may come across scenarios where the struct
 The code written for this post uses:
 
 - Java 25
-- Jackson Databind 3.0.3
-- JUnit 6.0.1
-- Maven 3.9.11
+- Jackson Databind 3.0.4
+- JUnit 6.0.3
+- Maven 3.9.12
 :::
 
 Create a Maven project using the following `pom.xml`.
@@ -28,27 +28,27 @@ Create a Maven project using the following `pom.xml`.
 
 	<groupId>com.example</groupId>
 	<artifactId>jackson3-polymorphic-requests</artifactId>
-	<version>2.0.0</version>
+	<version>2.1.0</version>
 
 	<properties>
 		<java.version>25</java.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<junit.version>6.0.1</junit.version>
+		<junit.version>6.0.3</junit.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>tools.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>3.0.3</version>
+			<version>3.0.4</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-core</artifactId>
-			<version>3.27.6</version>
+			<version>3.27.7</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -177,6 +177,66 @@ sealed interface CartItem permits Software, Accessory {
 
 - `@JsonTypeInfo` annotation tells Jackson that the identity of an instance should be determined by a property called `itemCategory`.
 - `@JsonSubTypes` annotations tell Jackson that if the `itemCategory` has a value `SOFTWARE`, the JSON should be deserialized as an instance of `Software` type. Similarly, if the `itemCategory` has a value `ACCESSORY`, the JSON should be deserialized as an instance of `Accessory` type.
+
+Alternatively, you can skip `@JsonSubTypes` on `CartItem`.
+
+```java
+package com.example.jackson.polymorphic;
+
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "itemCategory")
+sealed interface CartItem permits Software, Accessory {
+
+	ItemCategory itemCategory();
+}
+```
+
+And annotate `Accessory` and `Software` with `@JsonTypeName` as follows.
+
+```java {3,7}
+package com.example.jackson.polymorphic;
+
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
+import java.util.List;
+
+@JsonTypeName("ACCESSORY")
+public record Accessory(
+		String brand,
+		String manufacturer,
+		String model,
+		double price,
+		List<String> specialFeatures
+) implements CartItem {
+
+	@Override
+	public ItemCategory itemCategory() {
+		return ItemCategory.ACCESSORY;
+	}
+}
+```
+
+```java {3,5}
+package com.example.jackson.polymorphic;
+
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
+@JsonTypeName("SOFTWARE")
+public record Software(
+		String os,
+		String manufacturer,
+		String title,
+		double price,
+		String version
+) implements CartItem {
+
+	@Override
+	public ItemCategory itemCategory() {
+		return ItemCategory.SOFTWARE;
+	}
+}
+```
 
 ## Testing the implementation
 
