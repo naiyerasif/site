@@ -10,16 +10,16 @@ const status = z.enum(Object.keys(Status)).optional();
 const postType = z.enum(Object.keys(PostType)).default(PostType.guide.id);
 const url = z.preprocess(
 	val => val && fullLink(val),
-	z.string().url()
+	z.url()
 );
 const optionalUrl = z.preprocess(
 	val => val && fullLink(val),
-	z.string().url().optional()
+	z.url().optional()
 );
 
 const ogImage = z.preprocess(
 	val => fullLink(val || siteInfo.ogImage),
-	z.string().url()
+	z.url()
 );
 const ogTypes = z.enum(Object.keys(PageType));
 
