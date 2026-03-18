@@ -1,9 +1,8 @@
 <script type="module" is:inline>
 window.__viewTransition = function(callback) {
-	const noMotionPref = window.matchMedia("(prefers-reduced-motion: no-preference)");
-	const hasHighRefreshRate = window.matchMedia("(update: fast)");
-	const hasViewTransitionSupport = "startViewTransition" in document && typeof document.startViewTransition === "function";
-	if (noMotionPref && hasHighRefreshRate && hasViewTransitionSupport) {
+	const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+	// `update: fast` check is not needed since `startViewTransition` handles low-refresh-rate environments gracefully
+	if (!prefersReducedMotion && typeof document.startViewTransition === "function") {
 		document.startViewTransition(callback);
 		return;
 	}
