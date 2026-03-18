@@ -2,8 +2,8 @@
 
 import { join } from "path";
 import { writeFile } from "fs";
+import { styleText } from "util";
 import * as p from "@clack/prompts";
-import color from "picocolors";
 import dayjs from "dayjs";
 import timezone from "dayjs/plugin/timezone.js";
 import utc from "dayjs/plugin/utc.js";
@@ -18,7 +18,7 @@ const date_format = "YYYY-MM-DD HH:mm:ss";
 const drafts = ".workspace/drafts";
 
 async function main() {
-	p.intro(`${color.cyan("Create new post...")}`);
+	p.intro(styleText("cyan", "Create new post..."));
 
 	const answers = await p.group({
 		type: () =>
@@ -48,6 +48,15 @@ async function main() {
 		}
 	});
 
+	if (
+		typeof answers.type === "symbol" || 
+		typeof answers.title === "symbol" || 
+		typeof answers.date === "symbol"
+	) {
+		p.outro(styleText("red", `Failed to create a post`))
+		return
+	}
+
 	const slug = slugify(answers.title);
 	const date = dayjs(answers.date);
 	const frontmatter = [];
@@ -65,7 +74,7 @@ async function main() {
 	writeFile(
 		filePath,
 		`${frontmatter.join('\n')}\n`,
-		() => p.outro(color.green(`Created "${filePath}"`))
+		() => p.outro(styleText("green", `Created "${filePath}"`))
 	);
 }
 
