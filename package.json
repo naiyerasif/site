@@ -21,7 +21,7 @@
 		"@wooorm/starry-night": "^3.9.0",
 		"astro": "^6.0.6",
 		"cheerio": "^1.2.0",
-		"dayjs": "^1.11.19",
+		"dayjs": "^1.11.20",
 		"feed": "^5.2.0",
 		"hastscript": "^9.0.1",
 		"html-entities": "^2.6.0",
