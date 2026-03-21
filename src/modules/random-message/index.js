@@ -7,12 +7,16 @@ class RandomMessage extends HTMLElement {
 
 	connectedCallback() {
 		const selector = this.getAttribute("selector") || "[randomized]";
-		const messageNodes = this.querySelectorAll(selector);
+
+		// avoid randomizing nested random-message elements
+		const messageNodes = Array.from(this.children).filter((el) => el.matches(selector));
+
 		// there should be atleast two nodes to randomize
 		if (messageNodes.length > 1) {
 			for (const messageNode of messageNodes) {
 				messageNode.hidden = true;
 			}
+
 			const randomNode = messageNodes[Math.floor(Math.random() * messageNodes.length)];
 			randomNode.hidden = false;
 		}
