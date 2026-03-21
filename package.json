@@ -12,14 +12,14 @@
 		"lighthouse": "unlighthouse --site http://localhost:8080"
 	},
 	"dependencies": {
-		"@astrojs/sitemap": "^3.7.1",
+		"@astrojs/sitemap": "^3.7.2",
 		"@microflash/preset": "^8.0.1",
 		"@microflash/rehype-slugify": "^1.0.0",
 		"@microflash/rehype-starry-night": "^8.0.1",
 		"@microflash/remark-callout-directives": "^5.0.0",
 		"@sindresorhus/slugify": "^3.0.0",
 		"@wooorm/starry-night": "^3.9.0",
-		"astro": "^6.0.6",
+		"astro": "^6.1.1",
 		"cheerio": "^1.2.0",
 		"dayjs": "^1.11.20",
 		"feed": "^5.2.0",
