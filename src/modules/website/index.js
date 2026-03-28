@@ -10,10 +10,10 @@ const siteInfo = {
 				title: "Mastodon",
 				url: "https://mastodon.social/@naiyer"
 			},
-			github: {
-				id: "@naiyerasif",
-				title: "GitHub",
-				url: "https://github.com/naiyerasif"
+			codeberg: {
+				id: "@naiyer",
+				title: "Codeberg",
+				url: "https://codeberg.org/naiyer"
 			},
 			linkedin: {
 				id: "naiyerasif",
