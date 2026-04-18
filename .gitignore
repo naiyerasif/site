@@ -24,5 +24,8 @@ node_modules/
 # vscode
 .vscode
 
+# obsidian
+.obsidian
+
 # local workspace
 .workspace
