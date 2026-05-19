@@ -13,21 +13,21 @@
 	},
 	"dependencies": {
 		"@astrojs/sitemap": "^3.7.2",
-		"@microflash/preset": "^8.0.1",
-		"@microflash/rehype-slugify": "^1.0.0",
+		"@microflash/preset": "^9.0.0",
+		"@microflash/rehype-slugify": "^2.0.0",
 		"@microflash/rehype-starry-night": "^8.0.1",
 		"@microflash/remark-callout-directives": "^5.0.0",
 		"@sindresorhus/slugify": "^3.0.0",
 		"@wooorm/starry-night": "^3.9.0",
-		"astro": "^6.1.8",
+		"astro": "^6.3.4",
 		"cheerio": "^1.2.0",
 		"dayjs": "^1.11.20",
-		"feed": "^5.2.0",
+		"feed": "^5.2.1",
 		"hastscript": "^9.0.1",
 		"html-entities": "^2.6.0",
 		"lite-youtube-embed": "^0.3.4",
 		"mdast-util-to-string": "^4.0.0",
-		"postcss-preset-env": "^11.2.1",
+		"postcss-preset-env": "^11.3.0",
 		"rehype-autolink-headings": "^7.1.0",
 		"rehype-external-links": "^3.0.0",
 		"rehype-stringify": "^10.0.1",
@@ -42,9 +42,8 @@
 		"unist-util-visit": "^5.1.0"
 	},
 	"devDependencies": {
-		"@clack/prompts": "^1.2.0",
-		"@material/material-color-utilities": "^0.3.0",
+		"@clack/prompts": "^1.4.0",
 		"unlighthouse": "^0.17.9"
 	},
-	"packageManager": "pnpm@10.33.0"
+	"packageManager": "pnpm@11.1.3"
 }
