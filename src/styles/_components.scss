@@ -87,6 +87,10 @@ details > ::marker {
 			margin-inline-end: 0.5ch;
 		}
 
+		kbd {
+			padding-block: 1.5ch;
+		}
+
 		@include mixins.onTouch {
 			visibility: hidden;
 			display: none;
@@ -95,7 +99,7 @@ details > ::marker {
 	
 	input[autofocus] {
 		flex-grow: 1;
-		padding: 0.25rem 1rem;
+		padding: 0.5rem 1rem;
 	}
 
 	#commands {
@@ -106,7 +110,7 @@ details > ::marker {
 	.cmdb-section-header {
 		font-size: 0.8em;
 		color: var(--y-caption-color);
-		padding: 0.25rem 1rem;
+		padding: 1rem;
 	}
 
 	.cmdb-section:not(:first-child) .cmdb-section-header {
