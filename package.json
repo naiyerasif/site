@@ -12,16 +12,16 @@
 		"lighthouse": "unlighthouse --site http://localhost:8080"
 	},
 	"dependencies": {
-		"@astrojs/sitemap": "^3.7.2",
+		"@astrojs/sitemap": "^3.7.3",
 		"@microflash/preset": "^9.0.0",
 		"@microflash/rehype-slugify": "^2.0.0",
 		"@microflash/rehype-starry-night": "^8.0.1",
 		"@microflash/remark-callout-directives": "^5.0.0",
 		"@sindresorhus/slugify": "^3.0.0",
 		"@wooorm/starry-night": "^3.9.0",
-		"astro": "^6.3.4",
+		"astro": "^6.4.2",
 		"cheerio": "^1.2.0",
-		"dayjs": "^1.11.20",
+		"dayjs": "^1.11.21",
 		"feed": "^5.2.1",
 		"hastscript": "^9.0.1",
 		"html-entities": "^2.6.0",
@@ -36,7 +36,7 @@
 		"remark-parse": "^11.0.0",
 		"remark-rehype": "^11.1.2",
 		"remark-smartypants": "^3.0.2",
-		"sass": "^1.99.0",
+		"sass": "^1.100.0",
 		"sharp": "^0.34.5",
 		"unified": "^11.0.5",
 		"unist-util-visit": "^5.1.0"
