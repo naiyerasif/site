@@ -1,2 +1,7 @@
 allowBuilds:
+  '@parcel/watcher': false
+  esbuild: true
+  puppeteer: false
   sharp: true
+  vue-demi: false
+  workerd: true
