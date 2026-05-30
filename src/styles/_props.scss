@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "mixins";
 @use "colors" as *;
 
@@ -20,21 +21,21 @@
 	--y-accent-bg-color: #{$x-primary-50};
 	--y-strong-accent-bg-color: #{$x-primary-100};
 	--y-body-bg-color: #{$x-paper};
-	--y-note-bg-color: #{$x-gray-50};
+	--y-note-bg-color: #{color.change($x-gray-100, $lightness: 95%, $space: oklch)};
 	--y-commend-bg-color: #{$x-commend-50};
 	--y-deter-bg-color: #{$x-deter-50};
 	--y-warn-bg-color: #{$x-warn-50};
 	--y-assert-bg-color: #{$x-assert-50};
 	--y-selection-bg-color: #{$x-warn-150};
 
-	--y-note-canvas-color: #{$x-gray-100};
+	--y-note-canvas-color: #{$x-gray-150};
 	--y-commend-canvas-color: #{$x-commend-100};
 	--y-deter-canvas-color: #{$x-deter-100};
 	--y-warn-canvas-color: #{$x-warn-100};
 	--y-assert-canvas-color: #{$x-assert-100};
 
 	--y-body-border: #{$x-gray-150};
-	--y-note-border: var(--y-body-border);
+	--y-note-border: #{$x-gray-200};
 	--y-commend-border: #{$x-commend-150};
 	--y-deter-border: #{$x-deter-150};
 	--y-warn-border: #{$x-warn-150};
@@ -79,8 +80,8 @@
 @mixin darkTheme {
 	color-scheme: dark;
 
-	--y-accent-color: #{$x-primary-300};
-	--y-strong-accent-color: #{$x-primary-200};
+	--y-accent-color: #{$x-primary-250};
+	--y-strong-accent-color: #{$x-primary-150};
 	--y-decoration-color: #{$x-primary-600};
 	--y-strong-decoration-color: #{$x-primary-500};
 	--y-body-color: #{$x-gray-200};
