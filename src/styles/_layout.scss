@@ -27,11 +27,12 @@ body {
 	}
 }
 
+.hero,
 .footer,
-.sidekick,
-.hero {
+.sidekick {
+	--z-hero-expanse: var(--y-hero-expanse, var(--y-post-width));
 	--z-hero-gap: minmax(var(--y-body-gap), 1fr);
-	--z-hero-copy: min(var(--y-post-width), 100% - (var(--y-body-gap) * 2));
+	--z-hero-copy: min(var(--z-hero-expanse), 100% - (var(--y-body-gap) * 2));
 
 	display: grid;
 	grid-template-columns:
@@ -121,6 +122,11 @@ body > .header {
 	theme-switcher,
 	command-bar {
 		line-height: 0;
+
+		& > * {
+			line-height: 1.5;
+		}
+
 		& > button[role="switch"] {
 			padding: 0;
 			background-color: transparent;
@@ -230,34 +236,37 @@ main.glitch {
 }
 
 body > .footer {
+	--y-hero-expanse: var(--y-body-width);
 	--y-icon-size: var(--x-icon-small);
 	position: sticky;
 	top: 100vh;
 	top: 100dvh;
-	padding-block: var(--x-gap-lg);
+	padding-block: var(--y-body-gap);
 	border-block-start: 1px dotted var(--y-body-border);
-	@include mixins.flow;
+	font-size: var(--y-small-text);
 
-	.footer-nav {
+	li {
+		--y-flow-gap: 0;
+	}
+
+	a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5ch;
+	}
+
+	.copyright,
+	.quicklinks {
 		display: flex;
 		flex-wrap: wrap;
-		align-items: end;
+	}
+
+	.quicklinks {
+		gap: calc(2rem + 5vw);
+		margin-block-end: var(--x-gap-md);
+	}
+
+	.copyright {
 		justify-content: space-between;
-		gap: 1rem;
-		font-size: var(--y-small-text);
-
-		&-items {
-			display: flex;
-			flex-direction: column;
-			flex-wrap: wrap;
-			gap: 0.5ch;
-			flex: none;
-
-			a {
-				display: inline-flex;
-				align-items: center;
-				gap: 0.5ch;
-			}
-		}
 	}
 }

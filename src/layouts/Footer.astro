@@ -13,22 +13,26 @@ const now = new Date();
 ---
 
 <footer class="footer">
-	<div class="footer-nav">
-		<div class="footer-nav-items">
-			<a href="/feed.xml"><Icon name="rss"/>Posts</a>
-			<a href="/all.xml"><Icon name="rss"/>Posts+notes</a>
-			{Object.entries(authorPresence).map(([network, details]) => <a href={details.url} rel="nofollow noopener noreferrer"><Icon name={network} alt={details.title}/>{details.title}</a>)}
-		</div>
-		<div class="footer-nav-items">
-			<a href="/privacy/">Privacy</a>
-			<a href="/sitemap-index.xml">Sitemap</a>
-			<a href={siteIssueUrl} rel="nofollow noopener noreferrer">Report an issue</a>
-		</div>
-		<div class="footer-nav-items">
-			<div>&copy; 2018, <a href="/about/">{authorName}</a></div>
-			<div>Updated on <Time date={now} /></div>
-			<BackToTop/>
-		</div>
+	<div class="quicklinks">
+		<ul>
+			<strong>RSS</strong>
+			<li><a href="/feed.xml">Posts</a></li>
+			<li><a href="/all.xml">Firehose</a></li>
+		</ul>
+		<ul>
+			<strong>Connect</strong>
+			{Object.entries(authorPresence).map(([network, details]) => <li><a href={details.url} rel="nofollow noopener noreferrer">{details.title}</a></li>)}
+		</ul>
+		<ul>
+			<strong>Site</strong>
+			<li><a href="/privacy/">Privacy</a></li>
+			<li><a href="/sitemap-index.xml">Sitemap</a></li>
+			<li><a href={siteIssueUrl} rel="nofollow noopener noreferrer">Report an issue</a></li>
+		</ul>
+	</div>
+	<div class="copyright">
+		<p>&copy; 2018, <a href="/about/">{authorName}</a></p>
+		<BackToTop/>
 	</div>
 </footer>
 <IconPack/>

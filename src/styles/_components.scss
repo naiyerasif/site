@@ -87,10 +87,6 @@ details > ::marker {
 			margin-inline-end: 0.5ch;
 		}
 
-		kbd {
-			padding-block: 1.5ch;
-		}
-
 		@include mixins.onTouch {
 			visibility: hidden;
 			display: none;
@@ -110,7 +106,7 @@ details > ::marker {
 	.cmdb-section-header {
 		font-size: 0.8em;
 		color: var(--y-caption-color);
-		padding: 1rem;
+		padding: 0.5rem 1rem;
 	}
 
 	.cmdb-section:not(:first-child) .cmdb-section-header {
