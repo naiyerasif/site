@@ -246,7 +246,7 @@ figure {
 	}
 
 	&:not(:last-child) {
-		border-block-end: var(--x-border-root) solid var(--y-note-bg-color);
+		border-block-end: 12px solid var(--y-note-bg-color);
 		padding-block-end: var(--x-gap-root);
 	}
 
