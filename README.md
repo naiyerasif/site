@@ -135,10 +135,6 @@ Specify `.popout.popout-video` classes to bleed the video out of wrapper.
 
 ## Audits
 
-- To launch a full lighthouse audit, run `pnpm lighthouse`
-
-### Additional audits
-
 - [Blacklight Privacy Inspection](https://themarkup.org/blacklight?url=naiyerasif.com)
 - [Mozilla Observatory](https://observatory.mozilla.org/analyze/naiyerasif.com)
 - [Website Carbon Report](https://www.websitecarbon.com/website/naiyerasif-com/)
@@ -155,6 +151,7 @@ The source code of this site is available under [MPL-2.0](./LICENSE.md), the con
 
 #### Previous versions
 
+- [v5](https://github.com/naiyerasif/site/tree/v5) (refresh)
 - [v4](https://github.com/naiyerasif/site/tree/v4) (redesign)
 - [v3](https://github.com/naiyerasif/site/tree/v3) (built with [Astro](https://github.com/withastro/astro) and web components)
 - [v2](https://github.com/naiyerasif/site/tree/v2) (built with [Lume](https://github.com/lumeland/lume) and [Alpine.js](https://github.com/alpinejs/alpine))
