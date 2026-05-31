@@ -2,7 +2,7 @@
 slug: "about"
 title: "Naiyer Asif"
 date: 2019-06-30 05:14:56
-update: 2025-10-26 12:58:36
+update: 2026-05-31 22:27:51
 avatar: "./images/naiyer.png"
 ---
 
