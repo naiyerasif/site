@@ -81,12 +81,21 @@ const calloutOptions = {
 				type: "paragraph",
 				data: {
 					hName: "div",
-					hProperties: { className: ["callout-hint"] }
+					hProperties: { className: ["callout-header"] }
 				},
 				children: [
 					{
 						type: "html",
 						value: prefs.hint
+					},
+					{
+						type: "strong",
+						children: [
+							{
+								type: "text",
+								value: `${title} `
+							}
+						]
 					}
 				]
 			},
@@ -96,18 +105,7 @@ const calloutOptions = {
 					hName: "div",
 					hProperties: { className: ["callout-body"] }
 				},
-				children: [
-					{
-						type: "strong",
-						children: [
-							{
-								type: "text",
-								value: `${title} `
-							}
-						]
-					},
-					...children
-				]
+				children
 			}
 		]
 	}

@@ -10,36 +10,38 @@
 	--z-callout-border-width: var(--x-border-sm);
 	--z-callout-padding: 1ch;
 
-	display: flex;
 	border-radius: var(--z-callout-radius);
+	background-color: var(--y-theme-bg-color);
 	accent-color: var(--y-theme-color);
 	caret-color: var(--y-theme-color);
+	border: var(--z-callout-border-width) solid var(--y-theme-border);
 
 	details > ::marker {
 		--y-theme-marker-color: var(--y-theme-color);
 	}
 
-	&-hint {
-		flex: none;
+	.callout-header {
+		--z-header-radius: calc(var(--z-callout-radius) - 0.1rem);
+		display: flex;
+		align-items: center;
+		gap: 0.75ch;
 		color: var(--y-theme-color);
-		background-color: var(--y-theme-border);
-		border-start-start-radius: inherit;
-		border-end-start-radius: inherit;
-		padding: var(--z-callout-padding);
-		max-inline-size: fit-content; // prevent Safari from enlarging inline-size more than icon size
+		background-color: var(--y-theme-canvas-color);
+		padding: calc(var(--z-callout-padding) / 1.5) var(--z-callout-padding);
+		border-start-start-radius: var(--z-header-radius);
+		border-start-end-radius: var(--z-header-radius);
+		border-block-end: var(--z-callout-border-width) solid var(--y-theme-border);
+
+		* {
+			color: var(--y-theme-color);
+		}
 	}
 
 	&-body {
-		flex: 1;
 		overflow: auto;
-		padding: var(--z-callout-padding);
-		background-color: var(--y-theme-bg-color);
-		border-start-end-radius: inherit;
-		border-end-end-radius: inherit;
+		padding: 18px;
 		@include mixins.flow;
-		border-block: var(--z-callout-border-width) dotted var(--y-theme-border);
-		border-inline-end: var(--z-callout-border-width) dotted var(--y-theme-border);
-
+		
 		& > strong:first-of-type {
 			color: var(--y-theme-color);
 		}
@@ -84,4 +86,9 @@
 		--y-callout-border: var(--y-deter-border);
 		--y-callout-canvas-color: var(--y-deter-canvas-color);
 	}
+}
+
+.post > .callout,
+.card > .callout {
+	margin-inline: -18px;
 }
