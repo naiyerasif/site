@@ -43,6 +43,7 @@
 
 	clipboard-copy {
 		flex: none;
+		user-select: none;
 		padding: var(--z-hl-padding-min) var(--z-hl-padding-max);
 		margin: calc(var(--z-hl-padding-max) / 3);
 	}
@@ -126,5 +127,51 @@
 		color: var(--y-hl-line-prompt-color);
 		background-color: currentColor;
 		@include mixins.size(var(--z-hl-line-prompt-size));
+	}
+}
+
+.post > .hl,
+.card > .hl {
+	border-style: dotted;
+	border-inline: none;
+	border-radius: 0;
+	margin-block-end: var(--y-flow-gap);
+
+	.hl-header {
+		background-color: var(--y-note-bg-color);
+		border-inline: var(--z-hl-border);
+		border-end-end-radius: var(--z-hl-radius);
+		border-end-start-radius: var(--z-hl-radius);
+		border-style: dotted;
+		border-block-start: none;
+		margin-inline: -0.5rem;
+	}
+
+	.hl-footer {
+		--z-hl-radius: var(--x-radius-root);
+		--y-form-radius: var(--x-radius-root);
+		border: none;
+		margin-block-end: -2ch;
+	}
+
+	.hl-language {
+		line-height: 1;
+		background-color: var(--y-warn-bg-color);
+		border: 1px solid var(--y-warn-border);
+		border-radius: var(--z-hl-radius);
+	}
+
+	code {
+		span {
+			padding-inline-start: 0;
+		}
+		
+		[data-line-number] {
+			border-inline-start: none;
+		}
+
+		.diff {
+			margin-inline-start: 0.5ch;
+		}
 	}
 }

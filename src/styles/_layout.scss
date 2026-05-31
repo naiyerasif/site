@@ -63,6 +63,7 @@ body {
 		grid-column: postCopy;
 	}
 
+	& > .hl,
 	& > .popout {
 		grid-column: postPopout;
 
@@ -76,6 +77,11 @@ body {
 
 		& > * {
 			grid-column: contentCopy;
+		}
+
+		& > pre {
+			grid-column-start: contentCopy-start;
+			grid-column-end: contentPopout-end;
 		}
 
 		&.popout-image > p,
