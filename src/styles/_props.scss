@@ -1,4 +1,3 @@
-@use "sass:color";
 @use "mixins";
 @use "colors" as *;
 
@@ -9,10 +8,10 @@
 	--y-strong-accent-color: #{$x-primary-700};
 	--y-decoration-color: #{$x-primary-200};
 	--y-strong-decoration-color: #{$x-primary-300};
-	--y-body-color: #{$x-gray-850};
-	--y-emphasis-color: #{$x-gray-950};
-	--y-feeble-color: #{$x-gray-700};
-	--y-note-color: #{$x-gray-700};
+	--y-body-color: #{$x-note-900};
+	--y-emphasis-color: #{$x-note-950};
+	--y-feeble-color: #{$x-note-800};
+	--y-note-color: #{$x-note-850};
 	--y-commend-color: #{$x-commend-700};
 	--y-deter-color: #{$x-deter-700};
 	--y-warn-color: #{$x-warn-700};
@@ -21,25 +20,25 @@
 	--y-accent-bg-color: #{$x-primary-50};
 	--y-strong-accent-bg-color: #{$x-primary-100};
 	--y-body-bg-color: #{$x-paper};
-	--y-note-bg-color: #{color.change($x-gray-100, $lightness: 95%, $space: oklch)};
+	--y-note-bg-color: #{$x-note-100};
 	--y-commend-bg-color: #{$x-commend-50};
 	--y-deter-bg-color: #{$x-deter-50};
 	--y-warn-bg-color: #{$x-warn-50};
 	--y-assert-bg-color: #{$x-assert-50};
 	--y-selection-bg-color: #{$x-warn-150};
 
-	--y-note-canvas-color: #{$x-gray-150};
+	--y-note-canvas-color: #{$x-note-150};
 	--y-commend-canvas-color: #{$x-commend-100};
 	--y-deter-canvas-color: #{$x-deter-100};
 	--y-warn-canvas-color: #{$x-warn-100};
 	--y-assert-canvas-color: #{$x-assert-100};
 
-	--y-body-border: #{$x-gray-150};
-	--y-note-border: #{$x-gray-200};
-	--y-commend-border: #{$x-commend-150};
-	--y-deter-border: #{$x-deter-150};
-	--y-warn-border: #{$x-warn-150};
-	--y-assert-border: #{$x-assert-150};
+	--y-body-border: #{$x-note-200};
+	--y-note-border: var(--y-body-border);
+	--y-commend-border: #{$x-commend-200};
+	--y-deter-border: #{$x-deter-200};
+	--y-warn-border: #{$x-warn-200};
+	--y-assert-border: #{$x-assert-200};
 
 	--x-texture-fx-1: hsla(0, 0%, 0%, 0.02);
 	--x-texture-fx-2: hsla(0, 0%, 100%, 0);
@@ -80,14 +79,14 @@
 @mixin darkTheme {
 	color-scheme: dark;
 
-	--y-accent-color: #{$x-primary-250};
+	--y-accent-color: #{$x-primary-200};
 	--y-strong-accent-color: #{$x-primary-150};
 	--y-decoration-color: #{$x-primary-600};
 	--y-strong-decoration-color: #{$x-primary-500};
-	--y-body-color: #{$x-gray-200};
-	--y-emphasis-color: #{$x-gray-150};
-	--y-feeble-color: #{$x-gray-300};
-	--y-note-color: #{$x-gray-300};
+	--y-body-color: #{$x-note-200};
+	--y-emphasis-color: #{$x-note-150};
+	--y-feeble-color: #{$x-note-300};
+	--y-note-color: #{$x-note-300};
 	--y-commend-color: #{$x-commend-300};
 	--y-deter-color: #{$x-deter-300};
 	--y-warn-color: #{$x-warn-300};
@@ -96,20 +95,20 @@
 	--y-accent-bg-color: #{$x-primary-900};
 	--y-strong-accent-bg-color: #{$x-primary-850};
 	--y-body-bg-color: #{$x-black};
-	--y-note-bg-color: #{$x-gray-950};
+	--y-note-bg-color: #{$x-note-950};
 	--y-commend-bg-color: #{$x-commend-950};
 	--y-deter-bg-color: #{$x-deter-950};
 	--y-warn-bg-color: #{$x-warn-950};
 	--y-assert-bg-color: #{$x-assert-950};
 	--y-selection-bg-color: #{$x-warn-800};
 
-	--y-note-canvas-color: #{$x-gray-900};
+	--y-note-canvas-color: #{$x-note-900};
 	--y-commend-canvas-color: #{$x-commend-900};
 	--y-deter-canvas-color: #{$x-deter-900};
 	--y-warn-canvas-color: #{$x-warn-900};
 	--y-assert-canvas-color: #{$x-assert-900};
 
-	--y-body-border: #{$x-gray-800};
+	--y-body-border: #{$x-note-850};
 	--y-note-border: var(--y-body-border);
 	--y-commend-border: #{$x-commend-800};
 	--y-deter-border: #{$x-deter-800};

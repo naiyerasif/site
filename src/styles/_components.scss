@@ -95,7 +95,7 @@ details > ::marker {
 	
 	input[autofocus] {
 		flex-grow: 1;
-		padding: 0.5rem 1rem;
+		padding: 0.35rem 1rem;
 	}
 
 	#commands {
@@ -106,7 +106,7 @@ details > ::marker {
 	.cmdb-section-header {
 		font-size: 0.8em;
 		color: var(--y-caption-color);
-		padding: 0.5rem 1rem;
+		padding: 0.35rem 1rem;
 	}
 
 	.cmdb-section:not(:first-child) .cmdb-section-header {
