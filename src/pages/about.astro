@@ -17,9 +17,15 @@ const pageInfo = {
 
 <Layout {pageInfo} class="popout">
 	<div slot="hero" class="hero-body">
-		<hgroup class="with-avatar">
-			<Image src={data.avatar} alt={data.title} class="avatar"/>
-			<h1>About</h1>
+		<hgroup class="about">
+			<random-message selector="h1">
+				<h1>👋 Hello!</h1>
+				<h1 data-lang="Turkish" hidden>👋 Merhaba!</h1>
+				<h1 data-lang="Farsi" hidden>👋 Salâm!</h1>
+			</random-message>
+			<p>
+				I&rsquo;m Naiyer <Image src={data.avatar} alt={data.title} class="avatar"/> <audio-player><audio><source src="/audio/profile/naiyer/namedrop.mp3" type="audio/mpeg"/><source src="/audio/profile/naiyer/namedrop.m4a" type="audio/mp4"/></audio><button aria-label="Pronounce name"></button></audio-player><noscript><audio controls><source src="/audio/profile/naiyer/namedrop.mp3" type="audio/mpeg"/><source src="/audio/profile/naiyer/namedrop.m4a" type="audio/mp4"/></audio></noscript> &mdash;from India.
+			</p>
 		</hgroup>
 	</div>
 	<article class="post">

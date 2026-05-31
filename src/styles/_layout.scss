@@ -159,9 +159,17 @@ body > .header {
 	}
 
 	.avatar {
-		inline-size: calc(72px + 2vw);
+		inline-size: 30px;
 		border: 1px solid var(--y-note-canvas-color);
 		border-radius: var(--x-radius-max);
+
+		@include mixins.whenAnimated {
+			transition: transform 145ms ease-in-out;
+		}
+
+		&:is(:hover, :focus) {
+			transform: scale(7);
+		}
 	}
 }
 

@@ -23,13 +23,6 @@ details > ::marker {
 
 // fancy heading group
 :where(hgroup) {
-	&.with-avatar {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		gap: 1rem;
-	}
-
 	h1 {
 		font-family: var(--y-fancy-font);
 		font-weight: var(--y-strongly-emphasized-text);
@@ -44,6 +37,10 @@ details > ::marker {
 
 	h1 + p {
 		margin-block-start: 0.5rem;
+	}
+
+	&.about random-message + p {
+		margin-block-start: 1rem;
 	}
 }
 
@@ -301,15 +298,18 @@ figure {
 random-message {
 	font-size: var(--y-tagline-text);
 
-	span[data-language] {
+	h1[data-lang] {
+		max-inline-size: max-content;
 		position: relative;
 	
 		&::after {
 			position: absolute;
-			content: attr(data-language);
-			bottom: 3ch;
+			content: attr(data-lang);
+			bottom: 5ch;
 			right: 0;
-			font-size: 0.65em;
+			font-size: 0.4em;
+			font-family: var(--y-body-font);
+			font-weight: var(--y-regular-text);
 			text-transform: lowercase;
 			color: var(--y-warn-color);
 			background-color: var(--y-warn-canvas-color);
@@ -318,20 +318,21 @@ random-message {
 			line-height: 1;
 		}
 	}
+}
 
-	audio-player {
-		display: inline-block;
-		vertical-align: middle;
-		line-height: 1;
+audio-player {
+	--y-icon-size: 30px;
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 0;
 
-		button {
-			display: inline-flex;
-			align-items: center;
-			justify-content: center;
-			padding: 0;
-			border-radius: var(--x-radius-max);
-			border: none;
-		}
+	button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0;
+		border-radius: var(--x-radius-max);
+		border: none;
 	}
 }
 
