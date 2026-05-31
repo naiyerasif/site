@@ -1,9 +1,9 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import PostCard from "../components/PostCard.astro";
-import NoteCard from "../components/NoteCard.astro";
-import Icon from "../components/Icon.astro";
+import PostCard from "../components/legacy/PostCard.astro";
+import NoteCard from "../components/legacy/NoteCard.astro";
+import Icon from "../components/legacy/Icon.astro";
 import siteInfo, { paginationPathname } from "../modules/website/index.js";
 import { compare } from "../modules/datetime/index.js";
 import { PostType, Status } from "../modules/schema/defs.js";

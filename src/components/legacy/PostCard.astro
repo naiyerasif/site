@@ -1,7 +1,7 @@
 ---
 import Time from "./Time.astro";
-import { postPathname } from "../modules/website/index.js";
-import { PostType } from "../modules/schema/defs.js";
+import { postPathname } from "../../modules/website/index.js";
+import { PostType } from "../../modules/schema/defs.js";
 
 const { entry } = Astro.props;
 const path = postPathname(entry.id);

@@ -1,15 +1,12 @@
 ---
-import Icon from "../components/Icon.astro";
-import IconPack from "../components/IconPack.astro";
-import BackToTop from "../components/BackToTop.astro";
-import Time from "../components/Time.astro";
+import IconPack from "../components/legacy/IconPack.astro";
+import BackToTop from "../components/legacy/BackToTop.astro";
 import siteInfo from "../modules/website/index.js";
 
 const authorInfo = siteInfo.author;
 const authorPresence = authorInfo.presence;
 const authorName = authorInfo.name;
 const siteIssueUrl = siteInfo.issueBase;
-const now = new Date();
 ---
 
 <footer class="footer">
