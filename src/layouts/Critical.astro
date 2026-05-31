@@ -45,19 +45,29 @@ try {
 setTheme(currentTheme || (prefersDarkScheme.matches ? "dark" : "light"));
 </script>
 
-<script type="module" is:inline>
-const searchOptions = {
-	shouldSort: true,
-	threshold: 0.2,
-	location: 0,
-	distance: 300,
-	minMatchCharLength: 3,
-	keys: ["title"]
-};
+<script>
+import MiniSearch from "minisearch";
 
-window.__search = function (query, searchIndex) {
-	const fuse = new Fuse(searchIndex, searchOptions);
-	return fuse.search(query);
+const searchOptions = {
+	fields: ["title"],
+	idField: ["path"],
+	storeFields: ["title", "path", "icon", "section"],
+	searchOptions: {
+		fuzzy: true,
+		prefix: true,
+	}
+};
+const minisearch = new MiniSearch(searchOptions);
+
+const searchIndex = (await (await fetch("/search-index.json")).json())
+	.map(item => {
+		item.section = item.section || "Default"
+		return item
+	});
+minisearch.addAll(searchIndex);
+
+window.__search = function (query) {
+	return minisearch.search(query);
 }
 </script>
 

@@ -9,7 +9,6 @@ class CommandBar extends HTMLElement {
 		super();
 
 		this.query = "";
-		this.searchIndex = [];
 		this.searchResults = [];
 		this.anchorIcon = `<svg role="img" class="icon" aria-hidden="true"><use href="#x4-twist-right-up"/></svg>`;
 	}
@@ -102,15 +101,10 @@ class CommandBar extends HTMLElement {
 
 	_search() {
 		if (this.query && this.query.length > 2) {
-			this.searchResults = window.__search(this.query, this.searchIndex)
-				.map(result => {
-					const { item } = result;
-					item.section = item.section || "Default";
-					return item;
-				});
+			this.searchResults = window.__search(this.query);
 
 			if (this.searchResults && this.searchResults.length) {
-				this._setRecents(this.searchResults.filter(result => result.section === "Default"));
+				this._setRecents(this.searchResults);
 			}
 		}
 	}
@@ -150,19 +144,10 @@ class CommandBar extends HTMLElement {
 	}
 
 	_getDefaultCommands() {
-		const items = this._groupBy(this.searchIndex, "section");
 		const nodes = [];
 
 		if (this.recents && this.recents.length) {
 			nodes.push(this._getSectionItems(this.recents, "Recent search results", "recently-searched"));
-		}
-
-		if (items["Navigation"] && items["Navigation"].length) {
-			nodes.push(this._getSectionItems(items["Navigation"], "Navigation", "navigation"));
-		}
-
-		if (items["Preferences"] && items["Preferences"].length) {
-			nodes.push(this._getSectionItems(items["Preferences"], "Preferences", "preferences"));
 		}
 
 		return nodes;
@@ -195,23 +180,12 @@ class CommandBar extends HTMLElement {
 			anchor.classList.add(cls);
 			anchor.setAttribute("href", item.path);
 			anchor.setAttribute("part", "link");
-			anchor.innerHTML = (item.icon || this.anchorIcon) + item.title;
+			anchor.innerHTML = this.anchorIcon + item.title;
 			return anchor;
-		} else {
-			const div = document.createElement("div");
-			div.classList.add(cls);
-			div.innerHTML = item.content;
-			return div.childNodes[0];
 		}
 	}
 
 	async _setupCommands() {
-		this.searchIndex = (await (await fetch("/search-index.json")).json())
-			.map(item => {
-				item.section = item.section || "Default"
-				return item
-			});
-
 		this._getRecents();
 	}
 
@@ -241,13 +215,6 @@ class CommandBar extends HTMLElement {
 		return array.filter(function (value, index, self) {
 			return self.findIndex(function (v) { return v.title === value.title }) === index;
 		});
-	}
-
-	_groupBy(array, key) {
-		return array.reduce(function(storage, item) {
-			(storage[item[key]] = storage[item[key]] || []).push(item);
-			return storage;
-		}, {});
 	}
 }
 
