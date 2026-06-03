@@ -7,6 +7,7 @@ const authorInfo = siteInfo.author;
 const authorPresence = authorInfo.presence;
 const authorName = authorInfo.name;
 const siteIssueUrl = siteInfo.issueBase;
+const currentYear = (new Date()).getFullYear();
 ---
 
 <footer class="footer">
@@ -28,7 +29,7 @@ const siteIssueUrl = siteInfo.issueBase;
 		</ul>
 	</div>
 	<div class="copyright">
-		<p>&copy; 2018, <a href="/about/">{authorName}</a></p>
+		<p>&copy; 2018&mdash;{currentYear}, <a href="/about/">{authorName}</a></p>
 		<BackToTop/>
 	</div>
 </footer>

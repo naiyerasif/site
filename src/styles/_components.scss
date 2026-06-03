@@ -243,7 +243,7 @@ figure {
 	}
 
 	&:not(:last-child) {
-		border-block-end: 12px solid var(--y-note-bg-color);
+		border-block-end: var(--x-border-sm) dotted var(--y-body-border);
 		padding-block-end: var(--x-gap-root);
 	}
 
