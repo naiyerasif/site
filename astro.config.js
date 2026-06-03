@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
+import { unified } from '@astrojs/markdown-remark';
 import remarkDirective from "remark-directive";
 import remarkCalloutDirectives from "@microflash/remark-callout-directives";
 import rehypeExternalLinks from "rehype-external-links";
@@ -49,95 +50,97 @@ export default defineConfig({
 	},
 	markdown: {
 		syntaxHighlight: false,
-		remarkPlugins: [
-			remarkDirective,
-			remarkTimeDirective,
-			remarkFigureDirective,
-			remarkYoutubeDirective,
-			[remarkCalloutDirectives, calloutOptions],
-			remarkDefinitionListDirective
-		],
-		rehypePlugins: [
-			[
-				rehypeExternalLinks,
-				{
-					target: false,
-					rel: ["nofollow", "noopener", "noreferrer"]
-				}
+		processor: unified({
+			remarkPlugins: [
+				remarkDirective,
+				remarkTimeDirective,
+				remarkFigureDirective,
+				remarkYoutubeDirective,
+				[remarkCalloutDirectives, calloutOptions],
+				remarkDefinitionListDirective
 			],
-			[
-				rehypeSlugify,
-				{
-					reset() {
-						slugifier.reset()
-					},
-					slugify(text) {
-						return slugifier.slugify(text)
+			rehypePlugins: [
+				[
+					rehypeExternalLinks,
+					{
+						target: false,
+						rel: ["nofollow", "noopener", "noreferrer"]
 					}
-				}
-			],
-			[
-				rehypeAutolinkHeadings,
-				{
-					behavior: "append",
-					content: {
-						type: "element",
-						tagName: "svg",
-						properties: {
-							"aria-hidden": "true",
-							role: "img",
-							className: ["icon"]
+				],
+				[
+					rehypeSlugify,
+					{
+						reset() {
+							slugifier.reset()
 						},
-						children: [
+						slugify(text) {
+							return slugifier.slugify(text)
+						}
+					}
+				],
+				[
+					rehypeAutolinkHeadings,
+					{
+						behavior: "append",
+						content: {
+							type: "element",
+							tagName: "svg",
+							properties: {
+								"aria-hidden": "true",
+								role: "img",
+								className: ["icon"]
+							},
+							children: [
+								{
+									type: "element",
+									tagName: "use",
+									properties: {
+										href: "#x4-link"
+									}
+								}
+							]
+						}
+					}
+				],
+				[
+					rehypeStarryNight,
+					{
+						aliases: {
+							brewfile: "shell",
+							conf: "ini",
+							json: "jsonc",
+						},
+						grammars: [
+							sourcePgsql,
+							textLog,
+							...all
+						],
+						plugins: [
+							titlePlugin,
+							lineAnnotationPlugin,
+							languageIndicatorPlugin,
 							{
-								type: "element",
-								tagName: "use",
-								properties: {
-									href: "#x4-link"
+								type: "footer",
+								apply: (opts, nodes) => {
+									if (opts.id) {
+										nodes.push({
+											type: "element",
+											tagName: "clipboard-copy",
+											properties: {
+												className: [`${opts.namespace}-copy`],
+												for: opts.id
+											},
+											children: [
+												{ type: "text", value: "Copy" }
+											]
+										});
+									}
 								}
 							}
 						]
 					}
-				}
-			],
-			[
-				rehypeStarryNight,
-				{
-					aliases: {
-						brewfile: "shell",
-						conf: "ini",
-						json: "jsonc",
-					},
-					grammars: [
-						sourcePgsql,
-						textLog,
-						...all
-					],
-					plugins: [
-						titlePlugin,
-						lineAnnotationPlugin,
-						languageIndicatorPlugin,
-						{
-							type: "footer",
-							apply: (opts, nodes) => {
-								if (opts.id) {
-									nodes.push({
-										type: "element",
-										tagName: "clipboard-copy",
-										properties: {
-											className: [`${opts.namespace}-copy`],
-											for: opts.id
-										},
-										children: [
-											{ type: "text", value: "Copy" }
-										]
-									});
-								}
-							}
-						}
-					]
-				}
+				]
 			]
-		]
+		})
 	}
 });
