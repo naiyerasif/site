@@ -59,11 +59,7 @@ const searchOptions = {
 };
 const minisearch = new MiniSearch(searchOptions);
 
-const searchIndex = (await (await fetch("/search-index.json")).json())
-	.map(item => {
-		item.section = item.section || "Default"
-		return item
-	});
+const searchIndex = (await (await fetch("/search-index.json")).json());
 minisearch.addAll(searchIndex);
 
 window.__search = function (query) {

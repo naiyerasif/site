@@ -180,7 +180,8 @@ class CommandBar extends HTMLElement {
 			anchor.classList.add(cls);
 			anchor.setAttribute("href", item.path);
 			anchor.setAttribute("part", "link");
-			anchor.innerHTML = this.anchorIcon + item.title;
+			anchor.innerHTML = this.anchorIcon
+			anchor.insertAdjacentText('beforeend', item.title);
 			return anchor;
 		}
 	}

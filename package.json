@@ -23,7 +23,6 @@
 		"dayjs": "^1.11.21",
 		"feed": "^5.2.1",
 		"hastscript": "^9.0.1",
-		"html-entities": "^2.6.0",
 		"lite-youtube-embed": "^0.3.4",
 		"mdast-util-to-string": "^4.0.0",
 		"minisearch": "^7.2.0",
