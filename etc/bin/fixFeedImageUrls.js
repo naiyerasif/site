@@ -1,33 +1,44 @@
 #!/usr/bin/env node
 
-import { parse, join } from "path";
-import { readdirSync, readFileSync, writeFileSync } from "fs";
-import * as cheerio from "cheerio";
+import { parse, join } from "node:path"
+import { readdirSync, readFileSync, writeFileSync } from "node:fs"
 
-const baseUrl = "naiyerasif.com";
-const dist = join(process.cwd(), "dist");
-const asset = join(dist, "_astro");
+const baseUrl = "naiyerasif.com"
+const dist = join(process.cwd(), "dist")
+const asset = join(dist, "_astro")
 
-const imageRegistry = readdirSync(asset)
-	.map(fileName => parse(fileName))
-	.filter(fileName => fileName.ext === ".webp" || fileName.ext === ".svg")
-	.map(fileName => ({
-		key: `${baseUrl}/images/${fileName.name.split(".")[0]}`,
-		value: `${baseUrl}/_astro/${fileName.base}`
-	}))
-	.reduce((a, v) => Object.assign(a, { [v.key]: v.value }), {});
+const imageRegistry = new Map()
 
-function fixImageUrls(feedFileName) {
-	let feed = readFileSync(join(dist, feedFileName), "utf-8");
-	const $ = cheerio.load(feed, {}, false);
-	$("img").each((index, image) => {
-		const { dir, name, ext } = parse(image.attribs.src);
-		const key = `${dir}/${name}`.replace("https://", "");
-		const imageSrc = imageRegistry[key];
-		feed = feed.replace(key + ext, imageSrc);
-	});
-	writeFileSync(join(dist, feedFileName), feed);
+const files = readdirSync(asset)
+for (const fileName of files) {
+	const parsed = parse(fileName)
+	if (parsed.ext === ".webp" || parsed.ext === ".svg") {
+		const originalName = parsed.name.split(".")[0]
+		const key = `${baseUrl}/images/${originalName}`
+		const value = `${baseUrl}/_astro/${parsed.base}`
+		imageRegistry.set(key, value)
+	}
 }
 
-fixImageUrls("all.xml");
-fixImageUrls("feed.xml");
+const imgRegex = /<img[^>]+src=["']([^"']+)["']/gi
+
+function fixImageUrls(feedFileName) {
+	const filePath = join(dist, feedFileName)
+	const feedContent = readFileSync(filePath, "utf-8")
+
+	const updatedFeed = feedContent.replace(imgRegex, (match, srcPath) => {
+		const { dir, name, ext } = parse(srcPath)
+		const key = `${dir}/${name}`.replace("https://", "")
+
+		if (imageRegistry.has(key)) {
+			return match.replace(key + ext, imageRegistry.get(key))
+		}
+
+		return match
+	})
+
+	writeFileSync(filePath, updatedFeed)
+}
+
+fixImageUrls("all.xml")
+fixImageUrls("feed.xml")
