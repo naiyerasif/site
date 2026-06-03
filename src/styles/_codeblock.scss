@@ -89,19 +89,19 @@
 
 		[data-line-marked] {
 			--z-hl-line-number-color: var(--syntax-comment);
-			--z-hl-line-bg-color: var(--y-warn-bg-color);
+			--z-hl-line-bg-color: var(--y-warn-canvas-color);
 			--z-hl-line-border: var(--y-warn-border);
 		}
 
 		[data-line-inserted] {
 			--z-hl-line-number-color: var(--y-commend-color);
-			--z-hl-line-bg-color: var(--y-commend-bg-color);
+			--z-hl-line-bg-color: var(--y-commend-canvas-color);
 			--z-hl-line-border: var(--y-commend-border);
 		}
 
 		[data-line-deleted] {
 			--z-hl-line-number-color: var(--y-deter-color);
-			--z-hl-line-bg-color: var(--y-deter-bg-color);
+			--z-hl-line-bg-color: var(--y-deter-canvas-color);
 			--z-hl-line-border: var(--y-deter-border);
 		}
 
@@ -125,18 +125,16 @@
 
 .post > .hl,
 .card > .hl {
-	border-style: dotted;
-	border-inline: none;
+	border: none;
 	border-radius: 0;
+	background-color: var(--y-note-bg-color);
 	margin-block-end: var(--y-flow-gap);
 
 	.hl-header {
-		background-color: var(--y-note-bg-color);
-		border-inline: var(--z-hl-border);
+		background-color: var(--y-note-canvas-color);
 		border-end-end-radius: var(--z-hl-radius);
 		border-end-start-radius: var(--z-hl-radius);
-		border-style: dotted;
-		border-block-start: none;
+		border: none;
 		margin-inline: -0.5rem;
 	}
 
@@ -149,7 +147,7 @@
 
 	.hl-language {
 		line-height: 1;
-		background-color: var(--y-warn-bg-color);
+		background-color: var(--y-warn-canvas-color);
 		border: 1px solid var(--y-warn-border);
 		border-radius: var(--z-hl-radius);
 	}
