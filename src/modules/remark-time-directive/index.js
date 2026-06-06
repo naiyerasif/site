@@ -1,7 +1,7 @@
 import { h } from "hastscript";
 import { visit } from "unist-util-visit";
 import { toString } from "mdast-util-to-string";
-import format, { format_iso } from "../datetime/index.js";
+import format, { formats } from "#mods/datetime/index.js";
 
 // :time[2011-11-18T14:54:39.929Z]
 // :time[2011-11-18T14:54:39]
@@ -23,7 +23,7 @@ export default function remarkTimeDirective() {
 						value: format(content)
 					}
 				];
-				const datetime = format(content, format_iso);
+				const datetime = format(content, formats.iso);
 				const attributes = node.attributes || {};
 
 				const { tagName, properties } = h(node.name, { ...attributes, datetime });

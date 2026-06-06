@@ -3,8 +3,8 @@ import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import SharePanel from "../../components/legacy/SharePanel.astro";
 import Toc from "../../components/legacy/Toc.astro";
-import Time from "../../components/legacy/Time.astro";
-import format, { compare, format_date } from "../../modules/datetime/index.js";
+import Time from "#components/Time.astro";
+import format, { compare, formats } from "#mods/datetime/index.js";
 import toc from "../../modules/table-of-contents/index.js";
 import siteInfo, { postPathname } from "../../modules/website/index.js";
 import { Status } from "../../modules/schema/defs.js";
@@ -36,8 +36,8 @@ const pageInfo = {
 	url,
 	source: post.filePath,
 	type: "article",
-	published: format(data.date, format_date),
-	updated: showUpdate ? format(data.update, format_date) : undefined,
+	published: format(data.date, formats.date),
+	updated: showUpdate ? format(data.update, formats.date) : undefined,
 	previous: prevPage,
 	next: nextPage
 };
