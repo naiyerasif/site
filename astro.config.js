@@ -14,7 +14,7 @@ import {
 } from "@microflash/rehype-starry-night/plugins";
 import remarkTimeDirective from "#mods/remark-time-directive/index.js";
 import remarkFigureDirective from "#mods/remark-figure-directive/index.js";
-import remarkYoutubeDirective from "./src/modules/remark-youtube-directive/index.js";
+import remarkYoutubeDirective from "#mods/remark-youtube-directive/index.js";
 import remarkDescriptionListDirective from "#mods/remark-desclist-directive/index.js";
 import siteInfo, { calloutOptions } from "./src/modules/website/index.js";
 import { CountableSlugifier } from "./src/modules/slugifier/index.js";

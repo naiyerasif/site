@@ -8,7 +8,7 @@ import remarkCalloutDirectives from "@microflash/remark-callout-directives";
 import remarkTimeDirective from "#mods/remark-time-directive/index.js";
 import remarkFigureDirective from "#mods/remark-figure-directive/index.js";
 import remarkDescriptionListDirective from "#mods/remark-desclist-directive/index.js";
-import remarkYoutubeDirective from "../remark-youtube-directive/index.js";
+import remarkYoutubeDirective from "#mods/remark-youtube-directive/index.js";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 import { fullLink, calloutOptions } from "../website/index.js";
