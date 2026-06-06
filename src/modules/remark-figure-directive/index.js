@@ -9,7 +9,7 @@ export default function remarkFigureDirective() {
 		visit(tree, conditions, (node) => {
 			if (!node.children || node.children.length === 0) return;
 
-			const data = node.data || (node.data = {});
+			const data = (node.data ??= {});
 			data.hName = node.name === "caption" ? "figcaption" : "figure";
 			data.hProperties = node.attributes || {};
 		});

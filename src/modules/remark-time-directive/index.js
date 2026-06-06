@@ -12,7 +12,7 @@ export default function remarkTimeDirective() {
 			const datetime = format(content, formats.iso);
 			const hast = h(node.name, { ...node.attributes, datetime }, format(content));
 
-			const data = node.data || (node.data = {});
+			const data = (node.data ??= {});
 			data.hName = hast.tagName;
 			data.hProperties = hast.properties;
 			data.hChildren = hast.children;

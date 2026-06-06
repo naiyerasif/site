@@ -18,7 +18,7 @@ export default function remarkDescriptionListDirective() {
 
 			node.children = children;
 
-			const data = node.data || (node.data = {});
+			const data = (node.data ??= {});
 			data.hName = node.name;
 			data.hProperties = node.attributes || {};
 		});
