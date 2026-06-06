@@ -7,6 +7,7 @@ import remarkDirective from "remark-directive";
 import remarkCalloutDirectives from "@microflash/remark-callout-directives";
 import remarkTimeDirective from "#mods/remark-time-directive/index.js";
 import remarkFigureDirective from "#mods/remark-figure-directive/index.js";
+import remarkDescriptionListDirective from "#mods/remark-desclist-directive/index.js";
 import remarkYoutubeDirective from "../remark-youtube-directive/index.js";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
@@ -27,6 +28,7 @@ async function process(markdown) {
 		.use(remarkDirective)
 		.use(remarkTimeDirective)
 		.use(remarkFigureDirective)
+		.use(remarkDescriptionListDirective)
 		.use(remarkYoutubeDirective, { server: true })
 		.use(remarkCalloutDirectives, calloutOptions)
 		.use(remarkRehype, { allowDangerousHtml: true })
