@@ -13,7 +13,7 @@ import {
 	lineAnnotationPlugin
 } from "@microflash/rehype-starry-night/plugins";
 import remarkTimeDirective from "#mods/remark-time-directive/index.js";
-import remarkFigureDirective from "./src/modules/remark-figure-directive/index.js";
+import remarkFigureDirective from "#mods/remark-figure-directive/index.js";
 import remarkYoutubeDirective from "./src/modules/remark-youtube-directive/index.js";
 import remarkDefinitionListDirective from "./src/modules/remark-deflist-directive/index.js";
 import siteInfo, { calloutOptions } from "./src/modules/website/index.js";
