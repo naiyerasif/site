@@ -3,33 +3,19 @@ import { visit } from "unist-util-visit";
 import { toString } from "mdast-util-to-string";
 import format, { formats } from "#mods/datetime/index.js";
 
-// :time[2011-11-18T14:54:39.929Z]
-// :time[2011-11-18T14:54:39]
-// :time[2011-11-18]
 export default function remarkTimeDirective() {
 	return (tree) => {
-		visit(tree, (node) => {
-			if (node.type === "textDirective") {
-				if (node.name !== "time") return;
+		visit(tree, { type: "textDirective", name: "time" }, (node) => {
+			const content = toString(node).trim();
+			if (!content) return;
 
-				const data = node.data || (node.data = {});
-				const content = toString(node.children || []).trim();
+			const datetime = format(content, formats.iso);
+			const hast = h(node.name, { ...node.attributes, datetime }, format(content));
 
-				if (content.length < 1) return;
-
-				node.children = [
-					{
-						type: "text",
-						value: format(content)
-					}
-				];
-				const datetime = format(content, formats.iso);
-				const attributes = node.attributes || {};
-
-				const { tagName, properties } = h(node.name, { ...attributes, datetime });
-				data.hName = tagName;
-				data.hProperties = properties;
-			}
+			const data = node.data || (node.data = {});
+			data.hName = hast.tagName;
+			data.hProperties = hast.properties;
+			data.hChildren = hast.children;
 		});
 	};
 }

@@ -12,7 +12,7 @@ import {
 	languageIndicatorPlugin,
 	lineAnnotationPlugin
 } from "@microflash/rehype-starry-night/plugins";
-import remarkTimeDirective from "./src/modules/remark-time-directive/index.js";
+import remarkTimeDirective from "#mods/remark-time-directive/index.js";
 import remarkFigureDirective from "./src/modules/remark-figure-directive/index.js";
 import remarkYoutubeDirective from "./src/modules/remark-youtube-directive/index.js";
 import remarkDefinitionListDirective from "./src/modules/remark-deflist-directive/index.js";

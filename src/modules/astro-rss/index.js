@@ -5,7 +5,7 @@ import remarkGfm from "remark-gfm";
 import remarkSmartypants from "remark-smartypants";
 import remarkDirective from "remark-directive";
 import remarkCalloutDirectives from "@microflash/remark-callout-directives";
-import remarkTimeDirective from "../remark-time-directive/index.js";
+import remarkTimeDirective from "#mods/remark-time-directive/index.js";
 import remarkFigureDirective from "../remark-figure-directive/index.js";
 import remarkYoutubeDirective from "../remark-youtube-directive/index.js";
 import remarkRehype from "remark-rehype";
