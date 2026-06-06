@@ -43,5 +43,10 @@
 	"devDependencies": {
 		"@clack/prompts": "^1.5.1"
 	},
+	"imports": {
+		"#components/*": "./src/components/*",
+		"#layouts/*": "./src/layouts/*",
+		"#mods/*": "./src/modules/*"
+	},
 	"packageManager": "pnpm@11.5.0"
 }
