@@ -9,12 +9,12 @@
 
 :where(
 	blockquote, figure, caption, dd + dt,
-	.hero, .card, .card-body
+	.hero, .card, .card-body, .callout-body
 ) > * {
 	--y-flow-gap: 1em;
 }
 
-:where(ul, ol, dl, details, .callout-body) > * {
+:where(ul, ol, dl, details) > * {
 	--y-flow-gap: 0.5em;
 }
 
