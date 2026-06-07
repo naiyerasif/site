@@ -1,9 +1,0 @@
-extends: existence
-message: "In general, don't use an ellipsis."
-level: warning
-nonword: true
-action:
-  name: remove
-tokens:
-  - '\.\.\.'
-  - '…'

@@ -12,13 +12,6 @@ Personal website of [@naiyerasif](https://github.com/naiyerasif)
 
 - To create a new post, run `pnpm new`
 
-### Spellcheck
-
-[Vale](https://vale.sh) enforces the spellcheck and prose styling of this blog.
-
-- To verify a post, run `vale <path>`
-- To sync packages and styles, run `vale sync`
-
 ## Markdown extensions
 
 This blog uses the following custom markdown extensions on top of [GFM](https://github.github.com/gfm/).

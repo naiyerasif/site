@@ -1,7 +1,0 @@
-extends: existence
-message: "Use the Oxford comma in '%s'."
-level: suggestion
-scope: sentence
-nonword: true
-tokens:
-  - '(?:[^\s,]+,){1,} \w+ (?:and|or) \w+[.?!]'
