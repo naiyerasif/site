@@ -47,7 +47,7 @@
 		}
 	}
 
-	&.setup li {
+	ul:only-child li {
 		--y-flow-gap: 0;
 		font-variant-numeric: tabular-nums lining-nums;
 	}
