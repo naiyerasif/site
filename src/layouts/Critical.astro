@@ -320,6 +320,15 @@ window.__search = function (query) {
 	font-feature-settings: "calt" 0;
 }
 
+@font-face {
+	font-family: "Adjusted Arial";
+	src: local(Arial);
+	size-adjust: 105%;
+	ascent-override: normal;
+	descent-override: normal;
+	line-gap-override: 4%;
+}
+
 @media (prefers-reduced-motion: no-preference), (update: fast) {
 	@view-transition {
 		navigation: auto;
@@ -333,7 +342,7 @@ window.__search = function (query) {
 		"Segoe UI Symbol", "Noto Color Emoji";
 	--x-native-mono-font: ui-monospace, SFMono-Regular, "Roboto Mono",
 		Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-	--y-body-font: "Inter", var(--x-native-sans-font);
+	--y-body-font: "Inter", "Adjusted Arial", var(--x-native-sans-font);
 	--y-fancy-font: "MakeSans", var(--x-native-sans-font);
 	--y-mono-font: "JetBrains Mono", var(--x-native-mono-font);
 
