@@ -17,6 +17,7 @@
 		"@microflash/rehype-slugify": "^2.0.0",
 		"@microflash/rehype-starry-night": "^8.0.1",
 		"@microflash/remark-callout-directives": "^5.0.1",
+		"@naiyer/remark-directives": "^0.0.2",
 		"@sindresorhus/slugify": "^3.0.0",
 		"@wooorm/starry-night": "^3.9.0",
 		"astro": "^6.4.4",
@@ -48,5 +49,5 @@
 		"#layouts/*": "./src/layouts/*",
 		"#mods/*": "./src/modules/*"
 	},
-	"packageManager": "pnpm@11.5.0"
+	"packageManager": "pnpm@11.6.0"
 }

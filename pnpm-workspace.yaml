@@ -5,3 +5,5 @@ allowBuilds:
   sharp: true
   vue-demi: false
   workerd: true
+minimumReleaseAgeExclude:
+  - '@naiyer/remark-directives@0.0.2'

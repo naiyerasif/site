@@ -26,6 +26,9 @@ importers:
       '@microflash/remark-callout-directives':
         specifier: ^5.0.1
         version: 5.0.1
+      '@naiyer/remark-directives':
+        specifier: ^0.0.2
+        version: 0.0.2
       '@sindresorhus/slugify':
         specifier: ^3.0.0
         version: 3.0.0
@@ -801,6 +804,9 @@ packages:
 
   '@microflash/remark-callout-directives@5.0.1':
     resolution: {integrity: sha512-Q9R1uFaDG8QQtlYqJKZSZg7DnJvUFkeFFOYExWghcCaQDNlvqBXNTDsSlc3WSW/NXoaR3LuSenGxs/f9jQ510g==}
+
+  '@naiyer/remark-directives@0.0.2':
+    resolution: {integrity: sha512-8HgkWzqt+OAab8tJlubwkpE9ahItoOGYkTCpRefyYeqseEks90R0uqJD+VNRvgHcoc5mZIKKPdkptKT9D3iAig==}
 
   '@oslojs/encoding@1.1.0':
     resolution: {integrity: sha512-70wQhgYmndg4GCPxPPxPGevRKqTIJ2Nh4OkiMWmDAVYsTQ+Ta7Sq+rPevXyXGdzr30/qZBnyOalCszoMxlyldQ==}
@@ -3070,6 +3076,10 @@ snapshots:
       unist-util-visit: 5.1.0
     transitivePeerDependencies:
       - supports-color
+
+  '@naiyer/remark-directives@0.0.2':
+    dependencies:
+      unist-util-visit: 5.1.0
 
   '@oslojs/encoding@1.1.0': {}
 
