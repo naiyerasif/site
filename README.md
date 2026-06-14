@@ -16,62 +16,6 @@ Personal website of [@naiyerasif](https://github.com/naiyerasif)
 
 This blog uses the following custom markdown extensions on top of [GFM](https://github.github.com/gfm/).
 
-### `figure` and `caption` directives
-
-The combination of `figure` and `caption` directives tackles the following usecases.
-
-#### Adding a caption for image
-
-The following markdown
-
-```md
-:::figure
-![a short description of the information an image conveys](./image.png)
-
-::caption[Captions are brief descriptions related to the image (for example commentary, attributions or quotations).]
-:::
-```
-
-gets converted to
-
-```html
-<figure>
-  <p>
-    <img src="./image.png" alt="a short description of the information an image conveys">
-  </p>
-  <figcaption>
-    Captions are brief descriptions related to the image (for example commentary, attributions or quotations).
-  </figcaption>
-</figure>
-```
-
-Specify
-- `.popout.popout-image` classes to bleed the image out of wrapper
-- `.frame` class to add border to the image
-
-#### Wrapping `blockquote` and citation together
-
-The following markdown
-
-```md
-:::figure
-> A fantastic quote
-
-::caption[With a useful citation]
-:::
-```
-
-gets converted to
-
-```html
-<figure>
-  <blockquote>
-    <p>A fantastic quote</p>
-  </blockquote>
-  <figcaption>With a useful citation</figcaption>
-</figure>
-```
-
 ### `time` directive
 
 The following markdown

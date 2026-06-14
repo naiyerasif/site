@@ -6,4 +6,4 @@ allowBuilds:
   vue-demi: false
   workerd: true
 minimumReleaseAgeExclude:
-  - '@naiyer/remark-directives@0.0.2'
+  - '@naiyer/remark-directives@0.0.4'
