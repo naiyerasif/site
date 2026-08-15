@@ -1,12 +1,12 @@
 import { getCollection } from "astro:content";
 import rss from "../modules/astro-rss/index.js";
 import { compare } from "#utils/datetime.js";
-import siteInfo, { fullLink } from "../modules/website/index.js";
+import siteInfo, { absoluteUrl } from "#utils/website.js";
 import { getPosts } from "#utils/content.js";
 
 const baseUrl = siteInfo.siteBase;
 const authorName = siteInfo.author.name;
-const aboutUrl = fullLink("/about");
+const aboutUrl = absoluteUrl("/about");
 
 const author = {
 	name: authorName,
@@ -20,16 +20,16 @@ const options = {
 	description: siteInfo.description,
 	copyright: `${(new Date()).getFullYear()}, ${authorName}`,
 	feedLinks: {
-		rss: fullLink("/all.xml")
+		rss: absoluteUrl("/all.xml")
 	},
 	author
 };
 
 export async function GET() {
 	const posts = (await getPosts())
-		.slice(0, siteInfo.maxFeedItems)
+		.slice(0, siteInfo.limits.feed)
 		.map(post => {
-			const pageUrl = fullLink(post.id);
+			const pageUrl = absoluteUrl(post.id);
 			const showUpdate = compare(post.data.update, post.data.date) !== 0;
 			return {
 				title: showUpdate ? `[Updated] ${post.data.title}` : post.data.title,

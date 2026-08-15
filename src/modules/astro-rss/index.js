@@ -13,12 +13,13 @@ import remarkTimeDirective from "#mods/remark-time-directive/index.js";
 import remarkYoutubeDirective from "#mods/remark-youtube-directive/index.js";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
-import { fullLink, calloutOptions } from "../website/index.js";
+import { absoluteUrl } from "#utils/website.js";
+import { calloutOptions } from "#utils/markdown.js";
 
 function canonize(html) {
 	const relativeRefs = /(href|src)=("|')((?=\.{1,2}\/|\/).+?)\2/gi;
 	return html.replace(relativeRefs, (_, attribute, quote, relUrl) => {
-		return [attribute, "=", quote, fullLink(relUrl), quote].join("");
+		return [attribute, "=", quote, absoluteUrl(relUrl), quote].join("");
 	});
 }
 

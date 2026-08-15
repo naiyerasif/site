@@ -1,6 +1,6 @@
 ---
 import Icon from "./Icon.astro";
-import siteInfo from "../../modules/website/index.js";
+import siteInfo from "#utils/website.js";
 import { PageInfo } from "#utils/schema.js";
 
 const shareInfo = PageInfo.parse(Astro.props.pageInfo);

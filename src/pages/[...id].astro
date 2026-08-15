@@ -5,7 +5,7 @@ import Toc from "../components/legacy/Toc.astro";
 import Layout from "../layouts/Layout.astro";
 import { compare } from "#utils/datetime.js";
 import toc from "../modules/table-of-contents/index.js";
-import siteInfo from "../modules/website/index.js";
+import siteInfo from "#utils/website.js";
 
 export async function getStaticPaths() {
 	const pages = await getCollection("page");
@@ -44,7 +44,7 @@ const pageInfo = {
 	<article class="post">
 		{showToc && <nav class="toc">
 			<div class="toc-header">Table of Contents</div>
-			<Toc headings={toc(headings, siteInfo.maxTocDepth)}/>
+			<Toc headings={toc(headings, siteInfo.limits.toc)}/>
 		</nav>}
 		<Content/>
 	</article>

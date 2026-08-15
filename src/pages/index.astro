@@ -3,12 +3,12 @@ import Layout from "../layouts/Layout.astro";
 import PostCard from "../components/legacy/PostCard.astro";
 import NoteCard from "../components/legacy/NoteCard.astro";
 import Icon from "../components/legacy/Icon.astro";
-import siteInfo, { paginationPathname } from "../modules/website/index.js";
+import siteInfo, { paginationPathname } from "#utils/website.js";
 import { PostType } from "#utils/schema.js";
 import { getPosts } from "#utils/content.js";
 
 const posts = (await getPosts())
-	.slice(0, siteInfo.maxPageItems);
+	.slice(0, siteInfo.limits.page);
 
 const pageInfo = {
 	title: "Home",

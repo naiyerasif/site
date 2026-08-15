@@ -18,7 +18,8 @@ import {
 } from "@naiyer/remark-directives";
 import remarkTimeDirective from "#mods/remark-time-directive/index.js";
 import remarkYoutubeDirective from "#mods/remark-youtube-directive/index.js";
-import siteInfo, { calloutOptions } from "./src/modules/website/index.js";
+import siteInfo from "#utils/website.js";
+import { calloutOptions } from "#utils/markdown.js";
 import { createCountableSlugifier } from "#utils/slugifier.js";
 import sourcePgsql from "./src/modules/textmate/source.pgsql.js";
 import textLog from "./src/modules/textmate/text.log.js";

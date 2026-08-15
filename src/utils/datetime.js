@@ -25,7 +25,7 @@ export const timezone_gmt = "GMT";
 /**
  * Parses a date with a specific timezone and ensures it is valid.
  * @private
- * @param {string|number|Date|dayjs.Dayjs} date - date to parse
+ * @param {string|number|Date|dayjs.Dayjs|undefined} date - date to parse
  * @param {string} tz - timezone
  * @returns {dayjs.Dayjs|null} A valid day.js object or null
  */
@@ -37,8 +37,8 @@ function parse(date, tz) {
 
 /**
  * Compares two dates and returns the difference.
- * @param {string|number|Date|dayjs.Dayjs} date1 - starting date
- * @param {string|number|Date|dayjs.Dayjs} date2 - ending date
+ * @param {string|number|Date|dayjs.Dayjs|undefined} date1 - starting date
+ * @param {string|number|Date|dayjs.Dayjs|undefined} date2 - ending date
  * @param {string} [tz=timezone_gmt] - timezone to use for parsing
  * @param {string} [unit="milliseconds"] - unit of time to measure the difference 
  * @param {boolean} [precise=true] - whether to return floating-point value or truncate it 
