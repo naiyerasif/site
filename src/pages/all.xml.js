@@ -1,6 +1,6 @@
 import { getCollection } from "astro:content";
 import rss from "../modules/astro-rss/index.js";
-import { compare } from "../modules/datetime/index.js";
+import { compare } from "#utils/datetime.js";
 import siteInfo, { fullLink } from "../modules/website/index.js";
 import { getPosts } from "#utils/content.js";
 

@@ -4,7 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import SharePanel from "../components/legacy/SharePanel.astro";
 import Toc from "../components/legacy/Toc.astro";
 import Time from "#components/Time.astro";
-import format, { compare, formats } from "#mods/datetime/index.js";
+import format, { compare, formats } from "#utils/datetime.js";
 import toc from "../modules/table-of-contents/index.js";
 import siteInfo from "../modules/website/index.js";
 import { getPosts } from "#utils/content.js";
@@ -35,8 +35,8 @@ const pageInfo = {
 	url,
 	source: post.filePath,
 	type: "article",
-	published: format(data.date, formats.date),
-	updated: showUpdate ? format(data.update, formats.date) : undefined,
+	published: format(data.date, formats.iso8601),
+	updated: showUpdate ? format(data.update, formats.iso8601) : undefined,
 	previous: prevPage,
 	next: nextPage
 };

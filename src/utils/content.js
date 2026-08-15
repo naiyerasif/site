@@ -1,5 +1,5 @@
 import { getCollection } from "astro:content";
-import { compare } from "#mods/datetime/index.js";
+import { compare } from "#utils/datetime.js";
 
 export async function getPosts() {
 	const posts = await getCollection("post");

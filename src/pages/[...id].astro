@@ -3,7 +3,7 @@ import { getCollection, render } from "astro:content";
 import Time from "#components/Time.astro";
 import Toc from "../components/legacy/Toc.astro";
 import Layout from "../layouts/Layout.astro";
-import format, { compare, formats } from "#mods/datetime/index.js";
+import format, { compare, formats } from "#utils/datetime.js";
 import toc from "../modules/table-of-contents/index.js";
 import siteInfo from "../modules/website/index.js";
 
@@ -24,8 +24,8 @@ const showUpdate = compare(data.update, data.date) !== 0;
 const pageInfo = {
 	title: data.title,
 	url: Astro.url.pathname,
-	published: format(data.date, formats.date),
-	updated: showUpdate ? format(data.update, formats.date) : undefined,
+	published: format(data.date, formats.iso8601),
+	updated: showUpdate ? format(data.update, formats.iso8601) : undefined,
 };
 ---
 

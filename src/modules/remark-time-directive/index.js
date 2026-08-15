@@ -1,7 +1,7 @@
 import { h } from "hastscript";
 import { visit } from "unist-util-visit";
 import { toString } from "mdast-util-to-string";
-import format, { formats } from "#mods/datetime/index.js";
+import format, { formats } from "#utils/datetime.js";
 
 export default function remarkTimeDirective() {
 	return (tree) => {
