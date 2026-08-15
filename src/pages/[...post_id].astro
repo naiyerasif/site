@@ -4,7 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import SharePanel from "../components/legacy/SharePanel.astro";
 import Toc from "../components/legacy/Toc.astro";
 import Time from "#components/Time.astro";
-import format, { compare, formats } from "#utils/datetime.js";
+import { compare } from "#utils/datetime.js";
 import toc from "../modules/table-of-contents/index.js";
 import siteInfo from "../modules/website/index.js";
 import { getPosts } from "#utils/content.js";
@@ -23,7 +23,6 @@ const { entry } = Astro.props;
 const { post, prev, next } = entry;
 const { data } = post;
 const { Content, headings } = await render(post);
-const url = Astro.url.pathname;
 const showToc = data.showToc && headings && headings.length > 0;
 const prevPage = prev ? `/${prev.id}` : undefined;
 const nextPage = next ? `/${next.id}` : undefined;
@@ -32,11 +31,11 @@ const showUpdate = compare(data.update, data.date) !== 0;
 
 const pageInfo = {
 	title: data.title,
-	url,
+	url: Astro.url.pathname,
 	source: post.filePath,
 	type: "article",
-	published: format(data.date, formats.iso8601),
-	updated: showUpdate ? format(data.update, formats.iso8601) : undefined,
+	published: data.date,
+	updated: data.update,
 	previous: prevPage,
 	next: nextPage
 };

@@ -56,20 +56,8 @@ const pageSchema = z.object({
 	ogType: ogTypes.default(PageType.website.id),
 });
 
-const pageInfoSchema = z.object({
-	title,
-	url,
-	image: ogImage,
-	type: ogTypes.default(PageType.website.id),
-	published: z.string().optional(), // add yyyy-MM-dd format validation
-	updated: z.string().optional(), // add yyyy-MM-dd format validation
-	previous: optionalUrl,
-	next: optionalUrl
-});
-
 export {
 	postSchema,
 	profileSchema,
 	pageSchema,
-	pageInfoSchema
 };

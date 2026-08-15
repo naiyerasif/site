@@ -1,17 +1,17 @@
 ---
-import { pageInfoSchema } from "../modules/schema/index.js";
+import { PageInfo } from "#utils/schema.js";
 import siteInfo from "../modules/website/index.js";
 
 const {
 	title,
 	url,
-	image,
+	cover,
 	type,
 	published,
 	updated,
 	previous,
 	next
-} = pageInfoSchema.parse(Astro.props.pageInfo);
+} = PageInfo.parse(Astro.props.pageInfo);
 const siteTitle = siteInfo.title;
 const siteAuthor = siteInfo.author.name;
 const mastodonUrl = siteInfo.author.presence.mastodon.url;
@@ -38,10 +38,10 @@ const mastodonId = siteInfo.author.presence.mastodon.id;
 <meta property="og:locale" content="en"/>
 <meta property="og:title" content={title}/>
 <meta property="og:url" content={url}/>
-<meta property="og:image" content={image}/>
+<meta property="og:image" content={cover}/>
 {published && <meta property="article:published_time" content={published}/>}
 {updated && <meta property="article:modified_time" content={updated}/>}
-<meta name="twitter:image:src" content={image}/>
+<meta name="twitter:image:src" content={cover}/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content={title}/>
 <link rel="me" href={mastodonUrl}/>
