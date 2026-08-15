@@ -3,7 +3,7 @@ slug: "post/2020/04/05/querying-postgres-with-spring-data-and-micronaut-data"
 title: "Querying Postgres with Spring Data and Micronaut Data"
 date: 2020-04-05 16:29:09
 update: 2020-04-05 16:29:09
-type: "guide"
+category: "guide"
 ---
 
 `Repository` API of Spring Data is one of the most elegant and compelling features of Spring framework. It generates runtime implementations of the repositories. But what if those implementations can be generated at compile-time with type-checks that fail during compilation, rather than at runtime.

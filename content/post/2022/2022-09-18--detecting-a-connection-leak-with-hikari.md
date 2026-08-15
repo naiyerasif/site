@@ -3,7 +3,7 @@ slug: "post/2022/09/18/detecting-a-connection-leak-with-hikari"
 title: "Detecting a connection leak with Hikari"
 date: 2022-09-18 17:05:15
 update: 2025-05-19 00:52:07
-type: "guide"
+category: "guide"
 ---
 
 Database connections are expensive application resources. That is why we use a connection pool (such as [Hikari](https://github.com/brettwooldridge/HikariCP)) to manage them. However, if a developer fails to close a connection, it can stay open and may never return to the connection pool, causing a _connection leak_. This can severely degrade the performance of your application.

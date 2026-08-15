@@ -3,7 +3,7 @@ slug: "post/2023/09/30/blocking-ai-web-crawlers"
 title: "Blocking AI web crawlers"
 date: 2023-09-30 20:41:51
 update: 2024-06-23 00:19:53
-type: "reference"
+category: "reference"
 ---
 
 Most AI chatbots and services typically browse the internet and [scrape](https://en.wikipedia.org/wiki/Web_scraping) information from websites to enrich their internal models. Here are some steps you can take to prevent such web crawlers from scraping your website.

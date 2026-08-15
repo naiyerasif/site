@@ -3,7 +3,7 @@ slug: "post/2025/12/23/how-to-dispose-javascript-objects"
 title: "How to dispose JavaScript objects"
 date: 2025-12-23 22:36:13
 update: 2025-12-23 22:36:13
-type: "guide"
+category: "guide"
 ---
 
 Everyday we work with _resources_ in our programs &mdash; editing files, fetching records from databases, and more. We open a resource, do the necessary work, and then close it. When we miss that final step, we end up with files inaccessible to other processes, locked database connections, or an unexpectedly large cloud bill. To ensure we deterministically clean up the resources, even when an error occurs, many languages provide native constructs, such as Java's [try-with-resources](https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html) and Python's [with](https://docs.python.org/3/reference/compound_stmts.html#the-with-statement) statement. JavaScript, however, still lacks a built-in equivalent. While we wait for better [platform support](https://caniuse.com/?search=Explicit+Resource+Management) for [Explicit Resource Management](https://github.com/tc39/proposal-explicit-resource-management), let's implement a solution we can use today.

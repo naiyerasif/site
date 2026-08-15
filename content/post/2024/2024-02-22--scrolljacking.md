@@ -3,7 +3,7 @@ slug: "post/2024/02/22/scrolljacking"
 title: "Scrolljacking"
 date: 2024-02-22 21:13:25
 update: 2024-02-22 21:13:25
-type: "note"
+category: "note"
 ---
 
 :::figure{.source.mastodon}

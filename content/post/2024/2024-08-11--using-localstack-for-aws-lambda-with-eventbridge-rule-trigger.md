@@ -3,7 +3,7 @@ slug: "post/2024/08/11/using-localstack-for-aws-lambda-with-eventbridge-rule-tri
 title: "Using LocalStack for AWS Lambda with EventBridge rule trigger"
 date: 2024-08-11 12:45:33
 update: 2025-05-24 22:44:21
-type: "guide"
+category: "guide"
 ---
 
 [Amazon EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html) is a serverless service for building event-driven loosely coupled workflows. It can trigger AWS Lambda functions based on specific rules. This is really handy for tasks like optimizing images after S3 uploads, generating aggregated reports from DynamoDB updates, or reacting to changes in other AWS resources. In this post, we'll deploy a Lambda function, and trigger it through an EventBridge rule locally using [LocalStack](https://localstack.cloud/).

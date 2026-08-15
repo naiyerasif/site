@@ -3,7 +3,7 @@ slug: "post/2021/10/10/weaving-aspects-at-compile-time-with-aspectj"
 title: "Weaving aspects at compile-time with AspectJ"
 date: 2021-10-10 15:12:18
 update: 2025-12-22 20:45:46
-type: "guide"
+category: "guide"
 ---
 
 [AspectJ](https://eclipse.dev/aspectj/) is an aspect-oriented programming (AOP) extension for Java. It _weaves_ aspects into Java bytecode at either compile-time or load-time. In a [previous post](/post/2020/09/13/logging-methods-with-aspectj-in-a-spring-application/), we explored load-time weaving using Spring AOP. In this post, we'll revisit the same example, and reimplement it using the AspectJ Compiler `ajc` to weave aspects at compile time.

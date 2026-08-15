@@ -33,7 +33,7 @@ const pageInfo = {
 	title: data.title,
 	url: Astro.url.pathname,
 	source: post.filePath,
-	type: "article",
+	type: data.type,
 	published: data.date,
 	updated: data.update,
 	previous: prevPage,

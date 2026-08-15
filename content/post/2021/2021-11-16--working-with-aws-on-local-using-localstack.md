@@ -3,7 +3,7 @@ slug: "post/2021/11/16/working-with-aws-on-local-using-localstack"
 title: "Working with AWS on local using LocalStack"
 date: 2021-11-16 09:12:12
 update: 2025-05-24 17:05:24
-type: "guide"
+category: "guide"
 ---
 
 If your organization has strict policies on cloud resources, prototyping with the AWS services can become a hassle. [LocalStack](https://localstack.cloud/) is a cloud emulation layer that runs offline in a container on your local machine. Using LocalStack, you can run AWS services without connecting to the actual AWS environment. You can use the familiar tools like the official AWS CLI and AWS SDK to interact with LocalStack seamlessly. In this post, we'll setup LocalStack and use it with the AWS CLI.

@@ -3,7 +3,7 @@ slug: "post/2026/02/05/solving-for-low-productivity"
 title: "Solving for Low Productivity"
 date: 2026-02-05 21:17:31
 update: 2026-02-05 21:17:31
-type: "note"
+category: "note"
 ---
 
 :::figure

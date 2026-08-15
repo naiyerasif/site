@@ -3,7 +3,7 @@ slug: "post/2023/11/25/customizing-default-screenshot-location-on-macos"
 title: "Customizing default screenshot location on macOS"
 date: 2023-11-25 20:42:07
 update: 2025-07-06 16:02:32
-type: "note"
+category: "note"
 ---
 
 If you don't want macOS cluttering the Desktop with screenshots (and screen recordings), you can change the default location where macOS saves them. Press <kbd><kbd>Shift</kbd>+<kbd>Command</kbd>+<kbd>5</kbd></kbd>, select __Options__, and choose __Other Location&hellip;__. Pick a preferred directory in Finder.

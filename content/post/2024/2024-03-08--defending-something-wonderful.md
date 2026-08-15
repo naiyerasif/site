@@ -3,7 +3,7 @@ slug: "post/2024/03/08/defending-something-wonderful"
 title: "Defending something wonderful"
 date: 2024-03-08 02:17:54
 update: 2024-03-08 02:17:54
-type: "note"
+category: "note"
 ---
 
 :::figure{.source.youtube}

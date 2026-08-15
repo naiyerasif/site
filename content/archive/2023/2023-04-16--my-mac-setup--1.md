@@ -3,7 +3,7 @@ slug: "archive/2023/04/16/my-mac-setup--1"
 title: "My Mac Setup"
 date: 2023-04-16 12:42:10
 update: 2024-07-01 00:17:21
-type: "reference"
+category: "reference"
 ---
 
 :::warn{title="Archived"}

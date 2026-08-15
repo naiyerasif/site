@@ -3,7 +3,7 @@ slug: "post/2019/03/24/git-playbook"
 title: "Git Playbook"
 date: 2019-03-24 09:11:01
 update: 2025-10-26 11:59:49
-type: "reference"
+category: "reference"
 tagline: "Recipes to git things done"
 ---
 

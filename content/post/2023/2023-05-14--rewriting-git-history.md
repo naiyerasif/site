@@ -3,7 +3,7 @@ slug: "post/2023/05/14/rewriting-git-history"
 title: "Rewriting Git history"
 date: 2023-05-14 18:45:00
 update: 2023-08-10 21:32:12
-type: "guide"
+category: "guide"
 ---
 
 While generally avoided, rewriting Git history is occasionally needed for security reasons, or for maintaining a cleaner history. Here are some approaches to achieve this.

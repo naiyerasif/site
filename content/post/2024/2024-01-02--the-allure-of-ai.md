@@ -3,7 +3,7 @@ slug: "post/2024/01/02/the-allure-of-ai"
 title: "The allure of AI"
 date: 2024-01-02 22:10:33
 update: 2024-01-02 22:10:33
-type: "note"
+category: "note"
 ---
 
 :::figure{.source.threads}

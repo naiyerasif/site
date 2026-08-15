@@ -3,7 +3,7 @@ slug: "post/2019/08/13/request-logging-with-morgan"
 title: "Request logging with morgan"
 date: 2019-08-13 14:11:09
 update: 2019-08-13 14:11:09
-type: "guide"
+category: "guide"
 ---
 
 Imagine developing an Express application with several endpoints and remaining in the bind which of those were being used by the client application and when! Some form of logging can help in this situation, just to tell about the endpoint and the timestamp when it was requested by the client. Express makes this easy through [morgan](https://github.com/expressjs/morgan).

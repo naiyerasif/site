@@ -3,7 +3,7 @@ slug: "post/2025/05/31/testcontainers-with-orbstack"
 title: "Testcontainers with Orbstack"
 date: 2025-05-31 01:52:15
 update: 2025-05-31 01:52:15
-type: "note"
+category: "note"
 ---
 
 While working with [Testcontainers](https://testcontainers.com/), I recently ran into an issue where it couldn't detect Docker running on my machine when using [Orbstack](https://orbstack.dev/) instead of Docker Desktop.

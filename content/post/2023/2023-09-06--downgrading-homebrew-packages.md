@@ -3,7 +3,7 @@ slug: "post/2023/09/06/downgrading-homebrew-packages"
 title: "Downgrading homebrew packages"
 date: 2023-09-06 21:28:32
 update: 2025-09-24T23:48:08
-type: "guide"
+category: "guide"
 ---
 
 Back in 2023, I [lamented](/archive/2023/09/06/downgrading-homebrew-packages--1/) on how clumsy it was to downgrade a Homebrew package. Fast forward to 2025, and the situation has not improved at all. Judge for yourself as I walk you through the hoops.

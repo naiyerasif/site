@@ -3,7 +3,7 @@ slug: "post/2024/01/07/period-of-the-day-format-for-java-temporal"
 title: "Period of the Day format for Java Temporal"
 date: 2024-01-07 01:33:06
 update: 2025-12-22 21:26:42
-type: "note"
+category: "note"
 ---
 
 Today I learned about "Period of the Day" pattern `B` to format a `java.time.Temporal` value in Java with `DateTimeFormatter`.

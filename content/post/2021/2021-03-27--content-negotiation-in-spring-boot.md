@@ -3,7 +3,7 @@ slug: "post/2021/03/27/content-negotiation-in-spring-boot"
 title: "Content negotiation in Spring Boot"
 date: 2021-03-27 11:03:46
 update: 2022-07-16 11:24:33
-type: "guide"
+category: "guide"
 ---
 
 In situations where an API is being consumed by multiple systems, you might be required to provide the response in different formats depending on the client. One client might accept JSON while the other can only work with XML. That's where the Request Content Negotiation comes into picture. In this post, we'll explore a specific usecase of the request content negotiation where a client sends their preferences for the mediatype of their choice.

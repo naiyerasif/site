@@ -3,7 +3,7 @@ slug: "post/2025/04/13/export-voiceover-speech-to-audio-file"
 title: "Export VoiceOver speech to audio file"
 date: 2025-04-13 01:31:26
 update: 2025-04-13 01:31:26
-type: "note"
+category: "note"
 ---
 
 Today I learned that you can export VoiceOver speech to an audio file using the `say` command in macOS.

@@ -3,7 +3,7 @@ slug: "post/2023/10/02/limiting-manual-changes-to-generated-numeric-columns-in-p
 title: "Limiting manual changes to generated numeric columns in Postgres"
 date: 2023-10-02 23:17:42
 update: 2023-10-14 13:26:00
-type: "guide"
+category: "guide"
 ---
 
 A generated numeric column is often used to keep the internal id of a row in a table. For compliance and consistency, you may want to restrict the insert and update operations on such columns. Such restrictions may outright disallow the insert and update operations, or allow them only through the approved generation mechanisms. Let's take a look at this with an example.

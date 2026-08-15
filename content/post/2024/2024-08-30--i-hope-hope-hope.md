@@ -3,7 +3,7 @@ slug: "post/2024/08/30/i-hope-hope-hope"
 title: "I HOPE HOPE HOPE"
 date: 2024-08-30 23:57:37
 update: 2024-08-30 23:57:37
-type: "note"
+category: "note"
 ---
 
 :::figure{.source.mastodon}

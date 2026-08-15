@@ -3,7 +3,7 @@ slug: "post/2025/05/19/future-doctor"
 title: "future doctor"
 date: 2025-05-19 22:49:52
 update: 2025-05-19 22:49:52
-type: "note"
+category: "note"
 ---
 
 :::figure{.source.mastodon}

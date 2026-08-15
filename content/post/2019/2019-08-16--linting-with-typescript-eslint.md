@@ -3,7 +3,7 @@ slug: "post/2019/08/16/linting-with-typescript-eslint"
 title: "Linting with TypeScript ESLint"
 date: 2019-08-16 16:23:12
 update: 2020-02-06 22:51:18
-type: "guide"
+category: "guide"
 ---
 
 [TypeScript ESLint](https://github.com/typescript-eslint/typescript-eslint) is the successor of [TSLint](https://github.com/palantir/tslint), the linting tool exclusively developed for TypeScript. It leverages the existing JavaScript linting ecosystem and brings consistency across the tooling to lint both JavaScript and TypeScript apps.

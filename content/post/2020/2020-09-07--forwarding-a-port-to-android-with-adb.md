@@ -3,7 +3,7 @@ slug: "post/2020/09/07/forwarding-a-port-to-android-with-adb"
 title: "Forwarding a port to Android with ADB"
 date: 2020-09-07 16:11:22
 update: 2025-12-22 21:53:22
-type: "note"
+category: "note"
 ---
 
 Say you are developing a web app that runs locally on port `8080`, and you want to test it in an Android browser on your phone. You can do this by forwarding port `8080` from your computer to your phone using [ADB](https://developer.android.com/tools/releases/platform-tools) (Android Debug Bridge).

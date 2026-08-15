@@ -3,7 +3,7 @@ slug: "post/2023/08/06/on-how-i-use-firefox"
 title: "On how I use Firefox"
 date: 2023-08-06 14:40:40
 update: 2024-08-24 22:58:16
-type: "opinion"
+category: "opinion"
 ---
 
 I have been using Firefox for ages. Here are some habits and configurations I have picked up along the way. May these come in handy if you are also a Firefox user, or persuade you to switch to Firefox if you are not.

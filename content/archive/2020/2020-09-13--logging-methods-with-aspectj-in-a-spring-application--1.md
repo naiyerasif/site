@@ -3,7 +3,7 @@ slug: "archive/2020/09/13/logging-methods-with-aspectj-in-a-spring-application--
 title: "Logging methods with AspectJ in a Spring application"
 date: 2020-09-13 21:01:49
 update: 2023-11-25 11:46:56
-type: "guide"
+category: "guide"
 ---
 
 :::warn{title="Archived"}

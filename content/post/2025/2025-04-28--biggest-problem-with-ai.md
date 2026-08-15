@@ -3,7 +3,7 @@ slug: "post/2025/04/28/biggest-problem-with-ai"
 title: "Biggest problem with AI"
 date: 2025-04-28 12:29:25
 update: 2025-04-28 12:29:25
-type: "note"
+category: "note"
 ---
 
 :::figure{.source.twitter}

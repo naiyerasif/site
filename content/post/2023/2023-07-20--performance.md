@@ -3,7 +3,7 @@ slug: "post/2023/07/20/performance"
 title: "Performance"
 date: 2023-07-20 21:15:01
 update: 2023-07-20 21:15:01
-type: "note"
+category: "note"
 ---
 
 :::figure

@@ -3,7 +3,7 @@ slug: "post/2025/06/03/how-to-write-integration-tests-using-testcontainers-in-py
 title: "How to write integration tests using Testcontainers in Python"
 date: 2025-06-03 21:48:03
 update: 2025-06-03 21:48:03
-type: "guide"
+category: "guide"
 ---
 
 When your application uses external components such as databases or cloud services, it's important to test how everything works together. That's where integration tests come in. They help ensure your application behaves as expected in an environment that resembles production. [Testcontainers](https://testcontainers.com/) is a popular library that spins up real dependencies using Docker to run your tests. Let's write a small application that uses [S3](https://aws.amazon.com/s3/) and Postgres, and explore how to test it using Testcontainers.

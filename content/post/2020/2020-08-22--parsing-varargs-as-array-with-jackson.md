@@ -3,7 +3,7 @@ slug: "post/2020/08/22/parsing-varargs-as-array-with-jackson"
 title: "Parsing varargs as array with Jackson"
 date: 2020-08-22 12:01:03
 update: 2020-08-22 12:01:03
-type: "guide"
+category: "guide"
 ---
 
 Consider the following Java class where the setter for the `author` property accepts the values as varargs.

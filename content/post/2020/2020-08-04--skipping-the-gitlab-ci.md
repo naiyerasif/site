@@ -3,7 +3,7 @@ slug: "post/2020/08/04/skipping-the-gitlab-ci"
 title: "Skipping the GitLab CI"
 date: 2020-08-04 11:34:58
 update: 2020-08-04 11:34:58
-type: "guide"
+category: "guide"
 ---
 
 [GitLab CI](https://gitlab.com/help/ci/yaml/README.md) is a pretty nifty tool to run your CI pipelines using Docker. At times, you may want to skip it, though, e.g., when you update a README or LICENSE. There are multiple ways to do that.

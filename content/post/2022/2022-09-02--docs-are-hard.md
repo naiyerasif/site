@@ -3,7 +3,7 @@ slug: "post/2022/09/02/docs-are-hard"
 title: "docs are hard"
 date: 2022-09-02 19:44:56
 update: 2022-09-02 19:44:56
-type: "note"
+category: "note"
 ---
 
 :::figure{.source.twitter}

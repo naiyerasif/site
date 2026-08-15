@@ -3,7 +3,7 @@ slug: "archive/2023/09/06/downgrading-homebrew-packages--1"
 title: "Downgrading homebrew packages"
 date: 2023-09-06 21:28:32
 update: 2023-09-06 21:28:32
-type: "note"
+category: "note"
 ---
 
 :::deter{title="Archived"}

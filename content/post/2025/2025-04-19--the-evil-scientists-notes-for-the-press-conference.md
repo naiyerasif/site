@@ -3,7 +3,7 @@ slug: "post/2025/04/19/the-evil-scientists-notes-for-the-press-conference"
 title: "The Evil Scientist's Notes for the Press Conference"
 date: 2025-04-19 23:34:10
 update: 2025-04-19 23:34:10
-type: "note"
+category: "note"
 ---
 
 :::figure

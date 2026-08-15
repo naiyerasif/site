@@ -27,7 +27,7 @@ const pageInfo = {
 	title: `${data.title} (Archived)`,
 	url: Astro.url.pathname,
 	source: post.filePath,
-	type: "article",
+	type: data.type,
 	published: data.date,
 	updated: data.update
 };

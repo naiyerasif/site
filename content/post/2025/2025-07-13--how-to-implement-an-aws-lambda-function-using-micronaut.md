@@ -3,7 +3,7 @@ slug: "post/2025/07/13/how-to-implement-an-aws-lambda-function-using-micronaut"
 title: "How to implement an AWS Lambda function using Micronaut"
 date: 2025-07-13 16:36:59
 update: 2025-07-13 16:36:59
-type: "guide"
+category: "guide"
 ---
 
 Micronaut is an open source Java framework designed to build microservices and serverless applications. Unlike other frameworks that use reflection-based dependency injection, Micronaut performs most of this work at compile time, improving performance and efficiency. This makes it handy for writing cloud-native applications, such as an AWS Lambda function. In this post, we'll do exactly this.

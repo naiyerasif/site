@@ -3,7 +3,7 @@ slug: "post/2020/04/10/securing-spring-boot-apis-with-jwt-authentication"
 title: "Securing Spring Boot APIs with JWT Authentication"
 date: 2020-04-10 21:35:25
 update: 2025-12-30 13:35:32
-type: "guide"
+category: "guide"
 ---
 
 JSON Web Token (JWT) is an [open standard](https://datatracker.ietf.org/doc/html/rfc7519) to send information (known as _claims_) as a JSON object. When digitally signed using a secret key or a public/private key pair, the recipient can verify and trust the claims.

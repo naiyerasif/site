@@ -3,7 +3,7 @@ slug: "post/2024/03/03/using-localstack-for-aws-lambda-with-sns-trigger"
 title: "Using LocalStack for AWS Lambda with SNS trigger"
 date: 2024-03-03 21:05:49
 update: 2025-05-24 19:27:45
-type: "guide"
+category: "guide"
 ---
 
 SNS (Simple Notification Service) is often used to tackle a [pubsub](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern) workflow. You can also use it to [fan-out](https://en.wikipedia.org/wiki/Fan-out_(software)) a process. In many such cases, you may want to trigger an AWS Lambda function when an event arrives to a topic. In this post, we'll deploy an AWS Lambda and trigger it through an SNS subscription using [LocalStack](https://localstack.cloud/).

@@ -3,7 +3,7 @@ slug: "post/2020/10/22/cleaning-up-docker-resources"
 title: "Cleaning up Docker resources"
 date: 2020-10-22 23:59:08
 update: 2020-10-22 23:59:08
-type: "guide"
+category: "guide"
 ---
 
 In good old days, we used to write [scripts to cleanup](https://stackoverflow.com/questions/32723111/how-to-remove-old-and-unused-docker-images) stale Docker containers, images, volumes, etc. Docker Engine 1.25 provided a welcome change on this. Now, there's a relatively straightforward way to cleanup unused resources using the following command.

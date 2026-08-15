@@ -3,7 +3,7 @@ slug: "post/2024/12/29/setting-up-environment-variables-on-macos"
 title: "Setting up environment variables on macOS"
 date: 2024-12-29 18:26:56
 update: 2024-12-29 18:26:56
-type: "reference"
+category: "reference"
 ---
 
 You can set the `PATH` and other environment variables on macOS by editing your shell's configuration file.

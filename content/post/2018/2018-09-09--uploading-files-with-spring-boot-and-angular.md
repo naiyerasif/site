@@ -3,7 +3,7 @@ slug: "post/2018/09/09/uploading-files-with-spring-boot-and-angular"
 title: "Uploading files with Spring Boot and Angular"
 date: 2018-09-09 11:14:23
 update: 2020-03-08 21:16:19
-type: "guide"
+category: "guide"
 ---
 
 Give yourself some time in software development and you'll eventually come across file upload problems of varying complexity. Consider this one: you want a Spring backend to upload a file through an Angular app. Since the files can be large and the network may be slow, the upload can take a while to complete. Hence, you also want to display the progress of the upload on the Angular app.

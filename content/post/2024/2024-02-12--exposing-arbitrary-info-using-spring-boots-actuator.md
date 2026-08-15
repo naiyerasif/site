@@ -3,7 +3,7 @@ slug: "post/2024/02/12/exposing-arbitrary-info-using-spring-boots-actuator"
 title: "How to show custom info using Spring Boot Actuator"
 date: 2024-02-12 21:42:25
 update: 2025-09-21T15:36:07
-type: "guide"
+category: "guide"
 ---
 
 [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html) offers a useful capability to show the details about an application. For example, the [`health`](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.endpoints.health) endpoint provides basic application health information. Similarly, you can show any custom information through the [`info`](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.endpoints.info) endpoint.

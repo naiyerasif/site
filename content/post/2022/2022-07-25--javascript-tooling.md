@@ -3,7 +3,7 @@ slug: "post/2022/07/25/javascript-tooling"
 title: "JavaScript tooling"
 date: 2022-07-25 18:36:00
 update: 2022-07-25 18:36:00
-type: "note"
+category: "note"
 ---
 
 :::figure{.source.twitter}

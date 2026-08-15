@@ -1,22 +1,22 @@
 import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
-import { postSchema, pageSchema, profileSchema } from "./modules/schema/index.js";
+import { Post, Profile, Page } from "#utils/schema.js";
 
 export const collections = {
 	"post": defineCollection({
 		loader: glob({ pattern: "**/*.md", base: "./content/post" }),
-		schema: postSchema
+		schema: Post
 	}),
 	"archive": defineCollection({
 		loader: glob({ pattern: "**/*.md", base: "./content/archive" }),
-		schema: postSchema
+		schema: Post
 	}),
 	"profile": defineCollection({
 		loader: glob({ pattern: "**/*.md", base: "./content/profile" }),
-		schema: profileSchema
+		schema: Profile
 	}),
 	"page": defineCollection({
 		loader: glob({ pattern: "**/*.md", base: "./content/page" }),
-		schema: pageSchema
+		schema: Page
 	}),
 };

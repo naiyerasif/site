@@ -3,7 +3,7 @@ slug: "post/2024/09/04/stop-using-serial-in-postgres"
 title: "Stop using SERIAL in Postgres"
 date: 2024-09-04 23:26:50
 update: 2024-09-05 19:57:21
-type: "opinion"
+category: "opinion"
 tagline: "Use identity columns instead."
 ---
 

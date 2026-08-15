@@ -3,7 +3,7 @@ slug: "post/2024/03/03/seriousness"
 title: "Seriousness"
 date: 2024-03-03 22:36:40
 update: 2024-03-03 22:36:40
-type: "note"
+category: "note"
 ---
 
 :::figure

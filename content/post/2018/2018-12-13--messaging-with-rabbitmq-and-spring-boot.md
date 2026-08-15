@@ -3,7 +3,7 @@ slug: "post/2018/12/13/messaging-with-rabbitmq-and-spring-boot"
 title: "Messaging with RabbitMQ and Spring Boot"
 date: 2018-12-13 20:20:54
 update: 2025-12-31 23:50:00
-type: "guide"
+category: "guide"
 ---
 
 [RabbitMQ](https://www.rabbitmq.com/) is an open source message broker. It supports a variety of messaging and streaming protocols, and can be used to implement message queues, which is the focus of this post. A typical message flow in RabbitMQ works as follows: a producer sends a message to an exchange, which routes the message to one or more queues based on rules defined by the exchange type. To receive messages, a queue must be bound to at least one exchange; this association is called a _binding_. Consumers subscribe to these queues and process the stored messages.

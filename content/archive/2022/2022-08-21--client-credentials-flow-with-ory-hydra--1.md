@@ -3,7 +3,7 @@ slug: "archive/2022/08/21/client-credentials-flow-with-ory-hydra--1"
 title: "Client Credentials flow with Ory Hydra"
 date: 2022-08-21 12:32:07
 update: 2022-08-21 12:32:07
-type: "guide"
+category: "guide"
 ---
 
 :::warn{title="Archived"}

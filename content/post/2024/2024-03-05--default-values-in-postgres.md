@@ -3,7 +3,7 @@ slug: "post/2024/03/05/default-values-in-postgres"
 title: "Default values in Postgres"
 date: 2024-03-05 23:48:37
 update: 2024-03-05 23:48:37
-type: "guide"
+category: "guide"
 ---
 
 You can set a default value for a column in Postgres. They help initializing columns consistently, and simplify the insert and update statements while manipulating the data.

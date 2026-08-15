@@ -3,7 +3,7 @@ slug: "post/2026/06/07/how-to-use-aws-cli-with-floci-for-local-development"
 title: "How to use AWS CLI with Floci for local development"
 date: 2026-06-07 15:47:57
 update: 2026-06-07 15:47:57
-type: "guide"
+category: "guide"
 ---
 
 Testing against real AWS services often feels like a chore. We have to juggle account configurations, suffer the network latency tax, and dodge state collisions with team members. And let's not forget about the constant paranoia of surprise cloud bills. It often kills the fast feedback loop we need to build good software.

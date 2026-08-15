@@ -1,10 +1,10 @@
 ---
 import Time from "#components/Time.astro";
-import { PostType } from "../../modules/schema/defs.js";
+import { PostType } from "#utils/schema.js";
 
 const { entry } = Astro.props;
 const link = `/${entry.id}`;
-const { id, label } = PostType[entry.data.type];
+const { id, label } = PostType[entry.data.category];
 ---
 
 <div class="card" data-post-type={id}>

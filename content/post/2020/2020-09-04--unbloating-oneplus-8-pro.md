@@ -3,7 +3,7 @@ slug: "post/2020/09/04/unbloating-oneplus-8-pro"
 title: "Unbloating OnePlus 8 Pro"
 date: 2020-09-04 19:58:22
 update: 2020-10-11 05:42:23
-type: "guide"
+category: "guide"
 ---
 
 > Install [Android Debug Bridge](https://developer.android.com/tools/adb) (ADB) to follow this guide.

@@ -3,7 +3,7 @@ slug: "post/2020/11/01/syntax-vs-semantics"
 title: "Syntax vs semantics"
 date: 2020-11-01 08:10:05
 update: 2020-11-01 08:10:05
-type: "note"
+category: "note"
 ---
 
 :::figure{.source.twitter}

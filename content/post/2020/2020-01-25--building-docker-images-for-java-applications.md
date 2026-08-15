@@ -3,7 +3,7 @@ slug: "post/2020/01/25/building-docker-images-for-java-applications"
 title: "Building Docker images for Java applications"
 date: 2020-01-25 18:37:25
 update: 2021-02-28 11:33:45
-type: "guide"
+category: "guide"
 ---
 
 With the rise of the container-first Java frameworks ([Micronaut](https://micronaut.io/), [Quarkus](https://quarkus.io/), etc) and the JVM itself [evolving](https://blogs.oracle.com/java-platform-group/java-se-support-for-docker-cpu-and-memory-limits) to work smoothly with containers, there's been never a better time to embrace Java in a continuous cloud-native workflow. In this post, we'll examine some of the practices that can improve and enhance building the Docker images for Java applications that are packaged as JARs.

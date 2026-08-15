@@ -3,7 +3,7 @@ slug: "post/2020/12/30/persevere"
 title: "Persevere"
 date: 2020-12-30 08:46:52
 update: 2020-12-30 08:46:52
-type: "note"
+category: "note"
 ---
 
 :::figure{.source.twitter}

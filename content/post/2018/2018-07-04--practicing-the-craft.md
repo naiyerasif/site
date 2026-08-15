@@ -3,7 +3,7 @@ slug: "post/2018/07/04/practicing-the-craft"
 title: "Practicing the craft"
 date: 2018-07-04 13:27:09
 update: 2018-07-04 13:27:09
-type: "note"
+category: "note"
 ---
 
 :::figure

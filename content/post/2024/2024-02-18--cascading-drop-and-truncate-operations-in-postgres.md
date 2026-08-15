@@ -3,7 +3,7 @@ slug: "post/2024/02/18/cascading-drop-and-truncate-operations-in-postgres"
 title: "Cascading DROP and TRUNCATE operations in Postgres"
 date: 2024-02-18 00:24:48
 update: 2024-02-18 00:24:48
-type: "guide"
+category: "guide"
 ---
 
 Today I learned that you can specify `CASCADE` on `DROP` and `TRUNCATE` statements in Postgres. This comes handy when you're dealing with the database objects which are references on other objects (for example, foreign keys, [domains](https://www.postgresql.org/docs/current/domains.html), etc).

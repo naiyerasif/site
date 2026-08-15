@@ -3,7 +3,7 @@ slug: "post/2023/04/16/my-mac-setup"
 title: "My Mac Setup"
 date: 2023-04-16 12:42:10
 update: 2026-04-18 22:31:56
-type: "reference"
+category: "reference"
 ---
 
 This is my personal setup for **macOS Sequoia 15**. If something feels opinionated, it probably is.

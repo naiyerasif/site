@@ -3,7 +3,7 @@ slug: "post/2022/07/23/nushell-playbook"
 title: "Nushell Playbook"
 date: 2022-07-23 11:25:13
 update: 2025-06-22 12:32:33
-type: "reference"
+category: "reference"
 tagline: "Handy recipes for smooth Nushell workflows"
 ---
 

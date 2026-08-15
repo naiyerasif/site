@@ -3,7 +3,7 @@ slug: "post/2024/08/31/closing-a-browser-2024"
 title: "Closing a browser, 2024"
 date: 2024-08-31 00:10:14
 update: 2024-08-31 00:10:14
-type: "note"
+category: "note"
 ---
 
 :::figure{.source.mastodon}
