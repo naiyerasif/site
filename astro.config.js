@@ -6,7 +6,7 @@ import remarkCalloutDirectives from "@microflash/remark-callout-directives";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlugify from "@microflash/rehype-slugify";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeStarryNight, { grammars } from "@microflash/rehype-starry-night";
+import rehypeStarryNight from "@microflash/rehype-starry-night";
 import {
 	titlePlugin,
 	languageIndicatorPlugin,
@@ -21,8 +21,7 @@ import remarkYoutubeDirective from "#mods/remark-youtube-directive/index.js";
 import siteInfo from "#utils/website.js";
 import { calloutOptions } from "#utils/markdown.js";
 import { createCountableSlugifier } from "#utils/slugifier.js";
-import sourcePgsql from "./src/modules/textmate/source.pgsql.js";
-import textLog from "./src/modules/textmate/text.log.js";
+import { customGrammars } from "#utils/textmate/index.js";
 
 const slugifier = createCountableSlugifier();
 
@@ -112,11 +111,7 @@ export default defineConfig({
 							conf: "ini",
 							json: "jsonc",
 						},
-						grammars: [
-							sourcePgsql,
-							textLog,
-							...grammars.all
-						],
+						grammars: customGrammars,
 						plugins: [
 							titlePlugin,
 							lineAnnotationPlugin,
