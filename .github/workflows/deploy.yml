@@ -10,6 +10,8 @@ env:
   PUPPETEER_SKIP_DOWNLOAD: true
   ASTRO_TELEMETRY_DISABLED: 1
   WRANGLER_SEND_METRICS: false
+  # see https://github.com/pnpm/setup/issues/10
+  CI: true
 
 jobs:
   deploy:
@@ -17,19 +19,13 @@ jobs:
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Setup PNPM
-        uses: pnpm/action-setup@v6
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: pnpm/setup@v2
         with:
-          node-version: 26
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile --prod
+          runtime: node@26
+          cache: true
 
       - name: Build site
         run: |
@@ -44,9 +40,3 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           packageManager: pnpm
           command: deploy
-
-      - name: Job summary
-        env:
-          DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
-        run: |
-          echo "**Deployment URL**: $DEPLOYMENT_URL" >> $GITHUB_STEP_SUMMARY
