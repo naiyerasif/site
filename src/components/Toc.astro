@@ -1,0 +1,14 @@
+---
+const { headings } = Astro.props;
+---
+
+{headings.length > 0 && (
+	<ol class="toc-items">
+		{headings.map(heading => (
+			<li class={`toc-item toc-item-${heading.depth}`}>
+				<a href={`#${heading.slug}`}>{heading.text}</a>
+				<Astro.self headings={heading.children} />
+			</li>
+		))}
+	</ol>
+)}

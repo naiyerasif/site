@@ -1,3 +1,5 @@
+import siteInfo from "#utils/website.js";
+
 function diveChildren(item, depth) {
 	if (depth === 1) {
 		return item.children;
@@ -9,7 +11,7 @@ function diveChildren(item, depth) {
 }
 
 // source: https://github.com/withastro/starlight/blob/c04c79785f7ac343edc5565a5f1faed929fe350a/packages/starlight/components/TableOfContents/generateToC.ts#L24
-export default function generateTocHierarchy(headings, maxDepth) {
+export default function generateTocHierarchy(headings, maxDepth = siteInfo.limits.toc) {
 	headings = [...headings.filter(({ depth }) => depth <= maxDepth)];
 	const toc = [];
 

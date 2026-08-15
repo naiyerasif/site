@@ -1,11 +1,10 @@
 ---
 import { render } from "astro:content";
-import Layout from "../layouts/Layout.astro";
-import Toc from "../components/legacy/Toc.astro";
+import Layout from "#layouts/Layout.astro";
+import Toc from "#components/Toc.astro";
 import Time from "#components/Time.astro";
 import { compare } from "#utils/datetime.js";
-import toc from "../modules/table-of-contents/index.js";
-import siteInfo from "#utils/website.js";
+import toc from "#utils/toc.js";
 import { getArchives } from "#utils/content.js";
 
 export async function getStaticPaths() {
@@ -46,7 +45,7 @@ const pageInfo = {
 		</div>
 		{showToc && <nav class="toc">
 			<div class="toc-header">Table of Contents</div>
-			<Toc headings={toc(headings, siteInfo.limits.toc)}/>
+			<Toc headings={toc(headings)}/>
 		</nav>}
 	</Fragment>
 	<article class="post">
