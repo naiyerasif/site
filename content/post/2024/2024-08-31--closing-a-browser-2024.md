@@ -1,0 +1,17 @@
+---
+slug: "post/2024/08/31/closing-a-browser-2024"
+title: "Closing a browser, 2024"
+date: 2024-08-31 00:10:14
+update: 2024-08-31 00:10:14
+type: "note"
+---
+
+:::figure{.source.mastodon}
+> "Closing a Browser", 2024
+>
+> White ASCII on transparent canvas.
+>
+> ![A screenshot of the 'free' CLI util showing 45GB RAM being freed by closing a browser.](./images/2024-08-31--closing-a-browser-2024.webp)
+
+::caption[[@fribbledom](https://mastodon.social/@fribbledom/113049572616177644), :time[2024-08-30T12:03:02]]
+:::

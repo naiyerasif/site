@@ -1,0 +1,15 @@
+---
+slug: "post/2024/02/22/scrolljacking"
+title: "Scrolljacking"
+date: 2024-02-22 21:13:25
+update: 2024-02-22 21:13:25
+type: "note"
+---
+
+:::figure{.source.mastodon}
+> I beg of you, web site designers, just let me scroll through a page and stop trying to make my scroll-wheel the hand-crank of your obnoxious hurdy-gurdy of a marketing presentation
+
+::caption[[Les Orchard](https://hackers.town/@lmorchard/111970561546029173), :time[2024-02-21T10:36:19]]
+:::
+
+More on this here: [Scrolljacking 101](https://www.nngroup.com/articles/scrolljacking-101/)

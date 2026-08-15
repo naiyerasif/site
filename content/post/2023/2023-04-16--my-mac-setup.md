@@ -1,0 +1,206 @@
+---
+slug: "post/2023/04/16/my-mac-setup"
+title: "My Mac Setup"
+date: 2023-04-16 12:42:10
+update: 2026-04-18 22:31:56
+type: "reference"
+---
+
+This is my personal setup for **macOS Sequoia 15**. If something feels opinionated, it probably is.
+
+## First steps
+
+Open **System Settings** and apply the following changes.
+
+- TrackPad [Point & Click] > set **Tap to click: ON**
+- Trackpad [Scroll & Zoom] > set **Natural scrolling: OFF**
+- Displays > select resolution smaller than *Default*. This trades pixel density for larger text.
+- Accessibility > Pointer Control > Trackpad Options > set **Use trackpad for dragging: ON** and **Dragging style: Three-Finger Drag**
+- Appearance > set **Show scroll bars: Always**
+- Keyboard > set **Keyboard navigation: ON** to move focus between controls using keyboard.
+
+## Install apps with Homebrew
+
+[Homebrew](https://brew.sh) is my preferred package manager on macOS. It needs Git to work, and the easiest way to get Git on Apple Silicon is to install **Xcode Command Line Tools**.
+
+```zsh
+xcode-select --install
+```
+
+Then install Homebrew itself.
+
+```zsh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Import apps using the following [Brewfile](https://docs.brew.sh/Manpage#bundle-subcommand) with `brew bundle install`.
+
+```brewfile
+brew "aria2"
+brew "awscli"
+brew "bat"
+brew "d2"
+brew "duckdb"
+brew "eza"
+brew "ffmpeg"
+brew "git-delta"
+brew "iina"
+brew "imagemagick"
+brew "jq"
+brew "maven"
+brew "node"
+brew "nushell"
+brew "pnpm"
+brew "starship"
+brew "uv"
+brew "vale"
+brew "yt-dlp"
+brew "zoxide"
+cask "adguard"
+cask "affinity-designer"
+cask "affinity-photo"
+cask "android-file-transfer"
+cask "android-platform-tools"
+cask "calibre"
+cask "clop"
+cask "cog-app"
+cask "firefox"
+cask "fork"
+cask "glyphs"
+cask "keka"
+cask "kekaexternalhelper"
+cask "kid3"
+cask "localsend"
+cask "maccy"
+cask "megasync"
+cask "mkvtoolnix-app"
+cask "obsidian"
+cask "orbstack"
+cask "pearcleaner"
+cask "pika"
+cask "visual-studio-code"
+cask "zulu"
+cask "zulu@21"
+cask "zulu@25"
+```
+
+### Disable telemetry and auto updates
+
+Homebrew phones home with usage data. It also attempts to learn newer versions of formulae, which can slow things down during updates. Disable both by [configuring](/post/2024/12/29/setting-up-environment-variables-on-macos/#setting-up-the-environment-variables) `HOMEBREW_NO_ANALYTICS=1` and `HOMEBREW_NO_AUTO_UPDATE=1` environment variables.
+
+### Add Homebrew binaries to `PATH`
+
+Homebrew binaries live in `/opt/homebrew/bin`. To let your shell know about them, [put this location on the `PATH`](/post/2024/12/29/setting-up-environment-variables-on-macos/#configuring-the-path).
+
+## Install apps and fonts from elsewhere
+
+- [Supercharge](https://sindresorhus.com/supercharge) - power tools for macOS
+- [Things](https://apps.apple.com/us/app/things-3/id904280696) - my favorite task manager
+- [Pixelmator Pro](https://apps.apple.com/us/app/pixelmator-pro/id1289583905) - my preferred photo and video editor
+- [Yomu EBook Reader](https://apps.apple.com/us/app/yomu-ebook-reader/id562211012) - ebook reader
+- [IntelliJ IDEA](https://github.com/JetBrains/intellij-community/releases) - Java IDE
+- [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) - monospace font for code editors and terminal
+- [Inter](https://github.com/rsms/inter) - workhorse sans-serif for everything else
+
+## System tweaks
+
+Open **System Settings**, again, and apply the following changes.
+
+- Desktop & Dock > set **Default web browser: Firefox**
+- Desktop & Dock > set **Tiled windows have margins: OFF**
+- Desktop & Dock > set **Prefer tabs when opening documents: Always**
+- [Remap F4 and F5 keys to adjust keyboard brightness](/post/2023/05/09/remap-function-keys-to-adjust-keyboard-brightness-on-macos/)
+- Appearance > set **Click in the scroll bar to: Jump to the spot that's clicked**
+- Sound > set **Play sound on startup: OFF**, **Play user interface sound effects: OFF**, and **Play feedback when volume is changed: OFF**
+- Apple Intelligence & Siri > set **Siri: OFF**
+- Spotlight > under Search results, uncheck Contacts, Mail & Messages, and Siri Suggestions
+- [Change default screenshot location](/post/2023/11/25/customizing-default-screenshot-location-on-macos/)
+- Desktop & Dock > Hot Corners. Unset all hot corners.
+- Desktop & Dock > set **Group windows by application: OFF**
+
+### Dock settings
+
+- System Settings > Desktop & Dock > set **Automatically hide and show the Dock: OFF**
+- Default Dock icons are too large for my taste, so I usually set them smaller.
+  
+  ```sh
+  defaults write com.apple.dock "tilesize" -int "36" && killall Dock
+  ```
+	
+	You can reset this with `defaults delete com.apple.dock "tilesize" && killall Dock`
+- Right click Downloads icon > set **View content as: List**
+- Remove all apps from Dock except the frequently used ones, such as Terminal, Firefox, Obsidian, Things, and Visual Studio Code.
+
+### Finder settings
+
+- Settings > Advanced > check **Show all filename extensions**
+- Settings > Advanced > set **When performing a search: Search the Current Folder**
+- Settings > Advanced > Keep folders on top > check **In windows when sorting by name**
+- Settings > General > check **Open folders in tabs instead of new windows**
+- Settings > General > set **New Finder windows show: Downloads**
+- Press <kbd>Option</kbd> <kbd>Command</kbd> <kbd>P</kbd>, or View > select **Show Path Bar**
+- Press <kbd>Command</kbd> <kbd>/</kbd>, or View > select **Show Status Bar**
+- Press <kbd>Shift</kbd> <kbd>Command</kbd> <kbd>T</kbd>, or View > select **Show Tab Bar**
+- Always show hidden files
+	
+	```sh
+	defaults write com.apple.finder AppleShowAllFiles YES
+	```
+- Set list view as default
+	
+	```sh
+	defaults write com.apple.finder "FXPreferredViewStyle" -string "Nlsv" && killall Finder
+	```
+	
+	You can reset this with `defaults delete com.apple.finder "FXPreferredViewStyle" && killall Finder`
+
+### Menu Bar settings
+
+- Reduce the gap between Menu Bar icons.
+	
+	```sh
+	defaults -currentHost write -globalDomain NSStatusItemSpacing -int 8
+	```
+  
+	You can reset this with `defaults -currentHost delete -globalDomain NSStatusItemSpacing && killall SystemUIServer`
+
+### Safari settings
+
+- Settings > Advanced > check **Show features for web developers** at the very bottom
+
+## Development environment
+
+### Set `JAVA_HOME`
+
+Homebrew does not automatically configure the `JAVA_HOME` variable after installing a JDK (Java Development Kit). The installed JDK is typically located at:
+
+```txt
+/Library/Java/JavaVirtualMachines/<distribution>-<version>.jdk/Contents/Home
+```
+
+Tools, such as Maven, rely on `JAVA_HOME` to locate the JDK. [Configure](/post/2024/12/29/setting-up-environment-variables-on-macos/#setting-up-the-environment-variables) this environment variable manually.
+
+### Terminal settings
+
+I backup and restore `~/Library/Preferences/com.apple.Terminal.plist` to carry over the macOS Terminal settings, which include the following changes.
+
+- I use [Nushell](https://www.nushell.sh/) most of the time, so it is set as Default profile, with `/opt/homebrew/bin/nu` as the start command.
+- I've an identical profile for `zsh` for occasional times I need it. Same goes for `jshell` when I want to quickly experiment with the Java standard library.
+- Settings > General > **New windows open with Default Profile in Default Working Directory**
+- Settings > General > **New tabs open with Same Profile in Same Working Directory**
+
+### Install global CLI tools with `pnpm`
+
+For optimizing vector graphics, I use [`svgo`](https://github.com/svg/svgo) installed globally with [`pnpm`](https://github.com/pnpm/pnpm).
+
+```sh
+pnpm add -g svgo
+```
+
+`pnpm` installs global dependencies at `~/Library/pnpm`. Add it to the `PATH` to access them through shell.
+
+---
+
+**Previous versions**
+
+- [:time[2024-07-01 00:17:21]](/archive/2023/04/16/my-mac-setup--1): macOS Sonoma 14 setup

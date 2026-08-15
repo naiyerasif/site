@@ -1,12 +1,11 @@
 import { z } from "astro:content";
 import siteInfo, { fullLink } from "../website/index.js";
-import { PageType, PostType, Status } from "./defs.js";
+import { PageType, PostType } from "./defs.js";
 
 const title = z.string().max(64);
 const date = z.date();
 const update = z.date().optional();
 const tagline = z.string().optional();
-const status = z.enum(Object.keys(Status)).optional();
 const postType = z.enum(Object.keys(PostType)).default(PostType.guide.id);
 const url = z.preprocess(
 	val => val && fullLink(val),
@@ -29,7 +28,6 @@ const postSchema = z.object({
 	date,
 	update,
 	type: postType,
-	status,
 	showToc: z.boolean().default(true),
 
 	ogImage,
@@ -52,7 +50,6 @@ const pageSchema = z.object({
 	tagline,
 	date,
 	update,
-	status,
 	showToc: z.boolean().default(false),
 
 	ogImage,

@@ -1,0 +1,178 @@
+---
+slug: "post/2019/03/24/git-playbook"
+title: "Git Playbook"
+date: 2019-03-24 09:11:01
+update: 2025-10-26 11:59:49
+type: "reference"
+tagline: "Recipes to git things done"
+---
+
+This is a collection of Git patterns, workflows, and configurations I've come to rely on over the years. I hope you find them as useful as I have!
+
+:::commend
+Drop the `--global` flag to apply the configuration only to a specific Git project.
+:::
+
+## Branches
+
+### Set the default branch name
+
+```sh
+git config --global init.defaultbranch $branch_name
+```
+
+When you run `git init`, Git uses this configuration to create a default branch.
+
+### Create a remote branch on push if it doesn't exist
+
+```sh
+git config --global push.autosetupremote true
+```
+
+This configuration tells Git to create the current branch on the remote (if it doesn't exist) when you push changes.
+
+## Ignore patterns
+
+### Global ignore file
+
+You can point Git to a global `~/.gitignore` file.
+
+```sh
+git config --global core.excludesfile ~/.gitignore
+```
+
+This is particularly useful to handle operating system differences. For example, if you add `.DS_Store` to `~/.gitignore` file now, Git will ignore it everywhere.
+
+### Ignore changes on versioned files
+
+To ignore local changes on files already versioned on Git, you can manually update the index.
+
+```sh
+git update-index --assume-unchanged $file_path
+```
+
+To ignore all files in a directory, list them and ignore them.
+
+```sh
+git ls-files -z $directory_path | xargs -0 git update-index --assume-unchanged
+```
+
+To stop ignoring the changes, run the same commands with `--no-assume-unchanged` flag.
+
+## Housekeeping
+
+### Remove deleted remote branches
+
+Prune a remote by specifying its name. You can specify several remotes separated by space.
+
+```sh
+git remote prune $remote_name
+```
+
+Alternatively, you can prune a remote while fetching the updates.
+
+```sh
+git fetch --prune $remote_name
+git fetch --prune --all
+```
+
+You can even configure Git to automatically prune on fetch, so you don't have to.
+
+```sh
+git config --global fetch.prune true
+git config --global fetch.prunetags true
+```
+
+## Configuration
+
+### Switch on autocorrect for Git commands
+
+With the following configuration, Git prompts you with a possible correct command if you mistype a command. If you approve, Git runs the suggested command.
+
+```sh
+git config --global help.autocorrect prompt
+```
+
+If you prefer Git to automatically run the autocorrected command without prompting, you can set a delay after which the command will run.
+
+```sh
+git config --global help.autocorrect 15 # 1.5 seconds
+```
+
+### Command aliases
+
+To avoid typing long commands, you can configure short aliases for them under `alias` key of `~/.gitconfig` file.
+
+```ini title="~/.gitconfig"
+[alias]
+	; list configured aliases
+	aliases = config --get-regexp alias
+
+	; amend previous commit with additional changes
+	amend = commit --amend --no-edit
+
+	; list branches, remotes, tags
+	branches = branch -a
+	remotes = remote -v
+	tags = tag -l
+```
+
+You can set an alias by editing the `~/.gitconfig` file or by running the following command.
+
+```sh
+git config --global alias.$alias_name <git_function>
+```
+
+Use quotes if the alias includes more than one function.
+
+### Repository URL aliases
+
+You can also alias repository URLs. For example, if you prefer to use SSH, you can translate HTTPS links using [`insteadOf`](https://git-scm.com/docs/git-config#Documentation/git-config.txt-urlbaseinsteadOf) conditional.
+
+```sh
+git config --global url.git@github.com:org/.insteadOf https://github.com/org/
+```
+
+With this configuration, if you clone a repository with `git clone https://github.com/org/repo.git`, it'll appear in `git remote -v` as
+
+```sh
+origin    git@github.com:org/repository.git (fetch)
+origin    git@github.com:org/repository.git (push)
+```
+
+### Host-specific configuration
+
+If you're working with different Git hosts, you can use [host-specific configuration](https://git-scm.com/docs/git-config#Documentation/git-config.txt-hasconfigremoteurl) to seamlessly switch between them.
+
+First, add a redirect to another Git configuration in your global `~/.gitconfig` file. If you're working with HTTPS and SSH, you should add redirects for both URL schemes.
+
+```sh
+git config --global includeif.hasconfig:remote.*.url:git@codeberg.org:*/**.path ~/.gitconfig.codeberg
+git config --global includeif.hasconfig:remote.*.url:https://codeberg.org/**.path ~/.gitconfig.codeberg
+```
+
+If you configure different email addresses in these `.gitconfig` files, running `git config --list --show-origin` in the directory where you've both configurations active should show the difference.
+
+```sh
+...
+file:~/.gitconfig           user.email=example@users.noreply.github.com
+file:~/.gitconfig.codeberg  user.email=example@noreply.codeberg.org
+...
+```
+
+:::warn
+Some Git clients may not detect host-specific configuration automatically.
+:::
+
+---
+
+## Radar
+
+:::commend{title='Adopt'}
+- [Host-specific configuration](#host-specific-configuration)
+- [Repository URL Aliases](#repository-url-aliases)
+:::
+
+**Related**
+
+- [Git Reference](https://git-scm.com/docs)

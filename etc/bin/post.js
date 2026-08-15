@@ -61,14 +61,14 @@ async function main() {
 	const date = dayjs(answers.date);
 	const frontmatter = [];
 	frontmatter.push('---');
-	frontmatter.push(`slug: "${date.format("YYYY/MM/DD")}/${slug}"`);
+	frontmatter.push(`slug: "post/${date.format("YYYY/MM/DD")}/${slug}"`);
 	frontmatter.push(`title: "${answers.title}"`);
 	frontmatter.push(`date: ${answers.date}`);
 	frontmatter.push(`update: ${answers.date}`);
 	frontmatter.push(`type: "${answers.type}"`);
 	frontmatter.push('---');
 
-	const fileName = `${date.format('YYYY-MM-DD-HH-mm-ss')}-${slug}.md`;
+	const fileName = `${date.format('YYYY-MM-DD')}--${slug}.md`;
 	const filePath = join(process.cwd(), drafts, fileName);
 
 	writeFile(

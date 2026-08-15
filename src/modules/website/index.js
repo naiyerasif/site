@@ -1,7 +1,4 @@
-import pkg from "../../../package.json" with { type: "json" };
-
 const siteInfo = {
-	version: pkg.version,
 	author: {
 		name: "Naiyer Asif",
 		presence: {
@@ -41,10 +38,6 @@ const siteInfo = {
 
 function fullLink(path, base = siteInfo.siteBase) {
 	return new URL(path, base).href;
-}
-
-function postPathname(slug) {
-	return `/post/${slug}/`;
 }
 
 function paginationPathname(base, pageNumber) {
@@ -115,6 +108,5 @@ export {
 	siteInfo as default,
 	calloutOptions,
 	fullLink,
-	postPathname,
 	paginationPathname
 };

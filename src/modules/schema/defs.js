@@ -6,11 +6,6 @@ const Tone = {
 	assert: { id: "assert" },
 };
 
-const Status = {
-	archived: { id: "archived", label: "Archived", tone: Tone.warn },
-	outdated: { id: "outdated", label: "Outdated", tone: Tone.deter },
-};
-
 const PostType = {
 	note: { id: "note", label: "Note", showFull: true },
 	guide: { id: "guide", label: "Guide", showFull: false },
@@ -27,7 +22,6 @@ const PageType = {
 
 export {
 	Tone,
-	Status,
 	PostType,
 	PageType,
 };

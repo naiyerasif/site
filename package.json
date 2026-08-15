@@ -46,7 +46,8 @@
 	"imports": {
 		"#components/*": "./src/components/*",
 		"#layouts/*": "./src/layouts/*",
-		"#mods/*": "./src/modules/*"
+		"#mods/*": "./src/modules/*",
+		"#utils/*": "./src/utils/*"
 	},
 	"packageManager": "pnpm@11.21.0"
 }

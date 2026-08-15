@@ -1,0 +1,13 @@
+---
+slug: "post/2024/03/03/seriousness"
+title: "Seriousness"
+date: 2024-03-03 22:36:40
+update: 2024-03-03 22:36:40
+type: "note"
+---
+
+:::figure
+> Why should a man bother to be serious when he knows that one day he will get buried along with all his seriousness.
+
+::caption[Ibn-e-Safi, <cite>Kali Tasweer</cite> (Imran series #26), 1957]
+:::

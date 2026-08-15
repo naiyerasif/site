@@ -1,0 +1,15 @@
+---
+slug: "post/2020/12/30/persevere"
+title: "Persevere"
+date: 2020-12-30 08:46:52
+update: 2020-12-30 08:46:52
+type: "note"
+---
+
+:::figure{.source.twitter}
+> The Queen's Gambit has been viewed by 62 million people. The producer, Allan Scott, is on BBC News talking about how it took 30 years, with 9 rewrites, and every studio he showed it to said that no one would be interested in chess. 
+>
+> PLEASE PERSEVERE WITH THAT THING YOU'RE MAKING
+
+::caption[[Amy Charlotte Kean](https://twitter.com/keano81/status/1343563785764827139), :time[2020-12-28T14:25:43]]
+:::

@@ -1,23 +1,18 @@
 ---
-import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import PostCard from "../../components/legacy/PostCard.astro";
 import NoteCard from "../../components/legacy/NoteCard.astro";
 import Pagination from "../../components/legacy/Pagination.astro";
 import siteInfo from "../../modules/website/index.js";
-import { compare } from "../../modules/datetime/index.js";
-import { PostType, Status } from "../../modules/schema/defs.js";
+import { PostType } from "../../modules/schema/defs.js";
+import { getPosts } from "#utils/content.js";
 
 export async function getStaticPaths({ paginate }) {
-	const posts = (await getCollection("post"))
-		.filter(post => post.data.state !== Status.outdated.id)
-		.sort((p1, p2) => compare(p1.data.date, p2.data.date));
+	const posts = await getPosts();
 	return paginate(posts, { pageSize: siteInfo.maxPageItems });
 }
 
 const { page } = Astro.props;
-const host = new URL(siteInfo.siteBase).hostname;
-
 const pageInfo = {
 	title: `Posts (Page ${page.currentPage})`,
 	url: Astro.url.pathname,

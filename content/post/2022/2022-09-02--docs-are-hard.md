@@ -1,0 +1,13 @@
+---
+slug: "post/2022/09/02/docs-are-hard"
+title: "docs are hard"
+date: 2022-09-02 19:44:56
+update: 2022-09-02 19:44:56
+type: "note"
+---
+
+:::figure{.source.twitter}
+> docs are hard, often harder than code
+
+::caption[[Jason Miller](https://twitter.com/_developit/status/1565787881255337986), :time[2022-09-02T19:44:56]]
+:::
