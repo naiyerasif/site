@@ -5,12 +5,12 @@ import remarkGfm from "remark-gfm";
 import remarkSmartypants from "remark-smartypants";
 import remarkDirective from "remark-directive";
 import remarkCalloutDirectives from "@microflash/remark-callout-directives";
+import { remarkFigureDirective } from "@naiyer/remark-directives";
 import {
 	remarkDescriptionListDirective,
-	remarkFigureDirective
-} from "@naiyer/remark-directives";
-import remarkTimeDirective from "#mods/remark-time-directive/index.js";
-import remarkYoutubeDirective from "#mods/remark-youtube-directive/index.js";
+	remarkTimeDirective,
+	remarkYoutubeDirective
+} from "#utils/remark/index.js";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 import { absoluteUrl } from "#utils/website.js";

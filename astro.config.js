@@ -12,12 +12,12 @@ import {
 	languageIndicatorPlugin,
 	lineAnnotationPlugin
 } from "@microflash/rehype-starry-night/plugins";
+import { remarkFigureDirective } from "@naiyer/remark-directives";
 import {
 	remarkDescriptionListDirective,
-	remarkFigureDirective
-} from "@naiyer/remark-directives";
-import remarkTimeDirective from "#mods/remark-time-directive/index.js";
-import remarkYoutubeDirective from "#mods/remark-youtube-directive/index.js";
+	remarkTimeDirective,
+	remarkYoutubeDirective
+} from "#utils/remark/index.js";
 import siteInfo from "#utils/website.js";
 import { calloutOptions } from "#utils/markdown.js";
 import { createCountableSlugifier } from "#utils/slugifier.js";
