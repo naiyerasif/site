@@ -1,0 +1,28 @@
+---
+import { paginationPathname } from "../modules/website/index.js";
+
+const { currentPage, totalPages, base } = Astro.props;
+
+const isVisible = (pageNumber) =>
+	totalPages <= 6 || pageNumber <= 1 || pageNumber >= totalPages || Math.abs(pageNumber - currentPage) <= 1;
+
+const items = [];
+let lastWasGap = false;
+
+for (let pageNumber = 1; pageNumber <= totalPages; pageNumber++) {
+	if (isVisible(pageNumber)) {
+		items.push({ type: "page", pageNumber });
+		lastWasGap = false;
+	} else if (!lastWasGap) {
+		items.push({ type: "gap" });
+		lastWasGap = true;
+	}
+}
+---
+
+{items.map(item => item.type === "gap" ?
+	<span class="pagination-separator">&ctdot;</span> : 
+	<a class="pagination-item button-link" href={paginationPathname(base, item.pageNumber)}
+		{...(item.pageNumber === currentPage ? { "aria-current": "page" } : {})}
+		aria-label={`Page ${item.pageNumber}`}>{item.pageNumber}</a>
+)}
