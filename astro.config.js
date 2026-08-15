@@ -6,7 +6,7 @@ import remarkCalloutDirectives from "@microflash/remark-callout-directives";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlugify from "@microflash/rehype-slugify";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeStarryNight from "@microflash/rehype-starry-night";
+import rehypeStarryNight, { grammars } from "@microflash/rehype-starry-night";
 import {
 	titlePlugin,
 	languageIndicatorPlugin,
@@ -22,7 +22,6 @@ import siteInfo, { calloutOptions } from "./src/modules/website/index.js";
 import { CountableSlugifier } from "./src/modules/slugifier/index.js";
 import sourcePgsql from "./src/modules/textmate/source.pgsql.js";
 import textLog from "./src/modules/textmate/text.log.js";
-import { all } from "@wooorm/starry-night";
 
 const slugifier = CountableSlugifier.slugifier();
 
@@ -115,7 +114,7 @@ export default defineConfig({
 						grammars: [
 							sourcePgsql,
 							textLog,
-							...all
+							...grammars.all
 						],
 						plugins: [
 							titlePlugin,

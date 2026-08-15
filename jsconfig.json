@@ -1,9 +1,13 @@
 {
-  "compilerOptions": {
-    "paths": {
-      "#components/*": ["./src/components/*"],
-      "#layouts/*": ["./src/layouts/*"],
-      "#mods/*": ["./src/modules/*"]
-    }
-  }
+	"extends": "astro/tsconfigs/strict",
+	"compilerOptions": {
+		"checkJs": false,
+		"module": "nodenext",
+		"moduleResolution": "nodenext",
+		"paths": {
+			"#components/*": ["./src/components/*"],
+			"#layouts/*": ["./src/layouts/*"],
+			"#mods/*": ["./src/modules/*"]
+		}
+	}
 }

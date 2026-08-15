@@ -17,34 +17,34 @@ const siteAuthor = siteInfo.author.name;
 const mastodonUrl = siteInfo.author.presence.mastodon.url;
 const mastodonId = siteInfo.author.presence.mastodon.id;
 ---
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>{title}</title>
-<link rel="icon" href="/favicon.ico" sizes="32x32">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
-<meta name="color-scheme" content="dark light">
-<meta name="author" content={siteAuthor}>
-<meta name="theme-color" content="#101112" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#fefdfb" media="(prefers-color-scheme: light)">
-<link rel="sitemap" href="/sitemap-index.xml">
-<link rel="alternate" type="application/rss+xml" href="/feed.xml">
-<link rel="canonical" href={url}>
-{previous && <link rel="prev" aria-label="Previous page" href={previous}>}
-{next && <link rel="next" aria-label="Next page" href={next}>}
-<meta property="og:type" content={type}>
-<meta property="og:site_name" content={siteTitle}>
-<meta property="og:locale" content="en">
-<meta property="og:title" content={title}>
-<meta property="og:url" content={url}>
-<meta property="og:image" content={image}>
-{published && <meta property="article:published_time" content={published}>}
-{updated && <meta property="article:modified_time" content={updated}>}
-<meta name="twitter:image:src" content={image}>
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content={title}>
-<link rel="me" href={mastodonUrl}>
-<meta name="fediverse:creator" content={mastodonId}>
-<meta itemprop="name" content={title}>
-<meta name="generator" content={Astro.generator}>
+<link rel="icon" href="/favicon.ico" sizes="32x32"/>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+<meta name="color-scheme" content="dark light"/>
+<meta name="author" content={siteAuthor}/>
+<meta name="theme-color" content="#101112" media="(prefers-color-scheme: dark)"/>
+<meta name="theme-color" content="#fefdfb" media="(prefers-color-scheme: light)"/>
+<link rel="sitemap" href="/sitemap-index.xml"/>
+<link rel="alternate" type="application/rss+xml" href="/feed.xml"/>
+<link rel="canonical" href={url}/>
+{previous && <link rel="prev" aria-label="Previous page" href={previous}/>}
+{next && <link rel="next" aria-label="Next page" href={next}/>}
+<meta property="og:type" content={type}/>
+<meta property="og:site_name" content={siteTitle}/>
+<meta property="og:locale" content="en"/>
+<meta property="og:title" content={title}/>
+<meta property="og:url" content={url}/>
+<meta property="og:image" content={image}/>
+{published && <meta property="article:published_time" content={published}/>}
+{updated && <meta property="article:modified_time" content={updated}/>}
+<meta name="twitter:image:src" content={image}/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content={title}/>
+<link rel="me" href={mastodonUrl}/>
+<meta name="fediverse:creator" content={mastodonId}/>
+<meta itemprop="name" content={title}/>
+<meta name="generator" content={Astro.generator}/>

@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 @use "props";
-@use "@microflash/preset";
+@use "@microflash/preset/dist/preset.min.css";
 @use "baseline";
 @use "flow";
 
