@@ -2,23 +2,76 @@
 
 Personal website of [@naiyerasif](https://github.com/naiyerasif)
 
-## Development
+## Rote
 
-- To launch the development server, run `pnpm dev`
-- To generate a production build, run `pnpm build`
-- To update dependencies interactively, run `pnpm update --interactive --latest`
-
-## Writing posts
-
-- To create a new post, run `pnpm new`
+| #   | Action                    | Command                            |
+| --- | ------------------------- | ---------------------------------- |
+| 1   | Launch development server | `pn dev`                           |
+| 2   | Generate production build | `pn build`                         |
+| 3   | Update dependencies       | `pn update --interactive --latest` |
+| 4   | Create new post           | `pn new`                           |
 
 ## Markdown extensions
 
-This blog uses the following custom markdown extensions on top of [GFM](https://github.github.com/gfm/).
+This site supports the following extensions in addition to [GFM](https://github.github.com/gfm/).
+
+### `dl` directive
+
+The `dl` directive generates a description list. Wrap the standard unordered list in `:::dl` block. The text immediately following the `-` becomes the definition term (`<dt>`). Any indented content below it becomes the definition description (`<dd>`), which can include multiple paragraphs, links, and other markdown elements.
+
+**Input**
+
+```md
+:::dl
+- Firefox
+
+  A free, open source, cross-platform web browser.
+
+  Source available at: [@mozilla-firefox/firefox](https://github.com/mozilla-firefox/firefox)
+:::
+```
+
+**Output**
+
+```html
+<dl>
+  <dt>Firefox</dt>
+  <dd>
+    <p>A free, open source, cross-platform web browser.</p>
+    <p>Source available at: <a href="https://github.com/mozilla-firefox/firefox">@mozilla-firefox/firefox</a></p>
+  </dd>
+</dl>
+```
+
+### `figure` directive
+
+The `figure` directive groups a piece of content (media, blockquote, and so on) with an associated caption. For example, you can wrap an image in a `:::figure` block, and a `::caption` after the image.
+
+**Input**
+
+```md
+:::figure
+![Elephant at sunset, with birds flying in the background](elephant.jpg)
+::caption[An elephant at sunset]
+:::
+```
+
+**Output**
+
+```html
+<figure>
+  <p><img src="elephant.jpg" alt="Elephant at sunset, with birds flying in the background"></p>
+  <figcaption>An elephant at sunset</figcaption>
+</figure>
+```
+
+Specify `.popout.popout-image` classes to bleed the image out of the standard content wrapper.
 
 ### `time` directive
 
-The following markdown
+The `time` directive generates a `<time>` element from an ISO 8601 date string. It automatically formats the human-readable text and normalizes the `datetime` attribute to UTC.
+
+**Input**
 
 ```md
 :time[2024-01-14T05:12:48]
@@ -26,7 +79,7 @@ The following markdown
 :time[2024-01-14]
 ```
 
-get converted to
+**Output**
 
 ```html
 <time datetime="2024-01-14T05:12:48.000Z">Jan 14, 2024</time>
@@ -36,15 +89,15 @@ get converted to
 
 ### `youtube` directive
 
-`youtube` directive has two output variants: `client` (for the website) and `server` (for the RSS feeds)
+The `youtube` directive embeds responsive YouTube videos. Depending on the output environment, it generates a performance-optimized `<lite-youtube>` component for the website (`client`), and a standard `<iframe>` for RSS feeds (`server`).
 
-The following markdown
+**Input**
 
 ```md
 ::youtube[What is Git LFS?]{#9gaTargV5BY}
 ```
 
-gets converted to the following HTML for the website.
+**Output (Client / Website)**
 
 ```html
 <figure id="9gaTargV5BY" class="directive-youtube">
@@ -59,7 +112,7 @@ gets converted to the following HTML for the website.
 </figure>
 ```
 
-It gets converted to the following HTML for the RSS feeds.
+**Output (Server / RSS feeds)**
 
 ```html
 <figure id="9gaTargV5BY">
@@ -68,7 +121,7 @@ It gets converted to the following HTML for the RSS feeds.
 </figure>
 ```
 
-Specify `.popout.popout-video` classes to bleed the video out of wrapper.
+Specify `.popout.popout-video` classes to bleed the video out of the standard content wrapper.
 
 ## Audits
 
