@@ -3,7 +3,7 @@
 .callout {
 	--y-theme-border: var(--y-callout-border, var(--y-note-border));
 	--y-theme-color: var(--y-callout-color, var(--y-note-color));
-	--y-theme-marker-color: var(--y-theme-border);
+	--y-theme-marker-color: var(--y-theme-color);
 	--y-theme-canvas-color: var(--y-callout-canvas-color, var(--y-note-canvas-color));
 	--y-theme-bg-color: var(--y-callout-bg-color, var(--y-note-bg-color));
 	--z-callout-radius: var(--x-radius-root);
@@ -15,10 +15,6 @@
 	accent-color: var(--y-theme-color);
 	caret-color: var(--y-theme-color);
 	border: var(--z-callout-border-width) solid var(--y-theme-border);
-
-	details > ::marker {
-		--y-theme-marker-color: var(--y-theme-color);
-	}
 
 	.callout-header {
 		--z-header-radius: calc(var(--z-callout-radius) - 0.1rem);
