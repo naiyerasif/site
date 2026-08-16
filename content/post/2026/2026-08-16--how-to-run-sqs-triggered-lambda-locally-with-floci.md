@@ -11,6 +11,7 @@ One of the common ways to run asynchronous workloads is through an AWS Lambda fu
 :::assert{title="Series"}
 1. [How to use AWS CLI with Floci for local development](/post/2026/06/07/how-to-use-aws-cli-with-floci-for-local-development/)
 2. *How to run SQS-triggered Lambda locally with Floci*
+3. [How to run SNS-triggered Lambda locally with Floci](/post/2026/08/16/how-to-run-sns-triggered-lambda-locally-with-floci/)
 :::
 
 :::note{title="Environment"}

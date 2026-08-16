@@ -179,7 +179,7 @@ aws --profile localstack sqs delete-queue --queue-url http://sqs.us-east-1.local
 
 **Source code**
 
-- [localstack-lambda-with-sqs-trigger](https://github.com/Microflash/guides/tree/main/aws/localstack-lambda-with-sqs-trigger)
+- [localstack-lambda-with-sqs-trigger](https://github.com/naiyerasif/backstage/tree/main/%40/archives/aws/localstack-lambda-with-sqs-trigger)
 
 **Related**
 

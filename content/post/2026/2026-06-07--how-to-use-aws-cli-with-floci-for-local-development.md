@@ -13,6 +13,7 @@ So, how do we get around this? We bring AWS to `localhost` using [Floci](https:/
 :::assert{title="Series"}
 1. *How to use AWS CLI with Floci for local development*
 2. [How to run SQS-triggered Lambda locally with Floci](/post/2026/08/16/how-to-run-sqs-triggered-lambda-locally-with-floci/)
+3. [How to run SNS-triggered Lambda locally with Floci](/post/2026/08/16/how-to-run-sns-triggered-lambda-locally-with-floci/)
 :::
 
 :::note{title="Environment"}

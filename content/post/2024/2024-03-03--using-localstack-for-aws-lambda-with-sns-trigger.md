@@ -226,7 +226,7 @@ aws --profile localstack sns delete-topic --topic-arn arn:aws:sns:us-east-1:0000
 
 **Source code**
 
-- [localstack-lambda-with-sns-trigger](https://github.com/Microflash/guides/tree/main/aws/localstack-lambda-with-sns-trigger)
+- [localstack-lambda-with-sns-trigger](https://github.com/naiyerasif/backstage/tree/main/%40/archives/aws/localstack-lambda-with-sns-trigger)
 
 **Related**
 

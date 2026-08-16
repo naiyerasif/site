@@ -333,7 +333,7 @@ For more operations, check the [secretsmanager](https://awscli.amazonaws.com/v2/
 
 **Source code**
 
-- [localstack-with-aws-cli](https://github.com/Microflash/guides/tree/main/aws/localstack-with-aws-cli)
+- [localstack-with-aws-cli](https://github.com/naiyerasif/backstage/tree/main/%40/archives/aws/localstack-with-aws-cli)
 
 **Related**
 
