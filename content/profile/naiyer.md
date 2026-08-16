@@ -2,15 +2,15 @@
 slug: "about"
 title: "Naiyer Asif"
 date: 2019-06-30 05:14:56
-update: 2026-05-31 22:27:51
+update: 2026-08-16 17:51:28
 avatar: "./images/naiyer.png"
 ---
 
-I'm a software engineer, building solutions for an aerospace organization, across data, backend, infrastructure, and frontend. Before this, I worked at [Wipro](https://www.wipro.com/), on [Wipro Holmes](https://en.wikipedia.org/wiki/Holmes_(computer)) and [Suncorp](https://www.suncorpbank.com.au/) projects.
+I'm a software engineer, involved in the design and architecture of solutions at an aerospace organization. I crisscross between data, backend, infrastructure, frontend and lately, AI on a given day. Previously, I worked at [Wipro](https://www.wipro.com/), on [Wipro Holmes](https://en.wikipedia.org/wiki/Holmes_(computer)) and [Suncorp](https://www.suncorpbank.com.au/) projects.
 
-At heart, I'm a wanderer in my curiosities. I care a lot about listening, humor, attention to detail, and leaving things better than I found them. When approaching a problem, I'm a relentless pragmatist, determined to craft a useful experience. I work best in short bursts of focus, buffered by drifting walks and steady sips of water.
+I care a lot about listening, humor, attention to detail, and leaving things better than I found them. I work best in short bursts, fueled by drifting walks, wandering thoughts, and steady sips of water.
 
-I love exploring languages, cultures and their interwoven histories. I'm introverted but willing to discuss Urdu poetry, manga, and science fiction. I prefer engaging in English or Urdu, but I can handle Hindi as well. I'm easily bribed by good books, alcohol-free fragrances, and high-quality tea.
+I love exploring languages, cultures and their interwoven histories. I'm introverted but willing to discuss Urdu poetry, manga, and science fiction. I'm fluent in English and Urdu, and competent at Hindi. I'm easily bribed by good books, alcohol-free fragrances, and high-quality tea.
 
 ## About this site
 
@@ -18,7 +18,7 @@ This is my personal website and technical guinea pig. It is mostly a stream of n
 
 This website is built with [Astro](https://astro.build), without any UI framework. It is deployed by GitHub Actions on Cloudflare Workers. Typography is set with [Inter](https://github.com/rsms/inter), along with [Make Sans](https://herewemake.gumroad.com/l/makesans) for headings and [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) for code. I draft the posts in [Obsidian](https://obsidian.md/) and [Codium](https://vscodium.com/). For illustrations, diagrams and icons, I use Affinity Designer. Unless stated otherwise, the shell used in examples is [Nushell](https://www.nushell.sh).
 
-This version was launched in July 2023, followed by steady updates over time. A refresh happened in May 2026.
+This version was launched in July 2023, followed by steady updates over time. A refresh happened in August 2026.
 
 ## Frequently Asked Questions
 
@@ -29,7 +29,7 @@ This version was launched in July 2023, followed by steady updates over time. A 
 	Yes&mdash;it's licensed under [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by-sa/4.0/).
 
 	:::deter{title="Disclaimer"}
-	**The examples are optimized for learning, not for use in production.** Use your discretion, review with peers, and choose what fits your needs.
+	**The examples on this site are optimized for learning, not for use in production.** Use your discretion, review with peers, and modify them to fit your needs.
 	:::
 - How can I stay updated with new posts?
 
@@ -45,6 +45,8 @@ This version was launched in July 2023, followed by steady updates over time. A 
 ::::
 
 ## Credits
+
+This site incorporates prior art from the following people.
 
 - Harry Roberts, [Get Your Head Straight](https://speakerdeck.com/csswizardry/get-your-head-straight) [2021]
 - Sara Soueidan, [A guide to designing accessible, WCAG-conformant focus indicators](https://www.sarasoueidan.com/blog/focus-indicators/) [2023]
