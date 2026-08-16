@@ -2,7 +2,7 @@
 slug: "post/2026/06/07/how-to-use-aws-cli-with-floci-for-local-development"
 title: "How to use AWS CLI with Floci for local development"
 date: 2026-06-07 15:47:57
-update: 2026-06-07 15:47:57
+update: 2026-08-16 17:52:17
 category: "guide"
 ---
 
@@ -12,8 +12,8 @@ So, how do we get around this? We bring AWS to `localhost` using [Floci](https:/
 
 :::note{title="Environment"}
 - Docker 29.4.0
-- AWS CLI 2.34.63
-- Floci 1.5.22
+- AWS CLI 2.36.24
+- Floci 1.6.0
 :::
 
 ## Configure AWS credentials
@@ -40,7 +40,7 @@ You can run Floci as a container through `docker compose up -d` command using th
 services:
   aws:
     container_name: floci-with-aws-cli
-    image: floci/floci:1.5.22
+    image: floci/floci:1.6.0
     ports:
       - "4566:4566"
     volumes:
@@ -52,65 +52,12 @@ Once the container is up, you can hit the healthcheck endpoint to list the avail
 ```sh title="Healthcheck for Floci container" prompt{1} output{2..62}
 curl -s http://localhost:4566/_floci/health
 {
-	"services": {
-		"ssm": "running",
-		"sqs": "running",
-		"s3": "running",
-		"dynamodb": "running",
-		"sns": "running",
-		"lambda": "running",
-		"apigateway": "running",
-		"iam": "running",
-		"kafka": "running",
-		"elasticache": "running",
-		"rds": "running",
-		"neptune": "running",
-		"events": "running",
-		"scheduler": "running",
-		"logs": "running",
-		"monitoring": "running",
-		"secretsmanager": "running",
-		"apigatewayv2": "running",
-		"kinesis": "running",
-		"kms": "running",
-		"cognito-idp": "running",
-		"states": "running",
-		"cloudformation": "running",
-		"acm": "running",
-		"athena": "running",
-		"glue": "running",
-		"firehose": "running",
-		"email": "running",
-		"es": "running",
-		"ec2": "running",
-		"ecs": "running",
-		"appconfig": "running",
-		"appconfigdata": "running",
-		"ecr": "running",
-		"tagging": "running",
-		"bedrock-runtime": "running",
-		"eks": "running",
-		"pipes": "running",
-		"elasticloadbalancing": "running",
-		"codebuild": "running",
-		"codedeploy": "running",
-		"config": "running",
-		"autoscaling": "running",
-		"backup": "running",
-		"transfer": "running",
-		"route53": "running",
-		"textract": "running",
-		"pricing": "running",
-		"transcribe": "running",
-		"ce": "running",
-		"cur": "running",
-		"bcm-data-exports": "running",
-		"cloudfront": "running",
-		"appsync": "running"
-	},
-	"version": "1.5.22",
+	"version": "1.6.0",
 	"original_edition": "floci-always-free",
-	"edition": "community"
+	"edition": "community",
+	"services": {
+		# list of available AWS services
+	}
 }
 ```
 
@@ -152,7 +99,7 @@ aws --endpoint-url http://localhost:4566 --profile floci s3api list-buckets
 	"Buckets": [
 		{
 			"Name": "local-bucket",
-			"CreationDate": "2026-06-07T09:12:24+00:00"
+			"CreationDate": "2026-08-16T12:10:54+00:00"
 		}
 	],
 	"Owner": {
@@ -190,7 +137,7 @@ Finally, you can delete the bucket itself:
 aws --endpoint-url http://localhost:4566 --profile floci s3api delete-bucket --bucket local-bucket
 ```
 
-Check the [s3](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/index.html) and [s3api](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3api/index.html) docs for more operations to try.
+Check the [s3](https://docs.aws.amazon.com/cli/latest/reference/s3/) and [s3api](https://docs.aws.amazon.com/cli/latest/reference/s3api/) docs for more operations to try.
 
 :::commend{title="Set global endpoint for all AWS services"}
 To avoid typing `--endpoint-url http://localhost:4566` for every single command, open `~/.aws/config` file (or `%USERPROFILE%/.aws/config` on Windows) and update your profile:
@@ -249,7 +196,7 @@ Let's publish a message using the `send-message` command:
 awslocal sqs send-message --queue-url http://localhost:4566/000000000000/local-queue --message-body "Gwen"
 {
 	"MD5OfMessageBody": "030997f386c4663f2c3e9594308c60b4",
-	"MessageId": "9155662c-a885-4c2d-8a32-4cdfb2200fd9"
+	"MessageId": "8adb0f5f-80b8-47e5-a082-ead8ddfa5d78"
 }
 ```
 You can read the published messages through the `receive-message` command:
@@ -259,8 +206,8 @@ awslocal sqs receive-message --queue-url http://localhost:4566/000000000000/loca
 {
 	"Messages": [
 		{
-			"MessageId": "9155662c-a885-4c2d-8a32-4cdfb2200fd9",
-			"ReceiptHandle": "c8076cf3-2411-437d-b132-38611d64143f",
+			"MessageId": "8adb0f5f-80b8-47e5-a082-ead8ddfa5d78",
+			"ReceiptHandle": "eb2b5c02-ba73-44e6-8def-edff0f154b97",
 			"MD5OfBody": "030997f386c4663f2c3e9594308c60b4",
 			"Body": "Gwen"
 		}
@@ -271,12 +218,12 @@ awslocal sqs receive-message --queue-url http://localhost:4566/000000000000/loca
 Finally, to delete a message, you can use the `delete-message` command as follows. To delete the queue entirely, use the `delete-queue` command:
 
 ```sh prompt{1,3}
-awslocal sqs delete-message --queue-url http://localhost:4566/000000000000/local-queue --receipt-handle c8076cf3-2411-437d-b132-38611d64143f
+awslocal sqs delete-message --queue-url http://localhost:4566/000000000000/local-queue --receipt-handle eb2b5c02-ba73-44e6-8def-edff0f154b97
 
 awslocal sqs delete-queue --queue-url http://localhost:4566/000000000000/local-queue
 ```
 
-For more operations, check the [sqs](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/sqs/index.html) docs.
+For more operations, check the [sqs](https://docs.aws.amazon.com/cli/latest/reference/sqs/) docs.
 
 ### Creating and reading secrets
 
@@ -285,9 +232,9 @@ To create a secret, use the `create-secret` command as follows:
 ```sh prompt{1} output{2..6}
 awslocal secretsmanager create-secret --name local-secret --secret-string '{"PASSWORD":"stacy"}'
 {
-	"ARN": "arn:aws:secretsmanager:us-east-1:000000000000:secret:local-secret-TNAV66",
+	"ARN": "arn:aws:secretsmanager:us-east-1:000000000000:secret:local-secret-N52O72",
 	"Name": "local-secret",
-	"VersionId": "4b0a566c-8346-4f8b-bda1-186a15df7a8e"
+	"VersionId": "b4cc76aa-80d1-49fc-842b-0031f59919b4"
 }
 ```
 
@@ -298,12 +245,12 @@ awslocal secretsmanager list-secrets
 {
 	"SecretList": [
 		{
-			"ARN": "arn:aws:secretsmanager:us-east-1:000000000000:secret:local-secret-TNAV66",
+			"ARN": "arn:aws:secretsmanager:us-east-1:000000000000:secret:local-secret-N52O72",
 			"Name": "local-secret",
 			"RotationEnabled": false,
-			"LastChangedDate": "2026-06-07T15:19:41.587000+05:30",
+			"LastChangedDate": "2026-08-16T17:46:30.628000+05:30",
 			"Tags": [],
-			"CreatedDate": "2026-06-07T15:19:41.587000+05:30"
+			"CreatedDate": "2026-08-16T17:46:30.628000+05:30"
 		}
 	]
 }
@@ -314,34 +261,34 @@ To read the secret's value, use the `get-secret-value` command:
 ```sh prompt{1} output{2..9}
 awslocal secretsmanager get-secret-value --secret-id local-secret
 {
-	"ARN": "arn:aws:secretsmanager:us-east-1:000000000000:secret:local-secret-TNAV66",
+	"ARN": "arn:aws:secretsmanager:us-east-1:000000000000:secret:local-secret-N52O72",
 	"Name": "local-secret",
-	"VersionId": "4b0a566c-8346-4f8b-bda1-186a15df7a8e",
+	"VersionId": "b4cc76aa-80d1-49fc-842b-0031f59919b4",
 	"SecretString": "{\"PASSWORD\":\"stacy\"}",
 	"VersionStages": [
 		"AWSCURRENT"
 	],
-	"CreatedDate": "2026-06-07T15:19:41.587000+05:30"
+	"CreatedDate": "2026-08-16T17:46:30.628000+05:30"
 }
 ```
 
 Finally, you can delete a secret using its ARN (Amazon Resource Name):
 
 ```sh prompt{1} output{2..6}
-awslocal secretsmanager delete-secret --secret-id arn:aws:secretsmanager:us-east-1:000000000000:secret:local-secret-TNAV66
+awslocal secretsmanager delete-secret --secret-id arn:aws:secretsmanager:us-east-1:000000000000:secret:local-secret-N52O72
 {
-	"ARN": "arn:aws:secretsmanager:us-east-1:000000000000:secret:local-secret-TNAV66",
+	"ARN": "arn:aws:secretsmanager:us-east-1:000000000000:secret:local-secret-N52O72",
 	"Name": "local-secret",
-	"DeletionDate": "2026-07-07T15:22:18.468000+05:30"
+	"DeletionDate": "2026-09-15T17:48:35.303000+05:30"
 }
 ```
 
-For more operations, check the [secretsmanager](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/secretsmanager/index.html) docs.
+For more operations, check the [secretsmanager](https://docs.aws.amazon.com/cli/latest/reference/secretsmanager/) docs.
 
 ## Wrapping up
 
 - Since Floci communicates using the standard AWS wire protocol, it works seamlessly not just with the AWS CLI, but with any standard AWS SDK you want to use with it.
-- At the time of writing, Floci can emulate [52 AWS services](https://floci.io/floci/services/).
+- At the time of writing, Floci can emulate [72 AWS services](https://floci.io/floci/services/).
 - If you want to spin up ephemeral environments for integration testing, Floci provides official [Testcontainers modules](https://floci.io/floci/testcontainers/) for Java, Python, JavaScript, and more.
 - It also supports full per-account resource isolation, making it well-suited for testing multi-tenant configurations.
 
@@ -349,7 +296,7 @@ For more operations, check the [secretsmanager](https://awscli.amazonaws.com/v2/
 
 **Source code**
 
-- [floci-with-aws-cli](https://codeberg.org/naiyer/backstage/src/branch/main/aws/floci-with-aws-cli)
+- [floci-with-aws-cli](https://github.com/naiyerasif/backstage/tree/main/aws/floci-with-aws-cli)
 
 **Related**
 
