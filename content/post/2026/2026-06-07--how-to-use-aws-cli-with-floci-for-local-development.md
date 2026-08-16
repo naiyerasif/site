@@ -10,6 +10,11 @@ Testing against real AWS services often feels like a chore. We have to juggle ac
 
 So, how do we get around this? We bring AWS to `localhost` using [Floci](https://github.com/floci-io/floci). It is an open-source local AWS emulator which plays nice with the AWS CLI and other AWS tooling. It lets us work without a real cloud environment, or a credit card. Let's spin it up with Docker and use it with AWS CLI to explore S3, SQS, and Secrets Manager.
 
+:::assert{title="Series"}
+1. *How to use AWS CLI with Floci for local development*
+2. [How to run SQS-triggered Lambda locally with Floci](/post/2026/08/16/how-to-run-sqs-triggered-lambda-locally-with-floci/)
+:::
+
 :::note{title="Environment"}
 - Docker 29.4.0
 - AWS CLI 2.36.24
