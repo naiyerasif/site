@@ -1,0 +1,257 @@
+/*! Preset v9.0.0 | MIT License | https://codeberg.org/naiyer/preset */
+
+/* include padding and border (but not margin) in element dimensions */
+*,
+::before,
+::after {
+	box-sizing: border-box;
+}
+
+/*
+ * increase specificity of `[hidden]` to avoid accidentally unhiding elements,
+ * except those with `hidden="until-found"` to keep them available to browser builtin search
+ */
+[hidden]:not([hidden="until-found"]) {
+	display: none !important;
+}
+
+/* zero margin on all elements except dialogs (to preserve centering) */
+:where(:not(dialog)) {
+	margin: 0;
+}
+
+:where(html) {
+	/* allow percentage based `block-size` for document children */
+	block-size: 100%;
+
+	/* opt into user color scheme preferences */
+	color-scheme: light dark;
+
+	/* prevent `font-size` adjustments after orientation changes */
+	text-size-adjust: 100%;
+
+	/* prevent text overflow of inline elements */
+	overflow-wrap: break-word;
+
+	/* optimize text rendering for legibility */
+	text-rendering: optimizeLegibility;
+
+	/* static unitless line-height inherited by child elements */
+	line-height: var(--preset-static-line-height, var(--preset-line-height, 1.5));
+}
+
+/*
+ * dynamic line-height based on x-height and `font-size`
+ * scales across all text sizes, including large headings
+ *
+ * since `ex` is relative to font size, apply this rule to text elements
+ */
+:where(p, li, h1, h2, h3, h4, h5, h6, blockquote, figcaption, td, th, label, legend, caption, dt, dd, summary) {
+	line-height: var(--preset-dynamic-line-height, var(--preset-line-height, calc(0.3rem + 2ex + 0.3rem)));
+}
+
+:root {
+	--presetOutlineTransition: outline-offset 145ms cubic-bezier(0.25, 0, 0.4, 1);
+}
+
+/* use linear timing function if available for focus outline animation */
+@supports (transition-timing-function: linear(0, 1)) {
+	:root {
+		--presetOutlineTransition: outline-offset 145ms linear(0, 0.009, 0.035 2.1%, 0.141 4.4%, 0.723 12.9%, 0.938 16.7%, 1.017, 1.077, 1.121, 1.149 24.3%, 1.159, 1.163, 1.161, 1.154 29.9%, 1.129 32.8%, 1.051 39.6%, 1.017 43.1%, 0.991, 0.977 51%, 0.974 53.8%, 0.975 57.1%, 0.997 69.8%, 1.003 76.9%, 1);
+	}
+}
+
+/* motion preferences with opt-out for low refresh rate devices */
+@media (prefers-reduced-motion: no-preference), (update: fast) {
+	:where(html) {
+		/*
+		 * animate intrinsic sizes, such as block-size, inline-size, and so on
+		 * progressive enhancement in limited browsers
+		 */
+		interpolate-size: allow-keywords;
+	}
+
+	/* enable smooth scrolling when focussed inside HTML document */
+	:where(html):focus-within,
+	/* enable smooth scrolling for nested scrollable elements */
+	:where(:has(:target)) {
+		scroll-behavior: smooth;
+	}
+
+	/* animate focus outline */
+	:where(:focus-visible) {
+		transition: var(--preset-outline-transition, var(--presetOutlineTransition));
+	}
+
+	:where(:not(:active):focus-visible) {
+		transition-duration: 0.25s;
+	}
+}
+
+/* add breathing room between a targeted element and the scrollport edges */
+:where(:target) {
+	scroll-margin-block: var(--preset-scroll-offset, 3rem);
+	scroll-margin-block: var(--preset-scroll-offset, 3rlh); /* use `rlh` line-height unit where supported */
+}
+
+:where(body) {
+	/* allow percentage based `block-size` for children */
+	min-block-size: 100%;
+	min-block-size: 100dvb; /* use `dvb` viewport unit where supported */
+	/* indentation size for code */
+	tab-size: var(--preset-tab-size, 2);
+	/* force browsers on macOS to use the default OS behavior */
+	-webkit-font-smoothing: antialiased;
+}
+
+/* position the `background-image` to cover the box without repetition */
+:where(:not(fieldset, progress, meter)) {
+	background-origin: border-box;
+	background-repeat: no-repeat;
+}
+
+:where(abbr[title]) {
+	/* consistent text-decoration in all browsers */
+	text-decoration-line: underline;
+	text-decoration-style: dotted;
+	/* remove `border-block-end` in favor of `text-decoration` */
+	border-block-end: none;
+	/* explicit cursor to indicate changed behavior */
+	cursor: help;
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+	/* balance text across lines */
+	text-wrap: balance;
+	/*
+	 * position numbers on baseline
+	 * supported by fonts with this opentype feature
+	 */
+	font-feature-settings: "lnum";
+	font-variant-numeric: lining-nums;
+}
+
+/* balance text to prevent orphans */
+:where(p, li, td, blockquote, figcaption) {
+	text-wrap: pretty;
+}
+
+:where(img, svg, canvas, audio, video, iframe, embed, object) {
+	/* remove surrounding whitespace caused by line-height */
+	vertical-align: middle;
+	/* italic alt text or title to visually distinguish from surrounding copy */
+	font-style: italic;
+	/* margin for optional `shape-outside` */
+	shape-margin: 0.75rem;
+}
+
+:where(img, svg, video) {
+	/* prevent overflowing the container */
+	max-inline-size: 100%;
+	/* maintain aspect-ratio based on `block-size` / `inline-size` */
+	block-size: auto;
+	/* cover the entire box with optional low-quality image placeholders */
+	background-size: cover;
+}
+
+/* keep strokes rounded for SVGs missing these attributes */
+:where(svg:not([stroke-linecap])) {
+	stroke-linecap: round;
+}
+:where(svg:not([stroke-linejoin])) {
+	stroke-linejoin: round;
+}
+
+:where(iframe) {
+	border: none;
+}
+
+:where(summary) {
+	display: list-item;
+}
+
+:where(dialog)::backdrop {
+	/* blur dialog backdrop */
+	backdrop-filter: var(--preset-dialog-backdrop-filter, blur(25px));
+}
+
+/* hide document overflow when dialog opens */
+:where(html:has(dialog[open])) {
+	overflow: hidden;
+}
+
+:where(table) {
+	/* prevent double borders */
+	border-collapse: collapse;
+	/* remove spacing between cells */
+	border-spacing: 0;
+	/* position captions */
+	caption-side: var(--preset-table-caption-side, bottom);
+}
+
+/*
+ * set numbers at same size and position them on baseline
+ * supported by fonts with these opentype features
+ */
+:where(td, math, time[datetime*=":"]) {
+	font-feature-settings: "tnum", "lnum";
+	font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* inherit typography from the parent (and not the OS) */
+:where(input, button, textarea, select, optgroup),
+:where(input[type="file"])::file-selector-button {
+	color: inherit;
+	font: inherit;
+	font-feature-settings: inherit;
+	font-variation-settings: inherit;
+	letter-spacing: inherit;
+	word-spacing: inherit;
+}
+
+:where(select, textarea) {
+	/*
+	 * allow textarea to resize to fit its content
+	 * progressive enhancement in limited browsers
+	 */
+	field-sizing: content;
+}
+
+:where(textarea) {
+	/* prevent textarea from overflowing containers when resized horizontally */
+	resize: vertical;
+	resize: block; /* use logical property if supported */
+}
+
+/* ensure textareas without `rows` aren't tiny */
+:where(textarea:not([rows])) {
+	min-block-size: 10em;
+	min-block-size: 5lh; /* use `lh` line-height unit if supported */
+}
+
+/* explicit cursor for clickable elements */
+:where(a[href], area, button,
+	input:not([type="text"], [type="email"], [type="file"], [type="number"], [type="password"], [type=""], [type="tel"], [type="url"]),
+	label[for], select, summary, [role="button"], [onclick], [tabindex]:not([tabindex*="-"])),
+:where(input[type="file"])::file-selector-button {
+	cursor: pointer;
+}
+
+:where(a[href], area, button, input, label[for], progress, select, summary, textarea, [role="button"], [onclick], [tabindex]:not([tabindex*="-"])) {
+	/* remove delay of click events on touch */
+	touch-action: manipulation;
+	/* remove tap highlight on Apple devices */
+	-webkit-tap-highlight-color: transparent;
+}
+
+/* ensure button content is not selectable */
+:where(button, input[type="button"], input[type="image"], input[type="submit"], input[type="reset"]),
+:where(input[type="file"])::file-selector-button {
+	-webkit-touch-callout: none;
+	user-select: none;
+}
+
+/* explicit cursor for disabled elements */
+:where([disabled]) {
+	cursor: not-allowed;
+}

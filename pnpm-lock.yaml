@@ -14,9 +14,6 @@ importers:
       '@astrojs/sitemap':
         specifier: ^3.7.3
         version: 3.7.3
-      '@microflash/preset':
-        specifier: ^9.0.0
-        version: 9.0.0
       '@microflash/rehype-slugify':
         specifier: ^2.0.0
         version: 2.0.0
@@ -921,9 +918,6 @@ packages:
 
   '@microflash/fenceparser@4.5.0':
     resolution: {integrity: sha512-AUIurJSBnoSyYljrtrkAHS7TT+LtguF/E2e8kR4EyOpGs9uaAAtyZWmc22M5vKhUktTKk+F36SB5Dpsa5oWZRA==}
-
-  '@microflash/preset@9.0.0':
-    resolution: {integrity: sha512-B+NGSEUQB24R041AjVgr5U5ll/nwqjCjTKILYqqiNikeHlcBIj4eZmoRSkTq1RnRGHXi/V84KIlOq0dBlytcUw==}
 
   '@microflash/rehype-slugify@2.0.0':
     resolution: {integrity: sha512-wSZkhXP02afmwFkJ0nO7esLFFNP1NsXrIolCknU+t7s2xGxHhP9AEmKAsE6VMd5KfOwWBpW+aZ2jyWvvvgBTdw==}
@@ -3357,8 +3351,6 @@ snapshots:
   '@jridgewell/sourcemap-codec@1.5.5': {}
 
   '@microflash/fenceparser@4.5.0': {}
-
-  '@microflash/preset@9.0.0': {}
 
   '@microflash/rehype-slugify@2.0.0':
     dependencies:

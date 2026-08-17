@@ -13,7 +13,6 @@
 	"dependencies": {
 		"@astrojs/markdown-remark": "^7.2.2",
 		"@astrojs/sitemap": "^3.7.3",
-		"@microflash/preset": "^9.0.0",
 		"@microflash/rehype-slugify": "^2.0.0",
 		"@microflash/rehype-starry-night": "^8.0.5",
 		"@microflash/remark-callout-directives": "^5.0.1",
@@ -49,5 +48,5 @@
 		"#mods/*": "./src/modules/*",
 		"#utils/*": "./src/utils/*"
 	},
-	"packageManager": "pnpm@11.21.0"
+	"packageManager": "pnpm@11.22.0"
 }

@@ -56,7 +56,6 @@
 			// restore automatic cursor and touch interactions
 			cursor: auto;
 			touch-action: auto;
-			font-size: 0.95rem;
 
 			&[style*="--hl-line-gutter"] {
 				display: grid;
