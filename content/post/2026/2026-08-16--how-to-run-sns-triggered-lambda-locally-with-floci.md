@@ -12,6 +12,7 @@ SNS (Simple Notification Service) is often used to implement a [pubsub](https://
 1. [How to use AWS CLI with Floci for local development](/post/2026/06/07/how-to-use-aws-cli-with-floci-for-local-development/)
 2. [How to run SQS-triggered Lambda locally with Floci](/post/2026/08/16/how-to-run-sqs-triggered-lambda-locally-with-floci/)
 3. *How to run SNS-triggered Lambda locally with Floci*
+4. [How to run EventRule-triggered Lambda locally with Floci](/post/2026/08/18/how-to-run-eventrule-triggered-lambda-locally-with-floci/)
 :::
 
 :::note{title="Environment"}
