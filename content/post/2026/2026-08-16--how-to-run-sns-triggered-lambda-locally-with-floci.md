@@ -2,7 +2,7 @@
 slug: "post/2026/08/16/how-to-run-sns-triggered-lambda-locally-with-floci"
 title: "How to run SNS-triggered Lambda locally with Floci"
 date: 2026-08-16 20:36:01
-update: 2026-08-16 20:36:01
+update: 2026-08-18 23:04:23
 category: "guide"
 ---
 
@@ -16,12 +16,24 @@ SNS (Simple Notification Service) is often used to implement a [pubsub](https://
 
 :::note{title="Environment"}
 - Docker 29.4.0
-- AWS CLI 2.36.24
-- Floci 1.6.0
+- AWS CLI 2.36.25
+- Floci 1.7.0
 - Java 25
 :::
 
-Configure a [local AWS account for Floci](/post/2026/06/07/how-to-use-aws-cli-with-floci-for-local-development/#configure-aws-credentials) and [launch the Floci container](/post/2026/06/07/how-to-use-aws-cli-with-floci-for-local-development/#launch-the-floci-container) before you continue further.
+Configure a [local AWS account for Floci](/post/2026/06/07/how-to-use-aws-cli-with-floci-for-local-development/#configure-aws-credentials) and [launch the Floci container](/post/2026/06/07/how-to-use-aws-cli-with-floci-for-local-development/#launch-the-floci-container) using the following Compose file before you continue further.
+
+```yml title="compose.yml"
+services:
+  floci:
+    container_name: floci
+    image: floci/floci:1.7.0
+    ports:
+      - "4566:4566"
+    volumes:
+      - "./data:/app/data"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+```
 
 ## Create a Lambda function
 
@@ -120,14 +132,14 @@ aws --profile floci lambda create-function --function-name floci-lambda-with-sns
 	"CodeSize": 1167193,
 	"Timeout": 120,
 	"MemorySize": 128,
-	"LastModified": "2026-08-16T15:42:29.032+0000",
+	"LastModified": "2026-08-18T17:30:04.011+0000",
 	"CodeSha256": "WCkoGkTsdxYaZVbNRxPonEIzNDcrfRSg86+P2Xzbx94=",
 	"Version": "$LATEST",
 	"Environment": {},
 	"TracingConfig": {
 		"Mode": "PassThrough"
 	},
-	"RevisionId": "c57db3d1-669c-4c6e-80b8-085a91e12a03",
+	"RevisionId": "deddc59d-4470-45cc-ba19-8a5db028119b",
 	"State": "Active",
 	"LastUpdateStatus": "Successful",
 	"PackageType": "Zip",
@@ -140,7 +152,7 @@ aws --profile floci lambda create-function --function-name floci-lambda-with-sns
 }
 ```
 
-- `mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout` prints out the project name and `mvn help:evaluate -Dexpression=project.version -q -DforceStdout` prints out the version specified in the `pom.xml` file. Thus, `(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)-(mvn help:evaluate -Dexpression=project.version -q -DforceStdout).jar` evaluates to `floci-lambda-with-sns-trigger-0.0.2.jar`.
+- `mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout` prints out the project name and `mvn help:evaluate -Dexpression=project.version -q -DforceStdout` prints out the version specified in the `pom.xml` file. Thus, `(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)-(mvn help:evaluate -Dexpression=project.version -q -DforceStdout).jar` evaluates to `floci-lambda-with-sns-trigger-0.0.3.jar`.
 - The role ARN (Amazon Resource Name) `arn:aws:iam::000000000000:role/local-lambda-noop-role` is a fake role ARN to satisfy AWS CLI which requires it for the `create-function` command. You can specify any arbitrary role ARN here.
 
 :::note
@@ -165,7 +177,7 @@ Create a subscription on the `local-topic`. This will trigger the Lambda when we
 ```sh prompt{1} output{2..4}
 aws --profile floci sns subscribe --protocol lambda --topic-arn arn:aws:sns:us-east-1:000000000000:local-topic --notification-endpoint arn:aws:lambda:us-east-1:000000000000:function:floci-lambda-with-sns-trigger
 {
-	"SubscriptionArn": "arn:aws:sns:us-east-1:000000000000:local-topic:d97254ed-0456-45f2-b55b-4b29a393823b"
+	"SubscriptionArn": "arn:aws:sns:us-east-1:000000000000:local-topic:3dd89731-6892-4e13-8ce7-5de8ba9ff9c0"
 }
 ```
 
@@ -178,7 +190,7 @@ Publish an event to the topic.
 ```sh prompt{1} output{2..4}
 aws --profile floci sns publish --topic-arn arn:aws:sns:us-east-1:000000000000:local-topic --message "Liberty, equality, fraternity!"
 {
-	"MessageId": "e1483ac8-26a7-4bb9-a013-f62e262d0379"
+	"MessageId": "b5d1942b-9ff7-481d-8df2-8cf5c05d574b"
 }
 ```
 
@@ -192,7 +204,7 @@ Liberty, equality, fraternity!
 Well, there's your message printed by the function.
 
 :::note
-Floci uses the [official AWS Docker base images](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html) pulled from [Amazon ECR registry](https://gallery.ecr.aws/lambda/) to run a function in a container. That's why, we're querying the container id with `public.ecr.aws/lambda/java:21` and passing it to `docker logs` to print the logs.
+Floci uses the [official AWS Docker base images](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html) pulled from [Amazon ECR registry](https://gallery.ecr.aws/lambda/) to run a function in a container. That's why, we're querying the container id with `public.ecr.aws/lambda/java:25` and passing it to `docker logs` to print the logs.
 :::
 
 ## Clean up the resources
@@ -200,7 +212,7 @@ Floci uses the [official AWS Docker base images](https://docs.aws.amazon.com/lam
 To finish things, you can delete the AWS resources with the following commands.
 
 ```sh prompt{1..3}
-aws --profile floci sns unsubscribe --subscription-arn arn:aws:sns:us-east-1:000000000000:local-topic:d97254ed-0456-45f2-b55b-4b29a393823b
+aws --profile floci sns unsubscribe --subscription-arn arn:aws:sns:us-east-1:000000000000:local-topic:3dd89731-6892-4e13-8ce7-5de8ba9ff9c0
 aws --profile floci lambda delete-function --function-name floci-lambda-with-sns-trigger
 aws --profile floci sns delete-topic --topic-arn arn:aws:sns:us-east-1:000000000000:local-topic
 ```

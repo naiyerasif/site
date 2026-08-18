@@ -2,7 +2,7 @@
 slug: "post/2026/08/16/how-to-run-sqs-triggered-lambda-locally-with-floci"
 title: "How to run SQS-triggered Lambda locally with Floci"
 date: 2026-08-16 18:02:46
-update: 2026-08-16 18:02:46
+update: 2026-08-18 22:56:54
 category: "guide"
 ---
 
@@ -16,12 +16,24 @@ One of the common ways to run asynchronous workloads is through an AWS Lambda fu
 
 :::note{title="Environment"}
 - Docker 29.4.0
-- AWS CLI 2.36.24
-- Floci 1.6.0
+- AWS CLI 2.36.25
+- Floci 1.7.0
 - Node.js 24
 :::
 
-Configure a [local AWS account for Floci](/post/2026/06/07/how-to-use-aws-cli-with-floci-for-local-development/#configure-aws-credentials) and [launch the Floci container](/post/2026/06/07/how-to-use-aws-cli-with-floci-for-local-development/#launch-the-floci-container) before you continue further.
+Configure a [local AWS account for Floci](/post/2026/06/07/how-to-use-aws-cli-with-floci-for-local-development/#configure-aws-credentials) and [launch the Floci container](/post/2026/06/07/how-to-use-aws-cli-with-floci-for-local-development/#launch-the-floci-container) using the following Compose file before you continue further.
+
+```yml title="compose.yml"
+services:
+  floci:
+    container_name: floci
+    image: floci/floci:1.7.0
+    ports:
+      - "4566:4566"
+    volumes:
+      - "./data:/app/data"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+```
 
 ## Create a Lambda function
 
@@ -58,14 +70,14 @@ aws --profile floci lambda create-function --function-name floci-lambda-with-sqs
 	"CodeSize": 586,
 	"Timeout": 120,
 	"MemorySize": 128,
-	"LastModified": "2026-08-16T14:29:33.431+0000",
-	"CodeSha256": "bW7fkI0KPxasJPkPtA1iMXjdQO/tBl+fISPEDz63Cls=",
+	"LastModified": "2026-08-18T17:22:08.893+0000",
+	"CodeSha256": "R7hTVtqW3SarrXchaTBcZqId16qwIj731yYpueQ7X8o=",
 	"Version": "$LATEST",
 	"Environment": {},
 	"TracingConfig": {
 		"Mode": "PassThrough"
 	},
-	"RevisionId": "f2b35a05-0e55-456e-822d-3e69560bc3c4",
+	"RevisionId": "4f779642-6a3e-468d-abaf-770ef300427f",
 	"State": "Active",
 	"LastUpdateStatus": "Successful",
 	"PackageType": "Zip",
@@ -109,11 +121,11 @@ Configure the queue using this ARN as a trigger on the Lambda.
 ```sh prompt{1} output{2..10}
 aws --profile floci lambda create-event-source-mapping --function-name floci-lambda-with-sqs-trigger --batch-size 10 --event-source-arn arn:aws:sqs:us-east-1:000000000000:LocalQueue
 {
-	"UUID": "6dcd4a93-0998-42fa-a018-9b32e225476e",
+	"UUID": "c056a801-f774-44ae-9438-e4234f5ed344",
 	"BatchSize": 10,
 	"EventSourceArn": "arn:aws:sqs:us-east-1:000000000000:LocalQueue",
 	"FunctionArn": "arn:aws:lambda:us-east-1:000000000000:function:floci-lambda-with-sqs-trigger",
-	"LastModified": "2026-08-16T20:00:38.556000+05:30",
+	"LastModified": "2026-08-18T22:54:19.732000+05:30",
 	"State": "Enabled",
 	"FunctionResponseTypes": []
 }
@@ -129,7 +141,7 @@ Publish a message on the queue.
 aws --profile floci sqs send-message --queue-url http://localhost:4566/000000000000/LocalQueue --message-body "Hello, Gwen!"
 {
 	"MD5OfMessageBody": "9552fd83e6071cf096ab709f9ccac0bc",
-	"MessageId": "44cb0755-cedd-41d6-9bc2-8a8f3c30b6b4"
+	"MessageId": "fcbeb078-40c4-439e-a19a-c58f71e738ff"
 }
 ```
 
@@ -137,13 +149,12 @@ Check the logs of the container used for running the function to verify if it is
 
 ```sh {2} prompt{1} output{2}
 docker logs $"(docker ps --filter ancestor=public.ecr.aws/lambda/nodejs:24 -q)"
-2026-08-16T14:32:50.903Z	f478ad39-7811-438b-bb1b-08cd776e3cbc	INFO	Hello, Gwen!
+2026-08-18T17:25:04.162Z	5445946d-e746-4f42-b80c-0ef5f0825602	INFO	Hello, Gwen!
 ```
 
 :::note
 Floci uses the [official AWS Docker base images](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html) pulled from [Amazon ECR registry](https://gallery.ecr.aws/lambda/) to run a function in a container. That's why, we're querying the container id with `public.ecr.aws/lambda/nodejs:24` and passing it to `docker logs` to print the logs.
 :::
-
 
 ## Clean up the resources
 

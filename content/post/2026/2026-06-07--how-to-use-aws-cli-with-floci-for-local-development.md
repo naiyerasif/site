@@ -2,7 +2,7 @@
 slug: "post/2026/06/07/how-to-use-aws-cli-with-floci-for-local-development"
 title: "How to use AWS CLI with Floci for local development"
 date: 2026-06-07 15:47:57
-update: 2026-08-16 17:52:17
+update: 2026-08-18 22:46:41
 category: "guide"
 ---
 
@@ -18,8 +18,8 @@ So, how do we get around this? We bring AWS to `localhost` using [Floci](https:/
 
 :::note{title="Environment"}
 - Docker 29.4.0
-- AWS CLI 2.36.24
-- Floci 1.6.0
+- AWS CLI 2.36.25
+- Floci 1.7.0
 :::
 
 ## Configure AWS credentials
@@ -44,9 +44,9 @@ You can run Floci as a container through `docker compose up -d` command using th
 
 ```yaml title="compose.yml"
 services:
-  aws:
-    container_name: floci-with-aws-cli
-    image: floci/floci:1.6.0
+  floci:
+    container_name: floci
+    image: floci/floci:1.7.0
     ports:
       - "4566:4566"
     volumes:
@@ -55,15 +55,15 @@ services:
 
 Once the container is up, you can hit the healthcheck endpoint to list the available services ready for our use.
 
-```sh title="Healthcheck for Floci container" prompt{1} output{2..62}
+```sh title="Healthcheck for Floci container" prompt{1} output{2..9}
 curl -s http://localhost:4566/_floci/health
 {
-	"version": "1.6.0",
 	"original_edition": "floci-always-free",
-	"edition": "community",
+	"version": "1.7.0",
 	"services": {
 		# list of available AWS services
-	}
+	},
+	"edition": "community"
 }
 ```
 
@@ -105,7 +105,7 @@ aws --endpoint-url http://localhost:4566 --profile floci s3api list-buckets
 	"Buckets": [
 		{
 			"Name": "local-bucket",
-			"CreationDate": "2026-08-16T12:10:54+00:00"
+			"CreationDate": "2026-08-18T17:08:09+00:00"
 		}
 	],
 	"Owner": {
@@ -202,7 +202,7 @@ Let's publish a message using the `send-message` command:
 awslocal sqs send-message --queue-url http://localhost:4566/000000000000/local-queue --message-body "Gwen"
 {
 	"MD5OfMessageBody": "030997f386c4663f2c3e9594308c60b4",
-	"MessageId": "8adb0f5f-80b8-47e5-a082-ead8ddfa5d78"
+	"MessageId": "851e67af-5ca5-40d0-8681-50ffb9e28020"
 }
 ```
 You can read the published messages through the `receive-message` command:
@@ -212,8 +212,8 @@ awslocal sqs receive-message --queue-url http://localhost:4566/000000000000/loca
 {
 	"Messages": [
 		{
-			"MessageId": "8adb0f5f-80b8-47e5-a082-ead8ddfa5d78",
-			"ReceiptHandle": "eb2b5c02-ba73-44e6-8def-edff0f154b97",
+			"MessageId": "851e67af-5ca5-40d0-8681-50ffb9e28020",
+			"ReceiptHandle": "afd7c540-8b7b-4443-9b1f-d6620ec13c84",
 			"MD5OfBody": "030997f386c4663f2c3e9594308c60b4",
 			"Body": "Gwen"
 		}
@@ -224,7 +224,7 @@ awslocal sqs receive-message --queue-url http://localhost:4566/000000000000/loca
 Finally, to delete a message, you can use the `delete-message` command as follows. To delete the queue entirely, use the `delete-queue` command:
 
 ```sh prompt{1,3}
-awslocal sqs delete-message --queue-url http://localhost:4566/000000000000/local-queue --receipt-handle eb2b5c02-ba73-44e6-8def-edff0f154b97
+awslocal sqs delete-message --queue-url http://localhost:4566/000000000000/local-queue --receipt-handle afd7c540-8b7b-4443-9b1f-d6620ec13c84
 
 awslocal sqs delete-queue --queue-url http://localhost:4566/000000000000/local-queue
 ```
@@ -238,9 +238,9 @@ To create a secret, use the `create-secret` command as follows:
 ```sh prompt{1} output{2..6}
 awslocal secretsmanager create-secret --name local-secret --secret-string '{"PASSWORD":"stacy"}'
 {
-	"ARN": "arn:aws:secretsmanager:us-east-1:000000000000:secret:local-secret-N52O72",
+	"ARN": "arn:aws:secretsmanager:us-east-1:000000000000:secret:local-secret-NS27BP",
 	"Name": "local-secret",
-	"VersionId": "b4cc76aa-80d1-49fc-842b-0031f59919b4"
+	"VersionId": "ba008bba-5b2f-43eb-8bcc-344421f572c2"
 }
 ```
 
@@ -251,12 +251,12 @@ awslocal secretsmanager list-secrets
 {
 	"SecretList": [
 		{
-			"ARN": "arn:aws:secretsmanager:us-east-1:000000000000:secret:local-secret-N52O72",
+			"ARN": "arn:aws:secretsmanager:us-east-1:000000000000:secret:local-secret-NS27BP",
 			"Name": "local-secret",
 			"RotationEnabled": false,
-			"LastChangedDate": "2026-08-16T17:46:30.628000+05:30",
+			"LastChangedDate": "2026-08-18T22:43:20.499000+05:30",
 			"Tags": [],
-			"CreatedDate": "2026-08-16T17:46:30.628000+05:30"
+			"CreatedDate": "2026-08-18T22:43:20.499000+05:30"
 		}
 	]
 }
@@ -267,25 +267,25 @@ To read the secret's value, use the `get-secret-value` command:
 ```sh prompt{1} output{2..9}
 awslocal secretsmanager get-secret-value --secret-id local-secret
 {
-	"ARN": "arn:aws:secretsmanager:us-east-1:000000000000:secret:local-secret-N52O72",
+	"ARN": "arn:aws:secretsmanager:us-east-1:000000000000:secret:local-secret-NS27BP",
 	"Name": "local-secret",
-	"VersionId": "b4cc76aa-80d1-49fc-842b-0031f59919b4",
+	"VersionId": "ba008bba-5b2f-43eb-8bcc-344421f572c2",
 	"SecretString": "{\"PASSWORD\":\"stacy\"}",
 	"VersionStages": [
 		"AWSCURRENT"
 	],
-	"CreatedDate": "2026-08-16T17:46:30.628000+05:30"
+	"CreatedDate": "2026-08-18T22:43:20.499000+05:30"
 }
 ```
 
 Finally, you can delete a secret using its ARN (Amazon Resource Name):
 
 ```sh prompt{1} output{2..6}
-awslocal secretsmanager delete-secret --secret-id arn:aws:secretsmanager:us-east-1:000000000000:secret:local-secret-N52O72
+awslocal secretsmanager delete-secret --secret-id arn:aws:secretsmanager:us-east-1:000000000000:secret:local-secret-NS27BP
 {
-	"ARN": "arn:aws:secretsmanager:us-east-1:000000000000:secret:local-secret-N52O72",
+	"ARN": "arn:aws:secretsmanager:us-east-1:000000000000:secret:local-secret-NS27BP",
 	"Name": "local-secret",
-	"DeletionDate": "2026-09-15T17:48:35.303000+05:30"
+	"DeletionDate": "2026-09-17T22:45:00.216000+05:30"
 }
 ```
 
@@ -294,7 +294,7 @@ For more operations, check the [secretsmanager](https://docs.aws.amazon.com/cli/
 ## Wrapping up
 
 - Since Floci communicates using the standard AWS wire protocol, it works seamlessly not just with the AWS CLI, but with any standard AWS SDK you want to use with it.
-- At the time of writing, Floci can emulate [72 AWS services](https://floci.io/floci/services/).
+- At the time of writing, Floci can emulate [80 AWS services](https://floci.io/floci/services/).
 - If you want to spin up ephemeral environments for integration testing, Floci provides official [Testcontainers modules](https://floci.io/floci/testcontainers/) for Java, Python, JavaScript, and more.
 - It also supports full per-account resource isolation, making it well-suited for testing multi-tenant configurations.
 
