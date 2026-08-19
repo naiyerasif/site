@@ -28,7 +28,8 @@
 	color-scheme: light dark;
 
 	/* prevent `font-size` adjustments after orientation changes */
-	text-size-adjust: 100%;
+	--doc-tsa: 100%; /* hack to force postcss add -webkit-text-size-adjust */
+	text-size-adjust: var(--doc-tsa);
 
 	/* prevent text overflow of inline elements */
 	overflow-wrap: break-word;
