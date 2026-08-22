@@ -4,6 +4,7 @@ const siteInfo = {
 		presence: {
 			mastodon: { id: "@naiyer@mastodon.social", title: "Mastodon", url: "https://mastodon.social/@naiyer" },
 			codeberg: { id: "@naiyer", title: "Codeberg", url: "https://codeberg.org/naiyer" },
+			github: { id: "@naiyerasif", title: "GitHub", url: "https://github.com/naiyerasif" },
 			linkedin: { id: "naiyerasif", title: "LinkedIn", url: "https://in.linkedin.com/in/naiyerasif" },
 		},
 	},
