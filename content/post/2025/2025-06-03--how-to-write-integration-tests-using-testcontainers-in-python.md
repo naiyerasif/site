@@ -2,23 +2,18 @@
 slug: "post/2025/06/03/how-to-write-integration-tests-using-testcontainers-in-python"
 title: "How to write integration tests using Testcontainers in Python"
 date: 2025-06-03 21:48:03
-update: 2025-06-03 21:48:03
+update: 2026-08-22 17:00:59
 category: "guide"
 ---
 
 When your application uses external components such as databases or cloud services, it's important to test how everything works together. That's where integration tests come in. They help ensure your application behaves as expected in an environment that resembles production. [Testcontainers](https://testcontainers.com/) is a popular library that spins up real dependencies using Docker to run your tests. Let's write a small application that uses [S3](https://aws.amazon.com/s3/) and Postgres, and explore how to test it using Testcontainers.
 
-:::note{.setup}
-The examples in this post use
-
-- Boto3 1.38.28
-- Psycopg 3.2.9
-- Pytest 8.4.0
-- Docker 28.2.2
-- LocalStack 4.4.0
-- Postgres 17
-- Python 3.13
-- uv 0.7.9
+:::note{title="Environment"}
+- Python 3.14
+- Docker 29.4.0
+- Floci 1.7.0
+- Postgres 18
+- uv 0.12.5
 :::
 
 ## Writing the application to test
@@ -30,19 +25,21 @@ Let's start by setting up a project using the following `pyproject.toml` file.
 ```toml title="pyproject.toml"
 [project]
 name = "testcontainers-integration-tests-with-pytest"
-version = "0.0.1"
+version = "0.0.2"
 description = "Integration tests using testcontainers and pytest"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.14"
 dependencies = [
-    "boto3>=1.38.28",
-    "psycopg[binary]>=3.2.9",
+    "boto3>=1.43.78",
+    "psycopg[binary]>=3.3.4",
+    "pydantic-settings>=2.15.0",
 ]
 
 [dependency-groups]
 dev = [
-    "pytest>=8.4.0",
-    "testcontainers[localstack,postgres]>=4.10.0",
+    "pytest>=9.1.1",
+    "testcontainers-floci>=0.1.1",
+    "testcontainers[postgres]>=4.15.0",
 ]
 ```
 
@@ -52,58 +49,44 @@ We'll need some configuration to connect to the database and access S3. Let's wr
 
 ```python title="app/conf.py"
 import json
-import os
-from dataclasses import dataclass
+
+from pydantic import model_validator
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from app.aws import secretsmanager
-from app.singleton import Singleton
 
 
-@dataclass(frozen=True)
-class Configuration(metaclass=Singleton):
+class Configuration(BaseSettings):
     bucket_name: str | None = None
     db_url: str | None = None
+    db_name: str | None = None
+    db_user: str | None = None
+    db_host: str | None = None
+    db_port: str | None = None
+    db_secret: str | None = None
 
-    def __post_init__(self):
-        if self.bucket_name is None:
-            object.__setattr__(self, "bucket_name", os.environ.get("APP_BUCKET_NAME"))
-        if self.db_url is None:
-            db_name = os.environ.get("APP_DB_NAME")
-            db_user = os.environ.get("APP_DB_USER")
-            db_host = os.environ.get("APP_DB_HOST")
-            db_port = os.environ.get("APP_DB_PORT")
-            db_secret = os.environ.get("APP_DB_SECRET")
-            secret = json.loads(secretsmanager.get_secret_value(SecretId=db_secret)["SecretString"])
-            object.__setattr__(
-                self,
-                "db_url",
-                f"dbname={db_name} user={db_user} password={secret['password']} host={db_host} port={db_port}",
+    model_config = SettingsConfigDict(env_prefix="APP_", env_file=".env", env_file_encoding="utf-8", extra="ignore")
+
+    @model_validator(mode="after")
+    def construct_db_url(self) -> Configuration:
+        if self.db_url is None and self.db_secret is not None:
+            secret = json.loads(secretsmanager.get_secret_value(SecretId=self.db_secret)["SecretString"])
+
+            self.db_url = (
+                f"dbname={self.db_name} "
+                f"user={self.db_user} "
+                f"password={secret['password']} "
+                f"host={self.db_host} "
+                f"port={self.db_port}"
             )
+
+        return self
 
 
 conf = Configuration()
 ```
 
-We'll export an instance of `Configuration` for use in other modules.
-
-- `@dataclass(frozen=True)` makes the `Configuration` immutable. Once initialized, it won't change.
-- `Configuration` is a singleton so that we load it just once. It inherits this behavior from the following metaclass.
-  
-  ```python title="app/singleton.py"
-  class Singleton(type):
-      """
-      A metaclass that creates a Singleton class when inherited from it.
-      """
-
-      _instances = {}
-
-      def __call__(cls, *args, **kwargs):
-          if cls not in cls._instances:
-              instance = super(Singleton, cls).__call__(*args, **kwargs)
-              cls._instances[cls] = instance
-          return cls._instances[cls]
-  ```
-- It is a good idea to securely store passwords (using services such as [AWS SecretsManager](https://aws.amazon.com/secrets-manager/), [Vault](https://www.hashicorp.com/en/products/vault), and so on). We're reading the database password from SecretsManager.
+The `BaseSettings` will automatically map the environment variables to properties. It is a good practice to securely store passwords using services such as [AWS SecretsManager](https://aws.amazon.com/secrets-manager/), [Vault](https://www.hashicorp.com/en/products/vault), and so on. We're reading the database password from SecretsManager.
 
 We're importing the specific AWS clients using `boto3` as follows.
 
@@ -114,7 +97,7 @@ s3 = boto3.client("s3")
 secretsmanager = boto3.client("secretsmanager")
 ```
 
-You might be wondering&mdash;why not use `boto3` directly? If we do that, we'll have to mock `boto3` in our tests. This can be tricky since `boto3` is a generic library with a large API. By wrapping only the clients we need in a separate module, we only have to mock `s3` and `secretsmanager`.
+You might be wondering&mdash;why not use `boto3` directly? If we do that, we'll have to mock `boto3` in our tests. This can be tricky since `boto3` is a generic library with a large API surface. By wrapping only the clients we need in a separate module, we only have to mock `s3` and `secretsmanager`.
 
 Now that the groundwork is in place, let's create a utility to connect to the database.
 
@@ -126,18 +109,16 @@ from dataclasses import dataclass
 from psycopg import Connection, connect
 
 from app.conf import conf
-from app.singleton import Singleton
 
 
 @dataclass
-class ConnectionContext(metaclass=Singleton):
-    _connection: Connection | None = None
+class ConnectionContext:
+    _connection: Connection
 
-    def __post_init__(self):
-        if self._connection is None:
-            conn = connect(conninfo=conf.db_url, autocommit=True)
-            object.__setattr__(self, "_connection", conn)
-            atexit.register(conn.close)
+    def __init__(self, db_url):
+        conn = connect(conninfo=db_url, autocommit=True)
+        object.__setattr__(self, "_connection", conn)
+        atexit.register(conn.close)
 
     @contextmanager
     def cursor(self):
@@ -145,12 +126,10 @@ class ConnectionContext(metaclass=Singleton):
             yield cursor
 
 
-connection = ConnectionContext()
+connection = ConnectionContext(conf.db_url)
 ```
 
-- `ConnectionContext` is another singleton, ensuring we use a single shared connection for all database operations.
-- To safely close a [cursor](https://www.psycopg.org/psycopg3/docs/api/cursors.html) after use, we're using a context manager.
-- To clean up gracefully, we're registering the `Connection.close` function with an exit handler so the connection is automatically closed when the application shuts down.
+To safely close a [cursor](https://www.psycopg.org/psycopg3/docs/api/cursors.html) after use, we're using a context manager. To clean up gracefully, we're registering the `Connection.close` function with an exit handler so the connection is automatically closed when the application shuts down.
 
 Now, it's time to implement the core workflow.
 
@@ -172,8 +151,7 @@ def read_text_file(file_id: int):
         return data.decode("utf-8")
 ```
 
-- `download_file_as_bytes` function fetches a file from S3 and returns its contents as a byte array
-- `read_text_file` function looks up the file location in the database using a given `id` and returns its contents as a string
+The `download_file_as_bytes` function fetches a file from S3 and returns its contents as a byte array. The `read_text_file` function looks up the file location in the database using a given `id` and returns its contents as a string.
 
 ## Writing the integration test
 
@@ -189,8 +167,9 @@ Let's implement this setup in a fixture.
 import json
 import os
 
+import boto3
 import pytest
-from testcontainers.localstack import LocalStackContainer
+from floci import FlociContainer
 from testcontainers.postgres import PostgresContainer
 
 from tests.mockutils import mock_module
@@ -199,12 +178,26 @@ object_key = "/root/text.txt"
 test_content = b"Hello from Testcontainers!"
 
 
+def floci_client(service_name, floci_container):
+    return boto3.client(
+        service_name,
+        endpoint_url=floci_container.get_endpoint(),
+        region_name=floci_container.get_region(),
+        aws_access_key_id=floci_container.get_access_key(),
+        aws_secret_access_key=floci_container.get_secret_key(),
+    )
+
+
 @pytest.fixture(scope="module", autouse=True)
 def setup():
     with (
-        LocalStackContainer(image="localstack/localstack:4.4.0") as localstack,
-        PostgresContainer(image="postgres:17-alpine") as postgres,
-        mock_module("app.aws", s3=localstack.get_client("s3"), secretsmanager=localstack.get_client("secretsmanager")),
+        FlociContainer(image="floci/floci:1.7.0") as floci,
+        PostgresContainer(image="postgres:18-alpine") as postgres,
+        mock_module(
+            "app.aws",
+            s3=floci_client("s3", floci),
+            secretsmanager=floci_client("secretsmanager", floci),
+        ),
     ):
         os.environ["APP_BUCKET_NAME"] = "test-bucket"
         os.environ["APP_DB_NAME"] = postgres.dbname
@@ -223,10 +216,7 @@ def setup():
 
         from app.conf import conf
 
-        s3.create_bucket(
-            Bucket=conf.bucket_name,
-            CreateBucketConfiguration={"LocationConstraint": localstack.region_name},
-        )
+        s3.create_bucket(Bucket=conf.bucket_name)
 
         from app.dbclient import connection
 
@@ -242,8 +232,8 @@ def setup():
         yield
 ```
 
-- We begin by starting [LocalStack](https://www.localstack.cloud/) and Postgres containers using Testcontainers.
-- We mock `app.aws` module so that our test uses LocalStack emulated AWS services, such as S3 and SecretsManager. (You can find the details about `mock_module` function in an earlier post [here](/post/2025/05/31/how-to-mock-a-module-import-in-python/).)
+- We begin by starting [Floci](https://floci.io/) and Postgres containers using Testcontainers.
+- We mock `app.aws` module so that our test uses Floci emulated AWS services, such as S3 and SecretsManager. (You can find the details about `mock_module` function in an earlier post [here](/post/2025/05/31/how-to-mock-a-module-import-in-python/).)
 - Next, we set the required environment variables, some of which use the properties of the `PostgresContainer`. We also store a secret in SecretsManager to hold the database password.
 - This is enough to mock the configuration, and allow us to import it.
 - We also create an S3 bucket and a database table, both of which we'll use later in our test.
@@ -252,12 +242,13 @@ We've annotated `setup` function with `@pytest.fixture(scope="module", autouse=T
 
 Now, let's write the test.
 
-```python title="tests/test_main.py" ins{57..74}
+```python title="tests/test_main.py" ins{69..86}
 import json
 import os
 
+import boto3
 import pytest
-from testcontainers.localstack import LocalStackContainer
+from floci import FlociContainer
 from testcontainers.postgres import PostgresContainer
 
 from tests.mockutils import mock_module
@@ -266,12 +257,26 @@ object_key = "/root/text.txt"
 test_content = b"Hello from Testcontainers!"
 
 
+def floci_client(service_name, floci_container):
+    return boto3.client(
+        service_name,
+        endpoint_url=floci_container.get_endpoint(),
+        region_name=floci_container.get_region(),
+        aws_access_key_id=floci_container.get_access_key(),
+        aws_secret_access_key=floci_container.get_secret_key(),
+    )
+
+
 @pytest.fixture(scope="module", autouse=True)
 def setup():
     with (
-        LocalStackContainer(image="localstack/localstack:4.4.0") as localstack,
-        PostgresContainer(image="postgres:17-alpine") as postgres,
-        mock_module("app.aws", s3=localstack.get_client("s3"), secretsmanager=localstack.get_client("secretsmanager")),
+        FlociContainer(image="floci/floci:1.7.0") as floci,
+        PostgresContainer(image="postgres:18-alpine") as postgres,
+        mock_module(
+            "app.aws",
+            s3=floci_client("s3", floci),
+            secretsmanager=floci_client("secretsmanager", floci),
+        ),
     ):
         os.environ["APP_BUCKET_NAME"] = "test-bucket"
         os.environ["APP_DB_NAME"] = postgres.dbname
@@ -290,10 +295,7 @@ def setup():
 
         from app.conf import conf
 
-        s3.create_bucket(
-            Bucket=conf.bucket_name,
-            CreateBucketConfiguration={"LocationConstraint": localstack.region_name},
-        )
+        s3.create_bucket(Bucket=conf.bucket_name)
 
         from app.dbclient import connection
 
@@ -335,15 +337,15 @@ You can now run this test as follows.
 
 ```sh prompt{1} output{2..10}
 uv run -m pytest -p no:warnings
-======================== test session starts ========================
-platform darwin -- Python 3.13.3, pytest-8.4.0, pluggy-1.6.0
-rootdir: ~/guides/python/testcontainers-integration-tests-with-pytest
+========================= test session starts ==========================
+platform darwin -- Python 3.14.7, pytest-9.1.1, pluggy-1.6.0
+rootdir: ~/backstage/python/testcontainers-integration-tests-with-pytest
 configfile: pyproject.toml
 collected 1 item
 
-tests/test_main.py .                                           [100%]
+tests/test_main.py .                                              [100%]
 
-========================= 1 passed in 7.70s =========================
+========================== 1 passed in 4.71s ===========================
 ```
 
 :::warn{title="A few things to be aware of before launching the test"}
@@ -355,4 +357,4 @@ tests/test_main.py .                                           [100%]
 
 **Source code**
 
-- [testcontainers-integration-tests-with-pytest](https://github.com/Microflash/guides/tree/main/python/testcontainers-integration-tests-with-pytest)
+- [testcontainers-integration-tests-with-pytest](https://github.com/naiyerasif/backstage/tree/main/python/testcontainers-integration-tests-with-pytest)
