@@ -1,36 +1,23 @@
 @use "mixins";
 
 .callout {
-	--y-theme-border: var(--y-callout-border, var(--y-note-border));
 	--y-theme-color: var(--y-callout-color, var(--y-note-color));
-	--y-theme-marker-color: var(--y-theme-border);
-	--y-theme-canvas-color: var(--y-callout-canvas-color, var(--y-note-canvas-color));
+	--y-theme-marker-color: var(--y-theme-color);
 	--y-theme-bg-color: var(--y-callout-bg-color, var(--y-note-bg-color));
-	--z-callout-radius: var(--x-radius-root);
-	--z-callout-border-width: var(--x-border-sm);
 	--z-callout-padding: 1ch;
 
-	border-radius: var(--z-callout-radius);
 	background-color: var(--y-theme-bg-color);
-	accent-color: var(--y-theme-color);
-	caret-color: var(--y-theme-color);
-	border: var(--z-callout-border-width) solid var(--y-theme-border);
-
-	details > ::marker {
-		--y-theme-marker-color: var(--y-theme-color);
-	}
+	padding: var(--z-callout-padding);
+	mask:
+		radial-gradient(closest-side at 50% 50%, transparent 66%, var(--y-body-bg-color) 67%) var(--z-callout-padding) var(--z-callout-padding) / calc(2 * var(--z-callout-padding)) calc(2 * var(--z-callout-padding)) round,
+		conic-gradient(#000 0 0) content-box;
 
 	.callout-header {
-		--z-header-radius: calc(var(--z-callout-radius) - 0.1rem);
 		display: flex;
 		align-items: center;
 		gap: 0.75ch;
 		color: var(--y-theme-color);
-		background-color: var(--y-theme-canvas-color);
-		padding: calc(var(--z-callout-padding) / 1.5) var(--z-callout-padding);
-		border-start-start-radius: var(--z-header-radius);
-		border-start-end-radius: var(--z-header-radius);
-		border-block-end: var(--z-callout-border-width) solid var(--y-theme-border);
+		padding: 0.75ch 0.75ch 0;
 
 		* {
 			color: var(--y-theme-color);
@@ -39,9 +26,9 @@
 
 	&-body {
 		overflow: auto;
-		padding: 18px;
+		padding: 0.75ch;
 		@include mixins.flow;
-		
+
 		& > strong:first-of-type {
 			color: var(--y-theme-color);
 		}
@@ -55,36 +42,26 @@
 	&-note {
 		--y-callout-color: var(--y-note-color);
 		--y-callout-bg-color: var(--y-note-bg-color);
-		--y-callout-border: var(--y-note-border);
-		--y-callout-canvas-color: var(--y-note-canvas-color);
 	}
 
 	&-commend {
 		--y-callout-color: var(--y-commend-color);
 		--y-callout-bg-color: var(--y-commend-bg-color);
-		--y-callout-border: var(--y-commend-border);
-		--y-callout-canvas-color: var(--y-commend-canvas-color);
 	}
 
 	&-assert {
 		--y-callout-color: var(--y-assert-color);
 		--y-callout-bg-color: var(--y-assert-bg-color);
-		--y-callout-border: var(--y-assert-border);
-		--y-callout-canvas-color: var(--y-assert-canvas-color);
 	}
 
 	&-warn {
 		--y-callout-color: var(--y-warn-color);
 		--y-callout-bg-color: var(--y-warn-bg-color);
-		--y-callout-border: var(--y-warn-border);
-		--y-callout-canvas-color: var(--y-warn-canvas-color);
 	}
 
 	&-deter {
 		--y-callout-color: var(--y-deter-color);
 		--y-callout-bg-color: var(--y-deter-bg-color);
-		--y-callout-border: var(--y-deter-border);
-		--y-callout-canvas-color: var(--y-deter-canvas-color);
 	}
 }
 

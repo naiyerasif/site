@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "mixins";
 @use "colors" as *;
 
@@ -95,11 +96,11 @@
 	--y-accent-bg-color: #{$x-primary-900};
 	--y-strong-accent-bg-color: #{$x-primary-850};
 	--y-body-bg-color: #{$x-black};
-	--y-note-bg-color: #{$x-note-950};
-	--y-commend-bg-color: #{$x-commend-950};
-	--y-deter-bg-color: #{$x-deter-950};
-	--y-warn-bg-color: #{$x-warn-950};
-	--y-assert-bg-color: #{$x-assert-950};
+	--y-note-bg-color: #{color.adjust($x-note-950, $lightness: 3%, $space: oklch)};
+	--y-commend-bg-color: #{color.adjust($x-commend-950, $lightness: 3%, $space: oklch)};
+	--y-deter-bg-color: #{color.adjust($x-deter-950, $lightness: 3%, $space: oklch)};
+	--y-warn-bg-color: #{color.adjust($x-warn-950, $lightness: 3%, $space: oklch)};
+	--y-assert-bg-color: #{color.adjust($x-assert-950, $lightness: 3%, $space: oklch)};
 	--y-selection-bg-color: #{$x-warn-800};
 
 	--y-note-canvas-color: #{$x-note-900};
@@ -221,7 +222,7 @@
 	--y-transition-function: cubic-bezier(0.25, 0, 0.4, 1);
 
 	@include mixins.withLinearTransitionTimingFunction {
-		--y-transition-function: linear(0, 0.009, 0.035 2.1%, 0.141 4.4%, 0.723 12.9%, 0.938 16.7%, 1.017, 1.077, 1.121, 1.149 24.3%, 1.159, 1.163, 1.161, 1.154 29.9%, 1.129 32.8%, 1.051 39.6%, 1.017 43.1%, 0.991, 0.977 51%, 0.974 53.8%, 0.975 57.1%, 0.997 69.8%, 1.003 76.9%, 1);
+		--y-transition-function: linear(0, 0.009, 0.035 2.1%, 0.141 4.3%, 0.723 12.9%, 0.938 16.7%, 1.017, 1.077, 1.121, 1.149 24.3%, 1.159, 1.163, 1.161, 1.154 29.9%, 1.129 32.8%, 1.051 39.6%, 1.017 43.1%, 0.991, 0.977 51%, 0.974 53.8%, 0.975 57.1%, 0.997 69.8%, 1.003 76.9%, 1);
 	}
 }
 
