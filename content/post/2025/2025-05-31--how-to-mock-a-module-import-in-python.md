@@ -6,8 +6,7 @@ update: 2026-08-22 17:00:28
 category: "guide"
 ---
 
-When writing tests, it is quite common to mock a module. [One way](https://stackoverflow.com/a/48290984) to do this is by injecting a custom module in `sys.modules`:
-
+When writing tests, it is quite common to mock a module. It can be a database, an API, or a cloud service for which you need a testable alternative. [One way](https://stackoverflow.com/a/48290984) is to inject a custom module into `sys.modules`, Python's built-in registry of every module that's been imported.
 
 ```python
 import sys
@@ -29,7 +28,7 @@ def mock_module(floci_container: FlociContainer):
 ```
 
 :::note
-In this example, I'm trying to mock the following module:
+This example mocks the following module:
 
 ```python title="clients.py"
 import boto3
@@ -61,7 +60,7 @@ def mock_module(floci_container: FlociContainer):
     sys.modules['clients'] = mocked_module
 ```
 
-Both approaches are valid.
+Both versions do exactly the same thing.
 
 Once done with running tests, you may want to remove the mocked module.
 
@@ -69,7 +68,7 @@ Once done with running tests, you may want to remove the mocked module.
 sys.modules.pop('clients', None)
 ```
 
-You can build a more generalized utility function.
+You can refactor this into a more generalized utility.
 
 ```python title="mockutils.py"
 import sys
@@ -83,7 +82,7 @@ def mock_module(module_name: str, **attributes):
     sys.modules[module_name] = mocked_module
 ```
 
-And you can use this function as follows:
+Now any module can be mocked like this:
 
 ```python
 import sys
@@ -109,7 +108,7 @@ mock_module(
 sys.modules.pop('clients', None)
 ```
 
-_What if you forget to manually clean up the mocked module?_ To make sure the mocked module is properly cleaned up, you can enhance `mock_module` function as a context manager.
+_What if you forget to manually clean up the mocked module?_ To make sure it is automically cleaned up, you can convert `mock_module` into a context manager.
 
 ```python title="mockutils.py" ins{2,6,8,14..20}
 import sys
@@ -134,7 +133,7 @@ def mock_module(module_name: str, **attributes):
             sys.modules.pop(module_name, None)
 ```
 
-As a bonus, this implementation restores the original module after mocking. Here's how you can use it.
+Now cleanup runs whether the test passes, fails, or raises. Additionally, this implementation restores the original module after mocking, or removes the mock entirely if it didn't. Here's how you can use it.
 
 ```python
 import sys

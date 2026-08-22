@@ -6,7 +6,9 @@ update: 2026-08-22 17:00:59
 category: "guide"
 ---
 
-When your application uses external components such as databases or cloud services, it's important to test how everything works together. That's where integration tests come in. They help ensure your application behaves as expected in an environment that resembles production. [Testcontainers](https://testcontainers.com/) is a popular library that spins up real dependencies using Docker to run your tests. Let's write a small application that uses [S3](https://aws.amazon.com/s3/) and Postgres, and explore how to test it using Testcontainers.
+When an application uses external components such as databases or cloud services, it's important to test how everything works together. That's where integration tests come in. They help ensure your application behaves as expected in an environment that resembles production. [Testcontainers](https://testcontainers.com/) makes these tests possible by simulating real dependencies using Docker.
+
+In this post, we'll build a small application that reads a file location from Postgres, downloads the file from [S3](https://aws.amazon.com/s3/), and returns its contents. Then, we'll test the whole path with Testcontainers.
 
 :::note{title="Environment"}
 - Python 3.14
@@ -16,11 +18,9 @@ When your application uses external components such as databases or cloud servic
 - uv 0.12.5
 :::
 
-## Writing the application to test
+## Building the application
 
-We'll write an application that retrieves a file location from a database table, downloads the file from S3, and reads its content. For simplicity, we'll assume the files are plain text that we can read as strings.
-
-Let's start by setting up a project using the following `pyproject.toml` file.
+Let's start by setting up a Python project with the following `pyproject.toml` file.
 
 ```toml title="pyproject.toml"
 [project]
@@ -43,9 +43,9 @@ dev = [
 ]
 ```
 
-With [uv](https://docs.astral.sh/uv/), you can run `uv sync`. It will automatically install the correct Python version (if needed), create a virtual environment, and install all dependencies.
+Run `uv sync` and [uv](https://docs.astral.sh/uv/) automatically installs the correct Python version (if needed), creates a virtual environment, and downloads all dependencies.
 
-We'll need some configuration to connect to the database and access S3. Let's write a `Configuration` utility to do this.
+To connect to Postgres and reach into S3, the application needs some configuration which we can read with the `Configuration` utility:
 
 ```python title="app/conf.py"
 import json
@@ -86,7 +86,7 @@ class Configuration(BaseSettings):
 conf = Configuration()
 ```
 
-The `BaseSettings` will automatically map the environment variables to properties. It is a good practice to securely store passwords using services such as [AWS SecretsManager](https://aws.amazon.com/secrets-manager/), [Vault](https://www.hashicorp.com/en/products/vault), and so on. We're reading the database password from SecretsManager.
+`BaseSettings` maps the environment variables to properties automatically. It is a good practice to securely store passwords using services such as [AWS SecretsManager](https://aws.amazon.com/secrets-manager/), [Vault](https://www.hashicorp.com/en/products/vault), and so on. We're reading the database password from SecretsManager.
 
 We're importing the specific AWS clients using `boto3` as follows.
 
@@ -97,9 +97,11 @@ s3 = boto3.client("s3")
 secretsmanager = boto3.client("secretsmanager")
 ```
 
-You might be wondering&mdash;why not use `boto3` directly? If we do that, we'll have to mock `boto3` in our tests. This can be tricky since `boto3` is a generic library with a large API surface. By wrapping only the clients we need in a separate module, we only have to mock `s3` and `secretsmanager`.
+You might wonder&mdash;why not use `boto3` directly?
 
-Now that the groundwork is in place, let's create a utility to connect to the database.
+If we do that, we'll have to mock `boto3` in our tests. This can be messy since `boto3` is a generic library with a large API surface. By wrapping only the clients we need in a separate module, we only have to mock `s3` and `secretsmanager`.
+
+Next, let's create a utility to connect to the database.
 
 ```python title="app/dbclient.py"
 import atexit
@@ -129,7 +131,7 @@ class ConnectionContext:
 connection = ConnectionContext(conf.db_url)
 ```
 
-To safely close a [cursor](https://www.psycopg.org/psycopg3/docs/api/cursors.html) after use, we're using a context manager. To clean up gracefully, we're registering the `Connection.close` function with an exit handler so the connection is automatically closed when the application shuts down.
+To safely close a [cursor](https://www.psycopg.org/psycopg3/docs/api/cursors.html) after use, we're using a context manager. To clean up gracefully, we're registering the `Connection.close` with an exit handler so the connection is automatically closed when the application shuts down.
 
 Now, it's time to implement the core workflow.
 
@@ -151,17 +153,17 @@ def read_text_file(file_id: int):
         return data.decode("utf-8")
 ```
 
-The `download_file_as_bytes` function fetches a file from S3 and returns its contents as a byte array. The `read_text_file` function looks up the file location in the database using a given `id` and returns its contents as a string.
+`download_file_as_bytes` fetches an object from S3 and returns it as a byte array. `read_text_file` looks up an object's location in the database using a given `id`, downloads it, and reads it as text.
 
 ## Writing the integration test
 
 To write an integration test, we need to set up a test environment with the following requirements.
 
 - A password stored in SecretsManager and environment variables to initialize the configuration
-- A database table to store the file locations
-- An S3 bucket from where the application can retrieve the files
+- A database table to store the object locations
+- An S3 bucket the application can read from
 
-Let's implement this setup in a fixture.
+The following fixture sets it all.
 
 ```python title="tests/test_main.py"
 import json
@@ -232,15 +234,14 @@ def setup():
         yield
 ```
 
-- We begin by starting [Floci](https://floci.io/) and Postgres containers using Testcontainers.
-- We mock `app.aws` module so that our test uses Floci emulated AWS services, such as S3 and SecretsManager. (You can find the details about `mock_module` function in an earlier post [here](/post/2025/05/31/how-to-mock-a-module-import-in-python/).)
+- We begin by launching [Floci](https://floci.io/) and Postgres containers managed by Testcontainers.
+- We mock `app.aws` module so that our test uses Floci emulated AWS services, such as S3 and SecretsManager. (More on how `mock_module` works in an earlier post [here](/post/2025/05/31/how-to-mock-a-module-import-in-python/))
 - Next, we set the required environment variables, some of which use the properties of the `PostgresContainer`. We also store a secret in SecretsManager to hold the database password.
-- This is enough to mock the configuration, and allow us to import it.
-- We also create an S3 bucket and a database table, both of which we'll use later in our test.
+- Finally, we create an S3 bucket and a database table, both of which we'll use later in our test.
 
-We've annotated `setup` function with `@pytest.fixture(scope="module", autouse=True)`, so that tests in `test_main` module can use it automatically.
+We've annotated `setup` with `@pytest.fixture(scope="module", autouse=True)`, so that every test in this module gets this environment automatically, and the containers only start once per module rather than once per test.
 
-Now, let's write the test.
+With the environment in place, the test itself is short:
 
 ```python title="tests/test_main.py" ins{69..86}
 import json
@@ -331,9 +332,9 @@ def test_read_text_file():
         assert read_text_file(file_id) == test_content.decode("utf-8")
 ```
 
-In `test_read_text_file`, we begin by uploading a sample text file to the S3 bucket and inserting its location in the database. Then, we call the `read_text_file` function and check that the returned string matches the content of the file we uploaded.
+In `test_read_text_file`, we upload a text file to the S3 bucket, inserting its location in the database, then call `read_text_file`, and check the returned string matches what was uploaded. It reads almost like a description of the feature itself, which is what we want from an integration test: to verify the same path a real request would take.
 
-You can now run this test as follows.
+You can run this test as follows.
 
 ```sh prompt{1} output{2..10}
 uv run -m pytest -p no:warnings
@@ -348,9 +349,9 @@ tests/test_main.py .                                              [100%]
 ========================== 1 passed in 4.71s ===========================
 ```
 
-:::warn{title="A few things to be aware of before launching the test"}
-- Make sure that Docker is up and running, and you're connected to internet.
-- If you run this test for the first time, it may take a while since Testcontainers will pull the required Docker images using your internet connection. Once the images are available on your machine, you can run the tests without internet connection.
+:::warn{title="Before you run it"}
+- Make sure Docker is running, and you're connected to internet.
+- On the first run, Testcontainers pulls the Floci and Postgres images using your internet connection, which may take a moment. Subsequent runs work offline and are faster.
 :::
 
 ---

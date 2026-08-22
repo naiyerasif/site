@@ -2,7 +2,7 @@
 
 .callout {
 	--y-theme-color: var(--y-callout-color, var(--y-note-color));
-	--y-theme-marker-color: var(--y-theme-color);
+	--y-theme-marker-color: var(--y-theme-canvas-color);
 	--y-theme-bg-color: var(--y-callout-bg-color, var(--y-note-bg-color));
 	--z-callout-padding: 1ch;
 
@@ -17,7 +17,7 @@
 		align-items: center;
 		gap: 0.75ch;
 		color: var(--y-theme-color);
-		padding: 0.75ch 0.75ch 0;
+		padding: 0.75ch;
 
 		* {
 			color: var(--y-theme-color);
@@ -42,26 +42,31 @@
 	&-note {
 		--y-callout-color: var(--y-note-color);
 		--y-callout-bg-color: var(--y-note-bg-color);
+		--y-callout-canvas-color: var(--y-note-canvas-color);
 	}
 
 	&-commend {
 		--y-callout-color: var(--y-commend-color);
 		--y-callout-bg-color: var(--y-commend-bg-color);
+		--y-callout-canvas-color: var(--y-commend-canvas-color);
 	}
 
 	&-assert {
 		--y-callout-color: var(--y-assert-color);
 		--y-callout-bg-color: var(--y-assert-bg-color);
+		--y-callout-canvas-color: var(--y-assert-canvas-color);
 	}
 
 	&-warn {
 		--y-callout-color: var(--y-warn-color);
 		--y-callout-bg-color: var(--y-warn-bg-color);
+		--y-callout-canvas-color: var(--y-warn-canvas-color);
 	}
 
 	&-deter {
 		--y-callout-color: var(--y-deter-color);
 		--y-callout-bg-color: var(--y-deter-bg-color);
+		--y-callout-canvas-color: var(--y-deter-canvas-color);
 	}
 }
 
