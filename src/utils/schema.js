@@ -41,6 +41,7 @@ const Post = z.object({
 	date,
 	update,
 	category: postTypes.default(PostType.guide.id),
+	series: z.string().optional(),
 	cover,
 	showToc: z.boolean().default(true),
 	type: pageTypes.default(PageType.article.id),

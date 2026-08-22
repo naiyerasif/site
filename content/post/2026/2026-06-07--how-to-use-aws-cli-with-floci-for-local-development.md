@@ -4,18 +4,12 @@ title: "How to use AWS CLI with Floci for local development"
 date: 2026-06-07 15:47:57
 update: 2026-08-18 22:46:41
 category: "guide"
+series: "2026--floci"
 ---
 
 Testing against real AWS services often feels like a chore. We have to juggle account configurations, suffer the network latency tax, and dodge state collisions with team members. And let's not forget about the constant paranoia of surprise cloud bills. It often kills the fast feedback loop we need to build good software.
 
 So, how do we get around this? We bring AWS to `localhost` using [Floci](https://github.com/floci-io/floci). It is an open-source local AWS emulator which plays nice with the AWS CLI and other AWS tooling. It lets us work without a real cloud environment, or a credit card. Let's spin it up with Docker and use it with AWS CLI to explore S3, SQS, and Secrets Manager.
-
-:::assert{title="Series"}
-1. *How to use AWS CLI with Floci for local development*
-2. [How to run SQS-triggered Lambda locally with Floci](/post/2026/08/16/how-to-run-sqs-triggered-lambda-locally-with-floci/)
-3. [How to run SNS-triggered Lambda locally with Floci](/post/2026/08/16/how-to-run-sns-triggered-lambda-locally-with-floci/)
-4. [How to run EventRule-triggered Lambda locally with Floci](/post/2026/08/18/how-to-run-eventrule-triggered-lambda-locally-with-floci/)
-:::
 
 :::note{title="Environment"}
 - Docker 29.4.0

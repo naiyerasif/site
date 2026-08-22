@@ -295,6 +295,20 @@ figure {
 	}
 }
 
+.series {
+	margin-block-start: 2rem;
+	font-size: var(--y-small-text);
+
+	&-header {
+		letter-spacing: 0.025em;
+		color: var(--y-caption-color);
+	}
+
+	&-items li {
+		--y-flow-gap: 0;
+	}
+}
+
 random-message {
 	font-size: var(--y-tagline-text);
 

@@ -1,7 +1,7 @@
-import { getCollection } from "astro:content";
+import { getPosts } from "#utils/content.js";
 
 export async function GET() {
-	const posts = (await getCollection("post"))
+	const posts = (await getPosts())
 		.map(post => ({
 			title: post.data.title,
 			path: `/${post.id}`

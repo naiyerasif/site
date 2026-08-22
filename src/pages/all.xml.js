@@ -1,4 +1,3 @@
-import { getCollection } from "astro:content";
 import rss from "../modules/astro-rss/index.js";
 import { compare } from "#utils/datetime.js";
 import siteInfo, { absoluteUrl } from "#utils/website.js";

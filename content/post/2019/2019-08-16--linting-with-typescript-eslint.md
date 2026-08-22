@@ -4,19 +4,12 @@ title: "Linting with TypeScript ESLint"
 date: 2019-08-16 16:23:12
 update: 2020-02-06 22:51:18
 category: "guide"
+series: "2019--express"
 ---
 
 [TypeScript ESLint](https://github.com/typescript-eslint/typescript-eslint) is the successor of [TSLint](https://github.com/palantir/tslint), the linting tool exclusively developed for TypeScript. It leverages the existing JavaScript linting ecosystem and brings consistency across the tooling to lint both JavaScript and TypeScript apps.
 
 In this post, we'll set up linting with TypeScript ESLint for a TypeScript project.
-
-:::assert{title="Series"}
-1. [Using Express with TypeScript](/post/2019/01/12/using-express-with-typescript/)
-2. [Request logging with morgan](/post/2019/08/13/request-logging-with-morgan/)
-3. [Logging on Node.js with log4js-node](/post/2019/08/14/logging-on-nodejs-with-log4js-node/)
-4. *Linting with TypeScript ESLint*
-5. [Developing an API with Express and Postgres](/post/2019/08/19/developing-an-api-with-express-and-postgres/)
-:::
 
 :::note{.setup}
 You can pick the Node.js application created in the post [Logging on Node.js with log4js-node](/post/2019/08/14/logging-on-nodejs-with-log4js-node/) to follow this post.

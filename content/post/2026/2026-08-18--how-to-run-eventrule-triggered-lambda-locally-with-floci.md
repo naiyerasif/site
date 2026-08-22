@@ -4,16 +4,10 @@ title: "How to run EventRule-triggered Lambda locally with Floci"
 date: 2026-08-18 23:10:49
 update: 2026-08-18 23:10:49
 category: "guide"
+series: "2026--floci"
 ---
 
 [Amazon EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html) is a serverless solution to build event-driven workflows. For example, it can trigger an AWS Lambda function based on a rule. This can be used to run operations like optimizing images after uploading them to S3, generating aggregated reports from DynamoDB updates, or reacting to changes in other AWS resources. In this post, we'll deploy a Lambda function, and trigger it with an EventBridge rule on local using [Floci](https://github.com/floci-io/floci).
-
-:::assert{title="Series"}
-1. [How to use AWS CLI with Floci for local development](/post/2026/06/07/how-to-use-aws-cli-with-floci-for-local-development/)
-2. [How to run SQS-triggered Lambda locally with Floci](/post/2026/08/16/how-to-run-sqs-triggered-lambda-locally-with-floci/)
-3. [How to run SNS-triggered Lambda locally with Floci](/post/2026/08/16/how-to-run-sns-triggered-lambda-locally-with-floci/)
-4. *How to run EventRule-triggered Lambda locally with Floci*
-:::
 
 :::note{title="Environment"}
 - Docker 29.4.0

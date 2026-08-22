@@ -4,19 +4,12 @@ title: "Logging on Node.js with log4js-node"
 date: 2019-08-14 17:11:09
 update: 2019-09-22 20:19:17
 category: "guide"
+series: "2019--express"
 ---
 
 `console.log` has been a prevalent anti-pattern inherited by Node.js developers from years of printing to the console on a browser. While this is useful for quick debugging, it doesn't sit well with server-side design; it's hard to turn it off selectively, add log levels to it or redirect the logs to a file or database. Some good alternatives to the `console.log` are [winston](https://github.com/winstonjs/winston) and [log4js-node](https://github.com/log4js-node/log4js-node).
 
 In this post, we'll explore the uses of `log4js-node` to print the logs on the console as well as a file.
-
-:::assert{title="Series"}
-1. [Using Express with TypeScript](/post/2019/01/12/using-express-with-typescript/)
-2. [Request logging with morgan](/post/2019/08/13/request-logging-with-morgan/)
-3. *Logging on Node.js with log4js-node*
-4. [Linting with TypeScript ESLint](/post/2019/08/16/linting-with-typescript-eslint/)
-5. [Developing an API with Express and Postgres](/post/2019/08/19/developing-an-api-with-express-and-postgres/)
-:::
 
 :::note{.setup}
 You can pick the Node.js application created in the post [Request logging with morgan](/post/2019/08/13/request-logging-with-morgan/) to follow this post.

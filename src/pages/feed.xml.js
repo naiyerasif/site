@@ -1,8 +1,8 @@
-import { getCollection } from "astro:content";
 import rss from "../modules/astro-rss/index.js";
 import { compare } from "#utils/datetime.js";
 import siteInfo, { absoluteUrl } from "#utils/website.js";
 import { PostType } from "#utils/schema.js";
+import { getPosts } from "#utils/content.js";
 
 const baseUrl = siteInfo.siteBase;
 const authorName = siteInfo.author.name;
@@ -26,9 +26,7 @@ const options = {
 };
 
 export async function GET() {
-	const posts = (await getCollection("post"))
-		.filter(post => post.data.category !== PostType.note.id)
-		.sort((p1, p2) => compare(p1.data.update, p2.data.update))
+	const posts = (await getPosts(post => post.data.category !== PostType.note.id))
 		.slice(0, siteInfo.limits.feed)
 		.map(post => {
 			const pageUrl = absoluteUrl(post.id);

@@ -4,16 +4,10 @@ title: "How to run SQS-triggered Lambda locally with Floci"
 date: 2026-08-16 18:02:46
 update: 2026-08-18 22:56:54
 category: "guide"
+series: "2026--floci"
 ---
 
 One of the common ways to run asynchronous workloads is through an AWS Lambda function triggered by a message from SQS (Simple Queue Service). SQS helps control the order of processing, and serves as a buffer to handle temporary spikes in load on a system. Let's explore how we can do this locally using [Floci](https://github.com/floci-io/floci).
-
-:::assert{title="Series"}
-1. [How to use AWS CLI with Floci for local development](/post/2026/06/07/how-to-use-aws-cli-with-floci-for-local-development/)
-2. *How to run SQS-triggered Lambda locally with Floci*
-3. [How to run SNS-triggered Lambda locally with Floci](/post/2026/08/16/how-to-run-sns-triggered-lambda-locally-with-floci/)
-4. [How to run EventRule-triggered Lambda locally with Floci](/post/2026/08/18/how-to-run-eventrule-triggered-lambda-locally-with-floci/)
-:::
 
 :::note{title="Environment"}
 - Docker 29.4.0

@@ -4,16 +4,10 @@ title: "How to run SNS-triggered Lambda locally with Floci"
 date: 2026-08-16 20:36:01
 update: 2026-08-18 23:04:23
 category: "guide"
+series: "2026--floci"
 ---
 
 SNS (Simple Notification Service) is often used to implement a [pubsub](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern) workflow, or to [fan-out](https://en.wikipedia.org/wiki/Fan-out_(software)) a process. In such cases, you may want to trigger an AWS Lambda function when an event arrives to a topic. In this post, we'll deploy an AWS Lambda and trigger it through an SNS subscription using [Floci](https://floci.io/).
-
-:::assert{title="Series"}
-1. [How to use AWS CLI with Floci for local development](/post/2026/06/07/how-to-use-aws-cli-with-floci-for-local-development/)
-2. [How to run SQS-triggered Lambda locally with Floci](/post/2026/08/16/how-to-run-sqs-triggered-lambda-locally-with-floci/)
-3. *How to run SNS-triggered Lambda locally with Floci*
-4. [How to run EventRule-triggered Lambda locally with Floci](/post/2026/08/18/how-to-run-eventrule-triggered-lambda-locally-with-floci/)
-:::
 
 :::note{title="Environment"}
 - Docker 29.4.0

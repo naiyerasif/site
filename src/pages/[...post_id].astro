@@ -6,7 +6,7 @@ import Toc from "#components/Toc.astro";
 import Time from "#components/Time.astro";
 import { compare } from "#utils/datetime.js";
 import toc from "#utils/toc.js";
-import { getPosts } from "#utils/content.js";
+import { getPosts, getSeries } from "#utils/content.js";
 
 export async function getStaticPaths() {
 	const posts = await getPosts();
@@ -27,6 +27,7 @@ const prevPage = prev ? `/${prev.id}` : undefined;
 const nextPage = next ? `/${next.id}` : undefined;
 const hasRecommendations = prevPage || nextPage;
 const showUpdate = compare(data.update, data.date) !== 0;
+const series = await getSeries(post.data.series);
 
 const pageInfo = {
 	title: data.title,
@@ -51,6 +52,14 @@ const pageInfo = {
 		<div class="hero-footer">
 			<small>Published on <Time date={data.date} /></small>{showUpdate && <small>Updated on <Time date={data.update} /></small>}
 		</div>
+		{series.length > 0 && <nav class="series">
+			<div class="series-header">Series</div>
+			<ol class="series-items">
+				{series.map(
+					p => <li>{p.id === post.id ? <strong>{p.data.title}</strong> : <a href={`/${p.id}`}>{p.data.title}</a>}</li>)
+				}
+			</ol>
+		</nav>}
 		{showToc && <nav class="toc">
 			<div class="toc-header">Table of Contents</div>
 			<Toc headings={toc(headings)}/>
