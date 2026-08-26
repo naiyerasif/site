@@ -10,10 +10,14 @@ details > ::marker {
 	--y-theme-marker-color: var(--y-note-color);
 }
 
-:where(ol, ul) {
+:where(ul) {
+	padding: 0 0 0 1em;
+}
+
+:where(ol) {
 	// this works for single character list markers
 	// anything longer will require more padding
-	padding: 0 0 0 1.3em;
+	padding: 0 0 0 1.5em;
 }
 
 // improve legibility of footnote links
