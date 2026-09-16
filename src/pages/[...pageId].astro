@@ -9,7 +9,7 @@ import toc from "#utils/toc.js";
 export async function getStaticPaths() {
 	const pages = await getCollection("page");
 	return pages.map(entry => ({
-			params: { id: entry.id },
+			params: { pageId: entry.id },
 			props: { entry }
 		}));
 }

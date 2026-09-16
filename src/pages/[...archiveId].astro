@@ -11,7 +11,7 @@ export async function getStaticPaths() {
 	const posts = await getArchives();
 	return posts
 		.map(post => ({
-			params: { archive_id: post.id },
+			params: { archiveId: post.id },
 			props: { post }
 		}));
 }

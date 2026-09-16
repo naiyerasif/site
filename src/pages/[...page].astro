@@ -1,0 +1,62 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PostCard from "../components/legacy/PostCard.astro";
+import NoteCard from "../components/legacy/NoteCard.astro";
+import Pagination from "../components/Pagination.astro";
+import siteInfo from "#utils/website.js";
+import { PostType } from "#utils/schema.js";
+import { getPosts } from "#utils/content.js";
+
+export async function getStaticPaths({ paginate }) {
+	const posts = await getPosts();
+	const pages = paginate(posts, { pageSize: siteInfo.limits.page });
+
+	return pages.map(p => {
+		// route page 1 directly to `/`
+		if (p.props.page.currentPage === 1) {
+			return {
+				params: { page: undefined },
+				props: { ...p.props, isHome: true }
+			};
+		}
+		
+		return {
+			params: { page: `posts/${p.props.page.currentPage}` },
+			props: { ...p.props, isHome: false }
+		};
+	});
+}
+
+const { page, isHome } = Astro.props;
+
+const pageInfo = {
+	title: isHome ? "Home" : `Posts (Page ${page.currentPage})`,
+	url: Astro.url.pathname,
+	previous: page?.url?.prev,
+	next: page?.url?.next
+};
+---
+
+<Layout {pageInfo} class="popout feed">
+	<div slot="hero" class="hero-body">
+		<hgroup>
+			{isHome ? (
+				<Fragment>
+					<h1>Hi, I&CloseCurlyQuote;m Naiyer</h1>
+					<p>Book lover, software engineer, and a fellow web wanderer</p>
+				</Fragment>
+			) : (
+				<Fragment>
+					<h1>Posts</h1>
+					<p>{page.start + 1}&hellip;{page.end + 1} of {page.total} entries</p>
+				</Fragment>
+			)}
+		</hgroup>
+	</div>
+	
+	{page.data.map(entry => entry.data.category === PostType.note.id ? <NoteCard {entry} /> : <PostCard {entry} />)}
+	
+	<div slot="sidekick" class="sidekick-items">
+		<Pagination currentPage={page.currentPage} totalPages={page.lastPage} base="posts"/>
+	</div>
+</Layout>
