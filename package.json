@@ -2,7 +2,7 @@
 	"name": "naiyerasif.com",
 	"private": true,
 	"type": "module",
-	"version": "5.0.0",
+	"version": "5.1.0",
 	"scripts": {
 		"dev": "astro dev",
 		"build": "astro build",
@@ -18,7 +18,7 @@
 		"@microflash/remark-callout-directives": "^5.0.1",
 		"@naiyer/remark-directives": "^0.0.4",
 		"@sindresorhus/slugify": "^3.0.1",
-		"astro": "^7.3.2",
+		"astro": "^7.3.3",
 		"dayjs": "^1.11.23",
 		"feed": "^6.0.0",
 		"hastscript": "^9.0.1",
