@@ -101,7 +101,7 @@ body > .header {
 	align-items: center;
 	justify-content: space-between;
 	gap: 1ch;
-	padding-block: var(--y-body-gap);
+	padding-block: var(--y-body-gap-sm);
 
 	.brand {
 		display: inline-flex;

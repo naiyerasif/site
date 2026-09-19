@@ -1,4 +1,3 @@
-@use "sass:color";
 @use "mixins";
 @use "colors" as *;
 
@@ -96,11 +95,11 @@
 	--y-accent-bg-color: #{$x-primary-900};
 	--y-strong-accent-bg-color: #{$x-primary-850};
 	--y-body-bg-color: #{$x-black};
-	--y-note-bg-color: #{color.adjust($x-note-950, $lightness: 3%, $space: oklch)};
-	--y-commend-bg-color: #{color.adjust($x-commend-950, $lightness: 3%, $space: oklch)};
-	--y-deter-bg-color: #{color.adjust($x-deter-950, $lightness: 3%, $space: oklch)};
-	--y-warn-bg-color: #{color.adjust($x-warn-950, $lightness: 3%, $space: oklch)};
-	--y-assert-bg-color: #{color.adjust($x-assert-950, $lightness: 3%, $space: oklch)};
+	--y-note-bg-color: #{$x-note-925};
+	--y-commend-bg-color: #{$x-commend-925};
+	--y-deter-bg-color: #{$x-deter-925};
+	--y-warn-bg-color: #{$x-warn-925};
+	--y-assert-bg-color: #{$x-assert-925};
 	--y-selection-bg-color: #{$x-warn-800};
 
 	--y-note-canvas-color: #{$x-note-900};
@@ -173,6 +172,7 @@
 	--y-post-width: 60ch;
 	--y-feature-width: 75rem;
 	--y-body-gap: 24px;
+	--y-body-gap-sm: 12px;
 	--x-gap-root: calc(2rem + 2vw);
 	--x-gap-md: calc(3rem + 3vw);
 	--x-gap-lg: calc(4rem + 4vw);
@@ -190,7 +190,6 @@
 	--y-theme-bg-color: var(--y-note-bg-color);
 	--y-theme-canvas-color: var(--y-note-canvas-color);
 	--y-theme-border: var(--y-note-border);
-	--y-theme-marker-color: var(--y-note-border);
 
 	// color
 	--y-caption-color: var(--y-feeble-color);

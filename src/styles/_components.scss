@@ -5,19 +5,10 @@
 	text-decoration-style: dotted;
 }
 
-// prominent details marker
-details > ::marker {
-	--y-theme-marker-color: var(--y-note-color);
-}
-
-:where(ul) {
-	padding: 0 0 0 1em;
-}
-
-:where(ol) {
+:where(ul, ol) {
 	// this works for single character list markers
 	// anything longer will require more padding
-	padding: 0 0 0 1.5em;
+	padding-inline-start: 1.25em;
 }
 
 // improve legibility of footnote links

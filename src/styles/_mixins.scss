@@ -77,6 +77,22 @@
 	}
 }
 
+@mixin textBoxExTrim {
+	@supports (text-box-trim: trim-both) {
+		text-box-trim: trim-both;
+		text-box-edge: ex alphabetic;
+		@content;
+	}
+}
+
+@mixin textBoxCapTrim {
+	@supports (text-box-trim: trim-both) {
+		text-box-trim: trim-both;
+		text-box-edge: cap alphabetic;
+		@content;
+	}
+}
+
 // progressive opt in to use linear timing function
 @mixin withLinearTransitionTimingFunction {
 	@supports (transition-timing-function: linear(0, 1)) {

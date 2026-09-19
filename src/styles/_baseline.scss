@@ -22,7 +22,7 @@
 }
 
 ::marker {
-	color: var(--y-theme-marker-color);
+	color: var(--y-theme-color);
 }
 
 :focus-visible {
@@ -102,12 +102,17 @@
 :where(mark) {
 	color: var(--y-mark-color);
 	background-color: var(--y-mark-bg-color);
-	border-radius: 0.25ch;
-	padding-inline: 0.25ch;
+	border-radius: 0.2em;
+	padding-inline: 0.2em;
+
+	@include mixins.textBoxExTrim {
+		padding-block: 0.4em;
+	}
 }
 
 :where(sub, sup) {
 	font-size: 0.8em;
+	line-height: 0;
 }
 
 :where(sub) {
@@ -170,7 +175,7 @@
 	cursor: default;
 	background-color: var(--y-theme-bg-color, var(--y-code-bg-color));
 	border: 1px solid var(--y-theme-border);
-	border-radius: 0.33em;
+	border-radius: 0.2em;
 	box-shadow: 0 2px 0 1px var(--y-theme-border);
 	padding-inline: 0.5ch;
 	position: relative;
@@ -191,6 +196,10 @@
 			transition: box-shadow 145ms var(--y-transition-function);
 		}
 	}
+
+	@include mixins.textBoxExTrim {
+		padding-block: 0.4em;
+	}
 }
 
 :where(code, samp, tt, pre) {
@@ -202,6 +211,10 @@
 :where(code, samp, tt) {
 	border: 1px solid var(--y-theme-border);
 	padding-inline: 0.3ch;
+
+	@include mixins.textBoxExTrim {
+		padding-block: 0.4em;
+	}
 }
 
 :where(pre) {
@@ -218,7 +231,7 @@
 
 :where(details) {
 	--z-details-vgap: var(--y-flow-gap, 0.5em);
-	--z-details-hgap: calc(var(--z-details-vgap) * 1.5);
+	--z-details-hgap: 0.8em;
 
 	display: block;
 	border: 1px solid var(--y-theme-border);
@@ -288,17 +301,17 @@
 
 :where(h4) {
 	font-size: 1.4238rem;
-	opacity: 0.9;
+	opacity: 0.88;
 }
 
 :where(h5) {
 	font-size: 1.2656rem;
-	opacity: 0.85;
+	opacity: 0.81;
 }
 
 :where(h6) {
 	font-size: 1.125rem;
-	opacity: 0.8;
+	opacity: 0.74;
 }
 
 :where(ol, ul) {
@@ -373,7 +386,7 @@
 
 :where(th, td) {
 	font-size: 1em;
-	padding: 0.25rem 0.75rem;
+	padding: 0.3rem 0.7rem;
 	border: 1px solid var(--y-theme-border);
 }
 
@@ -402,10 +415,13 @@
 	display: inline-flex;
 	align-items: center;
 	gap: 0.5ch;
-	line-height: 1.1;
-	padding-block: 0.5rem;
 	color: var(--y-button-color);
 	@include mixins.texture;
+
+	@include mixins.textBoxCapTrim {
+		line-height: 1;
+		padding-block: 0.5rem;
+	}
 }
 
 // subdue the reset button
@@ -450,4 +466,9 @@
 :where(fieldset) {
 	border: 1px solid var(--y-theme-border);
 	border-radius: var(--y-form-radius);
+	padding: 0.5rem 1rem 1rem;
+}
+
+:where(textarea) {
+	min-width: 100%;
 }
