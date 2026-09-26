@@ -3,20 +3,32 @@
 .callout {
 	--y-theme-color: var(--y-callout-color, var(--y-note-color));
 	--y-theme-bg-color: var(--y-callout-bg-color, var(--y-note-bg-color));
-	--z-callout-padding: 1ch;
+	--y-theme-canvas-color: var(--y-callout-canvas-color, var(--y-note-canvas-color));
+	--z-callout-padding: 1.5ch;
 
-	background-color: var(--y-theme-bg-color);
+	position: relative;
+	background: linear-gradient(135deg, var(--y-theme-bg-color) 0%, var(--y-theme-canvas-color) 100%);
 	padding: var(--z-callout-padding);
-	mask:
-		radial-gradient(closest-side at 50% 50%, transparent 66%, var(--y-body-bg-color) 67%) var(--z-callout-padding) var(--z-callout-padding) / calc(2 * var(--z-callout-padding)) calc(2 * var(--z-callout-padding)) round,
-		conic-gradient(#000 0 0) content-box;
+	border-radius: var(--x-radius-root);
+	outline: 1px dashed var(--y-callout-border, var(--y-note-border));
+	outline-offset: -3px;
 
-	.callout-header {
+	&::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%25" height="100%25" filter="url(%23n)"/></svg>');
+		filter: contrast(230%) brightness(100%);
+		mix-blend-mode: overlay;
+		opacity: 0.4;
+	}
+
+	&-header {
 		display: flex;
 		align-items: center;
 		gap: 0.75ch;
 		color: var(--y-theme-color);
-		padding: 0.75ch;
 
 		* {
 			color: var(--y-theme-color);
@@ -25,12 +37,15 @@
 
 	&-body {
 		overflow: auto;
-		padding: 0.75ch;
 		@include mixins.flow;
 
 		& > strong:first-of-type {
 			color: var(--y-theme-color);
 		}
+	}
+
+	.callout-header + .callout-body {
+		margin-block-start: 1ch;
 	}
 
 	ul:only-child li {
@@ -42,30 +57,35 @@
 		--y-callout-color: var(--y-note-color);
 		--y-callout-bg-color: var(--y-note-bg-color);
 		--y-callout-canvas-color: var(--y-note-canvas-color);
+		--y-callout-border: var(--y-note-border);
 	}
 
 	&-commend {
 		--y-callout-color: var(--y-commend-color);
 		--y-callout-bg-color: var(--y-commend-bg-color);
 		--y-callout-canvas-color: var(--y-commend-canvas-color);
+		--y-callout-border: var(--y-commend-border);
 	}
 
 	&-assert {
 		--y-callout-color: var(--y-assert-color);
 		--y-callout-bg-color: var(--y-assert-bg-color);
 		--y-callout-canvas-color: var(--y-assert-canvas-color);
+		--y-callout-border: var(--y-assert-border);
 	}
 
 	&-warn {
 		--y-callout-color: var(--y-warn-color);
 		--y-callout-bg-color: var(--y-warn-bg-color);
 		--y-callout-canvas-color: var(--y-warn-canvas-color);
+		--y-callout-border: var(--y-warn-border);
 	}
 
 	&-deter {
 		--y-callout-color: var(--y-deter-color);
 		--y-callout-bg-color: var(--y-deter-bg-color);
 		--y-callout-canvas-color: var(--y-deter-canvas-color);
+		--y-callout-border: var(--y-deter-border);
 	}
 }
 
