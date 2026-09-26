@@ -4,7 +4,6 @@ import PostCard from "../components/legacy/PostCard.astro";
 import NoteCard from "../components/legacy/NoteCard.astro";
 import Pagination from "../components/Pagination.astro";
 import siteInfo from "#utils/website.js";
-import { PostType } from "#utils/schema.js";
 import { getPosts } from "#utils/content.js";
 
 export async function getStaticPaths({ paginate }) {
@@ -54,7 +53,7 @@ const pageInfo = {
 		</hgroup>
 	</div>
 	
-	{page.data.map(entry => entry.data.category === PostType.note.id ? <NoteCard {entry} /> : <PostCard {entry} />)}
+	{page.data.map(entry => entry.data.showFull ? <NoteCard {entry} /> : <PostCard {entry} />)}
 	
 	<div slot="sidekick" class="sidekick-items">
 		<Pagination currentPage={page.currentPage} totalPages={page.lastPage} base="posts"/>

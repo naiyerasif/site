@@ -3,7 +3,6 @@ slug: "post/2019/08/19/developing-an-api-with-express-and-postgres"
 title: "Developing an API with Express and Postgres"
 date: 2019-08-19 21:43:03
 update: 2020-02-06 23:26:09
-category: "guide"
 series: "2019--express"
 ---
 

@@ -254,7 +254,7 @@ figure {
 		}
 	}
 
-	&:not([data-post-type="note"]) &-body {
+	&-tagline {
 		font-size: var(--y-small-text);
 	}
 

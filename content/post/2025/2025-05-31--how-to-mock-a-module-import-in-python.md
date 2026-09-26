@@ -3,7 +3,6 @@ slug: "post/2025/05/31/how-to-mock-a-module-import-in-python"
 title: "How to mock a module import in Python"
 date: 2025-05-31 01:47:07
 update: 2026-08-22 17:00:28
-category: "guide"
 ---
 
 When writing tests, it is quite common to mock a module. It can be a database, an API, or a cloud service for which you need a testable alternative. [One way](https://stackoverflow.com/a/48290984) is to inject a custom module into `sys.modules`, Python's built-in registry of every module that's been imported.

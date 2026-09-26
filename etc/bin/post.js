@@ -15,33 +15,19 @@ dayjs.tz.setDefault("GMT");
 
 const date_format = "YYYY-MM-DD HH:mm:ss";
 const drafts = ".workspace/drafts";
-const PostType = {
-	note: { id: "note", label: "Note", showFull: true },
-	guide: { id: "guide", label: "Guide", showFull: false },
-	explainer: { id: "explainer", label: "Explainer", showFull: false },
-	reference: { id: "reference", label: "Reference", showFull: false },
-	opinion: { id: "opinion", label: "Opinion", showFull: false },
-};
 
 async function main() {
 	p.intro(styleText("cyan", "Create new post..."));
 
 	const answers = await p.group({
-		category: () =>
-			p.select({
-				message: "Select the category",
-				initialValue: PostType.guide.id,
-				options: Object.values(PostType).map(t => ({ value: t.id, label: t.label }))
-			}),
-		title: () =>
-			p.text({
-				message: "Title (max 64 chars)",
-				validate: (value) => {
-					const size = value.length;
-					if (!size) return "Please enter a title";
-					if (size > 64) return "Please enter a shorter title";
-				}
-			}),
+		title: () => p.text({
+			message: "Title (max 64 chars)",
+			validate: (value) => {
+				const size = value.length;
+				if (!size) return "Please enter a title";
+				if (size > 64) return "Please enter a shorter title";
+			}
+		}),
 		date: () => {
 			const now = dayjs().format(date_format);
 			return p.text({
@@ -50,17 +36,20 @@ async function main() {
 				validate: (value) => {
 					if (!dayjs(value, date_format, true).isValid()) return "Please enter a valid date";
 				}
-			})
-		}
+			});
+		},
+		showFull: () => p.confirm({
+			message: "Show in full?"
+		}),
 	});
 
 	if (
-		typeof answers.category === "symbol" || 
-		typeof answers.title === "symbol" || 
-		typeof answers.date === "symbol"
+		typeof answers.title === "symbol" ||
+		typeof answers.date === "symbol" ||
+		typeof answers.showFull === "symbol"
 	) {
-		p.outro(styleText("red", `Failed to create a post`))
-		return
+		p.outro(styleText("red", `Failed to create a post`));
+		return;
 	}
 
 	const slug = slugify(answers.title);
@@ -71,7 +60,7 @@ async function main() {
 	frontmatter.push(`title: "${answers.title}"`);
 	frontmatter.push(`date: ${answers.date}`);
 	frontmatter.push(`update: ${answers.date}`);
-	frontmatter.push(`category: "${answers.category}"`);
+	if (answers.showFull) frontmatter.push(`showFull: ${answers.showFull}`);
 	frontmatter.push('---');
 
 	const fileName = `${date.format('YYYY-MM-DD')}--${slug}.md`;

@@ -3,7 +3,6 @@ slug: "post/2022/08/21/client-credentials-flow-with-ory-hydra"
 title: "Client Credentials flow with Ory Hydra"
 date: 2022-08-21 12:32:07
 update: 2026-08-22 19:48:51
-category: "guide"
 ---
 
 [Ory Hydra](https://github.com/ory/hydra) is an open source OAuth 2.0 and OpenID Connect server. It issues and introspects tokens for machine clients which communicate server-to-server, making it well-suited for testing how services access APIs using `client_credentials` on a local machine.

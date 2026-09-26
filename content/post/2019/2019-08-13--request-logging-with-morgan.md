@@ -3,7 +3,6 @@ slug: "post/2019/08/13/request-logging-with-morgan"
 title: "Request logging with morgan"
 date: 2019-08-13 14:11:09
 update: 2019-08-13 14:11:09
-category: "guide"
 series: "2019--express"
 ---
 

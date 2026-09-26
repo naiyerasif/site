@@ -3,7 +3,6 @@ slug: "post/2021/11/16/working-with-aws-on-local-using-localstack"
 title: "Working with AWS on local using LocalStack"
 date: 2021-11-16 09:12:12
 update: 2025-05-24 17:05:24
-category: "guide"
 series: "2021--localstack"
 ---
 

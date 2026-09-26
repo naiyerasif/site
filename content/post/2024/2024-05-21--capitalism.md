@@ -3,7 +3,7 @@ slug: "post/2024/05/21/capitalism"
 title: "Capitalism"
 date: 2024-05-21 21:55:57
 update: 2024-05-21 21:55:57
-category: "note"
+showFull: true
 ---
 
 :::figure{.source.mastodon}

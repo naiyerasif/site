@@ -1,7 +1,6 @@
 import rss from "../modules/astro-rss/index.js";
 import { compare } from "#utils/datetime.js";
 import siteInfo, { absoluteUrl } from "#utils/website.js";
-import { PostType } from "#utils/schema.js";
 import { getPosts } from "#utils/content.js";
 
 const baseUrl = siteInfo.siteBase;
@@ -26,7 +25,7 @@ const options = {
 };
 
 export async function GET() {
-	const posts = (await getPosts(post => post.data.category !== PostType.note.id))
+	const posts = (await getPosts(post => !!post.data.showFull))
 		.slice(0, siteInfo.limits.feed)
 		.map(post => {
 			const pageUrl = absoluteUrl(post.id);

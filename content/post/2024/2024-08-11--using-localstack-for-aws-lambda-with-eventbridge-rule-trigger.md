@@ -3,7 +3,6 @@ slug: "post/2024/08/11/using-localstack-for-aws-lambda-with-eventbridge-rule-tri
 title: "Using LocalStack for AWS Lambda with EventBridge rule trigger"
 date: 2024-08-11 12:45:33
 update: 2025-05-24 22:44:21
-category: "guide"
 series: "2021--localstack"
 ---
 

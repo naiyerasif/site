@@ -3,7 +3,7 @@ slug: "post/2023/07/18/overbearing-weight-of-fashion"
 title: "Overbearing weight of fashion"
 date: 2023-07-18 00:13:04
 update: 2023-07-18 00:13:04
-category: "note"
+showFull: true
 ---
 
 :::figure{.source.youtube}

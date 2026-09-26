@@ -5,19 +5,8 @@ import format, { formats } from "#utils/datetime.js";
 
 /**
  * @typedef {{ id: string }} ObjectRef
- * @typedef {{ id: string, label: string, showFull: boolean }} PostTypeRef
+ * @type {Record<string, ObjectRef>}
  */
-
-/** @type {Record<string, PostTypeRef>} */
-const PostType = freeze({
-	note: { id: "note", label: "Note", showFull: true },
-	guide: { id: "guide", label: "Guide", showFull: false },
-	explainer: { id: "explainer", label: "Explainer", showFull: false },
-	reference: { id: "reference", label: "Reference", showFull: false },
-	opinion: { id: "opinion", label: "Opinion", showFull: false },
-});
-
-/** @type {Record<string, ObjectRef>} */
 const PageType = freeze({
 	website: { id: "website" },
 	article: { id: "article" },
@@ -28,7 +17,6 @@ const title = z.string().max(64);
 const tagline = z.string().optional();
 const date = z.coerce.date();
 const update = date.optional();
-const postTypes = z.enum(Object.keys(PostType));
 const pageTypes = z.enum(Object.keys(PageType));
 const url = z.preprocess(v => v && absoluteUrl(v), z.url());
 const optionalUrl = z.preprocess(v => v && absoluteUrl(v), z.url().optional());
@@ -40,9 +28,9 @@ const Post = z.object({
 	tagline,
 	date,
 	update,
-	category: postTypes.default(PostType.guide.id),
 	series: z.string().optional(),
 	cover,
+	showFull: z.boolean().default(false),
 	showToc: z.boolean().default(true),
 	type: pageTypes.default(PageType.article.id),
 });
@@ -78,4 +66,4 @@ const PageInfo = z.object({
 	next: optionalUrl
 });
 
-export { Post, Profile, Page, PageInfo, PageType, PostType };
+export { Post, Profile, Page, PageInfo, PageType };

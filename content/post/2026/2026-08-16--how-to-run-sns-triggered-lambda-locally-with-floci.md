@@ -3,7 +3,6 @@ slug: "post/2026/08/16/how-to-run-sns-triggered-lambda-locally-with-floci"
 title: "How to run SNS-triggered Lambda locally with Floci"
 date: 2026-08-16 20:36:01
 update: 2026-08-18 23:04:23
-category: "guide"
 series: "2026--floci"
 ---
 

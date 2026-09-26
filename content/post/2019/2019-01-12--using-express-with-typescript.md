@@ -3,7 +3,6 @@ slug: "post/2019/01/12/using-express-with-typescript"
 title: "Using Express with TypeScript"
 date: 2019-01-12 10:11:13
 update: 2020-02-06 22:30:55
-category: "guide"
 series: "2019--express"
 ---
 

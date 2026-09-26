@@ -3,7 +3,6 @@ slug: "post/2024/02/11/using-localstack-for-aws-lambda-with-sqs-trigger"
 title: "Using LocalStack for AWS Lambda with SQS trigger"
 date: 2024-02-11 17:38:21
 update: 2025-05-24 18:30:11
-category: "guide"
 series: "2021--localstack"
 ---
 

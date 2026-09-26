@@ -3,7 +3,7 @@ slug: "post/2023/03/07/nested-border-radii"
 title: "Nested border radii"
 date: 2023-03-07 21:14:58
 update: 2023-03-07 21:14:58
-category: "note"
+showFull: true
 ---
 
 :::figure{.source.twitter}

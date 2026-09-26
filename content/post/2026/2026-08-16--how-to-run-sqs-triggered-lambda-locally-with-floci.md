@@ -3,7 +3,6 @@ slug: "post/2026/08/16/how-to-run-sqs-triggered-lambda-locally-with-floci"
 title: "How to run SQS-triggered Lambda locally with Floci"
 date: 2026-08-16 18:02:46
 update: 2026-08-18 22:56:54
-category: "guide"
 series: "2026--floci"
 ---
 

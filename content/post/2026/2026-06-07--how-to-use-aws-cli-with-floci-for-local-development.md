@@ -3,7 +3,6 @@ slug: "post/2026/06/07/how-to-use-aws-cli-with-floci-for-local-development"
 title: "How to use AWS CLI with Floci for local development"
 date: 2026-06-07 15:47:57
 update: 2026-08-18 22:46:41
-category: "guide"
 series: "2026--floci"
 ---
 

@@ -3,7 +3,6 @@ slug: "post/2019/08/16/linting-with-typescript-eslint"
 title: "Linting with TypeScript ESLint"
 date: 2019-08-16 16:23:12
 update: 2020-02-06 22:51:18
-category: "guide"
 series: "2019--express"
 ---
 

@@ -3,7 +3,6 @@ slug: "archive/2020/09/26/retrying-on-failure-with-resilience4j-and-aspects--1"
 title: "Retrying on failure with Resilience4J and Aspects"
 date: 2020-09-26 15:17:06
 update: 2020-09-26 15:17:06
-category: "guide"
 ---
 
 :::warn{title="Archived"}

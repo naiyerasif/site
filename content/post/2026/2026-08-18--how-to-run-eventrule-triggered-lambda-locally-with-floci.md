@@ -3,7 +3,6 @@ slug: "post/2026/08/18/how-to-run-eventrule-triggered-lambda-locally-with-floci"
 title: "How to run EventRule-triggered Lambda locally with Floci"
 date: 2026-08-18 23:10:49
 update: 2026-08-18 23:10:49
-category: "guide"
 series: "2026--floci"
 ---
 

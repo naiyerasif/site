@@ -1,15 +1,12 @@
 ---
 import Time from "#components/Time.astro";
-import { PostType } from "#utils/schema.js";
 
 const { entry } = Astro.props;
 const link = `/${entry.id}`;
-const { id, label } = PostType[entry.data.category];
 ---
 
-<div class="card" data-post-type={id}>
+<div class="card">
 	<div class="card-meta">
-		<small class="chip chip-note">{label}</small>
 		<Time date={entry.data.date} />
 	</div>
 	<div class="card-body">

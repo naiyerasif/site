@@ -3,7 +3,6 @@ slug: "post/2019/08/14/logging-on-nodejs-with-log4js-node"
 title: "Logging on Node.js with log4js-node"
 date: 2019-08-14 17:11:09
 update: 2019-09-22 20:19:17
-category: "guide"
 series: "2019--express"
 ---
 

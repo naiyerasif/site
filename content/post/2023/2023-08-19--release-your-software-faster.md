@@ -3,7 +3,6 @@ slug: "post/2023/08/19/release-your-software-faster"
 title: "Release your software faster"
 date: 2023-08-19 22:41:12
 update: 2023-08-19 22:41:12
-category: "opinion"
 ---
 
 :::figure
