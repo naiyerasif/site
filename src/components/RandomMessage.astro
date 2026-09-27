@@ -1,3 +1,12 @@
+---
+const { selector = "[randomized]" } = Astro.props;
+---
+<random-message {selector}>
+	<slot />
+</random-message>
+
+<script>
+// @ts-nocheck
 class RandomMessage extends HTMLElement {
 	static register(tagName = "random-message") {
 		if ("customElements" in window && !customElements.get(tagName)) {
@@ -24,3 +33,4 @@ class RandomMessage extends HTMLElement {
 }
 
 RandomMessage.register();
+</script>

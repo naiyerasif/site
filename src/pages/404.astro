@@ -1,7 +1,8 @@
 ---
 import Icon from "../components/legacy/Icon.astro";
-import Layout from "../layouts/Layout.astro";
-import DragTrail from "../components/legacy/DragTrail.astro";
+import Layout from "#layouts/Layout.astro";
+import DragTrail from "#components/DragTrail.astro";
+import RandomMessage from "#components/RandomMessage.astro";
 
 const pageInfo = {
 	title: "Page not found",
@@ -12,11 +13,11 @@ const pageInfo = {
 	<div slot="hero" class="hero-body">
 		<hgroup>
 			<h1>404</h1>
-			<random-message selector="p">
+			<RandomMessage selector="p">
 				<p>Page not here anymore</p>
 				<p hidden>Page not available</p>
 				<p hidden>Page not found</p>
-			</random-message>
+			</RandomMessage>
 		</hgroup>
 	</div>
 	<article class="post">

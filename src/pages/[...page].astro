@@ -1,12 +1,13 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from "#layouts/Layout.astro";
 import PostCard from "../components/legacy/PostCard.astro";
 import NoteCard from "../components/legacy/NoteCard.astro";
-import Pagination from "../components/Pagination.astro";
+import Pagination from "#components/Pagination.astro";
 import siteInfo from "#utils/website.js";
 import { getPosts } from "#utils/content.js";
+import type { GetStaticPathsOptions } from "astro";
 
-export async function getStaticPaths({ paginate }) {
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 	const posts = await getPosts();
 	const pages = paginate(posts, { pageSize: siteInfo.limits.page });
 

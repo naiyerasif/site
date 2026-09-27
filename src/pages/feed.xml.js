@@ -1,4 +1,4 @@
-import rss from "../modules/astro-rss/index.js";
+import rss from "#utils/rss.js";
 import { compare } from "#utils/datetime.js";
 import siteInfo, { absoluteUrl } from "#utils/website.js";
 import { getPosts } from "#utils/content.js";

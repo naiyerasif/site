@@ -1,7 +1,9 @@
 ---
 import { getEntry, render } from "astro:content";
 import { Image } from "astro:assets";
-import Layout from "../layouts/Layout.astro";
+import Layout from "#layouts/Layout.astro";
+import AudioPlayer from "#components/AudioPlayer.astro";
+import RandomMessage from "#components/RandomMessage.astro";
 
 const profile = await getEntry("profile", "about");
 const { data } = profile;
@@ -17,20 +19,17 @@ const pageInfo = {
 <Layout {pageInfo} class="popout">
 	<div slot="hero" class="hero-body">
 		<hgroup class="about">
-			<random-message selector="h1">
+			<RandomMessage selector="h1">
 				<h1>👋 Hello!</h1>
 				<h1 data-lang="Turkish" hidden>👋 Merhaba!</h1>
 				<h1 data-lang="Farsi" hidden>👋 Salâm!</h1>
-			</random-message>
+			</RandomMessage>
 			<p>
-				I&rsquo;m Naiyer <Image src={data.avatar} alt={data.title} class="avatar"/> <audio-player><audio><source src="/audio/profile/naiyer/namedrop.mp3" type="audio/mpeg"/><source src="/audio/profile/naiyer/namedrop.m4a" type="audio/mp4"/></audio><button aria-label="Pronounce name"></button></audio-player><noscript><audio controls><source src="/audio/profile/naiyer/namedrop.mp3" type="audio/mpeg"/><source src="/audio/profile/naiyer/namedrop.m4a" type="audio/mp4"/></audio></noscript> &mdash;from India.
+				I&rsquo;m Naiyer <Image src={data.avatar} alt={data.title} class="avatar"/> <AudioPlayer><source src="/audio/profile/naiyer/namedrop.mp3" type="audio/mpeg"/><source src="/audio/profile/naiyer/namedrop.m4a" type="audio/mp4"/></AudioPlayer> &mdash;from India.
 			</p>
 		</hgroup>
 	</div>
 	<article class="post">
 		<Content/>
 	</article>
-	<script>
-		import "../modules/audio-player/index.js";
-	</script>
 </Layout>

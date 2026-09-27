@@ -1,3 +1,48 @@
+---
+import Icon from "./legacy/Icon.astro";
+import siteInfo from "#utils/website.js";
+import { PageInfo } from "#utils/schema.js";
+
+const shareInfo = PageInfo.parse(Astro.props.pageInfo);
+const shareableTitle = encodeURI(shareInfo.title);
+const mastodonHandle = encodeURI(siteInfo.author.presence.mastodon.id);
+
+const shareVia = [
+	{
+		platform: "mail",
+		title: "Share via email",
+		link: `mailto:?subject=${shareInfo.title}&body=Checkout this article I read! ${shareInfo.url}`
+	},
+	{
+		platform: "mastodon",
+		title: "Share on Mastodon",
+		link: `https://share.joinmastodon.org/#text=${shareInfo.title}%20(by%20${mastodonHandle})%20-%20${shareInfo.url}`
+	},
+	{
+		platform: "hackernews",
+		title: "Submit to Hacker News",
+		link: `https://news.ycombinator.com/submitlink?u=${shareInfo.url}&t=${shareableTitle}`
+	},
+	{
+		platform: "linkedin",
+		title: "Post on LinkedIn",
+		link: `https://www.linkedin.com/sharing/share-offsite/?url=${shareInfo.url}`
+	},
+	{
+		platform: "reddit",
+		title: "Post on Reddit",
+		link: `http://www.reddit.com/submit?url=${shareInfo.url}&title=${shareableTitle}`
+	}
+];
+---
+
+<div class="share-panel">
+	<share-url><button type="button" aria-live="polite" aria-label="Share link" class="share-button"><Icon name="share"/></button></share-url>
+	{shareVia.map(share => <a href={share.link} title={share.title} rel="noopener noreferrer" target="_blank"><Icon name={share.platform}/></a>)}
+</div>
+
+<script>
+// @ts-nocheck
 // source: https://github.com/NigelOToole/share-url/blob/89309ed6de9a4e7ee284177f1291b7160c5a6d8d/src/scripts/share-url-wc.js#L1
 export class ShareUrl extends HTMLElement {
 	static register(tagName = "share-url") {
@@ -23,8 +68,8 @@ export class ShareUrl extends HTMLElement {
 
 	connectedCallback() {
 		for (const item of this.getAttributeNames()) {
-			let prop = this._camelCase(item);
-			let value = this._checkBoolean(this.getAttribute(item));
+			let prop = this.#camelCase(item);
+			let value = this.#checkBoolean(this.getAttribute(item));
 			this.options[prop] = value;
 		}
 
@@ -35,7 +80,7 @@ export class ShareUrl extends HTMLElement {
 
 		if (navigator[this.options.action]) {
 			const { signal } = this.abortController = new AbortController();
-			this.button.addEventListener("click", () => this._shareEvent(), { signal });
+			this.button.addEventListener("click", () => this.#shareEvent(), { signal });
 		} else {
 			this.hidden = true;
 		}
@@ -47,7 +92,7 @@ export class ShareUrl extends HTMLElement {
 		}
 	}
 
-	async _shareEvent() {
+	async #shareEvent() {
 		try {
 			if (this.options.action === "share") {
 				await navigator.share({ title: this.options.title, text: this.options.title, url: this.options.url });
@@ -63,16 +108,17 @@ export class ShareUrl extends HTMLElement {
 		}
 	}
 
-	_checkBoolean(string) {
+	#checkBoolean(string) {
 		if (string.toLowerCase() === "true") return true;
 		if (string.toLowerCase() === "false") return false;
 		return string;
 	}
 
-	_camelCase(name, delim = "-") {
+	#camelCase(name, delim = "-") {
 		const pattern = new RegExp((delim + "([a-z])"), "g");
 		return name.replace(pattern, (match, capture) => capture.toUpperCase());
 	}
 }
 
 ShareUrl.register();
+</script>

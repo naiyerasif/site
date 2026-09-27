@@ -1,3 +1,16 @@
+---
+import Icon from "./legacy/Icon.astro";
+---
+
+<theme-switcher>
+	<button class="nav-item" type="button" role="switch" aria-live="polite" aria-checked="true" aria-label="Switch theme" data-theme-switch>
+		<Icon name="moon" data-theme-state="dark"/>
+		<Icon name="sun" data-theme-state="light"/>
+	</button>
+</theme-switcher>
+
+<script>
+// @ts-nocheck
 class ThemeSwitcher extends HTMLElement {
 	static register(tagName = "theme-switcher") {
 		if ("customElements" in window) {
@@ -12,7 +25,7 @@ class ThemeSwitcher extends HTMLElement {
 		for (const state of this.states) {
 			this.themes.push(state.dataset.themeState);
 		}
-		this._render();
+		this.#render();
 
 		document.addEventListener("themechange", this);
 		this.switch.addEventListener("click", this);
@@ -23,22 +36,22 @@ class ThemeSwitcher extends HTMLElement {
 	}
 
 	_on_themechange(event) {
-		this._render();
+		this.#render();
 	}
 
 	_on_click(event) {
-		this._switchTheme();
+		this.#switchTheme();
 	}
 
-	_switchTheme() {
+	#switchTheme() {
 		const currentIndex = this.themes.indexOf(window.__theme);
 		const nextIndex = (currentIndex + 1) % this.themes.length;
 		const newTheme = this.themes[nextIndex];
 		window.__setTheme(newTheme);
-		this._render();
+		this.#render();
 	}
 
-	_render() {
+	#render() {
 		this.switch.setAttribute("aria-label", `${window.__theme} theme`);
 		for (const state of this.states) {
 			state.style.display = window.__theme === state.dataset.themeState ? "revert" : "none";
@@ -47,3 +60,4 @@ class ThemeSwitcher extends HTMLElement {
 }
 
 ThemeSwitcher.register();
+</script>

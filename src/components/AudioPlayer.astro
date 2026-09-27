@@ -1,3 +1,17 @@
+<audio-player>
+	<audio>
+		<slot/>
+	</audio>
+	<button aria-label="Pronounce name"></button>
+</audio-player>
+<noscript>
+	<audio controls>
+		<slot/>
+	</audio>
+</noscript>
+
+<script>
+// @ts-nocheck
 class AudioPlayer extends HTMLElement {
 	static register(tagName = "audio-player") {
 		if ("customElements" in window && !customElements.get(tagName)) {
@@ -60,3 +74,4 @@ class AudioPlayer extends HTMLElement {
 }
 
 AudioPlayer.register();
+</script>

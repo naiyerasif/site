@@ -1,6 +1,6 @@
 ---
-import Icon from "../components/legacy/Icon.astro";
-import CommandBar from "../components/legacy/CommandBar.astro";
+import CommandBar from "#components/CommandBar.astro";
+import ThemeSwitcher from "#components/ThemeSwitcher.astro";
 import siteInfo from "#utils/website.js";
 
 const logoAlt = `${new URL(siteInfo.siteBase).host}'s logo'`;
@@ -13,12 +13,7 @@ const logoAlt = `${new URL(siteInfo.siteBase).host}'s logo'`;
 		</a>
 	</div>
 	<nav class="navbar-secondary">
-		<theme-switcher class="nav-item">
-			<button type="button" role="switch" aria-live="polite" aria-checked="true" aria-label="Switch theme" data-theme-switch>
-				<Icon name="moon" data-theme-state="dark"/>
-				<Icon name="sun" data-theme-state="light"/>
-			</button>
-		</theme-switcher>
-		<CommandBar class="nav-item"/>
+		<ThemeSwitcher/>
+		<CommandBar/>
 	</nav>
 </header>

@@ -4,6 +4,7 @@
 </svg>
 
 <script>
+// @ts-nocheck
 const noMotionPref = window.matchMedia("(prefers-reduced-motion: no-preference)");
 const hasHighRefreshRate = window.matchMedia("(update: fast)");
 const hasViewTransitionSupport = "startViewTransition" in document && typeof document.startViewTransition === "function";

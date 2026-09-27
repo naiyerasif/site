@@ -4,8 +4,7 @@ import PageInfo from "./PageInfo.astro";
 import Critical from "./Critical.astro";
 import Header from "./Header.astro";
 import Footer from "./Footer.astro";
-import ClientBase from "./ClientBase.astro";
-import ClientExtended from "./ClientExtended.astro";
+import ClipboardCopy from "#components/ClipboardCopy.astro";
 
 const { pageInfo, ...attribs } = Astro.props;
 const hero = Astro.slots.has("hero");
@@ -26,7 +25,9 @@ const sidekick = Astro.slots.has("sidekick");
 		</main>
 		{sidekick && <div class="sidekick"><slot name="sidekick"/></div>}
 		<Footer/>
-		<ClientBase/>
-		<ClientExtended/>
+		<ClipboardCopy/>
+		<script>
+			import "lite-youtube-embed";
+		</script>
 	</body>
 </html>
