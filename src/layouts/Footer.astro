@@ -13,16 +13,16 @@ const currentYear = (new Date()).getFullYear();
 <footer class="footer">
 	<div class="quicklinks">
 		<ul>
-			<strong>RSS</strong>
+			<li><strong>RSS</strong></li>
 			<li><a href="/feed.xml">Posts</a></li>
 			<li><a href="/all.xml">Firehose</a></li>
 		</ul>
 		<ul>
-			<strong>Connect</strong>
+			<li><strong>Connect</strong></li>
 			{Object.entries(authorPresence).map(([network, details]) => <li><a href={details.url} rel="nofollow noopener noreferrer">{details.title}</a></li>)}
 		</ul>
 		<ul>
-			<strong>Site</strong>
+			<li><strong>Site</strong></li>
 			<li><a href="/privacy/">Privacy</a></li>
 			<li><a href="/sitemap-index.xml">Sitemap</a></li>
 			<li><a href={siteIssueUrl} rel="nofollow noopener noreferrer">Report an issue</a></li>

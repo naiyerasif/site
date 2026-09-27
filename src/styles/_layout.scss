@@ -277,6 +277,11 @@ body > .footer {
 	.quicklinks {
 		gap: calc(2rem + 5vw);
 		margin-block-end: var(--x-gap-md);
+
+		ul {
+			list-style: none;
+			padding-inline-start: 0;
+		}
 	}
 
 	.copyright {
