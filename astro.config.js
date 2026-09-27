@@ -114,11 +114,34 @@ export default defineConfig({
 						},
 						grammars: customGrammars,
 						plugins: [
+							{
+								type: "header",
+								apply: (opts, nodes) => {
+									if (opts.id) {
+										nodes.push({
+											type: "element",
+											tagName: "svg",
+											properties: {
+												"aria-hidden": "true",
+												role: "img",
+											},
+											children: [
+												{
+													type: "element",
+													tagName: "use",
+													properties: {
+														href: "#x4-traffic-lights"
+													}
+												}
+											]
+										});
+									}
+								}
+							},
 							titlePlugin,
 							lineAnnotationPlugin,
-							languageIndicatorPlugin,
 							{
-								type: "footer",
+								type: "header",
 								apply: (opts, nodes) => {
 									if (opts.id) {
 										nodes.push({
