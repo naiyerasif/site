@@ -6,13 +6,9 @@ const link = `/${entry.id}`;
 ---
 
 <div class="card">
-	<div class="card-meta">
-		<Time date={entry.data.date} />
-	</div>
+	<Time date={entry.data.date} class="card-meta" />
 	<div class="card-body">
-		<div class="card-header">
-			<a href={link}>{entry.data.title}</a>
-		</div>
+		<a href={link} class="card-header">{entry.data.title}</a>
 		{entry.data.tagline && <div class="card-tagline">{entry.data.tagline}</div>}
 	</div>
 </div>

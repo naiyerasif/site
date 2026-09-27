@@ -246,11 +246,10 @@ figure {
 		display: flex;
 		align-items: center;
 		font-size: var(--y-small-text);
-		color: var(--y-caption-color);
 		gap: 1ch;
 
-		a {
-			display: inline-flex;
+		&:not(a) {
+			color: var(--y-caption-color);
 		}
 	}
 

@@ -1,7 +1,6 @@
 ---
 import { render } from "astro:content";
 import Time from "#components/Time.astro";
-import Icon from "./Icon.astro";
 
 const { entry } = Astro.props;
 const link = `/${entry.id}`;
@@ -9,9 +8,8 @@ const { Content } = await render(entry);
 ---
 
 <div class="card" data-post-expanded>
-	<div class="card-meta">
-		<a href={link} title={entry.data.title}><Icon name="planet"/></a>
+	<a href={link} title={entry.data.title} class="card-meta">
 		<Time date={entry.data.date} />
-	</div>
+	</a>
 	<Content />
 </div>
