@@ -179,7 +179,7 @@ public class Launcher {
 
 Open a terminal and hit the `/book` endpoint in a loop.
 
-```nu prompt{1} output{2..8} {7..8}
+```nushell prompt{1} output{2..8} {7..8}
 for i in 1..7 { curl -s localhost:8080/book?genre=Space%20Opera }
 [{"title":"System Collapse","author":"Martha Wells","genre":["Science Fiction","Space Opera"]}]
 [{"title":"System Collapse","author":"Martha Wells","genre":["Science Fiction","Space Opera"]}]
@@ -378,7 +378,7 @@ public interface BookRepository extends CrudRepository<Book, UUID> {
 
 After either of these changes, the application works as expected.
 
-```nu prompt{1} output{2..8}
+```nushell prompt{1} output{2..8}
 for i in 1..7 { curl -s localhost:8080/book?genre=Space%20Opera }
 [{"title":"System Collapse","author":"Martha Wells","genre":["Science Fiction","Space Opera"]}]
 [{"title":"System Collapse","author":"Martha Wells","genre":["Science Fiction","Space Opera"]}]

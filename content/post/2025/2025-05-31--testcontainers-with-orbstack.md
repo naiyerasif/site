@@ -10,7 +10,7 @@ While working with [Testcontainers](https://testcontainers.com/), I recently ran
 
 [Turns out](https://www.rockyourcode.com/testcontainers-with-orbstack/), you can force Docker host detection by setting these environment variables.
 
-```nu
+```nushell
 $env.TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE = "/var/run/docker.sock"
 $env.DOCKER_HOST = $"unix://($env.HOME)/.orbstack/run/docker.sock"
 ```

@@ -97,7 +97,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 
 For nushell, add them in the `~/Library/Application Support/nushell/env.nu` file.
 
-```nu
+```nushell
 $env.HOMEBREW_NO_ANALYTICS = "1"
 $env.HOMEBREW_NO_AUTO_UPDATE = "1"
 ```
@@ -112,7 +112,7 @@ export PATH=/opt/homebrew/bin:$PATH
 
 For nushell, update the path in the `~/Library/Application Support/nushell/env.nu` file.
 
-```nu
+```nushell
 let paths = [
 		"/opt/homebrew/bin"
 ]
@@ -190,7 +190,7 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home
 
 For nushell, add it in the `~/Library/Application Support/nushell/env.nu` file.
 
-```nu
+```nushell
 $env.JAVA_HOME = "/Library/Java/JavaVirtualMachines/zulu-22.jdk/Contents/Home"
 ```
 
@@ -230,7 +230,7 @@ export PATH=/opt/homebrew/bin:$PNPM_HOME:$PATH
 
 For nushell, update the `PATH` in the `~/Library/Application Support/nushell/env.nu` file.
 
-```nu {1,4}
+```nushell {1,4}
 $env.PNPM_HOME = "~/Library/pnpm"
 let paths = [
 		"/opt/homebrew/bin",

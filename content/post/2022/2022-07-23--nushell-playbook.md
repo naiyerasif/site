@@ -28,7 +28,7 @@ Press <kbd><kbd>Ctrl</kbd>+<kbd>R</kbd></kbd> to launch interactive fuzzy searc
 
 Nushell currently doesn't support preventing duplicate entries in the command history. If your history file grows large, you can clean it up by removing duplicates and sorting it with the following command.
 
-```nu
+```nushell
 show ~/.config/nushell/history.txt
 	| lines
 	| each {|line| $line | str trim }
@@ -51,7 +51,7 @@ You must set `XDG_CONFIG_HOME` _before_ Nushell starts. Configure it at the OS l
 
 Sometimes a Nushell command can shadow an OS builtin, for example, Nushell's `open` command can shadow macOS's native `open`. To restore access to the OS version, you can assign the Nushell command a different alias and map the original name back to the system command.
 
-```nu
+```nushell
 alias show = open
 alias open = ^open
 ```
@@ -64,7 +64,7 @@ This preserves both functionalities: use `show` for Nushell's `open`, and `open`
 
 To delete multiple local Git branches at once, you can use the following Nushell command.
 
-```nu
+```nushell
 git branch
 	| lines
 	| where ($it !~ '^\*') # exclude the current branch

@@ -28,7 +28,7 @@ interface IslamicCalendarExample {
 
 Running the preceding snippet displays the date as follows.
 
-```nu prompt{1} {2}
+```nushell prompt{1} {2}
 java IslamicCalendarExample.java
 Islamic Calendar (Umm al-Qura): Muharram 18, 1445
 ```

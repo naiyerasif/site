@@ -107,9 +107,10 @@ export default defineConfig({
 					rehypeStarryNight,
 					{
 						aliases: {
-							brewfile: "shell",
+							brewfile: "nushell",
 							conf: "ini",
 							json: "jsonc",
+							sh: "nushell",
 						},
 						grammars: customGrammars,
 						plugins: [

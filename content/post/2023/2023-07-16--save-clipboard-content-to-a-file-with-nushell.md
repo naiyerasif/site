@@ -8,7 +8,7 @@ showFull: true
 
 You can save the clipboard content to a file using Nushell as follows.
 
-```nu
+```nushell
 pbpaste | save config.yml
 ```
 

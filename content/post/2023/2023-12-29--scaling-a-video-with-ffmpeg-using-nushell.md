@@ -8,7 +8,7 @@ showFull: true
 
 I've been using the following [Nushell](https://www.nushell.sh/) script for a while to scale down high resolution videos with [FFmpeg](https://ffmpeg.org/).
 
-```nu
+```nushell
 def scale_a_video [] {
 	print "? Input file path: "
 	let input_file_path = (ls | get name | input list)

@@ -199,7 +199,7 @@ services:
 
 Deploy the function JAR file with the following command.
 
-```nu prompt{1} output{2..38}
+```nushell prompt{1} output{2..38}
 aws --profile localstack lambda create-function --function-name mn4-aws-lambda-with-eventbridge --runtime java21 --role arn:aws:iam::000000000000:role/example-lambda-noop-role --handler com.example.FunctionRequestHandler --zip-file $"fileb://(pwd)/target/(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)-(mvn help:evaluate -Dexpression=project.version -q -DforceStdout).jar" --timeout 120
 {
 	"FunctionName": "mn4-aws-lambda-with-eventbridge",
@@ -249,7 +249,7 @@ The command `mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout`
 
 Next, create an event bus to receive Cloudwatch events.
 
-```nu prompt{1} output{2..4}
+```nushell prompt{1} output{2..4}
 aws --profile localstack events create-event-bus --name example-event-bus
 {
 	"EventBusArn": "arn:aws:events:us-east-1:000000000000:event-bus/example-event-bus"
@@ -258,7 +258,7 @@ aws --profile localstack events create-event-bus --name example-event-bus
 
 We also need to create a rule that triggers on events with `source` set to `example-source`, and routes them to our Lambda function.
 
-```nu prompt{1} output{2..4}
+```nushell prompt{1} output{2..4}
 aws --profile localstack events put-rule --name ScheduledEventLambdaInvocationRule --event-pattern "{\"source\":[\"example-source\"]}" --state ENABLED --event-bus-name example-event-bus
 {
 	"RuleArn": "arn:aws:events:us-east-1:000000000000:rule/example-event-bus/ScheduledEventLambdaInvocationRule"
@@ -267,7 +267,7 @@ aws --profile localstack events put-rule --name ScheduledEventLambdaInvocationRu
 
 Configure this rule as an event source for the Lambda function.
 
-```nu prompt{1} output{2..5}
+```nushell prompt{1} output{2..5}
 aws --profile localstack events put-targets --rule ScheduledEventLambdaInvocationRule --event-bus-name example-event-bus --targets Id=1,Arn=arn:aws:lambda:us-east-1:000000000000:function:mn4-aws-lambda-with-eventbridge
 {
 	"FailedEntryCount": 0,
