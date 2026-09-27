@@ -7,7 +7,7 @@
 	--z-callout-padding: 1.5ch;
 
 	position: relative;
-	background: linear-gradient(135deg, var(--y-theme-bg-color) 0%, var(--y-theme-canvas-color) 100%);
+	background: linear-gradient(180deg, var(--y-theme-bg-color) 0%, var(--y-theme-canvas-color) 100%);
 	padding: var(--z-callout-padding);
 	border-radius: var(--x-radius-root);
 	outline: 1px dashed var(--y-callout-border, var(--y-note-border));
@@ -19,7 +19,6 @@
 		inset: 0;
 		z-index: 0;
 		background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%25" height="100%25" filter="url(%23n)"/></svg>');
-		filter: contrast(230%) brightness(100%);
 		mix-blend-mode: overlay;
 		opacity: 0.4;
 	}
