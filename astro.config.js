@@ -96,7 +96,7 @@ export default defineConfig({
 									type: "element",
 									tagName: "use",
 									properties: {
-										href: "#x4-link"
+										href: "#px-link"
 									}
 								}
 							]

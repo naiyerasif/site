@@ -3,23 +3,23 @@ const calloutOptions = {
 	callouts: {
 		note: {
 			title: "Note",
-			hint: `<svg role="img" class="icon"><use href="#x4-callout-note"/></svg>`
+			hint: `<svg role="img" class="icon"><use href="#px-circle-info"/></svg>`
 		},
 		commend: {
 			title: "Tip",
-			hint: `<svg role="img" class="icon"><use href="#x4-callout-commend"/></svg>`
+			hint: `<svg role="img" class="icon"><use href="#px-circle-check"/></svg>`
 		},
 		warn: {
 			title: "Warning",
-			hint: `<svg role="img" class="icon"><use href="#x4-callout-warn"/></svg>`
+			hint: `<svg role="img" class="icon"><use href="#px-triangle-exclaim"/></svg>`
 		},
 		deter: {
 			title: "Caution",
-			hint: `<svg role="img" class="icon"><use href="#x4-callout-deter"/></svg>`
+			hint: `<svg role="img" class="icon"><use href="#px-circle-exclaim"/></svg>`
 		},
 		assert: {
 			title: "Important",
-			hint: `<svg role="img" class="icon"><use href="#x4-callout-assert"/></svg>`
+			hint: `<svg role="img" class="icon"><use href="#px-bell"/></svg>`
 		}
 	},
 	generate(title, children, prefs) {

@@ -406,13 +406,11 @@ window.__search = function (query) {
 .icon,
 .chip svg {
 	--z-icon-size: var(--y-icon-size, var(--x-icon-normal));
-	--z-icon-stroke: var(--y-icon-stroke, 2);
 	--z-icon-color: var(--y-icon-color, currentColor);
 	display: inline-block;
 	vertical-align: middle;
-	stroke: var(--z-icon-color);
-	stroke-width: var(--z-icon-stroke);
-	fill: none;
+	stroke: none;
+	fill: var(--z-icon-color);
 	width: var(--z-icon-size);
 	height: var(--z-icon-size);
 	flex: none; /* prevent squeezed icons */

@@ -10,7 +10,7 @@ import Icon from "./Icon.astro";
 		<header>
 			<input placeholder="Search..." aria-keyshortcuts="ctrl+k" autofocus/>
 			<button type="reset" aria-live="polite" aria-label="Reset search" data-cmdb-reset>
-				<Icon name="twist-left-down"/>
+				<Icon name="arrow-rotate-left"/>
 			</button>
 			<button type="button" aria-live="polite" aria-label="Close command bar" data-cmdb-esc>
 				<Icon name="x"/>
@@ -40,7 +40,7 @@ class CommandBar extends HTMLElement {
 
 		this.query = "";
 		this.searchResults = [];
-		this.anchorIcon = `<svg role="img" class="icon" aria-hidden="true"><use href="#x4-twist-right-up"/></svg>`;
+		this.anchorIcon = `<svg role="img" class="icon" aria-hidden="true"><use href="#px-corner-down-right"/></svg>`;
 	}
 
 	async connectedCallback() {

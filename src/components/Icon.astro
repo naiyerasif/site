@@ -3,7 +3,7 @@ import slugify from "#utils/slugifier.js";
 
 const { name, alt, class: classes, ...attributes } = Astro.props;
 const id = alt ? slugify(alt) : null;
-const href = `#x4-${name}`;
+const href = `#px-${name}`;
 ---
 
 <svg role="img"

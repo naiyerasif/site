@@ -9,27 +9,27 @@ const mastodonHandle = encodeURI(siteInfo.author.presence.mastodon.id);
 
 const shareVia = [
 	{
-		platform: "mail",
+		icon: "envelope",
 		title: "Share via email",
 		link: `mailto:?subject=${shareInfo.title}&body=Checkout this article I read! ${shareInfo.url}`
 	},
 	{
-		platform: "mastodon",
+		icon: "mastodon",
 		title: "Share on Mastodon",
 		link: `https://share.joinmastodon.org/#text=${shareInfo.title}%20(by%20${mastodonHandle})%20-%20${shareInfo.url}`
 	},
 	{
-		platform: "hackernews",
+		icon: "hackernews",
 		title: "Submit to Hacker News",
 		link: `https://news.ycombinator.com/submitlink?u=${shareInfo.url}&t=${shareableTitle}`
 	},
 	{
-		platform: "linkedin",
+		icon: "linkedin",
 		title: "Post on LinkedIn",
 		link: `https://www.linkedin.com/sharing/share-offsite/?url=${shareInfo.url}`
 	},
 	{
-		platform: "reddit",
+		icon: "reddit",
 		title: "Post on Reddit",
 		link: `http://www.reddit.com/submit?url=${shareInfo.url}&title=${shareableTitle}`
 	}
@@ -37,8 +37,8 @@ const shareVia = [
 ---
 
 <div class="share-panel">
-	<share-url><button type="button" aria-live="polite" aria-label="Share link" class="share-button"><Icon name="share"/></button></share-url>
-	{shareVia.map(share => <a href={share.link} title={share.title} rel="noopener noreferrer" target="_blank"><Icon name={share.platform}/></a>)}
+	<share-url><button type="button" aria-live="polite" aria-label="Share link" class="share-button"><Icon name="arrow-up-from-bracket"/></button></share-url>
+	{shareVia.map(share => <a href={share.link} title={share.title} rel="noopener noreferrer" target="_blank"><Icon name={share.icon}/></a>)}
 </div>
 
 <script>
