@@ -1,7 +1,7 @@
 ---
 import Layout from "#layouts/Layout.astro";
-import PostCard from "../components/legacy/PostCard.astro";
-import NoteCard from "../components/legacy/NoteCard.astro";
+import PostLink from "#components/PostLink.astro";
+import PostEntry from "#components/PostEntry.astro";
 import Pagination from "#components/Pagination.astro";
 import siteInfo from "#utils/website.js";
 import { getPosts } from "#utils/content.js";
@@ -54,7 +54,7 @@ const pageInfo = {
 		</hgroup>
 	</div>
 	
-	{page.data.map(entry => entry.data.showFull ? <NoteCard {entry} /> : <PostCard {entry} />)}
+	{page.data.map(entry => entry.data.showFull ? <PostEntry {entry} /> : <PostLink {entry} />)}
 	
 	<div slot="sidekick" class="sidekick-items">
 		<Pagination currentPage={page.currentPage} totalPages={page.lastPage} base="posts"/>

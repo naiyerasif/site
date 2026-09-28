@@ -1,5 +1,11 @@
 @use "mixins";
 
+:where(a) {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5ch;
+}
+
 // external link indicator
 :where(a[rel*="nofollow"]) {
 	text-decoration-style: dotted;
