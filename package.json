@@ -14,9 +14,9 @@
 		"@astrojs/markdown-satteri": "^0.4.7",
 		"@astrojs/sitemap": "^3.7.4",
 		"@microflash/fenceparser": "^4.5.0",
-		"@sindresorhus/slugify": "^4.0.0",
+		"@sindresorhus/slugify": "^4.0.1",
 		"@wooorm/starry-night": "^3.11.0",
-		"astro": "^7.4.7",
+		"astro": "^7.4.8",
 		"dayjs": "^1.11.23",
 		"defu": "^6.1.7",
 		"feed": "^6.0.0",
@@ -29,7 +29,7 @@
 		"sharp": "^0.35.5"
 	},
 	"devDependencies": {
-		"@clack/prompts": "^1.8.1"
+		"@clack/prompts": "^1.9.0"
 	},
 	"imports": {
 		"#components/*": "./src/components/*",
