@@ -55,6 +55,10 @@
 			}
 		}
 
+		&[data-diff] {
+			margin-inline-start: -2.25ch;
+		}
+
 		[data-line-number] {
 			border-inline-start: var(--x-border-root) solid var(--z-hl-line-border);
 			background-color: var(--z-hl-line-bg-color);

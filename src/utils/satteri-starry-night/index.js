@@ -110,6 +110,7 @@ export default function satteriStarryNight(options = {}) {
 					tabIndex: 0,
 					...node.properties
 				};
+				let dataDiff = false;
 
 				if (hasLinePlugins) {
 					const lineOpts = Object.assign(
@@ -118,6 +119,7 @@ export default function satteriStarryNight(options = {}) {
 							.filter(plugin => Boolean(plugin.opts))
 							.map(plugin => plugin.opts(meta))
 					);
+					dataDiff = lineOpts.diff;
 
 					const { children: lineChildren, totalLines } = mapLines(
 						fragment.children,
@@ -151,7 +153,7 @@ export default function satteriStarryNight(options = {}) {
 				const newPreNode = {
 					type: "element",
 					tagName: "pre",
-					properties: { ...container.properties },
+					properties: { ...container.properties, dataDiff },
 					children: [newCodeNode],
 					...(container.data ? { data: { ...container.data } } : {})
 				};
