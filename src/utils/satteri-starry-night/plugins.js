@@ -5,6 +5,30 @@ const createPromptNode = () => ({
 	children: []
 });
 
+const promptNode = Object.freeze({
+	type: "element",
+	tagName: "span",
+	properties: { className: ["prompt"], ariaHidden: "true" },
+});
+const emptyDiffNode = Object.freeze({
+	type: "element",
+	tagName: "span",
+	properties: { className: ["diff"] },
+	children: [{ type: "text", value: "\t" }]
+});
+const insDiffNode = Object.freeze({
+	type: "element",
+	tagName: "span",
+	properties: { className: ["diff"] },
+	children: [{ type: "text", value: "+\t" }]
+});
+const delDiffNode = Object.freeze({
+	type: "element",
+	tagName: "span",
+	properties: { className: ["diff"] },
+	children: [{ type: "text", value: "-\t" }]
+});
+
 export const titlePlugin = {
 	type: "header",
 	opts: meta => ({ title: meta?.title }),
@@ -24,10 +48,10 @@ export const lineAnnotationPlugin = {
 	type: "line",
 	opts: meta => {
 		const marked = new Set(meta["*"]);
-		const inserted = new Set(meta["+"]);
-		const deleted = new Set(meta["-"]);
-		const output = new Set(meta[">"]);
-		const prompt = new Set(meta["$"]);
+		const inserted = new Set(meta["ins"]);
+		const deleted = new Set(meta["del"]);
+		const output = new Set(meta["output"]);
+		const prompt = new Set(meta["prompt"]);
 
 		return {
 			marked,
@@ -40,26 +64,26 @@ export const lineAnnotationPlugin = {
 	},
 	apply: (opts, node) => {
 		const lineNumber = node.properties.dataLineNumber;
+		const line = { ...node };
 
-		let tagName = node.tagName;
-		if (opts.output.has(lineNumber)) tagName = "samp";
-		if (opts.marked.has(lineNumber)) tagName = "mark";
-		if (opts.inserted.has(lineNumber)) tagName = "ins";
-		if (opts.deleted.has(lineNumber)) tagName = "del";
+		if (opts.output.has(lineNumber)) line.properties["dataLineOutput"] = true;
+		if (opts.prompt.has(lineNumber)) line.children = [promptNode, ...line.children];
+		if (opts.marked.has(lineNumber)) line.properties["dataLineMarked"] = true;
+		let diffMarked = false;
+		if (opts.inserted.has(lineNumber)) {
+			line.properties["dataLineInserted"] = true;
+			line.children = [insDiffNode, ...line.children];
+			diffMarked = true;
+		}
+		if (opts.deleted.has(lineNumber)) {
+			line.properties["dataLineDeleted"] = true;
+			line.children = [delDiffNode, ...line.children];
+			diffMarked = true;
+		}
+		if (opts.diff && !diffMarked) {
+			line.children = [emptyDiffNode, ...line.children];
+		}
 
-		const children = opts.prompt.has(lineNumber)
-			? [createPromptNode(), ...node.children]
-			: node.children;
-
-		const properties = opts.diff
-			? { ...node.properties, dataDiff: true }
-			: node.properties;
-
-		return {
-			...node,
-			tagName,
-			properties,
-			children
-		};
+		return line;
 	}
 };
