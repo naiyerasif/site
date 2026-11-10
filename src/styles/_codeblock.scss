@@ -20,27 +20,24 @@
 		justify-content: space-between;
 		color: var(--y-caption-color);
 		border-block-end: var(--z-hl-border);
-		padding: var(--z-hl-padding-min);
+		padding: var(--z-hl-padding-min) var(--z-hl-padding-max);
 		font-size: 0.7em;
-
-		svg {
-			@include mixins.size(32px, 24px);
-			margin-inline: 0.5ch 1ch;
-		}
 	}
 
 	&-title {
 		line-height: 1.5;
 		overflow: hidden;
 		text-overflow: ellipsis;
-	}
 
-	clipboard-copy {
-		flex: none;
-		user-select: none;
-		padding: 0.4ch 0.8ch;
-		font-size: 0.9em;
-		margin-inline-start: auto;
+		&::before {
+			display: inline-block;
+			margin-inline-end: 1ch;
+			content: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 8' xmlns='http://www.w3.org/2000/svg' width='30' height='8'%3E%3Ccircle cx='4' cy='4' r='4' fill='%23ea694f'/%3E%3Ccircle cx='15' cy='4' r='4' fill='%23c28400'/%3E%3Ccircle cx='26' cy='4' r='4' fill='%235ca22b'/%3E%3C/svg%3E");
+			user-select: none;
+			text-decoration: none;
+			line-height: 0;
+			max-inline-size: 30px;
+		}
 	}
 
 	pre {

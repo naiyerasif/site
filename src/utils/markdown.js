@@ -1,3 +1,14 @@
+import { markdownToMdast } from "satteri";
+import satteriExternalLinks from "satteri-external-links";
+import {
+	satteriCalloutDirectives,
+	satteriFigureDirective,
+	satteriTimeDirective,
+	satteriYoutubeDirective,
+} from "#utils/satteri/index.js";
+import satteriStarryNight from "#utils/satteri-starry-night/index.js";
+import { titlePlugin, lineAnnotationPlugin } from "#utils/satteri-starry-night/plugins.js";
+
 const calloutOptions = {
 	tagName: "div",
 	callouts: {
@@ -21,41 +32,52 @@ const calloutOptions = {
 			title: "Important",
 			hint: `<svg role="img" class="icon"><use href="#px-bell"/></svg>`
 		}
-	},
-	generate(title, children, prefs) {
-		return [
-			{
-				type: "paragraph",
-				data: {
-					hName: "div",
-					hProperties: { className: ["callout-header"] }
-				},
-				children: [
-					{
-						type: "html",
-						value: prefs.hint
-					},
-					{
-						type: "strong",
-						children: [
-							{
-								type: "text",
-								value: `${title} `
-							}
-						]
-					}
-				]
-			},
-			{
-				type: "paragraph",
-				data: {
-					hName: "div",
-					hProperties: { className: ["callout-body"] }
-				},
-				children
-			}
-		];
 	}
 };
 
-export { calloutOptions };
+const satteriDefaultOptions = {
+	features: {
+		directive: true,
+		definitionList: true
+	}
+};
+
+const satteriClientOptions = {
+	...satteriDefaultOptions,
+	mdastPlugins: [
+		satteriTimeDirective(),
+		satteriFigureDirective(),
+		satteriCalloutDirectives(calloutOptions),
+		satteriYoutubeDirective()
+	],
+	hastPlugins: [
+		satteriExternalLinks({
+			target: false,
+			rel: ["nofollow", "noopener", "noreferrer"]
+		}),
+		satteriStarryNight({
+			aliases: {
+				brewfile: "nushell",
+				conf: "ini",
+				json: "jsonc",
+				sh: "nushell",
+			},
+			plugins: [
+				titlePlugin,
+				lineAnnotationPlugin
+			]
+		})
+	]
+};
+
+const satteriServerOptions = {
+	...satteriDefaultOptions,
+	mdastPlugins: [
+		satteriTimeDirective(),
+		satteriFigureDirective(),
+		satteriCalloutDirectives(calloutOptions),
+		satteriYoutubeDirective({ server: true })
+	],
+};
+
+export { calloutOptions, satteriClientOptions, satteriServerOptions };

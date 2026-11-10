@@ -419,7 +419,7 @@ window.__search = function (query) {
 
 /* hide undefined custom elements which don't have non-javascript fallbacks
    TODO: use `data-require=js` attribute to streamline this rule in future */
-:where(clipboard-copy, command-bar, theme-switcher):not(:defined) {
+:where(command-bar, theme-switcher):not(:defined) {
 	visibility: hidden !important;
 	display: none !important;
 }

@@ -22,27 +22,23 @@ This version was launched in July 2023, followed by steady updates over time. A 
 
 ## Frequently Asked Questions
 
-::::dl
-
-- Can I use your code?
-
-	Yes&mdash;it's licensed under [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by-sa/4.0/).
-
+Can I use your code?
+~ Yes&mdash;it's licensed under [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by-sa/4.0/).
+  
 	:::deter{title="Disclaimer"}
 	**The examples on this site are optimized for learning, not for use in production.** Use your discretion, review with peers, and modify them to fit your needs.
 	:::
-- How can I stay updated with new posts?
 
-	You can subscribe to this site using [RSS](https://aboutfeeds.com/). I offer two feeds: one for [posts](/feed.xml), and another for both [posts and notes](/all.xml).
-- How can I report a mistake, or contact you?
+How can I stay updated with new posts?
+~ You can subscribe to this site using [RSS](https://aboutfeeds.com/). I offer two feeds - one for [posts](/feed.xml), and another for both [posts and notes](/all.xml).
 
-	You can contact me on [Mastodon](https://en.wikipedia.org/wiki/Mastodon_(social_network)) for discussions and rants: [@naiyer@mastodon.social](https://mastodon.social/@naiyer)
-
+How can I report a mistake, or contact you?
+~ You can contact me on [Mastodon](https://en.wikipedia.org/wiki/Mastodon_(social_network)) for discussions and rants: [@naiyer@mastodon.social](https://mastodon.social/@naiyer)
+  
 	You can [submit an issue](https://github.com/naiyerasif/site/issues/new) for bug reports and corrections on accessibility, browser rendering inconsistencies, performance bottlenecks, and general usability concerns.
-- Do you use AI?
 
-	At work, yes. On this site, no. Despite my liberal use of em dashes, every post&mdash;with all flaws and imperfections&mdash;is my handiwork.
-::::
+Do you use AI?
+~ At work, yes. On this site, no. Despite my liberal use of em dashes, every post&mdash;with all flaws and imperfections&mdash;is my handiwork.
 
 ## Credits
 

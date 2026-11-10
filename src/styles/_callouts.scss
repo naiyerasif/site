@@ -13,7 +13,7 @@
 	outline: 1px dashed var(--y-callout-border, var(--y-note-border));
 	outline-offset: -3px;
 
-	&-header {
+	&-indicator {
 		display: flex;
 		align-items: center;
 		gap: 0.75ch;
@@ -24,7 +24,11 @@
 		}
 	}
 
-	&-body {
+	&-hint {
+		line-height: 0;
+	}
+
+	&-content {
 		overflow: auto;
 		@include mixins.flow;
 
@@ -33,7 +37,7 @@
 		}
 	}
 
-	.callout-header + .callout-body {
+	.callout-indicator + .callout-content {
 		margin-block-start: 1ch;
 	}
 

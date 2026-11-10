@@ -1,23 +1,35 @@
-import { visit } from "unist-util-visit";
-import { toString } from "mdast-util-to-string";
+import { defineMdastPlugin } from "satteri";
 
+/**
+ * @typedef {Object} YoutubeDirectiveOptions
+ * @property {boolean} [server] Render a plain `<iframe>` instead of `<lite-youtube>`.
+ */
+
+/** @type {YoutubeDirectiveOptions} */
 const defaults = {
-	server: false
+	server: false,
 };
 
-export default function remarkYoutubeDirective(options = defaults) {
-	return (tree) => {
-		visit(tree, { type: "leafDirective", name: "youtube" }, (node) => {
-			const data = (node.data ??= {});
-			const attributes = (node.attributes ??= {});
+/**
+ * Convert the `::youtube{id=...}` leaf directive to a `<figure>` element.
+ *
+ * @param {YoutubeDirectiveOptions} [options]
+ */
+export default function satteriYoutubeDirective(options = defaults) {
+	return defineMdastPlugin({
+		name: "satteri-youtube-directive",
+		leafDirective(node, ctx) {
+			if (node.name !== "youtube") return;
+
+			const attributes = { ...node.attributes };
 			const { id } = attributes;
 
 			if (!id) {
-				console.warn("Missing youtube video id");
+				ctx.report({ message: "Missing youtube video id", node, severity: "warning" });
 				return;
 			}
 
-			const title = toString(node) || "Play video";
+			const title = ctx.textContent(node) || "Play video";
 
 			let player;
 
@@ -40,7 +52,7 @@ export default function remarkYoutubeDirective(options = defaults) {
 					data: {
 						hName: "div",
 						hProperties: {
-							className: ["directive-youtube-iframe-container"]
+							className: ["directive-youtube-iframe-container"],
 						},
 					},
 					children: [
@@ -61,7 +73,7 @@ export default function remarkYoutubeDirective(options = defaults) {
 									title: "Play video",
 									data: {
 										hProperties: {
-											className: ["lty-playbtn"]
+											className: ["lty-playbtn"],
 										},
 									},
 									children: [
@@ -70,7 +82,7 @@ export default function remarkYoutubeDirective(options = defaults) {
 											data: {
 												hName: "span",
 												hProperties: {
-													className: ["lyt-visually-hidden"]
+													className: ["lyt-visually-hidden"],
 												},
 											},
 											children: [{ type: "text", value: title }],
@@ -85,17 +97,19 @@ export default function remarkYoutubeDirective(options = defaults) {
 				attributes["class"] = `directive-youtube ${attributes["class"]}`;
 			}
 
-			node.children = [
+			ctx.setField(node, "children", [
 				player,
 				{
 					type: "paragraph",
 					data: { hName: "figcaption" },
 					children: [{ type: "text", value: title }],
-				}
-			];
-
-			data.hName = "figure";
-			data.hProperties = attributes;
-		});
-	};
+				},
+			]);
+			ctx.setField(node, "data", {
+				...node.data,
+				hName: "figure",
+				hProperties: attributes,
+			});
+		},
+	});
 }

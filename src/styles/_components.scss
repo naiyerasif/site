@@ -132,29 +132,6 @@
 }
 
 article {
-	// header links
-	:where(h1, h2, h3, h4, h5, h6) {
-		--y-icon-size: 0.8em;
-		a .icon {
-			visibility: hidden;
-			vertical-align: text-top;
-			margin-inline-start: 0.25ch;
-		}
-
-		&:focus,
-		&:hover {
-			a .icon {
-				visibility: visible;
-			}
-		}
-
-		@include mixins.onTouch {
-			a .icon {
-				visibility: visible;
-			}
-		}
-	}
-
 	.footnotes {
 		font-size: var(--y-small-text);
 		color: var(--y-caption-color);

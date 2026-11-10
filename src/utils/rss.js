@@ -1,20 +1,7 @@
 import { Feed } from "feed";
-import { unified } from "unified";
-import remarkParse from "remark-parse";
-import remarkGfm from "remark-gfm";
-import remarkSmartypants from "remark-smartypants";
-import remarkDirective from "remark-directive";
-import remarkCalloutDirectives from "@microflash/remark-callout-directives";
-import { remarkFigureDirective } from "@naiyer/remark-directives";
-import {
-	remarkDescriptionListDirective,
-	remarkTimeDirective,
-	remarkYoutubeDirective
-} from "#utils/remark/index.js";
-import remarkRehype from "remark-rehype";
-import rehypeStringify from "rehype-stringify";
+import { createSatteriMarkdownProcessor } from "@astrojs/markdown-satteri";
 import { absoluteUrl } from "#utils/website.js";
-import { calloutOptions } from "#utils/markdown.js";
+import { satteriServerOptions } from "#utils/markdown.js";
 
 function canonize(html) {
 	const relativeRefs = /(href|src)=("|')((?=\.{1,2}\/|\/).+?)\2/gi;
@@ -23,22 +10,11 @@ function canonize(html) {
 	});
 }
 
+const processor = await createSatteriMarkdownProcessor(satteriServerOptions);
+
 async function process(markdown) {
-	const file = await unified()
-		.use(remarkParse)
-		.use(remarkGfm)
-		.use(remarkSmartypants)
-		.use(remarkDirective)
-		.use(remarkTimeDirective)
-		.use(remarkFigureDirective)
-		.use(remarkDescriptionListDirective)
-		.use(remarkYoutubeDirective, { server: true })
-		.use(remarkCalloutDirectives, calloutOptions)
-		.use(remarkRehype, { allowDangerousHtml: true })
-		.use(rehypeStringify, { allowDangerousHtml: true })
-		.process(markdown);
-	
-	return String(file);
+	const { code } = await processor.render(markdown);
+	return code;
 }
 
 export default async function(items, options) {

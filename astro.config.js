@@ -1,29 +1,8 @@
 import { defineConfig } from "astro/config";
+import { satteri } from "@astrojs/markdown-satteri";
 import sitemap from "@astrojs/sitemap";
-import { unified } from '@astrojs/markdown-remark';
-import remarkDirective from "remark-directive";
-import remarkCalloutDirectives from "@microflash/remark-callout-directives";
-import rehypeExternalLinks from "rehype-external-links";
-import rehypeSlugify from "@microflash/rehype-slugify";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeStarryNight from "@microflash/rehype-starry-night";
-import {
-	titlePlugin,
-	languageIndicatorPlugin,
-	lineAnnotationPlugin
-} from "@microflash/rehype-starry-night/plugins";
-import { remarkFigureDirective } from "@naiyer/remark-directives";
-import {
-	remarkDescriptionListDirective,
-	remarkTimeDirective,
-	remarkYoutubeDirective
-} from "#utils/remark/index.js";
 import siteInfo from "#utils/website.js";
-import { calloutOptions } from "#utils/markdown.js";
-import { createCountableSlugifier } from "#utils/slugifier.js";
-import { customGrammars } from "#utils/textmate/index.js";
-
-const slugifier = createCountableSlugifier();
+import { satteriClientOptions } from "#utils/markdown.js";
 
 // https://astro.build/config
 export default defineConfig({
@@ -51,117 +30,6 @@ export default defineConfig({
 	},
 	markdown: {
 		syntaxHighlight: false,
-		processor: unified({
-			remarkPlugins: [
-				remarkDirective,
-				remarkTimeDirective,
-				remarkFigureDirective,
-				remarkYoutubeDirective,
-				[remarkCalloutDirectives, calloutOptions],
-				remarkDescriptionListDirective
-			],
-			rehypePlugins: [
-				[
-					rehypeExternalLinks,
-					{
-						target: false,
-						rel: ["nofollow", "noopener", "noreferrer"]
-					}
-				],
-				[
-					rehypeSlugify,
-					{
-						reset() {
-							slugifier.reset()
-						},
-						slugify(text) {
-							return slugifier.slugify(text)
-						}
-					}
-				],
-				[
-					rehypeAutolinkHeadings,
-					{
-						behavior: "append",
-						content: {
-							type: "element",
-							tagName: "svg",
-							properties: {
-								"aria-hidden": "true",
-								role: "img",
-								className: ["icon"]
-							},
-							children: [
-								{
-									type: "element",
-									tagName: "use",
-									properties: {
-										href: "#px-link"
-									}
-								}
-							]
-						}
-					}
-				],
-				[
-					rehypeStarryNight,
-					{
-						aliases: {
-							brewfile: "nushell",
-							conf: "ini",
-							json: "jsonc",
-							sh: "nushell",
-						},
-						grammars: customGrammars,
-						plugins: [
-							{
-								type: "header",
-								apply: (opts, nodes) => {
-									if (opts.id) {
-										nodes.push({
-											type: "element",
-											tagName: "svg",
-											properties: {
-												"aria-hidden": "true",
-												role: "img",
-											},
-											children: [
-												{
-													type: "element",
-													tagName: "use",
-													properties: {
-														href: "#x4-traffic-lights"
-													}
-												}
-											]
-										});
-									}
-								}
-							},
-							titlePlugin,
-							lineAnnotationPlugin,
-							{
-								type: "header",
-								apply: (opts, nodes) => {
-									if (opts.id) {
-										nodes.push({
-											type: "element",
-											tagName: "clipboard-copy",
-											properties: {
-												className: [`${opts.namespace}-copy`],
-												for: opts.id
-											},
-											children: [
-												{ type: "text", value: "Copy" }
-											]
-										});
-									}
-								}
-							}
-						]
-					}
-				]
-			]
-		})
+		processor: satteri(satteriClientOptions),
 	}
 });

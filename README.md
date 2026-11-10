@@ -15,34 +15,6 @@ Personal website of [@naiyerasif](https://github.com/naiyerasif)
 
 This site supports the following extensions in addition to [GFM](https://github.github.com/gfm/).
 
-### `dl` directive
-
-The `dl` directive generates a description list. Wrap the standard unordered list in `:::dl` block. The text immediately following the `-` becomes the definition term (`<dt>`). Any indented content below it becomes the definition description (`<dd>`), which can include multiple paragraphs, links, and other markdown elements.
-
-**Input**
-
-```md
-:::dl
-- Firefox
-
-  A free, open source, cross-platform web browser.
-
-  Source available at: [@mozilla-firefox/firefox](https://github.com/mozilla-firefox/firefox)
-:::
-```
-
-**Output**
-
-```html
-<dl>
-  <dt>Firefox</dt>
-  <dd>
-    <p>A free, open source, cross-platform web browser.</p>
-    <p>Source available at: <a href="https://github.com/mozilla-firefox/firefox">@mozilla-firefox/firefox</a></p>
-  </dd>
-</dl>
-```
-
 ### `figure` directive
 
 The `figure` directive groups a piece of content (media, blockquote, and so on) with an associated caption. For example, you can wrap an image in a `:::figure` block, and a `::caption` after the image.
