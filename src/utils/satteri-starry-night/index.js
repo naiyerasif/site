@@ -4,8 +4,54 @@ import { createStarryNight } from "@wooorm/starry-night";
 import parse from "@microflash/fenceparser";
 import { customGrammars } from "./grammars/index.js";
 
+/**
+ * @typedef {import("satteri").HastNode} HastNode
+ * @typedef {import("satteri").HastVisitorContext} HastVisitorContext
+ * @typedef {Extract<HastNode, { type: "element" }>} HastElement
+ * @typedef {Extract<HastNode, { type: "text" }>} HastText
+ */
+
+/**
+ * @typedef {Record<string, any>} FenceMeta
+ */
+
+/**
+ * @typedef {object} SectionOptions
+ * @property {string} namespace
+ * @property {string} language
+ */
+
+/**
+ * @typedef {object} HeaderPlugin
+ * @property {"header"} type
+ * @property {(meta: FenceMeta) => Record<string, any>} [opts]
+ * @property {(opts: SectionOptions & Record<string, any>) => HastNode | HastNode[] | undefined | null | void} apply
+ */
+
+/**
+ * @typedef {object} LinePlugin
+ * @property {"line"} type
+ * @property {(meta: FenceMeta) => Record<string, any>} [opts]
+ * @property {(opts: Record<string, any>, node: HastElement) => HastElement | undefined | null | void} apply
+ */
+
+/**
+ * @typedef {object} Options
+ * @property {string} [namespace]
+ * @property {Parameters<typeof createStarryNight>[0]} [grammars]
+ * @property {Record<string, string>} [aliases]
+ * @property {string[]} [plainText]
+ * @property {Array<HeaderPlugin | LinePlugin>} [plugins]
+ * @property {boolean} [allowMissingScopes]
+ */
+
+/**
+ * @typedef {object} MappedLines
+ * @property {HastNode[]} children
+ * @property {number} totalLines
+ */
+
 const listFormatUnit = new Intl.ListFormat("en", { type: "unit" });
-const newLineRegex = /\r?\n|\r/g;
 const prefix = "language-";
 const defaults = {
 	namespace: "hl",
@@ -14,9 +60,24 @@ const defaults = {
 	plugins: []
 };
 
+/**
+ * @param {HeaderPlugin | LinePlugin} plugin
+ * @returns {plugin is LinePlugin}
+ */
 const isLinePlugin = plugin => plugin.type === "line" && typeof plugin.apply === "function";
+
+/**
+ * @param {HeaderPlugin | LinePlugin} plugin
+ * @returns {plugin is HeaderPlugin}
+ */
 const isHeaderPlugin = plugin => plugin.type === "header" && typeof plugin.apply === "function";
 
+/**
+ * Create a Satteri HAST plugin that highlights fenced code with Starry Night.
+ *
+ * @param {Options} [options]
+ * @returns {ReturnType<typeof defineHastPlugin>}
+ */
 export default function satteriStarryNight(options = {}) {
 	const {
 		namespace,
@@ -27,16 +88,65 @@ export default function satteriStarryNight(options = {}) {
 		allowMissingScopes
 	} = defu(options, defaults);
 
-	const headerPlugins = plugins.filter(isHeaderPlugin);
-	const linePlugins = plugins.filter(isLinePlugin);
+	/** @type {HeaderPlugin[]} */
+	const headerPlugins = [];
+	/** @type {LinePlugin[]} */
+	const linePlugins = [];
+
+	for (const plugin of plugins) {
+		if (isHeaderPlugin(plugin)) headerPlugins.push(plugin);
+		else if (isLinePlugin(plugin)) linePlugins.push(plugin);
+	}
+
+	const headerOptPlugins = headerPlugins.filter(plugin => Boolean(plugin.opts));
+	const lineOptPlugins = linePlugins.filter(plugin => Boolean(plugin.opts));
 
 	const hasPlugins = plugins.length > 0;
 	const hasHeaderPlugins = headerPlugins.length > 0;
 	const hasLinePlugins = linePlugins.length > 0;
 
+	const plainTextSet = new Set(plainText);
+	const headerClass = [`${namespace}-header`];
+	const wrapperClass = [namespace];
+
+	/** @type {Map<string, string | null>} */
+	const scopeCache = new Map();
+
 	const starryNightPromise = createStarryNight(grammars);
 	let starryNight;
 	let checked = false;
+
+	/**
+	 * @param {string} language
+	 * @returns {string | null}
+	 */
+	const resolveScope = language => {
+		let scope = scopeCache.get(language);
+		if (scope === undefined) {
+			scope = starryNight.flagToScope(aliases[language] || language) ?? null;
+			scopeCache.set(language, scope);
+		}
+		return scope;
+	};
+
+	/**
+	 * @param {FenceMeta} meta
+	 * @param {string} language
+	 * @returns {HastNode[]}
+	 */
+	const buildHeader = (meta, language) => {
+		const sectionOpts = Object.assign({ namespace, language }, ...headerOptPlugins.map(plugin => plugin.opts(meta)));
+		const nodes = [];
+
+		for (const plugin of headerPlugins) {
+			const result = plugin.apply(sectionOpts);
+			if (!result) continue;
+			if (Array.isArray(result)) nodes.push(...result);
+			else nodes.push(result);
+		}
+
+		return nodes;
+	};
 
 	return defineHastPlugin({
 		name: "satteri-starry-night",
@@ -62,20 +172,24 @@ export default function satteriStarryNight(options = {}) {
 
 		element: {
 			filter: ["pre"],
+
+			/**
+			 * @param {Readonly<HastElement>} container
+			 * @param {HastVisitorContext} ctx
+			 */
 			visit(container, ctx) {
-				const [node] = container.children;
+				const node = container.children[0];
 
 				if (!node || node.type !== "element" || node.tagName !== "code") {
 					return;
 				}
 
 				const language = extractLanguage(node);
-				if (!language || plainText.includes(language)) {
+				if (!language || plainTextSet.has(language)) {
 					return;
 				}
 
-				const resolvedLanguage = aliases[language] || language;
-				const scope = starryNight.flagToScope(resolvedLanguage);
+				const scope = resolveScope(language);
 
 				if (!scope) {
 					console.warn(
@@ -84,27 +198,23 @@ export default function satteriStarryNight(options = {}) {
 					return;
 				}
 
-				const blockNodes = [];
-				const sectionOpts = { namespace, language };
 				const meta = hasPlugins ? parseMeta(node) : {};
+				const blockNodes = [];
 
-				// Apply header
 				if (hasHeaderPlugins) {
-					const headerNodes = mapSection(headerPlugins, sectionOpts, meta);
+					const headerNodes = buildHeader(meta, language);
 					if (headerNodes.length > 0) {
 						blockNodes.push({
 							type: "element",
 							tagName: "div",
-							properties: { className: [`${namespace}-header`] },
+							properties: { className: headerClass },
 							children: headerNodes
 						});
 					}
 				}
 
-				// Highlight with Starry Night
 				const fragment = starryNight.highlight(ctx.textContent(node), scope);
 
-				// Apply line decorations
 				let codeChildren = fragment.children;
 				const codeProperties = {
 					tabIndex: 0,
@@ -113,13 +223,8 @@ export default function satteriStarryNight(options = {}) {
 				let dataDiff = false;
 
 				if (hasLinePlugins) {
-					const lineOpts = Object.assign(
-						{},
-						...linePlugins
-							.filter(plugin => Boolean(plugin.opts))
-							.map(plugin => plugin.opts(meta))
-					);
-					dataDiff = lineOpts.diff;
+					const lineOpts = Object.assign({}, ...lineOptPlugins.map(plugin => plugin.opts(meta)));
+					dataDiff = Boolean(lineOpts.diff);
 
 					const { children: lineChildren, totalLines } = mapLines(
 						fragment.children,
@@ -138,33 +243,29 @@ export default function satteriStarryNight(options = {}) {
 					);
 
 					codeChildren = lineChildren;
-					const gutter = `${totalLines}`.length;
-					codeProperties.style = `--hl-line-gutter: ${gutter}`;
+					codeProperties.style = `--hl-line-gutter: ${String(totalLines).length}`;
 				}
 
-				const newCodeNode = {
-					type: "element",
-					tagName: "code",
-					properties: codeProperties,
-					children: codeChildren,
-					...(node.data ? { data: { ...node.data } } : {})
-				};
-
-				const newPreNode = {
+				blockNodes.push({
 					type: "element",
 					tagName: "pre",
 					properties: { ...container.properties, dataDiff },
-					children: [newCodeNode],
+					children: [
+						{
+							type: "element",
+							tagName: "code",
+							properties: codeProperties,
+							children: codeChildren,
+							...(node.data ? { data: { ...node.data } } : {})
+						}
+					],
 					...(container.data ? { data: { ...container.data } } : {})
-				};
+				});
 
-				blockNodes.push(newPreNode);
-
-				// Replace <pre> with the wrapper <div class={namespace}>
 				ctx.replaceNode(container, {
 					type: "element",
 					tagName: "div",
-					properties: { className: [namespace] },
+					properties: { className: wrapperClass },
 					children: blockNodes
 				});
 			}
@@ -172,6 +273,12 @@ export default function satteriStarryNight(options = {}) {
 	});
 }
 
+/**
+ * Read the language from `data.lang` or from a `language-*` class.
+ *
+ * @param {HastElement} node
+ * @returns {string | undefined}
+ */
 function extractLanguage(node) {
 	if (typeof node.data?.lang === "string" && node.data.lang.length > 0) {
 		return node.data.lang;
@@ -179,17 +286,22 @@ function extractLanguage(node) {
 
 	const classes = node.properties?.className;
 	if (Array.isArray(classes)) {
-		const languageClass = classes.find(
-			d => typeof d === "string" && d.startsWith(prefix)
-		);
-		if (languageClass) {
-			return languageClass.slice(prefix.length);
+		for (const name of classes) {
+			if (typeof name === "string" && name.startsWith(prefix)) {
+				return name.slice(prefix.length);
+			}
 		}
 	}
 
 	return undefined;
 }
 
+/**
+ * Parse the fence meta string. Return an empty object on failure.
+ *
+ * @param {HastElement} node
+ * @returns {FenceMeta}
+ */
 function parseMeta(node) {
 	try {
 		const meta = node?.data?.meta;
@@ -199,22 +311,15 @@ function parseMeta(node) {
 	}
 }
 
-function mapSection(plugins, opts, meta) {
-	const pluginOpts = Object.assign(
-		{ ...opts },
-		...plugins
-			.filter(plugin => Boolean(plugin.opts))
-			.map(plugin => plugin.opts(meta))
-	);
-
-	return plugins.flatMap(plugin => {
-		const result = plugin?.apply(pluginOpts);
-		if (!result) return [];
-		return Array.isArray(result) ? result : [result];
-	});
-}
-
+/**
+ * Split highlighted nodes into lines and wrap each line with `createLine`.
+ *
+ * @param {HastNode[]} children
+ * @param {(children: HastNode[], lineNumber: number) => HastElement} createLine
+ * @returns {MappedLines}
+ */
 function mapLines(children, createLine) {
+	const newLine = /\r?\n|\r/g;
 	const replacement = [];
 	let index = -1;
 	let start = 0;
@@ -226,7 +331,8 @@ function mapLines(children, createLine) {
 
 		if (child.type === "text") {
 			let textStart = 0;
-			let match = newLineRegex.exec(child.value);
+			newLine.lastIndex = 0;
+			let match = newLine.exec(child.value);
 
 			while (match) {
 				const line = children.slice(start, index);
@@ -251,7 +357,7 @@ function mapLines(children, createLine) {
 
 				start = index + 1;
 				textStart = match.index + match[0].length;
-				match = newLineRegex.exec(child.value);
+				match = newLine.exec(child.value);
 			}
 
 			if (start === index + 1) {
@@ -263,7 +369,6 @@ function mapLines(children, createLine) {
 	const line = children.slice(start);
 	if (startTextRemainder) {
 		line.unshift({ type: "text", value: startTextRemainder });
-		startTextRemainder = "";
 	}
 
 	if (line.length > 0) {
