@@ -3,11 +3,15 @@ import satteriExternalLinks from "satteri-external-links";
 import {
 	satteriCalloutDirectives,
 	satteriFigureDirective,
+	satteriSlugify,
 	satteriTimeDirective,
 	satteriYoutubeDirective,
 } from "#utils/satteri/index.js";
 import satteriStarryNight from "#utils/satteri-starry-night/index.js";
 import { titlePlugin, lineAnnotationPlugin } from "#utils/satteri-starry-night/plugins.js";
+import { createCountableSlugifier } from "#utils/slugifier.js";
+
+const slugifier = createCountableSlugifier();
 
 const calloutOptions = {
 	tagName: "div",
@@ -51,6 +55,14 @@ const satteriClientOptions = {
 		satteriYoutubeDirective()
 	],
 	hastPlugins: [
+		satteriSlugify({
+			reset() {
+				slugifier.reset();
+			},
+			slugify(text) {
+				return slugifier.slugify(text);
+			}
+		}),
 		satteriExternalLinks({
 			target: false,
 			rel: ["nofollow", "noopener", "noreferrer"]
